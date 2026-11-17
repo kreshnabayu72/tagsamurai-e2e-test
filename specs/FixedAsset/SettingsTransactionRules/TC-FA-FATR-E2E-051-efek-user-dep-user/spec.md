@@ -5,17 +5,18 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r257", "§4.1#r258", "§4.1#r259", "§4.1#r405", "§4.1#r406", "§4.1#r407"]
+sourceRules: ["§4.1#r283", "§4.1#r284", "§4.1#r285", "§4.1#r431", "§4.1#r432", "§4.1#r433", "§4.1#r430"]
 smoke: []
 dependsOn:
   - "Settings User: nonaktifkan, hapus, dan ubah nama user"
 trace:
-  "§4.1#r257": [23, 24, 33]
-  "§4.1#r258": [32, 33]
-  "§4.1#r259": 35
-  "§4.1#r405": 26
-  "§4.1#r406": [37, 38]
-  "§4.1#r407": 40
+  "§4.1#r283": [23, 24, 33]
+  "§4.1#r284": [32, 33]
+  "§4.1#r285": 35
+  "§4.1#r431": 26
+  "§4.1#r432": [37, 38]
+  "§4.1#r433": 40
+  "§4.1#r430": [37, 38, 40]
 anchor: []
 coverage:
   web: automated
@@ -59,10 +60,10 @@ coverage:
 20. Klik `[Save]` pada dialog Save Changes
 21. Masuk sebagai Default User
 22. Buka tab `Borrow` pada node Category `Cooling Equipment {runId}` di Fixed Asset > Settings > Transaction Settings
-23. Verifikasi kolom Created By baris override untuk `Depot Bogor {runId}` menampilkan nama depan utuh dan inisial nama belakang `Rina{runId} S` dari user `Rina{runId} Susanti`
+23. Verifikasi kolom Created By baris override untuk `Depot Bogor {runId}` menampilkan nama depan utuh dan inisial nama belakang `Rina{runId} S` dari user `Rina{runId} Susanti`[^drift-1]
 24. Verifikasi nama lengkap `Rina{runId} Susanti` tersampaikan saat hover pada Created By baris override untuk `Depot Bogor {runId}`
 25. Buka dialog Changelog dari header halaman Transaction Settings
-26. Verifikasi kolom Modified By entri perubahan Category `Cooling Equipment {runId}` memuat nama depan utuh dan inisial nama belakang `Rina{runId} S` dari user `Rina{runId} Susanti`
+26. Verifikasi kolom Modified By entri perubahan Category `Cooling Equipment {runId}` dengan Field `Borrow (Max duration)` memuat nama depan utuh dan inisial nama belakang `Rina{runId} S` dari user `Rina{runId} Susanti`[^drift-1]
 27. Tutup dialog Changelog
 
 ### Pembuat dan pengubah tetap tampil sesudah dinonaktifkan, diubah namanya, atau dihapus
@@ -70,12 +71,14 @@ coverage:
 29. Ubah nama user `Tono{runId} Wibowo` menjadi `Toni{runId} Wibowo`
 30. Hapus user `Toni{runId} Wibowo`
 31. Buka tab `Borrow` pada node Category `Cooling Equipment {runId}` di Fixed Asset > Settings > Transaction Settings
-32. Verifikasi kolom Created By baris override untuk `Depot Bogor {runId}` tetap menampilkan `Rina{runId} S` sesudah user `Rina{runId} Susanti` dinonaktifkan
-33. Verifikasi kolom Created By baris override untuk `Depot Cirebon {runId}` tetap menampilkan `Tono{runId} W`, bukan `Toni{runId} W`, sesudah user diubah namanya dan dihapus
+32. Verifikasi kolom Created By baris override untuk `Depot Bogor {runId}` tetap menampilkan `Rina{runId} S` sesudah user `Rina{runId} Susanti` dinonaktifkan[^drift-1]
+33. Verifikasi kolom Created By baris override untuk `Depot Cirebon {runId}` tetap menampilkan `Tono{runId} W`, bukan `Toni{runId} W`, sesudah user diubah namanya dan dihapus[^drift-1]
 34. Buka pilihan Created By pada Filter Panel tabel Overrides
 35. Verifikasi opsi `All users` memuat nama pembuat `Rina{runId} Susanti` yang nonaktif dan `Tono{runId} Wibowo` yang terhapus
 36. Buka dialog Changelog dari header halaman Transaction Settings
-37. Verifikasi kolom Modified By entri perubahan Category di Changelog tetap menampilkan `Rina{runId} S` sesudah user `Rina{runId} Susanti` dinonaktifkan
-38. Verifikasi kolom Modified By entri perubahan Category di Changelog tetap menampilkan `Tono{runId} W` sesudah user diubah namanya dan dihapus
+37. Verifikasi kolom Modified By entri perubahan Category `Cooling Equipment {runId}` dengan Field `Borrow (Max duration)` di Changelog tetap menampilkan `Rina{runId} S` sesudah user `Rina{runId} Susanti` dinonaktifkan[^drift-1]
+38. Verifikasi kolom Modified By entri perubahan Category `Cooling Equipment {runId}` dengan Field `Borrow (Max extensions)` di Changelog tetap menampilkan `Tono{runId} W` sesudah user diubah namanya dan dihapus[^drift-1]
 39. Buka pilihan Modified By pada Filter Panel Changelog
 40. Verifikasi opsi `All users` memuat nama pengubah `Rina{runId} Susanti` yang nonaktif dan `Tono{runId} Wibowo` yang terhapus
+
+[^drift-1]: Drift PRD vs foundation. PRD §4.1 `OVR-COL-CRT-a` dan `CHG-COL-MOD-a`: nama pembuat atau pengubah «ditulis apa adanya sebagai snapshot» saat baris dibuat atau entri dicatat. foundation `prd-conventions.md` §9.13 konteks 2: kolom referensi user sekunder ditampilkan sebagai Plain Text `[First Name] [Last Initial]`, dengan hover tooltip nama lengkap. Diasersi: foundation untuk bentuk tampilan nama (pola bersama, SB-4), dan «apa adanya» PRD diasersi sebagai snapshot: nama tidak ikut berubah sesudah user diubah namanya, dinonaktifkan, atau dihapus.

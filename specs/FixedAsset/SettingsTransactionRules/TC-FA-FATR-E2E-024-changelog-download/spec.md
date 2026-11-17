@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#p88, §5#r6, EB-DL-1@changelog, EB-DL-2@changelog, EB-DL-3@changelog, EB-DL-4]
+sourceRules: [§4.1#p95, §5#r6, EB-DL-1@changelog, EB-DL-2@changelog, EB-DL-3@changelog, EB-DL-4]
 smoke: [EB-DL-4]
 dependsOn: []
 trace:
-  §4.1#p88: [7, 11]
+  §4.1#p95: [7, 11]
   §5#r6: [4, 7]
   EB-DL-1@changelog: [8, 16, 17, 33]
   EB-DL-2@changelog: [6]

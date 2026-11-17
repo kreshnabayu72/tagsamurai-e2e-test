@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.2#b4", "§4.2#r1", "§4.2#r2", "§4.2#r3", "§4.2#r4", "§4.2#r5", "§4.2#r6", "§9.2#b3", "§9.2#b27", "§9.2#b30", "§9.4.2#r15", "§9.5#r16", "§9.5#r17"]
+sourceRules: ["§4.2#b5", "§4.2#r1", "§4.2#r2", "§4.2#r3", "§4.2#r4", "§4.2#r5", "§4.2#r6", "§9.2#b3", "§9.2#b27", "§9.2#b30", "§9.4.2#r15", "§9.5#r16", "§9.5#r17"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.2#b4": 11
-  "§4.2#r1": [33, 37, 71, 73, 77, 80]
+  "§4.2#b5": 11
+  "§4.2#r1": [33, 37, 71, 73, 77, 80, 88, 90]
   "§4.2#r2": 34
   "§4.2#r3": 35
   "§4.2#r4": [42, 45]
@@ -18,7 +18,7 @@ trace:
   "§4.2#r6": [64, 65]
   "§9.2#b3": 11
   "§9.2#b27": [16, 18, 21]
-  "§9.2#b30": 30
+  "§9.2#b30": [30, 104]
   "§9.4.2#r15": 11
   "§9.5#r16": 40
   "§9.5#r17": [39, 40]
@@ -140,3 +140,30 @@ coverage:
 79. Klik tombol Forward browser
 80. Verifikasi dialog `Unsaved Changes` tampil
 81. Klik `[Cancel]` pada dialog Unsaved Changes
+
+### Dialog Unsaved Changes mencegat link navbar
+82. Ganti isi kotak search Sidebar Category Tree dengan `Conveyor {runId}`, tekan Enter
+83. Klik Category leaf `Conveyor {runId}`
+84. Klik tab `Borrow`
+85. Isi `Max duration` `35`
+86. Klik menu `Profile` di navbar
+87. Klik `My Asset` pada menu Profile
+88. Verifikasi dialog `Unsaved Changes` tampil
+89. Klik `[Cancel]` pada dialog Unsaved Changes
+90. Verifikasi field `Max duration` bernilai `35`
+
+### Dua draft tidak valid membuka tab pertama menurut urutan tab
+91. Ganti isi kotak search Sidebar Category Tree dengan `Pallet {runId}`, tekan Enter
+92. Klik Category leaf `Pallet {runId}`
+93. Klik tab `Assign`
+94. Klik `[Set own value]` pada field `Max assets per assignee (concurrent)`
+95. Kosongkan `Max assets per assignee (concurrent)`
+96. Klik tab `Borrow`
+97. Klik `[Set own value]` pada field `Max duration`
+98. Kosongkan `Max duration`
+99. Ganti isi kotak search Sidebar Category Tree dengan `Conveyor {runId}`, tekan Enter
+100. Klik Category leaf `Conveyor {runId}`
+101. Klik tab `Assign`
+102. Kosongkan kotak Search Sidebar Category Tree, tekan Enter
+103. Klik `[Save]`
+104. Verifikasi node `Pallet {runId}` terpilih dan tab `Borrow` aktif

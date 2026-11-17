@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r240, §5#r3, EB-SRC-2@tabel-overrides, EB-SRC-3@tabel-overrides, EB-SRC-1]
+sourceRules: [§4.1#r266, §4.1#r268, §4.1#r269, §4.1#r271, §4.1#r267, §5#r3, EB-SRC-2@tabel-overrides, EB-SRC-3@tabel-overrides, EB-SRC-1]
 smoke: [EB-SRC-1]
 dependsOn: []
 trace:
-  §4.1#r239: [7, 8, 39, 40]
-  §4.1#r241: [13, 14]
-  §4.1#r242: [16, 18]
-  §4.1#r244: [20, 22, 26]
-  §4.1#r240: [10, 11]
+  §4.1#r266: [7, 8, 39, 40]
+  §4.1#r268: [13, 14]
+  §4.1#r269: [16, 18]
+  §4.1#r271: [20, 22, 26]
+  §4.1#r267: [10, 11]
   §5#r3: [7, 10, 13, 16, 26, 36]
   EB-SRC-2@tabel-overrides: [10, 36, 37, 44]
   EB-SRC-3@tabel-overrides: [46, 48, 50, 52]
@@ -33,10 +33,10 @@ coverage:
   - DU-013-2: Group tingkat atas `Proyek Karawang {runId}`.
   - DU-013-3: Group tingkat atas `Max Pool {runId}`.
   - DU-013-4: Asset Name `Excavator PC200 {runId}`, Code `EXC13-{runId}`, Category `Machinery {runId}`, UoM `Unit`.
-  - DU-013-5: aset `Excavator PC200 {runId} - 1`, ber-Group `Proyek Karawang {runId}` dan Category `Machinery {runId}`.
+  - DU-013-5: aset `Excavator PC200 {runId} - 1`, Asset ID `EXC13-001-{runId}`, ber-Group `Proyek Karawang {runId}` dan Category `Machinery {runId}`.
   - DU-013-6: override Group `Proyek Karawang {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max duration (30 days)`, dibuat oleh `Rina Wulandari`; kata kunci Search yang dipakai atasnya: `Karawang {runId}`, `rawang {runId}`, `KARAWANG {runId}`, `Zzqx {runId}`, ` Karawang {runId} `, dan `ProyekKarawang {runId}`.
   - DU-013-7: override Asset Name `Excavator PC200 {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max extensions (2)`, dibuat oleh `Rina Wulandari`.
-  - DU-013-8: override Asset `Excavator PC200 {runId} - 1` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Allow Borrow (Deny)`, dibuat oleh `Rina Wulandari`.
+  - DU-013-8: override Asset dengan Target tampil `EXC13-001-{runId} · Excavator PC200 {runId} - 1` (Asset ID dan Name pada DU-013-5) di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Allow Borrow (Deny)`, dibuat oleh `Rina Wulandari`.
   - DU-013-9: override Group `Max Pool {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Allow Borrow (Allow)`, dibuat oleh `Rina Wulandari`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
@@ -50,10 +50,10 @@ coverage:
 2. Klik node `Machinery {runId}` di Sidebar Category Tree
 3. Klik tab `Borrow`
 4. Ketik Search `{runId}` pada tabel Overrides, tekan Enter
-5. Verifikasi keempat baris data uji tampil di tabel Overrides: Target `Proyek Karawang {runId}`, Target `Excavator PC200 {runId}`, Target `Excavator PC200 {runId} - 1`, dan Target `Max Pool {runId}`
+5. Verifikasi keempat baris data uji tampil di tabel Overrides: Target `Proyek Karawang {runId}`, Target `Excavator PC200 {runId}`, Target `EXC13-001-{runId} · Excavator PC200 {runId} - 1`, dan Target `Max Pool {runId}`
 6. Ganti isi kotak Search dengan `Asset Name`, tekan Enter
 7. Verifikasi baris dengan Scope `Asset Name` dan Target `Excavator PC200 {runId}` tampil karena kolom Scope ikut dicari
-8. Verifikasi baris dengan Scope `Asset` dan Target `Excavator PC200 {runId} - 1`, baris `Proyek Karawang {runId}`, dan baris `Max Pool {runId}` tidak tampil
+8. Verifikasi baris dengan Scope `Asset` dan Target `EXC13-001-{runId} · Excavator PC200 {runId} - 1`, baris `Proyek Karawang {runId}`, dan baris `Max Pool {runId}` tidak tampil
 9. Ganti isi kotak Search dengan `Karawang {runId}`, tekan Enter
 10. Verifikasi baris dengan Scope `Group` dan Target `Proyek Karawang {runId}` tampil karena kolom Target ikut dicari pada badge Group
 11. Verifikasi baris `Max Pool {runId}` dan baris `Excavator PC200 {runId}` tidak tampil
@@ -88,9 +88,9 @@ coverage:
 ### Kata kunci cocok di dua kolom berbeda dan satu nilai memuat nilai lain
 35. Ganti isi kotak Search dengan `Max`, tekan Enter
 36. Verifikasi baris dengan Target `Max Pool {runId}` dan baris dengan Target `Excavator PC200 {runId}` serta Overridden `Max extensions (2)` tampil karena `Max` cocok di kolom Target dan di kolom Overridden
-37. Verifikasi baris dengan Target `Excavator PC200 {runId} - 1` dan Overridden `Allow Borrow (Deny)` tidak tampil
+37. Verifikasi baris dengan Target `EXC13-001-{runId} · Excavator PC200 {runId} - 1` dan Overridden `Allow Borrow (Deny)` tidak tampil
 38. Ganti isi kotak Search dengan `Asset`, tekan Enter
-39. Verifikasi baris dengan Scope `Asset Name` dan Target `Excavator PC200 {runId}` serta baris dengan Scope `Asset` dan Target `Excavator PC200 {runId} - 1` tampil karena nilai `Asset` juga substring dari nilai `Asset Name`
+39. Verifikasi baris dengan Scope `Asset Name` dan Target `Excavator PC200 {runId}` serta baris dengan Scope `Asset` dan Target `EXC13-001-{runId} · Excavator PC200 {runId} - 1` tampil karena nilai `Asset` juga substring dari nilai `Asset Name`
 40. Verifikasi baris `Max Pool {runId}` tidak tampil
 
 ### Tanggal tidak dicari, spasi dibuang di tepi, dan karakter khusus dicari sebagai teks

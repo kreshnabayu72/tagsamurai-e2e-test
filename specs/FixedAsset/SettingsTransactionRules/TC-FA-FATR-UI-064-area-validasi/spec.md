@@ -2,12 +2,12 @@
 id: TC-FA-FATR-UI-064-area-validasi
 title: "Area utama: validasi field sebelum Save"
 layer: ui-client
-priority: Medium
+priority: Critical
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r115
-  - §4.1#r202
+  - §4.1#r125
+  - §4.1#r211
   - §6#r1
   - §6#r2
   - §6#r8
@@ -48,11 +48,23 @@ sourceRules:
   - §9.9#r10
   - §9.9#r11
   - §9.9#r12
+  - §4.1#r137
+  - §4.1#r154
+  - §4.1#r155
+  - §4.1#r166
+  - §4.1#r190
+  - §4.1#r209
+  - §4.1#r68
+  - §4.1#r70
+  - §9.2#b202
+  - §9.2#b71
+  - §9.4.1#r11
+  - §9.4.2#r9
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r115: [90, 91]
-  §4.1#r202: 24
+  §4.1#r125: [90, 91]
+  §4.1#r211: 24
   §6#r1: 81
   §6#r2: [90, 92]
   §6#r8: [8, 42, 49, 60, 61, 75]
@@ -88,11 +100,23 @@ trace:
   §9.9#r5: [49, 52, 54]
   §9.9#r6: [60, 65, 68]
   §9.9#r7: [61, 66, 70]
-  §9.9#r8: [11, 23, 35]
-  §9.9#r9: [12, 24, 37]
+  §9.9#r8: [11, 23, 35, 165, 166]
+  §9.9#r9: [12, 24, 37, 136, 139, 141, 146, 149, 151, 156, 159, 161]
   §9.9#r10: [75, 77]
   §9.9#r11: [80, 81]
   §9.9#r12: [90, 91, 98]
+  §4.1#r137: [49, 52, 54]
+  §4.1#r154: [60, 65, 68]
+  §4.1#r155: [61, 66, 70]
+  §4.1#r166: [75, 77]
+  §4.1#r190: [11, 23, 35, 165, 166]
+  §4.1#r209: [12, 24, 37, 136, 139, 141, 146, 149, 151, 156, 159, 161]
+  §4.1#r68: [8, 21, 29]
+  §4.1#r70: [10, 22, 33]
+  §9.2#b202: [12, 24, 136, 139, 141, 146, 149, 151, 156, 159, 161]
+  §9.2#b71: 84
+  §9.4.1#r11: [21, 24, 119, 127]
+  §9.4.2#r9: [80, 81]
 anchor: [83, 112, 115, 124]
 coverage:
   web: automated
@@ -116,12 +140,13 @@ coverage:
   - DU-064-9: Nilai Max duration `400` yang dicoba untuk Duration unit `Days`.
   - DU-064-10: Pengaturan Category leaf `Machinery` tab Borrow: semua field Inherit, Company default Duration unit `Hours` dengan Max duration `9000`.
   - DU-064-11: Draft tidak valid di node Category leaf `Machinery` tab Borrow: Max duration bernilai sendiri `0`. Node All categories yang dilihat tidak punya draft tidak valid.
+  - DU-064-12: Nilai Auto-approve when duration ≤ yang dicoba untuk memeriksa tidak adanya batas atas: `100000`.
 - Kondisi:
-  - K1: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-064-1.
+  - K1: node All categories terpilih, tab Borrow aktif, Approval Workflow tersedia di plan, level Feature Suite Borrowing Full, level Feature Suite Assignment, Transfer, dan Disposal tidak None, nilai Company default memakai DU-064-1.
   - K2: node All categories terpilih, tab Disposal aktif, Allowed disposal types hanya `Sell` memakai DU-064-5, field lain memakai DU-064-1.
   - K3: node Category leaf `Machinery` terpilih, tab Assign aktif, nilai memakai DU-064-7.
   - K4: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-064-8.
-  - K5: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-064-10.
+  - K5: node Category leaf `Machinery` terpilih, tab Borrow aktif, level Feature Suite Borrowing Full, nilai memakai DU-064-10.
   - K6: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-064-1, draft tidak valid ada di node Category leaf `Machinery` sesuai DU-064-11.
 
 ## Test Steps
@@ -139,7 +164,7 @@ coverage:
 10. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Max assets per borrower (concurrent)`
 11. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Auto-approve when duration ≤`
 12. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Transaction timeout`
-13. Verifikasi dialog `Save Changes` tidak tampil dan Save tidak diproses
+13. Verifikasi Save tidak diproses: tidak ada permintaan Save yang terkirim
 
 ### Field angka tab Borrow bernilai 0
 14. Tampilkan Area utama dengan kondisi K1
@@ -154,7 +179,7 @@ coverage:
 23. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Auto-approve when duration ≤`
 24. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Transaction timeout`
 25. Verifikasi `Max extensions` bernilai `0` dan tidak ada pesan di bawah kontrolnya
-26. Verifikasi dialog `Save Changes` tidak tampil dan Save tidak diproses
+26. Verifikasi Save tidak diproses: tidak ada permintaan Save yang terkirim
 
 ### Masukan field angka tab Borrow hanya digit
 27. Tampilkan Area utama dengan kondisi K1
@@ -234,7 +259,7 @@ coverage:
 89. Klik `Save`
 90. Verifikasi pesan `At least one assignee type must be enabled` tampil di bawah kontrol `Allowed assignee: Employee`
 91. Verifikasi pesan `At least one assignee type must be enabled` tampil di bawah kontrol `Allowed assignee: Division`
-92. Verifikasi dialog `Save Changes` tidak tampil
+92. Verifikasi Save tidak diproses: tidak ada permintaan Save yang terkirim
 
 ### Guard Allowed assignee tidak dievaluasi saat Allow Assign Deny
 93. Tampilkan Area utama dengan kondisi K3
@@ -261,7 +286,7 @@ coverage:
 110. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `In-transit overdue after`
 111. Klik tab `Borrow`
 112. Verifikasi `Transaction timeout` pada tab `Borrow` bernilai `7`
-113. Verifikasi dialog `Save Changes` tidak tampil
+113. Verifikasi Save tidak diproses: tidak ada permintaan Save yang terkirim
 
 ### Peringatan Max duration di halaman Settings untuk nilai sendiri
 114. Tampilkan Area utama dengan kondisi K4
@@ -285,4 +310,47 @@ coverage:
 128. Tampilkan Area utama dengan kondisi K6
 129. Klik `Save`
 130. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Max duration` pada node Category leaf `Machinery` tab `Borrow`
-131. Verifikasi dialog `Save Changes` tidak tampil dan Save tidak diproses
+131. Verifikasi Save tidak diproses: tidak ada permintaan Save yang terkirim
+
+### Transaction timeout di tab Assign
+132. Tampilkan Area utama dengan kondisi K1
+133. Klik tab `Assign`
+134. Kosongkan `Transaction timeout`
+135. Klik `Save`
+136. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Transaction timeout`
+137. Ganti `Transaction timeout` menjadi `0`
+138. Klik `Save`
+139. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Transaction timeout`
+140. Ganti `Transaction timeout` dengan `1a2`
+141. Verifikasi `Transaction timeout` bernilai `12`
+
+### Transaction timeout di tab Transfer
+142. Tampilkan Area utama dengan kondisi K1
+143. Klik tab `Transfer`
+144. Kosongkan `Transaction timeout`
+145. Klik `Save`
+146. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Transaction timeout`
+147. Ganti `Transaction timeout` menjadi `0`
+148. Klik `Save`
+149. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Transaction timeout`
+150. Ganti `Transaction timeout` dengan `1a2`
+151. Verifikasi `Transaction timeout` bernilai `12`
+
+### Transaction timeout di tab Disposal
+152. Tampilkan Area utama dengan kondisi K1
+153. Klik tab `Disposal`
+154. Kosongkan `Transaction timeout`
+155. Klik `Save`
+156. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Transaction timeout`
+157. Ganti `Transaction timeout` menjadi `0`
+158. Klik `Save`
+159. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Transaction timeout`
+160. Ganti `Transaction timeout` dengan `1a2`
+161. Verifikasi `Transaction timeout` bernilai `12`
+
+### Auto-approve when duration ≤ tanpa batas atas
+162. Tampilkan Area utama dengan kondisi K1
+163. Ganti `Auto-approve when duration ≤` menjadi `100000`
+164. Klik `Save`
+165. Verifikasi dialog `Save Changes` tampil
+166. Verifikasi `Auto-approve when duration ≤` bernilai `100000` tanpa pesan di bawah kontrolnya

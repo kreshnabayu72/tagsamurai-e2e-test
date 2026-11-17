@@ -6,12 +6,17 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: ["§11#r12"]
+sourceRules: ["§11#r12", "§4.1#r147", "§4.1#r148", "§4.1#r149", "§4.1#r150", "§4.1#r151"]
 smoke: []
 dependsOn:
   - "License: alokasi kuota per Group"
 trace:
   "§11#r12": [2, 4, 6, 9]
+  "§4.1#r147": 2
+  "§4.1#r148": 2
+  "§4.1#r149": 4
+  "§4.1#r150": 9
+  "§4.1#r151": 6
 ---
 
 # Kuota Group pada Destination quota check
@@ -19,7 +24,7 @@ trace:
 ## Prerequisites
 - Aktor: Total Control.
 - Data:
-  - DU-118-1: Group `Divisi Cabang Timur {runId}`, alokasi kuota per Group bernilai `3`.
+  - DU-118-1: Group `Divisi Cabang Timur {runId}`, alokasi kuota per Group bernilai `3`, tidak memiliki aset lain di luar transfer aktif DU-118-3 dan DU-118-4 (sisa kuota `3` sebelum pengajuan pertama spec ini).
   - DU-118-2: Group `Divisi Pusat {runId}`.
   - DU-118-3: aset `Meja Lipat Unit 1 {runId}` di Group `Divisi Pusat {runId}`, transfer aktif berstatus In Transit menuju `Divisi Cabang Timur {runId}`.
   - DU-118-4: aset `Meja Lipat Unit 5 {runId}` di Group `Divisi Pusat {runId}`, transfer aktif berstatus In Transit menuju `Divisi Cabang Timur {runId}`, Destination quota check `OFF` lewat override aset.

@@ -7,6 +7,7 @@ caseType: Positive
 status: ready-for-automation
 sourceRules:
   - §4.1#r1
+  - §4.1#r63
   - §4.1#p1
   - §7#r11
   - §9.2#b309
@@ -26,6 +27,7 @@ smoke: []
 dependsOn: []
 trace:
   §4.1#r1: [2, 6, 7, 9]
+  §4.1#r63: 36
   §4.1#p1: [3, 4]
   §7#r11: 26
   §9.2#b309: [12, 13]
@@ -70,7 +72,7 @@ coverage:
 3. Verifikasi segmen pertama `Settings` berupa teks statis, bukan tautan
 4. Verifikasi segmen terakhir `Transaction Settings` berupa halaman aktif
 5. Verifikasi jejak dua segmen itu tidak memuat segmen yang dapat diklik
-6. Verifikasi tombol `Export rules` tampil dengan gaya outline dan severity contrast
+6. Verifikasi tombol `Export rules` tampil dan aktif di header
 7. Verifikasi tombol Changelog tampil di header
 8. Arahkan kursor ke tombol Changelog
 9. Verifikasi nama fungsi `Changelog` tersampaikan saat kursor berada di tombol
@@ -108,3 +110,8 @@ coverage:
 31. Verifikasi tombol `Export rules` menampilkan keadaan loading dan disabled selama respons belum diterima
 32. Klik `Export rules` sekali lagi
 33. Verifikasi jumlah permintaan Export rules yang terkirim setelah dua klik adalah satu
+
+### Tooltip label ikon Changelog tanpa titik
+34. Tampilkan Header halaman dengan kondisi K1
+35. Arahkan kursor ke tombol Changelog
+36. Verifikasi tooltip tombol Changelog berbunyi `Changelog` tanpa tanda titik di akhir

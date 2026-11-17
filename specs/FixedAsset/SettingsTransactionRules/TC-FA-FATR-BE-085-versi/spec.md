@@ -6,15 +6,15 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r32", "§Aturan Logika Modul#r33", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r35", "§4.1#r349", "§9.2#b23", "§9.2#b56", "§9.4.2#r5", "§9.4.4#r34", "§9.6#r8", "§9.7#r3", "§9.7#r20", "§9.7#r21"]
+sourceRules: ["§Aturan Logika Modul#r35", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r38", "§4.1#r375", "§9.2#b23", "§9.2#b56", "§9.4.2#r5", "§9.4.4#r34", "§9.6#r8", "§9.7#r3", "§9.7#r20", "§9.7#r21", "§4.4#r7", "§9.2#b191"]
 smoke: []
 dependsOn: []
 trace:
-  "§Aturan Logika Modul#r32": 3
-  "§Aturan Logika Modul#r33": [13, 16]
-  "§Aturan Logika Modul#r34": [19, 23, 39, 40]
-  "§Aturan Logika Modul#r35": [22, 23, 27]
-  "§4.1#r349": [26, 27, 45, 46, 50, 51]
+  "§Aturan Logika Modul#r35": [3, 54, 55]
+  "§Aturan Logika Modul#r36": [13, 16]
+  "§Aturan Logika Modul#r37": [19, 23, 39, 40]
+  "§Aturan Logika Modul#r38": [22, 23, 27]
+  "§4.1#r375": [26, 27, 45, 46, 50, 51]
   "§9.2#b23": 6
   "§9.2#b56": [9, 10]
   "§9.4.2#r5": 10
@@ -23,6 +23,8 @@ trace:
   "§9.7#r3": [13, 16]
   "§9.7#r20": [19, 23, 39, 40]
   "§9.7#r21": [27, 34]
+  "§4.4#r7": 6
+  "§9.2#b191": 50
 ---
 # Versi setting
 
@@ -38,7 +40,11 @@ trace:
   - DU-085-7: Category, Category leaf milik spec ini yang mewarisi seluruh nilai: Name `Perangkat Survei {runId}`.
   - DU-085-8: Asset, aset untuk pengajuan transaksi baru: Name `Drone Survei {runId}`; Asset Name `Drone Ukur {runId}`; Category `Perangkat Survei {runId}`; Group `Tim Survei {runId}`.
   - DU-085-9: Asset, aset target override Asset pada guard Allowed assignee: Name `Drone Pemetaan {runId}`; Asset Name `Drone Ukur {runId}`; Category `Perangkat Survei {runId}`; Group `Tim Pemetaan {runId}`.
+  - DU-085-10: Entitas, entitas khusus spec ini, tidak dipakai spec lain: Name `Entitas Versi {runId}`.
 - Kondisi:
+  - Spec ini memakai entitas khusus `Entitas Versi {runId}` (DU-085-10) yang tidak dipakai spec lain, karena yang diasersi adalah versi setting yang naik pada setting Company default dan setting Category entitas; semua data di atas berada di entitas itu.
+  - Level Feature Suite Borrowing dan Assignment entitas bernilai `Full`.
+  - Company default pada transaksi Borrow bernilai default: Max duration `14`, Max extensions `1`, dan Max assets per borrower (concurrent) `3`.
   - Seluruh field Category `Perangkat Survei {runId}` bernilai Inherit dan belum ada override pada Category itu.
   - Allowed assignee: Employee `ON` dan Allowed assignee: Division `ON` pada Company default.
   - Allow Assign bernilai `Allow` pada Company default dan Inherit pada Category `Perangkat Survei {runId}`; spec ini tidak mengubahnya, sehingga penolakan guard Allowed assignee berlaku untuk aset yang nilai efektif Allow Assign-nya bukan Deny.
@@ -118,3 +124,9 @@ trace:
 49. Sari Penata menghapus bulk override Group `Tim Survei {runId}` dan override Group `Tim Lapangan {runId}` pada Category `Perangkat Survei {runId}` untuk transaksi penugasan, padahal ia hanya berhak pada Group `Tim Survei {runId}`
 50. Verifikasi kedua override masih ada: override Group `Tim Survei {runId}` ditolak guard dan override Group `Tim Lapangan {runId}` dilewati karena di luar cakupan Sari Penata
 51. Verifikasi versi setting tidak naik dari versi yang dicatat
+
+### Save Changes yang mengubah beberapa field sekaligus menaikkan versi satu kali
+52. Maya Pengelola mencatat versi setting
+53. Maya Pengelola menyimpan Category `Perangkat Survei {runId}` pada transaksi peminjaman dengan Max extensions nilai sendiri `3`, Max duration nilai sendiri `9`, dan Max assets per borrower (concurrent) nilai sendiri `4` dalam satu Save Changes
+54. Verifikasi ketiga perubahan tersimpan: Max extensions `3`, Max duration `9`, dan Max assets per borrower (concurrent) `4` pada Category `Perangkat Survei {runId}`
+55. Verifikasi versi setting naik tepat satu dari versi yang dicatat, bukan tiga, karena versi naik satu kali per Save Changes berselisih

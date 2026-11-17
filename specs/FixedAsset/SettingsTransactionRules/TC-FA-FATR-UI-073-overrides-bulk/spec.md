@@ -5,25 +5,27 @@ layer: ui-client
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#p49, §4.1#r354, §4.1#r355, §4.1#r356, §4.1#r357, §4.3#r20, §5#r5, §9.2#b159, §9.4.2#r120, §9.4.2#r121, §9.5#r15, EB-TBL-5@menu-bulk-delete, EB-BLK-1@tabel-overrides, EB-BLK-4]
+sourceRules: [§4.1#p56, §4.1#r380, §4.1#r381, §4.1#r382, §4.1#r383, §4.3#r19, §5#r5, §9.2#b159, §9.4.2#r128, §9.4.2#r129, §9.5#r15, EB-TBL-5@menu-bulk-delete, EB-BLK-1@tabel-overrides, EB-BLK-4, EB-FB-1@delete-override, EB-BLK-2@tabel-overrides]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#p49: [3, 7, 8, 12, 13, 26, 27, 29, 32]
-  §4.1#r354: 56
-  §4.1#r355: [62, 64]
-  §4.1#r356: 66
-  §4.1#r357: [7, 10, 60]
-  §4.3#r20: [7, 12]
+  §4.1#p56: [3, 7, 8, 12, 13, 26, 27, 29, 32]
+  §4.1#r380: 56
+  §4.1#r381: [62, 64]
+  §4.1#r382: 66
+  §4.1#r383: [7, 10, 60]
+  §4.3#r19: [7, 12]
   §5#r5: [12, 13]
-  §9.2#b159: [62, 64, 70, 72]
-  §9.4.2#r120: 62
-  §9.4.2#r121: 66
+  §9.2#b159: [62, 64, 69, 70]
+  §9.4.2#r128: 62
+  §9.4.2#r129: 66
   §9.5#r15: 4
-  EB-TBL-5@menu-bulk-delete: [64, 72]
+  EB-TBL-5@menu-bulk-delete: [62, 64]
   EB-BLK-1@tabel-overrides: [7, 10, 16, 18, 19, 21, 22, 26, 37, 39, 41, 47, 51]
-  EB-BLK-4: [78, 79, 85, 86]
-anchor: [2]
+  EB-BLK-4: [76, 77, 83, 84]
+  EB-FB-1@delete-override: [76, 83]
+  EB-BLK-2@tabel-overrides: [8, 26, 27, 29]
+anchor: [2, 68]
 coverage:
   web: automated
 ---
@@ -35,11 +37,11 @@ coverage:
 - Layar awal: Settings > Transaction Settings, bagian `Overrides` pada Category dan transaksi terpilih.
 - Komponen: Tabel Overrides
 - Data:
-  - DU-073-1: 12 override (volume) di dalam cakupan Group aktor, Scope `Group`, Target `Workshop {n}`, Overridden `Max duration (30 days)`, Category `Vehicle > Pool car`, Created By `Budi Santoso`, Created At `2026-06-15 14:05`.
-  - DU-073-2: override di luar cakupan Group aktor, Scope `Group`, Target `Proyek Bekasi`, Overridden `Auto-approve (OFF)`, Category `Vehicle > Pool car`, Created By `Siti Nurbaya`, Created At `2026-06-03 10:00`.
-  - DU-073-3: override di luar cakupan Group aktor, Scope `Group`, Target `Proyek Cikarang`, Overridden `Max extensions (2)`, Category `Machinery`, Created By `Alexander Graham Bell`, Created At `2026-06-02 13:10`.
+  - DU-073-1: 12 override (volume) di dalam cakupan Group aktor, Scope `Group`, Target `Workshop {n}`, Overridden `Max duration (30 days)`, Category `Vehicle > Pool car`, Created By `Budi Santoso`, Created At `2026-06-15 14:05` untuk `Workshop 1`, lalu mundur satu menit untuk tiap nomor berikutnya (`Workshop 12` pada `2026-06-15 13:54`).
+  - DU-073-2: override di luar cakupan Group aktor, Scope `Group`, Target `Proyek Bekasi`, Overridden `Auto-approve (OFF)`, Category `Vehicle > Pool car`, Created By `Siti Nurbaya`, Created At `2026-06-20 10:00`.
+  - DU-073-3: override di luar cakupan Group aktor, Scope `Group`, Target `Proyek Cikarang`, Overridden `Max extensions (2)`, Category `Machinery`, Created By `Alexander Graham Bell`, Created At `2026-06-19 13:10`.
 - Kondisi:
-  - K1: tabel berisi 14 baris dengan urutan DU-073-2, DU-073-3, lalu DU-073-1 (Target `Workshop 1` sampai `Workshop 12`); ukuran halaman bawaan 10, sehingga halaman 1 memuat DU-073-2, DU-073-3, dan `Workshop 1` sampai `Workshop 8`, dan halaman 2 memuat `Workshop 9` sampai `Workshop 12`.
+  - K1: tabel berisi 14 baris dengan urutan bawaan Created At terbaru lebih dulu: DU-073-2 (`2026-06-20 10:00`), DU-073-3 (`2026-06-19 13:10`), lalu DU-073-1 (Target `Workshop 1` sampai `Workshop 12`, `2026-06-15 14:05` mundur ke `2026-06-15 13:54`); ukuran halaman bawaan 10, sehingga halaman 1 memuat DU-073-2, DU-073-3, dan `Workshop 1` sampai `Workshop 8`, dan halaman 2 memuat `Workshop 9` sampai `Workshop 12`.
   - K2: sama dengan K1; permintaan Delete diterima server.
   - K3: sama dengan K1; permintaan Delete gagal karena error server.
   - K4: sama dengan K1; permintaan Delete tidak mendapat respons (timeout).
@@ -129,28 +131,28 @@ coverage:
 65. Klik `Delete` pada menu bulk
 66. Verifikasi tidak ada dialog yang tampil
 
-### Aktor tanpa hak menghapus
+### Aktor Read Only tanpa kolom checkbox dan bar bulk
 67. Tampilkan Tabel Overrides dengan kondisi K5
-68. Centang baris `Workshop 1`
-69. Klik `[Bulk Action]`
-70. Verifikasi `Delete` pada menu bulk disabled
-71. Arahkan kursor ke `Delete` pada menu bulk
-72. Verifikasi alasan `This override is outside your scope.` tersampaikan pada `Delete`
+68. Verifikasi tabel menampilkan baris Target `Workshop 1`
+69. Verifikasi tidak ada kolom checkbox seleksi pada tabel, baik pada baris maupun pada header[^drift-1]
+70. Verifikasi bar bulk dan tombol `[Bulk Action]` tidak tampil pada toolbar tabel[^drift-1]
 
 ### Bulk Delete gagal karena error server
-73. Tampilkan Tabel Overrides dengan kondisi K3
-74. Centang baris `Workshop 1`
-75. Klik `[Bulk Action]`
-76. Klik `Delete`
-77. Klik `[Delete]` pada dialog
-78. Verifikasi toast error `Error, failed to delete override.` tampil
-79. Verifikasi bar bulk tetap menampilkan `1 Override selected`
+71. Tampilkan Tabel Overrides dengan kondisi K3
+72. Centang baris `Workshop 1`
+73. Klik `[Bulk Action]`
+74. Klik `Delete`
+75. Klik `[Delete]` pada dialog
+76. Verifikasi toast error `Error, failed to delete override.` tampil
+77. Verifikasi bar bulk tetap menampilkan `1 Override selected`
 
 ### Bulk Delete tanpa respons
-80. Tampilkan Tabel Overrides dengan kondisi K4
-81. Centang baris `Workshop 1`
-82. Klik `[Bulk Action]`
-83. Klik `Delete`
-84. Klik `[Delete]` pada dialog
-85. Verifikasi toast error `Connection problem. Please try again.` tampil
-86. Verifikasi bar bulk tetap menampilkan `1 Override selected`
+78. Tampilkan Tabel Overrides dengan kondisi K4
+79. Centang baris `Workshop 1`
+80. Klik `[Bulk Action]`
+81. Klik `Delete`
+82. Klik `[Delete]` pada dialog
+83. Verifikasi toast error `Connection problem. Please try again.` tampil
+84. Verifikasi bar bulk tetap menampilkan `1 Override selected`
+
+[^drift-1]: Drift PRD vs foundation. PRD §4.8 (UI Visibility per Role, baris Delete untuk baris dan bulk): Read Only `Disabled 🔖` dengan tooltip alasan di luar cakupan role; PRD §4.1: tabel punya checkbox per baris dan checkbox header untuk bulk delete. Foundation `entity-isolation.md` §18.4 (Aturan kolom 3): kolom checkbox bulk select Hidden untuk aktor yang tidak punya write access sama sekali (mis. Read Only), dan bulk action bar Hidden total, bukan hanya checkbox-nya. Diasersi: foundation, karena UI visibility per capability adalah pola bersama (SB-4).

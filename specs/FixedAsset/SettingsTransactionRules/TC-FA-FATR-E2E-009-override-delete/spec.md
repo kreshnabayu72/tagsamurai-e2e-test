@@ -5,22 +5,22 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.4#r19, §4.4#r20, §4.4#r21, §9.4.2#r114, §9.4.2#r115, §9.6#r3, §9.6#r27, §9.7#r16, §7#r5, §9.2#b108, §9.2#b160, §9.4.2#r116, §9.6#r26, EB-FB-1@delete-override]
-smoke: [§7#r5, §9.2#b108, §9.2#b160, §9.4.2#r116, §9.6#r26, EB-FB-1@delete-override]
+sourceRules: [§4.4#r19, §4.4#r20, §4.4#r21, §9.4.2#r122, §9.4.2#r123, §9.6#r3, §9.6#r27, §9.7#r16, §7#r5, §9.2#b108, §9.2#b160, §9.4.2#r124, §9.6#r26, EB-FB-1@delete-override]
+smoke: [§7#r5, §9.2#b108, §9.2#b160, §9.4.2#r124, §9.6#r26, EB-FB-1@delete-override]
 dependsOn: []
 trace:
   §4.4#r19: 9
   §4.4#r20: 12
   §4.4#r21: 11
-  §9.4.2#r114: [9, 12]
-  §9.4.2#r115: 11
+  §9.4.2#r122: [9, 12]
+  §9.4.2#r123: 11
   §9.6#r3: [12, 13]
   §9.6#r27: 11
   §9.7#r16: 12
   §7#r5: 11
   §9.2#b108: 9
   §9.2#b160: [20, 21]
-  §9.4.2#r116: 12
+  §9.4.2#r124: 12
   §9.6#r26: 12
   EB-FB-1@delete-override: 11
 anchor: [5, 6, 19]

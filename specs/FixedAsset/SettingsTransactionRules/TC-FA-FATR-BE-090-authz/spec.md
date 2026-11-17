@@ -6,19 +6,19 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§2#p2", "§9.2#b1", "§9.2#b82", "§9.2#b126", "§9.2#b139", "§9.2#b156", "§9.2#b160", "§9.2#b307", "§9.2#b341", "§9.3#b1", "§9.3#b3", "§9.4.1#r16", "§9.4.1#r17", "§9.4.1#r18", "§9.4.1#r19", "§9.4.2#r3", "§9.4.2#r23", "§9.4.2#r30", "§9.4.3#b5", "§9.4.4#r1", "§9.4.4#r24", "§9.4.4#r25", "§9.11#r1", "§9.11#r2", "§9.11#r3", "§9.11#r4", "§9.11#r5", "§9.11#r6", "§9.11#r7", "§9.11#r8", "§9.11#r9", "§9.11#r10", "§10#b4", "§11#r1", EB-AKS-3@save-changes, EB-AKS-3@add-override, EB-AKS-3@delete-override]
+sourceRules: ["§2#p2", "§9.2#b1", "§9.2#b82", "§9.2#b126", "§9.2#b139", "§9.2#b156", "§9.2#b160", "§9.2#b307", "§9.2#b341", "§9.3#b1", "§9.3#b3", "§9.4.1#r16", "§9.4.1#r17", "§9.4.1#r18", "§9.4.1#r19", "§9.4.2#r3", "§9.4.2#r23", "§9.4.2#r30", "§9.4.3#b5", "§9.4.4#r1", "§9.4.4#r24", "§9.4.4#r25", "§9.11#r1", "§9.11#r2", "§9.11#r3", "§9.11#r4", "§9.11#r5", "§9.11#r6", "§9.11#r7", "§9.11#r8", "§9.11#r9", "§9.11#r10", "§10#b4", "§11#r1", EB-AKS-3@save-changes, EB-AKS-3@add-override, EB-AKS-3@delete-override, EB-AKS-5@add-override, EB-AKS-5@delete-override, EB-AKS-5@save-changes]
 smoke: []
 dependsOn: []
 trace:
-  "§2#p2": [9, 17, 26, 50, 67]
+  "§2#p2": [9, 17, 26, 50, 67, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130]
   "§9.2#b1": [3, 5, 7]
   "§9.2#b82": [36, 52]
   "§9.2#b126": 90
-  "§9.2#b139": [75, 80, 86, 106, 109]
+  "§9.2#b139": [75, 80, 86, 107, 110]
   "§9.2#b156": [32, 40]
   "§9.2#b160": [63, 73, 77]
   "§9.2#b307": [98, 100]
-  "§9.2#b341": 103
+  "§9.2#b341": [103, 104]
   "§9.3#b1": [7, 13, 38, 44, 52]
   "§9.3#b3": [3, 24, 96]
   "§9.4.1#r16": [3, 5, 7, 13]
@@ -33,7 +33,7 @@ trace:
   "§9.4.4#r24": [22, 41, 42]
   "§9.4.4#r25": [73, 81, 82]
   "§9.11#r1": [15, 19]
-  "§9.11#r2": [73, 92]
+  "§9.11#r2": [73, 92, 133, 134, 135]
   "§9.11#r3": 94
   "§9.11#r4": [98, 102]
   "§9.11#r5": [54, 60, 90]
@@ -47,11 +47,14 @@ trace:
   EB-AKS-3@save-changes: 3
   EB-AKS-3@add-override: 22
   EB-AKS-3@delete-override: 63
+  EB-AKS-5@add-override: [44, 46, 48, 52]
+  EB-AKS-5@delete-override: [84, 86, 88]
+  EB-AKS-5@save-changes: 13
 ---
 # Authz per role dan cakupan Group
 
 ## Prerequisites
-- Aktor: Maya Pengelola (DU-090-1), Total Control; Dewi Bawaan (DU-090-2), Default User; Tono Setelan (DU-090-3) dan Lina Baca Setelan (DU-090-4), pemegang Global Role Manage transaction settings; Sari Penata (DU-090-5) dan Gita Baca Aset (DU-090-6), pemegang Group Role Manage asset & TAG pada Group `Tim Survei {runId}`; Rafi Baca (DU-090-7), Read Only; Wati Gabungan (DU-090-8), gabungan Global Role dan Group Role; Hendra Tanpa Akses (DU-090-9).
+- Aktor: Maya Pengelola (DU-090-1), Total Control; Dewi Bawaan (DU-090-2), Default User; Tono Setelan (DU-090-3) dan Lina Baca Setelan (DU-090-4), pemegang Global Role Manage transaction settings; Sari Penata (DU-090-5) dan Gita Baca Aset (DU-090-6), pemegang Group Role Manage asset & TAG pada Group `Tim Survei {runId}`; Rafi Baca (DU-090-7), Read Only; Wati Gabungan (DU-090-8), gabungan Global Role dan Group Role; Hendra Tanpa Akses (DU-090-9); Rina Manajer (DU-090-39), Group Manager yang menaungi Group `Tim Survei {runId}` dan turunannya.
 - Data:
   - DU-090-1: User, pengelola Total Control: Name `Maya Pengelola {runId}`; Access Level `Total Control`; Cakupan `seluruh Group`.
   - DU-090-2: User, pengguna Default User: Name `Dewi Bawaan {runId}`; Access Level `Default User`; Cakupan `seluruh Group`.
@@ -61,7 +64,7 @@ trace:
   - DU-090-6: User, pemegang Group Role Manage asset & TAG (Read) pada satu Group: Name `Gita Baca Aset {runId}`; Group Role `Manage asset & TAG (Read)`; Cakupan `Group Tim Survei {runId} beserta turunannya`.
   - DU-090-7: User, pengguna Read Only yang tetap memegang peran Update: Name `Rafi Baca {runId}`; Access Level `Read Only`; Global Role `Manage transaction settings (Read, Update)`; Group Role `Manage asset & TAG (Read, Update)`; Cakupan `Group Tim Survei {runId} beserta turunannya`.
   - DU-090-8: User, pengguna dengan gabungan Global Role dan Group Role: Name `Wati Gabungan {runId}`; Global Role `Manage transaction settings (Read, Update)`; Group Role `Manage asset & TAG (Read, Update)`; Cakupan `Group Tim Survei {runId} beserta turunannya`.
-  - DU-090-9: User, pengguna tanpa peran yang memberi akses halaman: Name `Hendra Tanpa Akses {runId}`; Peran `tanpa Global Role dan Group Role yang memberi akses halaman`.
+  - DU-090-9: User, pengguna tanpa peran yang memberi akses halaman: Name `Hendra Tanpa Akses {runId}`; Peran `tanpa Global Role dan Group Role yang memberi akses halaman`; Cakupan `seluruh Group`.
   - DU-090-10: Category, Category leaf untuk Save per role: Name `Perangkat Otorisasi {runId}`.
   - DU-090-11: Category, Category leaf untuk override per role: Name `Peralatan Otorisasi {runId}`.
   - DU-090-12: Group, Group tempat Sari Penata berhak: Name `Tim Survei {runId}`.
@@ -87,9 +90,13 @@ trace:
   - DU-090-36: Override, override Group pada Group yang kemudian dipindah ke luar cakupan: Scope `Group`; Target `Tim Pindah Otorisasi {runId}`; Category `Peralatan Otorisasi {runId}`; Transaksi `penugasan`; Field `Allow Assign`; Value `Deny`.
   - DU-090-37: Group, Group turunan Tim Lapangan yang kemudian dipindah ke dalam cakupan Sari Penata: Name `Tim Masuk Otorisasi {runId}`; Parent `Tim Lapangan {runId}`.
   - DU-090-38: Override, override Group pada Group yang kemudian dipindah ke dalam cakupan: Scope `Group`; Target `Tim Masuk Otorisasi {runId}`; Category `Peralatan Otorisasi {runId}`; Transaksi `penugasan`; Field `Allow Assign`; Value `Deny`.
+  - DU-090-39: User, Group Manager yang menaungi Group Tim Survei: Name `Rina Manajer {runId}`; Peran `Group Manager`; Cakupan `Group Tim Survei {runId} beserta turunannya`.
+  - DU-090-40: Group, Group di luar subtree penugasan Rina Manajer: Name `Tim Luar Manajer {runId}`.
+  - DU-090-41: Entitas, entitas khusus spec ini, tidak dipakai spec lain: Name `Entitas Otorisasi {runId}`.
 - Kondisi:
+  - Spec ini memakai entitas khusus `Entitas Otorisasi {runId}` (DU-090-41) yang tidak dipakai spec lain, karena plan entitas menempatkan Feature Suite Transfer pada level `None`; semua data di atas berada di entitas itu.
   - Seluruh field Category `Perangkat Otorisasi {runId}` dan Category `Peralatan Otorisasi {runId}` bernilai Inherit sebelum spec dijalankan.
-  - Plan entitas menempatkan Feature Suite Transfer pada level `None`, sehingga tab Transfer tidak dapat dibuka oleh role mana pun.
+  - Plan entitas khusus ini menempatkan Feature Suite Transfer pada level `None`, sehingga tab Transfer tidak dapat dibuka oleh role mana pun.
   - Override pada Group `Tim Dihapus Otorisasi {runId}` tampil sebagai tidak berlaku karena Group-nya sudah dihapus.
   - Jumlah entri Changelog dan Activity Log serta versi setting dibaca sebagai selisih terhadap nilai yang dicatat sebelum aksi.
 
@@ -210,12 +217,44 @@ trace:
 100. Verifikasi berkas Export rules terunduh dari tab mana pun
 101. Rafi Baca menjalankan Export rules pada Category `Peralatan Otorisasi {runId}`
 102. Verifikasi berkas Export rules terunduh untuk pengguna Read Only
-103. Verifikasi berkas itu tidak memuat aturan transaksi yang tabnya tidak dapat dibuka, karena transaksi seperti itu tidak diekspor
+103. Verifikasi sheet Rules pada berkas Export rules yang diunduh Rafi Baca memuat baris transaksi peminjaman, karena tab peminjaman dapat dibuka
+104. Verifikasi sheet Rules pada berkas Export rules yang diunduh Rafi Baca tidak memuat baris transaksi pemindahan aset, karena tab pemindahan tidak dapat dibuka pada Feature Suite level `None` menurut Kondisi dan transaksi seperti itu tidak diekspor
 
 ### Hak Delete override Group mengikuti posisi Group target saat ini
-104. Maya Pengelola memindahkan Group `Tim Pindah Otorisasi {runId}` menjadi turunan Group `Tim Lapangan {runId}`
-105. Sari Penata mengirim langsung ke server Delete override Group `Tim Pindah Otorisasi {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
-106. Verifikasi Delete dari Sari Penata ditolak dan override Group `Tim Pindah Otorisasi {runId}` masih ada, karena hak Delete mengikuti posisi Group target saat ini yang kini di luar cakupan perannya
-107. Maya Pengelola memindahkan Group `Tim Masuk Otorisasi {runId}` menjadi turunan Group `Tim Survei {runId}`
-108. Sari Penata menghapus override Group `Tim Masuk Otorisasi {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
-109. Verifikasi override itu terhapus, karena hak Delete mengikuti posisi Group target saat ini yang kini dalam cakupan perannya
+105. Maya Pengelola memindahkan Group `Tim Pindah Otorisasi {runId}` menjadi turunan Group `Tim Lapangan {runId}`
+106. Sari Penata mengirim langsung ke server Delete override Group `Tim Pindah Otorisasi {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
+107. Verifikasi Delete dari Sari Penata ditolak dan override Group `Tim Pindah Otorisasi {runId}` masih ada, karena hak Delete mengikuti posisi Group target saat ini yang kini di luar cakupan perannya
+108. Maya Pengelola memindahkan Group `Tim Masuk Otorisasi {runId}` menjadi turunan Group `Tim Survei {runId}`
+109. Sari Penata menghapus override Group `Tim Masuk Otorisasi {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
+110. Verifikasi override itu terhapus, karena hak Delete mengikuti posisi Group target saat ini yang kini dalam cakupan perannya
+
+### Group Manager menambah dan menghapus override di subtree penugasannya dan ditolak di luar subtree dan untuk Save
+111. Rina Manajer menambahkan override Group `Seksi Survei {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan dengan Max assets per assignee (concurrent) `3`
+112. Verifikasi override Group `Seksi Survei {runId}` untuk transaksi penugasan terbuat, karena Group Manager setara Manage asset & TAG (Read, Update) pada subtree penugasannya
+113. Rina Manajer menambahkan override aset `Drone Survei {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan dengan Max assets per assignee (concurrent) `3`
+114. Verifikasi override aset `Drone Survei {runId}` untuk transaksi penugasan terbuat, karena aset berada di Group dalam subtree penugasan Rina Manajer
+115. Rina Manajer mengirim langsung ke server Add override Group `Tim Luar Manajer {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan dengan Max assets per assignee (concurrent) `3`
+116. Verifikasi Add override Group `Tim Luar Manajer {runId}` ditolak karena Group target di luar subtree penugasan Rina Manajer, dan tidak ada override terbuat
+117. Rina Manajer mengirim langsung ke server Add override aset `Drone Dua {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan dengan Max assets per assignee (concurrent) `3`
+118. Verifikasi Add override aset `Drone Dua {runId}` ditolak karena aset berada di Group di luar subtree penugasan Rina Manajer, dan tidak ada override terbuat
+119. Rina Manajer menghapus override Group `Seksi Survei {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
+120. Verifikasi override Group `Seksi Survei {runId}` untuk transaksi penugasan terhapus, karena Group-nya dalam subtree penugasan Rina Manajer
+121. Rina Manajer menghapus override aset `Drone Survei {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi penugasan
+122. Verifikasi override aset `Drone Survei {runId}` untuk transaksi penugasan terhapus, karena asetnya dalam subtree penugasan Rina Manajer
+123. Rina Manajer mengirim langsung ke server Save Category `Perangkat Otorisasi {runId}` dengan Max extensions nilai sendiri `5`
+124. Verifikasi Save dari Rina Manajer ditolak karena hak Group Manager setara Manage asset & TAG hanya untuk override dan bukan untuk ubah setting, dan Max extensions Category `Perangkat Otorisasi {runId}` tetap `1`
+
+### Delete override oleh Default User diterima untuk Group, aset, dan Asset Name
+125. Dewi Bawaan menghapus override Group `Tim Dewi {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi peminjaman
+126. Verifikasi override Group `Tim Dewi {runId}` terhapus, karena Default User setara Total Control
+127. Dewi Bawaan menghapus override aset `Drone Lapangan {runId}` pada Category `Peralatan Otorisasi {runId}` untuk transaksi peminjaman
+128. Verifikasi override aset `Drone Lapangan {runId}` terhapus, karena Default User berhak atas semua aset
+129. Dewi Bawaan menghapus override Asset Name `Drone Ukur Dua {runId}` untuk All categories pada transaksi peminjaman
+130. Verifikasi override Asset Name `Drone Ukur Dua {runId}` terhapus, karena Default User berhak atas Asset Name override
+
+### Semua override dari semua Category terlihat oleh semua role yang punya akses halaman
+131. Maya Pengelola menambahkan override Group `Tim Survei {runId}` pada Category `Perangkat Otorisasi {runId}` untuk transaksi peminjaman dengan Max duration `5`
+132. Gita Baca Aset membuka daftar override seluruh Category
+133. Verifikasi daftar memuat override Group `Tim Survei {runId}` pada Category `Perangkat Otorisasi {runId}`
+134. Verifikasi daftar memuat override Group `Tim Lapangan {runId}` pada Category `Peralatan Otorisasi {runId}`, walau Group itu di luar Group Gita Baca Aset
+135. Verifikasi daftar memuat override Asset Name `Drone Ukur {runId}` pada Category `All categories`

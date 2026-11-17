@@ -5,12 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§2#p2, EB-AKS-6]
+sourceRules: [§2#p2, EB-AKS-6, §9.4.2#r23]
 smoke: []
 dependsOn: []
 trace:
   §2#p2: [5, 6, 9, 10, 11, 19, 20, 21, 24, 25, 26, 34, 35, 36, 37, 39, 48]
   EB-AKS-6: [52, 53, 54, 55]
+  §9.4.2#r23: [10, 25, 26, 37]
 anchor: []
 coverage:
   web: automated

@@ -6,54 +6,54 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §Aturan Logika Modul#r20
-  - §Aturan Logika Modul#r21
-  - §Aturan Logika Modul#r22
   - §Aturan Logika Modul#r23
   - §Aturan Logika Modul#r24
-  - §4.1#r192
+  - §Aturan Logika Modul#r25
+  - §Aturan Logika Modul#r26
+  - §Aturan Logika Modul#r27
+  - §4.1#r201
   - §4.3#r9
   - §4.3#r10
-  - §4.3#r17
-  - §4.3#r21
-  - §4.3#r22
-  - §4.3#r23
-  - §4.3#r24
+  - §4.3#r16
   - §4.3#r25
   - §4.3#r26
   - §4.3#r27
   - §4.3#r28
+  - §4.3#r29
+  - §4.3#r30
+  - §4.3#r31
+  - §4.3#r32
   - §9.2#b17
   - §9.2#r10
   - §9.4.2#r18
-  - §9.4.2#r100
-  - §9.4.2#r103
+  - §9.4.2#r108
+  - §9.4.2#r111
 smoke: []
 dependsOn: []
 trace:
-  §Aturan Logika Modul#r20: [7, 13]
-  §Aturan Logika Modul#r21: [8, 14]
-  §Aturan Logika Modul#r22: [4, 5, 11]
-  §Aturan Logika Modul#r23: [2, 16, 17]
-  §Aturan Logika Modul#r24: [10, 11]
-  §4.1#r192: [39, 40, 41]
-  §4.3#r9: [22, 26, 32, 41, 44, 46, 49, 51, 54, 57, 59]
+  §Aturan Logika Modul#r23: [7, 13]
+  §Aturan Logika Modul#r24: [8, 14]
+  §Aturan Logika Modul#r25: [4, 5, 11]
+  §Aturan Logika Modul#r26: [2, 16, 17]
+  §Aturan Logika Modul#r27: [10, 11]
+  §4.1#r201: [39, 40, 41]
+  §4.3#r9: [22, 26, 32, 41, 44, 46, 49, 51, 54, 57, 59, 72, 74]
   §4.3#r10: [29, 34]
-  §4.3#r17: [39, 40]
-  §4.3#r21: [5, 11]
-  §4.3#r22: [7, 13]
-  §4.3#r23: [8, 14]
-  §4.3#r24: [6, 12]
-  §4.3#r25: [20, 30]
-  §4.3#r26: [24, 25, 35, 36]
-  §4.3#r27: [21, 25]
-  §4.3#r28: [31, 36]
+  §4.3#r16: [39, 40]
+  §4.3#r25: [5, 11]
+  §4.3#r26: [7, 13]
+  §4.3#r27: [8, 14]
+  §4.3#r28: [6, 12]
+  §4.3#r29: [20, 30, 62, 67]
+  §4.3#r30: [24, 25, 35, 36, 64, 69]
+  §4.3#r31: [21, 25]
+  §4.3#r32: [31, 36]
   §9.2#b17: [5, 7, 8]
   §9.2#r10: [20, 30]
-  §9.4.2#r18: [20, 24]
-  §9.4.2#r100: 5
-  §9.4.2#r103: [7, 8]
-anchor: [19, 28, 38, 43, 48, 56]
+  §9.4.2#r18: [20, 24, 64]
+  §9.4.2#r108: 5
+  §9.4.2#r111: [7, 8]
+anchor: [19, 28, 38, 43, 48, 56, 61, 66, 71]
 coverage:
   web: automated
 ---
@@ -68,22 +68,28 @@ coverage:
   - DU-063-1: Pengaturan Category leaf `Machinery` tab Borrow: Allow Borrow bernilai sendiri `Allow`, Max duration bernilai sendiri `21`, Company default Allow Borrow `Allow`.
   - DU-063-2: Pengaturan Category leaf `Machinery` tab Borrow: Allow Borrow Inherit, Company default Allow Borrow `Deny`.
   - DU-063-3: Pengaturan Category leaf `Machinery` tab Borrow: Allow Borrow bernilai sendiri `Allow`, Company default Allow Borrow `Deny`.
-  - DU-063-4: Pengaturan Company default tab Borrow pada All categories: Require approval `OFF`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Approval type `All approvers (AND)`, Self service `OFF`.
-  - DU-063-5: Pengaturan Company default tab Transfer pada All categories: Require approval `OFF`, Auto-approve `ON`, Auto-approve when destination in same parent Group `ON`, Approval scope `Origin only`, Approval type `All approvers (AND)`.
+  - DU-063-4: Pengaturan Company default tab Borrow pada All categories: Require approval `OFF`, Auto-approve `ON`, Auto-approve when duration ≤ `5`, Approval type `All approvers (AND)`, Self service `OFF`.
+  - DU-063-5: Pengaturan Company default tab Transfer pada All categories: Require approval `OFF`, Auto-approve `ON`, Auto-approve when destination in same parent Group `OFF`, Approval scope `Origin only`, Approval type `All approvers (AND)`.
   - DU-063-6: Pengaturan Company default tab Borrow pada All categories: Self service `ON`, Require approval `ON`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Approval type `Any one approver`.
   - DU-063-7: Pengaturan Company default tab Assign pada All categories: Require approval `OFF`, Approval type `All approvers (AND)`.
   - DU-063-8: Pengaturan Company default tab Disposal pada All categories: Require approval `OFF`, Approval type `All approvers (AND)`.
   - DU-063-9: Pengaturan Company default tab Borrow pada All categories: Self service `ON`, Require approval `ON`, Auto-approve `ON`, Approval type `All approvers (AND)`.
+  - DU-063-10: Pengaturan Company default tab Borrow pada All categories: Require approval `OFF`, Auto-approve `OFF`, Approval type `All approvers (AND)`, Self service `OFF`.
+  - DU-063-11: Pengaturan Company default tab Transfer pada All categories: Require approval `OFF`, Auto-approve `OFF`, Auto-approve when destination in same parent Group `OFF`, Approval type `All approvers (AND)`.
+  - DU-063-12: Pengaturan Company default tab Audit pada All categories: Require approval `OFF`, Approval type `All approvers (AND)`.
 - Kondisi:
   - K1: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-063-1.
   - K2: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-063-2.
   - K3: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-063-3.
-  - K4: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-063-4.
-  - K5: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-063-5.
+  - K4: node All categories terpilih, tab Borrow aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-4.
+  - K5: node All categories terpilih, tab Transfer aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-5.
   - K6: node All categories terpilih, tab Borrow aktif, level Feature Suite Borrowing Full, nilai Company default memakai DU-063-6.
-  - K7: node All categories terpilih, tab Assign aktif, nilai Company default memakai DU-063-7.
-  - K8: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-063-8.
+  - K7: node All categories terpilih, tab Assign aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-7.
+  - K8: node All categories terpilih, tab Disposal aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-8.
   - K9: node All categories terpilih, tab Borrow aktif, level Feature Suite Borrowing Full, nilai Company default memakai DU-063-9.
+  - K10: node All categories terpilih, tab Borrow aktif, Approval Workflow tersedia di plan, level Feature Suite Borrowing Full, nilai Company default memakai DU-063-10.
+  - K11: node All categories terpilih, tab Transfer aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-11.
+  - K12: node All categories terpilih, tab Audit aktif, addon Audit aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-063-12.
 
 ## Test Steps
 
@@ -118,7 +124,7 @@ coverage:
 22. Verifikasi `Approval type` tidak ada
 23. Nyalakan `Require approval`
 24. Verifikasi `Auto-approve` bernilai `ON`
-25. Verifikasi nilai tersimpan `Auto-approve when duration ≤` tetap `3`
+25. Verifikasi nilai tersimpan `Auto-approve when duration ≤` tetap `5`
 26. Verifikasi `Approval type` bernilai `All approvers (AND)`
 
 ### Field Approval Transfer saat Require approval OFF
@@ -131,7 +137,7 @@ coverage:
 33. Nyalakan `Require approval`
 34. Verifikasi `Approval scope` bernilai `Origin only`
 35. Verifikasi `Auto-approve` bernilai `ON`
-36. Verifikasi nilai tersimpan `Auto-approve when destination in same parent Group` tetap `ON`
+36. Verifikasi nilai tersimpan `Auto-approve when destination in same parent Group` tetap `OFF`
 
 ### Self service ON menyembunyikan field Approval Borrow
 37. Tampilkan Area utama dengan kondisi K6
@@ -165,3 +171,24 @@ coverage:
 57. Verifikasi `Approval type` tidak ada pada tab `Borrow`
 58. Matikan `Self service`
 59. Verifikasi `Approval type` bernilai tersimpan `All approvers (AND)` pada tab `Borrow`
+
+### Auto-approve Borrow tersimpan OFF dipertahankan saat Require approval dinyalakan
+60. Tampilkan Area utama dengan kondisi K10
+61. Verifikasi `Require approval` bernilai `OFF`
+62. Verifikasi `Auto-approve` tidak ada
+63. Nyalakan `Require approval`
+64. Verifikasi `Auto-approve` bernilai tersimpan `OFF`
+
+### Auto-approve Transfer tersimpan OFF dipertahankan saat Require approval dinyalakan
+65. Tampilkan Area utama dengan kondisi K11
+66. Verifikasi `Require approval` bernilai `OFF`
+67. Verifikasi `Auto-approve` tidak ada
+68. Nyalakan `Require approval`
+69. Verifikasi `Auto-approve` bernilai tersimpan `OFF`
+
+### Approval type Audit disembunyikan saat Require approval OFF
+70. Tampilkan Area utama dengan kondisi K12
+71. Verifikasi `Require approval` tampil dengan nilai `OFF` pada tab `Audit`
+72. Verifikasi `Approval type` tidak ada pada tab `Audit`
+73. Nyalakan `Require approval`
+74. Verifikasi `Approval type` bernilai tersimpan `All approvers (AND)` pada tab `Audit`

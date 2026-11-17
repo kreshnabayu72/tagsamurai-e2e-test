@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["EB-XM-2@missing", "§4.1#r158", "§11#r17"]
-smoke: ["§4.1#r158", "§11#r17"]
+sourceRules: ["EB-XM-2@missing", "§4.1#r168", "§11#r17"]
+smoke: ["§4.1#r168", "§11#r17"]
 dependsOn:
   - "Missing: penanda Long missing dan Mark as Found"
 trace:
   "EB-XM-2@missing": 11
-  "§4.1#r158": [4, 11]
+  "§4.1#r168": [4, 11]
   "§11#r17": [11, 12]
 anchor: [3]
 coverage:

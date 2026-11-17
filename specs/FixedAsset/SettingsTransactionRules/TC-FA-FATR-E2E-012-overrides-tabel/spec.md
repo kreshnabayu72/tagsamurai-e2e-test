@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r90, §4.1#p43, §4.1#p50, §11#r10, EB-TBL-7@tabel-overrides]
+sourceRules: [§4.1#r101, §4.1#p50, §4.1#p57, §11#r10, EB-TBL-7@tabel-overrides]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r90: [16, 17]
-  §4.1#p43: [3, 4, 6, 7, 9, 10, 12, 13, 16, 17, 18, 19, 24, 25, 26, 27]
-  §4.1#p50: [38, 41, 42, 43, 44, 46, 48, 52, 53, 63, 67, 68, 69, 70, 72]
+  §4.1#r101: [16, 17]
+  §4.1#p50: [3, 4, 6, 7, 9, 10, 12, 13, 16, 17, 18, 19, 24, 25, 26, 27]
+  §4.1#p57: [38, 41, 42, 43, 44, 46, 48, 52, 53, 63, 67, 68, 69, 70, 72]
   §11#r10: 5
   EB-TBL-7@tabel-overrides: [75, 79, 80, 81, 82]
 anchor: [3, 16]
@@ -34,7 +34,7 @@ coverage:
   - DU-012-7: 10 override Group `Cabang {n} {runId}` di Category `Machinery {runId}` transaksi `Borrow`, masing-masing Overridden `Max duration (7 days)`, dibuat berurutan dari n=1 paling awal sampai n=10 oleh `Rina Wulandari`.
   - DU-012-8: override Group `Workshop {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (12 hours), Auto-approve when duration ≤ (4 hours)`, dibuat sesudah DU-012-7.
   - DU-012-9: override Group `Proyek Karawang {runId}` di All categories transaksi `Borrow`, Overridden `Max duration (30 days), Max extensions (1), Auto-approve when duration ≤ (3 days)`, dibuat paling akhir oleh `Rina Wulandari`, sehingga Created By baris itu tampil `Rina W`.
-  - DU-012-10: override Group `Workshop {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Recipient acceptance (Optional)`.
+  - DU-012-10: override Group `Workshop {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Need recipient confirmation (No)`.
 - Kondisi:
   - Company default menyimpan Duration unit `Days`, dan Category `Laptop {runId}` menyimpan Duration unit `Hours`; level Feature Suite Borrowing `Full`.
   - Ukuran halaman tabel Overrides bernilai `10`.
@@ -53,7 +53,7 @@ coverage:
 9. Verifikasi laporan paginasi `Showing 11 to 11 of 11` tampil di bawah tabel Overrides
 10. Verifikasi baris dengan Target `Cabang 1 {runId}` tampil sebagai baris di halaman 2 tabel Overrides
 11. Klik tab `Assign`
-12. Verifikasi baris dengan Target `Workshop {runId}` dan Overridden `Recipient acceptance (Optional)` tampil di tabel Overrides
+12. Verifikasi baris dengan Target `Workshop {runId}` dan Overridden `Need recipient confirmation (No)` tampil di tabel Overrides
 13. Verifikasi tidak ada baris dengan Target `Cabang 1 {runId}` di tabel Overrides pada tab `Assign`
 
 ### Angka kolom Overridden memakai satuan Duration unit tempat nilai disimpan
@@ -99,7 +99,7 @@ coverage:
 49. Klik tab `Assign`
 50. Klik ikon filter pada toolbar tabel Overrides
 51. Klik field `Overridden` pada panel filter
-52. Verifikasi opsi `Recipient acceptance` tampil pada field `Overridden`
+52. Verifikasi opsi `Need recipient confirmation` tampil pada field `Overridden`
 53. Verifikasi opsi `Max duration` tidak tampil pada field `Overridden`
 
 ### Berpindah node mengembalikan Search, Filter, Sort, halaman, dan seleksi ke bawaan

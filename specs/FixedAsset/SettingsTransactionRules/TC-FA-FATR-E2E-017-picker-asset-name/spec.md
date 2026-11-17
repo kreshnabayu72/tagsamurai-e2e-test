@@ -5,17 +5,17 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r361, §4.1#r384, §4.1#r385, §4.1#r386, §4.1#r387, §4.1#r388, §4.1#r389, §5#r3, §5#r4, D-04, §9.5#r10, §9.5#r23, §9.5#r24, §11#r9, EB-TBL-9@select-asset-name, EB-SRC-5@select-asset-name]
+sourceRules: [§4.1#r387, §4.1#r410, §4.1#r411, §4.1#r412, §4.1#r413, §4.1#r414, §4.1#r415, §5#r3, §5#r4, D-04, §9.5#r10, §9.5#r23, §9.5#r24, §11#r9, EB-TBL-9@select-asset-name, EB-SRC-5@select-asset-name, "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f"]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r361: [8, 19]
-  §4.1#r384: [8, 22, 30]
-  §4.1#r385: [9, 26, 33]
-  §4.1#r386: [10, 40, 81, 93, 95, 100, 101]
-  §4.1#r387: [11, 12, 24, 35, 60, 61]
-  §4.1#r388: [9, 28, 38, 66, 67]
-  §4.1#r389: [9, 15, 17, 71, 72, 76]
+  §4.1#r387: [8, 19]
+  §4.1#r410: [8, 22, 30]
+  §4.1#r411: [9, 26, 33]
+  §4.1#r412: [10, 40, 81, 93, 95, 100, 101]
+  §4.1#r413: [11, 12, 24, 35, 60, 61]
+  §4.1#r414: [9, 28, 38, 66, 67]
+  §4.1#r415: [9, 15, 17, 71, 72, 76]
   §5#r3: [30, 31, 33, 35, 36, 38, 40, 42, 44, 60]
   §5#r4: [8, 19]
   D-04: [13, 90, 91]
@@ -25,6 +25,7 @@ trace:
   §11#r9: 8
   EB-TBL-9@select-asset-name: [13, 91]
   EB-SRC-5@select-asset-name: [46, 50, 54]
+  "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f": [13, 90, 91]
 anchor: [8]
 coverage:
   web: automated

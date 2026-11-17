@@ -5,20 +5,20 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r248, §4.1#r249, §9.4.2#r25, §9.10.1#b5, §9.10.1#p7, §9.10.1#p11, §9.10.1#p12, §Aturan Logika Modul#r78, §9.2#b556, §9.4.2#r92, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
-smoke: [§Aturan Logika Modul#r78, §9.2#b556, §9.4.2#r92, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
+sourceRules: [§4.1#r275, §4.1#r276, §9.4.2#r25, §9.10.1#b5, §9.10.1#p7, §9.10.1#p11, §9.10.1#p12, §Aturan Logika Modul#r80, §9.2#b555, §9.4.2#r100, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
+smoke: [§Aturan Logika Modul#r80, §9.2#b555, §9.4.2#r100, §9.10.1#r5, §9.10.1#r8, §9.10.1#b3, §9.10.1#b4, §9.10.1#r9]
 dependsOn: []
 trace:
-  §4.1#r248: [13]
-  §4.1#r249: [14]
-  §9.4.2#r25: [14, 18, 19]
-  §9.10.1#b5: [14, 15, 19]
+  §4.1#r275: [13]
+  §4.1#r276: [14]
+  §9.4.2#r25: [14, 19, 21]
+  §9.10.1#b5: [14, 16, 21]
   §9.10.1#p7: [3, 5, 12]
   §9.10.1#p11: [4, 5]
   §9.10.1#p12: [12]
-  §Aturan Logika Modul#r78: [5]
-  §9.2#b556: [3]
-  §9.4.2#r92: [4]
+  §Aturan Logika Modul#r80: [5]
+  §9.2#b555: [3]
+  §9.4.2#r100: [4]
   §9.10.1#r5: [3]
   §9.10.1#r8: [6]
   §9.10.1#b3: [4]
@@ -64,11 +64,13 @@ coverage:
 12. Verifikasi baris override Group `Workshop {runId}` tampil di tabel Overrides
 13. Verifikasi kolom Overridden baris itu menampilkan `Require approval (OFF)`
 14. Verifikasi sel Target baris itu menampilkan badge `Not applied`
-15. Verifikasi alasan `Requires Approval Workflow on your plan` tersampaikan pada badge `Not applied`
+15. Arahkan pointer ke badge `Not applied` pada baris `Workshop {runId}`
+16. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada badge `Not applied`
 
 ### Opsi field bergerbang di Dialog Add override disabled
-16. Klik `[+ Override]`
-17. Klik Select field pada baris Field + Value pertama
-18. Verifikasi opsi `Require approval` disabled
-19. Verifikasi alasan `Requires Approval Workflow on your plan` tersampaikan pada opsi `Require approval` yang disabled
-20. Klik `✕` pada Dialog Add override, form belum diubah
+17. Klik `[+ Override]`
+18. Klik Select field pada baris Field + Value pertama
+19. Verifikasi opsi `Require approval` disabled
+20. Arahkan pointer ke opsi `Require approval` yang disabled
+21. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Require approval` yang disabled
+22. Klik `✕` pada Dialog Add override, form belum diubah

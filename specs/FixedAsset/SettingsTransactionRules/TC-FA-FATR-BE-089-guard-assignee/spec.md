@@ -6,58 +6,61 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§4.1#r111", "§4.1#r112", "§4.1#r113", "§4.1#r114", "§4.1#r115", "§4.1#r116", "§4.1#r119", "§4.1#r120", "§4.1#r121", "§4.1#r123", "§6#r35", "§6#r36", "§6#r37", "§6#r40", "§6#r41", "§9.2#b32", "§9.2#b44", "§9.2#b47", "§9.2#b106", "§9.2#b110", "§9.2#b111", "§9.2#b114", "§9.2#b115", "§9.2#b116", "§9.2#b118", "§9.2#b119", "§9.2#b185", "§9.2#b187", "§9.2#b188", "§9.2#b189", "§9.2#b191", "§9.4.2#r65", "§9.4.2#r66", "§9.4.2#r68", "§9.4.2#r69", "§9.4.2#r70", "§9.4.2#r71", "§9.4.2#r72", "§9.4.2#r73", "§9.4.2#r74", "§9.4.2#r77", "§9.4.4#r34", "§9.6#r31", "§9.6#r32", "§9.6#r33", "§9.9#r12", "§9.9#r17", "§9.9#r22"]
+sourceRules: ["§4.1#r121", "§4.1#r122", "§4.1#r123", "§4.1#r124", "§4.1#r125", "§4.1#r126", "§4.1#r129", "§4.1#r130", "§4.1#r131", "§4.1#r133", "§6#r35", "§6#r36", "§6#r37", "§6#r40", "§6#r41", "§9.2#b32", "§9.2#b44", "§9.2#b47", "§9.2#b106", "§9.2#b110", "§9.2#b111", "§9.2#b114", "§9.2#b115", "§9.2#b116", "§9.2#b118", "§9.2#b119", "§9.2#b185", "§9.2#b187", "§9.2#b188", "§9.2#b189", "§9.2#b191", "§9.4.2#r73", "§9.4.2#r74", "§9.4.2#r76", "§9.4.2#r77", "§9.4.2#r78", "§9.4.2#r79", "§9.4.2#r80", "§9.4.2#r81", "§9.4.2#r82", "§9.4.2#r85", "§9.4.4#r34", "§9.6#r31", "§9.6#r32", "§9.6#r33", "§9.9#r12", "§9.9#r17", "§9.9#r22", EB-ERR-4, D-07, "§6#r3"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.1#r111": [3, 5, 7]
-  "§4.1#r112": 14
-  "§4.1#r113": 16
-  "§4.1#r114": 18
-  "§4.1#r115": 2
-  "§4.1#r116": [9, 10]
-  "§4.1#r119": 23
-  "§4.1#r120": 21
-  "§4.1#r121": [25, 27]
-  "§4.1#r123": 2
-  "§6#r35": [21, 23]
-  "§6#r36": 14
-  "§6#r37": 25
-  "§6#r40": 30
-  "§6#r41": 39
-  "§9.2#b32": 18
-  "§9.2#b44": 14
-  "§9.2#b47": 18
-  "§9.2#b106": [25, 27]
-  "§9.2#b110": 30
-  "§9.2#b111": 39
-  "§9.2#b114": 31
-  "§9.2#b115": [30, 31]
-  "§9.2#b116": 37
-  "§9.2#b118": 34
-  "§9.2#b119": 35
-  "§9.2#b185": 30
-  "§9.2#b187": 39
-  "§9.2#b188": 31
-  "§9.2#b189": 37
-  "§9.2#b191": 34
-  "§9.4.2#r65": 7
-  "§9.4.2#r66": [9, 12]
-  "§9.4.2#r68": 14
-  "§9.4.2#r69": 16
-  "§9.4.2#r70": 18
-  "§9.4.2#r71": 21
-  "§9.4.2#r72": [25, 27]
-  "§9.4.2#r73": 18
-  "§9.4.2#r74": 30
-  "§9.4.2#r77": 31
-  "§9.4.4#r34": 32
-  "§9.6#r31": 31
-  "§9.6#r32": 37
-  "§9.6#r33": 34
-  "§9.9#r12": [2, 19]
-  "§9.9#r17": [21, 23]
-  "§9.9#r22": 30
+  "§4.1#r121": [3, 5, 7, 42, 43]
+  "§4.1#r122": 15
+  "§4.1#r123": 17
+  "§4.1#r124": 19
+  "§4.1#r125": 2
+  "§4.1#r126": [9, 10, 13]
+  "§4.1#r129": 24
+  "§4.1#r130": 22
+  "§4.1#r131": [26, 28]
+  "§4.1#r133": 2
+  "§6#r35": [22, 24]
+  "§6#r36": 15
+  "§6#r37": 26
+  "§6#r40": 31
+  "§6#r41": 40
+  "§9.2#b32": 19
+  "§9.2#b44": 15
+  "§9.2#b47": 19
+  "§9.2#b106": [26, 28]
+  "§9.2#b110": 31
+  "§9.2#b111": 40
+  "§9.2#b114": 32
+  "§9.2#b115": [31, 32]
+  "§9.2#b116": 38
+  "§9.2#b118": 35
+  "§9.2#b119": 36
+  "§9.2#b185": 31
+  "§9.2#b187": 40
+  "§9.2#b188": 32
+  "§9.2#b189": 38
+  "§9.2#b191": 35
+  "§9.4.2#r73": 7
+  "§9.4.2#r74": [9, 12]
+  "§9.4.2#r76": 15
+  "§9.4.2#r77": 17
+  "§9.4.2#r78": 19
+  "§9.4.2#r79": 22
+  "§9.4.2#r80": [26, 28]
+  "§9.4.2#r81": 19
+  "§9.4.2#r82": 31
+  "§9.4.2#r85": 32
+  "§9.4.4#r34": 33
+  "§9.6#r31": 32
+  "§9.6#r32": 38
+  "§9.6#r33": 35
+  "§9.9#r12": [2, 20]
+  "§9.9#r17": [22, 24]
+  "§9.9#r22": 31
+  EB-ERR-4: [3, 10, 20]
+  D-07: 40
+  "§6#r3": [31, 40]
 ---
 # Guard Allowed assignee OFF/OFF
 
@@ -130,44 +133,50 @@ trace:
 10. Verifikasi tidak ada perubahan yang tersimpan: Allowed assignee: Division dan Max extensions Category `Guard Override Ada {runId}` tetap Inherit
 11. Maya Pengelola menyimpan Company default dengan Allowed assignee: Division `OFF`
 12. Verifikasi Save ditolak karena perubahan Company default membuat kombinasi efektif override Group `Tim Guard Ada {runId}` menjadi OFF/OFF
+13. Verifikasi Allowed assignee: Division Company default tetap `ON` dan tidak ada perubahan yang tersimpan di Company default
 
 ### Nilai Category tidak dievaluasi selama Allow Assign Deny dan dievaluasi saat menjadi Allow
-13. Maya Pengelola menyimpan Category `Guard Deny Tersimpan {runId}` dengan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
-14. Verifikasi Save diterima dan kedua nilai `OFF` tersimpan, karena nilai Category tidak dievaluasi selama Allow Assign bernilai Deny
-15. Maya Pengelola menyimpan Category `Guard Deny Tersimpan {runId}` dengan Allow Assign `Allow`
-16. Verifikasi Save ditolak karena Save yang membuat Allow Assign bernilai Allow mengevaluasi nilai Category yang kini keduanya OFF
+14. Maya Pengelola menyimpan Category `Guard Deny Tersimpan {runId}` dengan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
+15. Verifikasi Save diterima dan kedua nilai `OFF` tersimpan, karena nilai Category tidak dievaluasi selama Allow Assign bernilai Deny
+16. Maya Pengelola menyimpan Category `Guard Deny Tersimpan {runId}` dengan Allow Assign `Allow`
+17. Verifikasi Save ditolak karena Save yang membuat Allow Assign bernilai Allow mengevaluasi nilai Category yang kini keduanya OFF
 
 ### Aset yang dibuka override Allow di bawah Category Deny tetap dievaluasi
-17. Maya Pengelola menyimpan Category `Guard Deny Dibuka {runId}` dengan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
-18. Verifikasi Save ditolak karena aset `Mesin Dibuka {runId}`, yang dibuka override Allow, akan memiliki kombinasi efektif OFF/OFF
-19. Verifikasi Allowed assignee: Employee dan Allowed assignee: Division Category `Guard Deny Dibuka {runId}` tetap Inherit, karena kombinasi aset yang dibuka override Allow menolak Save
-20. Maya Pengelola menambahkan override aset `Mesin Terkunci Satu {runId}` pada Category `Guard Deny Tersimpan {runId}` untuk transaksi penugasan dengan Allow Assign `Allow`
-21. Verifikasi Add override ditolak karena membuka aset yang kombinasi efektif Allowed assignee-nya OFF/OFF di bawah Category Deny, dan tidak ada override terbuat
+18. Maya Pengelola menyimpan Category `Guard Deny Dibuka {runId}` dengan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
+19. Verifikasi Save ditolak karena aset `Mesin Dibuka {runId}`, yang dibuka override Allow, akan memiliki kombinasi efektif OFF/OFF
+20. Verifikasi Allowed assignee: Employee dan Allowed assignee: Division Category `Guard Deny Dibuka {runId}` tetap Inherit, karena kombinasi aset yang dibuka override Allow menolak Save
+21. Maya Pengelola menambahkan override aset `Mesin Terkunci Satu {runId}` pada Category `Guard Deny Tersimpan {runId}` untuk transaksi penugasan dengan Allow Assign `Allow`
+22. Verifikasi Add override ditolak dengan pesan `At least one assignee type must be enabled` karena membuka aset yang kombinasi efektif Allowed assignee-nya OFF/OFF di bawah Category Deny, dan tidak ada override terbuat
 
 ### Add override yang membuat kombinasi efektif OFF/OFF ditolak
-22. Maya Pengelola menambahkan override Group `Tim Guard Add {runId}` pada Category `Guard Add {runId}` untuk transaksi penugasan dengan Allowed assignee: Employee `OFF`
-23. Verifikasi Add override ditolak karena kombinasi efektif pada aset target keduanya OFF, dan tidak ada override terbuat
+23. Maya Pengelola menambahkan override Group `Tim Guard Add {runId}` pada Category `Guard Add {runId}` untuk transaksi penugasan dengan Allowed assignee: Employee `OFF`
+24. Verifikasi Add override ditolak karena kombinasi efektif pada aset target keduanya OFF, dan tidak ada override terbuat
 
 ### Guard tidak dievaluasi untuk aset target yang Allow Assign-nya Deny
-24. Maya Pengelola menambahkan override aset `Mesin Terkunci Dua {runId}` pada Category `Guard Deny Tersimpan {runId}` untuk transaksi penugasan dengan Allowed assignee: Employee `OFF`
-25. Verifikasi Add override diterima walau nilai efektif keduanya OFF, karena nilai efektif Allow Assign aset itu Deny
-26. Maya Pengelola menambahkan override Group `Tim Guard Add Deny {runId}` pada Category `Guard Add Deny Sendiri {runId}` untuk transaksi penugasan dengan Allow Assign `Deny` dan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
-27. Verifikasi Add override diterima, karena Deny dari override yang sedang dibuat membuat guard tidak dievaluasi
+25. Maya Pengelola menambahkan override aset `Mesin Terkunci Dua {runId}` pada Category `Guard Deny Tersimpan {runId}` untuk transaksi penugasan dengan Allowed assignee: Employee `OFF`
+26. Verifikasi Add override diterima walau nilai efektif keduanya OFF, karena nilai efektif Allow Assign aset itu Deny
+27. Maya Pengelola menambahkan override Group `Tim Guard Add Deny {runId}` pada Category `Guard Add Deny Sendiri {runId}` untuk transaksi penugasan dengan Allow Assign `Deny` dan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
+28. Verifikasi Add override diterima, karena Deny dari override yang sedang dibuat membuat guard tidak dievaluasi
 
 ### Delete override yang membuat override yang tersisa OFF/OFF ditolak
-28. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log serta versi setting
-29. Maya Pengelola menghapus override Group `Tim Guard Hapus {runId}`, yang akan membuat kombinasi efektif override aset `Perangkat Guard Hapus {runId}` yang tersisa keduanya OFF
-30. Verifikasi Delete ditolak server dengan pesan `At least one assignee type must be enabled`
-31. Verifikasi override Group `Tim Guard Hapus {runId}` masih ada
-32. Verifikasi Changelog dan Activity Log tidak bertambah entri dan versi setting tidak naik
+29. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log serta versi setting
+30. Maya Pengelola menghapus override Group `Tim Guard Hapus {runId}`, yang akan membuat kombinasi efektif override aset `Perangkat Guard Hapus {runId}` yang tersisa keduanya OFF
+31. Verifikasi Delete ditolak server dengan pesan `At least one assignee type must be enabled`
+32. Verifikasi override Group `Tim Guard Hapus {runId}` masih ada
+33. Verifikasi Changelog dan Activity Log tidak bertambah entri dan versi setting tidak naik
 
 ### Bulk Delete: baris yang ditolak guard dilewati dan bila tidak ada yang terhapus tidak ada perubahan
-33. Maya Pengelola menghapus bulk override Group `Tim Guard Hapus {runId}` dan override Group `Tim Guard Hapus Bulk {runId}`, keduanya akan ditolak guard
-34. Verifikasi tidak ada override yang terhapus, dan kedua override masih ada
-35. Verifikasi hasil Delete menyebut hanya kedua override itu sebagai ditolak guard
-36. Maya Pengelola menghapus bulk override Group `Tim Guard Hapus Bulk {runId}`, yang akan ditolak guard, dan override Group `Tim Guard Plain {runId}`
-37. Verifikasi override Group `Tim Guard Plain {runId}` terhapus dan override Group `Tim Guard Hapus Bulk {runId}` dilewati seperti baris di luar cakupan
+34. Maya Pengelola menghapus bulk override Group `Tim Guard Hapus {runId}` dan override Group `Tim Guard Hapus Bulk {runId}`, keduanya akan ditolak guard
+35. Verifikasi tidak ada override yang terhapus, dan kedua override masih ada
+36. Verifikasi hasil Delete menyebut hanya kedua override itu sebagai ditolak guard
+37. Maya Pengelola menghapus bulk override Group `Tim Guard Hapus Bulk {runId}`, yang akan ditolak guard, dan override Group `Tim Guard Plain {runId}`
+38. Verifikasi override Group `Tim Guard Plain {runId}` terhapus dan override Group `Tim Guard Hapus Bulk {runId}` dilewati seperti baris di luar cakupan
 
 ### Guard tidak dievaluasi bila aset target Allow Assign-nya Deny sesudah penghapusan
-38. Maya Pengelola menghapus override Group `Tim Guard Deny Hapus {runId}`, yang bila dievaluasi akan membuat kombinasi override aset `Mesin Deny Hapus {runId}` keduanya OFF
-39. Verifikasi Delete diterima dan override itu terhapus, karena nilai efektif Allow Assign aset itu Deny sesudah penghapusan
+39. Maya Pengelola menghapus override Group `Tim Guard Deny Hapus {runId}`, yang bila dievaluasi akan membuat kombinasi override aset `Mesin Deny Hapus {runId}` keduanya OFF
+40. Verifikasi Delete diterima dan override itu terhapus, karena nilai efektif Allow Assign aset itu Deny sesudah penghapusan
+
+### Save Company default dengan keduanya OFF ditolak
+41. Maya Pengelola menyimpan Company default dengan Allowed assignee: Employee `OFF` dan Allowed assignee: Division `OFF`
+42. Verifikasi Save ditolak server dengan pesan `At least one assignee type must be enabled`
+43. Verifikasi Allowed assignee: Employee dan Allowed assignee: Division Company default tetap `ON`, tidak ada perubahan yang tersimpan

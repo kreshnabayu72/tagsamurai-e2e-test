@@ -6,55 +6,55 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r6", "§Aturan Logika Modul#r26", "§4.1#r127", "§4.1#r130", "§4.1#r131", "§4.1#r132", "§4.1#r133", "§4.1#r134", "§4.1#r135", "§4.1#r136", "§4.1#r137", "§4.1#r138", "§4.1#r139", "§4.1#r140", "§4.1#r141", "§4.1#r142", "§4.1#r166", "§4.1#r177", "§9.2#b92", "§9.2#b131", "§9.2#b427", "§9.2#b428", "§9.2#b429", "§9.2#b434", "§9.2#b435", "§9.2#b438", "§9.2#b384", "§9.2#b392", "§9.2#b399", "§9.2#b414", "§9.2#b416", "§9.2#b417", "§9.2#b418", "§9.2#b420", "§9.2#b424", "§9.2#b430", "§9.2#b431", "§9.2#b432", "§9.4.2#r35", "§9.4.2#r61", "§9.4.2#r82", "§9.4.2#r123", "§9.4.2#r124", "§9.4.2#r128", "§9.4.3#b9", "§9.4.4#r54", "§9.7#r6", "§9.7#r15", "§9.8#r8", "§9.8#r9", "§11#r12"]
+sourceRules: ["§Aturan Logika Modul#r6", "§Aturan Logika Modul#r29", "§4.1#r137", "§4.1#r140", "§4.1#r141", "§4.1#r142", "§4.1#r143", "§4.1#r144", "§4.1#r145", "§4.1#r146", "§4.1#r147", "§4.1#r148", "§4.1#r149", "§4.1#r150", "§4.1#r151", "§4.1#r152", "§4.1#r176", "§4.1#r185", "§9.2#b92", "§9.2#b131", "§9.2#b426", "§9.2#b427", "§9.2#b428", "§9.2#b433", "§9.2#b434", "§9.2#b437", "§9.2#b384", "§9.2#b392", "§9.2#b399", "§9.2#b413", "§9.2#b415", "§9.2#b416", "§9.2#b417", "§9.2#b419", "§9.2#b423", "§9.2#b429", "§9.2#b430", "§9.2#b431", "§9.4.2#r35", "§9.4.2#r61", "§9.4.2#r90", "§9.4.2#r131", "§9.4.2#r132", "§9.4.2#r136", "§9.4.3#b9", "§9.4.4#r54", "§9.7#r6", "§9.7#r15", "§9.8#r8", "§9.8#r9", "§11#r12", "§11#r13", "§4.1#r171", "§4.1#r173", "§4.1#r136", "§4.1#r138", "§9.10.1#r11", "§9.2#b382", "§9.2#b444", "§9.2#b445", "§Aturan Logika Modul#r33", "§Aturan Logika Modul#r65"]
 smoke: []
 dependsOn:
   - "Transfer: pengajuan, Send, dan Receive"
 trace:
   "§Aturan Logika Modul#r6": [3, 11]
-  "§Aturan Logika Modul#r26": 3
-  "§4.1#r127": 111
-  "§4.1#r130": [59, 60]
-  "§4.1#r131": 63
-  "§4.1#r132": 61
-  "§4.1#r133": 69
-  "§4.1#r134": 74
-  "§4.1#r135": 75
-  "§4.1#r136": [70, 166]
-  "§4.1#r137": [77, 79]
-  "§4.1#r138": [81, 162, 164]
-  "§4.1#r139": [77, 81]
-  "§4.1#r140": 86
-  "§4.1#r141": 89
-  "§4.1#r142": 93
-  "§4.1#r166": [25, 27]
-  "§4.1#r177": [30, 32]
+  "§Aturan Logika Modul#r29": 3
+  "§4.1#r137": 111
+  "§4.1#r140": [59, 60]
+  "§4.1#r141": 63
+  "§4.1#r142": 61
+  "§4.1#r143": 69
+  "§4.1#r144": 74
+  "§4.1#r145": 75
+  "§4.1#r146": [70, 166]
+  "§4.1#r147": [77, 79]
+  "§4.1#r148": [81, 162, 164]
+  "§4.1#r149": [77, 81]
+  "§4.1#r150": 86
+  "§4.1#r151": 89
+  "§4.1#r152": 93
+  "§4.1#r176": [25, 27]
+  "§4.1#r185": [30, 32]
   "§9.2#b92": 11
   "§9.2#b131": [49, 50, 54]
-  "§9.2#b427": 21
-  "§9.2#b428": 23
-  "§9.2#b429": 36
-  "§9.2#b434": [3, 11, 18]
-  "§9.2#b435": 4
-  "§9.2#b438": [97, 98, 100, 101]
+  "§9.2#b426": 21
+  "§9.2#b427": 23
+  "§9.2#b428": 36
+  "§9.2#b433": [3, 11, 18]
+  "§9.2#b434": 4
+  "§9.2#b437": [97, 98, 100, 101]
   "§9.2#b384": 4
   "§9.2#b392": [109, 111, 154, 157]
   "§9.2#b399": [111, 112, 154, 155, 157, 158]
-  "§9.2#b414": [107, 111, 152]
-  "§9.2#b416": 114
-  "§9.2#b417": 119
-  "§9.2#b418": 120
-  "§9.2#b420": [123, 124, 126]
-  "§9.2#b424": [25, 30]
-  "§9.2#b430": 40
-  "§9.2#b431": [41, 42, 43, 44]
-  "§9.2#b432": [28, 33]
+  "§9.2#b413": [107, 111, 152]
+  "§9.2#b415": 114
+  "§9.2#b416": 119
+  "§9.2#b417": 120
+  "§9.2#b419": [123, 124, 126]
+  "§9.2#b423": [25, 30]
+  "§9.2#b429": [40, 187]
+  "§9.2#b430": [41, 42, 43, 44]
+  "§9.2#b431": [28, 33]
   "§9.4.2#r35": [3, 4, 11]
   "§9.4.2#r61": [77, 81, 86, 89, 93]
-  "§9.4.2#r82": [3, 7]
-  "§9.4.2#r123": 16
-  "§9.4.2#r124": 18
-  "§9.4.2#r128": [100, 101]
+  "§9.4.2#r90": [3, 7]
+  "§9.4.2#r131": 16
+  "§9.4.2#r132": 18
+  "§9.4.2#r136": [100, 101]
   "§9.4.3#b9": [100, 101]
   "§9.4.4#r54": [144, 145]
   "§9.7#r6": [3, 7]
@@ -62,19 +62,30 @@ trace:
   "§9.8#r8": [131, 133, 134]
   "§9.8#r9": [137, 139, 140]
   "§11#r12": [77, 81, 86]
+  "§11#r13": [61, 75]
+  "§4.1#r171": [25, 27]
+  "§4.1#r173": [30, 32]
+  "§4.1#r136": [60, 69, 74]
+  "§4.1#r138": [77, 86]
+  "§9.10.1#r11": [144, 172]
+  "§9.2#b382": [144, 145, 172]
+  "§9.2#b444": [133, 139]
+  "§9.2#b445": [144, 169]
+  "§Aturan Logika Modul#r33": [180, 181]
+  "§Aturan Logika Modul#r65": [185, 187, 189, 191, 193, 195]
 anchor: []
 ---
 
 # Evaluasi dan penegakan aturan pada transaksi Transfer
 
 ## Prerequisites
-- Aktor: Wulan (DU-103-1), Rizal (DU-103-2), Hendra (DU-103-3), Citra (DU-103-4), dan Operator platform yang mengubah plan client.
+- Aktor: Wulan (DU-103-1), Rizal (DU-103-2), Hendra (DU-103-3), Citra (DU-103-4), Joko (DU-103-5), Approver Transfer pada Group asal, dan Operator platform yang mengubah plan client.
 - Data:
   - DU-103-1: User: Name `Wulan Pengelola {runId}`, Access Level `Total Control`, Cakupan `seluruh client`.
   - DU-103-2: User: Name `Rizal Pengaju {runId}`, Role `Aktor Transfer`, Cakupan `Group Gudang Pusat {runId}`.
   - DU-103-3: User: Name `Hendra Penerima {runId}`, Role `Aktor Transfer`, Cakupan `Group Cabang Surabaya {runId}, Cabang Depok {runId}, Cabang Bekasi {runId}, Cabang Medan {runId}`.
   - DU-103-4: User: Name `Citra Akuntansi {runId}`, Role `Accounting`, Cakupan `seluruh client`.
-  - DU-103-5: User: Name `Joko Approver {runId}`, Role Transaksi `Approver`, Cakupan `Group Gudang Pusat {runId}`.
+  - DU-103-5: User: Name `Joko Approver {runId}`, Role Transaksi `Approver`, Cakupan `Group Gudang Pusat {runId}`, Status `Active`.
   - DU-103-6: Group: Name `Gudang Pusat {runId}`, Cost Center default `CC-GP-{runId}`.
   - DU-103-7: Group: Name `Cabang Surabaya {runId}`, Cost Center default `CC-SBY-{runId}`, Sisa kuota `50`.
   - DU-103-8: Group: Name `Cabang Depok {runId}`, Cost Center default `tidak ada`, Sisa kuota `50`.
@@ -89,25 +100,32 @@ anchor: []
   - DU-103-17: Asset: Name `Meja Kerja Non TAG {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Category `Furnitur Non TAG {runId}, bertanda Non TAG`.
   - DU-103-18: Asset: Name `Kompresor Tag Rusak {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, tag rusak`.
   - DU-103-19: Asset: Name `Printer Label Jaringan {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`.
-  - DU-103-20: Asset: Name `Troli Barang Kecil {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Cost Center `CC-GP-{runId}`.
-  - DU-103-21: Asset: Name `Troli Barang Besar {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Cost Center `CC-GP-{runId}`.
-  - DU-103-22: Asset: Name `Rak Besi Tinggi {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Cost Center `CC-GP-{runId}`, Penyusutan `periode berjalan sudah berjalan, bebannya tercatat pada Cost Center CC-GP-{runId}`.
-  - DU-103-23: Asset: Name `Rak Besi Rendah {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Cost Center `CC-GP-{runId}`.
+  - DU-103-20: Asset: Name `Troli Barang Kecil {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`, Cost Center `CC-GP-{runId}`.
+  - DU-103-21: Asset: Name `Troli Barang Besar {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`, Cost Center `CC-GP-{runId}`.
+  - DU-103-22: Asset: Name `Rak Besi Tinggi {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`, Cost Center `CC-GP-{runId}`, Penyusutan `periode berjalan sudah berjalan, bebannya tercatat pada Cost Center CC-GP-{runId}`.
+  - DU-103-23: Asset: Name `Rak Besi Rendah {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`, Cost Center `CC-GP-{runId}` (2 aset, {n} berurutan 1 sampai 2).
   - DU-103-24: Asset: Name `Lemari Arsip {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active` (4 aset, {n} berurutan 1 sampai 4).
-  - DU-103-25: Asset: Name `Meja Rapat Medan {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active` (3 aset, {n} berurutan 1 sampai 3).
+  - DU-103-25: Asset: Name `Meja Rapat Medan {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan` (3 aset, {n} berurutan 1 sampai 3).
   - DU-103-26: Asset: Name `Kursi Lipat Draft {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
-  - DU-103-27: Asset: Name `Tenda Lipat {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
-  - DU-103-28: Asset: Name `Bor Listrik {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active` (4 aset, {n} berurutan 1 sampai 4).
+  - DU-103-27: Asset: Name `Tenda Lipat {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`.
+  - DU-103-28: Asset: Name `Bor Listrik {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan` (4 aset, {n} berurutan 1 sampai 4).
   - DU-103-29: Asset: Name `Gerobak Dorong {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active` (3 aset, {n} berurutan 1 sampai 3).
-  - DU-103-34: Asset: Name `Dongkrak Hidrolik {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
+  - DU-103-30: Asset: Name `Kursi Kantor Medan {n} {runId}`, Group `Cabang Medan {runId}`, Status `Active` (2 aset, {n} berurutan 1 sampai 2), ditambahkan langsung ke Group oleh Wulan sesudah Send Meja Rapat Medan 1.
+  - DU-103-34: Asset: Name `Dongkrak Hidrolik {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`.
   - DU-103-35: Group: Name `Cabang Bogor {runId}`, Sisa kuota `2`.
   - DU-103-36: Asset: Name `Pallet Kayu {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active` (3 aset, {n} berurutan 1 sampai 3).
   - DU-103-37: Asset: Name `Kotak Peralatan Cadangan {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
+  - DU-103-38: Asset: Name `Kompresor Udara Pembanding {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
+  - DU-103-39: Asset: Name `Kompresor Udara Plan Off {runId}`, Group `Gudang Pusat {runId}`, Status `Active`.
+  - DU-103-40: Asset: Name `Troli Barang Sedang {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan`, Cost Center `CC-GP-{runId}`.
+  - DU-103-41: Asset: Name `Tangga Aluminium {n} {runId}`, Group `Gudang Pusat {runId}`, Status `Active`, Tag `ber-tag, dapat di-scan` (2 aset, {n} berurutan 1 sampai 2).
 - Kondisi:
   - Spec ini memakai entitas khusus yang tidak dipakai spec lain, karena mengubah setting entitas dan plan client.
   - Pada awal spec nilai di All categories: Allow Transfer `Allow`, Require approval untuk Transfer `OFF`, Change Cost Center with Group `Never`, In-transit overdue after `7`, Destination quota check `ON`, Photo at start `ON`, Photo at end `ON`, Transaction timeout `7`.
   - Alokasi kuota per Group aktif di client, dan Approval Workflow tersedia di plan client.
-  - Rizal, Hendra, dan Citra memiliki akun aktif dan kredensialnya disediakan fase 2.
+  - Zona waktu client bernilai `Asia/Jakarta` (UTC+07:00), sehingga pukul 06:30 zona client sama dengan pukul 23:30 UTC pada hari kalender sebelumnya.
+  - Hari kalender dihitung menurut zona waktu client, dan hari sebuah baris masuk `In Transit` dihitung hari ke-0.
+  - Rizal, Hendra, Citra, dan Joko memiliki akun aktif dan kredensialnya disediakan fase 2.
 
 ## Test Steps
 
@@ -165,8 +183,8 @@ anchor: []
 39. Hendra melakukan Receive atas baris Transfer aset `Kompresor Tag Rusak {runId}` lewat `I can't scan the TAG` karena tag rusak, dengan 1 foto
 40. Verifikasi Receive diterima dan baris Transfer aset `Kompresor Tag Rusak {runId}` berstatus `Received`
 41. Verifikasi foto yang disertakan pada Receive lewat `I can't scan the TAG` tersimpan pada baris itu
-42. Verifikasi cek radius dijalankan atas Receive lewat `I can't scan the TAG`
-43. Verifikasi baris Receive itu diberi flag
+42. Verifikasi Receive lewat `I can't scan the TAG` diterima dengan identifikasi manual berupa foto aset, tanpa cek radius
+43. Verifikasi baris Receive itu diberi flag `Manual identification`
 44. Verifikasi Report TAG dibuat otomatis untuk aset `Kompresor Tag Rusak {runId}`
 
 ### Override Asset tetap berlaku sesudah aset berpindah Group
@@ -185,10 +203,10 @@ anchor: []
 55. Citra mencatat jumlah notifikasi `transfer_cost_center_review` yang ia terima
 56. Rizal mengajukan Transfer aset `Troli Barang Kecil {runId}` dan `Troli Barang Besar {runId}` ke Group `Cabang Surabaya {runId}` dalam satu pengajuan
 57. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
-58. Hendra melakukan Receive atas kedua baris Transfer dengan scan tag dan 1 foto
+58. Hendra melakukan Receive atas kedua baris Transfer dalam satu sesi Receive dengan scan tag dan 1 foto
 59. Verifikasi kedua baris Transfer berstatus `Received`
 60. Verifikasi Cost Center aset `Troli Barang Kecil {runId}` dan `Troli Barang Besar {runId}` tetap `CC-GP-{runId}`
-61. Verifikasi Citra menerima dua notifikasi `transfer_cost_center_review` baru, satu untuk setiap baris Received
+61. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Received, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
 62. Citra memperbarui Cost Center aset `Troli Barang Kecil {runId}` menjadi `CC-SBY-{runId}`
 63. Verifikasi Cost Center aset `Troli Barang Kecil {runId}` tersimpan sebagai `CC-SBY-{runId}`
 
@@ -200,11 +218,11 @@ anchor: []
 68. Hendra melakukan Receive atas baris Transfer aset `Rak Besi Tinggi {runId}` dengan scan tag dan 1 foto
 69. Verifikasi Cost Center aset `Rak Besi Tinggi {runId}` menjadi `CC-SBY-{runId}`, Cost Center default Group tujuan
 70. Verifikasi beban penyusutan periode berjalan aset `Rak Besi Tinggi {runId}` tetap tercatat pada Cost Center `CC-GP-{runId}`, walau Cost Center aset sudah `CC-SBY-{runId}`
-71. Rizal mengajukan Transfer aset `Rak Besi Rendah {runId}` ke Group `Cabang Depok {runId}`, yang tidak punya Cost Center default
-72. Rizal melakukan Send atas baris Transfer aset `Rak Besi Rendah {runId}` dengan scan tag dan 1 foto
-73. Hendra melakukan Receive atas baris Transfer aset `Rak Besi Rendah {runId}` dengan scan tag dan 1 foto
-74. Verifikasi Cost Center aset `Rak Besi Rendah {runId}` tetap `CC-GP-{runId}`
-75. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk baris Received itu
+71. Rizal mengajukan Transfer aset `Rak Besi Rendah 1 {runId}` dan `Rak Besi Rendah 2 {runId}` ke Group `Cabang Depok {runId}`, yang tidak punya Cost Center default, dalam satu pengajuan
+72. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
+73. Hendra melakukan Receive atas kedua baris Transfer dalam satu sesi Receive dengan scan tag dan 1 foto
+74. Verifikasi Cost Center aset `Rak Besi Rendah 1 {runId}` dan `Rak Besi Rendah 2 {runId}` tetap `CC-GP-{runId}`
+75. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Received, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
 
 ### Destination quota check: pengajuan melebihi sisa kuota Group tujuan ditolak seluruhnya
 76. Rizal mengajukan satu Transfer berisi aset `Lemari Arsip 1 {runId}`, `Lemari Arsip 2 {runId}`, `Lemari Arsip 3 {runId}`, dan `Lemari Arsip 4 {runId}` ke Group `Cabang Bekasi {runId}`, yang sisa kuotanya 3
@@ -241,33 +259,33 @@ anchor: []
 101. Verifikasi baris Transfer aset `Tenda Lipat {runId}` tetap berstatus `In Transit`, tidak dibatalkan atau ditutup otomatis
 102. Wulan menyimpan Allow Transfer `Allow` di All categories
 
-### In-transit overdue after: notifikasi sekali per baris In Transit
+### In-transit overdue after: notifikasi dikirim sekali dan dikelompokkan satu per TRF
 103. Wulan menyimpan In-transit overdue after `3` di All categories
 104. Rizal dan Hendra masing-masing mencatat jumlah notifikasi `transfer_transit_overdue` yang mereka terima
 105. Rizal mengajukan Transfer aset `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` ke Group `Cabang Surabaya {runId}` dalam satu pengajuan
 106. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
-107. Verifikasi kedua baris Transfer berstatus `In Transit`
-108. Waktu berlalu sampai awal hari kalender kedua sesudah hari kedua baris masuk `In Transit`, menurut zona waktu client
+107. Verifikasi kedua baris Transfer dari satu pengajuan itu berstatus `In Transit`
+108. Waktu berlalu sampai awal hari ke-2 sesudah hari `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` masuk `In Transit`, menurut zona waktu client
 109. Verifikasi belum ada notifikasi `transfer_transit_overdue` baru untuk Rizal maupun Hendra
-110. Waktu berlalu sampai awal hari kalender kelima sesudah hari kedua baris masuk `In Transit`, menurut zona waktu client
-111. Verifikasi Rizal, Aktor Transfer Group asal, dan Hendra, Aktor Transfer Group tujuan, masing-masing menerima dua notifikasi `transfer_transit_overdue` baru, satu untuk setiap baris In Transit
+110. Waktu berlalu sampai awal hari ke-5 sesudah hari `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` masuk `In Transit`, menurut zona waktu client
+111. Verifikasi Rizal, Aktor Transfer Group asal, dan Hendra, Aktor Transfer Group tujuan, masing-masing menerima satu notifikasi `transfer_transit_overdue` baru untuk TRF yang memuat baris `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}`, bukan satu untuk setiap baris In Transit
 112. Verifikasi kedua baris Transfer ditandai In-transit overdue
-113. Waktu berlalu sampai awal hari kalender kesembilan sesudah hari kedua baris masuk `In Transit`, menurut zona waktu client
-114. Verifikasi Rizal dan Hendra masing-masing masih memiliki tepat satu notifikasi `transfer_transit_overdue` untuk baris `Bor Listrik 1 {runId}` dan tepat satu untuk baris `Bor Listrik 2 {runId}`, tanpa eskalasi atau pengulangan
+113. Waktu berlalu sampai awal hari ke-9 sesudah hari `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` masuk `In Transit`, menurut zona waktu client
+114. Verifikasi Rizal dan Hendra masing-masing masih memiliki tepat satu notifikasi `transfer_transit_overdue` untuk TRF yang memuat baris `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}`, tanpa eskalasi atau pengulangan
 
 ### Ambang In-transit overdue after yang baru hanya berlaku untuk transaksi yang diajukan sesudah Save
 115. Rizal mengajukan Transfer aset `Bor Listrik 4 {runId}` ke Group `Cabang Surabaya {runId}`
 116. Wulan menyimpan In-transit overdue after `10` di All categories
 117. Rizal mengajukan Transfer aset `Bor Listrik 3 {runId}` ke Group `Cabang Surabaya {runId}`
-118. Waktu berlalu sampai awal hari kalender ketiga belas sesudah hari kedua baris pertama masuk `In Transit`, menurut zona waktu client
-119. Verifikasi Rizal dan Hendra masing-masing tetap memiliki tepat satu notifikasi `transfer_transit_overdue` untuk baris `Bor Listrik 1 {runId}` dan tepat satu untuk baris `Bor Listrik 2 {runId}` sesudah Save ambang `10`, sehingga mengubah ambang sesudah notifikasi terkirim tidak mengirim ulang
-120. Verifikasi dua notifikasi `transfer_transit_overdue` untuk baris pertama dan kedua masih ada pada Rizal dan Hendra, sehingga mengubah ambang tidak mencabut notifikasi yang sudah terkirim
+118. Waktu berlalu sampai awal hari ke-13 sesudah hari `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` masuk `In Transit`, menurut zona waktu client
+119. Verifikasi Rizal dan Hendra masing-masing tetap memiliki tepat satu notifikasi `transfer_transit_overdue` untuk TRF yang memuat baris `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` sesudah Save ambang `10`, sehingga mengubah ambang sesudah notifikasi terkirim tidak mengirim ulang
+120. Verifikasi notifikasi `transfer_transit_overdue` untuk TRF yang memuat baris `Bor Listrik 1 {runId}` dan `Bor Listrik 2 {runId}` masih ada pada Rizal dan Hendra, sehingga mengubah ambang tidak mencabut notifikasi yang sudah terkirim
 121. Rizal melakukan Send atas baris Transfer aset `Bor Listrik 4 {runId}` dan `Bor Listrik 3 {runId}` dengan scan tag dan 1 foto
-122. Waktu berlalu sampai awal hari kalender kelima sesudah hari kedua baris masuk `In Transit`, menurut zona waktu client
-123. Verifikasi Rizal dan Hendra masing-masing menerima satu notifikasi `transfer_transit_overdue` baru untuk baris aset `Bor Listrik 4 {runId}`, yang diajukan sebelum Save ambang `10`
-124. Verifikasi tidak ada notifikasi `transfer_transit_overdue` untuk baris aset `Bor Listrik 3 {runId}`, yang diajukan sesudah Save ambang `10`
-125. Waktu berlalu sampai awal hari kalender kesebelas sesudah hari kedua baris masuk `In Transit`, menurut zona waktu client
-126. Verifikasi Rizal dan Hendra masing-masing menerima satu notifikasi `transfer_transit_overdue` baru untuk baris aset `Bor Listrik 3 {runId}`
+122. Waktu berlalu sampai awal hari ke-5 sesudah hari `Bor Listrik 4 {runId}` dan `Bor Listrik 3 {runId}` dikirim lewat Send, menurut zona waktu client
+123. Verifikasi Rizal dan Hendra masing-masing menerima satu notifikasi `transfer_transit_overdue` baru untuk TRF yang memuat baris aset `Bor Listrik 4 {runId}`, yang diajukan sebelum Save ambang `10`
+124. Verifikasi tidak ada notifikasi `transfer_transit_overdue` untuk TRF yang memuat baris aset `Bor Listrik 3 {runId}`, yang diajukan sesudah Save ambang `10`
+125. Waktu berlalu sampai awal hari ke-11 sesudah hari `Bor Listrik 4 {runId}` dan `Bor Listrik 3 {runId}` dikirim lewat Send, menurut zona waktu client
+126. Verifikasi Rizal dan Hendra masing-masing menerima satu notifikasi `transfer_transit_overdue` baru untuk TRF yang memuat baris aset `Bor Listrik 3 {runId}`
 
 ### Transaction timeout menutup baris Waiting for Approval dan Waiting for Send oleh System
 127. Wulan menyimpan Auto-approve `OFF` untuk Transfer di All categories
@@ -296,14 +314,14 @@ anchor: []
 146. Operator platform mengaktifkan Approval Workflow pada plan client
 147. Wulan menyimpan Require approval `OFF` untuk Transfer di All categories
 148. Wulan menyimpan In-transit overdue after `3` di All categories
-149. Waktu berlalu sampai pukul 23:30 menurut zona waktu client
+149. Waktu berlalu sampai pukul 06:30 menurut zona waktu client
 150. Rizal mengajukan Transfer aset `Dongkrak Hidrolik {runId}` ke Group `Cabang Surabaya {runId}`
 151. Rizal melakukan Send atas baris Transfer aset `Dongkrak Hidrolik {runId}` dengan scan tag dan 1 foto
 152. Verifikasi baris Transfer aset `Dongkrak Hidrolik {runId}` berstatus `In Transit`
-153. Waktu berlalu sampai pukul 23:45 pada hari kalender ketiga sesudah hari baris masuk `In Transit`, menurut zona waktu client, sehingga sudah lebih dari 72 jam sejak baris masuk `In Transit`
-154. Verifikasi belum ada notifikasi `transfer_transit_overdue` untuk baris `Dongkrak Hidrolik {runId}` pada Rizal maupun Hendra, karena lama `In Transit` baru tepat 3 hari kalender dan belum lebih dari ambang `3`
+153. Waktu berlalu sampai pukul 23:45 pada hari ke-3 sesudah hari baris masuk `In Transit`, menurut zona waktu client, sehingga sudah lebih dari 72 jam sejak baris masuk `In Transit`
+154. Verifikasi belum ada notifikasi `transfer_transit_overdue` untuk baris `Dongkrak Hidrolik {runId}` pada Rizal maupun Hendra, karena lama `In Transit` menurut zona waktu client baru tepat 3 hari kalender dan belum lebih dari ambang `3`, walau menurut hari kalender UTC baris itu sudah masuk `In Transit` 4 hari kalender lalu
 155. Verifikasi baris Transfer aset `Dongkrak Hidrolik {runId}` belum ditandai In-transit overdue
-156. Waktu berlalu sampai awal hari kalender keempat sesudah hari baris masuk `In Transit`, menurut zona waktu client
+156. Waktu berlalu sampai awal hari ke-4 sesudah hari baris masuk `In Transit`, menurut zona waktu client
 157. Verifikasi Rizal dan Hendra masing-masing menerima satu notifikasi `transfer_transit_overdue` untuk baris `Dongkrak Hidrolik {runId}`
 158. Verifikasi baris Transfer aset `Dongkrak Hidrolik {runId}` ditandai In-transit overdue
 
@@ -318,3 +336,38 @@ anchor: []
 ### Perubahan Cost Center with Group Always berlaku sejak periode penyusutan berikutnya
 165. Waktu berlalu sampai periode penyusutan berikutnya dimulai
 166. Verifikasi beban penyusutan periode berikutnya aset `Rak Besi Tinggi {runId}` tercatat pada Cost Center `CC-SBY-{runId}`
+
+### Approval Workflow tidak tersedia di plan: penugasan Approver tidak dipakai
+167. Wulan menyimpan Require approval `ON` untuk Transfer di All categories
+168. Rizal mengajukan Transfer aset `Kompresor Udara Pembanding {runId}` ke Group `Cabang Surabaya {runId}`
+169. Verifikasi baris Transfer aset `Kompresor Udara Pembanding {runId}` berstatus `Waiting for Approval` dan Joko, Approver pada Group asal `Gudang Pusat {runId}`, menerima permintaan approval atas baris itu, sehingga pengajuan dari Group asal yang sama memicu permintaan approval selama Approval Workflow tersedia di plan
+170. Operator platform menonaktifkan Approval Workflow pada plan client
+171. Rizal mengajukan Transfer aset `Kompresor Udara Plan Off {runId}` ke Group `Cabang Surabaya {runId}`
+172. Verifikasi Joko tidak menerima permintaan approval atas baris Transfer aset `Kompresor Udara Plan Off {runId}`, karena penugasan Role Transaksi `Approver` tidak dipakai selama nilai efektif Require approval `OFF`
+173. Operator platform mengaktifkan Approval Workflow pada plan client
+
+### Change Cost Center with Group dibaca saat baris Received, bukan saat Submit
+174. Wulan menyimpan Require approval `OFF` untuk Transfer di All categories
+175. Wulan menyimpan Change Cost Center with Group `Never` di All categories
+176. Rizal mengajukan Transfer aset `Troli Barang Sedang {runId}` ke Group `Cabang Surabaya {runId}`
+177. Rizal melakukan Send atas baris Transfer aset `Troli Barang Sedang {runId}` dengan scan tag dan 1 foto
+178. Wulan menyimpan Change Cost Center with Group `Always` di All categories
+179. Hendra melakukan Receive atas baris Transfer aset `Troli Barang Sedang {runId}` dengan scan tag dan 1 foto
+180. Verifikasi baris Transfer aset `Troli Barang Sedang {runId}` berstatus `Received`
+181. Verifikasi Cost Center aset `Troli Barang Sedang {runId}` menjadi `CC-SBY-{runId}`, Cost Center default Group tujuan, karena nilai `Always` yang berlaku saat baris Received yang dipakai, bukan nilai `Never` yang berlaku saat pengajuan
+
+### Mark as Received pada Transfer menyelesaikan baris In Transit tanpa scan dengan Reason dan foto wajib
+182. Wulan menyimpan Require approval `OFF` untuk Transfer di All categories
+183. Rizal mengajukan Transfer aset `Tangga Aluminium 1 {runId}` dan `Tangga Aluminium 2 {runId}` ke Group `Cabang Surabaya {runId}` dalam satu pengajuan
+184. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
+185. Verifikasi kedua baris Transfer berstatus `In Transit`
+186. Hendra melakukan Receive atas baris Transfer aset `Tangga Aluminium 1 {runId}` dengan 1 foto, tanpa scan tag dan tanpa `I can't scan the TAG`
+187. Verifikasi Receive ditolak karena langkah selesai tanpa scan sama sekali hanya tersedia lewat Mark as Received, dan baris tetap berstatus `In Transit`
+188. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 1 {runId}` dengan 1 foto, tanpa Reason
+189. Verifikasi Mark as Received ditolak karena Reason wajib, dan baris tetap berstatus `In Transit`
+190. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 1 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik` dan 1 foto, tanpa scan tag
+191. Verifikasi baris Transfer aset `Tangga Aluminium 1 {runId}` berstatus `Received` tanpa scan tag, sehingga penolakan sebelumnya berasal dari Reason yang kosong
+192. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 2 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik`, tanpa foto
+193. Verifikasi Mark as Received ditolak karena foto wajib, dan baris tetap berstatus `In Transit`
+194. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 2 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik` dan 1 foto, tanpa scan tag
+195. Verifikasi baris Transfer aset `Tangga Aluminium 2 {runId}` berstatus `Received` tanpa scan tag, sehingga penolakan sebelumnya berasal dari foto yang kosong

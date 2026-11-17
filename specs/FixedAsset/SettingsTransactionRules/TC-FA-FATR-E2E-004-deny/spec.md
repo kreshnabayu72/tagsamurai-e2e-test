@@ -5,17 +5,17 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r25", "§9.2#b17", "§9.4.2#r100", "§9.4.2#r101", "§9.4.2#r103", "§9.4.3#b3", "§9.4.2#r102"]
-smoke: ["§9.4.2#r102"]
+sourceRules: ["§Aturan Logika Modul#r28", "§9.2#b17", "§9.4.2#r108", "§9.4.2#r109", "§9.4.2#r111", "§9.4.3#b3", "§9.4.2#r110"]
+smoke: ["§9.4.2#r110"]
 dependsOn: []
 trace:
-  "§Aturan Logika Modul#r25": [17, 18, 19]
+  "§Aturan Logika Modul#r28": [17, 18, 19]
   "§9.2#b17": [17, 18, 19]
-  "§9.4.2#r100": 6
-  "§9.4.2#r101": [17, 18, 19]
-  "§9.4.2#r103": [7, 8, 9]
+  "§9.4.2#r108": 6
+  "§9.4.2#r109": [17, 18, 19]
+  "§9.4.2#r111": [7, 8, 9]
   "§9.4.3#b3": [17, 18, 19]
-  "§9.4.2#r102": 15
+  "§9.4.2#r110": 15
 anchor: [3, 5]
 coverage:
   web: automated

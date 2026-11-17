@@ -6,13 +6,13 @@ priority: Medium
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§8.1#b1", "§8.1#b2", "§9.2#b23", "§9.2#b25", "§9.2#b28", "§9.2#b29", "§9.2#b38", "§9.2#b39", "§9.2#b40", "§9.2#b41", "§9.2#b44", "§9.2#b45", "§9.2#b46", "§9.2#b53", "§9.2#b60", "§9.2#b198", "§9.2#b202", "§9.2#b209", "§9.2#b210", "§9.2#b211", "§9.2#b299", "§9.4.2#r5", "§9.4.2#r81", "§9.4.4#r14", "§9.6#r6", "§9.6#r7", "§9.6#r10", "§9.6#r16", "§9.6#r17", "§9.9#r1", "§9.9#r2", "§9.9#r3", "§9.9#r4", "§9.9#r5", "§9.9#r6", "§9.9#r7", "§9.9#r8", "§9.9#r9", "§9.9#r10", "§9.9#r11", "§9.10.4#b3", EB-ERR-4]
+sourceRules: ["§8.1#b1", "§8.1#b2", "§9.2#b23", "§9.2#b25", "§9.2#b28", "§9.2#b29", "§9.2#b38", "§9.2#b39", "§9.2#b40", "§9.2#b41", "§9.2#b44", "§9.2#b45", "§9.2#b46", "§9.2#b53", "§9.2#b198", "§9.2#b202", "§9.2#b209", "§9.2#b210", "§9.2#b211", "§9.2#b299", "§9.4.2#r5", "§9.4.2#r89", "§9.4.4#r14", "§9.6#r6", "§9.6#r7", "§9.6#r10", "§9.6#r17", "§9.9#r1", "§9.9#r2", "§9.9#r3", "§9.9#r4", "§9.9#r5", "§9.9#r6", "§9.9#r7", "§9.9#r8", "§9.9#r9", "§9.9#r10", "§9.9#r11", "§9.10.4#b3", EB-ERR-4, "§4.1#r153", "§4.1#r211"]
 smoke: []
 dependsOn: []
 trace:
   "§8.1#b1": [73, 74]
   "§8.1#b2": [60, 61]
-  "§9.2#b23": [4, 7]
+  "§9.2#b23": [4, 7, 8]
   "§9.2#b25": 3
   "§9.2#b28": 6
   "§9.2#b29": 6
@@ -24,7 +24,6 @@ trace:
   "§9.2#b45": 76
   "§9.2#b46": 77
   "§9.2#b53": 60
-  "§9.2#b60": 8
   "§9.2#b198": 52
   "§9.2#b202": 54
   "§9.2#b209": [52, 54]
@@ -32,12 +31,11 @@ trace:
   "§9.2#b211": 54
   "§9.2#b299": 56
   "§9.4.2#r5": 60
-  "§9.4.2#r81": 3
+  "§9.4.2#r89": [3, 82]
   "§9.4.4#r14": [60, 61]
   "§9.6#r6": 61
   "§9.6#r7": 60
   "§9.6#r10": 3
-  "§9.6#r16": 8
   "§9.6#r17": 7
   "§9.9#r1": [10, 12]
   "§9.9#r2": [14, 16]
@@ -49,9 +47,11 @@ trace:
   "§9.9#r8": [38, 40]
   "§9.9#r9": [42, 44]
   "§9.9#r10": [46, 48]
-  "§9.9#r11": 50
+  "§9.9#r11": [50, 88]
   "§9.10.4#b3": 79
-  EB-ERR-4: 7
+  "EB-ERR-4": [7, 8, 85, 86]
+  "§4.1#r153": 50
+  "§4.1#r211": [52, 54, 56]
 ---
 # Validasi dan atomisitas Save Changes
 
@@ -65,9 +65,10 @@ trace:
   - DU-084-5: Category, Category leaf yang mewarisi seluruh nilai: Name `Peralatan Kantor {runId}`.
   - DU-084-6: Category, Category leaf yang berstatus excess pada masa Grace: Name `Aset Lama {runId}`.
 - Kondisi:
+  - Approval Workflow tersedia di plan entitas.
   - Spec ini memakai entitas khusus `Entitas Simpan {runId}` (DU-084-1) yang tidak dipakai spec lain, karena yang diasersi adalah setting Company default dan setting Category.
   - Seluruh setting Company default bernilai default: Max duration `14`, Max extensions `1`, Max assets per borrower (concurrent) `3`, Max assets per assignee (concurrent) `0`, In-transit overdue after `7`, Min asset age warning `12`, Max deviation from book value `30`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Require approval `ON`, Transaction timeout `7`, dan Long missing after `30`.
-  - Allowed disposal types Company default berisi `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, dan `Write-off`.
+  - Allowed disposal types Company default berisi `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`.
   - Seluruh field setiap Category pada entitas ini bernilai Inherit.
   - Entitas berada pada masa Grace dan Category `Aset Lama {runId}` berstatus excess.
   - Nilai di langkah ditulis pada tab transaksi pemilik fieldnya; Max duration, Max extensions, Max assets per borrower (concurrent), dan Auto-approve when duration ≤ ada pada transaksi Borrow, yang di langkah disebut «transaksi peminjaman».
@@ -148,7 +149,7 @@ trace:
 
 ### Allowed disposal types tanpa satu jenis pun ditolak server
 49. Maya Pengelola mengirim Save pada Company default dengan Allowed disposal types dikosongkan
-50. Verifikasi Save ditolak dan Allowed disposal types tetap berisi `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, dan `Write-off`, tidak ada yang tersimpan
+50. Verifikasi Save ditolak dan Allowed disposal types tetap berisi `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`, tidak ada yang tersimpan
 
 ### Transaction timeout hanya menerima bilangan bulat minimal 1
 51. Maya Pengelola mengirim Save pada Company default dengan Transaction timeout `1.5`
@@ -192,3 +193,14 @@ trace:
 ### Setting Category excess dapat disimpan seperti biasa
 78. Maya Pengelola mengirim Save pada Category `Aset Lama {runId}` dengan Max extensions nilai sendiri `4`
 79. Verifikasi Save diterima dan Max extensions Category `Aset Lama {runId}` tersimpan `4`, karena Save tidak memeriksa status excess
+
+### Save yang ditolak validasi tidak mencatat entri log
+80. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log
+81. Maya Pengelola mengirim Save pada Company default dengan Max extensions `4`
+82. Verifikasi Changelog dan Activity Log masing-masing bertambah tepat satu entri dari jumlah yang dicatat, karena Save yang valid dicatat
+83. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log
+84. Maya Pengelola mengirim Save pada Company default dengan Max duration dikosongkan
+85. Verifikasi Save ditolak dan Max duration Company default tetap `21`
+86. Verifikasi Changelog dan Activity Log tidak bertambah entri dari jumlah yang dicatat
+87. Maya Pengelola mengirim Save pada Company default dengan Allowed disposal types dikosongkan
+88. Verifikasi Changelog dan Activity Log tetap tidak bertambah entri dari jumlah yang dicatat sebelum Save pertama di kelompok ini

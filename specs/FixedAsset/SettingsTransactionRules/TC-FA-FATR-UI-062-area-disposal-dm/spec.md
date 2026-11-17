@@ -6,42 +6,46 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r55
-  - §4.1#r143
-  - §4.1#r144
-  - §4.1#r145
-  - §4.1#r156
-  - §4.1#r162
-  - §4.1#r179
-  - §4.1#r184
-  - §4.1#r200
-  - §4.1#r212
+  - §4.1#r66
+  - §4.1#r153
+  - §4.1#r154
+  - §4.1#r155
+  - §4.1#r166
+  - §4.1#r172
+  - §4.1#r187
+  - §4.1#r192
+  - §4.1#r209
+  - §4.1#r221
   - §9.2#b71
   - §9.2#b85
+  - §9.2#b424
   - §9.2#b425
-  - §9.2#b426
   - §9.4.2#r9
   - §9.4.4#r19
+  - §4.1#r189
+  - §9.2#b423
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r55: [2, 4]
-  §4.1#r143: [6, 33, 36, 41]
-  §4.1#r144: [7, 37, 42]
-  §4.1#r145: [8, 38, 43]
-  §4.1#r156: 28
-  §4.1#r162: 29
-  §4.1#r179: [19, 46, 48]
-  §4.1#r184: [20, 22, 50, 52]
-  §4.1#r200: 25
-  §4.1#r212: [26, 39, 44]
+  §4.1#r66: [2, 4, 57]
+  §4.1#r153: [6, 33, 36, 41, 59]
+  §4.1#r154: [7, 37, 42, 61]
+  §4.1#r155: [8, 38, 43, 63]
+  §4.1#r166: [28, 74]
+  §4.1#r172: [29, 76]
+  §4.1#r187: [19, 46, 48, 65]
+  §4.1#r192: [20, 22, 50, 52, 67]
+  §4.1#r209: [25, 54, 69]
+  §4.1#r221: [26, 39, 44, 71]
   §9.2#b71: [15, 16]
   §9.2#b85: 30
-  §9.2#b425: [10, 11]
-  §9.2#b426: 29
+  §9.2#b424: [10, 11]
+  §9.2#b425: 29
   §9.4.2#r9: [15, 16]
   §9.4.4#r19: 17
-anchor: [13]
+  §4.1#r189: 80
+  §9.2#b423: [11, 83]
+anchor: [13, 78, 79, 82]
 coverage:
   web: automated
 ---
@@ -49,16 +53,17 @@ coverage:
 # Area utama: field tab Disposal dan tab Damaged & Missing
 
 ## Prerequisites
-- Aktor: Total Control.
+- Aktor: Total Control (cakupan semua Group).
 - Layar awal: Area utama pada halaman Transaction Settings.
 - Komponen: Area utama
 - Data:
-  - DU-062-1: Pengaturan Company default tab Disposal pada All categories: Allow Disposal `Allow`, Allowed disposal types `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, `Write-off`, Min asset age warning `12`, Max deviation from book value `30`, Require approval `ON`, Approval type `Any one approver`, Transaction timeout `7`, Send email notifications `OFF`.
+  - DU-062-1: Pengaturan Company default tab Disposal pada All categories: Allow Disposal `Allow`, Allowed disposal types `Sell`, `Scrap`, `Donate`, `Trade-in`, `Write-off`, Min asset age warning `12`, Max deviation from book value `30`, Require approval `ON`, Approval type `Any one approver`, Transaction timeout `7`, Send email notifications `OFF`.
   - DU-062-2: Pengaturan Company default tab Damaged & Missing pada All categories: Long missing after `30`, After photo required `OFF`.
   - DU-062-3: Pengaturan Company default tab Disposal dengan Allowed disposal types hanya `Sell`.
   - DU-062-4: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Allowed disposal types hanya `Sell`, Min asset age warning `24`, Max deviation from book value `50`, Send email notifications `ON`.
   - DU-062-5: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `OFF`.
   - DU-062-6: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `ON`, Approval type `All approvers (AND)`.
+  - DU-062-7: Pengaturan Company default tab Damaged & Missing pada All categories yang berbeda dari nilai awal: Long missing after `14`, After photo required `ON`.
 - Kondisi:
   - K1: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-1.
   - K2: node All categories terpilih, tab Damaged & Missing aktif, nilai Company default memakai DU-062-2.
@@ -66,6 +71,7 @@ coverage:
   - K4: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-4.
   - K5: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-5.
   - K6: node All categories terpilih, tab Disposal aktif, nilai Company default memakai DU-062-6.
+  - K7: node All categories terpilih, tab Damaged & Missing aktif, nilai Company default memakai DU-062-7.
 
 ## Test Steps
 
@@ -75,7 +81,7 @@ coverage:
 3. Buka daftar pilihan `Allow Disposal`
 4. Verifikasi pilihan `Allow Disposal` adalah `Allow` dan `Deny`
 5. Tutup daftar pilihan dengan Escape
-6. Verifikasi `Allowed disposal types` terpilih `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, dan `Write-off`
+6. Verifikasi `Allowed disposal types` terpilih `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
 7. Verifikasi `Min asset age warning` bernilai `12`
 8. Verifikasi `Max deviation from book value` bernilai `30`
 
@@ -114,7 +120,7 @@ coverage:
 ### Daftar pilihan Allowed disposal types
 31. Tampilkan Area utama dengan kondisi K1
 32. Buka daftar pilihan `Allowed disposal types`
-33. Verifikasi pilihan `Allowed disposal types` adalah `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, dan `Write-off`
+33. Verifikasi pilihan `Allowed disposal types` adalah `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
 34. Tutup daftar pilihan dengan Escape
 
 ### Reset to Default mengembalikan Limits dan Notifications Disposal ke nilai awal
@@ -124,7 +130,7 @@ coverage:
 38. Verifikasi `Max deviation from book value` bernilai `50`
 39. Verifikasi `Send email notifications` bernilai `ON`
 40. Klik `Reset to Default`
-41. Verifikasi `Allowed disposal types` kembali ke nilai awal terpilih `Sell`, `Scrap`, `Lost`, `Donate`, `Trade-in`, dan `Write-off`
+41. Verifikasi `Allowed disposal types` kembali ke nilai awal terpilih `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
 42. Verifikasi `Min asset age warning` kembali ke nilai awal `12`
 43. Verifikasi `Max deviation from book value` kembali ke nilai awal `30`
 44. Verifikasi `Send email notifications` kembali ke nilai awal `OFF`
@@ -140,3 +146,44 @@ coverage:
 50. Verifikasi `Approval type` bernilai `All approvers (AND)`
 51. Klik `Reset to Default`
 52. Verifikasi `Approval type` kembali ke nilai awal `Any one approver`
+
+### Satuan Transaction timeout tab Disposal
+53. Tampilkan Area utama dengan kondisi K1
+54. Verifikasi addon `Transaction timeout` menunjukkan satuan `days`
+
+### Teks bantuan label field tab Disposal
+55. Tampilkan Area utama dengan kondisi K1
+56. Pindahkan fokus keyboard ke bantuan label `Allow Disposal`
+57. Verifikasi teks bantuan label `Allow Disposal` tersampaikan berbunyi `Whether this transaction can be made for assets in this category.`
+58. Pindahkan fokus keyboard ke bantuan label `Allowed disposal types`
+59. Verifikasi teks bantuan label `Allowed disposal types` tersampaikan berbunyi `Disposal types that can be used for assets in this category.`
+60. Pindahkan fokus keyboard ke bantuan label `Min asset age warning`
+61. Verifikasi teks bantuan label `Min asset age warning` tersampaikan berbunyi `Shows a warning when disposing of an asset younger than this age.`
+62. Pindahkan fokus keyboard ke bantuan label `Max deviation from book value`
+63. Verifikasi teks bantuan label `Max deviation from book value` tersampaikan berbunyi `A sale price below book value by more than this percentage shows a warning and requires a reason.`
+64. Pindahkan fokus keyboard ke bantuan label `Require approval`
+65. Verifikasi teks bantuan label `Require approval` tersampaikan berbunyi `Requires approval before the transaction proceeds.`
+66. Pindahkan fokus keyboard ke bantuan label `Approval type`
+67. Verifikasi teks bantuan label `Approval type` tersampaikan berbunyi `Whether one approver or all approvers must approve.`
+68. Pindahkan fokus keyboard ke bantuan label `Transaction timeout`
+69. Verifikasi teks bantuan label `Transaction timeout` tersampaikan berbunyi `Days a transaction can wait at a step before it is closed automatically.`
+70. Pindahkan fokus keyboard ke bantuan label `Send email notifications`
+71. Verifikasi teks bantuan label `Send email notifications` tersampaikan berbunyi `Also sends this transaction's notifications by email.`
+
+### Teks bantuan label field tab Damaged & Missing
+72. Tampilkan Area utama dengan kondisi K2
+73. Pindahkan fokus keyboard ke bantuan label `Long missing after`
+74. Verifikasi teks bantuan label `Long missing after` tersampaikan berbunyi `Days missing before an asset is flagged as long missing; 0 turns this off.`
+75. Pindahkan fokus keyboard ke bantuan label `After photo required`
+76. Verifikasi teks bantuan label `After photo required` tersampaikan berbunyi `Requires an after photo when marking a damaged asset as repaired.`
+
+### Auto-approve tidak ada di tab Disposal
+77. Tampilkan Area utama dengan kondisi K6
+78. Verifikasi `Require approval` pada tab `Disposal` bernilai `ON`
+79. Verifikasi `Approval type` pada tab `Disposal` bernilai `All approvers (AND)`
+80. Verifikasi setting `Auto-approve` tidak ada pada tab `Disposal` karena tidak dirender
+
+### Photo at start dan Photo at end tidak ada di tab Damaged & Missing
+81. Tampilkan Area utama dengan kondisi K7
+82. Verifikasi `After photo required` pada tab `Damaged & Missing` bernilai `ON`
+83. Verifikasi setting `Photo at start` dan `Photo at end` tidak ada pada tab `Damaged & Missing`

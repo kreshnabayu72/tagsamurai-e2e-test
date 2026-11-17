@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r390, §4.1#r391, §4.1#r392, §4.1#r393, §4.1#r394, §4.1#r395, §4.1#r396, §4.1#r397, §5#r3, §5#r4, D-05, §9.5#r10, §9.5#r25, §11#r14, EB-TBL-9@select-asset, EB-SRC-5@select-asset]
+sourceRules: [§4.1#r416, §4.1#r417, §4.1#r418, §4.1#r419, §4.1#r420, §4.1#r421, §4.1#r422, §4.1#r423, §5#r3, §5#r4, D-05, §9.5#r10, §9.5#r25, §11#r14, EB-TBL-9@select-asset, EB-SRC-5@select-asset, "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f", D-04]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r390: [8, 21, 23, 27, 46]
-  §4.1#r391: [9, 34, 49]
-  §4.1#r392: [10, 37, 52, 53, 93, 94]
-  §4.1#r393: [10, 55, 115, 117, 119, 124, 125]
-  §4.1#r394: [11, 41, 57, 87, 88]
-  §4.1#r395: [11, 44, 59, 99, 100]
-  §4.1#r396: [12, 13, 29, 61, 81, 82]
-  §4.1#r397: [12, 13, 32, 63, 105, 106]
+  §4.1#r416: [8, 21, 23, 27, 46]
+  §4.1#r417: [9, 34, 49]
+  §4.1#r418: [10, 37, 52, 53, 93, 94]
+  §4.1#r419: [10, 55, 115, 117, 119, 124, 125]
+  §4.1#r420: [11, 41, 57, 87, 88]
+  §4.1#r421: [11, 44, 59, 99, 100]
+  §4.1#r422: [12, 13, 29, 61, 81, 82]
+  §4.1#r423: [12, 13, 32, 63, 105, 106]
   §5#r3: [46, 47, 49, 50, 52, 53, 55, 57, 59, 61, 63, 65, 81]
   §5#r4: 8
   D-05: [15, 16, 19, 115, 134, 135]
@@ -25,6 +25,8 @@ trace:
   §11#r14: 8
   EB-TBL-9@select-asset: [16, 135]
   EB-SRC-5@select-asset: [67, 71, 75]
+  "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f": [16, 115, 134, 135]
+  D-04: [15, 16, 19, 115, 134, 135]
 anchor: [8, 18]
 coverage:
   web: automated
@@ -56,7 +58,9 @@ coverage:
   - DU-018-18: aset `Laptop Dell Latitude 5420 {runId} - 2`, Asset ID `LPT18-002-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Assigned`, Labels `Staff {runId}`, `Warranty {runId}`, dan `Loan {runId}`.
   - DU-018-19: aset `Laptop Dell Latitude 5420 {runId} - 3`, Asset ID `LPT18-003-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, Labels `Loan {runId}` dan `Zone {runId}`.
   - DU-018-20: aset `Laptop Dell Latitude 5420 {runId} - 4`, Asset ID `LPT18-004-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, Labels `Staff {runId}` dan `Warranty {runId}`.
-  - DU-018-21: 3 aset `Laptop Dell Latitude 5420 {runId} - {n}` dengan n dari 5 sampai 7, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, tanpa Labels (tampil `—`).
+  - DU-018-21: aset `Laptop Dell Latitude 5420 {runId} - 5`, Asset ID `LPT18-005-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, tanpa Labels (tampil `—`).
+  - DU-018-31: aset `Laptop Dell Latitude 5420 {runId} - 6`, Asset ID `LPT18-006-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, tanpa Labels (tampil `—`).
+  - DU-018-32: aset `Laptop Dell Latitude 5420 {runId} - 7`, Asset ID `LPT18-007-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, tanpa Labels (tampil `—`).
   - DU-018-22: aset `Laptop Dell Latitude 5420 {runId} - 8`, Asset ID `LPT18-008-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, Labels tanpa Labels (tampil `—`).
   - DU-018-23: aset `Laptop Dell Latitude 5420 {runId} - 9`, Asset ID `LPT18-009-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, Labels tanpa Labels (tampil `—`).
   - DU-018-24: aset `Laptop Dell Latitude 5420 {runId} - 10`, Asset ID `LPT18-010-{runId}`, Group `Proyek Karawang {runId}`, Category `Laptop {runId}`, Brand `Dell {runId}`, Model/Type `E5420 {runId}`, Status `Available`, Labels tanpa Labels (tampil `—`).

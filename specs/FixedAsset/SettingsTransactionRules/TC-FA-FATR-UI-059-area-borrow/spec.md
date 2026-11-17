@@ -6,51 +6,53 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r55
-  - §4.1#r56
-  - §4.1#r57
-  - §4.1#r58
-  - §4.1#r59
-  - §4.1#r60
-  - §4.1#r61
-  - §4.1#r87
-  - §4.1#r161
-  - §4.1#r163
-  - §4.1#r179
-  - §4.1#r184
-  - §4.1#r180
-  - §4.1#r182
-  - §4.1#r181
-  - §4.1#r200
-  - §4.1#r201
-  - §4.1#r212
+  - §4.1#r66
+  - §4.1#r67
+  - §4.1#r68
+  - §4.1#r69
+  - §4.1#r70
+  - §4.1#r71
+  - §4.1#r72
+  - §4.1#r98
+  - §4.1#r171
+  - §4.1#r173
+  - §4.1#r187
+  - §4.1#r192
+  - §4.1#r188
+  - §4.1#r190
+  - §4.1#r189
+  - §4.1#r209
+  - §4.1#r210
+  - §4.1#r221
   - §9.2#b400
-  - §9.2#b424
+  - §9.2#b423
   - §9.4.2#r8
+  - §9.4.1#r11
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r55: [2, 4]
-  §4.1#r56: [6, 8]
-  §4.1#r57: [10, 23]
-  §4.1#r58: 11
-  §4.1#r59: [12, 67, 74]
-  §4.1#r60: [13, 15, 68, 75]
-  §4.1#r61: [17, 19, 69, 76]
-  §4.1#r87: [24, 25]
-  §4.1#r161: [45, 70, 77]
-  §4.1#r163: [46, 71, 78]
-  §4.1#r179: [48, 88, 90]
-  §4.1#r184: [49, 51, 81, 84]
-  §4.1#r180: [53, 92, 94]
-  §4.1#r182: [21, 55, 58, 86]
-  §4.1#r181: [54, 57, 82, 85]
-  §4.1#r200: 60
-  §4.1#r201: [61, 63, 72, 79]
-  §4.1#r212: 65
+  §4.1#r66: [2, 4, 104]
+  §4.1#r67: [6, 8, 98, 106]
+  §4.1#r68: [10, 23, 108]
+  §4.1#r69: [11, 110]
+  §4.1#r70: [12, 67, 74, 101, 112]
+  §4.1#r71: [13, 15, 68, 75, 114]
+  §4.1#r72: [17, 19, 69, 76, 116]
+  §4.1#r98: [24, 25]
+  §4.1#r171: [45, 70, 77, 118]
+  §4.1#r173: [46, 71, 78, 120]
+  §4.1#r187: [48, 88, 90, 122]
+  §4.1#r192: [49, 51, 81, 84, 124]
+  §4.1#r188: [53, 92, 94, 126]
+  §4.1#r190: [21, 55, 58, 86, 96, 98, 130]
+  §4.1#r189: [54, 57, 82, 85, 128]
+  §4.1#r209: [60, 100, 132]
+  §4.1#r210: [61, 63, 72, 79, 134]
+  §4.1#r221: [65, 136]
   §9.2#b400: [29, 31, 37, 39]
-  §9.2#b424: [45, 46]
+  §9.2#b423: [45, 46]
   §9.4.2#r8: [29, 31, 32, 37, 39, 40, 43]
+  §9.4.1#r11: [31, 39]
 anchor: [28, 36, 42, 57]
 coverage:
   web: automated
@@ -71,7 +73,7 @@ coverage:
   - DU-059-6: Pengaturan Company default tab Borrow pada All categories yang berbeda dari nilai awal: Require approval `OFF`, Self service `OFF`.
   - DU-059-7: Pengaturan Company default tab Borrow pada All categories yang berbeda dari nilai awal: Self service `ON`.
 - Kondisi:
-  - K1: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-059-1.
+  - K1: node All categories terpilih, tab Borrow aktif, Approval Workflow tersedia di plan, level Feature Suite Borrowing `Full`, nilai Company default memakai DU-059-1.
   - K2: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-059-3.
   - K3: node All categories terpilih, tab Borrow aktif, nilai memakai DU-059-4.
   - K4: node All categories terpilih, tab Borrow aktif, nilai memakai DU-059-5.
@@ -197,3 +199,51 @@ coverage:
 92. Verifikasi `Self service` tampil dengan nilai `ON` sebelum Reset to Default
 93. Klik `Reset to Default`
 94. Verifikasi `Self service` kembali ke nilai awal `OFF`
+
+### Satuan addon Auto-approve when duration ≤ mengikuti Duration unit
+95. Tampilkan Area utama dengan kondisi K1
+96. Verifikasi addon `Auto-approve when duration ≤` menunjukkan satuan yang sama dengan Duration unit `Days`
+97. Pilih `Hours` pada `Duration unit`
+98. Verifikasi addon `Auto-approve when duration ≤` menunjukkan satuan yang sama dengan Duration unit `Hours`
+
+### Satuan field angka tab Borrow
+99. Tampilkan Area utama dengan kondisi K1
+100. Verifikasi addon `Transaction timeout` menunjukkan satuan `days`
+101. Verifikasi addon `Max assets per borrower (concurrent)` menunjukkan satuan `assets`
+
+### Teks bantuan label field tab Borrow
+102. Tampilkan Area utama dengan kondisi K1
+103. Pindahkan fokus keyboard ke bantuan label `Allow Borrow`
+104. Verifikasi teks bantuan label `Allow Borrow` tersampaikan berbunyi `Whether this transaction can be made for assets in this category.`
+105. Pindahkan fokus keyboard ke bantuan label `Duration unit`
+106. Verifikasi teks bantuan label `Duration unit` tersampaikan berbunyi `Unit used for Max duration and Auto-approve when duration ≤.`
+107. Pindahkan fokus keyboard ke bantuan label `Max duration`
+108. Verifikasi teks bantuan label `Max duration` tersampaikan berbunyi `Longest total borrow time from handover, including all extensions.`
+109. Pindahkan fokus keyboard ke bantuan label `Max extensions`
+110. Verifikasi teks bantuan label `Max extensions` tersampaikan berbunyi `How many times the due date can be extended; 0 means no extension.`
+111. Pindahkan fokus keyboard ke bantuan label `Max assets per borrower (concurrent)`
+112. Verifikasi teks bantuan label `Max assets per borrower (concurrent)` tersampaikan berbunyi `Maximum number of assets one borrower can hold at the same time.`
+113. Pindahkan fokus keyboard ke bantuan label `Allowed borrower`
+114. Verifikasi teks bantuan label `Allowed borrower` tersampaikan berbunyi `Who can borrow assets, based on the asset's origin group.`
+115. Pindahkan fokus keyboard ke bantuan label `Block new borrow when overdue`
+116. Verifikasi teks bantuan label `Block new borrow when overdue` tersampaikan berbunyi `Prevents a borrower with an overdue borrow from borrowing again until it is returned.`
+117. Pindahkan fokus keyboard ke bantuan label `Photo at start`
+118. Verifikasi teks bantuan label `Photo at start` tersampaikan berbunyi `Requires a camera photo at the first step of the transaction.`
+119. Pindahkan fokus keyboard ke bantuan label `Photo at end`
+120. Verifikasi teks bantuan label `Photo at end` tersampaikan berbunyi `Requires a camera photo at the last step of the transaction.`
+121. Pindahkan fokus keyboard ke bantuan label `Require approval`
+122. Verifikasi teks bantuan label `Require approval` tersampaikan berbunyi `Requires approval before the transaction proceeds.`
+123. Pindahkan fokus keyboard ke bantuan label `Approval type`
+124. Verifikasi teks bantuan label `Approval type` tersampaikan berbunyi `Whether one approver or all approvers must approve.`
+125. Pindahkan fokus keyboard ke bantuan label `Self service`
+126. Verifikasi teks bantuan label `Self service` tersampaikan berbunyi `Lets users borrow assets themselves without an admin or approval.`
+127. Pindahkan fokus keyboard ke bantuan label `Auto-approve`
+128. Verifikasi teks bantuan label `Auto-approve` tersampaikan berbunyi `Approves requests automatically when the conditions below are met.`
+129. Pindahkan fokus keyboard ke bantuan label `Auto-approve when duration ≤`
+130. Verifikasi teks bantuan label `Auto-approve when duration ≤` tersampaikan berbunyi `Borrow requests up to this duration are approved automatically.`
+131. Pindahkan fokus keyboard ke bantuan label `Transaction timeout`
+132. Verifikasi teks bantuan label `Transaction timeout` tersampaikan berbunyi `Days a transaction can wait at a step before it is closed automatically.`
+133. Pindahkan fokus keyboard ke bantuan label `Due date reminders`
+134. Verifikasi teks bantuan label `Due date reminders` tersampaikan berbunyi `When borrowers are reminded before the due date.`
+135. Pindahkan fokus keyboard ke bantuan label `Send email notifications`
+136. Verifikasi teks bantuan label `Send email notifications` tersampaikan berbunyi `Also sends this transaction's notifications by email.`

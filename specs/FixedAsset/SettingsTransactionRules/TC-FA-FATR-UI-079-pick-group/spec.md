@@ -6,9 +6,9 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - "§4.1#r9"
+  - "§4.1#r12"
   - "§4.1#p1"
-  - "§4.1#r383"
+  - "§4.1#r409"
   - "§4.5#b4"
   - "§6#r12"
   - "§7#r17"
@@ -17,9 +17,9 @@ sourceRules:
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r9: [2, 4, 9, 26]
+  §4.1#r12: [2, 4, 9, 26]
   §4.1#p1: [2, 3, 15, 16]
-  §4.1#r383: [29, 30, 32]
+  §4.1#r409: [29, 30, 32]
   §4.5#b4: [35, 37]
   §6#r12: 30
   §7#r17: [39, 40]

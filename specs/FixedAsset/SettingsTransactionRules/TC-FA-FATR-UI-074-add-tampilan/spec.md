@@ -5,72 +5,71 @@ layer: ui-client
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§Aturan Logika Modul#r46, §Aturan Logika Modul#r47, §Aturan Logika Modul#r48, §Aturan Logika Modul#r49, §Aturan Logika Modul#r51, §Aturan Logika Modul#r67, §Aturan Logika Modul#r100, §4.1#r8, §4.1#r283, §4.1#r284, §4.1#r285, §4.1#r286, §4.1#r287, §4.1#r288, §4.1#r289, §4.1#r290, §4.1#r291, §4.1#r292, §4.1#r294, §4.1#r295, §4.1#r296, §4.1#r297, §4.1#r298, §4.1#r299, §4.1#r300, §4.1#r301, §4.1#r302, §4.1#r303, §4.1#r304, §4.1#r305, §4.1#r306, §4.1#r307, §4.1#r308, §4.1#r309, §4.1#r319, §4.1#p60, D-02, §9.2#b84, §9.2#b86, §9.2#b87, §9.2#b150, §9.2#b155, §9.2#b197, §9.4.2#r8, §9.4.2#r25, §9.4.4#r23, §9.5#r13, §9.5#r14, §9.5#r19, §9.5#r20, §9.5#r26, §9.9#r13, §9.9#r14, §9.9#r15, §9.9#r16, §9.10.1#b5, §9.10.2#b5, §9.10.3#b5, §10#b2, EB-FRM-7@add-override, EB-TBL-5@hapus-baris-field]
+sourceRules: [§Aturan Logika Modul#r49, §Aturan Logika Modul#r50, §Aturan Logika Modul#r51, §Aturan Logika Modul#r52, §Aturan Logika Modul#r54, §Aturan Logika Modul#r69, §Aturan Logika Modul#r102, §4.1#r11, §4.1#r309, §4.1#r310, §4.1#r311, §4.1#r312, §4.1#r313, §4.1#r314, §4.1#r315, §4.1#r316, §4.1#r317, §4.1#r318, §4.1#r320, §4.1#r321, §4.1#r322, §4.1#r323, §4.1#r324, §4.1#r325, §4.1#r326, §4.1#r327, §4.1#r328, §4.1#r329, §4.1#r330, §4.1#r331, §4.1#r332, §4.1#r333, §4.1#r334, §4.1#r335, §4.1#r345, §4.1#p67, D-02, §9.2#b84, §9.2#b86, §9.2#b87, §9.2#b150, §9.2#b155, §9.2#b197, §9.4.2#r8, §9.4.2#r25, §9.4.4#r23, §9.5#r13, §9.5#r14, §9.5#r19, §9.5#r20, §9.5#r26, §9.9#r13, §9.9#r14, §9.9#r15, §9.9#r16, §9.10.1#b5, §9.10.2#b5, §10#b2, EB-FRM-7@add-override, EB-TBL-5@hapus-baris-field]
 smoke: []
 dependsOn: []
 trace:
-  §Aturan Logika Modul#r46: 5
-  §Aturan Logika Modul#r47: 46
-  §Aturan Logika Modul#r48: 59
-  §Aturan Logika Modul#r49: 69
-  §Aturan Logika Modul#r51: 21
-  §Aturan Logika Modul#r67: 48
-  §Aturan Logika Modul#r100: [47, 48, 49]
-  §4.1#r8: [4, 15, 21, 22, 175, 176]
-  §4.1#r283: 28
-  §4.1#r284: [15, 31, 38]
-  §4.1#r285: 17
-  §4.1#r286: [33, 40]
-  §4.1#r287: 26
-  §4.1#r288: [21, 22]
-  §4.1#r289: [23, 25]
-  §4.1#r290: 36
-  §4.1#r291: 43
-  §4.1#r292: 8
-  §4.1#r294: 64
-  §4.1#r295: [69, 75, 145]
-  §4.1#r296: 82
-  §4.1#r297: 72
-  §4.1#r298: 73
-  §4.1#r299: 92
-  §4.1#r300: 93
-  §4.1#r301: 46
-  §4.1#r302: [75, 78]
-  §4.1#r303: 95
-  §4.1#r304: [46, 151, 155]
-  §4.1#r305: [59, 61, 64, 66]
-  §4.1#r306: 98
-  §4.1#r307: 100
-  §4.1#r308: 86
-  §4.1#r309: 6
-  §4.1#r319: 66
-  §4.1#p60: [23, 25]
-  D-02: [2, 3, 4, 80, 147]
-  §9.2#b84: [46, 49, 50, 150, 151, 154, 155]
+  §Aturan Logika Modul#r49: 5
+  §Aturan Logika Modul#r50: 46
+  §Aturan Logika Modul#r51: 59
+  §Aturan Logika Modul#r52: 69
+  §Aturan Logika Modul#r54: 21
+  §Aturan Logika Modul#r69: 48
+  §Aturan Logika Modul#r102: [47, 48, 49]
+  §4.1#r11: [4, 15, 21, 22, 170, 171]
+  §4.1#r309: 28
+  §4.1#r310: [15, 31, 38]
+  §4.1#r311: 17
+  §4.1#r312: [33, 40]
+  §4.1#r313: 26
+  §4.1#r314: [21, 22]
+  §4.1#r315: [23, 25]
+  §4.1#r316: 36
+  §4.1#r317: 43
+  §4.1#r318: 8
+  §4.1#r320: 64
+  §4.1#r321: [69, 75, 140]
+  §4.1#r322: 82
+  §4.1#r323: 72
+  §4.1#r324: 73
+  §4.1#r325: 92
+  §4.1#r326: 93
+  §4.1#r327: 46
+  §4.1#r328: [75, 78]
+  §4.1#r329: 95
+  §4.1#r330: [46, 146, 150, 186, 187, 188, 191]
+  §4.1#r331: [59, 61, 64, 66]
+  §4.1#r332: 98
+  §4.1#r333: 100
+  §4.1#r334: 86
+  §4.1#r335: 6
+  §4.1#r345: 66
+  §4.1#p67: [23, 25]
+  D-02: [2, 3, 4, 80, 142]
+  §9.2#b84: [46, 49, 50, 145, 146, 149, 150]
   §9.2#b86: 46
-  §9.2#b87: [53, 56, 166]
-  §9.2#b150: [115, 156, 157, 160, 161, 162]
+  §9.2#b87: [53, 56, 161]
+  §9.2#b150: [115, 151, 152, 155, 156, 157, 195, 197, 199, 203, 205]
   §9.2#b155: [107, 108, 111, 112]
   §9.2#b197: 47
   §9.4.2#r8: 104
-  §9.4.2#r25: [115, 117, 126, 128]
-  §9.4.4#r23: [115, 117]
+  §9.4.2#r25: [115, 117, 195, 197, 199, 203, 205]
+  §9.4.4#r23: [115, 117, 195, 197, 199, 203, 205]
   §9.5#r13: [7, 8]
   §9.5#r14: 10
   §9.5#r19: 12
-  §9.5#r20: [46, 50, 151, 155]
+  §9.5#r20: [46, 50, 146, 150]
   §9.5#r26: 46
   §9.9#r13: 7
   §9.9#r14: 9
   §9.9#r15: 8
   §9.9#r16: [59, 61]
-  §9.10.1#b5: [115, 117]
+  §9.10.1#b5: [115, 117, 195, 197, 199, 203, 205]
   §9.10.2#b5: [118, 120, 121, 123]
-  §9.10.3#b5: [126, 128]
   §10#b2: 12
-  EB-FRM-7@add-override: [130, 131, 132, 135, 137, 140]
+  EB-FRM-7@add-override: [125, 126, 127, 130, 132, 135, 177, 180, 183, 208, 210]
   EB-TBL-5@hapus-baris-field: 100
-anchor: [90, 173]
+anchor: [90, 168]
 coverage:
   web: automated
 ---
@@ -78,7 +77,7 @@ coverage:
 # Dialog Add override: tampilan awal, Scope, Target, dan baris Field + Value
 
 ## Prerequisites
-- Aktor: Total Control. K5 memakai aktor Manage asset & TAG (Read + Update) pada Group `Proyek Karawang`. K6 memakai aktor Manage transaction settings (Read + Update).
+- Aktor: Total Control (cakupan semua Group). K5 memakai aktor Manage asset & TAG (Read + Update) pada Group `Proyek Karawang`. K6 memakai aktor Manage transaction settings (Read + Update).
 - Layar awal: Settings > Transaction Settings, tab Borrow, Assign, Transfer, atau Disposal, dengan Dialog Add override dibuka dari tombol `[+ Override]`.
 - Komponen: Dialog Add override
 - Data:
@@ -95,11 +94,13 @@ coverage:
   - DU-074-11: nilai berlaku Borrow Max assets per borrower (concurrent) `3 assets`.
   - DU-074-12: field yang ditawarkan pada transaksi Disposal: `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Require approval`, `Approval type`.
   - DU-074-13: sebagian field yang ditawarkan pada transaksi Transfer: `Allow Transfer`, `Destination scope`, `In-transit overdue after`.
+  - DU-074-14: field lain yang ditawarkan pada transaksi Transfer: `Destination quota check`, `Photo at start`, `Photo at end`, `Require approval`, `Auto-approve`, `Approval type`.
+  - DU-074-15: field yang ditawarkan pada transaksi Assign: `Allow Assign`, `Allowed assignee: Employee`, `Allowed assignee: Division`, `Max assets per assignee (concurrent)`, `Need recipient confirmation`, `Photo at start`, `Photo at end`, `Require approval`, `Approval type`.
 - Kondisi:
   - K1: Dialog Add override - Borrow dibuka dari Category leaf `Vehicle > Pool car`; nilai berlaku di Category adalah DU-074-8 dan DU-074-11; plan entitas memuat Approval Workflow, Borrowing penuh, dan Assignment penuh; tree Group memuat DU-074-1 dan DU-074-2; picker Asset Name memuat DU-074-3; picker Select Asset memuat DU-074-4.
   - K2: sama dengan K1, tetapi dialog dibuka dari All categories dan nilai Company default adalah DU-074-8.
   - K3: sama dengan K1, tetapi plan entitas tidak memuat Approval Workflow dan Borrowing bukan versi penuh.
-  - K4: Dialog Add override - Assign dibuka dari Category leaf `Vehicle > Pool car`; plan entitas memuat Assignment yang bukan versi penuh.
+  - K4: Dialog Add override - Assign dibuka dari Category leaf `Vehicle > Pool car`.
   - K5: sama dengan K1, dengan aktor Manage asset & TAG (Read + Update) pada Group `Proyek Karawang`.
   - K6: sama dengan K1, dengan aktor Manage transaction settings (Read + Update).
   - K7: sama dengan K1, tetapi nilai berlaku di Category adalah DU-074-9.
@@ -249,83 +250,132 @@ coverage:
 114. Klik kontrol Field pada baris Field + Value pertama
 115. Verifikasi opsi `Require approval` disabled
 116. Arahkan kursor ke opsi `Require approval`
-117. Verifikasi alasan `Requires Approval Workflow on your plan` tersampaikan pada opsi
+117. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi
 118. Verifikasi opsi `Self service` disabled
 119. Arahkan kursor ke opsi `Self service`
-120. Verifikasi alasan `Available on plans with full Borrowing` tersampaikan pada opsi
+120. Verifikasi alasan `Available on plans with full Borrowing.` tersampaikan pada opsi
 121. Verifikasi opsi `Duration unit` disabled
 122. Arahkan kursor ke opsi `Duration unit`
-123. Verifikasi alasan `Available on plans with full Borrowing` tersampaikan pada opsi
-
-### Opsi field bergerbang plan Assignment disabled
-124. Tampilkan Dialog Add override dengan kondisi K4
-125. Klik kontrol Field pada baris Field + Value pertama
-126. Verifikasi opsi `Direct handover between holders` disabled
-127. Arahkan kursor ke opsi `Direct handover between holders`
-128. Verifikasi alasan `Available on plans with full Assignment` tersampaikan pada opsi
+123. Verifikasi alasan `Available on plans with full Borrowing.` tersampaikan pada opsi
 
 ### Aksesibilitas form, focus trap, dan fokus kembali
-129. Tampilkan Dialog Add override dengan kondisi K1
-130. Verifikasi fokus berada di dalam dialog sesudah dialog tampil
-131. Verifikasi kontrol Scope dan Target dinyatakan wajib bagi teknologi bantu
-132. Verifikasi tombol hapus baris Field + Value memiliki label aksesibel
-133. Pilih Field `Max duration` pada baris pertama
-134. Klik `[Submit]`
-135. Verifikasi kontrol Value pada baris pertama terhubung dengan pesan error inline-nya bagi teknologi bantu
-136. Tekan `Tab` berulang kali sampai melewati kontrol terakhir dialog
-137. Verifikasi fokus tetap berada di dalam dialog
-138. Klik `✕` pada dialog
-139. Klik `[Leave]` pada dialog Unsaved Changes
-140. Verifikasi fokus kembali ke tombol `[+ Override]` yang membuka dialog
+124. Tampilkan Dialog Add override dengan kondisi K1
+125. Verifikasi fokus berada di dalam dialog sesudah dialog tampil
+126. Verifikasi kontrol Scope dan Target dinyatakan wajib bagi teknologi bantu
+127. Verifikasi tombol hapus baris Field + Value memiliki label aksesibel
+128. Pilih Field `Max duration` pada baris pertama
+129. Klik `[Submit]`
+130. Verifikasi kontrol Value pada baris pertama terhubung dengan pesan error inline-nya bagi teknologi bantu
+131. Tekan `Tab` berulang kali sampai melewati kontrol terakhir dialog
+132. Verifikasi fokus tetap berada di dalam dialog
+133. Klik `✕` pada dialog
+134. Klik `[Leave]` pada dialog Unsaved Changes
+135. Verifikasi fokus kembali ke tombol `[+ Override]` yang membuka dialog
 
 ### Teks bantu nilai berlaku pada baris Field + Value kedua
-141. Tampilkan Dialog Add override dengan kondisi K1
-142. Pilih Field `Max duration` pada baris pertama
-143. Klik `[+ Add field]`
-144. Pilih Field `Max assets per borrower (concurrent)` pada baris kedua
-145. Verifikasi teks bantu `Current value: 3 assets` tampil di bawah baris kedua, dari nilai berlaku DU-074-11
+136. Tampilkan Dialog Add override dengan kondisi K1
+137. Pilih Field `Max duration` pada baris pertama
+138. Klik `[+ Add field]`
+139. Pilih Field `Max assets per borrower (concurrent)` pada baris kedua
+140. Verifikasi teks bantu `Current value: 3 assets` tampil di bawah baris kedua, dari nilai berlaku DU-074-11
 
 ### Judul Dialog Add override untuk transaksi Assign
-146. Tampilkan Dialog Add override dengan kondisi K4
-147. Verifikasi judul dialog `Add override - Assign`
+141. Tampilkan Dialog Add override dengan kondisi K4
+142. Verifikasi judul dialog `Add override - Assign`
 
 ### Daftar Field pada Dialog Add override - Disposal
-148. Tampilkan Dialog Add override dengan kondisi K8
-149. Klik kontrol Field pada baris Field + Value pertama
-150. Verifikasi opsi Field memuat `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Require approval`, `Approval type` (DU-074-12)
-151. Verifikasi opsi Field tidak memuat `Allowed disposal types`
+143. Tampilkan Dialog Add override dengan kondisi K8
+144. Klik kontrol Field pada baris Field + Value pertama
+145. Verifikasi opsi Field memuat `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Require approval`, `Approval type` (DU-074-12)
+146. Verifikasi opsi Field tidak memuat `Allowed disposal types`
 
 ### Daftar Field dan field Approval bergerbang pada Dialog Add override - Transfer
-152. Tampilkan Dialog Add override dengan kondisi K9
-153. Klik kontrol Field pada baris Field + Value pertama
-154. Verifikasi opsi Field memuat `Allow Transfer`, `Destination scope`, `In-transit overdue after` (DU-074-13)
-155. Verifikasi opsi Field tidak memuat `Change Cost Center with Group`
-156. Verifikasi opsi `Approval scope` disabled
-157. Verifikasi opsi `Auto-approve when destination in same parent Group` disabled
+147. Tampilkan Dialog Add override dengan kondisi K9
+148. Klik kontrol Field pada baris Field + Value pertama
+149. Verifikasi opsi Field memuat `Allow Transfer`, `Destination scope`, `In-transit overdue after` (DU-074-13)
+150. Verifikasi opsi Field tidak memuat `Change Cost Center with Group`
+151. Verifikasi opsi `Approval scope` disabled
+152. Verifikasi opsi `Auto-approve when destination in same parent Group` disabled
 
 ### Field Approval lain pada transaksi Borrow disabled tanpa Approval Workflow
-158. Tampilkan Dialog Add override dengan kondisi K3
-159. Klik kontrol Field pada baris Field + Value pertama
-160. Verifikasi opsi `Auto-approve` disabled
-161. Verifikasi opsi `Auto-approve when duration ≤` disabled
-162. Verifikasi opsi `Approval type` disabled
+153. Tampilkan Dialog Add override dengan kondisi K3
+154. Klik kontrol Field pada baris Field + Value pertama
+155. Verifikasi opsi `Auto-approve` disabled
+156. Verifikasi opsi `Auto-approve when duration ≤` disabled
+157. Verifikasi opsi `Approval type` disabled
 
 ### Opsi Field untuk Scope Group
-163. Tampilkan Dialog Add override dengan kondisi K1
-164. Pilih Scope `Group`
-165. Klik kontrol Field pada baris Field + Value pertama
-166. Verifikasi opsi Field untuk Scope `Group` sama dengan DU-074-10, termasuk `Self service`
+158. Tampilkan Dialog Add override dengan kondisi K1
+159. Pilih Scope `Group`
+160. Klik kontrol Field pada baris Field + Value pertama
+161. Verifikasi opsi Field untuk Scope `Group` sama dengan DU-074-10, termasuk `Self service`
 
 ### Melepas target lewat tombol close pada badge
-167. Tampilkan Dialog Add override dengan kondisi K1
-168. Pilih Scope `Group`
-169. Klik `[Select Group]`
-170. Centang node `Proyek Karawang`
-171. Centang node `Proyek Bekasi`
-172. Klik `[Select]`
-173. Verifikasi badge `Proyek Karawang` dan `Proyek Bekasi` tampil di bawah tombol `Select Group`
-174. Klik tombol close pada badge `Proyek Bekasi`
-175. Verifikasi badge `Proyek Karawang` tetap tampil
-176. Verifikasi badge `Proyek Bekasi` tidak tampil
+162. Tampilkan Dialog Add override dengan kondisi K1
+163. Pilih Scope `Group`
+164. Klik `[Select Group]`
+165. Centang node `Proyek Karawang`
+166. Centang node `Proyek Bekasi`
+167. Klik `[Select]`
+168. Verifikasi badge `Proyek Karawang` dan `Proyek Bekasi` tampil di bawah tombol `Select Group`
+169. Klik tombol close pada badge `Proyek Bekasi`
+170. Verifikasi badge `Proyek Karawang` tetap tampil
+171. Verifikasi badge `Proyek Bekasi` tidak tampil
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.1 (FLD-35l): badge target Group berisi full path Group, bukan nama dengan hover. Foundation `prd-conventions.md` §9.14: badge Group berisi nama, hierarki lengkap `[Parent] > [Child] > [Grandchild]` pada hover. Diasersi: foundation (SB-4).
+
+### Label aksesibel tombol close pada badge target
+172. Tampilkan Dialog Add override dengan kondisi K1
+173. Pilih Scope `Group`
+174. Klik `[Select Group]`
+175. Centang node `Proyek Karawang`
+176. Klik `[Select]`
+177. Verifikasi tombol close pada badge `Proyek Karawang` memiliki label aksesibel
+
+### Error inline Scope dan Target terhubung dengan kontrolnya
+178. Tampilkan Dialog Add override dengan kondisi K1
+179. Klik `[Submit]`
+180. Verifikasi kontrol Scope terhubung dengan pesan error inline `You must pick a scope` bagi teknologi bantu
+181. Pilih Scope `Group`
+182. Klik `[Submit]`
+183. Verifikasi tombol pemilih Target terhubung dengan pesan error inline `You must pick a group` bagi teknologi bantu
+
+### Daftar Field pada Dialog Add override - Assign
+184. Tampilkan Dialog Add override dengan kondisi K4
+185. Klik kontrol Field pada baris Field + Value pertama
+186. Verifikasi opsi Field memuat `Allow Assign`, `Allowed assignee: Employee`, `Allowed assignee: Division`, `Max assets per assignee (concurrent)`, `Need recipient confirmation`, `Photo at start`, `Photo at end`, `Require approval`, `Approval type` (DU-074-15)
+187. Verifikasi opsi Field tidak memuat `Transaction timeout`
+188. Verifikasi opsi Field tidak memuat `Send email notifications`
+
+### Daftar Field lain pada Dialog Add override - Transfer
+189. Tampilkan Dialog Add override dengan kondisi K9
+190. Klik kontrol Field pada baris Field + Value pertama
+191. Verifikasi opsi Field memuat `Destination quota check`, `Photo at start`, `Photo at end`, `Require approval`, `Auto-approve`, `Approval type` (DU-074-14)
+
+### Alasan plan pada opsi Field Approval lain di Dialog Add override - Borrow
+192. Tampilkan Dialog Add override dengan kondisi K3
+193. Klik kontrol Field pada baris Field + Value pertama
+194. Arahkan kursor ke opsi `Auto-approve`
+195. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Auto-approve`
+196. Arahkan kursor ke opsi `Auto-approve when duration ≤`
+197. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Auto-approve when duration ≤`
+198. Arahkan kursor ke opsi `Approval type`
+199. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Approval type`
+
+### Alasan plan pada opsi Field Approval lain di Dialog Add override - Transfer
+200. Tampilkan Dialog Add override dengan kondisi K9
+201. Klik kontrol Field pada baris Field + Value pertama
+202. Arahkan kursor ke opsi `Approval scope`
+203. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Approval scope`
+204. Arahkan kursor ke opsi `Auto-approve when destination in same parent Group`
+205. Verifikasi alasan `Requires Approval Workflow on your plan.` tersampaikan pada opsi `Auto-approve when destination in same parent Group`
+
+### Error inline Field terhubung dengan kontrolnya
+206. Tampilkan Dialog Add override dengan kondisi K1
+207. Klik `[Submit]`
+208. Verifikasi kontrol Field pada baris pertama terhubung dengan pesan error inline `You must pick a field` bagi teknologi bantu
+
+### Label aksesibel tombol close pada header dialog
+209. Tampilkan Dialog Add override dengan kondisi K1
+210. Verifikasi tombol `✕` pada header dialog memiliki label aksesibel `Close dialog`
+
+[^drift-1]: Drift PRD vs foundation. PRD §4.1 `FLD-35l`: «Target: `Badge` target terpilih untuk Group berisi full path.», dan catatan Deviasi §4.1: badge target Group menampilkan full path Group, bukan nama leaf dengan hover. Foundation `prd-conventions.md` §9.14 (Aturan hover): badge Group berisi nama, hover tooltip berisi «Hierarki lengkap dari parent paling atas: `[Parent] > [Child] > [Grandchild]`». Diasersi: foundation, karena badge Group kontekstual adalah komponen bersama (SB-4).

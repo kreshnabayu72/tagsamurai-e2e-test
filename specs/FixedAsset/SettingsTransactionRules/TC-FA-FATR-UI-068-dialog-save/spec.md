@@ -6,15 +6,15 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r5
-  - §4.1#r230
-  - §4.1#r231
-  - §4.1#r233
-  - §4.1#r234
-  - §4.1#r235
-  - §4.1#r236
-  - §4.1#r237
-  - §4.1#r238
+  - §4.1#r8
+  - §4.1#r257
+  - §4.1#r258
+  - §4.1#r260
+  - §4.1#r261
+  - §4.1#r262
+  - §4.1#r263
+  - §4.1#r264
+  - §4.1#r265
   - §4.4#r8
   - §4.5#b4
   - §9.2#r12
@@ -29,18 +29,19 @@ sourceRules:
   - §9.10.1#r13
   - EB-FB-2@save-changes
   - EB-FRM-1@save-changes
+  - §9.2#b38
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r5: [3, 4]
-  §4.1#r230: 4
-  §4.1#r231: [4, 14, 21, 24, 28, 50, 52, 54]
-  §4.1#r233: [10, 18, 31, 32]
-  §4.1#r234: [25, 26]
-  §4.1#r235: [8, 19, 22]
-  §4.1#r236: [10, 12, 15]
-  §4.1#r237: [17, 18]
-  §4.1#r238: [25, 26, 55, 56]
+  §4.1#r8: [3, 4]
+  §4.1#r257: 4
+  §4.1#r258: [4, 14, 21, 24, 28, 50, 52, 54]
+  §4.1#r260: [10, 18, 31, 32]
+  §4.1#r261: [25, 26]
+  §4.1#r262: [8, 19, 22]
+  §4.1#r263: [10, 12, 15]
+  §4.1#r264: [17, 18]
+  §4.1#r265: [25, 26, 55, 56]
   §4.4#r8: [35, 36]
   §4.5#b4: [40, 42]
   §9.2#r12: 10
@@ -55,6 +56,7 @@ trace:
   §9.10.1#r13: 29
   EB-FB-2@save-changes: 37
   EB-FRM-1@save-changes: [45, 46, 48]
+  §9.2#b38: [59, 60, 63, 64, 67, 68]
 anchor: [35]
 coverage:
   web: automated
@@ -77,6 +79,8 @@ coverage:
   - DU-068-8: Draft Company default pada All categories: Transaction timeout Disposal diubah dari `7` menjadi `5`; Require approval Disposal tersimpan `ON` dan kontrolnya tidak dapat diubah.
   - DU-068-9: Draft Company default pada All categories: Allow Borrow, Allow Assign, Allow Transfer, dan Allow Disposal diubah menjadi `Deny`; Require approval Disposal diubah dari `ON` menjadi `OFF`.
   - DU-068-10: Draft Company default pada All categories: Max duration tab Borrow diubah dari `14` menjadi `10`; Company default tidak diubah (semua Allow [transaction] `Allow`, Require approval Disposal `ON`). Override yang sudah ada memberi `Deny` pada semua Allow [transaction] dan `OFF` pada Require approval Disposal.
+  - DU-068-11: Draft Category leaf `Machinery`: Max duration tab Borrow berpindah dari Inherit (Company default `14`) ke bernilai sendiri `14`; semua field lain tetap Inherit.
+  - DU-068-12: Draft Category leaf `Machinery`: Max duration tab Borrow berpindah dari bernilai sendiri tersimpan `14` ke Inherit (Company default `14`); Max extensions tab Borrow tetap bernilai sendiri tersimpan `2`.
 - Kondisi:
   - K1: node All categories terpilih, draft memakai DU-068-1, semua transaksi tersedia di plan.
   - K2: node All categories terpilih, draft memakai DU-068-2, semua transaksi tersedia di plan.
@@ -89,6 +93,9 @@ coverage:
   - K9: node All categories terpilih, draft memakai DU-068-9, semua transaksi tersedia di plan.
   - K10: sama dengan K1, respons Save ditahan sampai pengujian melepasnya.
   - K11: node All categories terpilih, draft memakai DU-068-10, semua transaksi tersedia di plan.
+  - K12: sama dengan K1, server menjawab Save dengan sukses.
+  - K13: node Category leaf `Machinery` terpilih, draft memakai DU-068-11, server menjawab Save dengan sukses.
+  - K14: node Category leaf `Machinery` terpilih, draft memakai DU-068-12, server menjawab Save dengan sukses.
 
 ## Test Steps
 
@@ -175,3 +182,21 @@ coverage:
 54. Verifikasi paragraf pertama dialog tampil untuk draft `Max duration` di tab `Borrow`
 55. Verifikasi paragraf tambahan `No transactions will be possible for any asset.` tidak ada walau override memberi `Deny` pada semua Allow [transaction]
 56. Verifikasi paragraf tambahan `Disposal will run without approval. The same person can request and execute it, so there is no separation of duties.` tidak ada walau override memberi `OFF` pada `Require approval` di tab `Disposal`
+
+### Payload Save hanya memuat field yang nilainya berubah
+57. Tampilkan Dialog Save Changes dengan kondisi K12
+58. Klik `Save` pada dialog `Save Changes`
+59. Verifikasi payload Save memuat `Max duration` tab `Borrow` bernilai `10`
+60. Verifikasi payload Save tidak memuat `Allow Borrow` yang nilainya tetap `Allow`
+
+### Payload Save memuat field yang berpindah dari Inherit ke nilai sendiri walau angkanya sama
+61. Tampilkan Dialog Save Changes dengan kondisi K13
+62. Klik `Save` pada dialog `Save Changes`
+63. Verifikasi payload Save memuat `Max duration` tab `Borrow` dengan mode nilai sendiri `14`
+64. Verifikasi payload Save tidak memuat `Max extensions` yang tetap Inherit
+
+### Payload Save memuat field yang berpindah dari nilai sendiri ke Inherit walau angkanya sama
+65. Tampilkan Dialog Save Changes dengan kondisi K14
+66. Klik `Save` pada dialog `Save Changes`
+67. Verifikasi payload Save memuat `Max duration` tab `Borrow` dengan mode Inherit
+68. Verifikasi payload Save tidak memuat `Max extensions` yang tetap bernilai sendiri `2`

@@ -15,10 +15,10 @@ trace:
   §9.2#b315: [12, 13]
   §9.2#b322: [5]
   §9.4.2#r49: [4, 6, 7]
-  §9.4.2#r50: [16]
-  §9.4.4#r41: [16]
+  §9.4.2#r50: [17]
+  §9.4.4#r41: [17]
   §9.6#r4: [5, 6]
-  §9.11#r4: [8, 17]
+  §9.11#r4: [8, 18]
   EB-FB-2@export-rules: [6]
   §9.2#b310: [8]
 anchor: []
@@ -56,7 +56,8 @@ coverage:
 13. Verifikasi tidak ada baris Field `Max duration` bernilai `45` pada sheet `Rules`
 
 ### Export rules pada All categories dengan lebih dari 5.000 baris
-14. Klik `All categories` di Sidebar Category Tree
-15. Klik `[Export rules]`
-16. Verifikasi berkas terunduh langsung setelah berkas siap
-17. Verifikasi sheet `Info` baris `Category` bernilai `All categories`
+14. Klik `(←)` pada kotak Search Sidebar Category Tree
+15. Klik `All categories` di Sidebar Category Tree
+16. Klik `[Export rules]`
+17. Verifikasi berkas terunduh langsung setelah berkas siap
+18. Verifikasi sheet `Info` baris `Category` bernilai `All categories`

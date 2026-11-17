@@ -6,21 +6,21 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r1", "§Aturan Logika Modul#r2", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r17", "§Aturan Logika Modul#r18", "§Aturan Logika Modul#r19", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r101", "§4.1#r88", "§4.1#r89", "§9.2#r1", "§9.2#r2", "§9.2#r3", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r7", "§9.2#r8", "§9.2#p6", "§9.2#b5", "§9.2#b78", "§9.2#b92", "§9.2#b109", "§9.2#b165", "§9.2#b183", "§9.2#b193", "§9.2#b200", "§9.4.2#r6", "§9.4.2#r56", "§9.4.2#r57", "§9.4.2#r102", "§9.4.2#r116", "§9.6#r11", "§9.7#r18", "§9.10.4#b3"]
+sourceRules: ["§Aturan Logika Modul#r1", "§Aturan Logika Modul#r2", "§Aturan Logika Modul#r18", "§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r103", "§4.1#r99", "§4.1#r100", "§9.2#r1", "§9.2#r2", "§9.2#r3", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r7", "§9.2#r8", "§9.2#p6", "§9.2#b5", "§9.2#b78", "§9.2#b92", "§9.2#b109", "§9.2#b165", "§9.2#b183", "§9.2#b193", "§9.2#b200", "§9.4.2#r6", "§9.4.2#r56", "§9.4.2#r57", "§9.4.2#r110", "§9.4.2#r124", "§9.6#r11", "§9.7#r18", "§9.10.4#b3", "§4.4#r7", "§9.2#b86", "§9.2#b566"]
 smoke: []
 dependsOn: []
 trace:
   "§Aturan Logika Modul#r1": [1, 2, 3]
   "§Aturan Logika Modul#r2": [5, 10, 45]
-  "§Aturan Logika Modul#r15": 5
-  "§Aturan Logika Modul#r16": 15
-  "§Aturan Logika Modul#r17": 14
-  "§Aturan Logika Modul#r18": 15
-  "§Aturan Logika Modul#r19": [34, 56, 59]
-  "§Aturan Logika Modul#r44": 16
-  "§Aturan Logika Modul#r101": [48, 49, 52]
-  "§4.1#r88": 47
-  "§4.1#r89": 45
+  "§Aturan Logika Modul#r18": [5, 19, 22]
+  "§Aturan Logika Modul#r19": 15
+  "§Aturan Logika Modul#r20": 14
+  "§Aturan Logika Modul#r21": 15
+  "§Aturan Logika Modul#r22": [34, 56, 59]
+  "§Aturan Logika Modul#r47": [16, 69]
+  "§Aturan Logika Modul#r103": [48, 49, 52]
+  "§4.1#r99": 47
+  "§4.1#r100": 45
   "§9.2#r1": [5, 6]
   "§9.2#r2": [29, 30]
   "§9.2#r3": [7, 8]
@@ -41,11 +41,14 @@ trace:
   "§9.4.2#r6": [37, 40]
   "§9.4.2#r56": [13, 16]
   "§9.4.2#r57": [14, 15]
-  "§9.4.2#r102": 32
-  "§9.4.2#r116": 25
+  "§9.4.2#r110": 32
+  "§9.4.2#r124": 25
   "§9.6#r11": 43
   "§9.7#r18": 27
   "§9.10.4#b3": [61, 63, 64, 66]
+  "§4.4#r7": 43
+  "§9.2#b86": [34, 35]
+  "§9.2#b566": [70, 71, 73, 74]
 ---
 # Penyelesaian nilai efektif menurut tingkat pewarisan
 
@@ -76,6 +79,8 @@ trace:
   - DU-083-22: Category, Category leaf yang berstatus excess pada masa Grace: Name `Arsip Cadangan {runId}`.
   - DU-083-23: Asset, aset di Category excess: Name `Printer Cadangan {runId}`; Asset Name `Printer Arsip {runId}`; Category `Arsip Cadangan {runId}`; Group `Kantor Pusat {runId}`.
   - DU-083-24: User, operator Admin Console yang membaca nilai Approval Timeout platform: Name `Operator Platform {runId}`; Peran `operator Admin Console di luar entitas`.
+  - DU-083-25: Group, Group tempat override All categories Deny dan override Category leaf Allow bertemu: Name `Gudang Utara {runId}`; Parent `(tanpa induk)`.
+  - DU-083-26: Asset, aset Pool car di Group Gudang Utara: Name `Van Operasional Utara {runId}`; Asset Name `Van Antar Jemput {runId}`; Category `Pool car {runId}`; Group `Gudang Utara {runId}`.
   - Seluruh aset memakai Asset Name dan Category seperti di entri masing-masing, dan Asset Name `Mobil Pool Operasional {runId}` berada di Category `Pool car {runId}`.
 - Kondisi:
   - Spec ini memakai entitas khusus `Entitas Resolusi {runId}` (DU-083-1) yang tidak dipakai spec lain, karena yang diasersi adalah setting Company default dan setting Category.
@@ -89,6 +94,8 @@ trace:
   - Entitas berada pada masa Grace, Group `Gudang Cadangan {runId}` berstatus excess, dan Category `Arsip Cadangan {runId}` berstatus excess.
   - Category `Arsip Cadangan {runId}` pada transaksi Borrow: Max duration nilai sendiri `11`; field lainnya Inherit.
   - Nilai Approval Timeout platform adalah satu nilai milik platform yang dikonfigurasi di Admin Console tab Approval Settings (approval-foundation.md §1.7); spec ini tidak mengubahnya.
+  - Addon Maintenance aktif pada entitas.
+  - Pada tab Maintenance, Company default: Reminder before due `5`; Category `Pool car {runId}`: Reminder before due nilai sendiri `2`; Category `Elektronik {runId}`: Reminder before due Inherit.
 
 ## Test Steps
 
@@ -185,3 +192,15 @@ trace:
 64. Verifikasi nilai efektif Max duration untuk aset `Printer Cadangan {runId}` adalah `11`, dari nilai sendiri Category `Arsip Cadangan {runId}` yang berstatus excess
 65. Status excess Category `Arsip Cadangan {runId}` dilepas karena jumlah Category tidak lagi melebihi cap plan aktif
 66. Verifikasi nilai efektif Max duration untuk aset `Printer Cadangan {runId}` tetap `11`, karena evaluasi tidak berubah saat status excess dilepas
+
+### Deny pada override All categories mengalahkan Allow pada override Category leaf
+67. Maya Pengelola menambahkan override Group `Gudang Utara {runId}` untuk Category `Pool car {runId}` pada transaksi peminjaman dengan Allow Borrow `Allow`
+68. Maya Pengelola menambahkan override Group `Gudang Utara {runId}` untuk All categories pada transaksi peminjaman dengan Allow Borrow `Deny`
+69. Verifikasi nilai efektif Allow Borrow untuk aset `Van Operasional Utara {runId}` adalah `Deny`, karena override All categories bernilai Deny mengalahkan override Category leaf `Pool car {runId}` pada Group dan transaksi yang sama walau Category leaf lebih spesifik dan bernilai `Allow`
+
+### Nilai efektif tab Maintenance per aset diselesaikan dari Category leaf lalu Company default
+70. Verifikasi nilai efektif Reminder before due untuk aset `Mobil Pool Pusat {runId}` adalah `2`, dari nilai sendiri Category leaf `Pool car {runId}` dan bukan Company default `5`
+71. Verifikasi nilai efektif Reminder before due untuk aset `Laptop Pusat {runId}` adalah `5`, diwarisi dari Company default lewat Category `Elektronik {runId}` yang Inherit
+72. Maya Pengelola menyimpan Company default pada tab Maintenance dengan Reminder before due `9` lewat Save Changes
+73. Verifikasi nilai efektif Reminder before due untuk aset `Laptop Pusat {runId}` menjadi `9`, karena Category `Elektronik {runId}` yang Inherit ikut berubah
+74. Verifikasi nilai efektif Reminder before due untuk aset `Mobil Pool Pusat {runId}` tetap `2`, karena nilai sendiri Category leaf tidak ikut berubah saat Company default berubah

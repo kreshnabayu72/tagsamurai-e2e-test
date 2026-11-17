@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r278, §4.1#r281, §4.1#r282, §4.1#r295, §4.1#r296, §4.4#r10, §4.4#r16, §4.4#r17, §4.4#r18, §9.2#b74, §9.2#b75, §9.2#b80, §9.2#b81, §9.2#b89, §9.2#b182, §9.4.2#r26, §9.4.2#r56, §9.4.2#r104, §9.4.2#r105, §9.4.2#r106, §9.6#r2, §9.7#r13, EB-FRM-1@add-override, §Aturan Logika Modul#r43, §Aturan Logika Modul#r52, §7#r3, §9.2#b94, EB-FB-1@add-override]
-smoke: [§Aturan Logika Modul#r43, §Aturan Logika Modul#r52, §7#r3, §9.2#b94, EB-FB-1@add-override]
+sourceRules: [§4.1#r304, §4.1#r307, §4.1#r308, §4.1#r321, §4.1#r322, §4.4#r10, §4.4#r16, §4.4#r17, §4.4#r18, §9.2#b74, §9.2#b75, §9.2#b80, §9.2#b81, §9.2#b89, §9.2#b182, §9.4.2#r26, §9.4.2#r56, §9.4.2#r112, §9.4.2#r113, §9.4.2#r114, §9.6#r2, §9.7#r13, EB-FRM-1@add-override, §Aturan Logika Modul#r54, EB-FRM-2@add-override, §Aturan Logika Modul#r46, §Aturan Logika Modul#r55, §7#r3, §9.2#b94, EB-FB-1@add-override]
+smoke: [§Aturan Logika Modul#r46, §Aturan Logika Modul#r55, §7#r3, §9.2#b94, EB-FB-1@add-override]
 dependsOn: []
 trace:
-  §4.1#r278: 18
-  §4.1#r281: [31, 32, 33]
-  §4.1#r282: 56
-  §4.1#r295: 12
-  §4.1#r296: 44
+  §4.1#r304: 18
+  §4.1#r307: [31, 32, 33]
+  §4.1#r308: 56
+  §4.1#r321: 12
+  §4.1#r322: 44
   §4.4#r10: 5
   §4.4#r16: 33
   §4.4#r17: 17
@@ -26,18 +26,20 @@ trace:
   §9.2#b182: [49, 50]
   §9.4.2#r26: 33
   §9.4.2#r56: [49, 50]
-  §9.4.2#r104: 33
-  §9.4.2#r105: 17
-  §9.4.2#r106: [15, 29, 47]
+  §9.4.2#r112: 33
+  §9.4.2#r113: 17
+  §9.4.2#r114: [15, 29, 47]
   §9.6#r2: [15, 17]
   §9.7#r13: 17
   EB-FRM-1@add-override: 33
-  §Aturan Logika Modul#r43: 50
-  §Aturan Logika Modul#r52: 33
+  §Aturan Logika Modul#r54: [31, 32, 33]
+  EB-FRM-2@add-override: [65, 68, 69, 71, 74, 82, 87, 88]
+  §Aturan Logika Modul#r46: 50
+  §Aturan Logika Modul#r55: 33
   §7#r3: [15, 29, 47]
   §9.2#b94: 33
   EB-FB-1@add-override: 15
-anchor: [55]
+anchor: [55, 79, 81]
 coverage:
   web: automated
 ---
@@ -126,3 +128,38 @@ coverage:
 55. Verifikasi baris dengan Target `Proyek Karawang {runId}` dan Overridden `Max duration (45 days)` tampil di tabel Overrides
 56. Verifikasi tidak ada baris dengan Target `Proyek Karawang {runId}` dan Overridden `Max duration (30 days)` di tabel Overrides
 57. Verifikasi tidak ada baris dengan Target `Excavator PC200 {runId}` di tabel Overrides
+
+### Dialog Add override kotor dicegat saat muat ulang dan pindah menu
+58. Klik `[+ Override]`
+59. Pilih Scope `Group`
+60. Klik `[Select Group]`
+61. Ketik Search `{runId}` pada dialog Select Group, tekan Enter
+62. Centang Group `Proyek Karawang {runId}`
+63. Klik `[Select]`
+64. Muat ulang halaman
+65. Verifikasi konfirmasi bawaan browser untuk meninggalkan halaman tampil saat dialog `Add override - Borrow` sudah terisi
+66. Tolak konfirmasi bawaan browser
+67. Klik menu sidebar `Dashboard`
+68. Verifikasi dialog `Unsaved Changes` dengan pesan `You have unsaved changes. Are you sure you want to leave?` tampil
+69. Verifikasi dialog `Unsaved Changes` menyediakan tombol `[Cancel]` dan `[Leave]`
+70. Klik `[Cancel]` pada dialog Unsaved Changes
+71. Verifikasi dialog `Add override - Borrow` tetap terbuka dengan Target `Proyek Karawang {runId}`
+72. Klik menu sidebar `Dashboard`
+73. Klik `[Leave]` pada dialog Unsaved Changes
+74. Verifikasi halaman `Dashboard` tampil sesudah `[Leave]`
+
+### Dialog Add override bersih tidak dicegat saat muat ulang dan pindah menu
+75. Klik tombol Back browser
+76. Klik node `All categories` di Sidebar Category Tree
+77. Klik tab `Borrow`
+78. Klik `[+ Override]`
+79. Verifikasi dialog `Add override - Borrow` terbuka tanpa isian
+80. Muat ulang halaman
+81. Verifikasi menu sidebar `Transaction Settings` tampil sesudah muat ulang
+82. Verifikasi konfirmasi bawaan browser untuk meninggalkan halaman tidak tampil saat dialog `Add override - Borrow` masih bersih
+83. Klik node `All categories` di Sidebar Category Tree
+84. Klik tab `Borrow`
+85. Klik `[+ Override]`
+86. Klik menu sidebar `Dashboard`
+87. Verifikasi halaman `Dashboard` tampil dari dialog `Add override - Borrow` yang masih bersih
+88. Verifikasi dialog `Unsaved Changes` tidak tampil untuk dialog `Add override - Borrow` yang masih bersih

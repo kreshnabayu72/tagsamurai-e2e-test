@@ -6,84 +6,88 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - "§4.1#r358"
-  - "§4.1#r365"
-  - "§4.1#r366"
-  - "§4.1#r367"
-  - "§4.1#r368"
-  - "§4.1#r369"
-  - "§4.1#r370"
-  - "§4.1#r371"
-  - "§4.1#r372"
-  - "§4.1#r373"
-  - "§4.1#r374"
-  - "§4.1#r376"
-  - "§4.1#r377"
-  - "§4.1#r378"
-  - "§4.1#r379"
-  - "§4.1#r380"
-  - "§4.1#r381"
-  - "§4.1#r382"
   - "§4.1#r384"
-  - "§4.1#r385"
-  - "§4.1#r386"
-  - "§4.1#r387"
-  - "§4.1#r388"
-  - "§4.1#r389"
+  - "§4.1#r391"
+  - "§4.1#r392"
+  - "§4.1#r393"
+  - "§4.1#r394"
+  - "§4.1#r395"
+  - "§4.1#r396"
+  - "§4.1#r397"
+  - "§4.1#r398"
+  - "§4.1#r399"
+  - "§4.1#r400"
+  - "§4.1#r402"
+  - "§4.1#r403"
+  - "§4.1#r404"
+  - "§4.1#r405"
+  - "§4.1#r406"
+  - "§4.1#r407"
+  - "§4.1#r408"
+  - "§4.1#r410"
+  - "§4.1#r411"
+  - "§4.1#r412"
+  - "§4.1#r413"
+  - "§4.1#r414"
+  - "§4.1#r415"
   - "§4.4#r13"
   - "§4.5#b4"
   - "§6#r11"
   - "§7#r15"
-  - "AU-BAGIAN-asampaiAU-BAGIAN-o,AU-NILAI-asampaiAU-NILAI-j,AU-TOOLTIP-asampaiAU-TOOLTIP-d"
+  - "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f"
   - "D-04"
   - "S-08"
   - "§9.5#r2"
   - "§9.5#r29"
   - "§9.9#r23"
+  - "§9.5#r28"
   - "EB-TBL-1@select-asset-name"
   - "EB-TBL-9@select-asset-name"
   - "EB-FLT-6@select-asset-name"
+  - "§5#r3"
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r358: 2
-  §4.1#r365: [11, 15]
-  §4.1#r366: 12
-  §4.1#r367: 14
-  §4.1#r368: 37
-  §4.1#r369: 38
-  §4.1#r370: 40
-  §4.1#r371: 41
-  §4.1#r372: [35, 38]
-  §4.1#r373: 43
-  §4.1#r374: [47, 57]
-  §4.1#r376: 4
-  §4.1#r377: [4, 5]
-  §4.1#r378: 9
-  §4.1#r379: 71
-  §4.1#r380: [72, 77]
-  §4.1#r381: 74
-  §4.1#r382: 80
-  §4.1#r384: [11, 14, 17, 33, 57, 84]
-  §4.1#r385: [11, 14, 18, 33, 57]
-  §4.1#r386: [11, 14, 19, 21, 22, 24, 33, 47, 49]
-  §4.1#r387: [11, 14, 25, 27, 28, 50, 52]
-  §4.1#r388: [11, 14, 29, 30, 53, 55]
-  §4.1#r389: [11, 14, 31, 32, 33, 56]
+  §4.1#r384: 2
+  §4.1#r391: [11, 15]
+  §4.1#r392: 12
+  §4.1#r393: 14
+  §4.1#r394: 37
+  §4.1#r395: 38
+  §4.1#r396: 40
+  §4.1#r397: 41
+  §4.1#r398: [35, 38]
+  §4.1#r399: 43
+  §4.1#r400: [47, 57]
+  §4.1#r402: 4
+  §4.1#r403: [4, 5]
+  §4.1#r404: 9
+  §4.1#r405: 71
+  §4.1#r406: [72, 77]
+  §4.1#r407: 74
+  §4.1#r408: 80
+  §4.1#r410: [11, 14, 17, 33, 57, 84]
+  §4.1#r411: [11, 14, 18, 33, 57]
+  §4.1#r412: [11, 14, 19, 21, 22, 24, 33, 47, 49]
+  §4.1#r413: [11, 14, 25, 27, 28, 50, 52]
+  §4.1#r414: [11, 14, 29, 30, 53, 55]
+  §4.1#r415: [11, 14, 31, 32, 33, 56]
   §4.4#r13: [71, 72]
   §4.5#b4: [87, 89]
   §6#r11: 72
   §7#r15: [91, 92]
-  "AU-BAGIAN-asampaiAU-BAGIAN-o,AU-NILAI-asampaiAU-NILAI-j,AU-TOOLTIP-asampaiAU-TOOLTIP-d": [3, 19]
+  "AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f": [3, 19]
   D-04: [2, 8]
   S-08: [96, 97, 102]
   §9.5#r2: [45, 47]
   §9.5#r29: [91, 92]
   §9.9#r23: 72
+  §9.5#r28: [28, 30]
   EB-TBL-1@select-asset-name: [91, 96, 98, 104, 105, 106]
   EB-TBL-9@select-asset-name: [5, 71, 72]
   EB-FLT-6@select-asset-name: [65, 67, 68]
-anchor: []
+  "§5#r3": [111, 113]
+anchor: [110]
 coverage:
   web: automated
 ---
@@ -151,7 +155,7 @@ coverage:
 34. Tampilkan Dialog Select Asset Name dengan kondisi K1
 35. Verifikasi counter jumlah terpilih tidak tampil sebelum ada baris yang tercentang
 36. Centang baris `Excavator PC200`
-37. Verifikasi toolbar memuat counter, ikon Search, lalu tombol filter berurutan dari kiri ke kanan
+37. Verifikasi toolbar memuat counter yang rata kiri, ikon Search, lalu tombol filter berurutan dari kiri ke kanan[^drift-2]
 38. Verifikasi counter menampilkan `1 Asset Name selected`[^drift-1]
 39. Centang baris `Toyota Avanza`
 40. Verifikasi counter menampilkan `2 Asset Names selected`[^drift-1]
@@ -240,4 +244,14 @@ coverage:
 105. Verifikasi tombol `[Try Again]` tampil
 106. Verifikasi `No asset names yet` tidak tampil
 
+### Search dikirim saat Enter tanpa debounce
+107. Tampilkan Dialog Select Asset Name dengan kondisi K3
+108. Klik ikon Search di toolbar
+109. Ketik Search `Zebra Tidak Ada` pada Dialog Select Asset Name tanpa menekan Enter
+110. Verifikasi baris `Excavator PC200` masih tampil pada tabel Select Asset Name
+111. Verifikasi tidak ada permintaan pencarian Select Asset Name yang dikirim sebelum Enter ditekan
+112. Tekan Enter
+113. Verifikasi permintaan pencarian Select Asset Name dengan kata kunci `Zebra Tidak Ada` dikirim segera setelah Enter, tanpa jeda debounce
+
 [^drift-1]: Drift PRD vs foundation. PRD §4.1 `SAN-TOOLBAR-b` dan `SAN-TOOLBAR-c`: counter jumlah terpilih `1 asset name selected` dan `[N] asset names selected`. foundation `prd-conventions.md` §8 (dirujuk §37.2 Selection Counter): `1 → "1 [Item] selected" · N → "[N] [Items] selected"`, dengan nama entitas berkapital. Diasersi: foundation, karena counter jumlah terpilih adalah pola bersama (SB-4).
+[^drift-2]: Drift PRD vs foundation. PRD §4.1 (Deviasi): counter jumlah terpilih pada dialog Select Asset Name diletakkan rata kanan di toolbar, bukan rata kiri. Foundation `prd-conventions.md` §37.2 (Selection Counter): counter di atas tabel, rata kiri, sejajar satu baris dengan Toolbar (Search + Filter). Diasersi: foundation, karena counter jumlah terpilih adalah pola bersama (SB-4).

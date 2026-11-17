@@ -2,10 +2,10 @@
 id: TC-FA-FATR-E2E-034-gating-mts-read
 title: "Gating Manage transaction settings (Read)"
 layer: ui-e2e
-priority: Medium
+priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2#r1, §2#r7, §4.3#r5, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.4.2#r23, §9.11#r1]
+sourceRules: [§2#r1, §2#r7, §4.3#r5, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.4.2#r23, §9.11#r1, §9.2#b159]
 smoke: []
 dependsOn: []
 trace:
@@ -24,6 +24,7 @@ trace:
   §4.8#p2: [20, 25]
   §9.4.2#r23: [18, 20]
   §9.11#r1: [12, 16, 17]
+  §9.2#b159: [23, 25]
 anchor: [27, 28]
 coverage:
   web: automated

@@ -6,16 +6,17 @@ priority: High
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - "§4.1#r12"
-  - "§4.1#r41"
-  - "§4.1#r398"
-  - "§4.1#r399"
-  - "§4.1#r402"
-  - "§4.1#r403"
-  - "§4.1#r400"
-  - "§4.1#r401"
-  - "§4.1#r404"
-  - "§4.1#p88"
+  - "§4.1#r15"
+  - "§4.1#r48"
+  - "§4.1#r424"
+  - "§4.1#r425"
+  - "§4.1#r428"
+  - "§4.1#r429"
+  - "§4.1#r426"
+  - "§4.1#r427"
+  - "§4.1#r430"
+  - "§4.1#p95"
+  - "§4.1#r63"
   - "§4.5#b4"
   - "§5#r1"
   - "§7#r18"
@@ -29,21 +30,26 @@ sourceRules:
   - "EB-TBL-4@modified-by-changelog"
   - "EB-TBL-8@changelog"
   - "EB-XM-1"
+  - "§4.1#r51"
+  - "§5#r5"
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r12: 3
-  §4.1#r41: [31, 32]
-  §4.1#r398: [16, 18, 20, 21, 27, 43]
-  §4.1#r399: [16, 18, 22, 27, 47]
-  §4.1#r402: [16, 18, 27, 29, 30, 32, 47]
-  §4.1#r403: [16, 18, 27, 29, 31, 47]
-  §4.1#r400: [16, 18, 23, 24, 27, 44]
-  §4.1#r401: [16, 18, 25, 26, 27, 45]
-  §4.1#r404: [16, 18, 27, 34, 35, 38, 46]
-  §4.1#p88: [5, 11, 13, 14]
+  §4.1#r15: 3
+  §4.1#r48: [31, 32]
+  §4.1#r51: 75
+  §4.1#r424: [16, 18, 20, 21, 27, 43]
+  §4.1#r425: [16, 18, 22, 27, 47]
+  §4.1#r428: [16, 18, 27, 29, 30, 32, 47]
+  §4.1#r429: [16, 18, 27, 29, 31, 47]
+  §4.1#r426: [16, 18, 23, 24, 27, 44]
+  §4.1#r427: [16, 18, 25, 26, 27, 45]
+  §4.1#r430: [16, 18, 27, 34, 35, 38, 46]
+  §4.1#p95: [5, 11, 13, 14]
+  §4.1#r63: 73
   §4.5#b4: [50, 52]
   §5#r1: [5, 7, 9, 11]
+  §5#r5: [78, 79]
   §7#r18: [54, 55]
   D-08: 2
   S-08: [59, 60, 70]
@@ -55,7 +61,7 @@ trace:
   EB-TBL-4@modified-by-changelog: [34, 35, 37]
   EB-TBL-8@changelog: 40
   EB-XM-1: [20, 21]
-anchor: []
+anchor: [77]
 coverage:
   web: automated
 ---
@@ -63,7 +69,7 @@ coverage:
 # Dialog Changelog: kolom, format, dan empty state
 
 ## Prerequisites
-- Aktor: Total Control.
+- Aktor: Total Control (cakupan semua Group).
 - Layar awal: Settings > Transaction Settings, Dialog Changelog dibuka dari tombol `[Changelog]` di header halaman.
 - Komponen: Dialog Changelog
 - Data:
@@ -75,11 +81,13 @@ coverage:
   - DU-081-6: entri Date `2026-06-01 15:50` (tampil tanggal `01/06/26` dari 2026-06-01 dan jam `15:50` dari 15:50), Action `Edit`, Category `Machinery`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `1`, Modified By `Rina Wulandari` (tampil `Rina W`), pengguna itu kemudian dihapus.
   - DU-081-7: kata kunci Search `Zebra Tidak Ada`, tidak cocok dengan baris mana pun.
   - DU-081-8: filter Date rentang dari `01/01/25` sampai `31/01/25`, di luar semua entri, tidak menghasilkan baris.
+  - DU-081-9: entri Date `2026-05-28 10:10` (tampil tanggal `28/05/26` dari 2026-05-28 dan jam `10:10` dari 10:10), Action `Edit`, Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `30 days`, New Value bernilai `0` (tampil `Off`), Modified By `Siti Nurbaya` (tampil `Siti N`).
 - Kondisi:
   - K1: tabel berisi DU-081-1 sampai DU-081-6; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; waktu pada respons sudah dalam Time Zone entitas.
   - K2: belum ada entri changelog.
   - K3: sama dengan K1; respons atas Search DU-081-7 dan atas filter Date DU-081-8 tidak memuat baris; kedua saringan dipakai pada tampilan terpisah.
   - K4: memuat tabel gagal karena error server.
+  - K5: tabel berisi DU-081-9; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; waktu pada respons sudah dalam Time Zone entitas.
 
 ## Test Steps
 
@@ -178,3 +186,18 @@ coverage:
 68. Pada field `Date`, pilih rentang dari `01/01/25` sampai `31/01/25`
 69. Klik `[Apply]`
 70. Verifikasi judul empty state `No results found` tampil pada tabel Changelog sesudah filter
+
+### Tooltip label ikon Download tanpa titik
+71. Tampilkan Dialog Changelog dengan kondisi K1
+72. Arahkan kursor ke ikon Download di toolbar
+73. Verifikasi tooltip ikon Download berbunyi `Download` tanpa titik di akhir
+
+### Nilai 0 Long missing after tampil sebagai Off
+74. Tampilkan Dialog Changelog dengan kondisi K5
+75. Verifikasi sel New Value pada baris Field `Damaged & Missing (Long missing after)` berisi `Off`, nilai 0 tampil sebagai teks maknanya
+
+### Changelog tanpa aksi bulk
+76. Tampilkan Dialog Changelog dengan kondisi K1
+77. Verifikasi tabel Changelog menampilkan baris dengan Old Value `14 days`
+78. Verifikasi tidak ada kolom checkbox seleksi pada tabel Changelog
+79. Verifikasi tombol dropdown `Bulk Action` tidak tampil pada toolbar Changelog

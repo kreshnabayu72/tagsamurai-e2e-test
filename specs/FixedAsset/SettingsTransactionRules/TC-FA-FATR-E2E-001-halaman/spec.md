@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r92", "§4.2#b3", "§4.4#r2", "§9.2#b194", "§9.4.2#r19", "§9.5#r4", "§9.5#r11", "§11#r7"]
+sourceRules: ["§4.1#r103", "§4.2#b4", "§4.4#r2", "§9.2#b194", "§9.4.2#r19", "§9.5#r4", "§9.5#r11", "§11#r7"]
 smoke: []
 dependsOn: []
 trace:
@@ -14,9 +14,9 @@ trace:
   "§9.2#b194": [6, 21]
   "§9.4.2#r19": 7
   "§11#r7": 10
-  "§4.2#b3": [12, 18]
-  "§4.1#r92": [19, 27, 28]
-  "§4.4#r2": [20, 24]
+  "§4.2#b4": [12, 18]
+  "§4.1#r103": [19, 27, 28]
+  "§4.4#r2": [20, 24, 38]
 coverage:
   web: automated
 ---
@@ -74,3 +74,15 @@ coverage:
 27. Verifikasi field `Duration unit` bernilai `Hours`
 28. Verifikasi field `Auto-approve when duration ≤` menampilkan teks `Inherit — 3 days (from Company default)`
 29. Kosongkan kotak Search Sidebar Category Tree, tekan Enter
+
+### Perubahan yang belum disimpan di Category tetap di draft saat pindah ke All categories dan kembali
+30. Ketik Search Sidebar Category Tree `Pool Car {runId}`, tekan Enter
+31. Klik Category leaf `Pool Car {runId}`
+32. Klik `[Set own value]` pada field `Max duration`
+33. Isi `Max duration` `9`
+34. Kosongkan kotak Search Sidebar Category Tree, tekan Enter
+35. Klik `All categories`
+36. Ketik Search Sidebar Category Tree `Pool Car {runId}`, tekan Enter
+37. Klik Category leaf `Pool Car {runId}`
+38. Verifikasi field `Max duration` bernilai `9`
+39. Kosongkan kotak Search Sidebar Category Tree, tekan Enter

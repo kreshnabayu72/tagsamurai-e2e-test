@@ -5,16 +5,16 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r240, §4.1#r243, §5#r4, §9.5#r8, EB-SRT-1, EB-SRT-3@tabel-overrides]
+sourceRules: [§4.1#r266, §4.1#r268, §4.1#r269, §4.1#r271, §4.1#r267, §4.1#r270, §5#r4, §9.5#r8, EB-SRT-1, EB-SRT-3@tabel-overrides]
 smoke: [EB-SRT-1, EB-SRT-3@tabel-overrides]
 dependsOn: []
 trace:
-  §4.1#r239: [21, 23, 25]
-  §4.1#r241: [28, 30]
-  §4.1#r242: [32, 34]
-  §4.1#r244: [36, 38]
-  §4.1#r240: [12, 14, 16]
-  §4.1#r243: [8, 10]
+  §4.1#r266: [21, 23, 25]
+  §4.1#r268: [28, 30]
+  §4.1#r269: [32, 34]
+  §4.1#r271: [36, 38]
+  §4.1#r267: [12, 14, 16]
+  §4.1#r270: [8, 10]
   §5#r4: [3, 4]
   §9.5#r8: [4, 19]
   EB-SRT-1: [8, 10, 12, 14]
@@ -53,7 +53,7 @@ coverage:
   - DU-014-21: override Asset Name `Excavator PC200 {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (8 days)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-20.
   - DU-014-22: override Group `Zeta Selatan {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (9 days)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-21.
   - DU-014-23: override Group `Bima Tengah {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (10 days)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-22.
-  - DU-014-24: override Group `Dharma Pusat {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Allow Borrow (Deny)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-23.
+  - DU-014-24: override Group `Dharma Pusat {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Allow Borrow (Deny), Max extensions (3)` (dua field; nama field pertama `Allow Borrow`, nama field terakhir `Max extensions`), dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-23.
   - DU-014-25: override Asset Name `Toyota Avanza {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (11 days)`, dibuat oleh `Budi Hartono`, dibuat berurutan sesudah DU-014-24.
   - DU-014-26: override Group `Gudang Kota {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max duration (12 days)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-25.
   - DU-014-27: override Group `Cendana Raya {runId}` di Category `Laptop {runId}` transaksi `Borrow`, Overridden `Max extensions (2)`, dibuat oleh `Budi Santoso`, dibuat berurutan sesudah DU-014-26.
@@ -102,7 +102,7 @@ coverage:
 
 ### Sort kolom Overridden menurut nama field pertama
 27. Klik header kolom Overridden pada tabel Overrides
-28. Verifikasi baris pertama memiliki Target `Dharma Pusat {runId}` dan Overridden `Allow Borrow (Deny)` secara ascending menurut nama field pertama
+28. Verifikasi baris pertama memiliki Target `Dharma Pusat {runId}` dan Overridden `Allow Borrow (Deny), Max extensions (3)` secara ascending menurut nama field pertama `Allow Borrow`, bukan menurut nama field terakhir `Max extensions`
 29. Klik header kolom Overridden pada tabel Overrides
 30. Verifikasi baris pertama memiliki Target `Cendana Raya {runId}` dan Overridden `Max extensions (2)` secara descending menurut nama field pertama
 

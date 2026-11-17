@@ -2,10 +2,10 @@
 id: TC-FA-FATR-E2E-036-gating-mat-read
 title: "Gating Manage asset & TAG (Read)"
 layer: ui-e2e
-priority: Medium
+priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2#r2, §2#r9, §4.3#r5, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.11#r1, §9.11#r2]
+sourceRules: [§2#r2, §2#r9, §4.3#r5, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r12, §4.8#p2, §9.11#r1, §9.11#r2, §9.2#b159]
 smoke: []
 dependsOn: []
 trace:
@@ -24,6 +24,7 @@ trace:
   §4.8#p2: [20, 25]
   §9.11#r1: [12, 16, 17]
   §9.11#r2: [23, 29, 30, 31, 32]
+  §9.2#b159: [23, 25]
 anchor: [27, 28]
 coverage:
   web: automated

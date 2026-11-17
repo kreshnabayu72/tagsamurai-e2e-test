@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r347, §4.4#r22, §6#r29, §6#r32, §6#r33, D-07, FI-01sampaiFI-14, §9.2#b113, §9.2#b118, §9.2#b186, §9.4.2#r75, §9.4.2#r76, §9.4.2#r77, §9.4.2#r80, §9.6#r30, §9.6#r33, §9.9#r22, §9.2#b110, §9.2#b114, §9.2#b188, §9.6#r31]
+sourceRules: [§4.1#r373, §4.4#r22, §6#r29, §6#r32, §6#r33, D-07, FI-01sampaiFI-14, §9.2#b113, §9.2#b118, §9.2#b186, §9.4.2#r83, §9.4.2#r84, §9.4.2#r85, §9.4.2#r88, §9.6#r30, §9.6#r33, §9.9#r22, EB-BLK-3, §7#r7, §9.2#b110, §9.2#b114, §9.2#b188, §9.6#r31]
 smoke: [§9.2#b110, §9.2#b114, §9.2#b188, §9.6#r31]
 dependsOn: []
 trace:
-  §4.1#r347: [39, 40]
+  §4.1#r373: [39, 40]
   §4.4#r22: [8, 10, 27, 30]
   §6#r29: [15, 37, 38]
   §6#r32: [30, 34]
@@ -19,10 +19,10 @@ trace:
   §9.2#b113: [10, 11]
   §9.2#b118: [30, 34]
   §9.2#b186: [10, 11]
-  §9.4.2#r75: [10, 11, 30, 31]
-  §9.4.2#r76: [12, 34]
-  §9.4.2#r77: [15, 37]
-  §9.4.2#r80: [30, 32, 33, 34]
+  §9.4.2#r83: [10, 11, 30, 31]
+  §9.4.2#r84: [12, 34]
+  §9.4.2#r85: [15, 37]
+  §9.4.2#r88: [30, 32, 33, 34]
   §9.6#r30: [10, 12]
   §9.6#r33: [30, 34]
   §9.9#r22: [11, 31]
@@ -30,6 +30,8 @@ trace:
   §9.2#b114: 15
   §9.2#b188: 15
   §9.6#r31: 15
+  EB-BLK-3: [30, 31]
+  §7#r7: [30, 34]
 anchor: [5, 21, 22]
 coverage:
   web: automated
@@ -47,7 +49,7 @@ coverage:
   - DU-011-4: aset `Forklift FL25 {runId} - 1`, ber-Group `Proyek Guard {runId}` dan Category `Machinery {runId}`.
   - DU-011-5: override Group `Proyek Guard {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Allowed assignee: Division (ON)`.
   - DU-011-6: override Group `Proyek Guard {runId}` di All categories transaksi `Assign`, Overridden `Allowed assignee: Employee (OFF), Allowed assignee: Division (OFF)`.
-  - DU-011-7: override Group `Proyek Luar {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Recipient acceptance (Optional)`.
+  - DU-011-7: override Group `Proyek Luar {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Need recipient confirmation (No)`.
   - DU-011-8: user `Andi {runId}`, Group Role Manage asset & TAG (Read + Update), cakupan Group `Proyek Guard {runId}` beserta turunannya.
 - Kondisi:
   - Allow Assign bukan Deny untuk aset `Forklift FL25 {runId} - 1`.
@@ -79,7 +81,7 @@ coverage:
 19. Klik tab `Assign`
 20. Ketik Search `{runId}` pada tabel Overrides, tekan Enter
 21. Verifikasi baris dengan Target `Proyek Guard {runId}` dan Overridden `Allowed assignee: Division (ON)` tampil di tabel Overrides sebagai baris di dalam scope
-22. Verifikasi baris dengan Target `Proyek Luar {runId}` dan Overridden `Recipient acceptance (Optional)` tampil di tabel Overrides sebagai baris di luar scope
+22. Verifikasi baris dengan Target `Proyek Luar {runId}` dan Overridden `Need recipient confirmation (No)` tampil di tabel Overrides sebagai baris di luar scope
 23. Centang baris dengan Target `Proyek Guard {runId}` dan Overridden `Allowed assignee: Division (ON)`
 24. Centang baris `Proyek Luar {runId}`
 25. Klik `Bulk Action` pada toolbar tabel Overrides
@@ -95,7 +97,7 @@ coverage:
 35. Klik `[OK]`
 36. Verifikasi dialog `Cannot Delete Override` tertutup
 37. Verifikasi baris dengan Target `Proyek Guard {runId}` dan Overridden `Allowed assignee: Division (ON)` tetap tampil di tabel Overrides setelah Bulk Delete ditolak
-38. Verifikasi baris dengan Target `Proyek Luar {runId}` dan Overridden `Recipient acceptance (Optional)` tetap tampil di tabel Overrides setelah Bulk Delete ditolak
+38. Verifikasi baris dengan Target `Proyek Luar {runId}` dan Overridden `Need recipient confirmation (No)` tetap tampil di tabel Overrides setelah Bulk Delete ditolak
 39. Verifikasi baris dengan Target `Proyek Guard {runId}` dan Overridden `Allowed assignee: Division (ON)` masih tercentang
 40. Verifikasi baris `Proyek Luar {runId}` masih tercentang
 

@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§9.2#b166", "§9.4.2#r123", "§9.7#r28", "EB-XM-2@transfer", "§9.2#b277", "§9.2#p28", "§9.4.2#r61", "§9.4.2#r62"]
+sourceRules: ["§9.2#b166", "§9.4.2#r131", "§9.7#r28", "EB-XM-2@transfer", "§9.2#b277", "§9.2#p28", "§9.4.2#r61", "§9.4.2#r62"]
 smoke: ["§9.2#b277", "§9.2#p28", "§9.4.2#r61", "§9.4.2#r62"]
 dependsOn:
   - "Transfer: pengajuan, Send, dan Receive"
 trace:
   "§9.2#b166": 48
-  "§9.4.2#r123": [29, 31]
+  "§9.4.2#r131": [29, 31]
   "§9.7#r28": 37
   "EB-XM-2@transfer": [48, 55, 62]
   "§9.2#b277": [34, 35]

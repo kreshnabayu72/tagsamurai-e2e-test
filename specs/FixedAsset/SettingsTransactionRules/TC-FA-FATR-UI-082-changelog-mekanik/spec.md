@@ -6,7 +6,7 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - "§4.1#p88"
+  - "§4.1#p95"
   - "§5#r2"
   - "§5#r3"
   - "§7#r11"
@@ -23,7 +23,7 @@ sourceRules:
 smoke: []
 dependsOn: []
 trace:
-  §4.1#p88: [2, 91, 92, 172]
+  §4.1#p95: [2, 91, 92, 172]
   §5#r2: [2, 8]
   §5#r3: [13, 16]
   §7#r11: 176
@@ -34,7 +34,7 @@ trace:
   EB-FLT-2@changelog: [32, 34, 35, 37, 41, 43, 45, 47, 48, 51, 56, 58, 60, 72, 76]
   EB-FLT-6@changelog: [84, 86, 87]
   EB-SRT-3@changelog: [95, 97, 99, 102, 103, 104]
-  EB-KOL-1@changelog: [125, 126, 127, 129, 131, 136, 141, 148, 150, 152, 158, 167, 169]
+  EB-KOL-1@changelog: [125, 126, 127, 129, 131, 136, 141, 148, 150, 152, 158, 167, 169, 185, 188, 190, 192, 196, 198]
   EB-DL-2@changelog: 176
   EB-DL-5: [180, 181, 183]
 anchor: [89]
@@ -204,11 +204,11 @@ coverage:
 110. Ketik `abc` pada input nomor halaman, tekan Enter
 111. Verifikasi halaman aktif tetap `2` dan input `abc` diabaikan
 112. Ketik `-1` pada input nomor halaman, tekan Enter
-113. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+113. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1
 114. Ketik `4` pada input nomor halaman, tekan Enter
-115. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir[^drift-1]
+115. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir
 116. Ketik `0` pada input nomor halaman, tekan Enter
-117. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+117. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1
 118. Klik halaman `2`
 119. Klik dropdown `Rows per page`
 120. Pilih ukuran halaman `25`
@@ -292,4 +292,21 @@ coverage:
 182. Tunggu sampai berkas siap
 183. Verifikasi loading screen hilang dan berkas langsung terunduh tanpa toast sukses
 
-[^drift-1]: Drift PRD dan foundation vs kontrak komponen. PRD §4.1 (Dialog Changelog): tidak menetapkan perilaku nomor halaman tidak valid, paginasi mengikuti pola bersama foundation. foundation `prd-conventions.md` §9.18: «Nomor halaman tidak valid (0, negatif, melebihi halaman terakhir, bukan angka) pada input nomor halaman: input diabaikan dan tabel tetap di halaman sekarang.» Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Diasersi: kontrak untuk nomor `0`, `-1`, dan `4`, sehingga halaman berpindah ke halaman 1 atau halaman terakhir (SB-7); input `abc` tidak bertentangan dengan kontrak dan tetap diabaikan.
+### Kolom yang disembunyikan di Column Visibility ditampilkan kembali
+184. Tampilkan Dialog Changelog dengan kondisi K1
+185. Verifikasi tabel menampilkan header kolom `Modified By`
+186. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+187. Hilangkan centang kolom `Modified By` pada Column Visibility
+188. Verifikasi tabel tidak menampilkan header kolom `Modified By`
+189. Centang kolom `Modified By` pada Column Visibility
+190. Verifikasi tabel menampilkan header kolom `Modified By`
+
+### Kolom yang disembunyikan di modal Setup Column ditampilkan kembali
+191. Tampilkan Dialog Changelog dengan kondisi K1
+192. Verifikasi tabel menampilkan header kolom `Modified By`
+193. Klik header kolom Actions (`⋯`) untuk membuka Column Visibility
+194. Klik `Setup Column...` pada daftar Column Visibility
+195. Hilangkan centang kolom `Modified By` pada modal
+196. Verifikasi tabel di balik modal tidak menampilkan header kolom `Modified By`
+197. Centang kolom `Modified By` pada modal
+198. Verifikasi tabel di balik modal menampilkan header kolom `Modified By`

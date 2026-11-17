@@ -4,14 +4,14 @@ title: "Changelog mencatat perubahan setting per field"
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
-sourceRules: ["§4.1#r48", "§4.1#r50", "§4.1#r91", "§4.4#r15", "§8.1#r1", "§8.1#r3", "§8.1#r4", "§8.2#r1", "§9.2#p17", "§9.2#b376", "§9.2#b377", "§9.4.2#r53", "§9.4.2#r84", "§9.4.3#b8", "§9.4.4#r44", "§9.7#r8", "§11#r10", "EB-LOG-1", "EB-LOG-2", "§9.2#b42"]
+status: ready-for-automation
+sourceRules: ["§4.1#r55", "§4.1#r57", "§4.1#r102", "§4.4#r15", "§8.1#r1", "§8.1#r3", "§8.1#r4", "§8.2#r1", "§9.2#p17", "§9.2#b376", "§9.2#b377", "§9.4.2#r53", "§9.4.2#r92", "§9.4.3#b8", "§9.4.4#r44", "§9.7#r8", "§11#r10", "EB-LOG-1", "EB-LOG-2", "§9.2#b42"]
 smoke: ["§9.2#b42"]
 dependsOn: []
 trace:
-  "§4.1#r48": 35
-  "§4.1#r50": [90, 97]
-  "§4.1#r91": [15, 134, 148, 149]
+  "§4.1#r55": 35
+  "§4.1#r57": [90, 97]
+  "§4.1#r102": [15, 134, 148, 149]
   "§4.4#r15": 2
   "§8.1#r1": [15, 90]
   "§8.1#r3": [15, 26]
@@ -21,7 +21,7 @@ trace:
   "§9.2#b376": 4
   "§9.2#b377": 116
   "§9.4.2#r53": 4
-  "§9.4.2#r84": [15, 26, 44, 53, 80]
+  "§9.4.2#r92": [15, 26, 44, 53, 80]
   "§9.4.3#b8": [116, 125]
   "§9.4.4#r44": 4
   "§9.7#r8": 15
@@ -36,15 +36,16 @@ coverage:
 # Changelog mencatat perubahan setting per field
 
 ## Prerequisites
-- Aktor: Total Control `Rina Wulandari` (DU-020-1).
+- Aktor: Total Control `Rina Wulandari {runId}` (DU-020-1).
 - Layar awal: Fixed Asset > Settings > Transaction Settings.
 - Data:
-  - DU-020-1: User `Rina Wulandari`, role Total Control. Modified By yang diharapkan `Rina W`, dari Name `Rina Wulandari`.
-  - DU-020-2: Category leaf `Mobil Dinas {runId}` di bawah Category induk `Kendaraan {runId}`, semua field bernilai Inherit; full path Category `Kendaraan {runId} > Mobil Dinas {runId}`.
-  - DU-020-3: Group `Proyek Karawang {runId}`.
+  - DU-020-1: User `Rina Wulandari {runId}`, role Total Control, cakupan seluruh Group di entitas DU-020-19, dibuat di entitas itu. Modified By yang diharapkan `Rina W`, dari Name `Rina Wulandari {runId}`.
+  - DU-020-2: Category leaf `Mobil Dinas {runId}` di bawah Category induk `Kendaraan {runId}`, semua field bernilai Inherit; full path Category `Kendaraan {runId} > Mobil Dinas {runId}`; ada di entitas DU-020-19.
+  - DU-020-3: Group `Proyek Karawang {runId}`, ada di entitas DU-020-19.
+  - DU-020-19: Entitas `Armada Mitra Sejahtera {runId}`, entitas khusus yang hanya dipakai spec ini dan tidak dipakai spec lain. Plan-nya menyediakan transaksi Borrow, Assign, Transfer, dan Disposal, serta Approval Workflow.
 - Kondisi:
-  - Long missing after bernilai `30` pada All categories.
-  - Company default menyimpan Duration unit `Days`; level Feature Suite Borrowing `Full`.
+  - Company default entitas DU-020-19 bernilai bawaan: Max duration `14`, Duration unit `Days`, Allowed disposal types seluruh opsi (`Sell`, `Scrap`, `Donate`, `Trade-in`, `Write-off`), dan Long missing after `30`.
+  - Level Feature Suite Borrowing, Assignment, Transfer, dan Disposal entitas DU-020-19 bernilai `Full`.
 
 ## Test Steps
 
@@ -89,7 +90,7 @@ coverage:
 32. Klik `[Save]` pada dialog Save Changes
 33. Klik ikon Changelog di header
 34. Ketik Search `{runId}`, tekan Enter
-35. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Inherit`, dan New Value `Sell, Scrap, Lost, Trade-in, Write-off`
+35. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Inherit`, dan New Value `Sell, Scrap, Trade-in, Write-off`
 36. Klik `✕` pada dialog Changelog
 
 ### Edit Photo at start dari Inherit ke OFF tercatat per field
@@ -149,19 +150,19 @@ coverage:
 ### Edit setting All categories tercatat dengan Category All categories
 83. Klik All categories di Sidebar Category Tree
 84. Klik tab `Damaged & Missing`
-85. Isi Long missing after `31`
+85. Isi Long missing after `45`
 86. Klik `[Save]`
 87. Klik `[Save]` pada dialog Save Changes
 88. Klik ikon Changelog di header
 89. Ketik Search `Long missing after`, tekan Enter
-90. Verifikasi baris teratas hasil Search, menurut urutan bawaan Date Newest First, memuat Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `30 days`, dan New Value `31 days`
+90. Verifikasi baris teratas hasil Search, menurut urutan bawaan Date Newest First, memuat Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `30 days`, dan New Value `45 days`
 91. Klik `✕` pada dialog Changelog
 92. Isi Long missing after `30`
 93. Klik `[Save]`
 94. Klik `[Save]` pada dialog Save Changes
 95. Klik ikon Changelog di header
 96. Ketik Search `Long missing after`, tekan Enter
-97. Verifikasi baris teratas hasil Search, menurut urutan bawaan Date Newest First, memuat Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `31 days`, dan New Value `30 days`
+97. Verifikasi baris teratas hasil Search, menurut urutan bawaan Date Newest First, memuat Category `All categories`, Field `Damaged & Missing (Long missing after)`, Old Value `45 days`, dan New Value `30 days`
 98. Klik `✕` pada dialog Changelog
 
 ### Add override dan Delete override tidak masuk Changelog

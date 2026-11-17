@@ -6,26 +6,28 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§9.2#b39", "§9.2#b65", "§9.2#b180", "§9.4.2#r32", "§9.4.2#r88", "§9.4.2#r90", "§9.4.4#r17", "§9.4.4#r32", "§9.6#r3", "§9.6#r18", "§9.6#r19", EB-ERR-3, EB-CON-1, EB-CON-2, EB-CON-3, EB-EDG-1]
+sourceRules: ["§9.2#b39", "§9.2#b65", "§9.2#b180", "§9.4.2#r32", "§9.4.2#r96", "§9.4.2#r98", "§9.4.4#r17", "§9.4.4#r32", "§9.6#r3", "§9.6#r18", "§9.6#r19", EB-ERR-3, EB-CON-1, EB-CON-2, EB-CON-3, EB-EDG-1, EB-BLK-3, "§9.4.2#r97"]
 smoke: []
 dependsOn: []
 trace:
   "§9.2#b39": [13, 14]
   "§9.2#b65": 7
-  "§9.2#b180": [28, 29]
-  "§9.4.2#r32": [30, 31, 32]
-  "§9.4.2#r88": 7
-  "§9.4.2#r90": 8
+  "§9.2#b180": [29, 30]
+  "§9.4.2#r32": [31, 32, 33]
+  "§9.4.2#r96": 7
+  "§9.4.2#r98": 8
   "§9.4.4#r17": 8
-  "§9.4.4#r32": [30, 31]
-  "§9.6#r3": [29, 30]
+  "§9.4.4#r32": [31, 32]
+  "§9.6#r3": [30, 31]
   "§9.6#r18": [17, 18]
   "§9.6#r19": 7
-  EB-ERR-3: [28, 29, 30, 31]
+  EB-ERR-3: [28, 29, 30, 31, 32]
   EB-CON-1: [6, 7]
   EB-CON-2: [21, 22, 23]
-  EB-CON-3: [21, 34, 35]
-  EB-EDG-1: 29
+  EB-CON-3: [21, 35, 36]
+  EB-EDG-1: 30
+  EB-BLK-3: [39, 40]
+  "§9.4.2#r97": 6
 ---
 # Konkurensi dan aksi berulang pada Settings dan override
 
@@ -41,8 +43,12 @@ trace:
   - DU-095-7: Override, override yang dihapus Budi Penyunting lalu dihapus lagi Maya Pengelola: Scope `Group`; Target `Tim Hapus Serentak {runId}`; Category `Perangkat Serentak {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
   - DU-095-8: Override, override yang dihapus bersamaan dengan Save Category: Scope `Group`; Target `Tim Pasangan {runId}`; Category `Perangkat Serentak {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
   - DU-095-9 sampai DU-095-15 adalah nilai input Save dan Add override di langkah masing-masing, bukan record yang sudah ada.
+  - DU-095-16: Group, Group target override pertama pada bulk Delete klik ganda: Name `Tim Ganda Satu {runId}`.
+  - DU-095-17: Group, Group target override kedua pada bulk Delete klik ganda: Name `Tim Ganda Dua {runId}`.
+  - DU-095-18: Override, override Group pertama pada bulk Delete klik ganda: Scope `Group`; Target `Tim Ganda Satu {runId}`; Category `Perangkat Serentak {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-095-19: Override, override Group kedua pada bulk Delete klik ganda: Scope `Group`; Target `Tim Ganda Dua {runId}`; Category `Perangkat Serentak {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `7`.
 - Kondisi:
-  - Seluruh field Category `Perangkat Serentak {runId}` bernilai Inherit dan belum ada override pada Category itu selain DU-095-7 dan DU-095-8.
+  - Seluruh field Category `Perangkat Serentak {runId}` bernilai Inherit dan belum ada override pada Category itu selain DU-095-7, DU-095-8, DU-095-18, dan DU-095-19.
   - Jumlah entri Changelog dan Activity Log serta versi setting dibaca sebagai selisih terhadap nilai yang dicatat sebelum aksi, karena pihak lain dapat mengubahnya.
   - Pembukaan draft oleh kedua pengelola terjadi sebelum Save pertama diterima, sehingga keduanya memulai dari nilai tersimpan yang sama.
 
@@ -76,7 +82,7 @@ trace:
 19. Maya Pengelola mencatat jumlah override Category `Perangkat Serentak {runId}`
 20. Maya Pengelola dan Budi Penyunting menambahkan bersamaan override Group `Tim Serentak {runId}` pada Category `Perangkat Serentak {runId}` untuk transaksi peminjaman, Maya Pengelola dengan Max duration `5` dan Budi Penyunting dengan Max duration `6`
 21. Verifikasi tepat satu dari kedua Add override diterima
-22. Verifikasi Add override yang lain ditolak dengan pesan `An active override already exists for this target, category, and transaction. Delete it first`
+22. Verifikasi Add override yang lain ditolak karena override aktif untuk target, Category, dan transaksi yang sama sudah ada
 23. Verifikasi jumlah override Category `Perangkat Serentak {runId}` bertambah tepat satu dari yang dicatat, dengan satu override aktif untuk Group `Tim Serentak {runId}`
 
 ### Override yang sudah dihapus pengelola lain dihapus lagi tanpa efek ganda
@@ -84,13 +90,20 @@ trace:
 25. Maya Pengelola mencatat jumlah entri Activity Log dan versi setting
 26. Budi Penyunting menghapus override Group `Tim Hapus Serentak {runId}`
 27. Maya Pengelola menghapus override Group `Tim Hapus Serentak {runId}` dari daftarnya yang belum diperbarui
-28. Verifikasi override Group `Tim Hapus Serentak {runId}` sudah terhapus
-29. Verifikasi tidak ada override lain yang ikut terhapus oleh Delete kedua
-30. Verifikasi Activity Log bertambah tepat satu entri Delete override, bukan dua, karena tidak ada entri bila tidak ada override terhapus
-31. Verifikasi versi setting naik tepat satu dari yang dicatat, karena Delete kedua tidak menambah efek
-32. Verifikasi baris override Group `Tim Hapus Serentak {runId}` hilang dari daftar setelah daftar diperbarui
+28. Verifikasi Delete kedua Maya Pengelola diterima server sebagai sukses tanpa efek tambahan, bukan ditolak sebagai tidak ditemukan, karena penghapusan berulang pada override yang sudah dihapus bersifat idempotent
+29. Verifikasi override Group `Tim Hapus Serentak {runId}` sudah terhapus
+30. Verifikasi tidak ada override lain yang ikut terhapus oleh Delete kedua
+31. Verifikasi Activity Log bertambah tepat satu entri Delete override, bukan dua, karena tidak ada entri bila tidak ada override terhapus
+32. Verifikasi versi setting naik tepat satu dari yang dicatat, karena Delete kedua tidak menambah efek
+33. Verifikasi baris override Group `Tim Hapus Serentak {runId}` hilang dari daftar setelah daftar diperbarui
 
 ### Save Category dan Delete override pada record berbeda bersamaan sama-sama berhasil
-33. Maya Pengelola dan Budi Penyunting bertindak bersamaan: Maya Pengelola menyimpan Category `Perangkat Serentak {runId}` dengan Max duration nilai sendiri `35`, dan Budi Penyunting menghapus override Group `Tim Pasangan {runId}`
-34. Verifikasi Save Maya Pengelola diterima dan Max duration Category `Perangkat Serentak {runId}` bernilai `35`
-35. Verifikasi Delete Budi Penyunting diterima dan override Group `Tim Pasangan {runId}` terhapus
+34. Maya Pengelola dan Budi Penyunting bertindak bersamaan: Maya Pengelola menyimpan Category `Perangkat Serentak {runId}` dengan Max duration nilai sendiri `35`, dan Budi Penyunting menghapus override Group `Tim Pasangan {runId}`
+35. Verifikasi Save Maya Pengelola diterima dan Max duration Category `Perangkat Serentak {runId}` bernilai `35`
+36. Verifikasi Delete Budi Penyunting diterima dan override Group `Tim Pasangan {runId}` terhapus
+
+### Bulk Delete yang dikonfirmasi dua kali memproses setiap override sekali
+37. Maya Pengelola mencatat jumlah entri Activity Log
+38. Maya Pengelola mengirim bulk Delete override Group `Tim Ganda Satu {runId}` dan override Group `Tim Ganda Dua {runId}` pada Category `Perangkat Serentak {runId}` untuk transaksi peminjaman dua kali berturut-turut tanpa jeda
+39. Verifikasi kedua override terhapus
+40. Verifikasi Activity Log bertambah tepat dua entri dari yang dicatat, satu per override yang dihapus, bukan empat, karena pengiriman ganda memproses setiap override sekali

@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r246", "§4.1#r247", "§9.2#b122", "§9.2#b124", "§9.2#b141", "§9.2#b147", "§9.4.2#r34", "§9.7#r7", "§9.7#r14", "§9.7#r17", "§9.7#r30", "§11#r14", "EB-XM-2@asset-detail"]
+sourceRules: ["§4.1#r273", "§4.1#r274", "§9.2#b122", "§9.2#b124", "§9.2#b141", "§9.2#b147", "§9.4.2#r34", "§9.7#r7", "§9.7#r14", "§9.7#r17", "§9.7#r30", "§11#r14", "EB-XM-2@asset-detail", "§9.2#b125"]
 smoke: []
 dependsOn:
   - "Asset: Asset Detail dan penghapusan aset"
 trace:
-  "§4.1#r246": 40
-  "§4.1#r247": [41, 42]
+  "§4.1#r273": 40
+  "§4.1#r274": [41, 42]
   "§9.2#b122": 37
   "§9.2#b124": 40
   "§9.2#b141": [11, 15]
@@ -23,6 +23,7 @@ trace:
   "§9.7#r30": [45, 47]
   "§11#r14": [11, 12]
   "EB-XM-2@asset-detail": [11, 12, 21, 22, 32]
+  "§9.2#b125": [41, 42]
 anchor: [3, 4, 25]
 coverage:
   web: automated
@@ -35,7 +36,7 @@ coverage:
 - Layar awal: Fixed Asset > Asset List
 - Data:
   - DU-047-1: Group Name `Yard Operations {runId}`; Group tanpa Division.
-  - DU-047-2: Category Name `Heavy Machinery {runId}`, Max duration `14 Days`; Category leaf dengan Max duration Borrow nilai sendiri.
+  - DU-047-2: Category Name `Heavy Machinery {runId}`, Max duration `18 Days`; Category leaf dengan Max duration Borrow nilai sendiri.
   - DU-047-3: Asset Name `Skid Steer SS60 {runId}`, Category `Heavy Machinery {runId}`, Group `Yard Operations {runId}`, Status `Available`; aset tanpa override yang dipakai siklus override.
   - DU-047-4: Asset Name `Hydraulic Excavator HX210 {runId}`, Category `Heavy Machinery {runId}`, Group `Yard Operations {runId}`, Status `Available`; aset yang dihapus sesudah punya override.
   - DU-047-5: Asset Name `Scissor Lift SL30 {runId}`, Category `Heavy Machinery {runId}`, Group `Yard Operations {runId}`, Status `Waiting for Approval`; aset dengan pengajuan yang sudah melewati batas Transaction timeout.
@@ -47,7 +48,7 @@ coverage:
 ### Override aktif memberi penanda di halaman detail aset dan filter di Asset List
 1. Ketik Search `Skid Steer SS60 {runId}`, tekan Enter
 2. Buka halaman detail aset `Skid Steer SS60 {runId}`
-3. Verifikasi Transaction rules aset `Skid Steer SS60 {runId}` menampilkan Max duration `14` dari Category `Heavy Machinery {runId}`
+3. Verifikasi Transaction rules aset `Skid Steer SS60 {runId}` menampilkan Max duration `18` dari Category `Heavy Machinery {runId}`
 4. Verifikasi header halaman detail aset aset `Skid Steer SS60 {runId}` tidak memuat penanda override
 5. Buka tab `Borrow` pada node Category `Heavy Machinery {runId}` di Fixed Asset > Settings > Transaction Settings
 6. Klik `[+ Override]` pada bagian Overrides
@@ -68,7 +69,7 @@ coverage:
 19. Klik `[Delete]` pada dialog Delete Override
 20. Buka halaman detail aset `Skid Steer SS60 {runId}`
 21. Verifikasi penanda override tidak tampil lagi di header halaman detail aset aset `Skid Steer SS60 {runId}`
-22. Verifikasi Transaction rules aset `Skid Steer SS60 {runId}` kembali menampilkan Max duration `14` dari Category `Heavy Machinery {runId}`
+22. Verifikasi Transaction rules aset `Skid Steer SS60 {runId}` kembali menampilkan Max duration `18` dari Category `Heavy Machinery {runId}`
 23. Buka Asset List
 24. Terapkan filter aset yang terkena override aktif
 25. Verifikasi aset `Hydraulic Excavator HX210 {runId}` tampil pada hasil filter override aktif

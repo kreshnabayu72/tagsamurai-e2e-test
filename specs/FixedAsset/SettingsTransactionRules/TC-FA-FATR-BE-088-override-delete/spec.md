@@ -6,32 +6,34 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r45", "§4.1#r348", FI-01sampaiFI-14, "§9.2#b116", "§9.2#b117", "§9.2#b126", "§9.2#b162", "§9.2#b163", "§9.2#b180", "§9.2#b189", "§9.2#b190", "§9.4.1#r19", "§9.4.2#r78", "§9.4.2#r79", "§9.4.2#r80", "§9.4.2#r117", "§9.4.2#r118", "§9.4.4#r26", "§9.6#r3", "§9.6#r26", "§9.6#r29", "§9.10.4#b3"]
+sourceRules: ["§Aturan Logika Modul#r48", "§4.1#r374", FI-01sampaiFI-14, "§9.2#b116", "§9.2#b117", "§9.2#b126", "§9.2#b162", "§9.2#b163", "§9.2#b180", "§9.2#b189", "§9.2#b190", "§9.4.1#r19", "§9.4.2#r86", "§9.4.2#r87", "§9.4.2#r88", "§9.4.2#r125", "§9.4.2#r126", "§9.4.4#r26", "§9.6#r3", "§9.6#r26", "§9.6#r29", "§9.10.4#b3", EB-AKS-5@delete-override, "§9.2#b191"]
 smoke: []
 dependsOn: []
 trace:
-  "§Aturan Logika Modul#r45": [16, 18]
-  "§4.1#r348": [3, 5]
+  "§Aturan Logika Modul#r48": [16, 18]
+  "§4.1#r374": [3, 5, 47, 50, 51, 54, 55]
   FI-01sampaiFI-14: [9, 29, 31, 33]
   "§9.2#b116": 13
   "§9.2#b117": 10
-  "§9.2#b126": 22
+  "§9.2#b126": [22, 37, 39, 41, 43, 44]
   "§9.2#b162": 7
   "§9.2#b163": 8
   "§9.2#b180": 27
   "§9.2#b189": 13
   "§9.2#b190": 12
   "§9.4.1#r19": 8
-  "§9.4.2#r78": 13
-  "§9.4.2#r79": 12
-  "§9.4.2#r80": [3, 4]
-  "§9.4.2#r117": 7
-  "§9.4.2#r118": 8
+  "§9.4.2#r86": 13
+  "§9.4.2#r87": 12
+  "§9.4.2#r88": [3, 4]
+  "§9.4.2#r125": 7
+  "§9.4.2#r126": 8
   "§9.4.4#r26": 10
   "§9.6#r3": [5, 27]
   "§9.6#r26": [7, 15, 18, 20]
   "§9.6#r29": 8
   "§9.10.4#b3": [24, 35]
+  EB-AKS-5@delete-override: 7
+  "§9.2#b191": 3
 ---
 # Delete override baris dan bulk
 
@@ -76,6 +78,14 @@ trace:
   - DU-088-37: Asset Name, Asset Name excess pada masa Grace: Name `Nama Excess Hapus {runId}`; Category `Penghapusan Biasa {runId}`.
   - DU-088-38: Override, override Asset Name excess yang boleh dihapus: Scope `Asset Name`; Target `Nama Excess Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
   - DU-088-39: Asset, aset di Group target Delete satu baris: Name `Perangkat Hapus Satu {runId}`; Asset Name `Perangkat Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Group `Tim Hapus Satu {runId}`.
+  - DU-088-40: Category, Category leaf yang sudah dihapus dengan override yang tertinggal: Name `Kategori Lama Hapus {runId}`.
+  - DU-088-41: Override, override Group dalam cakupan Sari Penata pada Category yang sudah dihapus: Scope `Group`; Target `Tim Hapus Lingkup {runId}`; Category `Kategori Lama Hapus {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-088-42: Group, Group yang sudah dinonaktifkan dengan override yang tertinggal: Name `Tim Nonaktif Hapus {runId}`.
+  - DU-088-43: Override, override pada Group yang sudah dinonaktifkan: Scope `Group`; Target `Tim Nonaktif Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-088-44: Asset Name, Asset Name yang sudah dihapus dengan override yang tertinggal: Name `Nama Lama Hapus {runId}`; Category `Penghapusan Biasa {runId}`.
+  - DU-088-45: Override, override pada Asset Name yang sudah dihapus: Scope `Asset Name`; Target `Nama Lama Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
+  - DU-088-46: Asset, aset yang sudah dihapus dengan override yang tertinggal: Name `Perangkat Lama Hapus {runId}`; Asset Name `Perangkat Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Group `Tim Hapus Satu {runId}`.
+  - DU-088-47: Override, override pada aset yang sudah dihapus: Scope `aset`; Target `Perangkat Lama Hapus {runId}`; Category `Penghapusan Biasa {runId}`; Transaksi `peminjaman`; Field `Max duration`; Value `5`.
 - Kondisi:
   - Category `Penghapusan Guard {runId}` memiliki Allowed assignee: Division nilai sendiri `OFF` dan Allowed assignee: Employee `ON`; override pada Category itu yang memuat Allowed assignee: Division `ON` adalah satu-satunya penyebab kombinasi override aset tetap tidak OFF/OFF.
   - Transaksi Borrow disebut «transaksi peminjaman» dan transaksi Assign disebut «transaksi penugasan» di langkah.
@@ -83,6 +93,7 @@ trace:
   - Group `Tim Excess Hapus {runId}` dan Asset Name `Nama Excess Hapus {runId}` berstatus excess pada masa Grace, dan Group `Tim Dihapus Lama {runId}` sudah dihapus sehingga overridenya tampil sebagai tidak berlaku.
   - Allow Assign bernilai `Allow` pada Company default dan Inherit pada Category `Penghapusan Guard {runId}`; spec ini tidak mengubahnya, sehingga penolakan guard Allowed assignee berlaku untuk aset yang nilai efektif Allow Assign-nya bukan Deny.
   - Category `Penghapusan Biasa {runId}` pada transaksi Borrow: Max duration nilai sendiri `9`; field lainnya Inherit.
+  - Category `Kategori Lama Hapus {runId}`, Asset Name `Nama Lama Hapus {runId}`, dan aset `Perangkat Lama Hapus {runId}` sudah dihapus, dan Group `Tim Nonaktif Hapus {runId}` sudah dinonaktifkan, sehingga override pada keempatnya tampil tidak berlaku.
 
 ## Test Steps
 
@@ -140,3 +151,29 @@ trace:
 ### Delete override pada target Asset Name excess diterima seperti biasa
 34. Maya Pengelola menghapus override Asset Name `Nama Excess Hapus {runId}`, Asset Name yang berstatus excess
 35. Verifikasi override itu terhapus, karena Delete tidak memeriksa status excess
+
+### Override yang Category-nya dihapus atau targetnya dinonaktifkan atau dihapus tetap dapat dihapus
+36. Sari Penata menghapus override Group `Tim Hapus Lingkup {runId}` pada Category `Kategori Lama Hapus {runId}` untuk transaksi peminjaman, yang Category-nya sudah dihapus
+37. Verifikasi override itu terhapus dengan aturan Delete yang sama seperti baris lain
+38. Maya Pengelola menghapus override Group `Tim Nonaktif Hapus {runId}` pada Category `Penghapusan Biasa {runId}` untuk transaksi peminjaman, yang Group-nya sudah dinonaktifkan
+39. Verifikasi override itu terhapus dengan aturan Delete yang sama seperti baris lain
+40. Maya Pengelola menghapus override Asset Name `Nama Lama Hapus {runId}` pada Category `Penghapusan Biasa {runId}` untuk transaksi peminjaman, yang Asset Name-nya sudah dihapus
+41. Verifikasi override itu terhapus dengan aturan Delete yang sama seperti baris lain
+42. Maya Pengelola menghapus override aset `Perangkat Lama Hapus {runId}` pada Category `Penghapusan Biasa {runId}` untuk transaksi peminjaman, yang asetnya sudah dihapus
+43. Verifikasi override itu terhapus dengan aturan Delete yang sama seperti baris lain
+44. Verifikasi override Group `Tim Hapus Luar {runId}` pada Category `Penghapusan Guard {runId}` untuk transaksi peminjaman masih ada, sehingga hanya override yang dipilih yang terhapus
+
+### Bulk Delete yang seluruh barisnya ditolak guard tidak menulis log
+45. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log untuk Category `Penghapusan Guard {runId}`
+46. Maya Pengelola menghapus override Group `Tim Dihapus Dua Kali {runId}` pada Category `Penghapusan Guard {runId}` untuk transaksi peminjaman
+47. Verifikasi Activity Log untuk Category `Penghapusan Guard {runId}` bertambah tepat satu entri, untuk override yang terhapus
+48. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log untuk Category `Penghapusan Guard {runId}`
+49. Maya Pengelola menghapus bulk override Group `Tim Hapus Lingkup {runId}` dan override Group `Tim Hapus Luar Guard {runId}` untuk transaksi penugasan, yang keduanya akan ditolak guard Allowed assignee
+50. Verifikasi kedua override masih ada karena seluruh baris ditolak guard
+51. Verifikasi Changelog dan Activity Log untuk Category `Penghapusan Guard {runId}` tidak bertambah entri dari jumlah yang dicatat
+
+### Bulk Delete yang seluruh barisnya di luar cakupan tidak menulis log
+52. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log untuk Category `Penghapusan Guard {runId}`
+53. Sari Penata menghapus bulk override Group `Tim Hapus Luar {runId}` untuk transaksi peminjaman dan override Group `Tim Hapus Luar Guard {runId}` untuk transaksi penugasan, yang keduanya di luar cakupannya
+54. Verifikasi kedua override masih ada karena seluruh baris dilewati sebagai di luar cakupan
+55. Verifikasi Changelog dan Activity Log untuk Category `Penghapusan Guard {runId}` tidak bertambah entri dari jumlah yang dicatat

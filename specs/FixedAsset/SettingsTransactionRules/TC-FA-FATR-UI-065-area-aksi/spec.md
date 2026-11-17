@@ -6,14 +6,14 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r118
-  - §4.1#r218
-  - §4.1#r219
-  - §4.1#r221
-  - §4.1#r223
-  - §4.1#r224
-  - §4.1#r227
-  - §4.1#r228
+  - §4.1#r128
+  - §4.1#r245
+  - §4.1#r246
+  - §4.1#r248
+  - §4.1#r250
+  - §4.1#r251
+  - §4.1#r254
+  - §4.1#r255
   - §4.2#r5
   - §4.3#r2
   - §4.3#r6
@@ -21,29 +21,28 @@ sourceRules:
   - §4.4#r4
   - §4.4#r5
   - §4.4#r6
-  - AU-BAGIAN-asampaiAU-BAGIAN-o,AU-NILAI-asampaiAU-NILAI-j,AU-TOOLTIP-asampaiAU-TOOLTIP-d
+  - AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f
   - §9.2#b26
   - §9.2#b27
-  - §9.4.2#r97
-  - §9.4.2#r98
-  - §9.4.2#r99
+  - §9.4.2#r105
+  - §9.4.2#r106
+  - §9.4.2#r107
   - §9.4.4#r4
   - §9.10.1#b4
   - §9.10.2#b4
-  - §9.10.3#b4
   - EB-TBL-5@tombol-save
   - EB-TBL-5@tombol-reset-to-default
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r118: [53, 54, 55]
-  §4.1#r218: [47, 48]
-  §4.1#r219: 29
-  §4.1#r221: 23
-  §4.1#r223: 16
-  §4.1#r224: [6, 19]
-  §4.1#r227: [27, 28, 34, 38, 39]
-  §4.1#r228: [41, 44]
+  §4.1#r128: [53, 54, 55]
+  §4.1#r245: [47, 48]
+  §4.1#r246: 29
+  §4.1#r248: 23
+  §4.1#r250: 16
+  §4.1#r251: [6, 19]
+  §4.1#r254: [27, 28, 34, 38, 39]
+  §4.1#r255: [41, 44]
   §4.2#r5: [10, 21]
   §4.3#r2: [4, 5]
   §4.3#r6: 2
@@ -51,18 +50,17 @@ trace:
   §4.4#r4: 9
   §4.4#r5: [25, 26, 47]
   §4.4#r6: 16
-  AU-BAGIAN-asampaiAU-BAGIAN-o,AU-NILAI-asampaiAU-NILAI-j,AU-TOOLTIP-asampaiAU-TOOLTIP-d: [25, 26, 43]
-  §9.2#b26: [14, 81]
+  AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f: [25, 26, 43]
+  §9.2#b26: [14, 76]
   §9.2#b27: [31, 36, 50]
-  §9.4.2#r97: [59, 65, 71]
-  §9.4.2#r98: [59, 65, 66, 71]
-  §9.4.2#r99: [60, 61, 67, 72]
+  §9.4.2#r105: [59, 65]
+  §9.4.2#r106: [59, 65, 66]
+  §9.4.2#r107: [60, 61, 67]
   §9.4.4#r4: 61
   §9.10.1#b4: [57, 59]
   §9.10.2#b4: [63, 65, 66]
-  §9.10.3#b4: [69, 71]
-  EB-TBL-5@tombol-save: [74, 76]
-  EB-TBL-5@tombol-reset-to-default: [77, 79]
+  EB-TBL-5@tombol-save: [69, 71]
+  EB-TBL-5@tombol-reset-to-default: [72, 74]
 anchor: []
 coverage:
   web: automated
@@ -71,7 +69,7 @@ coverage:
 # Area utama: Set own value, Reset to inherit, Reset to Default, dan tombol Save
 
 ## Prerequisites
-- Aktor: Total Control; Read Only pada K11.
+- Aktor: Total Control; Read Only pada K10.
 - Layar awal: Area utama pada halaman Transaction Settings.
 - Komponen: Area utama
 - Data:
@@ -84,9 +82,8 @@ coverage:
   - DU-065-7: Pengaturan Company default tab Assign pada All categories: Allowed assignee: Employee `OFF`, Allowed assignee: Division `ON`, Max assets per assignee (concurrent) `5`.
   - DU-065-8: Pengaturan Company default tab Assign pada All categories: Require approval tersimpan `ON`, Max assets per assignee (concurrent) `5`.
   - DU-065-9: Pengaturan Company default tab Borrow pada All categories: Duration unit tersimpan `Hours`, Self service tersimpan `ON`, Max duration `30`.
-  - DU-065-10: Pengaturan Company default tab Assign pada All categories: Direct handover between holders tersimpan `Deny`, Max assets per assignee (concurrent) `5`.
-  - DU-065-11: Nilai Max duration yang dicoba: `20`.
-  - DU-065-12: Draft perubahan di node Category leaf `Machinery`: tab Borrow Max duration bernilai sendiri `20`. Node All categories yang dilihat tidak punya draft perubahan.
+  - DU-065-10: Nilai Max duration yang dicoba: `20`.
+  - DU-065-11: Draft perubahan di node Category leaf `Machinery`: tab Borrow Max duration bernilai sendiri `20`. Node All categories yang dilihat tidak punya draft perubahan.
 - Kondisi:
   - K1: node Category leaf `Machinery` terpilih, tab Borrow aktif, nilai memakai DU-065-1.
   - K2: node All categories terpilih, tab Borrow aktif, nilai memakai DU-065-2.
@@ -97,9 +94,8 @@ coverage:
   - K7: node All categories terpilih, tab Assign aktif, nilai memakai DU-065-7.
   - K8: node All categories terpilih, tab Assign aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-065-8.
   - K9: node All categories terpilih, tab Borrow aktif, level Feature Suite Borrowing Basic, nilai memakai DU-065-9.
-  - K10: node All categories terpilih, tab Assign aktif, level Feature Suite Assignment Basic, nilai memakai DU-065-10.
-  - K11: aktor Read Only, node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-065-2.
-  - K12: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-065-2, draft perubahan ada di node Category leaf `Machinery` sesuai DU-065-12.
+  - K10: aktor Read Only, node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-065-2.
+  - K11: node All categories terpilih, tab Borrow aktif, nilai Company default memakai DU-065-2, draft perubahan ada di node Category leaf `Machinery` sesuai DU-065-11.
 
 ## Test Steps
 
@@ -190,22 +186,15 @@ coverage:
 66. Verifikasi `Self service` tetap bernilai `ON`
 67. Verifikasi `Max duration` kembali ke nilai awal `14`
 
-### Reset to Default tidak menyentuh field bergerbang Assignment
-68. Tampilkan Area utama dengan kondisi K10
-69. Verifikasi `Direct handover between holders` disabled dengan nilai tersimpan `Deny`
-70. Klik `Reset to Default`
-71. Verifikasi `Direct handover between holders` tetap bernilai `Deny`
-72. Verifikasi `Max assets per assignee (concurrent)` kembali ke nilai awal `0`
-
 ### Alasan tombol disabled untuk Read Only
-73. Tampilkan Area utama dengan kondisi K11
-74. Verifikasi tombol `Save` disabled
-75. Arahkan kursor ke tombol `Save` yang disabled
-76. Verifikasi alasan tombol `Save` disabled tersampaikan
-77. Verifikasi tombol `Reset to Default` disabled
-78. Arahkan kursor ke tombol `Reset to Default` yang disabled
-79. Verifikasi alasan tombol `Reset to Default` disabled tersampaikan
+68. Tampilkan Area utama dengan kondisi K10
+69. Verifikasi tombol `Save` disabled
+70. Arahkan kursor ke tombol `Save` yang disabled
+71. Verifikasi alasan tombol `Save` disabled tersampaikan
+72. Verifikasi tombol `Reset to Default` disabled
+73. Arahkan kursor ke tombol `Reset to Default` yang disabled
+74. Verifikasi alasan tombol `Reset to Default` disabled tersampaikan
 
 ### Save aktif oleh draft di node lain
-80. Tampilkan Area utama dengan kondisi K12
-81. Verifikasi tombol `Save` aktif karena ada draft perubahan di node Category lain
+75. Tampilkan Area utama dengan kondisi K11
+76. Verifikasi tombol `Save` aktif karena ada draft perubahan di node Category lain

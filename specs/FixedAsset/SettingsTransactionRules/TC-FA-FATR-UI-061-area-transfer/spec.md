@@ -6,43 +6,43 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 sourceRules:
-  - §4.1#r55
-  - §4.1#r125
-  - §4.1#r126
-  - §4.1#r128
-  - §4.1#r127
-  - §4.1#r129
-  - §4.1#r161
-  - §4.1#r163
-  - §4.1#r179
-  - §4.1#r184
-  - §4.1#r181
-  - §4.1#r183
-  - §4.1#r185
-  - §4.1#r197
-  - §4.1#r200
-  - §4.1#r212
-  - §9.2#b424
+  - §4.1#r66
+  - §4.1#r135
+  - §4.1#r136
+  - §4.1#r138
+  - §4.1#r137
+  - §4.1#r139
+  - §4.1#r171
+  - §4.1#r173
+  - §4.1#r187
+  - §4.1#r192
+  - §4.1#r189
+  - §4.1#r191
+  - §4.1#r193
+  - §4.1#r206
+  - §4.1#r209
+  - §4.1#r221
+  - §9.2#b423
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r55: [2, 4]
-  §4.1#r125: [6, 8, 42, 46]
-  §4.1#r126: [10, 12]
-  §4.1#r128: [15, 17, 43, 47]
-  §4.1#r127: [14, 19]
-  §4.1#r129: 20
-  §4.1#r161: [22, 60, 64]
-  §4.1#r163: [23, 61, 65]
-  §4.1#r179: [25, 56, 58]
-  §4.1#r184: [26, 28, 68, 70]
-  §4.1#r181: [30, 33, 62, 66]
-  §4.1#r183: [31, 50, 53]
-  §4.1#r185: [34, 36, 51, 54]
-  §4.1#r197: 36
-  §4.1#r200: 39
-  §4.1#r212: [40, 44, 48]
-  §9.2#b424: [22, 23]
+  §4.1#r66: [2, 4, 76]
+  §4.1#r135: [6, 8, 42, 46, 78]
+  §4.1#r136: [10, 12, 80]
+  §4.1#r138: [15, 17, 43, 47, 84]
+  §4.1#r137: [14, 19, 72, 82]
+  §4.1#r139: 20
+  §4.1#r171: [22, 60, 64, 86]
+  §4.1#r173: [23, 61, 65, 88]
+  §4.1#r187: [25, 56, 58, 90]
+  §4.1#r192: [26, 28, 68, 70, 92]
+  §4.1#r189: [30, 33, 62, 66, 94]
+  §4.1#r191: [31, 50, 53, 96]
+  §4.1#r193: [34, 36, 51, 54, 98]
+  §4.1#r206: 36
+  §4.1#r209: [39, 73, 100]
+  §4.1#r221: [40, 44, 48, 102]
+  §9.2#b423: [22, 23]
 anchor: []
 coverage:
   web: automated
@@ -62,7 +62,7 @@ coverage:
   - DU-061-6: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Photo at start `OFF`, Photo at end `OFF`, Require approval `ON`, Auto-approve `OFF`.
   - DU-061-5: Pengaturan Company default tab Transfer pada All categories yang berbeda dari nilai awal: Require approval `OFF`.
 - Kondisi:
-  - K1: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-1.
+  - K1: node All categories terpilih, tab Transfer aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-061-1.
   - K2: node Category leaf `Machinery` terpilih, tab Transfer aktif, nilai memakai DU-061-2.
   - K3: node All categories terpilih, tab Transfer aktif, nilai Company default memakai DU-061-3.
   - K4: node All categories terpilih, tab Transfer aktif, Approval Workflow tersedia di plan, nilai Company default memakai DU-061-4.
@@ -160,3 +160,39 @@ coverage:
 68. Verifikasi `Approval type` bernilai `All approvers (AND)`
 69. Klik `Reset to Default`
 70. Verifikasi `Approval type` kembali ke nilai awal `Any one approver`
+
+### Satuan field angka tab Transfer
+71. Tampilkan Area utama dengan kondisi K1
+72. Verifikasi addon `In-transit overdue after` menunjukkan satuan `days`
+73. Verifikasi addon `Transaction timeout` menunjukkan satuan `days`
+
+### Teks bantuan label field tab Transfer
+74. Tampilkan Area utama dengan kondisi K1
+75. Pindahkan fokus keyboard ke bantuan label `Allow Transfer`
+76. Verifikasi teks bantuan label `Allow Transfer` tersampaikan berbunyi `Whether this transaction can be made for assets in this category.`
+77. Pindahkan fokus keyboard ke bantuan label `Destination scope`
+78. Verifikasi teks bantuan label `Destination scope` tersampaikan berbunyi `Which groups an asset can be transferred to.`
+79. Pindahkan fokus keyboard ke bantuan label `Change Cost Center with Group`
+80. Verifikasi teks bantuan label `Change Cost Center with Group` tersampaikan berbunyi `Whether the asset's cost center changes to the destination group's default cost center when received.`
+81. Pindahkan fokus keyboard ke bantuan label `In-transit overdue after`
+82. Verifikasi teks bantuan label `In-transit overdue after` tersampaikan berbunyi `Days in transit before a transfer is flagged as overdue.`
+83. Pindahkan fokus keyboard ke bantuan label `Destination quota check`
+84. Verifikasi teks bantuan label `Destination quota check` tersampaikan berbunyi `Checks the destination group's asset quota when a transfer is submitted and received.`
+85. Pindahkan fokus keyboard ke bantuan label `Photo at start`
+86. Verifikasi teks bantuan label `Photo at start` tersampaikan berbunyi `Requires a camera photo at the first step of the transaction.`
+87. Pindahkan fokus keyboard ke bantuan label `Photo at end`
+88. Verifikasi teks bantuan label `Photo at end` tersampaikan berbunyi `Requires a camera photo at the last step of the transaction.`
+89. Pindahkan fokus keyboard ke bantuan label `Require approval`
+90. Verifikasi teks bantuan label `Require approval` tersampaikan berbunyi `Requires approval before the transaction proceeds.`
+91. Pindahkan fokus keyboard ke bantuan label `Approval type`
+92. Verifikasi teks bantuan label `Approval type` tersampaikan berbunyi `Whether one approver or all approvers must approve.`
+93. Pindahkan fokus keyboard ke bantuan label `Auto-approve`
+94. Verifikasi teks bantuan label `Auto-approve` tersampaikan berbunyi `Approves requests automatically when the conditions below are met.`
+95. Pindahkan fokus keyboard ke bantuan label `Auto-approve when destination in same parent Group`
+96. Verifikasi teks bantuan label `Auto-approve when destination in same parent Group` tersampaikan berbunyi `Transfers to a group under the same parent are approved automatically.`
+97. Pindahkan fokus keyboard ke bantuan label `Approval scope`
+98. Verifikasi teks bantuan label `Approval scope` tersampaikan berbunyi `Which side of the transfer must approve: origin, destination, or both.`
+99. Pindahkan fokus keyboard ke bantuan label `Transaction timeout`
+100. Verifikasi teks bantuan label `Transaction timeout` tersampaikan berbunyi `Days a transaction can wait at a step before it is closed automatically.`
+101. Pindahkan fokus keyboard ke bantuan label `Send email notifications`
+102. Verifikasi teks bantuan label `Send email notifications` tersampaikan berbunyi `Also sends this transaction's notifications by email.`

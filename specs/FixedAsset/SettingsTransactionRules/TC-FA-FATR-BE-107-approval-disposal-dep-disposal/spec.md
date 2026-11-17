@@ -4,89 +4,85 @@ title: "Approval dan penentuan approver pada transaksi Disposal"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules:
-  - "§Aturan Logika Modul#r74"
-  - "§Aturan Logika Modul#r81"
-  - "§4.1#r186"
-  - "§4.1#r188"
-  - "§4.1#r189"
-  - "§4.1#r193"
   - "§4.1#r194"
-  - "§4.1#r195"
   - "§4.1#r196"
+  - "§4.1#r197"
+  - "§4.1#r202"
+  - "§4.1#r203"
+  - "§4.1#r204"
+  - "§4.1#r205"
   - "§9.2#b379"
   - "§9.2#b380"
   - "§9.2#b381"
-  - "§9.2#b382"
-  - "§9.2#b441"
+  - "§9.2#b440"
+  - "§9.2#b442"
   - "§9.2#b443"
   - "§9.2#b444"
   - "§9.2#b445"
-  - "§9.2#b446"
+  - "§9.2#b447"
   - "§9.2#b448"
   - "§9.2#b449"
   - "§9.2#b450"
-  - "§9.2#b451"
-  - "§9.2#b453"
+  - "§9.2#b452"
+  - "§9.2#b454"
   - "§9.2#b455"
   - "§9.2#b456"
   - "§9.2#b457"
-  - "§9.2#b458"
+  - "§9.2#b459"
   - "§9.2#b460"
-  - "§9.2#b461"
+  - "§9.2#b463"
   - "§9.2#b464"
   - "§9.2#b465"
-  - "§9.2#b466"
+  - "§9.2#b467"
   - "§9.2#b468"
   - "§9.2#b469"
   - "§9.2#b470"
   - "§9.2#b471"
-  - "§9.2#b472"
+  - "§9.2#b474"
   - "§9.2#b475"
   - "§9.2#b476"
-  - "§9.2#b477"
+  - "§9.2#b487"
   - "§9.2#b488"
   - "§9.2#b489"
   - "§9.2#b490"
   - "§9.2#b491"
   - "§9.2#b492"
   - "§9.2#b493"
-  - "§9.2#b494"
-  - "§9.2#b463"
+  - "§9.2#b462"
+  - "§9.2#b478"
   - "§9.2#b479"
-  - "§9.2#b480"
-  - "§9.2#b483"
-  - "§9.2#b481"
   - "§9.2#b482"
+  - "§9.2#b480"
+  - "§9.2#b481"
+  - "§9.2#b526"
   - "§9.2#b527"
-  - "§9.2#b528"
-  - "§9.2#b530"
+  - "§9.2#b529"
+  - "§9.2#b533"
   - "§9.2#b534"
-  - "§9.2#b535"
+  - "§9.2#b536"
   - "§9.2#b537"
-  - "§9.2#b538"
+  - "§9.2#b539"
   - "§9.2#b540"
-  - "§9.2#b541"
+  - "§9.2#b548"
   - "§9.2#b549"
   - "§9.2#b550"
   - "§9.2#b551"
   - "§9.2#b552"
-  - "§9.2#b553"
-  - "§9.2#b555"
-  - "§9.2#b547"
+  - "§9.2#b554"
+  - "§9.2#b546"
   - "§9.4.1#r20"
-  - "§9.4.2#r37"
   - "§9.4.2#r40"
   - "§9.4.2#r42"
-  - "§9.4.2#r130"
-  - "§9.4.2#r131"
-  - "§9.4.2#r136"
   - "§9.4.2#r138"
-  - "§9.4.2#r148"
-  - "§9.4.2#r149"
-  - "§9.4.2#r150"
-  - "§9.4.2#r152"
+  - "§9.4.2#r139"
+  - "§9.4.2#r144"
+  - "§9.4.2#r146"
+  - "§9.4.2#r156"
+  - "§9.4.2#r157"
+  - "§9.4.2#r158"
+  - "§9.4.2#r160"
   - "§9.4.3#b4"
   - "§9.4.4#r11"
   - "§9.4.4#r48"
@@ -96,107 +92,103 @@ sourceRules:
   - "§9.8#r10"
   - "§9.8#r11"
   - "§9.8#r12"
-  - "§9.10.1#r11"
-  - "§9.10.1#r12"
   - "§10#b1"
+  - "§9.2#r11"
+  - "§4.1#r153"
 smoke: []
 dependsOn:
   - "Disposal: pengajuan, approval, dan Execute"
 owner: BE
 trace:
-  "§Aturan Logika Modul#r74": 97
-  "§Aturan Logika Modul#r81": 100
-  "§4.1#r186": 85
-  "§4.1#r188": 87
-  "§4.1#r189": [88, 90]
-  "§4.1#r193": [10, 22]
-  "§4.1#r194": [10, 15]
-  "§4.1#r195": [24, 26, 30]
-  "§4.1#r196": [11, 15, 30, 31]
-  "§9.2#b379": [79, 81, 105, 106, 108, 109, 116, 117]
-  "§9.2#b380": [2, 85]
+  "§4.1#r194": 87
+  "§4.1#r196": 89
+  "§4.1#r197": [90, 92]
+  "§4.1#r202": [10, 22]
+  "§4.1#r203": [10, 15]
+  "§4.1#r204": [24, 26, 30]
+  "§4.1#r205": [11, 15, 30, 31]
+  "§9.2#b379": [81, 83, 110, 111, 113, 114, 121, 122, 124, 126, 127, 129, 130]
+  "§9.2#b380": [2, 87]
   "§9.2#b381": [3, 6, 7]
-  "§9.2#b382": 97
-  "§9.2#b441": 12
-  "§9.2#b443": [10, 24, 50]
-  "§9.2#b444": 3
-  "§9.2#b445": [95, 96]
-  "§9.2#b446": [2, 98]
-  "§9.2#b448": [3, 4]
-  "§9.2#b449": 4
-  "§9.2#b450": 9
-  "§9.2#b451": 64
-  "§9.2#b453": [34, 63]
-  "§9.2#b455": [10, 22]
-  "§9.2#b456": [10, 15]
-  "§9.2#b457": [24, 26, 30]
-  "§9.2#b458": [11, 15, 16, 30, 31]
-  "§9.2#b460": 37
-  "§9.2#b461": [37, 42, 45]
-  "§9.2#b464": 48
-  "§9.2#b465": [92, 94]
-  "§9.2#b466": 40
-  "§9.2#b468": [53, 58]
-  "§9.2#b469": [53, 56]
-  "§9.2#b470": 50
-  "§9.2#b471": 51
-  "§9.2#b472": [55, 61]
-  "§9.2#b475": [63, 71]
-  "§9.2#b476": 65
-  "§9.2#b477": 66
-  "§9.2#b488": [63, 114]
-  "§9.2#b489": 71
-  "§9.2#b490": [73, 77]
-  "§9.2#b491": [73, 74]
-  "§9.2#b492": 77
-  "§9.2#b493": 27
-  "§9.2#b494": [34, 35]
-  "§9.2#b463": [38, 46]
-  "§9.2#b479": [66, 69, 102]
-  "§9.2#b480": 102
-  "§9.2#b483": 103
-  "§9.2#b481": [66, 67]
-  "§9.2#b482": 69
-  "§9.2#b527": 83
-  "§9.2#b528": 85
-  "§9.2#b530": [87, 112]
-  "§9.2#b534": [10, 22]
-  "§9.2#b535": [11, 16, 26]
+  "§9.2#b440": 12
+  "§9.2#b442": [10, 24, 50]
+  "§9.2#b443": 3
+  "§9.2#b444": [99, 102]
+  "§9.2#b445": 2
+  "§9.2#b447": [3, 4]
+  "§9.2#b448": 4
+  "§9.2#b449": 9
+  "§9.2#b450": 65
+  "§9.2#b452": [34, 64]
+  "§9.2#b454": [10, 22]
+  "§9.2#b455": [10, 15]
+  "§9.2#b456": [24, 26, 30]
+  "§9.2#b457": [11, 15, 16, 30, 31]
+  "§9.2#b459": 37
+  "§9.2#b460": [37, 42, 45]
+  "§9.2#b463": 48
+  "§9.2#b464": [94, 96]
+  "§9.2#b465": 40
+  "§9.2#b467": [53, 58]
+  "§9.2#b468": [53, 56]
+  "§9.2#b469": 50
+  "§9.2#b470": 51
+  "§9.2#b471": [55, 61]
+  "§9.2#b474": [64, 72]
+  "§9.2#b475": 66
+  "§9.2#b476": 67
+  "§9.2#b487": [64, 119]
+  "§9.2#b488": [72, 73]
+  "§9.2#b489": [75, 79]
+  "§9.2#b490": [75, 76]
+  "§9.2#b491": 79
+  "§9.2#b492": 27
+  "§9.2#b493": [34, 35]
+  "§9.2#b462": [38, 46]
+  "§9.2#b478": [67, 70, 104]
+  "§9.2#b479": 106
+  "§9.2#b482": 108
+  "§9.2#b480": [67, 68, 104]
+  "§9.2#b481": 70
+  "§9.2#b526": 85
+  "§9.2#b527": 87
+  "§9.2#b529": [89, 117]
+  "§9.2#b533": [10, 22]
+  "§9.2#b534": [11, 16, 26]
+  "§9.2#b536": 50
   "§9.2#b537": 50
-  "§9.2#b538": 50
-  "§9.2#b540": [63, 71]
-  "§9.2#b541": 66
+  "§9.2#b539": [64, 72]
+  "§9.2#b540": 67
+  "§9.2#b548": [37, 42, 45]
   "§9.2#b549": [37, 42, 45]
-  "§9.2#b550": [37, 42, 45]
-  "§9.2#b551": [38, 43]
-  "§9.2#b552": 46
-  "§9.2#b553": [39, 43, 46]
-  "§9.2#b555": [92, 94]
-  "§9.2#b547": 85
+  "§9.2#b550": [38, 43]
+  "§9.2#b551": 46
+  "§9.2#b552": [39, 43, 46]
+  "§9.2#b554": [94, 96]
+  "§9.2#b546": 87
   "§9.4.1#r20": [58, 59]
-  "§9.4.2#r37": [97, 98]
   "§9.4.2#r40": [50, 51]
   "§9.4.2#r42": [19, 20]
-  "§9.4.2#r130": [63, 71]
-  "§9.4.2#r131": 65
-  "§9.4.2#r136": 85
-  "§9.4.2#r138": [88, 90]
-  "§9.4.2#r148": [37, 42, 45]
-  "§9.4.2#r149": [38, 43, 46]
-  "§9.4.2#r150": [39, 43, 46]
-  "§9.4.2#r152": [92, 94]
+  "§9.4.2#r138": [64, 72]
+  "§9.4.2#r139": 66
+  "§9.4.2#r144": 87
+  "§9.4.2#r146": [90, 92]
+  "§9.4.2#r156": [37, 42, 45]
+  "§9.4.2#r157": [38, 43, 46]
+  "§9.4.2#r158": [39, 43, 46]
+  "§9.4.2#r160": [94, 96]
   "§9.4.3#b4": [53, 58]
-  "§9.4.4#r11": 65
+  "§9.4.4#r11": 66
   "§9.4.4#r48": [19, 20]
   "§9.4.4#r49": [50, 51]
-  "§9.4.4#r50": [63, 65, 66]
-  "§9.4.4#r53": [37, 45, 92, 94]
+  "§9.4.4#r50": [64, 66, 67]
+  "§9.4.4#r53": [37, 45, 94, 96]
   "§9.8#r10": [51, 52]
   "§9.8#r11": [38, 39, 46]
-  "§9.8#r12": 65
-  "§9.10.1#r11": 99
-  "§9.10.1#r12": [99, 101]
+  "§9.8#r12": 66
   "§10#b1": 12
+  "§4.1#r153": 113
+  "§9.2#r11": [64, 72, 73, 119]
 ---
 
 # Approval dan penentuan approver pada transaksi Disposal
@@ -251,16 +243,23 @@ trace:
   - DU-107-46: Asset `Truk Dilarang X2 {runId}`, Category `Kendaraan Operasional OR {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Asset override Allow Disposal `Deny`
   - DU-107-54: Category `Kendaraan Terbatas {runId}`, Require approval `ON`, Approval type `Any one approver`, Allowed disposal types `Sell`
   - DU-107-55: Asset `Truk Terbatas L1 {runId}`, Category `Kendaraan Terbatas {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`
-  - DU-107-56: Asset `Truk Hilang Dilarang X3 {runId}`, Category `Kendaraan Operasional OR {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Missing`, Asset override Allow Disposal `Deny`
+  - DU-107-56: Asset `Truk Hilang Dilarang X3 {runId}`, Category `Kendaraan Operasional OR {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Missing`, jenis Disposal yang diizinkan untuk aset Missing `Write-off`, Asset override Allow Disposal `Deny`
   - DU-107-57: Asset `Truk Tanpa Approval Z4 {runId}`, Category `Kendaraan Tanpa Approval {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Reason `Aset rusak berat`
   - DU-107-58: User `Sari Wulandari {runId}`, Role `Staff Disposal`, Cakupan `Workshop Operasional {runId}`, Status `Aktif`
   - DU-107-59: Group `Sub Gudang Utara {runId}`, Group induk `Divisi Gudang {runId}`
   - DU-107-60: User `Maya Anggraini {runId}`, Role `Group Manager tanpa penugasan Approver`, Cakupan `Sub Gudang Utara {runId}`, Status `Aktif`
   - DU-107-61: Asset `Truk Sub Gudang S3 {runId}`, Category `Kendaraan Operasional OR {runId}`, Group `Sub Gudang Utara {runId}`, Tag `Ber-tag`, Condition `Active`
   - DU-107-62: Asset `Truk Terbatas L2 {runId}`, Category `Kendaraan Terbatas {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Asset override Allow Disposal `Deny`
+  - DU-107-63: Category `Kendaraan Batas {runId}`, Require approval `ON`, Approval type `Any one approver`, Allowed disposal types `Sell, Scrap`, Max deviation from book value `25`
+  - DU-107-64: Asset `Truk Batas B1 {runId}`, Category `Kendaraan Batas {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Commercial book value `10.000.000`
+  - DU-107-65: Asset `Truk Batas B2 {runId}`, Category `Kendaraan Batas {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Commercial book value `10.000.000`
+  - DU-107-66: Asset `Truk Batas B3 {runId}`, Category `Kendaraan Batas {runId}`, Group `Workshop Operasional {runId}`, Tag `Ber-tag`, Condition `Active`, Commercial book value `10.000.000`
+  - DU-107-67: Category `Kendaraan Simpan {runId}`, Require approval `OFF`, Require approval setelah Save Changes `ON`, Approval type `Any one approver`, Min asset age warning setelah Save Changes `8`
+  - DU-107-68: Asset `Truk Simpan K1 {runId}`, Category `Kendaraan Simpan {runId}`, Group `Divisi Tanpa Manajer {runId}`, Tag `Ber-tag`, Condition `Active`
+  - DU-107-69: User `Wati Susanti {runId}`, Role `Group Manager tanpa penugasan Approver`, Cakupan `Divisi Tanpa Manajer {runId}`, Status `Nonaktif`
 - Kondisi:
   - Require approval Disposal pada Category uji bernilai sesuai entri data, Approval type default Company bernilai `Any one approver`, Transaction timeout Disposal bernilai `7` (days), Approval Workflow tersedia di plan entitas aktor, dan Accounting & Depreciation (FA-7) aktif di plan entitas aktor sehingga tahap Post tersedia.
-  - Group Manager `Gita Maharani {runId}` dan `Hendra Saputra {runId}` aktif. Tidak ada Group Manager aktif yang menaungi Group `Divisi Tanpa Manajer {runId}` di node itu maupun ancestor-nya. `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` aktif.
+  - Group Manager `Gita Maharani {runId}` dan `Hendra Saputra {runId}` aktif. Tidak ada Group Manager aktif yang menaungi Group `Divisi Tanpa Manajer {runId}` di node itu maupun ancestor-nya, karena satu-satunya Group Manager yang menaunginya, `Wati Susanti {runId}`, nonaktif. `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` aktif.
 
 ## Test Steps
 
@@ -344,81 +343,94 @@ trace:
 61. Verifikasi Disposal berstatus `Waiting for Execution` sesudah persetujuan `Budi Santoso {runId}`
 
 ### Tidak ada Approver eligible: rute jatuh ke Group Manager yang menaungi Group aset
-62. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Gudang G2 {runId}` dengan scan tag aset
-63. Verifikasi Approver Disposal adalah `Hendra Saputra {runId}`, Group Manager yang menaungi Group aset, karena tidak ada Approver eligible yang mencakup Group aset
-64. Verifikasi `Eko Nugroho {runId}` yang nonaktif, `Fajar Hidayat {runId}` dengan tingkat akses Read Only, dan `Gunawan Wibowo {runId}` tanpa lisensi addon tidak dihitung sebagai Approver eligible
-65. Verifikasi log transaksi mencatat rute itu dengan Modified By `System` dan tanpa Note enum
-66. Verifikasi satu notifikasi `approver_required` terkirim untuk Disposal atas `Truk Gudang G2 {runId}`
-67. Verifikasi jumlah notifikasi `approver_required` untuk Disposal atas `Truk Gudang G2 {runId}` bertambah tepat satu dibanding sebelum pengajuan
-68. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Gudang G3 {runId}` dengan scan tag aset
-69. Verifikasi Disposal atas `Truk Gudang G3 {runId}` mengirim notifikasi `approver_required` sendiri, terpisah dari Disposal atas `Truk Gudang G2 {runId}`
+62. `Tono Prasetyo {runId}` mencatat jumlah notifikasi `approver_required` yang terkait Group `Divisi Gudang {runId}`
+63. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Gudang G2 {runId}` dengan scan tag aset
+64. Verifikasi Approver Disposal adalah `Hendra Saputra {runId}`, Group Manager yang menaungi Group aset, karena tidak ada Approver eligible yang mencakup Group aset
+65. Verifikasi `Eko Nugroho {runId}` yang nonaktif, `Fajar Hidayat {runId}` dengan tingkat akses Read Only, dan `Gunawan Wibowo {runId}` tanpa lisensi addon tidak dihitung sebagai Approver eligible
+66. Verifikasi log transaksi mencatat rute itu dengan Modified By `System` dan tanpa Note enum
+67. Verifikasi satu notifikasi `approver_required` terkirim untuk Disposal atas `Truk Gudang G2 {runId}`
+68. Verifikasi jumlah notifikasi `approver_required` yang terkait Group `Divisi Gudang {runId}` bertambah tepat satu dibanding jumlah yang dicatat sebelum pengajuan
+69. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Gudang G3 {runId}` dengan scan tag aset
+70. Verifikasi Disposal atas `Truk Gudang G3 {runId}` mengirim notifikasi `approver_required` sendiri, terpisah dari Disposal atas `Truk Gudang G2 {runId}`
 
 ### Tidak ada Approver eligible dan tidak ada Group Manager aktif: rute jatuh ke Total Control
-70. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Manajer V1 {runId}` dengan scan tag aset
-71. Verifikasi approver fallback Disposal memuat `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` karena tidak ada Approver eligible dan tidak ada Group Manager aktif yang menaungi Group aset
-72. `Tono Prasetyo {runId}` menyetujui Disposal atas `Truk Tanpa Manajer V1 {runId}`
-73. Verifikasi Disposal berstatus `Waiting for Execution` karena Approval type `Any one approver` berlaku pada himpunan fallback dan salah satu cukup
-74. Verifikasi status `Umar Hakim {runId}` pada Disposal menjadi `Not Involved`
-75. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Manajer V2 {runId}` dengan scan tag aset
-76. `Tono Prasetyo {runId}` menyetujui Disposal atas `Truk Tanpa Manajer V2 {runId}`
-77. Verifikasi Disposal tetap berstatus `Waiting for Approval` karena Approval type `All approvers (AND)` berlaku pada himpunan fallback dan semua harus menyetujui
+71. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Manajer V1 {runId}` dengan scan tag aset
+72. Verifikasi approver fallback Disposal memuat `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` karena tidak ada Approver eligible dan tidak ada Group Manager aktif yang menaungi Group aset
+73. Verifikasi `Wati Susanti {runId}`, Group Manager yang menaungi Group aset tetapi nonaktif, tidak termasuk approver fallback Disposal atas `Truk Tanpa Manajer V1 {runId}`, karena approver fallback hanya Group Manager aktif
+74. `Tono Prasetyo {runId}` menyetujui Disposal atas `Truk Tanpa Manajer V1 {runId}`
+75. Verifikasi Disposal berstatus `Waiting for Execution` karena Approval type `Any one approver` berlaku pada himpunan fallback dan salah satu cukup
+76. Verifikasi status `Umar Hakim {runId}` pada Disposal menjadi `Not Involved`
+77. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Manajer V2 {runId}` dengan scan tag aset
+78. `Tono Prasetyo {runId}` menyetujui Disposal atas `Truk Tanpa Manajer V2 {runId}`
+79. Verifikasi Disposal tetap berstatus `Waiting for Approval` karena Approval type `All approvers (AND)` berlaku pada himpunan fallback dan semua harus menyetujui
 
 ### Approval dievaluasi paling akhir sesudah aturan tetap dan Deny pada override
-78. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Hilang X1 {runId}` dengan scan tag aset
-79. Verifikasi pengajuan ditolak oleh aturan tetap dan tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}`
-80. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Dilarang X2 {runId}` dengan scan tag aset
-81. Verifikasi pengajuan ditolak karena override bernilai Deny dan tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}`
+80. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Hilang X1 {runId}` dengan scan tag aset
+81. Verifikasi pengajuan ditolak oleh aturan tetap dan tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}`
+82. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Dilarang X2 {runId}` dengan scan tag aset
+83. Verifikasi pengajuan ditolak karena override bernilai Deny dan tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}`
 
 ### Disposal tanpa approval karena Require approval OFF: alasan wajib, langsung menunggu Execute, Accounting tetap Post
-82. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z1 {runId}` dengan scan tag aset, tanpa Reason
-83. Verifikasi pengajuan ditolak karena Reason wajib diisi pada Disposal dengan Require approval OFF
-84. `Rina Wijaya {runId}` mengajukan ulang Disposal jenis `Scrap` atas `Truk Tanpa Approval Z1 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
-85. Verifikasi Disposal langsung berstatus `Waiting for Execution` tanpa melewati `Waiting for Approval` karena nilai efektif Require approval OFF
-86. `Indra Pratama {runId}` melakukan Execute atas Disposal `Truk Tanpa Approval Z1 {runId}`
-87. Verifikasi Disposal menjadi Executed saat Execute oleh Aktor Disposal
-88. Verifikasi Disposal berstatus Executed menunggu posting dan belum selesai sampai Post dilakukan oleh `Joko Susilo {runId}`
-89. `Joko Susilo {runId}` melakukan Post atas Disposal `Truk Tanpa Approval Z1 {runId}`
-90. Verifikasi Post oleh `Joko Susilo {runId}` diterima server, dan data serta log transaksi Disposal sesudahnya mencatat Post itu
+84. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z1 {runId}` dengan scan tag aset, tanpa Reason
+85. Verifikasi pengajuan ditolak karena Reason wajib diisi pada Disposal dengan Require approval OFF
+86. `Rina Wijaya {runId}` mengajukan ulang Disposal jenis `Scrap` atas `Truk Tanpa Approval Z1 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
+87. Verifikasi Disposal langsung berstatus `Waiting for Execution` tanpa melewati `Waiting for Approval` karena nilai efektif Require approval OFF
+88. `Indra Pratama {runId}` melakukan Execute atas Disposal `Truk Tanpa Approval Z1 {runId}`
+89. Verifikasi Disposal menjadi Executed saat Execute oleh Aktor Disposal
+90. Verifikasi Disposal berstatus Executed menunggu posting dan belum selesai sampai Post dilakukan oleh `Joko Susilo {runId}`
+91. `Joko Susilo {runId}` melakukan Post atas Disposal `Truk Tanpa Approval Z1 {runId}`
+92. Verifikasi Post oleh `Joko Susilo {runId}` diterima server, dan data serta log transaksi Disposal sesudahnya mencatat Post itu
 
 ### Kondisi A tidak berlaku bila Require approval efektif OFF
-91. `Gita Maharani {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z2 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
-92. Verifikasi Disposal berstatus `Waiting for Execution` dan log transaksi tidak memuat `Approved by Gita Maharani {runId} (Group Manager — requester)`
-93. `Tono Prasetyo {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z3 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
-94. Verifikasi Disposal berstatus `Waiting for Execution` dan log transaksi tidak memuat `Approved by Tono Prasetyo {runId} (Total Control — requester)`
+93. `Gita Maharani {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z2 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
+94. Verifikasi Disposal berstatus `Waiting for Execution` dan log transaksi tidak memuat `Approved by Gita Maharani {runId} (Group Manager — requester)`
+95. `Tono Prasetyo {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z3 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
+96. Verifikasi Disposal berstatus `Waiting for Execution` dan log transaksi tidak memuat `Approved by Tono Prasetyo {runId} (Total Control — requester)`
 
 ### Batas Transaction timeout per transaksi berlaku untuk status Waiting for Approval
-95. Verifikasi Disposal berstatus `Waiting for Approval` yang belum melewati batas Transaction timeout Disposal `7` hari tetap berstatus `Waiting for Approval`
-96. Verifikasi Disposal berstatus `Waiting for Approval` yang melewati batas Transaction timeout Disposal `7` hari berstatus `Canceled`
+97. Waktu berlalu 167 jam sejak Disposal `Truk Gudang G2 {runId}` masuk status `Waiting for Approval`
+98. Job Transaction timeout berjalan
+99. Verifikasi Disposal `Truk Gudang G2 {runId}` tetap berstatus `Waiting for Approval` karena batas Transaction timeout Disposal `7` hari, yaitu 168 jam sejak masuk status itu, belum tercapai
+100. Waktu berlalu sampai 168 jam sejak Disposal `Truk Gudang G2 {runId}` masuk status `Waiting for Approval`
+101. Job Transaction timeout berjalan
+102. Verifikasi Disposal `Truk Gudang G2 {runId}` berstatus `Canceled` karena batas Transaction timeout Disposal `7` hari, yaitu 168 jam sejak masuk status `Waiting for Approval`, tercapai
 
-### Approval Workflow tidak tersedia di plan: approval dilewati dan Disposal berjalan seperti Require approval OFF
-97. Verifikasi langkah approval dilewati bila Approval Workflow tidak tersedia di plan, walaupun Require approval Category bernilai `ON`
-98. Verifikasi nilai efektif Require approval OFF dan approval hanya berlaku bila Approval Workflow tersedia di plan
-99. Verifikasi Disposal langsung berstatus `Waiting for Execution` tanpa melewati `Waiting for Approval` bila Approval Workflow tidak tersedia di plan, seperti Disposal dengan Require approval OFF
-100. Verifikasi penugasan Role Transaksi `Approver` tidak dipakai selama Approval Workflow tidak tersedia di plan, sehingga Approver tidak menerima permintaan approval
-101. Verifikasi pengajuan Disposal tanpa Reason ditolak karena Reason wajib diisi pada Disposal yang berjalan seperti Require approval OFF saat Approval Workflow tidak tersedia di plan
-
-### Notifikasi approver_required terkirim saat Save menimbulkan kondisi tanpa Approver dan tidak diulang
-102. Verifikasi notifikasi `approver_required` terkirim bila Save konfigurasi Approval menimbulkan kondisi tidak ada Role Transaksi `Approver` yang ditugaskan untuk suatu transaksi
-103. Verifikasi notifikasi `approver_required` momen Save konfigurasi Approval tidak diulang selama konfigurasi Approval tidak diubah
+### Save konfigurasi Approval tidak mengirim approver_required bila Role Transaksi Approver ada di Group lain
+103. `Umar Hakim {runId}` mencatat jumlah notifikasi `approver_required` yang terkait Group `Divisi Tanpa Manajer {runId}`
+104. Verifikasi jumlah yang dicatat itu memuat satu notifikasi `approver_required` untuk pengajuan Disposal atas `Truk Tanpa Manajer V1 {runId}` dan satu untuk pengajuan atas `Truk Tanpa Manajer V2 {runId}`, karena tidak ada Approver eligible yang mencakup Group aset pada kedua pengajuan itu
+105. `Umar Hakim {runId}` mengubah Require approval Category `Kendaraan Simpan {runId}` di tab Disposal menjadi `ON`, lalu Save Changes
+106. Verifikasi jumlah notifikasi `approver_required` yang terkait Group `Divisi Tanpa Manajer {runId}` tidak bertambah dibanding jumlah yang dicatat sebelum Save, karena Role Transaksi `Approver` Disposal ditugaskan di Group lain, yaitu `Budi Santoso {runId}` pada `Divisi Operasional {runId}` dan `Citra Lestari {runId}` pada `Workshop Operasional {runId}`, sehingga Save konfigurasi Approval itu tidak menimbulkan kondisi tidak ada Role Transaksi `Approver` yang ditugaskan untuk aset `Truk Simpan K1 {runId}`
+107. `Umar Hakim {runId}` mengubah Min asset age warning Category `Kendaraan Simpan {runId}` di tab Disposal menjadi `8`, lalu Save Changes
+108. Verifikasi jumlah notifikasi `approver_required` yang terkait Group `Divisi Tanpa Manajer {runId}` tetap sama dengan jumlah yang dicatat sebelum Save pertama, karena Save itu tidak mengubah konfigurasi Approval sehingga guard konfigurasi Approval tidak terpicu
 
 ### Aturan tetap dan Eligibility dievaluasi sebelum Approval
-104. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Hilang Dilarang X3 {runId}` dengan scan tag aset
-105. Verifikasi pengajuan ditolak oleh aturan tetap aset berkondisi `Missing` yang hanya dapat di-Disposal jenis `Lost` atau `Write-off`, bukan oleh Deny pada override
-106. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Hilang Dilarang X3 {runId}`
-107. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Terbatas L1 {runId}` dengan scan tag aset
-108. Verifikasi pengajuan ditolak karena jenis `Scrap` tidak ada di Allowed disposal types `Sell` Category `Kendaraan Terbatas {runId}`
-109. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Terbatas L1 {runId}`
+109. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Hilang Dilarang X3 {runId}` dengan scan tag aset
+110. Verifikasi pengajuan ditolak oleh aturan tetap aset berkondisi `Missing` yang hanya dapat di-Disposal jenis `Write-off`, bukan oleh Deny pada override
+111. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Hilang Dilarang X3 {runId}`
+112. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Terbatas L1 {runId}` dengan scan tag aset
+113. Verifikasi pengajuan ditolak karena jenis `Scrap` tidak ada di Allowed disposal types `Sell` Category `Kendaraan Terbatas {runId}`
+114. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Terbatas L1 {runId}`
 
 ### Disposal tanpa approval: Staff Disposal dapat melakukan Execute
-110. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z4 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
-111. `Sari Wulandari {runId}` melakukan Execute atas Disposal `Truk Tanpa Approval Z4 {runId}`
-112. Verifikasi Disposal `Truk Tanpa Approval Z4 {runId}` menjadi Executed saat Execute oleh Staff Disposal
+115. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Tanpa Approval Z4 {runId}` dengan scan tag aset dan Reason `Aset rusak berat`
+116. `Sari Wulandari {runId}` melakukan Execute atas Disposal `Truk Tanpa Approval Z4 {runId}`
+117. Verifikasi Disposal `Truk Tanpa Approval Z4 {runId}` menjadi Executed saat Execute oleh Staff Disposal
 
 ### Tidak ada Approver eligible: approver fallback memuat semua Group Manager di node dan ancestor Group aset
-113. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Sub Gudang S3 {runId}` dengan scan tag aset
-114. Verifikasi approver fallback Disposal atas `Truk Sub Gudang S3 {runId}` memuat `Maya Anggraini {runId}`, Group Manager yang menaungi Group aset `Sub Gudang Utara {runId}` di node itu, dan `Hendra Saputra {runId}`, Group Manager yang menaungi Group induk `Divisi Gudang {runId}` sebagai ancestor, karena tidak ada Approver eligible yang mencakup Group aset
+118. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Sub Gudang S3 {runId}` dengan scan tag aset
+119. Verifikasi approver fallback Disposal atas `Truk Sub Gudang S3 {runId}` memuat `Maya Anggraini {runId}`, Group Manager yang menaungi Group aset `Sub Gudang Utara {runId}` di node itu, dan `Hendra Saputra {runId}`, Group Manager yang menaungi Group induk `Divisi Gudang {runId}` sebagai ancestor, karena tidak ada Approver eligible yang mencakup Group aset
 
 ### Deny pada override dievaluasi sebelum Eligibility
-115. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Terbatas L2 {runId}` dengan scan tag aset
-116. Verifikasi pengajuan ditolak oleh Deny pada override aset, yang dievaluasi sebelum Eligibility, walaupun jenis `Scrap` tidak ada di Allowed disposal types `Sell` Category `Kendaraan Terbatas {runId}`
-117. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Terbatas L2 {runId}`
+120. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Terbatas L2 {runId}` dengan scan tag aset
+121. Verifikasi pengajuan ditolak oleh Deny pada override aset, yang dievaluasi sebelum Eligibility, walaupun jenis `Scrap` tidak ada di Allowed disposal types `Sell` Category `Kendaraan Terbatas {runId}`
+122. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Terbatas L2 {runId}`
+
+### Eligibility dievaluasi sebelum Limits dan Limits sebelum Approval
+123. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Batas B1 {runId}` dengan scan tag aset, Nilai jual `6.000.000`, dan Reason `Harga pasar turun`
+124. Verifikasi Disposal atas `Truk Batas B1 {runId}` berstatus `Waiting for Approval` dan permintaan approval diterima `Budi Santoso {runId}` dan `Citra Lestari {runId}`, karena pengajuan yang lolos Eligibility dan Limits sampai ke Approval
+125. `Rina Wijaya {runId}` mengajukan Disposal jenis `Sell` atas `Truk Batas B2 {runId}` dengan scan tag aset dan Nilai jual `6.000.000`, tanpa Reason
+126. Verifikasi pengajuan ditolak oleh Limits karena Reason wajib diisi: Nilai jual `6.000.000` di bawah nilai buku Commercial `10.000.000` melebihi Max deviation from book value `25`%
+127. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Batas B2 {runId}`
+128. `Rina Wijaya {runId}` mengajukan Disposal jenis `Trade-in` atas `Truk Batas B3 {runId}` dengan scan tag aset dan Nilai jual `6.000.000`, tanpa Reason
+129. Verifikasi pengajuan ditolak oleh Eligibility karena jenis `Trade-in` tidak ada di Allowed disposal types `Sell, Scrap` Category `Kendaraan Batas {runId}`, bukan oleh Limits Reason wajib
+130. Verifikasi tidak ada permintaan approval yang diterima `Budi Santoso {runId}` maupun `Citra Lestari {runId}` untuk aset `Truk Batas B3 {runId}`

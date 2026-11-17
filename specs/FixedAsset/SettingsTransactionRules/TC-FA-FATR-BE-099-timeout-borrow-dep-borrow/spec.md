@@ -5,16 +5,16 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r27", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r37", "§8.1#r5", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b214", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b221", "§9.2#b222", "§9.2#b223", "§9.2#b225", "§9.2#b230", "§9.2#b231", "§9.2#b241", "§9.2#b242", "§9.2#b243", "§9.2#b244", "§9.2#b245", "§9.2#b246", "§9.2#b247", "§9.2#b248", "§9.2#b249", "§9.2#b251", "§9.2#b252", "§9.2#b253", "§9.2#b254", "§9.2#b255", "§9.2#b256", "§9.2#b257", "§9.2#b282", "§9.2#b288", "§9.2#b293", "§9.2#b294", "§9.2#b295", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b437", "§9.2#b439", "§9.4.1#r11", "§9.4.2#r46", "§9.4.2#r127", "§9.4.2#r129", "§9.4.2#r140", "§9.4.2#r141", "§9.4.2#r142", "§9.4.2#r143", "§9.4.2#r144", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r23", "§9.7#r24", "§9.7#r25", "§9.7#r26", "§9.7#r27", "§9.7#r31", "§9.10.1#b8", "§11#r18"]
+sourceRules: ["§Aturan Logika Modul#r5", "§Aturan Logika Modul#r30", "§Aturan Logika Modul#r31", "§Aturan Logika Modul#r32", "§Aturan Logika Modul#r40", "§8.1#r5", "§9.2#b128", "§9.2#b140", "§9.2#b201", "§9.2#b203", "§9.2#b205", "§9.2#b206", "§9.2#b207", "§9.2#b208", "§9.2#b213", "§9.2#b214", "§9.2#b217", "§9.2#b218", "§9.2#b219", "§9.2#b221", "§9.2#b222", "§9.2#b223", "§9.2#b225", "§9.2#b230", "§9.2#b231", "§9.2#b241", "§9.2#b242", "§9.2#b243", "§9.2#b244", "§9.2#b245", "§9.2#b246", "§9.2#b247", "§9.2#b248", "§9.2#b249", "§9.2#b251", "§9.2#b252", "§9.2#b253", "§9.2#b254", "§9.2#b255", "§9.2#b256", "§9.2#b257", "§9.2#b282", "§9.2#b288", "§9.2#b293", "§9.2#b294", "§9.2#b295", "§9.2#b300", "§9.2#b383", "§9.2#b395", "§9.2#b396", "§9.2#b436", "§9.2#b438", "§9.4.1#r11", "§9.4.2#r46", "§9.4.2#r135", "§9.4.2#r137", "§9.4.2#r148", "§9.4.2#r149", "§9.4.2#r150", "§9.4.2#r151", "§9.4.2#r152", "§9.4.3#b10", "§9.4.4#r37", "§9.6#r5", "§9.7#r2", "§9.7#r11", "§9.7#r22", "§9.7#r23", "§9.7#r24", "§9.7#r25", "§9.7#r26", "§9.7#r27", "§9.7#r31", "§9.10.1#b8", "§11#r21", "§11#r22", "§9.7#r29", "§9.8#r3", "§Aturan Logika Modul#r76"]
 smoke: []
 dependsOn:
   - "Borrow: pengajuan, Extension, dan Return"
 trace:
   "§Aturan Logika Modul#r5": [2, 10, 20, 22, 23]
-  "§Aturan Logika Modul#r27": [14]
-  "§Aturan Logika Modul#r28": [5, 6, 37]
-  "§Aturan Logika Modul#r29": [16, 18]
-  "§Aturan Logika Modul#r37": [9, 11, 16]
+  "§Aturan Logika Modul#r30": [14]
+  "§Aturan Logika Modul#r31": [5, 6, 37]
+  "§Aturan Logika Modul#r32": [16, 18]
+  "§Aturan Logika Modul#r40": [9, 11, 16]
   "§8.1#r5": [57, 96]
   "§9.2#b128": [27]
   "§9.2#b140": [9, 10]
@@ -60,17 +60,17 @@ trace:
   "§9.2#b383": [2, 23, 51, 98]
   "§9.2#b395": [66, 70]
   "§9.2#b396": [70]
-  "§9.2#b437": [9, 10, 11]
-  "§9.2#b439": [5, 37, 46]
+  "§9.2#b436": [9, 10, 11]
+  "§9.2#b438": [5, 37, 46]
   "§9.4.1#r11": [29]
   "§9.4.2#r46": [74, 75]
-  "§9.4.2#r127": [9, 10]
-  "§9.4.2#r129": [5, 40, 46]
-  "§9.4.2#r140": [55, 56]
-  "§9.4.2#r141": [90, 91]
-  "§9.4.2#r142": [74]
-  "§9.4.2#r143": [56, 61, 62, 71]
-  "§9.4.2#r144": [63]
+  "§9.4.2#r135": [9, 10]
+  "§9.4.2#r137": [5, 40, 46]
+  "§9.4.2#r148": [55, 56]
+  "§9.4.2#r149": [90, 91]
+  "§9.4.2#r150": [74]
+  "§9.4.2#r151": [56, 61, 62, 71]
+  "§9.4.2#r152": [63]
   "§9.4.3#b10": [11]
   "§9.4.4#r37": [57, 61]
   "§9.6#r5": [73]
@@ -84,7 +84,11 @@ trace:
   "§9.7#r27": [59, 93, 94]
   "§9.7#r31": [57]
   "§9.10.1#b8": [98, 99]
-  "§11#r18": [74, 81, 83]
+  "§11#r21": [74, 81, 83]
+  "§11#r22": [55, 56, 70, 90, 91]
+  "§9.7#r29": [90, 91, 92]
+  "§9.8#r3": [61, 62, 63, 64, 65]
+  "§Aturan Logika Modul#r76": [98]
 owner: BE
 ---
 
@@ -98,7 +102,7 @@ owner: BE
   - DU-099-3: Group, Group `Gudang Cadangan {runId}`; Group untuk override cakupan dinamis.
   - DU-099-4: Category, Category `Alat Berat {runId}`, TAG Type `RFID`; Category aset yang dipinjam.
   - DU-099-5: User, Nama `Rina Wulandari {runId}`, Akses `Total Control`; Total Control yang mengubah setting.
-  - DU-099-6: User, Nama `Hana Pertiwi {runId}`, Peran `Aktor Borrow`, Group `Gudang Utama {runId} beserta descendant`; Aktor Borrow yang mengajukan atas nama Borrower.
+  - DU-099-6: User, Nama `Hana Pertiwi {runId}`, Peran `Aktor Borrow`, Group `Gudang Utama {runId} beserta descendant dan Gudang Cadangan {runId}`; Aktor Borrow yang mengajukan atas nama Borrower.
   - DU-099-7: User, Nama `Rudi Hartono {runId}`, Peran `Approver Borrow`, Group `Gudang Utama {runId} beserta descendant`, Status `Active`; Approver Borrow.
   - DU-099-8: User, Nama `Bima Nugraha {runId}`, Peran `Borrower (Employee aktif)`, Group `Gudang Utama {runId}`; Borrower (Employee aktif).
   - DU-099-9: User, Nama `Citra Dewi {runId}`, Peran `Borrower (Employee aktif)`, Group `Gudang Utama {runId}`; Borrower (Employee aktif).
@@ -159,7 +163,7 @@ owner: BE
 5. Verifikasi batas Transaction timeout baris `Genset Yanmar 10kVA {runId}` (Waiting for Approval) menjadi `T0` ditambah 10 hari, yaitu waktu masuk status ditambah nilai baru dan bukan nilai lama
 6. Verifikasi batas Transaction timeout baris `Tangga Lipat Aluminium {runId}` (Waiting for Handover) menjadi `T0` ditambah 10 hari, dan batas itu adalah batas pengambilan
 7. Verifikasi batas Transaction timeout Extension pada baris `Rangka Perancah Baja {runId}` yang menunggu approval dan Extension pada baris `Mesin Las Inverter {runId}` yang menunggu review Aktor Borrow juga menjadi `T0` ditambah 10 hari
-8. Verifikasi peringatan 1 hari tidak dikirim ulang karena sisa waktu ke batas baru lebih dari 24 jam
+8. Verifikasi peringatan 1 hari tidak dikirim ulang untuk baris `Genset Yanmar 10kVA {runId}` dan `Tangga Lipat Aluminium {runId}` serta Extension `Rangka Perancah Baja {runId}` karena sisa waktu ke batas baru lebih dari 24 jam
 
 ### Save Changes tidak memengaruhi transaksi berjalan selain batas Transaction timeout
 9. Verifikasi baris `Mesin Bor Meja Makita {runId}` tetap `Borrowed` dengan Duration `4 hari` dan Due date `T0 + 4 hari`

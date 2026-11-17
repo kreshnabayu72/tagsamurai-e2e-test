@@ -5,22 +5,22 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#p49, §6#r30, §6#r31, §7#r7, D-07, §9.2#b117, §9.2#b190, §9.4.2#r79, §9.4.2#r117, §9.4.2#r118, §9.4.2#r119, §9.4.2#r120, §9.4.4#r26, §9.6#r28, EB-BLK-2@tabel-overrides, EB-BLK-3, EB-EDG-2, §9.2#b162, §9.6#r29]
+sourceRules: [§4.1#p56, §6#r30, §6#r31, §7#r7, D-07, §9.2#b117, §9.2#b190, §9.4.2#r87, §9.4.2#r125, §9.4.2#r126, §9.4.2#r127, §9.4.2#r128, §9.4.4#r26, §9.6#r28, EB-BLK-2@tabel-overrides, EB-BLK-3, EB-EDG-2, §4.4#r19, §4.4#r20, §4.4#r21, §9.2#b162, §9.6#r29]
 smoke: [§9.2#b162, §9.6#r29]
 dependsOn: []
 trace:
-  §4.1#p49: [11, 12, 19, 20, 21, 22, 27, 29, 30, 35, 37, 38, 43, 45, 46, 61, 63, 64, 65, 66, 74, 78, 92, 93, 94]
+  §4.1#p56: [11, 12, 19, 20, 21, 22, 27, 29, 30, 35, 37, 38, 43, 45, 46, 61, 63, 64, 65, 66, 74, 78, 92, 93, 94]
   §6#r30: 79
   §6#r31: 76
   §7#r7: [76, 92]
   D-07: [76, 77]
   §9.2#b117: [76, 92]
   §9.2#b190: 76
-  §9.4.2#r79: 76
-  §9.4.2#r117: 93
-  §9.4.2#r118: [90, 94]
-  §9.4.2#r119: 92
-  §9.4.2#r120: [98, 99]
+  §9.4.2#r87: 76
+  §9.4.2#r125: 93
+  §9.4.2#r126: [90, 94]
+  §9.4.2#r127: 92
+  §9.4.2#r128: [98, 99]
   §9.4.4#r26: [93, 94]
   §9.6#r28: 92
   EB-BLK-2@tabel-overrides: [52, 54, 56]
@@ -28,6 +28,9 @@ trace:
   EB-EDG-2: [9, 17, 98]
   §9.2#b162: 93
   §9.6#r29: 94
+  §4.4#r19: [9, 17]
+  §4.4#r20: [12, 20, 21]
+  §4.4#r21: [11, 19]
 anchor: [5, 69, 85]
 coverage:
   web: automated
@@ -56,7 +59,7 @@ coverage:
   - DU-010-29: override Group `Proyek Bekasi {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max duration (20 days)`, dibuat paling awal.
   - DU-010-30: override Group `Proyek Guard {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Allowed assignee: Division (ON)`.
   - DU-010-31: override Group `Proyek Guard {runId}` di All categories transaksi `Assign`, Overridden `Allowed assignee: Employee (OFF), Allowed assignee: Division (OFF)`.
-  - DU-010-32: override Group `Proyek Plain {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Recipient acceptance (Optional)`.
+  - DU-010-32: override Group `Proyek Plain {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Need recipient confirmation (No)`.
   - DU-010-33: user `Andi {runId}`, Group Role Manage asset & TAG (Read + Update), cakupan Group `Proyek Bekasi {runId}` beserta turunannya.
 - Kondisi:
   - Allow Assign bukan Deny untuk aset `Forklift FL25 {runId} - 1`.

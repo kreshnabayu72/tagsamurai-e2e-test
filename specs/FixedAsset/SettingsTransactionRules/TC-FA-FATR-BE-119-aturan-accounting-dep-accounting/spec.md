@@ -6,12 +6,12 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: ["§9.2#b531"]
+sourceRules: ["§9.2#b530"]
 smoke: []
 dependsOn:
   - "Accounting: Post dan review Cost Center"
 trace:
-  "§9.2#b531": [3, 5]
+  "§9.2#b530": [3, 5]
 ---
 
 # Post Accounting pada Disposal tanpa approval
@@ -22,7 +22,8 @@ trace:
   - DU-119-1: Category `Peralatan Pabrik {runId} > Mesin Potong {runId}`, Require approval `OFF` untuk transaksi pelepasan aset.
   - DU-119-2: aset `Mesin Potong Unit 1 {runId}` di Category `Peralatan Pabrik {runId} > Mesin Potong {runId}`, dengan data akuntansi.
   - DU-119-3: user `Hendra Saputra {runId}`, Accounting, cakupan seluruh entitas.
-  - DU-119-4: user `Sari Wulandari {runId}`, pelaksana Execute pelepasan aset, cakupan seluruh entitas.- Kondisi:
+  - DU-119-4: user `Sari Wulandari {runId}`, pelaksana Execute pelepasan aset, cakupan seluruh entitas.
+- Kondisi:
   - Accounting & Depreciation aktif pada paket entitas.
 
 ## Test Steps

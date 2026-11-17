@@ -5,29 +5,29 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§4.1#r149", "§4.1#r187", "§9.2#b16", "§9.2#b166", "§9.2#b525", "§9.2#b526", "§9.2#b529", "§9.2#b532", "§9.4.2#r137", "§9.7#r28", "EB-XM-2@disposal", "§4.1#r152", "§9.2#b269", "§9.2#b397", "§9.2#b527", "§9.2#b528", "§9.4.2#r136"]
-smoke: ["§4.1#r152", "§9.2#b269", "§9.2#b397", "§9.2#b527", "§9.2#b528", "§9.4.2#r136"]
+sourceRules: ["§4.1#r159", "§4.1#r195", "§9.2#b16", "§9.2#b166", "§9.2#b524", "§9.2#b525", "§9.2#b528", "§9.2#b531", "§9.4.2#r145", "§9.7#r28", "EB-XM-2@disposal", "§4.1#r162", "§9.2#b269", "§9.2#b397", "§9.2#b526", "§9.2#b527", "§9.4.2#r144"]
+smoke: ["§4.1#r162", "§9.2#b269", "§9.2#b397", "§9.2#b526", "§9.2#b527", "§9.4.2#r144"]
 dependsOn:
   - "Disposal: pengajuan, approval, dan Execute"
 trace:
-  "§4.1#r149": [7, 24]
-  "§4.1#r187": 16
-  "§9.2#b16": [42, 60]
+  "§4.1#r159": [7, 24]
+  "§4.1#r195": 16
+  "§9.2#b16": [42, 53]
   "§9.2#b166": 42
-  "§9.2#b525": [4, 5]
-  "§9.2#b526": 6
-  "§9.2#b529": 16
-  "§9.2#b532": 10
-  "§9.4.2#r137": 16
+  "§9.2#b524": [4, 5]
+  "§9.2#b525": 6
+  "§9.2#b528": 16
+  "§9.2#b531": 10
+  "§9.4.2#r145": 16
   "§9.7#r28": 31
-  "EB-XM-2@disposal": [42, 49, 56]
-  "§4.1#r152": 9
+  "EB-XM-2@disposal": [42, 49, 60]
+  "§4.1#r162": 9
   "§9.2#b269": [28, 29]
   "§9.2#b397": 7
-  "§9.2#b527": 12
-  "§9.2#b528": 15
-  "§9.4.2#r136": 15
-anchor: [34, 59]
+  "§9.2#b526": 12
+  "§9.2#b527": 15
+  "§9.4.2#r144": 15
+anchor: [34, 52]
 coverage:
   web: automated
 ---
@@ -117,17 +117,17 @@ coverage:
 48. Ketik Search `Welding Station WS20 {runId}` pada daftar aset di Fixed Asset > Disposal, tekan Enter
 49. Verifikasi aksi Disposal pada baris aset `Welding Station WS20 {runId}` aktif lagi
 
-### Perubahan nilai Category berlaku untuk pengajuan Disposal baru
-50. Buka tab Disposal pada node Category `Plant Equipment {runId}` di Fixed Asset > Settings > Transaction Settings
-51. Pilih nilai `Deny` pada field Allow Disposal
-52. Klik `[Save]`
-53. Klik `[Save]` pada dialog Save Changes
-54. Buka Fixed Asset > Disposal
-55. Ketik Search `Welding Station WS20 {runId}` pada daftar aset di Fixed Asset > Disposal, tekan Enter
-56. Verifikasi aksi Disposal pada baris aset `Welding Station WS20 {runId}` disabled sesuai nilai baru Category `Plant Equipment {runId}`
-
 ### Aset Missing dengan Allow Disposal Deny memblokir Disposal
-57. Buka Fixed Asset > Disposal
-58. Ketik Search `Welding Unit WU25 {runId}` pada daftar aset di Fixed Asset > Disposal, tekan Enter
-59. Verifikasi baris aset `Welding Unit WU25 {runId}` tampil di daftar aset
-60. Verifikasi aksi Disposal pada baris aset `Welding Unit WU25 {runId}` yang ditandai hilang disabled karena Allow Disposal bernilai `Deny` pada override, dengan pesan blokir yang menyebut siapa yang dapat dihubungi
+50. Buka Fixed Asset > Disposal
+51. Ketik Search `Welding Unit WU25 {runId}` pada daftar aset di Fixed Asset > Disposal, tekan Enter
+52. Verifikasi baris aset `Welding Unit WU25 {runId}` tampil di daftar aset
+53. Verifikasi aksi Disposal pada baris aset `Welding Unit WU25 {runId}` yang ditandai hilang disabled karena Allow Disposal bernilai `Deny` pada override, dengan pesan blokir yang menyebut siapa yang dapat dihubungi
+
+### Perubahan nilai Category berlaku untuk pengajuan Disposal baru
+54. Buka tab Disposal pada node Category `Plant Equipment {runId}` di Fixed Asset > Settings > Transaction Settings
+55. Pilih nilai `Deny` pada field Allow Disposal
+56. Klik `[Save]`
+57. Klik `[Save]` pada dialog Save Changes
+58. Buka Fixed Asset > Disposal
+59. Ketik Search `Welding Station WS20 {runId}` pada daftar aset di Fixed Asset > Disposal, tekan Enter
+60. Verifikasi aksi Disposal pada baris aset `Welding Station WS20 {runId}` disabled sesuai nilai baru Category `Plant Equipment {runId}`

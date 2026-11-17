@@ -5,20 +5,20 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.1#r279, §4.1#r280, §6#r10, §9.2#b97, §9.4.2#r107, §9.4.2#r108, §9.4.2#r110, §9.4.4#r21, §9.9#r21, §Aturan Logika Modul#r42, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
-smoke: [§Aturan Logika Modul#r42, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
+sourceRules: [§4.1#r305, §4.1#r306, §6#r10, §9.2#b97, §9.4.2#r115, §9.4.2#r116, §9.4.2#r118, §9.4.4#r21, §9.9#r21, §Aturan Logika Modul#r45, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
+smoke: [§Aturan Logika Modul#r45, §9.2#b98, §9.6#r22, EB-FRM-5@target-add-override]
 dependsOn: []
 trace:
-  §4.1#r279: [15, 16]
-  §4.1#r280: 30
+  §4.1#r305: [15, 16]
+  §4.1#r306: 30
   §6#r10: 15
   §9.2#b97: [29, 33]
-  §9.4.2#r107: [29, 33]
-  §9.4.2#r108: 15
-  §9.4.2#r110: [18, 33]
+  §9.4.2#r115: [29, 33]
+  §9.4.2#r116: 15
+  §9.4.2#r118: [18, 33]
   §9.4.4#r21: [18, 32]
   §9.9#r21: 15
-  §Aturan Logika Modul#r42: [46, 48, 49, 62, 64]
+  §Aturan Logika Modul#r45: [46, 48, 49, 62, 64]
   §9.2#b98: 15
   §9.6#r22: 15
   EB-FRM-5@target-add-override: 15
@@ -38,7 +38,7 @@ coverage:
   - DU-008-3: Group `Proyek Bekasi {runId}`, Group tingkat atas, ada di entitas aktor.
   - DU-008-4: override aktif untuk Group `Proyek Karawang {runId}`, transaksi `Borrow`, Category `Machinery {runId}`, dengan Overridden `Max duration (30 days)`.
   - Nilai yang dicoba dan ditolak: Group `Proyek Karawang {runId}` dengan `Max extensions` `2` di Category `Machinery {runId}` transaksi `Borrow` (DU-008-5); Group `Proyek Karawang {runId}` bersama `Proyek Bekasi {runId}` dengan `Max extensions` `2` di Category `Machinery {runId}` transaksi `Borrow` (DU-008-6).
-  - Override yang dibuat spec ini dan bukan duplikat: Group `Proyek Karawang {runId}` dengan `Max duration` `45` di All categories transaksi `Borrow`, Overridden `Max duration (45 days)` (DU-008-7); Group `Proyek Karawang {runId}` dengan `Recipient acceptance` `Optional` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Recipient acceptance (Optional)` (DU-008-8).
+  - Override yang dibuat spec ini dan bukan duplikat: Group `Proyek Karawang {runId}` dengan `Max duration` `45` di All categories transaksi `Borrow`, Overridden `Max duration (45 days)` (DU-008-7); Group `Proyek Karawang {runId}` dengan `Need recipient confirmation` `No` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Need recipient confirmation (No)` (DU-008-8).
 - Kondisi:
   - Category `Machinery {runId}` mewarisi seluruh field transaksi dari Company default (Inherit).
 
@@ -109,9 +109,9 @@ coverage:
 56. Ketik Search `{runId}` pada dialog Select Group, tekan Enter
 57. Centang Group `Proyek Karawang {runId}`
 58. Klik `[Select]`
-59. Pilih Field `Recipient acceptance`
-60. Pilih Value `Optional`
+59. Pilih Field `Need recipient confirmation`
+60. Pilih Value `No`
 61. Klik `[Submit]`
 62. Verifikasi toast `Success, override has been added.` tampil untuk override pada tab `Assign`
 63. Ketik Search `{runId}` pada tabel Overrides, tekan Enter
-64. Verifikasi baris dengan Target `Proyek Karawang {runId}` dan Overridden `Recipient acceptance (Optional)` tampil di tabel Overrides
+64. Verifikasi baris dengan Target `Proyek Karawang {runId}` dan Overridden `Need recipient confirmation (No)` tampil di tabel Overrides

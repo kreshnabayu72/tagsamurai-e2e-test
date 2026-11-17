@@ -6,18 +6,18 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r52", "§9.2#b74", "§9.2#b75", "§9.2#b76", "§9.2#b77", "§9.2#b80", "§9.2#b81", "§9.2#b84", "§9.2#b87", "§9.2#b90", "§9.2#b91", "§9.2#b94", "§9.2#b95", "§9.2#b96", "§9.2#b97", "§9.2#b101", "§9.2#b102", "§9.2#b143", "§9.2#b144", "§9.2#b174", "§9.2#b175", "§9.2#b182", "§9.2#b197", "§9.4.2#r26", "§9.4.2#r56", "§9.4.2#r104", "§9.4.2#r107", "§9.4.2#r110", "§9.4.3#b6", "§9.4.3#b7", "§9.4.4#r21", "§9.4.4#r30", "§9.6#r2", "§9.6#r20", "§9.6#r22", "§9.9#r13", "§9.9#r14", "§9.9#r15", "§9.9#r16", "§9.9#r21", "§9.10.4#b3", "§10#b2", EB-FRM-5@target-add-override]
+sourceRules: ["§Aturan Logika Modul#r41", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r55", "§9.2#b74", "§9.2#b75", "§9.2#b76", "§9.2#b77", "§9.2#b80", "§9.2#b81", "§9.2#b84", "§9.2#b87", "§9.2#b90", "§9.2#b91", "§9.2#b94", "§9.2#b95", "§9.2#b96", "§9.2#b97", "§9.2#b101", "§9.2#b102", "§9.2#b143", "§9.2#b144", "§9.2#b174", "§9.2#b175", "§9.2#b182", "§9.2#b197", "§9.4.2#r26", "§9.4.2#r56", "§9.4.2#r112", "§9.4.2#r115", "§9.4.2#r118", "§9.4.3#b6", "§9.4.3#b7", "§9.4.4#r21", "§9.4.4#r30", "§9.6#r2", "§9.6#r20", "§9.6#r22", "§9.9#r13", "§9.9#r14", "§9.9#r15", "§9.9#r16", "§9.9#r21", "§9.10.4#b3", "§10#b2", EB-FRM-5@target-add-override, "§Aturan Logika Modul#r102", EB-ERR-3]
 smoke: []
 dependsOn: []
 trace:
-  "§Aturan Logika Modul#r38": [2, 7]
-  "§Aturan Logika Modul#r39": 2
-  "§Aturan Logika Modul#r40": 2
-  "§Aturan Logika Modul#r41": 3
-  "§Aturan Logika Modul#r42": [17, 20]
-  "§Aturan Logika Modul#r43": 15
-  "§Aturan Logika Modul#r50": 40
-  "§Aturan Logika Modul#r52": 32
+  "§Aturan Logika Modul#r41": [2, 7]
+  "§Aturan Logika Modul#r42": 2
+  "§Aturan Logika Modul#r43": 2
+  "§Aturan Logika Modul#r44": 3
+  "§Aturan Logika Modul#r45": [17, 20]
+  "§Aturan Logika Modul#r46": 15
+  "§Aturan Logika Modul#r53": 40
+  "§Aturan Logika Modul#r55": 32
   "§9.2#b74": [9, 10]
   "§9.2#b75": 2
   "§9.2#b76": 2
@@ -42,9 +42,9 @@ trace:
   "§9.2#b197": 42
   "§9.4.2#r26": 32
   "§9.4.2#r56": 15
-  "§9.4.2#r104": 32
-  "§9.4.2#r107": 20
-  "§9.4.2#r110": 22
+  "§9.4.2#r112": 32
+  "§9.4.2#r115": 20
+  "§9.4.2#r118": 22
   "§9.4.3#b6": 22
   "§9.4.3#b7": 26
   "§9.4.4#r21": [23, 70]
@@ -55,11 +55,13 @@ trace:
   "§9.9#r13": 57
   "§9.9#r14": 61
   "§9.9#r15": 63
-  "§9.9#r16": [65, 67, 69]
+  "§9.9#r16": [65, 67, 69, 80]
   "§9.9#r21": 21
   "§9.10.4#b3": [72, 74]
   "§10#b2": 59
   EB-FRM-5@target-add-override: 21
+  "§Aturan Logika Modul#r102": [42, 44, 46]
+  EB-ERR-3: 29
 ---
 # Validasi Add override
 
@@ -92,9 +94,9 @@ trace:
   - DU-087-22 dan DU-087-23 adalah nilai input yang ditolak server, bukan record yang sudah ada.
 - Kondisi:
   - Belum ada override apa pun untuk seluruh target di atas.
-  - Level Feature Suite Borrowing entitas bernilai `Full`.
+  - Level Feature Suite Borrowing, Transfer, dan Disposal entitas masing-masing bernilai `Full`.
   - Group `Tim Excess Tambah {runId}` dan Asset Name `Nama Excess Tambah {runId}` berstatus excess pada masa Grace.
-  - Transaksi Borrow disebut «transaksi peminjaman» dan transaksi Assign disebut «transaksi penugasan» di langkah.
+  - Transaksi Borrow disebut «transaksi peminjaman» transaksi Assign disebut «transaksi penugasan», transaksi Transfer disebut «transaksi pemindahan», dan transaksi Disposal disebut «transaksi pelepasan» di langkah.
 
 ## Test Steps
 
@@ -127,7 +129,7 @@ trace:
 18. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log
 19. Maya Pengelola menambahkan lagi override scope `Group` dengan target `Tim Tambah Satu {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman dengan Max duration `9`
 20. Verifikasi Add override ditolak seluruhnya karena override aktif untuk Category, target, dan transaksi yang sama sudah ada
-21. Verifikasi server menjawab penolakan itu dengan pesan `An active override already exists for this target, category, and transaction. Delete it first`
+21. Verifikasi server menjawab penolakan itu dengan pesan duplikat yang menyatakan override aktif untuk target, Category, dan transaksi yang sama sudah ada dan harus dihapus lebih dulu
 22. Verifikasi tetap ada tepat satu override untuk Group `Tim Tambah Satu {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman, dengan Max duration `5`, dan tidak ada override kedua
 23. Verifikasi Changelog dan Activity Log tidak bertambah entri karena submit ditolak
 
@@ -157,13 +159,13 @@ trace:
 40. Verifikasi Add override diterima dan override tersimpan walau nilainya sama dengan nilai yang berlaku
 
 ### Field multi-pilih dan field khusus All categories ditolak sebagai field override
-41. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` dengan Transaction timeout `3`
+41. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman dengan Transaction timeout `3`
 42. Verifikasi Add override ditolak karena Transaction timeout tidak dapat dioverride, dan tidak ada override terbuat untuk Group `Tim Field Tolak {runId}`
-43. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` dengan Send email notifications `ON`
+43. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman dengan Send email notifications `ON`
 44. Verifikasi Add override ditolak karena Send email notifications adalah field khusus All categories, dan tidak ada override terbuat
-45. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` dengan Change Cost Center with Group `Always`
+45. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi pemindahan dengan Change Cost Center with Group `Always`
 46. Verifikasi Add override ditolak karena Change Cost Center with Group adalah field khusus All categories, dan tidak ada override terbuat
-47. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` dengan Allowed disposal types `Sell`
+47. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Field Tolak {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi pelepasan dengan Allowed disposal types `Sell`
 48. Verifikasi Add override ditolak karena Allowed disposal types adalah field multi-pilih, dan tidak ada override terbuat
 
 ### Semua scope menerima field yang sama termasuk Self service
@@ -203,3 +205,7 @@ trace:
 76. Maya Pengelola menambahkan dalam satu submit override scope `Group` dengan target `Tim Nonaktif Tambah {runId}` dan `Tim Pasangan Dua {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman dengan Max duration `9`
 77. Verifikasi seluruh submit ditolak karena sebuah target sudah dinonaktifkan
 78. Verifikasi tidak ada override untuk Group `Tim Pasangan Dua {runId}`, sehingga semua terbuat atau tidak ada
+
+### Value nol diterima untuk field yang minimumnya nol
+79. Maya Pengelola menambahkan override scope `Group` dengan target `Tim Validasi {runId}` pada Category `Sensor Tambah {runId}` untuk transaksi peminjaman dengan Max extensions `0`
+80. Verifikasi Add override diterima karena minimum Max extensions adalah 0, dan override untuk Group `Tim Validasi {runId}` memuat Max extensions `0`

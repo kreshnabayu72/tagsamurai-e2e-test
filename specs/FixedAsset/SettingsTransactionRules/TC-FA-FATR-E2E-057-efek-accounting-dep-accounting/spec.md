@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.4.2#r138"]
+sourceRules: ["§9.4.2#r146"]
 smoke: []
 dependsOn:
   - "Accounting: Post dan review Cost Center"
 trace:
-  "§9.4.2#r138": 6
+  "§9.4.2#r146": 6
 anchor: [3]
 coverage:
   web: automated

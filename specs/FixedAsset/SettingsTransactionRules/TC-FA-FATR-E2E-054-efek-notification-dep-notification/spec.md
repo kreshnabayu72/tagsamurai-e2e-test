@@ -5,8 +5,8 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r4", "§9.2#r11", "§9.2#b229", "§9.2#b388", "§9.2#b484", "§9.7#r12", "§11#r13"]
-smoke: ["§9.2#b229", "§9.2#b388", "§9.2#b484", "§9.7#r12", "§11#r13"]
+sourceRules: ["§Aturan Logika Modul#r4", "§9.2#r11", "§9.2#b229", "§9.2#b388", "§9.2#b483", "§9.7#r12", "§11#r13"]
+smoke: ["§9.2#b229", "§9.2#b388", "§9.2#b483", "§9.7#r12", "§11#r13"]
 dependsOn:
   - "Notification: notifikasi in-app dan email"
 trace:
@@ -14,7 +14,7 @@ trace:
   "§9.2#r11": [9, 10]
   "§9.2#b229": 25
   "§9.2#b388": 22
-  "§9.2#b484": 10
+  "§9.2#b483": 10
   "§9.7#r12": 9
   "§11#r13": [9, 22, 25]
 anchor: []
@@ -25,18 +25,19 @@ coverage:
 # Notifikasi akibat setting transaksi
 
 ## Prerequisites
-- Aktor: Default User yang memegang Manage transaction settings (Update) di entitas khusus; `Wulan Kusuma {runId}` sebagai Borrower dan pengaju.
+- Aktor: Default User (akses penuh setara Total Control, cakupan semua Group) di entitas khusus; `Wulan Kusuma {runId}` (Role `Employee`, cakupan Group `Logistics Team {runId}`) sebagai Borrower dan pengaju.
 - Layar awal: Fixed Asset > Settings > Transaction Settings
 - Data:
-  - DU-054-1: Entitas Name `Entitas Notifikasi {runId}`, Require approval Assign `OFF`; entitas khusus spec ini, tanpa Role Transaksi Approver untuk Assign dan dengan Require approval Assign bernilai OFF.
+  - DU-054-1: Entitas Name `Entitas Notifikasi {runId}`, Approval Workflow `ON`, Feature Suite Assignment `Full`, Require approval Assign `OFF`; entitas khusus spec ini dengan Approval Workflow tersedia di plan, level Feature Suite Assignment bukan `None`, tanpa Role Transaksi Approver untuk Assign, dan Require approval Assign bernilai OFF.
   - DU-054-2: Group Name `Logistics Team {runId}`; Group tanpa Division.
-  - DU-054-3: User Name `Wulan Kusuma {runId}`, Role `Employee`, Group `Logistics Team {runId}`; akun aktif Borrower dan pengaju.
+  - DU-054-3: User Name `Wulan Kusuma {runId}`, Role `Employee`, Group `Logistics Team {runId}`, Cakupan Group `Logistics Team {runId}`; akun aktif Borrower dan pengaju.
   - DU-054-4: Asset Name `Welding Machine WM30 {runId}`, Group `Logistics Team {runId}`, Status `Borrowed`; aset dengan pinjaman Borrowed yang Due date-nya kemarin.
   - DU-054-5: Asset Name `Air Compressor AC10 {runId}`, Group `Logistics Team {runId}`, Status `Waiting for Approval`; aset dengan pengajuan yang tersisa 1 hari sebelum batas Transaction timeout.
   - DU-054-6: Borrow Asset `Welding Machine WM30 {runId}`, Borrower `Wulan Kusuma {runId}`, Status `Borrowed`, Due date `T0 − 1 hari`; pinjaman Borrowed yang Overdue mulai H+1.
   - DU-054-7: Borrow Asset `Air Compressor AC10 {runId}`, Borrower `Wulan Kusuma {runId}`, Status `Waiting for Approval`, Sisa batas `1 hari`; pengajuan yang tersisa 1 hari sebelum batas Transaction timeout.
 - Kondisi:
   - Spec ini memakai entitas khusus `Entitas Notifikasi {runId}` yang tidak dipakai spec lain, karena yang diubah adalah setting tingkat entitas.
+  - Approval Workflow tersedia di plan entitas khusus ini (toggle bernilai `ON`) dan level Feature Suite Assignment bernilai `Full`, bukan `None`, sehingga tab `Assign` bisa dibuka dan field Require approval pada tab `Assign` aktif, tidak disabled.
   - Role Transaksi `Approver` untuk transaksi `Assign` belum ditugaskan ke user mana pun di Group mana pun di entitas khusus ini, dan Require approval pada `Assign` bernilai `OFF`.
   - Akun `Wulan Kusuma {runId}` aktif dan kredensialnya tersedia untuk login.
 

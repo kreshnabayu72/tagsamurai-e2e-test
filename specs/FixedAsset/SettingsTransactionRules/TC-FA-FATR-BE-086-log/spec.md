@@ -6,7 +6,7 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§8.1#r2", "§9.2#b42", "§9.2#b55", "§9.2#p17", "§9.2#b377", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r32", "§9.4.2#r84", "§9.4.3#b8", "§9.4.4#r5", "§9.4.4#r14", "§9.4.4#r34", "§9.4.4#r45", "§9.6#r1", "§9.6#r9", "§9.7#r9", "§9.8#r13", "§9.8#r14", "§9.8#r15", "§9.10.1#b9", "§9.10.2#b7", "§9.10.3#b7"]
+sourceRules: ["§8.1#r2", "§9.2#b42", "§9.2#b55", "§9.2#p17", "§9.2#b377", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r32", "§9.4.2#r92", "§9.4.3#b8", "§9.4.4#r5", "§9.4.4#r14", "§9.4.4#r34", "§9.4.4#r45", "§9.6#r1", "§9.6#r9", "§9.7#r9", "§9.8#r13", "§9.8#r14", EB-LOG-1]
 smoke: []
 dependsOn: []
 trace:
@@ -18,7 +18,7 @@ trace:
   "§9.4.2#r5": [18, 19]
   "§9.4.2#r6": 14
   "§9.4.2#r32": 29
-  "§9.4.2#r84": 3
+  "§9.4.2#r92": 3
   "§9.4.3#b8": [18, 22, 24]
   "§9.4.4#r5": 15
   "§9.4.4#r14": 18
@@ -29,10 +29,7 @@ trace:
   "§9.7#r9": 3
   "§9.8#r13": [18, 19]
   "§9.8#r14": [22, 24]
-  "§9.8#r15": 40
-  "§9.10.1#b9": 40
-  "§9.10.2#b7": 40
-  "§9.10.3#b7": 40
+  EB-LOG-1: [3, 18]
 ---
 # Isi entri Changelog
 
@@ -50,6 +47,7 @@ trace:
   - DU-086-10: Group, Group target override yang boleh dihapus: Name `Tim Log Empat {runId}`.
   - DU-086-11: Asset, aset target override Asset pada guard Allowed assignee: Name `Alat Ukur Tiga {runId}`; Asset Name `Alat Ukur Lapangan {runId}`; Category `Alat Ukur Log {runId}`; Group `Tim Log Tiga {runId}`.
 - Kondisi:
+  - Level Feature Suite Borrowing dan Assignment entitas bernilai `Full`.
   - Seluruh field Category `Perangkat Log {runId}`, `Peralatan Log {runId}`, dan `Alat Ukur Log {runId}` bernilai Inherit, dan belum ada override pada ketiga Category itu.
   - Max duration Category `Perangkat Log {runId}` belum bernilai sendiri sebelum Save pertama di spec ini.
   - Allowed assignee: Employee `ON` dan Allowed assignee: Division `ON` pada Company default.
@@ -110,6 +108,3 @@ trace:
 37. Maya Pengelola menghapus bulk override Group `Tim Log Tiga {runId}` dan override Group `Tim Log Empat {runId}`
 38. Verifikasi override Group `Tim Log Empat {runId}` terhapus dan override Group `Tim Log Tiga {runId}` dilewati karena ditolak guard
 39. Verifikasi Activity Log untuk Category `Alat Ukur Log {runId}` bertambah tepat satu entri, untuk override Group `Tim Log Empat {runId}` yang terhapus, dan Changelog tidak bertambah entri
-
-### Changelog halaman ini hanya memuat perubahan field Settings
-40. Verifikasi seluruh entri Changelog untuk Category `Perangkat Log {runId}` adalah entri perubahan field Settings dengan object path `Transaction Settings`, dan tidak ada entri perubahan toggle atau level plan karena perubahan itu bukan perubahan Settings dan tidak dicatat di halaman ini

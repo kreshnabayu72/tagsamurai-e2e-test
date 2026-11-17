@@ -5,23 +5,26 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r4", "§4.1#r220", "§4.4#r7", "§9.2#b54", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r81", "§9.4.2#r83", "§9.6#r12", "§9.6#r13", "EB-FB-3@save-changes", "EB-FRM-1@save-changes", "EB-FRM-9", "§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r13", "EB-FB-1@save-changes"]
+sourceRules: ["§Aturan Logika Modul#r4", "§4.1#r247", "§4.4#r7", "§9.2#b54", "§9.4.2#r5", "§9.4.2#r6", "§9.4.2#r89", "§9.4.2#r91", "§9.6#r12", "§9.6#r13", "EB-FB-3@save-changes", "EB-FRM-1@save-changes", "EB-FRM-9", "§9.4.4#r18", "§4.4#r5", "§9.4.4#r4", "§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r13", "EB-FB-1@save-changes"]
 smoke: ["§7#r1", "§7#r8", "§8.1#b1", "§8.1#b2", "§9.2#b5", "§9.2#b20", "§9.2#b23", "§9.2#b25", "§9.2#b41", "§9.2#b53", "§9.6#r1", "§9.6#r7", "§9.6#r10", "§9.6#r11", "§9.8#r13", "EB-FB-1@save-changes"]
 dependsOn: []
 trace:
   "§Aturan Logika Modul#r4": [14, 21, 27]
-  "§4.1#r220": [48, 54, 55]
+  "§4.1#r247": [48, 54, 55]
   "§4.4#r7": [16, 21]
   "§9.2#b54": 40
   "§9.4.2#r5": [40, 43]
   "§9.4.2#r6": [20, 28, 29]
-  "§9.4.2#r81": [21, 24]
-  "§9.4.2#r83": 16
+  "§9.4.2#r89": [21, 24]
+  "§9.4.2#r91": 16
   "§9.6#r12": 16
   "§9.6#r13": 40
   "EB-FB-3@save-changes": [33, 43]
   "EB-FRM-1@save-changes": [27, 30, 31]
-  "EB-FRM-9": [6, 21, 22, 60, 61, 62, 65]
+  "EB-FRM-9": [6, 21, 22, 60, 61, 64]
+  "§9.4.4#r18": 64
+  "§4.4#r5": [48, 54]
+  "§9.4.4#r4": [48, 54]
   "§7#r1": 16
   "§7#r8": 40
   "§8.1#b1": 28
@@ -130,8 +133,7 @@ coverage:
 58. Isi `Max duration` `0`
 59. Klik `[Save]`
 60. Verifikasi pesan `Value must be at least 1` tampil di bawah field `Max duration`
-61. Verifikasi dialog `Save Changes` tidak tampil
-62. Verifikasi toast `Success, settings have been saved.` tidak tampil
-63. Klik ikon `Changelog` di header
-64. Ketik Search Changelog `Excavator {runId}`, tekan Enter
-65. Verifikasi jumlah baris hasil Search tetap `6`
+61. Verifikasi toast `Success, settings have been saved.` tidak tampil
+62. Klik ikon `Changelog` di header
+63. Ketik Search Changelog `Excavator {runId}`, tekan Enter
+64. Verifikasi jumlah baris hasil Search tetap `6`

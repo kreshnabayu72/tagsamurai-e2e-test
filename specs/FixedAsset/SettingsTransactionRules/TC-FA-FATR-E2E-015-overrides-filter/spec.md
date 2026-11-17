@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r239, §4.1#r241, §4.1#r242, §4.1#r244, §4.1#r243, EB-FLT-1@tabel-overrides, EB-FLT-4@tabel-overrides, EB-FLT-3]
+sourceRules: [§4.1#r266, §4.1#r268, §4.1#r269, §4.1#r271, §4.1#r270, EB-FLT-1@tabel-overrides, EB-FLT-4@tabel-overrides, EB-FLT-3]
 smoke: [EB-FLT-3]
 dependsOn: []
 trace:
-  §4.1#r239: [20, 21, 24]
-  §4.1#r241: [8, 34, 35]
-  §4.1#r242: [15, 29, 30, 75]
-  §4.1#r244: [70, 71]
-  §4.1#r243: [59, 60, 63]
+  §4.1#r266: [20, 21, 24]
+  §4.1#r268: [8, 34, 35]
+  §4.1#r269: [15, 29, 30, 75]
+  §4.1#r271: [70, 71]
+  §4.1#r270: [59, 60, 63]
   EB-FLT-1@tabel-overrides: [8, 9, 11, 13, 15, 16, 65, 91]
   EB-FLT-4@tabel-overrides: [41, 43, 46, 50, 51, 53, 54, 75, 85, 86, 89, 97, 100, 101, 105, 106]
   EB-FLT-3: [24, 29, 30]
@@ -40,7 +40,7 @@ coverage:
   - DU-015-10: override Group `Workshop {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max duration (20 days), Max extensions (3)`, Created By `Budi S` (dibuat oleh `Budi Santoso`), Created At `T0 − 5 hari`; kata kunci opsi filter yang dipakai: `ration` dan `Zzqx`.
   - DU-015-11: override Asset Name `Excavator PC200 {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max extensions (2)`, Created By `Rina W` (dibuat oleh `Rina Wulandari`), Created At `T0 − 2 hari`.
   - DU-015-12: override Asset Name `Toyota Avanza {runId}` di Category `Machinery {runId}` transaksi `Borrow`, Overridden `Max extensions (1)`, Created By `Budi S` (dibuat oleh `Budi Santoso`), Created At `T0 − 2 hari`.
-  - DU-015-13: override Group `Proyek Karawang {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Recipient acceptance (Optional)`, Created By `Rina W` (dibuat oleh `Rina Wulandari`), Created At `T0 − 5 hari`.
+  - DU-015-13: override Group `Proyek Karawang {runId}` di Category `Machinery {runId}` transaksi `Assign`, Overridden `Need recipient confirmation (No)`, Created By `Rina W` (dibuat oleh `Rina Wulandari`), Created At `T0 − 5 hari`.
   - DU-015-15: Group tingkat atas `Kantor Pusat {runId}`.
   - DU-015-16: override Group `Kantor Pusat {runId}` di All categories transaksi `Borrow`, Overridden `Max duration (10 days)`, Created By `Rina W` (dibuat oleh `Rina Wulandari`), Created At `T0 − 2 hari`.
   - DU-015-14: Override yang dibuat spec ini bernilai: Group `Gudang Kota {runId}` dengan `Allow Borrow` `Deny` di Category `Machinery {runId}` transaksi `Borrow`.
@@ -60,7 +60,7 @@ coverage:
 6. Klik ikon filter pada toolbar tabel Overrides
 7. Klik field `Overridden` pada panel filter
 8. Verifikasi opsi `Max duration` dan opsi `Max extensions` tampil masing-masing satu kali pada field `Overridden`
-9. Verifikasi opsi `Recipient acceptance` tidak tampil pada field `Overridden` karena hanya dimiliki override tab `Assign`
+9. Verifikasi opsi `Need recipient confirmation` tidak tampil pada field `Overridden` karena hanya dimiliki override tab `Assign`
 10. Ketik `ration` pada kotak cari opsi Overridden
 11. Verifikasi opsi `Max duration` tampil pada hasil cari opsi Overridden
 12. Ganti isi kotak cari opsi Overridden dengan `Zzqx`

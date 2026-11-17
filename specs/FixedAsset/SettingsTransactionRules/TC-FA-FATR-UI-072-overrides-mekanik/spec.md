@@ -5,11 +5,11 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.1#r266, §5#r2, §5#r3, §9.5#r2, EB-TBL-7@tabel-overrides, EB-SRC-4@tabel-overrides, EB-FLT-2@tabel-overrides, EB-FLT-6@tabel-overrides, EB-SRT-3@tabel-overrides, EB-KOL-1@tabel-overrides]
+sourceRules: [§4.1#r292, §5#r2, §5#r3, §9.5#r2, EB-TBL-7@tabel-overrides, EB-SRC-4@tabel-overrides, EB-FLT-2@tabel-overrides, EB-FLT-6@tabel-overrides, EB-SRT-3@tabel-overrides, EB-KOL-1@tabel-overrides]
 smoke: []
 dependsOn: []
 trace:
-  §4.1#r266: [89, 90]
+  §4.1#r292: [89, 90]
   §5#r2: [2, 7]
   §5#r3: [12, 15]
   §9.5#r2: [3, 5]
@@ -31,7 +31,7 @@ coverage:
 - Layar awal: Settings > Transaction Settings, bagian `Overrides` pada Category dan transaksi terpilih.
 - Komponen: Tabel Overrides
 - Data:
-  - DU-072-1: 26 override (volume), Scope `Group`, Target `Proyek Cabang {n}`, Overridden `Max duration (30 days)`, Category `Vehicle > Pool car`, Created By `Budi Santoso`, Created At `2026-06-15 14:05`.
+  - DU-072-1: 20 override (volume), Scope `Group`, Target `Proyek Cabang {n}`, Overridden `Max duration (30 days)`, Category `Vehicle > Pool car`, Created By `Budi Santoso`, Created At `2026-06-15 14:05`.
   - DU-072-2: override Scope `Group`, Target `Proyek Karawang`, Overridden `Max duration (30 days), Max extensions (1)`, Category `Vehicle > Pool car`, Created By `Siti Nurbaya`, Created At `2026-06-12 09:30`.
   - DU-072-3: kata kunci Search `Karawang`.
   - DU-072-4: nomor halaman tidak valid `0`.
@@ -47,9 +47,15 @@ coverage:
   - DU-072-14: pembuat override `Rina Wulandari`.
   - DU-072-15: pembuat override `Dewi Lestari`.
   - DU-072-16: pembuat override `Agus Pratama`.
+  - DU-072-17: override Scope `Asset Name`, Target `Excavator PC200`, Overridden `Max duration (10 days)`, Category `Machinery`, Created By `Alexander Graham Bell` (DU-072-11), Created At `2026-06-10 16:45`.
+  - DU-072-18: override Scope `Asset`, Target `EXC-0001 · Excavator PC200 - 1`, Overridden `Allow Borrow (Deny)`, Category `Machinery`, Created By `John Lennon` (DU-072-12), Created At `2026-06-09 08:20`.
+  - DU-072-19: override Scope `Group`, Target `Proyek Surabaya`, Overridden `Max extensions (2)`, Category `Vehicle > Pool car`, Created By `Buzzlightyear Sumardi` (DU-072-13), Created At `2026-06-08 13:40`.
+  - DU-072-20: override Scope `Group`, Target `Proyek Medan`, Overridden `Max duration (14 days)`, Category `Vehicle > Pool car`, Created By `Rina Wulandari` (DU-072-14), Created At `2026-06-07 10:15`.
+  - DU-072-21: override Scope `Group`, Target `Proyek Palembang`, Overridden `Max extensions (1)`, Category `Vehicle > Pool car`, Created By `Dewi Lestari` (DU-072-15), Created At `2026-06-06 15:30`.
+  - DU-072-22: override Scope `Group`, Target `Proyek Bandung`, Overridden `Max duration (7 days)`, Category `Vehicle > Pool car`, Created By `Agus Pratama` (DU-072-16), Created At `2026-06-05 09:00`.
 - Kondisi:
-  - K1: tabel berisi DU-072-1 dan DU-072-2 (27 baris, tiga halaman pada ukuran halaman bawaan), baris tampil menurut urutan data (baris pertama Target `Proyek Cabang 1`); respons atas Search DU-072-3 hanya memuat DU-072-2; opsi filter `Scope` adalah `Group`, `Asset Name`, dan `Asset`; opsi filter `Created By` adalah DU-072-9, DU-072-10, DU-072-11, DU-072-12, DU-072-13, DU-072-14, DU-072-15, dan DU-072-16.
-  - K2: sama dengan K1, tetapi sumber opsi filter `Created By` kosong.
+  - K1: tabel berisi DU-072-1, DU-072-2, dan DU-072-17 sampai DU-072-22 (27 baris, tiga halaman pada ukuran halaman bawaan), baris tampil menurut urutan data (baris pertama Target `Proyek Cabang 1`); respons atas Search DU-072-3 hanya memuat DU-072-2; opsi filter `Scope` dan `Created By` diisi dari nilai pada baris tabel itu: opsi `Scope` adalah `Group`, `Asset Name`, dan `Asset`, dan opsi `Created By` adalah DU-072-9, DU-072-10, DU-072-11, DU-072-12, DU-072-13, DU-072-14, DU-072-15, dan DU-072-16.
+  - K2: tabel tanpa override, sehingga sumber opsi filter `Created By` kosong.
 
 ## Test Steps
 
@@ -182,11 +188,11 @@ coverage:
 108. Ketik `abc` pada input nomor halaman, tekan Enter
 109. Verifikasi halaman aktif tetap `2` dan input `abc` diabaikan
 110. Ketik `-1` pada input nomor halaman, tekan Enter
-111. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+111. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1
 112. Ketik `4` pada input nomor halaman, tekan Enter
-113. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir[^drift-1]
+113. Verifikasi halaman aktif berpindah ke halaman `3` karena nomor melewati halaman terakhir dibawa ke halaman terakhir
 114. Ketik `0` pada input nomor halaman, tekan Enter
-115. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1[^drift-1]
+115. Verifikasi halaman aktif berpindah ke halaman `1` karena nomor di bawah 1 dibawa ke halaman 1
 116. Klik halaman `2`
 117. Klik dropdown `Rows per page`
 118. Pilih ukuran halaman `25`
@@ -250,5 +256,3 @@ coverage:
 166. Verifikasi centang kolom `Created At` disabled
 167. Arahkan kursor ke centang kolom `Created At`
 168. Verifikasi alasan `At least one column must remain visible.` tersampaikan pada centang kolom `Created At`
-
-[^drift-1]: Drift PRD dan foundation vs kontrak komponen. PRD §4.1 (tabel Overrides): tidak menetapkan perilaku nomor halaman tidak valid, paginasi mengikuti pola bersama foundation. foundation `prd-conventions.md` §9.18: «Nomor halaman tidak valid (0, negatif, melebihi halaman terakhir, bukan angka) pada input nomor halaman: input diabaikan dan tabel tetap di halaman sekarang.» Kontrak `Paginator#9`: «a page past the last goes to the last page, a page below 1 goes to page 1». Diasersi: kontrak untuk nomor `0`, `-1`, dan `4`, sehingga halaman berpindah ke halaman 1 atau halaman terakhir (SB-7); input `abc` tidak bertentangan dengan kontrak dan tetap diabaikan.

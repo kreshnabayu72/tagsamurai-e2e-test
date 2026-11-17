@@ -14,23 +14,23 @@ sourceRules:
   - §9.2#b58
   - §9.2#b59
   - §9.4.2#r24
-  - §9.4.2#r65
-  - §9.4.2#r85
-  - §9.4.2#r86
+  - §9.4.2#r73
+  - §9.4.2#r93
   - §9.4.2#r94
-  - §9.4.2#r95
-  - §9.4.2#r96
-  - §9.4.4#r15
+  - §9.4.2#r102
+  - §9.4.2#r103
+  - §9.4.2#r104
   - §9.6#r14
   - §9.6#r15
   - EB-FB-1@save-changes
   - EB-FB-3@save-changes
   - EB-FB-4
   - EB-ERR-1@save-changes
+  - §4.1#r126
 smoke: []
 dependsOn: []
 trace:
-  §7#r1: [12, 27]
+  §7#r1: [12, 27, 85]
   §7#r2: [18, 24]
   §7#r8: 42
   S-01: [2, 7, 73]
@@ -38,19 +38,19 @@ trace:
   §9.2#b58: 18
   §9.2#b59: [24, 35]
   §9.4.2#r24: [64, 65]
-  §9.4.2#r65: [70, 71]
-  §9.4.2#r85: [49, 55]
-  §9.4.2#r86: [50, 56]
-  §9.4.2#r94: 18
-  §9.4.2#r95: [24, 35]
-  §9.4.2#r96: [37, 78, 80]
-  §9.4.4#r15: 37
+  §9.4.2#r73: [70, 71]
+  §9.4.2#r93: [49, 55]
+  §9.4.2#r94: [50, 56]
+  §9.4.2#r102: 18
+  §9.4.2#r103: [24, 35]
+  §9.4.2#r104: [37, 78, 80]
   §9.6#r14: 18
   §9.6#r15: [24, 35]
   EB-FB-1@save-changes: [12, 18]
   EB-FB-3@save-changes: [42, 43, 44]
   EB-FB-4: [13, 20, 21, 23]
   EB-ERR-1@save-changes: [25, 27, 32, 33, 34]
+  §4.1#r126: [70, 71]
 anchor: []
 coverage:
   web: automated
@@ -75,10 +75,10 @@ coverage:
   - K4: node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, server menjawab Save dengan kegagalan server (5xx) pada percobaan pertama dan sukses pada percobaan kedua.
   - K5: node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, Save tidak mendapat respons sampai timeout.
   - K6: node All categories terpilih, tab Borrow aktif, Area utama memakai DU-067-1 sedangkan server memakai DU-067-3, sehingga Save tiba tanpa selisih.
-  - K7: entitas berstatus Suspended, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1.
-  - K8: entitas berstatus Expired, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1.
-  - K9: entitas berstatus Suspended, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, dialog Add override diisi dengan DU-067-4.
-  - K10: node All categories terpilih, tab Assign aktif, nilai memakai DU-067-5, server menolak Save karena kombinasi efektif Allowed assignee OFF/OFF pada sebuah override yang sudah ada.
+  - K7: entitas berstatus Suspended, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, server menolak Save dengan larangan akses (`403`).
+  - K8: entitas berstatus Expired, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, server menolak Save dengan larangan akses (`403`).
+  - K9: entitas berstatus Suspended, node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, dialog Add override diisi dengan DU-067-4, server menolak Add override dengan larangan akses (`403`) karena entitas Suspended.
+  - K10: node All categories terpilih, tab Assign aktif, nilai memakai DU-067-5, server menolak Save karena kombinasi efektif Allowed assignee OFF/OFF pada aset yang nilai efektif Allow Assign-nya `Allow` (bukan Deny), lewat sebuah override yang sudah ada.
   - K11: node All categories terpilih, tab Borrow aktif, nilai memakai DU-067-1, respons daftar override belum diterima.
 
 ## Test Steps
@@ -187,4 +187,11 @@ coverage:
 79. Klik `Cancel` pada dialog `Save Changes`
 80. Verifikasi tombol `Save` pada Area utama tetap aktif karena draft belum tersimpan
 
-[^drift-1]: Drift PRD vs foundation. PRD §9.4.2 #r94 (EC-11a) dan §9.6 #r14 (RES-SAVE-i): Save Changes 5xx atau timeout memunculkan Toast T-02 `Error, failed to save settings.`. Foundation `error-handling-convention.md` §2 baris Timeout / Network: toast `Connection problem. Please try again.`. Diasersi: foundation, karena copy toast untuk timeout atau jaringan adalah pola bersama platform (SB-4); toast T-02 diasersi pada langkah kegagalan server.
+### Toast sukses Save tampil di kanan bawah
+81. Tampilkan Area utama dengan kondisi K3
+82. Ubah `Max duration` menjadi `10`
+83. Klik `Save`
+84. Klik `Save` pada dialog `Save Changes`
+85. Verifikasi toast `Success, settings have been saved.` tampil di pojok kanan bawah layar (`bottom-right`)
+
+[^drift-1]: Drift PRD vs foundation. PRD §9.4.2 `EC-11a` dan §9.6 `RES-SAVE-i`: Save Changes 5xx atau timeout memunculkan Toast T-02 `Error, failed to save settings.`. Foundation `error-handling-convention.md` §2 baris Timeout / Network: toast `Connection problem. Please try again.`. Diasersi: foundation, karena copy toast untuk timeout atau jaringan adalah pola bersama platform (SB-4); toast T-02 diasersi pada langkah kegagalan server.

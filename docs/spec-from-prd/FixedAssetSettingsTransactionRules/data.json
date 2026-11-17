@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-14",
- "sha": "3caf4193490c1282",
+ "disetujui": "user, 2026-11-17",
+ "sha": "7f58d77c1e07d344",
  "entri": [
   {
    "id": "DU-001-1",
@@ -22,7 +22,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r92",
+   "sumber": "§4.1#r103",
    "maks": {
     "Name": null
    }
@@ -100,11 +100,11 @@
     "TC-FA-FATR-E2E-003-save-company"
    ],
    "jenis": "Entitas",
-   "data": "Entitas khusus dengan Company default bawaan dan keempat transaksi tersedia",
+   "data": "Entitas khusus dengan Company default bawaan dan keempat transaksi dan Approval Workflow tersedia",
    "asal": "awal",
    "nilai": {
     "Name": "Citra Logistik {runId}",
-    "Plan": "transaksi Borrow, Assign, Transfer, dan Disposal tersedia",
+    "Plan": "transaksi Borrow, Assign, Transfer, dan Disposal tersedia, serta Approval Workflow",
     "Company default": "nilai bawaan §4.1"
    },
    "jumlah": 1,
@@ -441,7 +441,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.4.2#r67",
+   "sumber": "§9.4.2#r75",
    "maks": {
     "Target": null,
     "Category": null
@@ -847,8 +847,7 @@
     "Allowed assignee: Employee": "ON",
     "Allowed assignee: Division": "ON",
     "Max assets per assignee (concurrent)": "3",
-    "Recipient acceptance": "Required",
-    "Direct handover between holders": "Allow",
+    "Need recipient confirmation": "Yes",
     "Photo at start": "ON",
     "Photo at end": "ON",
     "Require approval": "OFF",
@@ -857,7 +856,7 @@
    "varian": [
     "Max-assets-per-assignee@assign:per-jenis-limit:Max assets per assignee (concurrent)"
    ],
-   "sumber": "§4.1#r107",
+   "sumber": "§4.1#r118",
    "id": "DU-100-18",
    "spec": [
     "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
@@ -1034,14 +1033,12 @@
   },
   {
    "jenis": "Asset",
-   "data": "aset berstatus Assigned kepada Agus",
+   "data": "aset di Group `Gudang Pusat {runId}`",
    "asal": "awal",
    "nilai": {
     "Name": "Lenovo ThinkBook 14 {runId}",
     "Category": "Laptop {runId}",
-    "Group": "Gudang Pusat {runId}",
-    "Status": "Assigned",
-    "Pemegang": "Agus Hartono {runId}"
+    "Group": "Gudang Pusat {runId}"
    },
    "id": "DU-100-26",
    "spec": [
@@ -1053,21 +1050,18 @@
    "maks": {
     "Name": null,
     "Category": null,
-    "Group": null,
-    "Pemegang": null
+    "Group": null
    },
    "sumber": "turunan penulis"
   },
   {
    "jenis": "Asset",
-   "data": "aset berstatus Assigned kepada Agus",
+   "data": "aset di Group `Gudang Pusat {runId}`",
    "asal": "awal",
    "nilai": {
     "Name": "Dell Vostro 3420 {runId}",
     "Category": "Laptop {runId}",
-    "Group": "Gudang Pusat {runId}",
-    "Status": "Assigned",
-    "Pemegang": "Agus Hartono {runId}"
+    "Group": "Gudang Pusat {runId}"
    },
    "id": "DU-100-27",
    "spec": [
@@ -1079,8 +1073,7 @@
    "maks": {
     "Name": null,
     "Category": null,
-    "Group": null,
-    "Pemegang": null
+    "Group": null
    },
    "sumber": "turunan penulis"
   },
@@ -1563,10 +1556,10 @@
   },
   {
    "jenis": "Setting Company default Assign",
-   "data": "Recipient acceptance Optional",
+   "data": "Need recipient confirmation No",
    "asal": "dibuat",
    "nilai": {
-    "Recipient acceptance": "Optional"
+    "Need recipient confirmation": "No"
    },
    "id": "DU-100-48",
    "spec": [
@@ -2211,6 +2204,84 @@
    ],
    "varian": [],
    "maks": {},
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Employee",
+   "data": "Employee pemegang aset untuk Unassign serah terima fisik",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Galih Permana {runId}",
+    "Status": "Aktif",
+    "Akun login": "Ada"
+   },
+   "id": "DU-100-79",
+   "spec": [
+    "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "Name": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Asset",
+   "data": "aset Assigned kepada Galih untuk Unassign dengan foto",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lenovo IdeaPad Slim 3 {runId}",
+    "Category": "Laptop {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Assigned",
+    "Pemegang": "Galih Permana {runId}"
+   },
+   "id": "DU-100-80",
+   "spec": [
+    "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
+   ],
+   "varian": [],
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null,
+    "Pemegang": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Asset",
+   "data": "aset Assigned kepada Galih dengan tag rusak untuk Unassign lewat I can't scan the TAG",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Acer Swift 3 {runId}",
+    "Category": "Laptop {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Assigned",
+    "Pemegang": "Galih Permana {runId}",
+    "Tag": "Rusak"
+   },
+   "id": "DU-100-81",
+   "spec": [
+    "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-100-aturan-assign-dep-assign"
+   ],
+   "varian": [],
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null,
+    "Pemegang": null
+   },
    "sumber": "turunan penulis"
   },
   {
@@ -3735,7 +3806,7 @@
    "data": "override aset: field di luar konfigurasi Approval",
    "asal": "dibuat",
    "nilai": {
-    "Recipient acceptance": "Optional"
+    "Need recipient confirmation": "No"
    },
    "id": "DU-101-75",
    "spec": [
@@ -4065,6 +4136,114 @@
    "sumber": "turunan penulis"
   },
   {
+   "jenis": "Asset",
+   "data": "aset milik spec ini, dipegang Employee Nonaktif",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Handphone Realme C55 {runId}",
+    "Group": "Gudang Pontianak {runId}",
+    "Status": "Assigned",
+    "Pemegang": "Dian Pertiwi {runId}"
+   },
+   "id": "DU-101-91",
+   "spec": [
+    "TC-FA-FATR-BE-101-approval-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Pemegang": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Asset",
+   "data": "aset milik spec ini",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Handphone Vivo Y36 {runId}",
+    "Group": "Gudang Pontianak {runId}"
+   },
+   "id": "DU-101-92",
+   "spec": [
+    "TC-FA-FATR-BE-101-approval-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "Name": null,
+    "Group": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Group",
+   "data": "Group milik spec ini, tercakup dalam cakupan Group pengaju",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Surabaya {runId}"
+   },
+   "id": "DU-101-93",
+   "spec": [
+    "TC-FA-FATR-BE-101-approval-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "Name": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Penugasan Role Transaksi",
+   "data": "penugasan Approver",
+   "asal": "awal",
+   "nilai": {
+    "User": "Rizal Fauzi {runId}",
+    "Role Transaksi": "Approver",
+    "Jenis transaksi": "Assign",
+    "Group": "Gudang Surabaya {runId}"
+   },
+   "id": "DU-101-94",
+   "spec": [
+    "TC-FA-FATR-BE-101-approval-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "User": null,
+    "Group": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
+   "jenis": "Asset",
+   "data": "aset milik spec ini",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer HP LaserJet Pro M404 {runId}",
+    "Group": "Gudang Surabaya {runId}"
+   },
+   "id": "DU-101-95",
+   "spec": [
+    "TC-FA-FATR-BE-101-approval-assign-dep-assign"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {
+    "Name": null,
+    "Group": null
+   },
+   "sumber": "turunan penulis"
+  },
+  {
    "jenis": "Entitas",
    "data": "entitas khusus spec ini, tidak dipakai spec lain",
    "asal": "awal",
@@ -4232,27 +4411,6 @@
    "data": "Employee assignee yang aktif dan punya akun login",
    "asal": "awal",
    "nilai": {
-    "Name": "Lina Marlina {runId}",
-    "Status": "Aktif",
-    "Akun login": "Ada"
-   },
-   "id": "DU-102-9",
-   "spec": [
-    "TC-FA-FATR-BE-102-timeout-assign-dep-assign"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {
-    "Name": null
-   },
-   "sumber": "turunan penulis"
-  },
-  {
-   "jenis": "Employee",
-   "data": "Employee assignee yang aktif dan punya akun login",
-   "asal": "awal",
-   "nilai": {
     "Name": "Rina Kusuma {runId}",
     "Status": "Aktif",
     "Akun login": "Ada"
@@ -4298,10 +4456,10 @@
     "Require approval": "ON",
     "Approval type": "Any one approver",
     "Transaction timeout": "7",
-    "Recipient acceptance": "Required",
+    "Need recipient confirmation": "Yes",
     "Photo at start": "ON",
     "Photo at end": "ON",
-    "Direct handover between holders": "Allow"
+    "Allowed assignee: Employee": "ON"
    },
    "id": "DU-102-12",
    "spec": [
@@ -4985,7 +5143,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r132",
+   "sumber": "§4.1#r142",
    "maks": {
     "Name": null
    }
@@ -5001,7 +5159,8 @@
    "nilai": {
     "Name": "Joko Approver {runId}",
     "Role Transaksi": "Approver",
-    "Cakupan": "Group Gudang Pusat {runId}"
+    "Cakupan": "Group Gudang Pusat {runId}",
+    "Status": "Active"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5049,7 +5208,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r133",
+   "sumber": "§4.1#r143",
    "maks": {
     "Name": null,
     "Cost Center default": null
@@ -5071,7 +5230,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r134",
+   "sumber": "§4.1#r144",
    "maks": {
     "Name": null
    }
@@ -5093,7 +5252,7 @@
    "varian": [
     "Destination-quota-check@transfer:per-jenis-limit:Destination quota check"
    ],
-   "sumber": "§4.1#r137",
+   "sumber": "§4.1#r147",
    "maks": {
     "Name": null
    }
@@ -5113,7 +5272,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r140",
+   "sumber": "§4.1#r150",
    "maks": {
     "Name": null
    }
@@ -5335,7 +5494,8 @@
     "Name": "Troli Barang Kecil {runId}",
     "Group": "Gudang Pusat {runId}",
     "Status": "Active",
-    "Cost Center": "CC-GP-{runId}"
+    "Cost Center": "CC-GP-{runId}",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5359,7 +5519,8 @@
     "Name": "Troli Barang Besar {runId}",
     "Group": "Gudang Pusat {runId}",
     "Status": "Active",
-    "Cost Center": "CC-GP-{runId}"
+    "Cost Center": "CC-GP-{runId}",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5384,7 +5545,8 @@
     "Group": "Gudang Pusat {runId}",
     "Status": "Active",
     "Cost Center": "CC-GP-{runId}",
-    "Penyusutan": "periode berjalan sudah berjalan, bebannya tercatat pada Cost Center CC-GP-{runId}"
+    "Penyusutan": "periode berjalan sudah berjalan, bebannya tercatat pada Cost Center CC-GP-{runId}",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5403,15 +5565,16 @@
     "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
    ],
    "jenis": "Asset",
-   "data": "Aset Cost Center Always ke Group tanpa Cost Center default",
+   "data": "Aset Cost Center Always ke Group tanpa Cost Center default, dua baris dalam satu TRF",
    "asal": "awal",
    "nilai": {
-    "Name": "Rak Besi Rendah {runId}",
+    "Name": "Rak Besi Rendah {n} {runId}",
     "Group": "Gudang Pusat {runId}",
     "Status": "Active",
-    "Cost Center": "CC-GP-{runId}"
+    "Cost Center": "CC-GP-{runId}",
+    "Tag": "ber-tag, dapat di-scan"
    },
-   "jumlah": 1,
+   "jumlah": 2,
    "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
@@ -5454,7 +5617,8 @@
    "nilai": {
     "Name": "Meja Rapat Medan {n} {runId}",
     "Group": "Gudang Pusat {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 3,
    "mutasi": [],
@@ -5498,7 +5662,8 @@
    "nilai": {
     "Name": "Tenda Lipat {runId}",
     "Group": "Gudang Pusat {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5520,7 +5685,8 @@
    "nilai": {
     "Name": "Bor Listrik {n} {runId}",
     "Group": "Gudang Pusat {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 4,
    "mutasi": [],
@@ -5594,7 +5760,7 @@
    "varian": [
     "Destination-quota-check@transfer:lebih-batas"
    ],
-   "sumber": "§4.1#r139",
+   "sumber": "§4.1#r149",
    "maks": {
     "Aset": null,
     "Group tujuan": null
@@ -5619,7 +5785,7 @@
    "varian": [
     "Destination-quota-check@transfer:di-bawah"
    ],
-   "sumber": "§4.1#r137",
+   "sumber": "§4.1#r147",
    "maks": {
     "Aset": null,
     "Group tujuan": null
@@ -5645,7 +5811,7 @@
    "varian": [
     "Destination-quota-check@transfer:lebih-batas"
    ],
-   "sumber": "§4.1#r138",
+   "sumber": "§4.1#r148",
    "maks": {
     "Aset": null,
     "Group tujuan": null
@@ -5662,7 +5828,8 @@
    "nilai": {
     "Name": "Dongkrak Hidrolik {runId}",
     "Group": "Gudang Pusat {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -5688,7 +5855,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r138",
+   "sumber": "§4.1#r148",
    "maks": {
     "Name": null
    }
@@ -5709,7 +5876,7 @@
    "jumlah": 3,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r138",
+   "sumber": "§4.1#r148",
    "maks": {
     "Name": null,
     "Group": null
@@ -5731,10 +5898,121 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r138",
+   "sumber": "§4.1#r148",
    "maks": {
     "Name": null,
     "Group": null
+   }
+  },
+  {
+   "id": "DU-103-38",
+   "spec": [
+    "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset pembanding: pengajuan dari Group asal saat Approval Workflow tersedia",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kompresor Udara Pembanding {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-103-39",
+   "spec": [
+    "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset yang diajukan saat Approval Workflow tidak tersedia di plan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kompresor Udara Plan Off {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-103-40",
+   "spec": [
+    "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Cost Center diubah dari Never ke Always antara Submit dan Receive",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Troli Barang Sedang {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan",
+    "Cost Center": "CC-GP-{runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r33",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Cost Center": null
+   }
+  },
+  {
+   "id": "DU-103-41",
+   "spec": [
+    "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset In Transit yang diselesaikan lewat Mark as Received",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tangga Aluminium {n} {runId}",
+    "Group": "Gudang Pusat {runId}",
+    "Status": "Active",
+    "Tag": "ber-tag, dapat di-scan"
+   },
+   "jumlah": 2,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r65",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-103-42",
+   "spec": [
+    "TC-FA-FATR-BE-103-aturan-transfer-dep-transfer"
+   ],
+   "jenis": "Reason",
+   "data": "Reason Mark as Received pada Transfer",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Tag tidak terbaca, aset sudah diterima secara fisik"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r65",
+   "maks": {
+    "Reason": null
    }
   },
   {
@@ -5748,8 +6026,8 @@
    "nilai": {
     "Name": "Rina Pengaju {runId}",
     "Role": "Aktor Transfer",
-    "Cakupan Transfer": "Group Gudang Asal {runId}, Gudang Anak {runId}, Gudang Sendiri {runId}, Gudang Tanpa Approver {runId}, Gudang Manager Saja {runId}, Gudang Hybrid {runId}, Gudang Asal Kosong {runId}, Kantor Pusat {runId}, Gudang Cabang Manajer {runId}",
-    "Role Transaksi": "Approver pada Group Gudang Asal {runId} dan Gudang Sendiri {runId}"
+    "Cakupan Transfer": "Group Gudang Asal {runId}, Gudang Anak {runId}, Gudang Sendiri {runId}, Gudang Tanpa Approver {runId}, Gudang Manager Saja {runId}, Gudang Hybrid {runId}, Gudang Asal Kosong {runId}, Kantor Pusat {runId}, Gudang Cabang Manajer {runId}, Gudang Toggle Off {runId}",
+    "Role Transaksi": "Approver pada Group Gudang Asal {runId}, Gudang Sendiri {runId}, dan Gudang Tujuan Sendiri {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -6194,7 +6472,8 @@
    "nilai": {
     "Name": "Gudang Tujuan {runId}",
     "Group induk": "Regional Jawa {runId}",
-    "Override Group": "Approval type Any one approver, Approval scope Origin only, Require approval OFF"
+    "Override Group": "Approval type Any one approver, Approval scope Origin only, Require approval OFF, Auto-approve ON, Auto-approve when destination in same parent Group ON",
+    "Sisa kuota": "500"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -6235,7 +6514,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Gudang Luar {runId}",
-    "Group induk": "Regional Sumatra {runId}"
+    "Group induk": "Regional Sumatra {runId}",
+    "Sisa kuota": "500"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -6437,7 +6717,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Kantor Wilayah {runId}",
-    "Group induk": "root client"
+    "Group induk": "root client",
+    "Sisa kuota": "500"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -7535,7 +7816,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b453",
+   "sumber": "§9.2#b452",
    "maks": {
     "Name": null
    }
@@ -7555,7 +7836,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b453",
+   "sumber": "§9.2#b452",
    "maks": {
     "Name": null,
     "Group induk": null
@@ -7602,7 +7883,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b453",
+   "sumber": "§9.2#b452",
    "maks": {
     "Name": null,
     "Group": null
@@ -7625,7 +7906,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b461",
+   "sumber": "§9.2#b460",
    "maks": {
     "Name": null,
     "Group": null
@@ -7648,7 +7929,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b520",
+   "sumber": "§9.2#b519",
    "maks": {
     "Name": null,
     "Group": null
@@ -7673,6 +7954,413 @@
    "maks": {
     "Log": null,
     "Modified By": null
+   }
+  },
+  {
+   "id": "DU-104-88",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Group",
+   "data": "Group tujuan dengan sisa kuota habis",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Kuota Penuh {runId}",
+    "Group induk": "Regional Sumatra {runId}",
+    "Sisa kuota": "0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group induk": null
+   }
+  },
+  {
+   "id": "DU-104-89",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset pembanding pengajuan lolos Limits",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Kuota Pembanding {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-90",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset yang melanggar Limits (Destination quota check)",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Kuota Terlampaui {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-91",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset yang melanggar aturan tetap, Deny, Eligibility, dan Limits sekaligus",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Genset Hilang Ganda {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Condition": "Missing",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only, Allow Transfer Deny, Destination scope Within same parent Group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-92",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Group",
+   "data": "Group dengan Require approval OFF dari override Group",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Toggle Off {runId}",
+    "Group induk": "root client",
+    "Override Group": "Require approval OFF, Auto-approve OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Group induk": null
+   }
+  },
+  {
+   "id": "DU-104-93",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "User",
+   "data": "Approver pada Group Require approval OFF",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bayu Approver Toggle {runId}",
+    "Role Transaksi": "Approver Transfer pada Group Gudang Toggle Off {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Role Transaksi": null
+   }
+  },
+  {
+   "id": "DU-104-94",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset pembanding ber-Require approval ON pada Group Toggle Off",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Toggle Pembanding {runId}",
+    "Group": "Gudang Toggle Off {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-95",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset tanpa override aset, Require approval OFF dari override Group",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Toggle Off {runId}",
+    "Group": "Gudang Toggle Off {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r82",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-96",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Group",
+   "data": "Group tujuan dengan pengaju sebagai satu-satunya Approver",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Tujuan Sendiri {runId}",
+    "Group induk": "root client",
+    "Sisa kuota": "500"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b519",
+   "maks": {
+    "Name": null,
+    "Group induk": null
+   }
+  },
+  {
+   "id": "DU-104-97",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Group",
+   "data": "Group tujuan tanpa Approver dan tanpa Group Manager",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Tujuan Kosong {runId}",
+    "Group induk": "root client",
+    "Sisa kuota": "500"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b519",
+   "maks": {
+    "Name": null,
+    "Group induk": null
+   }
+  },
+  {
+   "id": "DU-104-98",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Approval scope Both dengan pengaju satu-satunya Approver di sisi asal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Both Asal Sendiri {runId}",
+    "Group": "Gudang Sendiri {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Both"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b519",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-99",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Approval scope Both dengan pengaju satu-satunya Approver di sisi tujuan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Both Tujuan Sendiri {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Both"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b519",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-100",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Approval scope Both dengan sisi tujuan tanpa Approver",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Both Tujuan Kosong {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Both"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b519",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-101",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset tanpa override aset, Auto-approve OFF dari Group asal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Auto Asal Off {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b521",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-102",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus spec ini, tidak dipakai spec lain",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Approval Transfer {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-104-103",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Missing ber-Deny pada override aset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Genset Hilang Deny {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Condition": "Missing",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only, Allow Transfer Deny"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-104",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset ber-Deny pada override aset dan ber-Destination scope",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Deny Scope {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only, Allow Transfer Deny, Destination scope Within same parent Group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-104-105",
+   "spec": [
+    "TC-FA-FATR-BE-104-approval-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "Aset ber-Destination scope yang diajukan ke Group tujuan berkuota habis",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Scope Kuota {runId}",
+    "Group": "Gudang Asal {runId}",
+    "Status": "Active",
+    "Override aset": "Require approval ON, Auto-approve OFF, Approval type Any one approver, Approval scope Origin only, Destination scope Within same parent Group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b379",
+   "maks": {
+    "Name": null,
+    "Group": null
    }
   },
   {
@@ -8296,7 +8984,7 @@
    "asal": "awal",
    "nilai": {
     "Category Name": "Peralatan Proyek {runId}",
-    "Allowed disposal types": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in, Write-off",
     "Min asset age warning": "12",
     "Max deviation from book value": "30",
     "Allow Disposal": "Allow",
@@ -8320,7 +9008,7 @@
    "asal": "awal",
    "nilai": {
     "Category Name": "Mesin Produksi {runId}",
-    "Allowed disposal types": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in, Write-off",
     "Min asset age warning": "12",
     "Min asset age warning setelah Save Changes": "24",
     "Max deviation from book value": "30",
@@ -8347,7 +9035,7 @@
    "asal": "awal",
    "nilai": {
     "Category Name": "Kendaraan Dinas {runId}",
-    "Allowed disposal types": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in, Write-off",
     "Min asset age warning": "12",
     "Max deviation from book value": "30",
     "Allow Disposal": "Deny",
@@ -8497,7 +9185,7 @@
     "Group": "Workshop {runId}",
     "Tag": "Ber-tag",
     "Condition": "Active",
-    "Purchase date": "T0 − 12 bulan",
+    "Purchase date": "T0 − 12 bulan (tanggal kalender zona waktu client)",
     "Register Date": "T0 − 12 bulan",
     "Commercial book value": "10.000.000"
    },
@@ -8527,7 +9215,7 @@
     "Group": "Workshop {runId}",
     "Tag": "Ber-tag",
     "Condition": "Active",
-    "Purchase date": "T0 − 12 bulan + 1 hari",
+    "Purchase date": "T0 − 12 bulan + 1 hari (tanggal kalender zona waktu client)",
     "Register Date": "T0 − 12 bulan + 1 hari",
     "Commercial book value": "10.000.000"
    },
@@ -9148,36 +9836,6 @@
    }
   },
   {
-   "id": "DU-106-39",
-   "spec": [
-    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
-   ],
-   "jenis": "Asset",
-   "data": "Aset muda uji peringatan umur aset",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Tangga Lipat TL3 {runId}",
-    "Category": "Peralatan Proyek {runId}",
-    "Group": "Workshop {runId}",
-    "Tag": "Tidak ber-tag",
-    "Condition": "Active",
-    "Purchase date": "T0 − 6 bulan",
-    "Register Date": "T0 − 6 bulan",
-    "Commercial book value": "10.000.000"
-   },
-   "jumlah": 1,
-   "mutasi": [
-    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
-   ],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Asset Name": null,
-    "Category": null,
-    "Group": null
-   }
-  },
-  {
    "id": "DU-106-40",
    "spec": [
     "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
@@ -9203,6 +9861,221 @@
    "sumber": "turunan penulis",
    "maks": {
     "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-41",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Disposal",
+   "data": "Disposal menunggu eksekusi yang melewati batas timeout",
+   "asal": "awal",
+   "nilai": {
+    "Disposal": "Mesin Tunggu Eksekusi {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group": "Workshop {runId}",
+    "Status": "Waiting for Execution",
+    "Masuk status sejak": "T0"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Disposal": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-42",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf yang Allow Disposal-nya diubah spec",
+   "asal": "awal",
+   "nilai": {
+    "Category Name": "Pompa Industri {runId}",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in",
+    "Min asset age warning": "12",
+    "Max deviation from book value": "30",
+    "Allow Disposal": "Allow",
+    "Allow Disposal setelah Save Changes": "Deny",
+    "Non TAG": "Tidak"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Category Name": null
+   }
+  },
+  {
+   "id": "DU-106-43",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji pengajuan sesudah Allow berubah",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Pompa Uji {runId}",
+    "Category": "Pompa Industri {runId}",
+    "Group": "Workshop {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Purchase date": "T0 − 30 bulan",
+    "Register Date": "T0 − 30 bulan",
+    "Commercial book value": "10.000.000",
+    "Nilai jual yang diajukan": "10.000.000"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-44",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Disposal",
+   "data": "Draft Disposal yang harus tetap Draft",
+   "asal": "awal",
+   "nilai": {
+    "Disposal": "Pompa Draft {runId}",
+    "Category": "Pompa Industri {runId}",
+    "Group": "Workshop {runId}",
+    "Status": "Draft",
+    "Masuk status sejak": "T0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Disposal": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-45",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Disposal Report",
+   "data": "Disposal Report yang harus tetap Reported",
+   "asal": "awal",
+   "nilai": {
+    "Disposal Report": "Pompa Laporan {runId}",
+    "Category": "Pompa Industri {runId}",
+    "Group": "Workshop {runId}",
+    "Status": "Reported",
+    "Masuk status sejak": "T0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Disposal Report": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-46",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Disposal",
+   "data": "Disposal Executed menunggu posting yang harus tetap",
+   "asal": "awal",
+   "nilai": {
+    "Disposal": "Pompa Eksekusi {runId}",
+    "Category": "Pompa Industri {runId}",
+    "Group": "Workshop {runId}",
+    "Status": "Executed menunggu posting",
+    "Masuk status sejak": "T0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Disposal": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-47",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji Disposal tanpa foto",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Mesin Foto {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group": "Workshop {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Purchase date": "T0 − 30 bulan",
+    "Register Date": "T0 − 30 bulan",
+    "Commercial book value": "10.000.000"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-106-48",
+   "spec": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "jenis": "Disposal",
+   "data": "Disposal menunggu eksekusi yang di-Execute tanpa foto",
+   "asal": "awal",
+   "nilai": {
+    "Disposal": "Mesin Eksekusi Foto {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group": "Workshop {runId}",
+    "Status": "Waiting for Execution",
+    "Masuk status sejak": "T0"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-106-aturan-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Disposal": null,
     "Category": null,
     "Group": null
    }
@@ -10411,6 +11284,7 @@
     "Group": "Workshop Operasional {runId}",
     "Tag": "Ber-tag",
     "Condition": "Missing",
+    "Jenis Disposal yang diizinkan untuk aset Missing": "Write-off",
     "Asset override Allow Disposal": "Deny"
    },
    "jumlah": 1,
@@ -10570,6 +11444,180 @@
    }
   },
   {
+   "id": "DU-107-63",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf dengan batas deviasi dan Allowed disposal types terbatas",
+   "asal": "awal",
+   "nilai": {
+    "Category Name": "Kendaraan Batas {runId}",
+    "Require approval": "ON",
+    "Approval type": "Any one approver",
+    "Allowed disposal types": "Sell, Scrap",
+    "Max deviation from book value": "25"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Category Name": null
+   }
+  },
+  {
+   "id": "DU-107-64",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Truk Batas B1 {runId}",
+    "Category": "Kendaraan Batas {runId}",
+    "Group": "Workshop Operasional {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Commercial book value": "10.000.000"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-107-65",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Truk Batas B2 {runId}",
+    "Category": "Kendaraan Batas {runId}",
+    "Group": "Workshop Operasional {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Commercial book value": "10.000.000"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-107-66",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Truk Batas B3 {runId}",
+    "Category": "Kendaraan Batas {runId}",
+    "Group": "Workshop Operasional {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Commercial book value": "10.000.000"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-107-67",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf yang konfigurasi Approval-nya diubah spec",
+   "asal": "awal",
+   "nilai": {
+    "Category Name": "Kendaraan Simpan {runId}",
+    "Require approval": "OFF",
+    "Require approval setelah Save Changes": "ON",
+    "Approval type": "Any one approver",
+    "Min asset age warning setelah Save Changes": "8"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Category Name": null
+   }
+  },
+  {
+   "id": "DU-107-68",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Truk Simpan K1 {runId}",
+    "Category": "Kendaraan Simpan {runId}",
+    "Group": "Divisi Tanpa Manajer {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-107-69",
+   "spec": [
+    "TC-FA-FATR-BE-107-approval-disposal-dep-disposal"
+   ],
+   "jenis": "User",
+   "data": "Group Manager nonaktif pada Group tanpa Approver",
+   "asal": "awal",
+   "nilai": {
+    "User Name": "Wati Susanti {runId}",
+    "Role": "Group Manager tanpa penugasan Approver",
+    "Cakupan": "Divisi Tanpa Manajer {runId}",
+    "Status": "Nonaktif"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "User Name": null,
+    "Cakupan": null
+   }
+  },
+  {
    "id": "DU-108-1",
    "spec": [
     "TC-FA-FATR-BE-108-timeout-disposal-dep-disposal"
@@ -10640,7 +11688,7 @@
    "asal": "awal",
    "nilai": {
     "Category Name": "Mesin Timeout {runId}",
-    "Allowed disposal types": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in, Write-off",
     "Require approval": "ON",
     "Approval type": "Any one approver"
    },
@@ -10750,16 +11798,16 @@
    "spec": [
     "TC-FA-FATR-BE-108-timeout-disposal-dep-disposal"
    ],
-   "jenis": "Disposal",
-   "data": "Baris DSP menunggu approval untuk batas tepat 7 hari",
+   "jenis": "Asset",
+   "data": "Aset untuk Disposal yang mencapai batas tepat 7 hari",
    "asal": "awal",
    "nilai": {
     "Asset Name": "Mesin Cetak Q0 {runId}",
     "Category": "Mesin Timeout {runId}",
     "Group": "Workshop Timeout {runId}",
-    "Status": "Waiting for Approval",
-    "Masuk status sejak": "T0",
-    "Batas Transaction timeout": "7 hari sama dengan 168 jam"
+    "Tag": "Ber-tag",
+    "Condition": "Active",
+    "Batas Transaction timeout Disposal": "7 hari sama dengan 168 jam"
    },
    "jumlah": 1,
    "mutasi": [
@@ -11242,6 +12290,33 @@
    }
   },
   {
+   "id": "DU-108-27",
+   "spec": [
+    "TC-FA-FATR-BE-108-timeout-disposal-dep-disposal"
+   ],
+   "jenis": "Asset",
+   "data": "Aset untuk pengajuan pembanding saat Approval Workflow tersedia",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Mesin Plan P2 {runId}",
+    "Category": "Mesin Timeout {runId}",
+    "Group": "Workshop Timeout {runId}",
+    "Tag": "Ber-tag",
+    "Condition": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-108-timeout-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
    "id": "DU-109-1",
    "spec": [
     "TC-FA-FATR-BE-109-aturan-damaged-dep-damaged"
@@ -11280,7 +12355,7 @@
     "TC-FA-FATR-BE-109-aturan-damaged-dep-damaged"
    ],
    "varian": [],
-   "sumber": "§4.1#r170",
+   "sumber": "§4.1#r178",
    "maks": {
     "Asset Name": null
    }
@@ -11303,7 +12378,7 @@
     "TC-FA-FATR-BE-109-aturan-damaged-dep-damaged"
    ],
    "varian": [],
-   "sumber": "§4.1#r169",
+   "sumber": "§4.1#r177",
    "maks": {
     "Asset Name": null
    }
@@ -11326,7 +12401,7 @@
     "TC-FA-FATR-BE-109-aturan-damaged-dep-damaged"
    ],
    "varian": [],
-   "sumber": "§4.1#r171",
+   "sumber": "§4.1#r179",
    "maks": {
     "Asset Name": null
    }
@@ -11370,7 +12445,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r169",
+   "sumber": "§4.1#r177",
    "maks": {}
   },
   {
@@ -11387,7 +12462,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r172",
+   "sumber": "§4.1#r180",
    "maks": {}
   },
   {
@@ -11453,7 +12528,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r158",
+   "sumber": "§4.1#r168",
    "maks": {
     "Asset Name": null
    }
@@ -11475,7 +12550,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r158",
+   "sumber": "§4.1#r168",
    "maks": {
     "Asset Name": null
    }
@@ -11499,7 +12574,7 @@
     "TC-FA-FATR-BE-110-aturan-missing-dep-missing"
    ],
    "varian": [],
-   "sumber": "§4.1#r173",
+   "sumber": "§4.1#r181",
    "maks": {
     "Asset Name": null
    }
@@ -11523,7 +12598,7 @@
     "TC-FA-FATR-BE-110-aturan-missing-dep-missing"
    ],
    "varian": [],
-   "sumber": "§4.1#r174",
+   "sumber": "§4.1#r182",
    "maks": {
     "Asset Name": null
    }
@@ -11569,7 +12644,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r173",
+   "sumber": "§4.1#r181",
    "maks": {}
   },
   {
@@ -11586,7 +12661,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r174",
+   "sumber": "§4.1#r182",
    "maks": {}
   },
   {
@@ -11667,7 +12742,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "jenis": "Asset",
-   "data": "aset peminjaman Borrowed yang belum pernah memicu borrow_overdue, switch ON",
+   "data": "aset peminjaman Borrowed yang sudah lewat Due date sejak 1 hari sebelum T0 dan belum pernah memicu borrow_overdue, switch ON",
    "asal": "awal",
    "nilai": {
     "Asset Name": "Laptop Kantor {runId}",
@@ -11678,7 +12753,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
    }
@@ -11699,7 +12774,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
    }
@@ -11719,7 +12794,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
    }
@@ -11740,7 +12815,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
    }
@@ -11762,7 +12837,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§4.1#r215",
+   "sumber": "§4.1#r224",
    "maks": {
     "Asset Name": null
    }
@@ -11783,7 +12858,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r69",
+   "sumber": "§Aturan Logika Modul#r70",
    "maks": {
     "Asset Name": null
    }
@@ -11794,12 +12869,14 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "jenis": "Asset",
-   "data": "aset peminjaman Borrowed yang belum pernah memicu borrow_overdue, switch OFF",
+   "data": "aset peminjaman Borrowed yang jatuh tempo 30 menit sesudah T0 dan belum pernah memicu borrow_overdue, switch OFF",
    "asal": "awal",
    "nilai": {
     "Asset Name": "Monitor Ruang Rapat {runId}",
     "Peminjaman": "Borrowed",
-    "Due date": "T0 − 1 hari",
+    "Duration unit": "Hours",
+    "Due date": "T0 + 30 menit",
+    "Mulai Overdue": "T0 + 90 menit",
     "Event borrow_overdue": "belum pernah terjadi sebelum spec mulai"
    },
    "jumlah": 1,
@@ -11889,7 +12966,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§4.1#r215",
+   "sumber": "§4.1#r224",
    "maks": {
     "Asset Name": null
    }
@@ -11910,7 +12987,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r70",
+   "sumber": "§Aturan Logika Modul#r71",
    "maks": {
     "Asset Name": null
    }
@@ -11930,7 +13007,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.4.2#r132",
+   "sumber": "§9.4.2#r140",
    "maks": {
     "Group Name": null
    }
@@ -11953,7 +13030,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r132",
+   "sumber": "§9.4.2#r140",
    "maks": {
     "Asset Name": null,
     "Group": null
@@ -12210,7 +13287,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r132",
+   "sumber": "§9.4.2#r140",
    "maks": {
     "Name": null,
     "Cakupan": null
@@ -12291,12 +13368,14 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "jenis": "Asset",
-   "data": "aset peminjaman Borrowed yang belum pernah memicu borrow_overdue, switch pinjam ON dan transfer OFF",
+   "data": "aset peminjaman Borrowed yang jatuh tempo 100 menit sesudah T0 dan belum pernah memicu borrow_overdue, switch pinjam ON dan transfer OFF",
    "asal": "awal",
    "nilai": {
     "Asset Name": "Drone Survei {runId}",
     "Peminjaman": "Borrowed",
-    "Due date": "T0 − 1 hari",
+    "Duration unit": "Hours",
+    "Due date": "T0 + 100 menit",
+    "Mulai Overdue": "T0 + 160 menit",
     "Event borrow_overdue": "belum pernah terjadi sebelum spec mulai"
    },
    "jumlah": 1,
@@ -12304,7 +13383,7 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
    }
@@ -12326,9 +13405,53 @@
     "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
    ],
    "varian": [],
-   "sumber": "§Aturan Logika Modul#r68",
+   "sumber": "§Aturan Logika Modul#r69",
    "maks": {
     "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-111-32",
+   "spec": [
+    "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
+   ],
+   "jenis": "Audit",
+   "data": "Audit yang memicu event berawalan audit_, switch Send email notifications Audit ON",
+   "asal": "awal",
+   "nilai": {
+    "Audit": "Audit Aset Kantor {runId}",
+    "Event berawalan audit_": "belum pernah terjadi sebelum spec mulai"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
+   ],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r69",
+   "maks": {
+    "Audit": null
+   }
+  },
+  {
+   "id": "DU-111-33",
+   "spec": [
+    "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
+   ],
+   "jenis": "Audit",
+   "data": "Audit yang memicu event berawalan audit_, switch Send email notifications Audit OFF",
+   "asal": "awal",
+   "nilai": {
+    "Audit": "Audit Gudang Barat {runId}",
+    "Event berawalan audit_": "belum pernah terjadi sebelum spec mulai"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-111-aturan-notification-dep-notification"
+   ],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r69",
+   "maks": {
+    "Audit": null
    }
   },
   {
@@ -12612,7 +13735,7 @@
     "TC-FA-FATR-BE-113-aturan-categories-dep-categories"
    ],
    "varian": [],
-   "sumber": "§4.1#r18",
+   "sumber": "§4.1#r21",
    "maks": {
     "Category": null
    }
@@ -12634,7 +13757,7 @@
     "TC-FA-FATR-BE-113-aturan-categories-dep-categories"
    ],
    "varian": [],
-   "sumber": "§4.1#r18",
+   "sumber": "§4.1#r21",
    "maks": {
     "Category": null
    }
@@ -12676,7 +13799,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r20",
+   "sumber": "§4.1#r23",
    "maks": {
     "Category": null
    }
@@ -14049,11 +15172,13 @@
     "TC-FA-FATR-BE-118-aturan-license-dep-license"
    ],
    "jenis": "Group",
-   "data": "Group tujuan dengan alokasi kuota 3",
+   "data": "Group tujuan dengan alokasi kuota 3, tanpa aset lain",
    "asal": "awal",
    "nilai": {
     "Group Name": "Divisi Cabang Timur {runId}",
-    "Kuota": "3"
+    "Kuota": "3",
+    "Aset lain di Group": "tidak ada selain transfer aktif DU-118-3 dan DU-118-4",
+    "Sisa kuota": "3"
    },
    "jumlah": 1,
    "mutasi": [
@@ -14241,7 +15366,7 @@
     "TC-FA-FATR-BE-119-aturan-accounting-dep-accounting"
    ],
    "varian": [],
-   "sumber": "§9.2#b531",
+   "sumber": "§9.2#b530",
    "maks": {
     "Category": null
    }
@@ -14263,7 +15388,7 @@
     "TC-FA-FATR-BE-119-aturan-accounting-dep-accounting"
    ],
    "varian": [],
-   "sumber": "§9.2#b531",
+   "sumber": "§9.2#b530",
    "maks": {
     "Asset Name": null,
     "Category": null
@@ -14285,7 +15410,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b531",
+   "sumber": "§9.2#b530",
    "maks": {
     "Name": null
    }
@@ -14306,7 +15431,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b531",
+   "sumber": "§9.2#b530",
    "maks": {
     "Name": null
    }
@@ -14326,7 +15451,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b531",
+   "sumber": "§9.2#b530",
    "maks": {}
   },
   {
@@ -14339,7 +15464,7 @@
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Plan Transaksi {runId}",
-    "Plan": "Paid (rank 2)",
+    "Plan awal": "Plan Rank 2 {runId}",
     "Plan khusus": "dipakai entitas ini saja"
    },
    "jumlah": 1,
@@ -14349,7 +15474,8 @@
    "varian": [],
    "sumber": "foundation plans.md §2.2",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Plan awal": null
    }
   },
   {
@@ -14509,7 +15635,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b557",
+   "sumber": "§9.2#b556",
    "maks": {}
   },
   {
@@ -14526,28 +15652,11 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.2#b559",
+   "sumber": "§9.2#b558",
    "maks": {}
   },
   {
    "id": "DU-120-11",
-   "spec": [
-    "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
-   ],
-   "jenis": "Setting",
-   "data": "Direct handover between holders nilai sendiri untuk transaksi serah terima",
-   "asal": "dibuat",
-   "nilai": {
-    "Direct handover between holders": "Allow"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "§9.2#b561",
-   "maks": {}
-  },
-  {
-   "id": "DU-120-12",
    "spec": [
     "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
    ],
@@ -14567,7 +15676,7 @@
    }
   },
   {
-   "id": "DU-120-13",
+   "id": "DU-120-12",
    "spec": [
     "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
    ],
@@ -14590,7 +15699,7 @@
    }
   },
   {
-   "id": "DU-120-14",
+   "id": "DU-120-13",
    "spec": [
     "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
    ],
@@ -14611,7 +15720,7 @@
    }
   },
   {
-   "id": "DU-120-15",
+   "id": "DU-120-14",
    "spec": [
     "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
    ],
@@ -14627,6 +15736,1964 @@
    "varian": [],
    "sumber": "§9.10.4#b3",
    "maks": {}
+  },
+  {
+   "id": "DU-120-15",
+   "spec": [
+    "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
+   ],
+   "jenis": "Plan",
+   "data": "plan kustom salinan default plan awal Paid (rank 2), milik entitas DU-120-1",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Plan Rank 2 {runId}",
+    "Salinan dari": "default plan awal Paid (rank 2)",
+    "Approval Workflow": "Yes",
+    "Borrowing": "Full",
+    "Assignment": "Full"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
+   ],
+   "varian": [],
+   "sumber": "foundation plans.md §2.2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-120-16",
+   "spec": [
+    "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
+   ],
+   "jenis": "Plan",
+   "data": "plan kustom salinan default plan awal Paid (rank 1), milik entitas DU-120-1",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Plan Rank 1 {runId}",
+    "Salinan dari": "default plan awal Paid (rank 1)",
+    "Approval Workflow": "No",
+    "Borrowing": "Basic",
+    "Assignment": "Basic"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-120-aturan-plans-dep-plans"
+   ],
+   "varian": [],
+   "sumber": "foundation plans.md §2.2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-121-1",
+   "spec": [
+    "TC-FA-FATR-E2E-121-tab-audit-geolocation"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus dengan addon Audit dan Maintenance aktif dan belum punya entri Changelog Transaction Settings",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Audit {runId}",
+    "Addon Audit": "aktif",
+    "Addon Maintenance": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-121-tab-audit-geolocation"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-121-2",
+   "spec": [
+    "TC-FA-FATR-E2E-121-tab-audit-geolocation"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf tanpa sub-Category, semua field Inherit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Forklift {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-122-1",
+   "spec": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf tingkat teratas tanpa sub-Category, semua field tab Maintenance Inherit",
+   "asal": "awal",
+   "nilai": {
+    "Category": "Mesin Cetak {runId}",
+    "Reminder before due": "Inherit",
+    "Photo after": "Inherit",
+    "Require approval to close": "Inherit"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r71",
+   "maks": {
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-122-2",
+   "spec": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "jenis": "Setting",
+   "data": "Company default tab Maintenance bawaan pada All categories saat spec dimulai",
+   "asal": "awal",
+   "nilai": {
+    "Category": "All categories",
+    "Reminder before due": "3",
+    "Photo after": "ON",
+    "Require approval to close": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "varian": [],
+   "sumber": "PRD §4.1 Routine (FLD-39, FLD-40, FLD-41)",
+   "maks": {}
+  },
+  {
+   "id": "DU-122-3",
+   "spec": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "jenis": "Setting",
+   "data": "perubahan Reminder before due pada Category leaf",
+   "asal": "dibuat",
+   "nilai": {
+    "Category": "Mesin Cetak {runId}",
+    "Reminder before due": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "varian": [],
+   "sumber": "§4.1#r58",
+   "maks": {
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-122-4",
+   "spec": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan Approval Workflow, addon Maintenance aktif, dan Company default tab Maintenance bawaan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Grafika Nusantara {runId}",
+    "Plan": "Approval Workflow tersedia",
+    "Addon": "Maintenance aktif",
+    "Company default tab Maintenance": "nilai bawaan §4.1"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-122-5",
+   "spec": [
+    "TC-FA-FATR-E2E-122-tab-maintenance"
+   ],
+   "jenis": "Setting",
+   "data": "Company default tab Maintenance yang disimpan spec, berbeda dari bawaan",
+   "asal": "dibuat",
+   "nilai": {
+    "Category": "All categories",
+    "Reminder before due": "9",
+    "Photo after": "OFF",
+    "Require approval to close": "ON",
+    "Teks warisan Reminder before due": "9 days"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r71",
+   "maks": {}
+  },
+  {
+   "id": "DU-123-1",
+   "spec": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan addon Audit dan Maintenance aktif beserta nilai tersimpan tab Audit, Maintenance, dan Geolocation",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Addon {runId}",
+    "Addon Audit": "aktif",
+    "Addon Maintenance": "aktif",
+    "Grace period": "5",
+    "Reminder before due": "7",
+    "Require location Audit": "ON",
+    "Require location Maintenance": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "varian": [
+    "addon@plan:addon-dibeli"
+   ],
+   "sumber": "§9.10.5#b1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-123-2",
+   "spec": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "jenis": "Perubahan alokasi addon",
+   "data": "Operator mencabut alokasi lisensi addon Audit sehingga hanya Maintenance aktif",
+   "asal": "dibuat",
+   "nilai": {
+    "Entitas": "Citra Addon {runId}",
+    "Addon dicabut": "Audit",
+    "Addon aktif sesudahnya": "Maintenance"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b1",
+   "maks": {
+    "Entitas": null
+   }
+  },
+  {
+   "id": "DU-123-3",
+   "spec": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "jenis": "Perubahan alokasi addon",
+   "data": "Operator mengalokasikan kembali addon Audit dan mencabut addon Maintenance sehingga hanya Audit aktif",
+   "asal": "dibuat",
+   "nilai": {
+    "Entitas": "Citra Addon {runId}",
+    "Addon dialokasikan": "Audit",
+    "Addon dicabut": "Maintenance",
+    "Addon aktif sesudahnya": "Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli",
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b2",
+   "maks": {
+    "Entitas": null
+   }
+  },
+  {
+   "id": "DU-123-4",
+   "spec": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "jenis": "Perubahan alokasi addon",
+   "data": "Operator mencabut alokasi addon Audit yang tersisa sehingga kedua addon tidak aktif",
+   "asal": "dibuat",
+   "nilai": {
+    "Entitas": "Citra Addon {runId}",
+    "Addon dicabut": "Audit",
+    "Addon aktif sesudahnya": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b5",
+   "maks": {
+    "Entitas": null
+   }
+  },
+  {
+   "id": "DU-123-5",
+   "spec": [
+    "TC-FA-FATR-E2E-123-addon"
+   ],
+   "jenis": "Perubahan alokasi addon",
+   "data": "Operator mengalokasikan kembali lisensi addon Audit dan Maintenance ke entitas",
+   "asal": "dibuat",
+   "nilai": {
+    "Entitas": "Citra Addon {runId}",
+    "Addon dialokasikan": "Audit dan Maintenance"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli"
+   ],
+   "sumber": "§9.10.5#b5",
+   "maks": {
+    "Entitas": null
+   }
+  },
+  {
+   "id": "DU-124-1",
+   "spec": [
+    "TC-FA-FATR-E2E-124-efek-audit-dep-audit"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan Approval Workflow tersedia, addon Audit aktif, dan Require approval Audit ON",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Efek Audit {runId}",
+    "Addon Audit": "aktif",
+    "Approval Workflow": "tersedia",
+    "Require approval Audit": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r198",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-124-2",
+   "spec": [
+    "TC-FA-FATR-E2E-124-efek-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit siap di-Finish Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang Cikarang {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-124-efek-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-125-1",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Audit pada All categories sesuai default PRD",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Audit",
+    "Node": "All categories",
+    "Grace period": "3",
+    "Require approval": "ON",
+    "Approval type": "Any one approver",
+    "Send email notifications": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r225",
+   "maks": null
+  },
+  {
+   "id": "DU-125-2",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Maintenance pada All categories sesuai default PRD",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Maintenance",
+    "Node": "All categories",
+    "Reminder before due": "3",
+    "Photo after": "ON",
+    "Require approval to close": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r229",
+   "maks": null
+  },
+  {
+   "id": "DU-125-3",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Category leaf tab Maintenance dengan semua field Inherit dari Company default",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Maintenance",
+    "Node": "Machinery",
+    "Reminder before due": "Inherit",
+    "Photo after": "Inherit",
+    "Require approval to close": "Inherit",
+    "Company default Reminder before due": "3"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r71",
+   "maks": null
+  },
+  {
+   "id": "DU-125-4",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Geolocation dengan Require location Audit dan Maintenance ON",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "ON",
+    "Require location Maintenance": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r242",
+   "maks": null
+  },
+  {
+   "id": "DU-125-5",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Geolocation sesuai default PRD",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "OFF",
+    "Require location Maintenance": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r237",
+   "maks": null
+  },
+  {
+   "id": "DU-125-6",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Input Grace period",
+   "data": "Nilai angka bulat yang diisi pada Grace period",
+   "asal": "dibuat",
+   "nilai": {
+    "Grace period": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r225",
+   "maks": null
+  },
+  {
+   "id": "DU-125-7",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Input Grace period",
+   "data": "Nilai satu langkah di bawah batas 0 pada Grace period",
+   "asal": "dicoba",
+   "nilai": {
+    "Grace period": "-1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r225",
+   "maks": null
+  },
+  {
+   "id": "DU-125-8",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Audit bukan nilai bawaan, dibaca pada node Category leaf",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Audit",
+    "Node": "All categories",
+    "Grace period": "7",
+    "Require approval": "ON",
+    "Approval type": "All approvers (AND)",
+    "Send email notifications": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r116",
+   "maks": null
+  },
+  {
+   "id": "DU-125-9",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Pengaturan",
+   "data": "Company default tab Maintenance bukan nilai bawaan",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Maintenance",
+    "Node": "All categories",
+    "Reminder before due": "7",
+    "Photo after": "OFF",
+    "Require approval to close": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r229",
+   "maks": null
+  },
+  {
+   "id": "DU-125-10",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Input Reminder before due",
+   "data": "Nilai angka bulat yang diisi pada Reminder before due",
+   "asal": "dibuat",
+   "nilai": {
+    "Reminder before due": "4"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r229",
+   "maks": null
+  },
+  {
+   "id": "DU-125-11",
+   "spec": [
+    "TC-FA-FATR-UI-125-area-audit-maintenance-geolocation"
+   ],
+   "jenis": "Input Reminder before due",
+   "data": "Nilai satu langkah di bawah batas 0 pada Reminder before due",
+   "asal": "dicoba",
+   "nilai": {
+    "Reminder before due": "-1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r229",
+   "maks": null
+  },
+  {
+   "id": "DU-126-1",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Addon Audit dan Maintenance tidak aktif; level Feature Suite Transfer None",
+   "asal": "awal",
+   "nilai": {
+    "Addon Audit": "tidak aktif",
+    "Addon Maintenance": "tidak aktif",
+    "Level Feature Suite Transfer": "None"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b5",
+   "maks": null
+  },
+  {
+   "id": "DU-126-2",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Hanya addon Audit aktif dengan nilai tersimpan Require location ON",
+   "asal": "awal",
+   "nilai": {
+    "Addon Audit": "aktif",
+    "Addon Maintenance": "tidak aktif",
+    "Require location Audit": "ON",
+    "Require location Maintenance": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli",
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b4",
+   "maks": null
+  },
+  {
+   "id": "DU-126-3",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Hanya addon Maintenance aktif dengan nilai tersimpan Require location ON",
+   "asal": "awal",
+   "nilai": {
+    "Addon Audit": "tidak aktif",
+    "Addon Maintenance": "aktif",
+    "Require location Audit": "ON",
+    "Require location Maintenance": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli",
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b4",
+   "maks": null
+  },
+  {
+   "id": "DU-126-4",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Addon Audit dan Maintenance aktif, Require location OFF",
+   "asal": "awal",
+   "nilai": {
+    "Addon Audit": "aktif",
+    "Addon Maintenance": "aktif",
+    "Require location Audit": "OFF",
+    "Require location Maintenance": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli"
+   ],
+   "sumber": "§9.10.5#b4",
+   "maks": null
+  },
+  {
+   "id": "DU-126-5",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Addon Audit aktif, Approval Workflow tidak tersedia, nilai tersimpan field approval tab Audit",
+   "asal": "awal",
+   "nilai": {
+    "Addon Audit": "aktif",
+    "Approval Workflow": "tidak tersedia",
+    "Require approval": "ON",
+    "Approval type": "All approvers (AND)"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli"
+   ],
+   "sumber": "§9.10.5#b3",
+   "maks": null
+  },
+  {
+   "id": "DU-126-6",
+   "spec": [
+    "TC-FA-FATR-UI-126-area-addon"
+   ],
+   "jenis": "Status addon",
+   "data": "Addon Maintenance aktif, Approval Workflow tidak tersedia, nilai tersimpan Require approval to close",
+   "asal": "awal",
+   "nilai": {
+    "Addon Maintenance": "aktif",
+    "Approval Workflow": "tidak tersedia",
+    "Require approval to close": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "addon@plan:addon-dibeli"
+   ],
+   "sumber": "§4.1#r235",
+   "maks": null
+  },
+  {
+   "id": "DU-127-1",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan addon Audit dan Maintenance aktif yang dicabut bertahap oleh Operator",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Gerbang Addon {runId}",
+    "Plan": "menyediakan transaksi Borrow",
+    "Addon Audit": "aktif",
+    "Addon Maintenance": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "varian": [
+    "addon@plan:addon-dibeli",
+    "addon@plan:addon-tidak-dibeli"
+   ],
+   "sumber": "§9.10.5#b1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-127-2",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "User",
+   "data": "Admin Total Control entitas yang mengubah setting dan menjalankan Export rules",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rangga Pratama {runId}",
+    "Role": "Total Control entitas"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-127-3",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf dengan nilai sendiri tab Maintenance",
+   "asal": "awal",
+   "nilai": {
+    "Category": "Panel Listrik {runId}",
+    "Reminder before due": "7"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b567",
+   "maks": {
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-127-4",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Setting",
+   "data": "Company default tab Audit sebelum addon Audit dicabut",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Audit",
+    "Grace period": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b563",
+   "maks": {}
+  },
+  {
+   "id": "DU-127-5",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Setting",
+   "data": "Company default tab Geolocation sebelum addon dicabut",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "ON",
+    "Require location Maintenance": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r66",
+   "maks": {}
+  },
+  {
+   "id": "DU-127-6",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "perubahan Grace period tab Audit yang ditolak karena addon Audit tidak aktif",
+   "asal": "dicoba",
+   "nilai": {
+    "Tab": "Audit",
+    "Grace period": "9"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b563",
+   "maks": {}
+  },
+  {
+   "id": "DU-127-7",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "perubahan Require location Audit yang ditolak karena addon Audit tidak aktif",
+   "asal": "dicoba",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r66",
+   "maks": {}
+  },
+  {
+   "id": "DU-127-8",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "perubahan Reminder before due Category yang ditolak karena addon Maintenance tidak aktif",
+   "asal": "dicoba",
+   "nilai": {
+    "Category": "Panel Listrik {runId}",
+    "Reminder before due": "9"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.2#b567",
+   "maks": {
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-127-9",
+   "spec": [
+    "TC-FA-FATR-BE-127-addon"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "perubahan Require location Maintenance yang ditolak karena addon Maintenance tidak aktif",
+   "asal": "dicoba",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Maintenance": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r72",
+   "maks": {}
+  },
+  {
+   "id": "DU-128-1",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan Approval Workflow tersedia, addon Audit aktif, dan default Grace period 3, Require approval Audit ON, Require location Audit OFF",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Aturan Audit {runId}",
+    "Addon Audit": "aktif",
+    "Approval Workflow": "tersedia",
+    "Grace period": "3",
+    "Require approval Audit": "ON",
+    "Require location Audit": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "varian": [
+    "Grace-period@audit:nilai-default"
+   ],
+   "sumber": "§4.1#r225",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-128-2",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Admin Total Control entitas yang mengubah setting",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dewi Lestari {runId}",
+    "Role": "Total Control entitas"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-128-3",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Auditor yang ditugaskan pada task Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Eko Prasetyo {runId}",
+    "Role": "Employee"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-128-4",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf Laptop",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-128-5",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf Genset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Genset {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-128-6",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit sebelum perubahan Grace period",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Lenovo ThinkPad E14 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-7",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit sesudah perubahan Grace period",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Dell Latitude 5440 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-8",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Category Genset task Audit sesudah perubahan Grace period",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Genset Perkins 20kVA {runId}",
+    "Category": "Genset {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-9",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit untuk Require approval ON",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "HP ProBook 450 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-10",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit untuk Require approval OFF",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Genset Cummins 30kVA {runId}",
+    "Category": "Genset {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-11",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit saat Require location OFF",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Asus ExpertBook B1 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-12",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit saat Require location ON",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Acer Aspire 5 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-13",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Category Genset task Audit saat Require location ON",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Genset Kohler 15kVA {runId}",
+    "Category": "Genset {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-14",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit yang dibuat sebelum Grace period diubah",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Laptop Lama {runId}",
+    "Aset": "Lenovo ThinkPad E14 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "Grace-period@audit:record-sebelum-perubahan"
+   ],
+   "sumber": "§4.1#r228",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-15",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit Category Laptop yang dibuat sesudah Grace period diubah",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Laptop Baru {runId}",
+    "Aset": "Dell Latitude 5440 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "Grace-period@audit:record-sesudah-perubahan"
+   ],
+   "sumber": "§4.1#r228",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-16",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit Category Genset yang dibuat sesudah Grace period diubah",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Genset Baru {runId}",
+    "Aset": "Genset Perkins 20kVA {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "Grace-period@audit:record-sesudah-perubahan"
+   ],
+   "sumber": "§4.1#r228",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-17",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit yang di-Finish saat Require approval ON",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Approval Laptop {runId}",
+    "Aset": "HP ProBook 450 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r198",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-18",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit yang dibuat saat Require approval ON lalu di-Finish saat OFF",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Approval Genset {runId}",
+    "Aset": "Genset Cummins 30kVA {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r198",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-19",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit yang di-Finish saat Require location OFF",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Lokasi OFF {runId}",
+    "Aset": "Asus ExpertBook B1 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r240",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-20",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit Category Laptop yang dibuat saat Require location ON",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Lokasi ON Laptop {runId}",
+    "Aset": "Acer Aspire 5 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r239",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-21",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit Category Genset yang dibuat saat Require location ON",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Lokasi ON Genset {runId}",
+    "Aset": "Genset Kohler 15kVA {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r65",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-22",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "Company default tab Audit: Grace period diubah ke 0",
+   "asal": "dibuat",
+   "nilai": {
+    "Tab": "Audit",
+    "Grace period": "0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "Grace-period@audit:nilai-diubah"
+   ],
+   "sumber": "§9.4.2#r68",
+   "maks": null
+  },
+  {
+   "id": "DU-128-23",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "Company default tab Audit: Require approval diubah ke OFF",
+   "asal": "dibuat",
+   "nilai": {
+    "Tab": "Audit",
+    "Require approval": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r198",
+   "maks": null
+  },
+  {
+   "id": "DU-128-24",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "Company default tab Geolocation: Require location Audit diubah ke ON",
+   "asal": "dibuat",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r65",
+   "maks": null
+  },
+  {
+   "id": "DU-128-25",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Data lokasi",
+   "data": "Lokasi perangkat Auditor yang dikirim saat Finish Audit",
+   "asal": "dibuat",
+   "nilai": {
+    "Koordinat": "-6.2088, 106.8456",
+    "Akurasi": "10 meter"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": null
+  },
+  {
+   "id": "DU-128-26",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset task Audit saat Require location OFF dan Auditor mengirim data lokasi",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Toshiba Dynabook R40 {runId}",
+    "Category": "Laptop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-128-27",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "Task Audit yang di-Finish dengan data lokasi saat Require location OFF",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Lokasi OFF Terkirim {runId}",
+    "Aset": "Toshiba Dynabook R40 {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r240",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-128-28",
+   "spec": [
+    "TC-FA-FATR-BE-128-aturan-audit-dep-audit"
+   ],
+   "jenis": "Perubahan setting",
+   "data": "Company default tab Geolocation: Require location Audit dikembalikan ke OFF",
+   "asal": "dibuat",
+   "nilai": {
+    "Tab": "Geolocation",
+    "Require location Audit": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1#r240",
+   "maks": null
+  },
+  {
+   "id": "DU-129-1",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus berplan tanpa Approval Workflow dan addon Audit aktif",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Citra Plan Audit {runId}",
+    "Approval Workflow": "tidak tersedia",
+    "Addon Audit": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r70",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-129-2",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Admin Total Control entitas yang mengubah setting dan membuat task Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bimo Santoso {runId}",
+    "Role": "Total Control entitas"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-129-3",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Auditor yang ditugaskan pada task Audit dan menjalankan Finish Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Wulan Anggraini {runId}",
+    "Role": "Employee"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-129-4",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "Setting",
+   "data": "Require approval Audit tersimpan ON sejak plan masih menyediakan Approval Workflow",
+   "asal": "awal",
+   "nilai": {
+    "Tab": "Audit",
+    "Require approval": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r70",
+   "maks": {}
+  },
+  {
+   "id": "DU-129-5",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "aset task Audit pada plan tanpa Approval Workflow",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Rak Besi Gudang {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-129-6",
+   "spec": [
+    "TC-FA-FATR-BE-129-plan-addon-audit-dep-audit"
+   ],
+   "jenis": "Task Audit",
+   "data": "task Audit pada plan tanpa Approval Workflow",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Audit Rak Gudang {runId}",
+    "Aset": "Rak Besi Gudang {runId}",
+    "Durasi": "1 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r70",
+   "maks": {
+    "Name": null,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-130-1",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus spec ini, tidak dipakai spec lain, dengan Transaction timeout 1 hari",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Kegagalan Sistem {runId}",
+    "Transaction timeout": "1",
+    "Require approval Borrow, Assign, Transfer, Disposal": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-130-2",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "User",
+   "data": "Admin Total Control yang mengajukan transaksi dan menyimpan setting",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Teguh Wibowo {runId}",
+    "Access Level": "Total Control",
+    "Cakupan": "seluruh Group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-130-3",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "User",
+   "data": "Employee Borrower pada pengajuan Borrow",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dewi Anggraini {runId}",
+    "Peran": "Employee aktif",
+    "Group": "Gudang Gagal {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-4",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "User",
+   "data": "Employee Assignee pada pengajuan Assign",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bagus Setiawan {runId}",
+    "Peran": "Employee aktif",
+    "Akun login": "Ada",
+    "Group": "Gudang Gagal {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-5",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Group",
+   "data": "Group asal aset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Gagal {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-130-6",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Group",
+   "data": "Group tujuan Transfer",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Tujuan Gagal {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-130-7",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf target Save Changes dengan Max duration nilai sendiri 7",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Perkakas Gagal {runId}",
+    "Max duration": "7"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-130-8",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Asset",
+   "data": "aset pengajuan Borrow",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bor Listrik Gagal {runId}",
+    "Category": "Perkakas Gagal {runId}",
+    "Group": "Gudang Gagal {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-9",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Asset",
+   "data": "aset pengajuan Assign",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Kantor Gagal {runId}",
+    "Category": "Perkakas Gagal {runId}",
+    "Group": "Gudang Gagal {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-10",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Asset",
+   "data": "aset pengajuan Transfer",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Rapat Gagal {runId}",
+    "Category": "Perkakas Gagal {runId}",
+    "Group": "Gudang Gagal {runId}",
+    "Status": "Active",
+    "Tag": "Ber-tag, dapat di-scan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-11",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Asset",
+   "data": "aset pengajuan Disposal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Fotokopi Gagal {runId}",
+    "Category": "Perkakas Gagal {runId}",
+    "Group": "Gudang Gagal {runId}",
+    "Status": "Active",
+    "Tag": "Ber-tag, dapat di-scan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-130-12",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Setting",
+   "data": "Save Changes Category Perkakas Gagal yang mengubah Max duration dan gagal pada percobaan pertama",
+   "asal": "dicoba",
+   "nilai": {
+    "Max duration": "9"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 FLD-03",
+   "maks": {}
+  },
+  {
+   "id": "DU-130-13",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Borrow",
+   "data": "pengajuan Borrow yang menunggu Handover",
+   "asal": "dibuat",
+   "nilai": {
+    "Asset": "Bor Listrik Gagal {runId}",
+    "Borrower": "Dewi Anggraini {runId}",
+    "Duration": "3 hari",
+    "Status": "Waiting for Handover"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.6",
+   "maks": {
+    "Asset": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-130-14",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Assign",
+   "data": "pengajuan Assign yang menunggu Handover",
+   "asal": "dibuat",
+   "nilai": {
+    "Asset": "Laptop Kantor Gagal {runId}",
+    "Assignee": "Bagus Setiawan {runId}",
+    "Status": "Waiting for Handover"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.6",
+   "maks": {
+    "Asset": null,
+    "Assignee": null
+   }
+  },
+  {
+   "id": "DU-130-15",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Transfer",
+   "data": "pengajuan Transfer yang menunggu Send",
+   "asal": "dibuat",
+   "nilai": {
+    "Asset": "Meja Rapat Gagal {runId}",
+    "Group tujuan": "Gudang Tujuan Gagal {runId}",
+    "Status": "Waiting for Send"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.6",
+   "maks": {
+    "Asset": null,
+    "Group tujuan": null
+   }
+  },
+  {
+   "id": "DU-130-16",
+   "spec": [
+    "TC-FA-FATR-BE-130-kegagalan-sistem-dep-lintas"
+   ],
+   "jenis": "Disposal",
+   "data": "pengajuan Disposal yang menunggu Execute",
+   "asal": "dibuat",
+   "nilai": {
+    "Asset": "Mesin Fotokopi Gagal {runId}",
+    "Jenis": "Scrap",
+    "Reason": "Aset rusak berat",
+    "Status": "Waiting for Execution"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.6",
+   "maks": {
+    "Asset": null
+   }
   },
   {
    "id": "DU-007-1",
@@ -16453,9 +19520,10 @@
    "asal": "awal",
    "nilai": {
     "Name": "Excavator PC200 {runId} - 1",
-    "Asset ID": "milik entri ini",
+    "Asset ID": "EXC13-001-{runId}",
     "Group": "Proyek Karawang {runId}",
-    "Category": "Machinery {runId}"
+    "Category": "Machinery {runId}",
+    "Target tampil": "EXC13-001-{runId} · Excavator PC200 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -16464,7 +19532,9 @@
    "maks": {
     "Name": null,
     "Group": null,
-    "Category": null
+    "Category": null,
+    "Asset ID": null,
+    "Target tampil": null
    }
   },
   {
@@ -16554,7 +19624,7 @@
    "asal": "awal",
    "nilai": {
     "Scope": "Asset",
-    "Target": "Excavator PC200 {runId} - 1",
+    "Target": "EXC13-001-{runId} · Excavator PC200 {runId} - 1",
     "Transaksi": "Borrow",
     "Category": "Machinery {runId}",
     "Overridden": "Allow Borrow (Deny)",
@@ -17119,7 +20189,7 @@
     "Target": "Dharma Pusat {runId}",
     "Transaksi": "Borrow",
     "Category": "Laptop {runId}",
-    "Overridden": "Allow Borrow (Deny)",
+    "Overridden": "Allow Borrow (Deny), Max extensions (3)",
     "Dibuat oleh": "Budi Santoso"
    },
    "jumlah": 1,
@@ -18714,11 +21784,11 @@
     "TC-FA-FATR-E2E-018-picker-asset"
    ],
    "jenis": "Asset",
-   "data": "Tiga aset Latitude 5420 tanpa label",
+   "data": "Aset Laptop Dell Latitude 5420 {runId} - 5 tanpa label",
    "asal": "awal",
    "nilai": {
-    "Name": "Laptop Dell Latitude 5420 {runId} - {n}",
-    "Asset ID": "milik entri ini",
+    "Name": "Laptop Dell Latitude 5420 {runId} - 5",
+    "Asset ID": "LPT18-005-{runId}",
     "Group": "Proyek Karawang {runId}",
     "Category": "Laptop {runId}",
     "Brand": "Dell {runId}",
@@ -18726,7 +21796,7 @@
     "Status": "Available",
     "Labels": "—"
    },
-   "jumlah": 3,
+   "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
@@ -18735,7 +21805,70 @@
     "Group": null,
     "Category": null,
     "Brand": null,
-    "Model / Type": null
+    "Model / Type": null,
+    "Asset ID": null
+   }
+  },
+  {
+   "id": "DU-018-31",
+   "spec": [
+    "TC-FA-FATR-E2E-018-picker-asset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Laptop Dell Latitude 5420 {runId} - 6 tanpa label",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 {runId} - 6",
+    "Asset ID": "LPT18-006-{runId}",
+    "Group": "Proyek Karawang {runId}",
+    "Category": "Laptop {runId}",
+    "Brand": "Dell {runId}",
+    "Model / Type": "E5420 {runId}",
+    "Status": "Available",
+    "Labels": "—"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Category": null,
+    "Brand": null,
+    "Model / Type": null,
+    "Asset ID": null
+   }
+  },
+  {
+   "id": "DU-018-32",
+   "spec": [
+    "TC-FA-FATR-E2E-018-picker-asset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Laptop Dell Latitude 5420 {runId} - 7 tanpa label",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 {runId} - 7",
+    "Asset ID": "LPT18-007-{runId}",
+    "Group": "Proyek Karawang {runId}",
+    "Category": "Laptop {runId}",
+    "Brand": "Dell {runId}",
+    "Model / Type": "E5420 {runId}",
+    "Status": "Available",
+    "Labels": "—"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Category": null,
+    "Brand": null,
+    "Model / Type": null,
+    "Asset ID": null
    }
   },
   {
@@ -19160,18 +22293,21 @@
     "TC-FA-FATR-E2E-020-changelog"
    ],
    "jenis": "User",
-   "data": "Aktor Total Control",
+   "data": "Aktor Total Control di entitas khusus",
    "asal": "awal",
    "nilai": {
-    "Name": "Rina Wulandari",
+    "Name": "Rina Wulandari {runId}",
     "Role": "Total Control",
-    "Modified By tampil": "Rina W"
+    "Modified By tampil": "Rina W",
+    "Cakupan": "seluruh Group di entitas DU-020-19"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "matriks role PRD",
-   "maks": {}
+   "maks": {
+    "Name": null
+   }
   },
   {
    "id": "DU-020-2",
@@ -19284,7 +22420,7 @@
     "Category": "Kendaraan {runId} > Mobil Dinas {runId}",
     "Field": "Disposal (Allowed disposal types)",
     "Old Value": "Inherit",
-    "New Value": "Sell, Scrap, Lost, Trade-in, Write-off",
+    "New Value": "Sell, Scrap, Trade-in, Write-off",
     "Action": "Edit",
     "Modified By": "Rina W",
     "Input": "Donate"
@@ -19473,10 +22609,10 @@
     "Category": "All categories",
     "Field": "Damaged & Missing (Long missing after)",
     "Old Value": "30 days",
-    "New Value": "31 days",
+    "New Value": "45 days",
     "Action": "Edit",
     "Modified By": "Rina W",
-    "Input": "31"
+    "Input": "45"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -19497,11 +22633,11 @@
    "nilai": {
     "Category": "All categories",
     "Field": "Damaged & Missing (Long missing after)",
-    "Old Value": "31 days",
+    "Old Value": "45 days",
     "New Value": "30 days",
     "Action": "Edit",
     "Modified By": "Rina W",
-    "Input": "30"
+    "Input": "nilai awal yang dicatat"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -19557,7 +22693,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r91",
+   "sumber": "§4.1#r102",
    "maks": {
     "Category": null
    }
@@ -19583,7 +22719,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r91",
+   "sumber": "§4.1#r102",
    "maks": {
     "Category": null
    }
@@ -19607,9 +22743,33 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r91",
+   "sumber": "§4.1#r102",
    "maks": {
     "Category": null
+   }
+  },
+  {
+   "id": "DU-020-19",
+   "spec": [
+    "TC-FA-FATR-E2E-020-changelog"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan Company default bawaan, keempat transaksi, dan Approval Workflow",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Armada Mitra Sejahtera {runId}",
+    "Plan": "transaksi Borrow, Assign, Transfer, dan Disposal tersedia, serta Approval Workflow",
+    "Company default": "nilai bawaan §4.1",
+    "Level Feature Suite": "Full untuk Borrowing, Assignment, Transfer, dan Disposal"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-020-changelog"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
    }
   },
   {
@@ -19690,8 +22850,8 @@
    "nilai": {
     "Category": "Elektronik {runId} > Laptop {runId}",
     "Field": "Disposal (Allowed disposal types)",
-    "Old Value": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
-    "New Value": "Sell, Scrap, Lost, Trade-in, Write-off",
+    "Old Value": "Sell, Scrap, Donate, Trade-in, Write-off",
+    "New Value": "Sell, Scrap, Trade-in, Write-off",
     "Action": "Edit",
     "Modified By": "Rina W",
     "Date": "T0"
@@ -19941,7 +23101,8 @@
     "Modified By": "Rina Wulandari",
     "Action": "Edit",
     "Date": "T0 − 10 hari",
-    "Modified By (tampil)": "Rina W"
+    "Modified By (tampil)": "Rina W",
+    "Role Modified By": "Total Control"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -19954,7 +23115,7 @@
     "opsi-filter@changelog:kolom-tanpa-null",
     "opsi-filter@changelog:satu-nilai-distinct"
    ],
-   "sumber": "§4.1#r401",
+   "sumber": "§4.1#r427",
    "maks": {
     "Category": null
    }
@@ -19975,7 +23136,8 @@
     "Modified By": "Budi Santoso",
     "Action": "Edit",
     "Date": "T0 − 5 hari",
-    "Modified By (tampil)": "Budi S"
+    "Modified By (tampil)": "Budi S",
+    "Role Modified By": "Total Control"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -19983,7 +23145,7 @@
     "filter@changelog:rentang-dalam",
     "filter@changelog:per-kelas-kontrol:Date range picker"
    ],
-   "sumber": "§4.1#r398",
+   "sumber": "§4.1#r424",
    "maks": {
     "Category": null
    }
@@ -20004,14 +23166,15 @@
     "Modified By": "Rina Wulandari",
     "Action": "Edit",
     "Date": "T0 − 5 hari",
-    "Modified By (tampil)": "Rina W"
+    "Modified By (tampil)": "Rina W",
+    "Role Modified By": "Total Control"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
     "filter@changelog:and-keduanya"
    ],
-   "sumber": "§4.1#r400",
+   "sumber": "§4.1#r426",
    "maks": {
     "Category": null
    }
@@ -20032,7 +23195,8 @@
     "Modified By": "Budi Santoso",
     "Action": "Edit",
     "Date": "T0 − 2 hari",
-    "Modified By (tampil)": "Budi S"
+    "Modified By (tampil)": "Budi S",
+    "Role Modified By": "Total Control"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -20056,7 +23220,7 @@
    "nilai": {
     "Category": "Machinery {runId}",
     "Field": "Disposal (Allowed disposal types)",
-    "Old Value": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Old Value": "Sell, Scrap, Donate, Trade-in, Write-off",
     "New Value": "Sell, Scrap",
     "Modified By": "Dewi Anggraini",
     "Action": "Edit",
@@ -20070,7 +23234,7 @@
     "filter@changelog:irisan-kosong",
     "opsi-filter@changelog:opsi-tetap-worm"
    ],
-   "sumber": "§4.1#r404",
+   "sumber": "§4.1#r430",
    "maks": {
     "Category": null
    }
@@ -20115,7 +23279,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r400",
+   "sumber": "§4.1#r426",
    "maks": {
     "Category": null
    }
@@ -20166,7 +23330,7 @@
     "download@changelog:urutan-sort-aktif",
     "download@changelog:kolom-tersembunyi"
    ],
-   "sumber": "§4.1#p88",
+   "sumber": "§4.1#r427",
    "maks": {
     "Category": null
    }
@@ -20194,7 +23358,7 @@
    "varian": [
     "download@changelog:hasil-tersaring"
    ],
-   "sumber": "§4.1#r401",
+   "sumber": "§4.1#r427",
    "maks": {
     "Category": null
    }
@@ -20398,7 +23562,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r249",
+   "sumber": "§4.1#r276",
    "maks": {
     "Category": null
    }
@@ -20440,7 +23604,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§4.1#r248",
+   "sumber": "§4.1#r275",
    "maks": {
     "Target": null,
     "Category": null
@@ -20554,12 +23718,11 @@
     "TC-FA-FATR-E2E-028-plan-assignment"
    ],
    "jenis": "Entitas",
-   "data": "Entitas khusus dengan level Feature Suite Assignment Full dan nilai tersimpan Direct handover between holders Allow",
+   "data": "Entitas khusus dengan level Feature Suite Assignment Full",
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Plan Assignment {runId}",
-    "Level Feature Suite Assignment": "Full",
-    "Direct handover between holders": "Allow"
+    "Level Feature Suite Assignment": "Full"
    },
    "jumlah": 1,
    "mutasi": [
@@ -20569,30 +23732,12 @@
     "feature-suite@plan:per-level:Full"
    ],
    "sumber": "turunan penulis",
-   "maks": null
+   "maks": {
+    "Name": null
+   }
   },
   {
    "id": "DU-028-2",
-   "spec": [
-    "TC-FA-FATR-E2E-028-plan-assignment"
-   ],
-   "jenis": "Perubahan level plan",
-   "data": "Level Feature Suite Assignment turun ke Basic",
-   "asal": "dibuat",
-   "nilai": {
-    "Entitas": "Entitas Plan Assignment {runId}",
-    "Level Feature Suite Assignment": "Basic"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [
-    "feature-suite@plan:per-level:Basic"
-   ],
-   "sumber": "§9.10.3#b2",
-   "maks": null
-  },
-  {
-   "id": "DU-028-3",
    "spec": [
     "TC-FA-FATR-E2E-028-plan-assignment"
    ],
@@ -20609,45 +23754,9 @@
     "feature-suite@plan:per-level:None"
    ],
    "sumber": "§9.4.2#r16",
-   "maks": null
-  },
-  {
-   "id": "DU-028-4",
-   "spec": [
-    "TC-FA-FATR-E2E-028-plan-assignment"
-   ],
-   "jenis": "Override",
-   "data": "Override Group yang mengubah Direct handover between holders di All categories",
-   "asal": "awal",
-   "nilai": {
-    "Scope": "Group",
-    "Target": "Proyek Bekasi {runId}",
-    "Overridden": "Direct handover between holders (Allow)",
-    "Category": "All categories",
-    "Created By": "Rina Wulandari {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": null
-  },
-  {
-   "id": "DU-028-5",
-   "spec": [
-    "TC-FA-FATR-E2E-028-plan-assignment"
-   ],
-   "jenis": "Group",
-   "data": "Group target override",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Proyek Bekasi {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": null
+   "maks": {
+    "Entitas": null
+   }
   },
   {
    "id": "DU-029-1",
@@ -20655,13 +23764,12 @@
     "TC-FA-FATR-E2E-029-plan-transfer-disposal"
    ],
    "jenis": "Entitas",
-   "data": "Entitas khusus dengan level Feature Suite Transfer, Disposal, dan Assignment Basic",
+   "data": "Entitas khusus dengan level Feature Suite Transfer dan Disposal Basic",
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Plan Transfer Disposal {runId}",
     "Level Feature Suite Transfer": "Basic",
-    "Level Feature Suite Disposal": "Basic",
-    "Level Feature Suite Assignment": "Basic"
+    "Level Feature Suite Disposal": "Basic"
    },
    "jumlah": 1,
    "mutasi": [
@@ -25429,7 +28537,7 @@
    "asal": "awal",
    "nilai": {
     "Name": "Heavy Machinery {runId}",
-    "Max duration": "14 Days"
+    "Max duration": "18 Days"
    },
    "jumlah": 1,
    "mutasi": [
@@ -25759,7 +28867,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Rudi Hartono {runId}",
-    "Role": "Default User"
+    "Role": "Default User",
+    "Cakupan Group": "Semua Group"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -26421,6 +29530,100 @@
    }
   },
   {
+   "id": "DU-052-5",
+   "spec": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan transaksi Assign dan Approval Workflow ON",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Nusa Fleet {runId}",
+    "Plan": "transaksi Assign tersedia, Approval Workflow ON; diubah menjadi OFF oleh operator Admin Console",
+    "Role Transaksi Approver Assign": "belum ditugaskan"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-052-6",
+   "spec": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "jenis": "User",
+   "data": "akun aktif calon Approver kedua untuk transaksi Assign, ditugaskan saat Approval Workflow OFF",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Joko Santoso {runId}",
+    "Role": "Employee",
+    "Group": "Fleet Team {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": 100,
+    "Group": 100
+   }
+  },
+  {
+   "id": "DU-052-7",
+   "spec": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "jenis": "Approver",
+   "data": "penugasan Role Transaksi Approver untuk Assign saat Approval Workflow OFF yang dibuat spec",
+   "asal": "dibuat",
+   "nilai": {
+    "User": "Joko Santoso {runId}",
+    "Group": "Fleet Team {runId}",
+    "Transaction": "Assign",
+    "Role Transaksi": "Approver"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r81",
+   "maks": {
+    "User": 100,
+    "Group": 100
+   }
+  },
+  {
+   "id": "DU-052-8",
+   "spec": [
+    "TC-FA-FATR-E2E-052-efek-role-permission-dep-role-permission"
+   ],
+   "jenis": "User",
+   "data": "aktor Default User pemegang Manage transaction settings (Update) dengan cakupan Group",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dian Permata {runId}",
+    "Role": "Default User",
+    "Global Role": "Manage transaction settings (Update)",
+    "Group Role": "Manage asset & TAG (Read, Update)",
+    "Cakupan Group": "Fleet Team {runId} beserta turunannya"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 100,
+    "Cakupan Group": null
+   }
+  },
+  {
    "id": "DU-053-1",
    "spec": [
     "TC-FA-FATR-E2E-053-efek-activity-log-dep-activity-log"
@@ -26533,10 +29736,12 @@
     "TC-FA-FATR-E2E-054-efek-notification-dep-notification"
    ],
    "jenis": "Entitas",
-   "data": "entitas khusus spec ini, tanpa Role Transaksi Approver untuk Assign dan dengan Require approval Assign bernilai OFF",
+   "data": "entitas khusus spec ini dengan Approval Workflow tersedia di plan, level Feature Suite Assignment bukan None, tanpa Role Transaksi Approver untuk Assign, dan Require approval Assign bernilai OFF",
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Notifikasi {runId}",
+    "Approval Workflow": "ON",
+    "Feature Suite Assignment": "Full",
     "Require approval Assign": "OFF"
    },
    "jumlah": 1,
@@ -26579,7 +29784,8 @@
    "nilai": {
     "Name": "Wulan Kusuma {runId}",
     "Role": "Employee",
-    "Group": "Logistics Team {runId}"
+    "Group": "Logistics Team {runId}",
+    "Cakupan Group": "Logistics Team {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -26587,7 +29793,8 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name": 100,
-    "Group": 100
+    "Group": 100,
+    "Cakupan Group": 100
    }
   },
   {
@@ -26884,8 +30091,7 @@
     "Name": "Plan Equipment {runId}",
     "Require approval (Assign)": "ON",
     "Self service (Borrow)": "ON",
-    "Duration unit": "Hours",
-    "Direct handover between holders": "Allow"
+    "Duration unit": "Hours"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -26965,7 +30171,7 @@
    "asal": "dibuat",
    "nilai": {
     "Feature Suite Borrowing": "Basic",
-    "Feature Suite Assignment": "Basic",
+    "Feature Suite Assignment": "None",
     "Level awal": "Full"
    },
    "jumlah": 1,
@@ -27073,7 +30279,8 @@
     "Long missing after": "0",
     "Transaction timeout": "7",
     "Change Cost Center with Group": "Never",
-    "Send email notifications": "ON"
+    "Send email notifications": "ON",
+    "Allowed borrower": "Employee in any Group"
    },
    "sumber": "turunan penulis",
    "spec": [
@@ -27270,8 +30477,7 @@
     "Allowed assignee: Employee": "ON",
     "Allowed assignee: Division": "ON",
     "Max assets per assignee (concurrent)": "0",
-    "Recipient acceptance": "Required",
-    "Direct handover between holders": "Allow",
+    "Need recipient confirmation": "Yes",
     "Photo at start": "ON",
     "Photo at end": "ON",
     "Require approval": "OFF",
@@ -27279,7 +30485,7 @@
     "Transaction timeout": "7",
     "Send email notifications": "OFF"
    },
-   "sumber": "§4.1#r99",
+   "sumber": "§4.1#r110",
    "spec": [
     "TC-FA-FATR-UI-060-area-assign"
    ],
@@ -27297,8 +30503,7 @@
     "Node": "All categories",
     "Allowed assignee: Employee": "ON",
     "Allowed assignee: Division": "OFF",
-    "Recipient acceptance": "Optional",
-    "Direct handover between holders": "Deny",
+    "Need recipient confirmation": "No",
     "Photo at start": "OFF",
     "Photo at end": "OFF",
     "Require approval": "ON",
@@ -27336,7 +30541,7 @@
     "Transaction timeout": "7",
     "Send email notifications": "OFF"
    },
-   "sumber": "§4.1#r125",
+   "sumber": "§4.1#r135",
    "spec": [
     "TC-FA-FATR-UI-061-area-transfer"
    ],
@@ -27454,7 +30659,7 @@
    "nilai": {
     "Node": "All categories",
     "Allow Disposal": "Allow",
-    "Allowed disposal types": "Sell, Scrap, Lost, Donate, Trade-in, Write-off",
+    "Allowed disposal types": "Sell, Scrap, Donate, Trade-in, Write-off",
     "Min asset age warning": "12",
     "Max deviation from book value": "30",
     "Require approval": "ON",
@@ -27462,7 +30667,7 @@
     "Transaction timeout": "7",
     "Send email notifications": "OFF"
    },
-   "sumber": "§4.1#r143",
+   "sumber": "§4.1#r153",
    "spec": [
     "TC-FA-FATR-UI-062-area-disposal-dm"
    ],
@@ -27481,7 +30686,7 @@
     "Long missing after": "30",
     "After photo required": "OFF"
    },
-   "sumber": "§4.1#r156",
+   "sumber": "§4.1#r166",
    "spec": [
     "TC-FA-FATR-UI-062-area-disposal-dm"
    ],
@@ -27567,6 +30772,25 @@
    "maks": {}
   },
   {
+   "id": "DU-062-7",
+   "spec": [
+    "TC-FA-FATR-UI-062-area-disposal-dm"
+   ],
+   "jenis": "Pengaturan transaksi",
+   "data": "Company default tab Damaged & Missing dengan Long missing after dan After photo required berbeda dari nilai awal",
+   "asal": "awal",
+   "nilai": {
+    "Node": "All categories",
+    "Long missing after": "14",
+    "After photo required": "ON"
+   },
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
    "id": "DU-063-1",
    "jenis": "Pengaturan transaksi",
    "data": "Category leaf Machinery dengan Allow Borrow Allow dan Max duration bernilai sendiri",
@@ -27633,7 +30857,7 @@
     "Node": "All categories",
     "Require approval": "OFF",
     "Auto-approve": "ON",
-    "Auto-approve when duration ≤": "3",
+    "Auto-approve when duration ≤": "5",
     "Approval type": "All approvers (AND)",
     "Self service": "OFF"
    },
@@ -27655,7 +30879,7 @@
     "Node": "All categories",
     "Require approval": "OFF",
     "Auto-approve": "ON",
-    "Auto-approve when destination in same parent Group": "ON",
+    "Auto-approve when destination in same parent Group": "OFF",
     "Approval scope": "Origin only",
     "Approval type": "All approvers (AND)"
    },
@@ -27681,7 +30905,7 @@
     "Auto-approve when duration ≤": "3",
     "Approval type": "Any one approver"
    },
-   "sumber": "§4.1#r192",
+   "sumber": "§4.1#r201",
    "spec": [
     "TC-FA-FATR-UI-063-area-sembunyi"
    ],
@@ -27738,6 +30962,67 @@
     "Self service": "ON",
     "Require approval": "ON",
     "Auto-approve": "ON",
+    "Approval type": "All approvers (AND)"
+   },
+   "sumber": "§4.3#r9",
+   "spec": [
+    "TC-FA-FATR-UI-063-area-sembunyi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-063-10",
+   "jenis": "Pengaturan transaksi",
+   "data": "Company default Borrow dengan Require approval OFF dan Auto-approve OFF tersimpan",
+   "asal": "awal",
+   "nilai": {
+    "Node": "All categories",
+    "Require approval": "OFF",
+    "Auto-approve": "OFF",
+    "Approval type": "All approvers (AND)",
+    "Self service": "OFF"
+   },
+   "sumber": "§4.3#r29",
+   "spec": [
+    "TC-FA-FATR-UI-063-area-sembunyi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-063-11",
+   "jenis": "Pengaturan transaksi",
+   "data": "Company default Transfer dengan Require approval OFF dan Auto-approve OFF tersimpan",
+   "asal": "awal",
+   "nilai": {
+    "Node": "All categories",
+    "Require approval": "OFF",
+    "Auto-approve": "OFF",
+    "Auto-approve when destination in same parent Group": "OFF",
+    "Approval type": "All approvers (AND)"
+   },
+   "sumber": "§4.3#r29",
+   "spec": [
+    "TC-FA-FATR-UI-063-area-sembunyi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-063-12",
+   "jenis": "Pengaturan transaksi",
+   "data": "Company default Audit dengan Require approval OFF dan Approval type tersimpan",
+   "asal": "awal",
+   "nilai": {
+    "Node": "All categories",
+    "Require approval": "OFF",
     "Approval type": "All approvers (AND)"
    },
    "sumber": "§4.3#r9",
@@ -27971,6 +31256,24 @@
    "maks": {}
   },
   {
+   "id": "DU-064-12",
+   "jenis": "Pengaturan transaksi",
+   "data": "Auto-approve when duration ≤ bernilai besar tanpa batas atas",
+   "asal": "dicoba",
+   "nilai": {
+    "Auto-approve when duration ≤": "100000",
+    "Duration unit": "Days"
+   },
+   "sumber": "§9.9#r8",
+   "spec": [
+    "TC-FA-FATR-UI-064-area-validasi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
    "id": "DU-065-1",
    "jenis": "Pengaturan transaksi",
    "data": "Category leaf Machinery tab Borrow semua field Inherit",
@@ -27999,7 +31302,7 @@
     "Node": "All categories",
     "Max duration": "14"
    },
-   "sumber": "§4.1#r224",
+   "sumber": "§4.1#r251",
    "spec": [
     "TC-FA-FATR-UI-065-area-aksi"
    ],
@@ -28041,7 +31344,7 @@
     "Long missing after": "60",
     "After photo required": "ON"
    },
-   "sumber": "§4.1#r227",
+   "sumber": "§4.1#r254",
    "spec": [
     "TC-FA-FATR-UI-065-area-aksi"
    ],
@@ -28060,7 +31363,7 @@
     "Allow Borrow": "Deny",
     "Max duration": "30"
    },
-   "sumber": "§4.1#r228",
+   "sumber": "§4.1#r255",
    "spec": [
     "TC-FA-FATR-UI-065-area-aksi"
    ],
@@ -28080,7 +31383,7 @@
     "Max extensions": "2",
     "Max assets per assignee (concurrent)": "5"
    },
-   "sumber": "§4.1#r218",
+   "sumber": "§4.1#r245",
    "spec": [
     "TC-FA-FATR-UI-065-area-aksi"
    ],
@@ -28100,7 +31403,7 @@
     "Allowed assignee: Division": "ON",
     "Max assets per assignee (concurrent)": "5"
    },
-   "sumber": "§4.1#r118",
+   "sumber": "§4.1#r128",
    "spec": [
     "TC-FA-FATR-UI-065-area-aksi"
    ],
@@ -28151,25 +31454,6 @@
   {
    "id": "DU-065-10",
    "jenis": "Pengaturan transaksi",
-   "data": "Company default Assign dengan Direct handover between holders tersimpan saat level Basic",
-   "asal": "awal",
-   "nilai": {
-    "Node": "All categories",
-    "Direct handover between holders": "Deny",
-    "Max assets per assignee (concurrent)": "5"
-   },
-   "sumber": "§9.10.3#b4",
-   "spec": [
-    "TC-FA-FATR-UI-065-area-aksi"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {}
-  },
-  {
-   "id": "DU-065-11",
-   "jenis": "Pengaturan transaksi",
    "data": "Nilai Max duration yang dicoba",
    "asal": "dicoba",
    "nilai": {
@@ -28185,7 +31469,7 @@
    "maks": {}
   },
   {
-   "id": "DU-065-12",
+   "id": "DU-065-11",
    "jenis": "Pengaturan transaksi",
    "data": "Draft perubahan di node Category leaf Machinery sementara node All categories yang dilihat tanpa draft",
    "asal": "awal",
@@ -28253,9 +31537,11 @@
    "asal": "awal",
    "nilai": {
     "Node": "Machinery",
-    "Mode semua field": "Inherit"
+    "Mode semua field": "Inherit",
+    "Company default Require approval": "ON",
+    "Company default Self service": "OFF"
    },
-   "sumber": "§4.3#r30",
+   "sumber": "§4.3#r33",
    "spec": [
     "TC-FA-FATR-UI-066-area-plan"
    ],
@@ -28275,9 +31561,10 @@
     "Auto-approve when destination in same parent Group": "ON",
     "Approval scope": "Origin only",
     "In-transit overdue after": "10",
-    "Auto-approve": "ON"
+    "Auto-approve": "ON",
+    "Approval type": "All approvers (AND)"
    },
-   "sumber": "§4.1#r229",
+   "sumber": "§4.1#r256",
    "spec": [
     "TC-FA-FATR-UI-066-area-plan"
    ],
@@ -28327,26 +31614,6 @@
   {
    "id": "DU-066-7",
    "jenis": "Pengaturan transaksi",
-   "data": "Company default Assign dengan Direct handover between holders tersimpan saat level Basic",
-   "asal": "awal",
-   "nilai": {
-    "Node": "All categories",
-    "Direct handover between holders": "Deny",
-    "Allowed assignee: Division": "ON",
-    "Max assets per assignee (concurrent)": "5"
-   },
-   "sumber": "§4.3#r13",
-   "spec": [
-    "TC-FA-FATR-UI-066-area-plan"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {}
-  },
-  {
-   "id": "DU-066-9",
-   "jenis": "Pengaturan transaksi",
    "data": "Company default Borrow dengan Self service ON dan Auto-approve ON tersimpan",
    "asal": "awal",
    "nilai": {
@@ -28366,24 +31633,6 @@
   },
   {
    "id": "DU-066-8",
-   "jenis": "Pengaturan transaksi",
-   "data": "Category leaf Machinery tab Assign semua field Inherit saat level Basic",
-   "asal": "awal",
-   "nilai": {
-    "Node": "Machinery",
-    "Mode semua field": "Inherit"
-   },
-   "sumber": "§4.3#r13",
-   "spec": [
-    "TC-FA-FATR-UI-066-area-plan"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {}
-  },
-  {
-   "id": "DU-066-10",
    "jenis": "Pengaturan transaksi",
    "data": "Company default Transfer dengan Require approval OFF dan field Approval tersimpan saat Approval Workflow tidak tersedia",
    "asal": "awal",
@@ -28405,25 +31654,7 @@
    "maks": {}
   },
   {
-   "id": "DU-066-11",
-   "jenis": "Pengaturan transaksi",
-   "data": "Category leaf Machinery tab Assign dengan Direct handover between holders bernilai sendiri saat level Basic",
-   "asal": "awal",
-   "nilai": {
-    "Node": "Machinery",
-    "Direct handover between holders": "Deny (bernilai sendiri)"
-   },
-   "sumber": "§4.3#r13",
-   "spec": [
-    "TC-FA-FATR-UI-066-area-plan"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {}
-  },
-  {
-   "id": "DU-066-12",
+   "id": "DU-066-9",
    "jenis": "Pengaturan transaksi",
    "data": "Category leaf Machinery tab Borrow dengan Require approval dan Approval type bernilai sendiri saat Approval Workflow tidak tersedia",
    "asal": "awal",
@@ -28432,7 +31663,7 @@
     "Require approval": "ON (bernilai sendiri)",
     "Approval type": "All approvers (AND) (bernilai sendiri)"
    },
-   "sumber": "§4.3#r30",
+   "sumber": "§4.3#r33",
    "spec": [
     "TC-FA-FATR-UI-066-area-plan"
    ],
@@ -28442,13 +31673,33 @@
    "maks": {}
   },
   {
-   "id": "DU-066-13",
+   "id": "DU-066-10",
+   "jenis": "Pengaturan transaksi",
+   "data": "Category leaf Machinery tab Borrow dengan Self service dan Duration unit bernilai sendiri saat level Basic",
+   "asal": "awal",
+   "nilai": {
+    "Node": "Machinery",
+    "Self service": "ON (bernilai sendiri)",
+    "Duration unit": "Hours (bernilai sendiri)"
+   },
+   "sumber": "§4.3#r12",
+   "spec": [
+    "TC-FA-FATR-UI-066-area-plan"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-066-11",
    "jenis": "Pengaturan transaksi",
    "data": "Company default Disposal dengan Require approval tersimpan saat Approval Workflow tidak tersedia",
    "asal": "awal",
    "nilai": {
     "Node": "All categories",
-    "Require approval": "ON"
+    "Require approval": "ON",
+    "Approval type": "All approvers (AND)"
    },
    "sumber": "§7#r20",
    "spec": [
@@ -28460,16 +31711,38 @@
    "maks": {}
   },
   {
-   "id": "DU-066-14",
+   "id": "DU-066-12",
    "jenis": "Pengaturan transaksi",
-   "data": "Category leaf Machinery tab Borrow dengan Self service dan Duration unit bernilai sendiri saat level Basic",
+   "data": "Company default Borrow dengan Self service ON dan field Approval tersimpan saat Approval Workflow tidak tersedia",
    "asal": "awal",
    "nilai": {
-    "Node": "Machinery",
-    "Self service": "ON (bernilai sendiri)",
-    "Duration unit": "Hours (bernilai sendiri)"
+    "Node": "All categories",
+    "Self service": "ON",
+    "Require approval": "ON",
+    "Auto-approve": "ON",
+    "Auto-approve when duration ≤": "5",
+    "Approval type": "All approvers (AND)"
    },
-   "sumber": "§4.3#r12",
+   "sumber": "§4.3#r36",
+   "spec": [
+    "TC-FA-FATR-UI-066-area-plan"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-066-13",
+   "jenis": "Pengaturan transaksi",
+   "data": "Company default Assign dengan Require approval dan Approval type tersimpan saat Approval Workflow tidak tersedia",
+   "asal": "awal",
+   "nilai": {
+    "Node": "All categories",
+    "Require approval": "ON",
+    "Approval type": "All approvers (AND)"
+   },
+   "sumber": "§Aturan Logika Modul#r76",
    "spec": [
     "TC-FA-FATR-UI-066-area-plan"
    ],
@@ -28609,7 +31882,7 @@
     "Allow Disposal": "Deny",
     "Require approval Disposal": "ON"
    },
-   "sumber": "§4.1#r236",
+   "sumber": "§4.1#r263",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28631,7 +31904,7 @@
     "Allow Transfer tersimpan": "Allow",
     "Feature Suite Transfer": "None"
    },
-   "sumber": "§4.1#r236",
+   "sumber": "§4.1#r263",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28652,7 +31925,7 @@
     "Allow Disposal": "Deny",
     "Allow Transfer": "Allow"
    },
-   "sumber": "§4.1#r236",
+   "sumber": "§4.1#r263",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28675,7 +31948,7 @@
     "Allow Transfer": "Allow",
     "Allow Disposal": "Allow"
    },
-   "sumber": "§4.1#r237",
+   "sumber": "§4.1#r264",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28695,7 +31968,7 @@
     "Min asset age warning awal": "12",
     "Min asset age warning draft": "6"
    },
-   "sumber": "§4.1#r235",
+   "sumber": "§4.1#r262",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28719,7 +31992,7 @@
     "Company default Allow": "Allow",
     "Company default Require approval Disposal": "ON"
    },
-   "sumber": "§4.1#r238",
+   "sumber": "§4.1#r265",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28762,7 +32035,7 @@
     "Require approval Disposal awal": "ON",
     "Require approval Disposal draft": "OFF"
    },
-   "sumber": "§4.1#r233",
+   "sumber": "§4.1#r260",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -28784,7 +32057,47 @@
     "Override Allow [transaction]": "Deny",
     "Override Require approval Disposal": "OFF"
    },
-   "sumber": "§4.1#r238",
+   "sumber": "§4.1#r265",
+   "spec": [
+    "TC-FA-FATR-UI-068-dialog-save"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-068-11",
+   "jenis": "Pengaturan transaksi",
+   "data": "Draft Category leaf Machinery dengan Max duration berpindah dari Inherit ke nilai sendiri yang sama",
+   "asal": "awal",
+   "nilai": {
+    "Node": "Machinery",
+    "Max duration awal": "Inherit (Company default 14)",
+    "Max duration draft": "14",
+    "Field lain": "Inherit"
+   },
+   "sumber": "§9.2#b38",
+   "spec": [
+    "TC-FA-FATR-UI-068-dialog-save"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-068-12",
+   "jenis": "Pengaturan transaksi",
+   "data": "Draft Category leaf Machinery dengan Max duration berpindah dari nilai sendiri ke Inherit yang angkanya sama",
+   "asal": "awal",
+   "nilai": {
+    "Node": "Machinery",
+    "Max duration awal": "14 (bernilai sendiri tersimpan)",
+    "Max duration draft": "Inherit (Company default 14)",
+    "Max extensions": "2 (bernilai sendiri tersimpan, tidak diubah)"
+   },
+   "sumber": "§9.2#b38",
    "spec": [
     "TC-FA-FATR-UI-068-dialog-save"
    ],
@@ -29088,30 +32401,6 @@
   },
   {
    "jenis": "Override",
-   "data": "Override field Direct handover between holders yang tidak tersedia di plan",
-   "asal": "awal",
-   "nilai": {
-    "Scope": "Group",
-    "Target": "Proyek Makassar",
-    "Overridden": "Direct handover between holders (Deny)",
-    "Category": "Machinery",
-    "Created By": "Alexander Graham Bell",
-    "Created At": "2026-05-29 17:25",
-    "Status": "Not applied",
-    "Created At tampil": "29/05/26 17:25"
-   },
-   "sumber": "PRD §4.1 Overrides Example Data",
-   "id": "DU-071-10",
-   "spec": [
-    "TC-FA-FATR-UI-071-overrides-tampilan"
-   ],
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "maks": {}
-  },
-  {
-   "jenis": "Override",
    "data": "Override Allow Assign di bawah Category ber-Deny yang ditolak guard Allowed assignee",
    "asal": "awal",
    "nilai": {
@@ -29202,7 +32491,7 @@
    "jenis": "Override",
    "data": "Volume override agar tabel lebih dari dua halaman",
    "asal": "awal",
-   "jumlah": 26,
+   "jumlah": 20,
    "nilai": {
     "Scope": "Group",
     "Target": "Proyek Cabang {n}",
@@ -29482,6 +32771,138 @@
   },
   {
    "jenis": "Override",
+   "data": "Override Asset Name oleh pembuat ketiga",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Asset Name",
+    "Target": "Excavator PC200",
+    "Overridden": "Max duration (10 days)",
+    "Category": "Machinery",
+    "Created By": "Alexander Graham Bell",
+    "Created At": "2026-06-10 16:45"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-17",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
+   "data": "Override Asset oleh pembuat keempat",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Asset",
+    "Target": "EXC-0001 · Excavator PC200 - 1",
+    "Overridden": "Allow Borrow (Deny)",
+    "Category": "Machinery",
+    "Created By": "John Lennon",
+    "Created At": "2026-06-09 08:20"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-18",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
+   "data": "Override Group oleh pembuat kelima",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Proyek Surabaya",
+    "Overridden": "Max extensions (2)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Buzzlightyear Sumardi",
+    "Created At": "2026-06-08 13:40"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-19",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
+   "data": "Override Group oleh pembuat keenam",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Proyek Medan",
+    "Overridden": "Max duration (14 days)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Rina Wulandari",
+    "Created At": "2026-06-07 10:15"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-20",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
+   "data": "Override Group oleh pembuat ketujuh",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Proyek Palembang",
+    "Overridden": "Max extensions (1)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Dewi Lestari",
+    "Created At": "2026-06-06 15:30"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-21",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
+   "data": "Override Group oleh pembuat kedelapan",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Proyek Bandung",
+    "Overridden": "Max duration (7 days)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Agus Pratama",
+    "Created At": "2026-06-05 09:00"
+   },
+   "sumber": "turunan penulis",
+   "id": "DU-072-22",
+   "spec": [
+    "TC-FA-FATR-UI-072-overrides-mekanik"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Override",
    "data": "Volume override dalam cakupan Group aktor untuk seleksi lebih dari satu halaman",
    "asal": "awal",
    "jumlah": 12,
@@ -29491,7 +32912,8 @@
     "Overridden": "Max duration (30 days)",
     "Category": "Vehicle > Pool car",
     "Created By": "Budi Santoso",
-    "Created At": "2026-06-15 14:05"
+    "Created At": "2026-06-15 14:05",
+    "Created At Workshop 12": "2026-06-15 13:54"
    },
    "sumber": "turunan penulis",
    "id": "DU-073-1",
@@ -29512,7 +32934,7 @@
     "Overridden": "Auto-approve (OFF)",
     "Category": "Vehicle > Pool car",
     "Created By": "Siti Nurbaya",
-    "Created At": "2026-06-03 10:00"
+    "Created At": "2026-06-20 10:00"
    },
    "sumber": "PRD §4.1 Overrides Example Data",
    "id": "DU-073-2",
@@ -29534,7 +32956,7 @@
     "Overridden": "Max extensions (2)",
     "Category": "Machinery",
     "Created By": "Alexander Graham Bell",
-    "Created At": "2026-06-02 13:10"
+    "Created At": "2026-06-19 13:10"
    },
    "sumber": "turunan penulis",
    "id": "DU-073-3",
@@ -29768,6 +33190,40 @@
     "Field": "Allow Transfer; Destination scope; In-transit overdue after"
    },
    "sumber": "PRD §4.1 Limits: Transfer",
+   "asal": "awal",
+   "spec": [
+    "TC-FA-FATR-UI-074-add-tampilan"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-074-14",
+   "jenis": "Field",
+   "data": "Field lain yang ditawarkan pada transaksi Transfer",
+   "nilai": {
+    "Field": "Destination quota check; Photo at start; Photo at end; Require approval; Auto-approve; Approval type"
+   },
+   "sumber": "PRD §4.1 Limits: Transfer",
+   "asal": "awal",
+   "spec": [
+    "TC-FA-FATR-UI-074-add-tampilan"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-074-15",
+   "jenis": "Field",
+   "data": "Field yang ditawarkan pada transaksi Assign",
+   "nilai": {
+    "Field": "Allow Assign; Allowed assignee: Employee; Allowed assignee: Division; Max assets per assignee (concurrent); Need recipient confirmation; Photo at start; Photo at end; Require approval; Approval type"
+   },
+   "sumber": "PRD §4.1 Limits: Assign",
    "asal": "awal",
    "spec": [
     "TC-FA-FATR-UI-074-add-tampilan"
@@ -30074,6 +33530,63 @@
    "sumber": "turunan penulis"
   },
   {
+   "id": "DU-075-17",
+   "jenis": "Override",
+   "data": "Override aktif kedua untuk Group Proyek Bekasi pada Borrow di Category yang sama",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Proyek Bekasi",
+    "Overridden": "Max duration (21 days)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Siti Nurbaya",
+    "Created At": "2026-06-12 09:30"
+   },
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-FATR-UI-075-add-validasi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-075-18",
+   "jenis": "Group",
+   "data": "Group ketiga di tree picker tanpa override aktif",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Proyek Cikarang",
+    "Hierarki": "Region Jawa > Proyek Cikarang"
+   },
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-FATR-UI-075-add-validasi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-075-19",
+   "jenis": "Value",
+   "data": "Value 0 pada field angka berminimum 0",
+   "asal": "dibuat",
+   "nilai": {
+    "Value": "0"
+   },
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-FATR-UI-075-add-validasi"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
    "jenis": "Group",
    "data": "Group induk di tree picker",
    "asal": "awal",
@@ -30243,7 +33756,7 @@
     "Hierarki Category": "Heavy Equipment > Machinery",
     "Brand": "Komatsu",
     "Model / Type": "PC200",
-    "Status": "Active",
+    "Status": "Available",
     "Labels": "Heavy, Insured, Rental"
    },
    "sumber": "PRD §4.1 Overrides Example Data",
@@ -30269,8 +33782,9 @@
     "Hierarki Category": "Vehicle > Pool car",
     "Brand": "kosong",
     "Model / Type": "kosong",
-    "Status": "Active",
-    "Labels": "kosong"
+    "Status": "Available",
+    "Labels": "kosong",
+    "Badge target tampil": "VEH-0001 · Toyota Avanza - 1"
    },
    "sumber": "turunan penulis",
    "id": "DU-078-2",
@@ -30296,7 +33810,7 @@
     "Hierarki Category": "Heavy Equipment > Machinery",
     "Brand": "Komatsu",
     "Model / Type": "PC200",
-    "Status": "Active",
+    "Status": "Available",
     "Labels": "Outdoor"
    },
    "sumber": "foundation prd-conventions.md §9.14",
@@ -30332,10 +33846,11 @@
     "TC-FA-FATR-UI-078-pick-asset"
    ],
    "jenis": "Filter",
-   "data": "Filter Category yang tidak cocok dengan baris mana pun",
+   "data": "Filter Category dan Brand yang tidak cocok dengan baris mana pun",
    "asal": "dicoba",
    "nilai": {
-    "Category": "Pool car"
+    "Category": "Pool car",
+    "Brand": "Komatsu"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -30547,6 +34062,50 @@
    "maks": {}
   },
   {
+   "id": "DU-080-7",
+   "jenis": "Override",
+   "data": "Override Assign yang tersisa pada aset di bawah Target DU-080-4",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Asset",
+    "Target": "EXC-0001 · Excavator PC200 - 1",
+    "Overridden": "Allowed assignee: Division (OFF)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Budi Santoso",
+    "Created At": "2026-06-07 11:00"
+   },
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-FATR-UI-080-delete"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "id": "DU-080-8",
+   "jenis": "Override",
+   "data": "Override Assign yang tersisa pada aset di bawah Target DU-080-5",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Asset",
+    "Target": "VEH-0001 · Toyota Avanza - 1",
+    "Overridden": "Allowed assignee: Employee (OFF)",
+    "Category": "Vehicle > Pool car",
+    "Created By": "Budi Santoso",
+    "Created At": "2026-06-06 14:10"
+   },
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-FATR-UI-080-delete"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
    "jenis": "Changelog",
    "data": "Perubahan Max duration pada Category Vehicle > Pool car",
    "asal": "awal",
@@ -30723,6 +34282,32 @@
    },
    "sumber": "turunan penulis",
    "id": "DU-081-8",
+   "spec": [
+    "TC-FA-FATR-UI-081-changelog-tampilan"
+   ],
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "maks": {}
+  },
+  {
+   "jenis": "Changelog",
+   "data": "Perubahan Long missing after ke nilai 0 yang ditulis Off",
+   "asal": "awal",
+   "nilai": {
+    "Date": "2026-05-28 10:10",
+    "Date tampil": "28/05/26 10:10",
+    "Action": "Edit",
+    "Category": "All categories",
+    "Field": "Damaged & Missing (Long missing after)",
+    "Old Value": "30 days",
+    "New Value mentah": "0",
+    "New Value": "Off",
+    "Modified By": "Siti Nurbaya",
+    "Modified By tampil": "Siti N"
+   },
+   "sumber": "§4.1#r51",
+   "id": "DU-081-9",
    "spec": [
     "TC-FA-FATR-UI-081-changelog-tampilan"
    ],
@@ -31559,6 +35144,51 @@
    }
   },
   {
+   "id": "DU-083-25",
+   "spec": [
+    "TC-FA-FATR-BE-083-resolusi"
+   ],
+   "jenis": "Group",
+   "data": "Group tempat override All categories Deny dan override Category leaf Allow bertemu",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gudang Utara {runId}",
+    "Parent": "(tanpa induk)"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r22",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-083-26",
+   "spec": [
+    "TC-FA-FATR-BE-083-resolusi"
+   ],
+   "jenis": "Asset",
+   "data": "aset Pool car di Group Gudang Utara",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Van Operasional Utara {runId}",
+    "Asset Name": "Van Antar Jemput {runId}",
+    "Category": "Pool car {runId}",
+    "Group": "Gudang Utara {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r22",
+   "maks": {
+    "Name": null,
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
    "id": "DU-084-1",
    "spec": [
     "TC-FA-FATR-BE-084-save"
@@ -32109,6 +35739,27 @@
     "Asset Name": null,
     "Category": null,
     "Group": null
+   }
+  },
+  {
+   "id": "DU-085-10",
+   "spec": [
+    "TC-FA-FATR-BE-085-versi"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus spec ini, tidak dipakai spec lain",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Versi {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-085-versi"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
    }
   },
   {
@@ -33843,6 +37494,198 @@
    }
   },
   {
+   "id": "DU-088-40",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Category",
+   "data": "Category leaf yang sudah dihapus dengan override yang tertinggal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kategori Lama Hapus {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-088-41",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Override",
+   "data": "override Group dalam cakupan Sari Penata pada Category yang sudah dihapus",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Tim Hapus Lingkup {runId}",
+    "Category": "Kategori Lama Hapus {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-088-42",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Group",
+   "data": "Group yang sudah dinonaktifkan dengan override yang tertinggal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tim Nonaktif Hapus {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-088-43",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Override",
+   "data": "override pada Group yang sudah dinonaktifkan",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Tim Nonaktif Hapus {runId}",
+    "Category": "Penghapusan Biasa {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-088-44",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Asset Name",
+   "data": "Asset Name yang sudah dihapus dengan override yang tertinggal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Nama Lama Hapus {runId}",
+    "Category": "Penghapusan Biasa {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Name": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-088-45",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Override",
+   "data": "override pada Asset Name yang sudah dihapus",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Asset Name",
+    "Target": "Nama Lama Hapus {runId}",
+    "Category": "Penghapusan Biasa {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-088-46",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Asset",
+   "data": "aset yang sudah dihapus dengan override yang tertinggal",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Perangkat Lama Hapus {runId}",
+    "Asset Name": "Perangkat Hapus {runId}",
+    "Category": "Penghapusan Biasa {runId}",
+    "Group": "Tim Hapus Satu {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Name": null,
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-088-47",
+   "spec": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "jenis": "Override",
+   "data": "override pada aset yang sudah dihapus",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "aset",
+    "Target": "Perangkat Lama Hapus {runId}",
+    "Category": "Penghapusan Biasa {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-088-override-delete"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-FATR-06.p7",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
    "id": "DU-089-1",
    "spec": [
     "TC-FA-FATR-BE-089-guard-assignee"
@@ -35106,7 +38949,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Hendra Tanpa Akses {runId}",
-    "Peran": "tanpa Global Role dan Group Role yang memberi akses halaman"
+    "Peran": "tanpa Global Role dan Group Role yang memberi akses halaman",
+    "Cakupan": "seluruh Group"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -35786,6 +39630,68 @@
    }
   },
   {
+   "id": "DU-090-39",
+   "spec": [
+    "TC-FA-FATR-BE-090-authz"
+   ],
+   "jenis": "User",
+   "data": "Group Manager yang menaungi Group Tim Survei",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina Manajer {runId}",
+    "Peran": "Group Manager",
+    "Cakupan": "Group Tim Survei {runId} beserta turunannya"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null,
+    "Cakupan": null
+   }
+  },
+  {
+   "id": "DU-090-40",
+   "spec": [
+    "TC-FA-FATR-BE-090-authz"
+   ],
+   "jenis": "Group",
+   "data": "Group di luar subtree penugasan Rina Manajer",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tim Luar Manajer {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-090-41",
+   "spec": [
+    "TC-FA-FATR-BE-090-authz"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus spec ini, tidak dipakai spec lain",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Otorisasi {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-090-authz"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
    "id": "DU-091-1",
    "spec": [
     "TC-FA-FATR-BE-091-plan"
@@ -35834,19 +39740,20 @@
     "TC-FA-FATR-BE-091-plan"
    ],
    "jenis": "User",
-   "data": "pemanggil terotorisasi yang mengajukan transaksi dan mengirim request langsung",
+   "data": "pengaju peminjaman dan pemindahan yang bukan Total Control dan bukan Group Manager",
    "asal": "awal",
    "nilai": {
-    "Name": "Rudi Integrasi {runId}",
-    "Access Level": "Total Control",
-    "Cakupan": "seluruh entitas"
+    "Name": "Budi Peminjam {runId}",
+    "Peran": "pengaju transaksi, bukan Total Control dan bukan Group Manager",
+    "Cakupan": "Group Kantor Plan {runId}, Workshop {runId}, dan Gudang Plan {runId} beserta turunannya"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "matriks role PRD",
+   "sumber": "PRD §9.10.1",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Cakupan": null
    }
   },
   {
@@ -35875,7 +39782,7 @@
     "TC-FA-FATR-BE-091-plan"
    ],
    "jenis": "Category",
-   "data": "Category leaf untuk field approval dan Direct handover",
+   "data": "Category leaf untuk field approval dan Need recipient confirmation",
    "asal": "awal",
    "nilai": {
     "Name": "Armada Plan {runId}"
@@ -36061,7 +39968,7 @@
     "Require approval": "ON",
     "Auto-approve": "OFF",
     "Approval type": "All approvers (AND)",
-    "Direct handover between holders": "Allow",
+    "Need recipient confirmation": "No",
     "Max extensions": "2",
     "Max assets per assignee (concurrent)": "2"
    },
@@ -36113,8 +40020,8 @@
     "Transaksi": "penugasan",
     "Field": "Require approval",
     "Value": "ON",
-    "Field 2": "Direct handover between holders",
-    "Value 2": "Allow"
+    "Field 2": "Need recipient confirmation",
+    "Value 2": "No"
    },
    "jumlah": 1,
    "mutasi": [
@@ -36197,15 +40104,15 @@
     "TC-FA-FATR-BE-091-plan"
    ],
    "jenis": "Setting",
-   "data": "Save Category Armada Plan yang mengubah Direct handover between holders",
-   "asal": "dicoba",
+   "data": "Save Category Armada Plan pada level Assignment Basic yang mengubah Need recipient confirmation",
+   "asal": "dibuat",
    "nilai": {
-    "Direct handover between holders": "Deny"
+    "Need recipient confirmation": "Yes"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "PRD §9.10.3 b3",
+   "sumber": "PRD §9.10.3 DELTA-a",
    "maks": {}
   },
   {
@@ -36308,6 +40215,204 @@
    }
   },
   {
+   "id": "DU-091-25",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Asset",
+   "data": "aset kedua di Group Workshop untuk pengajuan saat Approval Workflow tidak tersedia",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Truk Workshop Dua {runId}",
+    "Asset Name": "Truk Operasional {runId}",
+    "Category": "Armada Plan {runId}",
+    "Group": "Workshop {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.10.1",
+   "maks": {
+    "Name": null,
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-091-26",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Asset",
+   "data": "aset di Group Kantor Plan untuk pengajuan pemindahan ke Group Gudang Plan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Kantor Dua {runId}",
+    "Asset Name": "Mesin Operasional {runId}",
+    "Category": "Armada Plan {runId}",
+    "Group": "Kantor Plan {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.10.1",
+   "maks": {
+    "Name": null,
+    "Asset Name": null,
+    "Category": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-091-27",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Override",
+   "data": "override Group Workshop untuk transaksi peminjaman yang dibuat sebelum Approval Workflow dimatikan",
+   "asal": "dibuat",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Workshop {runId}",
+    "Category": "Armada Plan {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Require approval",
+    "Value": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.10.1",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-091-28",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Setting",
+   "data": "Save Category Armada Plan yang menyimpan Require approval pemindahan dan Approval scope",
+   "asal": "dibuat",
+   "nilai": {
+    "Require approval pemindahan": "ON",
+    "Approval scope": "Origin only"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1 FLD-30",
+   "maks": {}
+  },
+  {
+   "id": "DU-091-29",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Override",
+   "data": "Add override yang memilih Self service saat level Feature Suite Borrowing Basic",
+   "asal": "dicoba",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Kantor Plan {runId}",
+    "Category": "Peralatan Plan {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Self service",
+    "Value": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.4#r23",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-091-30",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Override",
+   "data": "Add override yang memilih Duration unit saat level Feature Suite Borrowing Basic",
+   "asal": "dicoba",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Kantor Plan {runId}",
+    "Category": "Peralatan Plan {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Duration unit",
+    "Value": "Hours"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.4#r23",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-091-31",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Setting",
+   "data": "Save Category Peralatan Plan dengan Require approval peminjaman OFF saat Approval Workflow tersedia",
+   "asal": "dibuat",
+   "nilai": {
+    "Require approval": "OFF"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10.1#b6",
+   "maks": {}
+  },
+  {
+   "id": "DU-091-32",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Setting",
+   "data": "Save Category Peralatan Plan yang menyalakan Require approval peminjaman saat Approval Workflow tidak tersedia",
+   "asal": "dicoba",
+   "nilai": {
+    "Require approval": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10.1#b6",
+   "maks": {}
+  },
+  {
+   "id": "DU-091-33",
+   "spec": [
+    "TC-FA-FATR-BE-091-plan"
+   ],
+   "jenis": "Setting",
+   "data": "Save Category Peralatan Plan yang menyalakan Require approval peminjaman saat Approval Workflow tersedia",
+   "asal": "dibuat",
+   "nilai": {
+    "Require approval": "ON"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10.1#b6",
+   "maks": {}
+  },
+  {
    "id": "DU-092-1",
    "spec": [
     "TC-FA-FATR-BE-092-export-isi"
@@ -36400,8 +40505,7 @@
     "Name": "Mobil Pool {runId}",
     "Parent": "Kendaraan {runId}",
     "Full path": "Kendaraan {runId} > Mobil Pool {runId}",
-    "Require approval": "ON",
-    "Direct handover between holders": "Allow"
+    "Require approval": "ON"
    },
    "jumlah": 1,
    "mutasi": [
@@ -37085,6 +41189,27 @@
    }
   },
   {
+   "id": "DU-092-35",
+   "spec": [
+    "TC-FA-FATR-BE-092-export-isi"
+   ],
+   "jenis": "Addon",
+   "data": "addon Audit dan addon Maintenance yang dialokasikan ke subscription FAMS entitas khusus ini",
+   "asal": "dibuat",
+   "nilai": {
+    "Addon": "Audit, Maintenance",
+    "Subscription": "FAMS entitas khusus ini, status Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation plans.md §2.4",
+   "maks": {
+    "Addon": null,
+    "Subscription": null
+   }
+  },
+  {
    "id": "DU-093-1",
    "spec": [
     "TC-FA-FATR-BE-093-changelog-berkas"
@@ -37225,7 +41350,7 @@
     "Action": "Edit",
     "Category": "Perangkat Unduh {runId}",
     "Field": "Disposal (Allowed disposal types)",
-    "Old Value": "Sell, Scrap, Lost",
+    "Old Value": "Sell, Scrap, Write-off",
     "New Value": "Sell, Scrap",
     "Modified By": "Maya Pengelola {runId}"
    },
@@ -38025,6 +42150,98 @@
    "maks": {}
   },
   {
+   "id": "DU-095-16",
+   "spec": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "jenis": "Group",
+   "data": "Group target override pertama pada bulk Delete klik ganda",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tim Ganda Satu {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "EB-BLK-3",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-095-17",
+   "spec": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "jenis": "Group",
+   "data": "Group target override kedua pada bulk Delete klik ganda",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tim Ganda Dua {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "EB-BLK-3",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-095-18",
+   "spec": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "jenis": "Override",
+   "data": "override Group pertama pada bulk Delete klik ganda",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Tim Ganda Satu {runId}",
+    "Category": "Perangkat Serentak {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "varian": [],
+   "sumber": "EB-BLK-3",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-095-19",
+   "spec": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "jenis": "Override",
+   "data": "override Group kedua pada bulk Delete klik ganda",
+   "asal": "awal",
+   "nilai": {
+    "Scope": "Group",
+    "Target": "Tim Ganda Dua {runId}",
+    "Category": "Perangkat Serentak {runId}",
+    "Transaksi": "peminjaman",
+    "Field": "Max duration",
+    "Value": "7"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-095-konkurensi"
+   ],
+   "varian": [],
+   "sumber": "EB-BLK-3",
+   "maks": {
+    "Target": null,
+    "Category": null
+   }
+  },
+  {
    "id": "DU-096-1",
    "spec": [
     "TC-FA-FATR-BE-096-tenant"
@@ -38034,7 +42251,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Status {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Dipegang oleh": "Partner Jaringan {runId}"
    },
    "jumlah": 1,
    "mutasi": [
@@ -38045,7 +42263,8 @@
    ],
    "sumber": "turunan penulis",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Dipegang oleh": null
    }
   },
   {
@@ -38494,7 +42713,8 @@
    "asal": "awal",
    "nilai": {
     "Name": "Entitas Lain {runId}",
-    "Status": "Active"
+    "Status": "Active",
+    "Dipegang oleh": "Partner Jaringan {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -38502,7 +42722,8 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name": null,
-    "Status": null
+    "Status": null,
+    "Dipegang oleh": null
    }
   },
   {
@@ -38577,6 +42798,170 @@
     "Field": null,
     "Value": null
    }
+  },
+  {
+   "id": "DU-096-26",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Entitas",
+   "data": "Distributor pemegang jaringan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Distributor Jaringan {runId}",
+    "Jenis": "Distributor",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation entity-isolation §18.3",
+   "maks": {
+    "Name": null,
+    "Jenis": null,
+    "Status": null
+   }
+  },
+  {
+   "id": "DU-096-27",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Entitas",
+   "data": "Partner di bawah Distributor yang memegang langsung kedua Client",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Partner Jaringan {runId}",
+    "Jenis": "Partner",
+    "Distributor": "Distributor Jaringan {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation entity-isolation §18.3",
+   "maks": {
+    "Name": null,
+    "Jenis": null,
+    "Distributor": null,
+    "Status": null
+   }
+  },
+  {
+   "id": "DU-096-28",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "User",
+   "data": "pengguna entitas Distributor yang mencoba membaca dan menulis setting Client",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dewi Distributor {runId}",
+    "Peran": "pengguna entitas Distributor Jaringan {runId}",
+    "Cakupan": "seluruh Group di entitas Distributor sendiri"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation entity-isolation §18.3",
+   "maks": {
+    "Name": null,
+    "Peran": null
+   }
+  },
+  {
+   "id": "DU-096-29",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "User",
+   "data": "pengguna entitas Partner yang mencoba membaca dan menulis setting Client",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pandu Partner {runId}",
+    "Peran": "pengguna entitas Partner Jaringan {runId}",
+    "Cakupan": "seluruh Group di entitas Partner sendiri"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation entity-isolation §18.3",
+   "maks": {
+    "Name": null,
+    "Peran": null
+   }
+  },
+  {
+   "id": "DU-096-30",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Group",
+   "data": "Group target Add override aktor jaringan yang ditolak",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tim Jaringan Tolak {runId}",
+    "Entitas": "Entitas Status {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Entitas": null
+   }
+  },
+  {
+   "id": "DU-096-31",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Setting",
+   "data": "Save Category entitas lain yang dikirim langsung oleh pengelola entitas ini",
+   "asal": "dicoba",
+   "nilai": {
+    "Max extensions": "6"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.11#p1",
+   "maks": {}
+  },
+  {
+   "id": "DU-096-32",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Setting",
+   "data": "nilai Max extensions yang dikirim aktor jaringan",
+   "asal": "dicoba",
+   "nilai": {
+    "Max extensions": "5"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.11#p1",
+   "maks": {}
+  },
+  {
+   "id": "DU-096-33",
+   "spec": [
+    "TC-FA-FATR-BE-096-tenant"
+   ],
+   "jenis": "Override",
+   "data": "nilai Max duration pada Add override aktor jaringan",
+   "asal": "dicoba",
+   "nilai": {
+    "Max duration": "9"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.11#p1",
+   "maks": {}
   },
   {
    "id": "DU-097-1",
@@ -40668,7 +45053,7 @@
     "TC-FA-FATR-BE-097-aturan-borrow-dep-borrow"
    ],
    "jenis": "Borrow",
-   "data": "baris Days dengan Due date T0 + 1 hari",
+   "data": "baris Days dengan Due date T0 + 1 hari, pukul 05:00 Asia/Jakarta (pukul 22:00 UTC hari kalender sebelumnya)",
    "asal": "awal",
    "nilai": {
     "Borrower": "Wati Rahmawati {runId}",
@@ -41541,6 +45926,79 @@
    }
   },
   {
+   "id": "DU-097-120",
+   "spec": [
+    "TC-FA-FATR-BE-097-aturan-borrow-dep-borrow"
+   ],
+   "jenis": "Category",
+   "data": "Category dengan pilihan pengingat non-default",
+   "asal": "awal",
+   "nilai": {
+    "Category": "Alat Survei {runId}",
+    "TAG Type": "Non TAG",
+    "Due date reminders": "D-day only"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Category": null
+   }
+  },
+  {
+   "id": "DU-097-121",
+   "spec": [
+    "TC-FA-FATR-BE-097-aturan-borrow-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "baris Days yang hanya titik D-day-nya dipilih",
+   "asal": "awal",
+   "nilai": {
+    "Borrower": "Winda Kusuma {runId}",
+    "Asset": "Level Digital Sokkia {runId}",
+    "Category": "Alat Survei {runId}",
+    "Group asal": "Gudang Pusat {runId}",
+    "Status": "Borrowed",
+    "Duration unit": "Days",
+    "Due date": "T0 + 11 hari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Borrower": null,
+    "Asset": null,
+    "Category": null,
+    "Group asal": null
+   }
+  },
+  {
+   "id": "DU-097-122",
+   "spec": [
+    "TC-FA-FATR-BE-097-aturan-borrow-dep-borrow"
+   ],
+   "jenis": "Asset",
+   "data": "aset khusus untuk pengajuan Vina",
+   "asal": "awal",
+   "nilai": {
+    "Asset": "Stamper Mikasa {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group asal": "Gudang Pusat {runId}",
+    "Status": "Available"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset": null,
+    "Category": null,
+    "Group asal": null
+   }
+  },
+  {
    "id": "DU-098-1",
    "spec": [
     "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
@@ -41764,7 +46222,7 @@
    "nilai": {
     "Nama": "Hana Pertiwi {runId}",
     "Peran": "Aktor Borrow",
-    "Group": "Gudang Induk {runId} beserta descendant"
+    "Group": "Gudang Induk {runId} beserta descendant, Gudang Tanpa Approver {runId}, Gudang Tanpa Manager {runId}, Gudang Dua Manager {runId} beserta descendant, Gudang Wawan {runId}, Gudang Satu Approver B {runId}, dan Gudang GM Nonaktif {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -43499,6 +47957,143 @@
    }
   },
   {
+   "id": "DU-098-85",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "Group",
+   "data": "Group tanpa Approver, Group Manager-nya Inactive",
+   "asal": "awal",
+   "nilai": {
+    "Group": "Gudang GM Nonaktif {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-098-86",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "Group Manager nonaktif Gudang GM Nonaktif",
+   "asal": "awal",
+   "nilai": {
+    "Nama": "Hasan Basri {runId}",
+    "Peran": "Group Manager",
+    "Group": "Gudang GM Nonaktif {runId}",
+    "Status": "Inactive"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Nama": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-098-87",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "Borrower tanpa baris aktif",
+   "asal": "awal",
+   "nilai": {
+    "Nama": "Putra Wijaya {runId}",
+    "Peran": "Borrower (Employee aktif)",
+    "Group": "Gudang Induk {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Nama": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-098-88",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "Asset",
+   "data": "aset di Group tanpa Approver dan tanpa Group Manager aktif",
+   "asal": "awal",
+   "nilai": {
+    "Asset": "Rock Breaker Furukawa {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group asal": "Gudang GM Nonaktif {runId}",
+    "Status": "Available"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset": null,
+    "Category": null,
+    "Group asal": null
+   }
+  },
+  {
+   "id": "DU-098-89",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "Asset",
+   "data": "aset berkondisi Damaged dengan override Allow Borrow Deny",
+   "asal": "awal",
+   "nilai": {
+    "Asset": "Mesin Gerinda Rusak Bosch {runId}",
+    "Category": "Alat Berat {runId}",
+    "Group asal": "Gudang Induk {runId}",
+    "Status": "Damaged",
+    "Kondisi": "Damaged",
+    "Override Allow Borrow": "Deny"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Asset": null,
+    "Category": null,
+    "Group asal": null
+   }
+  },
+  {
+   "id": "DU-098-90",
+   "spec": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "jenis": "Entitas",
+   "data": "entitas khusus spec ini, tidak dipakai spec lain, dengan Transaction timeout 1 hari",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Approval Borrow {runId}",
+    "Transaction timeout": "1"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FATR-BE-098-approval-borrow-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Transaction timeout": null
+   }
+  },
+  {
    "id": "DU-099-1",
    "spec": [
     "TC-FA-FATR-BE-099-timeout-borrow-dep-borrow"
@@ -43606,7 +48201,7 @@
    "nilai": {
     "Nama": "Hana Pertiwi {runId}",
     "Peran": "Aktor Borrow",
-    "Group": "Gudang Utama {runId} beserta descendant"
+    "Group": "Gudang Utama {runId} beserta descendant dan Gudang Cadangan {runId}"
    },
    "jumlah": 1,
    "mutasi": [],

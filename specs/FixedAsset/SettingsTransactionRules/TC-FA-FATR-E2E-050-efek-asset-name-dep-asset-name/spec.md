@@ -2,17 +2,21 @@
 id: TC-FA-FATR-E2E-050-efek-asset-name-dep-asset-name
 title: "Override mengikuti perubahan Asset Name"
 layer: ui-e2e
-priority: Medium
+priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r246", "§4.1#r247", "§9.4.2#r34"]
+sourceRules: [§4.1#r273, §4.1#r274, §9.4.2#r34, §9.2#b122, §9.2#b124, §9.2#b147, §9.2#b125]
 smoke: []
 dependsOn:
   - "Settings Asset Name: hapus, nonaktifkan, dan pindah Category"
 trace:
-  "§4.1#r246": [7, 16]
-  "§4.1#r247": [8, 9, 17, 18]
-  "§9.4.2#r34": [6, 8, 15, 17]
+  §4.1#r273: [7, 16]
+  §4.1#r274: [8, 9, 17, 18]
+  §9.4.2#r34: [6, 8, 15, 17]
+  §9.2#b122: [6, 15]
+  §9.2#b124: [7, 16]
+  §9.2#b147: [6, 15]
+  §9.2#b125: [8, 9, 17, 18]
 anchor: [3, 12]
 coverage:
   web: automated

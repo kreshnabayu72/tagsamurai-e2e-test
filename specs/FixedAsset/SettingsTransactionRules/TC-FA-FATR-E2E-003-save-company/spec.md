@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.2#b22", "§9.2#b34", "§9.4.2#r12", "§9.4.2#r13", "§9.4.2#r81", "§9.4.2#r83", "§9.2#p6"]
+sourceRules: ["§9.2#b22", "§9.2#b34", "§9.4.2#r12", "§9.4.2#r13", "§9.4.2#r89", "§9.4.2#r91", "§9.2#p6"]
 smoke: ["§9.2#p6"]
 dependsOn: []
 trace:
@@ -13,8 +13,8 @@ trace:
   "§9.2#b34": [19, 28]
   "§9.4.2#r12": 9
   "§9.4.2#r13": 28
-  "§9.4.2#r81": [32, 34]
-  "§9.4.2#r83": 30
+  "§9.4.2#r89": [32, 34]
+  "§9.4.2#r91": 30
   "§9.2#p6": [38, 40]
 anchor: [18]
 coverage:
@@ -27,10 +27,11 @@ coverage:
 - Aktor: Total Control.
 - Layar awal: Settings > Transaction Settings.
 - Data:
-  - DU-003-1: Entitas `Citra Logistik {runId}`, entitas khusus yang hanya dipakai spec ini dan tidak dipakai spec lain. Plan-nya menyediakan transaksi Borrow, Assign, Transfer, dan Disposal.
+  - DU-003-1: Entitas `Citra Logistik {runId}`, entitas khusus yang hanya dipakai spec ini dan tidak dipakai spec lain. Plan-nya menyediakan transaksi Borrow, Assign, Transfer, dan Disposal, serta Approval Workflow.
   - DU-003-2: Category leaf `Forklift {runId}`, tanpa sub-Category, ada di entitas DU-003-1. Di tab Borrow: Max duration bernilai sendiri `14`. Field lain Inherit.
 - Kondisi:
   - Company default entitas DU-003-1 bernilai bawaan: Allow Borrow, Allow Assign, Allow Transfer, dan Allow Disposal `Allow`, Require approval Disposal `ON`, Max duration `14`.
+  - Plan entitas DU-003-1 menyediakan Approval Workflow, sehingga Require approval bisa diubah.
 
 ## Test Steps
 

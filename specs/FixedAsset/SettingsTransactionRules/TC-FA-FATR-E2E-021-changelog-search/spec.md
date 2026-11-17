@@ -5,22 +5,23 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r399", "§4.1#r402", "§4.1#r403", "§4.1#r400", "§4.1#r401", "§4.1#r404", "§5#r3", "§9.4.2#r53", "EB-SRC-2@changelog", "EB-SRC-3@changelog", "EB-SRC-5@changelog", "EB-KOL-2@changelog"]
+sourceRules: [§4.1#r425, §4.1#r428, §4.1#r429, §4.1#r426, §4.1#r427, §4.1#r430, §5#r3, §9.4.2#r53, EB-SRC-2@changelog, EB-SRC-3@changelog, EB-SRC-5@changelog, EB-KOL-2@changelog, §4.1#r424]
 smoke: []
 dependsOn: []
 trace:
-  "§4.1#r399": 12
-  "§4.1#r402": [20, 21]
-  "§4.1#r403": [23, 24]
-  "§4.1#r400": [14, 15]
-  "§4.1#r401": [17, 18]
-  "§4.1#r404": [26, 27]
-  "§5#r3": [12, 26, 33, 35, 36]
-  "§9.4.2#r53": 60
-  "EB-SRC-2@changelog": [45, 46, 54]
-  "EB-SRC-3@changelog": [56, 58]
-  "EB-SRC-5@changelog": [68, 72]
-  "EB-KOL-2@changelog": 80
+  §4.1#r425: 12
+  §4.1#r428: [20, 21]
+  §4.1#r429: [23, 24]
+  §4.1#r426: [14, 15]
+  §4.1#r427: [17, 18]
+  §4.1#r430: [26, 27]
+  §5#r3: [12, 26, 33, 35, 36]
+  §9.4.2#r53: 60
+  EB-SRC-2@changelog: [45, 46, 54]
+  EB-SRC-3@changelog: [56, 58]
+  EB-SRC-5@changelog: [68, 72]
+  EB-KOL-2@changelog: 80
+  §4.1#r424: 54
 anchor: [3, 52, 66, 83]
 coverage:
   web: automated
@@ -33,7 +34,7 @@ coverage:
 - Data:
   - DU-021-1: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `30 days`, Action `Edit`, Modified By `Rina W`, Date T0.
   - DU-021-2: Changelog Category `Elektronik {runId} > Proyektor {runId}`, Field `Transfer (Approval type)`, Old Value `Any one approver`, New Value `All approvers (AND)`, Action `Edit`, Modified By `Budi S`, dari Name `Budi Santoso`, Date T0.
-  - DU-021-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Lost, Donate, Trade-in, Write-off`, New Value `Sell, Scrap, Lost, Trade-in, Write-off`, Action `Edit`, Modified By `Rina W`, Date T0.
+  - DU-021-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Donate, Trade-in, Write-off`, New Value `Sell, Scrap, Trade-in, Write-off`, Action `Edit`, Modified By `Rina W`, Date T0.
   - DU-021-4: Changelog Category `Elektronik {runId} > Printer {runId}`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `Inherit`, Action `Edit`, Modified By `Rina W`, Date T0.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.

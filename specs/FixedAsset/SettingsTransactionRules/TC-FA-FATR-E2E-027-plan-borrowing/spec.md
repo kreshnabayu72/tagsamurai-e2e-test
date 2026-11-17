@@ -5,21 +5,21 @@ layer: ui-e2e
 priority: High
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.1#r248, §4.1#r249, §9.4.2#r16, §9.4.2#r25, §9.4.2#r38, §9.4.4#r2, §9.4.4#r56, §Aturan Logika Modul#r87, §Aturan Logika Modul#r90, §4.3#r14, §9.2#b558, §9.10.2#r6, §9.10.2#b3, §9.10.2#r10]
-smoke: [§Aturan Logika Modul#r87, §Aturan Logika Modul#r90, §4.3#r14, §9.2#b558, §9.10.2#r6, §9.10.2#b3, §9.10.2#r10]
+sourceRules: [§4.1#r275, §4.1#r276, §9.4.2#r16, §9.4.2#r25, §9.4.2#r38, §9.4.4#r2, §9.4.4#r56, §Aturan Logika Modul#r89, §Aturan Logika Modul#r92, §4.3#r13, §9.2#b557, §9.10.2#r6, §9.10.2#b3, §9.10.2#r10]
+smoke: [§Aturan Logika Modul#r89, §Aturan Logika Modul#r92, §4.3#r13, §9.2#b557, §9.10.2#r6, §9.10.2#b3, §9.10.2#r10]
 dependsOn: []
 trace:
-  §4.1#r248: 17
-  §4.1#r249: [18, 20]
+  §4.1#r275: 17
+  §4.1#r276: [18, 20]
   §9.4.2#r16: [31, 33, 34, 36]
   §9.4.2#r25: [18, 23, 24, 26]
   §9.4.2#r38: 18
   §9.4.4#r2: [31, 33, 34]
   §9.4.4#r56: 18
-  §Aturan Logika Modul#r87: [14, 15]
-  §Aturan Logika Modul#r90: 36
-  §4.3#r14: [33, 34, 36]
-  §9.2#b558: 18
+  §Aturan Logika Modul#r89: [14, 15]
+  §Aturan Logika Modul#r92: 36
+  §4.3#r13: [33, 34, 36]
+  §9.2#b557: 18
   §9.10.2#r6: [11, 12, 13]
   §9.10.2#b3: 11
   §9.10.2#r10: 18
@@ -64,7 +64,7 @@ coverage:
 17. Verifikasi baris override dengan Target `Workshop {runId}` tetap memuat Overridden `Self service (ON), Duration unit (Hours)`
 18. Verifikasi sel Target baris `Workshop {runId}` memuat Badge `Not applied`
 19. Arahkan pointer ke Badge `Not applied` pada baris `Workshop {runId}`
-20. Verifikasi alasan `Available on plans with full Borrowing` tersampaikan pada Badge `Not applied`
+20. Verifikasi alasan `Available on plans with full Borrowing.` tersampaikan pada Badge `Not applied`
 
 ### Opsi field bergerbang di Dialog Add override disabled
 21. Klik `[+ Override]`
@@ -72,7 +72,7 @@ coverage:
 23. Verifikasi opsi `Self service` disabled
 24. Verifikasi opsi `Duration unit` disabled
 25. Arahkan pointer ke opsi `Self service`
-26. Verifikasi alasan `Available on plans with full Borrowing` tersampaikan pada opsi `Self service` yang disabled
+26. Verifikasi alasan `Available on plans with full Borrowing.` tersampaikan pada opsi `Self service` yang disabled
 27. Klik `✕` pada dialog Add override, form belum diubah
 
 ### Level None: tab Borrow tidak dapat dibuka
@@ -81,7 +81,7 @@ coverage:
 30. Verifikasi tombol `Export rules` tampil
 31. Verifikasi tab `Borrow` disabled
 32. Arahkan pointer ke tab `Borrow`
-33. Verifikasi alasan `Not available on your current plan` tersampaikan pada tab `Borrow` yang disabled
+33. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Borrow` yang disabled
 34. Verifikasi chip `Upgrade` pada tab `Borrow`
 35. Klik tab `Borrow`
 36. Verifikasi tab `Borrow` tidak menjadi tab aktif
