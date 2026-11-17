@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-016-banner-setup-incomplete-hilang-setelah-setting-wajib-disimpan
 title: "Banner Setup Incomplete hilang setelah setting wajib terakhir disimpan dan memuat setting kosong menurut urutan SectionCard"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-PREF-80
   - TC-FA-PREF-397
   - TC-FA-PREF-398
+sourceRules: ["ST-07", "F-FAPREF-01.k22a", "T-01", "FAPREF-LOGIC-11c", "§9.5#r1", "ST-04", "§4.3#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-07": [1, 10, 17]
+  "F-FAPREF-01.k22a": [4, 13]
+  "T-01": [5, 14]
+  "FAPREF-LOGIC-11c": [6, 15]
+  "§9.5#r1": 7
+  "ST-04": 8
+  "§4.3#b2": 18
 coverage:
   web: automated
 ---

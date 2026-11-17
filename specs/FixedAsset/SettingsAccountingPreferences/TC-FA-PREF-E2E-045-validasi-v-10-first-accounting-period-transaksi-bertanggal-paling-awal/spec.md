@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-045-validasi-v-10-first-accounting-period-transaksi-bertanggal-paling-awal
 title: "Validasi V-10: First Accounting Period terhadap transaksi bertanggal paling awal (satu bulan sebelum, sama, dan sesudah)"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-PREF-155
   - TC-FA-PREF-156
   - TC-FA-PREF-157
+sourceRules: ["D-01", "PV-04", "F-FAPREF-01.k23", "V-10", "E-FAPREF-42", "T-01", "E-FAPREF-37"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 12, 20]
+  "PV-04": [3, 12, 20]
+  "F-FAPREF-01.k23": [5, 6]
+  "V-10": 7
+  "E-FAPREF-42": 8
+  "T-01": [14, 22]
+  "E-FAPREF-37": [15, 23]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-085-edit-kasus-tepi-kapitalisasi-class-code-dan-tax-depreciation-class
 title: "Edit Asset Class: Kapitalisasi Class Code serta Tax Depreciation Class dan Tax Method yang Tidak Lagi Valid"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-FAAC-173
   - TC-FA-FAAC-179
   - TC-FA-FAAC-653
+sourceRules: ["S-14", "T-02", "V-35", "V-36", "§4.1.2#r14", "FAAC-LOGIC-02e", "F-FAAC-02.k18", "V-04", "L-02"]
+smoke: []
+dependsOn: []
+trace:
+  "S-14": 3
+  "T-02": [7, 18, 28]
+  "V-35": [8, 19]
+  "V-36": [8, 19]
+  "§4.1.2#r14": 12
+  "FAAC-LOGIC-02e": 13
+  "F-FAAC-02.k18": [28, 29]
+  "V-04": 30
+  "L-02": [32, 33]
+anchor: [22]
 coverage:
   web: automated
 ---

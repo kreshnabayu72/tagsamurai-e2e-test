@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-095-bulk-status-berhasil-dan-campuran
 title: "Bulk Status: Activate Berhasil, Deactivate Campuran Lolos dan Diblokir, serta Seleksi Campuran"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,25 @@ sourceTc:
   - TC-FA-FAAC-244
   - TC-FA-FAAC-245
   - TC-FA-FAAC-249
+sourceRules: ["§3.9#r12", "D-08", "F-FAAC-03.k1", "§4.2f#b1", "T-04", "L-04", "D-03", "T-05b", "F-FAAC-04.k5", "D-09", "ST-31", "§7.3#b2", "§8.4#r5", "D-02", "T-05a"]
+smoke: []
+dependsOn: []
+trace:
+  "§3.9#r12": [3, 24]
+  "D-08": 5
+  "F-FAAC-03.k1": [5, 7, 9]
+  "§4.2f#b1": 5
+  "T-04": [7, 28]
+  "L-04": [9, 19, 31]
+  "D-03": 14
+  "T-05b": 16
+  "F-FAAC-04.k5": [17, 19]
+  "D-09": 26
+  "ST-31": [29, 38]
+  "§7.3#b2": [29, 38]
+  "§8.4#r5": 31
+  "D-02": 35
+  "T-05a": 37
 coverage:
   web: automated
 ---

@@ -1,12 +1,35 @@
 ---
 id: TC-FA-PREF-E2E-121-log-tiga-surface-save-default-loss-dan-disposal-documents-sell
 title: "Log Tiga Surface: Save Default Loss on Disposal dan Disposal Documents Sell"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-368
   - TC-FA-PREF-369
+sourceRules: ["D-01", "PV-02", "T-01", "§3.1#b6", "L-02a", "L-02e", "SET-06", "L-02h", "L-02i", "L-02b", "§8.2#p1", "§8.2#p2", "L-02c", "§8.3#p1", "§4.1.4#r9", "§8#b2", "DOC-01", "L-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 4
+  "PV-02": 4
+  "T-01": [6, 24]
+  "§3.1#b6": [7, 25]
+  "L-02a": [10, 28]
+  "L-02e": [10, 28]
+  "SET-06": 11
+  "L-02h": [11, 15, 19]
+  "L-02i": [11, 15, 19]
+  "L-02b": [14, 32]
+  "§8.2#p1": [15, 16, 33, 34]
+  "§8.2#p2": [15, 33]
+  "L-02c": [18, 36]
+  "§8.3#p1": [19, 37]
+  "§4.1.4#r9": 29
+  "§8#b2": [29, 37]
+  "DOC-01": 29
+  "L-02f": [33, 37]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-226-injeksi-script-sql-dropdown-asset-class-changelog-regulation-reference
 title: "Injeksi Script dan SQL: Dropdown Asset Class, Changelog, dan Regulation Reference Tampil sebagai Teks"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-871
   - TC-FA-TDC-872
   - TC-FA-TDC-873
+sourceRules: ["§4.1.1#r42", "§4.1.1#r11", "FLD-01", "§4.1.1#r3", "§4.1.1#p5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r42": [13, 14]
+  "§4.1.1#r11": 21
+  "FLD-01": 25
+  "§4.1.1#r3": 31
+  "§4.1.1#p5": 33
+anchor: [7, 8, 15, 26, 27, 35]
 coverage:
   web: automated
 ---

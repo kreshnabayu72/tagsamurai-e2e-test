@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-027-role-matrix-negatif-delete-only-create-only-dan-read-manage-tab-asset-names
 title: "Role Matrix Negatif: Deactivate Instead dan Tab Asset Names Tanpa Kontrol Tulis untuk Delete-Only, Create-Only, dan Read-Only (Manage Accounting, Huruf Read Saja)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-FAAC-615
   - TC-FA-FAAC-614
   - TC-FA-FAAC-616
+sourceRules: ["§4.2f#b3", "§4.8#b2", "§4.8#r20", "§4.1.3#p1", "§4.8#r21", "§4.8#r14"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b3": 4
+  "§4.8#b2": 5
+  "§4.8#r20": 6
+  "§4.1.3#p1": [11, 19, 27]
+  "§4.8#r21": [12, 13, 20, 21, 28]
+  "§4.8#r14": [12, 20, 28]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-052-create-akun-sama-shortcut-create-account-dan-titik-peringatan-tab
 title: "Form Create Asset Class: Titik Peringatan Tab, Shortcut Create Account, dan Akun yang Sama dengan Asset Class Lain"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-FAAC-94
   - TC-FA-FAAC-131
   - TC-FA-FAAC-133
+sourceRules: ["ST-04", "§4.5#b3", "FI-07", "§4.4#r12", "§4.2f#b2", "T-01", "V-38", "FAAC-LOGIC-04i"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-04": [3, 6, 7]
+  "§4.5#b3": 4
+  "FI-07": [10, 11, 13]
+  "§4.4#r12": 10
+  "§4.2f#b2": 15
+  "T-01": [22, 33]
+  "V-38": [23, 30]
+  "FAAC-LOGIC-04i": [24, 30, 34]
 coverage:
   web: automated
 ---

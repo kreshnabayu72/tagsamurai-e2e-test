@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-021-role-matrix-visibilitas-tabel-manage-create-update-delete
 title: "Role Matrix: Visibilitas Elemen Tabel Asset Class untuk Manage Accounting (Read, Create), (Read, Update), dan (Read, Delete)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-FAAC-59
   - TC-FA-FAAC-60
   - TC-FA-FAAC-61
+sourceRules: ["§4.8#r1", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r11", "§4.8#r14", "§4.8#r15", "§4.8#r16", "§4.8#r17", "§4.8#r18", "§4.8#r20", "ST-32", "§4.8#r19", "§4.8#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [1, 14, 28]
+  "§4.8#r3": [1, 14, 28]
+  "§4.8#r4": [1, 14, 28]
+  "§4.8#r5": [1, 14, 28]
+  "§4.8#r11": [2, 15, 29]
+  "§4.8#r14": [4, 18, 31]
+  "§4.8#r15": [4, 18, 31]
+  "§4.8#r16": [6, 21, 33]
+  "§4.8#r17": [7, 22, 34]
+  "§4.8#r18": [7, 22, 34]
+  "§4.8#r20": [7, 22, 34]
+  "ST-32": [10, 37]
+  "§4.8#r19": [11, 25, 38]
+  "§4.8#b3": 19
 coverage:
   web: automated
 ---

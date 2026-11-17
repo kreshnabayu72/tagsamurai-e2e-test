@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-073-move-screening-dan-validasi-destination
 title: "Screening Dialog Move Asset Names dan Validasi Destination Asset Class"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-FAAC-189
   - TC-FA-FAAC-196
   - TC-FA-FAAC-197
+sourceRules: ["D-14", "V-31", "E-FAAC-95", "E-FAAC-37", "F-FAAC-09.k1", "FAAC-LOGIC-11c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-14": [4, 5, 6, 7, 8, 9, 12, 13, 14, 21, 25]
+  "V-31": 16
+  "E-FAAC-95": [17, 18]
+  "E-FAAC-37": 19
+  "F-FAAC-09.k1": 22
+  "FAAC-LOGIC-11c": 23
 coverage:
   web: automated
 ---

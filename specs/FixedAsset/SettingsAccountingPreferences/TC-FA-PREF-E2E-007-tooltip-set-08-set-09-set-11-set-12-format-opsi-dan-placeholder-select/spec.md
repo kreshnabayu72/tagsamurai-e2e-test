@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-007-tooltip-set-08-set-09-set-11-set-12-format-opsi-dan-placeholder-select
 title: "Tooltip Ikon Info ⓘ SET-08, SET-09, SET-11, SET-12, Format Opsi Select Akun, dan Placeholder Select Saat Nilai Kosong"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -14,6 +15,23 @@ sourceTc:
   - TC-FA-PREF-48
   - TC-FA-PREF-49
   - TC-FA-PREF-50
+sourceRules: ["SET-08", "SET-09", "SET-11", "SET-12", "SET-05", "SET-06", "SET-13", "§4.1.1#p4", "FI-05", "SET-01", "SET-03", "SET-04", "SET-02"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-08": [2, 9]
+  "SET-09": [4, 9]
+  "SET-11": [6, 19]
+  "SET-12": [8, 20, 21]
+  "SET-05": 9
+  "SET-06": 9
+  "SET-13": 9
+  "§4.1.1#p4": [9, 12, 16, 17, 18, 19, 20, 21, 22]
+  "FI-05": 11
+  "SET-01": 16
+  "SET-03": 17
+  "SET-04": 18
+  "SET-02": 22
 coverage:
   web: automated
 ---

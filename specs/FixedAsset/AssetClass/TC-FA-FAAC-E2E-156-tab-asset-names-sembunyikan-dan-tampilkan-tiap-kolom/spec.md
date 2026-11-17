@@ -1,11 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-156-tab-asset-names-sembunyikan-dan-tampilkan-tiap-kolom
 title: "Tab Asset Names: Menyembunyikan dan Menampilkan Tiap Kolom Satu per Satu"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-464
+sourceRules: ["§4.1.3#r1", "§4.1.3#r2", "§4.1.3#r3", "§4.1.3#r4", "§4.1.3#r5", "§4.1.3#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#r1": [7, 9]
+  "§4.1.3#r2": [11, 13]
+  "§4.1.3#r3": [15, 17]
+  "§4.1.3#r4": [19, 21]
+  "§4.1.3#r5": [23, 25]
+  "§4.1.3#r6": [27, 29]
 coverage:
   web: automated
 ---

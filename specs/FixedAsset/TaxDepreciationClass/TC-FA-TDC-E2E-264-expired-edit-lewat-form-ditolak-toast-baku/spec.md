@@ -1,11 +1,18 @@
 ---
 id: TC-FA-TDC-E2E-264-expired-edit-lewat-form-ditolak-toast-baku
 title: "Entitas Expired: Edit lewat Form Ditolak dengan Toast Baku"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-102
+sourceRules: ["E-FATDC-62", "T-12"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-62": [6, 9, 10]
+  "T-12": 6
 coverage:
   web: automated
 ---

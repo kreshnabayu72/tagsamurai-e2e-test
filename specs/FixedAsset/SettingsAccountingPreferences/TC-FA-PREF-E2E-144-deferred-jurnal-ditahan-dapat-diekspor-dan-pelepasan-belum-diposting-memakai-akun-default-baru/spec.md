@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-144-deferred-jurnal-ditahan-dapat-diekspor-dan-pelepasan-belum-diposting-memakai-akun-default-baru
 title: "[DEFERRED] Jurnal ditahan dapat diekspor setelah akun diisi dan pelepasan belum diposting memakai akun default baru"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-454
   - TC-FA-PREF-455
+sourceRules: ["D-01", "PV-02", "FAPREF-LOGIC-06f", "FAPREF-LOGIC-06g"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [5, 15]
+  "PV-02": [5, 15]
+  "FAPREF-LOGIC-06f": 10
+  "FAPREF-LOGIC-06g": 22
 coverage:
   web: automated
 ---

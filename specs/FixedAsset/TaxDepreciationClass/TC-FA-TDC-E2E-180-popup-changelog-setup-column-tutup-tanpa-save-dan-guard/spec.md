@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-180-popup-changelog-setup-column-tutup-tanpa-save-dan-guard
 title: "Popup Changelog Setup Column: Reset to Default, Tutup Tanpa Save, dan Guard Satu Kolom Tersisa"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-TDC-645
   - TC-FA-TDC-646
   - TC-FA-TDC-647
+sourceRules: ["§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§5#b9", "§4.5#b1", "§4.1.1#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r25": [10, 14]
+  "§4.1.1#r26": [10, 14]
+  "§4.1.1#r27": [10, 14]
+  "§4.1.1#r28": [10, 14]
+  "§4.1.1#r29": [10, 14]
+  "§4.1.1#r30": [10, 14]
+  "§4.1.1#r31": [10, 14]
+  "§5#b9": [14, 20, 26]
+  "§4.5#b1": 25
+  "§4.1.1#b4": [31, 36]
+anchor: [19]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-088-absence-log-save-ditolak-cancel-dialog-save-changes-dan-j-01-tanpa-aktor-tidak-menulis-log
 title: "Absence Log: Save Ditolak Server, Cancel pada Dialog Save Changes, dan J-01 Tanpa User Aktor Tidak Menulis Log"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,26 @@ sourceTc:
   - TC-FA-PREF-386
   - TC-FA-PREF-387
   - TC-FA-PREF-427
+sourceRules: ["D-01", "PV-04", "PV-05", "V-09", "F-FAPREF-01.k19b", "F-FAPREF-01.k19d", "F-FAPREF-01.k19a", "RG-02", "PV-01", "F-FAPREF-01.k21c", "FAPREF-LOGIC-03e", "R-03", "J-01", "L-01a", "L-01c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [5, 17]
+  "PV-04": 5
+  "PV-05": 5
+  "V-09": 7
+  "F-FAPREF-01.k19b": 7
+  "F-FAPREF-01.k19d": 8
+  "F-FAPREF-01.k19a": [9, 10, 11]
+  "RG-02": [9, 10, 11]
+  "PV-01": 17
+  "F-FAPREF-01.k21c": [19, 21]
+  "FAPREF-LOGIC-03e": 21
+  "R-03": [22, 23, 24]
+  "J-01": 31
+  "L-01a": 31
+  "L-01c": [37, 42]
+anchor: [20]
 coverage:
   web: automated
 ---

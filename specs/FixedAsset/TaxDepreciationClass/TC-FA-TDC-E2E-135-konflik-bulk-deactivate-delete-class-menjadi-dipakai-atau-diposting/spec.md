@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-135-konflik-bulk-deactivate-delete-class-menjadi-dipakai-atau-diposting
 title: "Konflik Bulk Deactivate dan Bulk Delete: Class Menjadi Dipakai Asset Class Antara Dialog Dibuka dan Konfirmasi"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,23 @@ sourceTc:
   - TC-FA-TDC-471
   - TC-FA-TDC-472
   - TC-FA-TDC-473
+sourceRules: ["D-02", "F-FATDC-13.k3", "E-FATDC-81", "FATDC-LOGIC-14k", "F-FATDC-13.k2", "T-05b", "L-04", "D-04", "F-FATDC-13.k10", "E-FATDC-88", "F-FATDC-13.k9", "T-06b", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "D-02": 8
+  "F-FATDC-13.k3": [9, 11]
+  "E-FATDC-81": 12
+  "FATDC-LOGIC-14k": [13, 39]
+  "F-FATDC-13.k2": 23
+  "T-05b": 24
+  "L-04": 25
+  "D-04": 34
+  "F-FATDC-13.k10": [35, 37]
+  "E-FATDC-88": 38
+  "F-FATDC-13.k9": 49
+  "T-06b": 50
+  "L-05": 51
 coverage:
   web: automated
 ---

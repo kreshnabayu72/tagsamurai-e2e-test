@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-173-sinkron-asset-name-tabel-dan-banner-b
 title: "Sinkronisasi Move, Unassign, dan Asset Name Baru: Kolom Asset Names dan Assets serta Banner"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-FAAC-575
   - TC-FA-FAAC-576
   - TC-FA-FAAC-577
+sourceRules: ["S-08a", "§4.1.1#r8", "§4.1.1#r9", "S-09a", "E-FAAC-61", "§4.1.1#p3", "S-09b", "D-23", "S-13", "§4.1.4#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "S-08a": [14, 15, 17, 18]
+  "§4.1.1#r8": 22
+  "§4.1.1#r9": 22
+  "S-09a": 29
+  "E-FAAC-61": 33
+  "§4.1.1#p3": 41
+  "S-09b": 41
+  "D-23": [44, 56]
+  "S-13": 53
+  "§4.1.4#r4": 63
+anchor: [32]
 coverage:
   web: automated
 ---

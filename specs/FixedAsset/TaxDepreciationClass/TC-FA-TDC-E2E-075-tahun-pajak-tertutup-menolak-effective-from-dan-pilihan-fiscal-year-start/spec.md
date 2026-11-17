@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-075-tahun-pajak-tertutup-menolak-effective-from-dan-pilihan-fiscal-year-start
 title: "Tahun Pajak Tertutup pada Pilihan Effective From D-09: Closed Tidak Ditawarkan, Sebagian Closed Ditawarkan, dan Apply Ditolak dengan Caption V-21"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-TDC-757
   - TC-FA-TDC-758
   - TC-FA-TDC-934
+sourceRules: ["FATDC-LOGIC-04af", "FATDC-LOGIC-04ag", "FATDC-LOGIC-04e", "FATDC-LOGIC-04t", "V-20", "V-21", "F-FATDC-02.k7b", "E-FATDC-18", "L-03", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04af": [6, 7, 8, 13, 18]
+  "FATDC-LOGIC-04ag": 6
+  "FATDC-LOGIC-04e": [7, 8, 13, 18]
+  "FATDC-LOGIC-04t": 19
+  "V-20": 20
+  "V-21": 27
+  "F-FATDC-02.k7b": 27
+  "E-FATDC-18": [28, 29]
+  "L-03": 30
+  "§4.2c#b1": 33
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-160-log-edit-format-nominal-dan-total-estimated-units
 title: "Log Edit: Format Angka Nominal, Desimal, Persen, dan Total Estimated Units"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-FAAC-713
   - TC-FA-FAAC-715
   - TC-FA-FAAC-717
+sourceRules: ["F-FAAC-02.k18", "L-02", "§4.1.1#r30", "§4.1.1#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-02.k18": [8, 19, 30, 41]
+  "L-02": [8, 9, 10, 19, 20, 21, 30, 31, 32, 42]
+  "§4.1.1#r30": [9, 10, 20, 21, 31, 32]
+  "§4.1.1#r4": 42
 coverage:
   web: automated
 ---

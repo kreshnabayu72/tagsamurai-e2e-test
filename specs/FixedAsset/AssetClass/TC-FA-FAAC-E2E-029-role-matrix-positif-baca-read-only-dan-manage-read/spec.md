@@ -1,12 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-029-role-matrix-positif-baca-read-only-dan-manage-read
 title: "Role Matrix Positif: Read Only dan Manage Accounting (Read) Dapat Mencari, Memfilter, Mengunduh, Membuka Changelog, dan Membuka Detail"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-73
   - TC-FA-FAAC-74
+sourceRules: ["§4.1#r2", "§5#b2", "§5#b3", "§5#b8", "§5#b9", "§4.2b#p1", "§4.8#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r2": 1
+  "§5#b2": 3
+  "§5#b3": 5
+  "§5#b8": [8, 21]
+  "§5#b9": [10, 18]
+  "§4.2b#p1": [13, 24]
+  "§4.8#r6": 14
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-128-download-tabel-nama-berkas-dan-cakupan-baris
 title: "Download Tabel Asset Class: Menu, Nama Berkas, Cakupan Baris dan Kolom, serta Tanpa Toast Sukses"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -13,6 +14,14 @@ sourceTc:
   - TC-FA-FAAC-424
   - TC-FA-FAAC-425
   - TC-FA-FAAC-430
+sourceRules: ["§5#b8", "F-FAAC-14.k1", "R-15"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b8": [4, 6, 8, 11, 19, 20, 23]
+  "F-FAAC-14.k1": [14, 15]
+  "R-15": [25, 26]
+anchor: [2]
 coverage:
   web: automated
 ---

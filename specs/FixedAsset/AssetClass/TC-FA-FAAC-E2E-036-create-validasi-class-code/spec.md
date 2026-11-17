@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-036-create-validasi-class-code
 title: "Create Asset Class: Validasi Class Code (Kosong, Batas Panjang, Karakter, Duplikat)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-FAAC-98
   - TC-FA-FAAC-99
   - TC-FA-FAAC-100
+sourceRules: ["V-01", "R-01", "ST-04", "F-FAAC-01.k4", "V-02", "V-03", "V-04", "F-FAAC-01.k1", "S-01d", "§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": 6
+  "R-01": [7, 24]
+  "ST-04": 8
+  "F-FAAC-01.k4": 9
+  "V-02": [12, 14]
+  "V-03": [16, 18]
+  "V-04": 20
+  "F-FAAC-01.k1": 25
+  "S-01d": [26, 27, 28]
+  "§4.2f#b2": 30
+  "§4.1.2#p11": 30
 coverage:
   web: automated
 ---

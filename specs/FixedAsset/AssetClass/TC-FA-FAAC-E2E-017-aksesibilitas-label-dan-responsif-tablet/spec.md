@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-017-aksesibilitas-label-dan-responsif-tablet
 title: "Aksesibilitas Label Toggle, Ikon Accounts, dan Tab Detail serta Tampilan Responsif Tabel dan Form pada Lebar Tablet"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -10,6 +11,25 @@ sourceTc:
   - TC-FA-FAAC-42
   - TC-FA-FAAC-44
   - TC-FA-FAAC-45
+sourceRules: ["§4.5#b4", "§4.1.1#r1", "D-01", "§4.5#b5", "§4.1.1#r7", "§4.5#b3", "ST-04", "§4.5#b7", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r8", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b4": [2, 3, 4, 5]
+  "§4.1.1#r1": [3, 5, 10, 14, 27]
+  "D-01": [8, 12]
+  "§4.5#b5": [16, 17, 18]
+  "§4.1.1#r7": [16, 17, 18, 27]
+  "§4.5#b3": [22, 23]
+  "ST-04": [22, 23]
+  "§4.5#b7": [27, 30]
+  "§4.1.1#r2": 27
+  "§4.1.1#r3": 27
+  "§4.1.1#r4": 27
+  "§4.1.1#r5": 27
+  "§4.1.1#r6": 27
+  "§4.1.1#r8": 27
+  "§4.1.1#r9": 27
 coverage:
   web: automated
 ---

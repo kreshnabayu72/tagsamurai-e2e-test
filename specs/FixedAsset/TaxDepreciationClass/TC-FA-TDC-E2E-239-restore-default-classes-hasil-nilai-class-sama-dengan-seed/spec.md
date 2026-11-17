@@ -1,11 +1,28 @@
 ---
 id: TC-FA-TDC-E2E-239-restore-default-classes-hasil-nilai-class-sama-dengan-seed
 title: "Restore Default Classes: Nilai Class Hasil Restore Sama dengan Nilai Seed"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-324
+sourceRules: ["§4.1.5#r1", "§4.1.5#r2", "§4.1.5#r3", "§4.1.5#r4", "§4.1.5#r5", "§4.1.5#r6", "§4.1.5#r7", "§4.1.5#p1", "§4.1.2#r10", "§4.1.2#r11", "ST-08", "FATDC-LOGIC-03b"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.5#r1": 5
+  "§4.1.5#r2": 6
+  "§4.1.5#r3": 7
+  "§4.1.5#r4": 8
+  "§4.1.5#r5": 9
+  "§4.1.5#r6": 10
+  "§4.1.5#r7": 11
+  "§4.1.5#p1": 13
+  "§4.1.2#r10": 13
+  "§4.1.2#r11": 13
+  "ST-08": 16
+  "FATDC-LOGIC-03b": 16
 coverage:
   web: automated
 ---

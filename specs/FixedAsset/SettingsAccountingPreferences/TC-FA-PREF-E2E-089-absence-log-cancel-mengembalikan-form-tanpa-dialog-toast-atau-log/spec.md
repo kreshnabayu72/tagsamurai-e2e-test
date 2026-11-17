@@ -1,12 +1,24 @@
 ---
 id: TC-FA-PREF-E2E-089-absence-log-cancel-mengembalikan-form-tanpa-dialog-toast-atau-log
 title: "Absence Log: Klik [Cancel] Mengembalikan Form ke Nilai Tersimpan Tanpa Dialog, Toast, atau Log"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-274
   - TC-FA-PREF-577
+sourceRules: ["F-FAPREF-02.k3a", "R-03", "F-FAPREF-02.k3b", "F-FAPREF-02.k3d", "ST-01", "FAPREF-LOGIC-10f", "F-FAPREF-02.k3c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k3a": [7, 8, 21]
+  "R-03": [7, 8, 11, 14, 24, 25, 26]
+  "F-FAPREF-02.k3b": [9, 22]
+  "F-FAPREF-02.k3d": [10, 23]
+  "ST-01": 12
+  "FAPREF-LOGIC-10f": 12
+  "F-FAPREF-02.k3c": [14, 24, 25, 26]
 coverage:
   web: automated
 ---

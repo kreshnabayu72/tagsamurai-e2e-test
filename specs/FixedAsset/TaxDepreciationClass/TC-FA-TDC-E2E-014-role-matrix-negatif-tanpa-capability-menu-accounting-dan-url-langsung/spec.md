@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-014-role-matrix-negatif-tanpa-capability-menu-accounting-dan-url-langsung
 title: "Role Matrix Negatif: Tanpa Capability Menu Accounting dan URL Langsung"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-44
   - TC-FA-TDC-45
+sourceRules: ["§2.1#r4", "§2.2#r4", "§2.2#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§2.1#r4": [2, 5]
+  "§2.2#r4": [2, 12]
+  "§2.2#r5": [5, 8]
+anchor: [1, 4, 7, 11, 13]
 coverage:
   web: automated
 ---

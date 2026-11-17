@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-151-deferred-export-journal-jumlah-baris-menurut-journal-grouping-dan-group-assignable
 title: "[DEFERRED] Export Journal: jumlah baris menurut Journal Grouping dan Group Assignable"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-PREF-490
   - TC-FA-PREF-491
   - TC-FA-PREF-492
+sourceRules: ["§Aturan Logika Modul#p44", "FAPREF-LOGIC-09o", "§Aturan Logika Modul#p45", "FAPREF-LOGIC-09h", "§Aturan Logika Modul#p46", "FAPREF-LOGIC-09t", "FAPREF-LOGIC-09p"]
+smoke: []
+dependsOn: []
+trace:
+  "§Aturan Logika Modul#p44": 4
+  "FAPREF-LOGIC-09o": 4
+  "§Aturan Logika Modul#p45": 8
+  "FAPREF-LOGIC-09h": 12
+  "§Aturan Logika Modul#p46": 22
+  "FAPREF-LOGIC-09t": 26
+  "FAPREF-LOGIC-09p": [26, 27]
 coverage:
   web: automated
 ---

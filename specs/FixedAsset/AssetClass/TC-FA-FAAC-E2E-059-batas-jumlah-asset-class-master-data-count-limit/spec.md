@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-059-batas-jumlah-asset-class-master-data-count-limit
 title: "Batas Jumlah Asset Class: Dialog Blok Asset Class Limit Reached pada Master Data Count Limit"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-FAAC-137
   - TC-FA-FAAC-147
   - TC-FA-FAAC-267
+sourceRules: ["D-10", "F-FAAC-01.k10", "FAAC-LOGIC-15d", "§3.8#p1", "§4.1.2#p1", "FAAC-LOGIC-15a", "F-FAAC-01.k11", "§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "D-10": [3, 13, 17, 28, 41, 49]
+  "F-FAAC-01.k10": [4, 29]
+  "FAAC-LOGIC-15d": [5, 6, 7, 30, 51, 52, 53, 54]
+  "§3.8#p1": [13, 14]
+  "§4.1.2#p1": [23, 34]
+  "FAAC-LOGIC-15a": [24, 35]
+  "F-FAAC-01.k11": [49, 50, 51]
+  "§4.2f#b2": 57
+  "§4.1.2#p11": 57
+anchor: [9, 10]
 coverage:
   web: automated
 ---

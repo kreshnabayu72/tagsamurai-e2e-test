@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-153-changelog-setup-column-ceklis-geser-dan-pin
 title: "Modal Changelog: Setup Column Ceklis Kolom, Geser Urutan Kolom, dan Pin serta Unpin Kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-504
   - TC-FA-FAAC-505
   - TC-FA-FAAC-506
+sourceRules: ["§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r32", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§5#b10"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r30": [6, 13, 17, 23]
+  "§4.1.1#r31": [6, 13, 17, 23]
+  "§4.1.1#r32": [6, 13, 17, 23]
+  "§4.1.1#r26": [7, 12, 16, 23]
+  "§4.1.1#r27": [7, 12, 16, 23]
+  "§4.1.1#r28": [7, 12, 16, 23]
+  "§4.1.1#r29": [7, 12, 16, 23]
+  "§5#b10": [16, 17]
+anchor: [31, 37]
 coverage:
   web: automated
 ---

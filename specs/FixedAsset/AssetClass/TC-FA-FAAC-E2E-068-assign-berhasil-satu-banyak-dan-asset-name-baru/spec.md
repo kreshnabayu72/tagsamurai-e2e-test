@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-068-assign-berhasil-satu-banyak-dan-asset-name-baru
 title: "Assign Asset Name Tanpa Asset Class Berhasil: Satu, Banyak, dan Asset Name Baru Tidak Ikut Ter-assign"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-FAAC-151
   - TC-FA-FAAC-152
   - TC-FA-FAAC-636
+sourceRules: ["FAAC-LOGIC-13b", "FAAC-LOGIC-01e", "FAAC-LOGIC-14a", "S-13", "§[F-FAAC-08] Assign Asset Names#b2", "FI-11", "T-07", "§4.1.3#r5", "§4.1.3#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-13b": [10, 23, 30]
+  "FAAC-LOGIC-01e": 11
+  "FAAC-LOGIC-14a": 13
+  "S-13": 13
+  "§[F-FAAC-08] Assign Asset Names#b2": [17, 26]
+  "FI-11": 18
+  "T-07": [21, 29]
+  "§4.1.3#r5": 22
+  "§4.1.3#r6": 22
+anchor: [20, 28]
 coverage:
   web: automated
 ---

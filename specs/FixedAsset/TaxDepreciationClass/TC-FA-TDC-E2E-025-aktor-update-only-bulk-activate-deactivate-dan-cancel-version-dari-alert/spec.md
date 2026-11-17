@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-025-aktor-update-only-bulk-activate-deactivate-dan-cancel-version-dari-alert
 title: "Aktor Update-Only: Bulk Activate, Bulk Deactivate, dan Cancel Version dari Alert"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,29 @@ sourceTc:
   - TC-FA-TDC-86
   - TC-FA-TDC-87
   - TC-FA-TDC-301
+sourceRules: ["FATDC-LOGIC-14b", "D-01", "F-FATDC-13.k5", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3", "F-FATDC-13.k4", "D-03", "F-FATDC-13.k7", "ST-27", "F-FATDC-13.k1", "§[F-FATDC-03] Cancel Scheduled Version#b3", "ST-30", "§4.1.6#r5", "FATDC-LOGIC-04i", "§4.1.6#r4", "FATDC-LOGIC-04p.5", "§4.1.1#r5", "§4.1.1#r10", "S-13b"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-14b": 2
+  "D-01": [4, 17]
+  "F-FATDC-13.k5": [4, 6]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 6
+  "F-FATDC-13.k4": 7
+  "D-03": 10
+  "F-FATDC-13.k7": [10, 12, 13]
+  "ST-27": [13, 20]
+  "F-FATDC-13.k1": [17, 19, 20]
+  "§[F-FATDC-03] Cancel Scheduled Version#b3": [27, 28]
+  "ST-30": 29
+  "§4.1.6#r5": 31
+  "FATDC-LOGIC-04i": 31
+  "§4.1.6#r4": 32
+  "FATDC-LOGIC-04p.5": 32
+  "§4.1.1#r5": 35
+  "§4.1.1#r10": 35
+  "S-13b": 37
+anchor: [21]
 coverage:
   web: automated
 ---

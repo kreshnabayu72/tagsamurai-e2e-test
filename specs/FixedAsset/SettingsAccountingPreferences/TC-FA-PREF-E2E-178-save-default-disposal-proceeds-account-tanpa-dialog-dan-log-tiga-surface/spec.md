@@ -1,12 +1,36 @@
 ---
 id: TC-FA-PREF-E2E-178-save-default-disposal-proceeds-account-tanpa-dialog-dan-log-tiga-surface
 title: "Save Default Disposal Proceeds Account (SET-13): langsung tersimpan tanpa dialog dan tercatat di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-625
   - TC-FA-PREF-626
+sourceRules: ["F-FAPREF-01.k22a", "FAPREF-LOGIC-10j", "F-FAPREF-01.k22b", "T-01", "§3.1#b6", "ST-01", "L-02a", "L-02e", "§8#b1", "L-02h", "L-02i", "§4.1.4#r7", "L-02b", "§8.2#r1", "§8.2#p2", "§8.2#p1", "L-02c", "L-02d", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k22a": 5
+  "FAPREF-LOGIC-10j": 5
+  "F-FAPREF-01.k22b": [6, 13]
+  "T-01": [6, 13]
+  "§3.1#b6": 7
+  "ST-01": 8
+  "L-02a": 15
+  "L-02e": 15
+  "§8#b1": 16
+  "L-02h": 16
+  "L-02i": 16
+  "§4.1.4#r7": 16
+  "L-02b": 19
+  "§8.2#r1": 20
+  "§8.2#p2": 20
+  "§8.2#p1": 21
+  "L-02c": [23, 24]
+  "L-02d": 24
+  "§8.3#p1": 24
 coverage:
   web: automated
 ---

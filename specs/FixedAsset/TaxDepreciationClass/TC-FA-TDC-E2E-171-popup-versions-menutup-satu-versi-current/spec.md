@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-171-popup-versions-menutup-satu-versi-current
 title: "Popup Versions: Menutup dan Satu Versi Current"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-611
   - TC-FA-TDC-612
+sourceRules: ["§4.1.6#p5", "§4.5#b1", "§4.1.6#r10", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "§4.1.6#r7", "§4.1.6#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p5": [4, 6, 7, 15]
+  "§4.5#b1": 10
+  "§4.1.6#r10": 14
+  "§4.1.6#r4": 14
+  "§4.1.6#r5": 14
+  "§4.1.6#r6": 14
+  "§4.1.6#r7": 14
+  "§4.1.6#r8": 14
 coverage:
   web: automated
 ---

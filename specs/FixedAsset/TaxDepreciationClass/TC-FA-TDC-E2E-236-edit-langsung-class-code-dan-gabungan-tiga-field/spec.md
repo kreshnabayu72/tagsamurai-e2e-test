@@ -1,12 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-236-edit-langsung-class-code-dan-gabungan-tiga-field
 title: "Edit Langsung Tanpa Versi Baru: Class Code dan Gabungan Class Code, Class Name, Regulation Reference"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-191
   - TC-FA-TDC-192
+sourceRules: ["T-02a", "F-FATDC-02.k11a", "§4.1.1#r27", "F-FATDC-02.k11b", "FATDC-LOGIC-04ad"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02a": [5, 18]
+  "F-FATDC-02.k11a": [6, 8, 19, 21]
+  "§4.1.1#r27": 7
+  "F-FATDC-02.k11b": [11, 24]
+  "FATDC-LOGIC-04ad": [11, 24]
 coverage:
   web: automated
 ---

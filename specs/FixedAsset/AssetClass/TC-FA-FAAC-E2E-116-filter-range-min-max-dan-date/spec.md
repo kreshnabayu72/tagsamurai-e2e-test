@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-116-filter-range-min-max-dan-date
 title: "Filter Tabel Asset Class: Range Min dan Max Capitalization Threshold, Asset Names, Assets, dan Date Range Last Updated"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,29 @@ sourceTc:
   - TC-FA-FAAC-366
   - TC-FA-FAAC-367
   - TC-FA-FAAC-368
+sourceRules: ["§4.1.1#r6", "§4.1.1#r17", "§4.1.1#r19", "FAAC-LOGIC-03b", "§4.1.1#r18", "§4.1.1#r8", "§4.1.1#r21", "§4.1.1#r22", "§4.1.1#r24", "§4.1.1#r25", "§4.1.1#r9", "§4.1.1#r11", "§4.1.1#r40", "§4.1.1#r42", "§4.1.1#r43", "§4.1.1#r44", "§4.1.1#r33", "§4.1.1#r35", "§4.1.1#r38"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r6": [3, 4, 7, 8, 11, 12]
+  "§4.1.1#r17": [3, 7, 11, 15, 18, 21]
+  "§4.1.1#r19": [3, 7, 11, 15, 21]
+  "FAAC-LOGIC-03b": [4, 8, 12]
+  "§4.1.1#r18": [11, 15]
+  "§4.1.1#r8": [15, 18]
+  "§4.1.1#r21": [15, 18, 21]
+  "§4.1.1#r22": 18
+  "§4.1.1#r24": 18
+  "§4.1.1#r25": 18
+  "§4.1.1#r9": 21
+  "§4.1.1#r11": [24, 25]
+  "§4.1.1#r40": 24
+  "§4.1.1#r42": 24
+  "§4.1.1#r43": 24
+  "§4.1.1#r44": 24
+  "§4.1.1#r33": 25
+  "§4.1.1#r35": 25
+  "§4.1.1#r38": 25
 coverage:
   web: automated
 ---

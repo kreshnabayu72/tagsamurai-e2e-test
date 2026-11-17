@@ -1,12 +1,19 @@
 ---
 id: TC-FA-PREF-E2E-173-deferred-in-service-date-source-aset-berpindah-ke-active-setelah-save
 title: "[DEFERRED] In-service Date Source: aset yang berpindah ke Active setelah Save memakai sumber menurut waktu pendaftaran"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-438
   - TC-FA-PREF-439
+sourceRules: ["FAPREF-LOGIC-04f", "FAPREF-LOGIC-04b"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-04f": [10, 21]
+  "FAPREF-LOGIC-04b": [11, 22]
 coverage:
   web: automated
 ---

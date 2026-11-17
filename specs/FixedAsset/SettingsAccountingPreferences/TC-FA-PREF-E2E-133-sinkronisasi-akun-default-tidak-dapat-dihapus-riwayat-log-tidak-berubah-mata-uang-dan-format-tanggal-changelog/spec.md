@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-133-sinkronisasi-akun-default-tidak-dapat-dihapus-riwayat-log-tidak-berubah-mata-uang-dan-format-tanggal-changelog
 title: "Sinkronisasi: Akun Default Tidak Dapat Dihapus, Riwayat Log Tidak Berubah, Mata Uang, dan Format Tanggal Changelog"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-PREF-406
   - TC-FA-PREF-407
   - TC-FA-PREF-408
+sourceRules: ["F-FAPREF-04.k3", "FI-02", "D-01", "PV-02", "L-02a", "L-02k", "L-02h", "FAPREF-LOGIC-03e", "§4.1.4#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-04.k3": [5, 7, 10]
+  "FI-02": 11
+  "D-01": 17
+  "PV-02": 17
+  "L-02a": 22
+  "L-02k": 23
+  "L-02h": 23
+  "FAPREF-LOGIC-03e": 28
+  "§4.1.4#r1": 34
 coverage:
   web: automated
 ---

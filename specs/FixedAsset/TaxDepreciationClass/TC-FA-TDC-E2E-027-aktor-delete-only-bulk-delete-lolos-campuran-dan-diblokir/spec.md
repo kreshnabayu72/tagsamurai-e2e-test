@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-027-aktor-delete-only-bulk-delete-lolos-campuran-dan-diblokir
 title: "Aktor Delete-Only: Bulk Delete Lolos, Campuran, dan Diblokir"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-88
   - TC-FA-TDC-89
   - TC-FA-TDC-90
+sourceRules: ["D-04", "F-FATDC-13.k10", "F-FATDC-13.k11", "D-15", "T-06b", "F-FATDC-13.k9", "D-06", "F-FATDC-13.k8"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": 3
+  "F-FATDC-13.k10": [3, 5, 6]
+  "F-FATDC-13.k11": 7
+  "D-15": 11
+  "T-06b": 13
+  "F-FATDC-13.k9": 14
+  "D-06": 18
+  "F-FATDC-13.k8": [18, 20, 21]
 coverage:
   web: automated
 ---

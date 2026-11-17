@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-089-delete-race-dan-halaman-terakhir
 title: "Delete: Cek Ulang Server Saat Kondisi Berubah dan Halaman Terakhir Setelah Delete"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-223
   - TC-FA-FAAC-224
   - TC-FA-FAAC-703
+sourceRules: ["F-FAAC-05.k6", "D-06", "FAAC-LOGIC-12b", "D-05", "FAAC-LOGIC-12a", "D-07", "T-06"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-05.k6": [5, 6, 13, 14]
+  "D-06": 6
+  "FAAC-LOGIC-12b": 8
+  "D-05": 14
+  "FAAC-LOGIC-12a": 16
+  "D-07": 21
+  "T-06": 23
+anchor: [19, 24, 25]
 coverage:
   web: automated
 ---

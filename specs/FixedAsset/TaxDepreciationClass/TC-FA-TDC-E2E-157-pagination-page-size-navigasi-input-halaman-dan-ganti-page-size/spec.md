@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-157-pagination-page-size-navigasi-input-halaman-dan-ganti-page-size
 title: "Pagination: Page Size, Navigasi, Input Nomor Halaman, dan Penggantian Page Size"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-TDC-556
   - TC-FA-TDC-557
   - TC-FA-TDC-558
+sourceRules: ["§9.5#r3", "§9.5#r1", "§5#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.5#r3": [1, 3, 5, 8, 12, 16, 26]
+  "§9.5#r1": 1
+  "§5#b5": [30, 35, 38]
+anchor: [14, 19, 21, 23]
 coverage:
   web: automated
 ---

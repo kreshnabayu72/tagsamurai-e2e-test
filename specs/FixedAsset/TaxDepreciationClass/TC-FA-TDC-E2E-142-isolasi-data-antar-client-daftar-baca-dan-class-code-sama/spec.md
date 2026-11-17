@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-142-isolasi-data-antar-client-daftar-baca-dan-class-code-sama
 title: "Isolasi Data Antar Client: Daftar Class, Request Baca, Deactivate, Delete, dan Bulk Deactivate Lintas Client Ditolak serta Class Code yang Sama Boleh Dipakai di Dua Client"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-TDC-862
   - TC-FA-TDC-863
   - TC-FA-TDC-864
+sourceRules: ["§9.3#p1", "§4.1.5#r4", "L-04", "T-01", "V-04", "§4.1.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#p1": [2, 5, 6, 8, 9, 12, 14, 17, 19, 23]
+  "§4.1.5#r4": 4
+  "L-04": [15, 24]
+  "T-01": 28
+  "V-04": 29
+  "§4.1.1#r3": 31
 coverage:
   web: automated
 ---

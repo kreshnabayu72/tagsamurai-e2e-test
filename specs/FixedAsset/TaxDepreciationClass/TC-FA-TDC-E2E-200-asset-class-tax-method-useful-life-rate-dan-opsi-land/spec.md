@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-200-asset-class-tax-method-useful-life-rate-dan-opsi-land
 title: "Asset Class: Opsi Tax Method, Useful Life dan Rate, serta Opsi Class Land"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,19 @@ sourceTc:
   - TC-FA-TDC-737
   - TC-FA-TDC-738
   - TC-FA-TDC-739
+sourceRules: ["FATDC-LOGIC-03d", "§4.1.2#r6", "§11.1#r1", "FATDC-LOGIC-03f.4", "§4.1.1#r19", "§4.1.1#r18", "§4.1.1#r22", "FATDC-LOGIC-03b", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-03d": 6
+  "§4.1.2#r6": [6, 13, 24]
+  "§11.1#r1": [8, 14, 23]
+  "FATDC-LOGIC-03f.4": [8, 9, 29]
+  "§4.1.1#r19": [9, 27]
+  "§4.1.1#r18": [13, 14, 19]
+  "§4.1.1#r22": 26
+  "FATDC-LOGIC-03b": 26
+  "§4.2c#b1": 31
 coverage:
   web: automated
 ---

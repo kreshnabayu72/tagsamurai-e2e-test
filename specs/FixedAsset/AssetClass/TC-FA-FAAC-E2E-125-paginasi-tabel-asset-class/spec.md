@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-125-paginasi-tabel-asset-class
 title: "Paginasi Tabel Asset Class: Ukuran Halaman, Navigasi Halaman, Interaksi dengan Search, Filter, dan Sort, serta Input Nomor Halaman Tidak Valid"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,14 @@ sourceTc:
   - TC-FA-FAAC-411
   - TC-FA-FAAC-412
   - TC-FA-FAAC-702
+sourceRules: ["§9.5#r5", "§4.1.1#r3", "§9.5#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.5#r5": [1, 3, 4, 7, 9, 18]
+  "§4.1.1#r3": [23, 36]
+  "§9.5#r1": 31
+anchor: [13, 17, 22, 26, 30, 33, 35]
 coverage:
   web: automated
 ---

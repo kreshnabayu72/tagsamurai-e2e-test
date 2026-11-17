@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-057-drawer-edit-field-disabled-class-code-terkunci-class-land-building-dan-inactive
 title: "Drawer Edit: Last Posted Tax Year, Class Code Terkunci, Class Inactive, dan Asset Type Disabled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,27 @@ sourceTc:
   - TC-FA-TDC-183
   - TC-FA-TDC-185
   - TC-FA-TDC-186
+sourceRules: ["§4.1.2#r11", "ST-06", "FATDC-LOGIC-07a", "FATDC-LOGIC-07b", "ST-01", "FLD-18", "FATDC-LOGIC-08e", "§4.1#r2", "ST-07", "FATDC-LOGIC-03a.3", "ST-08", "FI-01", "FATDC-LOGIC-03b", "FATDC-LOGIC-03a.1", "ST-09", "FATDC-LOGIC-03c", "FI-02"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r11": [3, 7, 9]
+  "ST-06": [11, 12]
+  "FATDC-LOGIC-07a": [11, 14]
+  "FATDC-LOGIC-07b": 15
+  "ST-01": 19
+  "FLD-18": 19
+  "FATDC-LOGIC-08e": 20
+  "§4.1#r2": 21
+  "ST-07": [26, 33]
+  "FATDC-LOGIC-03a.3": 27
+  "ST-08": 31
+  "FI-01": 31
+  "FATDC-LOGIC-03b": 32
+  "FATDC-LOGIC-03a.1": 33
+  "ST-09": 39
+  "FATDC-LOGIC-03c": 40
+  "FI-02": 41
 coverage:
   web: automated
 ---

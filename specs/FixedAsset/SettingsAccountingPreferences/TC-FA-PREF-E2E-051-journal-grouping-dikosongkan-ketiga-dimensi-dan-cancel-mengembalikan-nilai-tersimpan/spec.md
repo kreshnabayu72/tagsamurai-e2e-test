@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-051-journal-grouping-dikosongkan-ketiga-dimensi-dan-cancel-mengembalikan-nilai-tersimpan
 title: "Journal Grouping dikosongkan, memilih ketiga dimensi, dan Cancel mengembalikan Select akun dan MultiSelect ke nilai tersimpan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-PREF-166
   - TC-FA-PREF-167
   - TC-FA-PREF-275
+sourceRules: ["F-FAPREF-02.k3a", "F-FAPREF-02.k3b", "F-FAPREF-02.k3d", "ST-01", "FAPREF-LOGIC-09h", "FAPREF-LOGIC-10j", "T-01", "F-FAPREF-01.k22b", "FAPREF-LOGIC-09c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k3a": [4, 5]
+  "F-FAPREF-02.k3b": 6
+  "F-FAPREF-02.k3d": 7
+  "ST-01": [8, 9]
+  "FAPREF-LOGIC-09h": [13, 14]
+  "FAPREF-LOGIC-10j": [16, 23]
+  "T-01": [17, 24]
+  "F-FAPREF-01.k22b": [17, 24]
+  "FAPREF-LOGIC-09c": 21
 coverage:
   web: automated
 ---

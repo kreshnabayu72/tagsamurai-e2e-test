@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-091-unassign-berhasil-dan-ditolak-state-berubah
 title: "Unassign: Berhasil Single dan Massal, serta Ditolak atau Dilewati Saat State Berubah"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-FAAC-232
   - TC-FA-FAAC-236
   - TC-FA-FAAC-237
+sourceRules: ["F-FAAC-10.k2", "D-17", "T-09a", "§4.1.3#p6", "F-FAAC-10.k4", "D-15", "§4.1.3#r11", "D-16", "§7.3#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-10.k2": [7, 10]
+  "D-17": 8
+  "T-09a": [15, 22, 27]
+  "§4.1.3#p6": [16, 28]
+  "F-FAAC-10.k4": [17, 18]
+  "D-15": 21
+  "§4.1.3#r11": 23
+  "D-16": 25
+  "§7.3#b2": 29
 coverage:
   web: automated
 ---

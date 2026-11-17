@@ -1,12 +1,24 @@
 ---
 id: TC-FA-PREF-E2E-085-isolasi-tenant-tab-dan-request-langsung-hanya-berlaku-untuk-company-client-aktor
 title: "Isolasi Tenant: Tab Preferences dan Request Langsung Hanya Berlaku untuk Company Client Aktor"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-546
   - TC-FA-PREF-547
+sourceRules: ["FAPREF-LOGIC-01a", "FAPREF-LOGIC-03e", "L-01a", "L-02e", "§4.1.4#r15", "§4.1.4#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-01a": [1, 6]
+  "FAPREF-LOGIC-03e": 1
+  "L-01a": 3
+  "L-02e": 3
+  "§4.1.4#r15": 4
+  "§4.1.4#r16": 5
+anchor: [12, 13]
 coverage:
   web: automated
 ---

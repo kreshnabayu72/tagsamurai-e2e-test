@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-088-restore-default-classes-gagal-5xx-saving-state-dan-klik-ganda
 title: "Restore Default Classes: Gagal 5xx, Saving State Tombol Restore, dan Klik Ganda Tidak Membuat Class Dobel"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-333
   - TC-FA-TDC-334
   - TC-FA-TDC-335
+sourceRules: ["T-10", "D-12", "FATDC-LOGIC-02f", "R-10", "ST-13", "FATDC-LOGIC-02d", "FATDC-LOGIC-02g"]
+smoke: []
+dependsOn: []
+trace:
+  "T-10": [4, 20]
+  "D-12": 6
+  "FATDC-LOGIC-02f": 6
+  "R-10": [6, 20]
+  "ST-13": [7, 12, 13]
+  "FATDC-LOGIC-02d": 21
+  "FATDC-LOGIC-02g": 21
+anchor: [14]
 coverage:
   web: automated
 ---

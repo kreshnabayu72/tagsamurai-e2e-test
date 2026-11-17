@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-080-defense-in-depth-first-accounting-period-di-luar-rentang-v-09-v-10-lewat-request-langsung
 title: "Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Transaksi Bertanggal Ditolak Lewat Request Langsung"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -11,6 +12,18 @@ sourceTc:
   - TC-FA-PREF-523
   - TC-FA-PREF-524
   - TC-FA-PREF-525
+sourceRules: ["V-08", "E-FAPREF-27", "RG-02", "V-09", "E-FAPREF-38", "§Aturan Logika Modul#p37", "V-10", "E-FAPREF-42"]
+smoke: []
+dependsOn: []
+trace:
+  "V-08": [3, 8, 14, 19]
+  "E-FAPREF-27": [5, 10, 16, 21]
+  "RG-02": [6, 11, 17, 22, 28, 35]
+  "V-09": 25
+  "E-FAPREF-38": 27
+  "§Aturan Logika Modul#p37": 29
+  "V-10": 32
+  "E-FAPREF-42": 34
 coverage:
   web: automated
 ---

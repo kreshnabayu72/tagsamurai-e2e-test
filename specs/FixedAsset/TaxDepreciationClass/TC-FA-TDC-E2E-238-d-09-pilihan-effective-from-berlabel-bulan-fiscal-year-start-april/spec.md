@@ -1,11 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-238-d-09-pilihan-effective-from-berlabel-bulan-fiscal-year-start-april
 title: "Pilihan Effective From pada D-09 Berlabel Bulan Fiscal Year Start Non-Januari (April)"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-258
+sourceRules: ["FATDC-LOGIC-04t", "FATDC-LOGIC-04ag", "FATDC-LOGIC-04af", "E-FATDC-77", "FATDC-LOGIC-04v", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04t": 6
+  "FATDC-LOGIC-04ag": 6
+  "FATDC-LOGIC-04af": 7
+  "E-FATDC-77": 7
+  "FATDC-LOGIC-04v": 8
+  "§4.2c#b1": 12
 coverage:
   web: automated
 ---

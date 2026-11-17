@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-032-validasi-v-01-first-accounting-period-bulan-kosong-dan-titik-peringatan
 title: "Validasi V-01: First Accounting Period Bulan Kosong, Caption Hilang Saat Field Terisi, dan Titik Peringatan Section"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-PREF-130
   - TC-FA-PREF-131
   - TC-FA-PREF-132
+sourceRules: ["§3.1#b3", "V-01", "ST-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§3.1#b3": 4
+  "V-01": [5, 11, 13, 14, 19, 22]
+  "ST-04": [6, 11, 15, 19, 23, 24]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-083-defense-in-depth-akun-default-tidak-ditemukan-inactive-function-salah-dan-disposal-documents-tidak-valid
 title: "Defense-in-Depth: Akun Default Tidak Ditemukan, Inactive, atau Function Salah dan Disposal Documents Tidak Valid Ditolak Server Lewat Request Langsung"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -12,6 +13,15 @@ sourceTc:
   - TC-FA-PREF-540
   - TC-FA-PREF-542
   - TC-FA-PREF-543
+sourceRules: ["V-04", "E-FAPREF-04", "RG-02", "FAPREF-LOGIC-07h", "FAPREF-LOGIC-07a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": [3, 8, 13, 18, 23]
+  "E-FAPREF-04": [5, 10, 15, 20, 25]
+  "RG-02": [6, 11, 16, 21, 26, 31, 36]
+  "FAPREF-LOGIC-07h": [28, 30, 33, 35]
+  "FAPREF-LOGIC-07a": [30, 35]
 coverage:
   web: automated
 ---

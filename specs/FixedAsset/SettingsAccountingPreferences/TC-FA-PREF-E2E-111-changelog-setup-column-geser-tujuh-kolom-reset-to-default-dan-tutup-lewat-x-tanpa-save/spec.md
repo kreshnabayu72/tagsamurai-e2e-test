@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-111-changelog-setup-column-geser-tujuh-kolom-reset-to-default-dan-tutup-lewat-x-tanpa-save
 title: "Changelog Setup Column: geser tujuh kolom, Reset to Default, tutup lewat ✕ tanpa Save"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-336
   - TC-FA-PREF-338
   - TC-FA-PREF-339
+sourceRules: ["§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r1": [20, 22]
+  "§4.1.4#r2": [20, 22]
+  "§4.1.4#r3": [20, 22]
+  "§4.1.4#r4": [20, 22, 26]
+  "§4.1.4#r5": [20, 22]
+  "§4.1.4#r6": [20, 22]
+  "§4.1.4#r7": [20, 22]
+anchor: [5, 6, 9, 28, 29]
 coverage:
   web: automated
 ---

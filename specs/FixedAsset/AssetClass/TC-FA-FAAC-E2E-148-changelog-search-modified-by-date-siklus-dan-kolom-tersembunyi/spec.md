@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-148-changelog-search-modified-by-date-siklus-dan-kolom-tersembunyi
 title: "Modal Changelog: Search pada Modified By, Kolom Date Tidak Dicari, Siklus Search Box, dan Kolom Field Tersembunyi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,29 @@ sourceTc:
   - TC-FA-FAAC-482
   - TC-FA-FAAC-483
   - TC-FA-FAAC-484
+sourceRules: ["§4.1.1#p11", "§4.1.1#r32", "§4.1.1#r35", "§4.1.1#r36", "§4.1.1#r37", "§4.1.1#r38", "§4.1.1#r39", "§4.1.1#r34", "§4.1.1#r43", "§4.1.1#r45", "§4.1.1#r46", "§4.1.1#r47", "§4.1.1#r48", "§4.1.1#r51", "ST-27", "§4.1.1#r26", "§5#b2", "§4.1.1#r29"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p11": 2
+  "§4.1.1#r32": [4, 7, 20]
+  "§4.1.1#r35": 4
+  "§4.1.1#r36": 4
+  "§4.1.1#r37": 4
+  "§4.1.1#r38": 4
+  "§4.1.1#r39": [4, 43]
+  "§4.1.1#r34": 7
+  "§4.1.1#r43": 7
+  "§4.1.1#r45": 7
+  "§4.1.1#r46": 7
+  "§4.1.1#r47": 7
+  "§4.1.1#r48": 7
+  "§4.1.1#r51": 7
+  "ST-27": [10, 36]
+  "§4.1.1#r26": 10
+  "§5#b2": [18, 20, 36]
+  "§4.1.1#r29": 43
+anchor: [13, 15, 17, 22, 23, 25, 28, 29, 30]
 coverage:
   web: automated
 ---

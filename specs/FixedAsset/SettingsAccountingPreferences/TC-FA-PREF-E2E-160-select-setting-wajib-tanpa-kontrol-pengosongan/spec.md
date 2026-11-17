@@ -1,11 +1,27 @@
 ---
 id: TC-FA-PREF-E2E-160-select-setting-wajib-tanpa-kontrol-pengosongan
 title: "Select Setting Wajib Tidak Menyediakan Kontrol atau Opsi Kosong untuk Mengosongkan Nilainya"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-618
+sourceRules: ["SET-01", "FAPREF-LOGIC-02a", "SET-03", "FAPREF-LOGIC-04a", "SET-04", "FAPREF-LOGIC-05a", "SET-12", "FAPREF-LOGIC-02i", "FAPREF-LOGIC-02h", "V-01"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 2
+  "FAPREF-LOGIC-02a": [2, 3, 4]
+  "SET-03": 7
+  "FAPREF-LOGIC-04a": [7, 8, 9]
+  "SET-04": 12
+  "FAPREF-LOGIC-05a": [12, 13, 14]
+  "SET-12": 17
+  "FAPREF-LOGIC-02i": [17, 21]
+  "FAPREF-LOGIC-02h": [18, 22, 24]
+  "V-01": 25
+anchor: [26]
 coverage:
   web: automated
 ---

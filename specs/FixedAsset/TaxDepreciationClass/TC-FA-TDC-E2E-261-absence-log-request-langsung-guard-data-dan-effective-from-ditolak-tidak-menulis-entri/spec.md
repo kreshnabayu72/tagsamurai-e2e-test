@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-261-absence-log-request-langsung-guard-data-dan-effective-from-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Guard Data (Used By, Last Posted Tax Year, Asset Type, Class Code) yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,15 @@ sourceTc:
   - TC-FA-TDC-836
   - TC-FA-TDC-839
   - TC-FA-TDC-840
+sourceRules: ["E-FATDC-24", "E-FATDC-26", "E-FATDC-27", "E-FATDC-60", "E-FATDC-10"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-24": [3, 4, 5, 6]
+  "E-FATDC-26": [9, 10, 11, 12]
+  "E-FATDC-27": [15, 16, 17, 18]
+  "E-FATDC-60": [21, 22, 23, 24]
+  "E-FATDC-10": [27, 28, 29, 30]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-269-absence-log-request-langsung-role-matrix-restore-default-classes-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Role Matrix Restore Default Classes pada Tabel Kosong yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-TDC-828
   - TC-FA-TDC-829
   - TC-FA-TDC-830
+sourceRules: ["§[F-FATDC-08] Restore Default Classes#p1", "§9.3#p1", "§8.4#r7", "J-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FATDC-08] Restore Default Classes#p1": 4
+  "§9.3#p1": 4
+  "§8.4#r7": [5, 6, 7]
+  "J-04": [5, 6, 7]
 coverage:
   web: automated
 ---

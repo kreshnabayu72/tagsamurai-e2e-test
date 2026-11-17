@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-136-tab-asset-names-filter-lanjutan-dan-kombinasi
 title: "Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter dengan Clear all"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-FAAC-454
   - TC-FA-FAAC-455
   - TC-FA-FAAC-456
+sourceRules: ["§4.1.3#p1", "§4.1.3#r9", "§4.1.3#r10", "§4.1.3#r11", "§4.1.3#r5", "§5#b3", "§4.1.3#r6", "§5#b2", "ST-24", "§4.1.3#r4", "§4.4#r13"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#p1": 5
+  "§4.1.3#r9": [5, 8, 13]
+  "§4.1.3#r10": [5, 8, 13, 18, 20, 24]
+  "§4.1.3#r11": [5, 9, 13]
+  "§4.1.3#r5": [8, 9]
+  "§5#b3": [8, 9, 13, 18, 20, 24]
+  "§4.1.3#r6": 13
+  "§5#b2": [18, 20, 24]
+  "ST-24": 18
+  "§4.1.3#r4": [18, 20]
+  "§4.4#r13": [22, 23]
 coverage:
   web: automated
 ---

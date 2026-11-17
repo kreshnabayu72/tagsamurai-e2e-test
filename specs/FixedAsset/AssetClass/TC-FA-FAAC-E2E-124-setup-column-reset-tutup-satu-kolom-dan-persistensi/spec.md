@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-124-setup-column-reset-tutup-satu-kolom-dan-persistensi
 title: "Setup Column Tabel Asset Class: Reset to Default, Tutup Modal dengan X, Satu Kolom Tersisa, dan Persistensi Konfigurasi"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,30 @@ sourceTc:
   - TC-FA-FAAC-404
   - TC-FA-FAAC-405
   - TC-FA-FAAC-406
+sourceRules: ["§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r11", "§4.1.1#b2", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r32"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r1": [4, 7]
+  "§4.1.1#r2": [4, 7, 26, 31]
+  "§4.1.1#r3": [4, 7]
+  "§4.1.1#r4": [4, 7]
+  "§4.1.1#r5": [4, 7]
+  "§4.1.1#r6": [4, 7]
+  "§4.1.1#r7": [4, 7]
+  "§4.1.1#r8": [4, 7]
+  "§4.1.1#r9": [4, 7]
+  "§4.1.1#r10": [4, 8]
+  "§4.1.1#r11": [4, 8]
+  "§4.1.1#b2": [17, 18, 19, 21]
+  "§4.1.1#r26": 34
+  "§4.1.1#r27": 34
+  "§4.1.1#r28": 34
+  "§4.1.1#r29": 34
+  "§4.1.1#r30": 34
+  "§4.1.1#r31": 34
+  "§4.1.1#r32": 34
+anchor: [12, 13, 27, 32]
 coverage:
   web: automated
 ---

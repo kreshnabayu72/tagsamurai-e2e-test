@@ -1,12 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-030-role-matrix-positif-manage-create-create-dan-duplicate
 title: "Role Matrix Positif: Manage Accounting (Read, Create) Create dan Duplicate Asset Class Berhasil"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-75
   - TC-FA-FAAC-76
+sourceRules: ["T-01", "R-01", "§4.1.2#b2", "§[F-FAAC-06] Duplicate Asset Class#b2", "§9.5#r11"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [5, 14]
+  "R-01": 6
+  "§4.1.2#b2": 6
+  "§[F-FAAC-06] Duplicate Asset Class#b2": 10
+  "§9.5#r11": 11
 coverage:
   web: automated
 ---

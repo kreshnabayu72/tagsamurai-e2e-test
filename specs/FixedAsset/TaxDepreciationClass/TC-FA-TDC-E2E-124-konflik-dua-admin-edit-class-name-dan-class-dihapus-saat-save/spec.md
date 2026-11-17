@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-124-konflik-dua-admin-edit-class-name-dan-class-dihapus-saat-save
 title: "Konflik Dua Admin: Edit Class Name Bersamaan dan Class Dihapus Saat Save"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-201
   - TC-FA-TDC-202
+sourceRules: ["T-02a", "F-FATDC-02.k4a", "T-13", "F-FATDC-02.k12b"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02a": [8, 11]
+  "F-FATDC-02.k4a": [12, 13]
+  "T-13": [20, 22]
+  "F-FATDC-02.k12b": 21
 coverage:
   web: automated
 ---

@@ -1,11 +1,19 @@
 ---
 id: TC-FA-FAAC-E2E-057-dialog-form-backdrop-tidak-menutup-assign-move-dan-apply-changes
 title: "Klik Backdrop pada Dialog Form Assign Asset Names, Move Asset Names, dan Apply Changes Tidak Menutup Dialog"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-698
+sourceRules: ["§4.2f#b2", "§4.1.2#p11"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [7, 9, 10, 11, 17, 20, 29, 32, 34]
+  "§4.1.2#p11": [34, 37]
+anchor: [5, 6, 15, 16, 19, 21, 27, 28, 31]
 coverage:
   web: automated
 ---

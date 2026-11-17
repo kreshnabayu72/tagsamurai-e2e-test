@@ -1,11 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-251-popup-changelog-setup-column-ceklis-dan-unceklis-tujuh-kolom-default
 title: "Popup Changelog Setup Column: Ceklis dan Unceklis Tujuh Kolom Default"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-642
+sourceRules: ["§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§5#b9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r25": [5, 15]
+  "§4.1.1#r26": [5, 15]
+  "§4.1.1#r27": [5, 15]
+  "§4.1.1#r28": [5, 15]
+  "§4.1.1#r29": [5, 15]
+  "§4.1.1#r30": [5, 15]
+  "§4.1.1#r31": [5, 15]
+  "§5#b9": [7, 10]
 coverage:
   web: automated
 ---

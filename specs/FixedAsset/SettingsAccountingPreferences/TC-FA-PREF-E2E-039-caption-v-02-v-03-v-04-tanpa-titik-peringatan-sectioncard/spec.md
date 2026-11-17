@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-039-caption-v-02-v-03-v-04-tanpa-titik-peringatan-sectioncard
 title: "Caption V-02, V-03, V-04 tidak menampilkan titik peringatan SectionCard; V-09 dan V-10 tidak menyalakan titik General"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-PREF-616
   - TC-FA-PREF-617
   - TC-FA-PREF-619
+sourceRules: ["V-02", "ST-04", "FAPREF-LOGIC-03e", "V-03", "V-04", "E-FAPREF-04", "F-FAPREF-01.k19d", "F-FAPREF-01.k23", "V-09", "V-10", "D-03", "E-FAPREF-38"]
+smoke: []
+dependsOn: []
+trace:
+  "V-02": 2
+  "ST-04": [3, 8, 14, 26]
+  "FAPREF-LOGIC-03e": 6
+  "V-03": 7
+  "V-04": 13
+  "E-FAPREF-04": 15
+  "F-FAPREF-01.k19d": [22, 23]
+  "F-FAPREF-01.k23": [22, 23]
+  "V-09": 24
+  "V-10": 25
+  "D-03": 27
+  "E-FAPREF-38": 27
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-107-changelog-sort-default-siklus-tiga-state-date-dan-kolom-teks-kolom-actions-tanpa-sort
 title: "Changelog Sort: urutan bawaan Date Newest First, siklus tiga state kolom Date dan kolom teks, kolom Actions tanpa sort"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-PREF-324
   - TC-FA-PREF-325
   - TC-FA-PREF-331
+sourceRules: ["§4.1.4#p2", "§4.1.4#r1", "§9.5#r8", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#p2": 2
+  "§4.1.4#r1": [3, 7, 9, 33]
+  "§9.5#r8": [4, 12, 19, 25, 31]
+  "§4.1.4#r2": [15, 17]
+  "§4.1.4#r3": [21, 23]
+  "§4.1.4#r4": [27, 29]
+anchor: [11, 34]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-101-changelog-search-kolom-tersembunyi-trim-spasi-serta-kombinasi-search-dan-filter
 title: "Changelog Search: Kolom Tersembunyi Tidak Dicari, Trim Spasi, serta Kombinasi Search dan Filter"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-304
   - TC-FA-PREF-318
   - TC-FA-PREF-319
+sourceRules: ["ST-23", "§4.1.4#r4", "§4.1.4#r7", "§4.1.4#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": 6
+  "§4.1.4#r4": [6, 11, 14]
+  "§4.1.4#r7": [18, 22, 32]
+  "§4.1.4#r3": [22, 30, 32]
+anchor: [15, 23, 33]
 coverage:
   web: automated
 ---

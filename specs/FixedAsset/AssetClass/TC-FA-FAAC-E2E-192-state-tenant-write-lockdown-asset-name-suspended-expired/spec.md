@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-192-state-tenant-write-lockdown-asset-name-suspended-expired
 title: "State Tenant: Assign, Unassign, dan Move Asset Name Ditolak saat Client Suspended atau Expired"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-FAAC-622
   - TC-FA-FAAC-623
   - TC-FA-FAAC-624
+sourceRules: ["T-13", "E-FAAC-73"]
+smoke: []
+dependsOn: []
+trace:
+  "T-13": [10, 20, 30]
+  "E-FAAC-73": [12, 13, 21, 22, 32, 33]
 coverage:
   web: automated
 ---

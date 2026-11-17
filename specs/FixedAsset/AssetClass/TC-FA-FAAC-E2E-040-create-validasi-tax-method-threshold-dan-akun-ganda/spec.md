@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-040-create-validasi-tax-method-threshold-dan-akun-ganda
 title: "Create Asset Class: Validasi Tax Depreciation Class, Tax Method, Capitalization Threshold, dan Akun Ganda"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-FAAC-115
   - TC-FA-FAAC-116
   - TC-FA-FAAC-117
+sourceRules: ["V-19", "ST-04", "F-FAAC-01.k4", "V-20", "V-22", "V-38", "§8.4#r9", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "V-19": 5
+  "ST-04": 6
+  "F-FAAC-01.k4": [7, 11]
+  "V-20": 10
+  "V-22": [13, 15]
+  "V-38": [20, 22, 23]
+  "§8.4#r9": 24
+  "§4.2f#b2": 26
 coverage:
   web: automated
 ---

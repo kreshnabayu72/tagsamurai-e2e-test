@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-033-first-accounting-period-tahun-berjalan-dan-bulan-setelah-bulan-berjalan
 title: "First Accounting Period: Tahun Berjalan Mengosongkan Bulan Setelah Bulan Berjalan dan Bulan Setelah Bulan Berjalan Tidak Dapat Dipilih"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-129
   - TC-FA-PREF-148
   - TC-FA-PREF-149
+sourceRules: ["FI-06", "§4.1.1#p4", "FAPREF-LOGIC-02i", "V-08", "§9.5#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-06": [4, 6, 11, 16, 17]
+  "§4.1.1#p4": 5
+  "FAPREF-LOGIC-02i": [7, 22]
+  "V-08": [12, 23]
+  "§9.5#r4": [22, 25]
 coverage:
   web: automated
 ---

@@ -1,12 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-179-defense-in-depth-default-disposal-proceeds-account-function-salah-dan-inactive-lewat-request-langsung
 title: "Defense-in-Depth: Default Disposal Proceeds Account dengan Akun Function di Luar Disposal Proceeds atau Inactive Ditolak Server Lewat Request Langsung"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-627
   - TC-FA-PREF-628
+sourceRules: ["F-FAPREF-01.k4a", "V-04", "E-FAPREF-04", "FAPREF-LOGIC-06h"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k4a": [4, 9]
+  "V-04": [4, 9]
+  "E-FAPREF-04": [6, 11]
+  "FAPREF-LOGIC-06h": 9
+anchor: [7, 12]
 coverage:
   web: automated
 ---

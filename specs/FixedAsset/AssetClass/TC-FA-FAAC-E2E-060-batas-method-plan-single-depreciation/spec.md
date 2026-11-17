@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-060-batas-method-plan-single-depreciation
 title: "Batas Method pada Plan Single Depreciation: Dialog Blok Depreciation Method Limit Reached"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -12,6 +13,21 @@ sourceTc:
   - TC-FA-FAAC-183
   - TC-FA-FAAC-186
   - TC-FA-FAAC-187
+sourceRules: ["D-22", "F-FAAC-01.k12", "§4.2f#b2", "§4.1.2#p11", "§4.2f#r32", "T-01", "FAAC-LOGIC-17a", "§Aturan Logika Modul#b4", "T-04", "T-02"]
+smoke: []
+dependsOn: []
+trace:
+  "D-22": [6, 21, 42, 58]
+  "F-FAAC-01.k12": [9, 43]
+  "§4.2f#b2": [14, 28, 46, 61]
+  "§4.1.2#p11": [14, 28, 46, 61]
+  "§4.2f#r32": [21, 23, 58, 68]
+  "T-01": 35
+  "FAAC-LOGIC-17a": 36
+  "§Aturan Logika Modul#b4": [42, 52]
+  "T-04": 51
+  "T-02": 67
+anchor: [8, 10, 11, 12, 24, 25, 26, 30]
 coverage:
   web: automated
 ---

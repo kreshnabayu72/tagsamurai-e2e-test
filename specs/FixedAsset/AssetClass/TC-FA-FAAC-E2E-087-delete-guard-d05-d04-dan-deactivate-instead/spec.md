@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-087-delete-guard-d05-d04-dan-deactivate-instead
 title: "Delete Guard D-05 dan D-04: Dialog Blok Asset Class yang Pernah Diposting dan Deactivate Instead"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-FAAC-217
   - TC-FA-FAAC-218
   - TC-FA-FAAC-226
+sourceRules: ["D-05", "F-FAAC-05.k1", "FAAC-LOGIC-12a", "§4.2f#b3", "D-04", "F-FAAC-04.k1", "D-01", "§3.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-05": [4, 9]
+  "F-FAAC-05.k1": 4
+  "FAAC-LOGIC-12a": 6
+  "§4.2f#b3": 10
+  "D-04": 14
+  "F-FAAC-04.k1": 16
+  "D-01": 19
+  "§3.3#p1": 21
+anchor: [7]
 coverage:
   web: automated
 ---

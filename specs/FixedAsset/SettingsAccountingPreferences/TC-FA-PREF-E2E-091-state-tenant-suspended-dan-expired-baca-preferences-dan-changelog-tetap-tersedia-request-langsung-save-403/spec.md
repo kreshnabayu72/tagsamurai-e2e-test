@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-091-state-tenant-suspended-dan-expired-baca-preferences-dan-changelog-tetap-tersedia-request-langsung-save-403
 title: "State Tenant Suspended dan Expired: Baca Preferences dan Changelog Tetap Tersedia, Request Langsung Save Ditolak 403"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-PREF-565
   - TC-FA-PREF-567
   - TC-FA-PREF-568
+sourceRules: ["F-FAPREF-01.k16c", "L-01a", "E-FAPREF-19", "F-FAPREF-01.k16a", "FAPREF-LOGIC-04a", "RG-02"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k16c": [3, 4, 6, 7, 19, 20, 22, 23]
+  "L-01a": [7, 23]
+  "E-FAPREF-19": [11, 27]
+  "F-FAPREF-01.k16a": [11, 13, 27, 29]
+  "FAPREF-LOGIC-04a": [13, 29]
+  "RG-02": [14, 15, 16, 30, 31, 32]
 coverage:
   web: automated
 ---

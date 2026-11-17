@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-097-activate-single-screening-cancel-esc-backdrop-dan-row-action-inactive
 title: "Activate Single: Screening Dialog, Cancel, Esc, Backdrop, dan Row Action Class Inactive"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-TDC-364
   - TC-FA-TDC-365
   - TC-FA-TDC-372
+sourceRules: ["FATDC-LOGIC-08h", "D-03", "L-04", "§4.5#b1", "§4.1.1#p3", "FATDC-LOGIC-08g"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08h": [3, 7, 16, 22, 25]
+  "D-03": 4
+  "L-04": [11, 18, 26]
+  "§4.5#b1": [15, 25]
+  "§4.1.1#p3": 28
+  "FATDC-LOGIC-08g": 29
+anchor: [6, 8, 10, 17, 21, 23]
 coverage:
   web: automated
 ---

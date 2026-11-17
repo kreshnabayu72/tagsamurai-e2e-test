@@ -1,12 +1,38 @@
 ---
 id: TC-FA-TDC-E2E-076-apply-effective-from-hari-ini-dan-masa-depan-membentuk-versi-current-atau-scheduled
 title: "Apply Effective From Hari Ini Langsung Membentuk Versi Current dan Effective From Masa Depan Membentuk Versi Scheduled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-267
   - TC-FA-TDC-268
+sourceRules: ["T-02b", "§[F-FATDC-02] Edit Tax Depreciation Class#b6", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r10", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "FATDC-LOGIC-04ad", "§4.1.2#r10", "ST-30", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "FATDC-LOGIC-04g.2", "T-02c", "FATDC-LOGIC-04h", "FATDC-LOGIC-04q.3", "FLD-05", "FATDC-LOGIC-04ab", "FATDC-LOGIC-04p.5"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02b": 7
+  "§[F-FATDC-02] Edit Tax Depreciation Class#b6": [8, 24]
+  "§4.1.1#r5": [9, 25]
+  "§4.1.1#r6": [9, 25]
+  "§4.1.1#r7": [9, 25]
+  "§4.1.1#r10": [9, 25, 27]
+  "FATDC-LOGIC-03f.1": [9, 25, 29]
+  "FATDC-LOGIC-03f.2": [9, 25, 29]
+  "FATDC-LOGIC-04ad": [11, 32]
+  "§4.1.2#r10": 11
+  "ST-30": [12, 29]
+  "§4.1.6#r4": [14, 15]
+  "§4.1.6#r5": [14, 15, 32, 33]
+  "§4.1.6#r6": [14, 15]
+  "FATDC-LOGIC-04g.2": 15
+  "T-02c": 23
+  "FATDC-LOGIC-04h": 25
+  "FATDC-LOGIC-04q.3": 27
+  "FLD-05": 29
+  "FATDC-LOGIC-04ab": 30
+  "FATDC-LOGIC-04p.5": 33
 coverage:
   web: automated
 ---

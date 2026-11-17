@@ -1,12 +1,26 @@
 ---
 id: TC-FA-TDC-E2E-059-edit-langsung-class-name-regulation-reference-class-code-dan-gabungan
 title: "Edit Langsung Tanpa Versi Baru: Class Name dan Regulation Reference"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-189
   - TC-FA-TDC-190
+sourceRules: ["T-02a", "F-FATDC-02.k11a", "§4.1.2#p4", "§4.1.1#r3", "FATDC-LOGIC-04ad", "FATDC-LOGIC-04c", "FATDC-LOGIC-04p.2", "FATDC-LOGIC-04m"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02a": [5, 18]
+  "F-FATDC-02.k11a": [6, 19]
+  "§4.1.2#p4": [6, 19]
+  "§4.1.1#r3": 8
+  "FATDC-LOGIC-04ad": [11, 22]
+  "FATDC-LOGIC-04c": [11, 22, 23]
+  "FATDC-LOGIC-04p.2": 12
+  "FATDC-LOGIC-04m": 23
+anchor: [7]
 coverage:
   web: automated
 ---

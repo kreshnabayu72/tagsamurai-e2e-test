@@ -1,12 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-263-absence-log-bypass-ui-create-dan-edit-ditolak-server-tidak-menulis-entri
 title: "Absence Log: Create Hasil Bypass UI (Building dengan Declining Balance dan Land Terisi) yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-160
   - TC-FA-TDC-161
+sourceRules: ["V-14", "E-FATDC-07", "§4.2c#b1", "V-18", "E-FATDC-06"]
+smoke: []
+dependsOn: []
+trace:
+  "V-14": 12
+  "E-FATDC-07": [13, 14, 15]
+  "§4.2c#b1": [17, 33]
+  "V-18": 28
+  "E-FATDC-06": [29, 30, 31]
 coverage:
   web: automated
 ---

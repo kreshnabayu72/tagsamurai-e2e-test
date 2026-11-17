@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-153-setup-column-tabel-utama-screening-overlay-popup-dan-kolom-default-tampil
 title: "Setup Column Tabel Utama: Screening Overlay dan Popup, serta Kolom Default Tampil"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,28 @@ sourceTc:
   - TC-FA-TDC-539
   - TC-FA-TDC-540
   - TC-FA-TDC-541
+sourceRules: ["§4.4#r11", "§4.1.1#r1", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#r11", "§4.1.1#r12", "§4.1.1#r13", "§9.5#r4", "§4.1#r8", "§5#b9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.4#r11": [2, 6]
+  "§4.1.1#r1": [3, 13]
+  "§4.1.1#r2": [3, 13]
+  "§4.1.1#r3": [3, 13]
+  "§4.1.1#r4": [3, 13]
+  "§4.1.1#r5": [3, 13]
+  "§4.1.1#r6": [3, 13]
+  "§4.1.1#r7": [3, 13]
+  "§4.1.1#r8": [3, 13]
+  "§4.1.1#r9": [3, 13]
+  "§4.1.1#r10": [3, 13]
+  "§4.1.1#r11": [3, 13]
+  "§4.1.1#r12": [3, 13]
+  "§4.1.1#r13": [3, 13]
+  "§9.5#r4": [4, 14]
+  "§4.1#r8": 10
+  "§5#b9": [19, 25, 27, 32]
+anchor: [5, 11, 12, 15, 16, 17, 23]
 coverage:
   web: automated
 ---

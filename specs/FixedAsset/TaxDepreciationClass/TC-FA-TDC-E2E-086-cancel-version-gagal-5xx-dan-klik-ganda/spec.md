@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-086-cancel-version-gagal-5xx-dan-klik-ganda
 title: "Cancel Version: Gagal 5xx Mempertahankan D-10 dan Klik Ganda Hanya Membatalkan Satu Kali"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-305
   - TC-FA-TDC-312
+sourceRules: ["T-07", "D-10", "R-07", "ST-13"]
+smoke: []
+dependsOn: []
+trace:
+  "T-07": [6, 13]
+  "D-10": 7
+  "R-07": 7
+  "ST-13": [8, 14]
 coverage:
   web: automated
 ---

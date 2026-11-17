@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-139-deferred-in-service-date-source-activation-date-dan-manual-by-accounting
 title: "[DEFERRED] In-service Date Source: Activation Date dan Manual by Accounting"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-PREF-433
   - TC-FA-PREF-434
   - TC-FA-PREF-440
+sourceRules: ["FAPREF-LOGIC-04b", "FAPREF-LOGIC-04c", "FAPREF-LOGIC-04e", "F-FAPREF-01.k13"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-04b": [6, 11, 16]
+  "FAPREF-LOGIC-04c": [21, 23]
+  "FAPREF-LOGIC-04e": 30
+  "F-FAPREF-01.k13": 30
 coverage:
   web: automated
 ---

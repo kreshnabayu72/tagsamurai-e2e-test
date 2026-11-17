@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-132-sinkronisasi-chart-of-accounts-nama-akun-inactive-dan-function-berubah
 title: "Sinkronisasi Chart of Accounts: Nama Akun, Akun Inactive, dan Function Akun Berubah pada Select Akun Preferences"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-PREF-402
   - TC-FA-PREF-403
   - TC-FA-PREF-405
+sourceRules: ["E-FAPREF-18", "FI-02", "ST-06", "D-01", "PV-01", "T-01", "V-04"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAPREF-18": [12, 24, 31]
+  "FI-02": [13, 25, 30]
+  "ST-06": [13, 25, 30]
+  "D-01": 19
+  "PV-01": 19
+  "T-01": 21
+  "V-04": 22
+anchor: [4, 6]
 coverage:
   web: automated
 ---

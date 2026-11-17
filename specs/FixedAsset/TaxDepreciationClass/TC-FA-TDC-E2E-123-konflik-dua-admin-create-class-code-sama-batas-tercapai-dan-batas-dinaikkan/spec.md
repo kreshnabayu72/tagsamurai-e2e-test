@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-123-konflik-dua-admin-create-class-code-sama-batas-tercapai-dan-batas-dinaikkan
 title: "Konflik Dua Admin: Create Class Code Sama, Batas Tercapai, dan Batas Dinaikkan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-117
   - TC-FA-TDC-132
   - TC-FA-TDC-763
+sourceRules: ["T-01", "V-04", "E-FATDC-01", "F-FATDC-01.k11a", "D-07", "S-01a", "F-FATDC-01.k10b", "§3.1#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 7
+  "V-04": 9
+  "E-FATDC-01": 10
+  "F-FATDC-01.k11a": 13
+  "D-07": 24
+  "S-01a": 32
+  "F-FATDC-01.k10b": 33
+  "§3.1#p1": [37, 38]
+anchor: [11, 15, 25, 26, 29]
 coverage:
   web: automated
 ---

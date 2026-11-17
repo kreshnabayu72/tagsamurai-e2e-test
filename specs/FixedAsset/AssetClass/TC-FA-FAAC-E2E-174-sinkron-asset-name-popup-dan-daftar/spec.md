@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-174-sinkron-asset-name-popup-dan-daftar
 title: "Sinkronisasi Asset Name: Banner, Popup Used By, Daftar Asset Name, Register Asset, dan Dampak Aset"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-FAAC-581
   - TC-FA-FAAC-582
   - TC-FA-FAAC-585
+sourceRules: ["S-13", "§4.1.1#p3", "S-07a", "S-15", "FAAC-LOGIC-14a", "FAAC-LOGIC-14b", "D-11", "FAAC-LOGIC-07f", "FAAC-LOGIC-07c"]
+smoke: []
+dependsOn: []
+trace:
+  "S-13": 9
+  "§4.1.1#p3": 9
+  "S-07a": 20
+  "S-15": 23
+  "FAAC-LOGIC-14a": 30
+  "FAAC-LOGIC-14b": [33, 34]
+  "D-11": 41
+  "FAAC-LOGIC-07f": 41
+  "FAAC-LOGIC-07c": 42
+anchor: [28, 29]
 coverage:
   web: automated
 ---

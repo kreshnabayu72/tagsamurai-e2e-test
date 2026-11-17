@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-073-d04-tampil-saat-sidebar-back-browser-tab-chart-of-accounts-dan-cancel
 title: "D-04: Dialog Unsaved Changes Tampil Saat Sidebar, Back Browser, dan Tab Chart of Accounts dengan Form Dirty; [Cancel] Tetap pada Tab Preferences"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-259
   - TC-FA-PREF-260
   - TC-FA-PREF-263
+sourceRules: ["D-04", "§4.2b#r13", "F-FAPREF-02.k1c", "§4.2b#b6", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": [3, 11, 17]
+  "§4.2b#r13": 3
+  "F-FAPREF-02.k1c": [4, 12, 18, 24, 25]
+  "§4.2b#b6": [4, 11, 12, 17, 18]
+  "ST-01": 26
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-149-filter-date-and-search-dropdown-chip-dan-hapus-opsi
 title: "Filter: Date Range, Logika AND, Search Dropdown, Chip, dan Hapus Opsi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,17 @@ sourceTc:
   - TC-FA-TDC-519
   - TC-FA-TDC-520
   - TC-FA-TDC-521
+sourceRules: ["§4.1.1#r10", "ST-23", "§4.1.1#r13", "§4.1.1#r4", "§4.1.1#r9", "§4.7#r5", "§4.1.1#b7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r10": [4, 5]
+  "ST-23": 9
+  "§4.1.1#r13": 13
+  "§4.1.1#r4": [18, 22, 24, 27, 29, 35, 36, 38]
+  "§4.1.1#r9": 18
+  "§4.7#r5": 18
+  "§4.1.1#b7": [32, 33]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-100-deactivate-single-alert-class-active-terakhir-per-asset-type
 title: "Deactivate Single: Alert Class Active Terakhir per Asset Type"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-TDC-384
   - TC-FA-TDC-385
   - TC-FA-TDC-386
+sourceRules: ["D-01", "FATDC-LOGIC-08d", "FATDC-LOGIC-08h", "R-05"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [2, 3, 6, 7, 10, 11, 12, 13]
+  "FATDC-LOGIC-08d": [6, 11]
+  "FATDC-LOGIC-08h": 16
+  "R-05": 17
+anchor: [15]
 coverage:
   web: automated
 ---

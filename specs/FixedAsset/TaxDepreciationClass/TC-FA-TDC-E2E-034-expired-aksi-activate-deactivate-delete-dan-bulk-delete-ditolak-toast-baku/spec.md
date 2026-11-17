@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-034-expired-aksi-activate-deactivate-delete-dan-bulk-delete-ditolak-toast-baku
 title: "Entitas Expired: Aksi Activate, Deactivate, Delete, dan Bulk Delete Ditolak dengan Toast Baku"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-881
   - TC-FA-TDC-882
   - TC-FA-TDC-883
+sourceRules: ["E-FATDC-62", "T-12", "R-04", "L-04", "R-05", "R-06", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FATDC-62": [4, 7, 8, 13, 16, 17, 22, 25, 26, 31, 34, 35]
+  "T-12": [4, 13, 22, 31]
+  "R-04": 7
+  "L-04": [8, 17]
+  "R-05": 16
+  "R-06": [25, 34]
+  "L-05": [26, 35]
+anchor: [5, 6, 14, 15, 23, 24, 32, 33]
 coverage:
   web: automated
 ---

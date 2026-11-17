@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-119-filter-lepas-draft-kolom-dan-kombinasi
 title: "Filter Tabel Asset Class: Draft Filter Panel, Hasil Kosong, Ganti Sort, dan Filter pada Kolom yang Disembunyikan"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-FAAC-380
   - TC-FA-FAAC-381
   - TC-FA-FAAC-382
+sourceRules: ["ST-23", "§7.1#p2", "§4.1.1#b4", "§4.4#r13", "§4.1.1#r20", "§4.4#r14", "§4.1.1#r2", "§4.1.1#r3", "§5#b3", "§4.1.1#r4", "§4.1.1#r17"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": 12
+  "§7.1#p2": [12, 13]
+  "§4.1.1#b4": 13
+  "§4.4#r13": 15
+  "§4.1.1#r20": [15, 32]
+  "§4.4#r14": [21, 22]
+  "§4.1.1#r2": 21
+  "§4.1.1#r3": 22
+  "§5#b3": [23, 24, 33]
+  "§4.1.1#r4": [32, 33]
+  "§4.1.1#r17": 32
+anchor: [6, 8]
 coverage:
   web: automated
 ---

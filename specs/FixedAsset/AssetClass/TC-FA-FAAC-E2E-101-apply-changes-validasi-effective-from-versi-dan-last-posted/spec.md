@@ -1,12 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-101-apply-changes-validasi-effective-from-versi-dan-last-posted
 title: "Apply Changes: Validasi Effective From terhadap Last Posted Period dan Versi Terakhir"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-319
   - TC-FA-FAAC-320
+sourceRules: ["V-25", "FAAC-LOGIC-07b", "F-FAAC-02.k8", "F-FAAC-02.k18", "FAAC-LOGIC-07a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-25": [7, 20]
+  "FAAC-LOGIC-07b": [7, 11, 24]
+  "F-FAAC-02.k8": [9, 22]
+  "F-FAAC-02.k18": [13, 26]
+  "FAAC-LOGIC-07a": 28
 coverage:
   web: automated
 ---

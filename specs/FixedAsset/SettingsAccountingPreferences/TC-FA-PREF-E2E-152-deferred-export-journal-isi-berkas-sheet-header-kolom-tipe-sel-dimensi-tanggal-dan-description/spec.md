@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-152-deferred-export-journal-isi-berkas-sheet-header-kolom-tipe-sel-dimensi-tanggal-dan-description
 title: "[DEFERRED] Export Journal isi berkas (1): sheet, header, kolom, tipe sel, dimensi, tanggal, dan Description"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,18 @@ sourceTc:
   - TC-FA-PREF-496
   - TC-FA-PREF-497
   - TC-FA-PREF-498
+sourceRules: ["FAPREF-LOGIC-09q", "FAPREF-LOGIC-09r", "FAPREF-LOGIC-09s", "FAPREF-LOGIC-09u", "FAPREF-LOGIC-09v", "FAPREF-LOGIC-09e", "FAPREF-LOGIC-09t", "FAPREF-LOGIC-09p"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-09q": [4, 5]
+  "FAPREF-LOGIC-09r": 6
+  "FAPREF-LOGIC-09s": 7
+  "FAPREF-LOGIC-09u": 8
+  "FAPREF-LOGIC-09v": 9
+  "FAPREF-LOGIC-09e": 9
+  "FAPREF-LOGIC-09t": 13
+  "FAPREF-LOGIC-09p": 13
 coverage:
   web: automated
 ---

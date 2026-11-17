@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-081-mode-create-draft-asset-name-screening-dan-pemilihan-draft
 title: "Mode Create: Screening Tab Asset Names, Dialog Assign, dan Pemilihan Draft Asset Name"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,24 @@ sourceTc:
   - TC-FA-FAAC-255
   - TC-FA-FAAC-256
   - TC-FA-FAAC-657
+sourceRules: ["FI-13", "§4.1.3#p1", "§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r5", "§4.1.4#p1", "§4.1.4#r6", "§4.1.4#r7", "ST-05", "§4.2f#b2", "FAAC-LOGIC-14a", "§4.1.1#p3"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-13": [4, 16, 18]
+  "§4.1.3#p1": 5
+  "§4.1.4#r1": 8
+  "§4.1.4#r2": 8
+  "§4.1.4#r3": 8
+  "§4.1.4#r5": 8
+  "§4.1.4#p1": [9, 10, 11, 12]
+  "§4.1.4#r6": 11
+  "§4.1.4#r7": 11
+  "ST-05": 16
+  "§4.2f#b2": 18
+  "FAAC-LOGIC-14a": 20
+  "§4.1.1#p3": 20
+anchor: [7, 15]
 coverage:
   web: automated
 ---

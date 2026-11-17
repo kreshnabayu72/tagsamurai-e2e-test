@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-010-aksesibilitas-fokus-ter-trap-dialog-konfirmasi-d-01-d-03-d-06-dan-campuran-d-14-d-15
 title: "Aksesibilitas Fokus Ter-trap Dialog Konfirmasi D-01, D-03, D-06 dan Dialog Campuran D-14, D-15"
+layer: ui-e2e
 priority: Low
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-916
   - TC-FA-TDC-917
+sourceRules: ["D-01", "§4.5#b2", "§4.5#b1", "§4.1.1#r1", "D-03", "D-06", "D-14", "D-15"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 3
+  "§4.5#b2": [3, 8, 14, 21, 29]
+  "§4.5#b1": [5, 10, 16, 23, 31]
+  "§4.1.1#r1": [5, 10, 23]
+  "D-03": 8
+  "D-06": 14
+  "D-14": 21
+  "D-15": 29
 coverage:
   web: automated
 ---

@@ -1,11 +1,17 @@
 ---
 id: TC-FA-TDC-E2E-250-popup-used-by-setup-column-pin-dan-unpin-kolom
 title: "Popup Used By Setup Column: Pin dan Unpin Kolom"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-599
+sourceRules: []
+smoke: []
+dependsOn: []
+trace:
+anchor: [7, 11, 17]
 coverage:
   web: automated
 ---

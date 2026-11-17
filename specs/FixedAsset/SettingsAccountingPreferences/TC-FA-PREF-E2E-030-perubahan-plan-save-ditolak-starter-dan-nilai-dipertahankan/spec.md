@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-030-perubahan-plan-save-ditolak-starter-dan-nilai-dipertahankan
 title: "Perubahan Plan: Request Langsung Save pada Starter Ditolak dan Nilai Preferences Dipertahankan setelah Downgrade lalu Upgrade"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-571
   - TC-FA-PREF-572
+sourceRules: ["§9.10#b2", "FAPREF-LOGIC-03e", "E-FAPREF-16", "R-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.10#b2": [2, 5, 13, 14]
+  "FAPREF-LOGIC-03e": 13
+  "E-FAPREF-16": [16, 17]
+  "R-04": 17
 coverage:
   web: automated
 ---

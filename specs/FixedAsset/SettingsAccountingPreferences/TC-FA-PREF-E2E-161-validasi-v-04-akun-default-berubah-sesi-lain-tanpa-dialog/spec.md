@@ -1,12 +1,23 @@
 ---
 id: TC-FA-PREF-E2E-161-validasi-v-04-akun-default-berubah-sesi-lain-tanpa-dialog
 title: "Validasi V-04: function Default Capitalization Offset berubah dan Found Asset Credit Account menjadi Inactive oleh sesi lain sebelum Save (tanpa dialog)"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-144
   - TC-FA-PREF-145
+sourceRules: ["F-FAPREF-01.k22a", "FAPREF-LOGIC-10j", "F-FAPREF-01.k4c", "F-FAPREF-01.k4b", "V-04", "FI-05"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k22a": [4, 15]
+  "FAPREF-LOGIC-10j": [4, 15]
+  "F-FAPREF-01.k4c": [5, 9, 16, 20]
+  "F-FAPREF-01.k4b": [6, 17]
+  "V-04": [6, 7, 17, 18]
+  "FI-05": [9, 20]
 coverage:
   web: automated
 ---

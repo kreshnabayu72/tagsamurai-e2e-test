@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-176-popup-changelog-filter-panel-opsi-multi-select-or-date-dan-and
 title: "Popup Changelog Filter Panel: Screening, Opsi, Multi-Select, OR, Date, dan AND"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,30 @@ sourceTc:
   - TC-FA-TDC-632
   - TC-FA-TDC-633
   - TC-FA-TDC-634
+sourceRules: ["§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r31", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r32", "§4.1.1#r38", "§4.1.1#r39", "§4.1.1#r40", "§4.1.1#r41", "§4.1.1#r45", "§4.1.1#r46", "§4.1.1#r43", "§4.1.1#r44", "§4.1.1#r35", "§4.1.1#r36", "§4.1.1#r42"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r25": [3, 30]
+  "§4.1.1#r26": [4, 11, 19, 24, 25, 37]
+  "§4.1.1#r27": [5, 19]
+  "§4.1.1#r28": [6, 14, 19]
+  "§4.1.1#r31": [7, 19, 37]
+  "§4.1.1#r29": 9
+  "§4.1.1#r30": 9
+  "§4.1.1#r32": 25
+  "§4.1.1#r38": 25
+  "§4.1.1#r39": 25
+  "§4.1.1#r40": 25
+  "§4.1.1#r41": 25
+  "§4.1.1#r45": 25
+  "§4.1.1#r46": 25
+  "§4.1.1#r43": [30, 31]
+  "§4.1.1#r44": [30, 31]
+  "§4.1.1#r35": 37
+  "§4.1.1#r36": 37
+  "§4.1.1#r42": 37
+anchor: [8]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-059-d01-pv02-akun-gain-dan-loss-default-pelepasan-belum-diposting
 title: "D-01 PV-02: Asset Class Akun Gain dan Loss Default, Pelepasan Belum Diposting"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-PREF-188
   - TC-FA-PREF-189
   - TC-FA-PREF-190
+sourceRules: ["D-01", "PV-02"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 6, 7, 11, 13, 14, 19, 21, 22, 27, 29, 30]
+  "PV-02": [5, 12, 20, 28]
 coverage:
   web: automated
 ---

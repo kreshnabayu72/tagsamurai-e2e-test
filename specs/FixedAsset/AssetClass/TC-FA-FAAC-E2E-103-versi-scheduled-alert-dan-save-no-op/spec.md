@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-103-versi-scheduled-alert-dan-save-no-op
 title: "Versi Scheduled: Alert Next Version, Save No-Op, dan Validasi Effective From Perubahan Lanjutan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-FAAC-323
   - TC-FA-FAAC-324
   - TC-FA-FAAC-325
+sourceRules: ["FAAC-LOGIC-07j", "E-FAAC-110", "§[F-FAAC-02] Edit Asset Class#p2", "T-03", "F-FAAC-02.k2", "R-03", "V-25", "FAAC-LOGIC-07b", "F-FAAC-02.k8", "§4.2f#b2", "§4.2b#p1", "ST-34"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-07j": [4, 6, 8, 10]
+  "E-FAAC-110": [4, 35]
+  "§[F-FAAC-02] Edit Asset Class#p2": [13, 22]
+  "T-03": 16
+  "F-FAAC-02.k2": [17, 18, 19]
+  "R-03": 19
+  "V-25": 26
+  "FAAC-LOGIC-07b": 26
+  "F-FAAC-02.k8": 28
+  "§4.2f#b2": 31
+  "§4.2b#p1": [39, 43]
+  "ST-34": [40, 44]
+anchor: [11]
 coverage:
   web: automated
 ---

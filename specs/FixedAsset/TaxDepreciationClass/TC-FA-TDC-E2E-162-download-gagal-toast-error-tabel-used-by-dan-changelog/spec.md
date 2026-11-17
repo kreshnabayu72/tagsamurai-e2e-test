@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-162-download-gagal-toast-error-tabel-used-by-dan-changelog
 title: "Download Gagal: Toast Error Tabel, Used By, dan Changelog"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-TDC-578
   - TC-FA-TDC-594
   - TC-FA-TDC-930
+sourceRules: ["T-11c", "R-14", "T-11f", "§4.1.6#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-11c": [4, 20]
+  "R-14": 7
+  "T-11f": 12
+  "§4.1.6#p1": 13
+anchor: [5, 21, 23]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-145-deferred-disposal-documents-field-dokumen-dan-execute-ditolak-saat-required
 title: "[DEFERRED] Disposal Documents: field dokumen dan Execute ditolak saat Required"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -13,6 +14,14 @@ sourceTc:
   - TC-FA-PREF-463
   - TC-FA-PREF-464
   - TC-FA-PREF-465
+sourceRules: ["FAPREF-LOGIC-07b", "V-07", "FAPREF-LOGIC-07c"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-07b": [3, 9]
+  "V-07": 17
+  "FAPREF-LOGIC-07c": [17, 18]
+anchor: [12, 13, 20]
 coverage:
   web: automated
 ---

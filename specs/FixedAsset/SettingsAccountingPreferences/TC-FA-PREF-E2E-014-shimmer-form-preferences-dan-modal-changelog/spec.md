@@ -1,12 +1,20 @@
 ---
 id: TC-FA-PREF-E2E-014-shimmer-form-preferences-dan-modal-changelog
 title: "Shimmer: form Preferences dan modal Changelog saat data dimuat"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-73
   - TC-FA-PREF-295
+sourceRules: ["ST-21", "ST-03", "§4.1#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-21": [3, 11, 13]
+  "ST-03": [4, 6, 7]
+  "§4.1#r2": 14
 coverage:
   web: automated
 ---

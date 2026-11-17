@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-136-deferred-aktivasi-dan-j-01-pada-entitas-suspended-dan-expired
 title: "[DEFERRED] Aktivasi dan Job J-01 pada Entitas Suspended dan Expired"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,31 @@ sourceTc:
   - TC-FA-PREF-420
   - TC-FA-PREF-429
   - TC-FA-PREF-430
+sourceRules: ["SET-01", "SET-12", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-08", "SET-09", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "SET-11", "N-15", "L-01a", "J-05", "§8#r4", "§8.4#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": [6, 16, 25, 30]
+  "SET-12": [6, 16, 25, 30]
+  "SET-02": [6, 16, 25, 30]
+  "SET-03": [6, 16, 25, 30]
+  "SET-04": [6, 16, 25, 30]
+  "SET-05": [6, 16, 25, 30]
+  "SET-06": [6, 16, 25, 30]
+  "SET-08": [6, 16, 25, 30]
+  "SET-09": [6, 16, 25, 30]
+  "DOC-01": [6, 16, 25, 30]
+  "DOC-02": [6, 16, 25, 30]
+  "DOC-03": [6, 16, 25, 30]
+  "DOC-04": [6, 16, 25, 30]
+  "DOC-05": [6, 16, 25, 30]
+  "DOC-06": [6, 16, 25, 30]
+  "SET-11": [6, 16, 25, 30]
+  "N-15": [6, 8, 9, 16, 18, 19]
+  "L-01a": [8, 18]
+  "J-05": [8, 18]
+  "§8#r4": [9, 19]
+  "§8.4#p2": [25, 30]
 coverage:
   web: automated
 ---

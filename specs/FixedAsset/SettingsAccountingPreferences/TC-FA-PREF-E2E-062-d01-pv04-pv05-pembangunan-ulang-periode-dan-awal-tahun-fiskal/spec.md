@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-062-d01-pv04-pv05-pembangunan-ulang-periode-dan-awal-tahun-fiskal
 title: "D-01 PV-04 dan PV-05: Pembangunan Ulang Periode dan Awal Tahun Fiskal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-PREF-195
   - TC-FA-PREF-196
   - TC-FA-PREF-197
+sourceRules: ["D-01", "PV-04", "PV-05"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 5, 6, 10, 12, 13, 19, 21, 22, 28, 30, 31]
+  "PV-04": [4, 11, 20, 29]
+  "PV-05": [4, 14, 20]
 coverage:
   web: automated
 ---

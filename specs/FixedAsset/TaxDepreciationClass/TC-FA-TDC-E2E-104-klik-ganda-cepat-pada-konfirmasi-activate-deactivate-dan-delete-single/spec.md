@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-104-klik-ganda-cepat-pada-konfirmasi-activate-deactivate-dan-delete-single
 title: "Klik Ganda Cepat pada Konfirmasi Activate, Deactivate, dan Delete Single"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-TDC-371
   - TC-FA-TDC-392
   - TC-FA-TDC-412
+sourceRules: ["ST-28", "T-04", "L-04", "R-05", "ST-13", "R-06", "T-13", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-28": [4, 13]
+  "T-04": 6
+  "L-04": [8, 9, 17, 18]
+  "R-05": 15
+  "ST-13": 22
+  "R-06": 24
+  "T-13": 25
+  "L-05": 27
+anchor: [5, 14, 23]
 coverage:
   web: automated
 ---

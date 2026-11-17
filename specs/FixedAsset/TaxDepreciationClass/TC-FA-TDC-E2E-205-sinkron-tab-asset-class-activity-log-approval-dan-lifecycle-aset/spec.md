@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-205-sinkron-tab-asset-class-activity-log-approval-dan-lifecycle-aset
 title: "Sinkronisasi Lintas Modul: Tab Asset Class, Activity Log, Approvals, Asset Name, dan Lifecycle Aset"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-TDC-784
   - TC-FA-TDC-785
   - TC-FA-TDC-786
+sourceRules: ["FATDC-LOGIC-01b", "§3.9#r3", "FATDC-LOGIC-05b.1", "FATDC-LOGIC-05b.2", "F-FATDC-02.k5c", "§4.2c#b1", "§3.9#r5", "FATDC-LOGIC-01e", "L-04"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-01b": [3, 8]
+  "§3.9#r3": [18, 45]
+  "FATDC-LOGIC-05b.1": 23
+  "FATDC-LOGIC-05b.2": [24, 25, 37]
+  "F-FATDC-02.k5c": [28, 29]
+  "§4.2c#b1": [31, 40]
+  "§3.9#r5": 48
+  "FATDC-LOGIC-01e": 51
+  "L-04": [58, 59]
+anchor: [7, 12, 17, 27, 50]
 coverage:
   web: automated
 ---

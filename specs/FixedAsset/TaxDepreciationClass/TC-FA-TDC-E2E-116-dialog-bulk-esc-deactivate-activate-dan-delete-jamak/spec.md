@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-116-dialog-bulk-esc-deactivate-activate-dan-delete-jamak
 title: "Dialog Bulk Esc Deactivate Activate dan Delete Jamak"
+layer: ui-e2e
 priority: Low
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-TDC-441
   - TC-FA-TDC-442
   - TC-FA-TDC-443
+sourceRules: ["§[F-FATDC-04] Activate Tax Depreciation Class#b1", "FATDC-LOGIC-14k", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FATDC-04] Activate Tax Depreciation Class#b1": 7
+  "FATDC-LOGIC-14k": [8, 9, 10, 18, 19, 20, 21, 30, 31, 32]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b1": 29
+anchor: [5, 6, 16, 17, 27, 28]
 coverage:
   web: automated
 ---

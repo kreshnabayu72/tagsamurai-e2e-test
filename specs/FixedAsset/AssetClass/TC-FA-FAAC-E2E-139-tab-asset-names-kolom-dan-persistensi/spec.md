@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-139-tab-asset-names-kolom-dan-persistensi
 title: "Tab Asset Names: Overlay Column Visibility, Kolom Terakhir Tidak Dapat Disembunyikan, dan Persistensi Setelah Muat Ulang"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-FAAC-463
   - TC-FA-FAAC-465
   - TC-FA-FAAC-466
+sourceRules: ["§4.1.3#r1", "§4.1.3#r2", "§4.1.3#r3", "§4.1.3#r4", "§4.1.3#r5", "§4.1.3#r6", "§4.4#r15", "§4.1.1#b2", "§5#b10"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#r1": [6, 19]
+  "§4.1.3#r2": 6
+  "§4.1.3#r3": 6
+  "§4.1.3#r4": 6
+  "§4.1.3#r5": 6
+  "§4.1.3#r6": 6
+  "§4.4#r15": 7
+  "§4.1.1#b2": [12, 13]
+  "§5#b10": 20
 coverage:
   web: automated
 ---

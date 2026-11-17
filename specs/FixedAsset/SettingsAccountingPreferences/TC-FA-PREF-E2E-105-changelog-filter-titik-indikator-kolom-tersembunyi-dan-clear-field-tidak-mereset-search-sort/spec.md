@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-105-changelog-filter-titik-indikator-kolom-tersembunyi-dan-clear-field-tidak-mereset-search-sort
 title: "Changelog Filter: titik indikator ikon Filter, filter pada kolom tersembunyi, Clear Field tidak mereset Search dan Sort"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-PREF-316
   - TC-FA-PREF-317
   - TC-FA-PREF-320
+sourceRules: ["§4.1.4#r2", "§4.1.4#r7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r2": [13, 14, 16, 17, 26]
+  "§4.1.4#r7": 27
+anchor: [4, 6, 8, 25]
 coverage:
   web: automated
 ---

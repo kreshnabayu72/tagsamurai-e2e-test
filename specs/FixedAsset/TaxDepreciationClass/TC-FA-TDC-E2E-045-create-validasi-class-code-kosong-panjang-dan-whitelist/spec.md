@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-045-create-validasi-class-code-kosong-panjang-dan-whitelist
 title: "Create - Validasi Class Code Kosong, Panjang, dan Whitelist Karakter"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-TDC-137
   - TC-FA-TDC-138
   - TC-FA-TDC-139
+sourceRules: ["V-01", "F-FATDC-01.k4a", "E-FATDC-04", "V-02", "E-FATDC-02", "§4.1.2#r2", "V-03"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": [4, 7]
+  "F-FATDC-01.k4a": 7
+  "E-FATDC-04": [8, 9, 10]
+  "V-02": [13, 17]
+  "E-FATDC-02": 15
+  "§4.1.2#r2": [18, 31]
+  "V-03": [20, 22, 24, 26, 28, 30]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-003-menu-accounting-per-plan-dan-akses-url-starter
 title: "Menu Accounting per Plan Client dan Akses URL Tab Asset Class pada Plan Starter"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-FAAC-5
   - TC-FA-FAAC-646
   - TC-FA-FAAC-6
+sourceRules: ["§3.10#p1", "FAAC-LOGIC-18e", "E-FAAC-74", "FAAC-LOGIC-18a", "§4.1.8#p1", "§3.10#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§3.10#p1": [1, 12]
+  "FAAC-LOGIC-18e": [2, 4, 7, 12]
+  "E-FAAC-74": [2, 4, 6]
+  "FAAC-LOGIC-18a": [13, 14]
+  "§4.1.8#p1": 13
+  "§3.10#p2": 14
 coverage:
   web: automated
 ---

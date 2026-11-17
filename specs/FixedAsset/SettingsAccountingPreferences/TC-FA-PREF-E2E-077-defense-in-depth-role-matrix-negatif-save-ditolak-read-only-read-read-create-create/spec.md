@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-077-defense-in-depth-role-matrix-negatif-save-ditolak-read-only-read-read-create-create
 title: "Defense-in-Depth Role Matrix Negatif: Request Langsung Save Preferences Ditolak Server 403 untuk Read Only, Manage accounting - Read, Read + Create, dan Create"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,11 @@ sourceTc:
   - TC-FA-PREF-512
   - TC-FA-PREF-513
   - TC-FA-PREF-514
+sourceRules: ["F-FAPREF-01.k8c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k8c": [3, 5, 7, 10, 12, 14, 17, 19, 21, 24, 26, 28, 31, 33, 35]
 coverage:
   web: automated
 ---

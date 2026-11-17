@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-078-apply-versi-cancelled-lebih-dari-satu-scheduled-dan-regulation-reference-versi
 title: "Apply D-09: Versi Cancelled Tidak Dihitung Versi Terakhir, Lebih dari Satu Versi Scheduled, dan Regulation Reference Menjadi Milik Versi Baru"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-TDC-272
   - TC-FA-TDC-273
   - TC-FA-TDC-274
+sourceRules: ["FATDC-LOGIC-04t", "FATDC-LOGIC-04u.1", "V-22", "T-02c", "§4.1.6#r5", "FATDC-LOGIC-04i", "FATDC-LOGIC-04ad", "FATDC-LOGIC-04q.3", "FLD-05", "ST-30", "FATDC-LOGIC-04aa", "FATDC-LOGIC-04q.2", "§4.1.6#r11", "FATDC-LOGIC-04r.1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04t": 5
+  "FATDC-LOGIC-04u.1": [5, 7]
+  "V-22": 7
+  "T-02c": [9, 20, 35]
+  "§4.1.6#r5": [12, 26]
+  "FATDC-LOGIC-04i": 12
+  "FATDC-LOGIC-04ad": 12
+  "FATDC-LOGIC-04q.3": 22
+  "FLD-05": 24
+  "ST-30": 24
+  "FATDC-LOGIC-04aa": 24
+  "FATDC-LOGIC-04q.2": 26
+  "§4.1.6#r11": [38, 39]
+  "FATDC-LOGIC-04r.1": [38, 39]
 coverage:
   web: automated
 ---

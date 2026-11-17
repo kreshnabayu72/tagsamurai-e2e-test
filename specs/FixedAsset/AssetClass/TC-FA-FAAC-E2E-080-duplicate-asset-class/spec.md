@@ -1,12 +1,27 @@
 ---
 id: TC-FA-FAAC-E2E-080-duplicate-asset-class
 title: "Duplicate Asset Class: Pre-fill Mode Create dan Submit dengan Class Code Baru"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-263
   - TC-FA-FAAC-264
+sourceRules: ["§4.2b#p1", "§3.8#p1", "R-07", "§[F-FAAC-06] Duplicate Asset Class#b3", "§[F-FAAC-06] Duplicate Asset Class#b2", "§[F-FAAC-06] Duplicate Asset Class#p2", "T-01", "§[F-FAAC-01] Create Asset Class#b3", "L-01", "§[F-FAAC-01] Create Asset Class#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2b#p1": 3
+  "§3.8#p1": 3
+  "R-07": 4
+  "§[F-FAAC-06] Duplicate Asset Class#b3": 4
+  "§[F-FAAC-06] Duplicate Asset Class#b2": [5, 6, 10, 12, 20]
+  "§[F-FAAC-06] Duplicate Asset Class#p2": [8, 20]
+  "T-01": 16
+  "§[F-FAAC-01] Create Asset Class#b3": [18, 19]
+  "L-01": 22
+  "§[F-FAAC-01] Create Asset Class#b4": 22
 coverage:
   web: automated
 ---

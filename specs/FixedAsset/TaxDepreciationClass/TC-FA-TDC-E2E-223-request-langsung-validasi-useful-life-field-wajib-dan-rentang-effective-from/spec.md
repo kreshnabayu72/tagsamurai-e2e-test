@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-223-request-langsung-validasi-useful-life-field-wajib-dan-rentang-effective-from
 title: "Request Langsung: Validasi Useful Life, Field Wajib, dan Rentang Effective From"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -11,6 +12,19 @@ sourceTc:
   - TC-FA-TDC-926
   - TC-FA-TDC-927
   - TC-FA-TDC-928
+sourceRules: ["F-FATDC-01.k5a", "F-FATDC-01.k4b", "E-FATDC-77", "E-FATDC-18", "E-FATDC-21", "F-FATDC-02.k10a", "FATDC-LOGIC-04h", "FATDC-LOGIC-04p.5"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-01.k5a": [3, 6, 8, 11]
+  "F-FATDC-01.k4b": [13, 16]
+  "E-FATDC-77": [18, 20]
+  "E-FATDC-18": [22, 24]
+  "E-FATDC-21": 26
+  "F-FATDC-02.k10a": 28
+  "FATDC-LOGIC-04h": 28
+  "FATDC-LOGIC-04p.5": 29
+anchor: [5, 10, 15]
 coverage:
   web: automated
 ---

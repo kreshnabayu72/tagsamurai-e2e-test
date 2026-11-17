@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-044-validasi-v-09-first-accounting-period-tidak-terpengaruh-versi-tdc
 title: "Validasi V-09: hanya First Accounting Period tidak terpengaruh; versi pertama tanpa Effective From tidak menghalangi Fiscal Year Start"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-PREF-220
   - TC-FA-PREF-579
   - TC-FA-PREF-580
+sourceRules: ["F-FAPREF-01.k19d", "V-09", "E-FAPREF-38", "F-FAPREF-01.k21b", "T-01", "F-FAPREF-01.k19c", "E-FAPREF-37", "D-01", "PV-04", "F-FAPREF-01.k20b", "PV-05", "FAPREF-LOGIC-02k"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k19d": [4, 5]
+  "V-09": 6
+  "E-FAPREF-38": 7
+  "F-FAPREF-01.k21b": 12
+  "T-01": [13, 22, 31]
+  "F-FAPREF-01.k19c": 14
+  "E-FAPREF-37": 15
+  "D-01": [20, 29]
+  "PV-04": [20, 29]
+  "F-FAPREF-01.k20b": 24
+  "PV-05": 29
+  "FAPREF-LOGIC-02k": 32
 coverage:
   web: automated
 ---

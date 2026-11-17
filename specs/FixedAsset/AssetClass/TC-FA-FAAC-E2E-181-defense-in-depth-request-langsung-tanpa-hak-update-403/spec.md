@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-181-defense-in-depth-request-langsung-tanpa-hak-update-403
 title: "Defense-in-Depth: Request Langsung Assign, Move, Unassign, dan Cancel Scheduled Version Tanpa Hak Update Ditolak 403"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-FAAC-619
   - TC-FA-FAAC-620
   - TC-FA-FAAC-686
+sourceRules: ["E-FAAC-78", "E-FAAC-82", "E-FAAC-110", "E-FAAC-114"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAAC-78": [2, 13, 16]
+  "E-FAAC-82": [3, 11, 14, 17]
+  "E-FAAC-110": 7
+  "E-FAAC-114": [8, 10]
 coverage:
   web: automated
 ---

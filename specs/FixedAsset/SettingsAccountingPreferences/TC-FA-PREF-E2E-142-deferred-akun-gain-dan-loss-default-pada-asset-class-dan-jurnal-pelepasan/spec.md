@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-142-deferred-akun-gain-dan-loss-default-pada-asset-class-dan-jurnal-pelepasan
 title: "[DEFERRED] Akun Gain dan Loss default pada Asset Class dan jurnal pelepasan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,13 @@ sourceTc:
   - TC-FA-PREF-447
   - TC-FA-PREF-448
   - TC-FA-PREF-453
+sourceRules: ["FAPREF-LOGIC-06c", "FAPREF-LOGIC-06d", "FAPREF-LOGIC-06e"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06c": [6, 12, 18]
+  "FAPREF-LOGIC-06d": [19, 23, 24]
+  "FAPREF-LOGIC-06e": [20, 27, 28, 34]
 coverage:
   web: automated
 ---

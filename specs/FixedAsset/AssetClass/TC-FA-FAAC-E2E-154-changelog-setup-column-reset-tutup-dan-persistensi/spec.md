@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-154-changelog-setup-column-reset-tutup-dan-persistensi
 title: "Modal Changelog: Setup Column Reset to Default, Tutup dengan X, Satu Kolom Tersisa, dan Tidak Memengaruhi Tabel Asset Class"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-FAAC-508
   - TC-FA-FAAC-509
   - TC-FA-FAAC-510
+sourceRules: ["§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r32", "§4.1.1#b2", "§5#b10"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r26": [7, 8]
+  "§4.1.1#r27": [7, 8]
+  "§4.1.1#r28": [7, 8]
+  "§4.1.1#r29": [7, 8, 14]
+  "§4.1.1#r30": [7, 8]
+  "§4.1.1#r31": [7, 8]
+  "§4.1.1#r32": [7, 8]
+  "§4.1.1#b2": [19, 20]
+  "§5#b10": 27
+anchor: [13]
 coverage:
   web: automated
 ---

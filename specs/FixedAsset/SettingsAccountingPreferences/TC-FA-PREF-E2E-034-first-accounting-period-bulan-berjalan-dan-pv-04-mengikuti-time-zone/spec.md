@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-034-first-accounting-period-bulan-berjalan-dan-pv-04-mengikuti-time-zone
 title: "First Accounting Period: Bulan Berjalan dan Bulan Sebelumnya Dapat Dipilih, Jumlah Periode PV-04 Mengikuti Time Zone Entitas"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-147
   - TC-FA-PREF-609
   - TC-FA-PREF-610
+sourceRules: ["FAPREF-LOGIC-02i", "V-08", "D-01", "PV-04", "PV-05"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-02i": [4, 9]
+  "V-08": [5, 10]
+  "D-01": [15, 21]
+  "PV-04": [15, 21]
+  "PV-05": [15, 21]
 coverage:
   web: automated
 ---

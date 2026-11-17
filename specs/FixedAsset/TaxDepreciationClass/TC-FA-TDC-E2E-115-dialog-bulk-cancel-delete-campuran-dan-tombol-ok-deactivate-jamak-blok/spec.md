@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-115-dialog-bulk-cancel-delete-campuran-dan-tombol-ok-deactivate-jamak-blok
 title: "Dialog Bulk Cancel Delete Campuran dan Tombol OK Deactivate Jamak Blok"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-437
   - TC-FA-TDC-438
+sourceRules: ["D-15", "FATDC-LOGIC-14k", "§8#r1", "D-02", "F-FATDC-13.k3", "FATDC-LOGIC-14g"]
+smoke: []
+dependsOn: []
+trace:
+  "D-15": 5
+  "FATDC-LOGIC-14k": [7, 8, 9, 12, 22, 23]
+  "§8#r1": [11, 25]
+  "D-02": 19
+  "F-FATDC-13.k3": [20, 21]
+  "FATDC-LOGIC-14g": [21, 26]
+anchor: [6]
 coverage:
   web: automated
 ---

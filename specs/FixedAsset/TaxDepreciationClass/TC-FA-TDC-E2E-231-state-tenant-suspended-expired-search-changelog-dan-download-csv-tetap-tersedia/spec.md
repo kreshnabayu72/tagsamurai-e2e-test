@@ -1,11 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-231-state-tenant-suspended-expired-search-changelog-dan-download-csv-tetap-tersedia
 title: "State Tenant Suspended dan Expired: Search, Popup Changelog, dan Download CSV Tetap Tersedia"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-101
+sourceRules: ["§4.1#r1", "§5#b2", "§4.1#r7", "T-11a", "§5#b7"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r1": [1, 15]
+  "§5#b2": [4, 18]
+  "§4.1#r7": [6, 20]
+  "T-11a": [9, 23]
+  "§5#b7": [10, 24]
+anchor: [2, 16]
 coverage:
   web: automated
 ---

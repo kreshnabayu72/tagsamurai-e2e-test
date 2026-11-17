@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-107-resilience-bulk-deactivate-dan-activate-5xx-timeout
 title: "Resilience Bulk Deactivate dan Bulk Activate: Gagal 5xx dan Timeout"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-481
   - TC-FA-TDC-482
   - TC-FA-TDC-483
+sourceRules: ["R-05", "§9.6#p1", "§7.3#b1", "T-04", "R-04"]
+smoke: []
+dependsOn: []
+trace:
+  "R-05": [5, 10, 23]
+  "§9.6#p1": [7, 9, 19, 20, 22, 33, 35]
+  "§7.3#b1": [8, 19, 21, 34]
+  "T-04": 31
+  "R-04": 36
+anchor: [6, 32]
 coverage:
   web: automated
 ---

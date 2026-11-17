@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-051-create-pilih-asset-type-land-building-non-building-mengatur-field-dan-opsi
 title: "Create - Pilih Asset Type Land, Building, dan Non-building Mengatur Field dan Opsi"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-TDC-162
   - TC-FA-TDC-163
   - TC-FA-TDC-164
+sourceRules: ["ST-08", "FI-01", "FI-02", "ST-10", "ST-09"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-08": [4, 6, 8]
+  "FI-01": [5, 6, 9]
+  "FI-02": [15, 16, 17, 20]
+  "ST-10": 17
+  "ST-09": [18, 19, 24, 26]
 coverage:
   web: automated
 ---

@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-168-popup-used-by-setup-column-ceklis-unceklis-dan-guard-satu-kolom-tersisa
 title: "Popup Used By Setup Column: Ceklis dan Unceklis serta Guard Satu Kolom Tersisa"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-597
   - TC-FA-TDC-602
+sourceRules: ["§4.1.6#r1", "§4.1.6#r2", "§4.1.6#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#r1": [5, 7, 10, 15]
+  "§4.1.6#r2": [5, 7, 10, 15]
+  "§4.1.6#r3": [5, 7, 10, 15]
+anchor: [21, 22, 28, 29]
 coverage:
   web: automated
 ---

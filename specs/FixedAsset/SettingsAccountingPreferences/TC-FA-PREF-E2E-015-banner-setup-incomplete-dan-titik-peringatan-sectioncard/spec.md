@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-015-banner-setup-incomplete-dan-titik-peringatan-sectioncard
 title: "Banner Setup Incomplete dan titik peringatan SectionCard: isi, tidak dapat ditutup, tidak tampil bila lengkap"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-PREF-79
   - TC-FA-PREF-81
   - TC-FA-PREF-82
+sourceRules: ["ST-07", "§4.3#b2", "ST-04", "§4.1.1#p1", "FAPREF-LOGIC-11c", "§9.5#r1"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-07": [1, 2, 4, 6, 10]
+  "§4.3#b2": 3
+  "ST-04": [7, 8, 15]
+  "§4.1.1#p1": 12
+  "FAPREF-LOGIC-11c": 13
+  "§9.5#r1": 14
 coverage:
   web: automated
 ---

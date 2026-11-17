@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-129-download-isi-berkas-csv-xlsx
 title: "Download Tabel Asset Class: Isi Berkas CSV dan XLSX (Nilai Sel, BOM, Sheet, Urutan Baris, dan Kesamaan dengan Tabel, serta Cakupan Search dan Filter)"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -13,6 +14,16 @@ sourceTc:
   - TC-FA-FAAC-433
   - TC-FA-FAAC-434
   - TC-FA-FAAC-656
+sourceRules: ["§5#b8", "§4.1.1#r10", "§4.1.1#r17", "§4.1.1#r19", "§4.1.1#r24"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b8": [3, 4, 5, 6, 7, 13, 39, 40]
+  "§4.1.1#r10": [22, 32]
+  "§4.1.1#r17": 29
+  "§4.1.1#r19": 31
+  "§4.1.1#r24": 33
+anchor: [8, 9, 12, 14, 17, 30]
 coverage:
   web: automated
 ---

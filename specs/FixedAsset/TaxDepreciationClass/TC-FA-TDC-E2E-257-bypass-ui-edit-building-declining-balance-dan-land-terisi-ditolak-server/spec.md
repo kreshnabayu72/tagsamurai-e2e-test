@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-257-bypass-ui-edit-building-declining-balance-dan-land-terisi-ditolak-server
 title: "Bypass UI Edit: Building dengan Declining Balance dan Land Terisi Ditolak Server"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-244
   - TC-FA-TDC-245
+sourceRules: ["V-14", "R-02", "FATDC-LOGIC-04p.5", "§4.1.1#r8", "V-18", "§4.1.1#r5", "FATDC-LOGIC-03b"]
+smoke: []
+dependsOn: []
+trace:
+  "V-14": 5
+  "R-02": [6, 14]
+  "FATDC-LOGIC-04p.5": [8, 16]
+  "§4.1.1#r8": 8
+  "V-18": 13
+  "§4.1.1#r5": 16
+  "FATDC-LOGIC-03b": 16
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-098-deactivate-single-screening-cancel-esc-dan-backdrop
 title: "Deactivate Single: Screening Dialog, Cancel, Esc, dan Backdrop"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-TDC-375
   - TC-FA-TDC-376
   - TC-FA-TDC-377
+sourceRules: ["FATDC-LOGIC-08h", "D-01", "L-04", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08h": [3, 8, 14, 20, 23]
+  "D-01": [4, 5]
+  "L-04": [10, 16, 24]
+  "§4.5#b1": [13, 23]
+anchor: [7, 9, 15, 19, 21]
 coverage:
   web: automated
 ---

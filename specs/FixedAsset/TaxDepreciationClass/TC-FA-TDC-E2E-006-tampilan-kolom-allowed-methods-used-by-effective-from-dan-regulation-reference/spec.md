@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-006-tampilan-kolom-allowed-methods-used-by-effective-from-dan-regulation-reference
 title: "Tampilan Kolom Allowed Methods, Used By, Effective From, dan Regulation Reference"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,27 @@ sourceTc:
   - TC-FA-TDC-25
   - TC-FA-TDC-26
   - TC-FA-TDC-27
+sourceRules: ["§4.1.1#r8", "§4.1.1#r16", "§4.1.1#r20", "§4.1.1#r22", "ST-03", "§4.1.1#r9", "§4.1.1#r19", "FATDC-LOGIC-04ac", "§4.1.1#r10", "FATDC-LOGIC-04p.5", "§4.1.1#r17", "FATDC-LOGIC-04q.3", "§4.1.1#r21", "§4.1.1#r11", "FATDC-LOGIC-02j", "FATDC-LOGIC-02b.4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r8": [1, 2, 3]
+  "§4.1.1#r16": [1, 4, 6]
+  "§4.1.1#r20": [2, 4]
+  "§4.1.1#r22": 3
+  "ST-03": [4, 5, 15]
+  "§4.1.1#r9": [4, 5, 15]
+  "§4.1.1#r19": [5, 7]
+  "FATDC-LOGIC-04ac": 6
+  "§4.1.1#r10": [6, 7, 12]
+  "FATDC-LOGIC-04p.5": 8
+  "§4.1.1#r17": 8
+  "FATDC-LOGIC-04q.3": [10, 18]
+  "§4.1.1#r21": 10
+  "§4.1.1#r11": [23, 24, 25]
+  "FATDC-LOGIC-02j": 24
+  "FATDC-LOGIC-02b.4": 25
+anchor: [14]
 coverage:
   web: automated
 ---

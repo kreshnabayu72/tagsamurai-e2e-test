@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-049-create-validasi-regulation-reference-asset-type-dan-useful-life-kosong
 title: "Create - Validasi Regulation Reference, Asset Type, dan Useful Life Kosong"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-TDC-154
   - TC-FA-TDC-155
   - TC-FA-TDC-156
+sourceRules: ["V-09", "§4.1.2#r1", "V-10", "F-FATDC-01.k4d", "V-11", "F-FATDC-01.k4f", "§4.1.2#p4", "T-01"]
+smoke: []
+dependsOn: []
+trace:
+  "V-09": 3
+  "§4.1.2#r1": [5, 25]
+  "V-10": 9
+  "F-FATDC-01.k4d": [10, 11]
+  "V-11": 15
+  "F-FATDC-01.k4f": [16, 18]
+  "§4.1.2#p4": 17
+  "T-01": 23
 coverage:
   web: automated
 ---

@@ -1,12 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-245-konflik-d-09-d-08-apply-class-dihapus-dan-asset-class-berubah-antara-save-dan-apply
 title: "Konflik D-09 dan D-08: Apply pada Class yang Dihapus dan Asset Class Berubah Antara Save dan Apply"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-282
   - TC-FA-TDC-291
+sourceRules: ["T-13", "F-FATDC-02.k12b", "D-08", "FATDC-LOGIC-10b.3", "F-FATDC-02.k6c", "§8.4#r7", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-13": [9, 12]
+  "F-FATDC-02.k12b": [10, 11]
+  "D-08": [21, 22]
+  "FATDC-LOGIC-10b.3": 21
+  "F-FATDC-02.k6c": 23
+  "§8.4#r7": 24
+  "§4.2c#b1": 27
 coverage:
   web: automated
 ---

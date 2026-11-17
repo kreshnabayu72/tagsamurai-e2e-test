@@ -1,12 +1,20 @@
 ---
 id: TC-FA-PREF-E2E-165-d04-tombol-esc-setara-cancel-dan-klik-di-luar-dialog-tidak-menutup
 title: "D-04: Tombol Esc Setara [Cancel] dan Klik Area di Luar Dialog Tidak Menutup Dialog"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-264
   - TC-FA-PREF-265
+sourceRules: ["§4.5#b1", "F-FAPREF-02.k1c", "D-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b1": 4
+  "F-FAPREF-02.k1c": 5
+  "D-04": 10
 coverage:
   web: automated
 ---

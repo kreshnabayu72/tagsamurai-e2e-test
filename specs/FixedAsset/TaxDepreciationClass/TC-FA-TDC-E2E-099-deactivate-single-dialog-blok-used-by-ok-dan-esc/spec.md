@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-099-deactivate-single-dialog-blok-used-by-ok-dan-esc
 title: "Deactivate Single: Dialog Blok Used By, OK, dan Esc"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-TDC-380
   - TC-FA-TDC-381
   - TC-FA-TDC-382
+sourceRules: ["FATDC-LOGIC-08h", "D-02", "L-04", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08h": [2, 7, 11, 20]
+  "D-02": [3, 8]
+  "L-04": [15, 22]
+  "§4.5#b1": 19
+anchor: [10, 12, 14, 21]
 coverage:
   web: automated
 ---

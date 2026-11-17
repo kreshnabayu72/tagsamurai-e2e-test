@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-162-log-assign-unassign-asset-name-satu-per-satu
 title: "Log Assign dan Unassign Asset Name Satu per Satu pada Tiga Surface"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-541
   - TC-FA-FAAC-542
   - TC-FA-FAAC-543
+sourceRules: ["L-06", "§4.1.1#r26", "§4.1.1#r32", "§8.2#p1", "§8.2#r1", "§8.3#p1", "L-07"]
+smoke: []
+dependsOn: []
+trace:
+  "L-06": [12, 13, 29]
+  "§4.1.1#r26": 14
+  "§4.1.1#r32": [15, 46]
+  "§8.2#p1": 28
+  "§8.2#r1": 29
+  "§8.3#p1": [31, 32]
+  "L-07": [44, 45]
 coverage:
   web: automated
 ---

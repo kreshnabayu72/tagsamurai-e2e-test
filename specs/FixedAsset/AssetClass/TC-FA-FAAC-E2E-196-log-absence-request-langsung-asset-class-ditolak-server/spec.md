@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-196-log-absence-request-langsung-asset-class-ditolak-server
 title: "Log Absence: Request Langsung Deactivate, Delete, Edit Class Code, dan Create Melampaui Batas yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,24 @@ sourceTc:
   - TC-FA-FAAC-602
   - TC-FA-FAAC-603
   - TC-FA-FAAC-604
+sourceRules: ["F-FAAC-04.k1", "E-FAAC-21", "§9.4.3#b2", "§8#p1", "§8.4#r9", "§8.2#p1", "§8.3#p1", "F-FAAC-05.k1", "E-FAAC-16", "FAAC-LOGIC-10c", "F-FAAC-02.k1", "E-FAAC-11", "F-FAAC-01.k11", "E-FAAC-76"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-04.k1": 3
+  "E-FAAC-21": 3
+  "§9.4.3#b2": 3
+  "§8#p1": [4, 10, 16, 23]
+  "§8.4#r9": [4, 5, 6, 10, 11, 12, 16, 17, 18, 23, 24, 25]
+  "§8.2#p1": [5, 11, 17, 24]
+  "§8.3#p1": [6, 12, 18, 25]
+  "F-FAAC-05.k1": 9
+  "E-FAAC-16": 9
+  "FAAC-LOGIC-10c": 15
+  "F-FAAC-02.k1": 15
+  "E-FAAC-11": 15
+  "F-FAAC-01.k11": 22
+  "E-FAAC-76": 22
 coverage:
   web: automated
 ---

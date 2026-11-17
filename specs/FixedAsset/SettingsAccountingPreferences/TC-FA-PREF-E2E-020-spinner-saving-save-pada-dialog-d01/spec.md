@@ -1,12 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-020-spinner-saving-save-pada-dialog-d01
 title: "Spinner Saving pada [Save] di dialog Save Changes D-01"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-90
   - TC-FA-PREF-284
+sourceRules: ["ST-02", "T-01", "D-01", "F-FAPREF-01.k21b"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-02": [5, 6, 14, 15]
+  "T-01": [8, 17, 20]
+  "D-01": [16, 19]
+  "F-FAPREF-01.k21b": 19
+anchor: [21]
 coverage:
   web: automated
 ---

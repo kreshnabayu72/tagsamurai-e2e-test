@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-219-request-langsung-guard-deactivate-delete-dan-bulk-hanya-yang-lolos
 title: "Request Langsung: Guard Deactivate dan Delete serta Bulk Memproses Hanya Class yang Lolos"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-TDC-836
   - TC-FA-TDC-837
   - TC-FA-TDC-838
+sourceRules: ["F-FATDC-05.k1", "FATDC-LOGIC-08a", "F-FATDC-06.k1", "FATDC-LOGIC-09a", "F-FATDC-06.k2", "FATDC-LOGIC-09b", "F-FATDC-13.k2", "FATDC-LOGIC-14d", "L-04", "J-04", "FATDC-LOGIC-09d", "L-05", "F-FATDC-13.k9"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-05.k1": [2, 4]
+  "FATDC-LOGIC-08a": 2
+  "F-FATDC-06.k1": 7
+  "FATDC-LOGIC-09a": [7, 9, 27]
+  "F-FATDC-06.k2": 11
+  "FATDC-LOGIC-09b": [11, 13]
+  "F-FATDC-13.k2": [17, 18, 22]
+  "FATDC-LOGIC-14d": 18
+  "L-04": [20, 22]
+  "J-04": [20, 29]
+  "FATDC-LOGIC-09d": 26
+  "L-05": [29, 31]
+  "F-FATDC-13.k9": 31
 coverage:
   web: automated
 ---

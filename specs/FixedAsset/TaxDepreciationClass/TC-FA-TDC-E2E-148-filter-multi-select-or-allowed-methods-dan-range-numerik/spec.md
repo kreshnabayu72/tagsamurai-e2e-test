@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-148-filter-multi-select-or-allowed-methods-dan-range-numerik
 title: "Filter: Multi-Select, Logika OR, Allowed Methods, dan Range Numerik"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-TDC-513
   - TC-FA-TDC-514
   - TC-FA-TDC-515
+sourceRules: ["§4.1.1#r1", "§4.1.1#r4", "§4.1.1#r8", "§4.1.1#r12", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r1": 4
+  "§4.1.1#r4": [4, 19, 20]
+  "§4.1.1#r8": [4, 9, 10, 14, 15]
+  "§4.1.1#r12": 4
+  "§4.1.1#r5": 25
+  "§4.1.1#r6": 25
+  "§4.1.1#r7": 25
+  "§4.1.1#r9": [25, 30, 34, 38]
 coverage:
   web: automated
 ---

@@ -1,12 +1,20 @@
 ---
 id: TC-FA-TDC-E2E-228-aksesibilitas-fokus-ter-trap-modal-versions-dan-popup-changelog
 title: "Aksesibilitas Fokus Ter-trap Modal Versions dan Popup Changelog"
+layer: ui-e2e
 priority: Low
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-922
   - TC-FA-TDC-923
+sourceRules: ["§4.5#b2", "§4.5#b1", "FATDC-LOGIC-04ae"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b2": [3, 9]
+  "§4.5#b1": [5, 11]
+  "FATDC-LOGIC-04ae": 9
 coverage:
   web: automated
 ---

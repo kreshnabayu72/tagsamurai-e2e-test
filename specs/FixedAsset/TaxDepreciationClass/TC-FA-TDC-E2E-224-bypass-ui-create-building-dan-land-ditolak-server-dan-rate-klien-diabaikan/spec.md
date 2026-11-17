@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-224-bypass-ui-create-building-dan-land-ditolak-server-dan-rate-klien-diabaikan
 title: "Bypass UI Create: Building dan Land Ditolak Server serta Rate dari Klien Diabaikan"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-160
   - TC-FA-TDC-161
   - TC-FA-TDC-850
+sourceRules: ["F-FATDC-01.k7", "§7.2#p2", "§4.2c#b1", "F-FATDC-01.k6", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "FATDC-LOGIC-03f.5"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-01.k7": [11, 18]
+  "§7.2#p2": [12, 28]
+  "§4.2c#b1": [14, 30]
+  "F-FATDC-01.k6": [27, 34]
+  "FATDC-LOGIC-03f.1": 37
+  "FATDC-LOGIC-03f.2": 37
+  "FATDC-LOGIC-03f.5": 38
+anchor: [17, 33]
 coverage:
   web: automated
 ---

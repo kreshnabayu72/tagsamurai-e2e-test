@@ -1,12 +1,50 @@
 ---
 id: TC-FA-PREF-E2E-125-log-save-dua-field-sekaligus-menulis-dua-baris-log
 title: "Log: Save Dua Field Sekaligus Menulis Dua Baris Log di Tiga Surface"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-378
   - TC-FA-PREF-379
+sourceRules: ["D-01", "FAPREF-LOGIC-10a", "F-FAPREF-01.k21a", "PV-04", "F-FAPREF-01.k20c", "PV-05", "F-FAPREF-01.k20e", "F-FAPREF-01.k20a", "T-01", "L-02a", "L-02e", "§4.1.4#r1", "§4.1.4#r2", "§8#r4", "§4.1.4#r3", "§8#b1", "§4.1.4#r4", "§4.1.4#r7", "SET-01", "L-02g", "SET-12", "L-02l", "L-02b", "§8.2#r1", "§8.2#p2", "L-02c", "L-02d", "§8.3#p1", "FAPREF-LOGIC-10j", "§4.2b#b1", "§8#b2", "SET-07", "L-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": 5
+  "FAPREF-LOGIC-10a": 5
+  "F-FAPREF-01.k21a": 5
+  "PV-04": 5
+  "F-FAPREF-01.k20c": 5
+  "PV-05": 5
+  "F-FAPREF-01.k20e": 5
+  "F-FAPREF-01.k20a": 5
+  "T-01": [7, 27]
+  "L-02a": [9, 11, 12, 30, 32, 33]
+  "L-02e": [9, 10, 15, 19, 30, 31, 36, 40]
+  "§4.1.4#r1": [10, 31]
+  "§4.1.4#r2": [11, 12, 32, 33]
+  "§8#r4": [11, 12, 32, 33]
+  "§4.1.4#r3": [11, 12, 32, 33]
+  "§8#b1": [11, 12, 32, 33]
+  "§4.1.4#r4": [11, 12, 32, 33]
+  "§4.1.4#r7": [11, 12, 20, 21, 32, 33, 41, 42]
+  "SET-01": [11, 16, 20]
+  "L-02g": [11, 16, 20]
+  "SET-12": [12, 17, 21]
+  "L-02l": [12, 17, 21]
+  "L-02b": [15, 16, 17, 36, 37, 38]
+  "§8.2#r1": [16, 17, 20, 21]
+  "§8.2#p2": [16, 17, 20, 21]
+  "L-02c": [19, 20, 21, 40, 41, 42]
+  "L-02d": [20, 21, 41, 42]
+  "§8.3#p1": [20, 21, 41, 42]
+  "FAPREF-LOGIC-10j": 28
+  "§4.2b#b1": 28
+  "§8#b2": [32, 33, 37, 38, 41, 42]
+  "SET-07": [32, 33, 37, 38, 41, 42]
+  "L-02f": [32, 33, 37, 38, 41, 42]
 coverage:
   web: automated
 ---

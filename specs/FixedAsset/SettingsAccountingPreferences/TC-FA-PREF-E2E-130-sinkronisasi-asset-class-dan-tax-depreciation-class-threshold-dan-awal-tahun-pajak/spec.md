@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-130-sinkronisasi-asset-class-dan-tax-depreciation-class-threshold-dan-awal-tahun-pajak
 title: "Sinkronisasi ke Asset Class dan Tax Depreciation Class: Threshold dan Awal Tahun Pajak"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-PREF-393
   - TC-FA-PREF-396
   - TC-FA-PREF-409
+sourceRules: ["FAPREF-LOGIC-06c", "FAPREF-LOGIC-08b", "D-01", "PV-01", "FAPREF-LOGIC-03b", "PV-04", "PV-05", "FAPREF-LOGIC-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06c": 5
+  "FAPREF-LOGIC-08b": 6
+  "D-01": [10, 24]
+  "PV-01": 10
+  "FAPREF-LOGIC-03b": [15, 17, 20]
+  "PV-04": 24
+  "PV-05": 24
+  "FAPREF-LOGIC-02f": 32
+anchor: [31]
 coverage:
   web: automated
 ---

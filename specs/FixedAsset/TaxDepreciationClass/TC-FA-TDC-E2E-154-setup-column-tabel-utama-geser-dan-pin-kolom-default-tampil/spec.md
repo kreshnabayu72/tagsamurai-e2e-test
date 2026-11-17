@@ -1,12 +1,18 @@
 ---
 id: TC-FA-TDC-E2E-154-setup-column-tabel-utama-geser-dan-pin-kolom-default-tampil
 title: "Setup Column Tabel Utama: Geser dan Pin Kolom yang Tampil Secara Default"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-542
   - TC-FA-TDC-543
+sourceRules: []
+smoke: []
+dependsOn: []
+trace:
+anchor: [4, 6, 8, 18, 21, 27]
 coverage:
   web: automated
 ---

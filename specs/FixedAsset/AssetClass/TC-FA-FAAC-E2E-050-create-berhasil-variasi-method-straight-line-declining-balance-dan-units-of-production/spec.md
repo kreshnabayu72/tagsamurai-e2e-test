@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-050-create-berhasil-variasi-method-straight-line-declining-balance-dan-units-of-production
 title: "Create Asset Class Berhasil: Variasi Method Straight Line, Declining Balance, dan Units of Production"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-FAAC-88
   - TC-FA-FAAC-89
   - TC-FA-FAAC-90
+sourceRules: ["T-01", "§[F-FAAC-01] Create Asset Class#b5", "ST-01", "§4.1.1#r8", "§4.1.1#r4", "FLD-07"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [5, 14, 26]
+  "§[F-FAAC-01] Create Asset Class#b5": 6
+  "ST-01": 6
+  "§4.1.1#r8": 7
+  "§4.1.1#r4": [17, 29]
+  "FLD-07": 22
 coverage:
   web: automated
 ---

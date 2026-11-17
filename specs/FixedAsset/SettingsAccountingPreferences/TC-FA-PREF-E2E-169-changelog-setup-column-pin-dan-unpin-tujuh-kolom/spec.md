@@ -1,11 +1,17 @@
 ---
 id: TC-FA-PREF-E2E-169-changelog-setup-column-pin-dan-unpin-tujuh-kolom
 title: "Changelog Setup Column: Pin dan unpin tujuh kolom"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-337
+sourceRules: []
+smoke: []
+dependsOn: []
+trace:
+anchor: [7, 12]
 coverage:
   web: automated
 ---

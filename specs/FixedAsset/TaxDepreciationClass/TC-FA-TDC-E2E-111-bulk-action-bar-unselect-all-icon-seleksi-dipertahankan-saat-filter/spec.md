@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-111-bulk-action-bar-unselect-all-icon-seleksi-dipertahankan-saat-filter
 title: "Bulk Action Bar Unselect All Icon dan Seleksi Dipertahankan saat Filter"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-TDC-421
   - TC-FA-TDC-422
   - TC-FA-TDC-425
+sourceRules: ["FATDC-LOGIC-14l", "§3.6#p1", "FATDC-LOGIC-14k", "§5#b2", "D-01", "FATDC-LOGIC-14e"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-14l": [4, 9]
+  "§3.6#p1": [5, 16]
+  "FATDC-LOGIC-14k": 10
+  "§5#b2": [22, 24]
+  "D-01": 26
+  "FATDC-LOGIC-14e": 26
+anchor: [15, 23]
 coverage:
   web: automated
 ---

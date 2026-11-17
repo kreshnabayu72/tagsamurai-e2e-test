@@ -1,12 +1,21 @@
 ---
 id: TC-FA-FAAC-E2E-046-create-opsi-tax-depreciation-class-disabled-dan-inactive
 title: "Create Asset Class: Opsi Tax Depreciation Class Inactive Tidak Ditawarkan dan Select Disabled Bila Tidak Ada Class Active"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-FAAC-130
   - TC-FA-FAAC-129
+sourceRules: ["FAAC-LOGIC-02e", "§4.1.2#r14", "FI-05", "V-19"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-02e": [4, 6, 8]
+  "§4.1.2#r14": [4, 8]
+  "FI-05": [16, 17]
+  "V-19": 19
 coverage:
   web: automated
 ---

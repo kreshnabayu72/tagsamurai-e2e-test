@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-028-role-matrix-tooltip-st-05-st-08-field-disabled-atau-terkunci
 title: "Role Matrix: Visibilitas Tooltip ST-05 dan ST-08 pada Field Disabled atau Terkunci untuk Read Only dan Read + Update"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-PREF-245
   - TC-FA-PREF-246
   - TC-FA-PREF-247
+sourceRules: ["§4.8#r4", "ST-08", "§4.5#b4", "ST-05", "§4.3#b1", "FAPREF-LOGIC-02e"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r4": [1, 9, 26]
+  "ST-08": [3, 5, 7, 9, 10, 16, 20]
+  "§4.5#b4": 7
+  "ST-05": [14, 18, 25]
+  "§4.3#b1": [14, 18, 25]
+  "FAPREF-LOGIC-02e": [14, 18, 25]
 coverage:
   web: automated
 ---

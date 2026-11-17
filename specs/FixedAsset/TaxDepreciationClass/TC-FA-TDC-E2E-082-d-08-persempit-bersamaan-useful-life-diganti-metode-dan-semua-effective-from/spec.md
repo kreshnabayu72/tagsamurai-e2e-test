@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-082-d-08-persempit-bersamaan-useful-life-diganti-metode-dan-semua-effective-from
 title: "Guard Persempit D-08: Bersamaan dengan Useful Life Diubah, Mengganti Metode, Metode Tidak Dipakai Tidak Diblokir, dan Berlaku untuk Semua Effective From"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-289
   - TC-FA-TDC-290
   - TC-FA-TDC-292
+sourceRules: ["D-08", "E-FATDC-17", "F-FATDC-02.k6c", "§4.2c#b1", "D-09", "FI-04"]
+smoke: []
+dependsOn: []
+trace:
+  "D-08": [6, 10, 20, 21, 31]
+  "E-FATDC-17": [7, 11]
+  "F-FATDC-02.k6c": [8, 9, 22]
+  "§4.2c#b1": [14, 25, 34]
+  "D-09": 30
+  "FI-04": 30
 coverage:
   web: automated
 ---

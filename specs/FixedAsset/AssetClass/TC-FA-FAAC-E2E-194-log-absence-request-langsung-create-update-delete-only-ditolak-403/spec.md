@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-194-log-absence-request-langsung-create-update-delete-only-ditolak-403
 title: "Log Absence: Request Langsung Create-Only, Update-Only, dan Delete-Only Ditolak 403 Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-FAAC-600
   - TC-FA-FAAC-619
   - TC-FA-FAAC-620
+sourceRules: ["E-FAAC-78", "§9.3#r3", "§9.3#r4", "§8#p1", "§8.4#r9", "§8.2#p1", "§8.3#p1", "§9.3#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAAC-78": [3, 4, 5, 11, 12, 18, 19, 25, 31]
+  "§9.3#r3": [3, 4, 19, 25, 31]
+  "§9.3#r4": [5, 12]
+  "§8#p1": [6, 13, 20, 26, 32]
+  "§8.4#r9": [6, 7, 8, 13, 14, 15, 20, 21, 22, 26, 27, 28, 32, 33, 34]
+  "§8.2#p1": [7, 14, 21, 27, 33]
+  "§8.3#p1": [8, 15, 22, 28, 34]
+  "§9.3#r2": [11, 18]
 coverage:
   web: automated
 ---

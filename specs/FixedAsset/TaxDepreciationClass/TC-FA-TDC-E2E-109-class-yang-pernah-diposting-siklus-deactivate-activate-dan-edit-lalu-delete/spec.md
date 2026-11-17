@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-109-class-yang-pernah-diposting-siklus-deactivate-activate-dan-edit-lalu-delete
 title: "Class yang Pernah Diposting, Siklus Deactivate dan Activate, serta Edit lalu Delete Class Inactive"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-903
   - TC-FA-TDC-904
   - TC-FA-TDC-908
+sourceRules: ["D-02", "D-04", "D-01", "FATDC-LOGIC-08h", "§3.6#r5", "§4.1.1#r9", "L-04", "T-02a", "FATDC-LOGIC-08g", "§3.6#r12", "F-FATDC-06.k6"]
+smoke: []
+dependsOn: []
+trace:
+  "D-02": 3
+  "D-04": [6, 14, 15]
+  "D-01": 9
+  "FATDC-LOGIC-08h": [11, 20]
+  "§3.6#r5": 12
+  "§4.1.1#r9": 21
+  "L-04": [24, 25]
+  "T-02a": 30
+  "FATDC-LOGIC-08g": 31
+  "§3.6#r12": 34
+  "F-FATDC-06.k6": 35
 coverage:
   web: automated
 ---

@@ -1,12 +1,19 @@
 ---
 id: TC-FA-FAAC-E2E-053-unsaved-changes-form-create-breadcrumb-dan-menu-sidebar
 title: "Unsaved Changes pada Form Create: Meninggalkan Form Lewat Breadcrumb dan Menu Sidebar"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-132
   - TC-FA-FAAC-661
+sourceRules: ["§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [4, 6, 7, 10, 16, 18, 19]
+anchor: [12, 22, 25]
 coverage:
   web: automated
 ---

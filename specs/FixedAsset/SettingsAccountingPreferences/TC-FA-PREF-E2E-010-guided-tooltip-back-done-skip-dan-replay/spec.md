@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-010-guided-tooltip-back-done-skip-dan-replay
 title: "Guided Tooltip Preferences: [Back], [Done], [Skip], dan Replay Lewat [?]"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-PREF-57
   - TC-FA-PREF-58
   - TC-FA-PREF-59
+sourceRules: ["§4.7#r1", "§4.2a#p3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#r1": [6, 7, 30]
+  "§4.2a#p3": [19, 27]
+anchor: [8, 17, 20, 25, 28, 31]
 coverage:
   web: automated
 ---

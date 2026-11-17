@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-113-changelog-paginasi-105-entri-ukuran-halaman-dan-input-nomor-halaman
 title: "Changelog paginasi 105 entri: ukuran halaman dan input nomor halaman"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,13 @@ sourceTc:
   - TC-FA-PREF-344
   - TC-FA-PREF-345
   - TC-FA-PREF-346
+sourceRules: ["§4.1.4#r1", "§9.5#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r1": 2
+  "§9.5#r8": 2
+anchor: [4, 8, 9, 13, 15, 19, 23, 25, 27]
 coverage:
   web: automated
 ---

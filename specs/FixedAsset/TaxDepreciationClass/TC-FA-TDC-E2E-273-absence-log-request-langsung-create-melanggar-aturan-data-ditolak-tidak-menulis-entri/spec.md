@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-273-absence-log-request-langsung-create-melanggar-aturan-data-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Create yang Melanggar Aturan Data (Land, Building, Class Code Kembar) yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-TDC-842
   - TC-FA-TDC-843
   - TC-FA-TDC-844
+sourceRules: ["F-FATDC-01.k6", "§8.4#r7", "F-FATDC-01.k7", "F-FATDC-01.k1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-01.k6": 3
+  "§8.4#r7": [4, 5, 6, 10, 11, 12, 16, 17, 18]
+  "F-FATDC-01.k7": 9
+  "F-FATDC-01.k1": 15
 coverage:
   web: automated
 ---

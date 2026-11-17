@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-021-kontrol-tidak-tersedia-pada-tab-preferences
 title: "Kontrol yang tidak disediakan tab Preferences: Create, Delete, Search, Filter, bulk action, Download, paginasi, setting keterangan jurnal"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-PREF-594
   - TC-FA-PREF-595
   - TC-FA-PREF-608
+sourceRules: ["§4.1.1#p1", "FAPREF-LOGIC-01b", "§4.1#r1", "SET-11", "§9.5#r1", "§4.1.1#p2", "§5#p1", "§4.2a#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p1": [1, 2, 4, 5, 12, 17]
+  "FAPREF-LOGIC-01b": [3, 8]
+  "§4.1#r1": 7
+  "SET-11": 10
+  "§9.5#r1": 10
+  "§4.1.1#p2": 11
+  "§5#p1": [13, 14, 16, 18]
+  "§4.2a#p1": 15
 coverage:
   web: automated
 ---

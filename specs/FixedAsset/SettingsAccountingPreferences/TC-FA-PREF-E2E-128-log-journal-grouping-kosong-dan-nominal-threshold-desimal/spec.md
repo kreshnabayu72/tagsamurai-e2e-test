@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-128-log-journal-grouping-kosong-dan-nominal-threshold-desimal
 title: "Log: Journal Grouping Dikosongkan atau Diisi dari Kosong dan Nominal Threshold Desimal"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,19 @@ sourceTc:
   - TC-FA-PREF-389
   - TC-FA-PREF-390
   - TC-FA-PREF-391
+sourceRules: ["T-01", "FAPREF-LOGIC-10a", "L-02a", "L-02j", "SET-11", "D-01", "PV-01", "FAPREF-LOGIC-03e", "S-01g"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [4, 15]
+  "FAPREF-LOGIC-10a": [5, 16]
+  "L-02a": [7, 18, 29, 42]
+  "L-02j": [8, 19, 30, 34, 43, 47]
+  "SET-11": [8, 19]
+  "D-01": [25, 38]
+  "PV-01": [25, 38]
+  "FAPREF-LOGIC-03e": [27, 40]
+  "S-01g": [33, 46]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-183-guided-tooltip-done-resize-viewport-dan-navigasi-halaman
 title: "Guided Tooltip: Done, Resize Viewport, dan Navigasi Halaman"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,12 @@ sourceTc:
   - TC-FA-TDC-656
   - TC-FA-TDC-657
   - TC-FA-TDC-658
+sourceRules: ["§4.7#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#p2": [13, 17, 22, 26]
+anchor: [4, 6, 8, 9, 15, 24]
 coverage:
   web: automated
 ---

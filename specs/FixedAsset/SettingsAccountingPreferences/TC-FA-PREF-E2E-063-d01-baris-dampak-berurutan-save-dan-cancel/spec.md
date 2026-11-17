@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-063-d01-baris-dampak-berurutan-save-dan-cancel
 title: "D-01 Baris Dampak Berurutan, Klik [Save] D-01 Menyimpan, [Cancel] D-01"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,24 @@ sourceTc:
   - TC-FA-PREF-198
   - TC-FA-PREF-200
   - TC-FA-PREF-201
+sourceRules: ["D-01", "PV-01", "PV-02", "PV-03", "PV-04", "PV-05", "§4.2b#p2", "F-FAPREF-01.k21b", "T-01", "FAPREF-LOGIC-03e", "§3.1#b6", "ST-01", "F-FAPREF-01.k21c", "§7.2#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [7, 9, 10]
+  "PV-01": 8
+  "PV-02": 8
+  "PV-03": 8
+  "PV-04": 8
+  "PV-05": 8
+  "§4.2b#p2": 11
+  "F-FAPREF-01.k21b": 16
+  "T-01": 17
+  "FAPREF-LOGIC-03e": 18
+  "§3.1#b6": 19
+  "ST-01": [20, 28]
+  "F-FAPREF-01.k21c": [25, 27]
+  "§7.2#p1": 26
 coverage:
   web: automated
 ---

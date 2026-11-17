@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-024-role-matrix-detail-create-manage-gabungan-dan-default-user
 title: "Role Matrix: Visibilitas Detail Mode Create, Akses Default User, dan Gabungan Elemen Manage Accounting (Read, Create, Update)"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,25 @@ sourceTc:
   - TC-FA-FAAC-68
   - TC-FA-FAAC-71
   - TC-FA-FAAC-672
+sourceRules: ["§4.8#r12", "§4.1.2#p11", "§4.8#r13", "§4.8#r11", "§4.8#r14", "§4.8#r15", "§4.8#r17", "§4.8#r18", "§4.8#r20", "§4.8#r19", "§4.8#b3", "§4.8#r9", "§4.8#r10", "§4.8#r21", "ST-11"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r12": 2
+  "§4.1.2#p11": 3
+  "§4.8#r13": 5
+  "§4.8#r11": [9, 19]
+  "§4.8#r14": [12, 25]
+  "§4.8#r15": 12
+  "§4.8#r17": [14, 22]
+  "§4.8#r18": [14, 22]
+  "§4.8#r20": [14, 23]
+  "§4.8#r19": 16
+  "§4.8#b3": 25
+  "§4.8#r9": 27
+  "§4.8#r10": 27
+  "§4.8#r21": [29, 31]
+  "ST-11": 32
 coverage:
   web: automated
 ---

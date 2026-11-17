@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-152-sort-active-effective-from-last-updated-guard-dan-urutan-deterministik
 title: "Sort: Active, Effective From, Last Updated, Guard Kolom, dan Urutan Deterministik"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,20 @@ sourceTc:
   - TC-FA-TDC-536
   - TC-FA-TDC-537
   - TC-FA-TDC-538
+sourceRules: ["§4.1.1#r1", "§4.1.1#b8", "§9.5#r1", "§4.1.1#r13", "§4.4#r10", "§4.1.1#r3", "§4.4#r11", "§9.5#r3", "§5#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r1": [2, 4]
+  "§4.1.1#b8": [6, 8]
+  "§9.5#r1": 10
+  "§4.1.1#r13": [15, 17]
+  "§4.4#r10": [23, 29]
+  "§4.1.1#r3": 24
+  "§4.4#r11": 28
+  "§9.5#r3": 39
+  "§5#b6": 42
+anchor: [25, 26, 38]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-018-alert-dependensi-akun-tidak-memblokir-link-dan-hilang-otomatis
 title: "Alert Dependensi Akun: Tidak Memblokir Aksi, Link Go to Chart of Accounts, dan Hilang Otomatis Setelah Akun Active Tersedia"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-FAAC-30
   - TC-FA-FAAC-27
   - TC-FA-FAAC-28
+sourceRules: ["F-FAAC-16.k2", "§4.2b#p1", "§5#b2", "§5#b8", "R-15", "FAAC-LOGIC-20c", "FI-15", "FAAC-LOGIC-20b", "§4.1.8#p2", "§4.1#r2", "F-FAAC-16.k1", "FAAC-LOGIC-20d"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAAC-16.k2": [1, 5, 11, 16]
+  "§4.2b#p1": 3
+  "§5#b2": 7
+  "§5#b8": 10
+  "R-15": 10
+  "FAAC-LOGIC-20c": 11
+  "FI-15": 18
+  "FAAC-LOGIC-20b": 20
+  "§4.1.8#p2": 20
+  "§4.1#r2": 25
+  "F-FAAC-16.k1": 26
+  "FAAC-LOGIC-20d": 26
 coverage:
   web: automated
 ---

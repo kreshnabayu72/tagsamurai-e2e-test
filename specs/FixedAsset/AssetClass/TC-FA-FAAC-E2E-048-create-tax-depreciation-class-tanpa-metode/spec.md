@@ -1,11 +1,21 @@
 ---
 id: TC-FA-FAAC-E2E-048-create-tax-depreciation-class-tanpa-metode
 title: "Create Asset Class: Tax Depreciation Class Tanpa Metode Membuat Tax Method Read-Only"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-128
+sourceRules: ["ST-09", "FI-04", "FAAC-LOGIC-02g", "V-20", "§[F-FAAC-01] Create Asset Class#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-09": 4
+  "FI-04": [4, 5]
+  "FAAC-LOGIC-02g": 5
+  "V-20": 8
+  "§[F-FAAC-01] Create Asset Class#b3": 9
 coverage:
   web: automated
 ---

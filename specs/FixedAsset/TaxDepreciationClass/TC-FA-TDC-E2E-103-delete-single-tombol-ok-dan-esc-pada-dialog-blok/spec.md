@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-103-delete-single-tombol-ok-dan-esc-pada-dialog-blok
 title: "Delete Single: Tombol OK dan Esc pada Dialog Blok"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-404
   - TC-FA-TDC-405
   - TC-FA-TDC-406
+sourceRules: ["D-04", "FATDC-LOGIC-09d", "F-FATDC-06.k1", "E-FATDC-26", "D-05", "F-FATDC-06.k2", "E-FATDC-27", "§4.5#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": 4
+  "FATDC-LOGIC-09d": [5, 14, 20, 26]
+  "F-FATDC-06.k1": [6, 21]
+  "E-FATDC-26": [9, 22]
+  "D-05": 13
+  "F-FATDC-06.k2": [15, 27]
+  "E-FATDC-27": [16, 28]
+  "§4.5#b1": [19, 25]
+anchor: [8]
 coverage:
   web: automated
 ---

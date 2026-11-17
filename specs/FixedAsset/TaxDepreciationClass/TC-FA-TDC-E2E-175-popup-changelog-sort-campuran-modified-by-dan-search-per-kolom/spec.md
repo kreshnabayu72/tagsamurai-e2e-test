@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-175-popup-changelog-sort-campuran-modified-by-dan-search-per-kolom
 title: "Popup Changelog: Sort Kolom Campuran, Sort Modified By, dan Search per Kolom"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-TDC-626
   - TC-FA-TDC-627
   - TC-FA-TDC-628
+sourceRules: ["§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r32", "ST-26", "§5#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r29": [4, 5, 6, 23]
+  "§4.1.1#r30": [8, 9, 10, 25]
+  "§4.1.1#r31": [12, 27]
+  "§4.1.1#r26": 17
+  "§4.1.1#r27": 19
+  "§4.1.1#r28": 21
+  "§4.1.1#r32": 29
+  "ST-26": 31
+  "§5#b2": 31
+anchor: [14]
 coverage:
   web: automated
 ---

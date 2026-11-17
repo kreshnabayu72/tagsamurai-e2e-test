@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-094-hari-ini-menurut-time-zone-entitas-bukan-utc-dan-versi-pertama
 title: "Hari Ini Menurut Time Zone Entitas Menentukan Versi Current atau Scheduled dan Versi Pertama Tidak Mengunci Fiscal Year Start"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-350
   - TC-FA-TDC-351
   - TC-FA-TDC-352
+sourceRules: ["§11.2#r6", "E-FATDC-20", "FLD-01", "§4.1.2#r1", "ST-30", "§9.5#r10", "FATDC-LOGIC-04w"]
+smoke: []
+dependsOn: []
+trace:
+  "§11.2#r6": [4, 5]
+  "E-FATDC-20": [14, 26]
+  "FLD-01": 16
+  "§4.1.2#r1": 16
+  "ST-30": 17
+  "§9.5#r10": 22
+  "FATDC-LOGIC-04w": [22, 26]
 coverage:
   web: automated
 ---

@@ -1,11 +1,18 @@
 ---
 id: TC-FA-TDC-E2E-229-role-matrix-positif-restore-default-classes-di-empty-state-pemegang-create
 title: "Role Matrix Positif: Restore default classes di Empty State bagi Pemegang Create"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-51
+sourceRules: ["ST-23", "§4.8#r10"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [1, 4]
+  "§4.8#r10": [2, 5]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-090-unassign-menu-baris-dialog-dan-blokir
 title: "Unassign: Menu Baris Asset Name, Dialog Single, dan Blokir Asset Name dengan Aset Aktif"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-FAAC-229
   - TC-FA-FAAC-230
   - TC-FA-FAAC-235
+sourceRules: ["§4.1.3#p5", "§3.9#r13", "§4.3#p1", "ST-11", "§3.9#r15", "D-15", "D-17", "F-FAAC-10.k1", "R-11"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#p5": [5, 11]
+  "§3.9#r13": 5
+  "§4.3#p1": 7
+  "ST-11": [11, 12]
+  "§3.9#r15": 13
+  "D-15": 16
+  "D-17": 23
+  "F-FAAC-10.k1": 27
+  "R-11": 28
+anchor: [18, 19, 20, 25, 26]
 coverage:
   web: automated
 ---

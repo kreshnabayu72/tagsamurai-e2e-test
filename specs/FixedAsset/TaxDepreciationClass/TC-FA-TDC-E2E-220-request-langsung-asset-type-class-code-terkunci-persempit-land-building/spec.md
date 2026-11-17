@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-220-request-langsung-asset-type-class-code-terkunci-persempit-land-building
 title: "Request Langsung: Asset Type, Class Code Terkunci, Persempit Allowed Methods, serta Land dan Building Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,21 @@ sourceTc:
   - TC-FA-TDC-841
   - TC-FA-TDC-842
   - TC-FA-TDC-843
+sourceRules: ["F-FATDC-02.k13", "FATDC-LOGIC-03a.3", "F-FATDC-02.k1", "FATDC-LOGIC-07c", "FATDC-LOGIC-10b.3", "FATDC-LOGIC-10a", "V-18", "FATDC-LOGIC-03b", "V-14", "FATDC-LOGIC-03c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k13": [3, 6]
+  "FATDC-LOGIC-03a.3": 5
+  "F-FATDC-02.k1": 8
+  "FATDC-LOGIC-07c": 10
+  "FATDC-LOGIC-10b.3": [13, 15]
+  "FATDC-LOGIC-10a": 16
+  "V-18": 18
+  "FATDC-LOGIC-03b": 21
+  "V-14": 23
+  "FATDC-LOGIC-03c": [23, 26]
+anchor: [20, 25]
 coverage:
   web: automated
 ---

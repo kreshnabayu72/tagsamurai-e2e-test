@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-004-restore-default-classes-tidak-tersedia-bila-masih-ada-class
 title: "Restore Default Classes Tidak Tersedia Selama Masih Ada Class"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-316
   - TC-FA-TDC-317
   - TC-FA-TDC-318
+sourceRules: ["§4.1.1#p5", "§7.1#p3", "§4.4#r11", "§4.1.1#p3", "ST-23", "FATDC-LOGIC-02k", "§4.1.1#b7", "FATDC-LOGIC-14b", "§3.6#r12"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p5": [1, 25]
+  "§7.1#p3": [1, 3, 9, 25, 27, 33]
+  "§4.4#r11": 3
+  "§4.1.1#p3": [6, 30]
+  "ST-23": [13, 20, 40]
+  "FATDC-LOGIC-02k": [14, 21, 40]
+  "§4.1.1#b7": 22
+  "FATDC-LOGIC-14b": 33
+  "§3.6#r12": 39
 coverage:
   web: automated
 ---

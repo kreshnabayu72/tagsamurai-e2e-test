@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-171-sinkron-tabel-pilihan-move-dan-used-by-b
 title: "Sinkronisasi Versi, Status Active, dan Kunci Periode ke Assign, Pilihan Move, dan Log"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,32 @@ sourceTc:
   - TC-FA-FAAC-564
   - TC-FA-FAAC-566
   - TC-FA-FAAC-586
+sourceRules: ["D-24", "S-03c", "L-12", "S-03d", "S-04a", "S-04b", "S-04d", "L-04", "§8.2#p1", "§8.3#p1", "D-20", "S-05a", "S-05b", "S-05d", "ST-07", "D-05", "D-12", "S-10d", "L-10", "L-11", "J-01", "J-02"]
+smoke: []
+dependsOn: []
+trace:
+  "D-24": 10
+  "S-03c": 13
+  "L-12": 14
+  "S-03d": 16
+  "S-04a": [24, 25]
+  "S-04b": 33
+  "S-04d": [37, 41, 44]
+  "L-04": [38, 68]
+  "§8.2#p1": [42, 72]
+  "§8.3#p1": [45, 75, 103]
+  "D-20": 53
+  "S-05a": 55
+  "S-05b": [62, 63, 113, 114]
+  "S-05d": [67, 71, 74]
+  "ST-07": [82, 84]
+  "D-05": 87
+  "D-12": 93
+  "S-10d": [98, 102]
+  "L-10": 99
+  "L-11": 99
+  "J-01": 99
+  "J-02": 99
 coverage:
   web: automated
 ---

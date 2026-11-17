@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-087-restore-default-classes-screening-empty-state-dan-dialog-d-12
 title: "Restore Default Classes: Screening Empty State, Posisi Tombol, dan Dialog D-12 (Cancel dan Esc)"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,32 @@ sourceTc:
   - TC-FA-TDC-319
   - TC-FA-TDC-321
   - TC-FA-TDC-322
+sourceRules: ["ST-23", "FATDC-LOGIC-02k", "§4.1.1#b7", "§4.1.1#r2", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r10", "§4.1.1#p5", "§4.6#b5", "§4.1.1#b4", "D-12", "FATDC-LOGIC-02f", "§4.1.5#r1", "§4.1.5#r2", "§4.1.5#r3", "§4.1.5#r4", "§4.1.5#r5", "§4.1.5#r6", "§4.1.5#r7", "E-FATDC-45", "§4.1#r6"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [2, 3, 4, 5, 8, 25, 29]
+  "FATDC-LOGIC-02k": [5, 25]
+  "§4.1.1#b7": 6
+  "§4.1.1#r2": 7
+  "§4.1.1#r8": 7
+  "§4.1.1#r9": 7
+  "§4.1.1#r10": 7
+  "§4.1.1#p5": 10
+  "§4.6#b5": [11, 14]
+  "§4.1.1#b4": 13
+  "D-12": [18, 19, 20, 22, 24, 29]
+  "FATDC-LOGIC-02f": [19, 20, 30]
+  "§4.1.5#r1": 19
+  "§4.1.5#r2": 19
+  "§4.1.5#r3": 19
+  "§4.1.5#r4": 19
+  "§4.1.5#r5": 19
+  "§4.1.5#r6": 19
+  "§4.1.5#r7": 19
+  "E-FATDC-45": 21
+  "§4.1#r6": 22
+anchor: [26]
 coverage:
   web: automated
 ---

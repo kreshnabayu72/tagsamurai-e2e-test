@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-075-form-pristine-tidak-menampilkan-d04-perpindahan-setelah-save-atau-perubahan-dikembalikan
 title: "Form Pristine Tidak Menampilkan D-04; Perpindahan Setelah Save atau Setelah Perubahan Dikembalikan Tidak Menampilkan Dialog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-PREF-268
   - TC-FA-PREF-269
   - TC-FA-PREF-576
+sourceRules: ["F-FAPREF-02.k2", "ST-01", "FAPREF-LOGIC-10f", "T-01", "FAPREF-LOGIC-04a"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-02.k2": [2, 6, 13, 20, 25]
+  "ST-01": 11
+  "FAPREF-LOGIC-10f": 11
+  "T-01": 18
+  "FAPREF-LOGIC-04a": 23
+anchor: [3, 7, 14, 21, 26]
 coverage:
   web: automated
 ---

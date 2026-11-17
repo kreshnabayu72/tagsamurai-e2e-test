@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-095-job-j-03-last-posted-tax-year-memajukan-nilai-dan-kunci-class-code
 title: "Job J-03: Posting Penyusutan Fiskal Memajukan Last Posted Tax Year dan Mengunci Class Code"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-TDC-355
   - TC-FA-TDC-356
   - TC-FA-TDC-357
+sourceRules: ["§4.1.2#r11", "F-FATDC-11.k1a", "ST-06", "§4.3#r16", "D-04", "FATDC-LOGIC-09a", "F-FATDC-11.k2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.2#r11": [4, 15]
+  "F-FATDC-11.k1a": [4, 15]
+  "ST-06": 6
+  "§4.3#r16": 6
+  "D-04": 9
+  "FATDC-LOGIC-09a": 11
+  "F-FATDC-11.k2": [20, 25]
 coverage:
   web: automated
 ---

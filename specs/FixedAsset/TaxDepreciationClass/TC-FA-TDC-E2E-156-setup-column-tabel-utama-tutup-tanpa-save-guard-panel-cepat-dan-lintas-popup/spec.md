@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-156-setup-column-tabel-utama-tutup-tanpa-save-guard-panel-cepat-dan-lintas-popup
 title: "Setup Column Tabel Utama: Tutup Tanpa Save, Guard Satu Kolom, Panel Cepat, dan Independensi Lintas Popup"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,24 @@ sourceTc:
   - TC-FA-TDC-550
   - TC-FA-TDC-552
   - TC-FA-TDC-553
+sourceRules: ["§5#b9", "§4.1.1#b4", "§4.1.6#r1", "§4.1.6#r2", "§4.1.6#r3", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§9.5#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b9": [6, 12, 27, 29, 30, 33]
+  "§4.1.1#b4": [17, 22]
+  "§4.1.6#r1": [40, 61]
+  "§4.1.6#r2": [40, 62]
+  "§4.1.6#r3": 40
+  "§4.1.1#r25": [43, 68]
+  "§4.1.1#r26": 43
+  "§4.1.1#r27": 43
+  "§4.1.1#r28": [43, 69]
+  "§4.1.1#r29": 43
+  "§4.1.1#r30": 43
+  "§4.1.1#r31": 43
+  "§9.5#r4": 59
+anchor: [5, 11]
 coverage:
   web: automated
 ---

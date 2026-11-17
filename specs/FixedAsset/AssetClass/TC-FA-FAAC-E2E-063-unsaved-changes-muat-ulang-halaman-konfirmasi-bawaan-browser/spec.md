@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-063-unsaved-changes-muat-ulang-halaman-konfirmasi-bawaan-browser
 title: "Unsaved Changes: Konfirmasi Bawaan Browser saat Muat Ulang Halaman pada Form Create dan Edit"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-FAAC-664
   - TC-FA-FAAC-665
   - TC-FA-FAAC-666
+sourceRules: ["§4.2f#b2", "T-02"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [8, 18]
+  "T-02": 33
+anchor: [4, 6, 14, 16, 22, 27, 35]
 coverage:
   web: automated
 ---

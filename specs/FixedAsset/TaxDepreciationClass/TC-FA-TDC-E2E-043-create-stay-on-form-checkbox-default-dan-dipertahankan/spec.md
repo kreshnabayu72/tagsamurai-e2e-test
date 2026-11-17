@@ -1,12 +1,25 @@
 ---
 id: TC-FA-TDC-E2E-043-create-stay-on-form-checkbox-default-dan-dipertahankan
 title: "Create dengan Checkbox Stay on This Form - Form Kosong dan Status Checkbox"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-111
   - TC-FA-TDC-112
+sourceRules: ["T-01", "FI-10", "ST-02", "F-FATDC-01.k13", "§9.5#r5", "§9.5#r7", "§12#r11", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": 5
+  "FI-10": [6, 8, 15]
+  "ST-02": 7
+  "F-FATDC-01.k13": [8, 16, 26]
+  "§9.5#r5": [9, 10, 11, 12, 13, 14]
+  "§9.5#r7": [16, 19, 22, 26, 31]
+  "§12#r11": 28
+  "§4.2c#b1": 29
 coverage:
   web: automated
 ---

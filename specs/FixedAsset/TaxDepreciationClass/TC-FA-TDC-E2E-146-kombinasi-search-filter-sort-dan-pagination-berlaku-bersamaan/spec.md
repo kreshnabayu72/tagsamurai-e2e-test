@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-146-kombinasi-search-filter-sort-dan-pagination-berlaku-bersamaan
 title: "Kombinasi Search, Filter, Sort, dan Pagination Berlaku Bersamaan"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-TDC-504
   - TC-FA-TDC-505
   - TC-FA-TDC-506
+sourceRules: ["§4.1.1#r9", "§5#b4", "§4.1.1#b7", "§5#b6", "§5#b5", "§5#b2", "§4.4#r10", "§4.1.1#r4", "§4.1.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r9": [6, 29, 40]
+  "§5#b4": 6
+  "§4.1.1#b7": [7, 25, 51]
+  "§5#b6": [8, 12, 13, 14, 15, 26, 27, 37, 38, 50]
+  "§5#b5": [10, 11]
+  "§5#b2": 28
+  "§4.4#r10": [29, 40, 48, 49]
+  "§4.1.1#r4": 39
+  "§4.1.1#r3": 49
 coverage:
   web: automated
 ---

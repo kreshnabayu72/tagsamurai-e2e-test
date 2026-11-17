@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-115-changelog-download-menu-format-csv-xlsx-dan-mengikuti-filter
 title: "Changelog Download: menu pilihan format, berkas CSV, berkas XLSX, dan mengikuti Filter"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,20 @@ sourceTc:
   - TC-FA-PREF-351
   - TC-FA-PREF-352
   - TC-FA-PREF-353
+sourceRules: ["§4.1.4#b2", "§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7", "§4.1.4#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#b2": [3, 8, 10, 11, 16, 19, 25]
+  "§4.1.4#r1": 10
+  "§4.1.4#r2": [10, 25]
+  "§4.1.4#r3": 10
+  "§4.1.4#r4": 10
+  "§4.1.4#r5": 10
+  "§4.1.4#r6": 10
+  "§4.1.4#r7": 10
+  "§4.1.4#r16": 25
+anchor: [7, 15, 18]
 coverage:
   web: automated
 ---

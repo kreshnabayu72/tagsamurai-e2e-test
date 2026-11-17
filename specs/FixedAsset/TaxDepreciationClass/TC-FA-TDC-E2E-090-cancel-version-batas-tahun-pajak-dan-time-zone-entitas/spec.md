@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-090-cancel-version-batas-tahun-pajak-dan-time-zone-entitas
 title: "Cancel Version: Batas Tahun Pajak Dimulai Menurut Time Zone Entitas"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-308
   - TC-FA-TDC-309
   - TC-FA-TDC-310
+sourceRules: ["T-07", "F-FATDC-03.k5b", "E-FATDC-69", "ST-30", "FLD-01", "FATDC-LOGIC-04s.2", "FATDC-LOGIC-04i", "FATDC-LOGIC-04ab", "FATDC-LOGIC-04ad", "§4.1.6#r14", "§4.1.6#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "T-07": [6, 29]
+  "F-FATDC-03.k5b": [6, 7]
+  "E-FATDC-69": 8
+  "ST-30": [8, 12, 22]
+  "FLD-01": [11, 21]
+  "FATDC-LOGIC-04s.2": [12, 22]
+  "FATDC-LOGIC-04i": [13, 16, 23, 31]
+  "FATDC-LOGIC-04ab": [13, 23]
+  "FATDC-LOGIC-04ad": 15
+  "§4.1.6#r14": 16
+  "§4.1.6#r5": 31
 coverage:
   web: automated
 ---

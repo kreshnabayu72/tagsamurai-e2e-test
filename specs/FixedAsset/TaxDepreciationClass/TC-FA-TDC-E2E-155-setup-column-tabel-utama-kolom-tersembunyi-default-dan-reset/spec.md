@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-155-setup-column-tabel-utama-kolom-tersembunyi-default-dan-reset
 title: "Setup Column Tabel Utama: Kolom Tersembunyi Secara Default dan Reset to Default"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-TDC-545
   - TC-FA-TDC-546
   - TC-FA-TDC-547
+sourceRules: ["§5#b9", "§4.1.1#r2", "§9.5#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b9": [6, 8, 14]
+  "§4.1.1#r2": 13
+  "§9.5#r4": [54, 57]
+anchor: [4, 22, 24, 26, 36, 39, 45]
 coverage:
   web: automated
 ---

@@ -1,12 +1,23 @@
 ---
 id: TC-FA-FAAC-E2E-158-log-create-asset-class-tiga-surface-dan-use-recommended
 title: "Log Create Asset Class pada Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-526
   - TC-FA-FAAC-527
+sourceRules: ["§8.4#r8", "L-01", "§8.2#p1", "§8.2#r1", "§8.3#p1", "§4.1.1#r51"]
+smoke: []
+dependsOn: []
+trace:
+  "§8.4#r8": 6
+  "L-01": [7, 8, 12, 13, 24, 28]
+  "§8.2#p1": [11, 27]
+  "§8.2#r1": [12, 13, 28]
+  "§8.3#p1": [15, 16, 17, 30, 31]
+  "§4.1.1#r51": [23, 24]
 coverage:
   web: automated
 ---

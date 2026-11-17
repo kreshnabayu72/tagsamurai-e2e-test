@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-270-absence-log-request-langsung-effective-from-dan-allowed-methods-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Allowed Methods dan Effective From Tidak Valid yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-845
   - TC-FA-TDC-846
   - TC-FA-TDC-927
+sourceRules: ["F-FATDC-02.k6a", "F-FATDC-02.k6c", "FATDC-LOGIC-10a", "FATDC-LOGIC-10b.3", "§8.4#r7", "J-04", "F-FATDC-02.k7a", "V-20", "FATDC-LOGIC-04f.1", "V-22", "FATDC-LOGIC-04af"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k6a": 4
+  "F-FATDC-02.k6c": 4
+  "FATDC-LOGIC-10a": 4
+  "FATDC-LOGIC-10b.3": 4
+  "§8.4#r7": [6, 7, 8, 12, 13, 14, 20, 21, 22, 28, 29, 30]
+  "J-04": [6, 7, 8, 12, 13, 14, 20, 21, 22, 28, 29, 30]
+  "F-FATDC-02.k7a": 11
+  "V-20": [11, 26]
+  "FATDC-LOGIC-04f.1": 18
+  "V-22": 18
+  "FATDC-LOGIC-04af": 26
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-147-changelog-search-action-field-class-code-old-new-value
 title: "Modal Changelog: Search pada Kolom Action, Field, Class Code, Old Value, dan New Value"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,28 @@ sourceTc:
   - TC-FA-FAAC-478
   - TC-FA-FAAC-479
   - TC-FA-FAAC-480
+sourceRules: ["§4.1.1#p11", "§4.1.1#r27", "§4.1.1#r50", "§4.1.1#r51", "§4.1.1#r34", "§4.1.1#r29", "§4.1.1#r39", "§4.1.1#r33", "§4.1.1#r28", "§4.1.1#r40", "§4.1.1#r41", "§4.1.1#r30", "§4.1.1#r49", "§4.1.1#r31", "§4.1.1#r38", "§4.1.1#r42", "§4.1.1#r43"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p11": 2
+  "§4.1.1#r27": [4, 7]
+  "§4.1.1#r50": 4
+  "§4.1.1#r51": 4
+  "§4.1.1#r34": [7, 19]
+  "§4.1.1#r29": [10, 13]
+  "§4.1.1#r39": 10
+  "§4.1.1#r33": [13, 25]
+  "§4.1.1#r28": [16, 19]
+  "§4.1.1#r40": 16
+  "§4.1.1#r41": 16
+  "§4.1.1#r30": [22, 28, 31]
+  "§4.1.1#r49": 22
+  "§4.1.1#r31": [25, 28, 31]
+  "§4.1.1#r38": 28
+  "§4.1.1#r42": 31
+  "§4.1.1#r43": 31
+anchor: [32]
 coverage:
   web: automated
 ---

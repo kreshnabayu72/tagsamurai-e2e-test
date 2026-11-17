@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-093-toggle-status-satu-asset-class-berhasil
 title: "Toggle Status Satu Asset Class: Activate dan Deactivate Berhasil"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-294
   - TC-FA-FAAC-296
   - TC-FA-FAAC-297
+sourceRules: ["D-08", "ST-31", "T-04", "L-04", "D-01", "T-05a", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "D-08": 4
+  "ST-31": [4, 7, 18, 27]
+  "T-04": 6
+  "L-04": [9, 10, 20, 21]
+  "D-01": 15
+  "T-05a": [17, 26]
+  "ST-01": 29
 coverage:
   web: automated
 ---

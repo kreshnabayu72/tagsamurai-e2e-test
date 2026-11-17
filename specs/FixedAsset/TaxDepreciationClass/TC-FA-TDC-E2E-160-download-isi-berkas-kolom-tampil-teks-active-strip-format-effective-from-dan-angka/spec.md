@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-160-download-isi-berkas-kolom-tampil-teks-active-strip-format-effective-from-dan-angka
 title: "Download Isi Berkas: Kolom Tampil, Teks Active, Strip, Format Effective From, dan Angka"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-TDC-571
   - TC-FA-TDC-572
   - TC-FA-TDC-573
+sourceRules: ["§5#b7", "§4.1.1#r16", "§4.1.1#r24", "§9.5#r15", "§4.1.1#r22", "§4.1.1#r17", "§4.1.1#r19", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b7": [6, 12, 15, 16, 25, 26]
+  "§4.1.1#r16": [15, 25, 30, 31, 32]
+  "§4.1.1#r24": 16
+  "§9.5#r15": [19, 20, 21, 27]
+  "§4.1.1#r22": 19
+  "§4.1.1#r17": [20, 27]
+  "§4.1.1#r19": 25
+  "§4.1.1#r9": 31
 coverage:
   web: automated
 ---

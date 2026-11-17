@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-123-setup-column-geser-dan-pin
 title: "Setup Column Tabel Asset Class: Geser Urutan Kolom, Pin dan Unpin Kolom, dan Tidak Memengaruhi Tabel Changelog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-FAAC-401
   - TC-FA-FAAC-402
   - TC-FA-FAAC-407
+sourceRules: ["§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§4.1.1#r32"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r26": 33
+  "§4.1.1#r27": 33
+  "§4.1.1#r28": 33
+  "§4.1.1#r29": 33
+  "§4.1.1#r30": 33
+  "§4.1.1#r31": 33
+  "§4.1.1#r32": 33
+anchor: [3, 5, 7, 13, 17, 19, 22, 27, 30]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-054-unsaved-changes-form-edit-breadcrumb-dan-nilai-kembali
 title: "Unsaved Changes pada Form Edit: Breadcrumb dengan Cancel dan Leave, serta Nilai yang Dikembalikan Identik"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,13 @@ sourceTc:
   - TC-FA-FAAC-659
   - TC-FA-FAAC-660
   - TC-FA-FAAC-663
+sourceRules: ["§4.2f#b2", "§9.6#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [6, 8, 9, 16, 18, 29, 30]
+  "§9.6#p1": [11, 12, 13, 21, 22, 23, 32, 33, 34]
+anchor: [10, 19, 20, 31]
 coverage:
   web: automated
 ---

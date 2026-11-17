@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-186-resilience-status-bulk-dan-delete
 title: "Resilience: Delete, Toggle Active, dan Bulk Activate atau Deactivate Gagal karena Error Server 5xx"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-FAAC-251
   - TC-FA-FAAC-302
   - TC-FA-FAAC-303
+sourceRules: ["T-06", "R-06", "§9.6#p1", "T-04", "R-04", "T-05c", "R-05"]
+smoke: []
+dependsOn: []
+trace:
+  "T-06": 6
+  "R-06": 7
+  "§9.6#p1": [8, 25, 41]
+  "T-04": [15, 23]
+  "R-04": [16, 17, 24]
+  "T-05c": [31, 39]
+  "R-05": [32, 40]
+anchor: [33]
 coverage:
   web: automated
 ---

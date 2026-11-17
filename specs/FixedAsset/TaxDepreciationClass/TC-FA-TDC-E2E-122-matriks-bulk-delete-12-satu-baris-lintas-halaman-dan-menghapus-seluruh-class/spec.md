@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-122-matriks-bulk-delete-12-satu-baris-lintas-halaman-dan-menghapus-seluruh-class
 title: "Matriks Bulk Delete 12 Satu Baris Lintas Halaman dan Menghapus Seluruh Class"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,21 @@ sourceTc:
   - TC-FA-TDC-905
   - TC-FA-TDC-906
   - TC-FA-TDC-907
+sourceRules: ["D-04", "D-05", "D-06", "§3.6#r12", "S-07a", "D-01", "FATDC-LOGIC-14e", "FATDC-LOGIC-14k", "§3.6#r9", "ST-23", "J-01"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": [3, 4, 5]
+  "D-05": [10, 11, 12]
+  "D-06": [17, 18, 35]
+  "§3.6#r12": 20
+  "S-07a": [21, 38]
+  "D-01": 27
+  "FATDC-LOGIC-14e": 28
+  "FATDC-LOGIC-14k": 33
+  "§3.6#r9": 37
+  "ST-23": [43, 46]
+  "J-01": 47
 coverage:
   web: automated
 ---

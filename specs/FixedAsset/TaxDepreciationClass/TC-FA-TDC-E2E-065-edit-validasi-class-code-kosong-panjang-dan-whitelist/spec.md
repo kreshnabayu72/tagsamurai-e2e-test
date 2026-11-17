@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-065-edit-validasi-class-code-kosong-panjang-dan-whitelist
 title: "Edit: Validasi Class Code Kosong, Batas Panjang 15 Karakter, dan Whitelist Karakter"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-222
   - TC-FA-TDC-223
   - TC-FA-TDC-224
+sourceRules: ["V-01", "E-FATDC-04", "V-02", "V-03", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": [5, 9]
+  "E-FATDC-04": 11
+  "V-02": [13, 15, 17, 18]
+  "V-03": [20, 23, 24]
+  "§4.2c#b1": 26
+anchor: [10, 28]
 coverage:
   web: automated
 ---

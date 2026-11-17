@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-127-konflik-d-09-tahun-pajak-tertutup-dan-effective-from-lebih-awal-dari-versi-terakhir
 title: "Konflik D-09: Tahun Pajak yang Baru Ditutup dan Effective From Lebih Awal dari Versi Terakhir yang Baru Dibentuk"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-263
   - TC-FA-TDC-264
+sourceRules: ["V-21", "FATDC-LOGIC-04e", "§4.2c#b1", "V-22"]
+smoke: []
+dependsOn: []
+trace:
+  "V-21": 9
+  "FATDC-LOGIC-04e": 11
+  "§4.2c#b1": [14, 26]
+  "V-22": [22, 23]
 coverage:
   web: automated
 ---

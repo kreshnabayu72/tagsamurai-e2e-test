@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-149-deferred-default-capitalization-offset-dikosongkan-perubahan-dipakai-gagal-dan-pembelian-di-bawah-threshold
 title: "[DEFERRED] Default Capitalization Offset: dikosongkan kembali, perubahan dipakai, kapitalisasi gagal, dan pembelian di bawah threshold"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-PREF-482
   - TC-FA-PREF-483
   - TC-FA-PREF-605
+sourceRules: ["T-01", "FAPREF-LOGIC-10j", "F-FAPREF-05.k1a", "FAPREF-LOGIC-08a", "FI-05", "F-FAPREF-05.k2a", "F-FAPREF-05.k2b", "R-06", "FAPREF-LOGIC-03c"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [5, 15]
+  "FAPREF-LOGIC-10j": [6, 16]
+  "F-FAPREF-05.k1a": 8
+  "FAPREF-LOGIC-08a": 12
+  "FI-05": 12
+  "F-FAPREF-05.k2a": 18
+  "F-FAPREF-05.k2b": 19
+  "R-06": [25, 28, 30]
+  "FAPREF-LOGIC-03c": [34, 35]
 coverage:
   web: automated
 ---

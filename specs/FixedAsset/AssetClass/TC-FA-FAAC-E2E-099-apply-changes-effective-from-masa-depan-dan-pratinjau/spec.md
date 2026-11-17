@@ -1,12 +1,25 @@
 ---
 id: TC-FA-FAAC-E2E-099-apply-changes-effective-from-masa-depan-dan-pratinjau
 title: "Apply Changes: Pratinjau Assets Affected dan Effective From Masa Depan Menjadwalkan Versi"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-309
   - TC-FA-FAAC-312
+sourceRules: ["FAAC-LOGIC-07f", "FAAC-LOGIC-07c", "FI-09", "F-FAAC-02.k19", "T-02", "F-FAAC-02.k17", "F-FAAC-02.k15", "L-12"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-07f": 6
+  "FAAC-LOGIC-07c": [8, 10]
+  "FI-09": 11
+  "F-FAAC-02.k19": [15, 16]
+  "T-02": 16
+  "F-FAAC-02.k17": 17
+  "F-FAAC-02.k15": 19
+  "L-12": [21, 22]
 coverage:
   web: automated
 ---

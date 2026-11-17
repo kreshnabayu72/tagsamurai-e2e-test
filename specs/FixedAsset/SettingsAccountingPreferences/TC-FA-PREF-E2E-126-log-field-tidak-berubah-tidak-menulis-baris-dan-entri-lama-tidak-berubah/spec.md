@@ -1,12 +1,45 @@
 ---
 id: TC-FA-PREF-E2E-126-log-field-tidak-berubah-tidak-menulis-baris-dan-entri-lama-tidak-berubah
 title: "Log: Field Tidak Berubah Tidak Menulis Baris dan Entri Changelog Lama Tidak Berubah"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-380
   - TC-FA-PREF-381
+sourceRules: ["D-01", "FAPREF-LOGIC-10a", "F-FAPREF-01.k21a", "PV-01", "§4.2b#b1", "FAPREF-LOGIC-10k", "T-01", "L-02a", "L-02e", "§4.1.4#r3", "§8#b1", "§4.1.4#r4", "SET-02", "L-02j", "§4.1.4#r1", "SET-03", "L-02f", "§8#r3", "SET-01", "SET-12", "SET-04", "SET-11", "L-02b", "L-02c", "L-02d", "§8.3#p1", "§4.1.4#p1", "L-02k"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [5, 27, 34]
+  "FAPREF-LOGIC-10a": [5, 27, 34]
+  "F-FAPREF-01.k21a": [5, 27, 34]
+  "PV-01": [5, 27, 34]
+  "§4.2b#b1": 6
+  "FAPREF-LOGIC-10k": 6
+  "T-01": 8
+  "L-02a": [10, 11, 12, 13, 38, 39, 40, 41]
+  "L-02e": [10, 13, 16, 18, 20, 22, 38]
+  "§4.1.4#r3": [11, 12]
+  "§8#b1": [11, 12]
+  "§4.1.4#r4": [11, 12, 39]
+  "SET-02": [11, 13, 17, 18, 21, 22, 39, 40, 41]
+  "L-02j": [11, 40, 41]
+  "§4.1.4#r1": 12
+  "SET-03": [12, 13, 17, 18, 21, 22]
+  "L-02f": 12
+  "§8#r3": [13, 18, 22]
+  "SET-01": 13
+  "SET-12": 13
+  "SET-04": 13
+  "SET-11": 13
+  "L-02b": [16, 17, 18]
+  "L-02c": [20, 21, 22]
+  "L-02d": 21
+  "§8.3#p1": 21
+  "§4.1.4#p1": [39, 40, 41]
+  "L-02k": 41
 coverage:
   web: automated
 ---

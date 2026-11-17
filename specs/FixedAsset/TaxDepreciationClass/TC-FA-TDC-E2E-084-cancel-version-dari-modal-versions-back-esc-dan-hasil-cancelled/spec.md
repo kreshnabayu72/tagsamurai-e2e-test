@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-084-cancel-version-dari-modal-versions-back-esc-dan-hasil-cancelled
 title: "Cancel Version: Entri dari Modal Versions, Back dan Esc Tidak Membatalkan, serta Hasil Cancelled"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-299
   - TC-FA-TDC-300
   - TC-FA-TDC-302
+sourceRules: ["FATDC-LOGIC-04ae", "D-10", "FATDC-LOGIC-04aa", "T-07", "§4.1.6#r5", "FATDC-LOGIC-04i", "FLD-01", "ST-30"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04ae": 4
+  "D-10": [5, 9, 14]
+  "FATDC-LOGIC-04aa": 10
+  "T-07": [11, 15, 22]
+  "§4.1.6#r5": [17, 24]
+  "FATDC-LOGIC-04i": 24
+  "FLD-01": 26
+  "ST-30": 27
 coverage:
   web: automated
 ---

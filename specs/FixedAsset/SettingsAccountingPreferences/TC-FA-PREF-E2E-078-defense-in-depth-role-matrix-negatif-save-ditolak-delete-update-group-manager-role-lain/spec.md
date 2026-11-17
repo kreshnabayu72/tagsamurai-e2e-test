@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-078-defense-in-depth-role-matrix-negatif-save-ditolak-delete-update-group-manager-role-lain
 title: "Defense-in-Depth Role Matrix Negatif: Request Langsung Save Preferences Ditolak Server 403 untuk Delete saja, Update saja, Group Manager, dan Role Lain"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,11 @@ sourceTc:
   - TC-FA-PREF-516
   - TC-FA-PREF-517
   - TC-FA-PREF-518
+sourceRules: ["F-FAPREF-01.k8c"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k8c": [3, 5, 7, 10, 12, 14, 17, 19, 21, 24, 26, 28]
 coverage:
   web: automated
 ---

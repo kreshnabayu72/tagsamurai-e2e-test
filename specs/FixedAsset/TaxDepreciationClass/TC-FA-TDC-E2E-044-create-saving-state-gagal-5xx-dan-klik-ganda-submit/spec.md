@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-044-create-saving-state-gagal-5xx-dan-klik-ganda-submit
 title: "Create - Saving State, Gagal 5xx, dan Klik Ganda Submit"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-114
   - TC-FA-TDC-115
   - TC-FA-TDC-116
+sourceRules: ["ST-13", "F-FATDC-01.k12", "T-01", "R-01", "§4.2c#b1", "F-FATDC-01.k11c", "F-FATDC-01.k11a"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-13": [5, 6, 7, 19, 30]
+  "F-FATDC-01.k12": 8
+  "T-01": [9, 16, 31]
+  "R-01": [17, 20, 29]
+  "§4.2c#b1": 24
+  "F-FATDC-01.k11c": 29
+  "F-FATDC-01.k11a": 32
+anchor: [18]
 coverage:
   web: automated
 ---

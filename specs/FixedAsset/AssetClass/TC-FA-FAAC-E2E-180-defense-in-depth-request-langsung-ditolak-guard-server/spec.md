@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-180-defense-in-depth-request-langsung-ditolak-guard-server
 title: "Defense-in-Depth: Request Langsung ke Server yang Melanggar Guard Bisnis dan Validasi Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -15,6 +16,26 @@ sourceTc:
   - TC-FA-FAAC-621
   - TC-FA-FAAC-648
   - TC-FA-FAAC-649
+sourceRules: ["V-37", "F-FAAC-09.k10", "F-FAAC-10.k1", "FAAC-LOGIC-13f", "FAAC-LOGIC-13a", "F-FAAC-04.k1", "FAAC-LOGIC-12a", "FAAC-LOGIC-12b", "F-FAAC-05.k2", "FAAC-LOGIC-10c", "F-FAAC-02.k1", "FAAC-LOGIC-15a", "F-FAAC-01.k11", "FAAC-LOGIC-15d", "V-18", "V-21"]
+smoke: []
+dependsOn: []
+trace:
+  "V-37": [2, 5]
+  "F-FAAC-09.k10": [2, 3, 5, 6]
+  "F-FAAC-10.k1": [8, 9]
+  "FAAC-LOGIC-13f": 8
+  "FAAC-LOGIC-13a": [11, 12]
+  "F-FAAC-04.k1": [14, 16]
+  "FAAC-LOGIC-12a": [18, 20]
+  "FAAC-LOGIC-12b": [18, 20]
+  "F-FAAC-05.k2": [18, 20]
+  "FAAC-LOGIC-10c": [23, 25]
+  "F-FAAC-02.k1": [23, 25]
+  "FAAC-LOGIC-15a": 28
+  "F-FAAC-01.k11": 28
+  "FAAC-LOGIC-15d": 29
+  "V-18": [32, 33]
+  "V-21": [35, 36]
 coverage:
   web: automated
 ---

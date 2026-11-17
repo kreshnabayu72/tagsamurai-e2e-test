@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-206-general-settings-format-tanggal-jam-dan-zona-waktu-changelog-dan-last-updated
 title: "General Settings: Format Tanggal, Jam, dan Zona Waktu pada Changelog, Date Filter, Last Updated, dan Effective From"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -10,6 +11,13 @@ sourceTc:
   - TC-FA-TDC-781
   - TC-FA-TDC-782
   - TC-FA-TDC-783
+sourceRules: ["§4.1.1#r25", "§4.1.1#r13", "FATDC-LOGIC-04ac"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r25": [5, 8, 21, 34]
+  "§4.1.1#r13": 13
+  "FATDC-LOGIC-04ac": [24, 30, 35]
 coverage:
   web: automated
 ---

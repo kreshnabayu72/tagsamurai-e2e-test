@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-096-log-job-j-02-j-03-modified-by-system-dan-job-dua-kali
 title: "Log Job J-02 (L-08) dan J-03 (L-10): Modified By System di Changelog dan Activity Log, Tidak di System Log, serta J-02 Dua Kali Tidak Menulis Log Ganda"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-TDC-692
   - TC-FA-TDC-693
   - TC-FA-TDC-913
+sourceRules: ["L-08", "S-04d", "§8.3#p1", "J-02", "§8.2#p1", "L-10", "S-10c", "R-12", "F-FATDC-10.k1", "S-04a"]
+smoke: []
+dependsOn: []
+trace:
+  "L-08": [6, 18, 47]
+  "S-04d": 6
+  "§8.3#p1": [11, 30]
+  "J-02": 11
+  "§8.2#p1": [13, 32]
+  "L-10": [26, 37]
+  "S-10c": [26, 30]
+  "R-12": [40, 42, 47]
+  "F-FATDC-10.k1": 44
+  "S-04a": 44
 coverage:
   web: automated
 ---

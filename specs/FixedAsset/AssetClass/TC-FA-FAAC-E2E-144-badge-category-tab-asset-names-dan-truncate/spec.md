@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-144-badge-category-tab-asset-names-dan-truncate
 title: "Tab Asset Names: Badge Label dengan Chip +N more dan Badge Category dengan Pemotongan Nama Panjang"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-FAAC-684
   - TC-FA-FAAC-692
   - TC-FA-FAAC-693
+sourceRules: ["§4.1.3#r3", "§4.1.3#r2", "§4.1.9#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.3#r3": [4, 5, 7, 9]
+  "§4.1.3#r2": [16, 17, 19, 21]
+  "§4.1.9#r2": [17, 19]
+anchor: [11, 18]
 coverage:
   web: automated
 ---

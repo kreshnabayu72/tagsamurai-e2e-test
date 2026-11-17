@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-088-delete-guard-asset-name-dialog-dan-berhasil
 title: "Delete Guard D-06 Asset Name, Cancel Dialog Delete, dan Delete Berhasil"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,21 @@ sourceTc:
   - TC-FA-FAAC-219
   - TC-FA-FAAC-220
   - TC-FA-FAAC-221
+sourceRules: ["D-05", "F-FAAC-05.k3", "D-06", "§3.4#p1", "FAAC-LOGIC-12b", "D-07", "T-06", "S-06a", "S-06b", "S-06c"]
+smoke: []
+dependsOn: []
+trace:
+  "D-05": 3
+  "F-FAAC-05.k3": [3, 4]
+  "D-06": [8, 15]
+  "§3.4#p1": 10
+  "FAAC-LOGIC-12b": 12
+  "D-07": 27
+  "T-06": 29
+  "S-06a": 30
+  "S-06b": 31
+  "S-06c": 32
+anchor: [21, 22, 23, 24]
 coverage:
   web: automated
 ---

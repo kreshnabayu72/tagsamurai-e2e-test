@@ -1,11 +1,20 @@
 ---
 id: TC-FA-FAAC-E2E-047-create-nilai-field-tersembunyi-tidak-tersimpan-setelah-ganti-method
 title: "Create Asset Class: Nilai Field yang Disembunyikan Karena Ganti Method Tidak Ikut Tersimpan"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-125
+sourceRules: ["§[F-FAAC-01] Create Asset Class#b3", "§[F-FAAC-01] Create Asset Class#r12", "F-FAAC-02.k20", "FI-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FAAC-01] Create Asset Class#b3": 6
+  "§[F-FAAC-01] Create Asset Class#r12": 7
+  "F-FAAC-02.k20": 11
+  "FI-01": 11
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-074-d-09-effective-from-kosong-cancel-dan-esc
 title: "Dialog Save Changes D-09: Cancel dan Esc Menutup Tanpa Menyimpan, Effective From Kosong Ditolak dengan Caption V-19"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-262
   - TC-FA-TDC-265
   - TC-FA-TDC-266
+sourceRules: ["F-FATDC-02.k5c", "§4.5#b1", "FATDC-LOGIC-04af", "§12#r13", "V-19", "E-FATDC-18", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-02.k5c": [6, 8, 9, 10, 15, 16, 17]
+  "§4.5#b1": 13
+  "FATDC-LOGIC-04af": 20
+  "§12#r13": 22
+  "V-19": 24
+  "E-FATDC-18": [25, 26]
+  "§4.2c#b1": 29
+anchor: [7, 14]
 coverage:
   web: automated
 ---

@@ -1,12 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-042-create-validasi-tempel-teks-berpemisah-desimal
 title: "Create Asset Class: Tempel Teks Berpemisah Desimal ke Useful Life, Total Estimated Units, dan Declining Rate"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-700
   - TC-FA-FAAC-714
+sourceRules: ["FI-16", "V-11", "V-15", "V-13", "§4.2f#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "FI-16": [5, 6, 8, 9, 13, 14]
+  "V-11": 10
+  "V-15": 10
+  "V-13": 15
+  "§4.2f#b2": 17
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-190-edge-destination-move-satu-class-per-asset-name-duplicate-dan-recommended
 title: "Kasus Tepi: Destination Move Hanya Asset Class Active, Satu Class per Asset Name, dan Duplicate Tidak Mengubah Data atau Menyalin Asset Name"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-FAAC-635
   - TC-FA-FAAC-637
   - TC-FA-FAAC-643
+sourceRules: ["§[F-FAAC-09] Move Asset Names#b1", "§[F-FAAC-04] Deactivate Asset Class#b4", "F-FAAC-09.k1", "§4.2f#b2", "§[F-FAAC-06] Duplicate Asset Class#b3", "§4.1.3#p1", "ST-05", "§[F-FAAC-01] Create Asset Class#b5", "§[F-FAAC-01] Create Asset Class#b3", "§[F-FAAC-06] Duplicate Asset Class#b2", "§[F-FAAC-09] Move Asset Names#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FAAC-09] Move Asset Names#b1": 4
+  "§[F-FAAC-04] Deactivate Asset Class#b4": 5
+  "F-FAAC-09.k1": 6
+  "§4.2f#b2": 13
+  "§[F-FAAC-06] Duplicate Asset Class#b3": [15, 16]
+  "§4.1.3#p1": 21
+  "ST-05": 22
+  "§[F-FAAC-01] Create Asset Class#b5": 29
+  "§[F-FAAC-01] Create Asset Class#b3": 30
+  "§[F-FAAC-06] Duplicate Asset Class#b2": [34, 38]
+  "§[F-FAAC-09] Move Asset Names#b5": [39, 43]
 coverage:
   web: automated
 ---

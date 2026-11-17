@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-092-toggle-status-satu-asset-class-blokir-dan-batal
 title: "Toggle Status Satu Asset Class: Diblokir D-04, Batal, Cek Ulang Server, dan Activate Idempotent"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -12,6 +13,17 @@ sourceTc:
   - TC-FA-FAAC-300
   - TC-FA-FAAC-301
   - TC-FA-FAAC-304
+sourceRules: ["D-04", "F-FAAC-04.k1", "F-FAAC-04.k3", "§3.3#p1", "D-08", "D-01", "F-FAAC-03.k1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": [3, 9, 15, 23]
+  "F-FAAC-04.k1": [3, 5, 11, 12]
+  "F-FAAC-04.k3": [22, 23, 25, 26]
+  "§3.3#p1": [31, 32, 33, 34, 39, 40, 41, 42]
+  "D-08": 32
+  "D-01": 40
+  "F-FAAC-03.k1": [48, 49]
 coverage:
   web: automated
 ---

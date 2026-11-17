@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-185-resilience-move-unassign-apply-changes-dan-cancel-scheduled
 title: "Resilience: Move, Unassign Massal, Apply Changes, dan Cancel Scheduled Version Gagal karena Error Server 5xx"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,21 @@ sourceTc:
   - TC-FA-FAAC-238
   - TC-FA-FAAC-311
   - TC-FA-FAAC-335
+sourceRules: ["T-08", "R-10", "§9.6#p1", "§7.3#b5", "§[F-FAAC-09] Move Asset Names#b5", "T-09c", "R-11", "T-02", "§7.3#b1", "T-15", "E-FAAC-118"]
+smoke: []
+dependsOn: []
+trace:
+  "T-08": [8, 16, 24]
+  "R-10": [9, 17]
+  "§9.6#p1": [10, 11, 36, 49]
+  "§7.3#b5": [18, 29]
+  "§[F-FAAC-09] Move Asset Names#b5": [25, 30]
+  "T-09c": 34
+  "R-11": 35
+  "T-02": 47
+  "§7.3#b1": 48
+  "T-15": 59
+  "E-FAAC-118": [60, 61]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-001-screening-tab-preferences-initial-state-dan-sectioncard-general-capitalization-depreciation
 title: "Screening Tab Preferences: Initial State dan SectionCard General, Capitalization, Depreciation dengan Nilai Awal"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,30 @@ sourceTc:
   - TC-FA-PREF-3
   - TC-FA-PREF-4
   - TC-FA-PREF-5
+sourceRules: ["§4.2a#p3", "§4.2a#p1", "§4.2a#p4", "§4.1.1#p1", "ST-07", "FAPREF-LOGIC-11c", "§9.5#r1", "§Ringkasan Cepat#b2", "ST-01", "§4.1.1#b2", "SET-01", "§4.1.2#p1", "ST-05", "FAPREF-LOGIC-02c", "SET-12", "FAPREF-LOGIC-02h", "SET-02", "FAPREF-LOGIC-03e", "SET-03", "SET-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p3": [1, 2]
+  "§4.2a#p1": [3, 6, 12, 20, 26]
+  "§4.2a#p4": 3
+  "§4.1.1#p1": [4, 7, 9]
+  "ST-07": 5
+  "FAPREF-LOGIC-11c": 5
+  "§9.5#r1": 6
+  "§Ringkasan Cepat#b2": 8
+  "ST-01": 10
+  "§4.1.1#b2": 10
+  "SET-01": [13, 14]
+  "§4.1.2#p1": [13, 16, 21, 23, 27]
+  "ST-05": [15, 18]
+  "FAPREF-LOGIC-02c": [15, 18]
+  "SET-12": [16, 17]
+  "FAPREF-LOGIC-02h": 17
+  "SET-02": [21, 22]
+  "FAPREF-LOGIC-03e": 22
+  "SET-03": [23, 24]
+  "SET-04": [27, 28]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-222-request-langsung-validasi-class-name-class-code-dan-regulation-reference
 title: "Request Langsung: Validasi Class Name, Class Code, dan Regulation Reference Ditolak Server"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-853
   - TC-FA-TDC-854
   - TC-FA-TDC-855
+sourceRules: ["V-07", "V-06", "V-03", "V-02", "V-09"]
+smoke: []
+dependsOn: []
+trace:
+  "V-07": [2, 5]
+  "V-06": [7, 10]
+  "V-03": [12, 15]
+  "V-02": [17, 20]
+  "V-09": [22, 25]
+anchor: [4, 9, 14, 19, 24]
 coverage:
   web: automated
 ---

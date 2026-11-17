@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-024-role-matrix-visibilitas-manage-accounting-create-dan-shortcut-create-account
 title: "Role Matrix: Visibilitas Preferences untuk Manage accounting Read + Create dan Read + Create + Update, shortcut Create account"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,23 @@ sourceTc:
   - TC-FA-PREF-102
   - TC-FA-PREF-122
   - TC-FA-PREF-123
+sourceRules: ["§4.8#r1", "§4.8#r2", "ST-07", "§4.8#r3", "ST-08", "§4.8#r5", "§4.8#r6", "FAPREF-LOGIC-06i", "FI-03", "FAPREF-LOGIC-01b", "§2.1#r7", "§4.8#r4", "ST-01"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [2, 26]
+  "§4.8#r2": [3, 27]
+  "ST-07": [4, 28]
+  "§4.8#r3": [4, 28]
+  "ST-08": 6
+  "§4.8#r5": [7, 30]
+  "§4.8#r6": [8, 22, 32]
+  "FAPREF-LOGIC-06i": [8, 13, 22, 32]
+  "FI-03": [11, 12, 15, 17, 18]
+  "FAPREF-LOGIC-01b": 23
+  "§2.1#r7": 24
+  "§4.8#r4": 29
+  "ST-01": 31
 coverage:
   web: automated
 ---

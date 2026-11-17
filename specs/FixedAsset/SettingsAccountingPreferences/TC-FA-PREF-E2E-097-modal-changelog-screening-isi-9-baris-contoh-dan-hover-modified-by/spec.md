@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-097-modal-changelog-screening-isi-9-baris-contoh-dan-hover-modified-by
 title: "Modal Changelog: Screening, Isi 9 Baris Contoh, dan Hover Modified By"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,34 @@ sourceTc:
   - TC-FA-PREF-289
   - TC-FA-PREF-290
   - TC-FA-PREF-291
+sourceRules: ["§4.1#r2", "§5#b1", "§8#r1", "§4.6#b4", "§4.4#r4", "§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r7", "§4.1#r3", "§4.1.4#p2", "§4.1.4#r8", "§4.1.4#r9", "§4.1.4#r10", "§4.1.4#r11", "§4.1.4#r12", "§4.1.4#r13", "§4.1.4#r14", "§4.1.4#r15", "§4.1.4#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r2": 2
+  "§5#b1": 3
+  "§8#r1": 3
+  "§4.6#b4": 4
+  "§4.4#r4": 12
+  "§4.1.4#r1": [13, 14]
+  "§4.1.4#r2": 13
+  "§4.1.4#r3": 13
+  "§4.1.4#r4": 13
+  "§4.1.4#r5": 13
+  "§4.1.4#r6": 13
+  "§4.1.4#r7": [13, 27, 28, 30, 31]
+  "§4.1#r3": 13
+  "§4.1.4#p2": 15
+  "§4.1.4#r8": 17
+  "§4.1.4#r9": 18
+  "§4.1.4#r10": 19
+  "§4.1.4#r11": 20
+  "§4.1.4#r12": 21
+  "§4.1.4#r13": 22
+  "§4.1.4#r14": 23
+  "§4.1.4#r15": 24
+  "§4.1.4#r16": 25
+anchor: [6, 8, 10, 16]
 coverage:
   web: automated
 ---

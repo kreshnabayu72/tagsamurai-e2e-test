@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-061-edit-class-code-terkunci-regulation-reference-dan-versi-scheduled
 title: "Edit: Class Code Terkunci, Regulation Reference, dan Edit pada Class dengan Versi Scheduled"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-215
   - TC-FA-TDC-216
   - TC-FA-TDC-217
+sourceRules: ["T-03", "DO-01", "FATDC-LOGIC-04ad", "T-02a", "S-02a", "FATDC-LOGIC-04c", "FATDC-LOGIC-04m", "FATDC-LOGIC-07a"]
+smoke: []
+dependsOn: []
+trace:
+  "T-03": 5
+  "DO-01": 6
+  "FATDC-LOGIC-04ad": 9
+  "T-02a": [15, 39]
+  "S-02a": [17, 31, 33, 40]
+  "FATDC-LOGIC-04c": 21
+  "FATDC-LOGIC-04m": 22
+  "FATDC-LOGIC-07a": 41
 coverage:
   web: automated
 ---

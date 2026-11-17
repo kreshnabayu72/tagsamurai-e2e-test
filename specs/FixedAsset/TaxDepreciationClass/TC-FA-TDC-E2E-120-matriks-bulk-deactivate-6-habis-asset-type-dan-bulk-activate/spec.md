@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-120-matriks-bulk-deactivate-6-habis-asset-type-dan-bulk-activate
 title: "Matriks Bulk Deactivate 6 Habis Asset Type dan Bulk Activate"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -11,6 +12,21 @@ sourceTc:
   - TC-FA-TDC-459
   - TC-FA-TDC-460
   - TC-FA-TDC-461
+sourceRules: ["F-FATDC-13.k6", "FATDC-LOGIC-14i", "D-01", "D-14", "FATDC-LOGIC-14f", "F-FATDC-13.k2", "FATDC-LOGIC-14k", "D-03", "FATDC-LOGIC-14c", "F-FATDC-13.k7", "§[F-FATDC-04] Activate Tax Depreciation Class#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k6": [3, 10, 17, 24]
+  "FATDC-LOGIC-14i": [3, 10, 11, 17, 24]
+  "D-01": [4, 5]
+  "D-14": 23
+  "FATDC-LOGIC-14f": [23, 25]
+  "F-FATDC-13.k2": [27, 28]
+  "FATDC-LOGIC-14k": [29, 36, 44, 45, 46]
+  "D-03": 33
+  "FATDC-LOGIC-14c": [34, 37, 38]
+  "F-FATDC-13.k7": [36, 43]
+  "§[F-FATDC-04] Activate Tax Depreciation Class#b2": 43
 coverage:
   web: automated
 ---

@@ -1,12 +1,20 @@
 ---
 id: TC-FA-TDC-E2E-039-batas-selection-limit-select-all-dan-live-block-checkbox
 title: "Batas Selection Limit: Select All Melebihi Batas Memotong Seleksi dan Live-Block Checkbox Baris"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-TDC-423
   - TC-FA-TDC-424
+sourceRules: ["§3.6#p1", "FATDC-LOGIC-14k"]
+smoke: []
+dependsOn: []
+trace:
+  "§3.6#p1": 3
+  "FATDC-LOGIC-14k": [4, 17]
+anchor: [5, 6, 8, 15, 16]
 coverage:
   web: automated
 ---

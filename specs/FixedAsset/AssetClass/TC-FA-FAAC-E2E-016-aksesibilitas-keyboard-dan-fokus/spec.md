@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-016-aksesibilitas-keyboard-dan-fokus
 title: "Aksesibilitas Tab Asset Class: Navigasi Keyboard, Esc Menutup Modal, Fokus Terkunci di Modal Changelog, dan Tab Detail dengan Tombol Panah"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-FAAC-37
   - TC-FA-FAAC-38
   - TC-FA-FAAC-39
+sourceRules: ["§4.5#b1", "§4.1#r9", "§4.1#r10", "§4.5#b2", "§4.5#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b1": [2, 5, 9, 12, 17, 22]
+  "§4.1#r9": [15, 24]
+  "§4.1#r10": [20, 22]
+  "§4.5#b2": [26, 28]
+  "§4.5#b3": [34, 36]
 coverage:
   web: automated
 ---

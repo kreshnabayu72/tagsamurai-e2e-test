@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-137-konflik-bulk-delete-activate-class-dihapus-sesi-lain
 title: "Konflik Bulk Delete dan Bulk Activate: Sebagian atau Seluruh Class Sudah Dihapus Sesi Lain Saat Confirm"
+layer: ui-e2e
 priority: Medium
 caseType: Edge
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-TDC-478
   - TC-FA-TDC-479
   - TC-FA-TDC-480
+sourceRules: ["F-FATDC-13.k12", "§[F-FATDC-06] Delete Tax Depreciation Class#b3", "L-05", "T-13", "FATDC-LOGIC-14k"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k12": 8
+  "§[F-FATDC-06] Delete Tax Depreciation Class#b3": 9
+  "L-05": [10, 21]
+  "T-13": [19, 20, 31, 32]
+  "FATDC-LOGIC-14k": [22, 23, 33, 34]
 coverage:
   web: automated
 ---

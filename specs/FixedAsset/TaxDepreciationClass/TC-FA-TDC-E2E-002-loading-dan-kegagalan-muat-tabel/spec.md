@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-002-loading-dan-kegagalan-muat-tabel
 title: "Loading dan Kegagalan Muat Tabel Tax Depreciation Class"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-TDC-5
   - TC-FA-TDC-6
   - TC-FA-TDC-7
+sourceRules: ["ST-21", "ST-22", "ST-14", "FATDC-LOGIC-02a"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-21": [5, 8, 21]
+  "ST-22": [13, 23]
+  "ST-14": 14
+  "FATDC-LOGIC-02a": 22
+anchor: [7]
 coverage:
   web: automated
 ---

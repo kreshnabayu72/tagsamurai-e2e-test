@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-019-spinner-saving-save-changes-tanpa-d01
 title: "Spinner Saving pada [Save changes] saat Save tanpa dialog D-01 diproses"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-89
   - TC-FA-PREF-283
+sourceRules: ["ST-02", "T-01", "F-FAPREF-01.k22b"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-02": [4, 5, 12, 13]
+  "T-01": [7, 19]
+  "F-FAPREF-01.k22b": 16
+anchor: [14, 15, 17, 20]
 coverage:
   web: automated
 ---

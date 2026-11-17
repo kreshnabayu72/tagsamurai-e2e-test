@@ -1,12 +1,23 @@
 ---
 id: TC-FA-FAAC-E2E-069-assign-klik-ganda-dan-spinner
 title: "Tombol Assign: Spinner Saat Permintaan Berjalan dan Klik Ganda Hanya Memproses Satu Permintaan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-625
   - TC-FA-FAAC-627
+sourceRules: ["ST-13", "T-07", "E-FAAC-80", "R-09", "L-06"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-13": [5, 6]
+  "T-07": 9
+  "E-FAAC-80": 16
+  "R-09": 17
+  "L-06": 20
+anchor: [8]
 coverage:
   web: automated
 ---

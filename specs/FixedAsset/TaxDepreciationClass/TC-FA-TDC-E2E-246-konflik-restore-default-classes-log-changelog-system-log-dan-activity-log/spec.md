@@ -1,11 +1,24 @@
 ---
 id: TC-FA-TDC-E2E-246-konflik-restore-default-classes-log-changelog-system-log-dan-activity-log
 title: "Konflik Restore Default Classes: Log Create per Class Dibuat dan Edit per Class Diaktifkan Kembali di Tiga Surface Log"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-674
+sourceRules: ["ST-23", "§8.4#r5", "L-01", "§4.1.1#r31", "L-04", "§8.2#p1", "§8.2#r1", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": 1
+  "§8.4#r5": [8, 11, 16, 20]
+  "L-01": 9
+  "§4.1.1#r31": 9
+  "L-04": 10
+  "§8.2#p1": 14
+  "§8.2#r1": 15
+  "§8.3#p1": [18, 19]
 coverage:
   web: automated
 ---

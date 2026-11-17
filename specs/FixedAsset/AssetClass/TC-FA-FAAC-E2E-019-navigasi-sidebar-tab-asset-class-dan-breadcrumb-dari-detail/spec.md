@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-019-navigasi-sidebar-tab-asset-class-dan-breadcrumb-dari-detail
 title: "Navigasi Menu Accounting di Sidebar, Klik Tab Asset Class, dan Breadcrumb dari Detail"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-FAAC-3
   - TC-FA-FAAC-4
   - TC-FA-FAAC-587
+sourceRules: ["FAAC-LOGIC-18c", "§4.2a#p1", "FAAC-LOGIC-18a", "§3.10#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-18c": 3
+  "§4.2a#p1": [6, 7]
+  "FAAC-LOGIC-18a": 9
+  "§3.10#p2": 14
+anchor: [4]
 coverage:
   web: automated
 ---

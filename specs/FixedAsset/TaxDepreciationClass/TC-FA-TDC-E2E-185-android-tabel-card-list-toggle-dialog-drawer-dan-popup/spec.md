@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-185-android-tabel-card-list-toggle-dialog-drawer-dan-popup
 title: "Android: Card List, Toggle Active, Dialog Bottom Sheet, Form Halaman Penuh, dan Popup Used By"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,19 @@ sourceTc:
   - TC-FA-TDC-663
   - TC-FA-TDC-664
   - TC-FA-TDC-665
+sourceRules: ["§4.6#b1", "ST-27", "§4.6#b4", "D-03", "FATDC-LOGIC-08h", "§4.6#b2", "FLD-18", "§4.1.6#p1", "§4.6#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.6#b1": [1, 2, 3]
+  "ST-27": 3
+  "§4.6#b4": [5, 20]
+  "D-03": 5
+  "FATDC-LOGIC-08h": 7
+  "§4.6#b2": [9, 10, 11, 12, 15, 16, 17]
+  "FLD-18": 17
+  "§4.1.6#p1": 20
+  "§4.6#b3": 21
 coverage:
   mobile: automated
 ---

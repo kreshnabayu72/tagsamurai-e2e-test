@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-204-fiscal-year-start-terbuka-kembali-dan-pilihan-effective-from-mengikuti
 title: "Preferences: Fiscal Year Start Terbuka Kembali dan Pilihan Effective From Mengikuti Fiscal Year Start"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -10,6 +11,21 @@ sourceTc:
   - TC-FA-TDC-755
   - TC-FA-TDC-924
   - TC-FA-TDC-925
+sourceRules: ["FATDC-LOGIC-04z", "S-12b", "S-12a", "T-07", "FATDC-LOGIC-04i", "§11.2#r6", "FATDC-LOGIC-04t", "FATDC-LOGIC-04d", "FATDC-LOGIC-04af", "FATDC-LOGIC-04ag", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04z": [6, 9, 20, 21, 31, 32]
+  "S-12b": [6, 20]
+  "S-12a": [9, 31, 32, 43, 44, 54, 55]
+  "T-07": [15, 26, 38]
+  "FATDC-LOGIC-04i": 15
+  "§11.2#r6": [31, 43]
+  "FATDC-LOGIC-04t": 62
+  "FATDC-LOGIC-04d": 62
+  "FATDC-LOGIC-04af": 63
+  "FATDC-LOGIC-04ag": 63
+  "§4.2c#b1": 67
 coverage:
   web: automated
 ---

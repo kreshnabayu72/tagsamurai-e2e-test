@@ -1,12 +1,28 @@
 ---
 id: TC-FA-PREF-E2E-162-select-offset-dan-found-asset-tanpa-shortcut-dan-save-akun-gabungan-gain-loss
 title: "Select Default Capitalization Offset, Found Asset Credit Account, dan Default Disposal Proceeds Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-170
   - TC-FA-PREF-592
+sourceRules: ["FAPREF-LOGIC-06i", "§4.8#r6", "FI-05", "FAPREF-LOGIC-08a", "FAPREF-LOGIC-08e", "D-01", "PV-02", "F-FAPREF-01.k10c", "F-FAPREF-01.k21a", "T-01", "F-FAPREF-01.k10a"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06i": [2, 6, 10, 13]
+  "§4.8#r6": 2
+  "FI-05": [5, 9]
+  "FAPREF-LOGIC-08a": 5
+  "FAPREF-LOGIC-08e": 9
+  "D-01": 20
+  "PV-02": 20
+  "F-FAPREF-01.k10c": 20
+  "F-FAPREF-01.k21a": 20
+  "T-01": 22
+  "F-FAPREF-01.k10a": [23, 24]
 coverage:
   web: automated
 ---

@@ -1,12 +1,27 @@
 ---
 id: TC-FA-TDC-E2E-253-absence-log-submit-save-ditolak-validasi-dan-d-08
 title: "Absence Log: Submit dan Save yang Ditolak (Validasi Create dan Edit, Dialog D-08) Tidak Menulis Entri"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-TDC-695
   - TC-FA-TDC-696
+sourceRules: ["V-04", "F-FATDC-01.k1", "§4.2c#b1", "V-05", "L-01", "§8.2#p1", "§8.3#p1", "D-08", "FATDC-LOGIC-10b.1", "F-FATDC-02.k6c"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": 10
+  "F-FATDC-01.k1": [10, 22]
+  "§4.2c#b1": [12, 19, 36]
+  "V-05": 17
+  "L-01": 22
+  "§8.2#p1": 25
+  "§8.3#p1": 27
+  "D-08": 33
+  "FATDC-LOGIC-10b.1": 33
+  "F-FATDC-02.k6c": 39
 coverage:
   web: automated
 ---

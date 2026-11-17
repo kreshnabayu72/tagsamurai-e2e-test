@@ -1,12 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-165-log-move-massal-dan-unassign-massal-campuran
 title: "Log Move Massal dan Unassign Massal Campuran pada Changelog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-549
   - TC-FA-FAAC-550
+sourceRules: ["L-08", "§8.4#r7", "L-07", "§8.4#r6", "F-FAAC-10.k1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-08": [10, 11, 12, 13, 14]
+  "§8.4#r7": 10
+  "L-07": [26, 27]
+  "§8.4#r6": 26
+  "F-FAAC-10.k1": 26
 coverage:
   web: automated
 ---

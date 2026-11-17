@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-076-move-batas-bawah-lanjutan-dan-versi-scheduled-tujuan
 title: "Move: Batas Bawah Effective From Lanjutan dan Versi Scheduled Asset Class Tujuan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-203
   - TC-FA-FAAC-204
   - TC-FA-FAAC-205
+sourceRules: ["V-25", "F-FAAC-09.k9", "D-14", "E-FAAC-42", "T-08", "FAAC-LOGIC-07k", "FAAC-LOGIC-07b"]
+smoke: []
+dependsOn: []
+trace:
+  "V-25": [8, 16]
+  "F-FAAC-09.k9": 9
+  "D-14": [15, 31]
+  "E-FAAC-42": [18, 34]
+  "T-08": [19, 35]
+  "FAAC-LOGIC-07k": [20, 23]
+  "FAAC-LOGIC-07b": 32
 coverage:
   web: automated
 ---

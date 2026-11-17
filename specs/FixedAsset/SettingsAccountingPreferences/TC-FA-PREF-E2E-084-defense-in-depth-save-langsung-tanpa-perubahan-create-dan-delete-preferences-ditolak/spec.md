@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-084-defense-in-depth-save-langsung-tanpa-perubahan-create-dan-delete-preferences-ditolak
 title: "Defense-in-depth: Save Langsung Tanpa Perubahan Nilai Berhasil, Create dan Delete Preferences oleh User Ditolak Server"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-PREF-232
   - TC-FA-PREF-544
   - TC-FA-PREF-545
+sourceRules: ["F-FAPREF-01.k1a", "FAPREF-LOGIC-06h", "E-FAPREF-01", "FAPREF-LOGIC-01b", "FAPREF-LOGIC-01a", "L-01a", "RG-02", "§4.1.4#p3", "FAPREF-LOGIC-02a", "FAPREF-LOGIC-02h", "FAPREF-LOGIC-03a", "FAPREF-LOGIC-04a"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k1a": 3
+  "FAPREF-LOGIC-06h": 4
+  "E-FAPREF-01": 6
+  "FAPREF-LOGIC-01b": [10, 18, 24, 26]
+  "FAPREF-LOGIC-01a": 12
+  "L-01a": 16
+  "RG-02": [17, 19, 20, 27, 28, 29]
+  "§4.1.4#p3": 18
+  "FAPREF-LOGIC-02a": 26
+  "FAPREF-LOGIC-02h": 26
+  "FAPREF-LOGIC-03a": 26
+  "FAPREF-LOGIC-04a": 26
+anchor: [14]
 coverage:
   web: automated
 ---

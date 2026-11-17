@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-008-helper-text-disposal-documents-per-jenis-dokumen
 title: "Helper Text Disposal Documents per Jenis Dokumen"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-PREF-43
   - TC-FA-PREF-44
   - TC-FA-PREF-45
+sourceRules: ["DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06"]
+smoke: []
+dependsOn: []
+trace:
+  "DOC-01": [2, 3]
+  "DOC-02": [4, 5]
+  "DOC-03": [6, 7]
+  "DOC-04": [8, 9]
+  "DOC-05": [10, 11]
+  "DOC-06": [12, 13]
 coverage:
   web: automated
 ---

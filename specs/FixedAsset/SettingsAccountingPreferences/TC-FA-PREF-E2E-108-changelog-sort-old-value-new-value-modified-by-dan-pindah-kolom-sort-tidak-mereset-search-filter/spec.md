@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-108-changelog-sort-old-value-new-value-modified-by-dan-pindah-kolom-sort-tidak-mereset-search-filter
 title: "Changelog Sort: Old Value, New Value, Modified By, dan berpindah kolom sort tidak mereset Search dan Filter"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-PREF-328
   - TC-FA-PREF-329
   - TC-FA-PREF-330
+sourceRules: ["§4.1.4#r5", "§9.5#r9", "§9.5#r8", "§4.1.4#r6", "§4.1.4#r7", "§4.1.4#r2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#r5": [3, 5]
+  "§9.5#r9": [3, 5, 10, 12]
+  "§9.5#r8": 7
+  "§4.1.4#r6": [10, 12]
+  "§4.1.4#r7": [16, 18, 27, 28]
+  "§4.1.4#r2": 25
+anchor: [24, 26]
 coverage:
   web: automated
 ---

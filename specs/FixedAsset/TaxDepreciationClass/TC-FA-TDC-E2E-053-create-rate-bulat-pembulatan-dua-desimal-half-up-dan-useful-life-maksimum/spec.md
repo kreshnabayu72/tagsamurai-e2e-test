@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-053-create-rate-bulat-pembulatan-dua-desimal-half-up-dan-useful-life-maksimum
 title: "Create - Rate Bulat, Pembulatan Dua Desimal Half-up, dan Useful Life Maksimum"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-TDC-169
   - TC-FA-TDC-170
   - TC-FA-TDC-172
+sourceRules: ["FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-03f.1": [4, 7, 10, 13, 17, 20, 23, 26, 29, 32]
+  "FATDC-LOGIC-03f.2": [5, 8, 11, 14, 18, 21, 24, 27, 30, 33]
+anchor: [15]
 coverage:
   web: automated
 ---

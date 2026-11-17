@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-108-resilience-bulk-activate-delete-5xx-timeout-dan-retry-delete
 title: "Resilience Bulk Activate dan Bulk Delete: Timeout, Gagal 5xx, dan Retry Delete"
+layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-485
   - TC-FA-TDC-486
   - TC-FA-TDC-901
+sourceRules: ["§7.3#b1", "§9.6#p1", "R-04", "R-06", "F-FATDC-06.k6", "S-07a", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "§7.3#b1": [7, 9, 22, 33, 35]
+  "§9.6#p1": [7, 8, 10, 21, 23, 33, 34, 36]
+  "R-04": 11
+  "R-06": [19, 24, 37, 43, 47]
+  "F-FATDC-06.k6": 45
+  "S-07a": 46
+  "L-05": 49
+anchor: [20]
 coverage:
   web: automated
 ---

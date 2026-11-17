@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-066-assign-screening-picker-dan-validasi
 title: "Screening Dialog Assign Asset Names, Filter Picker, Search Kosong, dan Validasi Tanpa Pilihan"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-FAAC-155
   - TC-FA-FAAC-168
   - TC-FA-FAAC-169
+sourceRules: ["§4.2c#p1", "D-13", "§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5", "FI-11", "§4.1#r5", "F-FAAC-08.k6", "§4.1.4#r8", "ST-25"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2c#p1": [3, 4, 6]
+  "D-13": [5, 10, 21]
+  "§4.1.4#r1": [7, 8]
+  "§4.1.4#r2": 7
+  "§4.1.4#r3": 7
+  "§4.1.4#r4": [7, 9, 17, 18, 20]
+  "§4.1.4#r5": 7
+  "FI-11": 13
+  "§4.1#r5": 14
+  "F-FAAC-08.k6": [15, 27, 28, 29]
+  "§4.1.4#r8": 17
+  "ST-25": [24, 34]
+anchor: [11, 12, 30]
 coverage:
   web: automated
 ---

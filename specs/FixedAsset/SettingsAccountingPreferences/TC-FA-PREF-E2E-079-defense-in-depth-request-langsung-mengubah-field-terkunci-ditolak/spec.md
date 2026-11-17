@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-079-defense-in-depth-request-langsung-mengubah-field-terkunci-ditolak
 title: "Defense-in-Depth: Request Langsung Mengubah Fiscal Year Start dan First Accounting Period yang Terkunci Ditolak Server"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,15 @@ sourceTc:
   - TC-FA-PREF-519
   - TC-FA-PREF-520
   - TC-FA-PREF-521
+sourceRules: ["FAPREF-LOGIC-02d", "F-FAPREF-01.k6b", "F-FAPREF-01.k22a", "F-FAPREF-01.k13"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-02d": [3, 10, 18, 25]
+  "F-FAPREF-01.k6b": [5, 7, 12, 14, 20, 22, 27, 29]
+  "F-FAPREF-01.k22a": 31
+  "F-FAPREF-01.k13": 33
+anchor: [34, 35]
 coverage:
   web: automated
 ---

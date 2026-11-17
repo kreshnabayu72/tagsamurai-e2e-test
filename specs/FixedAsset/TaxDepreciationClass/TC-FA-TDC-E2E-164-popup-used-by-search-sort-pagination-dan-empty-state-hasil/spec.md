@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-164-popup-used-by-search-sort-pagination-dan-empty-state-hasil
 title: "Popup Used By: Search, Sort, Pagination, dan Empty State Hasil"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-TDC-585
   - TC-FA-TDC-587
   - TC-FA-TDC-588
+sourceRules: ["§4.1.6#p1", "ST-25", "§4.1.6#p2", "§4.1.6#r2", "§4.4#r10", "§4.1.6#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p1": [3, 5, 25, 26, 28, 30]
+  "ST-25": [7, 9]
+  "§4.1.6#p2": [11, 21]
+  "§4.1.6#r2": [13, 15]
+  "§4.4#r10": [13, 15, 17, 19, 21]
+  "§4.1.6#r3": [17, 19]
 coverage:
   web: automated
 ---

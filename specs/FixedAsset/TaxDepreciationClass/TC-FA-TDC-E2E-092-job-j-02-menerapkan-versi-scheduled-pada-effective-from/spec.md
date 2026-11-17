@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-092-job-j-02-menerapkan-versi-scheduled-pada-effective-from
 title: "Job J-02: Menerapkan Versi Scheduled Menjadi Current pada 00:00 Effective From Menurut Time Zone Entitas"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -9,6 +10,26 @@ sourceTc:
   - TC-FA-TDC-344
   - TC-FA-TDC-345
   - TC-FA-TDC-346
+sourceRules: ["FATDC-LOGIC-04h", "ST-30", "FLD-05", "F-FATDC-10.k1", "S-04a", "R-12", "S-04h", "FLD-09", "§4.1.2#r10", "S-04g", "§4.1.6#r5", "§[F-FATDC-10] Apply Scheduled Version#b1", "§4.1.1#r10", "FATDC-LOGIC-04q.3", "FATDC-LOGIC-04aa", "F-FATDC-10.k4"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04h": 3
+  "ST-30": [5, 14]
+  "FLD-05": [5, 24]
+  "F-FATDC-10.k1": [9, 21]
+  "S-04a": [9, 21]
+  "R-12": 10
+  "S-04h": 11
+  "FLD-09": 13
+  "§4.1.2#r10": 13
+  "S-04g": 14
+  "§4.1.6#r5": [16, 31]
+  "§[F-FATDC-10] Apply Scheduled Version#b1": 16
+  "§4.1.1#r10": 22
+  "FATDC-LOGIC-04q.3": 22
+  "FATDC-LOGIC-04aa": 24
+  "F-FATDC-10.k4": [28, 31]
 coverage:
   web: automated
 ---

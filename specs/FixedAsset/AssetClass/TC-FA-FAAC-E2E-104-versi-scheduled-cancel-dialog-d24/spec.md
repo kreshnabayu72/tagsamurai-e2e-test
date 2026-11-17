@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-104-versi-scheduled-cancel-dialog-d24
 title: "Versi Scheduled: Dialog Cancel Scheduled Version (D-24), Konfirmasi, Back, dan Penolakan Server"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-FAAC-332
   - TC-FA-FAAC-333
   - TC-FA-FAAC-334
+sourceRules: ["§4.1#r12", "§3.11#p1", "E-FAAC-115", "F-FAAC-17.k2", "T-15", "F-FAAC-17.k3", "L-13", "F-FAAC-17.k4", "E-FAAC-117", "FAAC-LOGIC-07b"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1#r12": 4
+  "§3.11#p1": 4
+  "E-FAAC-115": [7, 10]
+  "F-FAAC-17.k2": [8, 9]
+  "T-15": [14, 26]
+  "F-FAAC-17.k3": [15, 17, 37, 39]
+  "L-13": [19, 20, 42]
+  "F-FAAC-17.k4": [26, 27, 28]
+  "E-FAAC-117": 29
+  "FAAC-LOGIC-07b": 40
 coverage:
   web: automated
 ---

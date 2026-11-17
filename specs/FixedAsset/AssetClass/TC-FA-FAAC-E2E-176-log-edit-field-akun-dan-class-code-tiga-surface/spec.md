@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-176-log-edit-field-akun-dan-class-code-tiga-surface
 title: "Log Edit Asset Class: Satu Baris per Field, Format Akun, dan Class Code Baru"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,14 @@ sourceTc:
   - TC-FA-FAAC-528
   - TC-FA-FAAC-529
   - TC-FA-FAAC-530
+sourceRules: ["L-02", "§8.2#p1", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-02": [7, 8, 9, 12, 13, 15, 16, 25, 26, 35, 36, 37, 40, 41, 45, 46]
+  "§8.2#p1": [12, 13, 40, 41]
+  "§8.3#p1": [15, 16, 45, 46]
+anchor: [43, 48]
 coverage:
   web: automated
 ---

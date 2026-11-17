@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-040-validasi-v-04-akun-default-berubah-sesi-lain-dengan-dialog
 title: "Validasi V-04: akun Default Gain menjadi Inactive dan akun Default Loss dihapus oleh sesi lain sebelum Save (dengan dialog Save Changes)"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-142
   - TC-FA-PREF-143
+sourceRules: ["FAPREF-LOGIC-10a", "F-FAPREF-01.k4c", "V-04", "FAPREF-LOGIC-06h"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-10a": [4, 17]
+  "F-FAPREF-01.k4c": [6, 7, 11, 19, 20, 24]
+  "V-04": [8, 9, 21, 22]
+  "FAPREF-LOGIC-06h": [11, 24]
 coverage:
   web: automated
 ---

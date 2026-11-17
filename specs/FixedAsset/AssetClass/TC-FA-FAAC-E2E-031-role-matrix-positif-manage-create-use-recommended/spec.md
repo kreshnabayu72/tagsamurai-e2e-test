@@ -1,11 +1,18 @@
 ---
 id: TC-FA-FAAC-E2E-031-role-matrix-positif-manage-create-use-recommended
 title: "Role Matrix Positif: Manage Accounting (Read, Create) Menjalankan Use Recommended Classes"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-77
+sourceRules: ["D-21", "T-10"]
+smoke: []
+dependsOn: []
+trace:
+  "D-21": 2
+  "T-10": 5
 coverage:
   web: automated
 ---

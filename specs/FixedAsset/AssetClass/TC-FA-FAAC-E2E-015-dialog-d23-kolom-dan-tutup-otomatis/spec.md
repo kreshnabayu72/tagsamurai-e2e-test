@@ -1,12 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-015-dialog-d23-kolom-dan-tutup-otomatis
 title: "Dialog Asset Names Without Asset Class: Sembunyikan dan Tampilkan Kolom, serta Menutup Sendiri Saat Jumlah Menjadi 0"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-278
   - TC-FA-FAAC-279
+sourceRules: ["§5#b1", "§4.1.9#r2", "§4.1.9#r3", "§4.1.9#r1", "F-FAAC-13.k3", "F-FAAC-13.k4", "§4.1.9#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b1": [4, 6, 8, 9]
+  "§4.1.9#r2": [4, 11]
+  "§4.1.9#r3": [6, 11]
+  "§4.1.9#r1": 8
+  "F-FAAC-13.k3": 17
+  "F-FAAC-13.k4": [20, 21, 22]
+  "§4.1.9#p2": 20
 coverage:
   web: automated
 ---

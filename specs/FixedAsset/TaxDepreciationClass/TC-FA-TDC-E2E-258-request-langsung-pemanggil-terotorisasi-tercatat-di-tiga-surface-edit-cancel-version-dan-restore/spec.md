@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-258-request-langsung-pemanggil-terotorisasi-tercatat-di-tiga-surface-edit-cancel-version-dan-restore
 title: "Request Langsung Pemanggil Terotorisasi Tercatat di Tiga Surface: Edit, Cancel Scheduled Version, dan Restore default classes"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-TDC-910
   - TC-FA-TDC-911
   - TC-FA-TDC-912
+sourceRules: ["J-04", "FATDC-LOGIC-04g.1", "L-03", "§8.2#p1", "§8.3#p1", "FATDC-LOGIC-04i", "L-09", "§8.2#r1", "FATDC-LOGIC-02d", "L-01", "§8.4#r5", "L-04"]
+smoke: []
+dependsOn: []
+trace:
+  "J-04": [5, 21, 33]
+  "FATDC-LOGIC-04g.1": 7
+  "L-03": [9, 12, 15]
+  "§8.2#p1": [12, 40]
+  "§8.3#p1": [15, 29, 43]
+  "FATDC-LOGIC-04i": 23
+  "L-09": [25, 27, 29]
+  "§8.2#r1": 27
+  "FATDC-LOGIC-02d": 35
+  "L-01": [37, 40, 43]
+  "§8.4#r5": 37
+  "L-04": [38, 41, 44]
+anchor: [10, 13, 16]
 coverage:
   web: automated
 ---

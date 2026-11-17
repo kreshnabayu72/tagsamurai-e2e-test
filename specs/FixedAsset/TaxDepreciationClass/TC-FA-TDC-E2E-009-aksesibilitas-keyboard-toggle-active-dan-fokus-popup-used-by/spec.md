@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-009-aksesibilitas-keyboard-toggle-active-dan-fokus-popup-used-by
 title: "Aksesibilitas Keyboard Toggle Active dan Fokus Popup Used By"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,17 @@ sourceTc:
   - TC-FA-TDC-36
   - TC-FA-TDC-366
   - TC-FA-TDC-378
+sourceRules: ["§4.5#b1", "D-03", "§4.1.1#r1", "§4.5#b4", "D-01", "§4.5#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b1": [2, 7, 27]
+  "D-03": [4, 13]
+  "§4.1.1#r1": [5, 8, 14, 21]
+  "§4.5#b4": [10, 11, 17, 18]
+  "D-01": 20
+  "§4.5#b2": 25
+anchor: [28]
 coverage:
   web: automated
 ---

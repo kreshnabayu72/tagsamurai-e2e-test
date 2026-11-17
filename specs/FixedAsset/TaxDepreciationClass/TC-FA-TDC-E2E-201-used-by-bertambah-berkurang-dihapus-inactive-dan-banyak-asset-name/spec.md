@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-201-used-by-bertambah-berkurang-dihapus-inactive-dan-banyak-asset-name
 title: "Used By: Bertambah, Berkurang, Asset Class Dihapus, Asset Class Inactive, dan Banyak Asset Name"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,22 @@ sourceTc:
   - TC-FA-TDC-742
   - TC-FA-TDC-743
   - TC-FA-TDC-744
+sourceRules: ["FATDC-LOGIC-11a", "§4.1.1#r9", "FATDC-LOGIC-11d.1", "FATDC-LOGIC-11d.2", "§4.1.6#r1", "§4.1.6#r2", "FATDC-LOGIC-11d.3", "§4.1.6#r3", "D-02", "FATDC-LOGIC-08a", "F-FATDC-05.k1", "FATDC-LOGIC-11b"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-11a": [10, 16, 22, 38]
+  "§4.1.1#r9": [10, 11, 36, 37, 39, 45]
+  "FATDC-LOGIC-11d.1": [13, 18]
+  "FATDC-LOGIC-11d.2": 13
+  "§4.1.6#r1": [13, 18]
+  "§4.1.6#r2": 13
+  "FATDC-LOGIC-11d.3": [14, 19]
+  "§4.1.6#r3": [14, 19]
+  "D-02": 24
+  "FATDC-LOGIC-08a": 24
+  "F-FATDC-05.k1": 24
+  "FATDC-LOGIC-11b": [36, 45]
 coverage:
   web: automated
 ---

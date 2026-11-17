@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-002-tampilan-tabel-urutan-link-asset-names-dan-format-ringkasan
 title: "Tampilan Tabel Asset Class: Loading, Empty State Search, Urutan Awal, Link Asset Names, Tooltip Accounts, dan Format Commercial"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,22 @@ sourceTc:
   - TC-FA-FAAC-13
   - TC-FA-FAAC-670
   - TC-FA-FAAC-671
+sourceRules: ["ST-14", "ST-21", "ST-23", "§4.1.1#r2", "§4.1.1#r8", "ST-03", "§4.4#r4", "§4.1.1#r7", "FAAC-LOGIC-05b", "§4.5#b5", "§4.1.1#r4", "§4.1.1#r20"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-14": [4, 6, 7]
+  "ST-21": [4, 6]
+  "ST-23": [9, 10, 11]
+  "§4.1.1#r2": 14
+  "§4.1.1#r8": [15, 16]
+  "ST-03": [15, 16, 18]
+  "§4.4#r4": [15, 18, 31]
+  "§4.1.1#r7": [20, 21]
+  "FAAC-LOGIC-05b": [20, 21]
+  "§4.5#b5": 22
+  "§4.1.1#r4": [23, 24, 25, 26, 27]
+  "§4.1.1#r20": 27
 coverage:
   web: automated
 ---

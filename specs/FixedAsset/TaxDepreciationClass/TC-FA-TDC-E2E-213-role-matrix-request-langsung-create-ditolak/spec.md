@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-213-role-matrix-request-langsung-create-ditolak
 title: "Role Matrix Negatif: Request Langsung Create Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,13 @@ sourceTc:
   - TC-FA-TDC-816
   - TC-FA-TDC-817
   - TC-FA-TDC-818
+sourceRules: ["§9.3#r2", "§9.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r2": 4
+  "§9.3#p1": 7
+anchor: [6]
 coverage:
   web: automated
 ---

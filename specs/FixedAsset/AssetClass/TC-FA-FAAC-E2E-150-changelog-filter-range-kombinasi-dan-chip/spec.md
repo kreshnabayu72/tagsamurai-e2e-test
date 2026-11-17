@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-150-changelog-filter-range-kombinasi-dan-chip
 title: "Modal Changelog: Filter Date Range, Kombinasi AND, Logika OR, Search di Dropdown, dan Hapus Opsi lewat Chip"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,28 @@ sourceTc:
   - TC-FA-FAAC-492
   - TC-FA-FAAC-493
   - TC-FA-FAAC-494
+sourceRules: ["§4.1.1#r26", "§4.1.1#r35", "§4.1.1#r36", "§4.1.1#r37", "§5#b3", "§4.1.1#r43", "§4.1.1#r45", "§4.1.1#r46", "§4.1.1#r47", "§4.1.1#r48", "§4.1.1#r29", "§4.1.1#r27", "§4.1.1#r34", "§4.1.1#r50", "§4.1.1#r51", "§4.1.1#r28", "§4.1.1#r33", "§4.1.1#b4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r26": 5
+  "§4.1.1#r35": 5
+  "§4.1.1#r36": 5
+  "§4.1.1#r37": 5
+  "§5#b3": [12, 15]
+  "§4.1.1#r43": 12
+  "§4.1.1#r45": [12, 15]
+  "§4.1.1#r46": [12, 15]
+  "§4.1.1#r47": [12, 15]
+  "§4.1.1#r48": [12, 15]
+  "§4.1.1#r29": 15
+  "§4.1.1#r27": [21, 37, 38]
+  "§4.1.1#r34": 21
+  "§4.1.1#r50": 21
+  "§4.1.1#r51": 21
+  "§4.1.1#r28": [27, 29]
+  "§4.1.1#r33": 27
+  "§4.1.1#b4": [34, 35, 43, 44]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-119-matriks-bulk-deactivate-4b-4c-dan-5-collapse-ke-dialog-single
 title: "Matriks Bulk Deactivate 4b 4c dan 5 Collapse ke Dialog Single"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,19 @@ sourceTc:
   - TC-FA-TDC-453
   - TC-FA-TDC-454
   - TC-FA-TDC-455
+sourceRules: ["D-14", "FATDC-LOGIC-14f", "FATDC-LOGIC-14c", "D-02", "FATDC-LOGIC-14g", "D-01", "FATDC-LOGIC-14h", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3", "FATDC-LOGIC-14k"]
+smoke: []
+dependsOn: []
+trace:
+  "D-14": [3, 4, 5]
+  "FATDC-LOGIC-14f": [4, 5]
+  "FATDC-LOGIC-14c": [6, 13, 34]
+  "D-02": [11, 12, 24, 25, 26]
+  "FATDC-LOGIC-14g": 12
+  "D-01": [18, 19, 31]
+  "FATDC-LOGIC-14h": [24, 31]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 33
+  "FATDC-LOGIC-14k": 35
 coverage:
   web: automated
 ---

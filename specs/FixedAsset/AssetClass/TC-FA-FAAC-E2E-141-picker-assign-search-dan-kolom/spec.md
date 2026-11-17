@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-141-picker-assign-search-dan-kolom
 title: "Picker Assign: Search pada Lima Kolom dan Menyembunyikan Kolom Label dan Current Class"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-FAAC-514
   - TC-FA-FAAC-515
   - TC-FA-FAAC-525
+sourceRules: ["§4.1.4#p1", "§4.1.4#r6", "§4.1.4#r7", "§4.1.4#r8", "§4.1.4#r9", "§4.1.4#r1", "§4.1.4#r2", "§4.1.4#r3", "§4.1.4#r4", "§4.1.4#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#p1": [7, 9, 12, 15, 18, 21]
+  "§4.1.4#r6": 7
+  "§4.1.4#r7": 7
+  "§4.1.4#r8": 7
+  "§4.1.4#r9": 7
+  "§4.1.4#r1": [9, 27]
+  "§4.1.4#r2": [12, 27]
+  "§4.1.4#r3": [15, 26, 29]
+  "§4.1.4#r4": [18, 26, 29]
+  "§4.1.4#r5": [21, 27]
 coverage:
   web: automated
 ---

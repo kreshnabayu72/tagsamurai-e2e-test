@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-169-sinkron-tax-depreciation-class-dan-used-by
 title: "Sinkronisasi Tax Depreciation Class: Kolom Fiscal, Opsi Select, dan Modal Used By"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,14 @@ sourceTc:
   - TC-FA-FAAC-650
   - TC-FA-FAAC-651
   - TC-FA-FAAC-652
+sourceRules: ["S-15", "S-14", "§4.1.2#r14", "FAAC-LOGIC-02e"]
+smoke: []
+dependsOn: []
+trace:
+  "S-15": [14, 23, 40, 41, 60, 63, 80, 81]
+  "S-14": [88, 91]
+  "§4.1.2#r14": [100, 101]
+  "FAAC-LOGIC-02e": 101
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-115-filter-panel-screening-dan-multi-select
 title: "Filter Tabel Asset Class: Screening Filter Panel, Opsi Dropdown, dan Filter Tunggal Multi-Select"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,29 @@ sourceTc:
   - TC-FA-FAAC-363
   - TC-FA-FAAC-364
   - TC-FA-FAAC-365
+sourceRules: ["§5#b3", "§4.1.1#r1", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r7", "§4.1.1#r10", "§4.1.1#r6", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r11", "§9.5#r18", "FAAC-LOGIC-05b", "§4.1.1#r25", "§4.1.1#r17", "§4.1.1#r20", "§4.1.1#r24", "§4.1.1#r19", "§4.1.1#r43"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b3": [2, 6]
+  "§4.1.1#r1": [3, 9, 20]
+  "§4.1.1#r4": [3, 11, 23]
+  "§4.1.1#r5": [3, 13, 26]
+  "§4.1.1#r7": [3, 15, 29]
+  "§4.1.1#r10": [3, 17, 32]
+  "§4.1.1#r6": 4
+  "§4.1.1#r8": 4
+  "§4.1.1#r9": 4
+  "§4.1.1#r11": 5
+  "§9.5#r18": [9, 11, 13, 15, 18]
+  "FAAC-LOGIC-05b": [15, 29]
+  "§4.1.1#r25": 20
+  "§4.1.1#r17": [20, 23, 26, 29, 32]
+  "§4.1.1#r20": 23
+  "§4.1.1#r24": 26
+  "§4.1.1#r19": 29
+  "§4.1.1#r43": 32
+anchor: [7]
 coverage:
   web: automated
 ---

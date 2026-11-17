@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-131-konflik-restore-d-07-batas-terlampaui-saat-restore
 title: "Konflik Restore Default Classes: Batas Master Data Count Limit Terlampaui Saat Klik Restore atau Konfirmasi"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-329
   - TC-FA-TDC-330
   - TC-FA-TDC-331
+sourceRules: ["ST-23", "D-07", "F-FATDC-08.k3e", "F-FATDC-08.k3f", "D-12", "FATDC-LOGIC-13a", "T-10"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [1, 17]
+  "D-07": [4, 12]
+  "F-FATDC-08.k3e": 5
+  "F-FATDC-08.k3f": [12, 14]
+  "D-12": 20
+  "FATDC-LOGIC-13a": [21, 24]
+  "T-10": 23
 coverage:
   web: automated
 ---

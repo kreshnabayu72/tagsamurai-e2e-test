@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-094-bulk-status-blokir-batal-dan-collapse
 title: "Bulk Status: Diblokir, Batal, dan Dialog Single untuk Satu Asset Class"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -11,6 +12,20 @@ sourceTc:
   - TC-FA-FAAC-252
   - TC-FA-FAAC-667
   - TC-FA-FAAC-668
+sourceRules: ["D-04", "F-FAAC-04.k6", "§7.3#b2", "§3.3#p1", "§8.4#r5", "D-01", "§4.2f#b1", "D-08", "D-09", "D-03"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": 7
+  "F-FAAC-04.k6": [9, 12, 14]
+  "§7.3#b2": [10, 13, 25, 27, 52, 54, 67, 69]
+  "§3.3#p1": [23, 24, 50, 51, 65, 66]
+  "§8.4#r5": [28, 55, 70]
+  "D-01": 33
+  "§4.2f#b1": [33, 39]
+  "D-08": 39
+  "D-09": 48
+  "D-03": 63
 coverage:
   web: automated
 ---

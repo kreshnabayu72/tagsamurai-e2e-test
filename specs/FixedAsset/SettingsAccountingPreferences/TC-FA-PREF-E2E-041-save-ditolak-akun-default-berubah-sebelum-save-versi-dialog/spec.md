@@ -1,12 +1,21 @@
 ---
 id: TC-FA-PREF-E2E-041-save-ditolak-akun-default-berubah-sebelum-save-versi-dialog
 title: "Save ditolak karena akun Default Gain atau Loss on Disposal berubah sebelum Save (alur Save dengan dialog D-01)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-214
   - TC-FA-PREF-215
+sourceRules: ["F-FAPREF-01.k4c", "V-04", "FAPREF-LOGIC-06h", "E-FAPREF-04"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k4c": [5, 6, 10, 18, 19, 23]
+  "V-04": [7, 8, 20, 21]
+  "FAPREF-LOGIC-06h": [10, 23]
+  "E-FAPREF-04": [11, 24]
 coverage:
   web: automated
 ---

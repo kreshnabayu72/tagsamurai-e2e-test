@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-202-used-by-penanda-warning-guard-deactivate-delete-lolos-dan-label-modal
 title: "Used By: Penanda Warning Hilang, Guard Deactivate dan Delete Menjadi Lolos, dan Label Modal Mengikuti Class Name"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,28 @@ sourceTc:
   - TC-FA-TDC-746
   - TC-FA-TDC-747
   - TC-FA-TDC-748
+sourceRules: ["FATDC-LOGIC-11d.5", "§4.1.6#r1", "F-FATDC-10.k5", "FATDC-LOGIC-10d", "S-11c", "D-02", "FATDC-LOGIC-08a", "§4.2c#r14", "D-01", "FATDC-LOGIC-08h", "D-05", "FATDC-LOGIC-09b", "F-FATDC-06.k2", "D-06", "D-04", "FATDC-LOGIC-09c", "§4.1.6#p1", "FATDC-LOGIC-11d.1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-11d.5": 2
+  "§4.1.6#r1": 2
+  "F-FATDC-10.k5": 2
+  "FATDC-LOGIC-10d": 12
+  "S-11c": 12
+  "D-02": [16, 29]
+  "FATDC-LOGIC-08a": 16
+  "§4.2c#r14": 16
+  "D-01": 28
+  "FATDC-LOGIC-08h": [28, 29]
+  "D-05": [34, 43]
+  "FATDC-LOGIC-09b": 34
+  "F-FATDC-06.k2": 34
+  "D-06": 42
+  "D-04": 43
+  "FATDC-LOGIC-09c": 43
+  "§4.1.6#p1": 50
+  "FATDC-LOGIC-11d.1": 50
 coverage:
   web: automated
 ---

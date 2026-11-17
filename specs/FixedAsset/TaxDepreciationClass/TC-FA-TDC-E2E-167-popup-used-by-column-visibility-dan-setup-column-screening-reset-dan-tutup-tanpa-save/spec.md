@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-167-popup-used-by-column-visibility-dan-setup-column-screening-reset-dan-tutup-tanpa-save
 title: "Popup Used By: Column Visibility, Setup Column Screening, Reset, dan Tutup Tanpa Save"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,16 @@ sourceTc:
   - TC-FA-TDC-596
   - TC-FA-TDC-600
   - TC-FA-TDC-601
+sourceRules: ["§4.1.6#r1", "§4.1.6#r2", "§4.1.6#r3", "§4.4#r11", "§4.1#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#r1": [4, 5, 12, 13, 23, 27]
+  "§4.1.6#r2": [4, 5, 12, 13, 23, 27]
+  "§4.1.6#r3": [4, 5, 12, 13, 23, 27]
+  "§4.4#r11": 7
+  "§4.1#r8": 9
+anchor: [3, 6, 10, 11, 14, 15, 16, 32, 33, 38, 39]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-203-fiscal-year-start-terkunci-oleh-versi-bertanggal
 title: "Preferences: Fiscal Year Start Terkunci oleh Versi Bertanggal dan Tidak Terkunci oleh Versi Pertama"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-750
   - TC-FA-TDC-751
   - TC-FA-TDC-752
+sourceRules: ["FATDC-LOGIC-04d", "S-12a", "V-20", "FATDC-LOGIC-04z", "§4.1.1#r17", "§4.1.6#p5", "§4.1.6#r5", "FATDC-LOGIC-04ad", "S-12b", "§4.1.6#r4", "FATDC-LOGIC-04ac"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04d": 6
+  "S-12a": 6
+  "V-20": 7
+  "FATDC-LOGIC-04z": [7, 20, 23, 40, 41]
+  "§4.1.1#r17": 9
+  "§4.1.6#p5": [12, 33]
+  "§4.1.6#r5": 12
+  "FATDC-LOGIC-04ad": 12
+  "S-12b": [20, 23, 40]
+  "§4.1.6#r4": 33
+  "FATDC-LOGIC-04ac": 33
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-091-seed-gagal-dan-job-j-01-harian-time-zone-entitas
 title: "Job J-01 Harian: Seed Tidak Dibuat Ulang Setelah Dihapus, Dicoba Ulang Setelah Gagal, pada 00:00 Menurut Time Zone Entitas"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-TDC-340
   - TC-FA-TDC-341
   - TC-FA-TDC-342
+sourceRules: ["ST-23", "FATDC-LOGIC-02c", "FATDC-LOGIC-04x", "R-11", "F-FATDC-09.k3", "F-FATDC-09.k1a", "F-FATDC-09.k1b"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-23": [5, 15, 23]
+  "FATDC-LOGIC-02c": [7, 10]
+  "FATDC-LOGIC-04x": [10, 23, 26]
+  "R-11": 11
+  "F-FATDC-09.k3": 15
+  "F-FATDC-09.k1a": [19, 26]
+  "F-FATDC-09.k1b": [19, 26]
 coverage:
   web: automated
 ---

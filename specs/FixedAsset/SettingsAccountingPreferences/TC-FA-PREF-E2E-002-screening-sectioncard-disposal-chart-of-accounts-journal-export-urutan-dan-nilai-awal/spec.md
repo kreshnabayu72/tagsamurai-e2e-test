@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-002-screening-sectioncard-disposal-chart-of-accounts-journal-export-urutan-dan-nilai-awal
 title: "Screening SectionCard Disposal, Chart of Accounts, Journal Export, Urutan SectionCard, dan Nilai Awal Seluruh Setting"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,35 @@ sourceTc:
   - TC-FA-PREF-8
   - TC-FA-PREF-21
   - TC-FA-PREF-22
+sourceRules: ["§4.2a#p1", "SET-05", "§4.1.2#p1", "§4.1.1#p4", "SET-06", "SET-07", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "§9.5#r5", "SET-08", "SET-09", "SET-11", "§9.5#r1", "SET-01", "SET-12", "FAPREF-LOGIC-02h", "SET-02", "SET-03", "SET-04", "SET-13", "FAPREF-LOGIC-09c"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2a#p1": [2, 11, 17, 20]
+  "SET-05": [3, 4, 28]
+  "§4.1.2#p1": [3, 5, 7, 12, 14, 18]
+  "§4.1.1#p4": [4, 6, 13, 15, 28]
+  "SET-06": [5, 6, 28]
+  "SET-07": [7, 9, 29]
+  "DOC-01": [8, 9, 22, 29]
+  "DOC-02": [8, 9, 22, 29]
+  "DOC-03": [8, 9, 22, 29]
+  "DOC-04": [8, 9, 22, 29]
+  "DOC-05": [8, 9, 22, 29]
+  "DOC-06": [8, 9, 22, 29]
+  "§9.5#r5": [8, 22]
+  "SET-08": [12, 13, 28]
+  "SET-09": [14, 15, 28]
+  "SET-11": [18, 19, 30]
+  "§9.5#r1": 20
+  "SET-01": 23
+  "SET-12": 24
+  "FAPREF-LOGIC-02h": 24
+  "SET-02": 25
+  "SET-03": 26
+  "SET-04": 27
+  "SET-13": 28
+  "FAPREF-LOGIC-09c": 30
 coverage:
   web: automated
 ---

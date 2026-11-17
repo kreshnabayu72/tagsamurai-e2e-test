@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-140-konflik-capability-diubah-saat-user-lain-login
 title: "Konflik Capability: Update dan Delete pada Manage accounting Diberikan atau Dicabut Saat User Lain Sedang Login"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-TDC-771
   - TC-FA-TDC-772
   - TC-FA-TDC-773
+sourceRules: ["§4.8#r14", "§4.8#r13", "§4.8#r15", "ST-29", "FATDC-LOGIC-08i", "§4.8#r12", "FATDC-LOGIC-14b", "§4.8#r17"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r14": 9
+  "§4.8#r13": [11, 30]
+  "§4.8#r15": [12, 29]
+  "ST-29": 20
+  "FATDC-LOGIC-08i": 21
+  "§4.8#r12": 22
+  "FATDC-LOGIC-14b": 33
+  "§4.8#r17": 34
 coverage:
   web: automated
 ---

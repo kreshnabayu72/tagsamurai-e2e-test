@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-186-android-toolbar-aksi-baris-restore-guided-tooltip-dan-akses-read-only
 title: "Android: Toolbar, Aksi Baris, Restore Default Classes, Guided Tooltip, dan Akses Read Only"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,24 @@ sourceTc:
   - TC-FA-TDC-671
   - TC-FA-TDC-662
   - TC-FA-TDC-668
+sourceRules: ["§4.6#b5", "§4.6#b4", "§4.1.1#p8", "§4.6#b6", "§4.8#r13", "§4.8#r15", "ST-23", "§4.7#p2", "FATDC-LOGIC-08i", "FATDC-LOGIC-08h", "§4.8#r2", "§4.8#r3", "§4.8#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.6#b5": [1, 5, 8, 20, 21]
+  "§4.6#b4": 3
+  "§4.1.1#p8": 3
+  "§4.6#b6": 6
+  "§4.8#r13": 14
+  "§4.8#r15": 14
+  "ST-23": 18
+  "§4.7#p2": [28, 30]
+  "FATDC-LOGIC-08i": 35
+  "FATDC-LOGIC-08h": 38
+  "§4.8#r2": 39
+  "§4.8#r3": 39
+  "§4.8#r9": 40
+anchor: [11, 26, 36, 37]
 coverage:
   mobile: automated
 ---

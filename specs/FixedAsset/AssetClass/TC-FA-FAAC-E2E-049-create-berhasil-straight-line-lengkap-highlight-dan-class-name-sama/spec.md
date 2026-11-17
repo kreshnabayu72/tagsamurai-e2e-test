@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-049-create-berhasil-straight-line-lengkap-highlight-dan-class-name-sama
 title: "Create Asset Class Berhasil: Method Straight Line Lengkap dengan Akun, Highlight Baris Baru, dan Class Name yang Sama"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,27 @@ sourceTc:
   - TC-FA-FAAC-14
   - TC-FA-FAAC-87
   - TC-FA-FAAC-95
+sourceRules: ["T-01", "§4.2b#p1", "§[F-FAAC-01] Create Asset Class#b5", "ST-01", "§4.1.2#r4", "§4.1.2#r5", "§5#b13", "ST-02", "§5#b12", "§4.1.1#r1", "§4.1.1#r4", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r8", "§4.1.1#r9", "§4.1.1#r7", "§4.1.1#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [9, 31]
+  "§4.2b#p1": [10, 11]
+  "§[F-FAAC-01] Create Asset Class#b5": [10, 12]
+  "ST-01": 11
+  "§4.1.2#r4": 13
+  "§4.1.2#r5": 13
+  "§5#b13": [15, 25]
+  "ST-02": [16, 26]
+  "§5#b12": [16, 26]
+  "§4.1.1#r1": 17
+  "§4.1.1#r4": 17
+  "§4.1.1#r5": 17
+  "§4.1.1#r6": 17
+  "§4.1.1#r8": 17
+  "§4.1.1#r9": 17
+  "§4.1.1#r7": 18
+  "§4.1.1#r3": 32
 coverage:
   web: automated
 ---

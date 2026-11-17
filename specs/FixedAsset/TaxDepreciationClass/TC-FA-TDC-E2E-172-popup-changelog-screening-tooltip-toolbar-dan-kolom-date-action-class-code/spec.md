@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-172-popup-changelog-screening-tooltip-toolbar-dan-kolom-date-action-class-code
 title: "Popup Changelog: Screening, Tooltip Toolbar, serta Kolom Date, Action, dan Class Code"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,33 @@ sourceTc:
   - TC-FA-TDC-614
   - TC-FA-TDC-619
   - TC-FA-TDC-620
+sourceRules: ["§5#b8", "§8#r1", "§4.1.1#p8", "§4.1.1#r25", "§4.1.1#r26", "§4.1.1#r27", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r30", "§4.1.1#r31", "§5#b1", "§9.5#r3", "§4.1.1#r32", "§5#b5", "§4.1.1#r35", "L-09", "§4.1.1#r37", "L-11", "§4.1.1#r38", "§4.1.1#r39", "§4.1.1#r40", "§4.1.1#r41"]
+smoke: []
+dependsOn: []
+trace:
+  "§5#b8": [2, 4]
+  "§8#r1": 2
+  "§4.1.1#p8": [4, 8]
+  "§4.1.1#r25": [5, 8, 16, 17]
+  "§4.1.1#r26": [5, 18, 19]
+  "§4.1.1#r27": [5, 20, 21, 22]
+  "§4.1.1#r28": 5
+  "§4.1.1#r29": 5
+  "§4.1.1#r30": 5
+  "§4.1.1#r31": 5
+  "§5#b1": 6
+  "§9.5#r3": [7, 9]
+  "§4.1.1#r32": [8, 16, 18, 20]
+  "§5#b5": 9
+  "§4.1.1#r35": [17, 19]
+  "L-09": 21
+  "§4.1.1#r37": 21
+  "L-11": 22
+  "§4.1.1#r38": 22
+  "§4.1.1#r39": 22
+  "§4.1.1#r40": 22
+  "§4.1.1#r41": 22
+anchor: [3, 11, 13, 15]
 coverage:
   web: automated
 ---

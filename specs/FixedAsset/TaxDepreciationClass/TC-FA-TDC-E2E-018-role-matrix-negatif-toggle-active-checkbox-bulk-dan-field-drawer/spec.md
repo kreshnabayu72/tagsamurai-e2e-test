@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-018-role-matrix-negatif-toggle-active-checkbox-bulk-dan-field-drawer
 title: "Role Matrix Negatif: Toggle Active, Checkbox Bulk, dan Field Drawer tanpa Hak Update"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-TDC-58
   - TC-FA-TDC-62
   - TC-FA-TDC-64
+sourceRules: ["FATDC-LOGIC-08i", "§4.8#b3", "§4.8#r14", "ST-29", "§3.9#r6", "§4.1.1#r2", "§4.1.1#r19", "§4.8#r16", "§4.1.1#p4", "§4.8#r7", "§4.8#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-08i": 4
+  "§4.8#b3": [4, 17, 19, 21, 23, 25, 27]
+  "§4.8#r14": 5
+  "ST-29": 5
+  "§3.9#r6": 7
+  "§4.1.1#r2": 10
+  "§4.1.1#r19": 10
+  "§4.8#r16": [11, 12]
+  "§4.1.1#p4": 12
+  "§4.8#r7": [17, 19, 21, 23, 25, 27]
+  "§4.8#r8": 28
 coverage:
   web: automated
 ---

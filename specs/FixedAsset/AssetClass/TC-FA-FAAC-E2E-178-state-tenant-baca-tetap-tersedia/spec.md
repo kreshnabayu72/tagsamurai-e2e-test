@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-178-state-tenant-baca-tetap-tersedia
 title: "State Tenant: Baca Tab Asset Class Tetap Tersedia saat Client Suspended atau Expired"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-FAAC-629
   - TC-FA-FAAC-630
   - TC-FA-FAAC-631
+sourceRules: ["§9.3#r1", "§3.9#r1", "§9.4.1#r1", "§4.1.1#r28", "§5#b8"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r1": [1, 15, 28]
+  "§3.9#r1": [2, 9]
+  "§9.4.1#r1": [4, 7, 11, 20, 24, 33]
+  "§4.1.1#r28": [13, 26]
+  "§5#b8": [18, 31]
 coverage:
   web: automated
 ---

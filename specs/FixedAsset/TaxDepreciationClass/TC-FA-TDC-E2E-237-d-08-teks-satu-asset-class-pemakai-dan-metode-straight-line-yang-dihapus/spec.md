@@ -1,12 +1,20 @@
 ---
 id: TC-FA-TDC-E2E-237-d-08-teks-satu-asset-class-pemakai-dan-metode-straight-line-yang-dihapus
 title: "Dialog D-08: Teks untuk Tepat Satu Asset Class Pemakai dan Penyebutan Straight Line sebagai Metode yang Dihapus"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-284
   - TC-FA-TDC-285
+sourceRules: ["D-08", "DO-01", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-08": [5, 6, 7, 8, 17, 18]
+  "DO-01": [9, 19]
+  "§4.2c#b1": [12, 22]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-096-aksi-form-dan-status-pada-asset-class-dihapus-pengguna-lain
 title: "Aksi Duplicate, Save Edit, Delete, Bulk, dan Toggle Status pada Asset Class yang Dihapus Pengguna Lain"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -11,6 +12,16 @@ sourceTc:
   - TC-FA-FAAC-268
   - TC-FA-FAAC-305
   - TC-FA-FAAC-306
+sourceRules: ["T-14", "F-FAAC-02.k14", "F-FAAC-05.k4", "F-FAAC-03.k2", "§7.3#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "T-14": [4, 5, 32, 33, 39]
+  "F-FAAC-02.k14": [11, 12, 13]
+  "F-FAAC-05.k4": [18, 19, 20]
+  "F-FAAC-03.k2": [25, 26, 27]
+  "§7.3#b6": [32, 33, 34, 39, 40, 41, 42]
+anchor: [6]
 coverage:
   web: automated
 ---

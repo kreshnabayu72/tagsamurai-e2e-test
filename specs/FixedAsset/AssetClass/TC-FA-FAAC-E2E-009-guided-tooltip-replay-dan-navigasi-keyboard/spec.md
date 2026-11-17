@@ -1,12 +1,21 @@
 ---
 id: TC-FA-FAAC-E2E-009-guided-tooltip-replay-dan-navigasi-keyboard
 title: "Guided Tooltip Tab Asset Class: Replay Lewat Tombol [?] dan Navigasi Keyboard Enter dan Panah"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-52
   - TC-FA-FAAC-53
+sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#r1": 7
+  "§4.7#r2": [15, 19]
+  "§4.7#r3": 17
+anchor: [5, 8, 13]
 coverage:
   web: automated
 ---

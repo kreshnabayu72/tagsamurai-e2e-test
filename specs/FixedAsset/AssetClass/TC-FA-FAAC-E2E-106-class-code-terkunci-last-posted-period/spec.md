@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-106-class-code-terkunci-last-posted-period
 title: "Class Code Terkunci oleh Last Posted Period: Tooltip, Kunci Berubah Setelah Halaman Dibuka, dan Edit Class Name"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,19 @@ sourceTc:
   - TC-FA-FAAC-337
   - TC-FA-FAAC-338
   - TC-FA-FAAC-339
+sourceRules: ["ST-07", "§4.3#r21", "§4.1.2#r4", "D-19", "F-FAAC-02.k1", "§7.2#b1", "T-02", "FAAC-LOGIC-10b", "FAAC-LOGIC-10a"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-07": [3, 17]
+  "§4.3#r21": [5, 17]
+  "§4.1.2#r4": 6
+  "D-19": 13
+  "F-FAAC-02.k1": 15
+  "§7.2#b1": 15
+  "T-02": [24, 30]
+  "FAAC-LOGIC-10b": [25, 31]
+  "FAAC-LOGIC-10a": 32
 coverage:
   web: automated
 ---

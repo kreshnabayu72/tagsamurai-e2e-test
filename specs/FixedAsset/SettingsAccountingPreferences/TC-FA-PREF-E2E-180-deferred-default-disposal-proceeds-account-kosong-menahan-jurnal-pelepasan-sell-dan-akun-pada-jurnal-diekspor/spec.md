@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-180-deferred-default-disposal-proceeds-account-kosong-menahan-jurnal-pelepasan-sell-dan-akun-pada-jurnal-diekspor
 title: "[DEFERRED] Default Disposal Proceeds Account kosong menahan jurnal pelepasan Sell, diekspor setelah diisi, dan jurnal yang sudah diekspor tidak berubah"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-629
   - TC-FA-PREF-630
   - TC-FA-PREF-631
+sourceRules: ["FAPREF-LOGIC-06k", "FAPREF-LOGIC-10j", "F-FAPREF-01.k22b", "T-01", "FAPREF-LOGIC-06f", "FAPREF-LOGIC-06g", "§11.2#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-06k": [5, 8]
+  "FAPREF-LOGIC-10j": [13, 23]
+  "F-FAPREF-01.k22b": [14, 24]
+  "T-01": [14, 24]
+  "FAPREF-LOGIC-06f": 18
+  "FAPREF-LOGIC-06g": [18, 28]
+  "§11.2#r8": 28
+anchor: [6]
 coverage:
   web: automated
 ---

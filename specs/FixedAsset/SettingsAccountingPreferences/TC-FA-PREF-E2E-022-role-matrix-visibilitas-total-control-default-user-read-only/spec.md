@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-022-role-matrix-visibilitas-total-control-default-user-read-only
 title: "Role Matrix: Visibilitas dan Kontrol Preferences untuk Total Control, Default User, dan Read Only"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-PREF-96
   - TC-FA-PREF-97
   - TC-FA-PREF-98
+sourceRules: ["§4.8#r1", "§4.8#r2", "ST-07", "§4.8#r3", "§4.8#r4", "§4.8#r5", "ST-01", "§4.8#r6", "FAPREF-LOGIC-06i", "ST-08"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r1": [2, 12, 22]
+  "§4.8#r2": [3, 13, 23]
+  "ST-07": [4, 14, 24]
+  "§4.8#r3": [4, 14, 24]
+  "§4.8#r4": [5, 15, 26]
+  "§4.8#r5": [6, 16, 27]
+  "ST-01": [7, 17]
+  "§4.8#r6": [8, 18, 28]
+  "FAPREF-LOGIC-06i": [8, 18]
+  "ST-08": 26
 coverage:
   web: automated
 ---

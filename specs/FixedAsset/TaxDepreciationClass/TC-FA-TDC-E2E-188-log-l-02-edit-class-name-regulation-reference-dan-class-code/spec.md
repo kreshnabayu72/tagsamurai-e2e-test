@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-188-log-l-02-edit-class-name-regulation-reference-dan-class-code
 title: "Pencatatan Log L-02 pada Tiga Surface: Edit Class Name, Regulation Reference, dan Class Code"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,22 @@ sourceTc:
   - TC-FA-TDC-675
   - TC-FA-TDC-676
   - TC-FA-TDC-677
+sourceRules: ["FATDC-LOGIC-04c", "§4.1.1#r42", "§4.1.1#r31", "§8.2#p1", "§8.2#r1", "§8.3#p1", "F-FATDC-02.k11d", "E-FATDC-16", "L-02d", "L-02a", "L-02b", "L-02c"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04c": [7, 8, 11, 12, 14, 15, 23, 24, 27, 28, 30, 31, 40, 42, 46, 48, 51, 53]
+  "§4.1.1#r42": 7
+  "§4.1.1#r31": [8, 24, 41, 42]
+  "§8.2#p1": [11, 27, 46]
+  "§8.2#r1": [12, 28, 47]
+  "§8.3#p1": [14, 15, 30, 31, 51, 52]
+  "F-FATDC-02.k11d": 23
+  "E-FATDC-16": 40
+  "L-02d": [41, 47, 52]
+  "L-02a": [41, 42, 43]
+  "L-02b": [47, 48, 49]
+  "L-02c": [52, 53, 54]
 coverage:
   web: automated
 ---

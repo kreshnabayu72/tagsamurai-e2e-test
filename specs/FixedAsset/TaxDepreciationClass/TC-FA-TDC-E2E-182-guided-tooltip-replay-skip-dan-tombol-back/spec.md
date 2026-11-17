@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-182-guided-tooltip-replay-skip-dan-tombol-back
 title: "Guided Tooltip: Replay, Skip, dan Tombol Back"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-TDC-653
   - TC-FA-TDC-654
   - TC-FA-TDC-655
+sourceRules: ["§4.7#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#p2": [4, 14, 16, 20, 28]
+anchor: [2, 6, 8, 9, 11, 12, 22, 24, 25, 30, 32, 33]
 coverage:
   web: automated
 ---

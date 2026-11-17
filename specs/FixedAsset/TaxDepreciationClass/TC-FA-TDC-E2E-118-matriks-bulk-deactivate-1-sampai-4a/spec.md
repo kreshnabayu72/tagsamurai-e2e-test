@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-118-matriks-bulk-deactivate-1-sampai-4a
 title: "Matriks Bulk Deactivate 1 sampai 4a"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-448
   - TC-FA-TDC-449
   - TC-FA-TDC-450
+sourceRules: ["F-FATDC-13.k3", "FATDC-LOGIC-14g", "FATDC-LOGIC-14k", "D-01", "FATDC-LOGIC-14c", "F-FATDC-13.k1", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3", "F-FATDC-13.k2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-13.k3": [4, 5]
+  "FATDC-LOGIC-14g": 4
+  "FATDC-LOGIC-14k": [6, 7, 21, 22, 23, 30, 31, 32]
+  "D-01": [11, 13, 19]
+  "FATDC-LOGIC-14c": 12
+  "F-FATDC-13.k1": [20, 21]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 20
+  "F-FATDC-13.k2": [28, 29]
 coverage:
   web: automated
 ---

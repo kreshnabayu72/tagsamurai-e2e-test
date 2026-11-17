@@ -1,11 +1,25 @@
 ---
 id: TC-FA-PREF-E2E-071-v09-v10-v04-tampil-bersamaan-saat-tidak-terkunci
 title: "V-09, V-10, V-04 Tampil Bersamaan Saat Tidak Terkunci"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-257
+sourceRules: ["F-FAPREF-01.k4c", "F-FAPREF-01.k23", "V-09", "FAPREF-LOGIC-02k", "V-10", "FAPREF-LOGIC-02n", "V-04", "D-03", "§6#p2"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k4c": [8, 9, 12]
+  "F-FAPREF-01.k23": 9
+  "V-09": 10
+  "FAPREF-LOGIC-02k": 10
+  "V-10": 11
+  "FAPREF-LOGIC-02n": 11
+  "V-04": 12
+  "D-03": 13
+  "§6#p2": 13
 coverage:
   web: automated
 ---

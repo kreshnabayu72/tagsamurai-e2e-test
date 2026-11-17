@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-094-resilience-pembangunan-ulang-periode-gagal-penulisan-log-gagal-dan-save-d-01-5xx-membatalkan-save
 title: "Resilience: Pembangunan Ulang Periode Gagal, Penulisan Log Gagal, dan Save Dialog Save Changes 5xx Membatalkan Save"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-PREF-288
   - TC-FA-PREF-392
   - TC-FA-PREF-573
+sourceRules: ["T-01", "F-FAPREF-01.k20b", "F-FAPREF-01.k17a", "F-FAPREF-01.k17b", "D-01", "PV-01", "RG-02", "§4.2a#p1", "L-02a", "F-FAPREF-01.k17c", "RG-04"]
+smoke: []
+dependsOn: []
+trace:
+  "T-01": [5, 34]
+  "F-FAPREF-01.k20b": [5, 9, 11]
+  "F-FAPREF-01.k17a": [6, 35, 36]
+  "F-FAPREF-01.k17b": [7, 37]
+  "D-01": [19, 31]
+  "PV-01": [19, 31]
+  "RG-02": [23, 26]
+  "§4.2a#p1": 24
+  "L-02a": 26
+  "F-FAPREF-01.k17c": 34
+  "RG-04": 34
 coverage:
   web: automated
 ---

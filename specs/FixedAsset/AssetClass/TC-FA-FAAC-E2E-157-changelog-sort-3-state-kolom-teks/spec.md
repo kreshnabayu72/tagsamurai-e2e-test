@@ -1,11 +1,22 @@
 ---
 id: TC-FA-FAAC-E2E-157-changelog-sort-3-state-kolom-teks
 title: "Modal Changelog: Sort Tiga Tahap pada Kolom Teks Action, Class Code, Field, dan Modified By"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-500
+sourceRules: ["§4.1.1#r27", "§4.4#r14", "§4.1.1#r28", "§4.1.1#r29", "§4.1.1#r32", "§4.1.1#r26"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#r27": 4
+  "§4.4#r14": [6, 8, 12, 14, 18, 20, 24, 26]
+  "§4.1.1#r28": 10
+  "§4.1.1#r29": 16
+  "§4.1.1#r32": 22
+  "§4.1.1#r26": 27
 coverage:
   web: automated
 ---

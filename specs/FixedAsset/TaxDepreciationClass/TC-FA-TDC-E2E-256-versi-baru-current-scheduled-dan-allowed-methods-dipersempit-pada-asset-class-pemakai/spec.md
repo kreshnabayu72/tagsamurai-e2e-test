@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-256-versi-baru-current-scheduled-dan-allowed-methods-dipersempit-pada-asset-class-pemakai
 title: "Asset Class Pemakai: Versi Current dan Scheduled Memengaruhi Useful Life dan Rate, serta Allowed Methods Dipersempit"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-788
   - TC-FA-TDC-789
   - TC-FA-TDC-790
+sourceRules: ["FATDC-LOGIC-04s.2", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "D-09", "FATDC-LOGIC-10b.1", "§4.2c#b1"]
+smoke: []
+dependsOn: []
+trace:
+  "FATDC-LOGIC-04s.2": [9, 21]
+  "FATDC-LOGIC-03f.1": [9, 21]
+  "FATDC-LOGIC-03f.2": [9, 21]
+  "D-09": 32
+  "FATDC-LOGIC-10b.1": 33
+  "§4.2c#b1": 36
 coverage:
   web: automated
 ---

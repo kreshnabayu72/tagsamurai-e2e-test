@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-150-deferred-found-asset-credit-account-pada-jurnal-aset-temuan
 title: "[DEFERRED] Found Asset Credit Account pada jurnal aset temuan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-485
   - TC-FA-PREF-486
   - TC-FA-PREF-487
+sourceRules: ["FAPREF-LOGIC-08f", "FAPREF-LOGIC-08g", "T-01", "FAPREF-LOGIC-10j", "FAPREF-LOGIC-08i"]
+smoke: []
+dependsOn: []
+trace:
+  "FAPREF-LOGIC-08f": 4
+  "FAPREF-LOGIC-08g": [7, 8, 10]
+  "T-01": [15, 24]
+  "FAPREF-LOGIC-10j": [16, 25]
+  "FAPREF-LOGIC-08i": [19, 28]
 coverage:
   web: automated
 ---

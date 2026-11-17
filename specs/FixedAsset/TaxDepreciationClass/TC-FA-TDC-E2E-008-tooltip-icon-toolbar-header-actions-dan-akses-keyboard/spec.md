@@ -1,12 +1,21 @@
 ---
 id: TC-FA-TDC-E2E-008-tooltip-icon-toolbar-header-actions-dan-akses-keyboard
 title: "Tooltip Icon Toolbar, Header Actions, dan Akses Keyboard"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-15
   - TC-FA-TDC-35
+sourceRules: ["§4.7#r5", "§4.7#r6", "§4.5#b5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#r5": [4, 14]
+  "§4.7#r6": [8, 18]
+  "§4.5#b5": [12, 14, 16, 18]
+anchor: [2, 6, 10]
 coverage:
   web: automated
 ---

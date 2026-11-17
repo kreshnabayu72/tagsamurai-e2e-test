@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-077-apply-effective-from-sama-dengan-versi-current-atau-scheduled-dan-versi-pertama
 title: "Apply Effective From Sama dengan Versi Current atau Scheduled Menggantikan Versi Itu, dan Versi Terakhir Adalah Versi Pertama"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,31 @@ sourceTc:
   - TC-FA-TDC-269
   - TC-FA-TDC-270
   - TC-FA-TDC-271
+sourceRules: ["T-02b", "§[F-FATDC-02] Edit Tax Depreciation Class#b6", "§4.1.1#r5", "§4.1.1#r10", "§4.1.6#p7", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "FATDC-LOGIC-04f.2", "FATDC-LOGIC-04f.3", "T-02c", "FLD-05", "ST-30", "FATDC-LOGIC-04aa", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "FATDC-LOGIC-04u.2", "V-22", "FATDC-LOGIC-04f.1", "F-FATDC-02.k15b", "FATDC-LOGIC-04f.5"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02b": 7
+  "§[F-FATDC-02] Edit Tax Depreciation Class#b6": [8, 21]
+  "§4.1.1#r5": 9
+  "§4.1.1#r10": 9
+  "§4.1.6#p7": [12, 25]
+  "§4.1.6#r4": [12, 25, 37]
+  "§4.1.6#r5": [12, 25, 37, 38]
+  "§4.1.6#r6": [12, 25]
+  "FATDC-LOGIC-04f.2": [12, 25]
+  "FATDC-LOGIC-04f.3": [12, 25]
+  "T-02c": [20, 34]
+  "FLD-05": 23
+  "ST-30": 23
+  "FATDC-LOGIC-04aa": 23
+  "FATDC-LOGIC-03f.1": 23
+  "FATDC-LOGIC-03f.2": 23
+  "FATDC-LOGIC-04u.2": 25
+  "V-22": 32
+  "FATDC-LOGIC-04f.1": 32
+  "F-FATDC-02.k15b": 38
+  "FATDC-LOGIC-04f.5": 38
 coverage:
   web: automated
 ---

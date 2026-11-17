@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-098-modal-changelog-urutan-default-date-newest-first-nilai-kosong-tanda-strip-tutup-modal-dan-empty-state
 title: "Modal Changelog: Urutan Default Date Newest First, Nilai Kosong Tanda Strip, Tutup Lewat X, Esc, Klik Luar, dan Empty State"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -11,6 +12,21 @@ sourceTc:
   - TC-FA-PREF-293
   - TC-FA-PREF-294
   - TC-FA-PREF-297
+sourceRules: ["§4.4#r3", "§9.5#r8", "§4.1.4#r8", "§4.1.4#r16", "§4.1.4#r1", "§4.1.4#r5", "§4.1.4#r6", "§4.1.4#r12", "§4.5#b1", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.4#r3": 2
+  "§9.5#r8": 3
+  "§4.1.4#r8": [3, 5]
+  "§4.1.4#r16": [3, 6]
+  "§4.1.4#r1": 4
+  "§4.1.4#r5": [5, 6]
+  "§4.1.4#r6": 7
+  "§4.1.4#r12": 7
+  "§4.5#b1": 13
+  "ST-23": 22
+anchor: [9, 10, 14, 17]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-026-role-matrix-negatif-read-only
 title: "Role Matrix Negatif: Read Only (Tooltip Toggle Active dan Kontrol Tab Asset Names Tidak Tersedia)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-FAAC-43
   - TC-FA-FAAC-633
   - TC-FA-FAAC-612
+sourceRules: ["§4.8#r19", "§4.8#b2", "§4.8#r6", "§4.1.3#p1", "§4.8#r5", "§4.8#r21", "§4.8#r14", "§4.8#r16"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#r19": [3, 9]
+  "§4.8#b2": [3, 7]
+  "§4.8#r6": 13
+  "§4.1.3#p1": 13
+  "§4.8#r5": 14
+  "§4.8#r21": [15, 16]
+  "§4.8#r14": 15
+  "§4.8#r16": 16
 coverage:
   web: automated
 ---

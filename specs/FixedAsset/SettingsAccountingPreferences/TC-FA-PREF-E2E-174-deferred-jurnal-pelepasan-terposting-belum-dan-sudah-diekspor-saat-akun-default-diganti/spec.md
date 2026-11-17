@@ -1,12 +1,20 @@
 ---
 id: TC-FA-PREF-E2E-174-deferred-jurnal-pelepasan-terposting-belum-dan-sudah-diekspor-saat-akun-default-diganti
 title: "[DEFERRED] Jurnal pelepasan terposting: belum diekspor memakai akun yang berlaku saat ekspor, sudah diekspor tidak berubah"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-456
   - TC-FA-PREF-457
+sourceRules: ["D-01", "PV-02", "FAPREF-LOGIC-06g"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [5, 16]
+  "PV-02": [5, 16]
+  "FAPREF-LOGIC-06g": [11, 22]
 coverage:
   web: automated
 ---

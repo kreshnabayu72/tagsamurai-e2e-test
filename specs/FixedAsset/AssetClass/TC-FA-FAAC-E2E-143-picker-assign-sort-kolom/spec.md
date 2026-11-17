@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-143-picker-assign-sort-kolom
 title: "Picker Assign: Sort pada Kolom Asset Name, Category, Current Class, dan Assets"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-FAAC-521
   - TC-FA-FAAC-522
   - TC-FA-FAAC-523
+sourceRules: ["§4.1.4#p1", "§4.1.4#r6", "§4.1.4#r7", "§4.1.4#r8", "§4.1.4#r9", "§4.1.4#r1", "§4.4#r14", "§9.5#r2", "§4.1.4#r2", "§4.1.4#r4", "§4.1.4#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.4#p1": 7
+  "§4.1.4#r6": 7
+  "§4.1.4#r7": 7
+  "§4.1.4#r8": 7
+  "§4.1.4#r9": 7
+  "§4.1.4#r1": [9, 11]
+  "§4.4#r14": [9, 11, 13, 14, 18, 23, 25, 26, 28, 30]
+  "§9.5#r2": [14, 26]
+  "§4.1.4#r2": [16, 18]
+  "§4.1.4#r4": [21, 23]
+  "§4.1.4#r5": [28, 30]
 coverage:
   web: automated
 ---

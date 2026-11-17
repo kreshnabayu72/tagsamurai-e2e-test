@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-163-log-unassign-dan-move-system-activity-log
 title: "Log Unassign dan Move Asset Name pada System Log, Activity Log, dan Changelog"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,17 @@ sourceTc:
   - TC-FA-FAAC-544
   - TC-FA-FAAC-545
   - TC-FA-FAAC-546
+sourceRules: ["L-07", "§8.2#p1", "§8.2#r1", "§8.3#p1", "L-08", "§8.4#r7", "§4.1.1#r32"]
+smoke: []
+dependsOn: []
+trace:
+  "L-07": [9, 10, 12, 13]
+  "§8.2#p1": [9, 38]
+  "§8.2#r1": [10, 39]
+  "§8.3#p1": [12, 13, 41, 42]
+  "L-08": [24, 25, 26, 39, 42]
+  "§8.4#r7": [24, 38, 41]
+  "§4.1.1#r32": 27
 coverage:
   web: automated
 ---

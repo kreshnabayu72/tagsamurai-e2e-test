@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-056-save-lima-setting-tidak-berdampak-dan-threshold-kosong-ditolak
 title: "Save Threshold Kosong Ditolak Tanpa Dialog; Save Lima Setting Tidak Berdampak Sekaligus"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-PREF-181
   - TC-FA-PREF-213
   - TC-FA-PREF-584
+sourceRules: ["V-01", "F-FAPREF-01.k2b", "ST-04", "F-FAPREF-01.k2c", "FAPREF-LOGIC-10a", "T-01", "FAPREF-LOGIC-10j", "ST-01", "F-FAPREF-01.k13", "F-FAPREF-01.k14", "FAPREF-LOGIC-09c", "F-FAPREF-01.k22a"]
+smoke: []
+dependsOn: []
+trace:
+  "V-01": 3
+  "F-FAPREF-01.k2b": 3
+  "ST-04": 5
+  "F-FAPREF-01.k2c": 5
+  "FAPREF-LOGIC-10a": 6
+  "T-01": [15, 30]
+  "FAPREF-LOGIC-10j": 16
+  "ST-01": 18
+  "F-FAPREF-01.k13": 19
+  "F-FAPREF-01.k14": 20
+  "FAPREF-LOGIC-09c": 22
+  "F-FAPREF-01.k22a": 31
+anchor: [4, 7, 17, 21]
 coverage:
   web: automated
 ---

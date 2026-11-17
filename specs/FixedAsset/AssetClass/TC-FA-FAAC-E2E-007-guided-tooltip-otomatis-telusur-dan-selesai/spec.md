@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-007-guided-tooltip-otomatis-telusur-dan-selesai
 title: "Guided Tooltip Tab Asset Class: Mulai Otomatis pada Kunjungan Pertama, Telusur Delapan Step dengan Next, dan Done Menyimpan Flag"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-FAAC-46
   - TC-FA-FAAC-47
   - TC-FA-FAAC-48
+sourceRules: ["FAAC-LOGIC-18c", "§4.7#p1", "§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§4.7#r5", "§4.7#r6", "§4.7#r7", "§4.7#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "FAAC-LOGIC-18c": 3
+  "§4.7#p1": [5, 35]
+  "§4.7#r1": [7, 8, 16, 17, 18, 19]
+  "§4.7#r2": [16, 17, 18, 19]
+  "§4.7#r3": [16, 17, 18, 19]
+  "§4.7#r4": [16, 17, 18, 19]
+  "§4.7#r5": [16, 17, 18, 19]
+  "§4.7#r6": [16, 17, 18, 19]
+  "§4.7#r7": [16, 17, 18, 19]
+  "§4.7#r8": [21, 22, 23]
+anchor: [9, 10, 29, 31, 36]
 coverage:
   web: automated
 ---

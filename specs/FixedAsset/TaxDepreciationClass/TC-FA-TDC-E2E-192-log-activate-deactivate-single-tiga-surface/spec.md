@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-192-log-activate-deactivate-single-tiga-surface
 title: "Pencatatan Log L-04 Activate dan Deactivate Single: Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,20 @@ sourceTc:
   - TC-FA-TDC-700
   - TC-FA-TDC-701
   - TC-FA-TDC-702
+sourceRules: ["L-04", "§[F-FATDC-04] Activate Tax Depreciation Class#b2", "§4.1.1#r31", "§4.1.1#r26", "§4.1.1#r29", "§4.1.1#r30", "§8.2#p1", "§8.2#r1", "§8.3#p1", "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3"]
+smoke: []
+dependsOn: []
+trace:
+  "L-04": [6, 7, 11, 12, 15, 16, 23, 24, 28, 29]
+  "§[F-FATDC-04] Activate Tax Depreciation Class#b2": 6
+  "§4.1.1#r31": [7, 24]
+  "§4.1.1#r26": [8, 25]
+  "§4.1.1#r29": [8, 25]
+  "§4.1.1#r30": [8, 25]
+  "§8.2#p1": [11, 28]
+  "§8.2#r1": [12, 29]
+  "§8.3#p1": [15, 16]
+  "§[F-FATDC-05] Deactivate Tax Depreciation Class#b3": 23
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-078-move-massal-tanpa-aset-aktif-bulan-lampau-klik-ganda-dan-spinner
 title: "Move Massal Tanpa Aset Aktif, Effective From Bulan Lampau, Klik Ganda, dan Spinner"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-FAAC-206
   - TC-FA-FAAC-626
   - TC-FA-FAAC-628
+sourceRules: ["E-FAAC-42", "T-08", "FAAC-LOGIC-07k", "E-FAAC-80", "L-08", "ST-13", "FAAC-LOGIC-13e", "D-14"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAAC-42": 7
+  "T-08": [8, 20, 37, 46]
+  "FAAC-LOGIC-07k": [9, 12, 49]
+  "E-FAAC-80": [20, 23]
+  "L-08": 25
+  "ST-13": [33, 34]
+  "FAAC-LOGIC-13e": [36, 45]
+  "D-14": [41, 42]
 coverage:
   web: automated
 ---

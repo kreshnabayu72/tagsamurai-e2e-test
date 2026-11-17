@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-036-default-capitalization-threshold-validasi-batas-v-02-dan-v-03
 title: "Default Capitalization Threshold: Nilai Minus, Batas 0, 16 Digit, 17 Digit, Validasi V-02 dan V-03"
+layer: ui-e2e
 priority: Critical
 caseType: Edge
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-PREF-135
   - TC-FA-PREF-136
   - TC-FA-PREF-137
+sourceRules: ["V-02", "§3.1#b3", "D-01", "PV-01", "T-01", "V-03", "FAPREF-LOGIC-03e"]
+smoke: []
+dependsOn: []
+trace:
+  "V-02": [2, 3, 6, 9, 11]
+  "§3.1#b3": [5, 26]
+  "D-01": 13
+  "PV-01": 13
+  "T-01": 15
+  "V-03": [18, 21, 23, 24, 27]
+  "FAPREF-LOGIC-03e": 20
 coverage:
   web: automated
 ---

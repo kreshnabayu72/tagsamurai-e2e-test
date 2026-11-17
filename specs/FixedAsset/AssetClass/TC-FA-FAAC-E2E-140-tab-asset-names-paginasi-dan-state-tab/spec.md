@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-140-tab-asset-names-paginasi-dan-state-tab
 title: "Tab Asset Names: Paginasi, Ukuran Halaman, Search pada Halaman 2, dan State Tabel antar Tab Detail"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-FAAC-469
   - TC-FA-FAAC-470
   - TC-FA-FAAC-471
+sourceRules: ["§9.5#r5", "§5#b5", "§5#b2", "§9.5#r2", "§9.5#r3", "§5#b6"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.5#r5": [4, 6, 8, 10, 23]
+  "§5#b5": 14
+  "§5#b2": 15
+  "§9.5#r2": 22
+  "§9.5#r3": 24
+  "§5#b6": [30, 31, 32]
+anchor: [21]
 coverage:
   web: automated
 ---

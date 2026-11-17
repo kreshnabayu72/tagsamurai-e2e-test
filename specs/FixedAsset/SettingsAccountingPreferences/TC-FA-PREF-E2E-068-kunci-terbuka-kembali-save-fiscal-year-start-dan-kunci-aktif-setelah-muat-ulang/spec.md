@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-068-kunci-terbuka-kembali-save-fiscal-year-start-dan-kunci-aktif-setelah-muat-ulang
 title: "Kunci Terbuka Kembali Setelah Periode Dibuka Kembali; Save Fiscal Year Start Berhasil; Kunci Aktif Setelah Muat Ulang"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,22 @@ sourceTc:
   - TC-FA-PREF-242
   - TC-FA-PREF-243
   - TC-FA-PREF-248
+sourceRules: ["§Resolved#r10", "FAPREF-LOGIC-02c", "ST-05", "D-01", "F-FAPREF-01.k21b", "T-01", "D-03", "E-FAPREF-37", "SET-01", "FAPREF-LOGIC-10j", "§4.2b#b1", "SET-03"]
+smoke: []
+dependsOn: []
+trace:
+  "§Resolved#r10": [2, 3, 15]
+  "FAPREF-LOGIC-02c": [2, 3, 15, 18, 25, 26]
+  "ST-05": [5, 18, 25, 26]
+  "D-01": 9
+  "F-FAPREF-01.k21b": 9
+  "T-01": [10, 22]
+  "D-03": [11, 23]
+  "E-FAPREF-37": 12
+  "SET-01": 12
+  "FAPREF-LOGIC-10j": 22
+  "§4.2b#b1": 23
+  "SET-03": 24
 coverage:
   web: automated
 ---

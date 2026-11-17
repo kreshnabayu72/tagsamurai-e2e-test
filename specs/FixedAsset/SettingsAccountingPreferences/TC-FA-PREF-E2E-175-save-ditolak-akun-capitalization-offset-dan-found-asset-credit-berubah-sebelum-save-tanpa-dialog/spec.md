@@ -1,12 +1,20 @@
 ---
 id: TC-FA-PREF-E2E-175-save-ditolak-akun-capitalization-offset-dan-found-asset-credit-berubah-sebelum-save-tanpa-dialog
 title: "Save ditolak karena akun Default Capitalization Offset atau Found Asset Credit Account berubah sebelum Save (alur Save tanpa dialog)"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-216
   - TC-FA-PREF-217
+sourceRules: ["E-FAPREF-04", "V-04", "F-FAPREF-01.k4c"]
+smoke: []
+dependsOn: []
+trace:
+  "E-FAPREF-04": [4, 6, 14, 16]
+  "V-04": [5, 15]
+  "F-FAPREF-01.k4c": [8, 18]
 coverage:
   web: automated
 ---

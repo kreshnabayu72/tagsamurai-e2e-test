@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-189-siklus-hidup-asset-name-dan-deactivate
 title: "Siklus Hidup Asset Name dan Deactivate: Diblokir saat Ada Asset Name, Diizinkan setelah Dipindah, Di-Unassign, atau Dihapus, serta Aktivasi Ulang"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-FAAC-640
   - TC-FA-FAAC-641
   - TC-FA-FAAC-642
+sourceRules: ["D-04", "F-FAAC-04.k1", "ST-10", "D-01", "ST-31", "T-07", "D-20", "§3.6#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "D-04": 5
+  "F-FAAC-04.k1": 7
+  "ST-10": 7
+  "D-01": [12, 19, 25]
+  "ST-31": [14, 21]
+  "T-07": 31
+  "D-20": 32
+  "§3.6#p1": 35
 coverage:
   web: automated
 ---

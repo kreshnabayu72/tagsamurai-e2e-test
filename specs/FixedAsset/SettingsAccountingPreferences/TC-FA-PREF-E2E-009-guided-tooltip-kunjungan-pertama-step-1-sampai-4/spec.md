@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-009-guided-tooltip-kunjungan-pertama-step-1-sampai-4
 title: "Guided Tooltip Preferences: Kunjungan Pertama Menampilkan Step 1 sampai Step 4"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-PREF-53
   - TC-FA-PREF-54
   - TC-FA-PREF-55
+sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#r1": [5, 6, 7]
+  "§4.7#r2": [11, 12, 13]
+  "§4.7#r3": [16, 17, 18]
+  "§4.7#r4": [21, 22, 23]
+anchor: [4, 8, 9, 14, 19, 24, 25]
 coverage:
   web: automated
 ---

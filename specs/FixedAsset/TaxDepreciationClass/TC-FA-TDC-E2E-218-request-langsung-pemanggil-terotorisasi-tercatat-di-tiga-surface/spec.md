@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-218-request-langsung-pemanggil-terotorisasi-tercatat-di-tiga-surface
 title: "Request Langsung Pemanggil Terotorisasi Tercatat di Tiga Surface: Create, Deactivate, dan Delete"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
@@ -8,6 +9,16 @@ sourceTc:
   - TC-FA-TDC-832
   - TC-FA-TDC-833
   - TC-FA-TDC-909
+sourceRules: ["J-04", "L-01", "FATDC-LOGIC-08g", "L-04", "FATDC-LOGIC-09d", "L-05"]
+smoke: []
+dependsOn: []
+trace:
+  "J-04": [3, 5, 7, 10, 13, 17, 21, 23, 25, 28, 32, 34, 36]
+  "L-01": [7, 8, 10, 11, 13, 14]
+  "FATDC-LOGIC-08g": 19
+  "L-04": [21, 23, 25]
+  "FATDC-LOGIC-09d": 30
+  "L-05": [32, 34, 36]
 coverage:
   web: automated
 ---

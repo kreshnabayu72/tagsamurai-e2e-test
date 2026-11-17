@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-135-deferred-upgrade-paket-aktivasi-ulang-dan-aktivasi-yang-gagal
 title: "[DEFERRED] Upgrade Paket, Aktivasi Ulang, dan Aktivasi yang Gagal"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,39 @@ sourceTc:
   - TC-FA-PREF-416
   - TC-FA-PREF-417
   - TC-FA-PREF-418
+sourceRules: ["SET-01", "SET-12", "SET-02", "SET-03", "SET-04", "SET-05", "SET-06", "SET-08", "SET-09", "DOC-01", "DOC-02", "DOC-03", "DOC-04", "DOC-05", "DOC-06", "SET-11", "FAPREF-LOGIC-01g", "F-FAPREF-03.k1", "L-01a", "J-05", "§8#r4", "§4.1.4#r2", "F-FAPREF-03.k2", "FAPREF-LOGIC-03e", "§4.1.4#p3", "R-04", "F-FAPREF-03.k3", "FAPREF-LOGIC-01b", "FAPREF-LOGIC-02b"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 6
+  "SET-12": 6
+  "SET-02": [6, 15]
+  "SET-03": 6
+  "SET-04": 6
+  "SET-05": 6
+  "SET-06": 6
+  "SET-08": 6
+  "SET-09": 6
+  "DOC-01": 6
+  "DOC-02": 6
+  "DOC-03": 6
+  "DOC-04": 6
+  "DOC-05": 6
+  "DOC-06": 6
+  "SET-11": 6
+  "FAPREF-LOGIC-01g": 6
+  "F-FAPREF-03.k1": 6
+  "L-01a": 8
+  "J-05": 8
+  "§8#r4": 9
+  "§4.1.4#r2": 9
+  "F-FAPREF-03.k2": 15
+  "FAPREF-LOGIC-03e": 15
+  "§4.1.4#p3": 17
+  "R-04": [17, 27]
+  "F-FAPREF-03.k3": [23, 25, 26, 27]
+  "FAPREF-LOGIC-01b": [23, 25]
+  "FAPREF-LOGIC-02b": 26
 coverage:
   web: automated
 ---

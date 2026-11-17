@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-027-role-matrix-negatif-akses-url-langsung-ditolak
 title: "Role Matrix Negatif: Akses Langsung URL Preferences Ditolak untuk Update Saja, Create Saja, Delete Saja, Group Manager, dan Role Lain"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,17 @@ sourceTc:
   - TC-FA-PREF-110
   - TC-FA-PREF-111
   - TC-FA-PREF-112
+sourceRules: ["§4.8#b3", "§4.8#r1", "§4.8#r4", "§4.8#b2", "§2.2#r4", "§2.2#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#b3": [4, 5]
+  "§4.8#r1": [4, 11, 18, 25, 32]
+  "§4.8#r4": [5, 12, 19, 26, 33]
+  "§4.8#b2": [11, 12, 18, 19]
+  "§2.2#r4": [25, 26]
+  "§2.2#r5": [32, 33]
+anchor: [2, 3, 9, 10, 16, 17, 23, 24, 30, 31]
 coverage:
   web: automated
 ---

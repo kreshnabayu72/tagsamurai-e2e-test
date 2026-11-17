@@ -1,12 +1,22 @@
 ---
 id: TC-FA-TDC-E2E-165-popup-used-by-menutup-dan-hanya-dibuka-dari-angka-lebih-dari-nol
 title: "Popup Used By: Menutup dan Hanya Dibuka dari Angka Lebih dari Nol"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-TDC-589
   - TC-FA-TDC-590
+sourceRules: ["§4.1.6#p1", "§4.5#b1", "§4.4#r5", "ST-03", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.6#p1": [3, 5]
+  "§4.5#b1": 8
+  "§4.4#r5": 10
+  "ST-03": [10, 13]
+  "§4.1.1#r9": [10, 13]
 coverage:
   web: automated
 ---

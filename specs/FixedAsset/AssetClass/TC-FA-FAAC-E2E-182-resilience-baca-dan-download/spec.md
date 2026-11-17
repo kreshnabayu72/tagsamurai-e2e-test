@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-182-resilience-baca-dan-download
 title: "Resilience: Kegagalan Server saat Memuat Tabel, Alert Dependensi Akun, Banner, Dialog D-23, dan Download"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -10,6 +11,16 @@ sourceTc:
   - TC-FA-FAAC-280
   - TC-FA-FAAC-281
   - TC-FA-FAAC-426
+sourceRules: ["ST-22", "R-18", "R-14", "§4.1.9#p1", "T-12", "R-15"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-22": [4, 7, 16]
+  "R-18": [11, 12]
+  "R-14": [16, 23, 24]
+  "§4.1.9#p1": 17
+  "T-12": 27
+  "R-15": 27
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-216-role-matrix-request-langsung-restore-default-classes-ditolak
 title: "Role Matrix Negatif: Request Langsung Restore default classes Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-TDC-828
   - TC-FA-TDC-829
   - TC-FA-TDC-830
+sourceRules: ["§9.3#r2", "§[F-FATDC-08] Restore Default Classes#p1", "§9.3#r1", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r2": 4
+  "§[F-FATDC-08] Restore Default Classes#p1": 4
+  "§9.3#r1": 6
+  "ST-23": 7
 coverage:
   web: automated
 ---

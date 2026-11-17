@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-064-edit-class-name-description-dan-class-code
 title: "Edit Class Name, Description, dan Class Code Asset Class lalu Save"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-FAAC-172
   - TC-FA-FAAC-174
   - TC-FA-FAAC-175
+sourceRules: ["T-03", "F-FAAC-02.k2", "V-04", "T-02", "F-FAAC-02.k18", "FAAC-LOGIC-10b", "FAAC-LOGIC-07i"]
+smoke: []
+dependsOn: []
+trace:
+  "T-03": 4
+  "F-FAAC-02.k2": [5, 6, 7]
+  "V-04": [12, 13, 18]
+  "T-02": [19, 24]
+  "F-FAAC-02.k18": 25
+  "FAAC-LOGIC-10b": 26
+  "FAAC-LOGIC-07i": [27, 28]
+anchor: [14]
 coverage:
   web: automated
 ---

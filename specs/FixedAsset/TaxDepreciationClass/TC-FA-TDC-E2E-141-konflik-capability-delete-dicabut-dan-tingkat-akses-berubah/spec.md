@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-141-konflik-capability-delete-dicabut-dan-tingkat-akses-berubah
 title: "Konflik Capability: Delete Dicabut dari Manage accounting dan Tingkat Akses User Berubah Saat User Sedang Login"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -8,6 +9,20 @@ sourceTc:
   - TC-FA-TDC-774
   - TC-FA-TDC-775
   - TC-FA-TDC-776
+sourceRules: ["§9.3#r1", "§4.8#r12", "§4.8#r16", "§4.8#r2", "§4.8#r9", "ST-29", "§4.8#r14", "§4.8#r13", "§4.8#r15", "FATDC-LOGIC-14a"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#r1": 9
+  "§4.8#r12": [10, 27]
+  "§4.8#r16": [11, 27, 38]
+  "§4.8#r2": 23
+  "§4.8#r9": [24, 33]
+  "ST-29": 26
+  "§4.8#r14": 34
+  "§4.8#r13": 36
+  "§4.8#r15": 36
+  "FATDC-LOGIC-14a": 40
 coverage:
   web: automated
 ---

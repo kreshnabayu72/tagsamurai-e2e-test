@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-032-role-matrix-positif-manage-update-save-dan-status
 title: "Role Matrix Positif: Manage Accounting (Read, Update) Save Edit, Activate, Deactivate, dan Bulk Deactivate Berhasil"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-FAAC-79
   - TC-FA-FAAC-80
   - TC-FA-FAAC-81
+sourceRules: ["T-02", "F-FAAC-02.k18", "§4.1.1#r3", "FAAC-LOGIC-10b", "D-08", "T-04", "§[F-FAAC-03] Activate Asset Class#b2", "D-01", "T-05a", "§[F-FAAC-04] Deactivate Asset Class#b4", "D-02"]
+smoke: []
+dependsOn: []
+trace:
+  "T-02": 5
+  "F-FAAC-02.k18": 6
+  "§4.1.1#r3": 7
+  "FAAC-LOGIC-10b": 7
+  "D-08": 10
+  "T-04": 12
+  "§[F-FAAC-03] Activate Asset Class#b2": 13
+  "D-01": 16
+  "T-05a": [18, 28]
+  "§[F-FAAC-04] Deactivate Asset Class#b4": 19
+  "D-02": 26
 coverage:
   web: automated
 ---

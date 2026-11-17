@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-151-sort-default-siklus-tiga-tahap-teks-dan-numerik
 title: "Sort: Urutan Default, Siklus Tiga Tahap, Kolom Teks, dan Kolom Numerik"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -10,6 +11,23 @@ sourceTc:
   - TC-FA-TDC-529
   - TC-FA-TDC-530
   - TC-FA-TDC-531
+sourceRules: ["§9.5#r1", "§4.4#r10", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r8", "§4.1.1#r11", "§4.1.1#r12", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.5#r1": [1, 9, 15]
+  "§4.4#r10": [2, 6, 8, 13, 19, 24, 32, 36]
+  "§4.1.1#r2": 4
+  "§4.1.1#r3": 11
+  "§4.1.1#r4": 17
+  "§4.1.1#r8": 22
+  "§4.1.1#r11": 30
+  "§4.1.1#r12": 34
+  "§4.1.1#r5": [42, 44]
+  "§4.1.1#r6": [42, 44]
+  "§4.1.1#r7": [42, 44]
+  "§4.1.1#r9": [42, 44]
+anchor: [20]
 coverage:
   web: automated
 ---

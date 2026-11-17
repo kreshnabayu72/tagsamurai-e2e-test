@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-093-resilience-save-timeout-input-dipertahankan-tombol-enabled-toast-connection-problem
 title: "Resilience Save Timeout: Input Dipertahankan, Tombol Enabled, Toast Connection Problem"
+layer: ui-e2e
 priority: High
 caseType: Negative
 status: draft
@@ -8,6 +9,18 @@ sourceTc:
   - TC-FA-PREF-280
   - TC-FA-PREF-281
   - TC-FA-PREF-574
+sourceRules: ["F-FAPREF-01.k17c", "ST-26", "RG-04", "F-FAPREF-01.k17a", "F-FAPREF-01.k17b", "ST-01", "F-FAPREF-01.k22b"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FAPREF-01.k17c": [5, 10, 19, 24, 34, 38]
+  "ST-26": [5, 19, 34]
+  "RG-04": [5, 19, 34]
+  "F-FAPREF-01.k17a": [6, 20, 35]
+  "F-FAPREF-01.k17b": [7, 21, 36]
+  "ST-01": 8
+  "F-FAPREF-01.k22b": [9, 23, 37]
+anchor: [22]
 coverage:
   web: automated
 ---

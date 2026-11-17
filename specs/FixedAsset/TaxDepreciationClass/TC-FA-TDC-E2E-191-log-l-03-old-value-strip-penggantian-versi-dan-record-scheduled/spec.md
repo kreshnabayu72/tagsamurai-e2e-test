@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-191-log-l-03-old-value-strip-penggantian-versi-dan-record-scheduled
 title: "Pencatatan Log L-03 dan L-11: Old Value Effective From Strip, Penggantian Versi dengan Effective From Sama, dan Record Scheduled"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,23 @@ sourceTc:
   - TC-FA-TDC-685
   - TC-FA-TDC-686
   - TC-FA-TDC-687
+sourceRules: ["L-03", "FATDC-LOGIC-04b.1", "FATDC-LOGIC-04ac", "§4.1.1#r31", "E-FATDC-19", "F-FATDC-02.k8", "FATDC-LOGIC-04u.2", "FATDC-LOGIC-04f.3", "L-11", "§4.1.1#r27", "§8.2#p1", "§8.2#r1", "§8.3#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "L-03": [8, 9, 19, 20, 34, 39, 43]
+  "FATDC-LOGIC-04b.1": 8
+  "FATDC-LOGIC-04ac": [9, 33]
+  "§4.1.1#r31": [9, 20, 33]
+  "E-FATDC-19": [19, 20, 21]
+  "F-FATDC-02.k8": [21, 22]
+  "FATDC-LOGIC-04u.2": 22
+  "FATDC-LOGIC-04f.3": 22
+  "L-11": [32, 33, 34, 37, 38, 39, 41, 42, 43]
+  "§4.1.1#r27": 33
+  "§8.2#p1": 37
+  "§8.2#r1": 38
+  "§8.3#p1": [41, 42]
 coverage:
   web: automated
 ---

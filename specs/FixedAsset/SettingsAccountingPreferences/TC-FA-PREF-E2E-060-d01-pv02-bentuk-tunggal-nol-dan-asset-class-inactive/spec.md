@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-060-d01-pv02-bentuk-tunggal-nol-dan-asset-class-inactive
 title: "D-01 PV-02 Bentuk Tunggal dan Nol; Asset Class Inactive Tidak Dihitung"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
@@ -8,6 +9,15 @@ sourceTc:
   - TC-FA-PREF-611
   - TC-FA-PREF-612
   - TC-FA-PREF-621
+sourceRules: ["D-01", "PV-02", "PV-01", "F-FAPREF-01.k10c", "F-FAPREF-01.k11"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 6, 7, 13, 15, 16, 23, 26, 27]
+  "PV-02": [5, 8, 14, 17, 24]
+  "PV-01": 24
+  "F-FAPREF-01.k10c": 25
+  "F-FAPREF-01.k11": 25
 coverage:
   web: automated
 ---

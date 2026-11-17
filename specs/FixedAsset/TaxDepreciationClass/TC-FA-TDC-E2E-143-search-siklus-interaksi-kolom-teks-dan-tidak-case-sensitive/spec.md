@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-143-search-siklus-interaksi-kolom-teks-dan-tidak-case-sensitive
 title: "Search: Siklus Interaksi, Kolom Teks, dan Tidak Case-Sensitive"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,21 @@ sourceTc:
   - TC-FA-TDC-490
   - TC-FA-TDC-491
   - TC-FA-TDC-492
+sourceRules: ["§4.1.1#p5", "§5#b2", "§4.1.1#r2", "§4.1.1#r3", "§4.1.1#r4", "§4.1.1#r8", "§4.1.1#r5", "§4.1.1#r6", "§4.1.1#r7", "§4.1.1#r9"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.1.1#p5": 4
+  "§5#b2": [9, 15, 17]
+  "§4.1.1#r2": [11, 24]
+  "§4.1.1#r3": 26
+  "§4.1.1#r4": 28
+  "§4.1.1#r8": 30
+  "§4.1.1#r5": 32
+  "§4.1.1#r6": 34
+  "§4.1.1#r7": 36
+  "§4.1.1#r9": 38
+anchor: [2, 3, 6, 8, 13, 14, 20, 21, 22]
 coverage:
   web: automated
 ---

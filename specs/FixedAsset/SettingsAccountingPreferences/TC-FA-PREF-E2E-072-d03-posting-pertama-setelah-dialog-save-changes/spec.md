@@ -1,12 +1,27 @@
 ---
 id: TC-FA-PREF-E2E-072-d03-posting-pertama-setelah-dialog-save-changes
 title: "D-03: Posting Penyusutan Pertama Setelah Dialog Save Changes Terbuka pada Fiscal Year Start dan First Accounting Period"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
 sourceTc:
   - TC-FA-PREF-557
   - TC-FA-PREF-558
+sourceRules: ["D-01", "PV-04", "PV-05", "D-03", "E-FAPREF-06", "ST-27", "F-FAPREF-01.k6d", "ST-05", "F-FAPREF-01.k6b", "§Resolved#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [4, 24]
+  "PV-04": [4, 24]
+  "PV-05": 4
+  "D-03": [7, 27]
+  "E-FAPREF-06": [7, 27]
+  "ST-27": [8, 28]
+  "F-FAPREF-01.k6d": [10, 30]
+  "ST-05": [12, 13, 15, 16, 32, 33, 35, 36]
+  "F-FAPREF-01.k6b": [17, 19, 37, 39]
+  "§Resolved#r5": [19, 39]
 coverage:
   web: automated
 ---

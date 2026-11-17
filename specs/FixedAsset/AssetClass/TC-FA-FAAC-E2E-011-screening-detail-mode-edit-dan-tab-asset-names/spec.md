@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-011-screening-detail-mode-edit-dan-tab-asset-names
 title: "Screening Halaman Detail Mode Edit: Badge Status dan Tab Asset Names (Berisi, Search Kosong, dan Genuinely Empty)"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -10,6 +11,33 @@ sourceTc:
   - TC-FA-FAAC-21
   - TC-FA-FAAC-23
   - TC-FA-FAAC-22
+sourceRules: ["§4.2b#p1", "ST-01", "§4.2b#p2", "§9.5#r10", "§4.1.2#r4", "§4.1.2#r5", "§4.1.2#p1", "§4.1.2#p11", "FAAC-LOGIC-07j", "§4.1.3#p1", "§5#b1", "§4.1.3#r1", "§4.1.3#r2", "§4.1.3#r3", "§4.1.3#r4", "§4.1.3#r5", "§4.1.3#r6", "§9.5#r2", "§4.1.3#r9", "§4.1.3#p5", "§4.1.3#r7", "§4.1.3#r8", "ST-24"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2b#p1": [3, 4, 5, 7, 17]
+  "ST-01": [6, 16]
+  "§4.2b#p2": 8
+  "§9.5#r10": 8
+  "§4.1.2#r4": 9
+  "§4.1.2#r5": 9
+  "§4.1.2#p1": 10
+  "§4.1.2#p11": [10, 11]
+  "FAAC-LOGIC-07j": 12
+  "§4.1.3#p1": [22, 23, 41, 47]
+  "§5#b1": [22, 47]
+  "§4.1.3#r1": [24, 25, 26]
+  "§4.1.3#r2": [24, 27, 29]
+  "§4.1.3#r3": [24, 30]
+  "§4.1.3#r4": [24, 31]
+  "§4.1.3#r5": [24, 32]
+  "§4.1.3#r6": [24, 33, 35]
+  "§9.5#r2": 25
+  "§4.1.3#r9": [30, 31, 32, 33]
+  "§4.1.3#p5": 37
+  "§4.1.3#r7": 37
+  "§4.1.3#r8": 37
+  "ST-24": [40, 46, 48]
 coverage:
   web: automated
 ---

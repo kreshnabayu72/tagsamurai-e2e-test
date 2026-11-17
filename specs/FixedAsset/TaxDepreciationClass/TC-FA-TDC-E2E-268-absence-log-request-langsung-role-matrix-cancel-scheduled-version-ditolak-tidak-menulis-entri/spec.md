@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-268-absence-log-request-langsung-role-matrix-cancel-scheduled-version-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Role Matrix Cancel Scheduled Version yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,14 @@ sourceTc:
   - TC-FA-TDC-824
   - TC-FA-TDC-825
   - TC-FA-TDC-826
+sourceRules: ["§[F-FATDC-03] Cancel Scheduled Version#p1", "§9.3#p1", "§8.4#r7", "J-04"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FATDC-03] Cancel Scheduled Version#p1": 3
+  "§9.3#p1": 3
+  "§8.4#r7": [4, 5, 6]
+  "J-04": [4, 5, 6]
 coverage:
   web: automated
 ---

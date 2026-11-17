@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-070-d-09-screening-dialog-save-changes-dan-pratinjau-dampak
 title: "Screening Dialog Save Changes D-09 dan Pratinjau Dampak Jumlah Asset Class dan Aset Aktif"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -8,6 +9,21 @@ sourceTc:
   - TC-FA-TDC-248
   - TC-FA-TDC-249
   - TC-FA-TDC-250
+sourceRules: ["D-09", "FLD-15", "FATDC-LOGIC-04t", "FATDC-LOGIC-05e", "§4.2c#b1", "FATDC-LOGIC-05a", "FATDC-LOGIC-05b.1", "FATDC-LOGIC-05b.2", "FATDC-LOGIC-05b.3", "FATDC-LOGIC-05b.4", "§Aturan Logika Modul#p14"]
+smoke: []
+dependsOn: []
+trace:
+  "D-09": [5, 9, 17, 21]
+  "FLD-15": [5, 6, 17, 18]
+  "FATDC-LOGIC-04t": [7, 19]
+  "FATDC-LOGIC-05e": 8
+  "§4.2c#b1": [12, 26]
+  "FATDC-LOGIC-05a": 20
+  "FATDC-LOGIC-05b.1": [20, 22]
+  "FATDC-LOGIC-05b.2": [20, 23]
+  "FATDC-LOGIC-05b.3": 20
+  "FATDC-LOGIC-05b.4": 20
+  "§Aturan Logika Modul#p14": [22, 23]
 coverage:
   web: automated
 ---

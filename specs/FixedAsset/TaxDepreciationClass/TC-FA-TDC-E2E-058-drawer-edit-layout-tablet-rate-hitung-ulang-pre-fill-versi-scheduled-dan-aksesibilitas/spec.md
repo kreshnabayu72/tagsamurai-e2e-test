@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-058-drawer-edit-layout-tablet-rate-hitung-ulang-pre-fill-versi-scheduled-dan-aksesibilitas
 title: "Drawer Edit: Layout Tablet, Rate Dihitung Ulang, Pre-fill Versi Scheduled, dan Aksesibilitas Keyboard"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -9,6 +10,24 @@ sourceTc:
   - TC-FA-TDC-187
   - TC-FA-TDC-188
   - TC-FA-TDC-247
+sourceRules: ["§4.5#b6", "FATDC-LOGIC-03f.4", "FATDC-LOGIC-03f.1", "FATDC-LOGIC-03f.2", "ST-10", "FI-03", "§4.2c#b1", "FATDC-LOGIC-04q.1", "§4.1.2#r10", "§4.5#b1", "§4.1#r2", "FATDC-LOGIC-04ad", "§4.5#b2"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.5#b6": [4, 6]
+  "FATDC-LOGIC-03f.4": [12, 13, 15, 18, 21]
+  "FATDC-LOGIC-03f.1": [12, 29]
+  "FATDC-LOGIC-03f.2": 13
+  "ST-10": [15, 18, 21, 30]
+  "FI-03": 16
+  "§4.2c#b1": [23, 41]
+  "FATDC-LOGIC-04q.1": [27, 28, 29]
+  "§4.1.2#r10": 31
+  "§4.5#b1": [36, 38, 40]
+  "§4.1#r2": 36
+  "FATDC-LOGIC-04ad": 36
+  "§4.5#b2": 37
+anchor: [19]
 coverage:
   web: automated
 ---

@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-066-edit-validasi-class-code-duplikat-trim-dan-class-name-kosong
 title: "Edit: Validasi Class Code Duplikat, Class Name Kosong, dan Class Code Disimpan Ter-trim"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-TDC-227
   - TC-FA-TDC-228
   - TC-FA-TDC-229
+sourceRules: ["V-04", "V-05", "E-FATDC-04", "T-02a", "S-02a", "E-FATDC-16", "L-02d"]
+smoke: []
+dependsOn: []
+trace:
+  "V-04": 4
+  "V-05": [8, 12]
+  "E-FATDC-04": 14
+  "T-02a": 19
+  "S-02a": 21
+  "E-FATDC-16": 23
+  "L-02d": 24
+anchor: [13]
 coverage:
   web: automated
 ---

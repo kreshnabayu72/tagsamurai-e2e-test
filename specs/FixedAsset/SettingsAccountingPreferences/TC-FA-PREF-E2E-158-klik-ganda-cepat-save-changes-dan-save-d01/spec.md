@@ -1,12 +1,22 @@
 ---
 id: TC-FA-PREF-E2E-158-klik-ganda-cepat-save-changes-dan-save-d01
 title: "Klik ganda cepat pada [Save changes] dan [Save] di D-01 hanya mengirim satu permintaan Save"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-PREF-285
   - TC-FA-PREF-286
+sourceRules: ["R-01c", "T-01", "L-02e", "§4.1.4#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "R-01c": [7, 8, 22, 23]
+  "T-01": [8, 23]
+  "L-02e": [11, 26]
+  "§4.1.4#p1": [12, 27]
+anchor: [9, 24]
 coverage:
   web: automated
 ---

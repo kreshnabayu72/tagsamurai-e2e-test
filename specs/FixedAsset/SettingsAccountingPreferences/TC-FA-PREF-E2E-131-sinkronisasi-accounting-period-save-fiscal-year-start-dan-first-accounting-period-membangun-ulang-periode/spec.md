@@ -1,12 +1,24 @@
 ---
 id: TC-FA-PREF-E2E-131-sinkronisasi-accounting-period-save-fiscal-year-start-dan-first-accounting-period-membangun-ulang-periode
 title: "Sinkronisasi ke Accounting Period: Save Fiscal Year Start dan First Accounting Period Membangun Ulang Periode"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-PREF-394
   - TC-FA-PREF-395
+sourceRules: ["D-01", "PV-04", "PV-05", "T-01", "FAPREF-LOGIC-02l", "FAPREF-LOGIC-02f"]
+smoke: []
+dependsOn: []
+trace:
+  "D-01": [3, 14]
+  "PV-04": [3, 14]
+  "PV-05": [3, 15]
+  "T-01": [5, 17]
+  "FAPREF-LOGIC-02l": [7, 19]
+  "FAPREF-LOGIC-02f": [9, 10]
+anchor: [8, 20]
 coverage:
   web: automated
 ---

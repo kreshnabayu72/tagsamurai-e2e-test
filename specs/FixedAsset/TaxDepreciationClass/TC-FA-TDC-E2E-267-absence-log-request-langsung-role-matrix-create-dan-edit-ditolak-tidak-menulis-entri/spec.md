@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-267-absence-log-request-langsung-role-matrix-create-dan-edit-ditolak-tidak-menulis-entri
 title: "Absence Log: Request Langsung Role Matrix Create dan Edit yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -13,6 +14,15 @@ sourceTc:
   - TC-FA-TDC-820
   - TC-FA-TDC-821
   - TC-FA-TDC-822
+sourceRules: ["§[F-FATDC-01] Create Tax Depreciation Class#p1", "§9.3#p1", "§8.4#r7", "J-04", "§[F-FATDC-02] Edit Tax Depreciation Class#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§[F-FATDC-01] Create Tax Depreciation Class#p1": 3
+  "§9.3#p1": [3, 9]
+  "§8.4#r7": [4, 5, 6, 10, 11, 12]
+  "J-04": [4, 5, 6, 10, 11, 12]
+  "§[F-FATDC-02] Edit Tax Depreciation Class#p1": 9
 coverage:
   web: automated
 ---

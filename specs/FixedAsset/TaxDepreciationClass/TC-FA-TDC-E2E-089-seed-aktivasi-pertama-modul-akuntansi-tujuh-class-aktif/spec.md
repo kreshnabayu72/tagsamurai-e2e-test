@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-089-seed-aktivasi-pertama-modul-akuntansi-tujuh-class-aktif
 title: "Seed Aktivasi Pertama Modul Akuntansi: Tujuh Class Aktif dan Tidak Dibuat Ulang Saat Diaktifkan Kembali"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,39 @@ sourceTc:
   - TC-FA-TDC-337
   - TC-FA-TDC-338
   - TC-FA-TDC-339
+sourceRules: ["F-FATDC-09.k1a", "§4.1.1#r2", "§4.1.5#r1", "§4.1.5#r2", "§4.1.5#r3", "§4.1.5#r4", "§4.1.5#r5", "§4.1.5#r6", "§4.1.5#r7", "FATDC-LOGIC-02b.1", "FATDC-LOGIC-04p.5", "§4.1.5#p2", "§4.1.1#b2", "§4.1.5#p1", "FLD-01", "§4.1.2#r10", "§4.1.2#r11", "ST-30", "FATDC-LOGIC-04ad", "§4.1.6#r4", "§4.1.6#r5", "§4.1.6#r6", "§4.1.6#r7", "§4.1.6#r8", "§4.1.6#r11", "F-FATDC-09.k2", "FATDC-LOGIC-02c", "FATDC-LOGIC-01c", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "F-FATDC-09.k1a": 4
+  "§4.1.1#r2": 4
+  "§4.1.5#r1": [5, 28]
+  "§4.1.5#r2": 6
+  "§4.1.5#r3": 7
+  "§4.1.5#r4": 8
+  "§4.1.5#r5": 9
+  "§4.1.5#r6": 10
+  "§4.1.5#r7": 11
+  "FATDC-LOGIC-02b.1": 12
+  "FATDC-LOGIC-04p.5": 12
+  "§4.1.5#p2": 13
+  "§4.1.1#b2": 15
+  "§4.1.5#p1": [15, 17, 20, 27]
+  "FLD-01": [17, 20]
+  "§4.1.2#r10": 24
+  "§4.1.2#r11": 24
+  "ST-30": 25
+  "FATDC-LOGIC-04ad": 27
+  "§4.1.6#r4": 28
+  "§4.1.6#r5": 28
+  "§4.1.6#r6": 28
+  "§4.1.6#r7": 28
+  "§4.1.6#r8": 28
+  "§4.1.6#r11": 28
+  "F-FATDC-09.k2": 36
+  "FATDC-LOGIC-02c": 36
+  "FATDC-LOGIC-01c": 36
+  "ST-23": 37
 coverage:
   web: automated
 ---

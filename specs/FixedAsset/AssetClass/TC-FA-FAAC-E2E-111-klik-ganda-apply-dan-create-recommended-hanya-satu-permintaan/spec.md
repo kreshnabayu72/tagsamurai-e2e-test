@@ -1,11 +1,24 @@
 ---
 id: TC-FA-FAAC-E2E-111-klik-ganda-apply-dan-create-recommended-hanya-satu-permintaan
 title: "Klik Ganda Apply dan Create (Recommended) Hanya Memproses Satu Permintaan"
+layer: ui-e2e
 priority: High
 caseType: Edge
 status: draft
 sourceTc:
   - TC-FA-FAAC-607
+sourceRules: ["ST-13", "D-11", "E-FAAC-80", "F-FAAC-02.k18", "L-02", "R-08", "FAAC-LOGIC-16a"]
+smoke: []
+dependsOn: []
+trace:
+  "ST-13": [9, 21]
+  "D-11": 11
+  "E-FAAC-80": [11, 21]
+  "F-FAAC-02.k18": 11
+  "L-02": 13
+  "R-08": 23
+  "FAAC-LOGIC-16a": 23
+anchor: [25]
 coverage:
   web: automated
 ---

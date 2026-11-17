@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-209-role-matrix-request-langsung-delete-ditolak
 title: "Role Matrix Negatif: Request Langsung Delete Ditolak"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -9,6 +10,12 @@ sourceTc:
   - TC-FA-TDC-800
   - TC-FA-TDC-801
   - TC-FA-TDC-802
+sourceRules: ["§9.3#p1", "§2.1#r8"]
+smoke: []
+dependsOn: []
+trace:
+  "§9.3#p1": [5, 7]
+  "§2.1#r8": 5
 coverage:
   web: automated
 ---

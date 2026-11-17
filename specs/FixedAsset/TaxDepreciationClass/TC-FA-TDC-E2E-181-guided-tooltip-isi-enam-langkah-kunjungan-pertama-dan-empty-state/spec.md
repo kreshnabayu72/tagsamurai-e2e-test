@@ -1,6 +1,7 @@
 ---
 id: TC-FA-TDC-E2E-181-guided-tooltip-isi-enam-langkah-kunjungan-pertama-dan-empty-state
 title: "Guided Tooltip: Isi Enam Langkah, Kunjungan Pertama, dan Empty State"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,18 @@ sourceTc:
   - TC-FA-TDC-649
   - TC-FA-TDC-650
   - TC-FA-TDC-651
+sourceRules: ["§4.7#p2", "§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§4.7#r6", "ST-23"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.7#p2": [3, 4, 9, 21]
+  "§4.7#r1": [5, 6, 7, 23]
+  "§4.7#r2": [5, 6, 7, 25]
+  "§4.7#r3": [5, 6, 7, 27]
+  "§4.7#r4": [5, 6, 7, 29]
+  "§4.7#r6": [10, 11, 12]
+  "ST-23": 22
+anchor: [13, 14, 17, 18, 30]
 coverage:
   web: automated
 ---

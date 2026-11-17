@@ -1,12 +1,21 @@
 ---
 id: TC-FA-FAAC-E2E-058-dialog-form-ikon-x-dan-esc-memunculkan-unsaved-changes
 title: "Ikon ✕ dan Esc pada Dialog Form Apply Changes dan Move Asset Names Memunculkan Dialog Unsaved Changes"
+layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: draft
 sourceTc:
   - TC-FA-FAAC-708
   - TC-FA-FAAC-709
+sourceRules: ["§4.2f#b2", "§4.1.2#p11", "§4.1.2#p1"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.2f#b2": [5, 10, 18, 25, 30]
+  "§4.1.2#p11": [5, 7, 10, 12, 18, 25, 27, 30, 32]
+  "§4.1.2#p1": 13
+anchor: [8, 14, 16, 28, 33, 34]
 coverage:
   web: automated
 ---

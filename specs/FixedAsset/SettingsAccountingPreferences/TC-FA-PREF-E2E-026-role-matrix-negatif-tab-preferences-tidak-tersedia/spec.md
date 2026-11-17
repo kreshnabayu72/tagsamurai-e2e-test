@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-026-role-matrix-negatif-tab-preferences-tidak-tersedia
 title: "Role Matrix Negatif: Tab Preferences Tidak Tersedia di Menu untuk Update Saja, Create Saja, Delete Saja, Group Manager, dan Role Lain"
+layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: draft
@@ -10,6 +11,18 @@ sourceTc:
   - TC-FA-PREF-105
   - TC-FA-PREF-106
   - TC-FA-PREF-107
+sourceRules: ["§4.8#b3", "§4.8#r1", "§9.3#r1", "§4.8#b2", "§2.2#r4", "§2.2#r5", "§2.1#r5"]
+smoke: []
+dependsOn: []
+trace:
+  "§4.8#b3": 3
+  "§4.8#r1": [3, 8, 14, 19, 24]
+  "§9.3#r1": [3, 8, 9, 14]
+  "§4.8#b2": [8, 14]
+  "§2.2#r4": [18, 19]
+  "§2.2#r5": [23, 24]
+  "§2.1#r5": 24
+anchor: [2, 7, 13, 17, 22]
 coverage:
   web: automated
 ---

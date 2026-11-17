@@ -1,6 +1,7 @@
 ---
 id: TC-FA-FAAC-E2E-108-reklasifikasi-d12-screening-dan-batal
 title: "Reklasifikasi D-12: Dialog Reclassify Balances, Cancel, Dua Akun, dan Perubahan Tanpa Dialog"
+layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
@@ -9,6 +10,15 @@ sourceTc:
   - TC-FA-FAAC-347
   - TC-FA-FAAC-348
   - TC-FA-FAAC-349
+sourceRules: ["D-12", "F-FAAC-02.k9d", "§4.2f#b2", "FAAC-LOGIC-06a", "F-FAAC-02.k18"]
+smoke: []
+dependsOn: []
+trace:
+  "D-12": [7, 8, 21, 22]
+  "F-FAAC-02.k9d": [10, 11, 17, 18]
+  "§4.2f#b2": [13, 25]
+  "FAAC-LOGIC-06a": [30, 34, 38]
+  "F-FAAC-02.k18": [30, 34, 38]
 coverage:
   web: automated
 ---

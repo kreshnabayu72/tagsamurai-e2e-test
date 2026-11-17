@@ -1,6 +1,7 @@
 ---
 id: TC-FA-PREF-E2E-005-opsi-select-dan-multiselect-fiscal-year-start-first-accounting-period-in-service-depreciation-month-journal-grouping
 title: "Opsi Select dan MultiSelect: Fiscal Year Start, First Accounting Period, In-service Date Source, Depreciation in Disposal Month, Journal Grouping"
+layer: ui-e2e
 priority: High
 caseType: Positive
 status: draft
@@ -12,6 +13,24 @@ sourceTc:
   - TC-FA-PREF-164
   - TC-FA-PREF-165
   - TC-FA-PREF-596
+sourceRules: ["SET-01", "§9.5#r3", "§9.5#r4", "§4.1.1#p4", "SET-12", "FAPREF-LOGIC-02i", "FI-06", "§9.5#r7", "FAPREF-LOGIC-09c", "SET-11", "SET-03", "FAPREF-LOGIC-04a", "SET-04", "FAPREF-LOGIC-05a"]
+smoke: []
+dependsOn: []
+trace:
+  "SET-01": 2
+  "§9.5#r3": 2
+  "§9.5#r4": [5, 6, 8, 13, 14, 15, 20]
+  "§4.1.1#p4": [5, 13, 20]
+  "SET-12": [6, 14]
+  "FAPREF-LOGIC-02i": [7, 16, 21]
+  "FI-06": 21
+  "§9.5#r7": 25
+  "FAPREF-LOGIC-09c": [25, 26]
+  "SET-11": 26
+  "SET-03": 29
+  "FAPREF-LOGIC-04a": 29
+  "SET-04": 32
+  "FAPREF-LOGIC-05a": 32
 coverage:
   web: automated
 ---
