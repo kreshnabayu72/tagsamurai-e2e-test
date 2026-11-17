@@ -2718,3 +2718,10 @@ Aturan:
 - **Aturan:** berlaku untuk semua modul. Jika log ditulis ke service lain, kegagalan penulisan log tidak membatalkan aksi pengguna: aksi tetap sukses, dan log menyusul lewat retry setelah service log pulih. Spec yang mengharapkan aksi dibatalkan karena log gagal tidak berlaku.
 - **Untuk spec:** dengan fault log aktif, verifikasi aksi sukses (toast sukses, nilai baru tersimpan setelah reload). Setelah fault dipulihkan, verifikasi entri log atau Changelog muncul. Di TC-477: Free Plan Duration `400` setelah reload, lalu setelah langkah 12 Changelog menampilkan satu entri 365 menjadi 400.
 - **Diputuskan oleh:** Wangs-UI Coordinator 2026-11-16 (didelegasikan owner), memperluas D-013.
+
+## D-263 Aturan umum: Supply Asset di luar sprint (2026-11-17)
+
+- **Berlaku untuk:** semua modul dan semua slot stack.
+- **Aturan:** produk Supply Asset tidak dibangun di sprint mana pun. Tidak ada plan, subscription, atau seed Supply di slot mana pun. Hook suite hanya berlangganan produk yang ada di sprint.
+- **Untuk spec:** langkah yang membutuhkan Supply Asset (Access, data, atau tampilan Supply) diberi tag `sprint-gap`. Langkah lain di spec yang sama tetap dijalankan. Contoh pertama: suite GlobalSettings/User (run `20261117-164337-91119`, User 001) yang hook-nya meminta `supply_asset`.
+- **Diputuskan oleh:** product owner 2026-11-15 ("Supply itu di luar sprint manapun"), dicatat Wangs-UI Coordinator 2026-11-17 sebagai aturan umum.
