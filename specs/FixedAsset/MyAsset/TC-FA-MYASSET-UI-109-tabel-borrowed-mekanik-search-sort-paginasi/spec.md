@@ -4,7 +4,7 @@ title: "Tabel Borrowed: siklus kotak Search, indikator sort, paginasi, dan teks 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r2", "EB-TBL-7@tabel-borrowed", "EB-TBL-8@tabel-borrowed", "EB-SRC-4@tabel-borrowed", "EB-SRT-3@tabel-borrowed"]
 smoke: []
 dependsOn: []

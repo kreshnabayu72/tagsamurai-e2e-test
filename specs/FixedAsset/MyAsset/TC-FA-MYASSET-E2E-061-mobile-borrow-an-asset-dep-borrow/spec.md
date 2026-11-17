@@ -4,25 +4,25 @@ title: "Mobile: tombol Borrow an Asset, pinjam sendiri, dan pinjam atas nama lew
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r43", "§2.1#r11", "§2.2#b1", "§3#p15", "§4.1b#p1", "§4.2.4#p1", "§4.3#r4", "§4.4#r12", "§4.6#p1", "§4.8#r10", "§7.3#r4", "§9.6#r7", "§9.7#r17"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§1.2#r43": 22
-  "§2.1#r11": [2, 22]
-  "§2.2#b1": [12, 16]
+  "§1.2#r43": 23
+  "§2.1#r11": [2, 23]
+  "§2.2#b1": [12, 17]
   "§3#p15": 4
-  "§4.1b#p1": [2, 16, 30, 32, 34]
+  "§4.1b#p1": [2, 17, 32, 34, 36]
   "§4.2.4#p1": [5, 7, 14]
-  "§4.3#r4": 34
+  "§4.3#r4": 36
   "§4.4#r12": 4
-  "§4.6#p1": [2, 22]
-  "§4.8#r10": [2, 22]
-  "§7.3#r4": [12, 27]
-  "§9.6#r7": [16, 19, 20, 30, 32]
-  "§9.7#r17": [16, 30, 32]
-anchor: [33]
+  "§4.6#p1": [2, 23]
+  "§4.8#r10": [2, 23]
+  "§7.3#r4": [12, 28]
+  "§9.6#r7": [17, 20, 21, 32, 34]
+  "§9.7#r17": [17, 32, 34]
+anchor: [35]
 coverage:
   android: automated
 ---
@@ -56,30 +56,32 @@ coverage:
 9. Pilih `Borrow for` `Me`
 10. Pilih aset `Projector Epson EB-X06 {runId}`
 11. Klik `Borrow Now`
-12. Verifikasi panel hasil di halaman, bukan toast, memuat `Success, 1 asset is now borrowed. Return by [Date].`
+12. Verifikasi panel hasil di halaman, bukan toast, memuat teks `Success, 1 asset is now borrowed. Return by` yang diikuti tanggal jatuh tempo pinjaman
 13. Tutup panel hasil dan kembali ke `My Asset`
 14. Verifikasi `My Asset` tab `Borrowed` tampil
-15. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
-16. Verifikasi kartu aset milik DU-061-1 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
-17. Klik menu ⋯ pada kartu aset milik DU-061-1
-18. Klik `Borrow Log`
-19. Verifikasi entri `Borrow requested` tampil di Borrow Log kartu aset milik DU-061-1
-20. Verifikasi entri `Handed over` tampil di Borrow Log kartu aset milik DU-061-1
-21. Tutup dialog Borrow Log
+15. Klik ikon `Search` pada toolbar tab Borrowed
+16. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
+17. Verifikasi kartu aset milik DU-061-1 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
+18. Klik menu ⋯ pada kartu aset milik DU-061-1
+19. Klik `Borrow Log`
+20. Verifikasi entri `Borrow requested` tampil di Borrow Log kartu aset milik DU-061-1
+21. Verifikasi entri `Handed over` tampil di Borrow Log kartu aset milik DU-061-1
+22. Tutup dialog Borrow Log
 
 ### Pinjam atas nama Borrower tanpa akun lewat Borrow for
-22. Verifikasi tombol `Borrow an Asset` tetap tampil untuk aset milik DU-061-3 dan DU-061-4
-23. Klik `Borrow an Asset`
-24. Pilih `Borrow for` `Wulan Pratama {runId}`
-25. Pilih aset `Meeting Mic Set {runId}` dan `Flip Chart Stand {runId}`
-26. Klik `Borrow Now`
-27. Verifikasi panel hasil di halaman, bukan toast, memuat `Success, 2 assets are now borrowed. Return by [Date].`
-28. Tutup panel hasil dan kembali ke `My Asset`
-29. Ganti isi kotak search dengan `Meeting Mic Set {runId}`, tekan Enter
-30. Verifikasi kartu aset milik DU-061-3 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
-31. Ganti isi kotak search dengan `Flip Chart Stand {runId}`, tekan Enter
-32. Verifikasi kartu aset milik DU-061-4 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
+23. Verifikasi tombol `Borrow an Asset` tetap tampil untuk aset milik DU-061-3 dan DU-061-4
+24. Klik `Borrow an Asset`
+25. Pilih `Borrow for` `Wulan Pratama {runId}`
+26. Pilih aset `Meeting Mic Set {runId}` dan `Flip Chart Stand {runId}`
+27. Klik `Borrow Now`
+28. Verifikasi panel hasil di halaman, bukan toast, memuat teks `Success, 2 assets are now borrowed. Return by` yang diikuti tanggal jatuh tempo pinjaman
+29. Tutup panel hasil dan kembali ke `My Asset`
+30. Klik ikon `Search` pada toolbar tab Borrowed
+31. Ketik Search `Meeting Mic Set {runId}`, tekan Enter
+32. Verifikasi kartu aset milik DU-061-3 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
+33. Ganti isi kotak search dengan `Flip Chart Stand {runId}`, tekan Enter
+34. Verifikasi kartu aset milik DU-061-4 tampil di tab Borrowed sebagai baris baru berstatus `Borrowed`
 
 ### Tombol Borrow an Asset tidak tampil tanpa aset layak
-33. Verifikasi ikon `Search` tampil pada toolbar tab Borrowed
-34. Verifikasi tombol `Borrow an Asset` tidak tampil (Hidden) di tab Borrowed
+35. Verifikasi ikon `Search` tampil pada toolbar tab Borrowed
+36. Verifikasi tombol `Borrow an Asset` tidak tampil (Hidden) di tab Borrowed

@@ -4,12 +4,12 @@ title: "Filter tab Borrowed: opsi DISTINCT, opsi Status berkombinasi badge, dan 
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#r7", "EB-FLT-1@tabel-borrowed", "EB-FLT-4@tabel-borrowed", "EB-FLT-3"]
 smoke: ["EB-FLT-3"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§4.1b#r7": [4, 15, 16, 21]
+  "§4.1b#r7": [4, 15, 16, 21, 111, 112]
   "EB-FLT-1@tabel-borrowed": [4, 5, 8, 9, 103]
   "EB-FLT-4@tabel-borrowed": [42, 43, 45, 53, 56, 62, 65, 100]
   "EB-FLT-3": [21, 32, 33, 70, 75, 76, 81, 88]
@@ -35,19 +35,20 @@ coverage:
   - DU-033-9: pinjaman Admin atas nama `Eka Prasetya {runId}`, aset `Meja Rapat Kayu {runId}`, Brand `Informa`, Model/Type `Meja Rapat`, Category `Furnitur`, Status `Waiting for Approval`, Duration `4 days`, Due Date `—`.
   - DU-033-10: pinjaman Admin atas nama `Eka Prasetya {runId}`, aset `Speaker Konferensi {runId}`, Brand `Dell`, Model/Type `Speaker`, Category `Elektronik`, Status `Borrowed` dengan badge `Reported Damaged`, sehingga opsi Status-nya `Borrowed · Reported Damaged`, Duration `7 days`, Handed Over At `T0 − 1 hari`, Due Date `T0 + 6 hari`.
   - DU-033-11: pinjaman Admin atas nama `Eka Prasetya {runId}`, aset `Webcam Logitech C920 {runId}`, Brand `Logitech`, dibuat Aktor Borrow `Rina Wulandari {runId}` pada langkah spec.
+  - DU-033-14: pinjaman Admin atas nama `Eka Prasetya {runId}`, aset `Docking Station Dell WD19 {runId}`, Brand `Dell`, Model/Type `WD19`, Category `Elektronik`, Status `Borrowed` dengan badge `Damaged` dan `Reported Missing`, sehingga opsi Status-nya `Borrowed · Damaged · Reported Missing`, Duration `7 days`, Handed Over At `T0 − 2 hari`, Due Date `T0 + 5 hari`.
   - Kata kunci Search: DU-033-12 `Overdue`, DU-033-13 `Borrowed`.
 - Kondisi:
-  - Tab Borrowed `Eka Prasetya {runId}` berisi 7 baris aset, dari DU-033-4 sampai DU-033-10, sebelum DU-033-11 dibuat.
+  - Tab Borrowed `Eka Prasetya {runId}` berisi 8 baris aset, dari DU-033-4 sampai DU-033-10 dan DU-033-14, sebelum DU-033-11 dibuat.
   - Kolom `Category` tidak tampil pada tabel Borrowed (kolom tambahan, tersembunyi pada konfigurasi bawaan).
   - Tidak ada Search, Filter, dan Sort aktif pada tabel Borrowed.
 
 ## Test Steps
 
 ### Opsi Filter berisi nilai DISTINCT dari tabel
-1. Verifikasi tabel Borrowed memuat 7 baris
+1. Verifikasi tabel Borrowed memuat 8 baris aset milik `Eka Prasetya {runId}`
 2. Klik ikon `Filter` pada toolbar
 3. Klik field `Status`
-4. Verifikasi opsi field `Status` berisi `Borrowed`, `Borrowed · Reported Damaged`, `Overdue`, `Waiting for Approval`, dan `Waiting for Handover`
+4. Verifikasi opsi field `Status` berisi `Borrowed`, `Borrowed · Damaged · Reported Missing`, `Borrowed · Reported Damaged`, `Overdue`, `Waiting for Approval`, dan `Waiting for Handover`
 5. Verifikasi opsi `Extension Request` dan `Extension Approval` tidak tampil di field `Status` karena tidak ada baris bernilai itu
 6. Tekan `Esc` untuk menutup daftar opsi
 7. Klik field `Brand`
@@ -71,7 +72,7 @@ coverage:
 ### AND antar field
 22. Klik `[Clear Field]`
 23. Klik `[Apply]`
-24. Verifikasi tabel Borrowed memuat 7 baris setelah saringan dilepas
+24. Verifikasi tabel Borrowed memuat 8 baris setelah saringan dilepas
 25. Klik field `Status`
 26. Centang opsi `Borrowed`
 27. Tekan `Esc` untuk menutup daftar opsi
@@ -163,3 +164,14 @@ coverage:
 101. Aktor Borrow `Rina Wulandari {runId}` membuat pinjaman atas nama `Eka Prasetya {runId}` untuk aset `Webcam Logitech C920 {runId}` ber-Brand `Logitech`
 102. Klik field `Brand`
 103. Verifikasi opsi `Logitech` tampil di field `Brand` tanpa memuat ulang halaman
+
+### Opsi Status dengan dua badge tambahan cocok hanya dengan opsi yang sama persis
+104. Tekan `Esc` untuk menutup daftar opsi
+105. Klik `[Clear Field]`
+106. Klik `[Apply]`
+107. Klik field `Status`
+108. Centang opsi `Borrowed · Damaged · Reported Missing`
+109. Tekan `Esc` untuk menutup daftar opsi
+110. Klik `[Apply]`
+111. Verifikasi tabel memuat baris `Docking Station Dell WD19 {runId}` yang Status-nya `Borrowed · Damaged · Reported Missing`
+112. Verifikasi baris `Speaker Konferensi {runId}` (Status `Borrowed · Reported Damaged`) tidak tampil karena bukan opsi yang sama persis

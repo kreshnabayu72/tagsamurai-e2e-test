@@ -4,7 +4,7 @@ title: "Tabel Borrowed: mekanik Setup Column dan kolom terakhir yang tetap tampi
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r8", "EB-KOL-1@tabel-borrowed"]
 smoke: []
 dependsOn: []

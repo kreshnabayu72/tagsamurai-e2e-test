@@ -4,7 +4,7 @@ title: "Filter My Asset: opsi tiap field dan hasil saringan di keempat tabel"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-MYA-01", "T-MYA-04", "§4.1b#r2", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r8", "§4.1b#r9", "§4.1b#r10", "§4.1b#r12", "§4.1b#r14", "§4.1b#r16", "§4.1b#r17", "§4.1c#r2", "§4.1c#r4", "§4.1c#r5", "§4.1c#r6", "§4.1c#r7", "§4.1c#r8", "§4.1c#r9", "§4.1c#r10", "§4.1c#r11", "§4.1c#r13", "§4.1c#r14", "EB-FLT-3"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
@@ -16,7 +16,7 @@ trace:
   "§4.1b#r4": [4, 22, 40]
   "§4.1b#r5": [6, 24]
   "§4.1b#r6": [8, 26]
-  "§4.1b#r7": [10, 28, 38, 186, 189]
+  "§4.1b#r7": [10, 28, 38, 186, 189, 193]
   "§4.1b#r8": [12, 30]
   "§4.1b#r9": [14, 32]
   "§4.1b#r10": [46, 48, 50]
@@ -41,7 +41,7 @@ trace:
 # Filter My Asset: opsi tiap field dan hasil saringan di keempat tabel
 
 ## Prerequisites
-- Aktor: Borrower dan Assignee, yaitu pengguna ber-akun login `Rina Wulandari {runId}` (DU-215-1) yang membuka My Asset dan tidak punya baris lain selain DU-215-2 sampai DU-215-20. Aktor Borrow dan Aktor Assignment menyerahkan aset ke Aktor, masing-masing dengan hak atas Group aset yang diserahkannya; Aktor Borrow `Budi Santoso {runId}`, Aktor Assignment `Agus Pratama {runId}` dan `Siti Rahmawati {runId}`. Borrower tanpa akun `Hendra Wijaya {runId}` dan Division `Divisi Keuangan {runId}` memakai Aktor sebagai PIC.
+- Aktor: Borrower dan Assignee, yaitu pengguna ber-akun login `Rina Wulandari {runId}` (DU-215-1) yang membuka My Asset dan tidak punya baris lain selain DU-215-2 sampai DU-215-21. Aktor Borrow dan Aktor Assignment menyerahkan aset ke Aktor, masing-masing dengan hak atas Group aset yang diserahkannya; Aktor Borrow `Budi Santoso {runId}`, Aktor Assignment `Agus Pratama {runId}` dan `Siti Rahmawati {runId}`. Borrower tanpa akun `Hendra Wijaya {runId}` dan Division `Divisi Keuangan {runId}` memakai Aktor sebagai PIC.
 - Data:
   - DU-215-1: Aktor pemegang semua baris di bawah, tanpa baris lain di My Asset: Name `Rina Wulandari {runId}`, Posisi `Borrower dan Assignee`.
   - DU-215-2: pinjaman Admin Borrowed, Brand dan Model yang dipakai dua baris: Name `Laptop Operasional {runId}`, Brand `Dell`, Model/Type `Latitude 5440`, Group `Ruang IT`, Status `Borrowed`, TAG `RFID`, Category `Komputer`, Borrower `Me`, Source `Admin`, Duration `3 days`, Due Date `T0 + 3 hari`, Handed Over At `T0`.
@@ -63,6 +63,7 @@ trace:
   - DU-215-18: Task Confirm Handover pinjaman dengan Total Asset terkecil: Transaction ID `nomor BRW milik DU-215-18`, Task `Confirm Handover`, Group `Ruang IT`, Total Asset `2`, Handed Over By `Budi Santoso {runId}`, Expires At `T0 + 1 hari`.
   - DU-215-19: Task Confirm Handover pinjaman dengan Total Asset di tengah rentang: Transaction ID `nomor BRW milik DU-215-19`, Task `Confirm Handover`, Group `Ruang Direksi`, Total Asset `5`, Handed Over By `Agus Pratama {runId}`, Expires At `T0 + 1 hari`.
   - DU-215-20: Task Confirm Handover pinjaman dengan Total Asset terbesar: Transaction ID `nomor BRW milik DU-215-20`, Task `Confirm Handover`, Group `Ruang IT`, Total Asset `9`, Handed Over By `Budi Santoso {runId}`, Expires At `T0 + 1 hari`.
+  - DU-215-21: pinjaman Admin Borrowed dengan laporan Damaged dari Borrower yang menunggu konfirmasi, Brand, Model, Group, dan TAG sama dengan DU-215-2: Name `Laptop Cadangan {runId}`, Brand `Dell`, Model/Type `Latitude 5440`, Group `Ruang IT`, Status `Borrowed · Reported Damaged`, TAG `RFID`, Category `Komputer`, Borrower `Me`, Source `Admin`, Duration `10 days`, Due Date `T0 + 10 hari`, Handed Over At `T0`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`
   - T0 adalah tanggal run dan seluruh pinjaman serta penugasan di atas diserahkan atau ditutup pada T0
@@ -72,7 +73,7 @@ trace:
 
 ### Opsi filter tab Borrowed dipopulasi dari baris tab Borrowed saja
 1. Aktor meminta opsi filter `Asset Name` tab Borrowed
-2. Verifikasi opsi `Asset Name` memuat `Kamera Dokumentasi {runId}`, `Laptop Operasional {runId}`, `Laptop Staf {runId}`, `Meja Lipat {runId}`, `Pengeras Suara {runId}`, dan `Proyektor Rapat {runId}`, masing-masing satu kali
+2. Verifikasi opsi `Asset Name` memuat `Kamera Dokumentasi {runId}`, `Laptop Operasional {runId}`, `Laptop Cadangan {runId}`, `Laptop Staf {runId}`, `Meja Lipat {runId}`, `Pengeras Suara {runId}`, dan `Proyektor Rapat {runId}`, masing-masing satu kali
 3. Aktor meminta opsi filter `Brand` tab Borrowed
 4. Verifikasi opsi `Brand` memuat `Canon`, `Dell`, `Epson`, dan `JBL`, masing-masing satu kali, tidak memuat `Acer {runId}` yang ada di master tetapi tidak dipakai baris mana pun, dan tidak memuat `Shure` yang hanya dipakai baris tab History
 5. Aktor meminta opsi filter `Model/Type` tab Borrowed
@@ -80,7 +81,7 @@ trace:
 7. Aktor meminta opsi filter `Group` tab Borrowed
 8. Verifikasi opsi `Group` memuat `Gudang Utama`, `Ruang IT`, `Ruang Rapat`, `Ruang Rekam`, dan `Studio`, masing-masing satu kali
 9. Aktor meminta opsi filter `Status` tab Borrowed
-10. Verifikasi opsi `Status` memuat `Borrowed`, `Extension Approval`, `Extension Request`, `Waiting for Approval`, dan `Waiting for Handover`, masing-masing satu kali, tidak memuat `Overdue` karena belum ada baris Overdue, dan tidak memuat `Returned` yang hanya dipakai baris tab History
+10. Verifikasi opsi `Status` memuat `Borrowed`, `Borrowed · Reported Damaged`, `Extension Approval`, `Extension Request`, `Waiting for Approval`, dan `Waiting for Handover`, masing-masing satu kali, dengan `Borrowed` dan `Borrowed · Reported Damaged` sebagai dua opsi terpisah, tidak memuat `Overdue` karena belum ada baris Overdue, dan tidak memuat `Returned` yang hanya dipakai baris tab History
 11. Aktor meminta opsi filter `TAG` tab Borrowed
 12. Verifikasi opsi `TAG` memuat `BLE`, `NFC`, dan `RFID`, masing-masing satu kali
 13. Aktor meminta opsi filter `Category` tab Borrowed
@@ -94,13 +95,13 @@ trace:
 19. Aktor meminta daftar tab Borrowed dengan filter `Asset Name` bernilai `Laptop Operasional {runId}`
 20. Verifikasi hasil memuat baris DU-215-2 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-5, DU-215-6, DU-215-7
 21. Aktor meminta daftar tab Borrowed dengan filter `Brand` bernilai `Dell`
-22. Verifikasi hasil memuat baris DU-215-2, DU-215-5 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7
+22. Verifikasi hasil memuat baris DU-215-2, DU-215-5, DU-215-21 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7
 23. Aktor meminta daftar tab Borrowed dengan filter `Model/Type` bernilai `EB-X500`
 24. Verifikasi hasil memuat baris DU-215-3 dan tidak memuat baris DU-215-2, DU-215-4, DU-215-5, DU-215-6, DU-215-7
 25. Aktor meminta daftar tab Borrowed dengan filter `Group` bernilai `Ruang IT`
-26. Verifikasi hasil memuat baris DU-215-2, DU-215-5 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7
+26. Verifikasi hasil memuat baris DU-215-2, DU-215-5, DU-215-21 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7
 27. Aktor meminta daftar tab Borrowed dengan filter `Status` bernilai `Borrowed`
-28. Verifikasi hasil memuat baris DU-215-2, DU-215-5 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7
+28. Verifikasi hasil memuat baris DU-215-2, DU-215-5 dan tidak memuat baris DU-215-3, DU-215-4, DU-215-6, DU-215-7, DU-215-21
 29. Aktor meminta daftar tab Borrowed dengan filter `TAG` bernilai `NFC`
 30. Verifikasi hasil memuat baris DU-215-3, DU-215-7 dan tidak memuat baris DU-215-2, DU-215-4, DU-215-5, DU-215-6
 31. Aktor meminta daftar tab Borrowed dengan filter `Category` bernilai `Fotografi`
@@ -114,7 +115,7 @@ trace:
 37. Aktor meminta daftar tab Borrowed dengan filter `Status` bernilai `Waiting for Approval`, dan `Waiting for Handover`
 38. Verifikasi hasil memuat baris DU-215-3, DU-215-4 dan tidak memuat baris DU-215-2, DU-215-5, DU-215-6, DU-215-7
 39. Aktor meminta daftar tab Borrowed dengan filter `Brand` bernilai `Dell`, dan `Epson`
-40. Verifikasi hasil memuat baris DU-215-2, DU-215-3, DU-215-5 dan tidak memuat baris DU-215-4, DU-215-6, DU-215-7
+40. Verifikasi hasil memuat baris DU-215-2, DU-215-3, DU-215-5, DU-215-21 dan tidak memuat baris DU-215-4, DU-215-6, DU-215-7
 41. Aktor meminta daftar tab Borrowed dengan filter `Brand` bernilai `Dell` dan filter `Source` bernilai `Self-service`
 42. Verifikasi hasil memuat baris DU-215-5 dan tidak memuat baris DU-215-2, DU-215-3, DU-215-4, DU-215-6, DU-215-7
 43. Aktor meminta daftar tab Borrowed dengan filter `Brand` bernilai `Dell` dan filter `Status` bernilai `Waiting for Approval`
@@ -128,7 +129,7 @@ trace:
 49. Aktor meminta daftar tab Borrowed dengan filter `Due Date` dari T0 + 8 hari sampai T0 + 9 hari
 50. Verifikasi hasil saringan tidak memuat baris apa pun dari tab Borrowed
 51. Aktor meminta daftar tab Borrowed dengan filter `Handed Over At` dari T0 sampai T0
-52. Verifikasi hasil memuat baris DU-215-2, DU-215-5, DU-215-6, DU-215-7 dan tidak memuat baris DU-215-3, DU-215-4
+52. Verifikasi hasil memuat baris DU-215-2, DU-215-5, DU-215-6, DU-215-7, DU-215-21 dan tidak memuat baris DU-215-3, DU-215-4
 53. Aktor meminta daftar tab Borrowed dengan filter `Handed Over At` dari T0 − 7 hari sampai T0 − 1 hari
 54. Verifikasi hasil saringan tidak memuat baris apa pun dari tab Borrowed
 55. Aktor meminta daftar tab Borrowed dan membaca kolom `Extensions` baris DU-215-2
@@ -284,9 +285,13 @@ trace:
 183. Aktor Borrow membuat pinjaman Admin atas `Server Rack {runId}` dengan Duration `2 hours` untuk Aktor, dan Aktor mengonfirmasi Handover
 184. Waktu berlalu sampai Due date pinjaman DU-215-8 terlewati
 185. Aktor meminta opsi filter `Status` tab Borrowed
-186. Verifikasi opsi `Status` memuat `Borrowed`, `Extension Approval`, `Extension Request`, `Overdue`, `Waiting for Approval`, dan `Waiting for Handover`, masing-masing satu kali, dengan `Overdue` sebagai opsi baru dan keenam status `Waiting for Approval`, `Waiting for Handover`, `Borrowed`, `Overdue`, `Extension Request`, dan `Extension Approval` masing-masing memiliki baris
+186. Verifikasi opsi `Status` memuat `Borrowed`, `Borrowed · Reported Damaged`, `Extension Approval`, `Extension Request`, `Overdue`, `Waiting for Approval`, dan `Waiting for Handover`, masing-masing satu kali, dengan `Overdue` sebagai opsi baru dan keenam status `Waiting for Approval`, `Waiting for Handover`, `Borrowed`, `Overdue`, `Extension Request`, dan `Extension Approval` masing-masing memiliki baris
 187. Aktor membatalkan pinjaman DU-215-3 lewat aksi Cancel Borrow
 188. Aktor meminta opsi filter `Status` tab Borrowed
-189. Verifikasi opsi `Status` memuat `Borrowed`, `Extension Approval`, `Extension Request`, `Overdue`, dan `Waiting for Handover`, masing-masing satu kali, dan tidak lagi memuat `Waiting for Approval` karena pembawa terakhirnya sudah pindah ke tab History
+189. Verifikasi opsi `Status` memuat `Borrowed`, `Borrowed · Reported Damaged`, `Extension Approval`, `Extension Request`, `Overdue`, dan `Waiting for Handover`, masing-masing satu kali, dan tidak lagi memuat `Waiting for Approval` karena pembawa terakhirnya sudah pindah ke tab History
 190. Aktor meminta opsi filter `Status` tab History
 191. Verifikasi opsi `Status` memuat `Canceled`, `Rejected`, `Returned`, `Returned · Damaged`, dan `Unassigned`, masing-masing satu kali, dengan `Canceled` sebagai opsi baru dari DU-215-3
+
+### Filter Status memakai kombinasi badge yang sama persis di tab Borrowed
+192. Aktor meminta daftar tab Borrowed dengan filter `Status` bernilai `Borrowed · Reported Damaged`
+193. Verifikasi hasil memuat baris DU-215-21 dan tidak memuat baris DU-215-2, DU-215-5, DU-215-7

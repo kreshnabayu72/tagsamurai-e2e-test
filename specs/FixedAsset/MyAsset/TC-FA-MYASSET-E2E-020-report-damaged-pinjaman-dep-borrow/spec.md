@@ -4,7 +4,7 @@ title: "Report Damaged pada pinjaman: badge Reported Damaged dan aksi Extend tid
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r7", "§4.1b#r40", "§4.1b#r43", "§4.1b#r44", "§4.1b#r45", "§4.1b#r46", "§4.1b#r47", "§4.1b#r48", "§4.4#r9", "§4.8#r8", "§7.3#r6", "§9.2#r15", "§9.2#r16", "§9.2#r17", "§9.6#r8", "§9.7#r12", "EB-FB-1@report-damaged"]
 smoke: ["EB-FB-1@report-damaged"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

@@ -4,15 +4,15 @@ title: "Tabel Borrowed: mekanik Filter Panel dan filter pada kolom yang disembun
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.9#p1", "EB-FLT-2@tabel-borrowed", "EB-FLT-6@tabel-borrowed"]
 smoke: []
 dependsOn: []
 trace:
   "§9.9#p1": 38
-  "EB-FLT-2@tabel-borrowed": [6, 7, 9, 10, 11, 14, 16, 17, 23, 26, 27, 35, 37, 39, 44, 47, 49, 51, 55]
+  "EB-FLT-2@tabel-borrowed": [6, 7, 9, 10, 11, 14, 16, 17, 23, 26, 27, 35, 37, 39, 44, 47, 49, 51, 55, 82, 83, 85, 86]
   "EB-FLT-6@tabel-borrowed": [66, 67, 68, 69, 74]
-anchor: [25, 33, 46, 61, 64, 65]
+anchor: [25, 33, 46, 61, 64, 65, 80]
 coverage:
   web: automated
 ---
@@ -123,5 +123,19 @@ coverage:
 72. Centang opsi `Overdue`
 73. Klik `[Apply]`
 74. Verifikasi `Laptop Dell Latitude 5420 - 9` tampil sesudah kolom `Status` yang disembunyikan difilter ulang
+
+### Hapus centang opsi langsung di dropdown menghapus chip-nya dan Apply memakai opsi tersisa
+75. Tampilkan Tabel Borrowed dengan kondisi K1
+76. Klik ikon Filter
+77. Klik field `Status`
+78. Centang opsi `Borrowed`
+79. Centang opsi `Overdue`
+80. Verifikasi chip `Borrowed` dan `Overdue` tampil pada field `Status`
+81. Hapus centang opsi `Overdue` pada daftar opsi dropdown
+82. Verifikasi chip `Borrowed` tetap tampil pada field `Status`
+83. Verifikasi chip `Overdue` tidak tampil lagi pada field `Status`
+84. Klik `[Apply]`
+85. Verifikasi `Laptop Dell Latitude 5420 - 2` tampil
+86. Verifikasi `Laptop Dell Latitude 5420 - 9` tidak tampil sesudah opsi `Overdue` dihapus centangnya dan `[Apply]` diklik
 
 [^drift-1]: Drift foundation vs kontrak komponen. PRD modul: tidak memuat teks ini dan menunjuk `prd-conventions.md` §9.8. foundation `prd-conventions.md` §9.8: dropdown filter menampilkan teks `"No results found"` bila pencarian di dalam dropdown tidak cocok. Kontrak `MultiSelect#41`: teks bawaan `No results found.` (dengan titik di akhir). Diasersi: kontrak, karena dropdown filter adalah MultiSelect wangs-ui dan teks bawaan komponen mengikuti kontraknya (SB-7).

@@ -4,7 +4,7 @@ title: "Cancel Damage Report pada pinjaman: badge hilang dan aksi kembali"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r9", "§4.1b#r60", "§4.1b#r61", "§4.1b#r62", "§4.1b#r64", "§4.1b#r65", "§4.1b#r66", "§4.8#r12", "§7.3#r9", "§9.6#r9", "EB-FB-1@cancel-damage-report"]
 smoke: ["EB-FB-1@cancel-damage-report"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

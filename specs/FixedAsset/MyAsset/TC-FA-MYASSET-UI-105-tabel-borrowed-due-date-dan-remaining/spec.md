@@ -4,14 +4,14 @@ title: "Tabel Borrowed: teks Remaining dan format Due Date menurut status, satua
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r55", "§1.2#r56", "§1.2#r58", "§1.2#r60", "§1.2#r62", "§4.1b#r10", "§4.1b#r11", "§9.4.2#r85", "EB-XM-1"]
 smoke: []
 dependsOn: []
 trace:
   "§1.2#r55": [2, 4]
   "§1.2#r56": [7, 9, 11, 13, 15, 24]
-  "§1.2#r58": [18, 19, 20, 21, 22]
+  "§1.2#r58": [18, 19, 20, 21, 22, 46, 47, 48]
   "§1.2#r60": [3, 5]
   "§1.2#r62": [24, 26, 27, 28, 29, 30, 32, 33, 34]
   "§4.1b#r10": [3, 8, 25, 37, 38]
@@ -49,9 +49,10 @@ coverage:
   - DU-105-17: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 53`, Asset ID `LPT-2026-0053`, Status `Overdue + Extension Request`, Duration `6 days`, Due Date `2026-11-08`, Due Date tampil `08/11/26`, Remaining `1 day overdue`.
   - DU-105-18: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 14`, Asset ID `LPT-2026-0014`, Status `Borrowed`, Duration `4 days`, Due Date `2026-03-25`, Due Date tampil dd/MM/yy `25/03/26`, Due Date tampil M/d/yy `3/25/26`, Remaining `Due in 1 day`.
   - DU-105-19: respons tiruan, satu baris tabel Borrowed: Name `Meeting Mic Set - 12`, Asset ID `MIC-2026-0012`, Status `Borrowed`, Duration `6 hours`, Due Date `2026-03-24T23:30:00Z`, Due Date tampil dd/MM/yy `24/03/26, 23:30`, Due Date tampil M/d/yy `3/24/26, 23:30`, Remaining `Due in 3 hours`.
+  - DU-105-20: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 10`, Asset ID `LPT-2026-0010`, Status `Extension Approval`, Duration `5 days`, Due Date `2026-11-11`, Due Date tampil `11/11/26`, Remaining `Due in 2 days`.
   - Jenis satuan pinjaman tiap baris mengikuti Duration: `days` untuk Duration berisi hari dan `hours` untuk Duration berisi jam.
 - Kondisi:
-  - K1: tabel Borrowed berisi DU-105-1 sampai DU-105-7, DU-105-16, dan DU-105-17, dengan jam sekarang `2026-11-09T20:30:00Z`, Time Zone bernilai `UTC`, Date Format bernilai `dd/MM/yy`, dan Time Format bernilai `24 jam`.
+  - K1: tabel Borrowed berisi DU-105-1 sampai DU-105-7, DU-105-16, DU-105-17, dan DU-105-20, dengan jam sekarang `2026-11-09T20:30:00Z`, Time Zone bernilai `UTC`, Date Format bernilai `dd/MM/yy`, dan Time Format bernilai `24 jam`.
   - K2: tabel Borrowed berisi DU-105-8 sampai DU-105-15, dengan jam sekarang `2026-11-09T20:30:00Z`, Time Zone bernilai `UTC`, Date Format bernilai `dd/MM/yy`, dan Time Format bernilai `24 jam`.
   - K3: tabel Borrowed berisi DU-105-18 dan DU-105-19, dengan jam sekarang `2026-03-24T20:30:00Z`, Time Zone bernilai `UTC`, Date Format bernilai `dd/MM/yy`, dan Time Format bernilai `24 jam`.
   - K4: sama dengan K3, dengan Date Format bernilai `M/d/yy`.
@@ -120,3 +121,9 @@ coverage:
 42. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K5
 43. Verifikasi sel Due Date baris `Meeting Mic Set - 12` menampilkan tanggal `24/03/26` dengan jam dalam format 12 jam
 44. Verifikasi jam pada sel Due Date baris `Meeting Mic Set - 12` tidak tampil sebagai `23:30`
+
+### Pengajuan Extend menunggu approval tampil di kolom Status dan tidak di Remaining
+45. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K1
+46. Verifikasi sel Remaining baris `Laptop Dell Latitude 5420 - 10` berisi `Due in 2 days`
+47. Verifikasi sel Remaining baris `Laptop Dell Latitude 5420 - 10` tidak memuat `Extension Approval`
+48. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 10` menampilkan badge `Extension Approval`

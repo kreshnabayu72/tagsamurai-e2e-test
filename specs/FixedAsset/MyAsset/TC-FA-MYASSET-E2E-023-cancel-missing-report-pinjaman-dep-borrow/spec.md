@@ -4,7 +4,7 @@ title: "Cancel Missing Report pada pinjaman: badge hilang dan aksi baris kembali
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r9", "§4.1b#r68", "§4.1b#r69", "§4.1b#r70", "§4.1b#r72", "§4.1b#r73", "§4.1b#r74", "§4.8#r12", "§7.3#r9", "§9.6#r9", "EB-FB-1@cancel-missing-report"]
 smoke: ["EB-FB-1@cancel-missing-report"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

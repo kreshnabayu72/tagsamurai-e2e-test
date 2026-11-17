@@ -4,7 +4,7 @@ title: "Perubahan berbasis waktu: baris menjadi Overdue dan Task hilang saat jen
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r12", "§1.2#r72", "§9.4.2#r84", "§9.4.2#r87", "§9.7#r2", "§9.7#r16"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]

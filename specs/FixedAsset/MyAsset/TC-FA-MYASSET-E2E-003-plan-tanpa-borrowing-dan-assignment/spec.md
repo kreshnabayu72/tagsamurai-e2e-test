@@ -4,7 +4,7 @@ title: "Item My Asset disembunyikan dan URL ditolak saat plan tanpa Borrowing da
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.10#p1"]
 smoke: []
 dependsOn: []

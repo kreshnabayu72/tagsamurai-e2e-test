@@ -4,7 +4,7 @@ title: "Aturan server pengajuan Extend dari My Asset dan penarikannya"
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r64", "§1.2#r66", "§1.2#r67", "§4.1b#r17", "§4.1b#r48", "§4.1b#r54", "§9.2#b8", "§9.4.2#r7", "§9.4.2#r44", "§9.6#r3", "§9.6#r4", "§9.7#r15", "EB-CON-3", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
@@ -14,11 +14,11 @@ trace:
   "§1.2#r67": 14
   "§4.1b#r17": [2, 3, 4, 11, 20]
   "§4.1b#r48": [52, 54, 79, 82, 84]
-  "§4.1b#r54": [58, 61, 88, 91, 94]
+  "§4.1b#r54": [58, 61, 88, 91, 94, 107, 110]
   "§9.2#b8": [23, 25, 31, 33, 35, 73]
   "§9.4.2#r7": 48
   "§9.4.2#r44": [39, 41]
-  "§9.6#r3": [6, 14, 16, 64, 65, 67, 68, 70]
+  "§9.6#r3": [6, 14, 16, 64, 65, 67, 68, 70, 103]
   "§9.6#r4": [23, 27, 33, 39, 73, 75]
   "§9.7#r15": [45, 47, 48]
   "EB-CON-3": [39, 48]
@@ -29,9 +29,9 @@ owner: BE
 # Aturan server pengajuan Extend dari My Asset dan penarikannya
 
 ## Prerequisites
-- Aktor: Maya (Borrower yang mengajukan dan menarik Extend) dan Gita (Aktor Borrow Group `Head Office` yang meninjau pengajuan, meneruskannya ke approval, dan mengembalikan aset).
+- Aktor: Maya (Borrower yang mengajukan dan menarik Extend), Gita (Aktor Borrow Group `Head Office` yang meninjau pengajuan, meneruskannya ke approval, dan mengembalikan aset), dan Dewi (Aktor Missing Group `Head Office` yang menolak laporan aset hilang).
 - Data:
-  - DU-206-1: User `Maya Anggraini {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Borrower pada DU-206-3 sampai DU-206-12 dan DU-206-21 sampai DU-206-26.
+  - DU-206-1: User `Maya Anggraini {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Borrower pada DU-206-3 sampai DU-206-12, DU-206-21 sampai DU-206-26, dan DU-206-32.
   - DU-206-2: User `Gita Permata {runId}`, role Asset Admin, cakupan Group `Head Office` beserta Group di bawahnya, Aktor Borrow Group `Head Office`.
   - DU-206-3: Pinjaman Maya, aset `Laptop Dell Latitude 5420 - 61 {runId}`, Group `Head Office`, status `Borrowed`, Max extensions `2`, Extensions `0 / 2`, Due date satuan Days belum terlewati.
   - DU-206-4: Pinjaman Maya, aset `Laptop Dell Latitude 5420 - 62 {runId}`, Group `Head Office`, status `Borrowed`, Max extensions `2`, Extensions `0 / 2`, Due date satuan Days belum terlewati.
@@ -49,6 +49,8 @@ owner: BE
   - DU-206-24: Pinjaman Maya, aset `Laptop Dell Latitude 5420 - 99 {runId}`, Group `Head Office`, status `Borrowed`, Max extensions `2`, Extensions `0 / 2`, Due date satuan Days belum terlewati, Extend yang diteruskan Aktor Borrow memerlukan approval.
   - DU-206-25: Pinjaman Maya, aset `Laptop Dell Latitude 5420 - 100 {runId}`, Group `Head Office`, status `Borrowed`, Max extensions `2`, Extensions `0 / 2`, Due date satuan Days belum terlewati, Extend yang diteruskan Aktor Borrow memerlukan approval.
   - DU-206-26: Pinjaman Maya melalui Borrow an Asset self-service, aset `Laptop Dell Latitude 5420 - 101 {runId}`, Group `Head Office`, status `Borrowed`, Due date belum terlewati.
+  - DU-206-32: Pinjaman Maya, aset `Laptop Dell Latitude 5420 - 102 {runId}`, Group `Head Office`, status `Borrowed`, Max extensions `2`, Extensions `0 / 2`, Due date satuan Days belum terlewati.
+  - DU-206-33: User `Dewi Lestari {runId}`, memegang hak Aktor Missing pada Group `Head Office`, cakupan Group `Head Office` beserta Group di bawahnya.
 
 ## Test Steps
 
@@ -180,3 +182,16 @@ owner: BE
 99. Verifikasi Return kedua tidak diproses ulang oleh server
 100. Maya meminta Borrow Log baris aset `Laptop Dell Latitude 5420 - 101 {runId}`
 101. Verifikasi Borrow Log tetap memuat satu node `Returned via self-service`
+
+### Pengajuan Extend yang berhasil tercatat di Borrow Log
+102. Gita meminta Borrow Log baris aset `Laptop Dell Latitude 5420 - 97 {runId}`
+103. Verifikasi Borrow Log memuat satu node `Extension requested`
+
+### Laporan aset hilang ditolak Aktor Missing dan pengajuan Extend tidak dipulihkan
+104. Maya mengajukan Extend untuk baris aset `Laptop Dell Latitude 5420 - 102 {runId}` dengan Reason `Perpanjangan untuk kegiatan studi banding`
+105. Maya mengirim laporan aset hilang atas baris aset `Laptop Dell Latitude 5420 - 102 {runId}`
+106. Gita meminta Borrow Log baris aset `Laptop Dell Latitude 5420 - 102 {runId}`
+107. Verifikasi Borrow Log memuat penutupan pengajuan Extend oleh `System` dengan alasan `Asset reported missing`
+108. Dewi menolak laporan aset hilang atas baris aset `Laptop Dell Latitude 5420 - 102 {runId}`
+109. Maya meminta data tab Borrowed
+110. Verifikasi baris aset `Laptop Dell Latitude 5420 - 102 {runId}` tidak berstatus `Extension Request`, karena pengajuan tidak dipulihkan sesudah laporan ditolak

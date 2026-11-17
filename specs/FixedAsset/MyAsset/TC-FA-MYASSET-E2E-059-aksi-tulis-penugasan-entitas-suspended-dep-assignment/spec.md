@@ -4,7 +4,7 @@ title: "Entitas Suspended: aksi tulis penugasan di My Asset ditolak dan baris te
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.1#r1", "§9.4.2#r79", "§9.4.2#r80", "EB-AKS-7"]
 smoke: []
 dependsOn:

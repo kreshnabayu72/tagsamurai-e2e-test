@@ -4,7 +4,7 @@ title: "Server menolak akses dan aksi atas baris milik orang lain"
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r22", "§1.2#r27", "§9.3#b1", "§9.3#b2", "§9.4.2#r19", "§9.4.3#b4", "EB-AKS-3@confirm-handover", "EB-AKS-3@confirm-handover-assignment", "EB-AKS-3@cancel-borrow", "EB-AKS-3@cancel-extension-request", "EB-AKS-3@report-damaged", "EB-AKS-3@report-missing", "EB-AKS-3@cancel-damage-report", "EB-AKS-3@cancel-missing-report"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]

@@ -4,7 +4,7 @@ title: "Aksi My Asset tercatat sebagai Activity di User Log Borrow dan Assignmen
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§8#p1", "§8#r1", "§8#r2", "§8#r3", "§8#r4", "§8#r5", "§8#r6", "§8#r7", "§8#r8", "§8#r9", "§8#r10", "§8#r11", "§8#p3"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
@@ -38,7 +38,7 @@ trace:
   - DU-209-6: User: Name `Agus Pratama {runId}`, Peran `Borrower yang juga memegang hak Aktor Missing pada Group Head Office`.
   - DU-209-7: User: Name `Rina Wulandari {runId}`, Peran `Aktor Borrow dan Aktor Assignment pada Group Head Office`.
   - DU-209-8: Division: Name `Finance {runId}`, PIC `Budi Santoso {runId}`, Anggota `Fajar Nugroho {runId}`.
-  - DU-209-9: Pinjaman: Aset 1 `Laptop Lenovo ThinkPad T14 {runId}`, Aset 2 `Mouse Logitech MX Master 3 {runId}`, Status `Waiting for Handover`, Sesi Handover `aktif, menunggu konfirmasi`, Borrower `Dewi Lestari {runId}`.
+  - DU-209-9: Pinjaman: Aset 1 `Laptop Lenovo ThinkPad T14 {runId}`, Aset 2 `Mouse Logitech MX Master 3 {runId}`, Aset 3 `Webcam Logitech C920 {runId}`, Status `Waiting for Handover`, Sesi Handover `aktif, menunggu konfirmasi`, Borrower `Dewi Lestari {runId}`.
   - DU-209-10: Pinjaman: Name `Monitor Dell 24 Inci {runId}`, Status `Waiting for Approval`, Borrower `Dewi Lestari {runId}`.
   - DU-209-11: Pinjaman: Name `Kamera Canon EOS 200D {runId}`, Status `Borrowed`, Borrower `Dewi Lestari {runId}`.
   - DU-209-12: Pinjaman: Name `Drone DJI Mini 3 {runId}`, Status `Borrowed`, Borrower `Dewi Lestari {runId}`, Source `Self-service`.
@@ -56,10 +56,10 @@ trace:
 ## Test Steps
 
 ### Confirm Handover dengan aset dicentang dan tidak dicentang tercatat
-1. Dewi mengonfirmasi serah terima pinjaman yang memuat `Laptop Lenovo ThinkPad T14 {runId}` dan `Mouse Logitech MX Master 3 {runId}`, dengan hanya `Laptop Lenovo ThinkPad T14 {runId}` tercentang
+1. Dewi mengonfirmasi serah terima pinjaman yang memuat `Laptop Lenovo ThinkPad T14 {runId}`, `Mouse Logitech MX Master 3 {runId}`, dan `Webcam Logitech C920 {runId}`, dengan hanya `Laptop Lenovo ThinkPad T14 {runId}` tercentang
 2. Verifikasi User Log Borrow Dewi memuat Activity `Handed over` untuk `Laptop Lenovo ThinkPad T14 {runId}`
-3. Verifikasi User Log Borrow Dewi memuat satu Activity `Handover not confirmed` untuk `Mouse Logitech MX Master 3 {runId}`
-4. Verifikasi baris `Mouse Logitech MX Master 3 {runId}` tetap `Waiting for Handover`
+3. Verifikasi User Log Borrow Dewi memuat satu Activity `Handover not confirmed` untuk tiap aset tidak tercentang, yaitu `Mouse Logitech MX Master 3 {runId}` dan `Webcam Logitech C920 {runId}`
+4. Verifikasi baris `Mouse Logitech MX Master 3 {runId}` dan `Webcam Logitech C920 {runId}` tetap `Waiting for Handover`
 
 ### Cancel Borrow tercatat
 5. Dewi membatalkan pinjaman `Monitor Dell 24 Inci {runId}` lewat Cancel Borrow

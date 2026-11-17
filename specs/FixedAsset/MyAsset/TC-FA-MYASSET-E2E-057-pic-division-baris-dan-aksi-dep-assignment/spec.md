@@ -4,7 +4,7 @@ title: "PIC Division: baris penugasan Division, penanda di Task, dan aksi atas n
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-MYA-04", "§1.2#r16", "§1.2#r25", "§1.2#r44", "§1.2#r45", "§1.2#r46", "§1.2#r47", "§1.2#r73", "§1.2#r83", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§2.1#r13", "§3#p9", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14"]
 smoke: []
 dependsOn:
@@ -22,7 +22,7 @@ trace:
   "§2.1#r1": [2, 4]
   "§2.1#r2": [11, 16]
   "§2.1#r3": 53
-  "§2.1#r4": 53
+  "§2.1#r4": [53, 59]
   "§2.1#r5": 53
   "§2.1#r6": 53
   "§2.1#r7": [26, 31, 35]
@@ -30,23 +30,23 @@ trace:
   "§2.1#r9": [37, 45]
   "§2.1#r10": [28, 29]
   "§2.1#r11": 54
-  "§2.1#r12": 53
-  "§2.1#r13": [25, 50]
+  "§2.1#r12": [53, 58, 64]
+  "§2.1#r13": [25, 50, 57, 63]
   "§3#p9": [19, 20, 26, 27]
   "§4.8#r1": [2, 4]
   "§4.8#r2": 53
   "§4.8#r3": 53
   "§4.8#r4": [6, 11, 13]
   "§4.8#r5": [28, 29]
-  "§4.8#r6": 53
+  "§4.8#r6": [53, 59]
   "§4.8#r7": 53
   "§4.8#r8": [26, 35]
   "§4.8#r9": [27, 43]
   "§4.8#r10": 54
   "§4.8#r11": 53
   "§4.8#r12": [37, 45]
-  "§4.8#r13": 53
-  "§4.8#r14": [25, 50]
+  "§4.8#r13": [53, 58, 64]
+  "§4.8#r14": [25, 50, 57, 63]
 anchor: []
 coverage:
   web: automated
@@ -85,7 +85,7 @@ coverage:
 ### Task Confirm Handover atas nama Division tampil bagi PIC Division
 5. Aktor Assignment `Rina Wijaya {runId}` menekan `[Request Confirmation]` pada Handover penugasan DU-057-8
 6. Verifikasi tepat satu baris Task dengan badge `Confirm Handover` tampil pada tab `Task`
-7. Verifikasi sel Transaction ID baris Task memuat penanda ikon dan nama Division `Finance {runId}`
+7. Verifikasi sel Transaction ID baris Task memuat nama Division `Finance {runId}`
 8. Arahkan kursor ke penanda Division pada sel Transaction ID baris Task
 9. Verifikasi tooltip `On behalf of: [Division]` tampil dengan `[Division]` diisi `Finance {runId}`
 
@@ -143,3 +143,16 @@ coverage:
 52. Klik tab `Borrowed`
 53. Verifikasi `You're not borrowing anything` tampil pada tab `Borrowed`
 54. Verifikasi tombol `Borrow an Asset` tidak tampil pada tab `Borrowed`
+
+### Menu baris PIC Division tidak memuat aksi pinjaman
+55. Klik tab `Assigned`
+56. Klik `⋯` pada baris `Laptop Dell Latitude 5420 {runId}`
+57. Verifikasi aksi `Assignment Log` tampil pada menu baris `Laptop Dell Latitude 5420 {runId}`
+58. Verifikasi aksi `Borrow Log` tidak tampil pada menu baris `Laptop Dell Latitude 5420 {runId}`
+59. Verifikasi aksi `Cancel Borrow` tidak tampil pada menu baris `Laptop Dell Latitude 5420 {runId}`
+60. Tutup menu baris `Laptop Dell Latitude 5420 {runId}`
+61. Klik tab `History`
+62. Klik `⋯` pada baris `Projector Epson EB-X06 {runId}`
+63. Verifikasi aksi `Assignment Log` tampil pada menu baris `Projector Epson EB-X06 {runId}`
+64. Verifikasi aksi `Borrow Log` tidak tampil pada menu baris `Projector Epson EB-X06 {runId}`
+65. Tutup menu baris `Projector Epson EB-X06 {runId}`

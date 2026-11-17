@@ -4,7 +4,7 @@ title: "Guided Tooltip My Asset: isi empat langkah, navigasi, dan langkah untuk 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§9.10#p1", "EB-TBL-10"]
 smoke: []
 dependsOn: []
@@ -13,9 +13,9 @@ trace:
   "§4.7#r2": [10, 11, 12]
   "§4.7#r3": [15, 16, 17]
   "§4.7#r4": [20, 21, 22]
-  "§9.10#p1": [57, 58, 59, 63, 64, 66, 67]
-  EB-TBL-10: [2, 7, 9, 14, 19, 23, 24, 27, 32, 33, 38, 41, 46, 47, 51]
-anchor: [6, 26, 37, 49, 53, 55, 61]
+  "§9.10#p1": [55, 56, 57, 61, 62, 64, 65]
+  EB-TBL-10: [2, 7, 9, 14, 19, 23, 24, 26, 31, 32, 36, 39, 44, 45, 49]
+anchor: [6, 47, 51, 53, 59]
 coverage:
   web: automated
 ---
@@ -65,57 +65,55 @@ coverage:
 23. Verifikasi tombol `[Done]` tampil
 24. Verifikasi tombol `[Next]` tidak tampil
 25. Klik `[Done]`
-26. Verifikasi tab `History` tampil
-27. Verifikasi Guided Tooltip tertutup
+26. Verifikasi Guided Tooltip tertutup
 
 ### Back kembali ke langkah sebelumnya
-28. Tampilkan Guided Tooltip My Asset dengan kondisi K1
+27. Tampilkan Guided Tooltip My Asset dengan kondisi K1
+28. Klik `[Next]`
 29. Klik `[Next]`
-30. Klik `[Next]`
-31. Klik `[Back]`
-32. Verifikasi progres `Step 2 of 4` tampil
-33. Verifikasi judul `Track your borrowed assets` tampil
+30. Klik `[Back]`
+31. Verifikasi progres `Step 2 of 4` tampil
+32. Verifikasi judul `Track your borrowed assets` tampil
 
 ### Skip menutup walkthrough
-34. Tampilkan Guided Tooltip My Asset dengan kondisi K1
-35. Klik `[Next]`
-36. Klik `[Skip]`
-37. Verifikasi tab `Borrowed` tampil
-38. Verifikasi Guided Tooltip tertutup
+33. Tampilkan Guided Tooltip My Asset dengan kondisi K1
+34. Klik `[Next]`
+35. Klik `[Skip]`
+36. Verifikasi Guided Tooltip tertutup
 
 ### Putar ulang dari langkah pertama lewat tombol bantuan
-39. Tampilkan Guided Tooltip My Asset dengan kondisi K2
-40. Klik `[?]` di sebelah Breadcrumb
-41. Verifikasi progres `Step 1 of 4` tampil
-42. Klik `[Next]`
-43. Klik `[Next]`
-44. Klik `[Skip]`
-45. Klik `[?]` di sebelah Breadcrumb
-46. Verifikasi progres `Step 1 of 4` tampil
-47. Verifikasi judul `Confirm what you received` tampil
+37. Tampilkan Guided Tooltip My Asset dengan kondisi K2
+38. Klik `[?]` di sebelah Breadcrumb
+39. Verifikasi progres `Step 1 of 4` tampil
+40. Klik `[Next]`
+41. Klik `[Next]`
+42. Klik `[Skip]`
+43. Klik `[?]` di sebelah Breadcrumb
+44. Verifikasi progres `Step 1 of 4` tampil
+45. Verifikasi judul `Confirm what you received` tampil
 
 ### Mengubah ukuran jendela menutup walkthrough
-48. Tampilkan Guided Tooltip My Asset dengan kondisi K1
-49. Verifikasi progres `Step 1 of 4` tampil
-50. Ubah ukuran jendela browser
-51. Verifikasi Guided Tooltip tertutup
+46. Tampilkan Guided Tooltip My Asset dengan kondisi K1
+47. Verifikasi progres `Step 1 of 4` tampil
+48. Ubah ukuran jendela browser
+49. Verifikasi Guided Tooltip tertutup
 
 ### Langkah tab Assigned dilewati pada plan tanpa Assignment
-52. Tampilkan Guided Tooltip My Asset dengan kondisi K3
-53. Verifikasi judul `Confirm what you received` tampil
+50. Tampilkan Guided Tooltip My Asset dengan kondisi K3
+51. Verifikasi judul `Confirm what you received` tampil
+52. Klik `[Next]`
+53. Verifikasi judul `Track your borrowed assets` tampil
 54. Klik `[Next]`
-55. Verifikasi judul `Track your borrowed assets` tampil
-56. Klik `[Next]`
-57. Verifikasi judul `Review past activity` tampil
-58. Verifikasi judul `See your assigned assets` tidak tampil
-59. Verifikasi tombol `[Done]` tampil
+55. Verifikasi judul `Review past activity` tampil
+56. Verifikasi judul `See your assigned assets` tidak tampil
+57. Verifikasi tombol `[Done]` tampil
 
 ### Langkah tab Borrowed dilewati pada plan tanpa Borrowing
-60. Tampilkan Guided Tooltip My Asset dengan kondisi K4
-61. Verifikasi judul `Confirm what you received` tampil
-62. Klik `[Next]`
-63. Verifikasi judul `See your assigned assets` tampil
-64. Verifikasi judul `Track your borrowed assets` tidak tampil
-65. Klik `[Next]`
-66. Verifikasi judul `Review past activity` tampil
-67. Verifikasi tombol `[Done]` tampil
+58. Tampilkan Guided Tooltip My Asset dengan kondisi K4
+59. Verifikasi judul `Confirm what you received` tampil
+60. Klik `[Next]`
+61. Verifikasi judul `See your assigned assets` tampil
+62. Verifikasi judul `Track your borrowed assets` tidak tampil
+63. Klik `[Next]`
+64. Verifikasi judul `Review past activity` tampil
+65. Verifikasi tombol `[Done]` tampil

@@ -4,7 +4,7 @@ title: "Dialog Borrow Log dan Assignment Log di My Asset: node keputusan approve
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r89", "§2.2#r4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r5", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§9.4.3#b2"]
 smoke: []
 dependsOn: []
@@ -23,7 +23,7 @@ coverage:
 
 ## Prerequisites
 - Aktor: Borrower `Budi Santoso` pada kondisi K1 sampai K4, Assignee Employee `Budi Santoso` pada kondisi K5 dan K6, dan PIC `Budi Santoso` pada kondisi K7 dan K8.
-- Layar awal: My Asset > Borrowed untuk kondisi K1 sampai K4 dan K7, dan My Asset > Assigned untuk kondisi K5, K6, dan K8.
+- Layar awal: My Asset > Borrowed untuk kondisi K1, K3, K4, dan K7, My Asset > Assigned untuk kondisi K5 dan K8, dan My Asset > History untuk kondisi K2 dan K6, karena baris DU-124-2 dan DU-124-6 berstatus `Rejected` dan berada di tab History.
 - Komponen: Dialog Borrow Log (T-BRW-23)
 - Data:
   - DU-124-1: baris Borrowed dengan Name `Laptop Dell Latitude 5420 - 10`, Asset ID `LPT-2026-0010`, Status `Borrowed`, Borrower `Me`, Transaction ID `BRW-2026-0149`. Borrow Log baris ini memuat node `Approved` oleh approver `Hendra Wijaya`, node `Extension forwarded` oleh Aktor Borrow `Rina W`, node `Extension approved` oleh approver `Hendra Wijaya`, dan node `Extension applied` oleh Aktor Borrow `Rina W`.

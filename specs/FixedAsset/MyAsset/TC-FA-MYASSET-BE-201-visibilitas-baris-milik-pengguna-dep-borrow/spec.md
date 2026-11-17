@@ -4,7 +4,7 @@ title: "Data My Asset hanya memuat baris milik pengguna atau yang PIC-nya penggu
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r23", "§1.2#r24", "§1.2#r25", "§1.2#r26", "§1.2#r45", "§2.2#r1", "§2.2#r2", "§2.2#r3", "§Dialog aksi baris (tab Borrowed dan Assigned)#r6", "§9.4.2#r34", "§9.4.3#b1", "§9.4.3#b8"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment", "Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log"]

@@ -4,7 +4,7 @@ title: "Aturan server Cancel Borrow: syarat status, sesi Handover berjalan, suda
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["V-02", "§1.2#r31", "§1.2#r32", "§1.2#r33", "§4.1b#r76", "§4.1b#r79", "§9.2#r4", "§9.2#r7", "§9.4.2#r68", "§9.4.2#r69", "§9.4.2#r71", "§9.4.2#r74", "§9.4.2#r75", "§9.4.2#r76", "§9.6#r2", "EB-ERR-4", "EB-CON-3", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

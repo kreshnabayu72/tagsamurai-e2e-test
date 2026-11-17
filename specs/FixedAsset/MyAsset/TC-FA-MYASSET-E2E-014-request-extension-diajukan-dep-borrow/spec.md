@@ -4,7 +4,7 @@ title: "Request Extension dari tab Borrowed: pengajuan menunggu review dan baris
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r58", "§1.2#r63", "§1.2#r64", "§1.2#r65", "§1.2#r66", "§1.2#r67", "§2.1#r5", "§3#p11", "§4.1b#r35", "§4.1b#r39", "§4.2.1#b6", "§4.2.3#p1", "§4.3#r7", "§4.4#r2", "§4.4#r4", "§4.8#r7", "§7.3#r5", "§9.2#b7", "§9.4.2#r41", "§9.4.2#r43", "§9.6#r3", "§9.7#r4"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

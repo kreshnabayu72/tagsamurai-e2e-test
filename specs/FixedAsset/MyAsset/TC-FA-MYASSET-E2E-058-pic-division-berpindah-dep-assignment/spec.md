@@ -4,7 +4,7 @@ title: "Change PIC Division: baris dan Task pindah ke PIC baru dan PIC lama tida
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r49", "§9.4.2#r62", "§9.4.2#r63", "§9.7#r11"]
 smoke: []
 dependsOn:

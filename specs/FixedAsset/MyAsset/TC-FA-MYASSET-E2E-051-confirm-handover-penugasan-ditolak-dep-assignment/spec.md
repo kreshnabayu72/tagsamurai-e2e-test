@@ -4,7 +4,7 @@ title: "Confirm Handover penugasan ditolak: sesi dibatalkan Aktor dan transaksi 
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r72", "§3#p7", "§4.2.5#p11", "§4.2.5#r6", "§9.4.2#r52", "§9.4.2#r53", "§9.4.2#r54", "§9.4.2#r55", "§9.4.2#r56", "§9.7#r7"]
 smoke: []
 dependsOn:

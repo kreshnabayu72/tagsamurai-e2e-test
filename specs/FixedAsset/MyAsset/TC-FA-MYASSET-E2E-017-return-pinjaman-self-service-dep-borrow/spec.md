@@ -4,7 +4,7 @@ title: "Return pinjaman self-service dari tab Borrowed: baris pindah ke tab Hist
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r6", "§4.1b#r14", "§4.1b#r28", "§4.1b#r29", "§4.1b#r31", "§4.1b#r32", "§4.1b#r33", "§4.1b#r34", "§4.8#r11", "§7.3#r10", "§9.6#r6", "§9.7#r14"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

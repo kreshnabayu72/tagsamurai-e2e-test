@@ -4,7 +4,7 @@ title: "Titik masuk My Asset dari menu profil, tab awal Task, tab di URL, dan em
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r20", "§1.2#r21", "§1.2#r22", "§3#p2", "§4.1#r1", "§4.3#r3", "§4.4#r1", "§4.4#r45", "§4.4#r46", "§7.1#r1", "§7.1#r2", "§7.1#r3", "§7.1#r4", "§9.4.2#r2", "§9.4.2#r13", "§10#r2"]
 smoke: []
 dependsOn: []

@@ -4,7 +4,7 @@ title: "Tautan My Asset dengan parameter tab dan highlight: baris transaksi diso
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r22", "§4.2.1#b4", "§4.4#r48", "§4.4#r49", "§9.2#b16"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

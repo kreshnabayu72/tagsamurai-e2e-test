@@ -4,7 +4,7 @@ title: "Tab Borrowed pada data nyata: satu baris per aset, nilai kolom, tooltip 
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r13", "§1.2#r28", "§1.2#r30", "§1.2#r38", "§1.2#r60", "§1.2#r85", "§1.2#r86", "§1.2#r87", "§1.2#r88", "§1.2#r89", "§2.1#r1", "§2.1#r12", "§2.1#b3", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r10", "§4.1b#r11", "§4.1b#r12", "§4.1b#r13", "§4.1b#r14", "§4.1b#r15", "§4.1b#r16", "§4.1b#r19", "§4.1b#p5", "§4.2.1#b3", "§Dialog aksi baris (tab Borrowed dan Assigned)#r5", "§4.4#r11", "§4.8#r1", "§4.8#r10", "§4.8#r13", "§9.4.3#b7", "§10#r3", "§1.2#r23"]
 smoke: ["§1.2#r23"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

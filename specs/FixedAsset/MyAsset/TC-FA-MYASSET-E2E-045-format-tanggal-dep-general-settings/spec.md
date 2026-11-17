@@ -4,13 +4,13 @@ title: "Perubahan Date Format dan Time Format General Settings sampai ke kolom t
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#r10", "EB-XM-1"]
 smoke: []
 dependsOn: ["General Settings: Date Format, Time Format, dan Time Zone", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§4.1b#r10": [4, 5, 12, 13, 20, 21, 28, 29, 36, 37, 44, 45]
-  "EB-XM-1": [4, 5, 12, 13, 20, 21, 28, 29, 36, 37, 44, 45]
+  "§4.1b#r10": [4, 5, 12, 13, 20, 21, 28, 29, 36, 37, 44, 45, 52, 53]
+  "EB-XM-1": [4, 5, 12, 13, 20, 21, 28, 29, 36, 37, 44, 45, 52, 53]
 anchor: []
 coverage:
   web: automated
@@ -31,9 +31,11 @@ coverage:
   - DU-045-7: Date Format diubah ke `DDD, MMM dd, yy`.
   - DU-045-8: Date Format diubah ke `DDD, MMM dd, yyyy`.
   - DU-045-9: Time Format diubah ke `12h`.
+  - DU-045-10: setting awal entitas Time Zone `UTC`.
+  - DU-045-11: Time Zone diubah ke `UTC+7`, sehingga jam yang tampil 7 jam lebih maju dari tampilan Time Zone `UTC`.
 - Kondisi:
   - Spec ini memakai entitas khusus yang tidak dipakai spec lain, karena mengubah setting format tanggal dan waktu tingkat entitas.
-  - Date Format entitas bernilai `dd/MM/yy` dan Time Format entitas bernilai `24h` saat langkah 1.
+  - Date Format entitas bernilai `dd/MM/yy`, Time Format entitas bernilai `24h`, dan Time Zone entitas bernilai `UTC` saat langkah 1.
   - `T0` adalah waktu handover kedua pinjaman, yaitu waktu run. Tab Borrowed aktor memuat 2 baris, yaitu DU-045-2 dan DU-045-3.
 
 ## Test Steps
@@ -94,3 +96,13 @@ coverage:
 43. Klik tab `Borrowed`
 44. Verifikasi kolom `Due Date` pada baris `Laptop Acer Swift 3 {runId}` menampilkan tanggal `T0 + 3 hari` dalam Date Format `DDD, MMM dd, yyyy` tanpa jam
 45. Verifikasi kolom `Due Date` pada baris `Proyektor Optoma HD146X {runId}` menampilkan tanggal dan jam `T0 + 6 jam` dalam Date Format `DDD, MMM dd, yyyy` dan Time Format `12h`
+
+### Time Zone `UTC+7` sampai ke kolom Due Date
+46. Buka General Settings
+47. Pilih Time Zone `UTC+7`
+48. Simpan perubahan General Settings
+49. Buka `My Asset` dari menu profil pada navbar
+50. Muat ulang halaman
+51. Klik tab `Borrowed`
+52. Verifikasi kolom `Due Date` pada baris `Laptop Acer Swift 3 {runId}` menampilkan tanggal `T0 + 3 hari` dalam Time Zone `UTC+7` dan Date Format `DDD, MMM dd, yyyy` tanpa jam
+53. Verifikasi kolom `Due Date` pada baris `Proyektor Optoma HD146X {runId}` menampilkan tanggal dan jam `T0 + 6 jam` dalam Time Zone `UTC+7`, 7 jam lebih maju dari tampilan Time Zone `UTC`, dengan Date Format `DDD, MMM dd, yyyy` dan Time Format `12h`

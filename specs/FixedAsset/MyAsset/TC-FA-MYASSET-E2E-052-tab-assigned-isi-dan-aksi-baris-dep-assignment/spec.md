@@ -4,7 +4,7 @@ title: "Tab Assigned pada data nyata: baris per aset, nilai kolom, aksi per stat
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-MYA-04", "§1.2#r15", "§1.2#r28", "§1.2#r74", "§1.2#r77", "§1.2#r78", "§1.2#r79", "§1.2#r82", "§1.2#r83", "§2.1#r10", "§2.1#r13", "§3#p9", "§4.8#r5", "§4.8#r14", "§9.4.2#r17", "§9.4.2#r23", "§9.7#r8", "§9.7#r10", "§1.2#r23"]
 smoke: ["§1.2#r23"]
 dependsOn:
@@ -25,11 +25,11 @@ trace:
   "§4.8#r5": [19, 20, 26, 32]
   "§4.8#r14": [14, 34]
   "§9.4.2#r17": [45, 47, 48]
-  "§9.4.2#r23": [53, 55, 56, 61, 63, 64]
-  "§9.7#r8": [38, 41, 64]
-  "§9.7#r10": [45, 47, 48, 53, 55, 56]
+  "§9.4.2#r23": [53, 55, 56, 61, 63, 64, 72, 74, 75]
+  "§9.7#r8": [38, 41, 64, 68]
+  "§9.7#r10": [45, 47, 48, 53, 55, 56, 72, 74, 75]
   "§1.2#r23": [2, 7]
-anchor: [44, 52, 60]
+anchor: [44, 52, 60, 71]
 coverage:
   web: automated
 ---
@@ -40,7 +40,7 @@ coverage:
 - Aktor: Assignee `Budi Santoso {runId}` (karyawan ber-akun login, role `Read Only`, cakupan Group `Head Office`). Aktor Assignment `Rina Wijaya {runId}` (role `Asset Admin`, cakupan Group `Head Office`) dan Approver `Dewi Lestari {runId}` (role `Approver`, cakupan Group `Head Office`) hanya memicu perubahan.
 - Layar awal: halaman My Asset, tab Task.
 - Data:
-  - DU-052-1: pengguna `Budi Santoso {runId}`, Assignee Employee, role `Read Only`, cakupan Group `Head Office`, akun aktif, tanpa penugasan lain selain DU-052-8, DU-052-9, DU-052-10, dan DU-052-11.
+  - DU-052-1: pengguna `Budi Santoso {runId}`, Assignee Employee, role `Read Only`, cakupan Group `Head Office`, akun aktif, tanpa penugasan lain selain DU-052-8, DU-052-9, dan DU-052-10.
   - DU-052-2: pengguna `Rina Wijaya {runId}`, role `Asset Admin`, cakupan Group `Head Office`, akun aktif.
   - DU-052-3: pengguna `Dewi Lestari {runId}`, role `Approver`, cakupan Group `Head Office`, akun aktif.
   - DU-052-4: aset `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, status `Assigned` kepada `Budi Santoso {runId}`, diserahkan oleh `Rina Wijaya {runId}`, ada di entitas aktor.
@@ -50,6 +50,7 @@ coverage:
   - DU-052-8: penugasan untuk `Budi Santoso {runId}` atas DU-052-4, status `Assigned`.
   - DU-052-9: penugasan untuk `Budi Santoso {runId}` atas DU-052-5, status `Waiting for Handover`.
   - DU-052-10: penugasan untuk `Budi Santoso {runId}` atas DU-052-6, status `Waiting for Approval`, menunggu keputusan `Dewi Lestari {runId}`.
+  - DU-052-12: aset `Monitor LG 24MK430H {runId}`, Group `Head Office`, belum ditugaskan, ada di entitas aktor.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24 jam`.
@@ -131,3 +132,16 @@ coverage:
 62. Klik tab `History`
 63. Verifikasi Type baris `Scanner Zebra DS2208 {runId}` adalah `Assignment`
 64. Verifikasi Status baris `Scanner Zebra DS2208 {runId}` adalah `Rejected`
+
+### Baris pindah ke History sesudah penugasan ditutup sistem
+65. Klik tab `Assigned`
+66. Aktor Assignment `Rina Wijaya {runId}` mengajukan penugasan aset `Monitor LG 24MK430H {runId}` kepada `Budi Santoso {runId}`
+67. Muat ulang halaman
+68. Verifikasi baris `Monitor LG 24MK430H {runId}` tampil pada tab `Assigned` dengan Status `Waiting for Approval`
+69. Penugasan aset `Monitor LG 24MK430H {runId}` ditutup sistem
+70. Muat ulang halaman
+71. Verifikasi baris `Projector Epson EB-X06 {runId}` tetap tampil pada tab `Assigned`
+72. Verifikasi baris `Monitor LG 24MK430H {runId}` tidak tampil pada tab `Assigned`
+73. Klik tab `History`
+74. Verifikasi Type baris `Monitor LG 24MK430H {runId}` adalah `Assignment`
+75. Verifikasi Status baris `Monitor LG 24MK430H {runId}` adalah `Canceled`

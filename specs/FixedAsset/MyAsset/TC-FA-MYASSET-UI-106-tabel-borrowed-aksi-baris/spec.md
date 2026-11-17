@@ -4,7 +4,7 @@ title: "Tabel Borrowed: aksi baris yang tampil menurut keadaan baris"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r28", "§1.2#r30", "§1.2#r31", "§1.2#r32", "§1.2#r35", "§4.1b#p3", "§4.1b#r19", "§4.1b#r28", "§4.1b#r29", "§4.1b#r30", "§4.1b#r31", "§4.1b#r35", "§4.1b#r36", "§4.1b#r37", "§4.1b#r38", "§4.1b#r40", "§4.1b#r41", "§4.1b#r42", "§4.1b#r47", "§4.1b#r49", "§4.1b#r50", "§4.1b#r56", "§4.1b#r57", "§4.1b#r60", "§4.1b#r67", "§4.1b#r68", "§4.1b#r75", "§4.1b#p5", "§4.3#r7", "§4.4#r51", "§9.4.2#r41", "§9.4.2#r43", "§9.4.2#r51", "§9.4.2#r86", "§9.4.3#b3", "§9.4.3#b4", "§9.4.3#b7"]
 smoke: []
 dependsOn: []
@@ -13,7 +13,7 @@ trace:
   "§1.2#r30": [4, 8]
   "§1.2#r31": [3, 7]
   "§1.2#r32": [13, 20]
-  "§1.2#r35": [34, 35, 36, 40, 43, 45, 46, 63, 66, 69]
+  "§1.2#r35": [34, 35, 36, 40, 43, 45, 46, 63, 66, 69, 79, 82, 83]
   "§4.1b#p3": [11, 16]
   "§4.1b#r19": [3, 7, 11, 16]
   "§4.1b#r28": [3, 16, 23]
@@ -30,14 +30,14 @@ trace:
   "§4.1b#r47": [36, 46]
   "§4.1b#r49": [3, 11, 19]
   "§4.1b#r50": [37, 43, 49, 52, 63, 66, 69]
-  "§4.1b#r56": [7, 26, 30]
-  "§4.1b#r57": [26, 30]
+  "§4.1b#r56": [7, 26, 30, 75]
+  "§4.1b#r57": [26, 30, 75]
   "§4.1b#r60": [34, 40]
   "§4.1b#r67": [44, 60]
   "§4.1b#r68": [49, 55, 59]
   "§4.1b#r75": [3, 7]
   "§4.1b#p5": [3, 7]
-  "§4.3#r7": [27, 30]
+  "§4.3#r7": [27, 30, 76]
   "§4.4#r51": [3, 11]
   "§9.4.2#r41": [27, 31]
   "§9.4.2#r43": [26, 30]
@@ -46,7 +46,7 @@ trace:
   "§9.4.3#b3": [4, 8]
   "§9.4.3#b4": [13, 20]
   "§9.4.3#b7": 12
-anchor: []
+anchor: [81]
 coverage:
   web: automated
 ---
@@ -76,9 +76,11 @@ coverage:
   - DU-106-16: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 16`, Asset ID `LPT-2026-0016`, Status `Borrowed`, Source `Admin`, Borrower `Me`, Damage Report `Canceled`, Laporan Missing `null`, Pengajuan Extend `null`.
   - DU-106-17: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 17`, Asset ID `LPT-2026-0017`, Status `Borrowed`, Source `Admin`, Borrower `Me`, Damage Report `Repaired`, Laporan Missing `null`, Pengajuan Extend `null`.
   - DU-106-18: respons tiruan, satu baris tabel Borrowed: Name `Tablet Samsung Galaxy Tab - 4`, Asset ID `TAB-2026-0004`, Status `Borrowed`, Source `Self-service`, Borrower `Agus Pratama`, Damage Report `null`, Laporan Missing `null`, Pengajuan Extend `null`, PIC `Budi Santoso`.
+  - DU-106-19: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 53`, Asset ID `LPT-2026-0053`, Status `Overdue + Extension Request`, Source `Admin`, Borrower `Me`, Damage Report `null`, Laporan Missing `null`, Pengajuan Extend `menunggu review`, Duration `6 days`.
+  - DU-106-20: respons tiruan, satu baris tabel Borrowed: Name `Tablet Samsung Galaxy Tab - 7`, Asset ID `TAB-2026-0007`, Status `Borrowed + Damaged`, Source `Self-service`, Borrower `Me`, Damage Report `Damaged`, Laporan Missing `null`, Pengajuan Extend `null`.
 - Kondisi:
-  - K1: tabel Borrowed berisi DU-106-1 sampai DU-106-8.
-  - K2: tabel Borrowed berisi DU-106-9 sampai DU-106-14.
+  - K1: tabel Borrowed berisi DU-106-1 sampai DU-106-8 dan DU-106-19.
+  - K2: tabel Borrowed berisi DU-106-9 sampai DU-106-14 dan DU-106-20.
   - K3: tabel Borrowed berisi DU-106-15 sampai DU-106-18.
 
 ## Test Steps
@@ -172,3 +174,20 @@ coverage:
 70. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K3
 71. Klik `⋯` pada baris `Tablet Samsung Galaxy Tab - 4`
 72. Verifikasi menu baris memuat tepat `Borrow Log`, `Return`, `Request Extension`, `Report Damaged`, dan `Report Missing`, dalam urutan itu
+
+### Baris Overdue dengan pengajuan Extend yang menunggu memiliki Cancel Extension Request
+73. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K1
+74. Klik `⋯` pada baris `Laptop Dell Latitude 5420 - 53`
+75. Verifikasi menu baris Overdue dengan pengajuan Extend yang menunggu memuat tepat `Borrow Log`, `Report Damaged`, `Report Missing`, dan `Cancel Extension Request`, dalam urutan itu
+76. Verifikasi menu baris tidak memuat `Request Extension`
+
+### Return tetap tersedia pada pinjaman self-service yang record Damage Report-nya Damaged
+77. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K2
+78. Klik `⋯` pada baris `Tablet Samsung Galaxy Tab - 7`
+79. Verifikasi menu baris memuat tepat `Borrow Log`, `Return`, dan `Report Missing`, dalam urutan itu
+
+### Badge Reported Damaged dan Damaged hilang sesudah Damage Report Repaired
+80. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K3
+81. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 17` menampilkan badge `Borrowed`
+82. Verifikasi badge `Reported Damaged` tidak tampil pada sel Status baris `Laptop Dell Latitude 5420 - 17`
+83. Verifikasi badge `Damaged` tidak tampil pada sel Status baris `Laptop Dell Latitude 5420 - 17`

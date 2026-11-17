@@ -4,7 +4,7 @@ title: "Konfigurasi kolom tab Borrowed tersimpan di akun pengguna"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-KOL-2@tabel-borrowed"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

@@ -4,7 +4,7 @@ title: "Aturan server Confirm Handover pinjaman: konfirmasi pertama berlaku, bat
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-05", "T-MYA-01", "V-03", "§4.2.5#p3", "§9.2#b3", "§9.2#r2", "§9.2#r3", "§9.4.2#r35", "§9.4.2#r38", "§9.4.2#r40", "§9.4.2#r88", "§9.6#r1", "EB-CON-3", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
@@ -42,8 +42,8 @@ owner: BE
   - DU-203-9: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 35 {runId}`, Group `Head Office`, status `Waiting for Handover`, jendela konfirmasi belum habis.
   - DU-203-10: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 36 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai; sesi ini dimulai lebih dulu daripada sesi DU-203-11.
   - DU-203-11: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 37 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-10 dimulai.
-  - DU-203-12: Pinjaman Maya dengan satu sesi Handover berjalan berisi tiga aset: `Projector Epson EB-X06 - 38 {runId}`, `Laptop Dell Latitude 5420 - 39 {runId}`, dan `Meeting Mic Set - 40 {runId}`, Group `Head Office`, ketiganya berstatus `Waiting for Handover`, jendela konfirmasi belum habis.
-  - DU-203-13: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 41 {runId}`, Group `Head Office`, status `Waiting for Handover`, jendela konfirmasi belum habis.
+  - DU-203-12: Pinjaman Maya dengan satu sesi Handover berjalan berisi tiga aset: `Projector Epson EB-X06 - 38 {runId}`, `Laptop Dell Latitude 5420 - 39 {runId}`, dan `Meeting Mic Set - 40 {runId}`, Group `Head Office`, ketiganya berstatus `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 56.
+  - DU-203-13: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 41 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 56.
 
 ## Test Steps
 
@@ -101,7 +101,7 @@ owner: BE
 43. Maya meminta data tab Borrowed
 44. Verifikasi baris pinjaman aset `Laptop Dell Latitude 5420 - 35 {runId}` tetap berstatus `Waiting for Handover`
 45. Gita meminta Custody aset `Laptop Dell Latitude 5420 - 35 {runId}`
-46. Verifikasi Custody aset `Laptop Dell Latitude 5420 - 35 {runId}` sama dengan Custody pada langkah 38
+46. Verifikasi Custody aset `Laptop Dell Latitude 5420 - 35 {runId}` sama dengan Custody pada langkah 40
 47. Maya meminta data tab Task
 48. Verifikasi data tidak memuat Task Confirm Handover untuk aset `Laptop Dell Latitude 5420 - 35 {runId}`
 

@@ -4,7 +4,7 @@ title: "Tabel Borrowed: kolom tampil awal, urutan kolom, field Filter, dan place
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#p2", "§4.1b#p1", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r8", "§4.1b#r9", "§4.1b#r10", "§4.1b#r12", "§4.1b#r13", "§4.1b#r14", "§4.1b#r15", "§4.1b#r16", "§4.1b#r17", "§4.1b#r18", "§4.3#r4", "§5#r1", "§5#r3", "§5#r7", "§5#r10"]
 smoke: []
 dependsOn: []

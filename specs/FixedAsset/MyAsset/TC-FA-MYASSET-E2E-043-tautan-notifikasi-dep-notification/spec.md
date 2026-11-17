@@ -4,7 +4,7 @@ title: "Tautan notifikasi membuka tab dan baris terkait di My Asset"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§3#p3", "§4.2.1#b4", "§4.2.2b#p1", "§4.4#r48", "§4.4#r49", "§9.2#b16", "§9.4.2#r11"]
 smoke: []
 dependsOn: ["Notification: notifikasi Borrow dan Assignment yang bertautan ke My Asset", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
@@ -60,5 +60,5 @@ coverage:
 15. Verifikasi baris `Kamera Canon M200 {runId}` disorot
 16. Verifikasi baris `Kamera Canon M200 {runId}` tampil
 17. Verifikasi kotak Search tab `History` kosong
-18. Waktu berlalu 3 detik sejak baris disorot
+18. Waktu berlalu sampai 4 detik sejak baris disorot, lebih lama dari durasi sorotan 3 detik
 19. Verifikasi baris `Kamera Canon M200 {runId}` tidak lagi disorot

@@ -4,7 +4,7 @@ title: "Confirm Handover pinjaman: aset tercentang menjadi Borrowed dan Task hil
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-05", "T-MYA-01", "§1.2#r10", "§1.2#r12", "§1.2#r61", "§2.1#r3", "§3#p5", "§4.2.5#p2", "§4.2.5#p3", "§4.4#r3", "§4.4#r38", "§4.8#r2", "§4.8#r3", "§7.3#r1", "§9.2#b1", "§9.2#r1", "§9.4.2#r64", "§9.4.2#r66", "§9.6#r1", "§9.7#r1", "§9.7#r2", "EB-EDG-2", "EB-FB-1@confirm-handover"]
 smoke: ["EB-FB-1@confirm-handover"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
@@ -47,7 +47,7 @@ coverage:
   - DU-010-2: Aset pertama pinjaman multi-aset milik Borrower berstatus `Waiting for Handover`: Name `Laptop Dell Latitude 5420 - 1 {runId}`, Asset ID `LPT-1-{runId}`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Duration `3 days`.
   - DU-010-3: Aset kedua pinjaman yang sama dengan DU-010-2: Name `Laptop Dell Latitude 5420 - 2 {runId}`, Asset ID `LPT-2-{runId}`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Duration `3 days`.
   - DU-010-4: Aset ketiga pinjaman yang sama dengan DU-010-2: Name `Laptop Dell Latitude 5420 - 3 {runId}`, Asset ID `LPT-3-{runId}`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Duration `3 days`.
-- Kondisi: Date Format bernilai `dd/MM/yy`.
+- Kondisi: Date Format bernilai `dd/MM/yy`. Flag Guided Tooltip My Asset milik Borrower sudah disetel, sehingga Guided Tooltip tidak terbuka otomatis saat My Asset dibuka.
 
 ## Test Steps
 

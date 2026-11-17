@@ -4,15 +4,15 @@ title: "Entitas Suspended: aksi tulis pinjaman di My Asset ditolak dan baris tet
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.1#r1", "§9.4.2#r79", "§9.4.2#r80", "EB-AKS-7"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§9.4.1#r1": [8, 15, 21, 28, 36, 43, 49, 55, 61, 9, 16, 24, 29, 37, 44, 50, 56, 65]
-  "§9.4.2#r79": [8, 15, 21, 28, 36, 43, 49, 55, 61]
-  "§9.4.2#r80": [9, 16, 24, 29, 37, 44, 50, 56, 65]
-  "EB-AKS-7": [3, 4, 8, 15, 21, 28, 36, 43, 49, 55, 61, 9, 16, 24, 29, 37, 44, 50, 56, 65]
+  "§9.4.1#r1": [8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64]
+  "§9.4.2#r79": [8, 15, 21, 28, 36, 42, 48, 54, 60]
+  "§9.4.2#r80": [9, 16, 24, 29, 37, 43, 49, 55, 64]
+  "EB-AKS-7": [3, 4, 8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64]
 anchor: []
 coverage:
   web: automated
@@ -39,6 +39,9 @@ coverage:
   - Spec ini memakai entitas khusus berstatus Suspended yang tidak dipakai spec lain.
   - Entitas aktor berstatus Suspended. Seluruh baris DU-046-2 sampai DU-046-10 terbentuk sebelum entitas di-Suspend.
   - Tab Borrowed aktor memuat 9 baris, yaitu DU-046-2 sampai DU-046-10. Tab Task aktor memuat 1 baris, yaitu DU-046-2.
+  - Halaman Extension Request untuk `Laptop Dell Inspiron 15 {runId}` terisi bawaan dengan isian valid, sehingga `[Submit Request]` tidak ditolak validasi klien.
+  - Dialog `Report Missing` untuk `Speaker JBL Charge 5 {runId}` tidak memuat field wajib yang kosong, sehingga `[Report Missing]` tidak ditolak validasi klien.
+  - Halaman Return untuk `Proyektor Epson EB-E01 {runId}` terisi otomatis dengan Borrower `Ratna Kusumawati {runId}` dan aset `Proyektor Epson EB-E01 {runId}`, tanpa isian wajib yang kosong, sehingga pengiriman Return tidak ditolak validasi klien.
 
 ## Test Steps
 
@@ -68,7 +71,7 @@ coverage:
 ### Request Extension ditolak dan baris tetap Borrowed
 18. Buka menu `⋯` pada baris `Laptop Dell Inspiron 15 {runId}`
 19. Klik `Request Extension`
-20. Klik `[Submit Request]`
+20. Klik `[Submit Request]` dengan isian halaman Extension Request yang terisi bawaan dan valid
 21. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
 22. Tutup toast
 23. Klik breadcrumb `Borrowed`
@@ -95,34 +98,33 @@ coverage:
 ### Report Missing ditolak dan baris tetap Borrowed
 39. Buka menu `⋯` pada baris `Speaker JBL Charge 5 {runId}`
 40. Klik `Report Missing`
-41. Isi seluruh field wajib pada dialog `Report Missing`
-42. Klik `[Report Missing]`
-43. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-44. Verifikasi baris `Speaker JBL Charge 5 {runId}` tetap tampil dengan Status `Borrowed`
-45. Tutup toast
+41. Klik `[Report Missing]`
+42. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+43. Verifikasi baris `Speaker JBL Charge 5 {runId}` tetap tampil dengan Status `Borrowed`
+44. Tutup toast
 
 ### Cancel Damage Report ditolak dan badge Reported Damaged tetap tampil
-46. Buka menu `⋯` pada baris `Mikrofon Rode NT-USB {runId}`
-47. Klik `Cancel Damage Report`
-48. Konfirmasi pembatalan pada dialog `Cancel Report`
-49. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-50. Verifikasi baris `Mikrofon Rode NT-USB {runId}` tetap tampil dengan badge `Reported Damaged`
-51. Tutup toast
+45. Buka menu `⋯` pada baris `Mikrofon Rode NT-USB {runId}`
+46. Klik `Cancel Damage Report`
+47. Konfirmasi pembatalan pada dialog `Cancel Report`
+48. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+49. Verifikasi baris `Mikrofon Rode NT-USB {runId}` tetap tampil dengan badge `Reported Damaged`
+50. Tutup toast
 
 ### Cancel Missing Report ditolak dan badge Reported Missing tetap tampil
-52. Buka menu `⋯` pada baris `Tripod Benro T660 {runId}`
-53. Klik `Cancel Missing Report`
-54. Konfirmasi pembatalan pada dialog `Cancel Report`
-55. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-56. Verifikasi baris `Tripod Benro T660 {runId}` tetap tampil dengan badge `Reported Missing`
-57. Tutup toast
+51. Buka menu `⋯` pada baris `Tripod Benro T660 {runId}`
+52. Klik `Cancel Missing Report`
+53. Konfirmasi pembatalan pada dialog `Cancel Report`
+54. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+55. Verifikasi baris `Tripod Benro T660 {runId}` tetap tampil dengan badge `Reported Missing`
+56. Tutup toast
 
 ### Return ditolak dan baris pinjaman Self-service tetap Borrowed
-58. Buka menu `⋯` pada baris `Proyektor Epson EB-E01 {runId}`
-59. Klik `Return`
-60. Kirim Return dari halaman Return
-61. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-62. Tutup toast
-63. Buka `My Asset` dari menu profil pada navbar
-64. Klik tab `Borrowed`
-65. Verifikasi baris `Proyektor Epson EB-E01 {runId}` tetap tampil dengan Status `Borrowed`
+57. Buka menu `⋯` pada baris `Proyektor Epson EB-E01 {runId}`
+58. Klik `Return`
+59. Kirim Return dari halaman Return dengan Borrower dan aset `Proyektor Epson EB-E01 {runId}` yang terisi otomatis, tanpa mengubah isian
+60. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+61. Tutup toast
+62. Buka `My Asset` dari menu profil pada navbar
+63. Klik tab `Borrowed`
+64. Verifikasi baris `Proyektor Epson EB-E01 {runId}` tetap tampil dengan Status `Borrowed`

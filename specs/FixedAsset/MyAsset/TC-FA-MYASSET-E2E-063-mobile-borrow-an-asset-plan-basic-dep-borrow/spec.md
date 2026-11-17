@@ -4,7 +4,7 @@ title: "Mobile plan Basic: tombol Borrow an Asset tidak tampil"
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.4.2#r82", "§9.10#p1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

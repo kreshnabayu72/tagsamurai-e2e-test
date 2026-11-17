@@ -4,7 +4,7 @@ title: "Aturan server Confirm Handover penugasan: hanya selama sesi Handover, va
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-05", "T-MYA-01", "V-04", "§1.2#r68", "§1.2#r71", "§9.2#r27", "§9.4.2#r54", "§9.4.3#b9", "§9.6#r10"]
 smoke: []
 dependsOn: ["Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]

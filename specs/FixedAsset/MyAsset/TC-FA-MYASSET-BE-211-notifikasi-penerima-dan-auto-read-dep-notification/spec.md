@@ -4,7 +4,7 @@ title: "Notifikasi My Asset: penerima atas nama dan sinyal Auto-Read saat Task h
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r48", "§9.8#p1"]
 smoke: []
 dependsOn: ["Notification: notifikasi Borrow dan Assignment yang bertautan ke My Asset", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]

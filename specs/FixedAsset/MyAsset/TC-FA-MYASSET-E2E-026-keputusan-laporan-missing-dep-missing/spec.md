@@ -4,7 +4,7 @@ title: "Keputusan laporan Missing tercermin di My Asset: baris Returned bermarke
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#r55", "§9.2#r14", "§9.7#r13"]
 smoke: []
 dependsOn: ["Missing: keputusan laporan Missing oleh Aktor Missing", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

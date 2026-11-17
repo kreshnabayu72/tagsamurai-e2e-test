@@ -4,7 +4,7 @@ title: "Tabel Borrowed: empty state, kosong tersaring, gagal muat, loading, dan 
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.3#r8", "§5#r6", "§7.1#r2", "§7.1#r5", "§7.3#r13", "EB-TBL-1@tabel-borrowed", "EB-DL-2@tabel-borrowed", "EB-DL-5"]
 smoke: []
 dependsOn: []

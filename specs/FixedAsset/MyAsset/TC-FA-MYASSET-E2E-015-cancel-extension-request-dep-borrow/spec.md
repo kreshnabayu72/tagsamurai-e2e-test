@@ -4,7 +4,7 @@ title: "Cancel Extension Request: pengajuan ditarik dan Due date tetap"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§3#p11", "§4.1b#r56", "§4.1b#r57", "§4.1b#r58", "§4.1b#r59", "§Dialog aksi baris (tab Borrowed dan Assigned)#p6", "§4.4#r5", "§7.3#r3", "§9.2#b8", "§9.4.2#r44", "§9.4.2#r45", "§9.6#r4", "§9.7#r5", "EB-FB-1@cancel-extension-request"]
 smoke: ["EB-FB-1@cancel-extension-request"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

@@ -4,7 +4,7 @@ title: "Toolbar tab Assigned pada data nyata: urutan default, Search dengan kolo
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-MYA-04", "§5#r4", "§5#r6", "EB-SRC-5@tabel-assigned"]
 smoke: []
 dependsOn:

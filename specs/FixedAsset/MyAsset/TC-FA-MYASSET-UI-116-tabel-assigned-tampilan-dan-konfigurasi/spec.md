@@ -4,13 +4,13 @@ title: "Tabel Assigned: format sel, Assigned To, badge Status, konfigurasi toolb
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-15", "T-MYA-04", "§1.2#r7", "§1.2#r45", "§1.2#r85", "§4.1#p2", "§4.4#r50", "§5#r1", "§5#r3", "§5#r9", "§5#r10", "§7.1#r3", "§9.4.2#r59", "EB-TBL-1@tabel-assigned", "EB-FLT-6@tabel-assigned"]
 smoke: []
 dependsOn: []
 trace:
   "FI-15": 7
-  "T-MYA-04": [2, 3, 4, 6, 9, 10, 11, 12, 13, 14, 17, 19, 20, 22, 24, 25, 26, 28, 29, 30, 31, 33, 34, 35, 36, 38, 40, 42, 43, 45, 47, 48, 53, 54, 56, 57, 58, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 79, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 110]
+  "T-MYA-04": [2, 3, 4, 6, 9, 10, 11, 12, 13, 14, 17, 19, 20, 22, 24, 25, 26, 28, 29, 30, 31, 33, 34, 35, 36, 38, 40, 42, 43, 45, 47, 48, 53, 54, 56, 57, 58, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 79, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 110, 151, 152]
   "§1.2#r7": 4
   "§1.2#r45": [19, 20, 22]
   "§1.2#r85": 17
@@ -230,3 +230,8 @@ coverage:
 147. Verifikasi Filter Panel masih memuat field `Status` dengan pilihan `Assigned`
 148. Verifikasi ikon Filter masih menampilkan titik penanda filter ter-Apply
 149. Verifikasi baris `Laptop Dell Latitude 5420 - 1` tetap tampil
+
+### Kolom Photo tidak bisa diurutkan
+150. Tampilkan Tabel Assigned dengan kondisi K1
+151. Verifikasi header kolom `Name` memiliki ikon sort
+152. Verifikasi header kolom `Photo` tidak memiliki ikon sort

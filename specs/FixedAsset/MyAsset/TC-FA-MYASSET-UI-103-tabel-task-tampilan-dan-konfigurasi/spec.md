@@ -4,13 +4,13 @@ title: "Tabel Task: nilai dan format kolom, penanda PIC Division, aksi baris, ko
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [FI-15, T-MYA-01, "§1.2#r39", "§1.2#r46", "§1.2#r70", "§4.1#p2", "§5#r1", "§5#r3", "§7.1#r1", "§9.4.3#b11", "EB-TBL-1@tabel-task", "EB-FLT-6@tabel-task"]
 smoke: []
 dependsOn: []
 trace:
   FI-15: [46, 47]
-  T-MYA-01: [2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 35, 38, 41, 54, 55, 59, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72]
+  T-MYA-01: [2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 35, 38, 41, 54, 55, 59, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 103, 105, 106, 108, 110, 111]
   "§1.2#r39": 34
   "§1.2#r46": [31, 33]
   "§1.2#r70": [39, 42]
@@ -42,13 +42,16 @@ coverage:
   - DU-103-7: Task Borrow dari aksi sistem: Transaction ID `BRW-2026-0161`, Task `Confirm Handover`, Group `Head Office`, Total Asset `7`, Handed Over By `System`, Expires At `2026-11-09 21:20`.
   - DU-103-8: pengguna tanpa Task aktif (`0`).
   - DU-103-9: kata kunci Search `BRW-9999` yang tidak cocok dengan Task mana pun.
-  - Nilai tampil turunan: Handed Over By `Rina W` dari `Rina Wulandari`; Expires At `09/11/26, 20:41` dari `2026-11-09 20:41` dengan Date Format `dd/MM/yy` dan Time Format `24 jam`; Group `Jakarta Sela..ution Center` dari `Jakarta Selatan Distribution Center`.
+  - DU-103-10: Task Borrow yang diserahkan Aktor yang sudah dinonaktifkan, dengan nama tercatat saat aksi: Transaction ID `BRW-2026-0162`, Task `Confirm Handover`, Group `Head Office`, Total Asset `2`, Handed Over By `Agus Pratama`, Expires At `2026-11-09 21:25`.
+  - DU-103-11: Task Borrow yang diserahkan Aktor yang sudah dihapus, dengan nama tercatat saat aksi: Transaction ID `BRW-2026-0163`, Task `Confirm Handover`, Group `Head Office`, Total Asset `3`, Handed Over By `Maya Kusuma`, Expires At `2026-11-09 21:30`.
+  - Nilai tampil turunan: Handed Over By `Rina W` dari `Rina Wulandari`; Handed Over By `Agus P` dari `Agus Pratama`; Handed Over By `Maya K` dari `Maya Kusuma`; Expires At `09/11/26, 20:41` dari `2026-11-09 20:41` dengan Date Format `dd/MM/yy` dan Time Format `24 jam`; Group `Jakarta Sela..ution Center` dari `Jakarta Selatan Distribution Center`.
 - Kondisi:
   - K1: Date Format bernilai `dd/MM/yy`, Time Format bernilai `24 jam`; Task berisi DU-103-1 sampai DU-103-7.
   - K2: Task berisi DU-103-8, yaitu daftar kosong.
   - K3: Task berisi DU-103-1; pencarian DU-103-9 dijawab tanpa baris.
   - K4: memuat daftar Task gagal karena error server pada permintaan pertama; permintaan ulang dijawab dengan DU-103-1.
   - K5: Task berisi DU-103-1 dan DU-103-3.
+  - K6: Task berisi DU-103-10 dan DU-103-11; Aktor penyerah DU-103-10 sudah dinonaktifkan dan Aktor penyerah DU-103-11 sudah dihapus, dan nama yang dikirim respons adalah nama yang tercatat saat aksi.
 
 ## Test Steps
 
@@ -178,3 +181,17 @@ coverage:
 99. Klik `[Try Again]`
 100. Verifikasi baris `BRW-2026-0152` tampil
 101. Verifikasi pesan `Unable to load this data.` tidak tampil
+
+### Handed Over By tetap tampil dengan nama tercatat bila Aktor nonaktif atau dihapus
+102. Tampilkan Tabel Task (T-MYA-01) dengan kondisi K6
+103. Verifikasi sel Handed Over By baris `BRW-2026-0162` menampilkan `Agus P`, dari `Agus Pratama`
+104. Arahkan kursor ke sel Handed Over By baris `BRW-2026-0162`
+105. Verifikasi tooltip `Agus Pratama` tampil
+106. Verifikasi sel Handed Over By baris `BRW-2026-0163` menampilkan `Maya K`, dari `Maya Kusuma`
+107. Arahkan kursor ke sel Handed Over By baris `BRW-2026-0163`
+108. Verifikasi tooltip `Maya Kusuma` tampil
+
+### Urutan kolom tabel Task
+109. Tampilkan Tabel Task (T-MYA-01) dengan kondisi K1
+110. Verifikasi urutan header kolom dari kiri ke kanan adalah `Transaction ID`, `Task`, `Group`, `Total Asset`, `Handed Over By`, `Expires At`
+111. Verifikasi `Expires At` adalah kolom data terakhir sebelum kolom Actions

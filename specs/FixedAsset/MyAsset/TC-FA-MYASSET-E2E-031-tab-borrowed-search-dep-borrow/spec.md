@@ -4,7 +4,7 @@ title: "Search tab Borrowed: substring, huruf besar kecil, spasi tepi, kolom ter
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r3", "EB-SRC-2@tabel-borrowed", "EB-SRC-3@tabel-borrowed", "EB-SRC-5@tabel-borrowed", "EB-TBL-1@tabel-borrowed", "EB-SRC-1"]
 smoke: ["EB-TBL-1@tabel-borrowed", "EB-SRC-1"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

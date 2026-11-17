@@ -4,15 +4,15 @@ title: "Tabel History: kolom tampil awal, urutan kolom, field Filter, placeholde
 layer: ui-client
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#p2", "§4.1c#p1", "§4.1c#r1", "§4.1c#r2", "§4.1c#r3", "§4.1c#r4", "§4.1c#r5", "§4.1c#r6", "§4.1c#r7", "§4.1c#r8", "§4.1c#r9", "§4.1c#r10", "§4.1c#r11", "§4.1c#r12", "§4.1c#r13", "§4.1c#r14", "§4.1c#r15", "§4.1c#r16", "§4.1c#r17", "§5#r1", "§5#r3", "§5#r10", "§7.1#r4", "EB-TBL-1@tabel-history", "EB-FLT-6@tabel-history"]
 smoke: []
 dependsOn: []
 trace:
   "§4.1#p2": [13, 14, 15, 16]
   "§4.1c#p1": [2, 3]
-  "§4.1c#r1": [9, 12, 13, 32]
-  "§4.1c#r2": [9, 12, 13, 20, 41]
+  "§4.1c#r1": [9, 12, 13, 32, 113]
+  "§4.1c#r2": [9, 12, 13, 20, 41, 112]
   "§4.1c#r3": [9, 12, 13, 32]
   "§4.1c#r4": [9, 12, 13, 21, 44]
   "§4.1c#r5": [9, 12, 13, 22, 47]
@@ -25,8 +25,8 @@ trace:
   "§4.1c#r12": [9, 12, 13, 32]
   "§4.1c#r13": [9, 12, 13, 29, 65, 67]
   "§4.1c#r14": [9, 12, 13, 30, 69, 71]
-  "§4.1c#r15": [10, 12, 14, 32]
-  "§4.1c#r16": [10, 12, 14, 32]
+  "§4.1c#r15": [10, 12, 14, 32, 119, 120]
+  "§4.1c#r16": [10, 12, 14, 32, 121, 122]
   "§4.1c#r17": [10, 12, 14, 32]
   "§5#r1": [2, 4]
   "§5#r3": 7
@@ -184,3 +184,19 @@ coverage:
 108. Verifikasi Filter Panel masih memuat field `Type` dengan pilihan `Borrow`
 109. Verifikasi ikon Filter masih menampilkan titik penanda filter ter-Apply
 110. Verifikasi baris `Laptop Dell Latitude 5420 - 12` tetap tampil
+
+### Kolom Photo tidak bisa diurutkan
+111. Tampilkan Tabel History dengan kondisi K1
+112. Verifikasi header kolom `Name` memiliki ikon sort
+113. Verifikasi header kolom `Photo` tidak memiliki ikon sort
+
+### Kolom Handover Photo dan Return Photo tidak bisa diurutkan
+114. Tampilkan Tabel History dengan kondisi K1
+115. Klik header kolom Actions `⋯`
+116. Centang kolom `Handover Photo` pada panel Column Visibility
+117. Centang kolom `Return Photo` pada panel Column Visibility
+118. Tutup panel Column Visibility dengan menekan `Escape`
+119. Verifikasi header kolom `Handover Photo` tampil
+120. Verifikasi header kolom `Handover Photo` tidak memiliki ikon sort
+121. Verifikasi header kolom `Return Photo` tampil
+122. Verifikasi header kolom `Return Photo` tidak memiliki ikon sort

@@ -4,7 +4,7 @@ title: "Tab History pada data nyata pinjaman: status akhir, Type Borrow, urutan 
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r17", "§1.2#r19", "§4.1c#r1", "§4.1c#r2", "§4.1c#r3", "§4.1c#r4", "§4.1c#r5", "§4.1c#r6", "§4.1c#r7", "§4.1c#r8", "§4.1c#r11", "§4.1c#r12", "§4.1c#r13", "§4.1c#r14", "§4.1c#r18", "§4.1c#p4", "§5#r4", "§5#r6", "§9.2#r20", "§9.2#r21", "§9.7#r15", "EB-SRC-5@tabel-history"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

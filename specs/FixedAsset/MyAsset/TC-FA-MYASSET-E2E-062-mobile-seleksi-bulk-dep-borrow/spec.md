@@ -4,7 +4,7 @@ title: "Mobile: seleksi bulk Request Extension lewat tekan lama tanpa checkbox p
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-16", "§4.1b#p6", "§4.6#p1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

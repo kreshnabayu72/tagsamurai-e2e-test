@@ -4,16 +4,16 @@ title: "Aturan server laporan Damaged dan Missing dari My Asset beserta pembatal
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r35", "§1.2#r54", "§4.1b#r60", "§4.1b#r62", "§4.1b#r63", "§4.1b#r68", "§4.1b#r70", "§4.1b#r71", "§9.2#r10", "§9.2#r11", "§9.2#r13", "§9.2#r15", "§9.2#r18", "§9.2#r29", "§9.2#r30", "§9.2#r31", "§9.4.2#r58", "§9.4.2#r61", "§9.4.3#b6", "§9.6#r5", "§9.6#r8", "§9.6#r9", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment", "Damaged: keputusan Damage Report oleh Aktor Damaged", "Missing: keputusan laporan Missing oleh Aktor Missing"]
 owner: BE
 trace:
-  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [7, 9, 13, 24, 26, 39, 49, 61, 63, 65, 67, 68, 70, 83, 86, 103, 105, 107, 109, 110, 112, 113]
-  "T-MYA-04": [70, 75, 103, 105, 107, 109, 110, 112, 113]
+  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [7, 9, 13, 24, 26, 39, 49, 61, 63, 65, 67, 68, 70, 83, 86, 103, 105, 107, 109, 110, 113, 114]
+  "T-MYA-04": [70, 75, 103, 105, 107, 109, 110, 113, 114]
   "§1.2#r35": [9, 11, 22, 28, 30, 32, 34, 73, 89, 91, 93, 95, 97, 99, 101]
-  "§1.2#r54": [83, 84, 86, 87, 115, 117]
+  "§1.2#r54": [83, 84, 86, 87, 117, 119]
   "§4.1b#r60": [13, 83]
   "§4.1b#r62": 13
   "§4.1b#r63": 14
@@ -33,7 +33,7 @@ trace:
   "§9.4.3#b6": [40, 58, 59]
   "§9.6#r5": [42, 43, 45]
   "§9.6#r8": [3, 4, 5, 7]
-  "§9.6#r9": [15, 16, 19, 20, 51, 52, 55, 56]
+  "§9.6#r9": [15, 16, 19, 20, 51, 52, 55, 56, 111, 115]
   "EB-EDG-1": [7, 19, 20, 45, 55, 56, 103, 107]
 ---
 
@@ -214,14 +214,16 @@ trace:
 108. Dewi mengirim Cancel Damage Report atas laporan Damaged pada `Monitor Dell 24 Inci {runId}`
 109. Verifikasi laporan Damaged pada aset itu menjadi `Canceled` karena dibatalkan pelapornya sendiri
 110. Verifikasi status global aset dihitung ulang sesudah pembatalan
+111. Verifikasi pembatalan laporan Damaged tercatat di Assignment Log penugasan itu
 
 ### Cancel Missing Report oleh pelapor pada baris Assigned memulihkan Condition aset
-111. Dewi mengirim Cancel Missing Report atas laporan Missing pada `Monitor LG 27 Inci {runId}`
-112. Verifikasi laporan Missing pada aset itu menjadi `Canceled`
-113. Verifikasi Condition aset kembali ke `Good`, nilai sebelum laporan, dari Condition yang sebelumnya berubah oleh Missing record
+112. Dewi mengirim Cancel Missing Report atas laporan Missing pada `Monitor LG 27 Inci {runId}`
+113. Verifikasi laporan Missing pada aset itu menjadi `Canceled`
+114. Verifikasi Condition aset kembali ke `Good`, nilai sebelum laporan, dari Condition yang sebelumnya berubah oleh Missing record
+115. Verifikasi pembatalan laporan Missing tercatat di Assignment Log penugasan itu
 
 ### Laporan PIC lama diputuskan Aktor Damaged dan Aktor Missing sesudah pergantian PIC
-114. Hendra mengonfirmasi Damage Report pada `Printer HP M404 {runId}`
-115. Verifikasi record Damage Report itu menjadi `Damaged` walau PIC pelapornya sudah diganti
-116. Maya mengonfirmasi laporan Missing pada `Scanner Epson DS-530 {runId}`
-117. Verifikasi record Missing itu dikonfirmasi menjadi `Missing` walau PIC pelapornya sudah diganti
+116. Hendra mengonfirmasi Damage Report pada `Printer HP M404 {runId}`
+117. Verifikasi record Damage Report itu menjadi `Damaged` walau PIC pelapornya sudah diganti
+118. Maya mengonfirmasi laporan Missing pada `Scanner Epson DS-530 {runId}`
+119. Verifikasi record Missing itu dikonfirmasi menjadi `Missing` walau PIC pelapornya sudah diganti

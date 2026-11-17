@@ -4,7 +4,7 @@ title: "Download tab Borrowed: cakupan baris dan kolom, nama berkas CSV dan XLSX
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§5#r6", "EB-FB-2@download", "EB-DL-1@tabel-borrowed", "EB-DL-2@tabel-borrowed", "EB-DL-3@tabel-borrowed", "EB-DL-4"]
 smoke: ["EB-DL-4"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

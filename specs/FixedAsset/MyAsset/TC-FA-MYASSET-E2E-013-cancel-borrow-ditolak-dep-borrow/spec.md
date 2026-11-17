@@ -4,7 +4,7 @@ title: "Cancel Borrow ditolak: sudah dibatalkan Aktor Borrow dan sesi Handover s
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-12", "V-02", "§1.2#r34", "§3#p13", "§4.1b#r76", "§4.1b#r81", "§4.2.5#p14", "§4.2.5#p15", "§4.2.5#r7", "§4.4#r6", "§4.4#r42", "§4.4#r43", "§4.4#r44", "§7.3#r14", "§9.4.2#r71", "§9.4.2#r72", "§9.4.2#r73", "§9.4.2#r75", "§9.4.2#r76", "§9.4.2#r77", "§9.4.2#r78", "EB-ERR-4"]
 smoke: ["EB-ERR-4"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

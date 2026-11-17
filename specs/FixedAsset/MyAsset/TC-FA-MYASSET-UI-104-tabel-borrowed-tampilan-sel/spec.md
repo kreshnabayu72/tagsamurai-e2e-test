@@ -4,7 +4,7 @@ title: "Tabel Borrowed: format sel, nilai kosong, hover, badge Status, dan toolt
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r7", "§1.2#r37", "§1.2#r38", "§1.2#r85", "§1.2#r89", "§4.1#p5", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r8", "§4.1b#r9", "§4.1b#r12", "§4.1b#r13", "§4.1b#r14", "§4.1b#r15", "§4.1b#r16", "§4.1b#r17", "§4.1b#r18", "§4.4#r13", "§4.4#r50", "§5#r9", "§9.4.2#r29", "EB-TBL-12"]
 smoke: []
 dependsOn: []
@@ -21,21 +21,21 @@ trace:
   "§4.1b#r4": [8, 20, 82, 84]
   "§4.1b#r5": [9, 21, 85, 87]
   "§4.1b#r6": [10, 75, 77, 78, 80]
-  "§4.1b#r7": [11, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  "§4.1b#r7": [11, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 98]
   "§4.1b#r8": [33, 34]
   "§4.1b#r9": [35, 88, 90]
-  "§4.1b#r12": [12, 60, 62, 63]
+  "§4.1b#r12": [12, 60, 62, 63, 92, 93]
   "§4.1b#r13": 13
   "§4.1b#r14": [14, 23]
-  "§4.1b#r15": [16, 25, 64]
+  "§4.1b#r15": [16, 25, 64, 96]
   "§4.1b#r16": [17, 22]
   "§4.1b#r17": [36, 37, 38]
-  "§4.1b#r18": 39
+  "§4.1b#r18": [39, 104]
   "§4.4#r13": [68, 70]
   "§4.4#r50": 68
   "§5#r9": 3
   "§9.4.2#r29": 57
-  "EB-TBL-12": [6, 39]
+  "EB-TBL-12": [6, 39, 92, 93, 94]
 anchor: [67]
 coverage:
   web: automated
@@ -60,12 +60,17 @@ coverage:
   - DU-104-10: respons tiruan, satu baris tabel Borrowed: Photo `tablet-samsung-galaxy-tab-4.jpg`, Name `Tablet Samsung Galaxy Tab - 4`, Asset ID `TAB-2026-0004`, Brand `Samsung`, Model/Type `Galaxy Tab S9`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Tablet`, Due Date `11/11/26`, Remaining `Due in 2 days`, Borrower `Agus Pratama`, Transaction ID `BRW-2026-0160`, Source `Admin`, Duration `1 day`, Handed Over At `08/11/26, 09:00`, Extensions `0 / 2`, Purpose `Survei pelanggan`, PIC `Budi Santoso`.
   - DU-104-11: respons tiruan, satu baris tabel Borrowed: Photo `scanner-zebra-tc21-1.jpg`, Name `Scanner Zebra TC21 - 1`, Asset ID `SCN-2026-0001`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Jakarta Barat Warehouse 1`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0170`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Inventarisasi gudang`, Group (hierarki) `Region Jawa > Jakarta Barat Warehouse 1`, Category (hierarki) `Sensors > Environmental Monitoring`.
   - DU-104-12: respons tiruan, satu baris tabel Borrowed: Photo `regional-procurement-1.jpg`, Name `Regional Procurement and Vendor Management Office Jakarta - 1`, Asset ID `RPV-2026-0001`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Jakarta Barat Warehouse 12`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0171`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pengadaan perangkat kantor regional`, Group (hierarki) `Region Jawa > Jakarta Cluster > Jakarta Barat Warehouse 12`.
+  - DU-104-13: respons tiruan, satu baris tabel Borrowed: Photo `headset-jabra-evolve-5.jpg`, Name `Headset Jabra Evolve - 5`, Asset ID `HDS-2026-0005`, Brand `Jabra`, Model/Type `Evolve 40`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Audio`, Due Date `09/11/26, 19:50`, Remaining `Due in 1 hour`, Borrower `Me`, Transaction ID `BRW-2026-0172`, Source `Self-service`, Duration `1 hour`, Handed Over At `09/11/26, 18:50`, Extensions `0 / 0`, Purpose `Panggilan konferensi singkat`.
+  - DU-104-14: respons tiruan, satu baris tabel Borrowed: Photo `camera-sony-a7-5.jpg`, Name `Camera Sony A7 - 5`, Asset ID `CAM-2026-0005`, Brand `Sony`, Model/Type `A7 III`, Group `Head Office`, Status `Borrowed + Damaged + Reported Missing`, TAG `NFC`, Category `Camera`, Due Date `13/11/26`, Remaining `Due in 4 days`, Borrower `Me`, Transaction ID `BRW-2026-0173`, Source `Admin`, Duration `7 days`, Handed Over At `06/11/26, 10:00`, Extensions `0 / 2`, Purpose `Liputan acara cabang`.
+  - DU-104-15: respons tiruan, satu baris tabel Borrowed: Photo `scanner-zebra-tc21-6.jpg`, Name `Scanner Zebra TC21 - 6`, Asset ID `SCN-2026-0006`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Head Office`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0174`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pemindaian inventaris seluruh gudang regional Jawa Barat selama triwulan keempat beserta rekonsiliasi hasilnya`.
   - Nama pada Borrower yang diharapkan untuk DU-104-10 adalah `Agus P`, dari Full Name `Agus Pratama`; tooltip yang diharapkan `Agus Pratama · PIC: Budi Santoso`, dari Full Name `Agus Pratama` dan PIC `Budi Santoso`.
   - Badge Group yang diharapkan untuk DU-104-12 adalah `Jakarta Bara..Warehouse 12`, dari Group `Jakarta Barat Warehouse 12`.
 - Kondisi:
-  - K1: tabel Borrowed berisi DU-104-1 sampai DU-104-9, dengan kolom bawaan tampil.
-  - K2: tabel Borrowed berisi DU-104-1 dan DU-104-10, dengan kolom bawaan tampil.
+  - K1: tabel Borrowed berisi DU-104-1 sampai DU-104-9 dan DU-104-14, dengan kolom bawaan tampil.
+  - K2: tabel Borrowed berisi DU-104-1, DU-104-10, dan DU-104-13, dengan kolom bawaan tampil.
   - K3: tabel Borrowed berisi DU-104-11 dan DU-104-12, dengan kolom bawaan tampil.
+  - K4: tabel Borrowed berisi DU-104-1 dan DU-104-10, dengan kolom bawaan tampil dan bahasa antarmuka aktif adalah bahasa selain bahasa bawaan.
+  - K5: tabel Borrowed berisi DU-104-15, dengan kolom bawaan tampil.
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`.
 
 ## Test Steps
@@ -177,3 +182,25 @@ coverage:
 88. Verifikasi sel Category baris `Scanner Zebra TC21 - 1` menampilkan badge `Environmental Monitoring`
 89. Arahkan kursor ke badge Category baris `Scanner Zebra TC21 - 1`
 90. Verifikasi tooltip badge itu berisi `Sensors > Environmental Monitoring`
+
+### Bahasa antarmuka lain: label sistem mengikuti bahasa, nama data tetap persis
+91. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K4
+92. Verifikasi sel Borrower baris `Laptop Dell Latitude 5420 - 9` menampilkan label sistem `Me` dalam bahasa antarmuka aktif
+93. Verifikasi sel Borrower baris `Tablet Samsung Galaxy Tab - 4` tetap berisi `Agus P` persis seperti data, tanpa diterjemahkan
+94. Verifikasi sel Name baris `Laptop Dell Latitude 5420 - 9` tetap tampil persis `Laptop Dell Latitude 5420 - 9`
+
+### Duration satuan jam bentuk tunggal
+95. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K2
+96. Verifikasi sel Duration baris `Headset Jabra Evolve - 5` berisi `1 hour`
+
+### Dua badge tambahan pada kolom Status tampil berurutan
+97. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K1
+98. Verifikasi sel Status baris `Camera Sony A7 - 5` menampilkan badge `Borrowed`, `Damaged`, dan `Reported Missing` berurutan dalam urutan itu
+
+### Tooltip teks penuh pada sel Purpose
+99. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K5
+100. Klik `⋯` pada header kolom Actions (Column Visibility)
+101. Centang kolom `Purpose`
+102. Tutup popover Column Visibility
+103. Arahkan kursor ke sel Purpose baris `Scanner Zebra TC21 - 6`
+104. Verifikasi tooltip sel itu berisi teks penuh `Pemindaian inventaris seluruh gudang regional Jawa Barat selama triwulan keempat beserta rekonsiliasi hasilnya`

@@ -4,7 +4,7 @@ title: "Report Missing pada pinjaman oleh pemegang: badge Reported Missing dan b
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r8", "§4.1b#r49", "§4.1b#r51", "§4.1b#r52", "§4.1b#r53", "§4.1b#r54", "§4.4#r10", "§4.8#r9", "§7.3#r7", "§9.2#r10", "§9.2#r12", "§9.4.3#b6", "§9.6#r5", "§9.7#r13", "EB-FB-1@report-missing"]
 smoke: ["EB-FB-1@report-missing"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

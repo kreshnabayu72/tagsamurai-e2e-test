@@ -4,7 +4,7 @@ title: "Guided Tooltip My Asset tidak muncul lagi di sesi berikutnya sesudah sel
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EB-TBL-10"]
 smoke: []
 dependsOn: []

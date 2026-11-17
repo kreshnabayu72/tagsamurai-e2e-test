@@ -4,7 +4,7 @@ title: "PIC Borrower diganti: baris pindah ke My Asset PIC baru dan PIC lama tid
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r52", "§9.2#r23", "§9.4.2#r46", "§9.4.2#r47", "§9.7#r11"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

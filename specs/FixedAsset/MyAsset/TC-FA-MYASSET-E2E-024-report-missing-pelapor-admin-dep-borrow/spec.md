@@ -4,7 +4,7 @@ title: "Report Missing oleh pemegang yang memegang hak Aktor Missing: baris lang
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#r52", "§4.1b#r53", "§4.4#r10", "§7.3#r8", "§9.2#r11"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

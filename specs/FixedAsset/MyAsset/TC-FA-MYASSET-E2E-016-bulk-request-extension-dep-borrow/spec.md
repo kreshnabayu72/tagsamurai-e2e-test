@@ -4,7 +4,7 @@ title: "Bulk Request Extension tab Borrowed: Select All, baris nonaktif, dan sat
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#p6", "§4.2.3#p1", "§4.4#r2", "§5#r5", "EB-BLK-2@tabel-borrowed"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

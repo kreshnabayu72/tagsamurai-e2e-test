@@ -4,7 +4,7 @@ title: "Tabel Borrowed: seleksi baris, baris nonaktif beserta alasannya, Bulk Ac
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-13", "FI-14", "FI-20", "FI-21", "V-01", "§4.1b#p6", "§5#r5", "§9.4.2#r42", "EB-BLK-1@tabel-borrowed", "EB-BLK-6"]
 smoke: []
 dependsOn: []
@@ -14,7 +14,7 @@ trace:
   "FI-20": [15, 17]
   "FI-21": [50, 51, 52, 54]
   "V-01": [4, 8, 17, 54]
-  "§4.1b#p6": [2, 4, 8, 15, 17, 18, 39, 40, 41, 50]
+  "§4.1b#p6": [2, 4, 8, 15, 17, 18, 39, 40, 41, 50, 109, 110, 111]
   "§5#r5": [24, 30, 35]
   "§9.4.2#r42": [8, 10]
   "EB-BLK-1@tabel-borrowed": [13, 14, 18, 22, 28, 33, 39, 42, 44, 47, 51, 55, 58, 61, 62, 64, 66, 68, 69, 72, 77, 78]
@@ -46,6 +46,7 @@ coverage:
   - DU-107-13: respons tiruan, 999 baris tabel Borrowed: Name `Laptop Cabang {n}`, Asset ID `LCB-2026-{n}`, Status `Borrowed`, Borrower `Me`, Due Date `2026-12-01`, Pengajuan Extend `null`.
   - DU-107-14: respons tiruan, 1001 baris tabel Borrowed: Name `Laptop Regional Jakarta {n}`, Asset ID `LRJ-2026-{n}`, Status `Borrowed`, Borrower `Me`, Due Date `2026-12-01`, Pengajuan Extend `null`.
   - DU-107-15: respons tiruan, 199 baris tabel Borrowed: Name `Printer Regional Bandung {n}`, Asset ID `PRB-2026-{n}`, Status `Borrowed`, Borrower `Me`, Due Date `2026-12-01`, Pengajuan Extend `null`.
+  - DU-107-16: respons tiruan, satu baris tabel Borrowed: Name `Laptop Dell Latitude 5420 - 18`, Asset ID `LPT-2026-0018`, Status `Borrowed`, Borrower `Me`, Due Date `2026-11-13`, Pengajuan Extend `null`.
   - Label tombol Select All yang diharapkan sesudah seluruh 3 baris yang dapat dipilih terpilih adalah `Unselect All (3 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `3`.
   - Label tombol Select All yang diharapkan sesudah seluruh 12 baris yang dapat dipilih terpilih adalah `Unselect All (12 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `12`.
   - Label tombol Select All yang diharapkan sesudah seluruh 1000 baris yang dapat dipilih terpilih adalah `Unselect All (1000 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `1000`.
@@ -58,6 +59,7 @@ coverage:
   - K5: Selection Limit bernilai `1000`, dan tabel Borrowed berisi DU-107-12, diurutkan menurut nomornya.
   - K6: Selection Limit bernilai `1000`, dan tabel Borrowed berisi DU-107-13, diurutkan menurut nomornya.
   - K7: Selection Limit bernilai `1000`, tabel Borrowed berisi DU-107-14 dan DU-107-15 yang diurutkan menurut nomornya, dan pencarian `Regional Jakarta` menghasilkan DU-107-14 saja.
+  - K8: tabel Borrowed berisi DU-107-8, DU-107-2, DU-107-1, dan DU-107-16 dengan urutan bawaan Due Date terdekat dulu.
 
 ## Test Steps
 
@@ -188,3 +190,10 @@ coverage:
 104. Klik `Select All (1001 records)`
 105. Verifikasi toast `Error, only the first 1000 of 1001 rows were selected. Narrow your filter to include the rest.` tampil
 106. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `1000`
+
+### Checkbox header memilih Borrower baris pertama menurut sort walau bukan milik sendiri dan bukan Borrower dengan baris terbanyak
+107. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K8
+108. Klik checkbox header tabel
+109. Verifikasi baris `Tablet Samsung Galaxy Tab - 5` tercentang
+110. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `1`
+111. Verifikasi baris `Meeting Mic Set - 2`, `Laptop Dell Latitude 5420 - 3`, dan `Laptop Dell Latitude 5420 - 18` tidak tercentang dan checkbox-nya disabled

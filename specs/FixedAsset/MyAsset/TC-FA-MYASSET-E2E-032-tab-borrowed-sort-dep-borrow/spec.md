@@ -4,7 +4,7 @@ title: "Sort tab Borrowed: urutan default Due Date terdekat, baris tanpa Due Dat
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1b#p7", "§5#r4", "EB-SRT-1", "EB-SRT-3@tabel-borrowed"]
 smoke: ["EB-SRT-1", "EB-SRT-3@tabel-borrowed"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

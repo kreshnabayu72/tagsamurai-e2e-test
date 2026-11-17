@@ -4,7 +4,7 @@ title: "Tab Task pada data nyata: satu baris per BRW, nilai kolom, urutan defaul
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-MYA-01", "§1.2#r10", "§1.2#r20", "§5#r4", "§5#r6", "§9.2#b1", "§9.4.2#r1", "§10#r3", "EB-SRC-5@tabel-task"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
@@ -29,7 +29,7 @@ coverage:
 - Aktor: Borrower `Indra Kusuma {runId}`, pengguna karyawan ber-akun login tanpa role admin. Aktor Borrow `Rina Wulandari {runId}` dan `Bagus Santoso {runId}` memicu sesi Handover (LK-8); spec ini hanya membaca layar `Indra Kusuma {runId}` dan tidak mengonfirmasi Task.
 - Layar awal: halaman Fixed Asset (FAMS) dengan navbar.
 - Data:
-  - DU-036-1: User `Indra Kusuma {runId}`, tanpa role admin, cakupan Group `Head Office`.
+  - DU-036-1: User `Indra Kusuma {runId}`, tanpa role admin, cakupan Group `Head Office`, dengan flag Guided Tooltip My Asset sudah disetel (tur sudah pernah dilihat).
   - DU-036-2: User `Rina Wulandari {runId}`, role Asset Admin dengan hak Aktor Borrow, cakupan Group `Head Office`.
   - DU-036-3: User `Bagus Santoso {runId}`, role Asset Admin dengan hak Aktor Borrow, cakupan Group `Head Office`.
   - DU-036-4: User `Agus Prasetyo {runId}`, tanpa role admin, cakupan Group `Head Office`.

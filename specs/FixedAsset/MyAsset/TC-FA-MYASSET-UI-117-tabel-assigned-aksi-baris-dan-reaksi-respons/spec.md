@@ -4,13 +4,13 @@ title: "Tabel Assigned: aksi baris menurut keadaan baris dan toast atas respons 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r28", "§1.2#r77", "§1.2#r78", "§1.2#r79", "§1.2#r82", "§1.2#r83", "§4.4#r51", "§7.3#r12", "§7.3#r15", "§9.4.2#r60", "§9.4.3#b10"]
 smoke: []
 dependsOn: []
 trace:
-  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 48]
-  "T-MYA-04": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34]
+  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 48, 67, 72, 77, 82, 87, 92]
+  "T-MYA-04": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 67, 72, 77, 82, 87, 92]
   "§1.2#r28": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34]
   "§1.2#r77": [5, 11, 17, 23, 29, 35]
   "§1.2#r78": [15, 16, 21, 22, 27, 28, 33, 34]
@@ -45,6 +45,12 @@ coverage:
   - K2: tabel Assigned memuat DU-117-3; Report Damaged pada baris `Laptop Dell Latitude 5420 - 1` dijawab sukses.
   - K3: tabel Assigned memuat DU-117-3; Report Damaged pada baris `Laptop Dell Latitude 5420 - 1` dijawab error server.
   - K4: tabel Assigned memuat DU-117-3; Report Damaged pada baris `Laptop Dell Latitude 5420 - 1` gagal karena koneksi putus.
+  - K5: tabel Assigned memuat DU-117-3; Report Missing pada baris `Laptop Dell Latitude 5420 - 1` dijawab sukses.
+  - K6: tabel Assigned memuat DU-117-3; Report Missing pada baris `Laptop Dell Latitude 5420 - 1` dijawab error server.
+  - K7: tabel Assigned memuat DU-117-4; Cancel Damage Report pada baris `Printer HP M404 - 2` dijawab sukses.
+  - K8: tabel Assigned memuat DU-117-4; Cancel Damage Report pada baris `Printer HP M404 - 2` dijawab error server.
+  - K9: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab sukses.
+  - K10: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab error server.
 
 ## Test Steps
 
@@ -129,3 +135,45 @@ coverage:
 60. Isi What happened dengan `Layar retak setelah terjatuh dari meja kerja`
 61. Klik `[Report Damaged]`
 62. Verifikasi toast error `Connection problem. Please try again.` tampil
+
+### Toast sukses atas respons Report Missing berhasil
+63. Tampilkan Tabel Assigned dengan kondisi K5
+64. Klik menu `⋯` pada baris `Laptop Dell Latitude 5420 - 1`
+65. Klik `Report Missing`
+66. Klik `[Report Missing]`
+67. Verifikasi toast sukses tampil untuk Report Missing
+
+### Toast error atas respons Report Missing gagal karena error server
+68. Tampilkan Tabel Assigned dengan kondisi K6
+69. Klik menu `⋯` pada baris `Laptop Dell Latitude 5420 - 1`
+70. Klik `Report Missing`
+71. Klik `[Report Missing]`
+72. Verifikasi toast error `Error, failed to send report.` tampil untuk Report Missing
+
+### Toast sukses atas respons Cancel Damage Report berhasil
+73. Tampilkan Tabel Assigned dengan kondisi K7
+74. Klik menu `⋯` pada baris `Printer HP M404 - 2`
+75. Klik `Cancel Damage Report`
+76. Klik tombol konfirmasi pada dialog `Cancel Report`
+77. Verifikasi toast sukses tampil untuk Cancel Damage Report
+
+### Toast error atas respons Cancel Damage Report gagal karena error server
+78. Tampilkan Tabel Assigned dengan kondisi K8
+79. Klik menu `⋯` pada baris `Printer HP M404 - 2`
+80. Klik `Cancel Damage Report`
+81. Klik tombol konfirmasi pada dialog `Cancel Report`
+82. Verifikasi toast error `Error, failed to cancel report.` tampil untuk Cancel Damage Report
+
+### Toast sukses atas respons Cancel Missing Report berhasil
+83. Tampilkan Tabel Assigned dengan kondisi K9
+84. Klik menu `⋯` pada baris `Monitor Dell 24" - 4`
+85. Klik `Cancel Missing Report`
+86. Klik tombol konfirmasi pada dialog `Cancel Report`
+87. Verifikasi toast sukses tampil untuk Cancel Missing Report
+
+### Toast error atas respons Cancel Missing Report gagal karena error server
+88. Tampilkan Tabel Assigned dengan kondisi K10
+89. Klik menu `⋯` pada baris `Monitor Dell 24" - 4`
+90. Klik `Cancel Missing Report`
+91. Klik tombol konfirmasi pada dialog `Cancel Report`
+92. Verifikasi toast error `Error, failed to cancel report.` tampil untuk Cancel Missing Report

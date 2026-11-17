@@ -4,7 +4,7 @@ title: "Keputusan Damage Report tercermin di tab Borrowed: badge Damaged dan aks
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§1.2#r35", "§4.1b#r50", "§4.1b#r67", "§9.7#r12"]
 smoke: []
 dependsOn: ["Damaged: keputusan Damage Report oleh Aktor Damaged", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]

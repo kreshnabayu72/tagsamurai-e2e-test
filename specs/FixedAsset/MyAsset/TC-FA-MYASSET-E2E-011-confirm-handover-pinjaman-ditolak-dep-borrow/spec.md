@@ -4,7 +4,7 @@ title: "Confirm Handover pinjaman ditolak: Cancel Request oleh admin dan sudah d
 layer: ui-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["V-03", "§1.2#r12", "§3#p5", "§4.2.5#p11", "§4.2.5#p12", "§4.2.5#r5", "§4.4#r40", "§4.4#r41", "§9.2#b3", "§9.2#r2", "§9.2#r3", "§9.4.2#r35", "§9.4.2#r36", "§9.4.2#r37", "§9.4.2#r39", "§9.4.2#r40"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
