@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r28", "§1.2#r77", "§1.2#r78", "§1.2#r79", "§1.2#r82", "§1.2#r83", "§4.4#r51", "§7.3#r12", "§7.3#r15", "§9.4.2#r60", "§9.4.3#b10"]
+sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r28", "§1.2#r77", "§1.2#r78", "§1.2#r79", "§1.2#r82", "§1.2#r83", "§4.4#r51", "§7.3#r12", "§7.3#r15", "§9.4.2#r62", "§9.4.3#b10", "§1.2#r85", "§4.3#r9"]
 smoke: []
 dependsOn: []
 trace:
@@ -20,8 +20,11 @@ trace:
   "§4.4#r51": 40
   "§7.3#r12": 48
   "§7.3#r15": [55, 62]
-  "§9.4.2#r60": [21, 22, 27, 28]
+  "§9.4.2#r62": [21, 22, 27, 28]
   "§9.4.3#b10": [5, 11, 17, 23, 29, 35]
+  "§1.2#r85": [96, 100, 104]
+  "§4.3#r9": [96, 100, 104]
+anchor: [95, 99, 103]
 coverage:
   web: automated
 ---
@@ -51,6 +54,7 @@ coverage:
   - K8: tabel Assigned memuat DU-117-4; Cancel Damage Report pada baris `Printer HP M404 - 2` dijawab error server.
   - K9: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab sukses.
   - K10: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab error server.
+  - K11: tabel Assigned memuat DU-117-3, DU-117-4, dan DU-117-6, dan respons menyatakan level Feature Suite Assignment `None`.
 
 ## Test Steps
 
@@ -177,3 +181,18 @@ coverage:
 90. Klik `Cancel Missing Report`
 91. Klik tombol konfirmasi pada dialog `Cancel Report`
 92. Verifikasi toast error `Error, failed to cancel report.` tampil untuk Cancel Missing Report
+
+### Aksi laporan tidak tampil pada level Assignment None
+93. Tampilkan Tabel Assigned dengan kondisi K11
+94. Klik menu `⋯` pada baris `Laptop Dell Latitude 5420 - 1`
+95. Verifikasi menu baris `Laptop Dell Latitude 5420 - 1` memuat aksi `Assignment Log`
+96. Verifikasi aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, dan `Cancel Missing Report` tidak tampil pada menu baris `Laptop Dell Latitude 5420 - 1` saat respons menyatakan level `None`
+97. Tutup menu dengan menekan `Escape`
+98. Klik menu `⋯` pada baris `Printer HP M404 - 2`
+99. Verifikasi menu baris `Printer HP M404 - 2` memuat aksi `Assignment Log`
+100. Verifikasi aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, dan `Cancel Missing Report` tidak tampil pada menu baris `Printer HP M404 - 2` saat respons menyatakan level `None`
+101. Tutup menu dengan menekan `Escape`
+102. Klik menu `⋯` pada baris `Monitor Dell 24" - 4`
+103. Verifikasi menu baris `Monitor Dell 24" - 4` memuat aksi `Assignment Log`
+104. Verifikasi aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, dan `Cancel Missing Report` tidak tampil pada menu baris `Monitor Dell 24" - 4` saat respons menyatakan level `None`
+105. Tutup menu dengan menekan `Escape`

@@ -43,7 +43,7 @@ coverage:
   - DU-041-3: Damage record `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset sedang Assigned (Custody `Assigned`).
   - DU-041-4: Input Report Disposal atas `Printer HP LaserJet M404 {runId}`: Reason `Unit rusak berat dan biaya perbaikan melebihi nilai buku`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

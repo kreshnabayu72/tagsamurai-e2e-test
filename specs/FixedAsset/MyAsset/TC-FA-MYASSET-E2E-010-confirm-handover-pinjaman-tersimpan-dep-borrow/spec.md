@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-05", "T-MYA-01", "§1.2#r10", "§1.2#r12", "§1.2#r61", "§2.1#r3", "§3#p5", "§4.2.5#p2", "§4.2.5#p3", "§4.4#r3", "§4.4#r38", "§4.8#r2", "§4.8#r3", "§7.3#r1", "§9.2#b1", "§9.2#r1", "§9.4.2#r64", "§9.4.2#r66", "§9.6#r1", "§9.7#r1", "§9.7#r2", "EB-EDG-2", "EB-FB-1@confirm-handover"]
+sourceRules: ["FI-05", "T-MYA-01", "§1.2#r10", "§1.2#r12", "§1.2#r61", "§2.1#r3", "§3#p5", "§4.2.5#p2", "§4.2.5#p3", "§4.4#r3", "§4.4#r38", "§4.8#r2", "§4.8#r3", "§7.3#r1", "§9.2#b1", "§9.2#r1", "§9.4.2#r66", "§9.4.2#r68", "§9.6#r1", "§9.7#r1", "§9.7#r2", "EB-EDG-2", "EB-FB-1@confirm-handover"]
 smoke: ["EB-FB-1@confirm-handover"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -25,8 +25,8 @@ trace:
   "§7.3#r1": [13, 26]
   "§9.2#b1": 6
   "§9.2#r1": [17, 30]
-  "§9.4.2#r64": 30
-  "§9.4.2#r66": 27
+  "§9.4.2#r66": 30
+  "§9.4.2#r68": 27
   "§9.6#r1": [13, 14]
   "§9.7#r1": 4
   "§9.7#r2": [14, 31]

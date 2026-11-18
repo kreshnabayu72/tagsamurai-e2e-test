@@ -17,7 +17,7 @@ sourceRules:
   - §Aturan Logika Modul#r106
   - §4.1#r63
   - §4.1#r65
-  - AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f
+  - AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-g
   - §4.1#r256
   - §4.3#r12
   - §4.3#r13
@@ -44,6 +44,22 @@ sourceRules:
   - §9.10.2#b3
   - §9.10.4#b1
   - §9.4.2#r19
+  - FLD-08
+  - FLD-09
+  - FLD-15
+  - FLD-23
+  - FLD-08d
+  - FLD-09a
+  - FATR-LOGIC-14c
+  - FATR-LOGIC-14d
+  - FATR-LOGIC-18m
+  - FATR-LOGIC-18n
+  - FATR-LOGIC-18p
+  - FLD-23e
+  - S-23b
+  - S-23c
+  - FLD-11
+  - FLD-16
 smoke: []
 dependsOn: []
 trace:
@@ -54,11 +70,11 @@ trace:
   §Aturan Logika Modul#r85: [35, 36]
   §Aturan Logika Modul#r88: [35, 36]
   §Aturan Logika Modul#r90: 41
-  §Aturan Logika Modul#r92: [48, 49, 50]
+  §Aturan Logika Modul#r92: [49, 50]
   §Aturan Logika Modul#r106: [53, 56]
   §4.1#r63: [10, 38, 40]
   §4.1#r65: [10, 38, 40]
-  AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f: [3]
+  AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-g: [3]
   §4.1#r256: 32
   §4.3#r12: [35, 36, 38, 40, 44, 94, 100, 101, 102]
   §4.3#r13: [46, 49, 53, 55]
@@ -85,6 +101,22 @@ trace:
   §9.10.2#b3: [35, 36]
   §9.10.4#b1: [60, 63, 67, 69]
   §9.4.2#r19: 72
+  FLD-08: [119, 123]
+  FLD-09: [118, 121]
+  FLD-15: [126, 128]
+  FLD-23: [129, 131]
+  FLD-08d: [119, 123]
+  FLD-09a: [118, 121]
+  FATR-LOGIC-14c: [119, 123]
+  FATR-LOGIC-14d: [118, 119, 121, 123]
+  FATR-LOGIC-18m: [126, 128]
+  FATR-LOGIC-18n: [129, 131]
+  FATR-LOGIC-18p: [126, 128, 129, 131]
+  FLD-23e: [129, 131]
+  S-23b: [126, 128, 129, 131]
+  S-23c: [118, 119, 121, 123]
+  FLD-11: [124]
+  FLD-16: [132]
 anchor: [25, 43, 85, 90, 96, 97, 104, 105]
 coverage:
   web: automated
@@ -109,11 +141,13 @@ coverage:
   - DU-066-11: Pengaturan Company default tab Disposal pada All categories: Require approval tersimpan `ON`, Approval type tersimpan `All approvers (AND)`.
   - DU-066-12: Pengaturan Company default tab Borrow pada All categories: Self service tersimpan `ON`, Require approval tersimpan `ON`, Auto-approve tersimpan `ON`, Auto-approve when duration ≤ tersimpan `5`, Approval type tersimpan `All approvers (AND)`.
   - DU-066-13: Pengaturan Company default tab Assign pada All categories: Require approval tersimpan `ON`, Approval type tersimpan `All approvers (AND)`.
+  - DU-066-14: Pengaturan Company default tab Assign pada All categories: Allowed assignee: Employee tersimpan `OFF`, Allowed assignee: Division tersimpan `ON`, Need recipient confirmation `Yes`.
+  - DU-066-15: Pengaturan Company default tab Transfer pada All categories: Destination quota check tersimpan `ON`, In-transit overdue after tersimpan `10`, Photo at end tersimpan `ON`.
 - Kondisi:
   - K1: node All categories terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, level Feature Suite Borrowing Full, tidak ada Approver ditugaskan untuk Borrow di Group mana pun, level Feature Suite Assignment bukan None, nilai memakai DU-066-1.
   - K2: node All categories terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-2.
   - K3: node Category leaf `Machinery` terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-3.
-  - K4: node All categories terpilih, tab Transfer aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-4.
+  - K4: node All categories terpilih, tab Transfer aktif, level Feature Suite Transfer Full, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-4.
   - K5: node All categories terpilih, tab Borrow aktif, level Feature Suite Borrowing Basic, nilai memakai DU-066-5.
   - K6: node Category leaf `Machinery` terpilih, tab Borrow aktif, level Feature Suite Borrowing Basic, nilai memakai DU-066-6.
   - K7: node All categories terpilih, level Feature Suite Borrowing None dan Assignment None, tab Transfer aktif.
@@ -127,13 +161,15 @@ coverage:
   - K15: node All categories terpilih, tab Disposal aktif, Approval Workflow tidak tersedia di plan, nilai memakai DU-066-11.
   - K16: node All categories terpilih, tab Borrow aktif, Approval Workflow tidak tersedia di plan, level Feature Suite Borrowing Full, nilai memakai DU-066-12.
   - K17: node All categories terpilih, tab Assign aktif, Approval Workflow tidak tersedia di plan, level Feature Suite Assignment bukan None, nilai memakai DU-066-13.
+  - K18: node All categories terpilih, tab Assign aktif, level Feature Suite Assignment Basic, nilai memakai DU-066-14.
+  - K19: node All categories terpilih, tab Transfer aktif, level Feature Suite Transfer Basic, Approval Workflow tersedia di plan, nilai memakai DU-066-15.
 
 ## Test Steps
 
 ### Approval Workflow tidak tersedia: alert dan field bergerbang
 1. Tampilkan Area utama dengan kondisi K1
 2. Verifikasi alert `Approval Workflow isn't available on your plan. Transactions run without approval.` tampil di bagian `Approval`
-3. Verifikasi chip `Upgrade` tampil pada alert itu
+3. Verifikasi tombol `Upgrade` tampil pada alert itu
 4. Verifikasi alert `No one is assigned as Approver for this transaction in any Group. Approval goes to the Group Manager or Total Control.` tidak ada
 5. Verifikasi kontrol `Require approval` tampil disabled dan nilai tersimpan `ON` dipertahankan
 6. Verifikasi `Auto-approve` disabled dengan nilai tersimpan `ON`
@@ -285,3 +321,23 @@ coverage:
 ### Approval type tab Disposal disabled saat Approval Workflow tidak tersedia
 115. Tampilkan Area utama dengan kondisi K15
 116. Verifikasi `Approval type` disabled dengan nilai tersimpan `All approvers (AND)` pada tab `Disposal`
+
+### Level Assignment Basic mengunci Allowed assignee: Division dan Allowed assignee: Employee
+117. Tampilkan Area utama dengan kondisi K18
+118. Verifikasi `Allowed assignee: Division` tampil disabled dengan nilai tersimpan `ON` dipertahankan
+119. Verifikasi `Allowed assignee: Employee` tampil disabled
+120. Arahkan kursor ke kontrol `Allowed assignee: Division` yang disabled
+121. Verifikasi alasan `Available on plans with full Assignment.` tersampaikan pada kontrol `Allowed assignee: Division` yang disabled
+122. Arahkan kursor ke kontrol `Allowed assignee: Employee` yang disabled
+123. Verifikasi alasan `Available on plans with full Assignment.` tersampaikan pada kontrol `Allowed assignee: Employee` yang disabled
+124. Verifikasi `Need recipient confirmation` aktif
+
+### Level Transfer Basic mengunci In-transit overdue after dan Photo at end sel Transfer
+125. Tampilkan Area utama dengan kondisi K19
+126. Verifikasi `In-transit overdue after` tampil disabled dengan nilai tersimpan `10` dipertahankan
+127. Arahkan kursor ke kontrol `In-transit overdue after` yang disabled
+128. Verifikasi alasan `Available on plans with full Transfer.` tersampaikan pada kontrol `In-transit overdue after` yang disabled
+129. Verifikasi `Photo at end` tampil disabled dengan nilai tersimpan `ON` dipertahankan
+130. Arahkan kursor ke kontrol `Photo at end` yang disabled
+131. Verifikasi alasan `Available on plans with full Transfer.` tersampaikan pada kontrol `Photo at end` yang disabled
+132. Verifikasi `Destination quota check` aktif

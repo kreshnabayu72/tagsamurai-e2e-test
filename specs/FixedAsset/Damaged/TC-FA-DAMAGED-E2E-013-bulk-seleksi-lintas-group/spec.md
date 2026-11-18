@@ -52,7 +52,7 @@ coverage:
   - DU-013-14: Input Reason Admin B atas record DU-013-12: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain`.
 - Kondisi:
   - Selection Limit bernilai `1000`.
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

@@ -11,16 +11,16 @@ dependsOn: []
 trace:
   "§4.2.1#p1": [2, 3, 7, 8, 32, 34, 36, 89, 91, 93, 95, 97]
   "§4.2.1#b2": [6, 15]
-  "§4.2.1#b3": [4, 5, 11, 12, 21, 25, 29, 109, 114, 118, 120]
+  "§4.2.1#b3": [4, 5, 11, 12, 21, 25, 29, 107, 112, 116, 118]
   "§4.3#r1": [4, 29]
   "§4.3#r2": [5, 6]
   "§4.4#r1": [47, 54, 68, 75]
   "§4.4#r47": [45, 64, 66]
   "§9.7#r16": 6
-  "§9.10#p1": [2, 99, 100, 102, 103, 105, 123, 125, 126, 128, 131]
+  "§9.10#p1": [2, 99, 100, 102, 103, 121, 123, 124, 126, 129, 132, 134, 136, 137]
   EB-TBL-11: [37, 39]
   EB-KOL-3: [84, 86]
-anchor: [10, 14, 18, 19, 27, 44, 51, 60, 63, 72, 80, 81, 107, 116, 122]
+anchor: [10, 14, 18, 19, 27, 44, 51, 60, 63, 72, 80, 81, 105, 114, 120]
 coverage:
   web: automated
 ---
@@ -34,7 +34,7 @@ coverage:
 - Data:
   - DU-101-1: Plan dengan Borrowing level `Full` dan Assignment `Tersedia`.
   - DU-101-2: Plan dengan Borrowing level `Basic` dan Assignment `Tidak tersedia`.
-  - DU-101-3: Plan `Starter` dengan Borrowing level `None` dan Assignment `Tidak tersedia`.
+  - DU-101-3: Plan dengan Borrowing level `None` dan Assignment `Tidak tersedia`.
   - DU-101-4: Plan dengan Borrowing level `None` dan Assignment `Tersedia`.
   - DU-101-5: dua Task `Confirm Handover` dengan Transaction ID `BRW-2026-0151` dan `BRW-2026-0152`, Group `Head Office`, Total Asset `6`, Handed Over By `Rina Wulandari`, Expires At `09/11/26, 20:41`.
   - DU-101-6: satu Task `Confirm Handover` dengan Transaction ID `ASG-2026-0072`, Group `Head Office`, Total Asset `2`, Handed Over By `Rina Wulandari`, Expires At `09/11/26, 20:48`.
@@ -43,19 +43,22 @@ coverage:
   - DU-101-9: pengguna tanpa Task aktif (`0`) dan tanpa baris Borrowed (`0`).
   - DU-101-10: satu baris History Borrow berstatus `Rejected`: Name `Excavator PC200 - 2`, Asset ID `EXC-2026-0008`, Group `Head Office`, Status `Rejected`, Holder `Me`, Type `Borrow`, Transaction ID `BRW-2026-0146`, Handed Over At `—`, Closed At `31/10/26, 11:30`.
   - DU-101-11: satu baris History Assignment berstatus `Unassigned`: Name `Projector Epson EB-X06 - 2`, Asset ID `PRJ-2026-0002`, Group `Head Office`, Status `Unassigned`, Holder `Me`, Type `Assignment`, Transaction ID `ASG-2026-0009`, Handed Over At `03/07/26, 10:00`, Closed At `30/10/26, 15:20`.
+  - DU-101-12: satu baris Assigned berstatus `Assigned`, yaitu penugasan berjalan: Name `Laptop Lenovo ThinkPad T14 - 4`, Asset ID `LPT-2026-0014`, Group `Head Office`, Assigned To `Me`, Transaction ID `ASG-2026-0011`, Assigned Date `03/07/26, 10:00`, Assigned By `Rina Wulandari`.
   - Badge jumlah yang diharapkan: tab `Task` `3` dari DU-101-5 dan DU-101-6, tab `Borrowed` `12` dari DU-101-7 dan DU-101-8, dan `11` dari DU-101-8 saja.
 - Kondisi:
   - K1: plan DU-101-1; Task berisi DU-101-5 dan DU-101-6; Borrowed berisi DU-101-7 dan DU-101-8; Assigned dan History berisi daftar kosong.
   - K2: plan DU-101-1; Task dan Borrowed berisi DU-101-9; Assigned dan History berisi daftar kosong.
-  - K3: plan DU-101-2; Task berisi DU-101-5; Borrowed berisi DU-101-8; History berisi daftar kosong.
-  - K4: plan DU-101-4; Task berisi DU-101-5; Assigned dan History berisi daftar kosong.
-  - K5: plan DU-101-3.
+  - K3: plan DU-101-2; Task berisi DU-101-5; Borrowed berisi DU-101-8; Assigned dan History berisi daftar kosong, yaitu tanpa penugasan berjalan.
+  - K4: plan DU-101-4; Task berisi DU-101-6; Borrowed, Assigned, dan History berisi daftar kosong, yaitu tanpa pinjaman berjalan.
   - K6: plan DU-101-1; Task berisi DU-101-5 pada saat halaman tampil, lalu DU-101-6 masuk lewat pembaruan realtime; Borrowed berisi DU-101-8.
   - K7: plan DU-101-1; Task berisi DU-101-5; Borrowed berisi DU-101-8 saja, tanpa baris Overdue.
   - K8: seperti K1; pencarian `Latitude 5420 - 9` pada tab Borrowed dan saringan Status `Overdue` pada tab Borrowed masing-masing dijawab dengan satu baris, yaitu DU-101-7.
-  - K9: plan DU-101-2 sesudah turun dari plan dengan Assignment; Task berisi DU-101-5 dan DU-101-6; Borrowed berisi DU-101-8; History berisi DU-101-10 dan DU-101-11.
+  - K9: plan DU-101-2 sesudah turun dari plan dengan Assignment; Task berisi DU-101-5; Borrowed berisi DU-101-8; Assigned berisi daftar kosong, yaitu tanpa penugasan berjalan; History berisi DU-101-10 dan DU-101-11.
   - K10: plan DU-101-1; Task berisi DU-101-5; Borrowed berisi DU-101-8 pada saat halaman tampil; DU-101-7 tercatat di server sesudahnya tanpa pembaruan realtime ke halaman.
   - K11: plan DU-101-1; Task berisi DU-101-5; Borrowed berisi DU-101-7 dan DU-101-8, yaitu keadaan K10 sesudah muat ulang.
+  - K13: plan DU-101-4; Task berisi DU-101-6; Borrowed berisi DU-101-8, yaitu pinjaman berjalan; Assigned dan History berisi daftar kosong.
+  - K14: plan DU-101-2; Task berisi DU-101-5; Borrowed berisi DU-101-8; Assigned berisi DU-101-12, yaitu penugasan berjalan; History berisi daftar kosong.
+  - K15: plan DU-101-3; Borrowed berisi DU-101-8, yaitu pinjaman berjalan; Assigned berisi DU-101-12, yaitu penugasan berjalan.
   - K12: seperti K1; pencarian `ASG-2026-0072` pada tab Task dijawab satu baris, yaitu DU-101-6, dan saringan Total Asset `6` sampai `6` pada tab Task dijawab dua baris, yaitu DU-101-5.
 
 ## Test Steps
@@ -181,49 +184,58 @@ coverage:
 96. Klik tab `History`
 97. Verifikasi toolbar tab `History` memuat ikon `Search`, `Filter`, dan `Download`
 
-### Susunan tab pada plan tanpa Assignment
+### Susunan tab pada plan tanpa Assignment dan tanpa penugasan berjalan
 98. Tampilkan Halaman My Asset dengan kondisi K3
 99. Verifikasi tab `Task`, `Borrowed`, dan `History` tampil
-100. Verifikasi tab `Assigned` tidak tampil
+100. Verifikasi tab `Assigned` tidak tampil karena tidak ada penugasan berjalan
 
-### Susunan tab pada plan tanpa Borrowing
+### Susunan tab pada plan tanpa Borrowing dan tanpa pinjaman berjalan
 101. Tampilkan Halaman My Asset dengan kondisi K4
 102. Verifikasi tab `Task`, `Assigned`, dan `History` tampil
-103. Verifikasi tab `Borrowed` tidak tampil
-
-### Susunan tab pada plan tanpa Borrowing dan Assignment
-104. Tampilkan Halaman My Asset dengan kondisi K5
-105. Verifikasi tab `Task`, `Borrowed`, `Assigned`, dan `History` tidak tampil
+103. Verifikasi tab `Borrowed` tidak tampil karena tidak ada pinjaman berjalan
 
 ### Badge Task menghitung seluruh Task tanpa memandang Search dan Filter
-106. Tampilkan Halaman My Asset dengan kondisi K12
-107. Verifikasi tab `Task` menampilkan badge jumlah `3`
-108. Ketik Search `ASG-2026-0072`, tekan Enter
-109. Verifikasi badge tab `Task` tetap `3`
-110. Klik `Filter` pada toolbar
-111. Isi `Min` pada field `Total Asset` dengan `6`
-112. Isi `Max` pada field `Total Asset` dengan `6`
-113. Klik `[Apply]`
-114. Verifikasi badge tab `Task` tetap `3`
+104. Tampilkan Halaman My Asset dengan kondisi K12
+105. Verifikasi tab `Task` menampilkan badge jumlah `3`
+106. Ketik Search `ASG-2026-0072`, tekan Enter
+107. Verifikasi badge tab `Task` tetap `3`
+108. Klik `Filter` pada toolbar
+109. Isi `Min` pada field `Total Asset` dengan `6`
+110. Isi `Max` pada field `Total Asset` dengan `6`
+111. Klik `[Apply]`
+112. Verifikasi badge tab `Task` tetap `3`
 
 ### Badge Borrowed tidak berubah secara realtime dan diperbarui saat muat ulang
-115. Tampilkan Halaman My Asset dengan kondisi K10
-116. Verifikasi tab `Borrowed` menampilkan badge jumlah `11`
-117. Satu baris Borrowed baru tercatat di server tanpa pembaruan realtime ke halaman
-118. Verifikasi tab `Borrowed` tetap menampilkan badge jumlah `11`
-119. Tampilkan Halaman My Asset dengan kondisi K11
-120. Verifikasi tab `Borrowed` menampilkan badge jumlah `12`
+113. Tampilkan Halaman My Asset dengan kondisi K10
+114. Verifikasi tab `Borrowed` menampilkan badge jumlah `11`
+115. Satu baris Borrowed baru tercatat di server tanpa pembaruan realtime ke halaman
+116. Verifikasi tab `Borrowed` tetap menampilkan badge jumlah `11`
+117. Tampilkan Halaman My Asset dengan kondisi K11
+118. Verifikasi tab `Borrowed` menampilkan badge jumlah `12`
 
-### Task Assignment tidak tampil dan History tetap memuat riwayat Borrow dan Assignment pada plan tanpa Assignment
-121. Tampilkan Halaman My Asset dengan kondisi K9
-122. Verifikasi Task `BRW-2026-0151` dan `BRW-2026-0152` tampil pada tabel Task
-123. Verifikasi Task `ASG-2026-0072` tidak tampil pada tabel Task
-124. Klik tab `History`
-125. Verifikasi baris `Excavator PC200 - 2` dengan Type `Borrow` tampil pada tabel History
-126. Verifikasi baris `Projector Epson EB-X06 - 2` dengan Type `Assignment` tampil pada tabel History
-127. Klik menu `⋯` pada baris `Excavator PC200 - 2`
-128. Verifikasi menu baris hanya memuat aksi `Borrow Log`
-129. Tekan Esc
-130. Klik menu `⋯` pada baris `Projector Epson EB-X06 - 2`
-131. Verifikasi menu baris hanya memuat aksi `Assignment Log`
-132. Tekan Esc
+### Tab Assigned tidak tampil dan History tetap memuat riwayat Borrow dan Assignment pada plan tanpa Assignment
+119. Tampilkan Halaman My Asset dengan kondisi K9
+120. Verifikasi Task `BRW-2026-0151` dan `BRW-2026-0152` tampil pada tabel Task
+121. Verifikasi tab `Assigned` tidak tampil karena tidak ada penugasan berjalan
+122. Klik tab `History`
+123. Verifikasi baris `Excavator PC200 - 2` dengan Type `Borrow` tampil pada tabel History
+124. Verifikasi baris `Projector Epson EB-X06 - 2` dengan Type `Assignment` tampil pada tabel History
+125. Klik menu `⋯` pada baris `Excavator PC200 - 2`
+126. Verifikasi menu baris hanya memuat aksi `Borrow Log`
+127. Tekan Esc
+128. Klik menu `⋯` pada baris `Projector Epson EB-X06 - 2`
+129. Verifikasi menu baris hanya memuat aksi `Assignment Log`
+130. Tekan Esc
+
+### Tab Borrowed tetap tampil pada plan tanpa Borrowing selama ada pinjaman berjalan
+131. Tampilkan Halaman My Asset dengan kondisi K13
+132. Verifikasi tab `Borrowed` tampil karena ada pinjaman berjalan
+
+### Tab Assigned tetap tampil pada plan tanpa Assignment selama ada penugasan berjalan
+133. Tampilkan Halaman My Asset dengan kondisi K14
+134. Verifikasi tab `Assigned` tampil karena ada penugasan berjalan
+
+### Tab Borrowed dan Assigned tampil pada plan tanpa Borrowing dan Assignment selama ada baris berjalan
+135. Tampilkan Halaman My Asset dengan kondisi K15
+136. Verifikasi tab `Borrowed` tampil karena ada pinjaman berjalan
+137. Verifikasi tab `Assigned` tampil karena ada penugasan berjalan

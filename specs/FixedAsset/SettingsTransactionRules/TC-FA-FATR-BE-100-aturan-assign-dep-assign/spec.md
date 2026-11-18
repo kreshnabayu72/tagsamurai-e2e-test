@@ -273,10 +273,10 @@ trace:
 89. `Tia Anggraini {runId}` mengajukan Assign aset `Printer Xerox B230 {runId}` kepada `Tono Wibowo {runId}`
 90. Verifikasi pengajuan tidak berstatus `Waiting for Approval` melainkan `Waiting for Handover`, karena nilai efektif Require approval `OFF` untuk transaksi Assign
 
-### Level Feature Suite Assignment Basic mencakup seluruh field tab Assign
+### Level Feature Suite Assignment Basic menerima Assign kepada Employee
 91. Operator platform mengubah level Feature Suite Assignment pada plan entitas menjadi `Basic`
 92. Admin mengajukan Assign aset `Printer Kyocera ECOSYS {runId}` kepada `Tono Wibowo {runId}`
-93. Verifikasi pengajuan Assign diterima pada level `Basic`, karena seluruh field tab Assign tersedia pada level itu
+93. Verifikasi pengajuan Assign kepada Employee diterima pada level `Basic`, karena tipe assignee Employee selalu tersedia pada level itu; tipe assignee Division tidak tersedia pada level `Basic` (Allowed assignee: Division terkunci, nilai efektif `OFF`)
 
 ### Level Feature Suite Assignment None membuat Assign tidak tersedia
 94. Operator platform mengubah level Feature Suite Assignment pada plan entitas menjadi `None`

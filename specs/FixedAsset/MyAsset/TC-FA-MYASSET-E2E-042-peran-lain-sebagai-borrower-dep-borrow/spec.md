@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r26", "§2.1#b4", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r11", "§4.8#r13", "§9.4.2#r12", "EB-AKS-4"]
+sourceRules: ["§1.2#r26", "§2.1#b4", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r13", "§9.4.2#r12", "EB-AKS-4"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -19,11 +19,12 @@ trace:
   "§4.8#r7": [14, 27]
   "§4.8#r8": 15
   "§4.8#r9": 16
+  "§4.8#r10": 84
   "§4.8#r11": 21
   "§4.8#r13": 13
   "§9.4.2#r12": [9, 10]
   "EB-AKS-4": [30, 31, 34, 39, 40, 43, 46, 47, 51, 55, 61, 62, 69, 70, 74, 75, 78]
-anchor: [48, 54]
+anchor: [48, 54, 83]
 coverage:
   web: automated
 ---
@@ -142,3 +143,11 @@ coverage:
 76. Klik header kolom Actions `⋯` untuk membuka Column Visibility
 77. Klik `Setup Column...`
 78. Verifikasi judul `Setup Column` tampil
+
+### Tombol Borrow an Asset tidak tampil di web bagi pengguna ber-role admin sebagai Borrower
+79. Keluar dari akun
+80. Masuk sebagai Asset Admin `Rahmat Hidayat {runId}`
+81. Buka `My Asset` dari menu profil pada navbar
+82. Klik tab `Borrowed`
+83. Verifikasi ikon `Filter` tampil pada toolbar tab Borrowed
+84. Verifikasi tombol `Borrow an Asset` tidak tampil (Hidden) pada toolbar tab Borrowed

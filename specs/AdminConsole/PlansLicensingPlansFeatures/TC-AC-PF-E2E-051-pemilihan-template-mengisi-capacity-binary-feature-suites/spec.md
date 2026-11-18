@@ -20,7 +20,7 @@ coverage:
 - Guided Tooltip: hook suite `before` men-set flag `guided_tooltip_seen_ac-plans-features` true dan hook `after` memulihkannya (lihat `suite.md`).
 - Kemampuan teknis (disediakan tim FE/BE, lihat `suite.md`): sesi API aktor dan fixture backend idempoten untuk memulihkan Dataset Pre-setup dan menghapus plan buatan spec. General Settings (Date Format `dd MMM yy`, Time Format 24-hour, Time Zone UTC) disiapkan fixture sebagai precondition TC dan tidak diubah spec.
 - Fixture `fixtures/plans-licensing-plans-features.json` belum ada (S-12): nilai Pre-setup dirujuk lewat kunci fixture yang dibuat tim FE; password dan token tidak ditulis di spec.
-- Data Pre-setup: Dataset Plan A dengan default plan `Growth` v5 (Asset Name cap 50, Group count 3, Group hierarchy depth 2, Category count 20, Category hierarchy depth 2, Scheduled reports 1, API call quota 100K/month, Asset ID Configuration ON, License allocation per group ON, Open API ON, SAMP & Document Center OFF, Custom Report Builder OFF, Approval Workflow OFF, Borrowing Basic, Assignment Basic, Transfer None, Disposal Basic, Accounting & Depreciation None).
+- Data Pre-setup: Dataset Plan A dengan default plan `Growth` v5 (Asset Name cap 50, Group count 3, Group hierarchy depth 2, Category count 20, Category hierarchy depth 2, Scheduled reports 1, API call quota 100K/month, Asset ID Configuration ON, License allocation per group ON, Open API ON, SAMP & Document Center OFF, Custom Report Builder OFF, Approval Workflow OFF, Borrowing Basic, Assignment Basic, Transfer None, Disposal Full, Accounting & Depreciation None).
 - Pengecualian S-06/S-12 butir A-14: nama literal Pre-setup (`Growth` v5) dipakai apa adanya, hanya dibaca (Template); pemulihan Dataset dijamin fixture backend idempoten yang disediakan tim FE/BE, dijalankan di hook `before` dan `after` spec ini.
 - Data Dinamis: tidak ada (spec tidak menyimpan plan).
 - State global: Dataset Pre-setup bersama; suite berjalan serial (`parallel: false`, lihat `suite.md`).
@@ -36,7 +36,7 @@ coverage:
 4. Pilih Template `Growth`
 5. Verifikasi Capacity Toggles: Asset Name cap `50`, Group count `3`, Group hierarchy depth `2`, Category count `20`, Category hierarchy depth `2`, Scheduled reports `1`, API call quota `100K/month`
 6. Verifikasi Binary Toggles: Asset ID Configuration ON, License allocation per group ON, Open API ON, SAMP & Document Center OFF, Custom Report Builder OFF, Approval Workflow OFF
-7. Verifikasi Feature Suites aktif (tidak terkunci): Borrowing `Basic`, Assignment `Basic`, Transfer `None`, Disposal `Basic`, Accounting & Depreciation `None`
+7. Verifikasi Feature Suites aktif (tidak terkunci): Borrowing `Basic`, Assignment `Basic`, Transfer `None`, Disposal `Full`, Accounting & Depreciation `None`
 
 ### Opsi dropdown (TC-AC-PF-129)
 
@@ -61,7 +61,7 @@ coverage:
 26. Tekan Esc, lalu buka dropdown Transfer
 27. Verifikasi opsi Transfer: `None`, `Basic`, `Full`
 28. Tekan Esc, lalu buka dropdown Disposal
-29. Verifikasi opsi Disposal: `None`, `Basic`, `Full`
+29. Verifikasi opsi Disposal: `None`, `Full`
 30. Tekan Esc, lalu buka dropdown Accounting & Depreciation
 31. Verifikasi opsi Accounting & Depreciation: `None`, `Single Depreciation`, `Multi Depreciation`
 32. Tekan Esc, lalu klik `[Clear Field]` untuk mengembalikan form ke kondisi awal tanpa dirty

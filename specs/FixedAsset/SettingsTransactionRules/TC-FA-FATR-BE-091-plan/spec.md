@@ -223,24 +223,24 @@ trace:
 88. Verifikasi nilai efektif Self service untuk aset `Truk Gudang {runId}` kembali `ON` langsung, dari nilai tersimpan
 89. Verifikasi nilai efektif Duration unit untuk aset `Truk Gudang {runId}` kembali `Hours` langsung
 
-### Level Feature Suite Assignment Basic tidak menggerbangi field tab penugasan
+### Level Feature Suite Assignment Basic hanya menggerbangi Allowed assignee, bukan field tab penugasan lain
 90. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log
 91. Operator Plan menurunkan level Feature Suite Assignment plan kustom `Paket Kustom {runId}` ke `Basic`
 92. Verifikasi Changelog dan Activity Log tidak bertambah entri dari yang dicatat sebelum penurunan level, karena perubahan level plan bukan perubahan Settings
-93. Verifikasi nilai efektif Need recipient confirmation untuk aset `Truk Workshop {runId}` tetap `No`, karena tidak ada field tab penugasan yang bergerbang plan pada level `Basic`
+93. Verifikasi nilai efektif Need recipient confirmation untuk aset `Truk Workshop {runId}` tetap `No`, karena Need recipient confirmation tidak bergerbang plan pada level `Basic` (hanya Allowed assignee yang bergerbang)
 94. Maya Pengelola menyimpan Category `Armada Plan {runId}` dengan Need recipient confirmation nilai sendiri `Yes` lewat Save Changes
-95. Verifikasi Save diterima dan Need recipient confirmation Category `Armada Plan {runId}` tersimpan `Yes`, karena tidak ada field tab penugasan yang bergerbang plan pada level `Basic`
+95. Verifikasi Save diterima dan Need recipient confirmation Category `Armada Plan {runId}` tersimpan `Yes`, karena Need recipient confirmation tidak bergerbang plan pada level `Basic` (hanya Allowed assignee yang bergerbang)
 96. Operator Plan mengembalikan level Feature Suite Assignment plan kustom `Paket Kustom {runId}` ke `Full`
 
-### Level Basic pemindahan dan pelepasan tidak menggerbangi field Settings
-97. Operator Plan menurunkan level Feature Suite pemindahan dan pelepasan plan kustom `Paket Kustom {runId}` ke `Basic`
+### Level Basic pemindahan tidak menggerbangi field Settings di luar Approval scope, In-transit overdue after, dan Photo at end sel Transfer; level Full pelepasan tidak menggerbangi field apa pun
+97. Operator Plan menurunkan level Feature Suite pemindahan plan kustom `Paket Kustom {runId}` ke `Basic`, dengan level Feature Suite pelepasan `Full`
 98. Maya Pengelola menyimpan Category `Armada Plan {runId}` dengan Auto-approve when destination in same parent Group nilai sendiri `OFF`
-99. Verifikasi Save diterima dan nilai itu tersimpan, karena tidak ada field Settings yang bergerbang pada Basic
+99. Verifikasi Save diterima dan nilai itu tersimpan, karena Auto-approve when destination in same parent Group tidak bergerbang pada Basic pemindahan
 100. Maya Pengelola menyimpan Category `Armada Plan {runId}` dengan Min asset age warning nilai sendiri `6`
-101. Verifikasi Save diterima dan Min asset age warning Category `Armada Plan {runId}` tersimpan `6`, karena tidak ada field Settings yang bergerbang pada Basic pelepasan
+101. Verifikasi Save diterima dan Min asset age warning Category `Armada Plan {runId}` tersimpan `6`, karena tidak ada field Settings pelepasan yang bergerbang pada Full
 102. Verifikasi nilai efektif Auto-approve when destination in same parent Group untuk aset `Mesin Kantor {runId}` mengikuti nilai tersimpan `OFF`
 103. Verifikasi nilai efektif Min asset age warning untuk aset `Mesin Kantor {runId}` mengikuti nilai tersimpan `6`
-104. Operator Plan mengembalikan level Feature Suite pemindahan dan pelepasan plan kustom `Paket Kustom {runId}` ke `Full`
+104. Operator Plan mengembalikan level Feature Suite pemindahan plan kustom `Paket Kustom {runId}` ke `Full`
 
 ### Pengaju biasa menunggu approval saat Approval Workflow tersedia dan langsung lanjut saat tidak tersedia
 105. Maya Pengelola menambahkan override Group `Workshop {runId}` pada Category `Armada Plan {runId}` untuk transaksi peminjaman dengan Require approval `ON`
@@ -262,11 +262,11 @@ trace:
 119. Verifikasi pemindahan itu langsung lanjut ke tahap eksekusi tanpa menunggu approval di Group asal maupun Group tujuan, walau Approval scope tersimpan `Origin only` dan Require approval transaksi pemindahan tersimpan `ON`
 120. Operator Plan menyalakan kembali toggle Approval Workflow pada plan kustom `Paket Kustom {runId}`
 
-### Perubahan level Feature Suite pemindahan dan pelepasan tidak masuk Changelog
+### Perubahan level Feature Suite pemindahan tidak masuk Changelog
 121. Maya Pengelola mencatat jumlah entri Changelog dan Activity Log
-122. Operator Plan menurunkan level Feature Suite pemindahan dan pelepasan plan kustom `Paket Kustom {runId}` ke `Basic`
+122. Operator Plan menurunkan level Feature Suite pemindahan plan kustom `Paket Kustom {runId}` ke `Basic`
 123. Verifikasi Changelog dan Activity Log tidak bertambah entri dari jumlah yang dicatat, karena perubahan level plan bukan perubahan Settings
-124. Operator Plan mengembalikan level Feature Suite pemindahan dan pelepasan plan kustom `Paket Kustom {runId}` ke `Full`
+124. Operator Plan mengembalikan level Feature Suite pemindahan plan kustom `Paket Kustom {runId}` ke `Full`
 125. Verifikasi Changelog dan Activity Log tetap tidak bertambah entri dari jumlah yang dicatat
 
 ### Reset to Default tidak dicatat dan Save sesudahnya dicatat
@@ -299,4 +299,4 @@ trace:
 148. Verifikasi Save diterima dan Require approval Category `Peralatan Plan {runId}` tersimpan `ON`
 149. Verifikasi jumlah notifikasi `approver_required` bertambah tepat satu dari yang dicatat, karena guard konfigurasi aktif saat Approval Workflow tersedia dan tidak ada Role Transaksi Approver yang ditugaskan untuk transaksi peminjaman
 
-[^drift-1]: Drift PRD vs foundation. PRD §9.10.1, §9.10.2, dan §9.10.3 (tabel level per plan): plan bernama `starter`, `growth`, `professional`, dan `enterprise`. foundation `plans.md` §2.2 dan §3.4: kolom plan adalah slot `Free (rank 0)`, `Paid (rank 1)`, `Paid (rank 2)`, dan `Paid (rank 3)` yang namanya bebas diedit Principal, dengan nilai default plan awal per slot (Approval Workflow: No, No, Yes, Yes; Borrowing dan Assignment: None, Basic, Full, Full). Diasersi: foundation, karena nama plan adalah label bebas dan plan adalah pola bersama platform; `starter`, `growth`, `professional`, dan `enterprise` dibaca sebagai slot rank 0 sampai 3 (SB-4).
+[^drift-1]: Drift PRD vs foundation. PRD §9.10.1, §9.10.2, dan §9.10.3 (tabel level per plan): kolom plan memakai slot `free`, `paid_1`, `paid_2`, dan `paid_3`. foundation `plans.md` §2.2 dan §3.4: kolom plan adalah slot `Free (rank 0)`, `Paid (rank 1)`, `Paid (rank 2)`, dan `Paid (rank 3)` yang namanya bebas diedit Principal, dengan nilai default plan awal per slot (Approval Workflow: No, No, Yes, Yes; Borrowing dan Assignment: None, Basic, Full, Full). Diasersi: foundation, karena nama plan adalah label bebas dan plan adalah pola bersama platform; `free`, `paid_1`, `paid_2`, dan `paid_3` dibaca sebagai slot rank 0 sampai 3 (SB-4).

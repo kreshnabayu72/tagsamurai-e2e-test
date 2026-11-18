@@ -57,7 +57,7 @@ coverage:
   - DU-103-19: Record `Welding Machine Lincoln - 2`, Asset ID `WLD-2026-0002`, Group `Head Office`, Status `Reported Disposal`.
   - DU-103-20: Record `Welding Machine Lincoln - 3`, Asset ID `WLD-2026-0003`, Group `Head Office`, Status `In Disposal Process`.
 - Kondisi:
-  - K1: daftar memuat DU-103-1 sampai DU-103-8; Selection Limit bernilai `1000`; Level Feature Suite Disposal bernilai `Basic`; aktor berhak menjalankan Report Disposal.
+  - K1: daftar memuat DU-103-1 sampai DU-103-8; Selection Limit bernilai `1000`; Level Feature Suite Disposal bernilai `Full`; aktor berhak menjalankan Report Disposal.
   - K2: daftar memuat 12 record pada DU-103-9 dengan ukuran halaman bawaan; Selection Limit bernilai `1000`.
   - K3: daftar memuat 999 record pada DU-103-10; Selection Limit bernilai `1000`.
   - K4: daftar memuat 1000 record pada DU-103-11; Selection Limit bernilai `1000`.

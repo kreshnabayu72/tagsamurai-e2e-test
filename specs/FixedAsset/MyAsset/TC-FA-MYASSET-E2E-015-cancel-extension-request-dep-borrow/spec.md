@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§3#p11", "§4.1b#r56", "§4.1b#r57", "§4.1b#r58", "§4.1b#r59", "§Dialog aksi baris (tab Borrowed dan Assigned)#p6", "§4.4#r5", "§7.3#r3", "§9.2#b8", "§9.4.2#r44", "§9.4.2#r45", "§9.6#r4", "§9.7#r5", "EB-FB-1@cancel-extension-request"]
+sourceRules: ["§3#p11", "§4.1b#r56", "§4.1b#r57", "§4.1b#r58", "§4.1b#r59", "§Dialog aksi baris (tab Borrowed dan Assigned)#p6", "§4.4#r5", "§7.3#r3", "§9.2#b8", "§9.4.2#r46", "§9.4.2#r47", "§9.6#r4", "§9.7#r5", "EB-FB-1@cancel-extension-request"]
 smoke: ["EB-FB-1@cancel-extension-request"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -18,12 +18,12 @@ trace:
   "§4.4#r5": [8, 11]
   "§7.3#r3": 11
   "§9.2#b8": [12, 18]
-  "§9.4.2#r44": 26
-  "§9.4.2#r45": 30
+  "§9.4.2#r46": 25
+  "§9.4.2#r47": 29
   "§9.6#r4": [11, 12]
-  "§9.7#r5": [26, 27]
+  "§9.7#r5": [25, 26]
   "EB-FB-1@cancel-extension-request": 11
-anchor: [19, 29]
+anchor: [19, 28]
 coverage:
   web: automated
 ---
@@ -69,9 +69,8 @@ coverage:
 22. Klik `Cancel Extension Request`
 23. Aktor Borrow meninjau pengajuan Extension pinjaman DU-015-2 dan menerapkannya saat dialog `Cancel Extension` masih terbuka
 24. Klik `[Cancel Extension]`
-25. Muat ulang halaman
-26. Verifikasi baris `Speaker JBL PartyBox 310 {runId}` berstatus `Borrowed`
-27. Verifikasi Due Date baris `Speaker JBL PartyBox 310 {runId}` berbeda dari Due Date yang dicatat
-28. Klik `⋯` pada baris `Speaker JBL PartyBox 310 {runId}`
-29. Verifikasi opsi `Borrow Log` tersedia pada menu baris
-30. Verifikasi opsi `Cancel Extension Request` tidak tersedia pada menu baris
+25. Verifikasi baris `Speaker JBL PartyBox 310 {runId}` berstatus `Borrowed`
+26. Verifikasi Due Date baris `Speaker JBL PartyBox 310 {runId}` berbeda dari Due Date yang dicatat
+27. Klik `⋯` pada baris `Speaker JBL PartyBox 310 {runId}`
+28. Verifikasi opsi `Borrow Log` tersedia pada menu baris
+29. Verifikasi opsi `Cancel Extension Request` tidak tersedia pada menu baris

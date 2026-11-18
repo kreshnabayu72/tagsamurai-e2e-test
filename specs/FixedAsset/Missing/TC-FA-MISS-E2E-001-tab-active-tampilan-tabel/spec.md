@@ -112,7 +112,7 @@ coverage:
   - Date Format bernilai `DD/MM/YY` dan Time Format bernilai `HH:mm`.
   - Long missing after bernilai `30`.
   - T0 adalah waktu spec dijalankan; tanggal Reported Date dan pemindaian pada entri di atas dihitung relatif terhadap T0.
-  - Level Feature Suite Disposal pada entitas aktor adalah Basic atau Full, dan `Rina Wijaya {runId}` sebagai Total Control memegang hak Report Disposal (Aktor Disposal).
+  - Level Feature Suite Disposal pada entitas aktor adalah Full, dan `Rina Wijaya {runId}` sebagai Total Control memegang hak Report Disposal (Aktor Disposal).
   - Plan client membuka semua tipe TAG: `RFID`, `NFC`, `QR`, `BLE`, dan `GPS`.
 
 ## Test Steps

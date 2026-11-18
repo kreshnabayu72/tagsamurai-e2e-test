@@ -42,7 +42,7 @@ coverage:
   - DU-022-10: Damage record aset `Scanner Fujitsu fi-7160 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-022-4.
 - Kondisi:
   - After photo required bernilai `OFF`.
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

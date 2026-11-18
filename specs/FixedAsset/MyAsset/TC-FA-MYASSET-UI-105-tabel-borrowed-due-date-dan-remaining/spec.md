@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r55", "§1.2#r56", "§1.2#r58", "§1.2#r60", "§1.2#r62", "§4.1b#r10", "§4.1b#r11", "§9.4.2#r85", "EB-XM-1"]
+sourceRules: ["§1.2#r55", "§1.2#r56", "§1.2#r58", "§1.2#r60", "§1.2#r62", "§4.1b#r10", "§4.1b#r11", "§9.4.2#r88", "EB-XM-1"]
 smoke: []
 dependsOn: []
 trace:
@@ -16,7 +16,7 @@ trace:
   "§1.2#r62": [24, 26, 27, 28, 29, 30, 32, 33, 34]
   "§4.1b#r10": [3, 8, 25, 37, 38]
   "§4.1b#r11": [2, 7, 10, 14, 16, 35]
-  "§9.4.2#r85": [13, 14]
+  "§9.4.2#r88": [13, 14]
   "EB-XM-1": [37, 38, 40, 41, 43, 44]
 anchor: []
 coverage:

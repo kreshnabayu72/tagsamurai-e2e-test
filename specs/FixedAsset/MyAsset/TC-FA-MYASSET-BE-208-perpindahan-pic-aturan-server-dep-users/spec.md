@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r49", "§1.2#r50", "§1.2#r52", "§1.2#r53", "§9.2#r23", "§9.2#r24", "§9.4.2#r10", "§9.4.2#r22", "§9.4.2#r46", "§9.4.2#r47", "§9.4.2#r48", "§9.4.2#r49", "§9.4.2#r62", "§9.4.2#r63"]
+sourceRules: ["§1.2#r49", "§1.2#r50", "§1.2#r52", "§1.2#r53", "§9.2#r23", "§9.2#r24", "§9.4.2#r10", "§9.4.2#r22", "§9.4.2#r48", "§9.4.2#r49", "§9.4.2#r50", "§9.4.2#r51", "§9.4.2#r64", "§9.4.2#r65"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 owner: BE
@@ -18,12 +18,12 @@ trace:
   "§9.2#r24": 16
   "§9.4.2#r10": [23, 24, 27]
   "§9.4.2#r22": [38, 40, 41, 43, 45]
-  "§9.4.2#r46": 4
-  "§9.4.2#r47": 5
-  "§9.4.2#r48": 16
-  "§9.4.2#r49": 19
-  "§9.4.2#r62": [30, 31, 35]
-  "§9.4.2#r63": [32, 33]
+  "§9.4.2#r48": 4
+  "§9.4.2#r49": 5
+  "§9.4.2#r50": 16
+  "§9.4.2#r51": 19
+  "§9.4.2#r64": [30, 31, 35]
+  "§9.4.2#r65": [32, 33]
 ---
 
 # Aturan server perpindahan baris saat PIC diganti, dikosongkan, atau Borrower dibuatkan akun

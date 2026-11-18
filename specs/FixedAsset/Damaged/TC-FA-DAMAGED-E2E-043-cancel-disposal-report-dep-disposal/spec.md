@@ -46,7 +46,7 @@ coverage:
   - DU-043-6: Input Cancel Disposal Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki`.
   - DU-043-7: Input Decline Report `Admin B {runId}` atas `Monitor Dell P2422H {runId}`: Reason `Laporan ditolak karena aset masih dapat dipakai`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

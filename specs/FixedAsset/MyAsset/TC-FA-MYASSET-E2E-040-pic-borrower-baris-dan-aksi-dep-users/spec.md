@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-20", "FI-21", "§1.2#r14", "§1.2#r24", "§1.2#r36", "§1.2#r37", "§1.2#r41", "§1.2#r42", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r12", "§2.1#r13", "§4.1b#r12", "§4.1b#r31", "§4.1b#p6", "§4.2.3#p1", "§4.2.5#p4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§9.2#b7"]
+sourceRules: ["FI-20", "FI-21", "§1.2#r14", "§1.2#r24", "§1.2#r36", "§1.2#r37", "§1.2#r41", "§1.2#r42", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r12", "§2.1#r13", "§4.1b#r12", "§4.1b#r31", "§4.1b#p6", "§4.2.3#p1", "§4.2.5#p4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§9.2#b7"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -31,7 +31,7 @@ trace:
   "§2.1#r13": 37
   "§4.1b#r12": [6, 7, 9]
   "§4.1b#r31": 41
-  "§4.1b#p6": [18, 20, 27]
+  "§4.1b#p6": [18, 20, 27, 97, 101]
   "§4.2.3#p1": [57, 58, 59, 61, 62, 63]
   "§4.2.5#p4": [73, 83, 85, 88]
   "§Dialog aksi baris (tab Borrowed dan Assigned)#r7": 83
@@ -44,12 +44,13 @@ trace:
   "§4.8#r7": [33, 47]
   "§4.8#r8": 34
   "§4.8#r9": 35
+  "§4.8#r10": 105
   "§4.8#r11": 41
   "§4.8#r12": [50, 53]
   "§4.8#r13": 32
   "§4.8#r14": 37
   "§9.2#b7": [61, 62, 63]
-anchor: [11]
+anchor: [11, 104]
 coverage:
   web: automated
 ---
@@ -119,7 +120,7 @@ coverage:
 26. Klik `Select All (4 records)`
 27. Verifikasi baris `Proyektor Epson X06 {runId}`, `Mikrofon Shure SM58 {runId}`, dan `Tripod Manfrotto 055 {runId}` tercentang
 28. Verifikasi baris `Monitor Dell P2422H {runId}` dan `Router Mikrotik hAP {runId}` tidak tercentang
-29. Verifikasi tombol `Unselect All (4 records)` tampil
+29. Verifikasi tombol `Unselect All (4 records)` tampil[^drift-1]
 30. Klik `✕` pada Bulk Action Bar untuk menghapus seleksi
 
 ### Aksi baris Borrowed bagi PIC atas nama Borrower tanpa akun
@@ -189,3 +190,26 @@ coverage:
 86. Buka menu `⋯` pada baris `Barcode Reader Zebra DS2208 {runId}`
 87. Klik `Borrow Log`
 88. Verifikasi node `Handover not confirmed` pada dialog Borrow Log tercatat dengan keterangan `Not received`
+
+### Request Extension bulk oleh PIC dicatat atas nama Borrower pada tiap baris
+89. Tutup dialog Borrow Log dengan menekan `Escape`
+90. Centang baris `Laptop Lenovo E14 {runId}`
+91. Centang baris `Proyektor Epson X06 {runId}`
+92. Klik `Bulk Action`
+93. Klik `Request Extension`
+94. Klik `[Submit Request]`
+95. Buka menu `⋯` pada baris `Laptop Lenovo E14 {runId}`
+96. Klik `Borrow Log`
+97. Verifikasi node `Extension requested` pada dialog Borrow Log dicatat `[PIC] on behalf of [Borrower]` dengan PIC `Taufik Hidayat {runId}` dan Borrower `Hendra Kusuma`
+98. Tutup dialog Borrow Log dengan menekan `Escape`
+99. Buka menu `⋯` pada baris `Proyektor Epson X06 {runId}`
+100. Klik `Borrow Log`
+101. Verifikasi node `Extension requested` pada dialog Borrow Log dicatat `[PIC] on behalf of [Borrower]` dengan PIC `Taufik Hidayat {runId}` dan Borrower `Hendra Kusuma`
+102. Tutup dialog Borrow Log dengan menekan `Escape`
+
+### Tombol Borrow an Asset tidak tampil bagi PIC Borrower di web
+103. Klik tab `Borrowed`
+104. Verifikasi toolbar tab Borrowed memuat `Download`, `Filter`, dan `Search`
+105. Verifikasi tombol `Borrow an Asset` tidak tampil di toolbar tab Borrowed (Hidden)
+
+[^drift-1]: Drift PRD/foundation vs kontrak komponen. foundation `prd-conventions.md` §8: tombol berubah (toggle) menjadi `"Unselect All"` saat seluruh data terselect. Kontrak `BulkActionButton#11` dan `BulkActionButton#60`: begitu semua baris yang dapat dipilih terpilih, tombol berbunyi `Unselect All (N records)`, tepat ketika jumlah terpilih sama dengan N. Diasersi: kontrak komponen (SB-7), sehingga label memuat jumlah.

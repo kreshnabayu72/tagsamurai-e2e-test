@@ -169,7 +169,7 @@ anchor: []
 29. Hendra melakukan Receive atas baris Transfer aset `Pompa Air Ber-TAG {runId}` dengan scan tag, tanpa foto
 30. Verifikasi Receive ditolak karena Photo at end `ON` mewajibkan 1 foto pada Receive, dan baris tetap berstatus `In Transit`
 31. Hendra melakukan Receive atas baris Transfer aset `Pompa Air Ber-TAG {runId}` dengan scan tag dan 1 foto
-32. Verifikasi baris Transfer aset `Pompa Air Ber-TAG {runId}` berstatus `Received`
+32. Verifikasi baris Transfer aset `Pompa Air Ber-TAG {runId}` berstatus `Completed`
 33. Verifikasi Handover Note PDF dibuat untuk serah terima fisik pada Receive itu
 
 ### Category bertanda Non TAG dikecualikan dari scan tag wajib
@@ -181,7 +181,7 @@ anchor: []
 37. Rizal mengajukan Transfer aset `Kompresor Tag Rusak {runId}` ke Group `Cabang Surabaya {runId}`
 38. Rizal melakukan Send atas baris Transfer aset `Kompresor Tag Rusak {runId}` dengan scan tag dan 1 foto
 39. Hendra melakukan Receive atas baris Transfer aset `Kompresor Tag Rusak {runId}` lewat `I can't scan the TAG` karena tag rusak, dengan 1 foto
-40. Verifikasi Receive diterima dan baris Transfer aset `Kompresor Tag Rusak {runId}` berstatus `Received`
+40. Verifikasi Receive diterima dan baris Transfer aset `Kompresor Tag Rusak {runId}` berstatus `Completed`
 41. Verifikasi foto yang disertakan pada Receive lewat `I can't scan the TAG` tersimpan pada baris itu
 42. Verifikasi Receive lewat `I can't scan the TAG` diterima dengan identifikasi manual berupa foto aset, tanpa cek radius
 43. Verifikasi baris Receive itu diberi flag `Manual identification`
@@ -192,21 +192,21 @@ anchor: []
 46. Rizal mengajukan Transfer aset `Printer Label Jaringan {runId}` ke Group `Cabang Surabaya {runId}`
 47. Rizal melakukan Send atas baris Transfer aset `Printer Label Jaringan {runId}` dengan scan tag dan 1 foto
 48. Hendra melakukan Receive atas baris Transfer aset `Printer Label Jaringan {runId}` dengan scan tag, tanpa foto
-49. Verifikasi Receive diterima dan baris berstatus `Received`, karena override aset memakai Photo at end `OFF`
+49. Verifikasi Receive diterima dan baris berstatus `Completed`, karena override aset memakai Photo at end `OFF`
 50. Verifikasi aset `Printer Label Jaringan {runId}` kini berada di Group `Cabang Surabaya {runId}`
 51. Hendra mengajukan Transfer aset `Printer Label Jaringan {runId}` dari Group `Cabang Surabaya {runId}` ke Group `Cabang Depok {runId}`
 52. Hendra melakukan Send atas baris Transfer aset `Printer Label Jaringan {runId}` dengan scan tag dan 1 foto
 53. Hendra melakukan Receive atas baris Transfer aset `Printer Label Jaringan {runId}` dengan scan tag, tanpa foto
-54. Verifikasi Receive diterima dan baris berstatus `Received`, sehingga override aset tetap berlaku sesudah aset berpindah Group
+54. Verifikasi Receive diterima dan baris berstatus `Completed`, sehingga override aset tetap berlaku sesudah aset berpindah Group
 
 ### Change Cost Center with Group Never: Cost Center aset tidak berubah dan Accounting diberi notifikasi
 55. Citra mencatat jumlah notifikasi `transfer_cost_center_review` yang ia terima
 56. Rizal mengajukan Transfer aset `Troli Barang Kecil {runId}` dan `Troli Barang Besar {runId}` ke Group `Cabang Surabaya {runId}` dalam satu pengajuan
 57. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
 58. Hendra melakukan Receive atas kedua baris Transfer dalam satu sesi Receive dengan scan tag dan 1 foto
-59. Verifikasi kedua baris Transfer berstatus `Received`
+59. Verifikasi kedua baris Transfer berstatus `Completed`
 60. Verifikasi Cost Center aset `Troli Barang Kecil {runId}` dan `Troli Barang Besar {runId}` tetap `CC-GP-{runId}`
-61. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Received, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
+61. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Completed, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
 62. Citra memperbarui Cost Center aset `Troli Barang Kecil {runId}` menjadi `CC-SBY-{runId}`
 63. Verifikasi Cost Center aset `Troli Barang Kecil {runId}` tersimpan sebagai `CC-SBY-{runId}`
 
@@ -222,7 +222,7 @@ anchor: []
 72. Rizal melakukan Send atas kedua baris Transfer dengan scan tag dan 1 foto
 73. Hendra melakukan Receive atas kedua baris Transfer dalam satu sesi Receive dengan scan tag dan 1 foto
 74. Verifikasi Cost Center aset `Rak Besi Rendah 1 {runId}` dan `Rak Besi Rendah 2 {runId}` tetap `CC-GP-{runId}`
-75. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Received, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
+75. Verifikasi Citra menerima satu notifikasi `transfer_cost_center_review` baru untuk TRF itu, bukan satu untuk setiap baris Completed, sehingga pengiriman dikelompokkan satu per TRF per sesi Receive
 
 ### Destination quota check: pengajuan melebihi sisa kuota Group tujuan ditolak seluruhnya
 76. Rizal mengajukan satu Transfer berisi aset `Lemari Arsip 1 {runId}`, `Lemari Arsip 2 {runId}`, `Lemari Arsip 3 {runId}`, dan `Lemari Arsip 4 {runId}` ke Group `Cabang Bekasi {runId}`, yang sisa kuotanya 3
@@ -346,15 +346,15 @@ anchor: []
 172. Verifikasi Joko tidak menerima permintaan approval atas baris Transfer aset `Kompresor Udara Plan Off {runId}`, karena penugasan Role Transaksi `Approver` tidak dipakai selama nilai efektif Require approval `OFF`
 173. Operator platform mengaktifkan Approval Workflow pada plan client
 
-### Change Cost Center with Group dibaca saat baris Received, bukan saat Submit
+### Change Cost Center with Group dibaca saat baris Completed lewat Receive, bukan saat Submit
 174. Wulan menyimpan Require approval `OFF` untuk Transfer di All categories
 175. Wulan menyimpan Change Cost Center with Group `Never` di All categories
 176. Rizal mengajukan Transfer aset `Troli Barang Sedang {runId}` ke Group `Cabang Surabaya {runId}`
 177. Rizal melakukan Send atas baris Transfer aset `Troli Barang Sedang {runId}` dengan scan tag dan 1 foto
 178. Wulan menyimpan Change Cost Center with Group `Always` di All categories
 179. Hendra melakukan Receive atas baris Transfer aset `Troli Barang Sedang {runId}` dengan scan tag dan 1 foto
-180. Verifikasi baris Transfer aset `Troli Barang Sedang {runId}` berstatus `Received`
-181. Verifikasi Cost Center aset `Troli Barang Sedang {runId}` menjadi `CC-SBY-{runId}`, Cost Center default Group tujuan, karena nilai `Always` yang berlaku saat baris Received yang dipakai, bukan nilai `Never` yang berlaku saat pengajuan
+180. Verifikasi baris Transfer aset `Troli Barang Sedang {runId}` berstatus `Completed`
+181. Verifikasi Cost Center aset `Troli Barang Sedang {runId}` menjadi `CC-SBY-{runId}`, Cost Center default Group tujuan, karena nilai `Always` yang berlaku saat baris Completed yang dipakai, bukan nilai `Never` yang berlaku saat pengajuan
 
 ### Mark as Received pada Transfer menyelesaikan baris In Transit tanpa scan dengan Reason dan foto wajib
 182. Wulan menyimpan Require approval `OFF` untuk Transfer di All categories
@@ -366,8 +366,8 @@ anchor: []
 188. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 1 {runId}` dengan 1 foto, tanpa Reason
 189. Verifikasi Mark as Received ditolak karena Reason wajib, dan baris tetap berstatus `In Transit`
 190. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 1 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik` dan 1 foto, tanpa scan tag
-191. Verifikasi baris Transfer aset `Tangga Aluminium 1 {runId}` berstatus `Received` tanpa scan tag, sehingga penolakan sebelumnya berasal dari Reason yang kosong
+191. Verifikasi baris Transfer aset `Tangga Aluminium 1 {runId}` berstatus `Completed` tanpa scan tag, sehingga penolakan sebelumnya berasal dari Reason yang kosong
 192. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 2 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik`, tanpa foto
 193. Verifikasi Mark as Received ditolak karena foto wajib, dan baris tetap berstatus `In Transit`
 194. Hendra melakukan Mark as Received atas baris Transfer aset `Tangga Aluminium 2 {runId}` dengan Reason `Tag tidak terbaca, aset sudah diterima secara fisik` dan 1 foto, tanpa scan tag
-195. Verifikasi baris Transfer aset `Tangga Aluminium 2 {runId}` berstatus `Received` tanpa scan tag, sehingga penolakan sebelumnya berasal dari foto yang kosong
+195. Verifikasi baris Transfer aset `Tangga Aluminium 2 {runId}` berstatus `Completed` tanpa scan tag, sehingga penolakan sebelumnya berasal dari foto yang kosong
