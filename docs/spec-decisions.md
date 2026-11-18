@@ -2759,3 +2759,11 @@ Aturan:
 - **Keputusan:** FE: Remove User bulk yang dijawab 403 `target_tier` menampilkan T-10; Remove satu baris tetap teks izin (R104-1). Spec tetap.
 - **Diputuskan oleh:** Coordinator 2026-11-18.
 - **Status:** berlaku, perbaikan di modul GlobalSettings Role (gs).
+
+## D-268 Aturan umum: tempel angka desimal ke NumberInput bilangan bulat diabaikan, field tidak berubah (2026-11-19)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationLicense `TC-AC-LA-E2E-030` (High, Negative), TC-AC-LA-114 langkah 8–10, baris `7.9` "tempel dari clipboard" → `79`.
+- **Karena:** NumberInput Wangs UI bilangan bulat (tanpa digit pecahan) menolak seluruh teks tempelan yang punya digit pecahan, sehingga field tetap seperti sebelum ditempel (Behavior Contract NumberInput sejak rc.320: "pasted text with too many fraction digits is ignored"). Design system lain juga tidak menghasilkan `79`: React Aria NumberField menolak seluruh sisipan yang tidak valid; Mantine (react-number-format, `decimalScale: 0`) memotong jadi `7`; Ant InputNumber menerima `7.9` lalu membulatkannya jadi `8` saat blur. Menyaring digit bisa diam-diam mengubah 7.9 menjadi 79, jadi berbahaya untuk kuantitas. Bukti: run local-20261119-030041-13018 (slot 2), temuan 19 di `plans/admin-console-license-allocation-license/integration-findings.md`.
+- **Keputusan:** mengikuti D-096. Untuk spec: menempel nilai desimal ke field bilangan bulat yang kosong membuat field tetap kosong, tanpa pesan validasi. Baris yang diketik (`1.5` → `15`, `5,2` → `52`) tetap seperti di spec.
+- **Diputuskan oleh:** Coordinator 2026-11-19.
+- **Status:** berlaku; script spec 030 baris `7.9` mengasersi field kosong (ac).
