@@ -2732,3 +2732,4 @@ Aturan:
 - **Karena:** product owner 2026-11-18 meminta interaksi scan diuji dulu tanpa API BE, dengan mock dan UI. Repo spec TAG Stock hanya berisi spec `-E2E-`, tanpa spec `-UI-`.
 - **Keputusan:** langkah UI scan dari ketiga spec diturunkan menjadi tes ui-client `TC-AC-ACTS-UI-048`, `-049`, `-050` (nama folder mengikuti judul spec asalnya). Reader disuapkan lewat seam stand-in scan reader app. Respons BE diambil dari mock/intercept yang mengikuti LLD TAG Stock. Mulai dari `-049`. Spec `-E2E-` tidak diubah dan tetap PI dengan BT-GAP-01. Setelah API terdeploy, spec E2E dijalankan dengan reader-sim lewat relay. Tes UI tetap ada sebagai lapisan ui-client.
 - **Diputuskan oleh:** Coordinator 2026-11-18, atas arahan owner.
+- **Status:** dicabut 2026-11-18. Owner membatalkan integrasi hardware/scan di tim e2e (dikerjakan tim hardware). Tes ui-client `-UI-048/049/050` tidak dibuat; spec `-E2E-` tetap PI dengan BT-GAP-01.
