@@ -71,7 +71,7 @@ coverage:
   - K4: seperti K1; baris DU-114-4 diubah ke Reject.
   - K5: seperti K1; keputusan Approve atas DU-114-4 dan DU-114-5 dikirim lewat dialog Submit Approval; respons simpan lambat.
   - K6: seperti K1 dengan Approval type Any one approver; Rina Wulandari memutuskan DU-114-4 lebih dulu saat halaman terbuka; teks yang diharapkan `You can no longer approve this request because it has already been done by another approver.`, dari approver lain.
-  - K7: seperti K1 dengan Approval type All approvers (AND); Rina Wulandari me-Reject DU-114-4 saat halaman terbuka.
+  - K7: seperti K1 dengan Approval type All approvers; Rina Wulandari me-Reject DU-114-4 saat halaman terbuka.
   - K8: seperti K7; Rina Wulandari hanya meng-Approve DU-114-4.
   - K9: seperti K1; saat Submit konflik pada DU-114-4 menolak seluruh Submit.
   - K10: seperti K9; sesudah `[Close]` halaman Review dimuat ulang; DU-114-4 sudah diputuskan pihak lain; DU-114-5 sudah diisi Reject dengan Approval Note DU-114-12.

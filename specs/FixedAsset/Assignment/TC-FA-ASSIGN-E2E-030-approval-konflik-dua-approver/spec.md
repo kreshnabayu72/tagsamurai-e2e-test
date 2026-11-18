@@ -178,8 +178,8 @@ coverage:
 106. [Tono] Klik `[Submit]` pada halaman Review
 107. [Tono] Klik `[Submit]` pada dialog `Submit Approval`
 108. [Rina] Klik `[Close]` pada dialog `Approval cannot be made`
-109. Verifikasi `[Submit]` pada halaman Review milik [Rina] pengajuan `Budi Santoso {runId}` disabled
-110. Verifikasi notice tampil di atas footer halaman Review milik [Rina] pengajuan `Budi Santoso {runId}`
+109. Verifikasi `[Submit]` pada halaman Review milik [Rina] pengajuan `Budi Santoso {runId}` tidak tampil
+110. Verifikasi halaman Review milik [Rina] pengajuan `Budi Santoso {runId}` read-only tanpa tombol keputusan
 
 ### Dua approver mengirim keputusan atas aset Any one yang sama bersamaan
 111. [Rina] Buka halaman `Approvals > Assignment`

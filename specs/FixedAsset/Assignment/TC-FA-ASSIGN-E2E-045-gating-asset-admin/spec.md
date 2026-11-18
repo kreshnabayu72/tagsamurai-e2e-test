@@ -109,15 +109,15 @@ coverage:
 24. Verifikasi aksi `Cancel Assignment` tampil dan aktif
 25. Ganti isi kotak Search dengan `Keyboard Logitech K380 {runId}`, tekan Enter
 26. Buka menu ⋯ pada baris ASG yang memuat aset `Keyboard Logitech K380 {runId}`
-27. Verifikasi aksi `Hand Over` tampil Disabled karena aktor adalah Assignee ASG ini
-28. Verifikasi aksi `Remind Assignee` tampil Disabled karena aktor adalah Assignee ASG ini
+27. Verifikasi aksi `Hand Over` tampil dan aktif karena aktor Assignee ASG ini dapat memprosesnya dengan syarat pemrosesan sendiri
+28. Verifikasi aksi `Remind Assignee` tampil dan aktif untuk aktor Assignee ASG ini
 29. Ganti isi kotak Search dengan `Projector Epson EB-X49 {runId}`, tekan Enter
 30. Buka menu ⋯ pada baris ASG yang memuat aset `Projector Epson EB-X49 {runId}`
 31. Verifikasi aksi `Change PIC` tampil dan aktif
 32. Ganti isi kotak Search dengan `Server Dell R740 {runId}`, tekan Enter
 33. Buka menu ⋯ pada baris ASG yang memuat aset `Server Dell R740 {runId}`
 34. Verifikasi aksi `Cancel Assignment` tampil dan aktif untuk ASG yang diajukan `Agus P`, siapa pun pengajunya
-35. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`[^drift-1]
+35. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`
 
 ### Aksi per aset pada tab Assigned Assets
 36. Klik tab `Assigned Assets`
@@ -133,8 +133,8 @@ coverage:
 46. Verifikasi aksi `Mark as Unassigned` tidak tampil karena level Feature Suite bukan `None`
 47. Ganti isi kotak Search dengan `Scanner Canon DR-C225 {runId}`, tekan Enter
 48. Buka menu ⋯ pada baris aset `Scanner Canon DR-C225 {runId}`
-49. Verifikasi aksi `Unassign` tampil Disabled karena aktor adalah Assignee ASG aset ini
-50. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Unassign` yang disabled
+49. Verifikasi aksi `Unassign` tampil dan aktif karena aktor Assignee ASG aset ini dapat menerimanya dengan syarat pemrosesan sendiri
+50. Verifikasi aksi `Unassign` tidak memiliki alasan disabled
 51. Ganti isi kotak Search dengan `Laptop Asus ExpertBook {runId}`, tekan Enter
 52. Buka menu ⋯ pada baris aset `Laptop Asus ExpertBook {runId}`
 53. Verifikasi aksi `Cancel Damage Report` tampil untuk laporan kerusakan milik aktor yang masih `Waiting for Confirmation`
@@ -164,4 +164,4 @@ coverage:
 73. Verifikasi aset `Scanner Canon DR-C225 {runId}` tampil pada tab `Assigned`
 74. Verifikasi Task `Confirm Handover` tidak tampil
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

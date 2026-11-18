@@ -100,7 +100,7 @@ coverage:
 17. Buka menu ⋯ pada baris ASG yang memuat aset `Projector Epson EB-X49 {runId}`
 18. Verifikasi aksi `Detail` tampil
 19. Verifikasi aksi `Change PIC` tidak tampil
-20. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`[^drift-1]
+20. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`
 
 ### Assigned Assets untuk Monitoring & Report
 21. Klik tab `Assigned Assets`
@@ -165,7 +165,7 @@ coverage:
 74. Buka menu ⋯ pada baris ASG yang memuat aset `Projector Epson EB-X49 {runId}`
 75. Verifikasi aksi `Detail` tampil
 76. Verifikasi aksi `Change PIC` tidak tampil
-77. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`[^drift-1]
+77. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`
 
 ### Assigned Assets untuk Read Only
 78. Klik tab `Assigned Assets`
@@ -239,4 +239,4 @@ coverage:
 136. Verifikasi ASG dengan Group `Head Office {runId}` tampil pada daftar
 137. Verifikasi ASG dengan Group `IT Head Office {runId}` yang memuat aset `Smart TV Samsung 55 {runId}` tidak tampil pada daftar
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

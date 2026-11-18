@@ -81,7 +81,7 @@ coverage:
 28. Tampilkan Dialog Select User dengan kondisi K1
 29. Verifikasi `[Select]` pada dialog Select User enabled
 30. Klik `[Select]`
-31. Verifikasi pesan error inline `You must pick a user` tampil di atas tombol footer[^drift-1]
+31. Verifikasi pesan error inline `You must pick a user` tampil di atas tombol footer
 32. Verifikasi dialog Select User tetap terbuka karena pilihan tidak dikirim
 
 ### Cancel menutup dialog
@@ -167,4 +167,4 @@ coverage:
 92. Tekan Enter pada kotak Search
 93. Verifikasi kotak Search memuat `nadia.pratama@example.com`
 
-[^drift-1]: Drift PRD vs foundation. PRD §9.9 (`FLD-ASG-09`, kolom Pesan error, merujuk §6 baris `Assignee Division`): `You must pick a PIC`. foundation `prd-conventions.md` §37.2: konfirmasi picker tanpa pilihan untuk User Picker menampilkan `You must pick a user`. Diasersi: foundation, karena error konfirmasi picker adalah pola bersama (SB-4).
+

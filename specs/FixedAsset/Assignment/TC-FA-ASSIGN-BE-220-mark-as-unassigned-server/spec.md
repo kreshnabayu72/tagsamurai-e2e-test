@@ -100,20 +100,20 @@ trace:
 22. Rina menjalankan Bulk `Mark as Unassigned` dengan hasil `Missing` untuk baris `Monitor LG UltraWide {runId}` pada DU-220-9
 23. Verifikasi hasil `Missing` atau `Damaged` ditolak pada Bulk dan hanya tersedia lewat aksi per aset
 
-### Bulk Mark as Unassigned dan pemisahan peran
+### Bulk Mark as Unassigned dan aset penugasan sendiri
 24. Hendra menjalankan Bulk `Mark as Unassigned` untuk baris `Monitor LG UltraWide {runId}`, `Monitor Dell P2422 {runId}`, `Printer HP LaserJet {runId}`, `Laptop Dell XPS {runId}`, dan `Genset Honda EU {runId}` pada DU-220-9, DU-220-10, dan DU-220-11
 25. Verifikasi Bulk tersedia karena sedikitnya satu aset terpilih berstatus `Assigned`
 26. Verifikasi baris `Monitor LG UltraWide {runId}` dan `Monitor Dell P2422 {runId}` berstatus `Unassigned` dengan hasil selalu `Unassigned`
 27. Verifikasi baris `Printer HP LaserJet {runId}` yang bukan `Assigned`, baris `Laptop Dell XPS {runId}` milik Hendra sebagai Assignee, dan baris `Genset Honda EU {runId}` milik Hendra sebagai PIC dilewati
 28. Verifikasi caption skipped menghitung terpisah `1` aset yang bukan `Assigned` dan `2` aset milik Aktor sendiri
 29. Hendra mengirim `Mark as Unassigned` langsung ke server untuk baris `Laptop Dell XPS {runId}` yang Assignee-nya adalah Hendra
-30. Verifikasi permintaan ditolak server karena pemisahan peran berlaku dan baris tetap `Assigned`
+30. Verifikasi permintaan ditolak server karena `Mark as Unassigned` tidak diizinkan atas aset penugasan sendiri dan baris tetap `Assigned`
 31. Hendra mengirim `Mark as Unassigned` langsung ke server untuk baris `Genset Honda EU {runId}` pada DU-220-11 sebagai PIC `Finance {runId}`
-32. Verifikasi permintaan ditolak server karena pemisahan peran melarang PIC Division aset itu memprosesnya dan baris `Genset Honda EU {runId}` tetap `Assigned`
+32. Verifikasi permintaan ditolak server karena `Mark as Unassigned` tidak diizinkan bagi PIC Division aset itu dan baris `Genset Honda EU {runId}` tetap `Assigned`
 33. Lina menjalankan `Mark as Unassigned` untuk baris `Laptop Dell XPS {runId}`
 34. Verifikasi baris `Laptop Dell XPS {runId}` berstatus `Unassigned` karena Aktor Assignment lain yang memproses
 35. Hendra menjalankan Bulk `Mark as Unassigned` hanya untuk baris `Genset Honda EU {runId}` yang semuanya miliknya sendiri
-36. Verifikasi permintaan ditolak dengan pesan `Error, you can't hand over or receive your own assignment.` tanpa dialog hasil
+36. Verifikasi permintaan ditolak dengan pesan `Error, you can't unassign your own assigned assets.` tanpa dialog hasil
 
 ### Aset Assigned tetap terkunci dan laporan hanya lewat hasil Mark as Unassigned
 37. Rina mengirim permintaan `Transfer`, `Dispose`, dan `Borrow` untuk baris `Genset Cummins {runId}` pada DU-220-12 yang masih `Assigned`

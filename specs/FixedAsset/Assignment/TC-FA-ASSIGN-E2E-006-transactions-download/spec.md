@@ -43,20 +43,20 @@ coverage:
 
 ### Unduh CSV dan XLSX tanpa saringan
 1. Verifikasi halaman pertama tabel memuat tepat 10 baris dengan laporan `Showing 1 to 10 of 12`
-2. Klik `Download`[^drift-1]
+2. Klik `Download`
 3. Verifikasi overlay menawarkan `Download as CSV` dan `Download as XLSX`
 4. Klik `Download as CSV`
 5. Verifikasi berkas `Assignment-Transactions.csv` terunduh
 6. Verifikasi berkas yang diunduh memuat 12 baris data walau tabel hanya menampilkan 10 baris per halaman
 7. Verifikasi tidak ada toast sukses yang tampil sesudah unduhan berhasil
-8. Klik `Download`[^drift-1]
+8. Klik `Download`
 9. Klik `Download as XLSX`
 10. Verifikasi berkas `Assignment-Transactions.xlsx` terunduh
 
 ### Unduh hasil Search
 11. Ganti isi kotak search dengan `Tim Cetak {runId}`, tekan Enter
 12. Verifikasi tabel memuat tepat 3 baris untuk Assignee `Tim Cetak {runId}`
-13. Klik `Download`[^drift-1]
+13. Klik `Download`
 14. Klik `Download as CSV`
 15. Verifikasi berkas yang diunduh memuat tepat 3 baris data, semuanya untuk Assignee `Tim Cetak {runId}`
 
@@ -64,7 +64,7 @@ coverage:
 16. Klik header kolom `Actions`
 17. Hilangkan centang kolom `Group` pada panel Column Visibility
 18. Verifikasi kolom `Group` tidak tampil di tabel
-19. Klik `Download`[^drift-1]
+19. Klik `Download`
 20. Klik `Download as CSV`
 21. Verifikasi header berkas yang diunduh tidak memuat kolom `Group` dan tetap memuat kolom `Transaction ID`
 
@@ -73,7 +73,7 @@ coverage:
 23. Klik header kolom `Assignee`
 24. Klik header kolom `Assignee` sekali lagi
 25. Verifikasi tabel terurut Z-A pada kolom `Assignee` dengan baris `Tim Cetak {runId}` berada di bagian akhir
-26. Klik `Download`[^drift-1]
+26. Klik `Download`
 27. Klik `Download as CSV`
 28. Verifikasi baris data terakhir berkas yang diunduh berisi Assignee `Tim Cetak {runId}` sesuai urutan tabel
 
@@ -81,13 +81,13 @@ coverage:
 29. Ganti isi kotak search dengan `{runId} tidakada`, tekan Enter
 30. Verifikasi pesan `No results found` tampil
 31. Verifikasi tombol `Download` tetap aktif
-32. Klik `Download`[^drift-1]
+32. Klik `Download`
 33. Klik `Download as CSV`
 34. Verifikasi berkas yang diunduh hanya memuat baris header kolom yang tampil, tanpa baris data dan tanpa toast
 
 ### Unduhan tanpa saringan tidak memuat Draft maupun ASG selesai
 35. Klik `(←)` pada kotak Search
-36. Klik `Download`[^drift-1]
+36. Klik `Download`
 37. Klik `Download as CSV`
 38. Verifikasi berkas yang diunduh memuat 12 baris data
 39. Verifikasi berkas yang diunduh tidak memuat aset `Proyektor Epson EB-X06 {runId}` milik Draft dan tidak memuat aset `Printer Label Zebra ZD220 {runId}` milik ASG `Canceled`
@@ -98,12 +98,12 @@ coverage:
 42. Pilih opsi `Tim Cetak {runId}` pada field `Assignee`
 43. Klik `[Apply]`
 44. Verifikasi tabel memuat tepat 3 baris untuk Assignee `Tim Cetak {runId}`
-45. Klik `Download`[^drift-1]
+45. Klik `Download`
 46. Klik `Download as CSV`
 47. Verifikasi berkas yang diunduh memuat tepat 3 baris data, semuanya untuk Assignee `Tim Cetak {runId}`
 
 ### Tooltip tombol toolbar unduh
-48. Arahkan kursor ke tombol `Download`[^drift-1]
-49. Verifikasi tombol `Download` menampilkan tooltip `Download`[^drift-1]
+48. Arahkan kursor ke tombol `Download`
+49. Verifikasi tombol `Download` menampilkan tooltip `Download`
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

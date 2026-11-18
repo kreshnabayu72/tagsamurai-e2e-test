@@ -120,12 +120,12 @@ coverage:
 24. Verifikasi aksi `Cancel Assignment` tampil dan aktif
 25. Ganti isi kotak Search dengan `Keyboard Logitech K380 {runId}`, tekan Enter
 26. Buka menu ⋯ pada baris ASG yang memuat aset `Keyboard Logitech K380 {runId}`
-27. Verifikasi aksi `Hand Over` tampil Disabled karena aktor adalah Assignee ASG ini
-28. Verifikasi aksi `Remind Assignee` tampil Disabled karena aktor adalah Assignee ASG ini
+27. Verifikasi aksi `Hand Over` tampil dan aktif karena aktor Assignee ASG ini dapat memprosesnya dengan syarat pemrosesan sendiri
+28. Verifikasi aksi `Remind Assignee` tampil dan aktif untuk aktor Assignee ASG ini
 29. Ganti isi kotak Search dengan `Projector Epson EB-X49 {runId}`, tekan Enter
 30. Buka menu ⋯ pada baris ASG yang memuat aset `Projector Epson EB-X49 {runId}`
 31. Verifikasi aksi `Change PIC` tampil dan aktif
-32. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`[^drift-1]
+32. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`
 
 ### Aksi per aset pada tab Assigned Assets
 33. Klik tab `Assigned Assets`
@@ -140,8 +140,8 @@ coverage:
 42. Verifikasi aksi `Mark as Unassigned` tidak tampil karena level Feature Suite bukan `None`
 43. Ganti isi kotak Search dengan `Scanner Canon DR-C225 {runId}`, tekan Enter
 44. Buka menu ⋯ pada baris aset `Scanner Canon DR-C225 {runId}`
-45. Verifikasi aksi `Unassign` tampil Disabled karena aktor adalah Assignee ASG aset ini
-46. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Unassign` yang disabled
+45. Verifikasi aksi `Unassign` tampil dan aktif karena aktor Assignee ASG aset ini dapat menerimanya dengan syarat pemrosesan sendiri
+46. Verifikasi aksi `Unassign` tidak memiliki alasan disabled
 47. Ganti isi kotak Search dengan `Laptop Asus ExpertBook {runId}`, tekan Enter
 48. Buka menu ⋯ pada baris aset `Laptop Asus ExpertBook {runId}`
 49. Verifikasi aksi `Cancel Damage Report` tampil untuk laporan kerusakan milik aktor yang masih `Waiting for Confirmation`
@@ -181,28 +181,28 @@ coverage:
 77. Verifikasi Task `Confirm Handover` untuk aset `Keyboard Logitech K380 {runId}` tampil karena aktor adalah Assignee ASG itu
 78. Verifikasi Task `Confirm Handover` untuk aset `Printer HP M404 {runId}` tidak tampil
 
-### Alasan Disabled Remind Assignee bagi aktor Assignee
+### Remind Assignee aktif bagi aktor Assignee
 79. Klik menu `Transactions > Assignment`
 80. Ketik Search `Keyboard Logitech K380 {runId}`, tekan Enter
 81. Buka menu ⋯ pada baris ASG yang memuat aset `Keyboard Logitech K380 {runId}`
-82. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Remind Assignee` yang disabled karena aktor adalah Assignee ASG ini
+82. Verifikasi aksi `Remind Assignee` tampil dan aktif tanpa alasan disabled karena aktor adalah Assignee ASG ini
 
-### Aksi Disabled bagi aktor PIC ASG Division
+### Aksi aktif bagi aktor PIC ASG Division
 83. Ganti isi kotak Search dengan `Docking Station Dell WD19 {runId}`, tekan Enter
 84. Buka menu ⋯ pada baris ASG yang memuat aset `Docking Station Dell WD19 {runId}`
-85. Verifikasi aksi `Remind Assignee` tampil Disabled karena aktor adalah PIC ASG Division ini
-86. Verifikasi aksi `Change PIC` tampil Disabled karena aktor adalah PIC ASG Division ini
+85. Verifikasi aksi `Remind Assignee` tampil dan aktif untuk aktor PIC ASG Division ini
+86. Verifikasi aksi `Change PIC` tampil dan aktif untuk aktor PIC ASG Division ini
 87. Ganti isi kotak Search dengan `Scanner Epson DS-530 {runId}`, tekan Enter
 88. Buka menu ⋯ pada baris ASG yang memuat aset `Scanner Epson DS-530 {runId}`
-89. Verifikasi aksi `Unassign` tampil Disabled karena aktor adalah PIC ASG Division ini
-90. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Unassign` ASG Division yang disabled bagi PIC
-91. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Remind Assignee` ASG Division yang disabled bagi PIC
+89. Verifikasi aksi `Unassign` tampil dan aktif untuk aktor PIC ASG Division ini dengan syarat pemrosesan sendiri
+90. Verifikasi aksi `Unassign` ASG Division tidak memiliki alasan disabled bagi PIC
+91. Verifikasi aksi `Remind Assignee` ASG Division tidak memiliki alasan disabled bagi PIC
 
 ### Aksi baris Assigned Assets bagi aktor PIC ASG Division
 92. Klik tab `Assigned Assets`
 93. Ketik Search `Scanner Epson DS-530 {runId}`, tekan Enter
 94. Buka menu ⋯ pada baris aset `Scanner Epson DS-530 {runId}`
-95. Verifikasi aksi `Unassign` tampil Disabled karena aktor adalah PIC ASG Division aset ini
-96. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Unassign` baris aset yang disabled bagi PIC
+95. Verifikasi aksi `Unassign` tampil dan aktif untuk aktor PIC ASG Division aset ini dengan syarat pemrosesan sendiri
+96. Verifikasi aksi `Unassign` baris aset tidak memiliki alasan disabled bagi PIC
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

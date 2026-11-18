@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["D-ASG-10", "D-ASG-28", "§4.1#r17", "FI-ASG-89", "FI-ASG-90", "FI-ASG-91", "FI-ASG-92", "FI-ASG-93", "FI-ASG-94", "FI-ASG-95", "FI-ASG-96", "FI-ASG-97", "FI-ASG-98", "FI-ASG-99", "FI-ASG-100", "FI-ASG-101", "FI-ASG-102", "FI-ASG-103", "FI-ASG-104", "FI-ASG-105", "FI-ASG-106", "FI-ASG-107", "FI-ASG-108", "FI-ASG-109", "FI-ASG-110", "EC-ASG-80", "EC-ASG-83", "§4.4#r15"]
+sourceRules: ["D-ASG-10", "D-ASG-28", "§4.1#r17", "FI-ASG-89", "FI-ASG-90", "FI-ASG-91", "FI-ASG-92", "FI-ASG-93", "FI-ASG-94", "FI-ASG-95", "FI-ASG-96", "FI-ASG-97", "FI-ASG-98", "FI-ASG-99", "FI-ASG-100", "FI-ASG-101", "FI-ASG-102", "FI-ASG-103", "FI-ASG-104", "FI-ASG-105", "FI-ASG-106", "FI-ASG-107", "FI-ASG-108", "FI-ASG-109", "FI-ASG-110", "EC-ASG-80", "EC-ASG-83", "EC-ASG-116", "EC-ASG-117", "§4.4#r15"]
 smoke: []
 dependsOn: []
 trace:
@@ -33,9 +33,11 @@ trace:
   "FI-ASG-107": [68, 73]
   "FI-ASG-108": [78, 79, 83]
   "FI-ASG-109": [88, 89]
-  "FI-ASG-110": 118
+  "FI-ASG-110": [94, 118, 148]
   "EC-ASG-80": [109, 111, 112]
   "EC-ASG-83": [17, 19, 25, 26]
+  "EC-ASG-116": [31, 32]
+  "EC-ASG-117": [94, 95, 148]
   "§4.4#r15": 8
 anchor: []
 coverage:
@@ -124,7 +126,7 @@ coverage:
 29. Klik `⋯` pada baris `Forklift Toyota 8FD {runId}`
 30. Klik `Transaction Rules`
 31. Verifikasi approver `Wawan Hartono {runId}` berstatus `Approved` dan approver `Yuni Astuti {runId}` berstatus `Waiting for Approval`
-32. Verifikasi `Approval type` pada dialog `Transaction Rules` bernilai `All approvers (AND)`
+32. Verifikasi `Approval type` pada dialog `Transaction Rules` bernilai `All approvers`
 33. Klik ikon silang pada dialog `Transaction Rules`
 
 ### Baris All approvers: satu penolakan membuat approver lain Not Involved
@@ -206,7 +208,7 @@ coverage:
 91. Ganti isi kotak search dengan `Laptop Dell Latitude 5420 {runId}`, tekan Enter
 92. Klik `⋯` pada baris `Laptop Dell Latitude 5420 {runId}`
 93. Klik `Transaction Rules`
-94. Verifikasi `Approval` pada dialog `Transaction Rules` bernilai `Not required`
+94. Verifikasi `Approval` pada dialog `Transaction Rules` bernilai `Not required`, tanpa `Approval type` dan tanpa daftar approver
 95. Klik ikon silang pada dialog `Transaction Rules`
 
 ### Blok per putaran memakai snapshot masing-masing putaran
@@ -268,3 +270,10 @@ coverage:
 141. Klik `Transaction Rules`
 142. Verifikasi approver `Wawan Hartono {runId}` dan `Xena Pramesti {runId}` yang belum bertindak berstatus `Not Involved` karena baris ditutup sistem dengan alasan `Assignee deactivated`
 143. Klik ikon silang pada dialog `Transaction Rules`
+
+### Draft tidak memiliki aksi Transaction Rules
+144. Buka halaman `Transactions > Assignment`
+145. Klik tab `Drafts`
+146. Ketik Search `Budi Santoso {runId}`, tekan Enter
+147. Klik `⋯` pada baris Draft `Budi Santoso {runId}`
+148. Verifikasi menu aksi baris hanya memuat `Edit` dan `Delete`, tanpa `Transaction Rules`

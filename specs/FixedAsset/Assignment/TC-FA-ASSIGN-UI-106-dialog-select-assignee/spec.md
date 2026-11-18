@@ -132,7 +132,7 @@ coverage:
 59. Tampilkan Dialog Select Assignee dengan kondisi K2
 60. Klik sub-tab `Divisions`
 61. Klik tombol konfirmasi dialog
-62. Verifikasi pesan error inline `You must pick an item` tampil di atas tombol footer[^drift-1]
+62. Verifikasi pesan error inline `You must pick an item` tampil di atas tombol footer
 63. Verifikasi dialog Select Assignee tetap terbuka karena pilihan tidak dikirim
 
 ### Sub-tab Divisions yang tidak diizinkan semua aset konteks disembunyikan
@@ -225,4 +225,4 @@ coverage:
 124. Verifikasi kolom `Division`, `Code`, dan `Eligibility` tetap tampil
 125. Verifikasi kolom `Users` tidak tampil
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.1e (T-ASG-05): tidak menetapkan copy error konfirmasi tanpa pilihan untuk sub-tab Divisions. foundation `prd-conventions.md` §37.2: pemilihan Item atau generik memakai `You must pick an item`. Diasersi: foundation, karena error konfirmasi picker adalah pola bersama (SB-4).
+

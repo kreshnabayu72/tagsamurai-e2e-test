@@ -64,12 +64,12 @@ coverage:
 6. Verifikasi setiap aset sesi berbadge `Waiting`
 7. Verifikasi popup memuat tombol `[Cancel Request]` dan `[Confirm on This Device]`
 
-### Popup tidak tertutup lewat klik di luar dan tertutup lewat Esc
+### Popup tidak tertutup lewat klik di luar maupun Esc
 8. Tampilkan Popup Waiting for Confirmation dengan kondisi K1
 9. Klik di luar popup
 10. Verifikasi popup Waiting for Confirmation tetap terbuka
 11. Tekan Esc
-12. Verifikasi popup Waiting for Confirmation tertutup setelah Esc[^drift-1]
+12. Verifikasi popup Waiting for Confirmation tetap terbuka setelah Esc, karena pengecualian atas aturan Esc `toast-copy.md` §7
 
 ### Aset siap yang belum terscan tetap Waiting for Handover
 13. Tampilkan Popup Waiting for Confirmation dengan kondisi K2
@@ -169,4 +169,4 @@ coverage:
 74. Tampilkan Popup Waiting for Confirmation dengan kondisi K7
 75. Verifikasi checkbox pernyataan tidak tercentang saat dialog Confirm Receipt dibuka
 
-[^drift-1]: Drift PRD vs foundation. PRD §7.2 `D-ASG-21`: popup «tidak tertutup lewat klik di luar atau Esc». foundation `toast-copy.md` §7 «Modal / Dialog — Behavior Standar»: klik backdrop tidak menutup modal, dan tekan `ESC` menutup modal. Diasersi: foundation untuk Esc, karena perilaku menutup dialog adalah pola bersama (SB-4); klik di luar tidak menutup popup sesuai kedua sumber.
+

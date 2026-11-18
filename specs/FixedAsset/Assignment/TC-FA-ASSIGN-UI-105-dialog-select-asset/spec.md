@@ -124,7 +124,7 @@ coverage:
 58. Verifikasi baris `Laptop Dell Latitude 5420 - 11` menampilkan badge `Inventaris Kantor` pada kolom `Label`
 59. Verifikasi baris `Toyota Avanza - 6` menampilkan badge `Kendaraan Operasional` lalu `Pool Surabaya` pada kolom `Label`
 60. Verifikasi baris `Excavator PC200 - 4` menampilkan badge `Alat Berat` lalu `Kritis` pada kolom `Label`
-61. Verifikasi baris `Excavator PC200 - 4` menampilkan chip `+2 more`[^drift-1]
+61. Verifikasi baris `Excavator PC200 - 4` menampilkan chip `+2 more`
 62. Klik chip `+2 more` pada baris `Excavator PC200 - 4`
 63. Verifikasi popover memuat semua Label baris itu, yaitu `Alat Berat`, `Kritis`, `Proyek Tambang`, dan `Sewa Jangka Panjang`
 
@@ -178,4 +178,4 @@ coverage:
 99. Verifikasi kolom `Name` tetap tampil pada dialog Select Asset
 100. Verifikasi kolom `Brand` tidak tampil
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.1d (T-ASG-04 Setup Column, baris Label): format `1–2 badge lalu +N`. foundation `prd-conventions.md` §21.1: lebih dari 2 item tampil 2 badge dan chip `+N more`, N = total − 2, klik chip membuka popover daftar semua. Diasersi: foundation, karena kolom multi-badge adalah pola bersama (SB-4).
+

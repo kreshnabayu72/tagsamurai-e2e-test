@@ -5,11 +5,12 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [FI-ASG-18, FI-ASG-24, FI-ASG-47, FI-ASG-48, FI-ASG-49, FI-ASG-50, FI-ASG-51, FI-ASG-52, FI-ASG-53, FI-ASG-54, FI-ASG-55, FI-ASG-56, V-ASG-17, V-ASG-18, V-ASG-24, V-ASG-25, "§4.4#r10", "§4.4#r11", "§4.4#r12"]
+sourceRules: [ASSIGN-LOGIC-15a, FI-ASG-18, FI-ASG-24, FI-ASG-47, FI-ASG-48, FI-ASG-49, FI-ASG-50, FI-ASG-51, FI-ASG-52, FI-ASG-53, FI-ASG-54, FI-ASG-55, FI-ASG-56, FI-ASG-64, V-ASG-17, V-ASG-18, V-ASG-24, V-ASG-25, "§4.4#r10", "§4.4#r11", "§4.4#r12"]
 smoke: []
 dependsOn: []
 trace:
   FI-ASG-18: 7
+  ASSIGN-LOGIC-15a: [53, 60, 67]
   FI-ASG-24: [5, 7, 9, 11, 12, 47, 48]
   FI-ASG-47: 19
   FI-ASG-48: [18, 24, 26, 28]
@@ -19,12 +20,13 @@ trace:
   FI-ASG-52: 31
   FI-ASG-53: 33
   FI-ASG-54: 35
-  FI-ASG-55: 37
+  FI-ASG-55: [66, 67]
   FI-ASG-56: 29
-  V-ASG-17: [5, 7, 9, 11]
+  FI-ASG-64: [65, 67]
+  V-ASG-17: [5, 7, 9, 11, 47]
   V-ASG-18: 14
   V-ASG-24: 35
-  V-ASG-25: [31, 33]
+  V-ASG-25: [31, 33, 37]
   "§4.4#r10": 5
   "§4.4#r11": 7
   "§4.4#r12": 31
@@ -84,7 +86,7 @@ coverage:
 8. Pindai TAG aset DU-039-9 lewat `[Verify Asset]`
 9. Verifikasi toast `Error, this asset belongs to Branch Surabaya.` tampil
 10. Pindai TAG aset DU-039-10 lewat `[Verify Asset]`
-11. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil
+11. Verifikasi toast `Error, this TAG belongs to [Asset Code], not in this assignment.` tampil dengan Asset Code milik DU-039-10
 12. Verifikasi kolom Verification DU-039-5 dan DU-039-6 tetap menampilkan `Unverified`
 
 ### TAG yang tidak terbaca pada halaman Handover
@@ -116,19 +118,44 @@ coverage:
 34. Pindai TAG aset DU-039-17 lewat `[Verify Asset]`
 35. Verifikasi toast `Error, unassign this asset in Branch Surabaya.` tampil
 36. Pindai TAG aset DU-039-11 lewat `[Verify Asset]`
-37. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil
+37. Verifikasi toast `Error, this asset isn't assigned to Budi S.` tampil
 38. Verifikasi daftar tetap memuat DU-039-12, DU-039-13, dan DU-039-14 tanpa baris tambahan
 
 ### Scan TAG aset milik Assignee terpilih yang belum ada di daftar ditambahkan langsung
 39. Pindai TAG aset DU-039-23 lewat `[Verify Asset]`
 40. Verifikasi DU-039-23 tampil di daftar dengan Verification `Verified`
 
-### Scan TAG aset ASG Division dengan Aktor sebagai PIC ditolak pada halaman Handover
+### Scan TAG aset ASG lain ditolak pada halaman Handover
 41. Klik `[Cancel]` pada halaman Unassign
 42. Klik `[Leave]` pada dialog Unsaved Changes
 43. Buka halaman Transactions > Assignment, tab Transactions
 44. Ketik Search `Laptop HP ProBook {runId}`, tekan Enter
 45. Klik `Hand Over` pada menu ⋯ baris ASG DU-039-18
 46. Pindai TAG aset DU-039-24 lewat `[Verify Asset]`
-47. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil
+47. Verifikasi toast `Error, this TAG belongs to [Asset Code], not in this assignment.` tampil dengan Asset Code milik DU-039-24
 48. Verifikasi kolom Verification DU-039-5 dan DU-039-6 tetap menampilkan `Unverified`
+
+### Scan TAG aset penugasan sendiri diterima pada halaman Handover (Aktor sebagai Assignee)
+49. Buka halaman Transactions > Assignment, tab Transactions
+50. Ketik Search `Meja Lipat {runId}`, tekan Enter
+51. Klik `Hand Over` pada menu ⋯ baris ASG DU-039-19
+52. Pindai TAG aset DU-039-10 lewat `[Verify Asset]`
+53. Verifikasi kolom Verification DU-039-10 menampilkan `Verified`
+54. Verifikasi tombol utama `[Complete Handover]` tampil
+55. Klik `[Cancel]`
+56. Klik `[Leave]` pada dialog Unsaved Changes
+
+### Scan TAG aset penugasan sendiri diterima pada halaman Handover (Aktor sebagai PIC Division)
+57. Ketik Search `Helm Proyek Safety {runId}`, tekan Enter
+58. Klik `Hand Over` pada menu ⋯ baris ASG DU-039-26
+59. Pindai TAG aset DU-039-24 lewat `[Verify Asset]`
+60. Verifikasi kolom Verification DU-039-24 menampilkan `Verified`
+61. Klik `[Cancel]`
+62. Klik `[Leave]` pada dialog Unsaved Changes
+
+### Scan TAG aset penugasan sendiri diterima pada halaman Unassign
+63. Ketik Search `Kursi Lipat {runId}`, tekan Enter
+64. Klik Transaction ID pada baris hasil pencarian
+65. Buka halaman Unassign lewat row action `Unassign` pada baris `Kursi Lipat {runId}` di tabel Assets Assignment Detail ASG DU-039-19
+66. Pindai TAG aset DU-039-11 lewat `[Verify Asset]`
+67. Verifikasi DU-039-11 tampil di daftar dengan Verification `Verified` tanpa penanda ⚠

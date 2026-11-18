@@ -72,8 +72,8 @@ coverage:
 27. Arahkan kursor ke kolom `Assignee` baris `Budi S`
 28. Verifikasi nama lengkap Assignee `Budi Santoso {runId}` tampil pada hover baris `Budi S`
 
-### Export sub-tab By Transaction
-29. Klik `Download`[^drift-1]
+### Download sub-tab By Transaction
+29. Klik `Download`
 30. Klik `Download as CSV`
 31. Verifikasi berkas `Assignment-History-By-Transaction.csv` terunduh
 32. Verifikasi berkas yang diunduh memuat tepat 3 baris data sesuai tabel yang tersaring dan header yang sama dengan kolom tabel yang tampil
@@ -116,8 +116,8 @@ coverage:
 63. Arahkan kursor ke kolom `Assignee` baris `Laptop Dell Latitude 5420 {runId}`
 64. Verifikasi nama lengkap Assignee `Sari Dewi {runId}` tampil pada hover baris `Laptop Dell Latitude 5420 {runId}`
 
-### Export sub-tab By Asset
-65. Klik `Download`[^drift-1]
+### Download sub-tab By Asset
+65. Klik `Download`
 66. Klik `Download as CSV`
 67. Verifikasi berkas `Assignment-History-By-Asset.csv` terunduh
 68. Verifikasi berkas yang diunduh memuat tepat 6 baris data sesuai tabel yang tersaring dan header yang sama dengan kolom tabel yang tampil
@@ -160,4 +160,4 @@ coverage:
 97. Ganti isi kotak search dengan kode TAG milik aset `Laptop Dell Latitude 5420 {runId}`, tekan Enter
 98. Verifikasi baris `Sari D` tampil di sub-tab `By Transaction` karena kode TAG aset ikut dicari
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.1k Matriks Aksi baris Export: nama tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

@@ -65,7 +65,7 @@ coverage:
 17. Verifikasi tooltip PIC memuat nama lengkap `Dewi Anggraini {runId}`
 
 ### Toolbar dan kolom tabel Assets
-18. Verifikasi toolbar tabel Assets memuat `Search by Scan`, Search, `Filter`, dan `Download` tanpa menu `⋯`[^drift-1]
+18. Verifikasi toolbar tabel Assets memuat `Search by Scan`, Search, `Filter`, dan `Download` tanpa menu `⋯`
 19. Klik `Search`
 20. Verifikasi kotak Search memuat placeholder `Search asset name or ID...`
 21. Verifikasi tabel Assets tampil tanpa tab dan tanpa judul `Assets`
@@ -94,7 +94,7 @@ coverage:
 40. Verifikasi menu aksi baris memuat `Assignment Log`, `Transaction Rules`, `Unassign`, dan `Report Missing`, tanpa `Report Damaged`
 41. Tutup menu aksi baris
 42. Verifikasi aksi di bawah tabel memuat `[Cancel Assignment]`, `[Change PIC]`, `[Unassign]`, dan `[Hand Over]` karena semuanya memenuhi syarat
-43. Klik `Download`[^drift-1]
+43. Klik `Download`
 44. Klik `Download as CSV`
 45. Verifikasi berkas `Assignment-Detail-Assets.csv` terunduh
 
@@ -164,4 +164,4 @@ coverage:
 98. Verifikasi placeholder `All asset names`, `All brands`, `All models`, `All statuses`, `All tags`, `All categories`, `All confirmations`, `All approvals`, dan `All users` tampil pada field dropdown masing-masing, serta field `Handed Over At` dan `Unassigned At` memuat placeholder `Select date`
 99. Klik `Filter`
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download dan §4.2.4: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

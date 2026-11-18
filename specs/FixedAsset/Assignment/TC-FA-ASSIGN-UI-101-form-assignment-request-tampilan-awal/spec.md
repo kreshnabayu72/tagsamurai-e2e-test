@@ -79,7 +79,7 @@ coverage:
   - DU-101-22: Aturan approval Group `Branch Surabaya` untuk DU-101-6: `No approval` saat aset ditambahkan, `Needs approval` saat Submit. Teks blok Approval yang diharapkan bila DU-101-6 tidak memerlukan approval: `No approval needed: Toyota Avanza - 6.`.
   - DU-101-23: Approver tunggal `Hendra Pratama` untuk Group `Branch Surabaya`.
   - DU-101-24: Dua approver `Hendra Pratama` dan `Maya Lestari` untuk Group `Branch Surabaya`, Approval type `Any one approver`.
-  - DU-101-25: Dua approver `Hendra Pratama` dan `Maya Lestari` untuk Group `Branch Surabaya`, Approval type `All approvers (AND)`.
+  - DU-101-25: Dua approver `Hendra Pratama` dan `Maya Lestari` untuk Group `Branch Surabaya`, Approval type `All approvers`.
   - DU-101-26: Group `Branch Surabaya` dan ancestor-nya tanpa pemegang Role Transaksi `Approver`; hanya Total Control yang dapat memutuskan.
 - Kondisi:
   - K1: form baru dibuka dari pilihan overlay `Employee`; Assignee belum dipilih dan tabel aset kosong.

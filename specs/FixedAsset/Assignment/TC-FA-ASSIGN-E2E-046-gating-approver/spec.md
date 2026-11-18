@@ -86,10 +86,10 @@ coverage:
 9. Verifikasi pilihan `Approve` dan `Reject` tampil pada kolom `Approval` aset `Server Dell R740 {runId}`
 10. Klik `[Cancel]` pada footer halaman Review tanpa memutuskan
 
-### Export riwayat approval
+### Download riwayat approval
 11. Klik menu `Approvals > Assignment`
 12. Klik tab `History`
-13. Verifikasi tombol `Download` tampil pada toolbar tab `History`[^drift-1]
+13. Verifikasi tombol `Download` tampil pada toolbar tab `History`
 
 ### Task Confirm Handover di My Asset
 14. Buka menu Profile pada navbar
@@ -103,4 +103,4 @@ coverage:
 20. Verifikasi pengajuan atas aset `Laptop Lenovo ThinkPad T14 {runId}` dengan Group `IT Head Office {runId}` tampil pada tab `Active`
 21. Verifikasi pengajuan atas aset `Drone DJI Mavic 3 {runId}` dengan Group `Branch Surabaya {runId}` tidak tampil pada tab `Active`
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

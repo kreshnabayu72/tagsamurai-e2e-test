@@ -60,7 +60,7 @@ coverage:
 ### Halaman Assignment terbuka di tab Transactions
 1. Verifikasi tab `Transactions`, `Drafts`, `Assigned Assets`, dan `History` tampil pada halaman Assignment
 2. Verifikasi tab `Transactions` menjadi tab yang aktif saat halaman pertama kali terbuka
-3. Verifikasi toolbar tab `Transactions` memuat Search, `Filter`, `Download`, dan `[+ Assign]`, dengan `[+ Assign]` di paling kanan[^drift-1]
+3. Verifikasi toolbar tab `Transactions` memuat Search, `Filter`, `Download`, dan `[+ Assign]`, dengan `[+ Assign]` di paling kanan
 
 ### Tabel hanya memuat data spec ini
 4. Ketik Search `{runId}`, tekan Enter
@@ -184,4 +184,4 @@ coverage:
 98. Muat ulang halaman
 99. Verifikasi kotak Search tab `History` masih berisi `Printer Label Zebra ZD220 {runId}` sesudah muat ulang
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

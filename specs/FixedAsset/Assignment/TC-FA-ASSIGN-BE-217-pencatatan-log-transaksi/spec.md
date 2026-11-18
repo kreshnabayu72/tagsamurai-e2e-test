@@ -64,9 +64,9 @@ trace:
 6. Verifikasi peristiwa Handover dicatat sekali ke log transaksi dan terbaca di Assignment Log, Transaction log aset, dan Transaction admin log
 7. Verifikasi User log Assignee `Budi Santoso {runId}` memuat peristiwa Handover itu
 
-### Export tidak dicatat
-8. Rina melakukan Export daftar ASG
-9. Verifikasi Export tidak dicatat di log mana pun
+### Download tidak dicatat
+8. Rina melakukan Download daftar ASG
+9. Verifikasi Download tidak dicatat di log mana pun
 
 ### Perubahan field Division aset dicatat di Changelog Asset
 10. Rina memverifikasi tag baris `Brankas Krisbow {runId}` pada DU-217-7

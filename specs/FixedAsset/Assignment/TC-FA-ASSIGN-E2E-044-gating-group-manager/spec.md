@@ -109,12 +109,12 @@ coverage:
 24. Verifikasi aksi `Cancel Assignment` tampil dan aktif
 25. Ganti isi kotak Search dengan `Keyboard Logitech K380 {runId}`, tekan Enter
 26. Buka menu ⋯ pada baris ASG yang memuat aset `Keyboard Logitech K380 {runId}`
-27. Verifikasi aksi `Hand Over` tampil Disabled karena aktor adalah Assignee ASG ini
-28. Verifikasi aksi `Remind Assignee` tampil Disabled karena aktor adalah Assignee ASG ini
+27. Verifikasi aksi `Hand Over` tampil dan aktif karena aktor Assignee ASG ini dapat memprosesnya dengan syarat pemrosesan sendiri
+28. Verifikasi aksi `Remind Assignee` tampil dan aktif untuk aktor Assignee ASG ini
 29. Ganti isi kotak Search dengan `Projector Epson EB-X49 {runId}`, tekan Enter
 30. Buka menu ⋯ pada baris ASG yang memuat aset `Projector Epson EB-X49 {runId}`
 31. Verifikasi aksi `Change PIC` tampil dan aktif
-32. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`[^drift-1]
+32. Verifikasi tombol `Download` tampil pada toolbar tab `Transactions`
 
 ### Aksi per aset pada tab Assigned Assets
 33. Klik tab `Assigned Assets`
@@ -130,8 +130,8 @@ coverage:
 43. Verifikasi aksi `Mark as Unassigned` tidak tampil karena level Feature Suite bukan `None`
 44. Ganti isi kotak Search dengan `Scanner Canon DR-C225 {runId}`, tekan Enter
 45. Buka menu ⋯ pada baris aset `Scanner Canon DR-C225 {runId}`
-46. Verifikasi aksi `Unassign` tampil Disabled karena aktor adalah Assignee ASG aset ini
-47. Verifikasi alasan `You can't hand over or receive your own assignment.` tersampaikan pada aksi `Unassign` yang disabled
+46. Verifikasi aksi `Unassign` tampil dan aktif karena aktor Assignee ASG aset ini dapat menerimanya dengan syarat pemrosesan sendiri
+47. Verifikasi aksi `Unassign` tidak memiliki alasan disabled
 48. Ganti isi kotak Search dengan `Laptop Asus ExpertBook {runId}`, tekan Enter
 49. Buka menu ⋯ pada baris aset `Laptop Asus ExpertBook {runId}`
 50. Verifikasi aksi `Cancel Damage Report` tampil untuk laporan kerusakan milik aktor yang masih `Waiting for Confirmation`
@@ -173,4 +173,4 @@ coverage:
 78. Klik menu `Transactions > Assignment`
 79. Verifikasi tombol `[+ Assign]` tampil pada toolbar tab `Transactions`
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

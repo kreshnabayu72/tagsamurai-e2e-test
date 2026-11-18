@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [TS-ASG-35, "§4.8#r13", EC-ASG-101, EC-ASG-102, EC-ASG-103, EC-ASG-104, EC-ASG-110, EC-ASG-111, "§9.6#r13"]
+sourceRules: [TS-ASG-35, "§4.8#r13", EC-ASG-101, EC-ASG-102, EC-ASG-103, EC-ASG-104, EC-ASG-110, EC-ASG-111, "§9.6#r13", ASSIGN-LOGIC-15j, ASSIGN-LOGIC-20i, ASSIGN-LOGIC-20aa]
 smoke: []
 dependsOn: ["Asset List: aksi baris dan bulk Mark as Unassigned"]
 trace:
@@ -18,6 +18,9 @@ trace:
   EC-ASG-110: [52, 53, 55, 84, 85, 87]
   EC-ASG-111: [61, 64, 69, 70]
   "§9.6#r13": [8, 12, 21, 38, 48, 49, 80]
+  ASSIGN-LOGIC-15j: [52, 53, 55, 69, 84, 85, 87]
+  ASSIGN-LOGIC-20i: [52, 55, 84, 87]
+  ASSIGN-LOGIC-20aa: [69, 70]
 anchor: []
 coverage:
   web: automated
@@ -118,10 +121,10 @@ coverage:
 ### Aset milik Aktor sendiri tidak dapat di-Mark as Unassigned
 50. Ketik Search `Laptop Dell XPS 13 {runId}`, tekan Enter
 51. Klik `⋯` pada baris `Laptop Dell XPS 13 {runId}`
-52. Verifikasi opsi `Mark as Unassigned` tampil dan disabled pada baris `Laptop Dell XPS 13 {runId}` dengan alasan `You can't hand over or receive your own assignment.` tersampaikan
+52. Verifikasi opsi `Mark as Unassigned` tampil dan disabled pada baris `Laptop Dell XPS 13 {runId}` dengan alasan `You can't unassign your own assigned asset.` tersampaikan
 53. Verifikasi baris `Laptop Dell XPS 13 {runId}` tetap memiliki Custody `Assigned`
 54. Buka halaman detail aset `Laptop Dell XPS 13 {runId}`
-55. Verifikasi tombol `Mark as Unassigned` tampil dan disabled di header halaman detail aset dengan alasan `You can't hand over or receive your own assignment.` tersampaikan
+55. Verifikasi tombol `Mark as Unassigned` tampil dan disabled di header halaman detail aset dengan alasan `You can't unassign your own assigned asset.` tersampaikan
 
 ### Bulk campuran aset milik Aktor sendiri dan aset lain
 56. Buka halaman Asset List
@@ -139,7 +142,7 @@ coverage:
 66. Centang baris `Laptop Dell XPS 13 {runId}`
 67. Centang baris `Tablet Lenovo Tab M10 {runId}`
 68. Klik `Mark as Unassigned` pada menu aksi bulk
-69. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil tanpa dialog `Mark as Unassigned`
+69. Verifikasi toast `Error, you can't unassign your own assigned assets.` tampil tanpa dialog `Mark as Unassigned`
 70. Verifikasi baris `Tablet Lenovo Tab M10 {runId}` tetap memiliki Custody `Assigned`
 
 ### Assignment Log mencatat Mark as Unassigned

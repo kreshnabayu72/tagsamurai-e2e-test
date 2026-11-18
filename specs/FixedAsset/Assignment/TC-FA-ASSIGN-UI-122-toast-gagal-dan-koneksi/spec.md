@@ -58,9 +58,9 @@ coverage:
   - K14: dialog Submit Approval untuk DU-122-6 siap dipakai, Submit Approval pertama tidak dijawab sampai batas waktu (timeout), dan Submit Approval berikutnya dijawab sukses dengan keputusan ini menjadi keputusan terakhir yang dibutuhkan sehingga pengajuan disetujui seluruhnya.
   - K15: form Assignment Request untuk DU-122-1 siap dipakai, dan Save Draft dijawab sukses.
   - K16: form Assignment Request untuk DU-122-1 siap dipakai, dan Save Draft dijawab error server 5xx.
-  - K17: daftar Tabel Transactions berisi DU-122-7, sehingga jumlah baris di atas ambang `5.000`, dan berkas Export belum siap.
-  - K18: daftar Tabel Transactions berisi DU-122-8, dan Export dijawab error server 5xx.
-  - K19: daftar Tabel Transactions berisi DU-122-8, dan Export tidak dijawab sampai batas waktu (timeout).
+  - K17: daftar Tabel Transactions berisi DU-122-7, sehingga jumlah baris di atas ambang `5.000`, dan berkas Download belum siap.
+  - K18: daftar Tabel Transactions berisi DU-122-8, dan Download dijawab error server 5xx.
+  - K19: daftar Tabel Transactions berisi DU-122-8, dan Download tidak dijawab sampai batas waktu (timeout).
   - K20: halaman Review Approval untuk DU-122-9 siap dipakai, dan Submit Approval dijawab error server 5xx.
   - K21: daftar Tabel Transactions berisi DU-122-8, dan Remind Assignee dijawab error server 5xx.
 
@@ -230,22 +230,22 @@ coverage:
 
 ### Download di atas ambang memakai loading screen
 131. Tampilkan Toast Assignment dengan kondisi K17
-132. Klik `Download`[^drift-1]
+132. Klik `Download`
 133. Klik `Download as CSV`
 134. Verifikasi loading screen tampil
-135. Berkas Export siap
+135. Berkas Download siap
 136. Verifikasi berkas langsung terunduh
 137. Verifikasi tidak ada toast informasional yang tampil
 
 ### Download gagal dengan error server 5xx
 138. Tampilkan Toast Assignment dengan kondisi K18
-139. Klik `Download`[^drift-1]
+139. Klik `Download`
 140. Klik `Download as CSV`
 141. Verifikasi toast `Error, failed to download Assignment-Transactions.` tampil
 
 ### Download gagal karena timeout
 142. Tampilkan Toast Assignment dengan kondisi K19
-143. Klik `Download`[^drift-1]
+143. Klik `Download`
 144. Klik `Download as XLSX`
 145. Verifikasi toast `Error, failed to download Assignment-Transactions.` tampil
 
@@ -263,4 +263,4 @@ coverage:
 154. Klik `Remind Assignee`
 155. Verifikasi toast error `Error, failed to remind [item].` tampil, dengan `[item]` nama entitas huruf kecil
 
-[^drift-1]: Drift PRD vs foundation dan kontrak komponen. PRD §5 Global Table Rules baris Download: nama tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1 dan kontrak `ExportButton#1` serta `ExportButton#26`: ikon toolbar bernama `Download` dengan tooltip dan aria-label `Download`. Diasersi: foundation dan kontrak, karena tombol unduh di toolbar tabel adalah pola bersama dan komponen bersama (SB-4, SB-7).
+
