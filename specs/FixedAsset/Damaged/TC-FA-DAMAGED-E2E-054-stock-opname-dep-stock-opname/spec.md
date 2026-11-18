@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#b1", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r45", "§8.3#r2", "§3#p2", "EC-DMG-22", "§9.11#r1", "T-DMG-01"]
+sourceRules: ["§2.1#b1", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r47", "§8.3#r2", "§3#p2", "EC-DMG-22", "§9.11#r1", "T-DMG-01"]
 smoke: []
 dependsOn:
   - "Stock Opname: dialog Report Condition"
@@ -14,8 +14,8 @@ trace:
   "§2.1#b2": [10, 14, 20, 21]
   "§2#b6": [10, 12]
   "§4.8#r3": [10]
-  "§Aturan Logika Modul#r42": [10]
-  "§Aturan Logika Modul#r45": [16]
+  "§Aturan Logika Modul#r44": [10]
+  "§Aturan Logika Modul#r47": [16]
   "§8.3#r2": [11, 15]
   "§3#p2": [7, 10, 15, 24]
   "EC-DMG-22": [14, 15]
@@ -29,10 +29,11 @@ coverage:
 # Pemilik sesi Stock Opname melaporkan kondisi rusak: record langsung Damaged Source Stock opname dan Damage Log dapat dibuka pelapornya
 
 ## Prerequisites
-- Aktor: Pemilik sesi Stock Opname `Stock Opname Gudang Pusat {runId}`, tanpa hak Update Manage asset & TAG pada Group aset, yang juga memegang role Read Only.
+- Aktor: Pemilik sesi Stock Opname `Stock Opname Gudang Pusat {runId}`, yaitu user `Hendra Wijaya {runId}` (DU-054-3), tanpa hak Update Manage asset & TAG pada Group aset, yang juga memegang role Read Only.
 - Layar awal: halaman sesi Stock Opname.
 - Data:
-  - DU-054-1: sesi Stock Opname Name `Stock Opname Gudang Pusat {runId}` untuk Group `Head Office`, berisi aset Name `Rak Besi Heavy Duty {runId}`, Group `Head Office`, tanpa TAG, belum punya record Damage.
+  - DU-054-1: sesi Stock Opname Name `Stock Opname Gudang Pusat {runId}` untuk Group `Head Office`, berisi aset Name `Rak Besi Heavy Duty {runId}`, Group `Head Office`, tanpa TAG, belum punya record Damage, dimiliki user `Hendra Wijaya {runId}`.
+  - DU-054-3: User `Hendra Wijaya {runId}`, pemilik sesi DU-054-1, role Read Only, tanpa hak Update Manage asset & TAG pada Group aset; cakupan: seluruh client.
 
 ## Test Steps
 
@@ -50,10 +51,10 @@ coverage:
 9. Ketik Search `{runId}`, tekan Enter
 10. Verifikasi baris aset `Rak Besi Heavy Duty {runId}` tampil di sub-tab `Active` dengan Status `Damaged`, tanpa Confirm
 11. Verifikasi kolom Source pada baris itu `Stock opname`
-12. Verifikasi kolom Reported By pada baris itu memuat nama pemilik sesi, dalam bentuk nama depan dan inisial nama belakang
+12. Verifikasi kolom Reported By pada baris itu memuat nama pemilik sesi `Hendra Wijaya {runId}`, dalam bentuk nama depan dan inisial nama belakang
 13. Klik nama aset pada baris aset `Rak Besi Heavy Duty {runId}`
 14. Verifikasi dialog `Damage Log` tampil
-15. Verifikasi node `Reported damaged by [Reporter Name]` tampil atas nama pemilik sesi Stock Opname
+15. Verifikasi node `Reported damaged by [Reporter Name]` tampil atas nama pemilik sesi Stock Opname `Hendra Wijaya {runId}`
 16. Verifikasi node itu memuat catatan kerusakan `Kaki rak bengkok dan tidak stabil saat diberi beban` dan foto kerusakan `rak-kaki-bengkok.jpg` dari dialog Report Condition
 17. Tutup dialog Damage Log
 

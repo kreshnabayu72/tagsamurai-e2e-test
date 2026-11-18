@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r18", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r49", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r51", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r35", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r62", "§Aturan Logika Modul#r84", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.2#b14", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p5", "V-DMG-07", "D-DMG-06", "EC-DMG-07", "EC-DMG-08", "EC-DMG-23", "§9.4.4#r16", "§9.4.4#r17", "§9.4.1#r11", "FLD-DMG-06", "§2.1#b6", "§3#p4", "EB-FRM-4@reason", "EB-ERR-4", "EB-CON-3", "EB-EDG-1", "F-DMG-04"]
+sourceRules: ["§Aturan Logika Modul#r18", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r51", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r35", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r86", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.2#b14", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p5", "V-DMG-07", "D-DMG-06", "EC-DMG-07", "EC-DMG-08", "EC-DMG-23", "§9.4.4#r16", "§9.4.4#r17", "§9.4.1#r11", "FLD-DMG-06", "§2.1#b6", "§3#p4", "EB-FRM-4@reason", "EB-ERR-4", "EB-CON-3", "EB-EDG-1", "F-DMG-04"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -13,15 +13,15 @@ trace:
   "§Aturan Logika Modul#r18": 2
   "§Aturan Logika Modul#r22": 11
   "§Aturan Logika Modul#r23": 15
-  "§Aturan Logika Modul#r49": 2
-  "§Aturan Logika Modul#r50": 11
-  "§Aturan Logika Modul#r51": [15, 22, 73, 75]
-  "§Aturan Logika Modul#r52": [67, 68, 69]
-  "§Aturan Logika Modul#r53": [31, 33]
+  "§Aturan Logika Modul#r51": 2
+  "§Aturan Logika Modul#r52": 11
+  "§Aturan Logika Modul#r53": [15, 22, 73, 75]
+  "§Aturan Logika Modul#r54": [67, 68, 69]
+  "§Aturan Logika Modul#r55": [31, 33]
   "§Aturan Logika Modul#r35": 20
-  "§Aturan Logika Modul#r61": [61, 63]
-  "§Aturan Logika Modul#r62": 65
-  "§Aturan Logika Modul#r84": [24, 26]
+  "§Aturan Logika Modul#r63": [61, 63]
+  "§Aturan Logika Modul#r64": [65, 77]
+  "§Aturan Logika Modul#r86": [24, 26]
   "§9.2#r1": 2
   "§9.2#r7": 11
   "§9.2#r8": 15
@@ -203,3 +203,7 @@ trace:
 73. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Yoga Tanuwijaya {runId}`
 74. Aktor penugasan `Dewi Anggraini {runId}` melakukan Cancel Report atas laporannya `Camera Canon EOS - 6 {runId}` dari halaman penugasan tempat ia melapor
 75. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Dewi Anggraini {runId}`
+
+### Kerusakan baru atas aset ber-record Canceled mendapat record baru
+76. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Office Chair Ergo - 22 {runId}` yang record sebelumnya sudah `Canceled` dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
+77. Verifikasi server membuat record baru berstatus `Damaged` untuk aset itu, sedangkan record `Canceled` sebelumnya tidak berubah

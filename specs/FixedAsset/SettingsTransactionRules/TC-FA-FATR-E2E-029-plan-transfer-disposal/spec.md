@@ -9,12 +9,12 @@ sourceRules: [§9.4.2#r16, §9.4.2#r25, §9.4.4#r2, §9.10.4#b1, §11#r2, §4.3#
 smoke: [§4.3#r14]
 dependsOn: []
 trace:
-  §9.4.2#r16: [14, 16, 17, 19, 20, 22, 23, 25]
+  §9.4.2#r16: [14, 16, 17, 19]
   §9.4.2#r25: [3, 6, 9]
-  §9.4.4#r2: [14, 16, 17, 20, 22, 23]
-  §9.10.4#b1: [14, 16, 17, 19, 20, 22, 23, 25]
-  §4.3#r14: [14, 16, 17, 20, 22, 23]
-  §11#r2: [14, 20]
+  §9.4.4#r2: [14, 16, 17, 19]
+  §9.10.4#b1: [14, 16, 17, 19]
+  §4.3#r14: [14, 16, 17, 19]
+  §11#r2: [14, 17]
 anchor: [13]
 coverage:
   web: automated
@@ -41,20 +41,19 @@ coverage:
 8. Klik tab `Disposal`
 9. Verifikasi kontrol `Min asset age warning` aktif
 
-### Level None: tab Transfer dan Disposal tidak dapat dibuka
+### Level None: tab Transfer dan Disposal tidak tampil dan nilai tersimpan dipertahankan
 10. Operator mengubah level Feature Suite Transfer entitas menjadi `None`
 11. Operator mengubah level Feature Suite Disposal entitas menjadi `None`
 12. Muat ulang halaman
 13. Verifikasi header halaman memuat tombol `Export rules`
-14. Verifikasi tab `Transfer` disabled
-15. Arahkan pointer ke tab `Transfer`
-16. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Transfer` yang disabled
-17. Verifikasi chip `Upgrade` pada tab `Transfer`
-18. Klik tab `Transfer`
-19. Verifikasi tab `Transfer` tidak menjadi tab aktif
-20. Verifikasi tab `Disposal` disabled
-21. Arahkan pointer ke tab `Disposal`
-22. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Disposal` yang disabled
-23. Verifikasi chip `Upgrade` pada tab `Disposal`
-24. Klik tab `Disposal`
-25. Verifikasi tab `Disposal` tidak menjadi tab aktif
+14. Verifikasi tab `Transfer` tidak tampil pada daftar tab
+15. Buka langsung URL Transaction Settings dengan tab `Transfer`
+16. Verifikasi tab `Transfer` tetap tidak tampil dan tidak menjadi tab aktif
+17. Verifikasi tab `Disposal` tidak tampil pada daftar tab
+18. Buka langsung URL Transaction Settings dengan tab `Disposal`
+19. Verifikasi tab `Disposal` tetap tidak tampil dan tidak menjadi tab aktif
+20. Operator mengubah level Feature Suite Transfer dan Disposal entitas menjadi `Full`
+21. Muat ulang halaman, lalu klik tab `Transfer`
+22. Verifikasi tab `Transfer` menjadi tab aktif
+23. Klik tab `Disposal`
+24. Verifikasi tab `Disposal` menjadi tab aktif

@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§Aturan Logika Modul#r31, §Aturan Logika Modul#r56, §Aturan Logika Modul#r40, §9.7#r9, §8.2#b1, §4.1#r10]
+sourceRules: [§Aturan Logika Modul#r31, §Aturan Logika Modul#r58, §Aturan Logika Modul#r41, §9.7#r9, §8.2#b1, §4.1#r10]
 smoke: []
 dependsOn:
   - "Asset: Asset Detail (status global aset, banner Damaged, Transaction log)"
 trace:
   §Aturan Logika Modul#r31: [13, 14]
-  §Aturan Logika Modul#r56: 13
-  §Aturan Logika Modul#r40: 14
+  §Aturan Logika Modul#r58: 13
+  §Aturan Logika Modul#r41: 14
   §9.7#r9: [13, 20]
   §8.2#b1: 16
   §4.1#r10: 14

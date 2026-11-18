@@ -1,10 +1,10 @@
 {
  "module": "Damaged",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-16",
- "prd": "fixed-asset@625d932",
- "prdSha": "cbd9b7ca9320daee",
- "foundation": "foundation@8ec9ed8-dirty",
+ "disetujui": "otomatis, 2026-11-18",
+ "prd": "fixed-asset@f688ea9",
+ "prdSha": "2f1b85fa1a79c843",
+ "foundation": "foundation@96df7b2-dirty",
  "specs": [
   {
    "id": "TC-FA-DAMAGED-E2E-001-tabel-active-tampilan",
@@ -255,8 +255,8 @@
     "§8.1#r8",
     "TS-DMG-04",
     "EC-DMG-08",
-    "§Aturan Logika Modul#r49",
-    "§Aturan Logika Modul#r84",
+    "§Aturan Logika Modul#r51",
+    "§Aturan Logika Modul#r86",
     "§Aturan Logika Modul#r18",
     "§2.1#b6",
     "§9.7#r5",
@@ -291,7 +291,7 @@
     "§8.1#b1",
     "§8.1#r8",
     "TS-DMG-04",
-    "§Aturan Logika Modul#r50",
+    "§Aturan Logika Modul#r52",
     "§Aturan Logika Modul#r22",
     "§9.7#r6",
     "FLD-DMG-06",
@@ -327,9 +327,9 @@
     "S-DMG-04",
     "S-DMG-05",
     "§8.1#r12",
-    "§Aturan Logika Modul#r54",
-    "§Aturan Logika Modul#r55",
-    "§Aturan Logika Modul#r85",
+    "§Aturan Logika Modul#r56",
+    "§Aturan Logika Modul#r57",
+    "§Aturan Logika Modul#r87",
     "§Aturan Logika Modul#r18",
     "EC-DMG-31",
     "§9.6#r5",
@@ -546,7 +546,8 @@
     "T-DMG-01",
     "§9.3#b1",
     "EB-AKS-5@confirm",
-    "EB-AKS-6"
+    "EB-AKS-6",
+    "D-DISP-15"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -732,7 +733,7 @@
    "units": [
     "EB-EDG-2",
     "S-DMG-11",
-    "§Aturan Logika Modul#r55"
+    "§Aturan Logika Modul#r57"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -883,9 +884,9 @@
     "§8.2#b1",
     "§Aturan Logika Modul#r13",
     "§Aturan Logika Modul#r14",
-    "§Aturan Logika Modul#r42",
     "§Aturan Logika Modul#r44",
-    "§Aturan Logika Modul#r48",
+    "§Aturan Logika Modul#r46",
+    "§Aturan Logika Modul#r50",
     "§Aturan Logika Modul#r25",
     "§9.7#r1",
     "§3#p2",
@@ -964,8 +965,8 @@
    "layer": "ui-e2e",
    "units": [
     "§Aturan Logika Modul#r31",
-    "§Aturan Logika Modul#r56",
-    "§Aturan Logika Modul#r40",
+    "§Aturan Logika Modul#r58",
+    "§Aturan Logika Modul#r41",
     "§9.7#r9",
     "§8.2#b1",
     "§4.1#r10"
@@ -992,7 +993,7 @@
     "§4.2.3#p1",
     "FI-DMG-04",
     "TS-DMG-02",
-    "§Aturan Logika Modul#r43",
+    "§Aturan Logika Modul#r45",
     "§Aturan Logika Modul#r27",
     "§Aturan Logika Modul#r28",
     "§9.7#r2",
@@ -1026,7 +1027,7 @@
    "units": [
     "EC-DMG-27",
     "§9.4.4#r7",
-    "§Aturan Logika Modul#r42",
+    "§Aturan Logika Modul#r44",
     "§2.1#r3",
     "§2#b6",
     "§2.1#b6",
@@ -1054,7 +1055,7 @@
     "§4.2.4#p7",
     "§4.2.4#r12",
     "TS-DMG-07",
-    "§Aturan Logika Modul#r51",
+    "§Aturan Logika Modul#r53",
     "§Aturan Logika Modul#r23",
     "§Aturan Logika Modul#r32",
     "§Aturan Logika Modul#r35",
@@ -1125,12 +1126,12 @@
     "S-DMG-02",
     "§8.1#r10",
     "§8.3#r3",
-    "§Aturan Logika Modul#r63",
     "§Aturan Logika Modul#r65",
-    "§Aturan Logika Modul#r66",
     "§Aturan Logika Modul#r67",
     "§Aturan Logika Modul#r68",
+    "§Aturan Logika Modul#r69",
     "§Aturan Logika Modul#r70",
+    "§Aturan Logika Modul#r72",
     "EC-DMG-11",
     "EC-DMG-26",
     "§9.4.4#r30",
@@ -1159,9 +1160,9 @@
    "title": "Mark as Found Damaged menambah node Asset found ke record yang ditahan tanpa record baru, dan membuat record Source Missing asset bagi aset tanpa record",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r72",
-    "§Aturan Logika Modul#r73",
-    "§Aturan Logika Modul#r47",
+    "§Aturan Logika Modul#r74",
+    "§Aturan Logika Modul#r75",
+    "§Aturan Logika Modul#r49",
     "§8.1#r10",
     "§8.3#p2",
     "§8.3#r2",
@@ -1188,7 +1189,7 @@
    "title": "Reject atau Cancel Report laporan Missing menghapus penanda, mengaktifkan record kembali, dan menambah node Missing report closed",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r69",
+    "§Aturan Logika Modul#r71",
     "§8.1#r11",
     "§8.3#r3",
     "EC-DMG-33",
@@ -1213,7 +1214,7 @@
    "title": "Aset Missing yang di-Dispose menyelesaikan Damage record sebagai Disposed di History dengan node Disposed oleh System",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r74",
+    "§Aturan Logika Modul#r76",
     "§8.1#r16",
     "§8.3#r3",
     "EC-DMG-34",
@@ -1235,7 +1236,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
-   "title": "Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed ditolak",
+   "title": "Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed atau Assigned tampil Report Disposal Disabled",
    "layer": "ui-e2e",
    "units": [
     "T-DMG-01",
@@ -1246,8 +1247,8 @@
     "S-DMG-05",
     "§8.1#r13",
     "§8.3#r4",
-    "§Aturan Logika Modul#r58",
-    "§Aturan Logika Modul#r59",
+    "§Aturan Logika Modul#r60",
+    "§Aturan Logika Modul#r61",
     "§Aturan Logika Modul#r19",
     "§9.7#r10",
     "TS-DISP-12",
@@ -1267,7 +1268,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu mutasi (Report Disposal satu aset). Penolakan aset Borrowed (pesan EC-DISP-08 dikutip PRD §4.1a) diasersi pada record awal lain tanpa mutasi. Badge jumlah tab sebagai selisih (AS-8).",
+   "alasan": "Satu mutasi (Report Disposal satu aset). Report Disposal Disabled pada aset Borrowed dan Assigned (Custody selain Available, T-DMG-01 §4.1a) diasersi pada record awal lain tanpa mutasi, tanpa literal tooltip karena S-35 ada di modul lain (temuan 13). Badge jumlah tab sebagai selisih (AS-8).",
    "priority": "Critical"
   },
   {
@@ -1348,7 +1349,7 @@
    "layer": "ui-e2e",
    "units": [
     "§Aturan Logika Modul#r20",
-    "§Aturan Logika Modul#r60",
+    "§Aturan Logika Modul#r62",
     "§8.1#r14",
     "§8.1#r15",
     "§8.3#r4",
@@ -1407,12 +1408,12 @@
    "title": "Aset yang didaftarkan dengan Condition Damaged mendapat record Damaged Source Registration tanpa Damaged Photo begitu aset Active",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r77",
-    "§Aturan Logika Modul#r78",
     "§Aturan Logika Modul#r79",
     "§Aturan Logika Modul#r80",
     "§Aturan Logika Modul#r81",
     "§Aturan Logika Modul#r82",
+    "§Aturan Logika Modul#r83",
+    "§Aturan Logika Modul#r84",
     "§8.3#r1",
     "§8.1#r7",
     "§9.2#b5",
@@ -1442,9 +1443,9 @@
    "title": "Mark as Repaired atas aset yang sedang dipinjam berjalan tanpa menunggu Return: baris Borrow tetap Borrowed dan pemegang tidak berubah; sebelum repair aset Damaged ditolak form Borrow",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r38",
     "§Aturan Logika Modul#r39",
     "§Aturan Logika Modul#r40",
+    "§Aturan Logika Modul#r41",
     "EC-DMG-09",
     "EC-DMG-18",
     "§9.4.4#r19",
@@ -1474,7 +1475,7 @@
     "§2.1#b2",
     "§4.8#r3",
     "§2.1#r2",
-    "§Aturan Logika Modul#r37",
+    "§Aturan Logika Modul#r38",
     "§Aturan Logika Modul#r26",
     "EC-DMG-03",
     "§9.4.4#r3",
@@ -1484,8 +1485,8 @@
     "§9.11#r1",
     "T-DMG-01",
     "§Aturan Logika Modul#r28",
-    "§Aturan Logika Modul#r43",
-    "§Aturan Logika Modul#r51",
+    "§Aturan Logika Modul#r45",
+    "§Aturan Logika Modul#r53",
     "§2#b7"
    ],
    "smoke": [],
@@ -1506,15 +1507,15 @@
    "title": "Report Damaged dari halaman Return Borrow oleh Aktor Borrow berhak Aktor Damaged membuat record Damaged Source Borrow return dari Description dan foto Return; Return aset ber-record Waiting for Confirmation selesai sebagai Returned bermarker Damaged tanpa laporan baru",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r46",
+    "§Aturan Logika Modul#r48",
     "§Aturan Logika Modul#r34",
-    "§Aturan Logika Modul#r41",
+    "§Aturan Logika Modul#r42",
     "§9.2#b7",
     "§8.1#r7",
     "EC-DMG-06",
     "§9.4.4#r4",
     "T-DMG-01",
-    "§Aturan Logika Modul#r42",
+    "§Aturan Logika Modul#r44",
     "§2#b6",
     "§3#p2"
    ],
@@ -1536,8 +1537,8 @@
    "title": "Mark as Repaired atas aset yang sedang ditugaskan berjalan tanpa Unassign: baris Assignment tetap Assigned dan pemegang tidak berubah; sebelum repair aset Damaged ditolak form Assign",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r38",
     "§Aturan Logika Modul#r39",
+    "§Aturan Logika Modul#r40",
     "EC-DMG-10",
     "EC-DMG-18",
     "§9.4.4#r20",
@@ -1565,13 +1566,13 @@
    "units": [
     "§2.1#b2",
     "§4.8#r3",
-    "§Aturan Logika Modul#r37",
+    "§Aturan Logika Modul#r38",
     "EC-DMG-03",
     "§4.2.3#p1",
     "T-DMG-01",
     "§Aturan Logika Modul#r28",
-    "§Aturan Logika Modul#r43",
-    "§Aturan Logika Modul#r51",
+    "§Aturan Logika Modul#r45",
+    "§Aturan Logika Modul#r53",
     "§2#b7",
     "§2.1#b1",
     "§4.2.4#p7"
@@ -1594,13 +1595,13 @@
    "title": "Unassign bermarker Damaged membuat record Damaged Source Assign return dari Description dan foto Unassign; laporan Waiting for Confirmation atas aset ditugaskan ditautkan tanpa Damage Report kedua dan tetap diputuskan Aktor Damaged, marker Unassigned mengikuti hasilnya",
    "layer": "ui-e2e",
    "units": [
-    "§Aturan Logika Modul#r46",
-    "§Aturan Logika Modul#r53",
+    "§Aturan Logika Modul#r48",
+    "§Aturan Logika Modul#r55",
     "§9.2#b7",
     "§8.3#r2",
     "§8.1#r7",
     "§Aturan Logika Modul#r34",
-    "§Aturan Logika Modul#r41",
+    "§Aturan Logika Modul#r42",
     "§9.7#r3",
     "T-DMG-01",
     "§2#b6",
@@ -1621,7 +1622,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer",
-   "title": "Aset Damaged dapat di-Transfer dengan peringatan, record aktif ikut Group tujuan saat Received tanpa node, dan Report Damaged saat Receive membuat record Source Transfer receive",
+   "title": "Aset Damaged dapat di-Transfer dengan peringatan; selama In Transfer Process Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit, dan record tetap di Active; saat Received record aktif ikut Group tujuan tanpa node dan Mark as Repaired aktif lagi; Report Damaged saat Receive membuat record Source Transfer receive",
    "layer": "ui-e2e",
    "units": [
     "EC-DMG-29",
@@ -1635,7 +1636,10 @@
     "§2#b6",
     "§4.8#r3",
     "§Aturan Logika Modul#r34",
-    "T-DMG-01"
+    "T-DMG-01",
+    "S-DMG-23",
+    "§9.4.2#r33",
+    "§Aturan Logika Modul#r43"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1647,7 +1651,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu alur Transfer atas dua aset: aset Damaged (record ikut Group tujuan) dan aset normal yang dilaporkan rusak saat Receive; keduanya teramati pada Received yang sama.",
+   "alasan": "Satu alur Transfer atas dua aset: aset Damaged (record ikut Group tujuan) dan aset normal yang dilaporkan rusak saat Receive; keduanya teramati pada Received yang sama. Pengamatan Mark as Repaired, Report Disposal, dan Report Missing Disabled selama In Transfer Process dan aktif lagi setelah Received memakai aset Damaged yang sama dalam alur Transfer yang sama (satu mutasi Transfer); cabang Returned to Origin, Rejected, dan Canceled dimiliki spec be-e2e (klausa server).",
    "priority": "Critical"
   },
   {
@@ -1659,8 +1663,8 @@
     "§2.1#b2",
     "§2#b6",
     "§4.8#r3",
-    "§Aturan Logika Modul#r42",
-    "§Aturan Logika Modul#r45",
+    "§Aturan Logika Modul#r44",
+    "§Aturan Logika Modul#r47",
     "§8.3#r2",
     "§3#p2",
     "EC-DMG-22",
@@ -1772,7 +1776,7 @@
     "D-DMG-08",
     "TS-DMG-02",
     "TS-DMG-07",
-    "§Aturan Logika Modul#r51",
+    "§Aturan Logika Modul#r53",
     "§4.2.4#p5"
    ],
    "smoke": [],
@@ -1957,7 +1961,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
-   "title": "Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed",
+   "title": "Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed, serta Mark as Repaired dan Report Disposal Disabled saat Custody In Transfer Process atau Report Disposal Disabled saat Custody bukan Available",
    "layer": "ui-client",
    "units": [
     "T-DMG-01",
@@ -1970,7 +1974,10 @@
     "V-DMG-07",
     "EC-DMG-36",
     "§2.1#b6",
-    "EB-TBL-5@aksi-disposal-plan-none"
+    "EB-TBL-5@aksi-disposal-plan-none",
+    "S-DMG-23",
+    "§9.4.2#r33",
+    "§Aturan Logika Modul#r43"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1980,7 +1987,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Hak aktor (Aktor Damaged, hak Report Disposal, level plan) ditulis sebagai Kondisi; yang diasersi aksi mana yang tampil, Disabled, atau Hidden per baris. D-DMG-06 adalah reaksi atas respons konflik status.",
+   "alasan": "Hak aktor (Aktor Damaged, hak Report Disposal, level plan) ditulis sebagai Kondisi; yang diasersi aksi mana yang tampil, Disabled, atau Hidden per baris. D-DMG-06 adalah reaksi atas respons konflik status. S-DMG-23 dan T-DMG-01 Report Disposal: Custody pada baris (Borrowed, Assigned, In Transfer Process) ditulis sebagai Kondisi; Disabled Report Disposal diasersi tanpa literal tooltip (temuan 13).",
    "komponen": "Tabel T-DMG-01 (sub-tab Active)",
    "priority": "Medium"
   },
@@ -2313,7 +2320,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status",
-   "title": "Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda",
+   "title": "Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda, dan tidak dibatasi Activity Lock",
    "layer": "be-e2e",
    "units": [
     "§Aturan Logika Modul#r10",
@@ -2322,11 +2329,11 @@
     "§Aturan Logika Modul#r13",
     "§Aturan Logika Modul#r15",
     "§Aturan Logika Modul#r16",
-    "§Aturan Logika Modul#r42",
-    "§Aturan Logika Modul#r43",
     "§Aturan Logika Modul#r44",
-    "§Aturan Logika Modul#r48",
-    "§Aturan Logika Modul#r75",
+    "§Aturan Logika Modul#r45",
+    "§Aturan Logika Modul#r46",
+    "§Aturan Logika Modul#r50",
+    "§Aturan Logika Modul#r77",
     "§9.2#r2",
     "S-DMG-22",
     "§9.2#b2",
@@ -2355,7 +2362,8 @@
     "§9.4.1#r6",
     "§9.4.1#r7",
     "EB-FRM-4@what-happened",
-    "F-DMG-01"
+    "F-DMG-01",
+    "§Aturan Logika Modul#r37"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2367,7 +2375,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset",
-   "title": "Efek Damage record ke status global aset: Damaged saat record Damaged, laporan pemegang vs scan selama Waiting for Confirmation, hitung ulang saat Reject/Cancel, Normal atau TAG Reported saat Repaired, dan transaksi berjalan tidak berubah",
+   "title": "Efek Damage record ke status global aset: Damaged saat record Damaged, laporan pemegang vs scan selama Waiting for Confirmation, hitung ulang saat Reject/Cancel, Normal atau TAG Reported saat Repaired, dan transaksi berjalan tidak berubah, serta Condition tidak berubah dan record tetap Active selama aset In Transfer Process",
    "layer": "be-e2e",
    "units": [
     "§Aturan Logika Modul#r24",
@@ -2382,13 +2390,13 @@
     "§Aturan Logika Modul#r33",
     "§Aturan Logika Modul#r34",
     "§Aturan Logika Modul#r36",
-    "§Aturan Logika Modul#r37",
     "§Aturan Logika Modul#r38",
     "§Aturan Logika Modul#r39",
     "§Aturan Logika Modul#r40",
     "§Aturan Logika Modul#r41",
-    "§Aturan Logika Modul#r56",
-    "§Aturan Logika Modul#r57",
+    "§Aturan Logika Modul#r42",
+    "§Aturan Logika Modul#r58",
+    "§Aturan Logika Modul#r59",
     "§9.2#b8",
     "§9.4.3#b2",
     "§9.4.3#b3",
@@ -2408,7 +2416,9 @@
     "§9.7#r9",
     "§9.4.1#r3",
     "§9.4.1#r8",
-    "§9.4.1#r5"
+    "§9.4.1#r5",
+    "§Aturan Logika Modul#r43",
+    "§9.4.2#r33"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2426,15 +2436,15 @@
     "§Aturan Logika Modul#r18",
     "§Aturan Logika Modul#r22",
     "§Aturan Logika Modul#r23",
-    "§Aturan Logika Modul#r49",
-    "§Aturan Logika Modul#r50",
     "§Aturan Logika Modul#r51",
     "§Aturan Logika Modul#r52",
     "§Aturan Logika Modul#r53",
+    "§Aturan Logika Modul#r54",
+    "§Aturan Logika Modul#r55",
     "§Aturan Logika Modul#r35",
-    "§Aturan Logika Modul#r61",
-    "§Aturan Logika Modul#r62",
-    "§Aturan Logika Modul#r84",
+    "§Aturan Logika Modul#r63",
+    "§Aturan Logika Modul#r64",
+    "§Aturan Logika Modul#r86",
     "§9.2#r1",
     "§9.2#r7",
     "§9.2#r8",
@@ -2475,9 +2485,9 @@
    "title": "Server memvalidasi Mark as Repaired: Scan TAG milik aset untuk aset ber-TAG, After photo menurut setting, Repair note, identifikasi manual, status record Repaired dengan penghapusan penanda secara atomik, dan penolakan pada status Disposal",
    "layer": "be-e2e",
    "units": [
-    "§Aturan Logika Modul#r54",
-    "§Aturan Logika Modul#r55",
-    "§Aturan Logika Modul#r85",
+    "§Aturan Logika Modul#r56",
+    "§Aturan Logika Modul#r57",
+    "§Aturan Logika Modul#r87",
     "§9.2#r5",
     "§9.2#b16",
     "§9.2#b17",
@@ -2574,8 +2584,6 @@
    "title": "Server menahan dan melepas Damage record saat aset dilaporkan Missing, ditemukan, laporan Missing ditutup, atau Missing → Disposed, menolak aksi pada record berpenanda Missing, dan menangani Report Missing atas record Disposal",
    "layer": "be-e2e",
    "units": [
-    "§Aturan Logika Modul#r63",
-    "§Aturan Logika Modul#r64",
     "§Aturan Logika Modul#r65",
     "§Aturan Logika Modul#r66",
     "§Aturan Logika Modul#r67",
@@ -2586,7 +2594,9 @@
     "§Aturan Logika Modul#r72",
     "§Aturan Logika Modul#r73",
     "§Aturan Logika Modul#r74",
+    "§Aturan Logika Modul#r75",
     "§Aturan Logika Modul#r76",
+    "§Aturan Logika Modul#r78",
     "V-DMG-02",
     "§9.2#b25",
     "§9.2#b26",
@@ -2621,9 +2631,9 @@
     "§Aturan Logika Modul#r19",
     "§Aturan Logika Modul#r20",
     "§Aturan Logika Modul#r21",
-    "§Aturan Logika Modul#r58",
-    "§Aturan Logika Modul#r59",
     "§Aturan Logika Modul#r60",
+    "§Aturan Logika Modul#r61",
+    "§Aturan Logika Modul#r62",
     "§9.2#r3",
     "§9.2#r4",
     "§9.2#r6",
@@ -2671,16 +2681,16 @@
    "title": "Server membuat record dan node dari jalur non-form (registrasi, Unassign bermarker Damaged, Stock Opname, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download",
    "layer": "be-e2e",
    "units": [
-    "§Aturan Logika Modul#r45",
-    "§Aturan Logika Modul#r46",
     "§Aturan Logika Modul#r47",
-    "§Aturan Logika Modul#r77",
-    "§Aturan Logika Modul#r78",
+    "§Aturan Logika Modul#r48",
+    "§Aturan Logika Modul#r49",
     "§Aturan Logika Modul#r79",
     "§Aturan Logika Modul#r80",
     "§Aturan Logika Modul#r81",
     "§Aturan Logika Modul#r82",
     "§Aturan Logika Modul#r83",
+    "§Aturan Logika Modul#r84",
+    "§Aturan Logika Modul#r85",
     "§9.2#b5",
     "§9.2#b6",
     "§9.2#b7",
@@ -2868,13 +2878,13 @@
   "§Dependencies#b21": "penunjuk: §11 (daftar modul «Membutuhkan», navigasi)",
   "DAMAGED-LOGIC-01": "penunjuk: §Aturan Logika Modul#r10–r17 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
   "DAMAGED-LOGIC-02": "penunjuk: §Aturan Logika Modul#r18–r23 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-03": "penunjuk: §Aturan Logika Modul#r24–r36 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-04": "penunjuk: §Aturan Logika Modul#r37–r41 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-05": "penunjuk: §Aturan Logika Modul#r42–r53 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-06": "penunjuk: §Aturan Logika Modul#r54–r62 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-07": "penunjuk: §Aturan Logika Modul#r63–r76 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-08": "penunjuk: §Aturan Logika Modul#r77–r83 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
-  "DAMAGED-LOGIC-09": "penunjuk: §Aturan Logika Modul#r84–r85 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-03": "penunjuk: §Aturan Logika Modul#r24–r37 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-04": "penunjuk: §Aturan Logika Modul#r38–r43 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-05": "penunjuk: §Aturan Logika Modul#r44–r55 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-06": "penunjuk: §Aturan Logika Modul#r56–r64 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-07": "penunjuk: §Aturan Logika Modul#r65–r78 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-08": "penunjuk: §Aturan Logika Modul#r79–r85 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
+  "DAMAGED-LOGIC-09": "penunjuk: §Aturan Logika Modul#r86–r87 (PRD: «baris induk di atas hanya judul dan penunjuk»; §4.9 indeks navigasi)",
   "§Aturan Logika Modul#p1": "PRD: catatan penulisan tabel sub-rule («satu klaim per baris»), bukan perilaku",
   "§Aturan Logika Modul#p3": "PRD: «Contoh skenario — Laporan pemegang di-Reject» (penunjuk: DAMAGED-LOGIC-03k, 09, 06)",
   "§Aturan Logika Modul#p5": "PRD: «Contoh skenario — Laporan pemegang di-Reject» (penunjuk: DAMAGED-LOGIC-03k, 09, 06)",
@@ -3084,7 +3094,7 @@
    "jenis": "bertentangan",
    "units": [
     "§9.4.3#b6",
-    "§Aturan Logika Modul#r84",
+    "§Aturan Logika Modul#r86",
     "EC-DMG-08",
     "§2.1#b6",
     "§4.8#r6",
@@ -3114,6 +3124,41 @@
     "§2.2 contoh: «Record `Waiting for Confirmation` (pelapor umum, `DAMAGED-LOGIC-05b`) dan status global aset langsung Damaged (`DAMAGED-LOGIC-03f`)»"
    ],
    "dampak": "Klausa «hanya laporan pemegang» di §9.4.3#b3 tidak diasersi; klausa lainnya (laporan scan mobile tidak mengubah status global sebelum Confirm, DAMAGED-LOGIC-03g) tetap dimiliki TC-FA-DAMAGED-BE-202. Spec mengikuti DAMAGED-LOGIC-03f (SSOT). Pemilik PRD perlu menyamakan baris Must NOT itu."
+  },
+  {
+   "no": 11,
+   "jenis": "kurang",
+   "units": [
+    "§Aturan Logika Modul#r43"
+   ],
+   "kutipan": [
+    "DAMAGED-LOGIC-04g: «`Report Missing` `Disabled 🔖` selama baris Transfer `In Transit` (`asset-list.md` `S-27`)»"
+   ],
+   "dampak": "Literal tooltip Report Missing selama baris Transfer In Transit ada di asset-list.md S-27 (PRD lain, bukan sumber, SB-5) dan tidak dinyatakan di PRD ini. Spec mengasersi Report Missing Disabled selama In Transit tanpa literal tooltip; sisa DAMAGED-LOGIC-04g tetap dimiliki spec."
+  },
+  {
+   "no": 12,
+   "jenis": "ambigu",
+   "units": [
+    "§Aturan Logika Modul#r43"
+   ],
+   "kutipan": [
+    "DAMAGED-LOGIC-04g: «Report Damaged tidak tersedia dari modul ini (kerusakan baru dicatat lewat Already damaged saat Send dan Report Damaged saat Receive, `transfer.md` `XFER-LOGIC-16`)»"
+   ],
+   "dampak": "PRD tidak menyebut elemen dan keadaannya (Hidden, Disabled, atau ditolak server) untuk Report Damaged atas aset In Transfer Process. Klausa itu tidak diasersi; bagian lain DAMAGED-LOGIC-04g (Mark as Repaired dan Report Disposal Disabled, Condition tidak berubah, record tetap di Active, aktif lagi setelah Received, Returned to Origin, Rejected, atau Canceled) tetap dimiliki spec."
+  },
+  {
+   "no": 13,
+   "jenis": "kurang",
+   "units": [
+    "T-DMG-01",
+    "§Aturan Logika Modul#r43"
+   ],
+   "kutipan": [
+    "§4.1a T-DMG-01 Matriks Aksi, Report Disposal: «Custody selain `Available` (Borrowed, Assigned, atau dalam proses transaksi termasuk `In Transfer Process`): `Disabled 🔖` dengan tooltip `asset-list.md` `S-35`»",
+    "DAMAGED-LOGIC-04g: «`Report Disposal` `Disabled 🔖` dengan tooltip `asset-list.md` `S-35`»"
+   ],
+   "dampak": "Literal tooltip Report Disposal Disabled menurut Custody ada di asset-list.md (PRD lain, bukan sumber, SB-5) dan tidak dinyatakan di PRD ini; di asset-list.md id `S-35` juga dipakai untuk tooltip info Document No., sehingga rujukan id saja tidak menentukan baris. Spec mengasersi Report Disposal Disabled (Borrowed, Assigned, In Transfer Process) tanpa literal tooltip; klausa tooltip tidak diasersi, sisa unit tetap dimiliki spec. Perilaku lama «klik lalu pesan `This asset is in [Transaction ID]. Return it first.`» tidak lagi diasersi."
   }
  ],
  "ekspektasiBaku": {
@@ -3780,11 +3825,11 @@
    "ui-e2e": "Review tersedia dan Confirm berhasil atas laporan yang dibuat aktor itu sebelum memiliki hak",
    "be-e2e": "server menerima Confirm / Reject dari Aktor Damaged yang juga pelapor"
   },
-  "§Aturan Logika Modul#r49": {
+  "§Aturan Logika Modul#r51": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r84": {
+  "§Aturan Logika Modul#r86": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -3826,7 +3871,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan"
   },
-  "§Aturan Logika Modul#r50": {
+  "§Aturan Logika Modul#r52": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -3872,15 +3917,15 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan"
   },
-  "§Aturan Logika Modul#r54": {
+  "§Aturan Logika Modul#r56": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r55": {
+  "§Aturan Logika Modul#r57": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r85": {
+  "§Aturan Logika Modul#r87": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4200,15 +4245,15 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r42": {
-   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
-   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
-  },
   "§Aturan Logika Modul#r44": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r48": {
+  "§Aturan Logika Modul#r46": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§Aturan Logika Modul#r50": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4324,11 +4369,11 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r56": {
+  "§Aturan Logika Modul#r58": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r40": {
+  "§Aturan Logika Modul#r41": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4344,7 +4389,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan"
   },
-  "§Aturan Logika Modul#r43": {
+  "§Aturan Logika Modul#r45": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4384,7 +4429,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan"
   },
-  "§Aturan Logika Modul#r51": {
+  "§Aturan Logika Modul#r53": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4417,15 +4462,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r63": {
-   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
-   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
-  },
   "§Aturan Logika Modul#r65": {
-   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
-   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
-  },
-  "§Aturan Logika Modul#r66": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4437,7 +4474,15 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
+  "§Aturan Logika Modul#r69": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
   "§Aturan Logika Modul#r70": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§Aturan Logika Modul#r72": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4461,15 +4506,15 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r72": {
+  "§Aturan Logika Modul#r74": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r73": {
+  "§Aturan Logika Modul#r75": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r47": {
+  "§Aturan Logika Modul#r49": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4493,7 +4538,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r69": {
+  "§Aturan Logika Modul#r71": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4505,7 +4550,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r74": {
+  "§Aturan Logika Modul#r76": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4525,11 +4570,11 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r58": {
+  "§Aturan Logika Modul#r60": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r59": {
+  "§Aturan Logika Modul#r61": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4606,7 +4651,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r60": {
+  "§Aturan Logika Modul#r62": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4650,14 +4695,6 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r77": {
-   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
-   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
-  },
-  "§Aturan Logika Modul#r78": {
-   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
-   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
-  },
   "§Aturan Logika Modul#r79": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
@@ -4671,6 +4708,14 @@
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
   "§Aturan Logika Modul#r82": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§Aturan Logika Modul#r83": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§Aturan Logika Modul#r84": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4698,11 +4743,11 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r38": {
+  "§Aturan Logika Modul#r39": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r39": {
+  "§Aturan Logika Modul#r40": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4722,7 +4767,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r37": {
+  "§Aturan Logika Modul#r38": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4738,7 +4783,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r46": {
+  "§Aturan Logika Modul#r48": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4746,7 +4791,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r41": {
+  "§Aturan Logika Modul#r42": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4774,7 +4819,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r53": {
+  "§Aturan Logika Modul#r55": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4794,7 +4839,7 @@
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
-  "§Aturan Logika Modul#r45": {
+  "§Aturan Logika Modul#r47": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   },
@@ -4894,6 +4939,20 @@
   "EB-FRM-4@reason": {
    "ui-client": "pesan Max. 360 characters saat melebihi",
    "be-e2e": "server menolak 361 karakter dan menerima 360"
+  },
+  "S-DMG-23": {
+   "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan (Mark as Repaired Disabled dengan tooltip pada baris Custody In Transfer Process)",
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata"
+  },
+  "§9.4.2#r33": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§Aturan Logika Modul#r43": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "ui-client": "klausa klien: label, copy, state, dan reaksi atas respons tiruan (Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit)",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   }
  },
  "dataUnits": [
@@ -4947,7 +5006,7 @@
   "S-DMG-01": "per klausa: tampil per peran di spec gating 014–019, jumlah berubah (selisih) di 011 dan 041",
   "S-DMG-04": "per klausa: baris awal berpenanda di 011, sesudah Report Missing di 037",
   "S-DMG-05": "per status: Hidden pada baris awal Reported Disposal/In Disposal Process di 011, sesudah Report Disposal di 041, sesudah Submit Request di 045",
-  "§Aturan Logika Modul#r55": "per spec, klausa masing-masing: 011, 021",
+  "§Aturan Logika Modul#r57": "per spec, klausa masing-masing: 011, 021",
   "EC-DMG-31": "per klausa: Mark as Repaired tanpa Scan TAG di 011, node tanpa foto (Registration) di 046",
   "§3#p6": "per spec, klausa masing-masing: 204, 207",
   "§4.4#r13": "per hasil: lintas Group (D-DMG-07) di 013, satu Group (D-DISP-13) di 042",
@@ -5000,18 +5059,18 @@
   "§4.2.3#b1": "per titik masuk: aksi Hidden satu aset di 030, keterangan banyak aset di 031, scan mobile di 057",
   "§8.2#b1": "per spec, klausa masing-masing: 030, 032",
   "§Aturan Logika Modul#r14": "per titik masuk satu aset: Asset List/Detail di 030, scan mobile di 057",
-  "§Aturan Logika Modul#r42": "per titik masuk Pelapor admin: Asset List / Detail di 030, pemegang Update dari My Asset di 034, halaman Return Borrow di 049",
+  "§Aturan Logika Modul#r44": "per titik masuk Pelapor admin: Asset List / Detail di 030, pemegang Update dari My Asset di 034, halaman Return Borrow di 049",
   "§3#p2": "per jalur: D-DMG-01 oleh Pelapor admin di 030, Return bermarker Damaged di 049, Unassign bermarker Damaged di 052, Stock Opname di 054",
   "EC-DMG-04": "per titik masuk: Asset List/Detail di 030, scan mobile di 057",
   "F-DMG-01": "per titik masuk: Asset List satu aset di 030, banyak aset di 031, My Asset di 033",
-  "§Aturan Logika Modul#r40": "per spec, klausa masing-masing: 032, 047",
+  "§Aturan Logika Modul#r41": "per spec, klausa masing-masing: 032, 047",
   "TS-DMG-02": "per platform: web My Asset di 033, scan mobile di 057, My Asset mobile di 058",
   "§4.2.2#p3": "per platform: web di 036, mobile di 058",
   "§9.4.4#r7": "per spec, klausa masing-masing: 201, 212",
   "§2#b6": "per jenis Pelapor admin: pemegang Update dari My Asset di 034, Aktor Damaged dari halaman Return Borrow di 049, Aktor Transfer di 053, pemilik sesi Stock Opname di 054; Unassign bermarker Damaged sebagai keputusan modul asal (langsung Damaged) di 052",
   "D-DMG-08": "per spec, klausa masing-masing: 035, 058",
   "TS-DMG-07": "per spec, klausa masing-masing: 035, 058",
-  "§Aturan Logika Modul#r51": "per titik masuk dan platform: My Asset web di 035, My Asset mobile di 058, halaman Borrow di 048, halaman Assignment di 051",
+  "§Aturan Logika Modul#r53": "per titik masuk dan platform: My Asset web di 035, My Asset mobile di 058, halaman Borrow di 048, halaman Assignment di 051",
   "TS-DISP-15": "per titik masuk: Report Disposal satu aset di 041, Bulk Report Disposal di 042",
   "§8.3#r3": "per event missing: Report Missing di 037, Found di 038, Missing report closed di 039, Missing → Disposed di 040",
   "§9.7#r15": "per peristiwa: Report Missing di 037, Reject/Cancel Report Missing di 039",
@@ -5022,19 +5081,19 @@
   "§9.2#b23": "per titik masuk: baris di 041, bulk satu Group di 042",
   "§Aturan Logika Modul#r20": "per pemicu: Cancel Disposal Report dari modul ini di 043, Decline/Cancel Report dari tab Reported di 044",
   "EC-DMG-17": "per peristiwa: Decline/Cancel Report atas Report di 044, baris Disposal ditolak/dibatalkan di 045",
-  "§Aturan Logika Modul#r38": "per status: Borrowed di 047, Assigned di 050",
   "§Aturan Logika Modul#r39": "per status: Borrowed di 047, Assigned di 050",
+  "§Aturan Logika Modul#r40": "per status: Borrowed di 047, Assigned di 050",
   "EC-DMG-18": "per modul transaksi: Borrow menolak di 047, Assign menolak di 050, Transfer menerima dengan peringatan di 053",
   "§9.4.4#r8": "per modul transaksi: Borrow di 047, Assign di 050, Transfer di 053",
   "§9.2#b17": "per status transaksi: Borrowed di 047, Assigned di 050",
   "§2.1#b1": "per halaman: Aktor Borrow tanpa hak Aktor Damaged (Waiting for Confirmation) di 048, Aktor Assignment tanpa hak Aktor Damaged di 051, Stock Opname (langsung Damaged) di 054",
   "§2.1#b2": "per aktor transaksi: Borrow (tanpa hak Aktor Damaged, Waiting for Confirmation) di 048, Assignment (tanpa hak Aktor Damaged) di 051, Transfer di 053, Stock Opname di 054",
-  "§Aturan Logika Modul#r37": "per halaman: Borrow di 048, Assignment di 051",
+  "§Aturan Logika Modul#r38": "per halaman: Borrow di 048, Assignment di 051",
   "EC-DMG-03": "per halaman transaksi: Borrow di 048, Assignment di 051",
   "§9.4.4#r3": "per spec, klausa masing-masing: 202, 212",
-  "§Aturan Logika Modul#r46": "per transaksi: Report Damaged dari halaman Return Borrow (Description dan foto Return) di 049, marker Damaged baris Unassigned di 052",
+  "§Aturan Logika Modul#r48": "per transaksi: Report Damaged dari halaman Return Borrow (Description dan foto Return) di 049, marker Damaged baris Unassigned di 052",
   "§Aturan Logika Modul#r34": "per transaksi: Return di 049, Unassign di 052, Transfer di 053",
-  "§Aturan Logika Modul#r41": "per transaksi: Return di 049, Unassign di 052",
+  "§Aturan Logika Modul#r42": "per transaksi: Return di 049, Unassign di 052",
   "§9.2#b7": "per spec, klausa masing-masing: 049, 052",
   "EC-DMG-29": "per spec, klausa masing-masing: 208, 210",
   "§4.6#p1": "per surface mobile: scan TAG di 057, My Asset di 058",
@@ -5044,8 +5103,9 @@
   "§9.4.4#r18": "per spec, klausa masing-masing: 210, 212",
   "D-DISP-13": "per titik masuk: baris record di 041, bulk satu Group di 042",
   "§Aturan Logika Modul#r28": "per jenis pelapor: pemegang dari My Asset di 033, Aktor Borrow dari halaman Borrow di 048, Aktor Assignment dari halaman Assignment di 051",
-  "§Aturan Logika Modul#r43": "per titik masuk pelapor umum: My Asset di 033, halaman Borrow di 048, halaman Assignment di 051",
-  "§4.2.4#p7": "per surface: My Asset di 035, halaman Assignment di 051"
+  "§Aturan Logika Modul#r45": "per titik masuk pelapor umum: My Asset di 033, halaman Borrow di 048, halaman Assignment di 051",
+  "§4.2.4#p7": "per surface: My Asset di 035, halaman Assignment di 051",
+  "D-DISP-15": "per klausa: hak melapor Report Disposal pemegang Manage asset & TAG (Update) atas aset Damaged di 016; Cancel Disposal Report di 043"
  },
  "kontrak": {
   "DataTable": [
@@ -5127,7 +5187,9 @@
    "V-DMG-02",
    "§4.5#p1",
    "EC-DMG-36",
-   "S-DMG-20"
+   "S-DMG-20",
+   "S-DMG-23",
+   "§9.4.2#r33"
   ],
   "Badge": [
    "§4.1#p3",
@@ -5142,7 +5204,8 @@
    "T-DMG-01",
    "S-DMG-04",
    "S-DMG-05",
-   "S-DMG-06"
+   "S-DMG-06",
+   "S-DMG-23"
   ],
   "Avatar": [
    "T-DMG-01",
@@ -6002,7 +6065,7 @@
    "units": [
     "T-DMG-01",
     "§9.2#b4",
-    "§Aturan Logika Modul#r48"
+    "§Aturan Logika Modul#r50"
    ],
    "spec": [
     "TC-FA-DAMAGED-E2E-001-tabel-active-tampilan",
@@ -6185,7 +6248,7 @@
    "units": [
     "EB-EDG-2",
     "S-DMG-11",
-    "§Aturan Logika Modul#r55"
+    "§Aturan Logika Modul#r57"
    ],
    "spec": [
     "TC-FA-DAMAGED-E2E-021-record-terakhir-selesai-empty-state"
@@ -6307,8 +6370,8 @@
     "§9.2#r6",
     "§9.2#r7",
     "§9.2#r8",
-    "§Aturan Logika Modul#r61",
-    "§Aturan Logika Modul#r62",
+    "§Aturan Logika Modul#r63",
+    "§Aturan Logika Modul#r64",
     "V-DMG-05",
     "V-DMG-06",
     "EB-EDG-1"
@@ -6391,7 +6454,7 @@
     "§Aturan Logika Modul#r13",
     "§9.4.3#b1",
     "EC-DMG-06",
-    "§Aturan Logika Modul#r73"
+    "§Aturan Logika Modul#r75"
    ],
    "spec": [
     "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status",
@@ -6421,7 +6484,7 @@
    "kode": "VD-A2",
    "units": [
     "T-DMG-01",
-    "§Aturan Logika Modul#r58"
+    "§Aturan Logika Modul#r60"
    ],
    "spec": [
     "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
@@ -7008,7 +7071,7 @@
     "§9.2#b5",
     "§9.2#b6",
     "§9.2#b7",
-    "§Aturan Logika Modul#r45",
+    "§Aturan Logika Modul#r47",
     "EC-DMG-28",
     "EC-DMG-32",
     "EC-DMG-06"
@@ -7300,6 +7363,36 @@
     "aset-missing": "§4.1#p2: hasil pindai hanya mengisi Search dengan Asset ID; keadaan TAG lain mengikuti prd-conventions.md §9.6 dan dimiliki tag/ (bukan sumber)",
     "group-found-sama": "§4.1#p2: hasil pindai hanya mengisi Search dengan Asset ID; keadaan TAG lain mengikuti prd-conventions.md §9.6 dan dimiliki tag/ (bukan sumber)",
     "group-found-beda": "§4.1#p2: hasil pindai hanya mengisi Search dengan Asset ID; keadaan TAG lain mengikuti prd-conventions.md §9.6 dan dimiliki tag/ (bukan sumber)"
+   }
+  },
+  {
+   "target": "kondisi-transfer@tabel-active",
+   "kode": "VD-A5",
+   "units": [
+    "S-DMG-23",
+    "§9.4.2#r33",
+    "§Aturan Logika Modul#r43"
+   ],
+   "spec": [
+    "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer",
+    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
+   ],
+   "pemilik": "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer",
+   "param": {
+    "per-kondisi-disabled": [
+     "Custody In Transfer Process"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-status": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "transisi-valid": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "transisi-mundur": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "transisi-ilegal": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "state-final": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "sudah-di-state-tujuan": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "state-transien": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "flag-terkunci": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server",
+    "koheren-rantai-gate": "§4.1a S-DMG-23 / DAMAGED-LOGIC-04g: target ini hanya kondisi Custody In Transfer Process yang men-disable Mark as Repaired (S-DMG-23) dan Report Disposal; status record dan transisinya dimiliki target status-record@tabel-active dan status-record@server"
    }
   }
  ],

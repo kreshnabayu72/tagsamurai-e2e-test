@@ -9,10 +9,10 @@ sourceRules: [§9.4.2#r16, §9.4.4#r2, §Aturan Logika Modul#r106, §9.10.3#r6]
 smoke: [§Aturan Logika Modul#r106, §9.10.3#r6]
 dependsOn: []
 trace:
-  §9.4.2#r16: [4, 6, 7, 9]
-  §9.4.4#r2: [4, 6, 7]
-  §Aturan Logika Modul#r106: 9
-  §9.10.3#r6: [4, 9]
+  §9.4.2#r16: [4, 6]
+  §9.4.4#r2: [4, 6]
+  §Aturan Logika Modul#r106: 6
+  §9.10.3#r6: [4, 6]
 anchor: [3]
 coverage:
   web: automated
@@ -28,13 +28,10 @@ coverage:
 
 ## Test Steps
 
-### Level None: tab Assign tidak dapat dibuka
+### Level None: tab Assign tidak tampil
 1. Operator mengubah level Feature Suite Assignment entitas menjadi `None`
 2. Muat ulang halaman
 3. Verifikasi `Export rules` pada header halaman tampil
-4. Verifikasi tab `Assign` disabled
-5. Arahkan pointer ke tab `Assign`
-6. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Assign` yang disabled
-7. Verifikasi chip `Upgrade` pada tab `Assign`
-8. Klik tab `Assign`
-9. Verifikasi tab `Assign` tidak menjadi tab aktif
+4. Verifikasi tab `Assign` tidak tampil pada daftar tab
+5. Buka langsung URL Transaction Settings dengan tab `Assign`
+6. Verifikasi tab `Assign` tetap tidak tampil dan tidak menjadi tab aktif

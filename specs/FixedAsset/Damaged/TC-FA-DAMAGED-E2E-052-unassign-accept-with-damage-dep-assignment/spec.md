@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r46", "§Aturan Logika Modul#r53", "§9.2#b7", "§8.3#r2", "§8.1#r7", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r41", "§9.7#r3", "T-DMG-01", "§2#b6", "§3#p2"]
+sourceRules: ["§Aturan Logika Modul#r48", "§Aturan Logika Modul#r55", "§9.2#b7", "§8.3#r2", "§8.1#r7", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r42", "§9.7#r3", "T-DMG-01", "§2#b6", "§3#p2"]
 smoke: []
 dependsOn:
   - "Assignment: Unassign (status Unassigned bermarker Damaged, form D-ASG-17)"
 trace:
-  "§Aturan Logika Modul#r46": [20, 21, 40, 41, 42]
-  "§Aturan Logika Modul#r53": [35, 38, 44, 46, 49, 50]
+  "§Aturan Logika Modul#r48": [20, 21, 40, 41, 42, 71, 73]
+  "§Aturan Logika Modul#r55": [35, 38, 44, 46, 49, 50, 53, 56, 58, 61, 67, 68, 71, 84, 89, 90, 94, 95]
   "§9.2#b7": [20, 21]
   "§8.3#r2": [19]
   "§8.1#r7": [19, 20, 21]
   "§Aturan Logika Modul#r34": [35, 38]
-  "§Aturan Logika Modul#r41": [10, 35, 49]
+  "§Aturan Logika Modul#r42": [10, 35, 49]
   "§9.7#r3": [14, 17, 25, 27]
   "T-DMG-01": [14, 15, 16, 38, 46]
   "§2#b6": [14]
@@ -34,6 +34,8 @@ coverage:
 - Data:
   - DU-052-1: aset Name `Webcam Logitech C920 {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Citra Maharani {runId}` lewat baris Assignment berstatus `Assigned`, belum punya record Damage.
   - DU-052-2: aset Name `Tablet Lenovo Tab M10 {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Dani Ramadhan {runId}` lewat baris Assignment berstatus `Assigned`, dengan record `Waiting for Confirmation` Source `Reported by holder` dari laporan pemegang dengan What happened `Layar tablet muncul bintik hitam dan sentuhan lambat`.
+  - DU-052-5: aset Name `Monitor Dell P2422H {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Eka Pratama {runId}` lewat baris Assignment berstatus `Assigned`, dengan record `Waiting for Confirmation` Source `Reported by holder` dari laporan pemegang dengan What happened `Panel monitor berkedip dan muncul garis vertikal`.
+  - DU-052-6: aset Name `Printer Epson L3250 {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Fajar Nugroho {runId}` lewat baris Assignment berstatus `Assigned`, dengan record `Waiting for Confirmation` Source `Reported by holder` dari laporan pemegang dengan What happened `Hasil cetak bergaris dan tinta bocor`.
 
 ## Test Steps
 
@@ -94,3 +96,52 @@ coverage:
 48. Ketik Search `Tablet Lenovo Tab M10 {runId}`, tekan Enter
 49. Verifikasi baris Assignment aset `Tablet Lenovo Tab M10 {runId}` tetap berstatus `Unassigned`
 50. Verifikasi baris Assignment aset `Tablet Lenovo Tab M10 {runId}` memuat penanda `Damaged`
+
+### Keputusan Aktor Damaged sebelum Unassign: aset tetap Assigned dan marker mengikuti record yang sudah diputuskan
+51. Buka halaman Assets, tab `Damaged`
+52. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+53. Verifikasi baris aset `Monitor Dell P2422H {runId}` tampil di sub-tab `Active` dengan Status `Waiting for Confirmation`
+54. Klik nama aset pada baris aset `Monitor Dell P2422H {runId}`
+55. Klik `[Confirm]` pada footer dialog Damage Log
+56. Verifikasi node `Report confirmed by [Admin Name]` tampil di dialog Damage Log
+57. Tutup dialog Damage Log
+58. Verifikasi Status baris aset `Monitor Dell P2422H {runId}` `Damaged`
+59. Buka halaman Assignment
+60. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+61. Verifikasi baris Assignment aset `Monitor Dell P2422H {runId}` masih berstatus `Assigned`
+62. Klik `Unassign` pada baris Assignment aset `Monitor Dell P2422H {runId}`
+63. Tandai aset rusak pada form Unassign
+64. Isi Description `Panel monitor berkedip seperti yang dilaporkan pemegang`
+65. Pilih foto Unassign `monitor-panel-berkedip.jpg`
+66. Submit form Unassign
+67. Verifikasi baris Assignment aset `Monitor Dell P2422H {runId}` berstatus `Unassigned`
+68. Verifikasi baris Assignment aset `Monitor Dell P2422H {runId}` memuat penanda `Damaged`
+69. Buka halaman Assets, tab `Damaged`
+70. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+71. Verifikasi tepat satu baris aset `Monitor Dell P2422H {runId}` tampil di sub-tab `Active` dengan Status `Damaged`
+72. Klik nama aset pada baris aset `Monitor Dell P2422H {runId}`
+73. Verifikasi timeline dialog Damage Log memuat tepat satu node `Reported damaged by [Reporter Name]`
+74. Tutup dialog Damage Log
+
+### Keputusan Aktor Damaged sesudah Unassign: Reject laporan memutuskan record dan marker mengikuti hasilnya
+75. Buka halaman Assignment
+76. Ketik Search `Printer Epson L3250 {runId}`, tekan Enter
+77. Klik `Unassign` pada baris Assignment aset `Printer Epson L3250 {runId}`
+78. Tandai aset rusak pada form Unassign
+79. Isi Description `Hasil cetak bergaris seperti yang dilaporkan pemegang`
+80. Pilih foto Unassign `printer-hasil-cetak-bergaris.jpg`
+81. Submit form Unassign
+82. Buka halaman Assets, tab `Damaged`
+83. Ketik Search `Printer Epson L3250 {runId}`, tekan Enter
+84. Verifikasi baris aset `Printer Epson L3250 {runId}` tampil di sub-tab `Active` dengan Status `Waiting for Confirmation`
+85. Klik nama aset pada baris aset `Printer Epson L3250 {runId}`
+86. Klik `[Reject]` pada footer dialog Damage Log
+87. Isi Reason `Kerusakan tidak terbukti setelah pengecekan teknisi`
+88. Klik `[Reject]` pada dialog `Reject Report`
+89. Verifikasi badge status record pada dialog Damage Log `Rejected`
+90. Verifikasi node `Report rejected by [Admin Name]` tampil di dialog Damage Log
+91. Tutup dialog Damage Log
+92. Buka halaman Assignment
+93. Ketik Search `Printer Epson L3250 {runId}`, tekan Enter
+94. Verifikasi baris Assignment aset `Printer Epson L3250 {runId}` tetap berstatus `Unassigned`
+95. Verifikasi baris Assignment aset `Printer Epson L3250 {runId}` tidak memuat penanda `Damaged`

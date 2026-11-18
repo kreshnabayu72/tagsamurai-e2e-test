@@ -1,15 +1,15 @@
 ---
 id: TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal
-title: "Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed ditolak"
+title: "Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed atau Assigned tampil Report Disposal Disabled"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r7", TS-DISP-15, D-DISP-13, "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r58", "§Aturan Logika Modul#r59", "§Aturan Logika Modul#r19", "§9.7#r10", TS-DISP-12, "§9.2#b23", F-DMG-06, "§2.1#r8", "§4.8#r8", S-DMG-01]
+sourceRules: [T-DMG-01, "§4.1#r7", TS-DISP-15, D-DISP-13, "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r19", "§9.7#r10", TS-DISP-12, "§9.2#b23", F-DMG-06, "§2.1#r8", "§4.8#r8", S-DMG-01]
 smoke: []
 dependsOn: ["Disposal: dialog Report Disposal (D-DISP-13)"]
 trace:
-  T-DMG-01: [2, 5, 15, 17, 29, 32, 34, 36, 39, 41]
+  T-DMG-01: [2, 5, 15, 17, 29, 31, 33, 36, 38, 40]
   "§4.1#r7": 7
   TS-DISP-15: [10, 11]
   D-DISP-13: [7, 11, 12, 26]
@@ -17,8 +17,8 @@ trace:
   S-DMG-05: 16
   "§8.1#r13": [20, 21, 22]
   "§8.3#r4": 20
-  "§Aturan Logika Modul#r58": [7, 26]
-  "§Aturan Logika Modul#r59": 12
+  "§Aturan Logika Modul#r60": [7, 26]
+  "§Aturan Logika Modul#r61": 12
   "§Aturan Logika Modul#r19": 12
   "§9.7#r10": [12, 13, 26]
   TS-DISP-12: [10, 12, 26]
@@ -32,15 +32,15 @@ coverage:
   web: automated
 ---
 
-# Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed ditolak
+# Report Disposal dari baris record membuka D-DISP-13 dan mengubah record menjadi Reported Disposal dengan node Disposal reported by; aset Borrowed atau Assigned tampil Report Disposal Disabled
 
 ## Prerequisites
 - Aktor: Total Control.
 - Layar awal: Assets > Damaged > Active.
 - Data:
   - DU-041-1: Damage record `Printer HP LaserJet M404 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset tidak sedang Borrowed maupun Assigned (Custody `Available`).
-  - DU-041-2: Damage record `Tablet Samsung Tab A8 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset sedang Borrowed; Transaction ID milik transaksi Borrow aset itu.
-  - DU-041-3: Damage record `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset sedang Assigned; Transaction ID milik transaksi Assignment aset itu.
+  - DU-041-2: Damage record `Tablet Samsung Tab A8 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset sedang Borrowed (Custody `Borrowed`).
+  - DU-041-3: Damage record `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, Status `Damaged`, Source `Manual`, aset sedang Assigned (Custody `Assigned`).
   - DU-041-4: Input Report Disposal atas `Printer HP LaserJet M404 {runId}`: Reason `Unit rusak berat dan biaya perbaikan melebihi nilai buku`.
 - Kondisi:
   - Level Feature Suite Disposal bernilai `Basic`.
@@ -79,21 +79,21 @@ coverage:
 25. Ketik Search `Printer HP LaserJet M404 {runId}`, tekan Enter
 26. Verifikasi Disposal Report atas aset `Printer HP LaserJet M404 {runId}` tampil di tab Reported
 
-### Aset Borrowed ditolak Report Disposal
+### Report Disposal Disabled pada aset Borrowed
 27. Buka tab Damaged, sub-tab Active
 28. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
 29. Verifikasi baris `Tablet Samsung Tab A8 {runId}` tampil dengan Status `Damaged`
 30. Buka menu ⋯ pada baris `Tablet Samsung Tab A8 {runId}`
-31. Klik `Report Disposal`
-32. Verifikasi pesan `This asset is in [Transaction ID]. Return it first.` tampil dengan `[Transaction ID]` diisi nomor transaksi milik DU-041-2
-33. Tutup pesan penolakan
-34. Verifikasi baris `Tablet Samsung Tab A8 {runId}` tetap berstatus `Damaged`
+31. Verifikasi aksi `Report Disposal` Disabled pada menu baris `Tablet Samsung Tab A8 {runId}`
+32. Arahkan pointer ke aksi `Report Disposal` pada menu baris `Tablet Samsung Tab A8 {runId}`
+33. Verifikasi alasan aksi `Report Disposal` Disabled tersampaikan pada menu baris `Tablet Samsung Tab A8 {runId}`
+34. Tutup menu ⋯
 
-### Aset Assigned ditolak Report Disposal
+### Report Disposal Disabled pada aset Assigned
 35. Ganti isi kotak search dengan `Laptop Dell Latitude 5420 {runId}`, tekan Enter
 36. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tampil dengan Status `Damaged`
 37. Buka menu ⋯ pada baris `Laptop Dell Latitude 5420 {runId}`
-38. Klik `Report Disposal`
-39. Verifikasi pesan `This asset is in [Transaction ID]. Return it first.` tampil dengan `[Transaction ID]` diisi nomor transaksi milik DU-041-3
-40. Tutup pesan penolakan
-41. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tetap berstatus `Damaged`
+38. Verifikasi aksi `Report Disposal` Disabled pada menu baris `Laptop Dell Latitude 5420 {runId}`
+39. Arahkan pointer ke aksi `Report Disposal` pada menu baris `Laptop Dell Latitude 5420 {runId}`
+40. Verifikasi alasan aksi `Report Disposal` Disabled tersampaikan pada menu baris `Laptop Dell Latitude 5420 {runId}`
+41. Tutup menu ⋯

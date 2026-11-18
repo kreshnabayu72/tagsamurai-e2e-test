@@ -5,20 +5,20 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r46", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r41", "§9.2#b7", "§8.1#r7", "EC-DMG-06", "§9.4.4#r4", "T-DMG-01", "§Aturan Logika Modul#r42", "§2#b6", "§3#p2"]
+sourceRules: ["§Aturan Logika Modul#r48", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r42", "§9.2#b7", "§8.1#r7", "EC-DMG-06", "§9.4.4#r4", "T-DMG-01", "§Aturan Logika Modul#r44", "§2#b6", "§3#p2"]
 smoke: []
 dependsOn:
   - "Borrow: Return (Report Damaged di halaman Return, status Returned bermarker Damaged)"
 trace:
-  "§Aturan Logika Modul#r46": [19, 20]
+  "§Aturan Logika Modul#r48": [19, 20]
   "§Aturan Logika Modul#r34": [29, 32]
-  "§Aturan Logika Modul#r41": [9, 29, 42]
+  "§Aturan Logika Modul#r42": [9, 29, 42]
   "§9.2#b7": [19, 20]
   "§8.1#r7": [18, 19, 20]
   "EC-DMG-06": [29, 32, 34, 35, 37, 38, 43]
   "§9.4.4#r4": [34]
   "T-DMG-01": [13, 14, 15, 16, 32, 38]
-  "§Aturan Logika Modul#r42": [13]
+  "§Aturan Logika Modul#r44": [13]
   "§2#b6": [13, 16]
   "§3#p2": [8, 10, 13, 24]
 anchor: []

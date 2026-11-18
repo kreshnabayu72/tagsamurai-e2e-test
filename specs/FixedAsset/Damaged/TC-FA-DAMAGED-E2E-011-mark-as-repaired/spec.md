@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, T-DMG-02, D-DMG-02, §4.2.4#p2, §4.4#r7, TS-DMG-05, S-DMG-01, S-DMG-04, S-DMG-05, §8.1#r12, §Aturan Logika Modul#r54, §Aturan Logika Modul#r55, §Aturan Logika Modul#r85, §Aturan Logika Modul#r18, EC-DMG-31, §9.6#r5, §3#p6, F-DMG-05, FLD-DMG-04, FLD-DMG-05, §4.2.1#b2, EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
+sourceRules: [T-DMG-01, T-DMG-02, D-DMG-02, §4.2.4#p2, §4.4#r7, TS-DMG-05, S-DMG-01, S-DMG-04, S-DMG-05, §8.1#r12, §Aturan Logika Modul#r56, §Aturan Logika Modul#r57, §Aturan Logika Modul#r87, §Aturan Logika Modul#r18, EC-DMG-31, §9.6#r5, §3#p6, F-DMG-05, FLD-DMG-04, FLD-DMG-05, §4.2.1#b2, EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
 smoke: [EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
 dependsOn: []
 trace:
@@ -19,9 +19,9 @@ trace:
   S-DMG-04: [30, 32, 33]
   S-DMG-05: [38, 39, 44, 45]
   §8.1#r12: [24, 25, 26]
-  §Aturan Logika Modul#r54: 5
-  §Aturan Logika Modul#r55: [15, 19, 23]
-  §Aturan Logika Modul#r85: [19, 21]
+  §Aturan Logika Modul#r56: 5
+  §Aturan Logika Modul#r57: [15, 19, 23]
+  §Aturan Logika Modul#r87: [19, 21]
   §Aturan Logika Modul#r18: 19
   EC-DMG-31: 9
   §9.6#r5: [13, 19]

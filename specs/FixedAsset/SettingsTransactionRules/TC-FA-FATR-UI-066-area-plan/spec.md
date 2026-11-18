@@ -54,15 +54,15 @@ trace:
   §Aturan Logika Modul#r85: [35, 36]
   §Aturan Logika Modul#r88: [35, 36]
   §Aturan Logika Modul#r90: 41
-  §Aturan Logika Modul#r92: [46, 52]
-  §Aturan Logika Modul#r106: [53, 58]
-  §4.1#r63: [10, 38, 40, 48, 55, 62, 69]
-  §4.1#r65: [10, 38, 40, 48, 55, 62, 69]
-  AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f: [3, 49, 56, 63, 70]
+  §Aturan Logika Modul#r92: [48, 49, 50]
+  §Aturan Logika Modul#r106: [53, 56]
+  §4.1#r63: [10, 38, 40]
+  §4.1#r65: [10, 38, 40]
+  AU-BAGIAN-asampaiAU-BAGIAN-s,AU-NILAI-asampaiAU-NILAI-l,AU-TOOLTIP-asampaiAU-TOOLTIP-f: [3]
   §4.1#r256: 32
   §4.3#r12: [35, 36, 38, 40, 44, 94, 100, 101, 102]
-  §4.3#r13: [46, 48, 49, 53, 55, 56]
-  §4.3#r14: [60, 62, 63, 66, 67, 69, 70]
+  §4.3#r13: [46, 49, 53, 55]
+  §4.3#r14: [60, 63, 67, 69]
   §4.3#r18: [28, 32]
   §4.3#r33: [10]
   §4.3#r34: [26, 98]
@@ -72,9 +72,9 @@ trace:
   §4.3#p2: [19, 20, 22, 23, 86, 87, 88, 91, 92, 93]
   §7#r20: [2, 16, 74, 76, 78, 82]
   §7#r21: 72
-  §9.2#b2: [46, 51, 52, 58]
+  §9.2#b2: [47, 50, 52, 58, 61, 64, 66, 70]
   §9.2#b4: [32, 33]
-  §9.4.2#r16: [46, 48, 49, 53, 55, 56]
+  §9.4.2#r16: [46, 49, 53, 55]
   §9.4.2#r99: 12
   §9.4.4#r2: [46, 53]
   §9.4.4#r20: 12
@@ -83,7 +83,7 @@ trace:
   §9.10.1#p11: 5
   §9.10.1#p13: 4
   §9.10.2#b3: [35, 36]
-  §9.10.4#b1: [60, 62, 63, 65, 66, 67, 69, 70]
+  §9.10.4#b1: [60, 63, 67, 69]
   §9.4.2#r19: 72
 anchor: [25, 43, 85, 90, 96, 97, 104, 105]
 coverage:
@@ -188,35 +188,35 @@ coverage:
 43. Verifikasi bagian `Limits` tampil pada Category leaf `Machinery`
 44. Verifikasi tombol `Set own value` dan tombol `Reset to inherit` tidak ada pada `Self service` dan `Duration unit`
 
-### Tab Borrow dan Assign tidak dapat dibuka pada level None
+### Tab Borrow dan tab Assign tidak tampil pada level None
 45. Tampilkan Area utama dengan kondisi K7
-46. Verifikasi tab `Borrow` disabled
-47. Arahkan kursor ke tab `Borrow` yang disabled
-48. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Borrow` yang disabled
-49. Verifikasi chip `Upgrade` tampil pada tab `Borrow`
-50. Klik tab `Borrow`
-51. Verifikasi tab `Transfer` tetap aktif
-52. Verifikasi tab `Borrow` tidak aktif
-53. Verifikasi tab `Assign` disabled
-54. Arahkan kursor ke tab `Assign` yang disabled
-55. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Assign` yang disabled
-56. Verifikasi chip `Upgrade` tampil pada tab `Assign`
-57. Klik tab `Assign`
-58. Verifikasi tab `Assign` tidak aktif
+46. Verifikasi tab `Borrow` tidak tampil pada daftar tab
+47. Verifikasi tab `Transfer` aktif
+48. Buka langsung URL Transaction Settings dengan tab `Borrow`
+49. Verifikasi tab `Borrow` tetap tidak tampil pada daftar tab
+50. Verifikasi tab `Borrow` tidak menjadi tab aktif
+51. Tampilkan Area utama dengan kondisi K7
+52. Verifikasi tab `Transfer` tetap aktif
+53. Verifikasi tab `Assign` tidak tampil pada daftar tab
+54. Buka langsung URL Transaction Settings dengan tab `Assign`
+55. Verifikasi tab `Assign` tetap tidak tampil pada daftar tab
+56. Verifikasi tab `Assign` tidak menjadi tab aktif
+57. Tampilkan Area utama dengan kondisi K7
+58. Verifikasi tab `Transfer` tetap aktif
 
-### Tab Transfer dan Disposal tidak dapat dibuka pada level None
+### Tab Transfer dan tab Disposal tidak tampil pada level None
 59. Tampilkan Area utama dengan kondisi K8
-60. Verifikasi tab `Transfer` disabled
-61. Arahkan kursor ke tab `Transfer` yang disabled
-62. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Transfer` yang disabled
-63. Verifikasi chip `Upgrade` tampil pada tab `Transfer`
-64. Klik tab `Transfer`
-65. Verifikasi tab `Borrow` tetap aktif
-66. Verifikasi tab `Transfer` tidak aktif
-67. Verifikasi tab `Disposal` disabled
-68. Arahkan kursor ke tab `Disposal` yang disabled
-69. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Disposal` yang disabled
-70. Verifikasi chip `Upgrade` tampil pada tab `Disposal`
+60. Verifikasi tab `Transfer` tidak tampil pada daftar tab
+61. Verifikasi tab `Borrow` aktif
+62. Buka langsung URL Transaction Settings dengan tab `Transfer`
+63. Verifikasi tab `Transfer` tetap tidak tampil pada daftar tab
+64. Verifikasi tab `Transfer` tidak menjadi tab aktif
+65. Tampilkan Area utama dengan kondisi K8
+66. Verifikasi tab `Borrow` tetap aktif
+67. Verifikasi tab `Disposal` tidak tampil pada daftar tab
+68. Buka langsung URL Transaction Settings dengan tab `Disposal`
+69. Verifikasi tab `Disposal` tetap tidak tampil pada daftar tab
+70. Verifikasi tab `Disposal` tidak menjadi tab aktif
 
 ### Alert tidak ada Approver saat Approval Workflow tersedia
 71. Tampilkan Area utama dengan kondisi K10

@@ -96,7 +96,7 @@ coverage:
 45. Simpan perubahan plan
 46. Masuk sebagai Default User
 47. Buka node Category `Plan Equipment {runId}` di Fixed Asset > Settings > Transaction Settings
-48. Verifikasi tab `Assign` tampil disabled dan tidak dapat dibuka
+48. Verifikasi tab `Assign` tidak tampil pada daftar tab
 49. Buka dialog Changelog dari header halaman Transaction Settings
 50. Verifikasi jumlah entri Changelog sama dengan jumlah yang dicatat sebelum perubahan plan
 51. Tutup dialog Changelog

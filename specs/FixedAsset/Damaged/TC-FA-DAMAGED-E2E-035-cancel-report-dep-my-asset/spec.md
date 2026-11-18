@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-08, §4.2.4#p7, §4.2.4#r12, TS-DMG-07, §Aturan Logika Modul#r51, §Aturan Logika Modul#r23, §Aturan Logika Modul#r32, §Aturan Logika Modul#r35, §8.1#r9, §9.7#r7, §4.8#r7, §2.1#r5, §4.2.4#p5, EC-DMG-07, §9.4.4#r16, §9.6#r4, F-DMG-04, T-DMG-02, EB-FB-1@cancel-report]
+sourceRules: [D-DMG-08, §4.2.4#p7, §4.2.4#r12, TS-DMG-07, §Aturan Logika Modul#r53, §Aturan Logika Modul#r23, §Aturan Logika Modul#r32, §Aturan Logika Modul#r35, §8.1#r9, §9.7#r7, §4.8#r7, §2.1#r5, §4.2.4#p5, EC-DMG-07, §9.4.4#r16, §9.6#r4, F-DMG-04, T-DMG-02, EB-FB-1@cancel-report]
 smoke: [EB-FB-1@cancel-report]
 dependsOn:
   - "My Asset: status laporan dan Cancel Report"
@@ -14,7 +14,7 @@ trace:
   §4.2.4#p7: [3, 4, 5]
   §4.2.4#r12: [3, 7]
   TS-DMG-07: 7
-  §Aturan Logika Modul#r51: [1, 8]
+  §Aturan Logika Modul#r53: [1, 8]
   §Aturan Logika Modul#r23: [8, 23]
   §Aturan Logika Modul#r32: 19
   §Aturan Logika Modul#r35: [1, 37]

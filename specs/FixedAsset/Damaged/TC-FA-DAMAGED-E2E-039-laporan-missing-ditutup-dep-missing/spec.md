@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r69", "§8.1#r11", "§8.3#r3", EC-DMG-33, "§9.4.4#r32", "§9.7#r15"]
+sourceRules: ["§Aturan Logika Modul#r71", "§8.1#r11", "§8.3#r3", EC-DMG-33, "§9.4.4#r32", "§9.7#r15"]
 smoke: []
 dependsOn: ["Missing: Reject dan Cancel Report laporan Missing"]
 trace:
-  "§Aturan Logika Modul#r69": [9, 10, 13, 25, 26, 29]
+  "§Aturan Logika Modul#r71": [9, 10, 13, 25, 26, 29]
   "§8.1#r11": [16, 17, 32]
   "§8.3#r3": [16, 32]
   EC-DMG-33: [10, 13, 16, 26, 32]

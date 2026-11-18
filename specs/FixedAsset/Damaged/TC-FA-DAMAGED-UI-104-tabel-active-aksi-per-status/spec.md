@@ -1,15 +1,15 @@
 ---
 id: TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status
-title: "Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed"
+title: "Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed, serta Mark as Repaired dan Report Disposal Disabled saat Custody In Transfer Process atau Report Disposal Disabled saat Custody bukan Available"
 layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p5", "§4.4#r10", S-DMG-04, S-DMG-05, S-DMG-06, V-DMG-07, EC-DMG-36, "§2.1#b6", EB-TBL-5@aksi-disposal-plan-none]
+sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p5", "§4.4#r10", S-DMG-04, S-DMG-05, S-DMG-06, V-DMG-07, EC-DMG-36, "§2.1#b6", EB-TBL-5@aksi-disposal-plan-none, S-DMG-23, "§9.4.2#r33", "§Aturan Logika Modul#r43"]
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [3, 8, 9, 10, 13, 17]
+  T-DMG-01: [3, 8, 9, 10, 13, 17, 76, 83, 86]
   D-DMG-06: [52, 53, 54, 62]
   "§4.2.4#p5": [53, 56, 57, 63, 69, 70]
   "§4.4#r10": [52]
@@ -20,12 +20,15 @@ trace:
   EC-DMG-36: [34, 36, 39, 41, 45, 47]
   "§2.1#b6": [4]
   EB-TBL-5@aksi-disposal-plan-none: [36, 41, 47]
+  S-DMG-23: [73, 75]
+  "§9.4.2#r33": [73, 75]
+  "§Aturan Logika Modul#r43": [73, 75, 76, 77, 80]
 anchor: []
 coverage:
   web: automated
 ---
 
-# Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed
+# Menu aksi baris sub-tab Active per status, penanda, dan hak: Review Show saat Waiting for Confirmation, aksi Hidden pada penanda Missing, Reported Disposal, In Disposal Process, Cancel Disposal Report, tooltip plan None, dan dialog Already Changed, serta Mark as Repaired dan Report Disposal Disabled saat Custody In Transfer Process atau Report Disposal Disabled saat Custody bukan Available
 
 ## Prerequisites
 - Aktor: pemegang Manage asset & TAG (Update) pada Group aset (Aktor Damaged), dengan hak lain menurut Kondisi.
@@ -40,6 +43,10 @@ coverage:
   - DU-104-7: Record `Drill Bosch GSB - 6`, Asset ID `DRL-2026-0006`, Group `Warehouse`, Status `Damaged` dengan penanda `Reported Missing`.
   - DU-104-8: Pelaku perubahan status terakhir `Rina Wijaya` pada DU-104-1 yang kini berstatus `Damaged`.
   - DU-104-9: Pelaku perubahan status terakhir `System` pada DU-104-1 yang kini berstatus `Damaged`.
+  - DU-104-11: Record `Scanner Fujitsu fi-7160 - 2`, Asset ID `SCN-2026-0002`, Group `Head Office`, Status `Damaged`, Custody aset `In Transfer Process` dengan baris Transfer `Waiting for Approval`.
+  - DU-104-12: Record `Tablet Samsung Galaxy Tab A8 - 5`, Asset ID `TAB-2026-0005`, Group `Head Office`, Status `Damaged`, Custody aset `In Transfer Process` dengan baris Transfer `In Transit`.
+  - DU-104-13: Record `Laptop Lenovo ThinkPad E14 - 7`, Asset ID `LPT-2026-0007`, Group `Head Office`, Status `Damaged`, Custody aset `Borrowed`.
+  - DU-104-14: Record `Handheld Zebra TC21 - 9`, Asset ID `HHD-2026-0009`, Group `Head Office`, Status `Damaged`, Custody aset `Assigned`.
 - Kondisi:
   - K1: daftar memuat DU-104-1 sampai DU-104-7; aktor memegang hak Report Disposal dan hak Cancel Disposal Report; Level Feature Suite Disposal bernilai `Basic`.
   - K2: daftar seperti K1; aktor tidak memegang hak Cancel Disposal Report.
@@ -47,6 +54,7 @@ coverage:
   - K4: daftar seperti K1; konfirmasi atas DU-104-1 ditolak karena status sudah diubah oleh pelaku pada DU-104-8; sesudah muat ulang DU-104-1 berstatus `Damaged`.
   - K5: daftar seperti K1; konfirmasi atas DU-104-1 ditolak karena status sudah diubah oleh pelaku pada DU-104-9; sesudah muat ulang DU-104-1 berstatus `Damaged`.
   - K6: daftar seperti K1; permintaan Report Disposal diterima server dengan sebagian record dilewati.
+  - K7: daftar memuat DU-104-11 sampai DU-104-14; aktor memegang hak Report Disposal dan hak Report Missing; Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 
@@ -140,3 +148,24 @@ coverage:
 69. Verifikasi toast `Success, asset has been reported for disposal. Some items were skipped.` tampil
 70. Verifikasi dialog `Already Changed` tidak tampil
 
+### Aset Custody In Transfer Process: Mark as Repaired dan Report Disposal Disabled
+71. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K7
+72. Klik `⋯` pada baris `Scanner Fujitsu fi-7160 - 2`
+73. Verifikasi aksi `Mark as Repaired` tampil Disabled
+74. Arahkan pointer ke aksi `Mark as Repaired`
+75. Verifikasi alasan `This asset is in transfer.` tersampaikan pada aksi yang Disabled
+76. Verifikasi aksi `Report Disposal` tampil Disabled
+77. Verifikasi aksi `Report Missing` aktif
+
+### Report Missing Disabled hanya selama baris Transfer In Transit
+78. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K7
+79. Klik `⋯` pada baris `Tablet Samsung Galaxy Tab A8 - 5`
+80. Verifikasi aksi `Report Missing` tampil Disabled
+
+### Report Disposal Disabled pada aset Borrowed dan Assigned
+81. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K7
+82. Klik `⋯` pada baris `Laptop Lenovo ThinkPad E14 - 7`
+83. Verifikasi aksi `Report Disposal` tampil Disabled
+84. Tekan `Esc`
+85. Klik `⋯` pada baris `Handheld Zebra TC21 - 9`
+86. Verifikasi aksi `Report Disposal` tampil Disabled

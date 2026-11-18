@@ -11,14 +11,14 @@ dependsOn: []
 trace:
   §4.1#r275: 17
   §4.1#r276: [18, 20]
-  §9.4.2#r16: [31, 33, 34, 36]
+  §9.4.2#r16: [31, 33]
   §9.4.2#r25: [18, 23, 24, 26]
   §9.4.2#r38: 18
-  §9.4.4#r2: [31, 33, 34]
+  §9.4.4#r2: [31, 33]
   §9.4.4#r56: 18
   §Aturan Logika Modul#r89: [14, 15]
-  §Aturan Logika Modul#r92: 36
-  §4.3#r13: [33, 34, 36]
+  §Aturan Logika Modul#r92: [32, 33]
+  §4.3#r13: [31, 33, 36]
   §9.2#b557: 18
   §9.10.2#r6: [11, 12, 13]
   §9.10.2#b3: 11
@@ -75,13 +75,13 @@ coverage:
 26. Verifikasi alasan `Available on plans with full Borrowing.` tersampaikan pada opsi `Self service` yang disabled
 27. Klik `✕` pada dialog Add override, form belum diubah
 
-### Level None: tab Borrow tidak dapat dibuka
+### Level None: tab Borrow tidak tampil dan nilai tersimpan dipertahankan
 28. Operator mengubah level Feature Suite Borrowing entitas menjadi `None`
 29. Muat ulang halaman
 30. Verifikasi tombol `Export rules` tampil
-31. Verifikasi tab `Borrow` disabled
-32. Arahkan pointer ke tab `Borrow`
-33. Verifikasi alasan `Not available on your current plan.` tersampaikan pada tab `Borrow` yang disabled
-34. Verifikasi chip `Upgrade` pada tab `Borrow`
-35. Klik tab `Borrow`
-36. Verifikasi tab `Borrow` tidak menjadi tab aktif
+31. Verifikasi tab `Borrow` tidak tampil pada daftar tab
+32. Buka langsung URL Transaction Settings dengan tab `Borrow`
+33. Verifikasi tab `Borrow` tetap tidak tampil dan tidak menjadi tab aktif
+34. Operator mengubah level Feature Suite Borrowing entitas menjadi `Full`
+35. Muat ulang halaman, lalu klik tab `Borrow`
+36. Verifikasi `Self service` tetap bernilai `ON` dan `Duration unit` tetap bernilai `Hours`

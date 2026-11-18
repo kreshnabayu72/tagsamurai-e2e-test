@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r58", "§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b12", "§9.2#b21", "§9.2#b22", "§9.2#b23", "§6#p2", "§8.1#p2", "V-DMG-06", "V-DMG-08", "V-DMG-09", "D-DMG-13", "TS-DMG-09", "TS-DISP-12", "TS-DISP-15", "§9.6#r8", "EC-DMG-17", "EC-DMG-21", "EC-DMG-35", "§9.4.4#r10", "§9.4.4#r11", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r27", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p6", "F-DMG-06"]
+sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r62", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b12", "§9.2#b21", "§9.2#b22", "§9.2#b23", "§6#p2", "§8.1#p2", "V-DMG-06", "V-DMG-08", "V-DMG-09", "D-DMG-13", "TS-DMG-09", "TS-DISP-12", "TS-DISP-15", "§9.6#r8", "EC-DMG-17", "EC-DMG-21", "EC-DMG-35", "§9.4.4#r10", "§9.4.4#r11", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r27", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p6", "F-DMG-06"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -13,9 +13,9 @@ trace:
   "§Aturan Logika Modul#r19": [2, 26, 59]
   "§Aturan Logika Modul#r20": [32, 34]
   "§Aturan Logika Modul#r21": [36, 38, 40, 42]
-  "§Aturan Logika Modul#r58": 2
-  "§Aturan Logika Modul#r59": [2, 6]
-  "§Aturan Logika Modul#r60": [26, 32, 34]
+  "§Aturan Logika Modul#r60": 2
+  "§Aturan Logika Modul#r61": [2, 6]
+  "§Aturan Logika Modul#r62": [26, 32, 34]
   "§9.2#r3": [2, 3, 12]
   "§9.2#r4": [26, 36, 82]
   "§9.2#r6": [20, 29, 84]

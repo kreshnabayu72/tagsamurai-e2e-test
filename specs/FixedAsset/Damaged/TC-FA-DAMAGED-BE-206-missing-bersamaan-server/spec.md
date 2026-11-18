@@ -5,24 +5,24 @@ layer: be-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r65", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r76", "V-DMG-02", "§9.2#b25", "§9.2#b26", "§9.2#b27", "§9.6#r10", "EC-DMG-11", "EC-DMG-12", "EC-DMG-33", "EC-DMG-34", "§9.4.4#r30", "§9.4.4#r31", "§9.4.4#r32", "§9.4.4#r33", "§9.7#r4", "§9.7#r15", "§9.7#r16", "F-DMG-10"]
+sourceRules: ["§Aturan Logika Modul#r65", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r76", "§Aturan Logika Modul#r78", "V-DMG-02", "§9.2#b25", "§9.2#b26", "§9.2#b27", "§9.6#r10", "EC-DMG-11", "EC-DMG-12", "EC-DMG-33", "EC-DMG-34", "§9.4.4#r30", "§9.4.4#r31", "§9.4.4#r32", "§9.4.4#r33", "§9.7#r4", "§9.7#r15", "§9.7#r16", "F-DMG-10"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r63": 3
-  "§Aturan Logika Modul#r64": [18, 20]
-  "§Aturan Logika Modul#r65": 4
-  "§Aturan Logika Modul#r66": 5
-  "§Aturan Logika Modul#r67": [29, 54]
-  "§Aturan Logika Modul#r68": [5, 56]
-  "§Aturan Logika Modul#r69": [31, 35]
-  "§Aturan Logika Modul#r70": [10, 12, 16]
-  "§Aturan Logika Modul#r71": [22, 25, 74, 76]
-  "§Aturan Logika Modul#r72": [37, 41]
-  "§Aturan Logika Modul#r73": [38, 39]
-  "§Aturan Logika Modul#r74": [45, 72]
-  "§Aturan Logika Modul#r76": [48, 50]
+  "§Aturan Logika Modul#r65": 3
+  "§Aturan Logika Modul#r66": [18, 20]
+  "§Aturan Logika Modul#r67": 4
+  "§Aturan Logika Modul#r68": 5
+  "§Aturan Logika Modul#r69": [29, 54]
+  "§Aturan Logika Modul#r70": [5, 56]
+  "§Aturan Logika Modul#r71": [31, 35]
+  "§Aturan Logika Modul#r72": [10, 12, 16]
+  "§Aturan Logika Modul#r73": [22, 25, 74, 76]
+  "§Aturan Logika Modul#r74": [37, 41]
+  "§Aturan Logika Modul#r75": [38, 39]
+  "§Aturan Logika Modul#r76": [45, 72]
+  "§Aturan Logika Modul#r78": [48, 50]
   V-DMG-02: [10, 12, 14, 58, 60]
   "§9.2#b25": [3, 6, 38]
   "§9.2#b26": [48, 50, 52]
@@ -66,7 +66,7 @@ trace:
   - DU-206-13: Aset `Forklift Toyota 8FD - 68 {runId}`, Group `Head Office {runId}`, `Missing` dengan Condition sebelumnya Damaged, punya record `Damaged` yang ditahan penanda `Missing`.
   - DU-206-14: Aset `Scanner Fujitsu fi-7160 - 69 {runId}`, Group `Head Office {runId}`, punya record `Waiting for Confirmation` dari laporan `Budi Santoso {runId}`.
   - DU-206-15: Aset `Office Chair Ergo - 70 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
-  - DU-206-16: Aset `Office Chair Ergo - 71 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris jenis selain Lost dan Write-off.
+  - DU-206-16: Aset `Office Chair Ergo - 71 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris jenis selain Write-off.
   - DU-206-17: Aset `Handheld Scanner Zebra TC21 - 72 {runId}`, Group `Head Office {runId}`, tanpa record Damaged, ada laporan hilang dari pemegang `Budi Santoso {runId}` yang masih `Waiting for Confirmation`.
   - DU-206-18: Aset `Office Chair Ergo - 74 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
   - DU-206-19: Aset `Toyota Avanza - 73 {runId}`, Group `Head Office {runId}`, `Missing` tanpa record Damaged.

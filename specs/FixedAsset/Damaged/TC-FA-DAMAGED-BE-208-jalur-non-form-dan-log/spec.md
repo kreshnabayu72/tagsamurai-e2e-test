@@ -5,21 +5,21 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r77", "§Aturan Logika Modul#r78", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r80", "§Aturan Logika Modul#r81", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", "EC-DMG-06", "EC-DMG-28", "EC-DMG-29", "EC-DMG-31", "EC-DMG-32", "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r12", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
+sourceRules: ["§Aturan Logika Modul#r47", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r49", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r80", "§Aturan Logika Modul#r81", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§Aturan Logika Modul#r85", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", "EC-DMG-06", "EC-DMG-28", "EC-DMG-29", "EC-DMG-31", "EC-DMG-32", "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r12", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r45": [57, 68, 70]
-  "§Aturan Logika Modul#r46": [57, 60, 95]
-  "§Aturan Logika Modul#r47": [76, 78]
-  "§Aturan Logika Modul#r77": 48
-  "§Aturan Logika Modul#r78": 49
+  "§Aturan Logika Modul#r47": [57, 68, 70]
+  "§Aturan Logika Modul#r48": [57, 60, 95]
+  "§Aturan Logika Modul#r49": [76, 78]
   "§Aturan Logika Modul#r79": 48
-  "§Aturan Logika Modul#r80": [50, 51]
-  "§Aturan Logika Modul#r81": 52
-  "§Aturan Logika Modul#r82": 53
-  "§Aturan Logika Modul#r83": 46
+  "§Aturan Logika Modul#r80": 49
+  "§Aturan Logika Modul#r81": 48
+  "§Aturan Logika Modul#r82": [50, 51]
+  "§Aturan Logika Modul#r83": 52
+  "§Aturan Logika Modul#r84": 53
+  "§Aturan Logika Modul#r85": 46
   "§9.2#b5": 54
   "§9.2#b6": [50, 51]
   "§9.2#b7": [57, 60, 66]

@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r38", "§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "EC-DMG-09", "EC-DMG-18", "§9.4.4#r19", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
+sourceRules: ["§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "EC-DMG-09", "EC-DMG-18", "§9.4.4#r19", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
 smoke: []
 dependsOn:
   - "Borrow: baris Borrow, form Borrow"
 trace:
-  "§Aturan Logika Modul#r38": [15, 23]
-  "§Aturan Logika Modul#r39": [29, 30]
-  "§Aturan Logika Modul#r40": [31]
+  "§Aturan Logika Modul#r39": [15, 23]
+  "§Aturan Logika Modul#r40": [29, 30]
+  "§Aturan Logika Modul#r41": [31]
   "EC-DMG-09": [23, 29, 30]
   "EC-DMG-18": [3]
   "§9.4.4#r19": [25]

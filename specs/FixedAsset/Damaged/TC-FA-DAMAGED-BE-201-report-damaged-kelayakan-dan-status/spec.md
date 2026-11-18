@@ -1,11 +1,11 @@
 ---
 id: TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status
-title: "Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda"
+title: "Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda, dan tidak dibatasi Activity Lock"
 layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r10", "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r75", "§9.2#r2", "S-DMG-22", "§9.2#b2", "§9.2#b3", "§9.2#b4", "S-DMG-21", "§4.2.3#b1", "§4.2.3#b4", "§9.4.3#b1", "§9.6#r1", "§3#p2", "V-DMG-10", "EC-DMG-01", "EC-DMG-02", "EC-DMG-04", "EC-DMG-05", "EC-DMG-27", "FLD-DMG-01", "FLD-DMG-02", "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", "EB-FRM-4@what-happened", "F-DMG-01"]
+sourceRules: ["§Aturan Logika Modul#r10", "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r77", "§9.2#r2", "S-DMG-22", "§9.2#b2", "§9.2#b3", "§9.2#b4", "S-DMG-21", "§4.2.3#b1", "§4.2.3#b4", "§9.4.3#b1", "§9.6#r1", "§3#p2", "V-DMG-10", "EC-DMG-01", "EC-DMG-02", "EC-DMG-04", "EC-DMG-05", "EC-DMG-27", "FLD-DMG-01", "FLD-DMG-02", "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", "EB-FRM-4@what-happened", "F-DMG-01", "§Aturan Logika Modul#r37"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -16,11 +16,11 @@ trace:
   "§Aturan Logika Modul#r13": [24, 31, 33]
   "§Aturan Logika Modul#r15": 43
   "§Aturan Logika Modul#r16": 42
-  "§Aturan Logika Modul#r42": [2, 87]
-  "§Aturan Logika Modul#r43": [15, 18, 20, 22]
-  "§Aturan Logika Modul#r44": 4
-  "§Aturan Logika Modul#r48": 3
-  "§Aturan Logika Modul#r75": 38
+  "§Aturan Logika Modul#r44": [2, 87]
+  "§Aturan Logika Modul#r45": [15, 18, 20, 22]
+  "§Aturan Logika Modul#r46": 4
+  "§Aturan Logika Modul#r50": 3
+  "§Aturan Logika Modul#r77": 38
   "§9.2#r2": 2
   S-DMG-22: [24, 35, 40, 44, 82, 84]
   "§9.2#b2": [2, 42]
@@ -50,9 +50,10 @@ trace:
   "§9.4.1#r7": 24
   EB-FRM-4@what-happened: [53, 57]
   F-DMG-01: 2
+  "§Aturan Logika Modul#r37": [89, 90, 91, 92, 94, 95, 96]
 ---
 
-# Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda
+# Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda, dan tidak dibatasi Activity Lock
 
 ## Prerequisites
 - Aktor:
@@ -118,6 +119,8 @@ trace:
   - DU-201-50: Aset `Laptop Dell Latitude 5420 - 12 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
   - DU-201-51: Aset `Handheld Scanner Zebra TC21 - 4 {runId}`, Group `Branch Surabaya {runId}`, Normal, tanpa record berjalan.
   - DU-201-52: Aset `Tablet Samsung Tab A8 - 6 {runId}`, Group `Head Office {runId}`, dalam Transfer menuju `Branch Surabaya {runId}`, tanpa record berjalan.
+  - DU-201-53: Aset `Generator Honda EU22i - 1 {runId}`, Group `Head Office {runId}`, Normal, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya, tanpa record berjalan.
+  - DU-201-54: Aset `Rack Server Dell R740 - 2 {runId}`, Group `Head Office {runId}`, Normal, Activity Lock `In Audit` karena menjadi item sesi Stock Opname berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
 
 ## Test Steps
 
@@ -239,3 +242,14 @@ trace:
 ### Aktor Transfer melapor dari halaman transaksinya: langsung Damaged
 86. Aktor pemindahan aset `Tono Riyadi {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 6 {runId}` dari halaman transaksi pemindahan dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
 87. Verifikasi server membuat record berstatus `Damaged`, bukan `Waiting for Confirmation`
+
+### Report Damaged tidak dibatasi Activity Lock dan tidak mengubah Work Order, jadwal maintenance, maupun item Stock Opname
+88. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 1 {runId}` yang ber-Activity Lock `Under Maintenance` dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+89. Verifikasi laporan itu diterima dan server membuat satu Damage record `Damaged` untuk aset yang ber-Activity Lock `Under Maintenance`
+90. Verifikasi Work Order aset itu tidak diubah, tidak ditutup, dan tidak dijeda oleh laporan
+91. Verifikasi jadwal maintenance aset itu tidak berubah oleh laporan
+92. Verifikasi Activity Lock `Under Maintenance` tetap ada sebagai overlay di atas Condition `Damaged`
+93. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Rack Server Dell R740 - 2 {runId}` yang ber-Activity Lock `In Audit` dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
+94. Verifikasi laporan itu diterima dan server membuat satu Damage record `Damaged` untuk aset yang ber-Activity Lock `In Audit`
+95. Verifikasi item aset itu di sesi opname `Sinta Marlina {runId}` yang berjalan tidak diubah, tidak ditutup, dan tidak dijeda oleh laporan
+96. Verifikasi Activity Lock `In Audit` tetap ada sebagai overlay di atas Condition `Damaged`

@@ -5,20 +5,20 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#b2", "§4.8#r3", "§Aturan Logika Modul#r37", "EC-DMG-03", "§4.2.3#p1", "T-DMG-01", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r43", "§Aturan Logika Modul#r51", "§2#b7", "§2.1#b1", "§4.2.4#p7"]
+sourceRules: ["§2.1#b2", "§4.8#r3", "§Aturan Logika Modul#r38", "EC-DMG-03", "§4.2.3#p1", "T-DMG-01", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r45", "§Aturan Logika Modul#r53", "§2#b7", "§2.1#b1", "§4.2.4#p7"]
 smoke: []
 dependsOn:
   - "Assignment: Detail Assignment (tombol Report Damaged, Cancel Report)"
 trace:
   "§2.1#b2": [8, 9, 11, 12, 18, 23, 24, 25]
   "§4.8#r3": [4]
-  "§Aturan Logika Modul#r37": [14, 15]
+  "§Aturan Logika Modul#r38": [14, 15]
   "EC-DMG-03": [14, 15]
   "§4.2.3#p1": [4]
   "T-DMG-01": [18, 19, 20, 22, 23, 24, 25]
   "§Aturan Logika Modul#r28": [28]
-  "§Aturan Logika Modul#r43": [18]
-  "§Aturan Logika Modul#r51": [32, 38, 40, 44, 46]
+  "§Aturan Logika Modul#r45": [18]
+  "§Aturan Logika Modul#r53": [32, 38, 40, 44, 46]
   "§2#b7": [8, 18, 25]
   "§2.1#b1": [4, 18]
   "§4.2.4#p7": [34, 35, 36]

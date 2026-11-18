@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-04, §4.2.4#p4, §4.2.4#r13, §4.4#r6, §4.4#p1, §8.1#b1, §8.1#r8, TS-DMG-04, §Aturan Logika Modul#r50, §Aturan Logika Modul#r22, §9.7#r6, FLD-DMG-06, §9.6#r3, F-DMG-04, EB-FB-1@reject, EB-FRM-1@reject-report]
+sourceRules: [T-DMG-01, D-DMG-04, §4.2.4#p4, §4.2.4#r13, §4.4#r6, §4.4#p1, §8.1#b1, §8.1#r8, TS-DMG-04, §Aturan Logika Modul#r52, §Aturan Logika Modul#r22, §9.7#r6, FLD-DMG-06, §9.6#r3, F-DMG-04, EB-FB-1@reject, EB-FRM-1@reject-report]
 smoke: [EB-FB-1@reject, EB-FRM-1@reject-report]
 dependsOn: []
 trace:
@@ -18,7 +18,7 @@ trace:
   §8.1#b1: [13, 15, 17]
   §8.1#r8: [17, 18]
   TS-DMG-04: 12
-  §Aturan Logika Modul#r50: [16, 18]
+  §Aturan Logika Modul#r52: [16, 18]
   §Aturan Logika Modul#r22: [16, 25]
   §9.7#r6: [21, 22, 25]
   FLD-DMG-06: 18

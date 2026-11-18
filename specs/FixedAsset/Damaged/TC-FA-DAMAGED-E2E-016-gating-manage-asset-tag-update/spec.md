@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §2#b2, §2#b3, §2#b5, §2.1#b7, §2.1#b4, S-DMG-01, S-DMG-06, S-DMG-09, T-DMG-01, §9.3#b1, EB-AKS-5@confirm, EB-AKS-6]
+sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §2#b2, §2#b3, §2#b5, §2.1#b7, §2.1#b4, S-DMG-01, S-DMG-06, S-DMG-09, T-DMG-01, §9.3#b1, EB-AKS-5@confirm, EB-AKS-6, D-DISP-15]
 smoke: []
 dependsOn: []
 trace:
@@ -43,6 +43,7 @@ trace:
   §9.3#b1: [30, 54]
   EB-AKS-5@confirm: [54, 55]
   EB-AKS-6: [62, 63, 66, 67]
+  D-DISP-15: [13, 17, 74, 78]
 anchor: [72, 77]
 coverage:
   web: automated
@@ -91,7 +92,7 @@ coverage:
 10. Verifikasi item `Damage Log` tampil pada menu baris
 11. Verifikasi item `Mark as Repaired` tampil pada menu baris
 12. Verifikasi item `Report Missing` tampil pada menu baris
-13. Verifikasi item `Report Disposal` tampil pada menu baris
+13. Verifikasi item `Report Disposal` tampil pada menu baris karena hak melapor Report Disposal mengikuti Pelapor Report, termasuk pemegang Update atas aset Damaged
 14. Tekan Esc untuk menutup menu baris
 15. Klik `⋯` pada baris `Printer HP LaserJet M404 {runId}`
 16. Verifikasi item `Damage Log` tampil pada menu baris

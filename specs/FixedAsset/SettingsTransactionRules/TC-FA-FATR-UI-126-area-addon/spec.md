@@ -86,7 +86,7 @@ coverage:
 
 ### Gerbang addon pada tab tidak memakai chip Upgrade
 21. Tampilkan Area utama dengan kondisi K1
-22. Verifikasi tab `Transfer` disabled dengan chip `Upgrade`
+22. Verifikasi tab `Transfer` tidak tampil pada daftar tab
 23. Verifikasi tab `Audit` tanpa ikon 🔒 dan tanpa chip `Upgrade`
 24. Verifikasi tab `Maintenance` tanpa ikon 🔒 dan tanpa chip `Upgrade`
 

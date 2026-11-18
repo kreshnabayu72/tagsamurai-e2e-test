@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-16",
- "sha": "a2e6f06bcadf191c",
+ "disetujui": "otomatis, 2026-11-18",
+ "sha": "51c6a0a156e8727c",
  "entri": [
   {
    "id": "DU-001-1",
@@ -5839,6 +5839,29 @@
    }
   },
   {
+   "id": "DU-023-4",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-023-guided-tooltip"
+   ],
+   "jenis": "User",
+   "data": "Aktor lain dengan akses sama yang belum mengubah preferensinya",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sari Wulandari {runId}",
+    "Role": "Total Control (flag Guided Tooltip tab Damaged belum diset dan belum pernah diubah)",
+    "Cakupan": "Seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "guided-tooltip@tab-damaged:aktor-lain"
+   ],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
    "id": "DU-024-1",
    "jenis": "Entitas",
    "data": "Entitas Active sebagai pembanding",
@@ -8172,8 +8195,7 @@
     "Group": "Head Office",
     "Status": "Damaged",
     "Source": "Manual",
-    "Custody": "Borrowed",
-    "Transaction ID": "milik transaksi Borrow aset ini"
+    "Custody": "Borrowed"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -8199,8 +8221,7 @@
     "Group": "Head Office",
     "Status": "Damaged",
     "Source": "Manual",
-    "Custody": "Assigned",
-    "Transaction ID": "milik transaksi Assignment aset ini"
+    "Custody": "Assigned"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -9257,6 +9278,117 @@
    "maks": {}
   },
   {
+   "id": "DU-052-5",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "jenis": "Asset",
+   "data": "aset ditugaskan dengan record Waiting for Confirmation dari laporan pemegang",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Monitor Dell P2422H {runId}",
+    "Group": "Head Office",
+    "TAG": "tanpa TAG",
+    "Status Assignment": "Assigned",
+    "Assignee": "Eka Pratama {runId}",
+    "Status record": "Waiting for Confirmation",
+    "Source": "Reported by holder",
+    "What happened": "Panel monitor berkedip dan muncul garis vertikal"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Assignee": null
+   }
+  },
+  {
+   "id": "DU-052-6",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "jenis": "Asset",
+   "data": "aset ditugaskan dengan record Waiting for Confirmation dari laporan pemegang",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer Epson L3250 {runId}",
+    "Group": "Head Office",
+    "TAG": "tanpa TAG",
+    "Status Assignment": "Assigned",
+    "Assignee": "Fajar Nugroho {runId}",
+    "Status record": "Waiting for Confirmation",
+    "Source": "Reported by holder",
+    "What happened": "Hasil cetak bergaris dan tinta bocor"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Assignee": null
+   }
+  },
+  {
+   "id": "DU-052-7",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "jenis": "Unassign",
+   "data": "catatan dan foto Unassign atas aset yang laporannya sudah dikonfirmasi sebelum Unassign",
+   "asal": "dibuat",
+   "nilai": {
+    "Description": "Panel monitor berkedip seperti yang dilaporkan pemegang",
+    "Foto Unassign": "monitor-panel-berkedip.jpg"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-052-8",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "jenis": "Unassign",
+   "data": "catatan dan foto Unassign atas aset yang laporannya baru ditolak sesudah Unassign",
+   "asal": "dibuat",
+   "nilai": {
+    "Description": "Hasil cetak bergaris seperti yang dilaporkan pemegang",
+    "Foto Unassign": "printer-hasil-cetak-bergaris.jpg"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-052-9",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment"
+   ],
+   "jenis": "Damage record",
+   "data": "Reason Reject Report",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Kerusakan tidak terbukti setelah pengecekan teknisi"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
    "id": "DU-053-1",
    "spec": [
     "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer"
@@ -9367,6 +9499,62 @@
    "maks": {}
   },
   {
+   "id": "DU-053-6",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "aset ber-record Damaged yang sedang In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Plotter HP DesignJet T630 {runId}",
+    "Group": "Head Office",
+    "TAG": "tanpa TAG",
+    "Custody": "Available",
+    "Status record": "Damaged",
+    "Source": "Manual",
+    "What happened": "Roller kertas plotter macet dan hasil cetak bergaris"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer"
+   ],
+   "varian": [
+    "kondisi-transfer@tabel-active:per-kondisi-disabled:Custody In Transfer Process"
+   ],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-053-7",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer"
+   ],
+   "jenis": "Asset",
+   "data": "aset ber-record Damaged yang di-Transfer lalu Returned to Origin",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Proyektor BenQ MW550 {runId}",
+    "Group": "Head Office",
+    "TAG": "tanpa TAG",
+    "Custody": "Available",
+    "Status record": "Damaged",
+    "Source": "Manual",
+    "What happened": "Lampu proyektor redup dan kipas berisik"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
    "id": "DU-054-1",
    "spec": [
     "TC-FA-DAMAGED-E2E-054-stock-opname-dep-stock-opname"
@@ -9378,7 +9566,8 @@
     "Name sesi": "Stock Opname Gudang Pusat {runId}",
     "Group": "Head Office",
     "Name aset": "Rak Besi Heavy Duty {runId}",
-    "TAG": "tanpa TAG"
+    "TAG": "tanpa TAG",
+    "Pemilik sesi": "Hendra Wijaya {runId}"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -9386,7 +9575,30 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name sesi": null,
-    "Name aset": null
+    "Name aset": null,
+    "Pemilik sesi": null
+   }
+  },
+  {
+   "id": "DU-054-3",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-054-stock-opname-dep-stock-opname"
+   ],
+   "jenis": "User",
+   "data": "pemilik sesi Stock Opname tanpa hak Update",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Hendra Wijaya {runId}",
+    "Role": "Read Only",
+    "Hak Update Manage asset & TAG": "tidak ada",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
    }
   },
   {
@@ -11089,6 +11301,96 @@
    "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-11",
+   "spec": [
+    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged aset In Transfer Process, baris Transfer belum In Transit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Scanner Fujitsu fi-7160 - 2",
+    "Asset ID": "SCN-2026-0002",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Custody": "In Transfer Process",
+    "Baris Transfer": "Waiting for Approval"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "kondisi-transfer@tabel-active:per-kondisi-disabled:Custody In Transfer Process"
+   ],
+   "sumber": "S-DMG-23",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-12",
+   "spec": [
+    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged aset In Transfer Process, baris Transfer In Transit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Tablet Samsung Galaxy Tab A8 - 5",
+    "Asset ID": "TAB-2026-0005",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Custody": "In Transfer Process",
+    "Baris Transfer": "In Transit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "kondisi-transfer@tabel-active:per-kondisi-disabled:Custody In Transfer Process"
+   ],
+   "sumber": "§Aturan Logika Modul#r43",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-13",
+   "spec": [
+    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged aset Borrowed",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Lenovo ThinkPad E14 - 7",
+    "Asset ID": "LPT-2026-0007",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Custody": "Borrowed"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "T-DMG-01",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-14",
+   "spec": [
+    "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged aset Assigned",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Handheld Zebra TC21 - 9",
+    "Asset ID": "HHD-2026-0009",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Custody": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "T-DMG-01",
    "maks": {}
   },
   {
@@ -14390,6 +14692,52 @@
    }
   },
   {
+   "id": "DU-201-53",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji ber-Activity Lock Under Maintenance",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Generator Honda EU22i - 1 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "Normal, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya, tanpa record berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r37",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-201-54",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji ber-Activity Lock In Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rack Server Dell R740 - 2 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "Normal, Activity Lock `In Audit` karena menjadi item sesi Stock Opname berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r37",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
    "id": "DU-202-1",
    "spec": [
     "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
@@ -14828,7 +15176,7 @@
    "nilai": {
     "Name": "Toyota Avanza - 4 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "status global `TAG Reported`, punya record `Damaged`",
+    "Keadaan": "berstatus global `TAG Reported` sebelum dilaporkan rusak, lalu punya record `Damaged` sehingga status global `Damaged`",
     "TAG": "RFID"
    },
    "jumlah": 1,
@@ -15111,6 +15459,175 @@
     "Name": null,
     "Group": null,
     "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-33",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 1 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-34",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 2 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `In Transit` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-35",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 3 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `In Transit` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-36",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 4 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `In Transit` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-37",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 5 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-38",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Damaged dalam Custody In Transfer Process",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pickup Toyota Hilux - 6 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-202-39",
+   "spec": [
+    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
+   ],
+   "jenis": "Disposal report",
+   "data": "Reason Report Disposal",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Unit sudah tidak ekonomis untuk diperbaiki {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Reason": null
    }
   },
   {
@@ -18380,7 +18897,7 @@
    "nilai": {
     "Name": "Office Chair Ergo - 71 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "punya record `In Disposal Process` dengan baris jenis selain Lost dan Write-off"
+    "Keadaan": "punya record `In Disposal Process` dengan baris jenis selain Write-off"
    },
    "jumlah": 1,
    "mutasi": [

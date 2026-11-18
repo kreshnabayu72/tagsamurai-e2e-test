@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r47", "§8.1#r10", "§8.3#p2", "§8.3#r2", "§9.7#r4", EC-DMG-12, "§9.4.4#r31", "§9.2#b25"]
+sourceRules: ["§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r49", "§8.1#r10", "§8.3#p2", "§8.3#r2", "§9.7#r4", EC-DMG-12, "§9.4.4#r31", "§9.2#b25"]
 smoke: []
 dependsOn: ["Missing: Mark as Found (Damaged)"]
 trace:
-  "§Aturan Logika Modul#r72": [11, 12, 16]
-  "§Aturan Logika Modul#r73": [14, 23]
-  "§Aturan Logika Modul#r47": [20, 21, 41, 42]
+  "§Aturan Logika Modul#r74": [11, 12, 16]
+  "§Aturan Logika Modul#r75": [14, 23]
+  "§Aturan Logika Modul#r49": [20, 21, 41, 42]
   "§8.1#r10": [19, 20, 22]
   "§8.3#p2": [20, 23, 24, 37, 40, 41]
   "§8.3#r2": 40

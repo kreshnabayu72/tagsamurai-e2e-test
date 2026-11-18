@@ -5,14 +5,14 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r85", "§9.2#r5", "§9.2#b16", "§9.2#b17", "§9.6#r5", "FLD-DMG-03", "FLD-DMG-04", "FLD-DMG-05", "V-DMG-03", "V-DMG-04", "V-DMG-05", "FI-DMG-08", "FI-DMG-11", "FI-DMG-12", "S-DMG-07", "EC-DMG-16", "EC-DMG-31", "§9.4.4#r21", "§9.4.4#r23", "§9.4.4#r24", "§9.4.4#r9", "§9.4.1#r12", "EB-FRM-4@repair-note", "§3#p6", "F-DMG-05"]
+sourceRules: ["§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§Aturan Logika Modul#r87", "§9.2#r5", "§9.2#b16", "§9.2#b17", "§9.6#r5", "FLD-DMG-03", "FLD-DMG-04", "FLD-DMG-05", "V-DMG-03", "V-DMG-04", "V-DMG-05", "FI-DMG-08", "FI-DMG-11", "FI-DMG-12", "S-DMG-07", "EC-DMG-16", "EC-DMG-31", "§9.4.4#r21", "§9.4.4#r23", "§9.4.4#r24", "§9.4.4#r9", "§9.4.1#r12", "EB-FRM-4@repair-note", "§3#p6", "F-DMG-05"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r54": [2, 19]
-  "§Aturan Logika Modul#r55": 2
-  "§Aturan Logika Modul#r85": 22
+  "§Aturan Logika Modul#r56": [2, 19]
+  "§Aturan Logika Modul#r57": 2
+  "§Aturan Logika Modul#r87": 22
   "§9.2#r5": 2
   "§9.2#b16": 31
   "§9.2#b17": [3, 24, 26]
