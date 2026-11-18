@@ -2733,3 +2733,21 @@ Aturan:
 - **Keputusan:** langkah UI scan dari ketiga spec diturunkan menjadi tes ui-client `TC-AC-ACTS-UI-048`, `-049`, `-050` (nama folder mengikuti judul spec asalnya). Reader disuapkan lewat seam stand-in scan reader app. Respons BE diambil dari mock/intercept yang mengikuti LLD TAG Stock. Mulai dari `-049`. Spec `-E2E-` tidak diubah dan tetap PI dengan BT-GAP-01. Setelah API terdeploy, spec E2E dijalankan dengan reader-sim lewat relay. Tes UI tetap ada sebagai lapisan ui-client.
 - **Diputuskan oleh:** Coordinator 2026-11-18, atas arahan owner.
 - **Status:** dicabut 2026-11-18. Owner membatalkan integrasi hardware/scan di tim e2e (dikerjakan tim hardware). Tes ui-client `-UI-048/049/050` tidak dibuat; spec `-E2E-` tetap PI dengan BT-GAP-01.
+
+## D-265 Changelog tab Asset Control Client memakai nilai foundation selama LLD BE belum ada (2026-11-18)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-258` sampai `-262` (ChangelogButton tab Asset Control: Enrollment Token, Station, Tablet).
+- **Karena:** tidak ada LLD BE "Logs Written" untuk ketiga objek. Nilainya hanya ada di `foundation/misc/change-logs-filters-per-page.md:80` (`logTable` `Asset Control`; `object` `Enrollment Token` / `Station` / `Tablet`; product `admin_console` + `global_settings`) dan `client.md` §8.1b. `change-logs-gaps.md` G-CL-01/G-CL-04 mencatatnya sebagai gap.
+- **Keputusan:** mock dan component test (ui-client) memakai nilai foundation itu, tanpa `objectId`. Saat disambung ke API: nilai diverifikasi ke BE; bila BE tidak punya, ini contract drift: spec E2E di-skip dengan gap tag dan issue untuk pemilik LLD (bahasa Indonesia, aturan hardware). Nilai tidak diimprovisasi di luar foundation.
+- **Untuk spec:** tidak ada perubahan.
+- **Diputuskan oleh:** Coordinator 2026-11-18.
+- **Status:** berlaku.
+
+## D-266 Aturan umum: sel gambar tanpa nilai tampil sebagai sel kosong (—), bukan "Image failed to load" (2026-11-18)
+
+- **Spec / langkah:** AdminConsole/Client `TC-AC-ACC-E2E-207` step 20 (TC-AC-ACC-295: Photo kosong tampil —); berlaku untuk semua kolom preset `image` DataTable.
+- **Karena:** preset `image` wangs-ui rc.306 merender Image dengan `src` kosong sehingga muncul pesan gagal muat; teks kosong kolom (`emptyCellText`) diabaikan (`displayPresets.helper.js:374`, `BodyCell.js:30-33`). Preset `gallery` dan `text` di library yang sama sudah menampilkan teks kosong. Data yang tidak ada berbeda dengan gambar yang gagal dimuat (MUI X DataGrid, Ant Table: sel null tampil kosong; fallback error hanya saat muat gagal).
+- **Keputusan:** perbaikan di wangs-ui: preset `image` dengan nilai null/undefined/'' menampilkan teks kosong kolom (bawaan app "—"); "Image failed to load" hanya untuk URL yang gagal dimuat. Spec tetap; sampai rilis, langkah ini PI dengan `library-gap`.
+- **Untuk spec:** nilai gambar kosong di tabel ditulis sebagai "—".
+- **Diputuskan oleh:** Coordinator 2026-11-18.
+- **Status:** berlaku, menunggu rilis wangs-ui.
