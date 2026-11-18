@@ -2725,3 +2725,10 @@ Aturan:
 - **Aturan:** produk Supply Asset tidak dibangun di sprint mana pun. Tidak ada plan, subscription, atau seed Supply di slot mana pun. Hook suite hanya berlangganan produk yang ada di sprint.
 - **Untuk spec:** langkah yang membutuhkan Supply Asset (Access, data, atau tampilan Supply) diberi tag `sprint-gap`. Langkah lain di spec yang sama tetap dijalankan. Contoh pertama: suite GlobalSettings/User (run `20261117-164337-91119`, User 001) yang hook-nya meminta `supply_asset`.
 - **Diputuskan oleh:** product owner 2026-11-15 ("Supply itu di luar sprint manapun"), dicatat Wangs-UI Coordinator 2026-11-17 sebagai aturan umum.
+
+## D-264 Sesi scan RFID Add Stock TAG Stock diuji di lapisan ui-client selama API TAG Stock belum ada (2026-11-18)
+
+- **Spec / langkah:** AdminConsole/TagStock `TC-AC-ACTS-E2E-048`, `-049`, `-050` (High; sesi scan, duplikat dan baris tidak lengkap, hapus baris). Badan ketiganya tergate `feature-gap:be BT-GAP-01` (hardware-tagging-service#79).
+- **Karena:** product owner 2026-11-18 meminta interaksi scan diuji dulu tanpa API BE, dengan mock dan UI. Repo spec TAG Stock hanya berisi spec `-E2E-`, tanpa spec `-UI-`.
+- **Keputusan:** langkah UI scan dari ketiga spec diturunkan menjadi tes ui-client `TC-AC-ACTS-UI-048`, `-049`, `-050` (nama folder mengikuti judul spec asalnya). Reader disuapkan lewat seam stand-in scan reader app. Respons BE diambil dari mock/intercept yang mengikuti LLD TAG Stock. Mulai dari `-049`. Spec `-E2E-` tidak diubah dan tetap PI dengan BT-GAP-01. Setelah API terdeploy, spec E2E dijalankan dengan reader-sim lewat relay. Tes UI tetap ada sebagai lapisan ui-client.
+- **Diputuskan oleh:** Coordinator 2026-11-18, atas arahan owner.
