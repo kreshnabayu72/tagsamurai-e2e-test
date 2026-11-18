@@ -44,8 +44,8 @@ coverage:
   - TC-524 | Company Email | 109×`a` + `@example.com` (121 karakter) | Max. 120 characters
   - TC-524 | PIC Name | A×121 | Max. 120 characters
   - TC-524 | PIC Email | 109×`a` + `@example.com` (121 karakter) | Max. 120 characters
-  - TC-524 | Website | A×121 | Max. 120 characters
-  - TC-524 | Fax | 121×`1` | Max. 120 characters
+  - TC-524 | Website | `https://` + 109×`a` + `.com` (121 karakter) | Max. 120 characters
+  - TC-524 | Fax | 31×`1` | Max. 30 characters
   - TC-525 | Client Code | ABCDEFGHIJKLMNOP (16 karakter) | Max. 15 characters
   - TC-525 | PIC Phone | 1234567890123456 | Max. 15 characters
   - TC-525 | Postal Code | 1234567890123456 | Max. 15 characters

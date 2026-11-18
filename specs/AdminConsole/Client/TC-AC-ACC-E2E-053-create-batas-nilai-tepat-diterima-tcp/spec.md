@@ -9,6 +9,8 @@ sourceTc:
   - TC-AC-ACC-476
   - TC-AC-ACC-477
   - TC-AC-ACC-478
+  - TC-AC-ACC-1045
+  - TC-AC-ACC-1047
 coverage:
   web: automated
 ---
@@ -21,7 +23,7 @@ coverage:
 - Akun aktor: Total Control Principal (A-01) `totalControlPrincipal_automated_qaTeam1@qwertysystem.net`, password `Spectra.env.AC_TC_PASSWORD`. Login akun Total Control Principal di hook `before` spec ini; halaman Admin Console > Client dibuka hook `beforeEach` suite. Hook `after` mengembalikan sesi ke akun default suite. Env var password didaftarkan di `executionConfig.environmentVariables` dan `.env.example` saat tahap script.
 - Data Pre-setup (Tabel A: C-01…C-14, Group tree baseline, aktor A-01…A-16) tersedia dan hanya dibaca; spec tidak mengubahnya.
 - Data valid Create (kecuali bila kasus menyebut lain): PIC Name `Rina Kartika`; PIC Email `rina.kartika@qwertysystem.net`; Address `Jl. Sudirman No. 10`; Country/State/City `Indonesia`/`DKI Jakarta`/`Jakarta Selatan`; Postal Code `12190`; Default User First Name, Last Name, Email (`<nama>+{runId}-053@qwertysystem.net`, unik per run), Division `Finance`; Position kosong; Select Group `Area Jakarta` bila Partner kosong.
-- Dataset Dinamis (nama bersuffix): `PT Batas Lima Belas {runId}-053` (Client Code `ABCDEFGHIJKLMNO` 15 karakter, Postal Code `123456789012345` 15 digit; Client Code literal sesuai TC, hook `before` menghapus sisa), `PT Batas Seratus Dua Puluh {runId}-053` (Company Email, Website, Fax, PIC Name, PIC Email, First Name, Last Name, Email Default User, Division, dan Position masing-masing tepat 120 karakter: Website, Fax, PIC Name, First Name, Last Name, Division, Position = 120×`A`; Company Email = 60×`c` + `@` + 42×`x` + `.qwertysystem.net`; PIC Email = 60×`p` + `@` + 42×`x` + `.qwertysystem.net`; Email Default User = local-part 60 karakter yang diakhiri suffix `+{runId}-053` + `@` + 42×`x` + `.qwertysystem.net`, total 120), `PT Alamat Tiga Ratus Enam Puluh {runId}-053` (Address 360×`A`), `PT Spasi Ujung Uji {runId}-053` (PIC Name, First Name = 120×`A` + 5 spasi di akhir; Address 360×`A` + 5 spasi di akhir; Last Name `Maharani`).
+- Dataset Dinamis (nama bersuffix): `PT Batas Lima Belas {runId}-053` (Client Code `ABCDEFGHIJKLMNO` 15 karakter, Postal Code `123456789012345` 15 digit; Client Code literal sesuai TC, hook `before` menghapus sisa), `PT Batas Seratus Dua Puluh {runId}-053` (Company Email, Website, PIC Name, PIC Email, First Name, Last Name, Email Default User, Division, dan Position masing-masing tepat 120 karakter: PIC Name, First Name, Last Name, Division, Position = 120×`A`; Website = `https://` + 108×`a` + `.com`; Company Email = 60×`c` + `@` + 42×`x` + `.qwertysystem.net`; PIC Email = 60×`p` + `@` + 42×`x` + `.qwertysystem.net`; Email Default User = local-part 60 karakter yang diakhiri suffix `+{runId}-053` + `@` + 42×`x` + `.qwertysystem.net`, total 120), `PT Alamat Tiga Ratus Enam Puluh {runId}-053` (Address 360×`A`), `PT Spasi Ujung Uji {runId}-053` (PIC Name, First Name = 120×`A` + 5 spasi di akhir; Address 360×`A` + 5 spasi di akhir; Last Name `Maharani`), `PT Website Valid Uji {runId}-053` (Website `qwertysystem.co.id` lalu `https://www.qwertysystem.co.id/about`), `PT Fax Batas Uji {runId}-053` (Fax `+62 (21) 5550100-` + 13×`1`, tepat 30 karakter).
 - Cleanup: hook `after` menghapus lewat API (soft-delete) Client yang dibuat atau di-seed spec ini, tanpa mengasumsikan setup berhasil penuh.
 - Suite berjalan serial (`parallel: false`); flag Guided Tooltip halaman Client disetel oleh hook suite (`suite.md`).
 
@@ -40,8 +42,8 @@ coverage:
 
 ### TC-476: Nilai tepat 120 karakter
 
-8. Isi Company Name `PT Batas Seratus Dua Puluh {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; Company Email, Website, Fax, PIC Name, PIC Email, First Name, Last Name, Email, Division, dan Position memakai nilai batas 120 karakter; Group "Cabang Menteng"
-9. Verifikasi tidak ada pesan error pada Company Email, Website, Fax, PIC Name, PIC Email, First Name, Last Name, Email, Division, dan Position
+8. Isi Company Name `PT Batas Seratus Dua Puluh {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; Company Email, Website, PIC Name, PIC Email, First Name, Last Name, Email, Division, dan Position memakai nilai batas 120 karakter; Group "Cabang Menteng"
+9. Verifikasi tidak ada pesan error pada Company Email, Website, PIC Name, PIC Email, First Name, Last Name, Email, Division, dan Position
 10. Klik `[Submit]`
 11. Verifikasi toast sukses "Success, client has been created."
 
@@ -52,34 +54,59 @@ coverage:
 14. Klik `[Submit]`
 15. Verifikasi toast sukses "Success, client has been created."
 
+### TC-1045: Website format URL valid diterima
+
+16. Ketik `qwertysystem.co.id` ke field Website lalu klik field Fax
+17. Verifikasi tidak ada pesan error di bawah Website
+18. Ganti isi Website dengan `https://www.qwertysystem.co.id/about` lalu klik field Fax
+19. Verifikasi tidak ada pesan error di bawah Website
+20. Isi Company Name `PT Website Valid Uji {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; Group "Cabang Menteng"
+21. Klik `[Submit]`
+22. Verifikasi toast sukses "Success, client has been created."
+
+### TC-1047: Fax tepat 30 karakter
+
+23. Isi Company Name `PT Fax Batas Uji {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; Fax `+62 (21) 5550100-` + 13×`1` (30 karakter), Group "Cabang Menteng"
+24. Verifikasi tidak ada pesan error di bawah Fax
+25. Klik `[Submit]`
+26. Verifikasi toast sukses "Success, client has been created."
+
 ### TC-478: Spasi ujung tidak dihitung
 
-16. Hapus centang checkbox "Stay on this form after submitting"
-17. Isi Company Name `PT Spasi Ujung Uji {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; PIC Name dan First Name 120×`A` + 5 spasi di akhir, Address 360×`A` + 5 spasi di akhir, Last Name `Maharani`, Group "Cabang Menteng"
-18. Verifikasi PIC Name dan First Name: tidak ada pesan "Max. 120 characters"
-19. Verifikasi Address: tidak ada pesan "Max. 360 characters"
-20. Klik `[Submit]`
-21. Verifikasi toast sukses "Success, client has been created."
+27. Hapus centang checkbox "Stay on this form after submitting"
+28. Isi Company Name `PT Spasi Ujung Uji {runId}-053`, PIC Name, PIC Email, Address, Country, State, City, Postal Code, Default User First Name, Last Name, Email, dan Division sesuai Data valid Create; PIC Name dan First Name 120×`A` + 5 spasi di akhir, Address 360×`A` + 5 spasi di akhir, Last Name `Maharani`, Group "Cabang Menteng"
+29. Verifikasi PIC Name dan First Name: tidak ada pesan "Max. 120 characters"
+30. Verifikasi Address: tidak ada pesan "Max. 360 characters"
+31. Klik `[Submit]`
+32. Verifikasi toast sukses "Success, client has been created."
 
 ### Verifikasi hasil di List
 
-22. Ketik Search `PT Batas Lima Belas {runId}-053`, tekan Enter
-23. Klik Company Name `PT Batas Lima Belas {runId}-053` untuk membuka Detail
-24. Verifikasi Detail menampilkan Client Code "ABCDEFGHIJKLMNO" dan Postal Code "123456789012345"
-25. Klik breadcrumb "Client" untuk kembali ke List
-26. Ketik Search `PT Batas Seratus Dua Puluh {runId}-053`, tekan Enter
-27. Buka `⋯` baris `PT Batas Seratus Dua Puluh {runId}-053` lalu klik `Edit`
-28. Verifikasi popup Edit memuat Company Email, Website, Fax, PIC Name, PIC Email, First Name, Last Name, dan Email dengan nilai 120 karakter yang sama persis dengan Data Uji
-29. Klik `[✕]` di header popup
-30. Ketik Search `PT Alamat Tiga Ratus Enam Puluh {runId}-053`, tekan Enter
-31. Buka `⋯` baris `PT Alamat Tiga Ratus Enam Puluh {runId}-053` lalu klik `Edit`
-32. Verifikasi popup Edit memuat Address 360 karakter yang sama persis dengan Data Uji
-33. Klik `[✕]` di header popup
+33. Ketik Search `PT Batas Lima Belas {runId}-053`, tekan Enter
+34. Klik Company Name `PT Batas Lima Belas {runId}-053` untuk membuka Detail
+35. Verifikasi Detail menampilkan Client Code "ABCDEFGHIJKLMNO" dan Postal Code "123456789012345"
+36. Klik breadcrumb "Client" untuk kembali ke List
+37. Ketik Search `PT Batas Seratus Dua Puluh {runId}-053`, tekan Enter
+38. Buka `⋯` baris `PT Batas Seratus Dua Puluh {runId}-053` lalu klik `Edit`
+39. Verifikasi popup Edit memuat Company Email, Website, PIC Name, PIC Email, First Name, Last Name, dan Email dengan nilai 120 karakter yang sama persis dengan Data Uji
+40. Klik `[✕]` di header popup
+41. Ketik Search `PT Alamat Tiga Ratus Enam Puluh {runId}-053`, tekan Enter
+42. Buka `⋯` baris `PT Alamat Tiga Ratus Enam Puluh {runId}-053` lalu klik `Edit`
+43. Verifikasi popup Edit memuat Address 360 karakter yang sama persis dengan Data Uji
+44. Klik `[✕]` di header popup
+45. Ketik Search `PT Website Valid Uji {runId}-053`, tekan Enter
+46. Klik Company Name `PT Website Valid Uji {runId}-053` untuk membuka Detail
+47. Verifikasi Detail menampilkan Website "https://www.qwertysystem.co.id/about"
+48. Klik breadcrumb "Client" untuk kembali ke List
+49. Ketik Search `PT Fax Batas Uji {runId}-053`, tekan Enter
+50. Buka `⋯` baris `PT Fax Batas Uji {runId}-053` lalu klik `Edit`
+51. Verifikasi popup Edit memuat Fax 30 karakter yang sama persis dengan Data Uji
+52. Klik `[✕]` di header popup
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular; `TC-n` berarti `TC-AC-ACC-n`.
-- Alasan di atas 35 langkah (sekitar 45 langkah): satu popup memakai Stay (prinsip 8) untuk tiga pembuatan beruntun, satu role, satu kelas (batas nilai diterima); tiap blok berdiri sendiri.
+- Alasan di atas 35 langkah (52 langkah): satu popup memakai Stay (prinsip 8) untuk lima pembuatan beruntun, satu role, satu kelas (batas nilai diterima); tiap blok berdiri sendiri.
 - Langkah penghubung (S-03): Search nama unik; `✕` menutup popup Edit pristine; Detail dan Edit dibuka sesudah popup Create tertutup.
 - Nilai "tepat N karakter" dihitung termasuk suffix pada Email Default User (R-06).
 - Temuan untuk QA:
