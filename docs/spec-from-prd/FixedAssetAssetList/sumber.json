@@ -1,0 +1,10 @@
+{
+ "suite": "specs/FixedAsset/AssetList",
+ "prd": "fixed-asset@f688ea9",
+ "prdSha": "71e4f6b3cc546171",
+ "foundation": "foundation@96df7b2",
+ "kontrakKomponen": "wangs-ui@1.0.0",
+ "kontrakSamaDenganPin": false,
+ "stage": "prd-harness@63da747",
+ "ditutup": "2026-11-18T05:28:48Z"
+}

@@ -1,0 +1,4157 @@
+{
+ "module": "Asset List",
+ "status": "disetujui",
+ "disetujui": "otomatis, 2026-11-18",
+ "prd": "fixed-asset@f688ea9",
+ "prdSha": "71e4f6b3cc546171",
+ "foundation": "foundation@96df7b2",
+ "specs": [
+  {
+   "id": "TC-FA-ASTL-E2E-001-tabel-all-assets-tampilan",
+   "title": "Tabel All Assets menampilkan data aset dengan status dan kolom",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-02a",
+    "ASTL-LOGIC-02c",
+    "ASTL-LOGIC-12a",
+    "EC-01",
+    "FLD-01",
+    "FLD-02",
+    "FLD-03",
+    "FLD-04",
+    "FLD-05",
+    "FLD-06",
+    "FLD-07",
+    "FLD-08",
+    "FLD-09",
+    "FLD-10",
+    "FLD-11",
+    "FLD-12",
+    "FLD-13",
+    "FLD-14",
+    "FLD-15",
+    "FLD-16",
+    "FLD-17",
+    "FLD-18",
+    "FLD-19",
+    "FLD-20",
+    "FLD-21",
+    "FLD-22",
+    "FLD-23",
+    "FLD-24",
+    "FLD-25",
+    "FLD-26",
+    "§9.4.3#p2",
+    "§4.1#p1",
+    "§4.2.1#p1",
+    "§4.8#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-002-kartu-status",
+   "title": "Kartu status menghitung dan menyaring aset",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-13a",
+    "ASTL-LOGIC-13b",
+    "ASTL-LOGIC-13c",
+    "ASTL-LOGIC-13e",
+    "ASTL-LOGIC-13f",
+    "ASTL-LOGIC-13g",
+    "EC-12",
+    "F-ASTL-02",
+    "KartuAll",
+    "KartuAvailable",
+    "KartuDisposed",
+    "KartuInTransaction",
+    "KartuIssues",
+    "§4.1a#p2",
+    "§4.1a#r1",
+    "§4.1a#r3",
+    "§4.1a#r4",
+    "§4.1a#r2",
+    "§4.1a#r5",
+    "§4.1a#b1",
+    "§4.1a#b4",
+    "§4.4#b7",
+    "§9.2#p2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu topik: pembacaan kartu tanpa mutasi"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-003-sidebar-group",
+   "title": "Sidebar Group membatasi tabel ke group dan descendant",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-14a",
+    "ASTL-LOGIC-14d",
+    "ASTL-LOGIC-14e",
+    "ASTL-LOGIC-14g",
+    "ASTL-LOGIC-14j",
+    "ASTL-LOGIC-14k",
+    "ASTL-LOGIC-14l",
+    "ASTL-LOGIC-14n",
+    "F-ASTL-13"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-004-search",
+   "title": "Search pada tabel All Assets",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-20",
+    "F-ASTL-03",
+    "FLD-01",
+    "FLD-02",
+    "FLD-03",
+    "FLD-04",
+    "FLD-05",
+    "FLD-06",
+    "FLD-07",
+    "FLD-08",
+    "FLD-09",
+    "FLD-10",
+    "FLD-11",
+    "FLD-12",
+    "FLD-13",
+    "FLD-14",
+    "FLD-15",
+    "FLD-16",
+    "FLD-17",
+    "FLD-18",
+    "FLD-19",
+    "FLD-20",
+    "FLD-21",
+    "FLD-22",
+    "FLD-23",
+    "FLD-24",
+    "FLD-25",
+    "FLD-26",
+    "§5#r3",
+    "§9.2#p3",
+    "EB-SRC-2@tabel-all-assets",
+    "EB-SRC-3@tabel-all-assets"
+   ],
+   "smoke": [
+    "EB-SRC-1"
+   ],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-005-sort",
+   "title": "Sort pada tabel All Assets",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASTL-05",
+    "FLD-01",
+    "FLD-02",
+    "FLD-03",
+    "FLD-04",
+    "FLD-05",
+    "FLD-06",
+    "FLD-07",
+    "FLD-08",
+    "FLD-09",
+    "FLD-10",
+    "FLD-11",
+    "FLD-12",
+    "FLD-13",
+    "FLD-14",
+    "FLD-15",
+    "FLD-16",
+    "FLD-17",
+    "FLD-18",
+    "FLD-19",
+    "FLD-20",
+    "FLD-21",
+    "FLD-22",
+    "FLD-23",
+    "FLD-24",
+    "FLD-25",
+    "FLD-26",
+    "§5#r4"
+   ],
+   "smoke": [
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "EB-SRT-3@tabel-all-assets"
+   ],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-006-filter-panel",
+   "title": "Panel Filter pada tabel All Assets",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-02b",
+    "ASTL-LOGIC-02e",
+    "F-ASTL-04",
+    "FLD-01",
+    "FLD-02",
+    "FLD-03",
+    "FLD-04",
+    "FLD-05",
+    "FLD-06",
+    "FLD-07",
+    "FLD-08",
+    "FLD-09",
+    "FLD-10",
+    "FLD-11",
+    "FLD-12",
+    "FLD-13",
+    "FLD-14",
+    "FLD-15",
+    "FLD-16",
+    "FLD-17",
+    "FLD-18",
+    "FLD-19",
+    "FLD-20",
+    "FLD-21",
+    "FLD-22",
+    "FLD-23",
+    "FLD-24",
+    "FLD-25",
+    "FLD-26",
+    "§4.1a#b3",
+    "§4.1c#b1",
+    "§4.1c#b2",
+    "§4.1c#b4",
+    "EB-FLT-1@tabel-all-assets",
+    "EB-FLT-4@tabel-all-assets",
+    "EB-FLT-5@tabel-all-assets"
+   ],
+   "smoke": [
+    "EB-FLT-3"
+   ],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-007-setup-column-tersimpan",
+   "title": "Konfigurasi Setup Column bertahan per user",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASTL-05",
+    "§5#r8",
+    "EB-SRC-5@tabel-all-assets",
+    "EB-KOL-2@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-008-paginasi",
+   "title": "Paginasi tabel All Assets",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASTL-05",
+    "§5#r2",
+    "EB-TBL-7@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "entitasKhusus seluruh-daftar: mengasersi jumlah baris dan nomor halaman atas seluruh daftar (IN-2)",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-009-download",
+   "title": "Download hasil tabel All Assets",
+   "layer": "ui-e2e",
+   "units": [
+    "§5#r6",
+    "§9.6#r7",
+    "EB-DL-1@tabel-all-assets",
+    "EB-DL-2@tabel-all-assets",
+    "EB-DL-3@tabel-all-assets"
+   ],
+   "smoke": [
+    "EB-DL-4"
+   ],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+   "title": "Navigasi ke Asset Detail dan kembali ke daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-18",
+    "§4.4#b1",
+    "§4.4#b2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-011-guided-tooltip-flag",
+   "title": "Guided tooltip tidak muncul lagi sesudah selesai",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-TBL-10"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-012-sel-pending-nilai-aset",
+   "title": "Sel Pending dan nilai kosong pada kolom bergerbang",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10h",
+    "ASTL-LOGIC-10i",
+    "ASTL-LOGIC-10j",
+    "ASTL-LOGIC-12i",
+    "ASTL-LOGIC-12j",
+    "ASTL-LOGIC-12k",
+    "ASTL-LOGIC-12l",
+    "EC-14",
+    "EC-25"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-013-warranty-expiry",
+   "title": "Kolom Warranty Expiry dan hover garansi",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-11b",
+    "ASTL-LOGIC-11c",
+    "ASTL-LOGIC-11e",
+    "ASTL-LOGIC-11l"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-015-select-all-bulk",
+   "title": "Seleksi baris dan Select All",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-20g",
+    "ASTL-LOGIC-20h",
+    "EC-35",
+    "§4.4#b4",
+    "EB-BLK-2@tabel-all-assets",
+    "EB-EDG-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-016-add-label-bulk",
+   "title": "Bulk Add Label tersimpan",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-04c",
+    "§9.7#r11",
+    "EB-FRM-1@add-label"
+   ],
+   "smoke": [
+    "EB-FB-1@add-label"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-017-remove-label-bulk",
+   "title": "Bulk Remove Label tersimpan",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-04d",
+    "ASTL-LOGIC-04f",
+    "ASTL-LOGIC-04h",
+    "EC-04",
+    "EB-FRM-1@remove-label"
+   ],
+   "smoke": [
+    "EB-FB-1@remove-label"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-018-manage-aset",
+   "title": "Manage aset Unmanaged dengan kuota Available",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-15b",
+    "ASTL-LOGIC-15c",
+    "ASTL-LOGIC-15d",
+    "ASTL-LOGIC-15e",
+    "ASTL-LOGIC-15f",
+    "ASTL-LOGIC-15g",
+    "ASTL-LOGIC-15o",
+    "ASTL-LOGIC-15r",
+    "DO-02",
+    "EB-FRM-1@manage-asset"
+   ],
+   "smoke": [
+    "EB-FB-1@manage-asset"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-019-switch-manage-aset",
+   "title": "Switch Manage Asset saat kuota Available habis",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-15aa"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-020-delete-asset-data",
+   "title": "Delete Asset Data menghapus aset",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-17a",
+    "ASTL-LOGIC-17c",
+    "ASTL-LOGIC-17d",
+    "ASTL-LOGIC-17m",
+    "§9.7#r14",
+    "EB-FRM-1@delete-asset-data",
+    "EB-BLK-3"
+   ],
+   "smoke": [
+    "EB-ERR-3",
+    "EB-EDG-3",
+    "EB-FB-1@delete-asset-data"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-021-edit-purchase-satu-aset",
+   "title": "Edit Purchase satu aset tersimpan",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-07a",
+    "ASTL-LOGIC-21d",
+    "ASTL-LOGIC-21e",
+    "ASTL-LOGIC-21f",
+    "EC-07",
+    "EC-40",
+    "§4.1i#b4",
+    "§9.7#r13",
+    "EB-FB-3@edit-purchase",
+    "EB-FRM-1@edit-purchase",
+    "EB-FRM-9"
+   ],
+   "smoke": [
+    "EB-FRM-5@edit-purchase",
+    "EB-ERR-4",
+    "EB-FB-1@edit-purchase"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-022-edit-purchase-bulk",
+   "title": "Bulk Edit Purchase tersimpan",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-07d",
+    "ASTL-LOGIC-07e"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-023-print-label",
+   "title": "Print Label dari toolbar dan Row Action",
+   "layer": "ui-e2e",
+   "units": [
+    "DO-01",
+    "F-ASTL-15.k1",
+    "§4.1h#p1",
+    "§4.1h#b13",
+    "§4.1h#b14",
+    "§9.2#p9",
+    "§9.6#r5"
+   ],
+   "smoke": [
+    "EB-FB-1@print-label"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+   "title": "Row Action dan Bulk Action menurut status aset",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-04a",
+    "ASTL-LOGIC-16a",
+    "ASTL-LOGIC-16b",
+    "ASTL-LOGIC-16d",
+    "ASTL-LOGIC-16g",
+    "ASTL-LOGIC-17n",
+    "ASTL-LOGIC-19a",
+    "ASTL-LOGIC-19b",
+    "ASTL-LOGIC-19c",
+    "ASTL-LOGIC-19d",
+    "ASTL-LOGIC-19e",
+    "ASTL-LOGIC-20j",
+    "EC-05",
+    "EC-22",
+    "EC-45",
+    "EC-46",
+    "F-ASTL-16.k1",
+    "F-ASTL-17.k2",
+    "MarkasReturned",
+    "MarkasUnassigned",
+    "AddLabel",
+    "AddtoAssignmentDraft",
+    "AddtoBorrowDraft",
+    "AddtoTransferDraft",
+    "Assign",
+    "BatchReplaceTAG",
+    "Borrow",
+    "DeleteAssetData",
+    "Detail",
+    "Edit",
+    "EditPurchase",
+    "Manage",
+    "PrintLabel",
+    "RemoveLabel",
+    "ReplaceTAG",
+    "ReportDamage",
+    "ReportDisposal",
+    "ReportMissing",
+    "ReportTAG",
+    "Transfer"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-025-gating-total-control",
+   "title": "Gating UI untuk Total Control",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10c",
+    "ASTL-LOGIC-10d",
+    "ASTL-LOGIC-10e",
+    "ASTL-LOGIC-10f",
+    "ASTL-LOGIC-10n",
+    "ASTL-LOGIC-10o",
+    "ASTL-LOGIC-10p",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-026-gating-read-only",
+   "title": "Gating UI untuk Read Only",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10f",
+    "ASTL-LOGIC-10n",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7",
+    "EB-AKS-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-027-gating-group-manager",
+   "title": "Gating UI untuk Group Manager",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10c",
+    "ASTL-LOGIC-10d",
+    "ASTL-LOGIC-10g",
+    "ASTL-LOGIC-10n",
+    "ASTL-LOGIC-10o",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-028-gating-manage-asset-tag",
+   "title": "Gating UI untuk Manage asset dan TAG",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10k",
+    "ASTL-LOGIC-10l",
+    "ASTL-LOGIC-10n",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7",
+    "EB-AKS-5@add-label",
+    "EB-AKS-5@remove-label",
+    "EB-AKS-5@manage-asset",
+    "EB-AKS-5@delete-asset-data"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-029-gating-view-asset-value",
+   "title": "Gating UI untuk View asset value",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10c",
+    "ASTL-LOGIC-10k",
+    "ASTL-LOGIC-10l",
+    "ASTL-LOGIC-10n",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+   "title": "Gating UI untuk Manage accounting",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10c",
+    "ASTL-LOGIC-10e",
+    "ASTL-LOGIC-10n",
+    "ASTL-LOGIC-10p",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-031-gating-manage-purchase",
+   "title": "Gating UI untuk Manage purchase",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10d",
+    "ASTL-LOGIC-10k",
+    "ASTL-LOGIC-10l",
+    "ASTL-LOGIC-10n",
+    "ASTL-LOGIC-10o",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7",
+    "EB-AKS-5@edit-purchase"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+   "title": "Gating UI untuk Asset Admin",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-10k",
+    "ASTL-LOGIC-10l",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r1",
+    "§2#r2",
+    "§2#r3",
+    "§2#r4",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#r5",
+    "§9.11#r6",
+    "§9.11#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-033-gating-tanpa-akses",
+   "title": "Aktor tanpa akses tidak masuk modul",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.8#r1",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§2#r5",
+    "§2#r6",
+    "§2#r7",
+    "§2#r8",
+    "§2#r9",
+    "§2#r10",
+    "§2#r11",
+    "§2#r12",
+    "§2#r13",
+    "§2#r14",
+    "§2#r15",
+    "§2#r16",
+    "§2#p3",
+    "EB-AKS-1",
+    "EB-AKS-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu spec per jenis aktor yang punya kolom di matriks PRD (RC-5); unit matriks masuk shared per jenis aktor"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-034-pencabutan-hak-saat-halaman-terbuka",
+   "title": "Hak dicabut saat halaman terbuka",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-14f",
+    "ASTL-LOGIC-20k",
+    "ASTL-LOGIC-20l",
+    "ASTL-LOGIC-20m",
+    "T-21",
+    "EC-44",
+    "EB-AKS-6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-035-state-tenant-aksi-tulis-ditolak",
+   "title": "Aksi tulis ditolak saat entitas Suspended atau Expired",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-19",
+    "EB-AKS-7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "alasan": "harness state-tenant: aksi tulis ditolak saat entitas Suspended atau Expired (EB-AKS-7)",
+   "entitasKhusus": "status-entitas"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-036-plan-gating",
+   "title": "Perilaku modul pada tiap tier plan dan level Feature Suite",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-18",
+    "§9.10#r1",
+    "§9.10#r2",
+    "§9.10#r3",
+    "§9.10#r4",
+    "§9.10#p1",
+    "§9.10#p2",
+    "EB-AKS-8"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "alasan": "harness state-tenant: tier plan berubah; Create, Edit, dan Delete identik di tiap tier (EB-AKS-8); level Feature Suite None, Basic, Full menentukan aksi transaksi yang tampil (§9.10)",
+   "entitasKhusus": "status-entitas"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-037-changelog-asset-dep-asset-detail",
+   "title": "Changelog Asset dan modal Changelog",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-15x",
+    "ASTL-LOGIC-15y",
+    "ASTL-LOGIC-15z",
+    "§4.1i#b11",
+    "§5#r7",
+    "§8#r1",
+    "§8#r2",
+    "§8#r3",
+    "§8#r4",
+    "§8#r5",
+    "§8#r6",
+    "§8#b2",
+    "EB-LOG-1",
+    "EB-LOG-2"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Detail: modal Changelog Asset"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+   "title": "Pencatatan Activity Log",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-17y",
+    "§8#r1",
+    "§8#r2",
+    "§8#r3",
+    "§8#r4",
+    "§8#r5",
+    "§8#b3",
+    "§8#b4",
+    "§8#b5",
+    "§8#b6"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Activity Log: tab User Action"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-039-status-borrow-dep-borrow",
+   "title": "Status Borrow dan pintasan Borrow",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-02d",
+    "ASTL-LOGIC-16e",
+    "ASTL-LOGIC-16f",
+    "§9.7#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Borrow: transaksi Borrow"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-040-status-assignment-dep-assignment",
+   "title": "Status Assignment dan pintasan Assign",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.7#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Assignment: transaksi Assignment"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+   "title": "Status Transfer dan pintasan Transfer",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.7#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Transfer: transaksi Transfer"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-042-laporan-damaged-dep-damaged",
+   "title": "Laporan Damaged tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-11d",
+    "§9.7#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Damaged: laporan Damaged"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-043-laporan-missing-dep-missing",
+   "title": "Laporan Missing tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-11d",
+    "ASTL-LOGIC-17l",
+    "§9.7#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Missing: laporan Missing"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-044-disposal-tercermin-dep-disposal",
+   "title": "Disposal tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-16h",
+    "ASTL-LOGIC-17l",
+    "§9.7#r2",
+    "§9.7#r3"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Disposal: Report Disposal dan Execute Disposal"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-045-registrasi-aset-dep-asset-registration",
+   "title": "Aset hasil registrasi muncul di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-01a",
+    "§9.4.3#p2",
+    "§9.7#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Registration: registrasi aset"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+   "title": "Operasi TAG tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-16c",
+    "ASTL-LOGIC-17x",
+    "§9.4.3#p2",
+    "§9.7#r5"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "TAG: operasi TAG"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit",
+   "title": "Audit tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.7#r6"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Audit: sesi Audit"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-048-asset-name-tercermin-dep-settings-asset-name",
+   "title": "Perubahan Asset Name tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.7#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Settings Asset Name: Asset Name dan Category"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-049-asset-class-tercermin-dep-asset-class",
+   "title": "Asset Class tercermin di Asset Value",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-12b",
+    "ASTL-LOGIC-12m",
+    "§9.7#r8"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Class: Asset Class dan metode"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-050-custom-field-kolom-dep-settings-custom-fields",
+   "title": "Custom field tercermin di kolom",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.7#r10"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Settings Custom Fields: custom field"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-051-kuota-lisensi-dep-license",
+   "title": "Kuota lisensi tercermin di Manage",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-16i",
+    "ASTL-LOGIC-16m",
+    "§9.7#r12"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "License: kuota lisensi"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-052-posting-penyusutan-dep-depreciation-run",
+   "title": "Posting penyusutan tercermin di daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "ASTL-LOGIC-12c",
+    "ASTL-LOGIC-12d",
+    "ASTL-LOGIC-12e",
+    "ASTL-LOGIC-12g",
+    "ASTL-LOGIC-12h",
+    "ASTL-LOGIC-12r",
+    "ASTL-LOGIC-12f",
+    "ASTL-LOGIC-12n",
+    "ASTL-LOGIC-17l",
+    "§9.7#r9"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Depreciation Run: posting periode penyusutan"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "ekspektasi membutuhkan modul lain (IS-2); hanya menyentuh satu modul luar (IS-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-E2E-053-format-tanggal-dep-general-settings",
+   "title": "Format tanggal tercermin di tabel",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-XM-1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "General Settings: format tanggal"
+   ],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "entitasKhusus setting-entitas: mengubah Date Format entitas; ekspektasi membutuhkan modul General Settings (IS-2)",
+   "entitasKhusus": "setting-entitas"
+  },
+  {
+   "id": "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+   "title": "Tampilan sel dan kolom tabel All Assets",
+   "layer": "ui-client",
+   "komponen": "Tabel All Assets",
+   "units": [
+    "ASTL-LOGIC-04g",
+    "ASTL-LOGIC-09d",
+    "ASTL-LOGIC-09e",
+    "ASTL-LOGIC-10i",
+    "ASTL-LOGIC-11c",
+    "ASTL-LOGIC-11f",
+    "ASTL-LOGIC-11g",
+    "ASTL-LOGIC-11h",
+    "ASTL-LOGIC-11i",
+    "ASTL-LOGIC-11j",
+    "ASTL-LOGIC-11k",
+    "ASTL-LOGIC-12l",
+    "ASTL-LOGIC-12o",
+    "ASTL-LOGIC-12p",
+    "ASTL-LOGIC-12q",
+    "S-09",
+    "S-20",
+    "S-21",
+    "S-22",
+    "S-23",
+    "S-24",
+    "S-28",
+    "S-38",
+    "EC-14",
+    "EC-25",
+    "FLD-01",
+    "FLD-02",
+    "FLD-03",
+    "FLD-04",
+    "FLD-05",
+    "FLD-06",
+    "FLD-07",
+    "FLD-08",
+    "FLD-09",
+    "FLD-10",
+    "FLD-11",
+    "FLD-12",
+    "FLD-13",
+    "FLD-14",
+    "FLD-15",
+    "FLD-16",
+    "FLD-17",
+    "FLD-18",
+    "FLD-19",
+    "FLD-20",
+    "FLD-21",
+    "FLD-22",
+    "FLD-23",
+    "FLD-24",
+    "FLD-25",
+    "FLD-26",
+    "§9.4.3#p2",
+    "§4.1a#p1",
+    "§4.5#b1",
+    "§4.5#b2",
+    "§4.5#b3",
+    "§5#r1",
+    "§7.1#b2",
+    "EB-TBL-2@kolom-division",
+    "EB-TBL-2@kolom-alias-name",
+    "EB-TBL-2@kolom-last-scanned",
+    "EB-TBL-2@kolom-tag",
+    "EB-TBL-3@kolom-labels",
+    "EB-TBL-4@kolom-modified-by",
+    "EB-TBL-8@tabel-all-assets",
+    "EB-XM-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "menggabung tampilan sel, tooltip sel, format tanggal, dan penyajian kolom karena semuanya aturan tampilan satu tabel"
+  },
+  {
+   "id": "TC-FA-ASTL-UI-055-tabel-all-assets-state-data",
+   "title": "State data tabel All Assets: memuat, kosong, gagal",
+   "layer": "ui-client",
+   "komponen": "Tabel All Assets",
+   "units": [
+    "S-39",
+    "S-41",
+    "S-42",
+    "EC-21",
+    "EmptystatetabelAllAssets",
+    "§7.1#r1",
+    "§7.1#b3",
+    "EB-TBL-1@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-056-toolbar-search",
+   "title": "Siklus kotak Search di toolbar",
+   "layer": "ui-client",
+   "komponen": "Toolbar All Assets",
+   "units": [
+    "EB-SRC-4@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-057-tabel-sort",
+   "title": "Siklus Sort kolom tabel",
+   "layer": "ui-client",
+   "komponen": "Tabel All Assets",
+   "units": [
+    "EB-SRT-3@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-058-panel-filter",
+   "title": "Mekanik Panel Filter",
+   "layer": "ui-client",
+   "komponen": "Panel Filter All Assets",
+   "units": [
+    "ASTL-LOGIC-14m",
+    "FI-27",
+    "§4.1c#p1",
+    "§4.1c#b3",
+    "EB-FLT-2@tabel-all-assets"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-059-setup-column",
+   "title": "Mekanik Setup Column",
+   "layer": "ui-client",
+   "komponen": "Setup Column All Assets",
+   "units": [
+    "EC-43",
+    "EB-FLT-6@tabel-all-assets",
+    "EB-KOL-1@tabel-all-assets",
+    "EB-KOL-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-060-bar-bulk",
+   "title": "Bar Bulk dan seleksi baris",
+   "layer": "ui-client",
+   "komponen": "Bar Bulk All Assets",
+   "units": [
+    "S-47",
+    "EC-16",
+    "§4.4#b3",
+    "§4.4#b5",
+    "§4.4#b6",
+    "§5#r5",
+    "EB-BLK-1@tabel-all-assets",
+    "EB-BLK-4",
+    "EB-BLK-6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "title": "Menu aksi baris dan Bulk Action: tooltip Disabled",
+   "layer": "ui-client",
+   "komponen": "Menu Aksi All Assets",
+   "units": [
+    "ASTL-LOGIC-15d",
+    "ASTL-LOGIC-15r",
+    "ASTL-LOGIC-17l",
+    "ASTL-LOGIC-17n",
+    "ASTL-LOGIC-19b",
+    "ASTL-LOGIC-19c",
+    "S-14",
+    "S-15",
+    "S-16",
+    "S-18",
+    "S-19",
+    "S-27",
+    "S-29",
+    "S-30",
+    "S-32",
+    "S-33",
+    "S-34",
+    "S-35",
+    "EC-22",
+    "EC-45",
+    "§4.5#b4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "satu kelompok: tooltip alasan Disabled pada menu aksi dan Bulk Action"
+  },
+  {
+   "id": "TC-FA-ASTL-UI-062-navigasi-halaman",
+   "title": "Paginasi, breadcrumb, dan guided tooltip halaman Assets",
+   "layer": "ui-client",
+   "komponen": "Halaman Assets",
+   "units": [
+    "§4.2.1#p2",
+    "§4.2.1#p3",
+    "§4.2.1#p4",
+    "§4.4#b1",
+    "§4.7Step1",
+    "§4.7Step2",
+    "§4.7Step3",
+    "§5#r2",
+    "EB-TBL-7@tabel-all-assets",
+    "EB-TBL-10",
+    "EB-TBL-11"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "menggabung paginasi, breadcrumb, dan guided tooltip karena unitnya sedikit pada halaman yang sama"
+  },
+  {
+   "id": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+   "title": "Tampilan kartu status",
+   "layer": "ui-client",
+   "komponen": "Kartu Status",
+   "units": [
+    "ASTL-LOGIC-13d",
+    "S-40",
+    "S-42",
+    "§4.1a#r1",
+    "§4.1a#r3",
+    "§4.1a#r4",
+    "§4.1a#b2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-064-sidebar-group-tampilan",
+   "title": "Perilaku Sidebar Group",
+   "layer": "ui-client",
+   "komponen": "Sidebar Group",
+   "units": [
+    "ASTL-LOGIC-14b",
+    "ASTL-LOGIC-14c",
+    "ASTL-LOGIC-14h",
+    "ASTL-LOGIC-14i",
+    "FI-25",
+    "FI-26",
+    "S-43",
+    "S-44",
+    "§4.1g#p1",
+    "§7.1#p1",
+    "EB-SRC-6@sidebar-group"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-065-popover-download",
+   "title": "Popover Download dan kegagalannya",
+   "layer": "ui-client",
+   "komponen": "Popover Download",
+   "units": [
+    "T-05",
+    "§5#r6",
+    "§6#r9",
+    "EB-DL-2@tabel-all-assets",
+    "EB-DL-5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-066-dialog-add-label",
+   "title": "Dialog Add Label",
+   "layer": "ui-client",
+   "komponen": "Dialog Add Label",
+   "units": [
+    "V-02",
+    "T-01",
+    "T-22",
+    "D-17",
+    "FLD-36",
+    "§4.1f#b1",
+    "§4.4#b8",
+    "§6#r9",
+    "§9.9#p3",
+    "EB-FB-1@add-label",
+    "EB-FB-2@add-label",
+    "EB-FB-4",
+    "EB-FRM-1@add-label",
+    "EB-ERR-1@add-label"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-067-dialog-remove-label",
+   "title": "Dialog Remove Label",
+   "layer": "ui-client",
+   "komponen": "Dialog Remove Label",
+   "units": [
+    "FI-16",
+    "S-04",
+    "T-02",
+    "T-23",
+    "D-18",
+    "FLD-37",
+    "§4.1f#b2",
+    "§6#r9",
+    "EB-FB-1@remove-label",
+    "EB-FB-2@remove-label",
+    "EB-FRM-1@remove-label",
+    "EB-ERR-1@remove-label"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-068-dialog-manage-asset",
+   "title": "Dialog Manage Asset",
+   "layer": "ui-client",
+   "komponen": "Dialog Manage Asset",
+   "units": [
+    "ASTL-LOGIC-15h",
+    "FI-12",
+    "FI-13",
+    "T-09",
+    "T-10",
+    "T-24",
+    "D-03",
+    "FLD-39",
+    "§6#r9",
+    "EB-FB-1@manage-asset",
+    "EB-FB-2@manage-asset",
+    "EB-FRM-1@manage-asset",
+    "EB-ERR-1@manage-asset"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+   "title": "Dialog Switch Manage Asset",
+   "layer": "ui-client",
+   "komponen": "Dialog Switch Manage Asset",
+   "units": [
+    "ASTL-LOGIC-15k",
+    "FI-14",
+    "V-03",
+    "D-04",
+    "D-04ExampleTable",
+    "FLD-40",
+    "§7.1#r3",
+    "§7.1#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-070-dialog-delete-asset-data",
+   "title": "Dialog Delete Asset Data",
+   "layer": "ui-client",
+   "komponen": "Dialog Delete Asset Data",
+   "units": [
+    "ASTL-LOGIC-17s",
+    "ASTL-LOGIC-17t",
+    "ASTL-LOGIC-17w",
+    "FI-15",
+    "V-04",
+    "V-05",
+    "T-11",
+    "T-25",
+    "D-05",
+    "FLD-41",
+    "§6#r9",
+    "EB-FB-1@delete-asset-data",
+    "EB-FB-2@delete-asset-data",
+    "EB-FRM-1@delete-asset-data",
+    "EB-ERR-1@delete-asset-data",
+    "EB-ERR-2@delete-asset-data"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+   "title": "Tampilan awal dan state Dialog Edit Purchase",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "FI-01",
+    "FI-07",
+    "S-17",
+    "S-36",
+    "S-37",
+    "S-35",
+    "D-13",
+    "FLD-33",
+    "§4.1i#p1",
+    "§4.1i#b1",
+    "§4.1i#b3",
+    "§4.1i#b6",
+    "§4.1i#b10",
+    "§9.9#r7",
+    "§9.9#r11"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "menggabung tampilan awal dan state dialog karena unitnya sedikit pada komponen yang sama"
+  },
+  {
+   "id": "TC-FA-ASTL-UI-072-dialog-edit-purchase-tanggal-biaya",
+   "title": "Validasi Purchase Date, Purchase Cost, dan Reference Price",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "ASTL-LOGIC-21b",
+    "ASTL-LOGIC-21e",
+    "ASTL-LOGIC-21a",
+    "ASTL-LOGIC-21i",
+    "FI-02",
+    "V-09",
+    "V-12",
+    "V-16",
+    "S-25",
+    "S-26",
+    "EC-39",
+    "EC-40",
+    "EC-47",
+    "FLD-27",
+    "FLD-28",
+    "FLD-29",
+    "§4.1i#b2",
+    "§4.1i#b8",
+    "§9.9#r1",
+    "§9.9#r2",
+    "§9.9#r3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-073-dialog-edit-purchase-warranty",
+   "title": "Validasi daftar Warranty dan field teks",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "ASTL-LOGIC-21c",
+    "FI-09",
+    "V-06",
+    "V-10",
+    "V-13",
+    "FLD-30",
+    "FLD-31",
+    "FLD-32",
+    "§4.1i#b5",
+    "§9.9#r4",
+    "§9.9#r5",
+    "§9.9#r6",
+    "EB-FRM-4@edit-purchase"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-074-dialog-edit-purchase-additional-costs",
+   "title": "Validasi Additional costs",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "ASTL-LOGIC-21k",
+    "FI-11",
+    "V-14",
+    "V-15",
+    "V-17",
+    "FLD-34",
+    "FLD-35",
+    "§4.1i#b9",
+    "§9.9#r8",
+    "§9.9#r10"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+   "title": "Dialog Edit Purchase mode Bulk",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "FI-03",
+    "FI-04",
+    "FI-05",
+    "FI-06",
+    "FI-08",
+    "FI-10",
+    "EC-29",
+    "§4.1i#b7",
+    "§9.9#r9"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi",
+   "title": "Mekanik form: Saving, Unsaved, Clear Field, toast",
+   "layer": "ui-client",
+   "komponen": "Dialog Edit Purchase",
+   "units": [
+    "T-20",
+    "T-27",
+    "T-28",
+    "§6#r9",
+    "EB-FB-1@edit-purchase",
+    "EB-FB-2@edit-purchase",
+    "EB-FB-3@edit-purchase",
+    "EB-FRM-1@edit-purchase",
+    "EB-FRM-2@edit-purchase",
+    "EB-FRM-3@edit-purchase",
+    "EB-FRM-7@edit-purchase",
+    "EB-ERR-1@edit-purchase"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-077-dialog-select-asset",
+   "title": "Dialog Select Asset",
+   "layer": "ui-client",
+   "komponen": "Dialog Select Asset",
+   "units": [
+    "ASTL-LOGIC-09c",
+    "FI-21",
+    "FI-22",
+    "FI-23",
+    "FI-24",
+    "V-08",
+    "S-45",
+    "S-46",
+    "D-15",
+    "SelectAssetSetupColumn",
+    "FLD-42",
+    "§4.1h#b1",
+    "§4.1h#p2",
+    "§4.1h#p3",
+    "§4.1h#r1",
+    "§4.1h#r2",
+    "§4.1h#r3",
+    "§4.1h#r4",
+    "§4.1h#p4",
+    "§4.1h#p5",
+    "§4.1h#b2",
+    "§4.1h#b3",
+    "§4.1h#b4",
+    "§4.1h#b5",
+    "§4.1h#b6",
+    "§4.1h#b7",
+    "§4.1h#b8",
+    "§4.1h#b9",
+    "§4.1h#b10",
+    "§7.1#r2",
+    "§7.1#p1",
+    "EB-TBL-1@tabel-select-asset"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-078-dialog-print-label",
+   "title": "Dialog Print Label",
+   "layer": "ui-client",
+   "komponen": "Dialog Print Label",
+   "units": [
+    "FI-17",
+    "FI-18",
+    "FI-19",
+    "FI-20",
+    "T-08",
+    "T-26",
+    "D-16",
+    "EC-42",
+    "FLD-38",
+    "§4.1h#b11",
+    "§4.1h#b12",
+    "§6#r9",
+    "EB-FB-1@print-label",
+    "EB-FB-2@print-label",
+    "EB-ERR-1@print-label"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-UI-079-dialog-aset-berubah",
+   "title": "Dialog Aset Berubah",
+   "layer": "ui-client",
+   "komponen": "Dialog Aset Berubah",
+   "units": [
+    "ASTL-LOGIC-20c",
+    "ASTL-LOGIC-20b",
+    "D-14",
+    "DO-03",
+    "§9.9#p4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-080-cakupan-group-aset",
+   "title": "Cakupan group dan akses langsung aset",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-01b",
+    "ASTL-LOGIC-01c",
+    "EC-17",
+    "F-ASTL-01.k1",
+    "403",
+    "§9.4.3#p2",
+    "§9.2#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "title": "Otorisasi aksi tulis per role",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-17r",
+    "ASTL-LOGIC-19f",
+    "ASTL-LOGIC-20o",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r4",
+    "§9.3#r5",
+    "§9.3#r6",
+    "§9.3#p1",
+    "EB-AKS-3@add-label",
+    "EB-AKS-3@remove-label",
+    "EB-AKS-3@manage-asset",
+    "EB-AKS-3@delete-asset-data",
+    "EB-AKS-3@edit-purchase"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-082-pertahanan-akses-langsung",
+   "title": "Akses langsung dan tampering ditolak",
+   "layer": "be-e2e",
+   "units": [
+    "T-07"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "harness": "pertahanan",
+   "varianPlatform": [],
+   "alasan": "harness pertahanan: akses langsung ke aset di luar cakupan"
+  },
+  {
+   "id": "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+   "title": "Aturan server Add Label dan Remove Label",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-04b",
+    "ASTL-LOGIC-04e",
+    "ASTL-LOGIC-07c",
+    "ASTL-LOGIC-20f",
+    "EC-03",
+    "F-ASTL-10.k2",
+    "F-ASTL-11.k2",
+    "§9.4.3#p2",
+    "§9.6#r1",
+    "§9.6#r2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+   "title": "Aturan server Manage dan kuota lisensi",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-15i",
+    "ASTL-LOGIC-15j",
+    "ASTL-LOGIC-15l",
+    "ASTL-LOGIC-15m",
+    "ASTL-LOGIC-15n",
+    "ASTL-LOGIC-15p",
+    "ASTL-LOGIC-15q",
+    "ASTL-LOGIC-15s",
+    "EC-49",
+    "F-ASTL-16.k4",
+    "§9.2#p6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-085-manage-race-kuota-terakhir",
+   "title": "Dua aksi Manage berebut kuota terakhir",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-20i",
+    "EC-36",
+    "F-ASTL-16.k2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "harness multi-konteks: dua aktor berebut kuota Available terakhir (RC-4, LY-7)"
+  },
+  {
+   "id": "TC-FA-ASTL-BE-086-manage-aktivasi-gagal",
+   "title": "Aktivasi Manage gagal setelah jeda transisi",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-15t",
+    "ASTL-LOGIC-15u",
+    "ASTL-LOGIC-15v",
+    "ASTL-LOGIC-15w",
+    "ASTL-LOGIC-16n",
+    "EC-50",
+    "F-ASTL-16.k5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "kegagalan aktivasi di dalam sistem tidak dibentuk di ui-e2e; aturan servernya ditulis di spec be-e2e tersendiri (LY-6)"
+  },
+  {
+   "id": "TC-FA-ASTL-BE-087-delete-asset-data-guard",
+   "title": "Aturan server Delete Asset Data dan blokirnya",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-16k",
+    "ASTL-LOGIC-16l",
+    "ASTL-LOGIC-17b",
+    "ASTL-LOGIC-17e",
+    "ASTL-LOGIC-17f",
+    "ASTL-LOGIC-17g",
+    "ASTL-LOGIC-17h",
+    "ASTL-LOGIC-17i",
+    "ASTL-LOGIC-17j",
+    "ASTL-LOGIC-17p",
+    "ASTL-LOGIC-17q",
+    "ASTL-LOGIC-17o",
+    "ASTL-LOGIC-17u",
+    "ASTL-LOGIC-17v",
+    "ASTL-LOGIC-17z",
+    "V-05",
+    "T-06",
+    "EC-27",
+    "EC-28",
+    "EC-31",
+    "EC-41",
+    "EC-48",
+    "F-ASTL-17.k3",
+    "404",
+    "422",
+    "§9.2#p7",
+    "§9.6#r6",
+    "EB-ERR-3",
+    "EB-EDG-1",
+    "EB-EDG-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "title": "Validasi server Edit Purchase",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-07b",
+    "ASTL-LOGIC-11a",
+    "ASTL-LOGIC-21g",
+    "ASTL-LOGIC-21h",
+    "ASTL-LOGIC-21j",
+    "ASTL-LOGIC-21a",
+    "ASTL-LOGIC-21c",
+    "ASTL-LOGIC-21i",
+    "ASTL-LOGIC-21k",
+    "V-06",
+    "V-07",
+    "V-11",
+    "V-09",
+    "V-10",
+    "V-12",
+    "V-13",
+    "V-14",
+    "V-15",
+    "V-16",
+    "V-17",
+    "EC-30",
+    "EC-37",
+    "EC-38",
+    "F-ASTL-18.k1",
+    "F-ASTL-18.k3",
+    "F-ASTL-18.k4",
+    "F-ASTL-18.k5",
+    "§9.2#p8",
+    "§9.6#r4",
+    "EB-FRM-4@edit-purchase",
+    "EB-FRM-5@edit-purchase"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-089-konflik-versi-aset",
+   "title": "Konflik versi aset dan penolakan 409",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-20a",
+    "ASTL-LOGIC-20d",
+    "ASTL-LOGIC-20e",
+    "ASTL-LOGIC-20b",
+    "EC-32",
+    "EC-33",
+    "EC-34",
+    "F-ASTL-10.k1",
+    "F-ASTL-11.k1",
+    "F-ASTL-16.k3",
+    "F-ASTL-17.k1",
+    "F-ASTL-18.k2",
+    "409",
+    "EB-ERR-4",
+    "EB-CON-1",
+    "EB-CON-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "harness multi-konteks: dua aktor bekerja pada aset yang sama (RC-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-BE-090-gerbang-nilai-sel",
+   "title": "Gerbang nilai sel sensitif",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-10a",
+    "ASTL-LOGIC-10b",
+    "ASTL-LOGIC-10m",
+    "ASTL-LOGIC-10q",
+    "ASTL-LOGIC-10r",
+    "ASTL-LOGIC-10s",
+    "EC-26",
+    "EC-13",
+    "F-ASTL-06.k1",
+    "F-ASTL-09",
+    "§9.4.3#p2",
+    "§9.3#r7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-091-query-search-sort-filter",
+   "title": "Search, Sort, dan Filter server",
+   "layer": "be-e2e",
+   "units": [
+    "EB-SRC-1",
+    "EB-FLT-3",
+    "EB-SRT-1",
+    "EB-SRT-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASTL-BE-092-download-isi-berkas",
+   "title": "Isi berkas Download",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-10t",
+    "ASTL-LOGIC-10u",
+    "ASTL-LOGIC-10v",
+    "ASTL-LOGIC-11m",
+    "EC-15",
+    "§9.2#p4",
+    "EB-DL-4",
+    "EB-DL-5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Critical",
+   "harness": "isi-berkas",
+   "varianPlatform": [],
+   "alasan": "harness isi-berkas: isi berkas hasil Download (RC-4)"
+  },
+  {
+   "id": "TC-FA-ASTL-BE-093-state-tenant-server",
+   "title": "Server menolak tulis saat entitas Suspended atau Expired",
+   "layer": "be-e2e",
+   "units": [
+    "ASTL-LOGIC-01d",
+    "EB-AKS-7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "alasan": "harness state-tenant: sisi server EB-AKS-7",
+   "entitasKhusus": "status-entitas"
+  }
+ ],
+ "na": {
+  "ASTL-LOGIC-09a": "ASTL-LOGIC-09a: «Tabel aset yang ditanam di popup atau modal modul lain disebut tabel aset popup.» (definisi istilah, tanpa perilaku)",
+  "ASTL-LOGIC-09b": "ASTL-LOGIC-09b: «Setup Column tiap tabel aset popup ditulis oleh modul pemilik popup» (dimiliki modul lain)",
+  "ASTL-LOGIC-16j": "ASTL-LOGIC-16j: «Alasan: Disposal adalah transaksi keluar, bukan pemakaian» (alasan desain, tanpa perilaku)",
+  "ASTL-LOGIC-17k": "penunjuk: §11.1#r9",
+  "ASTL-LOGIC-20n": "ASTL-LOGIC-20n: «Alasan pengecekan versi: aksi tulis modul ini bersifat Bulk all-or-nothing…» (alasan desain, tanpa perilaku)",
+  "T-12": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-13": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-14": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-16": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-17": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-18": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "T-19": "§7.1: «Dimiliki modul lain; tidak dibuat ulang» (asset-detail.md §7.1)",
+  "D-07": "asset-detail.md §4.2.3: dialog dimiliki modul lain (§4.2.3: «ID yang tidak dipakai» D-01, D-02, D-06, D-10; D-07 s/d D-12 milik asset-detail)",
+  "D-08": "asset-detail.md §4.2.3: dialog dimiliki modul lain (§4.2.3: «ID yang tidak dipakai» D-01, D-02, D-06, D-10; D-07 s/d D-12 milik asset-detail)",
+  "D-09": "asset-detail.md §4.2.3: dialog dimiliki modul lain (§4.2.3: «ID yang tidak dipakai» D-01, D-02, D-06, D-10; D-07 s/d D-12 milik asset-detail)",
+  "D-11": "asset-detail.md §4.2.3: dialog dimiliki modul lain (§4.2.3: «ID yang tidak dipakai» D-01, D-02, D-06, D-10; D-07 s/d D-12 milik asset-detail)",
+  "D-12": "asset-detail.md §4.2.3: dialog dimiliki modul lain (§4.2.3: «ID yang tidak dipakai» D-01, D-02, D-06, D-10; D-07 s/d D-12 milik asset-detail)",
+  "T-ASTL-01": "penunjuk: §4.1b",
+  "EC-08,EC-09,EC-10,EC-23,EC-24": "§9.4.2: «`EC-08`, `EC-09`, `EC-10`, `EC-23`, dan `EC-24` dimiliki asset-detail» (dimiliki modul lain)",
+  "CustomfieldPurchasingdanAccounting(kolomT-ASTL-01)": "penunjuk: §4.1b",
+  "CustomfieldPurchasingpadaD-13": "penunjuk: §4.1i",
+  "5xx/timeout": "penunjuk: §6",
+  "§4.1#1": "penunjuk: §4.1",
+  "§4.1#2": "penunjuk: §4.1",
+  "§4.1#3": "penunjuk: §4.1",
+  "§4.1#4": "penunjuk: §4.1",
+  "§4.1#5": "penunjuk: §4.1",
+  "§4.1#6": "penunjuk: §4.1",
+  "§4.1#7": "penunjuk: §4.1",
+  "§4.1#8": "penunjuk: §4.1",
+  "§4.1#9": "penunjuk: §4.1",
+  "§4.1#10": "penunjuk: §4.1",
+  "§9.4.3#1": "penunjuk: §9.4.3#p2",
+  "§9.4.3#2": "penunjuk: §9.4.3#p2",
+  "§9.4.3#3": "penunjuk: §9.4.3#p2",
+  "§9.4.3#4": "penunjuk: §9.4.3#p2",
+  "§9.4.3#5": "penunjuk: §9.4.3#p2",
+  "§9.4.3#6": "penunjuk: §9.4.3#p2",
+  "§9.4.3#7": "penunjuk: §9.4.3#p2",
+  "§9.4.3#8": "penunjuk: §9.4.3#p2",
+  "§9.4.3#9": "penunjuk: §9.4.3#p2",
+  "§9.4.3#p1": "penunjuk: §9.4.3#p2",
+  "§Ringkasan Cepat#b1": "penunjuk: §9.1",
+  "§Ringkasan Cepat#b2": "penunjuk: §9.1",
+  "§Ringkasan Cepat#b3": "penunjuk: §9.1",
+  "§Ringkasan Cepat#b4": "penunjuk: §9.1",
+  "§3#p1": "penunjuk: §9.2",
+  "§4#p1": "penunjuk: §4.1",
+  "§4.1#r1": "penunjuk: §4.2.3",
+  "§4.1#r2": "penunjuk: §4.2.3",
+  "§4.1#r3": "penunjuk: §4.2.3",
+  "§4.1#r4": "penunjuk: §4.2.3",
+  "§4.1#r5": "penunjuk: §4.2.3",
+  "§4.1#r6": "penunjuk: §4.2.3",
+  "§4.1#r7": "penunjuk: §4.2.3",
+  "§4.1#r8": "penunjuk: §4.2.3",
+  "§4.1#r9": "penunjuk: §4.2.3",
+  "§4.1#r10": "penunjuk: §4.2.3",
+  "§4.1h#p6": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r5": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r6": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r7": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#p7": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r8": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r9": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.1h#r10": "§4.1h: tabel «Example Table» (fiktif), data contoh",
+  "§4.2#p1": "penunjuk: §4.1",
+  "§4.2.3#p1": "penunjuk: §4.1h",
+  "§4.2.3#p2": "penunjuk: DO-01",
+  "§4.4#p2": "penunjuk: FI-01",
+  "§4.6#p1": "penunjuk: §Ringkasan Cepat#b4",
+  "§2#r17": "§2: tabel Persona (peran per persona), ringkasan tanpa perilaku sendiri; hak per role ada di §2#r5 s/d §2#r16",
+  "§2#r18": "§2: tabel Persona (peran per persona), ringkasan tanpa perilaku sendiri; hak per role ada di §2#r5 s/d §2#r16",
+  "§2#r19": "§2: tabel Persona (peran per persona), ringkasan tanpa perilaku sendiri; hak per role ada di §2#r5 s/d §2#r16",
+  "§6#p1": "§6: «`V-01` tidak dialokasikan.»",
+  "§7#p1": "§7: «ID yang tidak dipakai: `S-01`–`S-03` …»",
+  "§7.1#r4": "penunjuk: T-01",
+  "§7.1#r5": "penunjuk: T-01",
+  "§7.1#r6": "penunjuk: T-01",
+  "§7.1#r7": "penunjuk: T-01",
+  "§7.1#p2": "penunjuk: T-01",
+  "§8#b1": "penunjuk: §8#r1",
+  "§9.1#p1": "§9.1: «ID yang tidak dipakai: `F-ASTL-07`, `F-ASTL-08`, `F-ASTL-12` …»",
+  "§9.4.1#r1": "penunjuk: §9.4.2",
+  "§9.4.1#r2": "penunjuk: §9.4.2",
+  "§9.4.1#r3": "penunjuk: §9.4.2",
+  "§9.4.1#r4": "penunjuk: §9.4.2",
+  "§9.4.1#r5": "penunjuk: §9.4.2",
+  "§9.4.1#r6": "penunjuk: §9.4.2",
+  "§9.4.1#r7": "penunjuk: §9.4.2",
+  "§9.4.1#r8": "penunjuk: §9.4.2",
+  "§9.4.1#r9": "penunjuk: §9.4.2",
+  "§9.4.1#r10": "penunjuk: §9.4.2",
+  "§9.4.1#r11": "penunjuk: §9.4.2",
+  "§9.4.1#r12": "penunjuk: §9.4.2",
+  "§9.4.1#r13": "penunjuk: §9.4.2",
+  "§9.4.1#r14": "penunjuk: §9.4.2",
+  "§9.4.1#r15": "penunjuk: §9.4.2",
+  "§9.4.2#p1": "§9.4.2: «ID yang tidak dipakai: `EC-02`, `EC-06`, dan `EC-11` tidak dialokasikan …»",
+  "§9.4.4#p1": "penunjuk: §9.2",
+  "§9.4.4#r3": "penunjuk: §9.2",
+  "§9.4.4#r4": "penunjuk: §9.2",
+  "§9.5#p1": "penunjuk: §4.1b",
+  "§9.7#p1": "penunjuk: §9.7#r1",
+  "§9.7#p2": "penunjuk: §9.7#r11",
+  "§9.7#p3": "penunjuk: §9.7#r1",
+  "§9.9#p1": "§9.9: «API Response Contract ditulis backend di luar PRD ini»",
+  "§10#r1": "penunjuk: §9.4.3#p2",
+  "§10#r2": "penunjuk: §9.4.3#p2",
+  "§10#r3": "penunjuk: §9.4.3#p2",
+  "§10#r4": "penunjuk: §9.4.3#p2",
+  "§10#r5": "penunjuk: §9.4.3#p2",
+  "§10#r6": "penunjuk: §9.4.3#p2",
+  "§10#b1": "penunjuk: §9.4.3#p2",
+  "§10#b2": "penunjuk: §9.4.3#p2",
+  "§11.1#r1": "penunjuk: §Dependencies",
+  "§11.1#r2": "penunjuk: §Dependencies",
+  "§11.1#r3": "penunjuk: §Dependencies",
+  "§11.1#r4": "penunjuk: §Dependencies",
+  "§11.1#r5": "penunjuk: §Dependencies",
+  "§11.1#r6": "penunjuk: §Dependencies",
+  "§11.1#r7": "penunjuk: §Dependencies",
+  "§11.1#r8": "penunjuk: §Dependencies",
+  "§11.1#r9": "penunjuk: §Dependencies",
+  "§11.1#r10": "penunjuk: §Dependencies",
+  "§11.1#r11": "penunjuk: §Dependencies",
+  "§11.1#r12": "penunjuk: §Dependencies",
+  "§11.1#r13": "penunjuk: §Dependencies",
+  "§11.1#r14": "penunjuk: §Dependencies",
+  "§11.1#r15": "penunjuk: §Dependencies",
+  "§11.1#r16": "penunjuk: §Dependencies",
+  "§11.1#r17": "penunjuk: §Dependencies",
+  "§11.1#r18": "penunjuk: §Dependencies",
+  "§11.1#r19": "penunjuk: §Dependencies",
+  "§11.1#r20": "penunjuk: §Dependencies",
+  "§11.1#r21": "penunjuk: §Dependencies",
+  "§11.2#r1": "penunjuk: §Dependencies",
+  "§11.2#r2": "penunjuk: §Dependencies",
+  "§11.2#r3": "penunjuk: §Dependencies",
+  "§11.2#r4": "penunjuk: §Dependencies",
+  "§11.2#r5": "penunjuk: §Dependencies",
+  "§11.2#r6": "penunjuk: §Dependencies",
+  "§11.2#r7": "penunjuk: §Dependencies",
+  "§11.2#r8": "penunjuk: §Dependencies",
+  "§11.2#r9": "penunjuk: §Dependencies",
+  "§12#r1": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r2": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r3": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r4": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r5": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r6": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r7": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r8": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§12#r9": "§12: Open Items; butir keputusan yang belum diambil, bukan perilaku teruji",
+  "§Changelog#p1": "§Changelog: «Seluruh riwayat versi … dicatat terpisah pada file pendamping» (riwayat, bukan perilaku)",
+  "§Changelog#b1": "§Changelog: «Seluruh riwayat versi … dicatat terpisah pada file pendamping» (riwayat, bukan perilaku)",
+  "§Changelog#b2": "§Changelog: «Seluruh riwayat versi … dicatat terpisah pada file pendamping» (riwayat, bukan perilaku)",
+  "§Dependencies#b1": "penunjuk: §11.1",
+  "§Dependencies#b2": "penunjuk: §11.1",
+  "§Dependencies#b3": "penunjuk: §11.1",
+  "§Dependencies#b4": "penunjuk: §11.1",
+  "§Dependencies#b5": "penunjuk: §11.1",
+  "§Dependencies#b6": "penunjuk: §11.1",
+  "§Dependencies#b7": "penunjuk: §11.1",
+  "§Dependencies#b8": "penunjuk: §11.1",
+  "§Dependencies#b9": "penunjuk: §11.1",
+  "§Dependencies#b10": "penunjuk: §11.1",
+  "§Dependencies#b11": "penunjuk: §11.1",
+  "§Dependencies#b12": "penunjuk: §11.1",
+  "§Dependencies#b13": "penunjuk: §11.1",
+  "§Dependencies#b14": "penunjuk: §11.1",
+  "§Dependencies#b15": "penunjuk: §11.1",
+  "§Dependencies#b16": "penunjuk: §11.1",
+  "§Dependencies#b17": "penunjuk: §11.1",
+  "§Dependencies#b18": "penunjuk: §11.1",
+  "§Dependencies#b19": "penunjuk: §11.1",
+  "§Dependencies#b20": "penunjuk: §11.1",
+  "§Dependencies#b21": "penunjuk: §11.1",
+  "§Dependencies#b22": "penunjuk: §11.1",
+  "§Dependencies#b23": "penunjuk: §11.1",
+  "§Aturan Logika Modul#p1": "penunjuk: ASTL-LOGIC-18",
+  "§Aturan Logika Modul#p2": "§Aturan Logika Modul: «ID yang tidak dipakai: `ASTL-LOGIC-03` …»",
+  "§Aturan Logika Modul#p4": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p6": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p8": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p9": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p10": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p11": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p12": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p13": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p15": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p17": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p19": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p20": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p21": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p22": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p23": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p25": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p27": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p29": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p30": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p31": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p32": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p33": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p34": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p36": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p38": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p39": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p40": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p41": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p42": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)",
+  "§Aturan Logika Modul#p43": "§Aturan Logika Modul: «Contoh skenario» (data contoh yang PRD nyatakan sebagai contoh)"
+ },
+ "ditahan": {
+  "EB-FLT-7": 1
+ },
+ "temuan": [
+  {
+   "no": 1,
+   "jenis": "kurang",
+   "units": [
+    "EB-FLT-7"
+   ],
+   "kutipan": [
+    "§9.4.2 EC-43: «Setup Column atau filter tersimpan merujuk custom field, label, atau Category yang sudah dihapus»"
+   ],
+   "dampak": "PRD tidak menyatakan hasil saat opsi yang sedang dipakai sebagai kriteria Filter dihapus aktor lain; EB-FLT-7 ditahan sampai PRD menetapkannya"
+  },
+  {
+   "no": 2,
+   "jenis": "beda-foundation",
+   "units": [
+    "§5#r8",
+    "EB-KOL-2@tabel-all-assets"
+   ],
+   "kutipan": [
+    "§5: «Disimpan di browser per user»",
+    "prd-conventions.md §9.3: «Settingan tersimpan per user di akun, key unik per tabel»"
+   ],
+   "dampak": "Setup Column adalah pola bersama; yang diasersi mengikuti foundation (SB-4): konfigurasi tersimpan di akun user, bukan hanya di browser",
+   "literal": {
+    "elemen": "penyimpanan konfigurasi Setup Column",
+    "diasersi": "tersimpan di akun user",
+    "ditolak": [
+     "Disimpan di browser per user"
+    ],
+    "dari": "prd-conventions.md §9.3 `pengaturan tersimpan di akun user`"
+   }
+  },
+  {
+   "no": 4,
+   "jenis": "bertentangan",
+   "units": [
+    "EC-45",
+    "S-27",
+    "ReportMissing"
+   ],
+   "kutipan": [
+    "§9.4.2 EC-45: «Report Missing pada aset dengan Custody selain `Available` ... Aksi `Disabled 🔖` ... tooltip `S-27` menurut Custody»",
+    "§4.1b Matriks Aksi Report Missing: «Custody apa pun kecuali `In Transfer Process` dengan baris Transfer `In Transit`»; `Disabled 🔖` dengan tooltip `S-27` hanya bila baris Transfer aset `In Transit`",
+    "§7 S-27: «karena baris Transfer aset `In Transit`»"
+   ],
+   "dampak": "EC-45 dan indeks State S-27 masih memakai bunyi lama (Disabled menurut Custody selain Available); yang diasersi mengikuti Matriks Aksi dan tabel S-27: Report Missing aktif untuk Custody apa pun, Disabled dengan S-27 hanya untuk baris Transfer In Transit"
+  },
+  {
+   "no": 3,
+   "jenis": "kurang",
+   "units": [
+    "ASTL-LOGIC-12c",
+    "ASTL-LOGIC-12e",
+    "ASTL-LOGIC-12g",
+    "ASTL-LOGIC-17f",
+    "ASTL-LOGIC-17h",
+    "§9.7#r9"
+   ],
+   "kutipan": [
+    "§11.1: «Depreciation Run, Value Change | Hulu (PRD belum disusun)»"
+   ],
+   "dampak": "Predikat periode Posted dan jejak Posted dimiliki modul yang PRD-nya belum ada; unit tetap dimiliki spec dan diasersi dari sisi yang PRD ini nyatakan, tanpa mengarang perilaku modul hulu"
+  }
+ ],
+ "ekspektasiBaku": {
+  "EB-AKS-1": {
+   "status": "berlaku"
+  },
+  "EB-AKS-2": {
+   "status": "berlaku"
+  },
+  "EB-AKS-3": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase"
+   ]
+  },
+  "EB-AKS-4": {
+   "status": "berlaku"
+  },
+  "EB-AKS-5": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase"
+   ]
+  },
+  "EB-AKS-6": {
+   "status": "berlaku"
+  },
+  "EB-AKS-7": {
+   "status": "berlaku"
+  },
+  "EB-AKS-8": {
+   "status": "berlaku"
+  },
+  "EB-AKS-9": {
+   "status": "tidak berlaku",
+   "alasan": "§2: Default User adalah tier role (Total Control), bukan baris tabel aset; tabel T-ASTL-01 tidak memuat baris Default atau Self"
+  },
+  "EB-FB-1": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase",
+    "print-label"
+   ]
+  },
+  "EB-FB-2": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase",
+    "print-label"
+   ]
+  },
+  "EB-FB-3": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FB-4": {
+   "status": "berlaku"
+  },
+  "EB-FRM-1": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-2": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-3": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-4": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-5": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-7": {
+   "status": "berlaku",
+   "surface": [
+    "edit-purchase"
+   ]
+  },
+  "EB-FRM-8": {
+   "status": "tidak berlaku",
+   "alasan": "§2: kolom Create tidak dipakai di modul ini; tidak ada form Create"
+  },
+  "EB-FRM-9": {
+   "status": "berlaku"
+  },
+  "EB-TBL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets",
+    "tabel-select-asset"
+   ]
+  },
+  "EB-TBL-2": {
+   "status": "berlaku",
+   "surface": [
+    "kolom-division",
+    "kolom-alias-name",
+    "kolom-last-scanned",
+    "kolom-tag"
+   ]
+  },
+  "EB-TBL-3": {
+   "status": "berlaku",
+   "surface": [
+    "kolom-labels"
+   ]
+  },
+  "EB-TBL-4": {
+   "status": "berlaku",
+   "surface": [
+    "kolom-modified-by"
+   ]
+  },
+  "EB-TBL-7": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-TBL-8": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-TBL-10": {
+   "status": "berlaku"
+  },
+  "EB-TBL-11": {
+   "status": "berlaku"
+  },
+  "EB-BLK-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-BLK-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-BLK-3": {
+   "status": "berlaku"
+  },
+  "EB-BLK-4": {
+   "status": "berlaku"
+  },
+  "EB-BLK-5": {
+   "status": "tidak berlaku",
+   "alasan": "§2: Default User adalah tier role, bukan baris aset; tidak ada baris Default atau Self pada T-ASTL-01"
+  },
+  "EB-BLK-6": {
+   "status": "berlaku"
+  },
+  "EB-SRC-1": {
+   "status": "berlaku"
+  },
+  "EB-SRC-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-SRC-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-SRC-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-SRC-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-SRC-6": {
+   "status": "berlaku",
+   "surface": [
+    "sidebar-group"
+   ]
+  },
+  "EB-FLT-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-FLT-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-FLT-3": {
+   "status": "berlaku"
+  },
+  "EB-FLT-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-FLT-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-FLT-6": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-FLT-7": {
+   "status": "berlaku"
+  },
+  "EB-SRT-1": {
+   "status": "berlaku"
+  },
+  "EB-SRT-2": {
+   "status": "berlaku"
+  },
+  "EB-SRT-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-KOL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-KOL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-KOL-3": {
+   "status": "berlaku"
+  },
+  "EB-DL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-DL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-DL-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-all-assets"
+   ]
+  },
+  "EB-DL-4": {
+   "status": "berlaku"
+  },
+  "EB-DL-5": {
+   "status": "berlaku"
+  },
+  "EB-LOG-1": {
+   "status": "berlaku"
+  },
+  "EB-LOG-2": {
+   "status": "berlaku"
+  },
+  "EB-ERR-1": {
+   "status": "berlaku",
+   "surface": [
+    "add-label",
+    "remove-label",
+    "manage-asset",
+    "delete-asset-data",
+    "edit-purchase",
+    "print-label"
+   ]
+  },
+  "EB-ERR-2": {
+   "status": "berlaku",
+   "surface": [
+    "delete-asset-data"
+   ]
+  },
+  "EB-ERR-3": {
+   "status": "berlaku"
+  },
+  "EB-ERR-4": {
+   "status": "berlaku"
+  },
+  "EB-CON-1": {
+   "status": "berlaku"
+  },
+  "EB-CON-2": {
+   "status": "tidak berlaku",
+   "alasan": "§2: modul tidak punya Create; keunikan Warranty name per aset dijaga pengecekan versi aset (ASTL-LOGIC-20), bukan race unik antar aktor"
+  },
+  "EB-CON-3": {
+   "status": "berlaku"
+  },
+  "EB-EDG-1": {
+   "status": "berlaku"
+  },
+  "EB-EDG-2": {
+   "status": "berlaku"
+  },
+  "EB-EDG-3": {
+   "status": "berlaku"
+  },
+  "EB-XM-1": {
+   "status": "berlaku"
+  },
+  "EB-XM-2": {
+   "status": "tidak berlaku",
+   "alasan": "§9.7#r14: efek Delete Asset Data pada konsumen dicatat sebagai baris Sync Matrix (dimiliki unit §9.7), modul ini tidak memiliki master yang dikonsumsi sebagai opsi dropdown"
+  },
+  "EB-XM-3": {
+   "status": "tidak berlaku",
+   "alasan": "L12: «import aset massal (menunggu `asset-registration/`)» di luar scope modul ini"
+  }
+ },
+ "bagian": {
+  "ASTL-LOGIC-10i": {
+   "ui-e2e": "keadaan Pending dari data nyata",
+   "ui-client": "tooltip alasan sel Pending"
+  },
+  "ASTL-LOGIC-11c": {
+   "ui-e2e": "daftar garansi dari data nyata",
+   "ui-client": "hover daftar garansi dan penandanya"
+  },
+  "ASTL-LOGIC-12l": {
+   "ui-e2e": "prioritas alasan dari data nyata",
+   "ui-client": "tooltip alasan Pending"
+  },
+  "ASTL-LOGIC-15d": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-33"
+  },
+  "ASTL-LOGIC-15r": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-14"
+  },
+  "ASTL-LOGIC-17l": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip penyebab blokir"
+  },
+  "ASTL-LOGIC-17n": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-32"
+  },
+  "ASTL-LOGIC-19b": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip Disabled Bulk"
+  },
+  "ASTL-LOGIC-19c": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-33"
+  },
+  "ASTL-LOGIC-21e": {
+   "ui-e2e": "Asset Value dari data nyata",
+   "ui-client": "helper text S-26"
+  },
+  "ASTL-LOGIC-20b": {
+   "ui-client": "dialog D-14 dan reaksinya",
+   "be-e2e": "server menolak 409 tanpa mengubah apa pun"
+  },
+  "ASTL-LOGIC-21a": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "ASTL-LOGIC-21c": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "ASTL-LOGIC-21i": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "ASTL-LOGIC-21k": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-05": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-06": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-09": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-10": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-12": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-13": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-14": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-15": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-16": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "V-17": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "EC-14": {
+   "ui-e2e": "Asset Class kosong dan Asset Value Pending dari data nyata",
+   "ui-client": "tooltip S-24"
+  },
+  "EC-22": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-15"
+  },
+  "EC-25": {
+   "ui-e2e": "Purchase Cost belum diisi dari data nyata",
+   "ui-client": "tooltip sel Pending"
+  },
+  "EC-40": {
+   "ui-e2e": "Purchase Complete dan Asset Value dari data nyata",
+   "ui-client": "helper text S-26"
+  },
+  "EC-45": {
+   "ui-e2e": "keadaan Disabled dari data nyata",
+   "ui-client": "tooltip S-27"
+  },
+  "FLD-01": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-02": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-03": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-04": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-05": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-06": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-07": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-08": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-09": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-10": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-11": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-12": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-13": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-14": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-15": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-16": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-17": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-18": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-19": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-20": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-21": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-22": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-23": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-24": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-25": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "FLD-26": {
+   "ui-e2e": "hasil search, sort, dan filter dari data nyata",
+   "ui-client": "format tampilan, nilai kosong, dan hover sel"
+  },
+  "§9.4.3#p2": {
+   "ui-e2e": "butir 2, 4, dan 9",
+   "ui-client": "butir 5 dan 7: teks null dan Tag Code tidak jadi kolom",
+   "be-e2e": "butir 1, 3, 6, dan 8"
+  },
+  "§4.1a#r1": {
+   "ui-e2e": "isi dan angka kartu",
+   "ui-client": "tooltip hover kartu"
+  },
+  "§4.1a#r3": {
+   "ui-e2e": "isi dan angka kartu",
+   "ui-client": "rincian hover kartu"
+  },
+  "§4.1a#r4": {
+   "ui-e2e": "isi dan angka kartu",
+   "ui-client": "rincian hover kartu"
+  },
+  "§4.4#b1": {
+   "ui-e2e": "state daftar dipertahankan",
+   "ui-client": "breadcrumb dan kembali"
+  },
+  "§5#r2": {
+   "ui-e2e": "hasil halaman dari data nyata",
+   "ui-client": "default 10, opsi, dan reset halaman"
+  },
+  "§5#r6": {
+   "ui-e2e": "seluruh hasil filter dan kolom tampil",
+   "ui-client": "layar loading Download"
+  },
+  "EB-AKS-7": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "EB-FB-3@edit-purchase": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-1@add-label": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-1@remove-label": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-1@manage-asset": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-1@delete-asset-data": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-1@edit-purchase": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-FRM-4@edit-purchase": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "EB-TBL-7@tabel-all-assets": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-TBL-10": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-DL-2@tabel-all-assets": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  },
+  "EB-DL-5": {
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI",
+   "be-e2e": "aturan server secara black-box"
+  },
+  "EB-XM-1": {
+   "ui-e2e": "hasil yang ditentukan server dan teramati di UI",
+   "ui-client": "perilaku klien: tampilan, copy, validasi, dan reaksi UI"
+  }
+ },
+ "dataUnits": [],
+ "shared": {
+  "ASTL-LOGIC-10c": "per spec pemilik: gating-view-asset-value, gating-manage-accounting, gating-total-control, gating-group-manager",
+  "ASTL-LOGIC-10d": "per spec pemilik: gating-manage-purchase, gating-group-manager, gating-total-control",
+  "ASTL-LOGIC-10e": "per spec pemilik: gating-manage-accounting, gating-total-control",
+  "ASTL-LOGIC-10f": "per spec pemilik: gating-total-control, gating-read-only",
+  "ASTL-LOGIC-10k": "per spec pemilik: gating-manage-asset-tag, gating-view-asset-value, gating-manage-purchase, gating-asset-admin",
+  "ASTL-LOGIC-10l": "per spec pemilik: gating-manage-asset-tag, gating-view-asset-value, gating-manage-purchase, gating-asset-admin",
+  "ASTL-LOGIC-10n": "per spec pemilik: gating-total-control, gating-read-only, gating-group-manager, gating-manage-asset-tag, gating-view-asset-value, gating-manage-accounting, gating-manage-purchase",
+  "ASTL-LOGIC-10o": "per spec pemilik: gating-manage-purchase, gating-group-manager, gating-total-control",
+  "ASTL-LOGIC-10p": "per spec pemilik: gating-manage-accounting, gating-total-control",
+  "ASTL-LOGIC-11d": "per spec pemilik: dep-damaged, dep-missing",
+  "ASTL-LOGIC-17l": "per spec pemilik: dep-depreciation-run, dep-missing, dep-disposal",
+  "S-35": "per tooltip: info Document No. pada D-13 (c_ep_state) vs Report Disposal Disabled menurut Custody (c_aksi)",
+  "S-42": "per spec pemilik: tabel-all-assets-state-data, kartu-status-tampilan",
+  "F-ASTL-05": "per spec pemilik: setup-column-tersimpan, sort, paginasi",
+  "FLD-01": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-02": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-03": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-04": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-05": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-06": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-07": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-08": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-09": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-10": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-11": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-12": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-13": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-14": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-15": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-16": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-17": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-18": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-19": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-20": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-21": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-22": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-23": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-24": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-25": "per fitur tabel: tampilan data, search, sort, filter",
+  "FLD-26": "per fitur tabel: tampilan data, search, sort, filter",
+  "§9.4.3#p2": "per butir Must NOT menurut spec pemilik",
+  "§4.8#r1": "per jenis aktor",
+  "§4.8#r2": "per jenis aktor",
+  "§4.8#r3": "per jenis aktor",
+  "§4.8#r4": "per jenis aktor",
+  "§4.8#r5": "per jenis aktor",
+  "§4.8#r6": "per jenis aktor",
+  "§4.8#r7": "per jenis aktor",
+  "§4.8#r8": "per jenis aktor",
+  "§4.8#r9": "per jenis aktor",
+  "§4.8#r10": "per jenis aktor",
+  "§4.8#r11": "per jenis aktor",
+  "§4.8#r12": "per jenis aktor",
+  "§4.8#r13": "per jenis aktor",
+  "§4.8#r14": "per jenis aktor",
+  "§2#r1": "per jenis aktor",
+  "§2#r2": "per jenis aktor",
+  "§2#r3": "per jenis aktor",
+  "§2#r4": "per jenis aktor",
+  "§2#r5": "per jenis aktor",
+  "§2#r6": "per jenis aktor",
+  "§2#r7": "per jenis aktor",
+  "§2#r8": "per jenis aktor",
+  "§2#r9": "per jenis aktor",
+  "§2#r10": "per jenis aktor",
+  "§2#r11": "per jenis aktor",
+  "§2#r12": "per jenis aktor",
+  "§2#r13": "per jenis aktor",
+  "§2#r14": "per jenis aktor",
+  "§2#r15": "per jenis aktor",
+  "§2#r16": "per jenis aktor",
+  "§2#p3": "per jenis aktor",
+  "§6#r9": "per aksi tulis: pesan gagal 5xx",
+  "§7.1#p1": "per surface gagal muat",
+  "§8#r1": "per surface log",
+  "§8#r2": "per surface log",
+  "§8#r3": "per surface log",
+  "§8#r4": "per surface log",
+  "§8#r5": "per surface log",
+  "§9.7#r1": "per modul transaksi",
+  "§9.11#r1": "per jenis aktor",
+  "§9.11#r2": "per jenis aktor",
+  "§9.11#r3": "per jenis aktor",
+  "§9.11#r4": "per jenis aktor",
+  "§9.11#r5": "per jenis aktor",
+  "§9.11#r6": "per jenis aktor",
+  "§9.11#r7": "per jenis aktor"
+ },
+ "kontrak": {
+  "DataTable": [
+   "FLD-01",
+   "S-39"
+  ],
+  "BadgeGroup": [
+   "FLD-12"
+  ],
+  "Tooltip": [
+   "S-09",
+   "S-29"
+  ],
+  "DatePicker": [
+   "FLD-27",
+   "FLD-31"
+  ],
+  "CurrencyInput": [
+   "FLD-28",
+   "FLD-35"
+  ],
+  "Dialog": [
+   "D-05",
+   "D-03"
+  ],
+  "Checkbox": [
+   "FI-15"
+  ],
+  "Tree": [
+   "§4.1g#p1"
+  ],
+  "Card": [
+   "§4.1a#p2"
+  ],
+  "Breadcrumb": [
+   "§4.2.1#p2"
+  ],
+  "GuidedTour": [
+   "§4.7Step1"
+  ],
+  "Paginator": [
+   "§5#r2"
+  ]
+ },
+ "targetVarian": [
+  {
+   "target": "kolom-tabel@tabel-all-assets",
+   "kode": "VD-T1",
+   "units": [
+    "EB-SRC-2@tabel-all-assets",
+    "EB-SRC-3@tabel-all-assets",
+    "ASTL-LOGIC-10s",
+    "ASTL-LOGIC-13f",
+    "EC-20"
+   ],
+   "spec": [
+    "TC-FA-ASTL-E2E-004-search"
+   ],
+   "pemilik": "TC-FA-ASTL-E2E-004-search",
+   "tidakBerlaku": {
+    "record-tab-non-default": "§4.1: Search hanya berlaku pada tabel tab Assets; tab Registration, Damaged, dan Missing dimiliki modul lain",
+    "cocok-di-anak-saja": "§4.1b: T-ASTL-01 adalah tabel datar tanpa node anak",
+    "kolom-homogen": "§4.1b: tidak ada kolom T-ASTL-01 yang PRD nyatakan bernilai seragam di semua baris"
+   },
+   "param": {
+    "per-kelas-kolom": [
+     "Text",
+     "Badge",
+     "Icon"
+    ]
+   }
+  },
+  {
+   "target": "kolom-tabel@tabel-all-assets",
+   "kode": "VD-T2",
+   "units": [
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "ASTL-LOGIC-10q",
+    "ASTL-LOGIC-11l"
+   ],
+   "spec": [
+    "TC-FA-ASTL-E2E-005-sort"
+   ],
+   "pemilik": "TC-FA-ASTL-E2E-005-sort",
+   "tidakBerlaku": {
+    "campuran-tipe": "§4.1b: tidak ada kolom T-ASTL-01 yang memuat campuran tipe nilai (Old/New Value)",
+    "format-komposit": "§4.1b: tidak ada kolom ukuran atau alamat IP pada T-ASTL-01",
+    "urutan-custom": "§4.1b Status: «Alphabetical by label», bukan urutan lifecycle",
+    "jumlah-aktif-sama": "§4.1b TAG: sort alfabetis atas label ikon, bukan jumlah ikon aktif",
+    "nama-tampil-beda-nama-penuh": "§4.1b Modified By: sort Alphabetical (A-Z) atas nama; PRD tidak membedakan nama tampil singkat dari nama penuh"
+   },
+   "param": {
+    "per-tipe-kolom": [
+     "Date",
+     "Badge",
+     "Number",
+     "Icon"
+    ]
+   }
+  },
+  {
+   "target": "kolom-tabel@tabel-all-assets",
+   "kode": "VD-T3",
+   "units": [
+    "ASTL-LOGIC-02b",
+    "ASTL-LOGIC-10r",
+    "ASTL-LOGIC-11e",
+    "ASTL-LOGIC-13e",
+    "ASTL-LOGIC-14k",
+    "EB-FLT-4@tabel-all-assets",
+    "EB-FLT-5@tabel-all-assets"
+   ],
+   "spec": [
+    "TC-FA-ASTL-E2E-006-filter-panel"
+   ],
+   "pemilik": "TC-FA-ASTL-E2E-006-filter-panel",
+   "tidakBerlaku": {
+    "boolean-kedua-nilai": "§4.1b: tidak ada kolom boolean pada T-ASTL-01",
+    "create-tidak-cocok": "§2: kolom Create tidak dipakai; registrasi dimiliki asset-registration",
+    "default-filter-lolos": "§4.1c: panel Filter dimulai kosong; tidak ada filter pre-applied",
+    "default-filter-tersaring": "§4.1c: panel Filter dimulai kosong; tidak ada filter pre-applied",
+    "status-dikecualikan": "§9.2 ASTL-LOGIC-01a: Draft dan Waiting for Approval tidak tampil di tabel ini sehingga bukan opsi Status",
+    "custom-field-per-tipe": "§4.1b: opsi filter custom field mengikuti tabel kanonikal settings-custom-fields, bukan aturan modul ini"
+   },
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Date range picker",
+     "Min/Max",
+     "Tree picker multi-select"
+    ]
+   }
+  },
+  {
+   "target": "paginasi@tabel-all-assets",
+   "kode": "VD-T5",
+   "units": [
+    "§5#r2",
+    "EB-TBL-7@tabel-all-assets"
+   ],
+   "spec": [
+    "TC-FA-ASTL-E2E-008-paginasi"
+   ],
+   "pemilik": "TC-FA-ASTL-E2E-008-paginasi",
+   "tidakBerlaku": {
+    "lebih-ukuran-maks": "§5#r2: ukuran halaman maksimum 100; 101 baris adalah volume yang tidak dibentuk di ui-e2e (RC-4)"
+   },
+   "param": {
+    "lebih-ukuran-terpilih": [
+     "10",
+     "25",
+     "50",
+     "100"
+    ]
+   }
+  },
+  {
+   "target": "bulk-delete-asset-data@tabel-all-assets",
+   "kode": "VD-A1",
+   "units": [
+    "ASTL-LOGIC-17c",
+    "ASTL-LOGIC-19a",
+    "ASTL-LOGIC-17n",
+    "EC-22"
+   ],
+   "spec": [
+    "TC-FA-ASTL-E2E-020-delete-asset-data",
+    "TC-FA-ASTL-E2E-024-matriks-aksi-per-status"
+   ],
+   "pemilik": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+   "tidakBerlaku": {
+    "campuran": "§9.2 ASTL-LOGIC-19e: tidak ada penyaringan aset dan tidak ada ringkasan skipped; seleksi campuran membuat aksi Disabled",
+    "gagal-banyak": "§9.2 ASTL-LOGIC-20e: Bulk all-or-nothing, tidak ada penolakan sebagian",
+    "item-beranotasi": "§4.1b: dialog D-05 tidak memuat anotasi per item",
+    "sisa-satu-relevan": "§9.2 ASTL-LOGIC-19e: tidak ada penyaringan sehingga dialog tidak runtuh ke bentuk single",
+    "termasuk-baris-terlindungi": "§2: tidak ada baris Default atau Self pada T-ASTL-01",
+    "nol-item": "§4.4#b3: Bar Bulk hanya tampil bila sedikitnya satu baris terpilih",
+    "jadi-tidak-eligible-saat-submit": "§9.2 ASTL-LOGIC-20b: perubahan antara dialog dibuka dan submit ditangani 409 dan dialog D-14",
+    "daftar-melebihi-tampil": "§9.2 ASTL-LOGIC-17t: satu konfirmasi berlaku untuk seluruh aset; PRD tidak menetapkan batas tampil daftar bullet"
+   }
+  },
+  {
+   "target": "selection-limit@tabel-all-assets",
+   "kode": "VD-A6",
+   "units": [
+    "EB-BLK-6",
+    "EC-16"
+   ],
+   "spec": [
+    "TC-FA-ASTL-UI-060-bar-bulk"
+   ],
+   "pemilik": "TC-FA-ASTL-UI-060-bar-bulk",
+   "tidakBerlaku": {
+    "sisa-satu": "EB-BLK-6: Selection Limit bukan kuota yang diperebutkan dua aktor",
+    "over-cap-downgrade": "EB-BLK-6: Selection Limit tidak berubah mengikuti plan",
+    "tersimpan-melebihi-batas-baru": "EB-BLK-6: Selection Limit tidak berlaku atas data tersimpan",
+    "tanpa-cap-mobile": "§4.6: layout mobile menu ini di luar scope versi ini",
+    "berurutan-stay-on-form": "EB-BLK-6: seleksi bukan form dengan Stay on this form",
+    "saldo-cukup": "EB-BLK-6: Selection Limit tidak memakai saldo",
+    "saldo-kurang": "EB-BLK-6: Selection Limit tidak memakai saldo",
+    "kuota-status-akun": "EB-BLK-6: Selection Limit tidak bergantung status akun"
+   },
+   "param": {
+    "per-jenis-limit": [
+     "Selection Limit"
+    ]
+   }
+  },
+  {
+   "target": "kuota-available-license@dialog-manage-asset",
+   "kode": "VD-A6",
+   "units": [
+    "ASTL-LOGIC-15h",
+    "ASTL-LOGIC-15i",
+    "ASTL-LOGIC-15j",
+    "EC-36"
+   ],
+   "spec": [
+    "TC-FA-ASTL-BE-084-manage-kuota-lisensi"
+   ],
+   "pemilik": "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+   "tidakBerlaku": {
+    "limit-diturunkan": "§9.2 ASTL-LOGIC-15h: kuota Available adalah data group, bukan setting yang dikonfigurasi kecil",
+    "over-cap-downgrade": "§9.2 ASTL-LOGIC-15i: PRD tidak menetapkan hasil Manage setelah plan diturunkan",
+    "tersimpan-melebihi-batas-baru": "§9.2 ASTL-LOGIC-15i: PRD tidak menetapkan hasil atas data tersimpan melebihi batas baru",
+    "tersaring-lebih-limit": "§9.2 ASTL-LOGIC-15c: satu submit menarget tepat satu group, tidak ada penyaringan",
+    "tanpa-cap-mobile": "§4.6: layout mobile menu ini di luar scope versi ini",
+    "berurutan-stay-on-form": "§9.2 ASTL-LOGIC-15c: dialog Manage tidak memuat Stay on this form",
+    "kuota-status-akun": "§9.2 ASTL-LOGIC-15i: PRD tidak membedakan kuota menurut status akun"
+   },
+   "param": {
+    "per-jenis-limit": [
+     "Available license"
+    ]
+   }
+  }
+ ],
+ "tinjauan": [
+  {
+   "review": "[R-7] unit `ASTL-LOGIC-11d` milik ui-e2e memuat klausa klien («hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "unit menyatakan modul lain (Damaged, Missing) memakai hover yang sama; hover diuji di ui-client lewat ASTL-LOGIC-11c"
+  },
+  {
+   "review": "[R-7] unit `ASTL-LOGIC-12r` milik ui-e2e memuat klausa klien («tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "klausa tooltip aset Disposed adalah bagian dari nilai yang dibaca dari Depreciation Run; tooltip Pending diuji di ui-client lewat ASTL-LOGIC-12p"
+  },
+  {
+   "review": "[R-7] unit `ASTL-LOGIC-12g` milik ui-e2e memuat klausa klien («tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "klausa «tanpa tooltip» menyatakan ketiadaan tooltip pada sel Pending karena periode Posted tidak terbaca; tooltip Pending lain diuji di ui-client lewat ASTL-LOGIC-12p"
+  }
+ ],
+ "lingkungan": {
+  "Date Format": {
+   "nilai": "dd/MM/yy",
+   "sumber": "foundation prd-conventions.md §32: Date Format default `dd/MM/yy`"
+  }
+ }
+}
