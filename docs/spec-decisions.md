@@ -2751,3 +2751,11 @@ Aturan:
 - **Untuk spec:** nilai gambar kosong di tabel ditulis sebagai "—".
 - **Diputuskan oleh:** Coordinator 2026-11-18.
 - **Status:** berlaku, menunggu rilis wangs-ui.
+
+## D-267 Bulk Remove User di Role: semua baris ditolak 403 `target_tier` tampil toast gagal PRD T-10 (2026-11-18)
+
+- **Spec / langkah:** GlobalSettings/Role `TC-GS-ROLE-E2E-106` (High, Negative), TC-299 step 54.
+- **Karena:** PRD T-10 (prd-copy L2013) memberi toast `Error, failed to remove user.` untuk Remove User yang gagal. Saat semua baris bulk ditolak, BE menjawab 403 `{"reason":"target_tier"}`; app memetakan setiap 403 ke teks izin `You don't have permission to edit.` (perbaikan R104-1 untuk Remove satu baris). Kasus parsial (TC-296) sudah 200 dengan `failedUserIds`. Bukti: run local-20261118-175202-48302, slot 3; `gap-claims/gs-role-106-bulk-remove-403.md`.
+- **Keputusan:** FE: Remove User bulk yang dijawab 403 `target_tier` menampilkan T-10; Remove satu baris tetap teks izin (R104-1). Spec tetap.
+- **Diputuskan oleh:** Coordinator 2026-11-18.
+- **Status:** berlaku, perbaikan di modul GlobalSettings Role (gs).
