@@ -1,0 +1,1675 @@
+{
+ "schema": "spec-from-prd-eb/v1",
+ "list": "afd671ca975f47cdbe8c880723b5f33bb916e06721c80d7169743802c540c309",
+ "items": [
+  {
+   "id": "EB-AKS-1",
+   "keys": [
+    "aktor-tanpa-akses"
+   ],
+   "expectation": "Aktor tanpa capability read tidak melihat item sidebar modul. Aktor dengan sedikitnya satu capability, termasuk Read Only, melihatnya",
+   "source": "PRD, `navbar-foundation.md`",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-2",
+   "keys": [
+    "aktor-tanpa-akses"
+   ],
+   "expectation": "Membuka URL halaman modul langsung oleh aktor tanpa read tidak menampilkan isi modul. Bila PRD diam: toast `You don't have permission to do this.` tanpa redirect. Diasersi di titik masuk (sidebar dan URL). Elemen halaman yang memang tidak dirender tidak diasersi satu per satu",
+   "source": "PRD, `error-handling-convention.md` §2",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-3",
+   "keys": [
+    "matriks-role"
+   ],
+   "expectation": "Server menolak aksi tulis dari aktor tanpa capability walau UI dilewati, dan data tidak berubah",
+   "source": "`error-handling-convention.md` §2",
+   "layer": "be-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-AKS-4",
+   "keys": [
+    "matriks-role"
+   ],
+   "expectation": "Search, Filter, Sort, Pagination, dan Setup Column tampil dan aktif untuk setiap aktor yang punya read, termasuk Read Only",
+   "source": "PRD",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-5",
+   "keys": [
+    "matriks-role"
+   ],
+   "expectation": "Capability tunggal: setiap aksi yang digerbang dijalankan sampai sukses oleh aktor yang hanya punya capability aksi itu (ditambah read)",
+   "source": "PRD",
+   "layer": "ui-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-AKS-6",
+   "keys": [
+    "matriks-role"
+   ],
+   "expectation": "Capability dicabut saat halaman terbuka: aksi berikutnya ditolak dengan toast `You don't have permission to do this.`, dan UI menyembunyikan aksi yang tidak lagi berhak. Pencabutan ditulis sebagai langkah pemicu (LK-8)",
+   "source": "`error-handling-convention.md` §2",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-7",
+   "keys": [
+    "state-tenant"
+   ],
+   "expectation": "Entitas Suspended atau Expired (termasuk masa Grace): produk dan modul tetap terbuka dan datanya terbaca, tanpa gerbang akses dan tanpa redirect. Setiap aksi tulis (Create, Update, Delete, bulk, aksi domain seperti Activate/Deactivate) ditolak sesudah dikirim dengan toast `Changes can't be saved while this workspace is suspended or expired.`, dan datanya tidak berubah. Satu langkah per aksi tulis modul. Bila PRD diam: temuan",
+   "source": "PRD, `entity-isolation.md` §18.8, `plans.md` §5.10",
+   "layer": "ui-e2e (harness `state-tenant`), be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-8",
+   "keys": [
+    "plan-gating"
+   ],
+   "expectation": "Create, Edit, dan Delete berperilaku identik di setiap tier plan yang PRD sebut",
+   "source": "PRD, `plan-tier.md`",
+   "layer": "ui-e2e (harness `state-tenant`)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-AKS-9",
+   "keys": [
+    "baris-dilindungi"
+   ],
+   "expectation": "Baris Default dan Self: aksi yang PRD larang tidak tersedia, dan server tetap menolaknya. Default dan Self diuji terpisah",
+   "source": "PRD, `entity-isolation.md` §18.7",
+   "layer": "ui-e2e, be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-FB-1",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Toast sukses dan gagal untuk setiap aksi tulis. Bila PRD tidak menulis copy: `Success, [Item] has been created.` (`updated`, `deleted`) dan `Error, failed to create [item].` (`update`, `delete`), dengan `[Item]` noun modul dari PRD",
+   "source": "PRD, `toast-copy.md`",
+   "layer": "ui-client (copy sukses dan gagal), 1 ui-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FB-2",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Aksi yang tidak memunculkan toast diasersi tanpa toast, dengan anchor (AS-7, AS-13): Cancel, guard yang memblok, dan Download yang berhasil",
+   "source": "`toast-copy.md`",
+   "layer": "Layer aksinya",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FB-3",
+   "keys": [
+    "edit"
+   ],
+   "expectation": "Submit Edit tanpa perubahan nilai: form tertutup, toast `No changes to save.`, dan tanpa entri log baru",
+   "source": "PRD, `toast-copy.md`, `changelog-entry.md` §8.5",
+   "layer": "ui-client (toast); ui-e2e (tanpa entri log, bila ada `changelog`)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FB-4",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Toast sukses hilang sendiri. Toast error bertahan sampai ditutup",
+   "source": "`toast-copy.md`",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-FRM-1",
+   "keys": [
+    "form"
+   ],
+   "expectation": "Saving: klik tombol aksi utama dengan input valid membuat tombol masuk saving state (loading, disabled), dan seluruh kontrol form termasuk `✕` ikut disabled sampai respons diterima. Klik kedua tidak mengirim request kedua. Hasilnya satu record, satu toast, dan satu entri log",
+   "source": "`prd-conventions.md` §24.1b, `error-handling-convention.md` §5.1",
+   "layer": "ui-client (saving, satu request); ui-e2e (satu record dan satu entri log)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-2",
+   "keys": [
+    "form"
+   ],
+   "expectation": "Menutup form: (a) form bersih ditutup dengan `✕` atau Esc langsung tertutup tanpa dialog; (b) form kotor ditutup dengan cara yang sama memunculkan dialog `You have unsaved changes. Are you sure you want to leave?` dengan `[Leave]` dan `[Cancel]`; (c) Esc pada dialog itu sama dengan `[Cancel]`; (d) klik backdrop tidak menutup dan input tetap; (e) muat ulang atau pindah menu dengan form kotor mengikuti §24.1d dan §24.1e",
+   "source": "PRD, `prd-conventions.md` §24.1d §24.1e, `toast-copy.md`",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-3",
+   "keys": [
+    "clear-field"
+   ],
+   "expectation": "`[Clear Field]` mengosongkan semua field tanpa prompt. Di Edit, field dikosongkan, bukan dikembalikan ke nilai tersimpan. Pada form yang punya checkbox «Stay on this form», checkbox itu tidak ikut reset",
+   "source": "PRD, `prd-conventions.md` §24.1c",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-4",
+   "keys": [
+    "batas-karakter"
+   ],
+   "expectation": "Pesan `Max. [N] characters`, dengan N dari PRD. Tepat di batas diterima, satu di atasnya ditolak",
+   "source": "PRD, `prd-conventions.md` §4",
+   "layer": "ui-client (klien); be-e2e (server, AS-10)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-5",
+   "keys": [
+    "unik"
+   ],
+   "expectation": "Nilai yang sudah ada ditolak dengan `[Field] already exists`, dengan nama field dari PRD",
+   "source": "PRD, `prd-conventions.md` §5",
+   "layer": "1 ui-e2e; be-e2e (matriks)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-6",
+   "keys": [
+    "karakter-terlarang"
+   ],
+   "expectation": "(a) Field teks bebas (blocklist, misalnya Name): emoji dan karakter kontrol yang diketik atau ditempel tidak masuk ke field (`prd-conventions.md` §4). Field ber-whitelist (misalnya Code): tidak ada karakter yang diblok, termasuk emoji. Karakter di luar whitelist tetap masuk ke field, lalu pesan validasi field tampil («Bukan di-block — tetap tampilkan error»). (b) Server tetap menolak karakter yang lolos dari klien. (c) Markup dan payload tersimpan tampil sebagai teks, tidak dieksekusi",
+   "source": "PRD, `prd-conventions.md` §4",
+   "layer": "(a) ui-client; (b) be-e2e; (c) ui-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-7",
+   "keys": [
+    "form"
+   ],
+   "expectation": "Aksesibilitas form: field wajib punya `aria-required`, field dengan pesan error inline punya `aria-describedby`, kontrol icon-only punya label aksesibel. Fokus masuk ke modal, focus trap berlaku, dan fokus kembali ke pemicu sesudah modal tertutup",
+   "source": "PRD",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-8",
+   "keys": [
+    "edit"
+   ],
+   "expectation": "Simetri Edit: setiap kasus validasi Create diasersi juga di Edit, per field",
+   "source": "PRD",
+   "layer": "Layer kasusnya (AS-2)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FRM-9",
+   "keys": [
+    "edit"
+   ],
+   "expectation": "Efek simpan Edit: field yang diubah berubah, field lain tetap, dan nilainya bertahan sesudah muat ulang. Validasi yang gagal membiarkan modal terbuka, tanpa toast sukses, dan nilai tersimpan tidak berubah",
+   "source": "PRD",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-FRM-10",
+   "keys": [
+    "dropdown-referensi"
+   ],
+   "expectation": "Opsi dropdown referensi yang dihapus aktor lain sebelum submit: hasilnya mengikuti §5.5",
+   "source": "`error-handling-convention.md` §5.5",
+   "layer": "be-e2e; 1 ui-e2e bila PRD menyatakan tampilannya",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-1",
+   "keys": [
+    "tabel"
+   ],
+   "expectation": "Tiga state dibedakan: kosong (belum ada data), kosong tersaring (`No results found`), dan gagal muat (`Unable to load this data.` dengan `[Try Again]`, bukan empty state)",
+   "source": "PRD, `error-handling-convention.md` §8.1",
+   "layer": "ui-client (ketiganya); ui-e2e (kosong tersaring, lewat EB-SRC-1)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-2",
+   "keys": [
+    "nilai-kosong"
+   ],
+   "expectation": "Sel kosong tampil sesuai sel «Nilai Kosong» PRD (`—` atau label eksplisit)",
+   "source": "PRD, `prd-conventions.md` §9.3",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-3",
+   "keys": [
+    "multi-badge"
+   ],
+   "expectation": "0 item tampil `—`. 1 dan 2 item tampil sebagai badge. Lebih dari 2 tampil 2 badge dan `+N more`. Semua master data ter-assign tampil `All [Entitas]`. Urutan badge di dalam sel A-Z",
+   "source": "`prd-conventions.md` §21",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-4",
+   "keys": [
+    "nama-user-singkat"
+   ],
+   "expectation": "Nama user singkat tampil `[First Name] [Inisial Last Name]` tanpa titik sesudah inisial (`John L`), dan nama lengkap tampil saat hover",
+   "source": "`prd-conventions.md` §9.13",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-5",
+   "keys": [
+    "tombol-disabled"
+   ],
+   "expectation": "Tombol disabled menampilkan alasan saat hover. Literal dari PRD; tanpa literal, perilakunya saja",
+   "source": "PRD",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-6",
+   "keys": [
+    "daftar-detail"
+   ],
+   "expectation": "Search, Sort, Filter yang sudah di-Apply, halaman aktif, dan rows per page List dipertahankan saat kembali lewat Back atau breadcrumb dari Detail, refresh manual (F5) di tab yang sama, dan kembali lewat sidebar dari menu lain atau dari Detail. Tiap sub-tab menyimpan state-nya sendiri. Klik menu List di sidebar saat sedang berada di List itu mereset ke default; tab baru dan login sesudah logout juga mulai dari default. Tabel di dalam dialog, modal, atau popup kembali ke default setiap kali dibuka lagi",
+   "source": "`prd-conventions.md` §9.19, §24.5, §27.1c",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-TBL-7",
+   "keys": [
+    "pagination"
+   ],
+   "expectation": "Ganti page size kembali ke halaman 1. Ganti sort tetap di halaman sekarang. Nomor halaman tidak valid diabaikan. Hapus baris terakhir di halaman terakhir pindah ke halaman terakhir yang masih ada",
+   "source": "`prd-conventions.md` §9.18",
+   "layer": "ui-client (tiga pertama); ui-e2e (hapus baris, bila baris bisa dihapus)",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-TBL-8",
+   "keys": [
+    "tabel"
+   ],
+   "expectation": "Teks sel yang memuat markup tampil apa adanya sebagai teks",
+   "source": "`prd-conventions.md` §9.1a",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-TBL-9",
+   "keys": [
+    "picker"
+   ],
+   "expectation": "Tombol konfirmasi picker selalu enabled. Klik dengan 0 pilihan memunculkan error inline sesuai entitas, tanpa submit. Entitas yang sudah terpilih, Inactive, atau di luar scope tidak muncul",
+   "source": "`prd-conventions.md` §37",
+   "layer": "ui-client (0 pilihan); ui-e2e (pengecualian entitas)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-10",
+   "keys": [
+    "guided-tooltip"
+   ],
+   "expectation": "Konten step persis tabel PRD. Muncul otomatis di kunjungan pertama dan tidak muncul lagi sesudah Skip atau Done. `[?]` memutar ulang tanpa mereset flag. Back dan Next berpindah step. Keluar tanpa selesai tidak menyetel flag",
+   "source": "PRD, `guided-tooltip.md` §16",
+   "layer": "ui-client (konten, navigasi, replay); ui-e2e (flag bertahan antar sesi)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-TBL-11",
+   "keys": [
+    "breadcrumb"
+   ],
+   "expectation": "Segmen pertama dan terakhir statis. Breadcrumb satu atau dua segmen tidak punya segmen yang bisa diklik. Pola tab hanya diasersi bila PRD menyatakannya",
+   "source": "PRD, `prd-conventions.md` §27.0",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-TBL-12",
+   "keys": [
+    "bahasa"
+   ],
+   "expectation": "Kolom Verbatim menampilkan nilai persis seperti diinput di semua bahasa. Label Translatable mengikuti bahasa aktif",
+   "source": "PRD",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-TBL-13",
+   "keys": [
+    "widget"
+   ],
+   "expectation": "Angka widget atau metric card sesuai data dan berubah sesudah mutasi yang memengaruhinya. Label dan format angka mengikuti PRD",
+   "source": "PRD",
+   "layer": "ui-e2e (angka dan perubahan); ui-client (label, format)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-TBL-14",
+   "keys": [
+    "empty-struktural"
+   ],
+   "expectation": "Menghapus anak terakhir memindahkan panel ke empty state, dan Create anak mengembalikannya. Menghapus node yang sedang dipilih: fallback sesuai PRD; bila PRD diam, temuan",
+   "source": "PRD",
+   "layer": "ui-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-BLK-1",
+   "keys": [
+    "bulk"
+   ],
+   "expectation": "Mekanik seleksi: checkbox header dan indeterminate, bar dan counter dengan noun modul (bentuk tunggal untuk 1, jamak untuk ≥2), `✕` membersihkan seleksi, seleksi bertahan saat pindah halaman, Cancel dialog tidak memproses apa pun, dan seleksi bersih sesudah aksi selesai",
+   "source": "PRD, `prd-conventions.md` §8",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-BLK-2",
+   "keys": [
+    "bulk"
+   ],
+   "expectation": "`Select All ({N} records)` dengan N = total baris yang cocok dengan saringan aktif, memilih lintas halaman. Terpilih 100% berubah menjadi `Unselect All`. Uncheck satu baris dari keadaan 100% terpilih mengembalikan tombol ke `Select All ({N} records)`, dengan N tetap total baris yang cocok",
+   "source": "`prd-conventions.md` §8 «Uncheck Parsial»",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-BLK-3",
+   "keys": [
+    "bulk"
+   ],
+   "expectation": "Sebagian atau semua item tidak bisa diproses: dialog blok bulk sama verbatim dengan dialog single untuk kondisi yang sama, kecuali PRD mendefinisikan varian bulk. Konfirmasi klik ganda memproses setiap item sekali, dengan satu toast dan satu entri log per item",
+   "source": "PRD, `prd-conventions.md` §8",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-BLK-4",
+   "keys": [
+    "bulk"
+   ],
+   "expectation": "Bulk gagal 5xx atau timeout: bar dan seleksi dipertahankan, dengan toast error 5xx atau `Connection problem. Please try again.`",
+   "source": "`prd-conventions.md` §8, `error-handling-convention.md` §2",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-BLK-5",
+   "keys": [
+    "baris-dilindungi"
+   ],
+   "expectation": "Checkbox baris Default dan Self disabled sejak awal, tidak ikut checkbox header maupun Select All, dan tidak dihitung di counter maupun N",
+   "source": "`entity-isolation.md` §18.7, `prd-conventions.md` §8",
+   "layer": "ui-client (checkbox disabled, tidak ikut header); ui-e2e (tidak dihitung di N)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-BLK-6",
+   "keys": [
+    "selection-limit"
+   ],
+   "expectation": "Mencentang baris ke-`{limit}+1` diblok dengan tooltip `You've reached the maximum selection of {limit} rows.` Select All saat N lebih besar dari limit memotong seleksi ke `{limit}` baris pertama, dengan toast batas. Nilai limit ditulis di `Kondisi`",
+   "source": "`prd-conventions.md` §8",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-BLK-7",
+   "keys": [
+    "aksi-dua-arah"
+   ],
+   "expectation": "Aksi bulk dua arah (Activate dan Deactivate, Suspend dan Unsuspend) hanya memproses item yang statusnya bisa diubah, dan item lain dilaporkan sesuai PRD",
+   "source": "PRD, `prd-conventions.md` §8",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-SRC-1",
+   "keys": [
+    "search"
+   ],
+   "expectation": "Substring dan huruf besar/kecil sama-sama cocok. Kata kunci tanpa kecocokan menampilkan `No results found`",
+   "source": "PRD, `prd-conventions.md` §9.1a §9.16",
+   "layer": "be-e2e (per kelas kolom); 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-SRC-2",
+   "keys": [
+    "search"
+   ],
+   "expectation": "Nilai tanggal tidak cocok lewat Search, nilai badge cocok. Kata kunci yang cocok di dua kolom berbeda menampilkan kedua baris",
+   "source": "`prd-conventions.md` §9.1a",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-SRC-3",
+   "keys": [
+    "search"
+   ],
+   "expectation": "Spasi awal dan akhir kata kunci dibuang saat Enter, spasi di tengah dipertahankan. Karakter khusus dicari sebagai teks",
+   "source": "`prd-conventions.md` §9.1b §9.16",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-SRC-4",
+   "keys": [
+    "search"
+   ],
+   "expectation": "Siklus kotak Search: ikon membuka input dengan fokus, pencarian berjalan saat Enter (bukan real-time), `✕` sebelum Enter tidak mereset, Enter dengan kotak kosong mereset, dan `(←)` menutup sekaligus mereset",
+   "source": "`prd-conventions.md` §9.1b",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-SRC-5",
+   "keys": [
+    "search",
+    "setup-column"
+   ],
+   "expectation": "Kolom searchable yang disembunyikan tidak lagi cocok, dan cocok lagi saat ditampilkan",
+   "source": "`prd-conventions.md` §9.3",
+   "layer": "ui-e2e",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-SRC-6",
+   "keys": [
+    "tree"
+   ],
+   "expectation": "Pencarian tree berjalan saat Enter, bukan real-time",
+   "source": "`prd-conventions.md` §31.3",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FLT-1",
+   "keys": [
+    "filter"
+   ],
+   "expectation": "Opsi field filter berisi nilai DISTINCT dari tabel itu, bukan master data. Record baru di tabel sumber muncul sebagai opsi tanpa muat ulang",
+   "source": "`prd-conventions.md` §9.8",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-FLT-2",
+   "keys": [
+    "filter"
+   ],
+   "expectation": "Mekanik Filter Panel: menutup tanpa `[Apply]` membuang draft dan tabel tidak berubah; chip tampil untuk opsi terpilih dan overflow `+N`; hapus chip lalu `[Apply]` menyaring dengan opsi tersisa; uncheck opsi; search di dalam dropdown dengan `No results found`; sumber kosong menampilkan `No options available`; indikator aktif pada ikon Filter saat ada filter ter-Apply",
+   "source": "`prd-conventions.md` §9.8 §9.20",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-FLT-3",
+   "keys": [
+    "filter"
+   ],
+   "expectation": "Antar-field berlaku AND, dalam satu field berlaku OR",
+   "source": "`prd-conventions.md` §9.8",
+   "layer": "be-e2e; 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-FLT-4",
+   "keys": [
+    "filter",
+    "search"
+   ],
+   "expectation": "Kombinasi: hasil Search dan Filter adalah irisannya, baik Search dulu maupun Filter dulu. Clear Filter mempertahankan Search dan Sort, Clear Search mempertahankan Filter dan Sort. Melepas satu saringan memulihkan dari empty state. Record yang dibuat atau diubah sehingga tidak cocok tidak tampil",
+   "source": "`prd-conventions.md` §9.8",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-FLT-5",
+   "keys": [
+    "filter",
+    "nilai-kosong"
+   ],
+   "expectation": "Nilai kosong tidak menjadi opsi. Memilih opsi apa pun menyaring keluar baris yang kosong",
+   "source": "`prd-conventions.md` §9.20",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-FLT-6",
+   "keys": [
+    "filter",
+    "setup-column"
+   ],
+   "expectation": "Menyembunyikan kolom tidak menghapus field filternya dan tidak membatalkan filter yang sudah ter-Apply",
+   "source": "`prd-conventions.md` §9.3 §9.8",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-FLT-7",
+   "keys": [
+    "filter"
+   ],
+   "expectation": "Opsi yang sedang dipakai sebagai kriteria dihapus aktor lain: hasilnya mengikuti PRD. Bila PRD diam: temuan, dan unitnya ditahan",
+   "source": "PRD",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-SRT-1",
+   "keys": [
+    "sort"
+   ],
+   "expectation": "Urutan per tipe data: teks case-insensitive, angka natural, tanggal Oldest First dan Newest First, switch Active First, dan badge A-Z kecuali PRD menetapkan urutan sendiri",
+   "source": "`prd-conventions.md` §9.7",
+   "layer": "be-e2e; 1 ui-e2e (AS-12)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-SRT-2",
+   "keys": [
+    "sort",
+    "nilai-kosong"
+   ],
+   "expectation": "Nilai kosong di akhir saat ascending dan di awal saat descending. Nilai sama diurutkan menurut default sort lalu identifier",
+   "source": "`prd-conventions.md` §9.15",
+   "layer": "be-e2e; 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-SRT-3",
+   "keys": [
+    "sort"
+   ],
+   "expectation": "Siklus tiga klik: klik pertama dan kedua membalik arah, klik ketiga menghilangkan indikator dan kembali ke urutan default. Klik kolom lain memindahkan indikator. Kolom non-sortable tidak punya ikon sort",
+   "source": "`prd-conventions.md` §9.7",
+   "layer": "ui-client (indikator); 1 ui-e2e (urutan kembali ke default)",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-KOL-1",
+   "keys": [
+    "setup-column"
+   ],
+   "expectation": "Mekanik Setup Column: anatomi modal, hide dan show, reorder, pin dengan batas pin dan ikon pin disabled, `[Reset to Default]`, batal membuang perubahan, dan kolom terakhir tidak bisa disembunyikan",
+   "source": "`prd-conventions.md` §9.3",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-KOL-2",
+   "keys": [
+    "setup-column"
+   ],
+   "expectation": "Konfigurasi kolom tabel halaman (kolom yang tampil, urutan, pin, dan kolom tambahan) tersimpan di akun user per tabel: bertahan sesudah muat ulang, sesudah logout lalu login lagi, dan di browser lain untuk user yang sama, sedangkan user lain tetap melihat kolom default. Search, Filter, Sort, dan paginasi tidak ikut tersimpan di akun (EB-TBL-6). Tabel di dalam dialog tidak menyimpan konfigurasi kolom",
+   "source": "`prd-conventions.md` §9.3, §24.5",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-KOL-3",
+   "keys": [
+    "setup-column",
+    "dua-tabel"
+   ],
+   "expectation": "Konfigurasi kolom satu tabel tidak mengubah tabel lain",
+   "source": "`prd-conventions.md` §9.3",
+   "layer": "ui-client",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-DL-1",
+   "keys": [
+    "download"
+   ],
+   "expectation": "Tanpa Search atau Filter berkas memuat semua baris, tidak dibatasi halaman. Dengan Search, Filter, atau tab aktif hanya baris yang cocok. Kolom yang disembunyikan tidak ikut",
+   "source": "`prd-conventions.md` §9.9",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-DL-2",
+   "keys": [
+    "download"
+   ],
+   "expectation": "Berhasil: tanpa toast sukses. Gagal: toast `Error, failed to download [Nama File].`",
+   "source": "`prd-conventions.md` §9.9, `toast-copy.md`",
+   "layer": "ui-e2e (berhasil); ui-client (gagal)",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-DL-3",
+   "keys": [
+    "download"
+   ],
+   "expectation": "Pilihan CSV menghasilkan `[NamaFile].csv` dan XLSX menghasilkan `[NamaFile].xlsx`, dengan NamaFile dari PRD",
+   "source": "`prd-conventions.md` §9.9",
+   "layer": "ui-e2e",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-DL-4",
+   "keys": [
+    "download"
+   ],
+   "expectation": "Isi berkas per tipe kolom: foto tidak ikut, switch ditulis `Active`/`Inactive`, multi-badge dipisah `\", \"`, nilai kosong `-`, `+N more` ditulis semua itemnya. CSV UTF-8 dengan BOM, XLSX satu sheet `Sheet1`. Urutan baris mengikuti sort aktif. 0 baris menghasilkan berkas berisi header saja",
+   "source": "`prd-conventions.md` §9.9 §9.17",
+   "layer": "be-e2e (harness `isi-berkas`); 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-DL-5",
+   "keys": [
+    "download"
+   ],
+   "expectation": "Lebih dari 5.000 baris: loading screen sampai berkas siap, tanpa job background dan tanpa notifikasi",
+   "source": "`error-handling-convention.md` §10.1",
+   "layer": "ui-client (Kondisi: jumlah baris di atas ambang); berkas lengkap di be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-LOG-1",
+   "keys": [
+    "changelog"
+   ],
+   "expectation": "Satu entri per field yang berubah, tanpa entri untuk field yang tidak berubah, dan tanpa entri di record lain. Edit dua field sekaligus menghasilkan dua entri",
+   "source": "PRD, `changelog-entry.md`",
+   "layer": "ui-e2e (baseline, AS-8)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-LOG-2",
+   "keys": [
+    "changelog",
+    "edit"
+   ],
+   "expectation": "Sesudah dua kali rename, entri rename pertama tetap menampilkan nilai saat itu",
+   "source": "`changelog-entry.md` §8.4",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-NTF-1",
+   "keys": [
+    "notifikasi"
+   ],
+   "expectation": "Notifikasi view-only hanya menampilkan `[Mark as Read]`. Notifikasi actionable menampilkan tombol aksi dan `[Mark as Read]`",
+   "source": "`notification-system.md` §3",
+   "layer": "ui-e2e (`-dep-notification`)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-ERR-1",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Aksi tulis gagal 5xx atau timeout: form atau dialog tetap terbuka, input dipertahankan, tombol aktif lagi, dengan toast error 5xx atau `Connection problem. Please try again.` Toast hanya berisi pesan, tanpa tombol aksi seperti `[Try Again]`; pemulihan dilakukan dengan mengulang aksinya. Submit ulang sesudah pulih berhasil sekali",
+   "source": "`error-handling-convention.md` §2, `toast-copy.md` aturan 13",
+   "layer": "ui-client",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-ERR-2",
+   "keys": [
+    "delete"
+   ],
+   "expectation": "Dialog hapus satu record: klik ganda `[Delete]` menghapus sekali dengan satu toast; Esc menutup dialog tanpa menghapus; fokus terkunci di dialog dan kembali ke pemicu",
+   "source": "`toast-copy.md`",
+   "layer": "ui-client",
+   "scope": "pertama-per-jenis"
+  },
+  {
+   "id": "EB-ERR-3",
+   "keys": [
+    "delete"
+   ],
+   "expectation": "Saat konfirmasi, server mengecek ulang. Record yang sudah in-use oleh pihak lain ditolak guard. Record yang sudah dihapus pihak lain menghasilkan respons yang dinyatakan PRD: `404` beserta toast netral, atau sukses no-op bila PRD menyatakan aksi idempotent. Spec mengasersi respons yang dinyatakan PRD, bukan selalu penolakan",
+   "source": "PRD, `error-handling-convention.md` §2, §5.7, §7.1",
+   "layer": "be-e2e; 1 ui-e2e bila PRD menyatakan tampilannya",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-ERR-4",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Penolakan server meninggalkan data tanpa perubahan, dan UI tetap menampilkan nilai lama",
+   "source": "PRD",
+   "layer": "be-e2e; 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-CON-1",
+   "keys": [
+    "edit"
+   ],
+   "expectation": "Dua aktor mengedit record yang sama: last-write-wins, kedua Save sukses, dan nilai akhir dari Save terakhir tanpa dialog konflik. Dialog konflik hanya bila PRD menyatakan pengecekan versi",
+   "source": "`error-handling-convention.md` §5.7",
+   "layer": "be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-CON-2",
+   "keys": [
+    "unik"
+   ],
+   "expectation": "Dua aktor membuat nilai unik yang sama bersamaan: satu berhasil, yang kedua ditolak dengan `[Field] already exists`",
+   "source": "`error-handling-convention.md` §5.2",
+   "layer": "be-e2e; 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-CON-3",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "Setiap pasangan aksi tulis yang menurut PRD bisa mengenai record yang sama (Edit dan Delete, Delete dan Delete, status dan Edit) punya hasil yang dinyatakan. Pasangan yang PRD-nya diam menjadi temuan",
+   "source": "PRD",
+   "layer": "be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-CON-4",
+   "keys": [
+    "master-data-limit"
+   ],
+   "expectation": "Kuota data: data ke-N sukses dan ke-N+1 ditolak dengan copy pemiliknya. Dua aktor berebut slot terakhir: hanya satu yang berhasil. Nilai batas ditulis di `Kondisi`",
+   "source": "PRD, `master-data-crud.md`",
+   "layer": "ui-e2e (N dan N+1); be-e2e (race)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-EDG-1",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "D7: aksi atas record yang sudah selesai atau sudah dihapus bersifat idempoten, atau ditolak sesuai PRD",
+   "source": "PRD, `edge-case-matrix-convention.md`",
+   "layer": "be-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-EDG-2",
+   "keys": [
+    "aksi-tulis"
+   ],
+   "expectation": "D9: nol, satu, banyak, dan item terakhir. Contohnya hapus record terakhir menampilkan empty state, dan bulk dengan satu item memakai bentuk tunggal",
+   "source": "PRD, `edge-case-matrix-convention.md`",
+   "layer": "ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-EDG-3",
+   "keys": [
+    "delete"
+   ],
+   "expectation": "D14: nasib data dependen saat induknya dihapus atau diubah mengikuti PRD. Bila PRD diam: temuan",
+   "source": "PRD, `edge-case-matrix-convention.md`",
+   "layer": "be-e2e; 1 ui-e2e",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-XM-1",
+   "keys": [
+    "tanggal"
+   ],
+   "expectation": "Tanggal dan waktu mengikuti Date Format, Time Format, dan Timezone General Settings. Timestamp memakai Date Format ditambah Time Format",
+   "source": "`prd-conventions.md` §32",
+   "layer": "ui-client (format menurut setting di `Kondisi`); ui-e2e `-dep-general-settings` (perubahan setting sampai ke modul)",
+   "scope": "modul"
+  },
+  {
+   "id": "EB-XM-2",
+   "keys": [
+    "konsumen"
+   ],
+   "expectation": "Untuk setiap konsumen yang PRD sebut: Create memunculkan opsi, Edit mengubah nilainya, dan Delete atau Bulk Delete menghilangkan opsi",
+   "source": "PRD (Dependencies)",
+   "layer": "ui-e2e (`-dep-<konsumen>`)",
+   "scope": "tiap-surface"
+  },
+  {
+   "id": "EB-XM-3",
+   "keys": [
+    "import"
+   ],
+   "expectation": "Record hasil Import menjalani satu alur Edit atau Delete modul dengan hasil yang sama seperti record manual",
+   "source": "PRD",
+   "layer": "ui-e2e (`-dep-import`)",
+   "scope": "modul"
+  }
+ ],
+ "detection": [
+  {
+   "id": "EB-AKS-1",
+   "triggered": true,
+   "evidence": {
+    "aktor-tanpa-akses": [
+     404,
+     405,
+     413
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-2",
+   "triggered": true,
+   "evidence": {
+    "aktor-tanpa-akses": [
+     404,
+     405,
+     413
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-3",
+   "triggered": true,
+   "evidence": {
+    "matriks-role": [
+     183,
+     905,
+     1184
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-4",
+   "triggered": true,
+   "evidence": {
+    "matriks-role": [
+     183,
+     905,
+     1184
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-5",
+   "triggered": true,
+   "evidence": {
+    "matriks-role": [
+     183,
+     905,
+     1184
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-6",
+   "triggered": true,
+   "evidence": {
+    "matriks-role": [
+     183,
+     905,
+     1184
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-7",
+   "triggered": true,
+   "evidence": {
+    "state-tenant": [
+     729,
+     1027,
+     1200
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-8",
+   "triggered": true,
+   "evidence": {
+    "plan-gating": [
+     13,
+     52,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-AKS-9",
+   "triggered": true,
+   "evidence": {
+    "baris-dilindungi": [
+     345,
+     391,
+     410
+    ]
+   }
+  },
+  {
+   "id": "EB-FB-1",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-FB-2",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-FB-3",
+   "triggered": true,
+   "evidence": {
+    "edit": [
+     483,
+     766,
+     1029
+    ]
+   }
+  },
+  {
+   "id": "EB-FB-4",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-FRM-1",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-2",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-3",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-4",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-5",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-6",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-7",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FRM-8",
+   "triggered": true,
+   "evidence": {
+    "edit": [
+     483,
+     766,
+     1029
+    ]
+   }
+  },
+  {
+   "id": "EB-FRM-9",
+   "triggered": true,
+   "evidence": {
+    "edit": [
+     483,
+     766,
+     1029
+    ]
+   }
+  },
+  {
+   "id": "EB-FRM-10",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-1",
+   "triggered": true,
+   "evidence": {
+    "tabel": [
+     354,
+     395,
+     520
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-2",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-3",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-4",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-5",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-6",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-7",
+   "triggered": true,
+   "evidence": {
+    "pagination": [
+     818,
+     964,
+     1384
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-8",
+   "triggered": true,
+   "evidence": {
+    "tabel": [
+     354,
+     395,
+     520
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-9",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-10",
+   "triggered": true,
+   "evidence": {
+    "guided-tooltip": [
+     32,
+     892,
+     895
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-11",
+   "triggered": true,
+   "evidence": {
+    "breadcrumb": [
+     152,
+     658,
+     679
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-12",
+   "triggered": true,
+   "evidence": {
+    "bahasa": [
+     408,
+     529,
+     584
+    ]
+   }
+  },
+  {
+   "id": "EB-TBL-13",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-TBL-14",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-BLK-1",
+   "triggered": true,
+   "evidence": {
+    "bulk": [
+     491,
+     664,
+     679
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-2",
+   "triggered": true,
+   "evidence": {
+    "bulk": [
+     491,
+     664,
+     679
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-3",
+   "triggered": true,
+   "evidence": {
+    "bulk": [
+     491,
+     664,
+     679
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-4",
+   "triggered": true,
+   "evidence": {
+    "bulk": [
+     491,
+     664,
+     679
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-5",
+   "triggered": true,
+   "evidence": {
+    "baris-dilindungi": [
+     345,
+     391,
+     410
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-6",
+   "triggered": true,
+   "evidence": {
+    "selection-limit": [
+     491
+    ]
+   }
+  },
+  {
+   "id": "EB-BLK-7",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-SRC-1",
+   "triggered": true,
+   "evidence": {
+    "search": [
+     196,
+     350,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRC-2",
+   "triggered": true,
+   "evidence": {
+    "search": [
+     196,
+     350,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRC-3",
+   "triggered": true,
+   "evidence": {
+    "search": [
+     196,
+     350,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRC-4",
+   "triggered": true,
+   "evidence": {
+    "search": [
+     196,
+     350,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRC-5",
+   "triggered": true,
+   "evidence": {
+    "search": [
+     196,
+     350,
+     356
+    ],
+    "setup-column": [
+     91,
+     337,
+     339
+    ]
+   }
+  },
+  {
+   "id": "EB-SRC-6",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-FLT-1",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-2",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-3",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-4",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ],
+    "search": [
+     196,
+     350,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-5",
+   "triggered": false,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-6",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ],
+    "setup-column": [
+     91,
+     337,
+     339
+    ]
+   }
+  },
+  {
+   "id": "EB-FLT-7",
+   "triggered": true,
+   "evidence": {
+    "filter": [
+     350,
+     354,
+     391
+    ]
+   }
+  },
+  {
+   "id": "EB-SRT-1",
+   "triggered": true,
+   "evidence": {
+    "sort": [
+     111,
+     354,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRT-2",
+   "triggered": false,
+   "evidence": {
+    "sort": [
+     111,
+     354,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-SRT-3",
+   "triggered": true,
+   "evidence": {
+    "sort": [
+     111,
+     354,
+     356
+    ]
+   }
+  },
+  {
+   "id": "EB-KOL-1",
+   "triggered": true,
+   "evidence": {
+    "setup-column": [
+     91,
+     337,
+     339
+    ]
+   }
+  },
+  {
+   "id": "EB-KOL-2",
+   "triggered": true,
+   "evidence": {
+    "setup-column": [
+     91,
+     337,
+     339
+    ]
+   }
+  },
+  {
+   "id": "EB-KOL-3",
+   "triggered": true,
+   "evidence": {
+    "setup-column": [
+     91,
+     337,
+     339
+    ],
+    "dua-tabel": [
+     354,
+     395,
+     520
+    ]
+   }
+  },
+  {
+   "id": "EB-DL-1",
+   "triggered": true,
+   "evidence": {
+    "download": [
+     350,
+     391,
+     516
+    ]
+   }
+  },
+  {
+   "id": "EB-DL-2",
+   "triggered": true,
+   "evidence": {
+    "download": [
+     350,
+     391,
+     516
+    ]
+   }
+  },
+  {
+   "id": "EB-DL-3",
+   "triggered": true,
+   "evidence": {
+    "download": [
+     350,
+     391,
+     516
+    ]
+   }
+  },
+  {
+   "id": "EB-DL-4",
+   "triggered": true,
+   "evidence": {
+    "download": [
+     350,
+     391,
+     516
+    ]
+   }
+  },
+  {
+   "id": "EB-DL-5",
+   "triggered": true,
+   "evidence": {
+    "download": [
+     350,
+     391,
+     516
+    ]
+   }
+  },
+  {
+   "id": "EB-LOG-1",
+   "triggered": true,
+   "evidence": {
+    "changelog": [
+     57,
+     969,
+     1511
+    ]
+   }
+  },
+  {
+   "id": "EB-LOG-2",
+   "triggered": true,
+   "evidence": {
+    "changelog": [
+     57,
+     969,
+     1511
+    ],
+    "edit": [
+     483,
+     766,
+     1029
+    ]
+   }
+  },
+  {
+   "id": "EB-NTF-1",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-ERR-1",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-ERR-2",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-ERR-3",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-ERR-4",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-CON-1",
+   "triggered": true,
+   "evidence": {
+    "edit": [
+     483,
+     766,
+     1029
+    ]
+   }
+  },
+  {
+   "id": "EB-CON-2",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-CON-3",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-CON-4",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-EDG-1",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-EDG-2",
+   "triggered": true,
+   "evidence": {
+    "aksi-tulis": [
+     287,
+     483,
+     766
+    ]
+   }
+  },
+  {
+   "id": "EB-EDG-3",
+   "triggered": false,
+   "evidence": {}
+  },
+  {
+   "id": "EB-XM-1",
+   "triggered": true,
+   "evidence": {
+    "tanggal": [
+     89,
+     149,
+     150
+    ]
+   }
+  },
+  {
+   "id": "EB-XM-2",
+   "triggered": true,
+   "evidence": {
+    "konsumen": [
+     65
+    ]
+   }
+  },
+  {
+   "id": "EB-XM-3",
+   "triggered": true,
+   "evidence": {
+    "import": [
+     360
+    ]
+   }
+  }
+ ]
+}
