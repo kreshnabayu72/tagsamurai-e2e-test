@@ -1,0 +1,5384 @@
+{
+ "module": "Assignment",
+ "status": "disetujui",
+ "disetujui": "User, 2026-11-18",
+ "prd": "fixed-asset@26f50fb",
+ "prdSha": "fe40b96304a925fa",
+ "foundation": "foundation@96df7b2",
+ "specs": [
+  {
+   "id": "TC-FA-ASSIGN-E2E-001-daftar-transactions-tampilan",
+   "title": "Daftar Transactions: kolom, badge status header, aksi baris, dan tab awal",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-01",
+    "§4.1#r1",
+    "§4.1#p2",
+    "§4.1#p4",
+    "§4.1#p5",
+    "§4.1#r22",
+    "§4.1#r23",
+    "§4.1#r24",
+    "§4.1#r25",
+    "§4.1#r26",
+    "§4.1#r27",
+    "§4.1#r28",
+    "§5#r1",
+    "§9.5#r1",
+    "§9.5#r6",
+    "§4.4#r19"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu pembukaan tab Transactions tanpa mutasi: kolom, badge, urutan awal, dan tab awal diamati bersama (RC-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-002-transactions-search",
+   "title": "Search pada tab Transactions",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.2.1#p2",
+    "§5#r2",
+    "§5#r4",
+    "EB-SRC-2@tabel-transactions",
+    "EB-SRC-3@tabel-transactions",
+    "EB-SRC-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu fitur tabel dengan target varian sendiri (RC-2 butir 8). EB-SRC-1 dibagi: matriks per kelas kolom di be-e2e, satu representatif di sini."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-003-transactions-sort",
+   "title": "Sort pada tab Transactions",
+   "layer": "ui-e2e",
+   "units": [
+    "§5#r5",
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "EB-SRT-3@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu fitur tabel dengan target varian sendiri (RC-2 butir 8). EB-SRT dibagi lewat bagian: urutan per tipe di be-e2e, satu representatif di sini."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-004-transactions-filter",
+   "title": "Filter pada tab Transactions",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-FLT-1@tabel-transactions",
+    "EB-FLT-3",
+    "EB-FLT-4@tabel-transactions",
+    "EB-FLT-5@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu fitur tabel dengan target varian sendiri (RC-2 butir 8). EB-FLT-3 dibagi lewat bagian: matriks AND/OR di be-e2e, satu representatif di sini."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-005-transactions-paginasi",
+   "title": "Paginasi pada tab Transactions",
+   "layer": "ui-e2e",
+   "units": [
+    "§5#r3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "entitasKhusus": "seluruh-daftar",
+   "alasan": "Satu fitur tabel dengan target varian sendiri (RC-2 butir 8). Jumlah, paginasi, atau unduhan atas seluruh daftar memakai entitas khusus (IN-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-006-transactions-download",
+   "title": "Download CSV dan XLSX dari tab Transactions",
+   "layer": "ui-e2e",
+   "units": [
+    "§5#r7",
+    "F-ASSIGN-13",
+    "EB-DL-1@tabel-transactions",
+    "EB-DL-2@tabel-transactions",
+    "EB-DL-3@tabel-transactions",
+    "EB-DL-4",
+    "EB-FB-2@download-transactions",
+    "§9.6#r17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "entitasKhusus": "seluruh-daftar",
+   "alasan": "Satu fitur tabel dengan target varian sendiri (RC-2 butir 8). EB-DL-2 dan EB-DL-4 dibagi lewat bagian (berhasil di sini, gagal di ui-client; isi berkas di be-e2e). Jumlah, paginasi, atau unduhan atas seluruh daftar memakai entitas khusus (IN-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-007-transactions-setup-column-tersimpan",
+   "title": "Konfigurasi kolom tab Transactions tersimpan di akun",
+   "layer": "ui-e2e",
+   "units": [
+    "§5#r9",
+    "EB-KOL-2@tabel-transactions",
+    "EB-SRC-5@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kolom yang disembunyikan, urutan, dan pin dibaca ulang sesudah muat ulang dan login ulang: keadaan akun, terpisah dari spec tabel lain."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-008-tab-assigned-assets",
+   "title": "Tab Assigned Assets: By Asset dan By Assignee, serta halaman Assigned Asset",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-13",
+    "T-ASG-14",
+    "§4.1#r2",
+    "§4.1#r13",
+    "§4.2.14#p2",
+    "§9.5#r3",
+    "§9.5#r4",
+    "EC-ASG-87"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Dua sub-tab dibaca dari satu pembukaan tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-009-tab-history",
+   "title": "Tab History: By Transaction dan By Asset",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-15",
+    "T-ASG-16",
+    "§4.1#r3",
+    "§9.5#r5",
+    "§9.5#r15"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Dua sub-tab dibaca dari satu pembukaan tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-010-tab-drafts-tampilan",
+   "title": "Tab Drafts: kolom, urutan awal, dan Draft hasil timeout",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-20",
+    "§4.1#r4",
+    "§9.5#r2",
+    "EC-ASG-78"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pembacaan tabel Draft tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-011-drafts-hapus-single-dan-bulk",
+   "title": "Hapus Draft satu per satu dan bulk",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-11",
+    "TS-ASG-33",
+    "EB-BLK-2@tabel-drafts",
+    "EB-BLK-3",
+    "EB-EDG-2",
+    "§9.6#r15"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi utama: hapus Draft. TS-ASG-11 dibagi lewat shared: Delete Draft di sini, Cancel Assignment di spec cancel."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-012-assignment-detail",
+   "title": "Assignment Detail: header ASG, tabel Assets, dan salin Transaction ID",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-03",
+    "§4.1#r9",
+    "§4.2.4#p1",
+    "§4.2.4#p2",
+    "TS-ASG-17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pembacaan halaman Detail tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-013-log-assignment-per-aset",
+   "title": "Assignment Log per aset dalam satu ASG",
+   "layer": "ui-e2e",
+   "units": [
+    "D-ASG-29",
+    "§4.1#r12",
+    "§5#r8",
+    "§8#p1",
+    "§8.1#p1",
+    "§8.1#r1",
+    "§8.1#r2",
+    "§8.1#r3",
+    "§8.1#r4",
+    "§8.1#r5",
+    "§8.1#b1",
+    "§8.1#b2",
+    "§8.1#r6",
+    "§8.1#r7",
+    "§8.1#r8",
+    "§8.1#r9",
+    "§8.1#r10",
+    "§8.1#r11",
+    "§8.1#r12",
+    "§8.1#r13",
+    "§8.1#r14",
+    "§8.1#r15",
+    "§8.1#r16",
+    "§8.1#r17",
+    "§8.1#r18",
+    "§8.1#r19",
+    "§8.1#r20",
+    "§8.1#r21",
+    "§8.1#r22",
+    "§8.1#r23",
+    "§8.1#r24",
+    "§8.1#r25",
+    "§8.1#p4",
+    "§8.1#p6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Dialog log hanya baca; node dibaca dari ASG yang keadaannya disiapkan lewat aksi modul ini."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-014-create-assignment-employee-tanpa-approval",
+   "title": "Create Assignment untuk Employee tanpa approval lalu Submit",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASSIGN-02",
+    "§3#p3",
+    "§3#p5",
+    "§4.1#p1",
+    "§4.4#r6",
+    "TS-ASG-03",
+    "EC-ASG-08"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi utama: Create dan Submit satu ASG dengan Require approval OFF."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-015-create-assignment-division-dengan-pic",
+   "title": "Create Assignment untuk Division dengan PIC",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASSIGN-04",
+    "FI-ASG-126",
+    "FI-ASG-127"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Cabang Assignee Division memakai data PIC sendiri; dipisah dari cabang Employee (RC-2 butir 1)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-016-submit-multi-group-dipecah",
+   "title": "Submit aset dari beberapa Group menghasilkan beberapa ASG",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-34",
+    "EC-ASG-106"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Submit multi-Group dengan datanya sendiri."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-017-submit-menunggu-approval",
+   "title": "Submit dengan Require approval ON dan campuran ON/OFF",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-04",
+    "TS-ASG-05",
+    "EC-ASG-09",
+    "F-ASSIGN-03.k3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Submit yang menghasilkan baris Waiting for Approval; dipisah dari Submit tanpa approval karena keadaan akhir berbeda."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-018-submit-diblokir-aset-tidak-layak",
+   "title": "Submit ditolak karena aset tidak layak dan tanda di baris",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-05",
+    "EC-ASG-50",
+    "S-ASG-13"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kasus ditolak karena kondisi data target (RC-2 butir 4): aset Damaged atau Deleted sejak dimasukkan ke Draft."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-019-submit-melebihi-batas-aset-assignee",
+   "title": "Submit ditolak karena melebihi Max assets per assignee",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-03"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kasus ditolak karena kuota data target (RC-2 butir 4)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-020-save-draft-dan-lanjutkan",
+   "title": "Save Draft, edit Draft, dan Submit Draft",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASSIGN-01",
+    "TS-ASG-01",
+    "TS-ASG-28",
+    "EB-FRM-9",
+    "§4.4#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu journey Draft oleh satu aktor: simpan, buka ulang, ubah, simpan tanpa perubahan."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-021-draft-bersama-beberapa-aktor",
+   "title": "Draft bersama: aktor lain melanjutkan, baris di luar cakupan, dan perubahan bersamaan",
+   "layer": "ui-e2e",
+   "units": [
+    "D-ASG-13",
+    "FI-ASG-16",
+    "EC-ASG-63",
+    "EC-ASG-64",
+    "EC-ASG-65",
+    "EB-AKS-6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Layar aktor kedua ikut diasersi (RC-4 multi-konteks)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-022-visibilitas-draft-per-cakupan",
+   "title": "Visibilitas Draft menurut cakupan Group aktor",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.11#r1",
+    "§9.11#r2",
+    "§9.11#r3",
+    "§9.11#r4",
+    "§9.11#p2",
+    "§9.11#p4",
+    "§9.11#p5",
+    "§9.11#p6",
+    "§9.11#p7",
+    "§9.11#p8"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pembacaan daftar Draft oleh beberapa aktor dengan cakupan berbeda tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-023-cancel-assignment-per-asg",
+   "title": "Cancel Assignment per ASG sebelum handover",
+   "layer": "ui-e2e",
+   "units": [
+    "§3#p11",
+    "TS-ASG-11",
+    "D-ASG-09"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Cancel per ASG."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-024-cancel-assignment-per-baris",
+   "title": "Cancel Assignment per baris",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-86"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Cancel per baris dengan baris terakhir yang belum selesai."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-025-cancel-dengan-save-as-draft-to-edit",
+   "title": "Cancel dengan Save as Draft to edit lalu Submit ulang",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.2#p69",
+    "§9.2#p70",
+    "§9.2#p71",
+    "§9.2#b47",
+    "§9.2#b48",
+    "§9.2#b49",
+    "§9.2#b50",
+    "§9.2#b51",
+    "§9.2#b52",
+    "§9.2#b53",
+    "§9.2#b54",
+    "§9.2#b55",
+    "§9.2#r21",
+    "§9.2#r22",
+    "§9.2#r23",
+    "§9.2#r24",
+    "TS-ASG-22",
+    "EC-ASG-53",
+    "EC-ASG-54",
+    "F-ASSIGN-09.k3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Cancel yang menghasilkan Draft baru."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-026-approvals-antrean-active-history",
+   "title": "Approvals > Assignment: antrean Active, History, dan Detail read-only",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-06",
+    "T-ASG-07",
+    "F-ASSIGN-14",
+    "F-ASSIGN-05.k4",
+    "§4.1#r18",
+    "§4.2.10#b1",
+    "§4.2.10#b2",
+    "§4.2.10#b3",
+    "§4.2.10#p1",
+    "§9.5#r7",
+    "EC-ASG-79",
+    "FI-ASG-123",
+    "FI-ASG-124",
+    "FI-ASG-125",
+    "ASSIGN-LOGIC-07r",
+    "FI-ASG-111",
+    "FI-ASG-112"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pembacaan antrean dan Detail read-only tanpa mutasi."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-027-approve-any-one-approver",
+   "title": "Approve per aset dengan Approval type Any one approver",
+   "layer": "ui-e2e",
+   "units": [
+    "§3#p7",
+    "T-ASG-08",
+    "§4.1#r19",
+    "§4.4#r7",
+    "TS-ASG-06",
+    "FI-ASG-113",
+    "FI-ASG-114",
+    "FI-ASG-115",
+    "FI-ASG-116",
+    "FI-ASG-117",
+    "FI-ASG-118",
+    "EC-ASG-84"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi utama: keputusan Approve satu approver."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-028-reject-per-aset",
+   "title": "Reject per aset dengan Approval Note",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.4#r9",
+    "F-ASSIGN-05.k1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Reject; keadaan akhir berbeda dari Approve (RC-2 butir 1)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-029-approve-all-approvers",
+   "title": "Approve per aset dengan Approval type All approvers",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.4#r8",
+    "FI-ASG-119",
+    "FI-ASG-120",
+    "FI-ASG-121",
+    "FI-ASG-122"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: keputusan bertahap beberapa approver; keadaan awal berbeda dari Any one."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-030-approval-konflik-dua-approver",
+   "title": "Keputusan bersamaan dua approver dan pengajuan ditutup saat Review",
+   "layer": "ui-e2e",
+   "units": [
+    "D-ASG-16",
+    "EC-ASG-11",
+    "EC-ASG-81",
+    "EC-ASG-52",
+    "EC-ASG-68",
+    "EC-ASG-69",
+    "DO-ASG-11",
+    "DO-ASG-12",
+    "DO-ASG-13",
+    "DO-ASG-14",
+    "DO-ASG-15",
+    "DO-ASG-16",
+    "S-ASG-07",
+    "ASSIGN-LOGIC-07m"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Layar approver kedua diasersi (RC-4 multi-konteks)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-031-dialog-transaction-rules-dan-approval-progress",
+   "title": "Dialog Transaction Rules dan Approval Progress per aset",
+   "layer": "ui-e2e",
+   "units": [
+    "D-ASG-10",
+    "D-ASG-28",
+    "§4.1#r17",
+    "FI-ASG-89",
+    "FI-ASG-90",
+    "FI-ASG-91",
+    "FI-ASG-92",
+    "FI-ASG-93",
+    "FI-ASG-94",
+    "FI-ASG-95",
+    "FI-ASG-96",
+    "FI-ASG-97",
+    "FI-ASG-98",
+    "FI-ASG-99",
+    "FI-ASG-100",
+    "FI-ASG-101",
+    "FI-ASG-102",
+    "FI-ASG-103",
+    "FI-ASG-104",
+    "FI-ASG-105",
+    "FI-ASG-106",
+    "FI-ASG-107",
+    "FI-ASG-108",
+    "FI-ASG-109",
+    "FI-ASG-110",
+    "EC-ASG-80",
+    "EC-ASG-83",
+    "§4.4#r15"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Dialog hanya baca; isi dari snapshot ASG yang disiapkan lewat aksi modul ini."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-032-handover-tanpa-konfirmasi",
+   "title": "Handover dengan Need recipient confirmation = No (Complete Handover)",
+   "layer": "ui-e2e",
+   "units": [
+    "§3#p9",
+    "TS-ASG-07",
+    "EC-ASG-13",
+    "FI-ASG-41"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Handover selesai tanpa konfirmasi Assignee."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-033-handover-konfirmasi-di-perangkat-admin",
+   "title": "Handover dengan Request Confirmation dan Confirm on This Device",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.4#r13",
+    "FI-ASG-37",
+    "FI-ASG-38",
+    "FI-ASG-39",
+    "EC-ASG-14",
+    "EC-ASG-71"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Handover dengan konfirmasi atas nama Assignee di perangkat admin."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-034-handover-sebagian",
+   "title": "Handover sebagian: hanya sebagian aset diverifikasi",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-19",
+    "FI-ASG-21",
+    "FI-ASG-22",
+    "FI-ASG-23",
+    "FI-ASG-17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: handover sebagian atas satu ASG."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-035-handover-sesi-konfirmasi-batal",
+   "title": "Sesi konfirmasi dibatalkan lewat Cancel Request",
+   "layer": "ui-e2e",
+   "units": [
+    "DO-ASG-01",
+    "DO-ASG-02",
+    "DO-ASG-03",
+    "DO-ASG-06"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Layar Assignee ikut diasersi (Task ditutup); jendela habis berbasis jam diuji di be-e2e."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-036-remind-assignee",
+   "title": "Remind Assignee pada baris Waiting for Handover",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-30"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu aksi tanpa perubahan status baris."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-037-change-pic",
+   "title": "Change PIC pada ASG Division yang berjalan",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-12",
+    "ASSIGN-LOGIC-06k",
+    "ASSIGN-LOGIC-06u"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Change PIC."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-038-no-pic-handover-diblokir",
+   "title": "Baris No PIC: Handover diblokir sampai Change PIC",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-76",
+    "FI-ASG-40",
+    "S-ASG-11",
+    "ASSIGN-LOGIC-06m"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kasus ditolak karena kondisi data target (RC-2 butir 4): ASG Division tanpa PIC aktif."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-039-scan-tag-handover-dan-unassign",
+   "title": "Scan TAG saat Handover dan Unassign: penolakan dan verifikasi",
+   "layer": "ui-e2e",
+   "units": [
+    "FI-ASG-18",
+    "FI-ASG-24",
+    "FI-ASG-47",
+    "FI-ASG-48",
+    "FI-ASG-49",
+    "FI-ASG-50",
+    "FI-ASG-51",
+    "FI-ASG-52",
+    "FI-ASG-53",
+    "FI-ASG-54",
+    "FI-ASG-55",
+    "FI-ASG-56",
+    "V-ASG-17",
+    "V-ASG-18",
+    "V-ASG-24",
+    "V-ASG-25",
+    "§4.4#r10",
+    "§4.4#r11",
+    "§4.4#r12"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "manual"
+   },
+   "harness": "eksternal",
+   "varianPlatform": [],
+   "alasan": "Scan TAG memakai pembaca atau kamera fisik (RC-4 eksternal); hasilnya butuh perangkat sehingga coverage manual (PF-1)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-040-unassign-penuh",
+   "title": "Unassign semua aset satu Assignee",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-08",
+    "FI-ASG-74",
+    "FI-ASG-75",
+    "FI-ASG-76",
+    "FI-ASG-77",
+    "FI-ASG-83",
+    "FI-ASG-86",
+    "FI-ASG-62"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Unassign penuh."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-041-unassign-partial",
+   "title": "Partial unassign: aset yang tidak dimasukkan tetap Assigned",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-24",
+    "FI-ASG-88"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu mutasi: Unassign sebagian."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-042-pemisahan-peran-handover-dan-unassign",
+   "title": "Aktor yang juga Assignee atau PIC tidak dapat Handover dan Unassign",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-18",
+    "EC-ASG-75",
+    "FI-ASG-20",
+    "FI-ASG-63",
+    "FI-ASG-64",
+    "FI-ASG-65",
+    "FI-ASG-66",
+    "FI-ASG-67",
+    "ASSIGN-LOGIC-15b"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kasus ditolak karena kondisi data target (RC-2 butir 4): aktor sama dengan Assignee atau PIC."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-043-gating-total-control",
+   "title": "Gating Total Control: elemen Show, Hidden, dan Disabled menurut matriks role",
+   "layer": "ui-e2e",
+   "units": [
+    "§2.1#r1",
+    "§2.1#r2",
+    "§2.1#r3",
+    "§2.1#r4",
+    "§2.1#r5",
+    "§2.1#r6",
+    "§2.1#r7",
+    "§2.1#r8",
+    "§2.1#r9",
+    "§2.1#r10",
+    "§2.1#r11",
+    "§2.1#r12",
+    "§2.1#r13",
+    "§2.1#r14",
+    "§2.1#r15",
+    "§2.1#r16",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§4.8#r15",
+    "§4.8#r16",
+    "§4.8#r17",
+    "§2.1#b1",
+    "§2.1#b2",
+    "§2.1#b3",
+    "§4.8#p1",
+    "§4.8#p2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu spec per jenis aktor yang punya kolom di matriks role (RC-5); baris matriks dibagi per jenis aktor."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-044-gating-group-manager",
+   "title": "Gating Group Manager: elemen Show, Hidden, dan Disabled menurut matriks role",
+   "layer": "ui-e2e",
+   "units": [
+    "§2.1#r1",
+    "§2.1#r2",
+    "§2.1#r3",
+    "§2.1#r4",
+    "§2.1#r5",
+    "§2.1#r6",
+    "§2.1#r7",
+    "§2.1#r8",
+    "§2.1#r9",
+    "§2.1#r10",
+    "§2.1#r11",
+    "§2.1#r12",
+    "§2.1#r13",
+    "§2.1#r14",
+    "§2.1#r15",
+    "§2.1#r16",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§4.8#r15",
+    "§4.8#r16",
+    "§4.8#r17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu spec per jenis aktor yang punya kolom di matriks role (RC-5); baris matriks dibagi per jenis aktor."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-045-gating-asset-admin",
+   "title": "Gating Asset Admin: elemen Show, Hidden, dan Disabled menurut matriks role",
+   "layer": "ui-e2e",
+   "units": [
+    "§2.1#r1",
+    "§2.1#r2",
+    "§2.1#r3",
+    "§2.1#r4",
+    "§2.1#r5",
+    "§2.1#r6",
+    "§2.1#r7",
+    "§2.1#r8",
+    "§2.1#r9",
+    "§2.1#r10",
+    "§2.1#r11",
+    "§2.1#r12",
+    "§2.1#r13",
+    "§2.1#r14",
+    "§2.1#r15",
+    "§2.1#r16",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§4.8#r15",
+    "§4.8#r16",
+    "§4.8#r17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu spec per jenis aktor yang punya kolom di matriks role (RC-5); baris matriks dibagi per jenis aktor."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-046-gating-approver",
+   "title": "Gating Approver: elemen Show, Hidden, dan Disabled menurut matriks role",
+   "layer": "ui-e2e",
+   "units": [
+    "§2.1#r1",
+    "§2.1#r2",
+    "§2.1#r3",
+    "§2.1#r4",
+    "§2.1#r5",
+    "§2.1#r6",
+    "§2.1#r7",
+    "§2.1#r8",
+    "§2.1#r9",
+    "§2.1#r10",
+    "§2.1#r11",
+    "§2.1#r12",
+    "§2.1#r13",
+    "§2.1#r14",
+    "§2.1#r15",
+    "§2.1#r16",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§4.8#r15",
+    "§4.8#r16",
+    "§4.8#r17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu spec per jenis aktor yang punya kolom di matriks role (RC-5); baris matriks dibagi per jenis aktor."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-047-gating-monitoring-report-dan-read-only",
+   "title": "Gating Monitoring & Report dan Read Only: elemen Show, Hidden, dan Disabled menurut matriks role",
+   "layer": "ui-e2e",
+   "units": [
+    "§2.1#r1",
+    "§2.1#r2",
+    "§2.1#r3",
+    "§2.1#r4",
+    "§2.1#r5",
+    "§2.1#r6",
+    "§2.1#r7",
+    "§2.1#r8",
+    "§2.1#r9",
+    "§2.1#r10",
+    "§2.1#r11",
+    "§2.1#r12",
+    "§2.1#r13",
+    "§2.1#r14",
+    "§2.1#r15",
+    "§2.1#r16",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#r11",
+    "§4.8#r12",
+    "§4.8#r13",
+    "§4.8#r14",
+    "§4.8#r15",
+    "§4.8#r16",
+    "§4.8#r17",
+    "EB-AKS-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu spec per jenis aktor yang punya kolom di matriks role (RC-5); baris matriks dibagi per jenis aktor."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-048-akses-tanpa-capability",
+   "title": "Aktor tanpa capability: sidebar dan URL langsung",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-AKS-1",
+    "EB-AKS-2",
+    "§2.1#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Aktor tanpa akses diasersi di titik masuknya (RC-5)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-049-plan-level-basic",
+   "title": "Feature Suite Assignment level Basic",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.10#b1",
+    "§9.10#b3",
+    "§9.10#b4",
+    "§9.10#b5",
+    "§9.10#b6",
+    "§9.10#r33",
+    "§9.10#r34",
+    "§9.10#r35",
+    "§9.10#r36",
+    "§9.10#p12",
+    "EC-ASG-36",
+    "EC-ASG-99",
+    "EC-ASG-107",
+    "EC-ASG-109",
+    "EC-ASG-112",
+    "EC-ASG-115",
+    "EC-ASG-56",
+    "S-ASG-06",
+    "ASSIGN-LOGIC-06t",
+    "ASSIGN-LOGIC-06x",
+    "ASSIGN-LOGIC-18n"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Level plan berlaku per entitas, sehingga spec memakai entitas khusus (IN-2). Klausa Asset List (aksi Assign dan Add to Assignment Draft) dipisah ke spec -dep-asset-list (IS-2, IS-3); EC-ASG-99 dibagi per surface."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-050-plan-level-none",
+   "title": "Feature Suite Assignment level None",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.10#p5",
+    "§9.10#r16",
+    "§9.10#r17",
+    "§9.10#r20",
+    "§9.10#r21",
+    "§9.10#r24",
+    "§9.10#r25",
+    "§9.10#r26",
+    "EC-ASG-98",
+    "EC-ASG-100",
+    "ASSIGN-LOGIC-18d",
+    "ASSIGN-LOGIC-18e",
+    "ASSIGN-LOGIC-18f",
+    "ASSIGN-LOGIC-18x"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Perubahan plan tier diasersi (RC-4 state-tenant); level berlaku per entitas (IN-2). Klausa Asset List dan Asset Detail dipisah ke spec -dep-asset-list dan -dep-asset-detail (IS-2, IS-3, IS-4); ASSIGN-LOGIC-18f dan EC-ASG-98 dibagi per surface."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-051-entitas-suspended-atau-expired",
+   "title": "Entitas Suspended atau Expired: aksi tulis ditolak",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-AKS-7",
+    "EC-ASG-97",
+    "F-ASSIGN-03.k6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Write-lockdown entitas diasersi (RC-4 state-tenant); status entitas berlaku untuk seluruh entitas (IN-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-052-mobile-wizard-scan-assign",
+   "title": "Mobile Scan > Assign: wizard, kartu aset, dan offline",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.6#p1",
+    "§4.6#p3",
+    "§4.6#b1",
+    "§4.6#b2",
+    "§4.6#b3",
+    "§4.6#b4",
+    "§4.6#b5",
+    "§4.6#b6",
+    "§10#r8",
+    "EC-ASG-74",
+    "§4.2.13#b3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "android": "manual"
+   },
+   "harness": "eksternal",
+   "varianPlatform": [],
+   "alasan": "Wizard memakai scan TAG dan kamera perangkat fisik (RC-4 eksternal); PRD menyebut aplikasi native Android (§4.6), coverage manual (PF-1)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-053-assign-dari-asset-list-dan-quick-action-dep-asset-list",
+   "title": "Assign dari Asset List dan Quick Action membuka form dengan aset terisi",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.2.13#b1",
+    "§4.2.13#b2",
+    "§4.1#r21"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: aksi Assign, Add to Assignment Draft, dan Quick Action Assign"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Titik masuk dari modul lain dipisah ke spec -dep- (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-054-add-to-assignment-draft-dari-asset-list-dep-asset-list",
+   "title": "Add to Assignment Draft dari Asset List",
+   "layer": "ui-e2e",
+   "units": [
+    "T-ASG-02",
+    "§4.1#r5",
+    "TS-ASG-02",
+    "EC-ASG-66",
+    "§9.6#r14"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: aksi Add to Assignment Draft"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Titik masuk dari modul lain dipisah ke spec -dep- (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-055-mark-as-unassigned-level-none-dep-asset-list",
+   "title": "Mark as Unassigned pada level None dari Asset List dan Asset Detail",
+   "layer": "ui-e2e",
+   "units": [
+    "TS-ASG-35",
+    "§4.8#r13",
+    "EC-ASG-101",
+    "EC-ASG-102",
+    "EC-ASG-103",
+    "EC-ASG-104",
+    "EC-ASG-110",
+    "EC-ASG-111",
+    "§9.6#r13"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: aksi baris dan bulk Mark as Unassigned"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Aksi wind-down hanya ada di Asset List dan Asset Detail (IS-2); level None berlaku per entitas (IN-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-056-konfirmasi-handover-assignee-dari-my-asset-dep-my-asset",
+   "title": "Assignee atau PIC mengonfirmasi handover dari My Asset",
+   "layer": "ui-e2e",
+   "units": [
+    "F-ASSIGN-11",
+    "§4.1h#p1",
+    "§4.1h#r1",
+    "§4.1h#r2",
+    "§4.1h#r3",
+    "§4.1h#r4",
+    "§4.1h#r5",
+    "§4.1#r20",
+    "FI-ASG-34",
+    "FI-ASG-35",
+    "FI-ASG-36",
+    "TS-ASG-31",
+    "DO-ASG-07",
+    "EC-ASG-108"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "My Asset: tab Task, Assigned, History, dan dialog Confirm Handover"
+   ],
+   "batch": "b6",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Layar Assignee diasersi (RC-4 multi-konteks) dan butuh modul My Asset (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-057-transaction-log-aset-di-asset-detail-dep-asset-detail",
+   "title": "Transaction log aset di Asset Detail",
+   "layer": "ui-e2e",
+   "units": [
+    "§8.1a#p1",
+    "§8.1a#p2",
+    "§9.7#r20",
+    "ASSIGN-LOGIC-06s"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Detail: tab Transaction log dan Changelog Asset"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Surface di modul lain (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-058-transaction-admin-log-dan-offboarding-di-settings-user-dep-settings-user",
+   "title": "Transaction admin log di User Detail dan Assignee dinonaktifkan",
+   "layer": "ui-e2e",
+   "units": [
+    "§8.2#p1",
+    "§8.2#p2",
+    "§8.2#r1",
+    "§8.2#r2",
+    "§8.2#r3",
+    "§8.2#r4",
+    "§8.2#r5",
+    "EC-ASG-01",
+    "EC-ASG-02",
+    "EC-ASG-31",
+    "EC-ASG-67",
+    "§9.7#r17",
+    "§9.7#r18",
+    "§9.7#r21",
+    "ASSIGN-LOGIC-16ad",
+    "ASSIGN-LOGIC-16ae",
+    "ASSIGN-LOGIC-16ap",
+    "ASSIGN-LOGIC-16aq"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Settings User: User Detail > Transaction admin log, daftar Unassign offboarding"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Surface dan pemicu berada di modul Settings User (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-059-division-in-use-guard-dan-division-dihapus-dep-division",
+   "title": "Division yang dipakai ASG aktif tidak dapat dihapus",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-35",
+    "ASSIGN-LOGIC-16af",
+    "ASSIGN-LOGIC-16ag",
+    "ASSIGN-LOGIC-16ar",
+    "ASSIGN-LOGIC-16ah"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Division: hapus Division"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pemicu berada di modul Division (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-060-group-in-use-guard-dep-settings-groups",
+   "title": "Group dengan baris aktif tidak dapat dihapus",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-93"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Settings Groups: hapus Group"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pemicu berada di modul Settings Groups (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-061-report-damaged-saat-ditugaskan-dep-damaged",
+   "title": "Report Damaged, Cancel Damage Report, dan marker Damaged saat ditugaskan",
+   "layer": "ui-e2e",
+   "units": [
+    "D-ASG-17",
+    "FI-ASG-78",
+    "FI-ASG-79",
+    "FI-ASG-80",
+    "FI-ASG-81",
+    "FI-ASG-82",
+    "FI-ASG-84",
+    "FI-ASG-85",
+    "TS-ASG-29",
+    "EC-ASG-25",
+    "EC-ASG-88",
+    "F-ASSIGN-07.k3",
+    "F-ASSIGN-10.k2",
+    "§9.7#r14"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Damaged: Report Damaged dan Cancel Damage Report"
+   ],
+   "batch": "b6",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Rekaman laporan milik modul Damaged (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-062-report-missing-saat-ditugaskan-dep-missing",
+   "title": "Report Missing saat ditugaskan dan scan aset Missing",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-ASG-33",
+    "EC-ASG-34",
+    "EC-ASG-39",
+    "F-ASSIGN-10.k1",
+    "§9.7#r15",
+    "V-ASG-26"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Missing: Report Missing dan Mark as Found"
+   ],
+   "batch": "b6",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Rekaman laporan milik modul Missing (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-063-i-cant-scan-the-tag-dep-tag",
+   "title": "I Can't Scan the TAG saat Handover dan Unassign",
+   "layer": "ui-e2e",
+   "units": [
+    "FI-ASG-25",
+    "FI-ASG-26",
+    "FI-ASG-27",
+    "FI-ASG-28",
+    "FI-ASG-29",
+    "FI-ASG-30",
+    "FI-ASG-31",
+    "FI-ASG-32",
+    "FI-ASG-33",
+    "FI-ASG-68",
+    "FI-ASG-69",
+    "EC-ASG-26",
+    "EC-ASG-72",
+    "F-ASSIGN-06.k7",
+    "F-ASSIGN-07.k4",
+    "§9.7#r16",
+    "V-ASG-07"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Tag: Report TAG dan Replace TAG"
+   ],
+   "batch": "b6",
+   "priority": "Critical",
+   "coverage": {
+    "web": "manual"
+   },
+   "harness": "eksternal",
+   "varianPlatform": [],
+   "alasan": "Laporan TAG dicatat modul Tag (IS-2); pembacaan TAG memakai perangkat fisik sehingga coverage manual (PF-1)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-064-notifikasi-assignment-dep-notification",
+   "title": "Notifikasi event Assignment",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.8#p1",
+    "§9.8#p2",
+    "§9.8#r1",
+    "§9.8#r2",
+    "§9.8#r3",
+    "§9.8#r4",
+    "§9.8#r5",
+    "§9.8#r6",
+    "§9.8#r7",
+    "§9.8#r8",
+    "§9.8#r9",
+    "§9.8#r10",
+    "§9.8#r11",
+    "§9.8#r12",
+    "§9.8#r13",
+    "§9.8#r14",
+    "F-ASSIGN-12",
+    "§9.7#r19",
+    "EC-ASG-95",
+    "FI-ASG-87",
+    "§9.10#r27",
+    "§9.10#r28",
+    "§9.10#p7"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Notification: katalog notifikasi Assignment"
+   ],
+   "batch": "b6",
+   "priority": "Critical",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Surface notifikasi milik modul Notification (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-065-pemetaan-transaction-settings-dep-settings-transaction-rules",
+   "title": "Perubahan Transaction Settings tab Assign dan efeknya",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.12#p1",
+    "§9.12#p2",
+    "§9.12#r1",
+    "§9.12#r2",
+    "§9.12#r3",
+    "§9.12#r4",
+    "§9.12#r5",
+    "§9.12#r6",
+    "§9.12#r7",
+    "§9.12#r8",
+    "EC-ASG-113"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Settings Transaction Rules: tab Assign"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "entitasKhusus": "setting-entitas",
+   "alasan": "Setting berlaku per entitas (IN-2) dan diubah di modul Settings Transaction Rules (IS-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-066-aksi-asset-list-level-basic-dep-asset-list",
+   "title": "Asset List pada level Basic: aksi Assign tampil dan Add to Assignment Draft tidak tampil",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.10#b2",
+    "EC-ASG-99"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: aksi Assign dan Add to Assignment Draft pada baris aset"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Klausa Asset List dari spec inti level Basic dipisah karena butuh modul Asset List (IS-2, IS-3). EC-ASG-99 dibagi per surface: Draft dihapus dan tab Drafts di spec inti level Basic, aksi Add to Assignment Draft di Asset List di spec ini. Level plan berlaku per entitas, sehingga spec memakai entitas khusus (IN-2)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-067-aksi-asset-list-level-none-dep-asset-list",
+   "title": "Asset List pada level None: aksi Assign dan Add to Assignment Draft tidak tampil, Mark as Unassigned untuk aset Assigned",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.10#r18",
+    "§9.10#r22",
+    "§9.10#r23",
+    "ASSIGN-LOGIC-18f"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: aksi baris Assign, Add to Assignment Draft, dan Mark as Unassigned"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Klausa Asset List dari spec inti level None dipisah karena butuh modul Asset List (IS-2, IS-3). ASSIGN-LOGIC-18f dibagi per surface: halaman Assignment, Approvals, dan Quick Action di spec inti level None; Asset List di spec ini; Asset Detail di spec -dep-asset-detail. Level None berlaku per entitas, sehingga spec memakai entitas khusus (IN-2, RC-4 state-tenant)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-E2E-068-asset-detail-level-none-dep-asset-detail",
+   "title": "Asset Detail pada level None: Transaction log Assignment terbaca dan Mark as Unassigned di header",
+   "layer": "ui-e2e",
+   "units": [
+    "§9.10#r19",
+    "ASSIGN-LOGIC-18f",
+    "EC-ASG-98"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Detail: Transaction log Assignment, aksi Mark as Unassigned di header, dan tab History"
+   ],
+   "batch": "b6",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "entitasKhusus": "status-entitas",
+   "alasan": "Klausa Asset Detail dari spec inti level None dipisah karena butuh modul Asset Detail (IS-2, IS-3, IS-4). EC-ASG-98 dibagi per surface: baris Canceled oleh System, sesi Confirm Handover batal, Task hilang, dan notifikasi di spec inti level None; Custody Available dan Assignment Log aset yang dibuka dari Asset Detail di spec ini. Downgrade ke None dijalankan spec ini pada entitas khusus (IN-2, RC-4 state-tenant)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-101-form-assignment-request-tampilan-awal",
+   "title": "Form Assignment Request: tampilan awal, tipe Assignee, dan Purpose per aset",
+   "layer": "ui-client",
+   "komponen": "Form Assignment Request",
+   "units": [
+    "§4.2.3#p1",
+    "§4.2.3#p2",
+    "§4.2.3#p3",
+    "§4.2.3#p4",
+    "§4.2.3#b1",
+    "§4.2.3#b2",
+    "§4.2.3#b3",
+    "§4.2.3#b4",
+    "§4.2.3#b5",
+    "§4.2.3#b6",
+    "§4.2.3#b7",
+    "§4.2.3#b8",
+    "§4.2.3#b9",
+    "§4.2.3#b10",
+    "§4.2.3#b11",
+    "§4.2.3#b12",
+    "§4.2.3#b13",
+    "§4.2.3#b14",
+    "§4.2.3#b15",
+    "§4.2.3#b16",
+    "§4.2.3#b17",
+    "§4.1#r6",
+    "FI-ASG-01",
+    "FI-ASG-02",
+    "FI-ASG-03",
+    "FI-ASG-04",
+    "S-ASG-04",
+    "S-ASG-03",
+    "FLD-ASG-04",
+    "FLD-ASG-05",
+    "§4.4#r1",
+    "§4.4#r2",
+    "§9.5#r11",
+    "§10#r3",
+    "ASSIGN-LOGIC-01e",
+    "ASSIGN-LOGIC-01f",
+    "ASSIGN-LOGIC-01g",
+    "ASSIGN-LOGIC-01n"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Menggabung struktur awal, default, dan interaksi tipe Assignee karena unitnya sedikit per kelompok (RC-3)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "title": "Form Assignment Request: validasi Assignee, PIC, Purpose, Note, dan Assets",
+   "layer": "ui-client",
+   "komponen": "Form Assignment Request",
+   "units": [
+    "FLD-ASG-01",
+    "FLD-ASG-02",
+    "FLD-ASG-03",
+    "FI-ASG-06",
+    "FI-ASG-08",
+    "V-ASG-09",
+    "V-ASG-12",
+    "V-ASG-14",
+    "V-ASG-15",
+    "§9.5#r9",
+    "EB-FRM-4@purpose",
+    "EB-FRM-4@note"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kelompok validasi per field pada komponen yang sama dengan spec tampilan awal (RC-3)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-103-form-assignment-request-baris-aset-tidak-layak",
+   "title": "Form Assignment Request: baris aset Ready dan Not ready",
+   "layer": "ui-client",
+   "komponen": "Form Assignment Request",
+   "units": [
+    "S-ASG-01",
+    "S-ASG-02",
+    "FI-ASG-09",
+    "FI-ASG-10",
+    "FI-ASG-11",
+    "FI-ASG-12",
+    "FI-ASG-13",
+    "FI-ASG-14",
+    "FI-ASG-15",
+    "V-ASG-05",
+    "V-ASG-04",
+    "EC-ASG-43",
+    "EC-ASG-44",
+    "ASSIGN-LOGIC-03d",
+    "ASSIGN-LOGIC-03f",
+    "ASSIGN-LOGIC-05f",
+    "§4.4#r5",
+    "§6#p1",
+    "EB-TBL-5@submit-luar-cakupan"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Kelompok state data baris pada komponen yang sama (RC-3)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-104-form-assignment-request-mekanik-dan-unsaved",
+   "title": "Form Assignment Request: Saving, Unsaved Changes, Restore Changes, dan aksesibilitas",
+   "layer": "ui-client",
+   "komponen": "Form Assignment Request",
+   "units": [
+    "EB-FRM-1@assignment-request",
+    "EB-FRM-2@assignment-request",
+    "EB-FRM-7@assignment-request",
+    "EB-FRM-8@edit-draft",
+    "EB-FB-3@edit-draft",
+    "D-ASG-11",
+    "D-ASG-25",
+    "§4.4#r16",
+    "§4.4#r17"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Mekanik komponen form (LY-11, RC-3 butir 3)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-105-dialog-select-asset",
+   "title": "Dialog Select Asset: pilih aset dan tombol Select",
+   "layer": "ui-client",
+   "komponen": "Dialog Select Asset",
+   "units": [
+    "T-ASG-04",
+    "EB-TBL-9@select-asset",
+    "EB-TBL-3@kolom-label-select-asset"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-106-dialog-select-assignee",
+   "title": "Dialog Select Assignee: sub-tab Employees dan Divisions, status Blocked",
+   "layer": "ui-client",
+   "komponen": "Dialog Select Assignee",
+   "units": [
+    "T-ASG-05",
+    "§4.1#r7",
+    "S-ASG-05",
+    "S-ASG-22",
+    "S-ASG-23",
+    "FI-ASG-07",
+    "EC-ASG-06",
+    "EC-ASG-45",
+    "EB-TBL-9@select-assignee"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-107-overlay-assign-to",
+   "title": "Overlay Assign to: pilih tipe Assignee",
+   "layer": "ui-client",
+   "komponen": "Overlay Assign to",
+   "units": [
+    "D-ASG-23",
+    "§4.1#r14"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-108-dialog-set-purpose",
+   "title": "Dialog Set Purpose: terapkan Purpose ke baris tercentang",
+   "layer": "ui-client",
+   "komponen": "Dialog Set Purpose",
+   "units": [
+    "D-ASG-27",
+    "FI-ASG-05"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-109-dialog-select-user-pic",
+   "title": "Dialog Select User untuk PIC",
+   "layer": "ui-client",
+   "komponen": "Dialog Select User",
+   "units": [
+    "D-ASG-18",
+    "FLD-ASG-09",
+    "T-ASG-09",
+    "§4.1#r15",
+    "S-ASG-24",
+    "EC-ASG-32",
+    "EB-TBL-9@select-user-pic"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-110-dialog-konfirmasi-dan-blok-assignment",
+   "title": "Dialog konfirmasi dan blok: Cancel, Delete Draft, Submit, dan batas baris",
+   "layer": "ui-client",
+   "komponen": "Dialog Konfirmasi Assignment",
+   "units": [
+    "D-ASG-01",
+    "D-ASG-02",
+    "D-ASG-03",
+    "D-ASG-06",
+    "D-ASG-20",
+    "D-ASG-24",
+    "DO-ASG-09",
+    "DO-ASG-10",
+    "EC-ASG-40",
+    "EC-ASG-41",
+    "§4.2.8#p1",
+    "§4.2.8#p2",
+    "§4.2.8#p3",
+    "§4.2.8#b1",
+    "§4.2.8#b2",
+    "§4.2.8#b3",
+    "§4.2.8#b4",
+    "§4.2.8#b5",
+    "§4.2.8#b6",
+    "§4.2.8#b7",
+    "§4.2.8#b8",
+    "§4.2.8#b9",
+    "§4.2.8#b10",
+    "§4.2.8#b11",
+    "§4.2.8#b12",
+    "§4.2.8#b13",
+    "§7.2#r11",
+    "§7.2#r12",
+    "§7.2#r24",
+    "§4.1#r11",
+    "§9.5#r16",
+    "§4.4#r3",
+    "EB-ERR-2@delete-draft"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Menggabung dialog konfirmasi sejenis karena kelompok aturannya sama (RC-3)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-111-halaman-handover-state-dan-copy",
+   "title": "Halaman Handover: state tombol, foto wajib, dan kamera tidak tersedia",
+   "layer": "ui-client",
+   "komponen": "Halaman Handover",
+   "units": [
+    "§4.2.5#p1",
+    "§4.2.5#p2",
+    "§4.2.5#p3",
+    "§4.2.5#p4",
+    "§4.2.5#b1",
+    "§4.2.5#b2",
+    "§4.2.5#b3",
+    "§4.2.5#b4",
+    "§4.2.5#b5",
+    "§4.2.5#b6",
+    "§4.2.5#b7",
+    "§4.2.5#b8",
+    "§4.2.5#b9",
+    "§4.2.5#b10",
+    "§4.1#r10",
+    "FI-ASG-19",
+    "FI-ASG-42",
+    "S-ASG-08",
+    "S-ASG-09",
+    "V-ASG-19",
+    "V-ASG-20",
+    "V-ASG-21",
+    "FLD-ASG-14",
+    "FLD-ASG-15",
+    "TS-ASG-32",
+    "EC-ASG-73",
+    "§4.4#r18",
+    "EB-TBL-5@hand-over-no-pic"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-112-popup-konfirmasi-handover",
+   "title": "Popup Waiting for Confirmation dan dialog Confirm Receipt",
+   "layer": "ui-client",
+   "komponen": "Popup Waiting for Confirmation",
+   "units": [
+    "D-ASG-21",
+    "D-ASG-22",
+    "S-ASG-10",
+    "S-ASG-14",
+    "FLD-ASG-16",
+    "FLD-ASG-17",
+    "V-ASG-22",
+    "V-ASG-23",
+    "DO-ASG-04",
+    "DO-ASG-05",
+    "§4.4#r14",
+    "§4.1#r16"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-113-halaman-unassign-daftar-dan-validasi",
+   "title": "Halaman Unassign: daftar aset, Verification, Photo, dan Submit",
+   "layer": "ui-client",
+   "komponen": "Halaman Unassign",
+   "units": [
+    "T-ASG-10",
+    "§4.1#r8",
+    "§4.2.6#p1",
+    "§4.2.6#p2",
+    "§4.2.6#p3",
+    "§4.2.6#b1",
+    "§4.2.6#b2",
+    "§4.2.6#b3",
+    "§4.2.6#b4",
+    "§4.2.6#b5",
+    "§4.2.6#b6",
+    "§4.2.6#b7",
+    "§4.2.6#b8",
+    "§4.2.6#b9",
+    "§4.2.6#b10",
+    "§4.2.6#b11",
+    "§4.2.6#b12",
+    "§4.2.6#b13",
+    "§4.2.6#b14",
+    "§4.2.6#b15",
+    "§4.2.6#b16",
+    "§4.2.6#b17",
+    "§4.2.6#b18",
+    "§4.2.6#b19",
+    "§4.2.6#b20",
+    "§4.2.6#b21",
+    "FI-ASG-43",
+    "FI-ASG-44",
+    "FI-ASG-45",
+    "FI-ASG-46",
+    "FI-ASG-57",
+    "FI-ASG-58",
+    "FI-ASG-59",
+    "FI-ASG-60",
+    "FI-ASG-61",
+    "FI-ASG-70",
+    "FI-ASG-71",
+    "FI-ASG-72",
+    "FI-ASG-73",
+    "FLD-ASG-10",
+    "FLD-ASG-11",
+    "FLD-ASG-12",
+    "FLD-ASG-13",
+    "V-ASG-27",
+    "V-ASG-28",
+    "V-ASG-29",
+    "FLD-ASG-18",
+    "FLD-ASG-19",
+    "S-ASG-25",
+    "EB-FRM-4@description-report-damaged",
+    "EB-TBL-5@aksi-pemisahan-peran"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-114-halaman-review-approval-keputusan-dan-note",
+   "title": "Halaman Review Approval: keputusan per aset, Approval Note, dan notice",
+   "layer": "ui-client",
+   "komponen": "Halaman Review Approval",
+   "units": [
+    "§4.2.9#b1",
+    "§4.2.9#b2",
+    "§4.2.9#b3",
+    "§4.2.9#b4",
+    "§4.2.9#b5",
+    "§4.2.9#b6",
+    "§4.2.9#b7",
+    "§4.2.9#b8",
+    "§4.2.9#b9",
+    "§4.2.9#b10",
+    "§4.2.9#b11",
+    "§4.2.9#p1",
+    "§4.2.9#p2",
+    "§4.2.9#p4",
+    "§4.2.9#r23",
+    "§4.2.9#r24",
+    "§4.2.9#r25",
+    "§4.2.9#r26",
+    "§4.2.9#r27",
+    "§4.2.9#r28",
+    "FLD-ASG-06",
+    "FLD-ASG-07",
+    "FLD-ASG-08",
+    "V-ASG-16",
+    "EC-ASG-82",
+    "EB-FRM-1@review-approval",
+    "EB-FRM-4@approval-note"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-115-dialog-mark-as-unassigned",
+   "title": "Dialog Mark as Unassigned: pilihan hasil dan Reason",
+   "layer": "ui-client",
+   "komponen": "Dialog Mark as Unassigned",
+   "units": [
+    "D-ASG-26",
+    "FLD-ASG-20",
+    "FLD-ASG-21",
+    "EB-FRM-1@mark-as-unassigned",
+    "EB-FRM-7@mark-as-unassigned",
+    "EB-FRM-4@reason-mark-unassigned"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-116-tabel-transactions-search-sort-paginasi",
+   "title": "Tabel Transactions: siklus Search, siklus Sort, dan paginasi",
+   "layer": "ui-client",
+   "komponen": "Tabel Transactions",
+   "units": [
+    "EB-SRC-4@tabel-transactions",
+    "EB-SRT-3@tabel-transactions",
+    "EB-TBL-7@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Mekanik komponen tabel utama pertama (LY-11); EB-SRT-3 dibagi dengan spec sort ui-e2e lewat bagian."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-117-tabel-transactions-filter-panel",
+   "title": "Tabel Transactions: mekanik Filter Panel",
+   "layer": "ui-client",
+   "komponen": "Tabel Transactions",
+   "units": [
+    "EB-FLT-2@tabel-transactions",
+    "EB-FLT-6@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-118-tabel-transactions-setup-column",
+   "title": "Tabel Transactions: mekanik Setup Column",
+   "layer": "ui-client",
+   "komponen": "Tabel Transactions",
+   "units": [
+    "EB-KOL-1@tabel-transactions",
+    "EB-KOL-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-119-tabel-drafts-bulk-bar",
+   "title": "Tabel Drafts: mekanik seleksi dan Bulk Action Bar",
+   "layer": "ui-client",
+   "komponen": "Tabel Drafts",
+   "units": [
+    "EB-BLK-1@tabel-drafts",
+    "EB-BLK-4",
+    "EB-BLK-6",
+    "§5#r6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-120-tabel-state-kosong-dan-gagal-muat",
+   "title": "Tabel: state kosong, kosong tersaring, loading, dan gagal muat",
+   "layer": "ui-client",
+   "komponen": "Tabel Assignment",
+   "units": [
+    "S-ASG-15",
+    "S-ASG-16",
+    "S-ASG-17",
+    "S-ASG-18",
+    "S-ASG-19",
+    "S-ASG-20",
+    "S-ASG-21",
+    "S-ASG-26",
+    "S-ASG-27",
+    "EB-TBL-1@tabel-transactions",
+    "EB-TBL-1@tabel-drafts",
+    "EB-TBL-1@tabel-assigned-assets",
+    "EB-TBL-1@tabel-history",
+    "EB-TBL-1@approvals-active",
+    "EB-TBL-1@approvals-history"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "State data semua tabel tab dan Approvals dibaca pada komponen tabel yang sama (RC-3 butir 4)."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-121-tabel-tampilan-nilai-kolom",
+   "title": "Tabel: nilai kosong, badge, nama user singkat, markup, status, dan format tanggal",
+   "layer": "ui-client",
+   "komponen": "Tabel Assignment",
+   "units": [
+    "EB-TBL-2@tabel-transactions",
+    "EB-TBL-2@tabel-drafts",
+    "EB-TBL-2@tabel-assigned-assets",
+    "EB-TBL-2@tabel-history",
+    "EB-TBL-4@kolom-requested-by-transactions",
+    "EB-TBL-4@kolom-modified-by-drafts",
+    "EB-TBL-8@tabel-transactions",
+    "S-ASG-12",
+    "EB-XM-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-122-toast-gagal-dan-koneksi",
+   "title": "Toast gagal server, gangguan jaringan, dan reaksi atas respons gagal",
+   "layer": "ui-client",
+   "komponen": "Toast Assignment",
+   "units": [
+    "TS-ASG-26",
+    "TS-ASG-27",
+    "EB-ERR-1@submit-assignment",
+    "EB-ERR-1@save-draft",
+    "EB-ERR-1@cancel-assignment",
+    "EB-ERR-1@handover",
+    "EB-ERR-1@unassign",
+    "EB-ERR-1@change-pic",
+    "EB-ERR-1@keputusan-approval",
+    "EB-FB-4",
+    "EB-DL-5",
+    "EB-DL-2@tabel-transactions"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Reaksi klien atas respons gagal (LY-6) digabung dalam satu kelompok."
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-123-guided-tooltip-halaman-assignment",
+   "title": "Guided Tooltip halaman Assignment dan Review",
+   "layer": "ui-client",
+   "komponen": "Guided Tooltip",
+   "units": [
+    "§4.7#r1",
+    "§4.7#r2",
+    "§4.7#r3",
+    "§4.7#r4",
+    "§4.7#r5",
+    "EB-TBL-10"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-UI-124-breadcrumb-halaman-assignment",
+   "title": "Breadcrumb semua halaman Assignment",
+   "layer": "ui-client",
+   "komponen": "Breadcrumb Assignment",
+   "units": [
+    "EB-TBL-11",
+    "§4.2#p2",
+    "§4.2#p3",
+    "§4.2#r1",
+    "§4.2#r2",
+    "§4.2#r3",
+    "§4.2#r4",
+    "§4.2#r5",
+    "§4.2#r6",
+    "§4.2#r7",
+    "§4.2#r8",
+    "§4.2#r9",
+    "§4.2#r10",
+    "§4.2#r11",
+    "§4.2.1#p1",
+    "§4.2.10#p2",
+    "§4.2.14#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b9",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-201-status-baris-dan-status-header",
+   "title": "Status baris dan status header turunan, termasuk marker dan penanda",
+   "layer": "be-e2e",
+   "units": [
+    "ASSIGN-LOGIC-01a",
+    "ASSIGN-LOGIC-01b",
+    "ASSIGN-LOGIC-01c",
+    "ASSIGN-LOGIC-01d",
+    "ASSIGN-LOGIC-01h",
+    "ASSIGN-LOGIC-01i",
+    "ASSIGN-LOGIC-01j",
+    "ASSIGN-LOGIC-01k",
+    "ASSIGN-LOGIC-01l",
+    "§9.2#p3",
+    "§9.2#p4",
+    "§9.2#p5",
+    "§9.2#p6",
+    "§9.2#r1",
+    "§9.2#r2",
+    "§9.2#r3",
+    "§9.2#r4",
+    "§9.2#r5",
+    "§9.2#r6",
+    "§9.2#r7",
+    "§9.2#r8",
+    "§9.2#r9",
+    "§9.2#r10",
+    "§9.2#r11",
+    "§9.2#r12",
+    "§9.2#r13",
+    "§9.2#r14",
+    "§9.2#r15",
+    "§9.2#r16",
+    "§9.2#r17",
+    "§9.2#r18",
+    "§9.2#b1",
+    "§9.2#b2",
+    "§9.2#b3",
+    "§9.2#p8",
+    "§9.2#p10",
+    "§9.2#p12",
+    "§9.2#p13",
+    "§9.2#p14",
+    "§9.2#p15",
+    "§9.2#p16",
+    "§9.2#p17",
+    "§9.4.3#b1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-202-aturan-efektif-dan-snapshot",
+   "title": "Aturan efektif per aset, snapshot saat Submit, dan perubahan setting",
+   "layer": "be-e2e",
+   "units": [
+    "EC-ASG-37",
+    "EC-ASG-58",
+    "EC-ASG-59",
+    "EC-ASG-60",
+    "EC-ASG-61",
+    "EC-ASG-62",
+    "§9.4.3#b10",
+    "§9.4.3#b11",
+    "§9.7#r22",
+    "ASSIGN-LOGIC-02a",
+    "ASSIGN-LOGIC-02b",
+    "ASSIGN-LOGIC-02c",
+    "ASSIGN-LOGIC-02d",
+    "ASSIGN-LOGIC-02e",
+    "ASSIGN-LOGIC-02f",
+    "ASSIGN-LOGIC-02g",
+    "ASSIGN-LOGIC-02h"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-203-kelayakan-aset-saat-submit",
+   "title": "Kelayakan aset: status, tag, Allow Assign, dan Allowed assignee",
+   "layer": "be-e2e",
+   "units": [
+    "V-ASG-01",
+    "V-ASG-06",
+    "V-ASG-08",
+    "V-ASG-30",
+    "V-ASG-31",
+    "V-ASG-32",
+    "V-ASG-33",
+    "V-ASG-34",
+    "V-ASG-35",
+    "V-ASG-36",
+    "F-ASSIGN-03.k1",
+    "EC-ASG-94",
+    "§9.2#b4",
+    "§9.2#b5",
+    "§9.2#b6",
+    "§9.2#b7",
+    "§9.2#b8",
+    "§9.2#p19",
+    "§9.4.3#b3",
+    "§10#r9",
+    "ASSIGN-LOGIC-03a",
+    "ASSIGN-LOGIC-03b",
+    "ASSIGN-LOGIC-03c",
+    "ASSIGN-LOGIC-03e"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-204-custody-dan-satu-transaksi-aktif",
+   "title": "Custody aset dan satu transaksi aktif per aset",
+   "layer": "be-e2e",
+   "units": [
+    "V-ASG-02",
+    "§9.2#p33",
+    "§9.4.3#b4",
+    "§10#r1",
+    "§9.7#r1",
+    "§9.7#r2",
+    "§9.7#r3",
+    "§9.7#r4",
+    "§9.7#r5",
+    "§9.7#r6",
+    "§9.7#r7",
+    "§9.7#r8",
+    "§9.7#r9",
+    "§9.7#r10",
+    "§9.7#r11",
+    "§9.7#r12",
+    "ASSIGN-LOGIC-04a",
+    "ASSIGN-LOGIC-04b",
+    "ASSIGN-LOGIC-04c",
+    "ASSIGN-LOGIC-04d",
+    "ASSIGN-LOGIC-04e",
+    "ASSIGN-LOGIC-04f",
+    "ASSIGN-LOGIC-04g"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-205-pengelompokan-group-dan-nomor-asg",
+   "title": "Pengelompokan per Group asal dan penomoran ASG",
+   "layer": "be-e2e",
+   "units": [
+    "§9.2#b17",
+    "§9.2#b18",
+    "§9.2#b19",
+    "§9.2#b20",
+    "§9.2#b21",
+    "§9.2#p36",
+    "§9.2#p38",
+    "§9.2#p40",
+    "§9.2#p41",
+    "§9.2#p42",
+    "§9.2#p43",
+    "§9.5#r12",
+    "§9.5#r13",
+    "§10#r2",
+    "ASSIGN-LOGIC-05a",
+    "ASSIGN-LOGIC-05b",
+    "ASSIGN-LOGIC-05c",
+    "ASSIGN-LOGIC-05d",
+    "ASSIGN-LOGIC-05e",
+    "ASSIGN-LOGIC-05g",
+    "ASSIGN-LOGIC-05h",
+    "ASSIGN-LOGIC-05i"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-206-assignee-employee-division-dan-pic",
+   "title": "Aturan Assignee Employee dan Division serta PIC",
+   "layer": "be-e2e",
+   "units": [
+    "V-ASG-10",
+    "V-ASG-11",
+    "F-ASSIGN-03.k2",
+    "EC-ASG-07",
+    "EC-ASG-46",
+    "§10#r4",
+    "§10#r5",
+    "ASSIGN-LOGIC-06a",
+    "ASSIGN-LOGIC-06b",
+    "ASSIGN-LOGIC-06d",
+    "ASSIGN-LOGIC-06e",
+    "ASSIGN-LOGIC-06f",
+    "ASSIGN-LOGIC-06g",
+    "ASSIGN-LOGIC-06h",
+    "ASSIGN-LOGIC-06i",
+    "ASSIGN-LOGIC-06j",
+    "ASSIGN-LOGIC-06l"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-207-field-division-aset-untuk-assignee-division",
+   "title": "Field Division aset diisi dan dikembalikan untuk Assignee Division",
+   "layer": "be-e2e",
+   "units": [
+    "ASSIGN-LOGIC-06n",
+    "ASSIGN-LOGIC-06o",
+    "ASSIGN-LOGIC-06p",
+    "ASSIGN-LOGIC-06q",
+    "ASSIGN-LOGIC-06r",
+    "ASSIGN-LOGIC-06v",
+    "ASSIGN-LOGIC-06w",
+    "EC-ASG-96",
+    "§9.7#r13"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-208-approval-aturan-server",
+   "title": "Aturan approval per aset: Any one, All, self-approval guard, dan reroute",
+   "layer": "be-e2e",
+   "units": [
+    "§9.2#b22",
+    "§9.2#b23",
+    "§9.2#b24",
+    "§9.2#b25",
+    "§9.2#b26",
+    "§9.2#b27",
+    "§9.2#b28",
+    "§9.2#r19",
+    "§9.2#r20",
+    "§9.2#p45",
+    "§9.2#p47",
+    "§9.2#p49",
+    "§9.2#p51",
+    "§9.2#p52",
+    "§9.2#p53",
+    "§9.2#p54",
+    "§9.2#p55",
+    "§9.2#p56",
+    "§9.2#p57",
+    "F-ASSIGN-05.k2",
+    "F-ASSIGN-05.k3",
+    "EC-ASG-12",
+    "EC-ASG-42",
+    "§9.4.3#b5",
+    "§10#r6",
+    "ASSIGN-LOGIC-07a",
+    "ASSIGN-LOGIC-07b",
+    "ASSIGN-LOGIC-07c",
+    "ASSIGN-LOGIC-07d",
+    "ASSIGN-LOGIC-07e",
+    "ASSIGN-LOGIC-07f",
+    "ASSIGN-LOGIC-07g",
+    "ASSIGN-LOGIC-07h",
+    "ASSIGN-LOGIC-07i",
+    "ASSIGN-LOGIC-07j",
+    "ASSIGN-LOGIC-07k",
+    "ASSIGN-LOGIC-07l",
+    "ASSIGN-LOGIC-07n",
+    "ASSIGN-LOGIC-07o",
+    "ASSIGN-LOGIC-07p",
+    "ASSIGN-LOGIC-07q",
+    "ASSIGN-LOGIC-07s",
+    "ASSIGN-LOGIC-07t",
+    "ASSIGN-LOGIC-07u",
+    "ASSIGN-LOGIC-07v",
+    "ASSIGN-LOGIC-07w"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b10",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-209-handover-aturan-server",
+   "title": "Aturan Handover: scan wajib, sesi konfirmasi, jendela konfirmasi, dan handover sebagian",
+   "layer": "be-e2e",
+   "units": [
+    "§9.2#b29",
+    "§9.2#b30",
+    "§9.2#b31",
+    "§9.2#b32",
+    "§9.2#b33",
+    "§9.2#b34",
+    "§9.2#b35",
+    "§9.2#b36",
+    "§9.2#b37",
+    "§9.2#p60",
+    "§9.2#p62",
+    "§9.2#p64",
+    "§9.2#p65",
+    "§9.2#p66",
+    "F-ASSIGN-06.k1",
+    "F-ASSIGN-06.k2",
+    "F-ASSIGN-06.k3",
+    "F-ASSIGN-06.k4",
+    "F-ASSIGN-06.k5",
+    "F-ASSIGN-06.k6",
+    "F-ASSIGN-06.k8",
+    "EC-ASG-15",
+    "EC-ASG-17",
+    "EC-ASG-51",
+    "EC-ASG-70",
+    "DO-ASG-08",
+    "§9.5#r10",
+    "§9.4.3#b8",
+    "§10#r7",
+    "ASSIGN-LOGIC-08a",
+    "ASSIGN-LOGIC-08b",
+    "ASSIGN-LOGIC-08c",
+    "ASSIGN-LOGIC-08d",
+    "ASSIGN-LOGIC-08e",
+    "ASSIGN-LOGIC-08f",
+    "ASSIGN-LOGIC-08g",
+    "ASSIGN-LOGIC-08h",
+    "ASSIGN-LOGIC-08i",
+    "ASSIGN-LOGIC-08j",
+    "ASSIGN-LOGIC-08k",
+    "ASSIGN-LOGIC-08l",
+    "ASSIGN-LOGIC-08m",
+    "ASSIGN-LOGIC-08n",
+    "ASSIGN-LOGIC-08o",
+    "ASSIGN-LOGIC-08p",
+    "ASSIGN-LOGIC-08q",
+    "ASSIGN-LOGIC-08r",
+    "ASSIGN-LOGIC-08s",
+    "ASSIGN-LOGIC-08t",
+    "ASSIGN-LOGIC-08u"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-210-unassign-aturan-server",
+   "title": "Aturan Unassign: Aktor Assignment, marker, dan partial unassign",
+   "layer": "be-e2e",
+   "units": [
+    "§9.2#b38",
+    "§9.2#b39",
+    "§9.2#b40",
+    "§9.2#b41",
+    "§9.2#b42",
+    "§9.2#b43",
+    "§9.2#b44",
+    "§9.2#b45",
+    "§9.2#b46",
+    "F-ASSIGN-07.k2",
+    "F-ASSIGN-07.k5",
+    "§9.4.3#b9",
+    "§9.4.3#b12",
+    "ASSIGN-LOGIC-09a",
+    "ASSIGN-LOGIC-09b",
+    "ASSIGN-LOGIC-09c",
+    "ASSIGN-LOGIC-09d",
+    "ASSIGN-LOGIC-09e",
+    "ASSIGN-LOGIC-09f",
+    "ASSIGN-LOGIC-09g",
+    "ASSIGN-LOGIC-09h",
+    "ASSIGN-LOGIC-09i",
+    "ASSIGN-LOGIC-09j",
+    "ASSIGN-LOGIC-09k",
+    "ASSIGN-LOGIC-09l",
+    "ASSIGN-LOGIC-09m",
+    "ASSIGN-LOGIC-09n",
+    "ASSIGN-LOGIC-09o",
+    "ASSIGN-LOGIC-09p",
+    "ASSIGN-LOGIC-09q",
+    "ASSIGN-LOGIC-09r",
+    "ASSIGN-LOGIC-09s",
+    "ASSIGN-LOGIC-09t",
+    "ASSIGN-LOGIC-09u",
+    "ASSIGN-LOGIC-09v"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-211-batas-aset-per-assignee-dan-bulk-row-limit",
+   "title": "Max assets per assignee dan Bulk Transaction Row Limit",
+   "layer": "be-e2e",
+   "units": [
+    "ASSIGN-LOGIC-01m",
+    "§9.2#p21",
+    "§9.2#p23",
+    "§9.2#p25",
+    "§9.2#p26",
+    "§9.2#p27",
+    "§9.2#p28",
+    "§9.2#p29",
+    "§9.2#b9",
+    "§9.2#b10",
+    "§9.2#b11",
+    "§9.2#b12",
+    "§9.2#p31",
+    "§9.2#b13",
+    "§9.2#b14",
+    "§9.2#b15",
+    "§9.2#b16",
+    "EC-ASG-04",
+    "EC-ASG-90",
+    "EC-ASG-91",
+    "EC-ASG-92",
+    "V-ASG-13",
+    "F-ASSIGN-03.k4",
+    "§9.5#r8",
+    "ASSIGN-LOGIC-10a",
+    "ASSIGN-LOGIC-10b",
+    "ASSIGN-LOGIC-10c",
+    "ASSIGN-LOGIC-10d",
+    "ASSIGN-LOGIC-10e",
+    "ASSIGN-LOGIC-10f"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-212-timeout-dan-penutupan-otomatis",
+   "title": "Transaction timeout, batas serah terima, dan penutupan otomatis",
+   "layer": "be-e2e",
+   "units": [
+    "F-ASSIGN-09.k1",
+    "F-ASSIGN-09.k2",
+    "EC-ASG-20",
+    "EC-ASG-21",
+    "EC-ASG-22",
+    "EC-ASG-55",
+    "EC-ASG-57",
+    "§9.5#r14",
+    "§9.4.3#b7",
+    "ASSIGN-LOGIC-12a",
+    "ASSIGN-LOGIC-12b",
+    "ASSIGN-LOGIC-12c",
+    "ASSIGN-LOGIC-12d",
+    "ASSIGN-LOGIC-12e",
+    "ASSIGN-LOGIC-12f",
+    "ASSIGN-LOGIC-12g",
+    "ASSIGN-LOGIC-12h",
+    "ASSIGN-LOGIC-12i",
+    "ASSIGN-LOGIC-12j",
+    "ASSIGN-LOGIC-12k",
+    "ASSIGN-LOGIC-12l",
+    "ASSIGN-LOGIC-12m",
+    "ASSIGN-LOGIC-12n",
+    "ASSIGN-LOGIC-12o",
+    "ASSIGN-LOGIC-12p",
+    "ASSIGN-LOGIC-12q",
+    "ASSIGN-LOGIC-12r",
+    "ASSIGN-LOGIC-12s",
+    "ASSIGN-LOGIC-12t",
+    "ASSIGN-LOGIC-12u",
+    "ASSIGN-LOGIC-12v",
+    "ASSIGN-LOGIC-12w"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-213-draft-bersama-aturan-server",
+   "title": "Draft bersama: cakupan, versi, dan tanpa kunci aset",
+   "layer": "be-e2e",
+   "units": [
+    "§9.2#b56",
+    "§9.2#b57",
+    "§9.2#b58",
+    "§9.2#b59",
+    "§9.2#b60",
+    "§9.2#b61",
+    "§9.2#p73",
+    "§9.2#r25",
+    "§9.2#r26",
+    "§9.2#r27",
+    "§9.2#r28",
+    "§9.2#r29",
+    "§9.2#r30",
+    "§9.2#r31",
+    "§9.2#r32",
+    "§9.2#r33",
+    "§9.2#r34",
+    "§9.4.3#b2",
+    "ASSIGN-LOGIC-13a",
+    "ASSIGN-LOGIC-13b",
+    "ASSIGN-LOGIC-13c",
+    "ASSIGN-LOGIC-13d",
+    "ASSIGN-LOGIC-13e",
+    "ASSIGN-LOGIC-13f",
+    "ASSIGN-LOGIC-13g",
+    "ASSIGN-LOGIC-13h",
+    "ASSIGN-LOGIC-13i",
+    "ASSIGN-LOGIC-13j",
+    "ASSIGN-LOGIC-13k",
+    "ASSIGN-LOGIC-13l",
+    "ASSIGN-LOGIC-13m",
+    "ASSIGN-LOGIC-13n",
+    "ASSIGN-LOGIC-13o",
+    "ASSIGN-LOGIC-13p",
+    "ASSIGN-LOGIC-13q",
+    "ASSIGN-LOGIC-13r",
+    "ASSIGN-LOGIC-13s"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-214-cakupan-group-dan-authz-server",
+   "title": "Cakupan Group dan penolakan aksi tanpa hak di server",
+   "layer": "be-e2e",
+   "units": [
+    "V-ASG-03",
+    "EC-ASG-23",
+    "F-ASSIGN-07.k1",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#b1",
+    "§9.3#b2",
+    "EB-AKS-3@submit-assignment",
+    "EB-AKS-3@save-draft",
+    "EB-AKS-3@cancel-assignment",
+    "EB-AKS-3@handover",
+    "EB-AKS-3@unassign",
+    "EB-AKS-3@change-pic",
+    "EB-AKS-3@keputusan-approval",
+    "ASSIGN-LOGIC-14a",
+    "ASSIGN-LOGIC-14b",
+    "ASSIGN-LOGIC-14c",
+    "ASSIGN-LOGIC-14d",
+    "ASSIGN-LOGIC-14e",
+    "ASSIGN-LOGIC-14f",
+    "ASSIGN-LOGIC-14g"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-215-pemisahan-peran-server",
+   "title": "Pemisahan peran: Aktor yang menjadi Assignee atau PIC",
+   "layer": "be-e2e",
+   "units": [
+    "§9.4.3#b6",
+    "ASSIGN-LOGIC-15a",
+    "ASSIGN-LOGIC-15c",
+    "ASSIGN-LOGIC-15d",
+    "ASSIGN-LOGIC-15e",
+    "ASSIGN-LOGIC-15f",
+    "ASSIGN-LOGIC-15g",
+    "ASSIGN-LOGIC-15h"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-216-pengecualian-saat-ditugaskan-server",
+   "title": "Report Missing, Report Damaged, tag diganti, dan aset Missing saat ditugaskan",
+   "layer": "be-e2e",
+   "units": [
+    "§3#p10",
+    "ASSIGN-LOGIC-16b",
+    "ASSIGN-LOGIC-16c",
+    "ASSIGN-LOGIC-16d",
+    "ASSIGN-LOGIC-16e",
+    "ASSIGN-LOGIC-16f",
+    "ASSIGN-LOGIC-16g",
+    "ASSIGN-LOGIC-16h",
+    "ASSIGN-LOGIC-16i",
+    "ASSIGN-LOGIC-16j",
+    "ASSIGN-LOGIC-16k",
+    "ASSIGN-LOGIC-16l",
+    "ASSIGN-LOGIC-16m",
+    "ASSIGN-LOGIC-16n",
+    "ASSIGN-LOGIC-16o",
+    "ASSIGN-LOGIC-16p",
+    "ASSIGN-LOGIC-16q",
+    "ASSIGN-LOGIC-16r",
+    "ASSIGN-LOGIC-16s",
+    "ASSIGN-LOGIC-16t",
+    "ASSIGN-LOGIC-16u",
+    "ASSIGN-LOGIC-16v",
+    "ASSIGN-LOGIC-16w",
+    "ASSIGN-LOGIC-16x",
+    "ASSIGN-LOGIC-16y",
+    "ASSIGN-LOGIC-16z",
+    "ASSIGN-LOGIC-16aa",
+    "ASSIGN-LOGIC-16ab",
+    "ASSIGN-LOGIC-16ac",
+    "ASSIGN-LOGIC-16ai",
+    "ASSIGN-LOGIC-16aj",
+    "ASSIGN-LOGIC-16ak",
+    "ASSIGN-LOGIC-16al",
+    "ASSIGN-LOGIC-16am",
+    "ASSIGN-LOGIC-16an",
+    "ASSIGN-LOGIC-16ao"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-217-pencatatan-log-transaksi",
+   "title": "Pencatatan ke log transaksi dan snapshot nama pelaku",
+   "layer": "be-e2e",
+   "units": [
+    "§8.3#b1",
+    "§8.3#b2",
+    "§8.3#b3",
+    "§8.3#b4",
+    "ASSIGN-LOGIC-17a",
+    "ASSIGN-LOGIC-17b",
+    "ASSIGN-LOGIC-17c",
+    "ASSIGN-LOGIC-17d",
+    "ASSIGN-LOGIC-17e",
+    "ASSIGN-LOGIC-17f",
+    "ASSIGN-LOGIC-17g"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-218-plan-gating-server",
+   "title": "Plan gating server: level Full, Basic, None dan penutupan T-0",
+   "layer": "be-e2e",
+   "units": [
+    "§9.10#p1",
+    "§9.10#r1",
+    "§9.10#r2",
+    "§9.10#r3",
+    "§9.10#r4",
+    "§9.10#r5",
+    "§9.10#r6",
+    "§9.10#r7",
+    "§9.10#r8",
+    "§9.10#r9",
+    "§9.10#r10",
+    "§9.10#r11",
+    "§9.10#r12",
+    "§9.10#r13",
+    "§9.10#r14",
+    "§9.10#r15",
+    "§9.10#p9",
+    "§9.10#r29",
+    "§9.10#r30",
+    "§9.10#r31",
+    "§9.10#r32",
+    "EC-ASG-105",
+    "EC-ASG-114",
+    "ASSIGN-LOGIC-18b",
+    "ASSIGN-LOGIC-18c",
+    "ASSIGN-LOGIC-18g",
+    "ASSIGN-LOGIC-18h",
+    "ASSIGN-LOGIC-18i",
+    "ASSIGN-LOGIC-18j",
+    "ASSIGN-LOGIC-18k",
+    "ASSIGN-LOGIC-18l",
+    "ASSIGN-LOGIC-18m",
+    "ASSIGN-LOGIC-18o",
+    "ASSIGN-LOGIC-18p",
+    "ASSIGN-LOGIC-18q",
+    "ASSIGN-LOGIC-18r",
+    "ASSIGN-LOGIC-18s",
+    "ASSIGN-LOGIC-18t",
+    "ASSIGN-LOGIC-18u",
+    "ASSIGN-LOGIC-18v",
+    "ASSIGN-LOGIC-18w",
+    "ASSIGN-LOGIC-18y",
+    "ASSIGN-LOGIC-18z",
+    "ASSIGN-LOGIC-18aa",
+    "ASSIGN-LOGIC-18ab",
+    "ASSIGN-LOGIC-18ac",
+    "ASSIGN-LOGIC-18ad"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-219-status-transaksi-vs-status-global-aset",
+   "title": "Status transaksi berbeda dari status global aset",
+   "layer": "be-e2e",
+   "units": [
+    "ASSIGN-LOGIC-19a",
+    "ASSIGN-LOGIC-19b",
+    "ASSIGN-LOGIC-19c",
+    "ASSIGN-LOGIC-19d",
+    "ASSIGN-LOGIC-19e",
+    "ASSIGN-LOGIC-19f",
+    "ASSIGN-LOGIC-19g",
+    "ASSIGN-LOGIC-19h",
+    "ASSIGN-LOGIC-19i",
+    "ASSIGN-LOGIC-19j",
+    "ASSIGN-LOGIC-19k"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-220-mark-as-unassigned-server",
+   "title": "Wind-down Mark as Unassigned pada level None di server",
+   "layer": "be-e2e",
+   "units": [
+    "ASSIGN-LOGIC-20b",
+    "ASSIGN-LOGIC-20c",
+    "ASSIGN-LOGIC-20d",
+    "ASSIGN-LOGIC-20e",
+    "ASSIGN-LOGIC-20f",
+    "ASSIGN-LOGIC-20g",
+    "ASSIGN-LOGIC-20h",
+    "ASSIGN-LOGIC-20i",
+    "ASSIGN-LOGIC-20j",
+    "ASSIGN-LOGIC-20k",
+    "ASSIGN-LOGIC-20l",
+    "ASSIGN-LOGIC-20m",
+    "ASSIGN-LOGIC-20n",
+    "ASSIGN-LOGIC-20o",
+    "ASSIGN-LOGIC-20p",
+    "ASSIGN-LOGIC-20q",
+    "ASSIGN-LOGIC-20r",
+    "ASSIGN-LOGIC-20s",
+    "ASSIGN-LOGIC-20t",
+    "ASSIGN-LOGIC-20u",
+    "ASSIGN-LOGIC-20v",
+    "ASSIGN-LOGIC-20w",
+    "ASSIGN-LOGIC-20x",
+    "ASSIGN-LOGIC-20y",
+    "ASSIGN-LOGIC-20z",
+    "ASSIGN-LOGIC-20aa",
+    "ASSIGN-LOGIC-20ab",
+    "ASSIGN-LOGIC-20ac",
+    "ASSIGN-LOGIC-20ad"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-221-konkurensi-idempotensi-dan-penolakan-server",
+   "title": "Konkurensi, idempotensi aksi, dan penolakan server tanpa perubahan data",
+   "layer": "be-e2e",
+   "units": [
+    "§9.6#r1",
+    "§9.6#r2",
+    "§9.6#r3",
+    "§9.6#r4",
+    "§9.6#r5",
+    "§9.6#r6",
+    "§9.6#r7",
+    "§9.6#r8",
+    "§9.6#r9",
+    "§9.6#r10",
+    "§9.6#r11",
+    "§9.6#r12",
+    "EB-CON-1",
+    "EB-CON-3",
+    "EB-EDG-1",
+    "EB-ERR-3",
+    "EB-ERR-4",
+    "EC-ASG-10",
+    "EC-ASG-47",
+    "EC-ASG-48",
+    "EC-ASG-85",
+    "EC-ASG-49",
+    "F-ASSIGN-03.k5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-222-nasib-dependen-dan-sinkronisasi",
+   "title": "Nasib data dependen dan sinkronisasi state lintas modul",
+   "layer": "be-e2e",
+   "units": [
+    "§9.7#p1",
+    "EB-EDG-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-223-validasi-panjang-teks-server",
+   "title": "Batas karakter Purpose, Note, Approval Note, Description, dan Reason di server",
+   "layer": "be-e2e",
+   "units": [
+    "EB-FRM-4@purpose",
+    "EB-FRM-4@note",
+    "EB-FRM-4@approval-note",
+    "EB-FRM-4@description-report-damaged",
+    "EB-FRM-4@reason-mark-unassigned"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Penolakan server atas teks melebihi batas; bagian klien dimiliki spec ui-client."
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-224-pencarian-urutan-dan-saringan-server",
+   "title": "Hasil Search, Sort, dan Filter di server per kelas kolom",
+   "layer": "be-e2e",
+   "units": [
+    "EB-SRC-1",
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "EB-FLT-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-ASSIGN-BE-225-isi-berkas-download",
+   "title": "Isi berkas CSV dan XLSX hasil Download",
+   "layer": "be-e2e",
+   "units": [
+    "EB-DL-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b11",
+   "priority": "Medium",
+   "harness": "isi-berkas",
+   "varianPlatform": [],
+   "alasan": null
+  }
+ ],
+ "na": {
+  "§Ringkasan Cepat#b1": "penunjuk: §3; «Ringkasan Cepat» merangkum aturan yang dimiliki unit §3, §4, dan §9",
+  "§Ringkasan Cepat#b2": "penunjuk: §3; «Ringkasan Cepat» merangkum aturan yang dimiliki unit §3, §4, dan §9",
+  "§Ringkasan Cepat#b3": "penunjuk: §3; «Ringkasan Cepat» merangkum aturan yang dimiliki unit §3, §4, dan §9",
+  "§Ringkasan Cepat#b4": "penunjuk: §3; «Ringkasan Cepat» merangkum aturan yang dimiliki unit §3, §4, dan §9",
+  "§Dependencies#b1": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b2": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b3": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b4": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b5": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b6": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b7": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b8": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b9": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b10": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b11": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b12": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b13": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b14": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Dependencies#b15": "penunjuk: §11; daftar modul «Digunakan oleh» dan «Membutuhkan» tanpa perilaku sendiri",
+  "§Aturan Logika Modul#p1": "penunjuk: ASSIGN-LOGIC-01a",
+  "§Perbandingan dengan Borrow#p1": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r1": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r2": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r3": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r4": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r5": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r6": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r7": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r8": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r9": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r10": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r11": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r12": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§Perbandingan dengan Borrow#r13": "penunjuk: ASSIGN-LOGIC-01a («Tabel turunan (indeks): setiap sel menunjuk aturan pemiliknya»)",
+  "§2.2#p1": "penunjuk: §9.11",
+  "§3#p1": "penunjuk: §8.1; «Setiap kejadian dicatat dan diberi notifikasi sesuai katalog node di §8.1 dan katalog event di §9.8»",
+  "§3#p12": "penunjuk: §8.1; «Pencatatan dan notifikasi penutupan: §8.1 dan §9.8»",
+  "§4.2#p1": "Pengantar bagian: «Tanpa wireframe ASCII penuh. Bagian ini memuat hierarki komponen, copy verbatim, dan perilaku»",
+  "§9#p1": "penunjuk: §9.2; «Acuan foundation (jangan tulis ulang aturannya)»",
+  "§9.2#p1": "penunjuk: §9.5; «Setiap nilai atau istilah lintas section punya satu pemilik: aturan di tabel Aturan Logika Modul, angka di §9.5»",
+  "§9.4#p1": "penunjuk: §9.7; «D10 (failure) → error-handling-convention.md §2 dan §7; D8 → §9.7»",
+  "§9.6#r16": "penunjuk: F-ASSIGN-10.k1; «Dimiliki damaged.md dan missing.md (Action Resilience pemilik)»",
+  "§4#p1": "Metadata dokumen: «Ditujukan untuk: Claude Design / UI Designer»",
+  "§4.1#p3": "penunjuk: T-ASG-01 («Konvensi cell pada Setup Column di bawah: Toggle ☑ = Hideable»)",
+  "§4.5#p1": "Ketentuan tata letak responsif (scroll horizontal), bukan perilaku teruji (LR-5)",
+  "§5#r10": "penunjuk: T-ASG-01 (glosarium istilah kolom waktu dan pelaku)",
+  "§9.4.1#r1": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r2": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r3": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r4": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r5": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r6": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r7": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r8": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r9": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r10": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r11": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r12": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r13": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r14": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.1#r15": "penunjuk: §9.4.2; checklist dimensi D1 sampai D15 menunjuk matriks edge case",
+  "§9.4.3#p1": "Penanda blok kode «~~~» pada daftar Must NOT",
+  "§9.4.3#p2": "Judul daftar «Must NOT:»",
+  "§9.4.3#p3": "Penanda blok kode «~~~» pada daftar Must NOT",
+  "§9.4.3#b13": "Aturan penulisan dokumen: «Menyalin angka atau copy Bulk Transaction Row Limit ke dokumen ini», bukan perilaku produk",
+  "§9.4.3#b14": "Aturan penulisan dokumen: «Menyalin copy notifikasi ke dokumen ini», bukan perilaku produk",
+  "§9.4.4#p1": "penunjuk: §9.2; «Tabel turunan dari §9.2 (arah perubahan: §9.2 → peta)»",
+  "§9.4.4#r32": "penunjuk: §9.2; «Tabel turunan dari §9.2 (arah perubahan: §9.2 → peta)»",
+  "§9.4.4#p2": "penunjuk: §9.2; «Tabel turunan dari §9.2 (arah perubahan: §9.2 → peta)»",
+  "§11#r1": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r2": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r3": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r4": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r5": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r6": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r7": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r8": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r9": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r10": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r11": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r12": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r13": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r14": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r15": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r16": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r17": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r18": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r19": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r20": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r21": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r22": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r23": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r24": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r25": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r26": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r27": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r28": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r29": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r30": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r31": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r32": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#r33": "penunjuk: §9.7; baris dependensi dan dampak perubahan terhadap modul lain, tanpa perilaku sendiri",
+  "§11#p2": "penunjuk: §11; «Pointer ke assignment.md di modul lain (diubah terpisah, tidak disalin ke sini)»",
+  "§12#r2": "Open Item 2 «Handover Note» dinyatakan «Fase berikutnya», bukan perilaku v1",
+  "§12#r4": "Open Item 5 «Sapuan pernyataan absolut penuh atas seluruh PRD» berstatus «Belum dijalankan», proses dokumen",
+  "§12.1#r1": "Backlog di luar v1: «Setelah v1» atau «v2»",
+  "§12.1#r2": "Backlog di luar v1: «Setelah v1» atau «v2»",
+  "§12.1#r3": "Backlog di luar v1: «Setelah v1» atau «v2»",
+  "§12.1#r4": "Backlog di luar v1: «Setelah v1» atau «v2»",
+  "§12.1#r5": "Backlog di luar v1: «Setelah v1» atau «v2»"
+ },
+ "ditahan": {
+  "ASSIGN-LOGIC-06c": 2,
+  "§12#r1": 1,
+  "§12#r3": 3
+ },
+ "temuan": [
+  {
+   "no": 1,
+   "jenis": "kurang",
+   "units": [
+    "§12#r1"
+   ],
+   "kutipan": [
+    "§12 Open Item 1: «Copy notifikasi event Assignment (§9.8) ditinjau PM dalam satu batch mengikuti padanan Borrow; perhatian khusus pada `assignment_confirmation_required` karena memuat pernyataan tanggung jawab» | «Menunggu persetujuan»"
+   ],
+   "dampak": "Open Item 1 ditahan sampai PM menyetujui copy; unit katalog event §9.8 tetap diasersi sebagaimana tertulis dan perlu disamakan bila copy berubah"
+  },
+  {
+   "no": 2,
+   "jenis": "kurang",
+   "units": [
+    "ASSIGN-LOGIC-06c"
+   ],
+   "kutipan": [
+    "ASSIGN-LOGIC-06c: «ditolak dengan pesan blokir sesuai `settings-transaction-rules.md` §9.2 \"F-FATR-10\" (templat pesan menunggu §12 Open Item 4 halaman itu)»"
+   ],
+   "dampak": "Pesan blokir untuk aset ber-Allowed assignee OFF/OFF belum ditetapkan, sehingga unit ditahan; penolakan tipe Assignee per aset tetap diasersi lewat V-ASG-08 dan V-ASG-36"
+  },
+  {
+   "no": 3,
+   "jenis": "bertentangan",
+   "units": [
+    "§12#r3"
+   ],
+   "kutipan": [
+    "§12 Open Item 3: «`approvals/` masih multi-file dan menyebut alur Assignment lama» | «Menunggu migrasi `approvals/`»",
+    "§4.2.10: «Active memuat pengajuan Waiting for Approval yang memiliki ≥ 1 aset dengan saya sebagai approver»"
+   ],
+   "dampak": "Dokumen approvals/ menyebut alur Assignment lama sehingga berlawanan dengan PRD ini; unit Open Item ditahan, sedangkan spec Approvals mengikuti PRD ini sampai approvals/ dimigrasi"
+  }
+ ],
+ "ekspektasiBaku": {
+  "EB-AKS-1": {
+   "status": "berlaku"
+  },
+  "EB-AKS-2": {
+   "status": "berlaku"
+  },
+  "EB-AKS-3": {
+   "status": "berlaku",
+   "surface": [
+    "submit-assignment",
+    "save-draft",
+    "cancel-assignment",
+    "handover",
+    "unassign",
+    "change-pic",
+    "keputusan-approval"
+   ]
+  },
+  "EB-AKS-4": {
+   "status": "berlaku"
+  },
+  "EB-AKS-5": {
+   "status": "tidak berlaku",
+   "alasan": "§2.1: akses ditetapkan per role (Total Control, Group Manager, Asset Admin, Approver, Monitoring & Report, Read Only), bukan per capability tunggal; «Pemegang Update Manage asset & TAG saja tidak cukup»"
+  },
+  "EB-AKS-6": {
+   "status": "berlaku"
+  },
+  "EB-AKS-7": {
+   "status": "berlaku"
+  },
+  "EB-AKS-8": {
+   "status": "tidak berlaku",
+   "alasan": "§9.10: perilaku Assignment berbeda per level Feature Suite (None, Basic, Full), bukan identik di setiap tier; dinyatakan lewat unit §9.10 dan ASSIGN-LOGIC-18"
+  },
+  "EB-AKS-9": {
+   "status": "tidak berlaku",
+   "alasan": "§2.1 dan §9.3: tidak ada baris Default atau Self pada tabel modul; pembatasan aktor yang menjadi Assignee atau PIC diatur ASSIGN-LOGIC-15"
+  },
+  "EB-FB-1": {
+   "status": "tidak berlaku",
+   "alasan": "§7.3: katalog toast TS-ASG-01 sampai TS-ASG-35 memuat copy sukses dan gagal setiap aksi tulis (TS-ASG-26 untuk gagal server), sehingga PRD tidak diam"
+  },
+  "EB-FB-2": {
+   "status": "berlaku",
+   "surface": [
+    "download-transactions"
+   ]
+  },
+  "EB-FB-3": {
+   "status": "berlaku",
+   "surface": [
+    "edit-draft"
+   ]
+  },
+  "EB-FB-4": {
+   "status": "berlaku"
+  },
+  "EB-FRM-1": {
+   "status": "berlaku",
+   "surface": [
+    "assignment-request",
+    "review-approval",
+    "mark-as-unassigned"
+   ]
+  },
+  "EB-FRM-2": {
+   "status": "berlaku",
+   "surface": [
+    "assignment-request"
+   ],
+   "alasan": "§4.2.3: form halaman penuh ditinggalkan lewat [Cancel] atau breadcrumb, bukan ✕, Esc, atau backdrop; klausa (a), (c), dan (d) hanya berlaku sejauh D-ASG-11 menaunginya"
+  },
+  "EB-FRM-3": {
+   "status": "tidak berlaku",
+   "alasan": "§4.2.3: «Footer memakai [Cancel] ... tanpa [Clear Field]»"
+  },
+  "EB-FRM-4": {
+   "status": "berlaku",
+   "surface": [
+    "purpose",
+    "note",
+    "approval-note",
+    "description-report-damaged",
+    "reason-mark-unassigned"
+   ]
+  },
+  "EB-FRM-5": {
+   "status": "tidak berlaku",
+   "alasan": "§6 V-ASG-05: keunikan hanya untuk aset per form dengan toast khusus, dan §9.9 tidak memuat field teks unik"
+  },
+  "EB-FRM-7": {
+   "status": "berlaku",
+   "surface": [
+    "assignment-request",
+    "mark-as-unassigned"
+   ]
+  },
+  "EB-FRM-8": {
+   "status": "berlaku",
+   "surface": [
+    "edit-draft"
+   ],
+   "alasan": "§4.2.3: «Edit draft membuka form yang sama dengan nilai tersimpan»; tidak ada form Edit terpisah"
+  },
+  "EB-FRM-9": {
+   "status": "berlaku"
+  },
+  "EB-TBL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions",
+    "tabel-drafts",
+    "tabel-assigned-assets",
+    "tabel-history",
+    "approvals-active",
+    "approvals-history"
+   ]
+  },
+  "EB-TBL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions",
+    "tabel-drafts",
+    "tabel-assigned-assets",
+    "tabel-history"
+   ]
+  },
+  "EB-TBL-3": {
+   "status": "berlaku",
+   "surface": [
+    "kolom-label-select-asset"
+   ]
+  },
+  "EB-TBL-4": {
+   "status": "berlaku",
+   "surface": [
+    "kolom-requested-by-transactions",
+    "kolom-modified-by-drafts"
+   ]
+  },
+  "EB-TBL-5": {
+   "status": "berlaku",
+   "surface": [
+    "hand-over-no-pic",
+    "submit-luar-cakupan",
+    "aksi-pemisahan-peran"
+   ]
+  },
+  "EB-TBL-7": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ],
+   "alasan": "§4.1a: baris tabel Transactions tidak dapat dihapus, sehingga klausa hapus baris terakhir tidak berlaku"
+  },
+  "EB-TBL-8": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-TBL-9": {
+   "status": "berlaku",
+   "surface": [
+    "select-asset",
+    "select-assignee",
+    "select-user-pic"
+   ]
+  },
+  "EB-TBL-10": {
+   "status": "berlaku"
+  },
+  "EB-TBL-11": {
+   "status": "berlaku"
+  },
+  "EB-TBL-12": {
+   "status": "tidak berlaku",
+   "alasan": "§4: «Copy/string UI: Bahasa Inggris»; PRD tidak menetapkan kolom Verbatim atau Translatable"
+  },
+  "EB-TBL-13": {
+   "status": "tidak berlaku",
+   "alasan": "§4.1: halaman modul tidak memiliki widget atau metric card; §9.10 hanya menyebut Reports / Dashboard modul lain disembunyikan"
+  },
+  "EB-BLK-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-drafts"
+   ]
+  },
+  "EB-BLK-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-drafts"
+   ]
+  },
+  "EB-BLK-3": {
+   "status": "berlaku"
+  },
+  "EB-BLK-4": {
+   "status": "berlaku"
+  },
+  "EB-BLK-5": {
+   "status": "tidak berlaku",
+   "alasan": "§2.1 dan §9.3: tidak ada baris Default atau Self pada tabel bulk modul; aset milik aktor sendiri dilewati menurut ASSIGN-LOGIC-15 dan ASSIGN-LOGIC-20"
+  },
+  "EB-BLK-6": {
+   "status": "berlaku"
+  },
+  "EB-SRC-1": {
+   "status": "berlaku"
+  },
+  "EB-SRC-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-SRC-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-SRC-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-SRC-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-SRC-6": {
+   "status": "tidak berlaku",
+   "alasan": "§4.1: modul tidak memiliki surface tree; Group hanya dipakai sebagai filter Tree picker (§4.1a) tanpa pencarian tree"
+  },
+  "EB-FLT-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-FLT-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-FLT-3": {
+   "status": "berlaku"
+  },
+  "EB-FLT-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-FLT-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-FLT-6": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-FLT-7": {
+   "status": "tidak berlaku",
+   "alasan": "§9.4.2 EC-ASG-35 dan EC-ASG-93: Division dan Group yang dipakai baris aktif tidak dapat dihapus (in-use guard), sehingga opsi filter tidak hilang saat dipakai sebagai kriteria"
+  },
+  "EB-SRT-1": {
+   "status": "berlaku"
+  },
+  "EB-SRT-2": {
+   "status": "berlaku"
+  },
+  "EB-SRT-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-KOL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-KOL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-KOL-3": {
+   "status": "berlaku"
+  },
+  "EB-DL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-DL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-DL-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-transactions"
+   ]
+  },
+  "EB-DL-4": {
+   "status": "berlaku"
+  },
+  "EB-DL-5": {
+   "status": "berlaku"
+  },
+  "EB-LOG-1": {
+   "status": "tidak berlaku",
+   "alasan": "§5: «Tidak ada modal Changelog; riwayat ada di Assignment Log per aset (§8.1)»; entri log dinyatakan oleh katalog node §8.1"
+  },
+  "EB-LOG-2": {
+   "status": "tidak berlaku",
+   "alasan": "§5: «Tidak ada modal Changelog; riwayat ada di Assignment Log per aset (§8.1)»; ASSIGN-LOGIC-17e menetapkan nilai snapshot di log"
+  },
+  "EB-ERR-1": {
+   "status": "berlaku",
+   "surface": [
+    "submit-assignment",
+    "save-draft",
+    "cancel-assignment",
+    "handover",
+    "unassign",
+    "change-pic",
+    "keputusan-approval"
+   ]
+  },
+  "EB-ERR-2": {
+   "status": "berlaku",
+   "surface": [
+    "delete-draft"
+   ]
+  },
+  "EB-ERR-3": {
+   "status": "berlaku"
+  },
+  "EB-ERR-4": {
+   "status": "berlaku"
+  },
+  "EB-CON-1": {
+   "status": "berlaku"
+  },
+  "EB-CON-2": {
+   "status": "tidak berlaku",
+   "alasan": "§9.4.2 EC-ASG-10: hasil dua aktor men-Submit aset sama bersamaan dinyatakan PRD; tidak ada field unik bermakna «[Field] already exists»"
+  },
+  "EB-CON-3": {
+   "status": "berlaku"
+  },
+  "EB-CON-4": {
+   "status": "tidak berlaku",
+   "alasan": "§10: modul tidak membuat master data; batas jumlah dinyatakan ASSIGN-LOGIC-10 (Max assets per assignee) dan §9.2 \"9.2.2a\" (Bulk Transaction Row Limit)"
+  },
+  "EB-EDG-1": {
+   "status": "berlaku"
+  },
+  "EB-EDG-2": {
+   "status": "berlaku"
+  },
+  "EB-EDG-3": {
+   "status": "berlaku"
+  },
+  "EB-XM-1": {
+   "status": "berlaku"
+  },
+  "EB-XM-2": {
+   "status": "tidak berlaku",
+   "alasan": "Dependencies «Digunakan oleh» dan §9.7: konsumen menerima perubahan status, Custody, log, dan notifikasi, bukan opsi dropdown dari master data modul ini"
+  }
+ },
+ "bagian": {
+  "EB-SRC-1": {
+   "ui-e2e": "satu representatif: kata kunci tanpa kecocokan menampilkan No results found",
+   "be-e2e": "pencocokan substring dan huruf besar kecil per kelas kolom"
+  },
+  "EB-SRT-1": {
+   "ui-e2e": "satu representatif urutan di tabel",
+   "be-e2e": "urutan per tipe data"
+  },
+  "EB-SRT-2": {
+   "ui-e2e": "satu representatif posisi nilai kosong",
+   "be-e2e": "posisi nilai kosong dan tiebreak per tipe kolom"
+  },
+  "EB-FLT-3": {
+   "ui-e2e": "satu representatif AND antar-field dan OR dalam field",
+   "be-e2e": "matriks AND dan OR di server"
+  },
+  "EB-DL-4": {
+   "ui-e2e": "satu berkas diunduh dan nama berkasnya",
+   "be-e2e": "isi berkas per tipe kolom, BOM, dan sheet"
+  },
+  "EB-DL-2@tabel-transactions": {
+   "ui-e2e": "unduhan berhasil tanpa toast sukses",
+   "ui-client": "toast gagal unduh"
+  },
+  "EB-SRT-3@tabel-transactions": {
+   "ui-client": "indikator siklus tiga klik",
+   "ui-e2e": "urutan kembali ke default"
+  },
+  "EB-FRM-4@purpose": {
+   "ui-client": "pesan Max. N characters di klien dan batas tepat diterima",
+   "be-e2e": "server menolak teks melebihi batas"
+  },
+  "EB-FRM-4@note": {
+   "ui-client": "pesan Max. N characters di klien dan batas tepat diterima",
+   "be-e2e": "server menolak teks melebihi batas"
+  },
+  "EB-FRM-4@approval-note": {
+   "ui-client": "pesan Max. N characters di klien dan batas tepat diterima",
+   "be-e2e": "server menolak teks melebihi batas"
+  },
+  "EB-FRM-4@description-report-damaged": {
+   "ui-client": "pesan Max. N characters di klien dan batas tepat diterima",
+   "be-e2e": "server menolak teks melebihi batas"
+  },
+  "EB-FRM-4@reason-mark-unassigned": {
+   "ui-client": "pesan Max. N characters di klien dan batas tepat diterima",
+   "be-e2e": "server menolak teks melebihi batas"
+  }
+ },
+ "dataUnits": [],
+ "shared": {
+  "§2.1#r1": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r2": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r3": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r4": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r5": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r6": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r7": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r8": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r9": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r10": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r11": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r12": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r13": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r14": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r15": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§2.1#r16": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r1": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r2": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r3": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r4": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r5": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r6": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r7": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r8": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r9": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r10": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r11": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r12": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r13": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r14": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r15": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r16": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "§4.8#r17": "per jenis aktor: Total Control, Group Manager, Asset Admin, Approver, serta Monitoring & Report dan Read Only",
+  "TS-ASG-11": "per aksi: Cancel Assignment di spec cancel per ASG, Delete Draft di spec hapus Draft",
+  "EC-ASG-99": "per surface: Draft dihapus dan tab Drafts tidak tampil di spec inti level Basic; aksi Add to Assignment Draft tidak tampil di Asset List di spec -dep-asset-list level Basic",
+  "ASSIGN-LOGIC-18f": "per surface: halaman Assignment, Approvals, dan Quick Action di spec inti level None; Asset List di spec -dep-asset-list level None; Asset Detail di spec -dep-asset-detail level None",
+  "EC-ASG-98": "per surface: baris Canceled oleh System, sesi Confirm Handover batal, Task hilang, dan notifikasi di spec inti level None; Custody Available dan Assignment Log aset dari Asset Detail di spec -dep-asset-detail level None"
+ },
+ "kontrak": {
+  "Dialog": [
+   "D-ASG-01",
+   "D-ASG-02",
+   "D-ASG-03",
+   "D-ASG-06",
+   "D-ASG-09",
+   "D-ASG-16",
+   "D-ASG-20",
+   "D-ASG-24",
+   "D-ASG-25"
+  ],
+  "DialogForm": [
+   "D-ASG-11",
+   "D-ASG-26",
+   "D-ASG-27"
+  ],
+  "Tooltip": [
+   "FI-ASG-11",
+   "S-ASG-11"
+  ],
+  "Badge": [
+   "S-ASG-12"
+  ],
+  "DataTable": [
+   "T-ASG-01",
+   "T-ASG-03"
+  ],
+  "EmptyState": [
+   "S-ASG-15",
+   "S-ASG-16",
+   "S-ASG-18",
+   "S-ASG-19"
+  ],
+  "Shimmer": [
+   "S-ASG-26"
+  ],
+  "Textarea": [
+   "FLD-ASG-04"
+  ],
+  "Input": [
+   "FLD-ASG-03"
+  ],
+  "Checkbox": [
+   "FLD-ASG-16"
+  ]
+ },
+ "lingkungan": {
+  "Jendela konfirmasi Handover": {
+   "nilai": "15 menit",
+   "sumber": "PRD §9.5: Jendela konfirmasi saat Handover 15 menit"
+  },
+  "Feature Suite Assignment (level entitas suite)": {
+   "nilai": "Full",
+   "sumber": "PRD §9.10 Pembagian fitur: Draft, tab Drafts, tipe Assignee Division, Change PIC, dan Assigned Assets By Assignee hanya ada pada level Full (plan paid_2 dan paid_3); spec suite yang memakai fitur itu mengandaikan level Full, sedangkan Basic dan None diuji di spec entitas khusus status-entitas"
+  },
+  "Require approval per Category": {
+   "nilai": "OFF untuk setiap Category kecuali Category Vehicle (ON)",
+   "sumber": "PRD §5 ASSIGN-LOGIC-07a: «default Company OFF»; §4.1a T-ASG-01 Example Data: setting contoh «Require approval OFF kecuali Category Vehicle»"
+  },
+  "Max assets per assignee (Company default)": {
+   "nilai": "5",
+   "sumber": "PRD §9.2 «Contoh skenario — Max assets per assignee»: Company default 5, Category Laptop 2 (contoh PRD; contoh lain di §4.1a T-ASG-01 Example Data memakai 0 = tanpa batas, EC-ASG-04)"
+  }
+ },
+ "targetVarian": [
+  {
+   "target": "Purpose@assignment-request",
+   "kode": "VD-F1",
+   "units": [
+    "FLD-ASG-03",
+    "V-ASG-15"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "pilihan-kosong": "§9.9 FLD-ASG-03: Purpose adalah input teks, bukan pilihan",
+    "berkas-kosong": "§9.9 FLD-ASG-03: Purpose adalah input teks, bukan berkas"
+   }
+  },
+  {
+   "target": "Purpose@assignment-request",
+   "kode": "VD-F2",
+   "units": [
+    "FLD-ASG-03",
+    "V-ASG-15",
+    "§9.5#r9",
+    "EB-FRM-4@purpose"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "addon-tidak-dihitung": "§9.9 FLD-ASG-03: Purpose tidak memiliki addon",
+    "opsional-kosong-tanpa-min": "§9.9 FLD-ASG-03: Purpose wajib diisi, bukan opsional"
+   }
+  },
+  {
+   "target": "Purpose@assignment-request",
+   "kode": "VD-F3",
+   "units": [
+    "FLD-ASG-03"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "spasi-tengah-ganda": "§9.9 FLD-ASG-03: PRD hanya menyatakan spasi di awal dan akhir dibuang",
+    "spasi-tengah-tunggal": "§9.9 FLD-ASG-03: PRD hanya menyatakan spasi di awal dan akhir dibuang",
+    "pengecualian-tanpa-trim": "§9.9: tidak ada field pada form ini yang dikecualikan dari trim",
+    "lookup-spasi-tepi": "§9.9 FLD-ASG-03: Purpose bukan nilai lookup"
+   }
+  },
+  {
+   "target": "Note@assignment-request",
+   "kode": "VD-F2",
+   "units": [
+    "FLD-ASG-04",
+    "EB-FRM-4@note"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "batas-min": "§9.9 FLD-ASG-04: Note tanpa panjang minimum",
+    "kurang-min": "§9.9 FLD-ASG-04: Note tanpa panjang minimum",
+    "addon-tidak-dihitung": "§9.9 FLD-ASG-04: Note tidak memiliki addon",
+    "opsional-kosong-tanpa-min": "§9.9 FLD-ASG-04: Note tanpa panjang minimum"
+   }
+  },
+  {
+   "target": "Assignee@assignment-request",
+   "kode": "VD-F1",
+   "units": [
+    "FLD-ASG-01",
+    "V-ASG-09"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "kosong": "§9.9 FLD-ASG-01: Assignee dipilih lewat dialog Select Assignee, bukan teks bebas",
+    "spasi-saja": "§9.9 FLD-ASG-01: Assignee dipilih lewat dialog Select Assignee, bukan teks bebas",
+    "berkas-kosong": "§9.9 FLD-ASG-01: Assignee bukan berkas"
+   }
+  },
+  {
+   "target": "PIC@assignment-request",
+   "kode": "VD-F1",
+   "units": [
+    "FLD-ASG-02",
+    "V-ASG-12"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-102-form-assignment-request-validasi-field",
+   "tidakBerlaku": {
+    "kosong": "§9.9 FLD-ASG-02: PIC dipilih lewat dialog Select User, bukan teks bebas",
+    "spasi-saja": "§9.9 FLD-ASG-02: PIC dipilih lewat dialog Select User, bukan teks bebas",
+    "berkas-kosong": "§9.9 FLD-ASG-02: PIC bukan berkas"
+   }
+  },
+  {
+   "target": "Approval-Note@review-approval",
+   "kode": "VD-F1",
+   "units": [
+    "FLD-ASG-07",
+    "V-ASG-16"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-114-halaman-review-approval-keputusan-dan-note"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-114-halaman-review-approval-keputusan-dan-note",
+   "tidakBerlaku": {
+    "pilihan-kosong": "§9.9 FLD-ASG-07: Approval note adalah teks, bukan pilihan",
+    "berkas-kosong": "§9.9 FLD-ASG-07: Approval note adalah teks, bukan berkas"
+   }
+  },
+  {
+   "target": "Approval-Note@review-approval",
+   "kode": "VD-F2",
+   "units": [
+    "FLD-ASG-07",
+    "V-ASG-16",
+    "EB-FRM-4@approval-note"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-114-halaman-review-approval-keputusan-dan-note"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-114-halaman-review-approval-keputusan-dan-note",
+   "tidakBerlaku": {
+    "addon-tidak-dihitung": "§9.9 FLD-ASG-07: tanpa addon",
+    "opsional-kosong-tanpa-min": "§9.9 FLD-ASG-07: wajib saat Reject"
+   }
+  },
+  {
+   "target": "kolom-Transaction-ID@tabel-transactions",
+   "kode": "VD-T1",
+   "units": [
+    "T-ASG-01",
+    "EB-SRC-2@tabel-transactions",
+    "§4.2.1#p1",
+    "§4.2.1#p2",
+    "§4.2.10#b3",
+    "§4.2.10#p2",
+    "§4.2.14#p1",
+    "§4.2.4#p1",
+    "§4.2.5#p2",
+    "§4.4#r19",
+    "§4.6#p1",
+    "§4.7#r1",
+    "§5#r1",
+    "§5#r2",
+    "§5#r4",
+    "EB-AKS-4",
+    "EB-FLT-4@tabel-transactions",
+    "EB-KOL-2@tabel-transactions",
+    "EB-SRC-3@tabel-transactions",
+    "EB-SRC-4@tabel-transactions",
+    "EB-SRC-5@tabel-transactions",
+    "T-ASG-02",
+    "FLD-ASG-10",
+    "§4.2.6#p2",
+    "S-ASG-15",
+    "S-ASG-16",
+    "S-ASG-17",
+    "S-ASG-18",
+    "S-ASG-19",
+    "S-ASG-20",
+    "S-ASG-21",
+    "S-ASG-22",
+    "S-ASG-23",
+    "S-ASG-24",
+    "S-ASG-25"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-002-transactions-search"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-002-transactions-search",
+   "param": {
+    "per-kelas-kolom": [
+     "Text link",
+     "Text",
+     "Badge",
+     "Number"
+    ]
+   },
+   "tidakBerlaku": {
+    "kolom-icon-label": "§4.1a T-ASG-01: tidak ada kolom Searchable yang menampilkan ikon sebagai label",
+    "cocok-di-anak-saja": "§4.1a T-ASG-01: tabel tanpa node anak",
+    "record-tab-non-default": "§5 Search: pencarian hanya atas tab yang sedang aktif"
+   }
+  },
+  {
+   "target": "kolom-Status@tabel-transactions",
+   "kode": "VD-T2",
+   "units": [
+    "T-ASG-01",
+    "§5#r5",
+    "T-ASG-03",
+    "T-ASG-05",
+    "T-ASG-06",
+    "T-ASG-07",
+    "T-ASG-09",
+    "T-ASG-10",
+    "T-ASG-13",
+    "T-ASG-14",
+    "T-ASG-20",
+    "§9.5#r2",
+    "§9.5#r4",
+    "§9.5#r5",
+    "§9.5#r6",
+    "§9.5#r7",
+    "EB-SRT-3@tabel-transactions",
+    "EB-SRT-2",
+    "EB-DL-4"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-003-transactions-sort"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-003-transactions-sort",
+   "param": {
+    "per-tipe-kolom": [
+     "Badge",
+     "Number",
+     "Date"
+    ]
+   },
+   "tidakBerlaku": {
+    "urutan-custom": "§4.1a T-ASG-01: kolom Status berurut Alphabetical by label, bukan urutan lifecycle",
+    "kosong": "§4.1a T-ASG-01 Setup Column: kolom Status «Nilai Kosong: Tidak pernah kosong»",
+    "campuran-tipe": "§4.1a T-ASG-01 Setup Column: kolom Status bertipe Badge tunggal berisi label status; tidak ada kolom yang bercampur angka, currency, teks, dan kosong",
+    "format-komposit": "§4.1a T-ASG-01 Setup Column: Status berformat badge label status «tanpa ringkasan baris», bukan nilai komposit berformat seperti ukuran atau alamat IP",
+    "jumlah-chip-sama": "§4.1a T-ASG-01 Setup Column: Sort Status «Alphabetical by label»; urutan ditentukan label, bukan jumlah chip atau ikon aktif",
+    "jumlah-aktif-sama": "§4.1a T-ASG-01 Setup Column: Sort Status «Alphabetical by label»; urutan ditentukan label, bukan jumlah item atau ikon aktif",
+    "sama-di-kolom-dan-default": "§4.1a T-ASG-01 (Last Updated): urutan tindakan Status sudah menjadi bagian kunci default sort, sehingga nilai Status sama selalu membawa posisi default yang sama; pembeda nilai sama dicakup varian sama-tiebreak (EB-SRT-2: default sort lalu identifier) dan PRD tidak menetapkan hasil lain untuk keadaan ini (VD-9)"
+   }
+  },
+  {
+   "target": "filter@tabel-transactions",
+   "kode": "VD-T3",
+   "units": [
+    "T-ASG-01",
+    "EB-FLT-2@tabel-transactions",
+    "EB-FLT-6@tabel-transactions",
+    "EC-ASG-78",
+    "T-ASG-04",
+    "T-ASG-15",
+    "T-ASG-16",
+    "D-ASG-18",
+    "FI-ASG-43",
+    "F-ASSIGN-13",
+    "§9.5#r15",
+    "§4.2.14#p2"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-004-transactions-filter"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-004-transactions-filter",
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Range Min–Max",
+     "Date range picker"
+    ]
+   },
+   "tidakBerlaku": {
+    "custom-field-per-tipe": "§4.1a T-ASG-01: tabel tidak memiliki custom field",
+    "status-dikecualikan": "§4.1a T-ASG-01: tab Transactions hanya memuat Waiting for Approval, Waiting for Handover, dan Assigned",
+    "default-filter-lolos": "§4.1a T-ASG-01: tidak ada filter pre-applied",
+    "default-filter-tersaring": "§4.1a T-ASG-01: tidak ada filter pre-applied",
+    "create-tidak-cocok": "§4.1a T-ASG-01 dan §4.2.3: ASG baru hanya lahir dari Submit pada form Assignment Request yang membuka Assignment Detail (§4.4), bukan dari tab Transactions; Create adalah mutasi yang dipisah dari spec filter (RC-2) dan PRD tidak menetapkan perilaku tabel tersaring terhadap ASG baru yang tidak cocok (VD-9)"
+   }
+  },
+  {
+   "target": "opsi-filter-Status@tabel-transactions",
+   "kode": "VD-T4",
+   "units": [
+    "T-ASG-01",
+    "EB-FLT-1@tabel-transactions"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-004-transactions-filter"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-004-transactions-filter",
+   "param": {
+    "per-anggota-enum": [
+     "Waiting for Approval",
+     "Waiting for Handover",
+     "Assigned"
+    ]
+   },
+   "tidakBerlaku": {
+    "kosong": "§4.1a T-ASG-01 Setup Column: Status «Nilai Kosong: Tidak pernah kosong», dan EB-FLT-5: nilai kosong tidak menjadi opsi",
+    "sumber-kosong": "§4.1a T-ASG-01 Status «Opsi: nilai Status pada baris dalam cakupan tab»; tab Transactions tanpa baris adalah keadaan seluruh daftar (IN-2) yang tidak dibentuk di ui-e2e, dan tampilan «No options available» sudah dimiliki EB-FLT-2 di ui-client",
+    "satu-nilai-distinct": "§4.1a T-ASG-01 Status «Opsi: nilai Status pada baris dalam cakupan tab»; himpunan nilai Status adalah keadaan seluruh daftar Transactions yang dipakai bersama spec lain di entitas suite (IN-2), sehingga spec filter yang bekerja pada barisnya sendiri tidak bisa membentuk atau mengubahnya",
+    "dua-nilai-distinct": "§4.1a T-ASG-01 Status «Opsi: nilai Status pada baris dalam cakupan tab»; himpunan nilai Status adalah keadaan seluruh daftar Transactions yang dipakai bersama spec lain di entitas suite (IN-2), sehingga spec filter yang bekerja pada barisnya sendiri tidak bisa membentuk atau mengubahnya",
+    "opsi-hilang": "§4.1a T-ASG-01 Status «Opsi: nilai Status pada baris dalam cakupan tab»; himpunan nilai Status adalah keadaan seluruh daftar Transactions yang dipakai bersama spec lain di entitas suite (IN-2), sehingga spec filter yang bekerja pada barisnya sendiri tidak bisa membentuk atau mengubahnya; opsi hilang hanya bila baris pembawa nilai terakhir keluar dari tab",
+    "nilai-baru-saat-uji": "§4.1a T-ASG-01 Status «Opsi: nilai Status pada baris dalam cakupan tab»; himpunan nilai Status adalah keadaan seluruh daftar Transactions yang dipakai bersama spec lain di entitas suite (IN-2), sehingga spec filter yang bekerja pada barisnya sendiri tidak bisa membentuk atau mengubahnya; tiga nilai Status sudah dibawa baris spec lain sehingga tidak ada nilai yang baru muncul selama uji",
+    "opsi-banyak-overflow": "§4.1a T-ASG-01: tab Transactions hanya memuat Waiting for Approval, Waiting for Handover, dan Assigned; opsi Status tidak pernah lebih dari tiga sehingga tidak ada overflow",
+    "opsi-tetap-worm": "§4.1a T-ASG-01: tab Transactions memuat ASG yang masih berjalan (selesai pindah ke tab History) dan bukan log WORM; opsi mengikuti baris yang ada",
+    "entitas-terhapus-berhistori": "§4.1a T-ASG-01: opsi Status adalah nilai status header turunan (§9.2 «9.2.1»), bukan entitas master yang dapat dihapus",
+    "entitas-rename-berhistori": "§4.1a T-ASG-01: opsi Status adalah nilai status header turunan (§9.2 «9.2.1»), bukan entitas master yang dapat di-rename",
+    "opsi-tidak-dipersempit-search": "§4.1a T-ASG-01 Status hanya menyatakan «Opsi: nilai Status pada baris dalam cakupan tab»; PRD tidak menyatakan opsi berasal dari seluruh katalog yang tidak dipersempit Search (prd-conventions.md §9.8)"
+   }
+  },
+  {
+   "target": "paginasi@tabel-transactions",
+   "kode": "VD-T5",
+   "units": [
+    "§5#r3",
+    "EB-TBL-7@tabel-transactions"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-005-transactions-paginasi"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-005-transactions-paginasi",
+   "param": {
+    "lebih-ukuran-terpilih": [
+     "10",
+     "25"
+    ]
+   }
+  },
+  {
+   "target": "download@tabel-transactions",
+   "kode": "VD-D1",
+   "units": [
+    "§5#r7",
+    "EB-DL-1@tabel-transactions"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-006-transactions-download"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-006-transactions-download",
+   "tidakBerlaku": {
+    "per-tab": "§5 Download: Export tab Transactions tidak memiliki tab penyaring selain Filter"
+   }
+  },
+  {
+   "target": "kolom-Requested-By@tabel-transactions",
+   "kode": "VD-T10",
+   "units": [
+    "EB-TBL-4@kolom-requested-by-transactions"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-121-tabel-tampilan-nilai-kolom"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-121-tabel-tampilan-nilai-kolom"
+  },
+  {
+   "target": "kolom-Label@select-asset",
+   "kode": "VD-T8",
+   "units": [
+    "EB-TBL-3@kolom-label-select-asset"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-105-dialog-select-asset"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-105-dialog-select-asset",
+   "tidakBerlaku": {
+    "semua-master": "§4.1d: kolom Label menampilkan label yang menempel pada aset, bukan seluruh master",
+    "total-kurang-satu": "§4.1d: kolom Label menampilkan label yang menempel pada aset, bukan seluruh master",
+    "switch-off-relasi-tersimpan": "§4.1d: Label bukan relasi bersyarat switch",
+    "konsolidasi-multi-group": "§4.1d: Label bukan agregasi multi-group"
+   }
+  },
+  {
+   "target": "bulk-delete@tabel-drafts",
+   "kode": "VD-A1",
+   "units": [
+    "TS-ASG-33",
+    "EB-BLK-3",
+    "§4.1#r4",
+    "§4.2.3#b17",
+    "§9.2#b60",
+    "§9.2#b16",
+    "ASSIGN-LOGIC-01n",
+    "FI-ASG-04",
+    "FI-ASG-70",
+    "FI-ASG-71",
+    "FI-ASG-72",
+    "FI-ASG-73",
+    "EB-EDG-2",
+    "EB-BLK-4",
+    "D-ASG-27",
+    "FI-ASG-05",
+    "FI-ASG-114",
+    "FLD-ASG-05",
+    "FLD-ASG-11",
+    "ASSIGN-LOGIC-07j",
+    "ASSIGN-LOGIC-20q",
+    "ASSIGN-LOGIC-20r",
+    "ASSIGN-LOGIC-20s",
+    "ASSIGN-LOGIC-20ac",
+    "ASSIGN-LOGIC-20ad",
+    "ASSIGN-LOGIC-20j",
+    "ASSIGN-LOGIC-20aa",
+    "D-ASG-26",
+    "§4.2.13#b1",
+    "§4.2.9#r28",
+    "§5#r6",
+    "§8.3#b1",
+    "§9.6#r13",
+    "§9.6#r15",
+    "§9.7#r6",
+    "§9.10#r18",
+    "§9.10#b2",
+    "EC-ASG-103",
+    "EC-ASG-111",
+    "EC-ASG-79",
+    "§4.8#r13",
+    "§4.2.6#p1",
+    "§4.2.9#p1",
+    "§3#p3",
+    "§4.1#r17",
+    "§8.2#r1",
+    "T-ASG-08",
+    "FI-ASG-123",
+    "EB-AKS-7"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-011-drafts-hapus-single-dan-bulk"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-011-drafts-hapus-single-dan-bulk",
+   "tidakBerlaku": {
+    "termasuk-baris-terlindungi": "§2.1 dan §9.3: tidak ada baris Default atau Self pada tabel Drafts",
+    "semua-ditolak": "§4.1l T-ASG-20 Matriks Aksi (Delete Bulk) dan D-ASG-24: Draft yang tidak memenuhi syarat dilewati, dan dialog hanya mendefinisikan varian semua dapat dihapus dan campuran; PRD tidak menetapkan dialog atau hasil bila seluruh Draft terpilih dilewati (VD-9)",
+    "semua-ditolak-alasan-single": "§4.1l T-ASG-20 Matriks Aksi: Delete single untuk Draft di luar cakupan Aktor berupa aksi Disabled dengan tooltip «Some assets are outside your groups. Ask another admin to delete.», bukan dialog blok; tidak ada dialog blok single yang bisa dibandingkan dengan dialog bulk (EB-BLK-3)",
+    "jadi-tidak-eligible-saat-submit": "§9.6 baris Delete Draft (single dan bulk): satu-satunya perubahan antara dialog dan submit yang PRD tetapkan adalah Draft yang sudah terhapus (no-op); PRD tidak menetapkan hasil bulk Delete bila kelayakan Draft berubah antara dialog dan submit (VD-9)"
+   }
+  },
+  {
+   "target": "max-assets-per-assignee@submit",
+   "kode": "VD-A6",
+   "units": [
+    "ASSIGN-LOGIC-10a",
+    "V-ASG-13",
+    "ASSIGN-LOGIC-01m",
+    "ASSIGN-LOGIC-10b",
+    "§9.2#p31",
+    "§9.5#r8",
+    "V-ASG-14",
+    "V-ASG-28",
+    "D-ASG-20",
+    "DO-ASG-09",
+    "EC-ASG-40",
+    "EC-ASG-41",
+    "EC-ASG-92",
+    "EB-BLK-6",
+    "§10#r3",
+    "§4.1#p2",
+    "§4.2.3#b12",
+    "§4.2.3#b6",
+    "§9.2#b28",
+    "§9.2#b41"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-BE-211-batas-aset-per-assignee-dan-bulk-row-limit"
+   ],
+   "pemilik": "TC-FA-ASSIGN-BE-211-batas-aset-per-assignee-dan-bulk-row-limit",
+   "param": {
+    "per-jenis-limit": [
+     "Max assets per assignee",
+     "Bulk Transaction Row Limit"
+    ]
+   },
+   "tidakBerlaku": {
+    "berurutan-stay-on-form": "§4.2.3 Delta form transaksi full-page: «tidak ada checkbox Stay on this form after submitting karena Submit membuka Assignment Detail (§4.4)»; tidak ada dua input berurutan dalam satu sesi form",
+    "kuota-status-akun": "§9.2 F-ASSIGN-03.k2 dan EC-ASG-45: Assignee Employee harus aktif dan ber-akun login, akun yang bukan Active atau Activated tidak muncul di Select Assignee; kuota atas Assignee berstatus akun lain tidak pernah dievaluasi",
+    "tanpa-cap-mobile": "§9.2 F-ASSIGN-03.k2 dan ASSIGN-LOGIC-10a: batas dihitung sama untuk setiap pengajuan; PRD tidak menyatakan pengecualian batas di mobile, dan «0 = tanpa batas» adalah nilai setting (EC-ASG-04), bukan varian platform",
+    "tersaring-lebih-limit": "§9.2 «Perhitungan Max assets per assignee»: batas dibandingkan dengan baris aktif Assignee ditambah baris baru dalam pengajuan, bukan dengan hasil saringan tabel; target ini tidak punya tabel yang disaring"
+   }
+  },
+  {
+   "target": "Description@report-damaged-unassign",
+   "kode": "VD-F2",
+   "units": [
+    "FLD-ASG-19",
+    "V-ASG-29",
+    "EB-FRM-4@description-report-damaged"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-113-halaman-unassign-daftar-dan-validasi"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-113-halaman-unassign-daftar-dan-validasi",
+   "tidakBerlaku": {
+    "batas-min": "§9.9 FLD-ASG-19: Description wajib tanpa panjang minimum selain tidak kosong",
+    "kurang-min": "§9.9 FLD-ASG-19: Description wajib tanpa panjang minimum selain tidak kosong",
+    "addon-tidak-dihitung": "§9.9 FLD-ASG-19: tanpa addon",
+    "opsional-kosong-tanpa-min": "§9.9 FLD-ASG-19: Description wajib"
+   }
+  },
+  {
+   "target": "Reason@mark-as-unassigned",
+   "kode": "VD-F2",
+   "units": [
+    "FLD-ASG-21",
+    "EB-FRM-4@reason-mark-unassigned"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-115-dialog-mark-as-unassigned"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-115-dialog-mark-as-unassigned",
+   "tidakBerlaku": {
+    "batas-min": "§9.9 FLD-ASG-21: Reason tanpa panjang minimum",
+    "kurang-min": "§9.9 FLD-ASG-21: Reason tanpa panjang minimum",
+    "addon-tidak-dihitung": "§9.9 FLD-ASG-21: tanpa addon",
+    "opsional-kosong-tanpa-min": "§9.9 FLD-ASG-21: Reason tanpa panjang minimum"
+   }
+  },
+  {
+   "target": "Assets@assignment-request",
+   "kode": "VD-F5",
+   "units": [
+    "V-ASG-05"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-UI-103-form-assignment-request-baris-aset-tidak-layak"
+   ],
+   "pemilik": "TC-FA-ASSIGN-UI-103-form-assignment-request-baris-aset-tidak-layak",
+   "tidakBerlaku": {
+    "duplikat-beda-kapital": "V-ASG-05: keunikan atas aset yang sama, bukan teks",
+    "duplikat-spasi-tepi": "V-ASG-05: keunikan atas aset yang sama, bukan teks",
+    "duplikat-luar-scope": "V-ASG-05: keunikan hanya per form",
+    "sama-dengan-diri": "V-ASG-05: tidak ada Edit atas aset yang sudah ada di form",
+    "beda-kapital-bukan-duplikat": "V-ASG-05: bukan field case-sensitive",
+    "duplikat-kombinasi": "V-ASG-05: keunikan satu aset, bukan kombinasi field",
+    "duplikat-identifier-fisik": "V-ASG-05: bukan EPC, UID, atau MAC"
+   }
+  },
+  {
+   "target": "Division@hapus-division",
+   "kode": "VD-A2",
+   "units": [
+    "EC-ASG-35",
+    "ASSIGN-LOGIC-16af",
+    "EB-ERR-3"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-059-division-in-use-guard-dan-division-dihapus-dep-division"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-059-division-in-use-guard-dan-division-dihapus-dep-division",
+   "param": {
+    "per-jenis-pemakai": [
+     "Waiting for Approval",
+     "Waiting for Handover",
+     "Assigned"
+    ]
+   },
+   "tidakBerlaku": {
+    "pemakai-di-recycle-bin": "§9.4.2 EC-ASG-35: PRD tidak menyebut Recycle Bin untuk baris Assignment",
+    "dipakai-multi-konsumen": "§9.4.2 EC-ASG-35: Assignment satu-satunya pemakai yang disebut guard Division oleh PRD ini"
+   }
+  },
+  {
+   "target": "aksi-assignment@gating-tc",
+   "kode": "VD-P1",
+   "units": [
+    "§2.1#r1",
+    "§4.8#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-043-gating-total-control"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-043-gating-total-control",
+   "param": {
+    "per-baris-matriks": [
+     "Total Control"
+    ]
+   },
+   "tidakBerlaku": {
+    "tanpa-akses": "§2.1: aktor tanpa akses diasersi di spec akses-tanpa-capability (EB-AKS-1, EB-AKS-2)",
+    "read-only-saja": "§2.1: Read Only diasersi di spec gating Monitoring & Report dan Read Only",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "aksi-assignment@gating-gm",
+   "kode": "VD-P1",
+   "units": [
+    "§2.1#r1",
+    "§4.8#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-044-gating-group-manager"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-044-gating-group-manager",
+   "param": {
+    "per-baris-matriks": [
+     "Group Manager"
+    ]
+   },
+   "tidakBerlaku": {
+    "tanpa-akses": "§2.1: aktor tanpa akses diasersi di spec akses-tanpa-capability (EB-AKS-1, EB-AKS-2)",
+    "read-only-saja": "§2.1: Read Only diasersi di spec gating Monitoring & Report dan Read Only",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "aksi-assignment@gating-aa",
+   "kode": "VD-P1",
+   "units": [
+    "§2.1#r1",
+    "§4.8#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-045-gating-asset-admin"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-045-gating-asset-admin",
+   "param": {
+    "per-baris-matriks": [
+     "Asset Admin"
+    ]
+   },
+   "tidakBerlaku": {
+    "tanpa-akses": "§2.1: aktor tanpa akses diasersi di spec akses-tanpa-capability (EB-AKS-1, EB-AKS-2)",
+    "read-only-saja": "§2.1: Read Only diasersi di spec gating Monitoring & Report dan Read Only",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "aksi-assignment@gating-ap",
+   "kode": "VD-P1",
+   "units": [
+    "§2.1#r1",
+    "§4.8#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-046-gating-approver"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-046-gating-approver",
+   "param": {
+    "per-baris-matriks": [
+     "Approver"
+    ]
+   },
+   "tidakBerlaku": {
+    "tanpa-akses": "§2.1: aktor tanpa akses diasersi di spec akses-tanpa-capability (EB-AKS-1, EB-AKS-2)",
+    "read-only-saja": "§2.1: Read Only diasersi di spec gating Monitoring & Report dan Read Only",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "aksi-assignment@gating-mr",
+   "kode": "VD-P1",
+   "units": [
+    "§2.1#r1",
+    "§4.8#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-047-gating-monitoring-report-dan-read-only"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-047-gating-monitoring-report-dan-read-only",
+   "param": {
+    "per-baris-matriks": [
+     "Monitoring & Report"
+    ]
+   },
+   "tidakBerlaku": {
+    "tanpa-akses": "§2.1: aktor tanpa akses diasersi di spec akses-tanpa-capability (EB-AKS-1, EB-AKS-2)",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "modul@akses-tanpa-capability",
+   "kode": "VD-P1",
+   "units": [
+    "EB-AKS-1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-048-akses-tanpa-capability"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-048-akses-tanpa-capability",
+   "tidakBerlaku": {
+    "read-only-saja": "§2.1: Read Only diasersi di spec gating Monitoring & Report dan Read Only",
+    "per-baris-matriks": "§2.1: spec ini mengasersi aktor tanpa akses, bukan satu baris matriks role",
+    "capability-tunggal": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-capability-aksi": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "kombinasi-permission": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-kombinasi-crud": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-bulk": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-single-action": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "tanpa-sesi": "§9.3: PRD tidak menetapkan hasil request tanpa token; dinilai di platform",
+    "access-level-null-plus-individual": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "zero-assignment": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "can-read-false": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "assignment-retained": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "entitas-diblok-punya-role": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-jenis-entitas": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas",
+    "per-peran-alur": "§2.1: akses ditetapkan per role (satu kolom per role), bukan per capability, kombinasi permission, assignment, atau jenis entitas"
+   }
+  },
+  {
+   "target": "url-halaman@akses-tanpa-capability",
+   "kode": "VD-P4",
+   "units": [
+    "EB-AKS-2"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-048-akses-tanpa-capability"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-048-akses-tanpa-capability",
+   "tidakBerlaku": {
+    "id-tidak-ada": "§9.6: PRD tidak menetapkan hasil membuka Detail dengan ID yang tidak ada",
+    "id-sudah-dihapus": "§9.6: PRD tidak menetapkan hasil membuka Detail dengan ID yang sudah dihapus",
+    "id-milik-entitas-lain": "§9.4.1 D1: PRD tidak menetapkan hasil membuka Detail milik entitas lain"
+   }
+  },
+  {
+   "target": "plan-level@plan-level-basic",
+   "kode": "VD-P5",
+   "units": [
+    "§9.10#b1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-049-plan-level-basic",
+    "TC-FA-ASSIGN-E2E-066-aksi-asset-list-level-basic-dep-asset-list"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-049-plan-level-basic",
+   "param": {
+    "per-level": [
+     "Basic"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-tier": "§9.10: nilai level per slot plan dimiliki plans.md, spec memakai level",
+    "basic-dalam-scope": "§9.10: PRD tidak membedakan scope Basic per fitur di luar tabel pembagian fitur",
+    "basic-luar-scope": "§9.10: PRD tidak membedakan scope Basic per fitur di luar tabel pembagian fitur",
+    "addon-dibeli": "§9.10: PRD tidak menyebut add-on",
+    "addon-tidak-dibeli": "§9.10: PRD tidak menyebut add-on",
+    "cap-plan-lama-beda-baru": "§9.10: PRD tidak menyebut cap plan"
+   }
+  },
+  {
+   "target": "plan-level@plan-level-none",
+   "kode": "VD-P5",
+   "units": [
+    "§9.10#p5"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-E2E-050-plan-level-none",
+    "TC-FA-ASSIGN-E2E-067-aksi-asset-list-level-none-dep-asset-list",
+    "TC-FA-ASSIGN-E2E-068-asset-detail-level-none-dep-asset-detail"
+   ],
+   "pemilik": "TC-FA-ASSIGN-E2E-050-plan-level-none",
+   "param": {
+    "per-level": [
+     "None"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-tier": "§9.10: nilai level per slot plan dimiliki plans.md, spec memakai level",
+    "basic-dalam-scope": "§9.10: PRD tidak membedakan scope Basic per fitur di luar tabel pembagian fitur",
+    "basic-luar-scope": "§9.10: PRD tidak membedakan scope Basic per fitur di luar tabel pembagian fitur",
+    "addon-dibeli": "§9.10: PRD tidak menyebut add-on",
+    "addon-tidak-dibeli": "§9.10: PRD tidak menyebut add-on",
+    "cap-plan-lama-beda-baru": "§9.10: PRD tidak menyebut cap plan"
+   }
+  },
+  {
+   "target": "status-baris@status-baris-dan-header",
+   "kode": "VD-A5",
+   "units": [
+    "§9.2#r1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-BE-201-status-baris-dan-status-header"
+   ],
+   "pemilik": "TC-FA-ASSIGN-BE-201-status-baris-dan-status-header",
+   "param": {
+    "per-status": [
+     "Draft",
+     "Waiting for Approval",
+     "Waiting for Handover",
+     "Assigned",
+     "Unassigned",
+     "Rejected",
+     "Canceled"
+    ]
+   },
+   "tidakBerlaku": {
+    "flag-terkunci": "§9.2 \"9.2.1\": status baris tidak memiliki flag terkunci selain penanda No PIC dan marker",
+    "per-kondisi-disabled": "§4.8: kondisi disabled dinilai di spec gating dan spec ui-client, bukan di server"
+   }
+  },
+  {
+   "target": "per-kondisi@kelayakan-submit",
+   "kode": "VD-R1",
+   "units": [
+    "F-ASSIGN-03.k1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-BE-203-kelayakan-aset-saat-submit"
+   ],
+   "pemilik": "TC-FA-ASSIGN-BE-203-kelayakan-aset-saat-submit",
+   "param": {
+    "per-kondisi": [
+     "F-ASSIGN-03.k1"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-langkah-logic": "§9.2: PRD tidak memuat dokumen API dengan langkah Logic",
+    "per-baris-error-handling": "§9.2: PRD tidak memuat dokumen API dengan baris Error Handling"
+   }
+  },
+  {
+   "target": "per-kondisi@handover-server",
+   "kode": "VD-R1",
+   "units": [
+    "F-ASSIGN-06.k1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-BE-209-handover-aturan-server"
+   ],
+   "pemilik": "TC-FA-ASSIGN-BE-209-handover-aturan-server",
+   "param": {
+    "per-kondisi": [
+     "F-ASSIGN-06.k1",
+     "F-ASSIGN-06.k2",
+     "F-ASSIGN-06.k3",
+     "F-ASSIGN-06.k4"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-langkah-logic": "§9.2: PRD tidak memuat dokumen API dengan langkah Logic",
+    "per-baris-error-handling": "§9.2: PRD tidak memuat dokumen API dengan baris Error Handling"
+   }
+  },
+  {
+   "target": "per-kondisi@timeout-server",
+   "kode": "VD-R1",
+   "units": [
+    "F-ASSIGN-09.k1"
+   ],
+   "spec": [
+    "TC-FA-ASSIGN-BE-212-timeout-dan-penutupan-otomatis"
+   ],
+   "pemilik": "TC-FA-ASSIGN-BE-212-timeout-dan-penutupan-otomatis",
+   "param": {
+    "per-kondisi": [
+     "F-ASSIGN-09.k1",
+     "F-ASSIGN-09.k2"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-langkah-logic": "§9.2: PRD tidak memuat dokumen API dengan langkah Logic",
+    "per-baris-error-handling": "§9.2: PRD tidak memuat dokumen API dengan baris Error Handling"
+   }
+  }
+ ],
+ "tinjauan": [
+  {
+   "review": "[R-7] unit `D-ASG-13` milik ui-e2e memuat klausa klien («unsaved»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Dialog bertema Draft Changed muncul karena versi Draft berubah di server, bukan karena form kotor klien"
+  },
+  {
+   "review": "[R-7] unit `D-ASG-17` milik ui-e2e memuat klausa klien («placeholder»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Placeholder hanya satu butir dari unit yang hasil utamanya ditentukan server; klausa klien diasersi di spec ui-client halaman atau dialog yang sama"
+  },
+  {
+   "review": "[R-7] unit `FI-ASG-113` milik ui-e2e memuat klausa klien («placeholder»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Placeholder hanya satu butir dari unit yang hasil utamanya ditentukan server; klausa klien diasersi di spec ui-client halaman atau dialog yang sama"
+  },
+  {
+   "review": "[R-7] unit `FI-ASG-123` milik ui-e2e memuat klausa klien («breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Breadcrumb hanya penanda halaman; klausa breadcrumb dimiliki spec ui-client Breadcrumb"
+  },
+  {
+   "review": "[R-7] unit `FI-ASG-66` milik ui-e2e memuat klausa klien («tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Tooltip memuat alasan yang dihitung server (LY-3); mekanik tooltip diuji di spec ui-client"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-01` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-02` milik ui-e2e memuat klausa klien («placeholder»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Placeholder hanya satu butir dari unit yang hasil utamanya ditentukan server; klausa klien diasersi di spec ui-client halaman atau dialog yang sama"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-03` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-06` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-07` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-08` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-13` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-14` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-15` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-16` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `T-ASG-20` milik ui-e2e memuat klausa klien («Hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa Hover hanya menampilkan nilai kolom penuh (nama lengkap, hierarki Group, rincian baris) dari data nyata sehingga hasilnya ditentukan server (LY-3); mekanik tooltip komponen diuji di spec ui-client tabel"
+  },
+  {
+   "review": "[R-7] unit `§4.1#p5` milik ui-e2e memuat klausa klien («hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa hover hanya menampilkan nama lengkap dari data nyata sehingga hasilnya ditentukan server (LY-3)"
+  },
+  {
+   "review": "[R-7] unit `§4.1#r9` milik ui-e2e memuat klausa klien («Tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Tooltip memuat nilai dari data nyata (alasan atau nama dari server) sehingga hasilnya ditentukan server (LY-3)"
+  },
+  {
+   "review": "[R-7] unit `§4.2.1#p2` milik ui-e2e memuat klausa klien («placeholder»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Placeholder hanya satu butir dari unit yang hasil utamanya ditentukan server; klausa klien diasersi di spec ui-client halaman atau dialog yang sama"
+  },
+  {
+   "review": "[R-7] unit `§4.2.10#b3` milik ui-e2e memuat klausa klien («placeholder»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Placeholder hanya satu butir dari unit yang hasil utamanya ditentukan server; klausa klien diasersi di spec ui-client halaman atau dialog yang sama"
+  },
+  {
+   "review": "[R-8] unit `§4.2.3#b3` menyebut cabang «Create / Edit» tetapi dimiliki satu spec (TC-FA-ASSIGN-UI-101-form-assignment-request-tampilan-awal); cabang lain butuh `shared` (AS-2)",
+   "alasan": "Cabang lain dimiliki spec yang sama karena form atau daftar Draft memakai satu komponen dan satu journey (RC-2)"
+  },
+  {
+   "review": "[R-7] unit `§4.2.4#p1` milik ui-e2e memuat klausa klien («Breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Breadcrumb hanya penanda halaman; klausa breadcrumb dimiliki spec ui-client Breadcrumb"
+  },
+  {
+   "review": "[R-7] unit `§4.6#b3` milik ui-e2e memuat klausa klien («tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Tooltip memuat alasan yang dihitung server (LY-3); mekanik tooltip diuji di spec ui-client"
+  },
+  {
+   "review": "[R-7] unit `§5#r7` milik ui-e2e memuat klausa klien («tooltip»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Tooltip memuat alasan yang dihitung server (LY-3); mekanik tooltip diuji di spec ui-client"
+  },
+  {
+   "review": "[R-7] unit `§9.10#b1` milik ui-e2e memuat klausa klien («Unsaved»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Kata Unsaved menyebut perilaku level plan Basic, bukan dialog Unsaved Changes klien"
+  },
+  {
+   "review": "[R-7] unit `§9.12#r5` milik ui-e2e memuat klausa klien («hover»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Klausa hover hanya menampilkan nama lengkap dari data nyata sehingga hasilnya ditentukan server (LY-3)"
+  },
+  {
+   "review": "[R-8] unit `§9.6#r15` menyebut cabang «single dan bulk» tetapi dimiliki satu spec (TC-FA-ASSIGN-E2E-011-drafts-hapus-single-dan-bulk); cabang lain butuh `shared` (AS-2)",
+   "alasan": "Cabang lain dimiliki spec yang sama karena form atau daftar Draft memakai satu komponen dan satu journey (RC-2)"
+  },
+  {
+   "review": "[R-8] unit `§9.7#r6` menyebut cabang «single dan bulk» tetapi dimiliki satu spec (TC-FA-ASSIGN-BE-204-custody-dan-satu-transaksi-aktif); cabang lain butuh `shared` (AS-2)",
+   "alasan": "Cabang lain dimiliki spec yang sama karena form atau daftar Draft memakai satu komponen dan satu journey (RC-2)"
+  },
+  {
+   "review": "[R-11] unit `ASSIGN-LOGIC-07h` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `ASSIGN-LOGIC-20d` memuat aturan data («bulk») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «bulk» menyebut aksi atau bar bulk yang variasi datanya dicakup target bulk-delete@tabel-drafts dan batas jumlah"
+  },
+  {
+   "review": "[R-11] unit `EB-FRM-7@assignment-request` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `EB-FRM-7@mark-as-unassigned` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `EC-ASG-13` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `EC-ASG-14` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `FI-ASG-100` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `FI-ASG-109` memuat aturan data («maksimal 5») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Batas tampilan jumlah nama approver di dialog adalah aturan tampilan dari snapshot server, bukan aturan data baru"
+  },
+  {
+   "review": "[R-11] unit `§4.2.8#p2` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§4.4#r8` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Bukan aturan data baru; variasinya dicakup target lain"
+  },
+  {
+   "review": "[R-11] unit `§4.6#b6` memuat aturan data («kuota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kuota penyimpanan offline di perangkat mobile adalah keadaan perangkat, bukan variasi data (VD-6)"
+  },
+  {
+   "review": "[R-11] unit `§8.1#p6` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§8.1#r11` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§8.1#r6` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§9.2#b10` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§9.2#b34` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§9.2#p52` memuat aturan data («required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «required» menyebut setting Require approval atau Need recipient confirmation (keadaan aturan efektif per aset), bukan field wajib; variasinya dinyatakan lewat target per-kondisi"
+  },
+  {
+   "review": "[R-11] unit `§9.2#r20` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Bukan aturan data baru; variasinya dicakup target lain"
+  },
+  {
+   "review": "[R-11] unit `§9.5#r11` memuat aturan data («bulk») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "Kata «bulk» menyebut aksi atau bar bulk yang variasi datanya dicakup target bulk-delete@tabel-drafts dan batas jumlah"
+  }
+ ]
+}
