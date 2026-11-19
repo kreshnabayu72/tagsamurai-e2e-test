@@ -2797,7 +2797,7 @@ Aturan:
 
 ## D-271 Aturan umum: toast error menetap sampai ditutup dan punya tombol tutup (2026-11-19)
 
-- **Spec / langkah:** FixedAsset/ActivityLog `TC-FA-AL-E2E-004` dan `078`, langkah toast "download gagal". Berlaku juga untuk spec lain yang meminta toast error hilang sendiri atau tanpa tombol tutup.
+- **Spec / langkah:** FixedAsset/ActivityLog `TC-FA-FAAL-E2E-004` dan `078`, langkah toast "download gagal". Berlaku juga untuk spec lain yang meminta toast error hilang sendiri atau tanpa tombol tutup.
 - **Spec meminta:** toast download gagal tanpa tombol tutup, hilang sendiri.
 - **Kenyataannya:** toast error di aplikasi memakai `sticky: true`: menetap sampai ditutup dan memiliki tombol tutup (`packages/core/ui/components/log/useLogTable.ts:119-123`, sama di log GS/AC).
 - **Karena:**
