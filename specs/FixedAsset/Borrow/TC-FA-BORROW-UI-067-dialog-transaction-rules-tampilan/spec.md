@@ -27,7 +27,7 @@ coverage:
   - DU-067-3: baris pinjaman, Asset `Toyota Avanza - 2`, Max duration `5 days`, Max extensions `2`, Approval `Needs approval`, Approval type `All approvers`, approver snapshot `Agus P` berstatus `Not Involved`, aktor override `Siti Nurhaliza` berstatus `Approved` dengan keterangan `Group Manager override`.
   - DU-067-4: baris pinjaman, Asset `Printer Epson L3110 - 1`, Max duration `3 days`, Max extensions `1`, Approval `Auto-approved`, tanpa approver.
   - DU-067-5: baris pinjaman, Asset `Monitor LG 24MK430`, Max duration `10 days`, Max extensions `2`, Approval `Not required`, tanpa approver.
-  - DU-067-6: baris pinjaman dibatalkan, Asset `Kamera Canon EOS 200D`, Approval `Needs approval`, Approval type `All approvers`, approver snapshot `Rina W` berstatus `Approved` dan `Agus P` berstatus `Not Involved`, keterangan `Canceled by Budi Santoso`.
+  - DU-067-6: baris pinjaman dibatalkan, Asset `Kamera Canon EOS 200D`, Approval `Needs approval`, Approval type `All approvers`, approver snapshot `Rina W` berstatus `Approved` dan `Agus P` berstatus `Not Involved`.
 - Kondisi:
   - K1: dialog dibuka dari baris DU-067-1.
   - K2: dialog dibuka dari baris DU-067-2.
@@ -78,7 +78,7 @@ coverage:
 
 ### Baris yang dibatalkan sebelum diputuskan
 26. Tampilkan Dialog Transaction Rules dengan kondisi K6
-27. Verifikasi keterangan `Canceled by Budi Santoso` tampil
+27. Verifikasi dialog tidak memuat keterangan `Canceled by` (pembatalan tercatat di log)
 28. Verifikasi approver `Agus P` tampil dengan status `Not Involved` dan approver `Rina W` tetap `Approved`
 
 ### Varian Draft dari form Borrow Request

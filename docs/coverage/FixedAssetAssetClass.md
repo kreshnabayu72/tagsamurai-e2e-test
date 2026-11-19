@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Asset Class
 
-Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (718 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
+Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (739 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
 Suite: `specs/FixedAsset/AssetClass/` (beserta `suite.md`).
 Prefix Modul: `FA` + `AC` (`TC-FA-FAAC-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (196 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (198 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -207,6 +207,8 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-194-log-absence-request-langsung-create-update-delete-only-ditolak-403 | Log Absence: Request Langsung Create-Only, Update-Only, dan Delete-Only Ditolak 403 Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 34 | TC-FA-FAAC-598, TC-FA-FAAC-599, TC-FA-FAAC-600, TC-FA-FAAC-619, TC-FA-FAAC-620 |
 | TC-FA-FAAC-E2E-195-log-absence-request-langsung-asset-name-ditolak-server | Log Absence: Request Langsung Move, Unassign, dan Assign Asset Name yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 24 | TC-FA-FAAC-207, TC-FA-FAAC-605, TC-FA-FAAC-242, TC-FA-FAAC-621 |
 | TC-FA-FAAC-E2E-196-log-absence-request-langsung-asset-class-ditolak-server | Log Absence: Request Langsung Deactivate, Delete, Edit Class Code, dan Create Melampaui Batas yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 26 | TC-FA-FAAC-601, TC-FA-FAAC-602, TC-FA-FAAC-603, TC-FA-FAAC-604 |
+| TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | Tab Asset Names: Caption per Mode dan Assign pada Mode Edit Berlaku Tanpa Save | FE+BE | 21 | TC-FA-FAAC-737, TC-FA-FAAC-736, TC-FA-FAAC-739 |
+| TC-FA-FAAC-E2E-198-role-matrix-caption-tab-asset-names-read-only | Role Matrix: Caption Tab Asset Names Tidak Tampil bagi Read Only | FE+BE | 6 | TC-FA-FAAC-738 |
 
 ## 2. Daftar TC hanya-BE (Excluded dari E2E — 0 TC)
 
@@ -953,6 +955,10 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-716 | E2E | TC-FA-FAAC-E2E-131-hover-identifier-dan-format-nominal | FE+BE |
 | TC-FA-FAAC-717 | E2E | TC-FA-FAAC-E2E-160-log-edit-format-nominal-dan-total-estimated-units | FE+BE |
 | TC-FA-FAAC-718 | E2E | TC-FA-FAAC-E2E-155-changelog-download-csv-xlsx | FE+BE |
+| TC-FA-FAAC-736 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
+| TC-FA-FAAC-737 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
+| TC-FA-FAAC-738 | E2E | TC-FA-FAAC-E2E-198-role-matrix-caption-tab-asset-names-read-only | FE+BE |
+| TC-FA-FAAC-739 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
 
 ## 4. Pertanyaan terbuka dan Temuan untuk QA
 

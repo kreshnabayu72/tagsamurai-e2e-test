@@ -143,7 +143,7 @@ coverage:
 42. Klik `Transaction Rules`
 43. Verifikasi approver `Citra Lestari {runId}` yang belum bertindak berstatus `Not Involved`
 44. Verifikasi approver `Wawan Hartono {runId}` tetap berstatus `Approved` dengan waktu keputusannya
-45. Verifikasi dialog memuat keterangan `Canceled by [Name]` dengan Name `Agus Pratama {runId}` beserta waktunya
+45. Verifikasi dialog tidak memuat keterangan `Canceled by` (pembatalan tercatat di log)
 46. Verifikasi putaran yang dibatalkan tetap tampil sebagai blok pada dialog `Transaction Rules`
 47. Klik ikon silang pada dialog `Transaction Rules`
 
@@ -152,7 +152,7 @@ coverage:
 49. Klik `⋯` pada baris `Tablet Samsung Tab S8 {runId}`
 50. Klik `Transaction Rules`
 51. Verifikasi approver `Dimas Pratama {runId}` dan `Eko Saputra {runId}` yang belum bertindak berstatus `Not Involved`
-52. Verifikasi dialog memuat keterangan `Canceled by system (approval timeout` beserta waktunya
+52. Verifikasi dialog tidak memuat keterangan `Canceled by` (pembatalan tercatat di log)
 53. Klik ikon silang pada dialog `Transaction Rules`
 
 ### Baris diputuskan Group Manager lewat override

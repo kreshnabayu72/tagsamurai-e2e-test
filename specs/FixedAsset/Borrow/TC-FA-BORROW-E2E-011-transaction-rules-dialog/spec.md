@@ -99,11 +99,11 @@ coverage:
 24. Tutup dialog `Transaction Rules` lewat ikon silang
 25. Klik `⋯` pada baris aset `Aset Rules 05 Dibatalkan {runId}`
 26. Klik `Transaction Rules`
-27. Verifikasi `Bayu Anggoro` tetap `Approved` dengan waktunya, `Hendra Saputra` dan `Maria Ulfa` berstatus `Not Involved`, dan keterangan `Canceled by Agus Pratama` tampil dengan waktunya
+27. Verifikasi `Bayu Anggoro` tetap `Approved` dengan waktunya, `Hendra Saputra` dan `Maria Ulfa` berstatus `Not Involved`, dan dialog tidak memuat keterangan `Canceled by` (pembatalan tercatat di log)
 28. Tutup dialog `Transaction Rules` lewat ikon silang
 29. Klik `⋯` pada baris aset `Aset Rules 06 Timeout {runId}`
 30. Klik `Transaction Rules`
-31. Verifikasi `Bayu Anggoro` dan `Maria Ulfa` berstatus `Not Involved` dan keterangan `Canceled by system (Timed out (Waiting for Approval))` tampil dengan waktunya
+31. Verifikasi `Bayu Anggoro` dan `Maria Ulfa` berstatus `Not Involved`, dan dialog tidak memuat keterangan `Canceled by` (pembatalan tercatat di log)
 32. Tutup dialog `Transaction Rules` lewat ikon silang
 
 ### Override Group Manager dan approval yang dirutekan ulang
@@ -126,17 +126,17 @@ coverage:
 ### Aset tanpa approval dan yang lolos Auto-approve
 46. Klik `⋯` pada baris aset `Aset Rules 10 Tanpa Approval {runId}`
 47. Klik `Transaction Rules`
-48. Verifikasi Approval menampilkan `Not required` tanpa Approval type dan tanpa daftar approver
+48. Verifikasi blok `Borrow` memuat Approval `Not required` tanpa Approval type dan tanpa daftar approver
 49. Tutup dialog `Transaction Rules` lewat ikon silang
 50. Klik `⋯` pada baris aset `Aset Rules 11 Auto Approved {runId}`
 51. Klik `Transaction Rules`
-52. Verifikasi Approval menampilkan `Auto-approved` tanpa Approval type dan tanpa daftar approver
+52. Verifikasi blok `Borrow` memuat Approval `Auto-approved` tanpa Approval type dan tanpa daftar approver
 53. Tutup dialog `Transaction Rules` lewat ikon silang
 
 ### Aset dengan putaran Extension
 54. Klik `⋯` pada baris aset `Aset Rules 12 Extension {runId}`
 55. Klik `Transaction Rules`
-56. Verifikasi Approval di atas bagian `Approval Progress` mengikuti putaran terakhir: `Needs approval` dengan Approval type `Any one approver`
+56. Verifikasi dialog tidak memuat baris Approval di luar bagian `Approval Progress`; Approval dan Approval type hanya ada di dalam blok
 57. Verifikasi bagian `Approval Progress` memuat blok `Extension 2`, `Extension 1`, dan `Borrow` dengan blok terbaru di atas
 58. Verifikasi blok `Extension 2` terbuka dan blok `Extension 1` serta `Borrow` terlipat
 59. Verifikasi blok `Extension 2` memuat `Extend by 3 days`, Approval type `Any one approver`, serta approver `Bayu Anggoro` dan `Maria Ulfa` berstatus `Waiting for Approval`
