@@ -51,8 +51,8 @@ coverage:
 13. Pada dialog `Confirm Audit` biarkan checkbox dicentang, klik `[Confirm]`
 14. Tunggu aksi selesai
 15. Buka User Detail > System Log dan Activity Log
-16. Verifikasi jumlah entri Activity Log `Audit` bertambah 1 dari baseline langkah 11, dengan entri teratas (urutan default `Date` terbaru) baru: satu entri Action `Audit`, Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `—`, New Value `1`, Modified By `[First Name] [Last Initial]`
-17. Verifikasi jumlah entri System Log `Audit` bertambah 1 dari baseline langkah 11, dengan entri teratas baru: Action `Audit`, Object `TAG Stock`, Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old `—`, New `1`, tanpa Modified By
+16. Verifikasi jumlah entri Activity Log `Audit` bertambah 1 dari baseline langkah 11, dengan entri teratas (urutan default `Date` terbaru) baru: satu entri Action `Audit`, Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old Value `—`, New Value `1 TAG`, Modified By `[First Name] [Last Initial]`
+17. Verifikasi jumlah entri System Log `Audit` bertambah 1 dari baseline langkah 11, dengan entri teratas baru: Action `Audit`, Object `TAG Stock`, Name `RFID-ASSET-CORE-R5 (RFID)`, Field `Quantity`, Old `—`, New `1 TAG`, tanpa Modified By
 18. Verifikasi kolom Activity Log sama dengan System Log ditambah Modified By
 19. Verifikasi entri per unit tetap ada: jumlah `Mark as Damaged/Missing` bertambah 2 (A, B) dan jumlah `Mark as Available` bertambah 1 (C) dari baseline langkah 11
 
