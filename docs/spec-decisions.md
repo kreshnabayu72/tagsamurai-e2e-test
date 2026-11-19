@@ -2807,3 +2807,15 @@ Aturan:
   - Tanpa perubahan app.
 - **Diputuskan oleh:** Coordinator 2026-11-19.
 - **Status:** berlaku; script FA AL 004/078 (fal).
+
+## D-272 Aturan umum: tanggal di berkas Download mengikuti format General Settings, bukan ISO (2026-11-19)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-E2E-059` langkah 18–27 dan FixedAsset/AssetLabeling `TC-FA-LBL-E2E-086` langkah 5–9 (kolom Date pada berkas Change Log). Berlaku juga untuk spec lain yang mengharapkan tanggal/jam ISO (`2026-09-15T07:25:00.000Z`) di berkas CSV/XLSX hasil Download.
+- **Spec meminta:** kolom Date di berkas ditulis ISO 8601 UTC.
+- **Dasar keputusan: foundation.** Foundation `process/prd-process/prd-conventions.md` §9.9 Download, ketentuan data yang diexport: "Format tanggal & jam mengikuti General Settings platform". Tidak ada override tercatat. Spec yang meminta ISO bertentangan dengan foundation, jadi spec yang salah.
+- **Aplikasi:** sudah sesuai. Mock log menulis tanggal sesuai tampilan tabel, yaitu pola General Settings (`packages/infrastructure/log/LogMockDataSource.ts:67` `toExportedChangeLog`, sama untuk Session Log). Bila berkas dari backend menulis ISO, itu cacat backend (`be-bug`), bukan alasan mengubah asersi.
+- **Keputusan:**
+  - Untuk spec: tanggal dan jam di berkas Download ditulis dengan format Date Format + Time Format General Settings tenant (sama dengan sel tabel), bukan ISO. Script mengasersi nilai berformat General Settings untuk waktu yang sama.
+  - Tanpa perubahan app atau mock.
+- **Diputuskan oleh:** Coordinator 2026-11-19 (gap claim `gap-claims/fa-coordinator-changelog-csv-date.md`).
+- **Status:** berlaku; script CAID-059, LBL-086 (fa).
