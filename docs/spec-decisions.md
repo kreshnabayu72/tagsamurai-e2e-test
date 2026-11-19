@@ -2777,3 +2777,20 @@ Aturan:
 - **Keputusan:** Untuk spec: kalau panel, popover, atau dropdown masih terbuka di dalam dialog, setiap Esc hanya menutup satu lapisan. Script menutup lapisan yang masih terbuka dengan Esc terlebih dulu, lalu menjalankan Esc spec yang menutup dialog. Asersi dialog tertutup tetap seperti di spec.
 - **Diputuskan oleh:** Coordinator 2026-11-19.
 - **Status:** berlaku; script FAAM-147 (fa).
+
+## D-270 Aturan umum: General Settings sessionIdleTimeout bertipe string ditolak dengan pesan tipe, bukan pesan enum (2026-11-19)
+
+- **Spec / langkah:** GlobalSettings/GeneralSettings `TC-GS-GSET-143` (P1), blok langkahnya di spec GSET 050 dan 143. Payload `sessionIdleTimeout` berupa string (`"Never"`, `""`).
+- **Spec meminta:** 422 `Invalid session idle timeout value` untuk input string.
+- **Kenyataannya:** EMS `PUT /general-settings` menolak string dengan 422 `Expected number, but received string`. Angka di luar enum (mis. `45`, `0`) tetap ditolak dengan 422 `Invalid session idle timeout value`.
+- **Karena:**
+  - Nilai dan pesan ke BE mengikuti LLD/openapi. LLD L81 membedakan pesan salah tipe dari pesan nilai di luar enum, begitu juga contoh openapi `sessionIdleTimeoutWrongType` dan TC backend BE-016.
+  - Kode EMS sejalan dengan kontrak: `internal/module/general_settings/dto/general_settings_dto.go:75-80`, tes `handler/update_general_settings_handler_test.go:36,47`.
+  - Spec yang tidak sesuai kontrak, bukan BE.
+- **Keputusan:**
+  - Untuk spec: `sessionIdleTimeout` bertipe string → 422 `Expected number, but received string`.
+  - Angka di luar enum (15, 30, 60, 120, 240, 480 menit) → 422 `Invalid session idle timeout value`.
+  - Payload string di spec tetap, supaya kasus salah tipe tetap teruji.
+  - Tanpa issue BE. Koreksi TC diteruskan ke pemilik TC.
+- **Diputuskan oleh:** Coordinator 2026-11-19.
+- **Status:** berlaku; script GSET 050/143 (gs). BT-GS-GSET-5 ditutup bersamaan.
