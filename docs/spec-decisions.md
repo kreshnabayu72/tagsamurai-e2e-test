@@ -1470,7 +1470,7 @@ Aturan:
 - **Karena:** e2e hanya membangun keadaan yang benar-benar bisa terjadi; ini cacat spec, bukan wrapper-gap atau library-gap.
 - **Keputusan:** blok itu di luar e2e, tanpa langkah dan tanpa gap; tag `@library-gap` dan `@wrapper-gap` dihapus.
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-HHR-INJECT).
-- **Diterapkan di:** `TC-GS-HHR-E2E-029`.
+- **Diterapkan di:** `TC-GS-HHR-E2E-029`; FixedAsset/SettingsAssetName `TC-FA-FAAM-E2E-052` (TC-FA-FAAM-92, -137) dan `TC-FA-FAAM-E2E-088` (TC-FA-FAAM-189, -684): emoji disuntik ke DOM Asset Name / model (2026-11-19).
 - **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-INJECT).
 
 ## D-150 Pesan validasi Custom Field memakai nama field seperti dikonfigurasi (2026-11-12)
