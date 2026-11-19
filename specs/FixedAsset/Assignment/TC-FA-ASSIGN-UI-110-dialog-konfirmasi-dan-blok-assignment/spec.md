@@ -66,11 +66,11 @@ coverage:
   - DU-110-25: Baris aset form Name `Genset Perkins 20kVA - 2`, Group `Gudang Medan`, Purpose `Cadangan listrik gudang`, Approval Rule `No approval`.
   - DU-110-11: Baris Transaction Rules Asset `Excavator PC200 - 4`, Approval `Needs approval`, Approval type `Any one approver`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Status `Waiting for Approval`.
   - DU-110-12: Baris Transaction Rules Asset `Toyota Avanza - 6`, Approval `Needs approval`, Approval type `Any one approver`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Keputusan `Rina Wulandari Approved pada T0 − 2 jam`.
-  - DU-110-13: Baris Transaction Rules Asset `Printer HP M404 - 3`, Approval `Needs approval`, Approval type `All approvers (AND)`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Keputusan `Agus Pratama Rejected pada T0 − 1 jam`.
-  - DU-110-14: Baris Transaction Rules Asset `Camera Sony A7 - 9`, Approval `Needs approval`, Approval type `All approvers (AND)`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Keputusan `Rina Wulandari Approved pada T0 − 3 jam`, Keterangan `Canceled by Dewi Lestari`.
+  - DU-110-13: Baris Transaction Rules Asset `Printer HP M404 - 3`, Approval `Needs approval`, Approval type `All approvers`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Keputusan `Agus Pratama Rejected pada T0 − 1 jam`.
+  - DU-110-14: Baris Transaction Rules Asset `Camera Sony A7 - 9`, Approval `Needs approval`, Approval type `All approvers`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Approver 3 `Sari Dewi`, Keputusan `Rina Wulandari Approved pada T0 − 3 jam`, Keterangan `Canceled by Dewi Lestari`.
   - DU-110-15: Baris Transaction Rules Asset `Tablet Samsung Tab S8 - 2`, Approval `Needs approval`, Approval type `Any one approver`, Approver 1 `Agus Pratama`, Approver 2 `Sari Dewi`, Keterangan `Canceled by system (approval timeout`.
-  - DU-110-16: Baris Transaction Rules Asset `Laptop Dell Latitude 5420 - 10`, Putaran 3 (terbaru) `Needs approval, Any one approver, Agus Pratama dan Rina Wulandari Waiting for Approval`, Putaran 2 `Not required`, Putaran 1 `Needs approval, All approvers (AND), Sari Dewi Rejected dan Agus Pratama Not Involved`, Submitted putaran 3 `T0 − 1 hari`, putaran 2 `T0 − 3 hari`, putaran 1 `T0 − 5 hari`, Approval Note Agus Pratama `Setuju setelah cek lapangan`.
-  - DU-110-17: Baris Transaction Rules Asset `Printer HP M404 - 3`, Approval `Needs approval`, Approval type `All approvers (AND)`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Override `Dewi Lestari Approved dengan keterangan Group Manager override`.
+  - DU-110-16: Baris Transaction Rules Asset `Laptop Dell Latitude 5420 - 10`, Putaran 3 (terbaru) `Needs approval, Any one approver, Agus Pratama dan Rina Wulandari Waiting for Approval`, Putaran 2 `Not required`, Putaran 1 `Needs approval, All approvers, Sari Dewi Rejected dan Agus Pratama Not Involved`, Submitted putaran 3 `T0 − 1 hari`, putaran 2 `T0 − 3 hari`, putaran 1 `T0 − 5 hari`, Approval Note Agus Pratama `Setuju setelah cek lapangan`.
+  - DU-110-17: Baris Transaction Rules Asset `Printer HP M404 - 3`, Approval `Needs approval`, Approval type `All approvers`, Approver 1 `Agus Pratama`, Approver 2 `Rina Wulandari`, Override `Dewi Lestari Approved dengan keterangan Group Manager override`.
   - DU-110-18: Baris Transaction Rules Asset `Camera Sony A7 - 9`, Approval `Needs approval`, Approval type `Any one approver`, Approver 1 `Agus Pratama`, Approver 2 `Sari Dewi`, Override `Hendra Gunawan Rejected dengan keterangan Total Control override`.
   - DU-110-19: Baris Transaction Rules Asset `Excavator PC200 - 5`, Approval `Needs approval`, Penerima `Dewi Lestari`, Keterangan `Routed to Group Manager`.
   - DU-110-20: Baris Transaction Rules Asset `Excavator PC200 - 6`, Approval `Needs approval`, Penerima `Hendra Gunawan`, Keterangan `Routed to Total Control`.
@@ -303,7 +303,7 @@ coverage:
 
 ### All approvers: satu Rejected menolak aset
 133. Tampilkan Dialog Konfirmasi Assignment dengan kondisi K21
-134. Verifikasi blok putaran memuat Approval type `All approvers (AND)`
+134. Verifikasi blok putaran memuat Approval type `All approvers`
 135. Verifikasi `Agus Pratama` berstatus `Rejected`
 136. Verifikasi status `Rejected` pada `Agus Pratama` disertai waktu keputusannya
 137. Verifikasi `Rina Wulandari` dan `Sari Dewi` berstatus `Not Involved`

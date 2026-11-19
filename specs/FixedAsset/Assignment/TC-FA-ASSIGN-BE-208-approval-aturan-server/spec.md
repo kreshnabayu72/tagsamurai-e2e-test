@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.2#b22", "§9.2#b23", "§9.2#b24", "§9.2#b25", "§9.2#b26", "§9.2#b27", "§9.2#b28", "§9.2#r19", "§9.2#r20", "§9.2#p45", "§9.2#p47", "§9.2#p49", "§9.2#p51", "§9.2#p52", "§9.2#p53", "§9.2#p54", "§9.2#p55", "§9.2#p56", "§9.2#p57", "F-ASSIGN-05.k2", "F-ASSIGN-05.k3", "EC-ASG-12", "EC-ASG-42", "§9.4.3#b5", "§10#r6", "ASSIGN-LOGIC-07a", "ASSIGN-LOGIC-07b", "ASSIGN-LOGIC-07c", "ASSIGN-LOGIC-07d", "ASSIGN-LOGIC-07e", "ASSIGN-LOGIC-07f", "ASSIGN-LOGIC-07g", "ASSIGN-LOGIC-07h", "ASSIGN-LOGIC-07i", "ASSIGN-LOGIC-07j", "ASSIGN-LOGIC-07k", "ASSIGN-LOGIC-07l", "ASSIGN-LOGIC-07n", "ASSIGN-LOGIC-07o", "ASSIGN-LOGIC-07p", "ASSIGN-LOGIC-07q", "ASSIGN-LOGIC-07s", "ASSIGN-LOGIC-07t", "ASSIGN-LOGIC-07u", "ASSIGN-LOGIC-07v", "ASSIGN-LOGIC-07w"]
+sourceRules: ["§9.2#b22", "§9.2#b23", "§9.2#b24", "§9.2#b25", "§9.2#b26", "§9.2#b27", "§9.2#b28", "§9.2#r19", "§9.2#r20", "§9.2#p45", "§9.2#p47", "§9.2#p49", "§9.2#p51", "§9.2#p52", "§9.2#p53", "§9.2#p54", "§9.2#p55", "§9.2#p56", "§9.2#p57", "F-ASSIGN-05.k2", "F-ASSIGN-05.k3", "EC-ASG-12", "EC-ASG-42", "§9.4.3#b5", "§10#r6", "ASSIGN-LOGIC-07a", "ASSIGN-LOGIC-07b", "ASSIGN-LOGIC-07c", "ASSIGN-LOGIC-07d", "ASSIGN-LOGIC-07e", "ASSIGN-LOGIC-07f", "ASSIGN-LOGIC-07g", "ASSIGN-LOGIC-07h", "ASSIGN-LOGIC-07i", "ASSIGN-LOGIC-07j", "ASSIGN-LOGIC-07k", "ASSIGN-LOGIC-07l", "ASSIGN-LOGIC-07n", "ASSIGN-LOGIC-07o", "ASSIGN-LOGIC-07p", "ASSIGN-LOGIC-07q", "ASSIGN-LOGIC-07s", "ASSIGN-LOGIC-07t", "ASSIGN-LOGIC-07u", "ASSIGN-LOGIC-07v", "ASSIGN-LOGIC-07w", "ASSIGN-LOGIC-07x", "EC-ASG-118"]
 smoke: []
 dependsOn: []
 trace:
@@ -31,6 +31,8 @@ trace:
   "F-ASSIGN-05.k2": 15
   "F-ASSIGN-05.k3": [62, 66, 107]
   "EC-ASG-12": [17, 19, 66, 68, 98, 101, 102, 104]
+  "EC-ASG-118": [112, 113, 114]
+  "ASSIGN-LOGIC-07x": [112, 113, 114]
   "EC-ASG-42": [62, 64, 107]
   "§9.4.3#b5": [17, 19, 68, 74, 79, 101, 104]
   "§10#r6": 23
@@ -61,7 +63,7 @@ owner: BE
 # Aturan approval per aset: Any one, All, self-approval guard, dan reroute
 
 ## Prerequisites
-- Aktor: Aktor Assignment `Hendra Kusuma {runId}` (Asset Admin) dengan cakupan Group `Grup Approval {runId}`, `Grup Reroute {runId}`, `Grup Tunggal {runId}`, `Grup Division Approval {runId}`, `Grup Division Tunggal {runId}`, `Grup Satu Approver {runId}`, dan `Grup Cabut {runId}`, sebagai pengaju. Approver: `Rina Wijaya {runId}` dan `Agus Pratama {runId}`; approver `Bagas Reroute {runId}` pada Group `Grup Reroute {runId}`; approver `Wati Susanti {runId}` pada Group `Grup Division Approval {runId}` dan `Grup Division Tunggal {runId}`; Group Manager `Gita Manajer {runId}`. approver `Bayu Cabut {runId}` pada Group `Grup Cabut {runId}`; approver `Rina Wijaya {runId}` sebagai satu-satunya approver Group `Grup Satu Approver {runId}`. Pengelola karyawan, Pengelola Role Transaksi, dan pengelola plan pada langkah yang menyebutnya.
+- Aktor: Aktor Assignment `Hendra Kusuma {runId}` (Asset Admin) dengan cakupan Group `Grup Approval {runId}`, `Grup Reroute {runId}`, `Grup Tunggal {runId}`, `Grup Division Approval {runId}`, `Grup Division Tunggal {runId}`, `Grup Satu Approver {runId}`, `Grup Cabut {runId}`, dan `Grup Fallback Habis {runId}`, sebagai pengaju. Approver: `Rina Wijaya {runId}` dan `Agus Pratama {runId}`; approver `Bagas Reroute {runId}` pada Group `Grup Reroute {runId}`; approver `Wati Susanti {runId}` pada Group `Grup Division Approval {runId}` dan `Grup Division Tunggal {runId}`; Group Manager `Gita Manajer {runId}`. approver `Bayu Cabut {runId}` pada Group `Grup Cabut {runId}`; approver `Rina Wijaya {runId}` sebagai satu-satunya approver Group `Grup Satu Approver {runId}`. Pengelola karyawan, Pengelola Role Transaksi, dan pengelola plan pada langkah yang menyebutnya.
 - Data:
   - DU-208-1: Category KL beserta Asset Name, Category `Kategori Tanpa Approval {runId}`, Asset Name `Nama Tanpa Approval {runId}`, Override Category Max assets per assignee `0`, Override Category Need recipient confirmation `No`, Override Category Photo at start `OFF`, Override Category Allowed assignee Employee `ON`, Override Category Allowed assignee Division `ON`, Override Category Require approval `OFF`.
   - DU-208-2: Category KA beserta Asset Name, Category `Kategori Any One {runId}`, Asset Name `Nama Any One {runId}`, Override Category Max assets per assignee `0`, Override Category Need recipient confirmation `No`, Override Category Photo at start `OFF`, Override Category Allowed assignee Employee `ON`, Override Category Allowed assignee Division `ON`, Override Category Require approval `ON`, Override Category Approval type `Any one`.
@@ -111,6 +113,7 @@ owner: BE
   - DU-208-46: Aset Excavator PIC Approver, Name `Excavator PIC Approver {runId}`, Group `Grup Division Approval {runId}`, Category `Kategori All {runId}`, Asset Name `Nama All {runId}`, TAG `Non TAG`, Custody `Available`, Condition `Normal`.
   - DU-208-47: Aset Projector PIC Tunggal, Name `Projector PIC Tunggal {runId}`, Group `Grup Division Tunggal {runId}`, Category `Kategori Any One {runId}`, Asset Name `Nama Any One {runId}`, TAG `Non TAG`, Custody `Available`, Condition `Normal`.
   - DU-208-48: Aset Projector Cabut, Name `Projector Cabut {runId}`, Group `Grup Cabut {runId}`, Category `Kategori Any One {runId}`, Asset Name `Nama Any One {runId}`, TAG `Non TAG`, Custody `Available`, Condition `Normal`.
+  - DU-208-49: Group dengan seluruh fallback habis, Group `Grup Fallback Habis {runId}`, Approver `Hendra Kusuma {runId}`, Group Manager `Hendra Kusuma {runId}`, Total Control hanya `Hendra Kusuma {runId}`; aset `Projector Tanpa Approver {runId}`, Category `Kategori Any One {runId}`, Custody `Available`.
 - Kondisi:
   - Level Feature Suite Assignment pada plan adalah `Full`, dan Approval Workflow tersedia di plan pada awal spec.
   - Setiap aset berada di Custody `Available` dan tidak berada di ASG aktif maupun Draft mana pun.
@@ -257,3 +260,8 @@ owner: BE
 109. Waktu berlalu melewati Transaction timeout sejak baris `Projector Timeout {runId}` masuk `Waiting for Approval`
 110. Verifikasi baris `Projector Timeout {runId}` berstatus `Canceled` oleh `System` dengan alasan `Timed out (Waiting for Approval)`
 111. Verifikasi status pengajuan adalah `Canceled`, karena ditutup sistem
+
+### Submit diblokir bila daftar approver dan seluruh fallback habis
+112. Aktor Assignment `Hendra Kusuma {runId}` mengajukan Submit untuk Assignee `Sari Dewi {runId}` dengan aset `Projector Tanpa Approver {runId}` dan Purpose `Daily work`
+113. Verifikasi Submit ditolak dengan pesan `There is no eligible approver for Projector Tanpa Approver {runId}. Ask someone else to submit this assignment.`
+114. Verifikasi tidak ada ASG yang dibuat dan aset `Projector Tanpa Approver {runId}` tetap Custody `Available`

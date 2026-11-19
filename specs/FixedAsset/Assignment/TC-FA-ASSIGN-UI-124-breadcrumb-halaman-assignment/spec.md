@@ -73,7 +73,7 @@ coverage:
 2. Verifikasi breadcrumb menampilkan segmen berurutan `Transactions`, `Assignment`, `Transactions`
 3. Verifikasi tab `Transactions` tersimpan pada parameter `?tab=transactions`
 4. Verifikasi tab navigasi memuat `Transactions`, `Drafts`, `Assigned Assets`, dan `History`
-5. Verifikasi toolbar memuat `Search by Scan`, `Search`, `Filter`, `Download`, dan `[+ Assign]`[^drift-1]
+5. Verifikasi toolbar memuat `Search by Scan`, `Search`, `Filter`, `Download`, dan `[+ Assign]`
 6. Verifikasi segmen pertama `Transactions` tidak bisa diklik
 7. Verifikasi segmen tengah `Assignment` bisa diklik
 8. Verifikasi segmen terakhir `Transactions` tidak bisa diklik
@@ -84,7 +84,7 @@ coverage:
 11. Verifikasi breadcrumb menampilkan segmen berurutan `Transactions`, `Assignment`, `Drafts`
 12. Verifikasi tab `Drafts` tersimpan pada parameter `?tab=drafts`
 13. Verifikasi toolbar memuat `Search by Scan`, `Search`, `Filter`, dan `[+ Assign]`
-14. Verifikasi toolbar tidak memuat `Download`[^drift-1]
+14. Verifikasi toolbar tidak memuat `Download`
 15. Verifikasi segmen pertama `Transactions` tidak bisa diklik
 16. Verifikasi segmen tengah `Assignment` bisa diklik
 17. Verifikasi segmen terakhir `Drafts` tidak bisa diklik
@@ -94,7 +94,7 @@ coverage:
 19. Verifikasi breadcrumb menampilkan segmen berurutan `Transactions`, `Assignment`, `Assigned Assets`
 20. Verifikasi tab `Assigned Assets` tersimpan pada parameter `?tab=assigned`
 21. Verifikasi sub-tab memuat `By Asset` dan `By Assignee`
-22. Verifikasi toolbar memuat `Search by Scan`, `Search`, `Filter`, dan `Download`[^drift-1]
+22. Verifikasi toolbar memuat `Search by Scan`, `Search`, `Filter`, dan `Download`
 23. Verifikasi segmen pertama `Transactions` tidak bisa diklik
 24. Verifikasi segmen tengah `Assignment` bisa diklik
 25. Verifikasi segmen terakhir `Assigned Assets` tidak bisa diklik
@@ -104,7 +104,7 @@ coverage:
 27. Verifikasi breadcrumb menampilkan segmen berurutan `Transactions`, `Assignment`, `History`
 28. Verifikasi tab `History` tersimpan pada parameter `?tab=history`
 29. Verifikasi sub-tab memuat `By Transaction` dan `By Asset`
-30. Verifikasi toolbar memuat `Search`, `Filter`, dan `Download`[^drift-1]
+30. Verifikasi toolbar memuat `Search`, `Filter`, dan `Download`
 31. Verifikasi toolbar tidak memuat `Search by Scan`
 32. Verifikasi segmen pertama `Transactions` tidak bisa diklik
 33. Verifikasi segmen tengah `Assignment` bisa diklik
@@ -231,7 +231,7 @@ coverage:
 124. Verifikasi tab `Active` tersimpan pada parameter `?tab=active`
 125. Verifikasi tab memuat `Active` dan `History`
 126. Verifikasi toolbar memuat `Search` dan `Filter`
-127. Verifikasi toolbar tidak memuat `Download`[^drift-1]
+127. Verifikasi toolbar tidak memuat `Download`
 128. Verifikasi segmen pertama `Approvals` tidak bisa diklik
 129. Verifikasi segmen tengah `Assignment` bisa diklik
 130. Verifikasi segmen terakhir `Active` tidak bisa diklik
@@ -241,7 +241,7 @@ coverage:
 132. Verifikasi breadcrumb menampilkan segmen berurutan `Approvals`, `Assignment`, `History`
 133. Verifikasi tab `History` tersimpan pada parameter `?tab=history`
 134. Verifikasi tab memuat `Active` dan `History`
-135. Verifikasi toolbar memuat `Search`, `Filter`, dan `Download`[^drift-1]
+135. Verifikasi toolbar memuat `Search`, `Filter`, dan `Download`
 136. Verifikasi segmen pertama `Approvals` tidak bisa diklik
 137. Verifikasi segmen tengah `Assignment` bisa diklik
 138. Verifikasi segmen terakhir `History` tidak bisa diklik
@@ -281,4 +281,4 @@ coverage:
 160. Verifikasi Filter Panel memuat field `Status`
 161. Verifikasi field `Assignee` tidak tampil pada Filter Panel
 
-[^drift-1]: Drift PRD vs foundation dan kontrak komponen. PRD §4.2.1 dan §5 Global Table Rules baris Download: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1 dan kontrak `ExportButton#1` serta `ExportButton#26`: ikon toolbar bernama `Download` dengan tooltip dan aria-label `Download`. Diasersi: foundation dan kontrak, karena tombol unduh di toolbar tabel adalah pola bersama dan komponen bersama (SB-4, SB-7).
+

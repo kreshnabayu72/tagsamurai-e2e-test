@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.2.5#p1", "§4.2.5#p2", "§4.2.5#p3", "§4.2.5#p4", "§4.2.5#b1", "§4.2.5#b2", "§4.2.5#b3", "§4.2.5#b4", "§4.2.5#b5", "§4.2.5#b6", "§4.2.5#b7", "§4.2.5#b8", "§4.2.5#b9", "§4.2.5#b10", "§4.1#r10", FI-ASG-19, FI-ASG-42, S-ASG-08, S-ASG-09, V-ASG-19, V-ASG-20, V-ASG-21, FLD-ASG-14, FLD-ASG-15, TS-ASG-32, EC-ASG-73, "§4.4#r18", "EB-TBL-5@hand-over-no-pic"]
+sourceRules: ["§4.2.5#p1", "§4.2.5#p2", "§4.2.5#p3", "§4.2.5#p4", "§4.2.5#b1", "§4.2.5#b2", "§4.2.5#b3", "§4.2.5#b4", "§4.2.5#b5", "§4.2.5#b6", "§4.2.5#b7", "§4.2.5#b8", "§4.2.5#b9", "§4.2.5#b10", "§4.1#r10", FI-ASG-19, FI-ASG-42, S-ASG-08, S-ASG-09, V-ASG-19, V-ASG-20, V-ASG-21, FLD-ASG-14, FLD-ASG-15, TS-ASG-32, EC-ASG-73, "§4.4#r18", "EB-TBL-5@hand-over-no-pic", FI-ASG-20, ASSIGN-LOGIC-15a, ASSIGN-LOGIC-15c]
 smoke: []
 dependsOn: []
 trace:
@@ -25,8 +25,11 @@ trace:
   "§4.2.5#b10": [129, 130]
   "§4.1#r10": 11
   FI-ASG-19: [59, 60]
+  FI-ASG-20: [85, 87, 88, 89]
+  ASSIGN-LOGIC-15a: [85, 87, 88]
+  ASSIGN-LOGIC-15c: 89
   FI-ASG-42: [129, 130]
-  S-ASG-08: [21, 24, 25]
+  S-ASG-08: [21, 24, 25, 89]
   S-ASG-09: 111
   V-ASG-19: 122
   V-ASG-20: 30
@@ -73,7 +76,7 @@ coverage:
   - K9: seperti K1; scan TAG aset DU-111-8, yang bukan aset ASG ini, ditolak; pesan yang diharapkan `Error, this TAG belongs to LPT-2026-0099, not in this assignment.`, dari Asset ID DU-111-8.
   - K10: seperti K1; scan TAG aset DU-111-9, yang masih Waiting for Approval, ditolak; pesan yang diharapkan `Error, this asset is still waiting for approval from Agus Pratama.`, dari Approver DU-111-9.
   - K11: seperti K1; scan TAG aset DU-111-10, yang berada di Group lain, ditolak; pesan yang diharapkan `Error, this asset belongs to Branch Surabaya.`, dari Group DU-111-10.
-  - K12: seperti K1; scan TAG aset milik penugasan Aktor sendiri ditolak; pesan yang diharapkan `Error, you can't hand over or receive your own assignment.`.
+  - K12: Halaman Handover dibuka untuk ASG yang Assignee-nya adalah Aktor sendiri (`Dewi Lestari`); baris DU-111-3 `Unverified` dan Need recipient confirmation `Yes`; scan TAG DU-111-3 diterima; tombol utama yang diharapkan `[Complete Handover]`, tanpa popup `D-ASG-21` dan tanpa `D-ASG-22`.
   - K13: seperti K1 dengan baris DU-111-3, DU-111-4, dan DU-111-7; scan TAG aset DU-111-7 gagal karena tag tidak terbaca; pesan yang diharapkan `Error, this TAG can't be read. Report the TAG and use another asset.`.
   - K14: Halaman Handover dibuka untuk DU-111-1; baris DU-111-3 Verified dan DU-111-7 `Unverified`; laporan TAG DU-111-7 lewat `I Can't Scan the TAG` berhasil dibuat; teks yang diharapkan `TAG reported. Replace the TAG to hand over.`.
   - K15: seperti K14; Replace TAG untuk DU-111-7 sudah selesai saat halaman terbuka.
@@ -205,12 +208,12 @@ coverage:
 83. Verifikasi toast `Error, this asset belongs to Branch Surabaya.` tampil
 84. Verifikasi baris `Laptop Dell Latitude 5420 - 10` tetap menampilkan Verification `Unverified`
 
-### Scan ditolak: penugasan Aktor sendiri
+### Scan diterima: penugasan Aktor sendiri
 85. Tampilkan Halaman Handover dengan kondisi K12
 86. Klik `[Verify Asset]`
 87. Pindai TAG aset penugasan Aktor sendiri
-88. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil
-89. Verifikasi baris `Laptop Dell Latitude 5420 - 10` tetap menampilkan Verification `Unverified`
+88. Verifikasi baris `Laptop Dell Latitude 5420 - 10` menampilkan Verification `Verified` tanpa toast error
+89. Verifikasi tombol utama `[Complete Handover]` tampil dan popup `D-ASG-21` tidak tampil
 
 ### Tag tidak terbaca: toast dan handover tidak dapat dimulai untuk aset itu
 90. Tampilkan Halaman Handover dengan kondisi K13

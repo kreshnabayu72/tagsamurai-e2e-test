@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["T-ASG-06", "T-ASG-07", "F-ASSIGN-14", "F-ASSIGN-05.k4", "§4.1#r18", "§4.2.10#b1", "§4.2.10#b2", "§4.2.10#b3", "§4.2.10#p1", "§9.5#r7", "EC-ASG-79", "FI-ASG-123", "FI-ASG-124", "FI-ASG-125", "ASSIGN-LOGIC-07r", "FI-ASG-111", "FI-ASG-112"]
+sourceRules: ["T-ASG-06", "T-ASG-07", "F-ASSIGN-14", "F-ASSIGN-05.k4", "§4.1#r18", "§4.2.10#b1", "§4.2.10#b2", "§4.2.10#b3", "§4.2.10#p1", "§9.5#r7", "EC-ASG-79", "FI-ASG-123", "FI-ASG-124", "FI-ASG-125", "ASSIGN-LOGIC-07r", "FI-ASG-111", "FI-ASG-112", "ASSIGN-LOGIC-07y", "EC-ASG-119"]
 smoke: []
 dependsOn: []
 trace:
@@ -26,6 +26,8 @@ trace:
   "ASSIGN-LOGIC-07r": [8, 9, 244, 251]
   "FI-ASG-111": [59, 62]
   "FI-ASG-112": [64, 246, 253]
+  "ASSIGN-LOGIC-07y": [64, 246, 253]
+  "EC-ASG-119": [64, 246, 253]
 anchor: []
 coverage:
   web: automated
@@ -140,7 +142,7 @@ coverage:
 61. Buka langsung alamat halaman Review pengajuan milik DU-026-5
 62. Verifikasi halaman Review pengajuan `Sari Dewi {runId}` terbuka untuk approver aset itu
 63. Buka langsung alamat halaman Review pengajuan milik DU-026-12
-64. Verifikasi akses ke halaman Review pengajuan itu ditolak dan keputusan atas asetnya tidak tersedia
+64. Verifikasi halaman Review pengajuan itu tampil read-only dengan notice `You cannot decide an assignment you requested or are assigned to.`, tanpa tombol `[Submit]`
 
 ### Antrean History memuat pengajuan yang asetnya diputuskan approver
 65. Buka halaman `Approvals > Assignment`
@@ -161,7 +163,7 @@ coverage:
 80. Verifikasi tidak ada baris dengan Assignee `Mira Anjani {runId}` di tab `History` karena keputusan approver lain pada aset Any one tidak membuat pengajuan masuk History
 81. Verifikasi tidak ada baris dengan Assignee `Nina Safitri {runId}` di tab `History` karena pengajuan dibatalkan sebelum approver memutuskan satu asetnya pun
 82. Verifikasi tidak ada baris dengan Assignee `Sari Dewi {runId}` di tab `History` karena asetnya belum diputuskan approver
-83. Verifikasi tombol `Download` tampil di tab `History`[^drift-1]
+83. Verifikasi tombol `Download` tampil di tab `History`
 
 ### Filter Status di tab History
 84. Klik `Filter`
@@ -174,12 +176,12 @@ coverage:
 91. Klik `[Apply]`
 
 ### Download hanya ada di tab History
-92. Klik `Download`[^drift-1]
+92. Klik `Download`
 93. Pilih `Download as CSV`
 94. Verifikasi berkas yang diunduh bernama `Approvals-Assignment-History`
 95. Klik tab `Active`
 96. Verifikasi baris `Sari Dewi {runId}` tampil di tab `Active`
-97. Verifikasi tombol `Download` tidak ada di tab `Active`[^drift-1]
+97. Verifikasi tombol `Download` tidak ada di tab `Active`
 
 ### Detail di tab History membuka halaman Review read-only untuk pengajuan yang sudah ditutup
 98. Klik tab `History`
@@ -341,7 +343,7 @@ coverage:
 234. Klik `Transaction ID` pada baris `Budi Santoso {runId}`
 235. Verifikasi breadcrumb `Approvals > Assignment > History > Detail`
 236. Klik `History` pada breadcrumb
-237. Klik `Download`[^drift-1]
+237. Klik `Download`
 238. Pilih `Download as XLSX`
 239. Verifikasi berkas yang diunduh bernama `Approvals-Assignment-History`
 
@@ -352,7 +354,7 @@ coverage:
 243. Ketik Search `{runId}`, tekan Enter
 244. Verifikasi baris dengan Assignee `Wawan Hartono {runId}` tampil di tab `Active`
 245. Buka langsung alamat halaman Review pengajuan milik DU-026-6
-246. Verifikasi akses ke halaman Review pengajuan itu ditolak dan keputusan atas asetnya tidak tersedia
+246. Verifikasi halaman Review pengajuan itu tampil read-only dengan notice `You cannot decide an assignment you requested or are assigned to.`, tanpa tombol `[Submit]`
 
 ### PIC yang juga approver di pengajuan lain tidak dapat membuka Review pengajuan Division-nya lewat alamat langsung
 247. Keluar dari akun lalu masuk sebagai `Hendra Kusuma {runId}`
@@ -361,7 +363,7 @@ coverage:
 250. Ketik Search `{runId}`, tekan Enter
 251. Verifikasi baris dengan Assignee `Wawan Hartono {runId}` tampil di tab `Active`
 252. Buka langsung alamat halaman Review pengajuan milik DU-026-6
-253. Verifikasi akses ke halaman Review pengajuan itu ditolak dan keputusan atas asetnya tidak tersedia
+253. Verifikasi halaman Review pengajuan itu tampil read-only dengan notice `You cannot decide an assignment you requested or are assigned to.`, tanpa tombol `[Submit]`
 
 ### Total Control yang menjadi approver membuka Assignment Detail dari Detail di tab History
 254. Keluar dari akun lalu masuk sebagai `Dewi Anggraini {runId}`
@@ -383,4 +385,4 @@ coverage:
 268. Klik `Detail`
 269. Verifikasi halaman Assignment Detail terbuka dengan baris judul memuat Transaction ID berformat `ASG-YYYY-NNNN` dan kolom `Status` pada tabel Assets, tanpa kolom `Approval Rule` milik halaman Review read-only
 
-[^drift-1]: Drift PRD vs foundation. PRD §5 Global Table Rules baris Download dan §4.2.10: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+

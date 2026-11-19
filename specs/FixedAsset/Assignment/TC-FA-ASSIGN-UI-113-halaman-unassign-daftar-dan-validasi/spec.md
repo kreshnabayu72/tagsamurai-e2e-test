@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-ASG-10, "§4.1#r8", "§4.2.6#p1", "§4.2.6#p2", "§4.2.6#p3", "§4.2.6#b1", "§4.2.6#b2", "§4.2.6#b3", "§4.2.6#b4", "§4.2.6#b5", "§4.2.6#b6", "§4.2.6#b7", "§4.2.6#b8", "§4.2.6#b9", "§4.2.6#b10", "§4.2.6#b11", "§4.2.6#b12", "§4.2.6#b13", "§4.2.6#b14", "§4.2.6#b15", "§4.2.6#b16", "§4.2.6#b17", "§4.2.6#b18", "§4.2.6#b19", "§4.2.6#b20", "§4.2.6#b21", FI-ASG-43, FI-ASG-44, FI-ASG-45, FI-ASG-46, FI-ASG-57, FI-ASG-58, FI-ASG-59, FI-ASG-60, FI-ASG-61, FI-ASG-70, FI-ASG-71, FI-ASG-72, FI-ASG-73, FLD-ASG-10, FLD-ASG-11, FLD-ASG-12, FLD-ASG-13, V-ASG-27, V-ASG-28, V-ASG-29, FLD-ASG-18, FLD-ASG-19, S-ASG-25, "EB-FRM-4@description-report-damaged", "EB-TBL-5@aksi-pemisahan-peran"]
+sourceRules: [T-ASG-10, "§4.1#r8", "§4.2.6#p1", "§4.2.6#p2", "§4.2.6#p3", "§4.2.6#b1", "§4.2.6#b2", "§4.2.6#b3", "§4.2.6#b4", "§4.2.6#b5", "§4.2.6#b6", "§4.2.6#b7", "§4.2.6#b8", "§4.2.6#b9", "§4.2.6#b10", "§4.2.6#b11", "§4.2.6#b12", "§4.2.6#b13", "§4.2.6#b14", "§4.2.6#b15", "§4.2.6#b16", "§4.2.6#b17", "§4.2.6#b18", "§4.2.6#b19", "§4.2.6#b20", "§4.2.6#b21", FI-ASG-43, FI-ASG-44, FI-ASG-45, FI-ASG-46, FI-ASG-57, FI-ASG-58, FI-ASG-59, FI-ASG-60, FI-ASG-61, FI-ASG-70, FI-ASG-71, FI-ASG-72, FI-ASG-73, FLD-ASG-10, FLD-ASG-11, FLD-ASG-12, FLD-ASG-13, V-ASG-27, V-ASG-28, V-ASG-29, FLD-ASG-18, FLD-ASG-19, S-ASG-25, "EB-FRM-4@description-report-damaged", ASSIGN-LOGIC-15a, FI-ASG-55, FI-ASG-64, FI-ASG-65]
 smoke: []
 dependsOn: []
 trace:
@@ -59,7 +59,10 @@ trace:
   FLD-ASG-19: [147, 151, 155, 161]
   S-ASG-25: [45, 46, 49, 50]
   "EB-FRM-4@description-report-damaged": [155, 156, 161, 162, 166, 167, 171, 172, 176, 177]
-  "EB-TBL-5@aksi-pemisahan-peran": 131
+  ASSIGN-LOGIC-15a: [82, 83, 133]
+  FI-ASG-55: [82, 83, 84]
+  FI-ASG-64: [131, 133]
+  FI-ASG-65: 131
 anchor: [262]
 coverage:
   web: automated
@@ -103,7 +106,7 @@ coverage:
   - K9: seperti K2; scan TAG aset DU-113-8 ditolak; pesan yang diharapkan `Error, this asset isn't assigned.`.
   - K10: seperti K2; scan TAG aset DU-113-9 ditolak; pesan yang diharapkan `Error, this asset isn't assigned to Budi Santoso.`, dari Assignee `Budi Santoso`.
   - K11: seperti K2; scan TAG aset DU-113-10 ditolak; pesan yang diharapkan `Error, unassign this asset in Branch Surabaya.`, dari Group DU-113-10.
-  - K12: seperti K2; scan TAG aset DU-113-7 (`Camera Sony A7 - 9`), penugasan Aktor sendiri, ditolak; pesan yang diharapkan `Error, you can't hand over or receive your own assignment.`.
+  - K12: halaman dibuka tanpa Assignee terpilih; scan TAG aset DU-113-7 (`Camera Sony A7 - 9`), penugasan Aktor sendiri, diterima; Assignee terisi dari aset itu.
   - K13: Assignee DU-113-1 terpilih; daftar berisi DU-113-3 (`Unverified`), DU-113-5 (`Non TAG`), dan DU-113-6 (status `Reported Damaged`).
   - K14: seperti K2; Photo at end ON; belum ada foto.
   - K15: seperti K2; Photo at end ON; kedua baris Verified tanpa foto.
@@ -112,7 +115,7 @@ coverage:
   - K18: Assignee DU-113-1 terpilih dan daftar kosong; Submit ditekan.
   - K19: seperti K2; DU-113-3 Verified; Submit berhasil; aset DU-113-4 tidak dimasukkan ke daftar, sehingga daftar hanya DU-113-3; semua aset dalam daftar berasal dari ASG asal yang sama; toast yang diharapkan `Success, 1 asset has been unassigned.`.
   - K20: seperti K19; aset dalam daftar berasal dari beberapa ASG; toast yang diharapkan `Success, 2 assets have been unassigned.`.
-  - K21: Assignee DU-113-1 terpilih; daftar memuat DU-113-3 dan baris penugasan Aktor sendiri DU-113-7 yang ditandai ⚠; Submit ditolak karena daftar memuat aset penugasan Aktor sendiri; tooltip yang diharapkan `You can't hand over or receive your own assignment.`.
+  - K21: Assignee penugasan Aktor sendiri terpilih; daftar memuat DU-113-7 `Verified` lewat scan TAG tanpa penanda ⚠; Submit berhasil; toast yang diharapkan `Success, 1 asset has been unassigned.`.
   - K22: seperti K2; DU-113-3 tetap Unverified dan belum difoto; aksi `I Can't Scan the TAG` pada DU-113-3 selesai dengan Report TAG varian identifikasi manual; Photo at end OFF.
   - K23: seperti K2; Photo at end ON; DU-113-3 Verified, difoto, dan dilaporkan Damaged di halaman ini.
   - K24: seperti K2; DU-113-3 sudah Report Damaged di halaman ini dengan Description DU-113-11.
@@ -245,12 +248,12 @@ coverage:
 78. Verifikasi toast `Error, unassign this asset in Branch Surabaya.` tampil
 79. Verifikasi daftar tidak berubah
 
-### Scan ditolak: penugasan Aktor sendiri
+### Scan diterima: penugasan Aktor sendiri
 80. Tampilkan Halaman Unassign dengan kondisi K12
 81. Klik `[Verify Asset]`
 82. Pindai TAG aset `Camera Sony A7 - 9`
-83. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil tanpa tombol aksi setelah scan aset penugasan Aktor sendiri ditolak
-84. Verifikasi daftar tidak berubah
+83. Verifikasi baris `Camera Sony A7 - 9` tampil di daftar dengan Verification `Verified` tanpa toast error
+84. Verifikasi baris `Camera Sony A7 - 9` tidak ditandai ⚠
 
 ### Verification mengikuti status TAG aset
 85. Tampilkan Halaman Unassign dengan kondisi K13
@@ -321,12 +324,12 @@ coverage:
 128. Verifikasi tidak ada pilihan hasil Unassign selain `[Submit]`
 129. Verifikasi halaman tidak memuat kontrol konfirmasi Assignee
 
-### Pemisahan peran: baris penugasan Aktor sendiri
+### Pemrosesan sendiri: baris penugasan Aktor sendiri
 130. Tampilkan Halaman Unassign dengan kondisi K21
-131. Verifikasi baris `Camera Sony A7 - 9` ditandai ⚠ dengan alasan `You can't hand over or receive your own assignment.` tersampaikan padanya
+131. Verifikasi baris `Camera Sony A7 - 9` tidak ditandai ⚠ dan aksi `I Can't Scan the TAG` tidak tersedia pada baris itu
 132. Klik `[Submit]`
-133. Verifikasi toast `Error, you can't hand over or receive your own assignment.` tampil setelah Submit ditolak
-134. Verifikasi daftar, Verification, dan foto tidak direset setelah Submit ditolak
+133. Verifikasi toast `Success, 1 asset has been unassigned.` tampil
+134. Verifikasi halaman Unassign ditutup setelah Unassign selesai
 
 ### Aksi I Can't Scan the TAG: identifikasi manual dan foto wajib
 135. Tampilkan Halaman Unassign dengan kondisi K22

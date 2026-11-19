@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§9.2#b29", "§9.2#b30", "§9.2#b31", "§9.2#b32", "§9.2#b33", "§9.2#b34", "§9.2#b35", "§9.2#b36", "§9.2#b37", "§9.2#p60", "§9.2#p62", "§9.2#p64", "§9.2#p65", "§9.2#p66", "F-ASSIGN-06.k1", "F-ASSIGN-06.k2", "F-ASSIGN-06.k3", "F-ASSIGN-06.k4", "F-ASSIGN-06.k5", "F-ASSIGN-06.k6", "F-ASSIGN-06.k8", "EC-ASG-15", "EC-ASG-17", "EC-ASG-51", "EC-ASG-70", "DO-ASG-08", "§9.5#r10", "§9.4.3#b8", "§10#r7", "ASSIGN-LOGIC-08a", "ASSIGN-LOGIC-08b", "ASSIGN-LOGIC-08c", "ASSIGN-LOGIC-08d", "ASSIGN-LOGIC-08e", "ASSIGN-LOGIC-08f", "ASSIGN-LOGIC-08g", "ASSIGN-LOGIC-08h", "ASSIGN-LOGIC-08i", "ASSIGN-LOGIC-08j", "ASSIGN-LOGIC-08k", "ASSIGN-LOGIC-08l", "ASSIGN-LOGIC-08m", "ASSIGN-LOGIC-08n", "ASSIGN-LOGIC-08o", "ASSIGN-LOGIC-08p", "ASSIGN-LOGIC-08q", "ASSIGN-LOGIC-08r", "ASSIGN-LOGIC-08s", "ASSIGN-LOGIC-08t", "ASSIGN-LOGIC-08u"]
+sourceRules: ["§9.2#b29", "§9.2#b30", "§9.2#b31", "§9.2#b32", "§9.2#b33", "§9.2#b34", "§9.2#b35", "§9.2#b36", "§9.2#b37", "§9.2#p60", "§9.2#p62", "§9.2#p64", "§9.2#p65", "§9.2#p66", "F-ASSIGN-06.k1", "F-ASSIGN-06.k2", "F-ASSIGN-06.k3", "F-ASSIGN-06.k4", "F-ASSIGN-06.k5", "F-ASSIGN-06.k6", "F-ASSIGN-06.k8", "EC-ASG-15", "EC-ASG-17", "EC-ASG-51", "EC-ASG-70", "DO-ASG-08", "§9.5#r10", "§9.4.3#b8", "§10#r7", "ASSIGN-LOGIC-08a", "ASSIGN-LOGIC-08b", "ASSIGN-LOGIC-08c", "ASSIGN-LOGIC-08d", "ASSIGN-LOGIC-08e", "ASSIGN-LOGIC-08f", "ASSIGN-LOGIC-08g", "ASSIGN-LOGIC-08h", "ASSIGN-LOGIC-08i", "ASSIGN-LOGIC-08j", "ASSIGN-LOGIC-08k", "ASSIGN-LOGIC-08l", "ASSIGN-LOGIC-08m", "ASSIGN-LOGIC-08n", "ASSIGN-LOGIC-08o", "ASSIGN-LOGIC-08p", "ASSIGN-LOGIC-08q", "ASSIGN-LOGIC-08r", "ASSIGN-LOGIC-08s", "ASSIGN-LOGIC-08t", "ASSIGN-LOGIC-08u", "ASSIGN-LOGIC-15g", "ASSIGN-LOGIC-15c", "ASSIGN-LOGIC-15i", "EC-ASG-18"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -29,6 +29,10 @@ trace:
   "F-ASSIGN-06.k3": [59, 60, 70]
   "F-ASSIGN-06.k4": [43, 79, 81, 89]
   "F-ASSIGN-06.k5": [95, 98]
+  "ASSIGN-LOGIC-15g": [94, 95, 96]
+  "ASSIGN-LOGIC-15c": [97, 98]
+  "ASSIGN-LOGIC-15i": 98
+  "EC-ASG-18": [95, 98]
   "F-ASSIGN-06.k6": 49
   "F-ASSIGN-06.k8": 29
   "EC-ASG-15": [59, 60, 61, 62]
@@ -210,13 +214,13 @@ trace:
 91. Lina memakai `Confirm on This Device` dengan pernyataan tidak dicentang
 92. Verifikasi konfirmasi ditolak dan baris `Whiteboard Elektronik {runId}` tetap `Waiting for Handover`
 
-### Pemisahan peran: Aktor yang menjadi PIC tidak dapat menyerahkan
+### Pemrosesan sendiri: Aktor yang menjadi PIC menyerahkan dengan scan TAG
 93. Hendra membuka `Hand Over` untuk ASG DU-209-16 yang Assignee-nya Division `Finance {runId}` dengan PIC `Hendra Kusuma {runId}`
-94. Hendra mengirim permintaan Handover langsung ke server untuk baris `Genset Honda EU {runId}`
-95. Verifikasi permintaan ditolak server, baris tetap `Waiting for Handover`, dan tidak ada log baru
-96. Lina memverifikasi tag baris `Genset Honda EU {runId}`
-97. Lina menekan `[Request Confirmation]`
-98. Verifikasi sesi konfirmasi terbentuk untuk PIC `Hendra Kusuma {runId}` karena Aktor Assignment lain memprosesnya
+94. Hendra mengirim permintaan Handover langsung ke server untuk baris `Genset Honda EU {runId}` tanpa scan TAG
+95. Verifikasi permintaan ditolak server karena pemrosesan sendiri mewajibkan scan TAG, baris tetap `Waiting for Handover`, dan tidak ada log baru
+96. Hendra memverifikasi tag baris `Genset Honda EU {runId}` lewat scan TAG
+97. Hendra menekan `[Complete Handover]`
+98. Verifikasi baris `Genset Honda EU {runId}` menjadi `Assigned` dengan Confirmation `Confirmed (self)` tanpa sesi konfirmasi, dan Assignment Log memuat node `Handed over` dengan Processing `Self-processed`
 99. Hendra mengajukan Assignment atas aset `Tablet Samsung Galaxy Tab {runId}` dengan dirinya sendiri sebagai Assignee Employee
 100. Verifikasi pengajuan diterima dan ASG baru terbentuk dengan Assignee `Hendra Kusuma {runId}`
 

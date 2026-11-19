@@ -87,8 +87,8 @@ coverage:
 38. Tutup menu `Bulk Action`
 39. Klik `×` pada bar seleksi
 
-### Export sub-tab By Asset
-40. Klik `Download`[^drift-1]
+### Download sub-tab By Asset
+40. Klik `Download`
 41. Klik `Download as CSV`
 42. Verifikasi berkas `Assignment-Assigned-Assets.csv` terunduh
 
@@ -104,7 +104,7 @@ coverage:
 51. Verifikasi kolom `Total Asset` menampilkan `2` pada baris `Budi S`, `1` pada baris `Finance {runId}`, dan `1` pada baris `Sari D`
 52. Verifikasi kolom `Group` baris `Budi S` menampilkan satu badge Group diikuti `+1`
 
-### Hover Group, Sort, Filter, dan Export di sub-tab By Assignee
+### Hover Group, Sort, Filter, dan Download di sub-tab By Assignee
 53. Arahkan kursor ke kolom `Group` baris `Budi S`
 54. Verifikasi daftar Group `Head Office {runId}` dan `Branch Surabaya {runId}` tampil
 55. Klik header kolom `Assignee Type`
@@ -114,7 +114,7 @@ coverage:
 59. Verifikasi placeholder `All assignees`, `All types`, dan `All groups` tampil pada field dropdown masing-masing, serta field `Total Asset` memuat input `Min` dan `Max`
 60. Klik `Filter`
 61. Verifikasi tabel tidak memiliki kolom checkbox dan `Bulk Action` tidak tampil
-62. Klik `Download`[^drift-1]
+62. Klik `Download`
 63. Klik `Download as CSV`
 64. Verifikasi berkas `Assignment-Assigned-Assets-By-Assignee.csv` terunduh
 
@@ -212,4 +212,4 @@ coverage:
 139. Arahkan kursor ke nilai Assignee `Budi S`
 140. Verifikasi nama lengkap `Budi Santoso {runId}` tampil pada hover Assignee di sub-tab `By Assignee`
 
-[^drift-1]: Drift PRD vs foundation. PRD §4.1 Matriks Aksi baris Export: nama dan tooltip tombol toolbar adalah `Export`, bukan `Download`. foundation `prd-conventions.md` §9.1: icon toolbar bernama `Download` dengan tooltip `Download`, dan modul tidak menulis ulang teks tooltip itu. Diasersi: foundation, karena tombol unduh di toolbar tabel adalah pola bersama (SB-4).
+
