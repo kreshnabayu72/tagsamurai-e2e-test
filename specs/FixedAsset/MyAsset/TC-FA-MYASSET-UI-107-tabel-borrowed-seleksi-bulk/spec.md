@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-13", "FI-14", "FI-20", "FI-21", "V-01", "§4.1b#p6", "§5#r5", "§9.4.2#r42", "EB-BLK-1@tabel-borrowed", "EB-BLK-6"]
+sourceRules: ["FI-13", "FI-14", "FI-20", "FI-21", "V-01", "§4.1b#p6", "§5#r5", "§9.4.2#r44", "EB-BLK-1@tabel-borrowed", "EB-BLK-6"]
 smoke: []
 dependsOn: []
 trace:
@@ -14,9 +14,9 @@ trace:
   "FI-20": [15, 17]
   "FI-21": [50, 51, 52, 54]
   "V-01": [4, 8, 17, 54]
-  "§4.1b#p6": [2, 4, 8, 15, 17, 18, 39, 40, 41, 50, 109, 110, 111]
+  "§4.1b#p6": [2, 4, 8, 15, 17, 18, 39, 40, 41, 50, 109, 110, 111, 114, 119]
   "§5#r5": [24, 30, 35]
-  "§9.4.2#r42": [8, 10]
+  "§9.4.2#r44": [8, 10]
   "EB-BLK-1@tabel-borrowed": [13, 14, 18, 22, 28, 33, 39, 42, 44, 47, 51, 55, 58, 61, 62, 64, 66, 68, 69, 72, 77, 78]
   "EB-BLK-6": [81, 83, 84, 86, 88, 91, 93, 94, 98, 99, 103, 105, 106]
 anchor: [46, 57, 71, 76]
@@ -51,6 +51,8 @@ coverage:
   - Label tombol Select All yang diharapkan sesudah seluruh 12 baris yang dapat dipilih terpilih adalah `Unselect All (12 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `12`.
   - Label tombol Select All yang diharapkan sesudah seluruh 1000 baris yang dapat dipilih terpilih adalah `Unselect All (1000 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `1000`.
   - Label tombol Select All yang diharapkan sesudah seluruh 999 baris yang dapat dipilih terpilih adalah `Unselect All (999 records)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `999`.
+  - Label tombol Select All yang diharapkan sesudah satu-satunya baris yang dapat dipilih terpilih adalah `Unselect All (1 record)`, dari pola `Unselect All ([N] records)` dengan [N] sama dengan `1`, bentuk tunggal.
+  - Label tombol Select All yang diharapkan saat hasil pencarian hanya memuat satu baris yang dapat dipilih dan dua baris terpilih adalah `Select All (1 record)`, dari pola `Select All ([N] records)` dengan [N] sama dengan `1`, bentuk tunggal.
 - Kondisi:
   - K1: tabel Borrowed berisi DU-107-1 sampai DU-107-9 dengan urutan bawaan Due Date terdekat dulu.
   - K2: tabel Borrowed berisi DU-107-10, diurutkan menurut nomornya.
@@ -111,7 +113,7 @@ coverage:
 39. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `3`
 40. Verifikasi baris `Laptop Dell Latitude 5420 - 3`, `Meeting Mic Set - 2`, dan `Laptop Dell Latitude 5420 - 9` tercentang
 41. Verifikasi baris `Tablet Samsung Galaxy Tab - 4` dan `Tablet Samsung Galaxy Tab - 5` tidak tercentang
-42. Verifikasi tombol `Unselect All (3 records)` tampil
+42. Verifikasi tombol `Unselect All (3 records)` tampil[^drift-1]
 43. Hapus centang baris `Meeting Mic Set - 2`
 44. Verifikasi tombol `Select All (3 records)` tampil kembali
 45. Klik `×` di Bulk Action Bar
@@ -142,8 +144,8 @@ coverage:
 66. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `11`
 67. Klik `Select All (12 records)`
 68. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `12`
-69. Verifikasi tombol `Unselect All (12 records)` tampil
-70. Klik `Unselect All (12 records)`
+69. Verifikasi tombol `Unselect All (12 records)` tampil[^drift-1]
+70. Klik `Unselect All (12 records)`[^drift-1]
 71. Verifikasi tabel Borrowed masih menampilkan baris `Laptop Pinjaman 11`
 72. Verifikasi Bulk Action Bar tidak tampil
 
@@ -173,14 +175,14 @@ coverage:
 91. Verifikasi tombol `Select All (1000 records)` tampil
 92. Klik `Select All (1000 records)`
 93. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `1000`
-94. Verifikasi tombol `Unselect All (1000 records)` tampil
+94. Verifikasi tombol `Unselect All (1000 records)` tampil[^drift-1]
 
 ### Select All satu di bawah Selection Limit memilih semua baris tanpa toast batas
 95. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K6
 96. Centang baris `Laptop Cabang 1`
 97. Klik `Select All (999 records)`
 98. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `999`
-99. Verifikasi tombol `Unselect All (999 records)` tampil
+99. Verifikasi tombol `Unselect All (999 records)` tampil[^drift-1]
 
 ### Select All atas hasil pencarian yang melebihi Selection Limit dipotong
 100. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K7
@@ -197,3 +199,17 @@ coverage:
 109. Verifikasi baris `Tablet Samsung Galaxy Tab - 5` tercentang
 110. Verifikasi counter seleksi di Bulk Action Bar menampilkan jumlah `1`
 111. Verifikasi baris `Meeting Mic Set - 2`, `Laptop Dell Latitude 5420 - 3`, dan `Laptop Dell Latitude 5420 - 18` tidak tercentang dan checkbox-nya disabled
+
+### Satu-satunya baris yang dapat dipilih memakai bentuk tunggal Unselect All
+112. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K8
+113. Klik checkbox header tabel
+114. Verifikasi tombol `Unselect All (1 record)` tampil[^drift-1]
+
+### Satu baris hasil pencarian memakai bentuk tunggal Select All
+115. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K3
+116. Centang baris `Laptop Dell Latitude 5420 - 3`
+117. Centang baris `Laptop Dell Latitude 5420 - 9`
+118. Ketik Search `Meeting Mic Set`, tekan Enter
+119. Verifikasi tombol `Select All (1 record)` tampil
+
+[^drift-1]: Drift PRD/foundation vs kontrak komponen. foundation `prd-conventions.md` §8: tombol berubah (toggle) menjadi `"Unselect All"` saat seluruh data terselect. Kontrak `BulkActionButton#11` dan `BulkActionButton#60`: begitu semua baris yang dapat dipilih terpilih, tombol berbunyi `Unselect All (N records)` (`Unselect All (1 record)` untuk N sama dengan 1, `BulkActionButton#41`), tepat ketika jumlah terpilih sama dengan N. Diasersi: kontrak komponen (SB-7), sehingga label memuat jumlah.

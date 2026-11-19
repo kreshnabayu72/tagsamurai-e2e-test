@@ -1,0 +1,8700 @@
+{
+ "schema": "spec-from-prd-audit/v1",
+ "putaran": 2,
+ "suite": "017994816cc332c5",
+ "hitung": {
+  "ok": 717,
+  "parsial": 20,
+  "hilang": 0,
+  "salah": 0,
+  "na": 215,
+  "skor": 98.6
+ },
+ "siap": [
+  "TC-FA-ASTL-E2E-001-tabel-all-assets-tampilan",
+  "TC-FA-ASTL-E2E-002-kartu-status",
+  "TC-FA-ASTL-E2E-003-sidebar-group",
+  "TC-FA-ASTL-E2E-004-search",
+  "TC-FA-ASTL-E2E-005-sort",
+  "TC-FA-ASTL-E2E-006-filter-panel",
+  "TC-FA-ASTL-E2E-007-setup-column-tersimpan",
+  "TC-FA-ASTL-E2E-008-paginasi",
+  "TC-FA-ASTL-E2E-009-download",
+  "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+  "TC-FA-ASTL-E2E-011-guided-tooltip-flag",
+  "TC-FA-ASTL-E2E-012-sel-pending-nilai-aset",
+  "TC-FA-ASTL-E2E-013-warranty-expiry",
+  "TC-FA-ASTL-E2E-015-select-all-bulk",
+  "TC-FA-ASTL-E2E-016-add-label-bulk",
+  "TC-FA-ASTL-E2E-017-remove-label-bulk",
+  "TC-FA-ASTL-E2E-018-manage-aset",
+  "TC-FA-ASTL-E2E-019-switch-manage-aset",
+  "TC-FA-ASTL-E2E-020-delete-asset-data",
+  "TC-FA-ASTL-E2E-021-edit-purchase-satu-aset",
+  "TC-FA-ASTL-E2E-022-edit-purchase-bulk",
+  "TC-FA-ASTL-E2E-023-print-label",
+  "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+  "TC-FA-ASTL-E2E-025-gating-total-control",
+  "TC-FA-ASTL-E2E-026-gating-read-only",
+  "TC-FA-ASTL-E2E-027-gating-group-manager",
+  "TC-FA-ASTL-E2E-028-gating-manage-asset-tag",
+  "TC-FA-ASTL-E2E-029-gating-view-asset-value",
+  "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+  "TC-FA-ASTL-E2E-031-gating-manage-purchase",
+  "TC-FA-ASTL-E2E-032-gating-asset-admin",
+  "TC-FA-ASTL-E2E-033-gating-tanpa-akses",
+  "TC-FA-ASTL-E2E-034-pencabutan-hak-saat-halaman-terbuka",
+  "TC-FA-ASTL-E2E-035-state-tenant-aksi-tulis-ditolak",
+  "TC-FA-ASTL-E2E-036-plan-gating",
+  "TC-FA-ASTL-E2E-037-changelog-asset-dep-asset-detail",
+  "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+  "TC-FA-ASTL-E2E-039-status-borrow-dep-borrow",
+  "TC-FA-ASTL-E2E-040-status-assignment-dep-assignment",
+  "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+  "TC-FA-ASTL-E2E-042-laporan-damaged-dep-damaged",
+  "TC-FA-ASTL-E2E-043-laporan-missing-dep-missing",
+  "TC-FA-ASTL-E2E-044-disposal-tercermin-dep-disposal",
+  "TC-FA-ASTL-E2E-045-registrasi-aset-dep-asset-registration",
+  "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+  "TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit",
+  "TC-FA-ASTL-E2E-048-asset-name-tercermin-dep-settings-asset-name",
+  "TC-FA-ASTL-E2E-049-asset-class-tercermin-dep-asset-class",
+  "TC-FA-ASTL-E2E-050-custom-field-kolom-dep-settings-custom-fields",
+  "TC-FA-ASTL-E2E-051-kuota-lisensi-dep-license",
+  "TC-FA-ASTL-E2E-052-posting-penyusutan-dep-depreciation-run",
+  "TC-FA-ASTL-E2E-053-format-tanggal-dep-general-settings",
+  "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+  "TC-FA-ASTL-UI-055-tabel-all-assets-state-data",
+  "TC-FA-ASTL-UI-056-toolbar-search",
+  "TC-FA-ASTL-UI-057-tabel-sort",
+  "TC-FA-ASTL-UI-058-panel-filter",
+  "TC-FA-ASTL-UI-059-setup-column",
+  "TC-FA-ASTL-UI-060-bar-bulk",
+  "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+  "TC-FA-ASTL-UI-062-navigasi-halaman",
+  "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+  "TC-FA-ASTL-UI-064-sidebar-group-tampilan",
+  "TC-FA-ASTL-UI-065-popover-download",
+  "TC-FA-ASTL-UI-066-dialog-add-label",
+  "TC-FA-ASTL-UI-067-dialog-remove-label",
+  "TC-FA-ASTL-UI-068-dialog-manage-asset",
+  "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+  "TC-FA-ASTL-UI-070-dialog-delete-asset-data",
+  "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+  "TC-FA-ASTL-UI-072-dialog-edit-purchase-tanggal-biaya",
+  "TC-FA-ASTL-UI-073-dialog-edit-purchase-warranty",
+  "TC-FA-ASTL-UI-074-dialog-edit-purchase-additional-costs",
+  "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+  "TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi",
+  "TC-FA-ASTL-UI-077-dialog-select-asset",
+  "TC-FA-ASTL-UI-078-dialog-print-label",
+  "TC-FA-ASTL-UI-079-dialog-aset-berubah",
+  "TC-FA-ASTL-BE-080-cakupan-group-aset",
+  "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+  "TC-FA-ASTL-BE-082-pertahanan-akses-langsung",
+  "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+  "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+  "TC-FA-ASTL-BE-085-manage-race-kuota-terakhir",
+  "TC-FA-ASTL-BE-086-manage-aktivasi-gagal",
+  "TC-FA-ASTL-BE-087-delete-asset-data-guard",
+  "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+  "TC-FA-ASTL-BE-089-konflik-versi-aset",
+  "TC-FA-ASTL-BE-090-gerbang-nilai-sel",
+  "TC-FA-ASTL-BE-091-query-search-sort-filter",
+  "TC-FA-ASTL-BE-092-download-isi-berkas",
+  "TC-FA-ASTL-BE-093-state-tenant-server"
+ ],
+ "draft": {},
+ "plan": [
+  {
+   "unit": "FLD-02",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+   "langkah": [
+    12,
+    13
+   ],
+   "catatan": "Klik tautan Name membuka Asset Detail ('Buka Asset Detail', PRD baris Name) diasersi E2E-010 yang tidak tercatat sebagai penanggung FLD-02."
+  },
+  {
+   "unit": "FLD-06",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-058-panel-filter",
+   "langkah": [
+    3
+   ],
+   "catatan": "Placeholder `All brands` diasersi UI-058 (ui-client) yang tidak tercatat sebagai penanggung FLD-06."
+  },
+  {
+   "unit": "FLD-22",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-013-warranty-expiry",
+   "langkah": [
+    6,
+    7,
+    8,
+    9,
+    11,
+    17,
+    24
+   ],
+   "catatan": "Nilai sel (garansi terdekat yang belum lewat / tanggal terakhir), hover, filter 'salah satu garansi', dan sort diasersi E2E-013 yang tidak tercatat sebagai penanggung FLD-22."
+  },
+  {
+   "unit": "§4.2.1#p1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+   "langkah": [
+    155,
+    156,
+    157,
+    158,
+    159,
+    160
+   ],
+   "catatan": "Grid kartu (satu baris di layar lebar, tiga kolom menengah, dua kolom sempit) diasersi UI-054 yang tidak tercatat sebagai penanggung §4.2.1#p1."
+  },
+  {
+   "unit": "§4.2.1#p1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-059-setup-column",
+   "langkah": [
+    31,
+    34,
+    35,
+    36,
+    37,
+    41,
+    42,
+    43,
+    44
+   ],
+   "catatan": "Maksimal 3 kolom pinned diasersi UI-059 yang tidak tercatat sebagai penanggung §4.2.1#p1."
+  },
+  {
+   "unit": "KartuAll",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+   "langkah": [
+    4,
+    5
+   ],
+   "catatan": "Tooltip kartu All `Active assets only. Disposed assets are in the Disposed card.` diasersi UI-063 (ui-client), tetapi UI-063 tidak tercatat sebagai penanggung KartuAll; catat sebagai pemilik/pendukung."
+  },
+  {
+   "unit": "KartuInTransaction",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+   "langkah": [
+    5
+   ],
+   "catatan": "Nilai Custody `In Transfer Process` pada kartu In Transaction diasersi E2E-041 yang tidak tercatat sebagai penanggung KartuInTransaction."
+  },
+  {
+   "unit": "KartuInTransaction",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+   "langkah": [
+    10,
+    11,
+    20,
+    21
+   ],
+   "catatan": "Rincian hover In Transaction dan aturan jumlah rincian diasersi UI-063 yang tidak tercatat sebagai penanggung KartuInTransaction."
+  },
+  {
+   "unit": "KartuIssues",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+   "langkah": [
+    12,
+    13,
+    15,
+    16
+   ],
+   "catatan": "Rincian hover kartu Issues diasersi UI-063 yang tidak tercatat sebagai penanggung KartuIssues."
+  },
+  {
+   "unit": "KartuIssues",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+   "langkah": [
+    8,
+    12
+   ],
+   "catatan": "Tagging `TAG Reported` pada kartu Issues diasersi E2E-046 (dan Missing di E2E-043, Reported Disposal di E2E-044) yang tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "§4.1a#r3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+   "langkah": [
+    5
+   ],
+   "catatan": "E2E-039/040/041/044 mengasersi angka kartu In Transaction (Borrowed, Assigned, In Transfer Process, In Disposal Process) tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.1a#r4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-042-laporan-damaged-dep-damaged",
+   "langkah": [
+    5
+   ],
+   "catatan": "E2E-042/043/044/046 mengasersi angka kartu Issues (Damaged, Missing, Reported Disposal, Not Paired Yet, TAG Reported) tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-14n",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-034-pencabutan-hak-saat-halaman-terbuka",
+   "langkah": [
+    6
+   ],
+   "catatan": "Cabang 14f ada di E2E-034, spec ini tidak tercatat sebagai penanggung 14n."
+  },
+  {
+   "unit": "F-ASTL-13",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-064-sidebar-group-tampilan",
+   "langkah": [
+    6
+   ],
+   "catatan": "Read-only sidebar (tanpa Create/Edit/Delete) diasersi di UI-064 langkah 6, bukan di E2E-003; UI-064 tidak tercatat sebagai penanggung F-ASTL-13."
+  },
+  {
+   "unit": "EB-SRC-1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-091-query-search-sort-filter",
+   "langkah": [
+    6
+   ],
+   "catatan": "Langkah 6 mengasersi teks UI `No results found` pada spec be-e2e (tanpa teks UI); teks itu seharusnya hanya di E2E-004 (langkah 20, 22). Di BE-091 cukup: hasil kosong."
+  },
+  {
+   "unit": "§5#r4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-090-gerbang-nilai-sel",
+   "langkah": [
+    12,
+    14
+   ],
+   "catatan": "Klausa `No access` selalu di akhir (ASTL-LOGIC-10) diasersi di BE-090 langkah 12 dan 14, tidak tercatat sebagai penanggung 5#r4."
+  },
+  {
+   "unit": "§5#r8",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-059-setup-column",
+   "langkah": [
+    74,
+    75,
+    76,
+    77,
+    78,
+    79
+   ],
+   "catatan": "Rujukan terhapus dibuang diam-diam diasersi UI-059 yang tidak tercatat sebagai penanggung §5#r8."
+  },
+  {
+   "unit": "§9.6#r7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+   "langkah": [
+    55,
+    56,
+    62,
+    66,
+    68
+   ],
+   "catatan": "'Tidak dicatat' (Download tidak masuk Activity Log, Changelog, System Log) diasersi E2E-038 yang tidak tercatat sebagai penanggung §9.6#r7."
+  },
+  {
+   "unit": "§9.6#r7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-065-popover-download",
+   "langkah": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "catatan": "`T-05` (toast gagal `Error, failed to download All-Assets.`) diasersi UI-065 yang tidak tercatat sebagai penanggung §9.6#r7."
+  },
+  {
+   "unit": "EC-25",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-012-sel-pending-nilai-aset",
+   "langkah": [],
+   "catatan": "Klausa EC-25 selain Asset Value/S-22/S-23 diasersi spec lain yang tidak tercatat: Pending terurut sebelum No access (BE-090), tidak cocok search/filter (E2E-004, E2E-006), Download kosong (E2E-009), dilengkapi lewat D-13 (E2E-021), predikat tidak terbaca dan Disposed berjurnal Posted (E2E-052). Catat sebagai penanggung."
+  },
+  {
+   "unit": "ASTL-LOGIC-11l",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa Download tidak terpengaruh penanda garansi diasersi di BE-092 langkah 10 (seluruh garansi satu sel tanpa warna), yang tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-15o",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-037-changelog-asset-dep-asset-detail",
+   "langkah": [],
+   "catatan": "Sumber Switch (aset yang di-Manage berstatus Pending Activation) diasersi E2E-037 (changelog) dan BE-084, tetapi unit hanya mencatat E2E-018 yang menguji sumber Available quota. Catat penanggung tambahan."
+  },
+  {
+   "unit": "ASTL-LOGIC-15aa",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Penolakan server 422 atas pasangan Switch yang tidak sesuai (beda group, bukan managed, jumlah tidak sama) diasersi BE-084 langkah 26-32, spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "EB-BLK-3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Satu entri log per item pada Bulk Delete diasersi E2E-038 langkah 42-50 (satu entri User Action per aset); spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "§9.7#r14",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Efek turunan Delete diasersi spec lain yang tidak tercatat: TAG masuk To Be Returned alasan Deleted (E2E-046 langkah 23-24), file terlampir dan record multi-aset (BE-087 langkah 4, 43-47), entri User Action (E2E-038 langkah 35-40)."
+  },
+  {
+   "unit": "EB-FRM-5@edit-purchase",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pesan 'Warranty name already exists' dan 'Additional cost name already exists' juga diasersi UI-073 langkah 17 dan UI-074 langkah 17; spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "§4.1h#b14",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "'Tanpa entri Activity Log' untuk Print Label diasersi E2E-038 langkah 58-62, bukan E2E-023 (hanya Changelog, langkah 14); catat E2E-038 sebagai penanggung klausa Activity Log."
+  },
+  {
+   "unit": "§9.2#p9",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Penolakan server Print Label atas aset di luar cakupan, Disposed, dan Unmanaged diasersi BE-081 langkah 49-53, spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "AddtoTransferDraft",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "langkah": [
+    51
+   ],
+   "catatan": "Langkah 51 mengasersi Bulk Add to Transfer Draft Disabled (S-32) untuk aset Borrowed; spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "AddtoTransferDraft",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+   "langkah": [
+    68,
+    83,
+    102,
+    118,
+    137,
+    153
+   ],
+   "catatan": "Visibilitas Add to Transfer Draft (baris dan Bulk) per level Feature Suite None/Basic/Full diasersi di sini, tetapi spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "AddtoTransferDraft",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+   "langkah": [
+    63,
+    68,
+    82,
+    87,
+    95
+   ],
+   "catatan": "Aktor Asset Admin jenis Transfer (tampil) dan jenis lain (Hidden) diasersi di sini; spec tidak tercatat sebagai penanggung unit. Aktor Group Manager di E2E-027 langkah 10 dan 26 juga tidak tercatat."
+  },
+  {
+   "unit": "F-ASTL-16.k1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Penolakan server atas aset non-Unmanaged (BE-084 langkah 20-21) dan lintas group (BE-084 langkah 22-23), serta Manage Disabled lintas group di UI (E2E-018 langkah 10-12, UI-061 langkah 60-66) diasersi spec yang tidak tercatat sebagai penanggung unit; E2E-024 langkah 45-47 menumpuk dua penyebab (lintas group dan Pending Activation) sehingga tidak mengisolasi aturan lintas group."
+  },
+  {
+   "unit": "F-ASTL-17.k2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Aset tidak memenuhi syarat membatalkan seluruh aksi diasersi dengan benar di BE-087 (langkah 13-14, 40-41) dan UI-061 (langkah 42-53), tetapi spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "Manage",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa Manage (dialog D-03/D-04 menurut Available, jeda S-14, lintas group S-33, server cakupan, QUOTA_EXCEEDED, Changelog/Activity Log/System Log) diasersi E2E-018, UI-061, UI-068/069, BE-081, BE-084, E2E-038; hanya E2E-024 yang tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "MarkasReturned",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+   "langkah": [
+    69,
+    70,
+    78
+   ],
+   "catatan": "Aktor Group Manager untuk Mark as Returned diasersi di E2E-027 (juga 025, 032 langkah 101/110/122/131 untuk Asset Admin Borrow vs jenis lain, 026/028-031 Hidden), tetapi hanya E2E-024 tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "MarkasReturned",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+   "langkah": [
+    73,
+    88,
+    107,
+    123,
+    142,
+    158
+   ],
+   "catatan": "Visibilitas Mark as Returned per level Feature Suite (None/Basic/Full) diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "MarkasUnassigned",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+   "langkah": [
+    73,
+    83
+   ],
+   "catatan": "Aktor Group Manager untuk Mark as Unassigned diasersi di E2E-027 (juga 025, 032 langkah 126/136 untuk Asset Admin Assignment, 026/028-031 Hidden), tetapi hanya E2E-024 tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "MarkasUnassigned",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+   "langkah": [
+    77,
+    93,
+    111,
+    128,
+    146,
+    163
+   ],
+   "catatan": "Visibilitas Mark as Unassigned per level Feature Suite diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "PrintLabel",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Dialog Print Label berisi aset terpilih (Row Action dan Bulk) diasersi di E2E-023 (langkah 20-30); spec itu tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "ReportDisposal",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "langkah": [
+    134,
+    136,
+    138,
+    140,
+    142,
+    144
+   ],
+   "catatan": "Tooltip S-35 Report Disposal Disabled menurut Custody diasersi di UI-061, dan aktor Report Disposal di spec gating 025-032; keduanya tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "ReportMissing",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "langkah": [
+    22,
+    24,
+    26
+   ],
+   "catatan": "UI-061 mengasersi Report Missing Disabled + tooltip S-27 pada aset In Transit dan aktif pada aset Borrowed; trace EC-45/S-27 ada, tetapi spec tidak tercatat sebagai penanggung unit. Aktor Group Manager dan Manage asset & TAG (Update) ada di E2E-027 langkah 12 dan E2E-028 langkah 12, juga tidak tercatat."
+  },
+  {
+   "unit": "Transfer",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "langkah": [
+    51
+   ],
+   "catatan": "Langkah 51 mengasersi Bulk Transfer Disabled (S-32) untuk aset Borrowed; spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "Transfer",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+   "langkah": [
+    101,
+    117,
+    136,
+    152
+   ],
+   "catatan": "Visibilitas Transfer per level Feature Suite diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "Transfer",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+   "langkah": [
+    63,
+    68,
+    82,
+    87,
+    95
+   ],
+   "catatan": "Aktor Asset Admin jenis Transfer diasersi di sini; E2E-027 (Group Manager) juga; keduanya tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "ASTL-LOGIC-10d",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Nilai sel custom field Purchasing bagi pemegang Manage purchase dan No access bagi pihak lain diasersi BE-090 langkah 31-35; spec itu tidak tercatat sebagai penanggung unit (E2E-031 hanya menyatakan ketersediaan kolom, langkah 32)."
+  },
+  {
+   "unit": "§2#r7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-080-cakupan-group-aset",
+   "langkah": [
+    2,
+    14,
+    27
+   ],
+   "catatan": "Cakupan 'Group yang dikelola dan descendant' untuk Group Manager hanya terasersi di BE-080 (Dewi, anak IT/GA); E2E-027 tidak punya group descendant. BE-080 tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "§4.8#r2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-033-gating-tanpa-akses",
+   "langkah": [
+    2
+   ],
+   "catatan": "Kolom 'Role lain' (Hidden) dicakup oleh E2E-033 (menu All Assets Hidden sehingga aksi tidak terjangkau); spec ini tidak tercatat sebagai penanggung unit r2."
+  },
+  {
+   "unit": "§4.8#r5",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+   "langkah": [
+    31
+   ],
+   "catatan": "Bulk Batch Replace TAG pada Total Control diasersi E2E-024 yang tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "§4.8#r6",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+   "langkah": [
+    7,
+    8
+   ],
+   "catatan": "Bulk Manage Total Control diasersi E2E-018, tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "§4.8#r7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+   "langkah": [
+    21
+   ],
+   "catatan": "Bulk Delete Asset Data Total Control diasersi E2E-020, tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "§9.11#r1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-080-cakupan-group-aset",
+   "langkah": [
+    2,
+    14,
+    27
+   ],
+   "catatan": "Cakupan group + descendant untuk Group Manager dan Asset Admin diasersi BE-080, descendant View asset value dan Manage purchase di E2E-029/031; BE-080 tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "ASTL-LOGIC-10k",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+   "langkah": [
+    38,
+    39
+   ],
+   "catatan": "Spec 027 mengasersi `No access` (Asset Class, Tax Depreciation Class) tetapi tidak tercatat sebagai penanggung 10k."
+  },
+  {
+   "unit": "ASTL-LOGIC-10k",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+   "langkah": [
+    34,
+    35
+   ],
+   "catatan": "Spec 030 mengasersi `No access` (Purchase Date/Cost/Warranty) tetapi tidak tercatat sebagai penanggung 10k."
+  },
+  {
+   "unit": "ASTL-LOGIC-10l",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+   "langkah": [
+    35
+   ],
+   "catatan": "Spec 030 langkah 35 mengasersi `No access`, bukan `Pending`, tetapi tidak tercatat sebagai penanggung 10l."
+  },
+  {
+   "unit": "EB-AKS-5@add-label",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    7,
+    8,
+    15,
+    16
+   ],
+   "catatan": "Add Label sukses oleh pemegang Update saja (Sari) dan ditolak untuk pemegang Delete saja ada di BE-081; spec 028 memakai Update + Delete. BE-081 tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "EB-AKS-5@delete-asset-data",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    33,
+    34
+   ],
+   "catatan": "Delete Asset Data sukses oleh pemegang Read + Delete saja (Tono) ada di BE-081; 028 langkah 79-88 memakai Update + Delete. BE-081 tidak tercatat."
+  },
+  {
+   "unit": "EB-AKS-5@manage-asset",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    8,
+    10,
+    34,
+    62
+   ],
+   "catatan": "BE-081 mengasersi sukses Add/Remove Label dan Manage oleh Read + Update serta Delete oleh Read + Delete, tetapi tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "EB-AKS-5@remove-label",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    9,
+    10
+   ],
+   "catatan": "Remove Label sukses oleh pemegang Update saja ada di BE-081; 028 memakai Update + Delete. BE-081 tidak tercatat."
+  },
+  {
+   "unit": "EB-AKS-5@edit-purchase",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    23,
+    24
+   ],
+   "catatan": "BE-081 juga mengasersi Edit Purchase oleh pemegang Manage purchase (Update); tidak tercatat."
+  },
+  {
+   "unit": "EB-AKS-7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-093-state-tenant-server",
+   "langkah": [],
+   "catatan": "BE-093 dan E2E-035 memuat satu langkah per aksi tulis modul termasuk Switch Manage (E2E-035 langkah 72, BE-093 langkah 32); BE-093 tidak tercatat sebagai penanggung bagian Switch."
+  },
+  {
+   "unit": "ASTL-LOGIC-15x",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+   "langkah": [
+    42
+   ],
+   "catatan": "Entri `Unmanaged` ke `Pending Activation` untuk Manage sumber Available quota diasersi di E2E-018 (037 hanya sumber Switch); tidak tercatat."
+  },
+  {
+   "unit": "§8#b2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+   "langkah": [
+    23,
+    27
+   ],
+   "catatan": "Entri License di Activity Log dan System Log aktor diasersi di 038 (langkah 23, 27); 038 tidak tercatat sebagai penanggung §8#b2."
+  },
+  {
+   "unit": "§8#r6",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-086-manage-aktivasi-gagal",
+   "langkah": [
+    29,
+    30,
+    31
+   ],
+   "catatan": "BE-086 mengasersi Activity Log + tanpa System Log untuk jalur gagal, tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "ASTL-LOGIC-02d",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+   "langkah": [
+    9,
+    10,
+    11,
+    12
+   ],
+   "catatan": "Klausa TAG pada ASTL-LOGIC-02d diasersi tanpa reload di 046 tetapi unit tidak dicatat sebagai miliknya."
+  },
+  {
+   "unit": "ASTL-LOGIC-02d",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit",
+   "langkah": [
+    6,
+    7,
+    10,
+    11
+   ],
+   "catatan": "Klausa audit pada ASTL-LOGIC-02d diasersi tanpa reload di 047 tetapi unit tidak dicatat sebagai miliknya."
+  },
+  {
+   "unit": "ASTL-LOGIC-17l",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+   "langkah": [
+    4,
+    15,
+    83
+   ],
+   "catatan": "Klausa Hidden pada Row Action dan Bulk Disabled S-32 diasersi E2E-024; alert inline S-32 di UI-070 langkah 89 dan penolakan server di BE-087: tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "ASTL-LOGIC-16h",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+   "langkah": [
+    16
+   ],
+   "catatan": "Penawaran Report Disposal pada aset Pending Activation (menu hanya Detail, Report Disposal, Delete Asset Data) diasersi di 024 tetapi 024 tidak tercatat sebagai penanggung ASTL-LOGIC-16h."
+  },
+  {
+   "unit": "§9.7#r12",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+   "langkah": [
+    17
+   ],
+   "catatan": "Switch Manage (Available tidak berubah) diasersi BE-084; entri License aset yang ditukar di E2E-037 langkah 58/85: tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "§4.1a#p1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-026-gating-read-only",
+   "langkah": [
+    5
+   ],
+   "catatan": "Gating tombol `Print Label` toolbar (hanya pemegang Update) diasersi E2E-025/026/028, bukan UI-054 (Total Control): tidak tercatat sebagai penanggung."
+  },
+  {
+   "unit": "S-47",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa 'aksi dan Bulk Action Disabled (S-15), Matriks Aksi' diasersi di TC-FA-ASTL-UI-061-menu-aksi-tooltip (step 95, S-15) dan E2E-024 (matriks), bukan di UI-060 yang tercatat pemilik. Tambahkan UI-061/E2E-024 sebagai penanggung S-47."
+  },
+  {
+   "unit": "§4.4#b3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pada UI-060 step 7-8 data hanya 3 baris satu halaman sehingga 'halaman aktif' tidak terbedakan dari 'seluruh hasil'; pembedaan (10 baris halaman aktif dari 12) diasersi di TC-FA-ASTL-E2E-015 step 4-5. Catat E2E-015 sebagai penanggung."
+  },
+  {
+   "unit": "S-14",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-051-kuota-lisensi-dep-license",
+   "langkah": [
+    11
+   ],
+   "catatan": "Tooltip S-14 pada Row Action Manage diasersi di E2E-051, bukan di spec yang tercatat sebagai penanggung unit; catat E2E-051 sebagai penanggung S-14 (varian baris)."
+  },
+  {
+   "unit": "S-29",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+   "langkah": [],
+   "catatan": "Tooltip S-29 pada aksi Edit diasersi juga di TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit langkah 9 dan E2E-024 langkah 26/89, tidak tercatat sebagai penanggung S-29."
+  },
+  {
+   "unit": "§6#r9",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+   "langkah": [],
+   "catatan": "069 tidak tercatat sebagai penanggung §6#r9 padahal Switch Manage termasuk aksi tulis di unit ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-15k",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Cakupan 'aset managed pada group yang sama' diasersi TC-FA-ASTL-E2E-019-switch-manage-aset langkah 6-7, spec itu tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "D-13",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa Bulk (`N assets selected`, tanpa Additional costs, label `Purchase Cost (per asset)` + helper text), penutupan lewat `✕`/`Esc`, dan proteksi form dirty diasersi TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk dan TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi; keduanya tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.1i#p1",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pintu Row Action/Bulk (TC-FA-ASTL-E2E-021, E2E-022) dan aktor Manage purchase/Group Manager (E2E-031, E2E-027) diasersi spec lain yang tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "FLD-28",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+   "langkah": [
+    5
+   ],
+   "catatan": "Label Bulk `Purchase Cost (per asset)` dan helper Bulk diasersi UI-075/UI-071, yang tidak tercatat sebagai penanggung FLD-28."
+  },
+  {
+   "unit": "FLD-29",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+   "langkah": [
+    12
+   ],
+   "catatan": "Tooltip info `S-37` pada label Reference Price diasersi UI-071 step 11-12 yang tidak tercatat sebagai penanggung FLD-29."
+  },
+  {
+   "unit": "§4.1i#b2",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-072-dialog-edit-purchase-tanggal-biaya",
+   "langkah": [],
+   "catatan": "Klausa non-dampak ke Asset Value/Acquisition Cost/penyusutan tidak teramati di ui-client; perlu pemilik ui-e2e (mis. E2E-021) atau pembagian bagian per layer."
+  },
+  {
+   "unit": "V-13",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+   "langkah": [
+    75,
+    76,
+    77,
+    78,
+    79
+   ],
+   "catatan": "UI-071 mengasersi sisi Document No. unit ini tetapi tidak tercatat sebagai penanggung (hanya UI-073 dan BE-088)."
+  },
+  {
+   "unit": "FLD-34",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+   "langkah": [
+    10
+   ],
+   "catatan": "Tooltip info `S-36` pada bagian Additional costs diasersi UI-071 step 9-10 yang tidak tercatat sebagai penanggung FLD-34."
+  },
+  {
+   "unit": "EC-29",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [
+    36,
+    37
+   ],
+   "catatan": "Penolakan 422 Bulk yang memuat Additional costs diasersi BE-088 step 36-37 yang tidak tercatat sebagai penanggung EC-29."
+  },
+  {
+   "unit": "FI-06",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [
+    36,
+    37
+   ],
+   "catatan": "Penolakan server Bulk dengan Additional costs diasersi BE-088 step 36-37 (be-e2e) yang tidak tercatat sebagai penanggung FI-06."
+  },
+  {
+   "unit": "FI-10",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [
+    22,
+    23
+   ],
+   "catatan": "Cabang 'nama sama sudah ada -> Warranty until dan Provider diperbarui' diasersi benar di BE-088 (langkah 22-23), bukan di UI-075 (pemilik di plan, ui-client hanya mengasersi isi permintaan, langkah 30). Catat BE-088 sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§4.1i#b7",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [
+    37,
+    18
+   ],
+   "catatan": "Klausa 'Bulk dengan Additional costs ditolak 422', 'nama sama diperbarui', dan 'satu transaksi: berhasil semua atau tidak sama sekali' diasersi di BE-088 (langkah 17-18, 22-23, 37), bukan di UI-075; catat BE-088 sebagai penanggung unit."
+  },
+  {
+   "unit": "EB-FRM-2@edit-purchase",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi",
+   "langkah": [],
+   "catatan": "Klausa (e) keluar dari komponen sehingga tidak bisa di ui-client; tempatkan di spec ui-e2e Edit Purchase satu aset (E2E-021) dan catat sebagai penanggung."
+  },
+  {
+   "unit": "T-28",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [
+    3,
+    72
+   ],
+   "catatan": "Cabang 'permintaan langsung tanpa perubahan' diasersi di BE-088 (langkah 3 dan 72 sebagai Edit No-Op), bukan di UI-076; catat BE-088 sebagai penanggung unit."
+  },
+  {
+   "unit": "§4.1h#p4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+   "langkah": [
+    4,
+    5,
+    16,
+    46,
+    49,
+    50
+   ],
+   "catatan": "UI-069 mengasersi sisi D-04 unit ini (kolom awal Name/Asset ID/Group/Category, Panel Filter memuat Group, Category, Brand, Model / Type, Status, Labels) tetapi tidak tercatat sebagai penanggung (hanya UI-077)."
+  },
+  {
+   "unit": "D-16",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-023-print-label",
+   "langkah": [
+    21,
+    22,
+    27,
+    28
+   ],
+   "catatan": "Pintu Row Action dan Bulk Action ke D-16 (tanpa Select Asset) diasersi di E2E-023, bukan di UI-078; catat E2E-023 sebagai penanggung unit."
+  },
+  {
+   "unit": "ASTL-LOGIC-20o",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+   "langkah": [
+    33,
+    34
+   ],
+   "catatan": "E2E-020 langkah 33-34 mengasersi akibat UI aset terhapus (toast T-06, tabel dimuat ulang, D-14 tidak tampil) tetapi tidak tercatat sebagai penanggung unit ini (hanya BE-081)."
+  },
+  {
+   "unit": "F-ASTL-10.k2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+   "langkah": [],
+   "catatan": "Sisi UI 'aksi tidak ditawarkan bila ada aset Disposed' (ASTL-LOGIC-04a) diasersi di spec UI (mis. UI-061, UI-063) yang tidak tercatat sebagai penanggung unit; BE-083 hanya menegakkan server (PRD butir 8 'DILARANG memproses mutasi label pada aset Disposed')."
+  },
+  {
+   "unit": "F-ASTL-11.k2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+   "langkah": [],
+   "catatan": "Sama dengan F-ASTL-10.k2: sisi UI 'tidak ditawarkan' dimiliki spec UI yang tidak tercatat; BE-083 langkah 18-19 hanya sisi server."
+  },
+  {
+   "unit": "V-11",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+   "langkah": [
+    39,
+    40
+   ],
+   "catatan": "Alert inline '[Asset] would exceed 10 warranties.' untuk beberapa aset penyebab (daftar gulir) diasersi benar di UI-075, tetapi UI-075 tidak tercatat sebagai penanggung V-11; catat di plan."
+  },
+  {
+   "unit": "§9.2#p8",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+   "langkah": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+   ],
+   "catatan": "Klausa 'memvalidasi aktor dan cakupan group (Matriks Aksi)' untuk Edit Purchase diasersi di BE-081 (bukan di BE-088); BE-081 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§9.6#r4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+   "langkah": [],
+   "catatan": "Presedensi 409 atas 422 untuk Edit Purchase diasersi BE-089 langkah 39-43, toast T-20 di E2E-021/022 dan UI-076, tetapi spec-spec itu tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-01d",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-ASTL-E2E-035-state-tenant-aksi-tulis-ditolak",
+   "langkah": [
+    9,
+    19,
+    27,
+    34
+   ],
+   "catatan": "Klausa 'UI tidak dinonaktifkan' dan toast baku pada UI diasersi di E2E-035 (ui-e2e), yang tidak tercatat sebagai penanggung unit ini."
+  }
+ ],
+ "prd": [
+  {
+   "unit": "FLD-06",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-ASTL-E2E-005-sort",
+   "langkah": [
+    22,
+    23
+   ],
+   "catatan": "Kontrak DataTable#6: 'an empty (null/undefined) value goes last in both directions'; foundation prd-conventions §9.15: nilai kosong 'di akhir saat ascending dan di awal saat descending'. Spec mengasersi versi foundation (baris tanpa Brand paling awal saat descending) tanpa footnote drift. Unit tidak memuat `kontrak` dan tabel ini server-driven (DataTable#8), sehingga sisi yang berlaku dinilai foundation dan verdict tidak berubah; mohon konfirmasi untuk semua kolom sortable."
+  },
+  {
+   "unit": "FLD-11",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Aturan bahwa selama aset Assigned field Division diisi Division Assignee dan dikembalikan saat Unassign (kolom menampilkan nilai itu) ditetapkan `assignment.md` ASSIGN-LOGIC-06, di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "FLD-12",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+   "langkah": [
+    58,
+    59
+   ],
+   "catatan": "Foundation (Setup Column +N more / §21): chip membuka popover; kontrak BadgeGroup#4: `+N more` membuka modal dialog berjudul `All Items`. Sisi yang berlaku: kontrak komponen untuk mekanik; spec menyebut 'popover' tanpa footnote drift."
+  },
+  {
+   "unit": "§4.2.1#p1",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Tab Registration/Damaged/Missing 'menurut hak akses' modul pemilik (asset-registration/, damaged/, missing/) ditetapkan di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "§4.8#p1",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Visibilitas tab Registration/Damaged/Missing 'menurut hak modul pemiliknya' (asset-registration/, damaged/, missing/) ditetapkan dokumen di luar kit; suite hanya mengasersi keempat tab tampil bagi Total Control (E2E-001 langkah 3). Tidak dihitung kurang."
+  },
+  {
+   "unit": "§9.2#p2",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD 9.2 [F-ASTL-02]: \"Jumlah kartu `Available` selalu sama dengan jumlah baris sub-menu `available/` bila filter lain kosong.\" Sub-menu `available/` adalah surface/modul lain di luar kit; E2E-002 langkah 20 hanya membandingkan kartu Available dengan total tabel kartu itu, bukan dengan sub-menu `available/`. Tidak dihitung kurang."
+  },
+  {
+   "unit": "§5#r8",
+   "verdict": "ok",
+   "jenis": "drift",
+   "spec": "TC-FA-ASTL-E2E-007-setup-column-tersimpan",
+   "langkah": [
+    28,
+    29,
+    30
+   ],
+   "catatan": "PRD §5 Setup Column: 'Disimpan di browser per user'; foundation §9.3/EB-KOL-2: 'tersimpan per user di akun' (bertahan di browser lain). Sisi yang berlaku: foundation (pola bersama). E2E-007 mengasersi sisi foundation (sesi browser terpisah, langkah 28-30) tanpa footnote `[^drift-n]`."
+  },
+  {
+   "unit": "ASTL-LOGIC-18",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+   "langkah": [
+    13
+   ],
+   "catatan": "Klausa 'konteks daftar dibawa sebagai parameter URL; server menghitung aset sebelum dan sesudahnya' (hasil tampilnya, navigasi sebelum/sesudah) dimiliki `asset-detail.md` §4.1d, di luar kit; suite ini hanya bisa mengasersi pembukaan dari kolom Name dan pemulihan state daftar."
+  },
+  {
+   "unit": "ASTL-LOGIC-15o",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+   "langkah": [
+    40,
+    53
+   ],
+   "catatan": "Klausa 'dihitung Used' sesudah jeda transisi adalah surface modul `license/` (Used/Reserved) yang ditetapkan di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "ASTL-LOGIC-17a",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Penanda ⚠ pada baris aset terhapus di Draft Borrow/Transfer/Assignment (EC-41) dan hitung ulang agregat record dimiliki modul transaksi/pemilik record; tidak dihitung kurang (BE-087 langkah 43 hanya asersi draft tidak disentuh)."
+  },
+  {
+   "unit": "§9.7#r14",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "'asset-detail/: data aset tidak lagi tersedia' adalah surface modul Asset Detail; tidak dapat diasersi suite ini, tidak mengubah verdict."
+  },
+  {
+   "unit": "ASTL-LOGIC-21e",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa 'aset tidak masuk Depreciation Run (Open Item #19)' ditetapkan modul Depreciation Run/Open Item #19, di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "EC-40",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa 'aset tidak masuk Depreciation Run (Open Item #19)' ditetapkan modul Depreciation Run/Open Item #19, di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "§9.7#r13",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "'Tab Purchasing dan Book value di asset-detail/' adalah surface modul Asset Detail; tidak diasersi suite ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-20j",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "'Kelayakan aset dievaluasi ulang di form saat dikirim, salinan penolakan dimiliki modul transaksi' ditetapkan modul Borrow/Assignment/Transfer di luar kit; tidak dihitung kurang."
+  },
+  {
+   "unit": "AddtoTransferDraft",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Hasil Add to Transfer Draft (dialog T-XFER-02, 'aset tidak dikunci sampai Submit', transfer.md) dan kelayakan Custody (asset-state-machine.md §5) dimiliki dokumen/modul di luar kit; tidak diasersi."
+  },
+  {
+   "unit": "Detail",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Eksekusi 'Asset Detail' dari Row Action Detail adalah surface modul Asset Detail; klik Detail tidak dijalankan di suite (navigasi hanya lewat kolom Name, E2E-010), tidak dihitung kurang."
+  },
+  {
+   "unit": "EC-45",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD tidak konsisten: EC-45 (§9.4.2) 'Report Missing pada aset dengan Custody selain `Available` ... Aksi `Disabled 🔖` ... tooltip `S-27` menurut Custody' vs Matriks Aksi §4.1b Report Missing: 'Custody apa pun kecuali `In Transfer Process` dengan baris Transfer `In Transit`' dan `Disabled 🔖` S-27 'hanya bila baris Transfer aset `In Transit`' (S-27 juga khusus Transfer In Transit). Tidak ada aturan penentu sisi; suite mengikuti Matriks (aktif pada Borrowed/Assigned, Disabled hanya In Transit)."
+  },
+  {
+   "unit": "EC-46",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Hasil laporan di damaged/ atau missing/ (Condition master berubah seketika walau Require approval Audit aktif; Work Order, jadwal maintenance, item sesi Stock Opname tidak berubah; DAMAGED-LOGIC-03p, MISS-LOGIC-04i/04j) dimiliki modul Damaged/Missing/Audit/Maintenance; tidak dihitung kurang. Aksi tetap aktif pada In Audit (langkah 27) dan Under Maintenance (langkah 95) sudah diasersi."
+  },
+  {
+   "unit": "MarkasReturned",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Kolom Activity Lock dan hasil dialog D-BRW-25 mengikuti borrow.md §9.11 (di luar kit); tidak diasersi."
+  },
+  {
+   "unit": "MarkasUnassigned",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Kolom Activity Lock dan hasil dialog D-ASG-26 mengikuti assignment.md §9.10 (di luar kit); tidak diasersi."
+  },
+  {
+   "unit": "ReportDisposal",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pembuatan Disposal Report lewat `D-DISP-13` dan kelayakan `DISP-LOGIC-15` dimiliki `disposal.md` (di luar kit)."
+  },
+  {
+   "unit": "ReportMissing",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "EC-45 'Report Missing pada aset dengan Custody selain Available: Disabled dengan tooltip S-27' dan S-27 di indeks (baris 1333) 'karena Custody aset selain Available' bertentangan dengan Matriks Aksi 'Custody apa pun kecuali In Transfer Process dengan baris Transfer In Transit' dan S-27 §7 'hanya bila baris Transfer In Transit'. Suite mengikuti Matriks. Efek ke transaksi berjalan dimiliki borrow/assignment/transfer.md."
+  },
+  {
+   "unit": "Transfer",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Kelayakan Custody (asset-state-machine.md §5) dan perilaku Transfer pada level None (transfer.md §9.11) berada di dokumen di luar kit; tidak diasersi."
+  },
+  {
+   "unit": "§9.11#r1",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Transaction Log adalah surface Asset Detail (asset-detail.md), di luar kit; hasil cakupannya tidak bisa dipastikan suite ini."
+  },
+  {
+   "unit": "§9.11#r3",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "'Purchase Information' pada Asset Detail dimiliki `asset-detail.md` (seksi Purchase & Value); tidak diasersi di suite, tidak dihitung kurang."
+  },
+  {
+   "unit": "§9.10#p2",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD §9.10: 'serta `Transfer` dan `Add to Transfer Draft` sesuai modulnya' pada level None merujuk `transfer.md` §9.11 (di luar kit); keadaan Transfer pada level None tidak diasersi (Add to Transfer Draft Hidden pada None sesuai 'Draft hanya di level Full')."
+  },
+  {
+   "unit": "§8#b4",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa 'Aksi Asset Detail: asset-detail.md §8' menunjuk dokumen modul lain; pencatatan aksi Asset Detail di Activity Log tidak dapat diasersi suite ini (PRD asset-detail.md)."
+  },
+  {
+   "unit": "§8#b5",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pencatatan pelepasan TAG ke To Be Returned dan pengeluaran baris dari record multi-aset dimiliki modul tag/ dan modul pemilik record (PRD baris 1554); hasil di sana tidak bisa diasersi suite ini."
+  },
+  {
+   "unit": "ASTL-LOGIC-11d",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa menyebut Maintenance sebagai modul lain yang menampilkan garansi dengan nilai dan hover sama; surface modul Maintenance milik modul lain dan tidak ada spec dep-maintenance. Tidak dihitung kurang."
+  },
+  {
+   "unit": "ASTL-LOGIC-16c",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "ASTL-LOGIC-16c 'TAG yang sudah Paired tetap terpasang sampai aset dihapus (Delete Asset Data) atau didisposal' tidak menetapkan apakah disposal melepas TAG; DU-046-2 (Disposed masih ber-TAG Paired) dan ASTL-LOGIC-17x (lepas lewat To Be Returned saat Delete) tidak memutuskan sisi mana."
+  },
+  {
+   "unit": "S-27",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "S-27 'Dirujuk juga oleh damaged.md' dan alur Lost in Transit (`transfer.md` XFER-LOGIC-16) dimiliki modul lain; tidak diasersi suite ini."
+  },
+  {
+   "unit": "S-35",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "ID S-35 dipakai ganda di PRD §7: baris 1478 'Tooltip aksi Report Disposal yang Disabled karena Custody selain Available' dan baris 1480 'Tooltip info di samping label Document No. pada D-13'. Suite mengasersi keduanya (UI-061 langkah 134-153; UI-071 langkah 8)."
+  },
+  {
+   "unit": "§4.2.1#p2",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Breadcrumb tab `Registration`, `Damaged`, `Missing` dimiliki `asset-registration/`, `damaged/`, `missing/` dan Breadcrumb Asset Detail dimiliki `asset-detail.md` §4.2.2 (PRD baris 715); tidak bisa diasersi suite ini."
+  },
+  {
+   "unit": "§4.1i#p1",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pintu masuk menu ⋮ Asset Detail dan tombol `Edit Purchase` di tab Purchasing (hanya bagi aktornya) ada di surface `asset-detail.md` (§4.1d), tidak dapat diasersi suite ini; hasilnya ditetapkan dokumen itu."
+  },
+  {
+   "unit": "§9.9#r11",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Pesan batas dan format custom field 'menurut settings-custom-fields/' (modul lain); literalnya tidak ditetapkan di PRD ini sehingga tidak bisa diasersi suite ini."
+  },
+  {
+   "unit": "F-ASTL-16.k4",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Nilai Managed Action Retry Delay dan jeda dimiliki 'plans-licensing-lifecycle-settings/' ('n/a — nilai jeda dimiliki plans-licensing-lifecycle-settings/'); suite ini tidak bisa menetapkan nilainya, jadi hanya perilaku jeda (EC-49) yang diasersi."
+  },
+  {
+   "unit": "EC-33",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "EC-33: 'aksi transaksi: dievaluasi ulang di modul transaksi (ASTL-LOGIC-20)'; hasil ditetapkan PRD modul transaksi (Borrow/Assign/Transfer), tidak bisa diasersi suite ini; tidak mengubah verdict."
+  },
+  {
+   "unit": "ASTL-LOGIC-10a",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "ASTL-LOGIC-10a: 'pada Asset Detail berlaku untuk seksi Purchase & Value' adalah surface modul asset-detail (asset-detail.md); tidak diasersi suite ini dan tidak mengubah verdict."
+  },
+  {
+   "unit": "EB-FLT-7",
+   "verdict": "na",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD hanya menetapkan hasil untuk rujukan terhapus pada filter/konfigurasi TERSIMPAN saat dimuat (EC-43: 'Setup Column atau filter tersimpan merujuk custom field, label, atau Category yang sudah dihapus -> dibuang diam-diam', juga §5 Setup Column); itu diasersi UI-059 langkah 74-78. Hasil saat opsi yang sedang dipakai di panel Filter aktif dihapus aktor lain, dan untuk jenis opsi lain (Group, Asset Class, Status, Brand dll), tidak ditetapkan PRD."
+  }
+ ],
+ "rows": [
+  {
+   "unit": "ASTL-LOGIC-02a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-02c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-12a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EC-01",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-01",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-02",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+     "langkah": [
+      12,
+      13
+     ],
+     "catatan": "Klik tautan Name membuka Asset Detail ('Buka Asset Detail', PRD baris Name) diasersi E2E-010 yang tidak tercatat sebagai penanggung FLD-02."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-06",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-ASTL-E2E-005-sort",
+     "langkah": [
+      22,
+      23
+     ],
+     "catatan": "Kontrak DataTable#6: 'an empty (null/undefined) value goes last in both directions'; foundation prd-conventions §9.15: nilai kosong 'di akhir saat ascending dan di awal saat descending'. Spec mengasersi versi foundation (baris tanpa Brand paling awal saat descending) tanpa footnote drift. Unit tidak memuat `kontrak` dan tabel ini server-driven (DataTable#8), sehingga sisi yang berlaku dinilai foundation dan verdict tidak berubah; mohon konfirmasi untuk semua kolom sortable."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-058-panel-filter",
+     "langkah": [
+      3
+     ],
+     "catatan": "Placeholder `All brands` diasersi UI-058 (ui-client) yang tidak tercatat sebagai penanggung FLD-06."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-07",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-08",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-11",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Aturan bahwa selama aset Assigned field Division diisi Division Assignee dan dikembalikan saat Unassign (kolom menampilkan nilai itu) ditetapkan `assignment.md` ASSIGN-LOGIC-06, di luar kit; tidak dihitung kurang."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-12",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+     "langkah": [
+      58,
+      59
+     ],
+     "catatan": "Foundation (Setup Column +N more / §21): chip membuka popover; kontrak BadgeGroup#4: `+N more` membuka modal dialog berjudul `All Items`. Sisi yang berlaku: kontrak komponen untuk mekanik; spec menyebut 'popover' tanpa footnote drift."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-18",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-19",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-20",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-21",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-22",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-005-sort",
+     "langkah": [
+      117,
+      118
+     ],
+     "catatan": "PRD baris Warranty Expiry: sort 'No access selalu paling akhir' (ASTL-LOGIC-10q, kedua arah). Aktor E2E-005 (Total Control) tidak punya sel `No access`, dan BE-090 langkah 11-14 hanya mengasersi urutan Purchase Cost. Perlu aktor tanpa hak Purchase yang mengurutkan Warranty Expiry asc dan desc dan melihat `No access` paling akhir (idealnya di BE-090).",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-013-warranty-expiry",
+     "langkah": [
+      6,
+      7,
+      8,
+      9,
+      11,
+      17,
+      24
+     ],
+     "catatan": "Nilai sel (garansi terdekat yang belum lewat / tanggal terakhir), hover, filter 'salah satu garansi', dan sort diasersi E2E-013 yang tidak tercatat sebagai penanggung FLD-22."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-23",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-005-sort",
+     "langkah": [
+      121,
+      122
+     ],
+     "catatan": "Sort custom field 'menurut Data Type: numerik, tanggal, atau A-Z' hanya diuji untuk tipe teks (`Lokasi Rak`). Tambah custom field numerik dan tanggal dan verifikasi urutan numerik/kronologis.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-006-filter-panel",
+     "langkah": [
+      7
+     ],
+     "catatan": "Kapabilitas Filter/Search per Data Type (PRD baris Custom field: Dropdown/Multi-Dropdown multi-select dengan opsi = nilai distinct, Date rentang, Numeric/Percentage/Currency Min/Max, Text hanya Search, Document tanpa keduanya) hanya diuji untuk tipe teks (tanpa field filter). Tipe lain tidak diuji.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-24",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-25",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "FLD-26",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.2.1#p1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-054-tabel-all-assets-tampilan-sel",
+     "langkah": [
+      155,
+      156,
+      157,
+      158,
+      159,
+      160
+     ],
+     "catatan": "Grid kartu (satu baris di layar lebar, tiga kolom menengah, dua kolom sempit) diasersi UI-054 yang tidak tercatat sebagai penanggung §4.2.1#p1."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-059-setup-column",
+     "langkah": [
+      31,
+      34,
+      35,
+      36,
+      37,
+      41,
+      42,
+      43,
+      44
+     ],
+     "catatan": "Maksimal 3 kolom pinned diasersi UI-059 yang tidak tercatat sebagai penanggung §4.2.1#p1."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Tab Registration/Damaged/Missing 'menurut hak akses' modul pemilik (asset-registration/, damaged/, missing/) ditetapkan di luar kit; tidak dihitung kurang."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.8#p1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Visibilitas tab Registration/Damaged/Missing 'menurut hak modul pemiliknya' (asset-registration/, damaged/, missing/) ditetapkan dokumen di luar kit; suite hanya mengasersi keempat tab tampil bagi Total Control (E2E-001 langkah 3). Tidak dihitung kurang."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.3#p2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-13g",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EC-12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "F-ASTL-02",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "KartuAll",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+     "langkah": [
+      4,
+      5
+     ],
+     "catatan": "Tooltip kartu All `Active assets only. Disposed assets are in the Disposed card.` diasersi UI-063 (ui-client), tetapi UI-063 tidak tercatat sebagai penanggung KartuAll; catat sebagai pemilik/pendukung."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "KartuAvailable",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "KartuDisposed",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "KartuInTransaction",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+     "langkah": [
+      5
+     ],
+     "catatan": "Nilai Custody `In Transfer Process` pada kartu In Transaction diasersi E2E-041 yang tidak tercatat sebagai penanggung KartuInTransaction."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+     "langkah": [
+      10,
+      11,
+      20,
+      21
+     ],
+     "catatan": "Rincian hover In Transaction dan aturan jumlah rincian diasersi UI-063 yang tidak tercatat sebagai penanggung KartuInTransaction."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "KartuIssues",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-063-kartu-status-tampilan",
+     "langkah": [
+      12,
+      13,
+      15,
+      16
+     ],
+     "catatan": "Rincian hover kartu Issues diasersi UI-063 yang tidak tercatat sebagai penanggung KartuIssues."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+     "langkah": [
+      8,
+      12
+     ],
+     "catatan": "Tagging `TAG Reported` pada kartu Issues diasersi E2E-046 (dan Missing di E2E-043, Reported Disposal di E2E-044) yang tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#b4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#p2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§4.1a#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#r3",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-041-status-transfer-dep-transfer",
+     "langkah": [
+      5
+     ],
+     "catatan": "E2E-039/040/041/044 mengasersi angka kartu In Transaction (Borrowed, Assigned, In Transfer Process, In Disposal Process) tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#r4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-042-laporan-damaged-dep-damaged",
+     "langkah": [
+      5
+     ],
+     "catatan": "E2E-042/043/044/046 mengasersi angka kartu Issues (Damaged, Missing, Reported Disposal, Not Paired Yet, TAG Reported) tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1a#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§4.4#b7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.2#p2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD 9.2 [F-ASTL-02]: \"Jumlah kartu `Available` selalu sama dengan jumlah baris sub-menu `available/` bila filter lain kosong.\" Sub-menu `available/` adalah surface/modul lain di luar kit; E2E-002 langkah 20 hanya membandingkan kartu Available dengan total tabel kartu itu, bukan dengan sub-menu `available/`. Tidak dihitung kurang."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-14j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-14l",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-14n",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-003-sidebar-group",
+     "langkah": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "catatan": "Klausa kedua: kembali ke `All Groups` karena node aktif keluar cakupan (14f) memuat ulang tabel dari halaman 1 dengan seleksi baris bertahan. Tidak ada asersi halaman 1 aktif dan seleksi baris bertahan sesudah pengembalian otomatis (E2E-034 langkah 6 hanya node kembali ke `All Groups`); data E2E-034 tidak menaruh aktor di halaman >1 atau dengan baris tercentang.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-034-pencabutan-hak-saat-halaman-terbuka",
+     "langkah": [
+      6
+     ],
+     "catatan": "Cabang 14f ada di E2E-034, spec ini tidak tercatat sebagai penanggung 14n."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "F-ASTL-13",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-064-sidebar-group-tampilan",
+     "langkah": [
+      6
+     ],
+     "catatan": "Read-only sidebar (tanpa Create/Edit/Delete) diasersi di UI-064 langkah 6, bukan di E2E-003; UI-064 tidak tercatat sebagai penanggung F-ASTL-13."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRC-1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-091-query-search-sort-filter",
+     "langkah": [
+      6
+     ],
+     "catatan": "Langkah 6 mengasersi teks UI `No results found` pada spec be-e2e (tanpa teks UI); teks itu seharusnya hanya di E2E-004 (langkah 20, 22). Di BE-091 cukup: hasil kosong."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRC-2@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRC-3@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EC-20",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "F-ASTL-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§5#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.2#p3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRT-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRT-2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-SRT-3@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "F-ASTL-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§5#r4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-090-gerbang-nilai-sel",
+     "langkah": [
+      12,
+      14
+     ],
+     "catatan": "Klausa `No access` selalu di akhir (ASTL-LOGIC-10) diasersi di BE-090 langkah 12 dan 14, tidak tercatat sebagai penanggung 5#r4."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-02b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-02e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-FLT-1@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-FLT-3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-FLT-4@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-FLT-5@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "F-ASTL-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§4.1a#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§4.1c#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1c#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§4.1c#b4",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-006-filter-panel",
+     "langkah": [
+      214,
+      215,
+      216,
+      217
+     ],
+     "catatan": "Filter Purchase status 'tersedia bagi aktor Edit Purchase': tidak ada asersi aktor tanpa hak Edit Purchase tidak melihat field `Purchase Status` (E2E-026..033 tidak memeriksanya).",
+     "status": "tetap"
+    },
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-006-filter-panel",
+     "langkah": [
+      214,
+      215,
+      216,
+      217
+     ],
+     "catatan": "Aset `No access` bagi pemanggil tidak pernah cocok dan tidak dihitung sehingga `Pending` tidak bocor: tidak ada aktor tanpa hak Purchase (ASTL-LOGIC-10) yang memfilter Purchase Status `Pending` dan memastikan aset di luar hak tidak muncul.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Server menegakkan aturan di atas pada setiap kueri: tidak ada spec be-e2e (BE-091/BE-090) yang mengasersi filter Purchase status oleh pemanggil tanpa hak.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-KOL-2@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-SRC-5@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§5#r8",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-ASTL-E2E-007-setup-column-tersimpan",
+     "langkah": [
+      28,
+      29,
+      30
+     ],
+     "catatan": "PRD §5 Setup Column: 'Disimpan di browser per user'; foundation §9.3/EB-KOL-2: 'tersimpan per user di akun' (bertahan di browser lain). Sisi yang berlaku: foundation (pola bersama). E2E-007 mengasersi sisi foundation (sesi browser terpisah, langkah 28-30) tanpa footnote `[^drift-n]`."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-059-setup-column",
+     "langkah": [
+      74,
+      75,
+      76,
+      77,
+      78,
+      79
+     ],
+     "catatan": "Rujukan terhapus dibuang diam-diam diasersi UI-059 yang tidak tercatat sebagai penanggung §5#r8."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-TBL-7@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§5#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-DL-1@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-DL-2@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-DL-3@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-DL-4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§5#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.6#r7",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+     "langkah": [
+      55,
+      56,
+      62,
+      66,
+      68
+     ],
+     "catatan": "'Tidak dicatat' (Download tidak masuk Activity Log, Changelog, System Log) diasersi E2E-038 yang tidak tercatat sebagai penanggung §9.6#r7."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-065-popover-download",
+     "langkah": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "catatan": "`T-05` (toast gagal `Error, failed to download All-Assets.`) diasersi UI-065 yang tidak tercatat sebagai penanggung §9.6#r7."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-18",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-ASTL-E2E-010-navigasi-asset-detail",
+     "langkah": [
+      13
+     ],
+     "catatan": "Klausa 'konteks daftar dibawa sebagai parameter URL; server menghitung aset sebelum dan sesudahnya' (hasil tampilnya, navigasi sebelum/sesudah) dimiliki `asset-detail.md` §4.1d, di luar kit; suite ini hanya bisa mengasersi pembukaan dari kolom Name dan pemulihan state daftar."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.4#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.4#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EB-TBL-10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-10h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-10i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-10j",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-012-sel-pending-nilai-aset",
+     "langkah": [
+      16,
+      21
+     ],
+     "catatan": "Klausa 'keadaan tidak berlaku berlaku tanpa memandang hak': tidak ada aktor tanpa hak Asset Class (mis. Group Manager) yang melihat `—` (bukan `No access`) pada aset yang Asset Name-nya tanpa Asset Class. E2E-012 hanya memakai Total Control; E2E-026..033 tidak memeriksa sel Asset Class baris `Kursi Kerja` (tanpa Asset Class).",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-12i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12l",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EC-14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "EC-25",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-012-sel-pending-nilai-aset",
+     "langkah": [],
+     "catatan": "Klausa EC-25 selain Asset Value/S-22/S-23 diasersi spec lain yang tidak tercatat: Pending terurut sebelum No access (BE-090), tidak cocok search/filter (E2E-004, E2E-006), Download kosong (E2E-009), dilengkapi lewat D-13 (E2E-021), predikat tidak terbaca dan Disposed berjurnal Posted (E2E-052). Catat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-11b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-11c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-11e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-11l",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa Download tidak terpengaruh penanda garansi diasersi di BE-092 langkah 10 (seluruh garansi satu sel tanpa warna), yang tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-20g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-20h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-BLK-2@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-EDG-2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EC-35",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.4#b4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-04c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-FB-1@add-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-FRM-1@add-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-04d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-04f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-04h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-FB-1@remove-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-FRM-1@remove-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EC-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-15c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15o",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+     "langkah": [
+      40,
+      53
+     ],
+     "catatan": "Klausa 'dihitung Used' sesudah jeda transisi adalah surface modul `license/` (Used/Reserved) yang ditetapkan di luar kit; tidak dihitung kurang."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-037-changelog-asset-dep-asset-detail",
+     "langkah": [],
+     "catatan": "Sumber Switch (aset yang di-Manage berstatus Pending Activation) diasersi E2E-037 (changelog) dan BE-084, tetapi unit hanya mencatat E2E-018 yang menguji sumber Available quota. Catat penanggung tambahan."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15r",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "DO-02",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-FB-1@manage-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-FRM-1@manage-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-15aa",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Penolakan server 422 atas pasangan Switch yang tidak sesuai (beda group, bukan managed, jumlah tidak sama) diasersi BE-084 langkah 26-32, spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-17a",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+     "langkah": [
+      11,
+      15,
+      17,
+      27
+     ],
+     "catatan": "Yang diasersi hanya Changelog hilang (langkah 17). Tidak diasersi: Activity Log aset ikut terhapus dan riwayat transaksi yang melekat, termasuk record Missing selesai di tab History Missing, ikut terhapus permanen (PRD: 'seluruh lognya (Changelog Asset, Activity Log aset, dan riwayat transaksi ... termasuk record Missing selesai di tab History Missing)'). Tambahkan aset Disposed dengan record Missing selesai dan verifikasi tab History Missing tidak lagi memuatnya.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-BE-087-delete-asset-data-guard",
+     "langkah": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+     ],
+     "catatan": "Tidak diasersi: 'bila pengeluaran baris dari salah satu record gagal, seluruh penghapusan dibatalkan (toast T-25)'; atomisitas (data aset tetap utuh bila salah satu record multi-aset gagal diproses) tidak diuji di spec mana pun.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Penanda ⚠ pada baris aset terhapus di Draft Borrow/Transfer/Assignment (EC-41) dan hitung ulang agregat record dimiliki modul transaksi/pemilik record; tidak dihitung kurang (BE-087 langkah 43 hanya asersi draft tidak disentuh)."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-17c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-17d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-17m",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+     "langkah": [
+      37,
+      39,
+      42,
+      44,
+      46,
+      48,
+      51,
+      53,
+      56,
+      58,
+      61,
+      63
+     ],
+     "catatan": "Urutan prioritas pada Row Action sudah menutup pasangan S-16>S-19, S-16>S-18, S-18>S-19, S-19>S-34, S-34>lock, S-19>lock. Belum teruji: prioritas pada Bulk lintas aset (S-32 paling didahulukan atas S-16/S-18/S-19/S-34) dan S-29 vs S-30 pada seleksi yang memuat dua jenis lock.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-BLK-3",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Satu entri log per item pada Bulk Delete diasersi E2E-038 langkah 42-50 (satu entri User Action per aset); spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-EDG-3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-ERR-3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FB-1@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FRM-1@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.7#r14",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "'asset-detail/: data aset tidak lagi tersedia' adalah surface modul Asset Detail; tidak dapat diasersi suite ini, tidak mengubah verdict."
+    },
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Efek turunan Delete diasersi spec lain yang tidak tercatat: TAG masuk To Be Returned alasan Deleted (E2E-046 langkah 23-24), file terlampir dan record multi-aset (BE-087 langkah 4, 43-47), entri User Action (E2E-038 langkah 35-40)."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-07a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21e",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa 'aset tidak masuk Depreciation Run (Open Item #19)' ditetapkan modul Depreciation Run/Open Item #19, di luar kit; tidak dihitung kurang."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-ERR-4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FB-1@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FB-3@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FRM-1@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FRM-5@edit-purchase",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pesan 'Warranty name already exists' dan 'Additional cost name already exists' juga diasersi UI-073 langkah 17 dan UI-074 langkah 17; spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-FRM-9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EC-07",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EC-40",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa 'aset tidak masuk Depreciation Run (Open Item #19)' ditetapkan modul Depreciation Run/Open Item #19, di luar kit; tidak dihitung kurang."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1i#b4",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-021-edit-purchase-satu-aset",
+     "langkah": [
+      80,
+      81,
+      82,
+      83,
+      101,
+      102,
+      103
+     ],
+     "catatan": "Syarat Complete diasersi positif (langkah 14, BE-088 langkah 5-6), tetapi cabang negatif tidak bisa gagal: langkah 83 dan 103 hanya memeriksa Asset Value Pending, yang juga berlaku karena Purchase Cost kosong (S-23), bukan membuktikan status Purchase tetap Pending. Verifikasi status Purchase lewat filter Purchase Status Pending/Complete untuk: hanya Date terisi, hanya Cost terisi, custom field Purchasing wajib kosong tetap Pending, dan status dihitung ulang tiap simpan (Date dikosongkan kembali ke Pending).",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.7#r13",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "'Tab Purchasing dan Book value di asset-detail/' adalah surface modul Asset Detail; tidak diasersi suite ini."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-07d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-07e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "DO-01",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EB-FB-1@print-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "F-ASTL-15.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1h#b13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1h#b14",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "'Tanpa entri Activity Log' untuk Print Label diasersi E2E-038 langkah 58-62, bukan E2E-023 (hanya Changelog, langkah 14); catat E2E-038 sebagai penanggung klausa Activity Log."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1h#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.2#p9",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Penolakan server Print Label atas aset di luar cakupan, Disposed, dan Unmanaged diasersi BE-081 langkah 49-53, spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.6#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-04a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-16a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-16b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-16d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-16g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-17n",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-19a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-19b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-19c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-19d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-19e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-20j",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "'Kelayakan aset dievaluasi ulang di form saat dikirim, salinan penolakan dimiliki modul transaksi' ditetapkan modul Borrow/Assignment/Transfer di luar kit; tidak dihitung kurang."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "AddLabel",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "AddtoAssignmentDraft",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "AddtoBorrowDraft",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "AddtoTransferDraft",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+     "langkah": [
+      51
+     ],
+     "catatan": "Langkah 51 mengasersi Bulk Add to Transfer Draft Disabled (S-32) untuk aset Borrowed; spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+     "langkah": [
+      68,
+      83,
+      102,
+      118,
+      137,
+      153
+     ],
+     "catatan": "Visibilitas Add to Transfer Draft (baris dan Bulk) per level Feature Suite None/Basic/Full diasersi di sini, tetapi spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+     "langkah": [
+      63,
+      68,
+      82,
+      87,
+      95
+     ],
+     "catatan": "Aktor Asset Admin jenis Transfer (tampil) dan jenis lain (Hidden) diasersi di sini; spec tidak tercatat sebagai penanggung unit. Aktor Group Manager di E2E-027 langkah 10 dan 26 juga tidak tercatat."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Hasil Add to Transfer Draft (dialog T-XFER-02, 'aset tidak dikunci sampai Submit', transfer.md) dan kelayakan Custody (asset-state-machine.md §5) dimiliki dokumen/modul di luar kit; tidak diasersi."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "Assign",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "BatchReplaceTAG",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "Borrow",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "DeleteAssetData",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "Detail",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Eksekusi 'Asset Detail' dari Row Action Detail adalah surface modul Asset Detail; klik Detail tidak dijalankan di suite (navigasi hanya lewat kolom Name, E2E-010), tidak dihitung kurang."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "EC-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "EC-22",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+     "langkah": [
+      32
+     ],
+     "catatan": "Bagian ui-e2e 'keadaan Disabled dari data nyata' tidak terpenuhi: trace EC-22 menunjuk langkah 32, yang hanya memeriksa item Delete Asset Data dan Manage Disabled dalam menu Bulk Action yang terbuka (aksi lain tersedia). Tidak ada langkah ui-e2e dengan data nyata (aktor tanpa aksi Bulk yang berhak pada aset terpilih, mis. Manage purchase dengan seleksi aset Disposed) yang mengasersi tombol Bulk Action Disabled; UI-061 langkah 91-95 (ui-client) sudah menutup tooltip S-15.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "EC-45",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD tidak konsisten: EC-45 (§9.4.2) 'Report Missing pada aset dengan Custody selain `Available` ... Aksi `Disabled 🔖` ... tooltip `S-27` menurut Custody' vs Matriks Aksi §4.1b Report Missing: 'Custody apa pun kecuali `In Transfer Process` dengan baris Transfer `In Transit`' dan `Disabled 🔖` S-27 'hanya bila baris Transfer aset `In Transit`' (S-27 juga khusus Transfer In Transit). Tidak ada aturan penentu sisi; suite mengikuti Matriks (aktif pada Borrowed/Assigned, Disabled hanya In Transit)."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "EC-46",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Hasil laporan di damaged/ atau missing/ (Condition master berubah seketika walau Require approval Audit aktif; Work Order, jadwal maintenance, item sesi Stock Opname tidak berubah; DAMAGED-LOGIC-03p, MISS-LOGIC-04i/04j) dimiliki modul Damaged/Missing/Audit/Maintenance; tidak dihitung kurang. Aksi tetap aktif pada In Audit (langkah 27) dan Under Maintenance (langkah 95) sudah diasersi."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "Edit",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "EditPurchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "F-ASTL-16.k1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Penolakan server atas aset non-Unmanaged (BE-084 langkah 20-21) dan lintas group (BE-084 langkah 22-23), serta Manage Disabled lintas group di UI (E2E-018 langkah 10-12, UI-061 langkah 60-66) diasersi spec yang tidak tercatat sebagai penanggung unit; E2E-024 langkah 45-47 menumpuk dua penyebab (lintas group dan Pending Activation) sehingga tidak mengisolasi aturan lintas group."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "F-ASTL-17.k2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Aset tidak memenuhi syarat membatalkan seluruh aksi diasersi dengan benar di BE-087 (langkah 13-14, 40-41) dan UI-061 (langkah 42-53), tetapi spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "Manage",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa Manage (dialog D-03/D-04 menurut Available, jeda S-14, lintas group S-33, server cakupan, QUOTA_EXCEEDED, Changelog/Activity Log/System Log) diasersi E2E-018, UI-061, UI-068/069, BE-081, BE-084, E2E-038; hanya E2E-024 yang tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "MarkasReturned",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+     "langkah": [
+      69,
+      70,
+      78
+     ],
+     "catatan": "Aktor Group Manager untuk Mark as Returned diasersi di E2E-027 (juga 025, 032 langkah 101/110/122/131 untuk Asset Admin Borrow vs jenis lain, 026/028-031 Hidden), tetapi hanya E2E-024 tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+     "langkah": [
+      73,
+      88,
+      107,
+      123,
+      142,
+      158
+     ],
+     "catatan": "Visibilitas Mark as Returned per level Feature Suite (None/Basic/Full) diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Kolom Activity Lock dan hasil dialog D-BRW-25 mengikuti borrow.md §9.11 (di luar kit); tidak diasersi."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "MarkasUnassigned",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+     "langkah": [
+      73,
+      83
+     ],
+     "catatan": "Aktor Group Manager untuk Mark as Unassigned diasersi di E2E-027 (juga 025, 032 langkah 126/136 untuk Asset Admin Assignment, 026/028-031 Hidden), tetapi hanya E2E-024 tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+     "langkah": [
+      77,
+      93,
+      111,
+      128,
+      146,
+      163
+     ],
+     "catatan": "Visibilitas Mark as Unassigned per level Feature Suite diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Kolom Activity Lock dan hasil dialog D-ASG-26 mengikuti assignment.md §9.10 (di luar kit); tidak diasersi."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "PrintLabel",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Dialog Print Label berisi aset terpilih (Row Action dan Bulk) diasersi di E2E-023 (langkah 20-30); spec itu tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "RemoveLabel",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ReplaceTAG",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ReportDamage",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ReportDisposal",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+     "langkah": [
+      134,
+      136,
+      138,
+      140,
+      142,
+      144
+     ],
+     "catatan": "Tooltip S-35 Report Disposal Disabled menurut Custody diasersi di UI-061, dan aktor Report Disposal di spec gating 025-032; keduanya tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pembuatan Disposal Report lewat `D-DISP-13` dan kelayakan `DISP-LOGIC-15` dimiliki `disposal.md` (di luar kit)."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "ReportMissing",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+     "langkah": [
+      22,
+      24,
+      26
+     ],
+     "catatan": "UI-061 mengasersi Report Missing Disabled + tooltip S-27 pada aset In Transit dan aktif pada aset Borrowed; trace EC-45/S-27 ada, tetapi spec tidak tercatat sebagai penanggung unit. Aktor Group Manager dan Manage asset & TAG (Update) ada di E2E-027 langkah 12 dan E2E-028 langkah 12, juga tidak tercatat."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "EC-45 'Report Missing pada aset dengan Custody selain Available: Disabled dengan tooltip S-27' dan S-27 di indeks (baris 1333) 'karena Custody aset selain Available' bertentangan dengan Matriks Aksi 'Custody apa pun kecuali In Transfer Process dengan baris Transfer In Transit' dan S-27 §7 'hanya bila baris Transfer In Transit'. Suite mengikuti Matriks. Efek ke transaksi berjalan dimiliki borrow/assignment/transfer.md."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "ReportTAG",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "Transfer",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+     "langkah": [
+      51
+     ],
+     "catatan": "Langkah 51 mengasersi Bulk Transfer Disabled (S-32) untuk aset Borrowed; spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+     "langkah": [
+      101,
+      117,
+      136,
+      152
+     ],
+     "catatan": "Visibilitas Transfer per level Feature Suite diasersi di sini; spec tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+     "langkah": [
+      63,
+      68,
+      82,
+      87,
+      95
+     ],
+     "catatan": "Aktor Asset Admin jenis Transfer diasersi di sini; E2E-027 (Group Manager) juga; keduanya tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Kelayakan Custody (asset-state-machine.md §5) dan perilaku Transfer pada level None (transfer.md §9.11) berada di dokumen di luar kit; tidak diasersi."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "ASTL-LOGIC-10c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-10d",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Nilai sel custom field Purchasing bagi pemegang Manage purchase dan No access bagi pihak lain diasersi BE-090 langkah 31-35; spec itu tidak tercatat sebagai penanggung unit (E2E-031 hanya menyatakan ketersediaan kolom, langkah 32)."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "ASTL-LOGIC-10e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10n",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10o",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10p",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-036-plan-gating",
+     "langkah": [
+      3,
+      9
+     ],
+     "catatan": "Hanya dua keadaan lisensi FA-7 diuji (aktif dan dicabut). Keadaan Grace Period (kolom custom field Accounting tersedia read-only) tidak diasersi di spec mana pun; 'server tidak mengembalikan nilainya' saat FA-7 tidak aktif juga tidak diasersi (hanya ketersediaan kolom di Setup Column).",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#p3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§2#r15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§2#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§2#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§2#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r7",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-080-cakupan-group-aset",
+     "langkah": [
+      2,
+      14,
+      27
+     ],
+     "catatan": "Cakupan 'Group yang dikelola dan descendant' untuk Group Manager hanya terasersi di BE-080 (Dewi, anak IT/GA); E2E-027 tidak punya group descendant. BE-080 tidak tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§2#r8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§2#r9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.8#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.8#r10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.8#r14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.8#r2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-033-gating-tanpa-akses",
+     "langkah": [
+      2
+     ],
+     "catatan": "Kolom 'Role lain' (Hidden) dicakup oleh E2E-033 (menu All Assets Hidden sehingga aksi tidak terjangkau); spec ini tidak tercatat sebagai penanggung unit r2."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.8#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r5",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+     "langkah": [
+      31
+     ],
+     "catatan": "Bulk Batch Replace TAG pada Total Control diasersi E2E-024 yang tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r6",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-032-gating-asset-admin",
+     "langkah": [
+      26,
+      27,
+      28
+     ],
+     "catatan": "Bulk `Manage` Hidden untuk Asset Admin (dan Manage purchase di E2E-031 langkah 26-27) tidak diasersi; Bar Bulk tampil pada kedua aktor itu.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+     "langkah": [
+      7,
+      8
+     ],
+     "catatan": "Bulk Manage Total Control diasersi E2E-018, tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r7",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+     "langkah": [
+      21
+     ],
+     "catatan": "Bulk Delete Asset Data Total Control diasersi E2E-020, tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.8#r9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.11#r1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Transaction Log adalah surface Asset Detail (asset-detail.md), di luar kit; hasil cakupannya tidak bisa dipastikan suite ini."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-080-cakupan-group-aset",
+     "langkah": [
+      2,
+      14,
+      27
+     ],
+     "catatan": "Cakupan group + descendant untuk Group Manager dan Asset Admin diasersi BE-080, descendant View asset value dan Manage purchase di E2E-029/031; BE-080 tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.11#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.11#r3",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "'Purchase Information' pada Asset Detail dimiliki `asset-detail.md` (seksi Purchase & Value); tidak diasersi di suite, tidak dihitung kurang."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.11#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.11#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.11#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.11#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-10g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-10k",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-027-gating-group-manager",
+     "langkah": [
+      38,
+      39
+     ],
+     "catatan": "Spec 027 mengasersi `No access` (Asset Class, Tax Depreciation Class) tetapi tidak tercatat sebagai penanggung 10k."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+     "langkah": [
+      34,
+      35
+     ],
+     "catatan": "Spec 030 mengasersi `No access` (Purchase Date/Cost/Warranty) tetapi tidak tercatat sebagai penanggung 10k."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-10l",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-030-gating-manage-accounting",
+     "langkah": [
+      35
+     ],
+     "catatan": "Spec 030 langkah 35 mengasersi `No access`, bukan `Pending`, tetapi tidak tercatat sebagai penanggung 10l."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-5@add-label",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      7,
+      8,
+      15,
+      16
+     ],
+     "catatan": "Add Label sukses oleh pemegang Update saja (Sari) dan ditolak untuk pemegang Delete saja ada di BE-081; spec 028 memakai Update + Delete. BE-081 tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-5@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      33,
+      34
+     ],
+     "catatan": "Delete Asset Data sukses oleh pemegang Read + Delete saja (Tono) ada di BE-081; 028 langkah 79-88 memakai Update + Delete. BE-081 tidak tercatat."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-5@manage-asset",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      8,
+      10,
+      34,
+      62
+     ],
+     "catatan": "BE-081 mengasersi sukses Add/Remove Label dan Manage oleh Read + Update serta Delete oleh Read + Delete, tetapi tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "EB-AKS-5@remove-label",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      9,
+      10
+     ],
+     "catatan": "Remove Label sukses oleh pemegang Update saja ada di BE-081; 028 memakai Update + Delete. BE-081 tidak tercatat."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-5@edit-purchase",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      23,
+      24
+     ],
+     "catatan": "BE-081 juga mengasersi Edit Purchase oleh pemegang Manage purchase (Update); tidak tercatat."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-14f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-20k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-20l",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-20m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EC-44",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "T-21",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-7",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-093-state-tenant-server",
+     "langkah": [],
+     "catatan": "BE-093 dan E2E-035 memuat satu langkah per aksi tulis modul termasuk Switch Manage (E2E-035 langkah 72, BE-093 langkah 32); BE-093 tidak tercatat sebagai penanggung bagian Switch."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "EC-19",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-AKS-8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EC-18",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.10#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.10#p2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD §9.10: 'serta `Transfer` dan `Add to Transfer Draft` sesuai modulnya' pada level None merujuk `transfer.md` §9.11 (di luar kit); keadaan Transfer pada level None tidak diasersi (Add to Transfer Draft Hidden pada None sesuai 'Draft hanya di level Full')."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.10#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.10#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.10#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§9.10#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-15x",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-018-manage-aset",
+     "langkah": [
+      42
+     ],
+     "catatan": "Entri `Unmanaged` ke `Pending Activation` untuk Manage sumber Available quota diasersi di E2E-018 (037 hanya sumber Switch); tidak tercatat."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-15y",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "ASTL-LOGIC-15z",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-LOG-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "EB-LOG-2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§4.1i#b11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§5#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§8#b2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+     "langkah": [
+      23,
+      27
+     ],
+     "catatan": "Entri License di Activity Log dan System Log aktor diasersi di 038 (langkah 23, 27); 038 tidak tercatat sebagai penanggung §8#b2."
+    }
+   ],
+   "juri": "j6"
+  },
+  {
+   "unit": "§8#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§8#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j6"
+  },
+  {
+   "unit": "§8#r3",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-037-changelog-asset-dep-asset-detail",
+     "langkah": [
+      14,
+      111
+     ],
+     "catatan": "fields[]: Label, License, Purchase Date, Purchase Cost, Reference Price, Warranty, Additional costs, Document No. sudah diasersi, tetapi entri Changelog untuk perubahan custom field Purchasing (dan field seksi Pembelian lain seperti Provider) tidak diasersi; E2E-038 langkah 25 hanya Purchase Cost.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§8#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "§8#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§8#r6",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-086-manage-aktivasi-gagal",
+     "langkah": [
+      29,
+      30,
+      31
+     ],
+     "catatan": "BE-086 mengasersi Activity Log + tanpa System Log untuk jalur gagal, tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-17y",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§8#b3",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-038-activity-log-hapus-aset-dep-activity-log",
+     "langkah": [
+      27
+     ],
+     "catatan": "System Log untuk 'kegagalan teknis Bulk Label' tidak diasersi; hanya Manage dan Switch Manage. Tambah keadaan Add/Remove Label gagal teknis dan asersi entri System Log.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§8#b4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa 'Aksi Asset Detail: asset-detail.md §8' menunjuk dokumen modul lain; pencatatan aksi Asset Detail di Activity Log tidak dapat diasersi suite ini (PRD asset-detail.md)."
+    }
+   ],
+   "juri": "j7"
+  },
+  {
+   "unit": "§8#b5",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pencatatan pelepasan TAG ke To Be Returned dan pengeluaran baris dari record multi-aset dimiliki modul tag/ dan modul pemilik record (PRD baris 1554); hasil di sana tidak bisa diasersi suite ini."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§8#b6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-02d",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+     "langkah": [
+      9,
+      10,
+      11,
+      12
+     ],
+     "catatan": "Klausa TAG pada ASTL-LOGIC-02d diasersi tanpa reload di 046 tetapi unit tidak dicatat sebagai miliknya."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit",
+     "langkah": [
+      6,
+      7,
+      10,
+      11
+     ],
+     "catatan": "Klausa audit pada ASTL-LOGIC-02d diasersi tanpa reload di 047 tetapi unit tidak dicatat sebagai miliknya."
+    }
+   ],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-16e",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-039-status-borrow-dep-borrow",
+     "langkah": [
+      11,
+      12
+     ],
+     "catatan": "Hanya pengembalian Borrow pada aset Unmanaged yang diasersi. 'verifikasi, atau penyelesaian Assignment termasuk Unassign' pada aset Unmanaged tidak diasersi; E2E-040 memakai aset managed. Tambah aset Unmanaged ber-Custody Assigned yang di-Unassign dari modul Assignment dan verifikasi badge kembali Available + overlay Unmanaged.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-16f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "§9.7#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11d",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa menyebut Maintenance sebagai modul lain yang menampilkan garansi dengan nilai dan hover sama; surface modul Maintenance milik modul lain dan tidak ada spec dep-maintenance. Tidak dihitung kurang."
+    }
+   ],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-17l",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+     "langkah": [
+      4,
+      15,
+      83
+     ],
+     "catatan": "Klausa Hidden pada Row Action dan Bulk Disabled S-32 diasersi E2E-024; alert inline S-32 di UI-070 langkah 89 dan penolakan server di BE-087: tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-16h",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-024-matriks-aksi-per-status",
+     "langkah": [
+      16
+     ],
+     "catatan": "Penawaran Report Disposal pada aset Pending Activation (menu hanya Detail, Report Disposal, Delete Asset Data) diasersi di 024 tetapi 024 tidak tercatat sebagai penanggung ASTL-LOGIC-16h."
+    }
+   ],
+   "juri": "j7"
+  },
+  {
+   "unit": "§9.7#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-01a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-16c",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-046-operasi-tag-dep-tag",
+     "langkah": [
+      19,
+      25
+     ],
+     "catatan": "Cabang 'atau didisposal' tidak diasersi: langkah 19 justru mengasersi TAG Paired tetap terpasang pada aset Disposed (DU-046-2) sampai dihapus, tanpa aksi disposal atas aset Unmanaged ber-TAG.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "ASTL-LOGIC-16c 'TAG yang sudah Paired tetap terpasang sampai aset dihapus (Delete Asset Data) atau didisposal' tidak menetapkan apakah disposal melepas TAG; DU-046-2 (Disposed masih ber-TAG Paired) dan ASTL-LOGIC-17x (lepas lewat To Be Returned saat Delete) tidak memutuskan sisi mana."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-17x",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "§9.7#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "§9.7#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "§9.7#r10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-16i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-16m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r12",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+     "langkah": [
+      17
+     ],
+     "catatan": "Switch Manage (Available tidak berubah) diasersi BE-084; entri License aset yang ditukar di E2E-037 langkah 58/85: tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12n",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12r",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "EB-XM-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-04g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-09d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-09e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-11j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-11k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j7"
+  },
+  {
+   "unit": "ASTL-LOGIC-12o",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "ASTL-LOGIC-12p",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "ASTL-LOGIC-12q",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-2@kolom-alias-name",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-2@kolom-division",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-2@kolom-last-scanned",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-2@kolom-tag",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-3@kolom-labels",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-4@kolom-modified-by",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-8@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-20",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-21",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-22",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-23",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-24",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-28",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-38",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.1a#p1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-026-gating-read-only",
+     "langkah": [
+      5
+     ],
+     "catatan": "Gating tombol `Print Label` toolbar (hanya pemegang Update) diasersi E2E-025/026/028, bukan UI-054 (Total Control): tidak tercatat sebagai penanggung."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.5#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§4.5#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.5#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§5#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§7.1#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-TBL-1@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EC-21",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EmptystatetabelAllAssets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-39",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "S-41",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-42",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§7.1#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§7.1#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-SRC-4@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "ASTL-LOGIC-14m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-FLT-2@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FI-27",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.1c#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.1c#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-FLT-6@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-KOL-1@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-KOL-3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EC-43",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-BLK-1@tabel-all-assets",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-BLK-4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EB-BLK-6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "EC-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "S-47",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa 'aksi dan Bulk Action Disabled (S-15), Matriks Aksi' diasersi di TC-FA-ASTL-UI-061-menu-aksi-tooltip (step 95, S-15) dan E2E-024 (matriks), bukan di UI-060 yang tercatat pemilik. Tambahkan UI-061/E2E-024 sebagai penanggung S-47."
+    }
+   ],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.4#b3",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pada UI-060 step 7-8 data hanya 3 baris satu halaman sehingga 'halaman aktif' tidak terbedakan dari 'seluruh hasil'; pembedaan (10 baris halaman aktif dari 12) diasersi di TC-FA-ASTL-E2E-015 step 4-5. Catat E2E-015 sebagai penanggung."
+    }
+   ],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.4#b5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.4#b6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§5#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "S-14",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-051-kuota-lisensi-dep-license",
+     "langkah": [
+      11
+     ],
+     "catatan": "Tooltip S-14 pada Row Action Manage diasersi di E2E-051, bukan di spec yang tercatat sebagai penanggung unit; catat E2E-051 sebagai penanggung S-14 (varian baris)."
+    }
+   ],
+   "juri": "j9"
+  },
+  {
+   "unit": "S-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-18",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-19",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-27",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "S-27 'Dirujuk juga oleh damaged.md' dan alur Lost in Transit (`transfer.md` XFER-LOGIC-16) dimiliki modul lain; tidak diasersi suite ini."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "S-29",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-061-menu-aksi-tooltip",
+     "langkah": [],
+     "catatan": "Tooltip S-29 pada aksi Edit diasersi juga di TC-FA-ASTL-E2E-047-audit-tercermin-dep-audit langkah 9 dan E2E-024 langkah 26/89, tidak tercatat sebagai penanggung S-29."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-30",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-32",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-33",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "S-34",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-35",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "ID S-35 dipakai ganda di PRD §7: baris 1478 'Tooltip aksi Report Disposal yang Disabled karena Custody selain Available' dan baris 1480 'Tooltip info di samping label Document No. pada D-13'. Suite mengasersi keduanya (UI-061 langkah 134-153; UI-071 langkah 8)."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.5#b4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-TBL-11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.2.1#p2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Breadcrumb tab `Registration`, `Damaged`, `Missing` dimiliki `asset-registration/`, `damaged/`, `missing/` dan Breadcrumb Asset Detail dimiliki `asset-detail.md` §4.2.2 (PRD baris 715); tidak bisa diasersi suite ini."
+    }
+   ],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.2.1#p3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.2.1#p4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.7Step1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.7Step2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.7Step3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-13d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "S-40",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1a#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "ASTL-LOGIC-14b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "ASTL-LOGIC-14c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "ASTL-LOGIC-14h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-14i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-SRC-6@sidebar-group",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "FI-25",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "FI-26",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-43",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "S-44",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.1g#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§7.1#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-DL-5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "T-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§6#r9",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+     "langkah": [],
+     "catatan": "069 tidak tercatat sebagai penanggung §6#r9 padahal Switch Manage termasuk aksi tulis di unit ini."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "D-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-ERR-1@add-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-FB-2@add-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-FB-4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "FLD-36",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "T-01",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "T-22",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "V-02",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.1f#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§4.4#b8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§9.9#p3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "D-18",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-ERR-1@remove-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "EB-FB-2@remove-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FLD-37",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "S-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-02",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-23",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "§4.1f#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "ASTL-LOGIC-15h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "D-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-ERR-1@manage-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "EB-FB-2@manage-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FLD-39",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "T-24",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "ASTL-LOGIC-15k",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Cakupan 'aset managed pada group yang sama' diasersi TC-FA-ASTL-E2E-019-switch-manage-aset langkah 6-7, spec itu tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "D-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "D-04ExampleTable",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FLD-40",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "V-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§7.1#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "ASTL-LOGIC-17s",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "ASTL-LOGIC-17t",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "ASTL-LOGIC-17w",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "D-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "EB-ERR-1@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "EB-ERR-2@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "EB-FB-2@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FI-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FLD-41",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "T-25",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "V-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "V-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "D-13",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa Bulk (`N assets selected`, tanpa Additional costs, label `Purchase Cost (per asset)` + helper text), penutupan lewat `✕`/`Esc`, dan proteksi form dirty diasersi TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk dan TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi; keduanya tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-01",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FI-07",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "FLD-33",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "S-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "S-36",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "S-37",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "§4.1i#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "§4.1i#b10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1i#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "§4.1i#b6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j10"
+  },
+  {
+   "unit": "§4.1i#p1",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pintu masuk menu ⋮ Asset Detail dan tombol `Edit Purchase` di tab Purchasing (hanya bagi aktornya) ada di surface `asset-detail.md` (§4.1d), tidak dapat diasersi suite ini; hasilnya ditetapkan dokumen itu."
+    },
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pintu Row Action/Bulk (TC-FA-ASTL-E2E-021, E2E-022) dan aktor Manage purchase/Group Manager (E2E-031, E2E-027) diasersi spec lain yang tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j10"
+  },
+  {
+   "unit": "§9.9#r11",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+     "langkah": [
+      65,
+      68
+     ],
+     "catatan": "Batas menurut Data Type hanya diuji untuk Text (120). Text Area <= 360, Numeric/Currency <= 15 digit, Percentage 0-100, Phone 4-15 digit tidak diuji.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pesan batas dan format custom field 'menurut settings-custom-fields/' (modul lain); literalnya tidak ditetapkan di PRD ini sehingga tidak bisa diasersi suite ini."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.9#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "ASTL-LOGIC-21b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "EC-39",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "EC-47",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FI-02",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FLD-27",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-28",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+     "langkah": [
+      5
+     ],
+     "catatan": "Label Bulk `Purchase Cost (per asset)` dan helper Bulk diasersi UI-075/UI-071, yang tidak tercatat sebagai penanggung FLD-28."
+    }
+   ],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-29",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+     "langkah": [
+      12
+     ],
+     "catatan": "Tooltip info `S-37` pada label Reference Price diasersi UI-071 step 11-12 yang tidak tercatat sebagai penanggung FLD-29."
+    }
+   ],
+   "juri": "j11"
+  },
+  {
+   "unit": "S-25",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "S-26",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "V-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "V-12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "V-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1i#b2",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-UI-072-dialog-edit-purchase-tanggal-biaya",
+     "langkah": [
+      53,
+      73
+     ],
+     "catatan": "Tidak diasersi: jumlah Reference Price >= 0 (input minus/negatif diblok atau ditolak), tidak dikonversi kurs, dan tidak masuk Asset Value, Acquisition Cost, maupun penyusutan (setelah simpan berhasil). Klausa non-dampak butuh asersi ui-e2e pada aset yang tersimpan.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-072-dialog-edit-purchase-tanggal-biaya",
+     "langkah": [],
+     "catatan": "Klausa non-dampak ke Asset Value/Acquisition Cost/penyusutan tidak teramati di ui-client; perlu pemilik ui-e2e (mis. E2E-021) atau pembagian bagian per layer."
+    }
+   ],
+   "juri": "j4"
+  },
+  {
+   "unit": "§4.1i#b8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.9#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "§9.9#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "ASTL-LOGIC-21c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "EB-FRM-4@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "FI-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-30",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-31",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-32",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "V-06",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "V-10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
+   "unit": "V-13",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-UI-073-dialog-edit-purchase-warranty",
+     "langkah": [
+      37,
+      38,
+      39,
+      40
+     ],
+     "catatan": "Klausa `setelah trim` hanya diuji untuk Document No. (UI-071 langkah 75-79). Provider (UI-073) dan nama Additional cost (UI-074) tidak diuji dengan nilai 120 karakter yang diapit spasi tepi (harus diterima tanpa `Max. 120 characters`).",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+     "langkah": [
+      75,
+      76,
+      77,
+      78,
+      79
+     ],
+     "catatan": "UI-071 mengasersi sisi Document No. unit ini tetapi tidak tercatat sebagai penanggung (hanya UI-073 dan BE-088)."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.1i#b5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "ASTL-LOGIC-21k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "FI-11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-34",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-071-dialog-edit-purchase-tampilan",
+     "langkah": [
+      10
+     ],
+     "catatan": "Tooltip info `S-36` pada bagian Additional costs diasersi UI-071 step 9-10 yang tidak tercatat sebagai penanggung FLD-34."
+    }
+   ],
+   "juri": "j11"
+  },
+  {
+   "unit": "FLD-35",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "V-14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "V-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "V-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§4.1i#b9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "§9.9#r8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "EC-29",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [
+      36,
+      37
+     ],
+     "catatan": "Penolakan 422 Bulk yang memuat Additional costs diasersi BE-088 step 36-37 yang tidak tercatat sebagai penanggung EC-29."
+    }
+   ],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-04",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-05",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-06",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [
+      36,
+      37
+     ],
+     "catatan": "Penolakan server Bulk dengan Additional costs diasersi BE-088 step 36-37 (be-e2e) yang tidak tercatat sebagai penanggung FI-06."
+    }
+   ],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-08",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j11"
+  },
+  {
+   "unit": "FI-10",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [
+      22,
+      23
+     ],
+     "catatan": "Cabang 'nama sama sudah ada -> Warranty until dan Provider diperbarui' diasersi benar di BE-088 (langkah 22-23), bukan di UI-075 (pemilik di plan, ui-client hanya mengasersi isi permintaan, langkah 30). Catat BE-088 sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1i#b7",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [
+      37,
+      18
+     ],
+     "catatan": "Klausa 'Bulk dengan Additional costs ditolak 422', 'nama sama diperbarui', dan 'satu transaksi: berhasil semua atau tidak sama sekali' diasersi di BE-088 (langkah 17-18, 22-23, 37), bukan di UI-075; catat BE-088 sebagai penanggung unit."
+    }
+   ],
+   "juri": "j12"
+  },
+  {
+   "unit": "§9.9#r9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-ERR-1@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-FB-2@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "EB-FRM-2@edit-purchase",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-E2E-021-edit-purchase-satu-aset",
+     "langkah": [],
+     "catatan": "Klausa (e) 'muat ulang atau pindah menu dengan form kotor mengikuti §24.1d dan §24.1e' tidak diasersi di spec mana pun: konfirmasi bawaan browser saat reload dengan form kotor, dan guard navigasi internal (klik sidebar/Back) yang memunculkan dialog Unsaved Changes (`[Cancel]` tetap di form, `[Leave]` melanjutkan). E2E-021 langkah 54 muat ulang hanya sesudah Save sukses.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-076-dialog-edit-purchase-interaksi",
+     "langkah": [],
+     "catatan": "Klausa (e) keluar dari komponen sehingga tidak bisa di ui-client; tempatkan di spec ui-e2e Edit Purchase satu aset (E2E-021) dan catat sebagai penanggung."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "EB-FRM-3@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-FRM-7@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "T-20",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "T-27",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "T-28",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [
+      3,
+      72
+     ],
+     "catatan": "Cabang 'permintaan langsung tanpa perubahan' diasersi di BE-088 (langkah 3 dan 72 sebagai Edit No-Op), bukan di UI-076; catat BE-088 sebagai penanggung unit."
+    }
+   ],
+   "juri": "j12"
+  },
+  {
+   "unit": "ASTL-LOGIC-09c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "D-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-TBL-1@tabel-select-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-21",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-22",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-23",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "FI-24",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FLD-42",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "S-45",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "S-46",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "SelectAssetSetupColumn",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "V-08",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.1h#b10",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b8",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#b9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#p3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#p4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-069-dialog-switch-manage-asset",
+     "langkah": [
+      4,
+      5,
+      16,
+      46,
+      49,
+      50
+     ],
+     "catatan": "UI-069 mengasersi sisi D-04 unit ini (kolom awal Name/Asset ID/Group/Category, Panel Filter memuat Group, Category, Brand, Model / Type, Status, Labels) tetapi tidak tercatat sebagai penanggung (hanya UI-077)."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.1h#p5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§4.1h#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#r3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§4.1h#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "§7.1#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "D-16",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-023-print-label",
+     "langkah": [
+      21,
+      22,
+      27,
+      28
+     ],
+     "catatan": "Pintu Row Action dan Bulk Action ke D-16 (tanpa Select Asset) diasersi di E2E-023, bukan di UI-078; catat E2E-023 sebagai penanggung unit."
+    }
+   ],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-ERR-1@print-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EB-FB-2@print-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "EC-42",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "FI-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-18",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-19",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FI-20",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j12"
+  },
+  {
+   "unit": "FLD-38",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "T-08",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "T-26",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§4.1h#b11",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§4.1h#b12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-20b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-20c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "D-14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "DO-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.9#p4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "403",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-01b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-01c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EC-17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "F-ASTL-01.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "§9.2#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-17r",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-19f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-20o",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-020-delete-asset-data",
+     "langkah": [
+      33,
+      34
+     ],
+     "catatan": "E2E-020 langkah 33-34 mengasersi akibat UI aset terhapus (toast T-06, tabel dimuat ulang, D-14 tidak tampil) tetapi tidak tercatat sebagai penanggung unit ini (hanya BE-081)."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "EB-AKS-3@add-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EB-AKS-3@delete-asset-data",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EB-AKS-3@edit-purchase",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EB-AKS-3@manage-asset",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "EB-AKS-3@remove-label",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#r5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.3#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "T-07",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-04b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-04e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-07c",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-20f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EC-03",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "F-ASTL-10.k2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+     "langkah": [],
+     "catatan": "Sisi UI 'aksi tidak ditawarkan bila ada aset Disposed' (ASTL-LOGIC-04a) diasersi di spec UI (mis. UI-061, UI-063) yang tidak tercatat sebagai penanggung unit; BE-083 hanya menegakkan server (PRD butir 8 'DILARANG memproses mutasi label pada aset Disposed')."
+    }
+   ],
+   "juri": "j13"
+  },
+  {
+   "unit": "F-ASTL-11.k2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-083-label-bulk-idempoten",
+     "langkah": [],
+     "catatan": "Sama dengan F-ASTL-10.k2: sisi UI 'tidak ditawarkan' dimiliki spec UI yang tidak tercatat; BE-083 langkah 18-19 hanya sisi server."
+    }
+   ],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.6#r1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.6#r2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15l",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15n",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15p",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "ASTL-LOGIC-15q",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-ASTL-BE-084-manage-kuota-lisensi",
+     "langkah": [
+      11
+     ],
+     "catatan": "'Perubahan nilai License Timing tidak berlaku surut pada proses yang sedang berjalan, hanya pada submit berikutnya' tidak diuji di spec mana pun: tidak ada langkah yang mengubah Managed Action Retry Delay/Managed Transition Time saat jeda atau proses berjalan lalu mengasersi proses itu tidak berubah dan submit berikutnya memakai nilai baru.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-15s",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "EC-49",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j13"
+  },
+  {
+   "unit": "F-ASTL-16.k4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Nilai Managed Action Retry Delay dan jeda dimiliki 'plans-licensing-lifecycle-settings/' ('n/a — nilai jeda dimiliki plans-licensing-lifecycle-settings/'); suite ini tidak bisa menetapkan nilainya, jadi hanya perilaku jeda (EC-49) yang diasersi."
+    }
+   ],
+   "juri": "j13"
+  },
+  {
+   "unit": "§9.2#p6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-20i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-36",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "F-ASTL-16.k2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-15t",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-15u",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-15v",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-15w",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-16n",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "EC-50",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "F-ASTL-16.k5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "404",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "422",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-16k",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-16l",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-17e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17f",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-17h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17i",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-17j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17o",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17p",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17q",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17u",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17v",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-17z",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EB-EDG-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-27",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-28",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-31",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-41",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-48",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "F-ASTL-17.k3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "T-06",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "§9.2#p7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "§9.6#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-07b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-11a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-21g",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-21h",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "ASTL-LOGIC-21j",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-30",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "EC-37",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "EC-38",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "F-ASTL-18.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "F-ASTL-18.k3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "F-ASTL-18.k4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "F-ASTL-18.k5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j14"
+  },
+  {
+   "unit": "V-07",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "V-11",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-UI-075-dialog-edit-purchase-bulk",
+     "langkah": [
+      39,
+      40
+     ],
+     "catatan": "Alert inline '[Asset] would exceed 10 warranties.' untuk beberapa aset penyebab (daftar gulir) diasersi benar di UI-075, tetapi UI-075 tidak tercatat sebagai penanggung V-11; catat di plan."
+    }
+   ],
+   "juri": "j15"
+  },
+  {
+   "unit": "§9.2#p8",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-081-otorisasi-aksi-tulis",
+     "langkah": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+     ],
+     "catatan": "Klausa 'memvalidasi aktor dan cakupan group (Matriks Aksi)' untuk Edit Purchase diasersi di BE-081 (bukan di BE-088); BE-081 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j15"
+  },
+  {
+   "unit": "§9.6#r4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-BE-088-edit-purchase-validasi-server",
+     "langkah": [],
+     "catatan": "Presedensi 409 atas 422 untuk Edit Purchase diasersi BE-089 langkah 39-43, toast T-20 di E2E-021/022 dan UI-076, tetapi spec-spec itu tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "409",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-20a",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-20d",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-20e",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EB-CON-1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EB-CON-3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-32",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-33",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "EC-33: 'aksi transaksi: dievaluasi ulang di modul transaksi (ASTL-LOGIC-20)'; hasil ditetapkan PRD modul transaksi (Borrow/Assign/Transfer), tidak bisa diasersi suite ini; tidak mengubah verdict."
+    }
+   ],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-34",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-10.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-11.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-16.k3",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-17.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-18.k2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-10a",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "ASTL-LOGIC-10a: 'pada Asset Detail berlaku untuk seksi Purchase & Value' adalah surface modul asset-detail (asset-detail.md); tidak diasersi suite ini dan tidak mengubah verdict."
+    }
+   ],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10b",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-10q",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-10r",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-10s",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-13",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-26",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-06.k1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "F-ASTL-09",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "§9.3#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10t",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j5"
+  },
+  {
+   "unit": "ASTL-LOGIC-10u",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-10v",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-11m",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "§9.2#p4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-01d",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-ASTL-E2E-035-state-tenant-aksi-tulis-ditolak",
+     "langkah": [
+      9,
+      19,
+      27,
+      34
+     ],
+     "catatan": "Klausa 'UI tidak dinonaktifkan' dan toast baku pada UI diasersi di E2E-035 (ui-e2e), yang tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j15"
+  },
+  {
+   "unit": "5xx/timeout",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-09a",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-09b",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-16j",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-17k",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "ASTL-LOGIC-20n",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "CustomfieldPurchasingdanAccounting(kolomT-ASTL-01)",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "CustomfieldPurchasingpadaD-13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "D-07",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "D-08",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "D-09",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "D-11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "D-12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j15"
+  },
+  {
+   "unit": "EB-FLT-7",
+   "verdict": "na",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD hanya menetapkan hasil untuk rujukan terhapus pada filter/konfigurasi TERSIMPAN saat dimuat (EC-43: 'Setup Column atau filter tersimpan merujuk custom field, label, atau Category yang sudah dihapus -> dibuang diam-diam', juga §5 Setup Column); itu diasersi UI-059 langkah 74-78. Hasil saat opsi yang sedang dipakai di panel Filter aktif dihapus aktor lain, dan untuk jenis opsi lain (Group, Asset Class, Status, Brand dll), tidak ditetapkan PRD."
+    }
+   ],
+   "juri": "j15"
+  },
+  {
+   "unit": "EC-08,EC-09,EC-10,EC-23,EC-24",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-14",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-16",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-17",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-18",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-19",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "T-ASTL-01",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#b1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#b2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§10#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r14",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r15",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r16",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r17",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r18",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r19",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r20",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r21",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.1#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§11.2#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§12#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§12#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§12#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j16"
+  },
+  {
+   "unit": "§12#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§12#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§12#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§12#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§12#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§12#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§2#r17",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§2#r18",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§2#r19",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§3#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#p6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#p7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.1h#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.2#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.2.3#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.2.3#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.4#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§4.6#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§6#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7.1#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7.1#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7.1#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7.1#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j17"
+  },
+  {
+   "unit": "§7.1#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§8#b1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.1#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r14",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r15",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.1#r9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.2#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.3#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.4#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.4#r3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.4.4#r4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.5#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.7#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.7#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.7#p3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§9.9#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p15",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p17",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p19",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p20",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p21",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p22",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j18"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p23",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p25",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p27",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p29",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p30",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p31",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p32",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p33",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p34",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p36",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p38",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p39",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p40",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p41",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p42",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p43",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Aturan Logika Modul#p9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Changelog#b1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Changelog#b2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Changelog#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b10",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b13",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b14",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b15",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b16",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b17",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b18",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b19",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b20",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b21",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b22",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b23",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b5",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b6",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b7",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b8",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Dependencies#b9",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Ringkasan Cepat#b1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Ringkasan Cepat#b2",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Ringkasan Cepat#b3",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  },
+  {
+   "unit": "§Ringkasan Cepat#b4",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j19"
+  }
+ ]
+}

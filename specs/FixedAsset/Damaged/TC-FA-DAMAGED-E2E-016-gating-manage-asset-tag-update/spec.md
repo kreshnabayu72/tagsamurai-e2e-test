@@ -73,7 +73,7 @@ coverage:
   - DU-016-16: User `Maya Puspita {runId}`, pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` dan Asset Admin sub-tab Disposal; cakupan: Group Update beserta descendant.
   - DU-016-17: Damage record aset `Scanner Brother ADS-2200 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Manual`, dilaporkan DU-016-16.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

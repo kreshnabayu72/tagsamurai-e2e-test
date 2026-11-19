@@ -40,6 +40,8 @@ sourceTc:
   - TC-AC-ACC-100
   - TC-AC-ACC-479
   - TC-AC-ACC-480
+  - TC-AC-ACC-1044
+  - TC-AC-ACC-1046
 coverage:
   web: automated
 ---
@@ -123,35 +125,56 @@ coverage:
 
 ### TC-479: Website 121 karakter
 
-27. Ketik 121×`A` ke field Website tanpa memindahkan fokus
+27. Ketik `https://` + 109×`a` + `.com` (121 karakter) ke field Website tanpa memindahkan fokus
 28. Verifikasi pesan error inline di bawah Website: "Max. 120 characters" sebelum `[Submit]`
 29. Klik `[Submit]`
 30. Verifikasi popup tetap terbuka
 31. Verifikasi tidak ada toast sukses "Success, client has been created."
 32. Ganti isi Website dengan kosong
 
-### TC-480: Fax 121 karakter
+### TC-1044: Website bukan format URL
 
-33. Ketik 121×`A` ke field Fax tanpa memindahkan fokus
-34. Verifikasi pesan error inline di bawah Fax: "Max. 120 characters" sebelum `[Submit]`
-35. Klik `[Submit]`
-36. Verifikasi popup tetap terbuka
-37. Verifikasi tidak ada toast sukses "Success, client has been created."
-38. Ganti isi Fax dengan kosong
+33. Ketik `qwertysystem` ke field Website tanpa memindahkan fokus
+34. Verifikasi belum ada pesan error di bawah Website
+35. Klik field Fax (fokus keluar dari Website)
+36. Verifikasi pesan error inline di bawah Website: "Invalid website URL format"
+37. Klik `[Submit]`
+38. Verifikasi pesan error Website tetap tampil dan popup tetap terbuka
+39. Verifikasi tidak ada toast sukses "Success, client has been created."
+40. Ganti isi Website dengan kosong
+
+### TC-480: Fax 31 karakter
+
+41. Ketik 31×`1` ke field Fax tanpa memindahkan fokus
+42. Verifikasi pesan error inline di bawah Fax: "Max. 30 characters" sebelum `[Submit]`
+43. Klik `[Submit]`
+44. Verifikasi popup tetap terbuka
+45. Verifikasi tidak ada toast sukses "Success, client has been created."
+46. Ganti isi Fax dengan kosong
+
+### TC-1046: Karakter Fax yang tidak diizinkan dibuang
+
+47. Ketik `+62 (21) 555-0100 ext.9` ke field Fax
+48. Verifikasi field Fax berisi `+62 (21) 555-0100 9`
+49. Ganti isi Fax dengan kosong, lalu paste `021abc5550100😀` ke field Fax
+50. Verifikasi field Fax berisi `0215550100`
+51. Klik field Website (fokus keluar dari Fax)
+52. Verifikasi tidak ada pesan error di bawah Fax
+53. Ganti isi Fax dengan kosong
 
 ### Penutup
 
-39. Klik `[✕]` di header popup
-40. Verifikasi dialog "You have unsaved changes. Are you sure you want to leave?" dengan tombol `[Leave]` dan `[Cancel]` tampil
-41. Klik `[Leave]`
-42. Ketik Search `PT Validasi {runId}-042`, tekan Enter
-43. Verifikasi tidak ada Client "PT Validasi {runId}-042" yang dibuat (empty state "No results found")
+54. Klik `[✕]` di header popup
+55. Verifikasi dialog "You have unsaved changes. Are you sure you want to leave?" dengan tombol `[Leave]` dan `[Cancel]` tampil
+56. Klik `[Leave]`
+57. Ketik Search `PT Validasi {runId}-042`, tekan Enter
+58. Verifikasi tidak ada Client "PT Validasi {runId}-042" yang dibuat (empty state "No results found")
 
 ## Notes
 
 - Subjudul `###` memetakan langkah ke id TC granular; `TC-n` berarti `TC-AC-ACC-n`.
 - Alasan di atas 35 langkah (setara sekitar 200 langkah setelah ekspansi tabel): satu form Create, satu role, satu dataset, kasus sejenis (validasi diblokir) yang diulang per field dengan parameter di tabel Prerequisites (butir 8b-7); langkah yang diulang adalah langkah 21 sampai 26 dengan 29 baris; tiap baris berdiri sendiri.
-- Langkah penghubung (S-03): pengembalian field ke nilai valid (langkah 26), pengosongan Website dan Fax, pemilihan Group "Area Jakarta"; penutup form dirty memakai `[✕]`, dialog `Unsaved Changes`, `[Leave]` (S-08).
+- Langkah penghubung (S-03): pengembalian field ke nilai valid (langkah 26), pengosongan Website dan Fax sesudah tiap blok TC-479, TC-1044, TC-480, dan TC-1046, pemilihan Group "Area Jakarta"; penutup form dirty memakai `[✕]`, dialog `Unsaved Changes`, `[Leave]` (S-08).
 - "Tidak ada Client dibuat" tiap baris dibuktikan satu kali di akhir lewat Search `PT Validasi {runId}-042` (empty state "No results found" sebagai anchor); tiap baris memverifikasi popup tetap terbuka dan tidak ada toast sukses.
 - Kasus Select memakai urutan kumulatif (Country, lalu State, City, Select Group) karena State dan City disabled sampai Country dipilih; pesan error tiap field diasersi saat field itu menjadi satu-satunya field Select yang belum terisi.
 - Temuan untuk QA:

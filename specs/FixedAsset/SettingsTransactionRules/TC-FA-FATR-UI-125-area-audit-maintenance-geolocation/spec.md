@@ -5,7 +5,7 @@ layer: ui-client
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r4", "§4.1#r5", "§4.1#r6", "§4.1#r44", "§4.1#r45", "§4.1#r46", "§4.1#r47", "§Aturan Logika Modul#r107", "§Aturan Logika Modul#r108", "§Aturan Logika Modul#r116", "§Aturan Logika Modul#r117", "§Aturan Logika Modul#r120", "§Aturan Logika Modul#r122", "§4.1#r225", "§4.1#p39", "§4.1#r187", "§4.1#r192", "§4.1#r221", "§4.1#r229", "§4.1#r230", "§4.1#r231", "§4.1#r237", "§4.1#r238", "§4.1#r242", "§9.4.2#r71", "§9.2#b566"]
+sourceRules: ["§4.1#r4", "§4.1#r5", "§4.1#r6", "§4.1#r44", "§4.1#r45", "§4.1#r46", "§4.1#r47", "§Aturan Logika Modul#r107", "§Aturan Logika Modul#r108", "§Aturan Logika Modul#r116", "§Aturan Logika Modul#r117", "§Aturan Logika Modul#r120", "§Aturan Logika Modul#r122", "§4.1#r225", "§4.1#p39", "§4.1#r187", "§4.1#r192", "§4.1#r221", "§4.1#r229", "§4.1#r230", "§4.1#r231", "§4.1#r237", "§4.1#r238", "§4.1#r242", "§9.4.2#r71", "§9.2#b566", "FLD-42"]
 smoke: []
 dependsOn: []
 trace:
@@ -35,6 +35,7 @@ trace:
   "§4.1#r242": [68, 69, 70, 71]
   "§9.4.2#r71": [45, 46, 47, 48]
   "§9.2#b566": [45, 46, 47]
+  "FLD-42": [29, 91]
 anchor: [24, 41, 64, 65, 66, 73, 74]
 coverage:
   web: automated
@@ -108,7 +109,7 @@ coverage:
 ### Tab Maintenance memuat bagian Routine dan field-nya
 27. Tampilkan Area utama dengan kondisi K2
 28. Verifikasi tab `Maintenance` memuat bagian `Routine`
-29. Verifikasi bagian `Routine` memuat `Reminder before due`, `Photo after`, dan `Require approval to close`
+29. Verifikasi bagian `Routine` memuat `Reminder before due`, `Photo after`, `Require approval to close`, dan `Require scan to start`
 30. Verifikasi tab `Maintenance` tidak memuat bagian `Overrides`
 31. Verifikasi `Reminder before due` bernilai `3`
 32. Arahkan pointer ke label `Reminder before due`
@@ -186,3 +187,8 @@ coverage:
 86. Isi `Reminder before due` `-1`
 87. Pindahkan fokus dari kontrol `Reminder before due`
 88. Verifikasi `Reminder before due` bernilai `0`
+
+### Tooltip Require scan to start
+89. Tampilkan Area utama dengan kondisi K2
+90. Arahkan pointer ke label `Require scan to start`
+91. Verifikasi teks bantu `Requires scanning the asset's TAG before routine maintenance can start.` tersampaikan pada label `Require scan to start`

@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§9.4.1#r1", "§9.4.2#r79", "§9.4.2#r80", "EB-AKS-7"]
+sourceRules: ["§9.4.1#r1", "§9.4.2#r81", "§9.4.2#r82", "EB-AKS-7"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§9.4.1#r1": [8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64]
-  "§9.4.2#r79": [8, 15, 21, 28, 36, 42, 48, 54, 60]
-  "§9.4.2#r80": [9, 16, 24, 29, 37, 43, 49, 55, 64]
-  "EB-AKS-7": [3, 4, 8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64]
+  "§9.4.1#r1": [8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64, 69, 70]
+  "§9.4.2#r81": [8, 15, 21, 28, 36, 42, 48, 54, 60, 69]
+  "§9.4.2#r82": [9, 16, 24, 29, 37, 43, 49, 55, 64, 70]
+  "EB-AKS-7": [3, 4, 8, 9, 15, 16, 21, 24, 28, 29, 36, 37, 42, 43, 48, 49, 54, 55, 60, 64, 69, 70]
 anchor: []
 coverage:
   web: automated
@@ -37,7 +37,7 @@ coverage:
   - DU-046-11: isian Report Damaged: Damaged Photo `damaged-monitor-046.jpg`, What happened `Layar retak setelah terjatuh dari meja`.
 - Kondisi:
   - Spec ini memakai entitas khusus berstatus Suspended yang tidak dipakai spec lain.
-  - Entitas aktor berstatus Suspended. Seluruh baris DU-046-2 sampai DU-046-10 terbentuk sebelum entitas di-Suspend.
+  - Entitas aktor berstatus Suspended. Seluruh baris DU-046-2 sampai DU-046-10 terbentuk sebelum entitas di-Suspend. Pada kelompok terakhir, entitas aktor berstatus Expired, diubah Operator Admin Console dari keadaan Suspended; baris-baris tetap seperti sebelum penolakan.
   - Tab Borrowed aktor memuat 9 baris, yaitu DU-046-2 sampai DU-046-10. Tab Task aktor memuat 1 baris, yaitu DU-046-2.
   - Halaman Extension Request untuk `Laptop Dell Inspiron 15 {runId}` terisi bawaan dengan isian valid, sehingga `[Submit Request]` tidak ditolak validasi klien.
   - Dialog `Report Missing` untuk `Speaker JBL Charge 5 {runId}` tidak memuat field wajib yang kosong, sehingga `[Report Missing]` tidak ditolak validasi klien.
@@ -128,3 +128,12 @@ coverage:
 62. Buka `My Asset` dari menu profil pada navbar
 63. Klik tab `Borrowed`
 64. Verifikasi baris `Proyektor Epson EB-E01 {runId}` tetap tampil dengan Status `Borrowed`
+
+### Entitas Expired: Cancel Borrow ditolak dengan toast yang sama dan baris tetap tampil
+65. Operator Admin Console mengubah status entitas aktor menjadi Expired
+66. Buka menu `⋯` pada baris `Kamera Nikon Z30 {runId}`
+67. Klik `Cancel Borrow`
+68. Klik `[Cancel Borrow]` pada dialog `Cancel Borrow`
+69. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+70. Verifikasi baris `Kamera Nikon Z30 {runId}` tetap tampil dengan Status `Waiting for Approval`
+71. Tutup toast

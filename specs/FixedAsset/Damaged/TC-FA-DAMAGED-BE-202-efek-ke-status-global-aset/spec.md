@@ -214,8 +214,8 @@ trace:
 78. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Pickup Toyota Hilux - 2 {runId}` dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
 79. Verifikasi Report Disposal itu ditolak server dan record tetap `Damaged`, bukan `Reported Disposal`
 
-### Mark as Repaired aktif lagi setelah baris Transfer Received, Returned to Origin, Rejected, atau Canceled
-80. Aktor pemindahan aset `Tono Riyadi {runId}` menyelesaikan pemindahan atas `Pickup Toyota Hilux - 3 {runId}` sehingga baris pemindahan menjadi `Received`
+### Mark as Repaired aktif lagi setelah baris Transfer Completed, Returned to Origin, Rejected, atau Canceled
+80. Aktor pemindahan aset `Tono Riyadi {runId}` menyelesaikan pemindahan atas `Pickup Toyota Hilux - 3 {runId}` sehingga baris pemindahan menjadi `Completed`
 81. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 3 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
 82. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
 83. Aktor pemindahan aset `Tono Riyadi {runId}` mengembalikan pemindahan atas `Pickup Toyota Hilux - 4 {runId}` ke asal sehingga baris pemindahan menjadi `Returned to Origin`

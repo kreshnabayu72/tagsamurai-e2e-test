@@ -48,13 +48,13 @@ coverage:
   - DU-104-13: Record `Laptop Lenovo ThinkPad E14 - 7`, Asset ID `LPT-2026-0007`, Group `Head Office`, Status `Damaged`, Custody aset `Borrowed`.
   - DU-104-14: Record `Handheld Zebra TC21 - 9`, Asset ID `HHD-2026-0009`, Group `Head Office`, Status `Damaged`, Custody aset `Assigned`.
 - Kondisi:
-  - K1: daftar memuat DU-104-1 sampai DU-104-7; aktor memegang hak Report Disposal dan hak Cancel Disposal Report; Level Feature Suite Disposal bernilai `Basic`.
+  - K1: daftar memuat DU-104-1 sampai DU-104-7; aktor memegang hak Report Disposal dan hak Cancel Disposal Report; Level Feature Suite Disposal bernilai `Full`.
   - K2: daftar seperti K1; aktor tidak memegang hak Cancel Disposal Report.
   - K3: daftar seperti K1; Level Feature Suite Disposal bernilai `None`.
   - K4: daftar seperti K1; konfirmasi atas DU-104-1 ditolak karena status sudah diubah oleh pelaku pada DU-104-8; sesudah muat ulang DU-104-1 berstatus `Damaged`.
   - K5: daftar seperti K1; konfirmasi atas DU-104-1 ditolak karena status sudah diubah oleh pelaku pada DU-104-9; sesudah muat ulang DU-104-1 berstatus `Damaged`.
   - K6: daftar seperti K1; permintaan Report Disposal diterima server dengan sebagian record dilewati.
-  - K7: daftar memuat DU-104-11 sampai DU-104-14; aktor memegang hak Report Disposal dan hak Report Missing; Level Feature Suite Disposal bernilai `Basic`.
+  - K7: daftar memuat DU-104-11 sampai DU-104-14; aktor memegang hak Report Disposal dan hak Report Missing; Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

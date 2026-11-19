@@ -59,7 +59,7 @@ coverage:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24h`.
   - Time Zone bernilai `Asia/Jakarta`.
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

@@ -49,7 +49,7 @@ coverage:
   - Pengguna pada data: Andi P, Group Manager pada Group Head Office beserta sub-group; Rina W, Total Control, seluruh client; Joko S, karyawan pemegang tanpa akun.
   - Waktu pada data ditulis relatif terhadap waktu run `T0`.
 - Kondisi:
-  - Level Feature Suite Disposal pada entitas aktor adalah Basic atau Full
+  - Level Feature Suite Disposal pada entitas aktor adalah Full
 
 ## Test Steps
 

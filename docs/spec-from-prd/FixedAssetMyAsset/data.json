@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-17",
- "sha": "9b479112943473d0",
+ "disetujui": "otomatis, 2026-11-18",
+ "sha": "b8d61b5ce495b89e",
  "entri": [
   {
    "id": "DU-201-1",
@@ -5617,27 +5617,6 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "jenis": "User",
-   "data": "Principal pemilik subscription",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Hartono Wibowo {runId}",
-    "Peran": "Principal yang mengelola plan entitas PT Sinar Mandiri Utama {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "matriks role PRD",
-   "maks": {
-    "Name": null,
-    "Peran": null
-   }
-  },
-  {
-   "id": "DU-212-4",
-   "spec": [
-    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
-   ],
-   "jenis": "User",
    "data": "operator Admin Console",
    "asal": "awal",
    "nilai": {
@@ -5653,7 +5632,7 @@
    }
   },
   {
-   "id": "DU-212-5",
+   "id": "DU-212-4",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5678,32 +5657,7 @@
    }
   },
   {
-   "id": "DU-212-6",
-   "spec": [
-    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
-   ],
-   "jenis": "Pinjaman",
-   "data": "pinjaman awal Kamera Sony ZV-E10",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Kamera Sony ZV-E10 {runId}",
-    "Status": "Borrowed",
-    "Borrower": "Dewi Lestari {runId}",
-    "Extension": "belum ada pengajuan"
-   },
-   "jumlah": 1,
-   "mutasi": [
-    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
-   ],
-   "varian": [],
-   "sumber": "§9.4.2#r83",
-   "maks": {
-    "Name": null,
-    "Borrower": null
-   }
-  },
-  {
-   "id": "DU-212-7",
+   "id": "DU-212-5",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5721,7 +5675,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null,
@@ -5729,7 +5683,7 @@
    }
   },
   {
-   "id": "DU-212-8",
+   "id": "DU-212-6",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5746,14 +5700,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-9",
+   "id": "DU-212-7",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5770,14 +5724,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-10",
+   "id": "DU-212-8",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5795,14 +5749,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-11",
+   "id": "DU-212-9",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5819,14 +5773,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-12",
+   "id": "DU-212-10",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5843,14 +5797,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-13",
+   "id": "DU-212-11",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5868,7 +5822,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null,
@@ -5876,7 +5830,7 @@
    }
   },
   {
-   "id": "DU-212-14",
+   "id": "DU-212-12",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5894,7 +5848,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null,
@@ -5902,7 +5856,7 @@
    }
   },
   {
-   "id": "DU-212-15",
+   "id": "DU-212-13",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5920,14 +5874,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Borrower": null
    }
   },
   {
-   "id": "DU-212-16",
+   "id": "DU-212-14",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5950,7 +5904,7 @@
    }
   },
   {
-   "id": "DU-212-17",
+   "id": "DU-212-15",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5968,7 +5922,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Assignee": null,
@@ -5976,7 +5930,7 @@
    }
   },
   {
-   "id": "DU-212-18",
+   "id": "DU-212-16",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -5993,14 +5947,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Assignee": null
    }
   },
   {
-   "id": "DU-212-19",
+   "id": "DU-212-17",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6017,14 +5971,14 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Assignee": null
    }
   },
   {
-   "id": "DU-212-20",
+   "id": "DU-212-18",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6042,7 +5996,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Assignee": null,
@@ -6050,7 +6004,7 @@
    }
   },
   {
-   "id": "DU-212-21",
+   "id": "DU-212-19",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6068,7 +6022,7 @@
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {
     "Name": null,
     "Assignee": null,
@@ -6076,7 +6030,7 @@
    }
   },
   {
-   "id": "DU-212-22",
+   "id": "DU-212-20",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6090,11 +6044,11 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {}
   },
   {
-   "id": "DU-212-23",
+   "id": "DU-212-21",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6108,11 +6062,11 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {}
   },
   {
-   "id": "DU-212-24",
+   "id": "DU-212-22",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6125,11 +6079,11 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "§9.4.2#r79",
+   "sumber": "§9.4.2#r81",
    "maks": {}
   },
   {
-   "id": "DU-212-25",
+   "id": "DU-212-23",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6147,24 +6101,7 @@
    "maks": {}
   },
   {
-   "id": "DU-212-26",
-   "spec": [
-    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
-   ],
-   "jenis": "Extension Request",
-   "data": "Request Extension sesudah downgrade",
-   "asal": "dibuat",
-   "nilai": {
-    "Reason": "Kegiatan dokumentasi proyek belum selesai"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "§9.4.2#r83",
-   "maks": {}
-  },
-  {
-   "id": "DU-212-27",
+   "id": "DU-212-24",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6188,7 +6125,7 @@
    }
   },
   {
-   "id": "DU-212-28",
+   "id": "DU-212-25",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6212,7 +6149,7 @@
    }
   },
   {
-   "id": "DU-212-29",
+   "id": "DU-212-26",
    "spec": [
     "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
    ],
@@ -6231,6 +6168,28 @@
    "varian": [
     "state-entitas@aksi-tulis:per-interval:Grace"
    ],
+   "sumber": "§9.4.1#r1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-212-27",
+   "spec": [
+    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
+   ],
+   "jenis": "Status Entitas",
+   "data": "entitas dikembalikan ke Active sebelum Expired",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "PT Sinar Mandiri Utama {runId}",
+    "Status": "Active"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow"
+   ],
+   "varian": [],
    "sumber": "§9.4.1#r1",
    "maks": {
     "Name": null
@@ -8491,16 +8450,17 @@
     "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
    ],
    "jenis": "Entitas",
-   "data": "Entitas khusus ber-plan Starter tanpa Borrowing dan Assignment",
+   "data": "Entitas khusus dengan plan Borrowing None dan Assignment None",
    "asal": "awal",
    "nilai": {
-    "Name": "Entitas Starter {runId}",
-    "Plan": "Starter"
+    "Name": "Entitas Level None {runId}",
+    "Level Borrowing": "None",
+    "Level Assignment": "None"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "plan@susunan-tab:per-tier:Starter"
+    "plan@susunan-tab:per-level:None"
    ],
    "sumber": "§9.10#p1",
    "maks": {
@@ -8513,11 +8473,143 @@
     "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
    ],
    "jenis": "User",
-   "data": "Borrower aktif di entitas ber-plan Starter",
+   "data": "Borrower aktif di entitas dengan plan Borrowing None dan Assignment None, tanpa pinjaman dan penugasan berjalan",
    "asal": "awal",
    "nilai": {
     "Name": "Hendra Saputra {runId}",
-    "Posisi": "Borrower aktif di entitas khusus ber-plan Starter"
+    "Posisi": "Borrower aktif di entitas khusus dengan plan Borrowing None dan Assignment None, tanpa pinjaman berjalan dan tanpa penugasan berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-003-3",
+   "spec": [
+    "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan plan Borrowing None dan Assignment Basic",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Borrowing None {runId}",
+    "Level Borrowing": "None",
+    "Level Assignment": "Basic"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "plan@susunan-tab:per-level:None",
+    "plan@susunan-tab:per-level:Basic"
+   ],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-003-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
+   ],
+   "jenis": "User",
+   "data": "Borrower aktif di entitas dengan plan Borrowing None dan Assignment Basic, tanpa pinjaman dan penugasan berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina Wijaya {runId}",
+    "Posisi": "Borrower aktif di entitas khusus dengan plan Borrowing None dan Assignment Basic, tanpa pinjaman berjalan dan tanpa penugasan berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-003-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan plan Borrowing Basic dan Assignment None",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Assignment None {runId}",
+    "Level Borrowing": "Basic",
+    "Level Assignment": "None"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "plan@susunan-tab:per-level:None",
+    "plan@susunan-tab:per-level:Basic"
+   ],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-003-6",
+   "spec": [
+    "TC-FA-MYASSET-E2E-003-plan-tanpa-borrowing-dan-assignment"
+   ],
+   "jenis": "User",
+   "data": "Borrower aktif di entitas dengan plan Borrowing Basic dan Assignment None, tanpa pinjaman dan penugasan berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Maya Anggraini {runId}",
+    "Posisi": "Borrower aktif di entitas khusus dengan plan Borrowing Basic dan Assignment None, tanpa pinjaman berjalan dan tanpa penugasan berjalan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-004-1",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan plan Borrowing None dan Assignment None, dengan pinjaman berjalan sejak sebelum penurunan plan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Level None Pinjaman {runId}",
+    "Level Borrowing": "None",
+    "Level Assignment": "None"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "plan@susunan-tab:per-level:None"
+   ],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-004-2",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "Borrower aktif dengan pinjaman berjalan dan tanpa penugasan berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bambang Hartono {runId}",
+    "Role": "tanpa role admin",
+    "Group": "Head Office"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -8525,6 +8617,320 @@
    "sumber": "matriks role PRD",
    "maks": {
     "Name": null
+   }
+  },
+  {
+   "id": "DU-004-3",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "Aktor Borrow yang mengonfirmasi Handover dan melakukan Return",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina Wulandari {runId}",
+    "Role": "Asset Admin dengan hak Aktor Borrow",
+    "Group": "Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-004-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman Waiting for Handover dengan sesi Handover menunggu konfirmasi pada plan Borrowing None",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Proyektor Epson EB-X06 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "Source": "Admin",
+    "Borrower": "Me",
+    "Duration": "3 days",
+    "Sesi Handover": "menunggu konfirmasi Borrower, jendela konfirmasi berlaku sampai langkah 32 selesai"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r93",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-004-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman Admin Borrowed pada plan Borrowing None, calon aksi Request Extension, Report Damaged, dan Report Missing",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Source": "Admin",
+    "Borrower": "Me",
+    "Duration": "3 days"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r92",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-004-6",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman Self-service Borrowed pada plan Borrowing None, calon aksi Return, dan pinjaman terakhir yang berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Meeting Mic Set {runId}",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Source": "Self-service",
+    "Borrower": "Me",
+    "Duration": "4 days"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r94",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-004-7",
+   "spec": [
+    "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman Returned di tab History pada plan Borrowing None",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Kamera Canon EOS 90D {runId}",
+    "Group": "Head Office",
+    "Status": "Returned",
+    "Source": "Admin",
+    "Borrower": "Me",
+    "Duration": "2 days"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r93",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-005-1",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Entitas",
+   "data": "Entitas khusus dengan plan Borrowing None dan Assignment None, dengan penugasan berjalan sejak sebelum penurunan plan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Entitas Level None Penugasan {runId}",
+    "Level Borrowing": "None",
+    "Level Assignment": "None"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "plan@susunan-tab:per-level:None"
+   ],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-005-2",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "User",
+   "data": "Assignee aktif dengan penugasan berjalan dan tanpa pinjaman berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dian Pratiwi {runId}",
+    "Role": "tanpa role admin",
+    "Group": "Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-005-3",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "User",
+   "data": "Aktor Assignment yang membatalkan dan melepas penugasan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina Wijaya {runId}",
+    "Role": "Asset Admin dengan hak Aktor Assignment",
+    "Group": "Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-005-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Waiting for Handover dengan sesi Handover menunggu konfirmasi pada plan Assignment None",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Printer HP LaserJet M404 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "Assigned To": "Me",
+    "Sesi Handover": "menunggu konfirmasi Assignee, jendela konfirmasi berlaku sampai langkah 31 selesai"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r96",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-005-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned pada plan Assignment None, calon aksi Report Damaged dan Report Missing",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop Lenovo ThinkPad T14 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r95",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-005-6",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned dengan Damage Report milik Assignee yang menunggu konfirmasi, calon aksi Cancel Damage Report",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Monitor Dell 24 inci {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Badge": "Reported Damaged",
+    "Pelapor": "Dian Pratiwi {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r95",
+   "maks": {
+    "Asset Name": null,
+    "Pelapor": null
+   }
+  },
+  {
+   "id": "DU-005-7",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned dengan laporan Missing milik Assignee yang menunggu konfirmasi, calon aksi Cancel Missing Report, dan penugasan terakhir yang berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Scanner Zebra DS2208 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Badge": "Reported Missing",
+    "Pelapor": "Dian Pratiwi {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r97",
+   "maks": {
+    "Asset Name": null,
+    "Pelapor": null
+   }
+  },
+  {
+   "id": "DU-005-8",
+   "spec": [
+    "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Unassigned di tab History pada plan Assignment None",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Projector Epson EB-X06 {runId}",
+    "Group": "Head Office",
+    "Status": "Unassigned",
+    "Assigned To": "Me"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r96",
+   "maks": {
+    "Asset Name": null
    }
   },
   {
@@ -13052,7 +13458,9 @@
     "Due Date": "T0 + 2 hari"
    },
    "jumlah": 1,
-   "mutasi": [],
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users"
+   ],
    "varian": [],
    "sumber": "§1.2#r14",
    "maks": {
@@ -13078,7 +13486,9 @@
     "Due Date": "T0 + 3 hari"
    },
    "jumlah": 1,
-   "mutasi": [],
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users"
+   ],
    "varian": [],
    "sumber": "§4.1b#r31",
    "maks": {
@@ -16257,317 +16667,128 @@
    "maks": {}
   },
   {
-   "id": "DU-060-1",
+   "id": "DU-064-1",
    "spec": [
-    "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman dengan sesi Handover menunggu konfirmasi Borrower",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
-    "Total Asset": "2",
-    "Task": "Confirm Handover"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1a T-MYA-01 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-060-2",
-   "spec": [
-    "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Admin berstatus Borrowed satuan Days",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Projector Epson EB-X06 {runId}",
-    "Status": "Borrowed",
-    "Duration": "3 days",
-    "Source": "Admin"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1b T-MYA-02 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-060-3",
-   "spec": [
-    "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Admin yang sudah Returned",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Meeting Mic Set {runId}",
-    "Status": "Returned",
-    "Holder": "Me"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1c T-MYA-03 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-060-4",
-   "spec": [
-    "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Admin berstatus Overdue dengan pengajuan Extend menunggu review",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Kamera Canon EOS 90D {runId}",
-    "Status": "Overdue",
-    "Duration": "2 days",
-    "Source": "Admin",
-    "Handed Over At": "T0 − 5 hari",
-    "Extension": "pengajuan Extend menunggu review Aktor Borrow"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1b T-MYA-02 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-061-1",
-   "spec": [
-    "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow"
-   ],
-   "jenis": "Asset",
-   "data": "Aset self-service di Group di luar cakupan role aktor",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Projector Epson EB-X06 {runId}",
-    "Group": "Branch Surabaya",
-    "Status": "Available",
-    "Self service": "ON",
-    "Allowed borrower": "Aktor"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "§2.2#b1",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-061-2",
-   "spec": [
-    "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow"
-   ],
-   "jenis": "Borrower tanpa akun",
-   "data": "Borrower tanpa akun yang PIC-nya aktor",
-   "asal": "awal",
-   "nilai": {
-    "Full Name": "Wulan Pratama {runId}",
-    "PIC": "Aktor"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Full Name": null
-   }
-  },
-  {
-   "id": "DU-061-3",
-   "spec": [
-    "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow"
-   ],
-   "jenis": "Asset",
-   "data": "Aset self-service layak untuk Borrower tanpa akun",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Meeting Mic Set {runId}",
-    "Group": "Head Office",
-    "Status": "Available",
-    "Self service": "ON",
-    "Allowed borrower": "Wulan Pratama {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Asset Name": null,
-    "Allowed borrower": null
-   }
-  },
-  {
-   "id": "DU-061-4",
-   "spec": [
-    "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow"
-   ],
-   "jenis": "Asset",
-   "data": "Aset self-service kedua layak untuk Borrower tanpa akun",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Flip Chart Stand {runId}",
-    "Group": "Head Office",
-    "Status": "Available",
-    "Self service": "ON",
-    "Allowed borrower": "Wulan Pratama {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Asset Name": null,
-    "Allowed borrower": null
-   }
-  },
-  {
-   "id": "DU-062-1",
-   "spec": [
-    "TC-FA-MYASSET-E2E-062-mobile-seleksi-bulk-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Borrowed milik aktor sendiri",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Projector Epson EB-X06 {runId}",
-    "Status": "Borrowed",
-    "Borrower": "Me",
-    "Duration": "3 days",
-    "Source": "Admin"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1b T-MYA-02 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-062-2",
-   "spec": [
-    "TC-FA-MYASSET-E2E-062-mobile-seleksi-bulk-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Borrowed kedua milik aktor sendiri",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Meeting Mic Set {runId}",
-    "Status": "Borrowed",
-    "Borrower": "Me",
-    "Duration": "3 days",
-    "Source": "Admin"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "PRD §4.1b T-MYA-02 Example Data",
-   "maks": {
-    "Asset Name": null
-   }
-  },
-  {
-   "id": "DU-062-3",
-   "spec": [
-    "TC-FA-MYASSET-E2E-062-mobile-seleksi-bulk-dep-borrow"
-   ],
-   "jenis": "Borrow",
-   "data": "Pinjaman Borrowed milik Borrower tanpa akun yang PIC-nya aktor",
-   "asal": "awal",
-   "nilai": {
-    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
-    "Status": "Borrowed",
-    "Borrower": "Wulan Pratama {runId}",
-    "Duration": "3 days",
-    "Source": "Admin"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "§4.1b#p6",
-   "maks": {
-    "Asset Name": null,
-    "Borrower": null
-   }
-  },
-  {
-   "id": "DU-063-1",
-   "spec": [
-    "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow"
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
    ],
    "jenis": "Entitas",
-   "data": "Entitas khusus berplan Basic",
+   "data": "Entitas khusus berplan Basic, diturunkan dari Full sesudah pinjaman terbentuk",
    "asal": "awal",
    "nilai": {
-    "Name": "Basic Borrowing {runId}",
+    "Name": "Basic Aksi Borrowed {runId}",
     "Plan": "Basic"
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [],
-   "sumber": "§9.10#p1",
+   "varian": [
+    "plan@susunan-tab:per-level:Basic"
+   ],
+   "sumber": "§9.4.2#r86",
    "maks": {
     "Name": null
    }
   },
   {
-   "id": "DU-063-2",
+   "id": "DU-064-2",
    "spec": [
-    "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow"
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
    ],
-   "jenis": "Asset",
-   "data": "Aset self-service yang memenuhi syarat pinjam sendiri",
+   "jenis": "User",
+   "data": "Borrower aktor spec ini",
    "asal": "awal",
    "nilai": {
-    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
-    "Status": "Available",
-    "Self service": "ON",
-    "Allowed borrower": "Aktor"
+    "Name": "Nadia Pratiwi {runId}",
+    "Role": "Borrower",
+    "Group": "Head Office"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {
-    "Asset Name": null
+    "Name": null
    }
   },
   {
-   "id": "DU-063-3",
+   "id": "DU-064-3",
    "spec": [
-    "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow"
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
    ],
    "jenis": "Borrow",
-   "data": "Pinjaman Admin Borrowed milik aktor",
+   "data": "Pinjaman Admin Borrowed milik aktor yang di-Extend Aktor Borrow",
    "asal": "awal",
    "nilai": {
-    "Asset Name": "Projector Epson EB-X06 {runId}",
+    "Asset Name": "Kamera Canon EOS 90D {runId}",
+    "Asset ID": "CAM-90D-{runId}",
+    "Brand": "Canon",
+    "Model/Type": "EOS 90D",
+    "Group": "Head Office",
     "Status": "Borrowed",
-    "Borrower": "Me",
-    "Duration": "3 days",
+    "Borrower": "Nadia Pratiwi {runId}",
+    "Duration": "5 days",
+    "Extensions": "0 / 2",
     "Source": "Admin"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "PRD §4.1b T-MYA-02 Example Data",
+   "maks": {
+    "Asset Name": null,
+    "Asset ID": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-064-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman self-service Borrowed yang sudah berjalan sebelum turun level",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Tablet Lenovo Tab P11 {runId}",
+    "Asset ID": "TAB-P11-{runId}",
+    "Brand": "Lenovo",
+    "Model/Type": "Tab P11",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Borrower": "Nadia Pratiwi {runId}",
+    "Duration": "2 days",
+    "Source": "Self-service"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "PRD §4.1b T-MYA-02 Example Data",
+   "sumber": "§9.4.2#r85",
    "maks": {
-    "Asset Name": null
+    "Asset Name": null,
+    "Asset ID": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-064-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "Aktor Borrow yang melakukan Extend dari web",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gita Permata {runId}",
+    "Role": "Asset Admin",
+    "Group": "Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
    }
   },
   {
@@ -16616,17 +16837,16 @@
     "TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb"
    ],
    "jenis": "Plan",
-   "data": "Plan Starter tanpa Borrowing dan tanpa Assignment",
+   "data": "Plan dengan Borrowing level None dan Assignment tidak tersedia",
    "asal": "awal",
    "nilai": {
-    "Plan": "Starter",
     "Level Borrowing": "None",
     "Assignment": "Tidak tersedia"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "plan@susunan-tab:per-tier:Starter"
+    "plan@susunan-tab:per-level:None"
    ],
    "sumber": "§9.10#p1",
    "maks": {}
@@ -16645,7 +16865,9 @@
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [],
+   "varian": [
+    "plan@susunan-tab:per-level:None"
+   ],
    "sumber": "§9.10#p1",
    "maks": {}
   },
@@ -16834,6 +17056,33 @@
    "maks": {}
   },
   {
+   "id": "DU-101-12",
+   "spec": [
+    "TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb"
+   ],
+   "jenis": "Assigned",
+   "data": "Baris Assigned berstatus Assigned, yaitu penugasan berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-lenovo-thinkpad-t14-4.jpg",
+    "Name": "Laptop Lenovo ThinkPad T14 - 4",
+    "Asset ID": "LPT-2026-0014",
+    "Brand": "—",
+    "Model/Type": "—",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Transaction ID": "ASG-2026-0011",
+    "Assigned Date": "03/07/26, 10:00",
+    "Assigned By": "Rina Wulandari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
    "id": "DU-102-1",
    "spec": [
     "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi"
@@ -16860,12 +17109,13 @@
     "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi"
    ],
    "jenis": "Plan",
-   "data": "Plan Borrowing Basic tanpa Assignment, Guided Tooltip belum pernah selesai atau dilewati",
+   "data": "Plan Borrowing Basic tanpa Assignment dan tanpa penugasan berjalan, Guided Tooltip belum pernah selesai atau dilewati",
    "asal": "awal",
    "nilai": {
     "Level Borrowing": "Basic",
     "Assignment": "Tidak tersedia",
-    "Flag Guided Tooltip": "belum diset"
+    "Flag Guided Tooltip": "belum diset",
+    "Penugasan berjalan": "tidak ada"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -16879,12 +17129,13 @@
     "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi"
    ],
    "jenis": "Plan",
-   "data": "Plan tanpa Borrowing dengan Assignment tersedia, Guided Tooltip belum pernah selesai atau dilewati",
+   "data": "Plan tanpa Borrowing dengan Assignment tersedia dan tanpa pinjaman berjalan, Guided Tooltip belum pernah selesai atau dilewati",
    "asal": "awal",
    "nilai": {
     "Level Borrowing": "None",
     "Assignment": "Tersedia",
-    "Flag Guided Tooltip": "belum diset"
+    "Flag Guided Tooltip": "belum diset",
+    "Pinjaman berjalan": "tidak ada"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -16911,6 +17162,46 @@
     "guided-tooltip@halaman-my-asset:flag-sudah"
    ],
    "sumber": "foundation functions/guided-tooltip.md §16.4",
+   "maks": {}
+  },
+  {
+   "id": "DU-102-5",
+   "spec": [
+    "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi"
+   ],
+   "jenis": "Plan",
+   "data": "Plan Borrowing Basic tanpa Assignment dengan penugasan berjalan, Guided Tooltip belum pernah selesai atau dilewati",
+   "asal": "awal",
+   "nilai": {
+    "Level Borrowing": "Basic",
+    "Assignment": "Tidak tersedia",
+    "Penugasan berjalan": "ada",
+    "Flag Guided Tooltip": "belum diset"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {}
+  },
+  {
+   "id": "DU-102-6",
+   "spec": [
+    "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi"
+   ],
+   "jenis": "Plan",
+   "data": "Plan tanpa Borrowing dengan Assignment tersedia dan pinjaman berjalan, Guided Tooltip belum pernah selesai atau dilewati",
+   "asal": "awal",
+   "nilai": {
+    "Level Borrowing": "None",
+    "Assignment": "Tersedia",
+    "Pinjaman berjalan": "ada",
+    "Flag Guided Tooltip": "belum diset"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.10#p1",
    "maks": {}
   },
   {
@@ -18705,6 +18996,55 @@
     "Damage Report": "Damaged",
     "Laporan Missing": "null",
     "Pengajuan Extend": "null"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-106-21",
+   "spec": [
+    "TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Borrowed dari Admin untuk level Borrowing Basic dan None",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 - 18",
+    "Asset ID": "LPT-2026-0018",
+    "Status": "Borrowed",
+    "Source": "Admin",
+    "Borrower": "Me",
+    "Damage Report": "null",
+    "Laporan Missing": "null",
+    "Pengajuan Extend": "null"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-106-22",
+   "spec": [
+    "TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Overdue dari Admin untuk level Borrowing Basic dan None",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 - 19",
+    "Asset ID": "LPT-2026-0019",
+    "Status": "Overdue",
+    "Source": "Admin",
+    "Borrower": "Me",
+    "Damage Report": "null",
+    "Laporan Missing": "null",
+    "Pengajuan Extend": "null",
+    "Duration": "2 days"
    },
    "jumlah": 1,
    "mutasi": [],

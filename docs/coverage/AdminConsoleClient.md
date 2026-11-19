@@ -47,7 +47,7 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-035-defense-tulis-langsung-di-luar-scope-group-ditolak-404 | Defense-in-depth: Aksi Tulis Langsung ke Client di Luar Scope Group oleh Group Manager Ditolak 404 | FE+BE | 30 | 454, 987 |
 | TC-AC-ACC-E2E-036-defense-injeksi-script-pada-address-client-disanitasi | Defense-in-depth: Input Script pada Address Client Disanitasi dan Tampil sebagai Teks Literal | FE+BE | 12 | 452 |
 | TC-AC-ACC-E2E-041-create-screening-popup-cascading-dan-foto-af | Popup New Client: Screening, Cascading Country-State-City, dan Preview Photo (Active-Full) | FE+BE | 54 | 65, 121, 122 |
-| TC-AC-ACC-E2E-042-create-validasi-field-wajib-format-dan-batas-af | Validasi Create: Field Wajib, Format, dan Batas Karakter Diblokir (Active-Full) | FE+BE | 43 | 76, 77, 79, 80, 81, 82, 83, 84, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 479, 480 |
+| TC-AC-ACC-E2E-042-create-validasi-field-wajib-format-dan-batas-af | Validasi Create: Field Wajib, Format, dan Batas Karakter Diblokir (Active-Full) | FE+BE | 58 | 76, 77, 79, 80, 81, 82, 83, 84, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 479, 480, 1044, 1046 |
 | TC-AC-ACC-E2E-043-create-validasi-karakter-dan-timing-af | Validasi Create: Filter Karakter, Newline, Emoji Fallback, dan Timing Pesan Error (Active-Full) | FE+BE | 76 | 78, 85, 493, 494, 495, 496, 497, 503, 504, 505, 506 |
 | TC-AC-ACC-E2E-044-create-duplikat-ditolak-dan-spasi-client-code-af | Validasi Create: Duplikat Company Name, Client Code, dan Email Default User Ditolak (Active-Full) | FE+BE | 42 | 113, 114, 115, 118, 498, 942 |
 | TC-AC-ACC-E2E-045-create-sukses-af-partner-dan-email-lintas-entitas | Create Client oleh Active-Full: Partner Dipilih dan Email Default User Sama dengan User Distributor, Partner, Principal | FE+BE | 31 | 66, 119, 501, 502 |
@@ -58,7 +58,7 @@ Spec memakai `coverage.web: automated`, kecuali tiga spec Android native (024, 0
 | TC-AC-ACC-E2E-050-create-screening-opsi-partner-dan-select-group-tcp | Popup New Client: Footer, Opsi Industry, Opsi Partner, Tree Select Group, dan Perilaku Partner-Group (Total Control) | FE+BE | 46 | 481, 484, 485, 486, 487, 489 |
 | TC-AC-ACC-E2E-051-create-aksesibilitas-popup-aria-dan-fokus-tcp | Aksesibilitas Popup New Client: aria-required, aria-describedby, dan Fokus Terkunci (Total Control) | FE+BE | 16 | 750, 751, 752 |
 | TC-AC-ACC-E2E-052-create-sukses-tcp-stay-direct-partner-ganda-opsional-dan-saving-state | Create Client oleh Total Control: Stay on this Form, Direct, Dua Partner, Field Opsional, dan Saving State | FE+BE | 50 | 67, 70, 71, 490, 491, 749 |
-| TC-AC-ACC-E2E-053-create-batas-nilai-tepat-diterima-tcp | Create Client: Nilai Tepat di Batas Karakter Diterima dan Spasi Ujung Tidak Dihitung (Total Control) | FE+BE | 33 | 475, 476, 477, 478 |
+| TC-AC-ACC-E2E-053-create-batas-nilai-tepat-diterima-tcp | Create Client: Nilai Tepat di Batas Karakter Diterima dan Spasi Ujung Tidak Dihitung (Total Control) | FE+BE | 52 | 475, 476, 477, 478, 1045, 1047 |
 | TC-AC-ACC-E2E-054-create-pakai-ulang-client-code-dan-email-client-dihapus-tcp | Create Client: Client Code dan Email Default User Milik Client yang Sudah Dihapus Dipakai Ulang (Total Control) | FE+BE | 16 | 499, 500 |
 | TC-AC-ACC-E2E-055-create-efek-lanjutan-default-user-division-position-dan-log-tcp | Efek Lanjutan Create Client: Default User Not Yet Activated, Division, Position, dan Tiga Log (Total Control) | FE+BE | 33 | 131, 132, 133, 134, 492 |
 | TC-AC-ACC-E2E-056-create-clear-field-dan-penutupan-popup-tcp | Popup New Client: Clear Field, Esc, Klik Backdrop, Muat Ulang, dan Tombol Back (Total Control) | FE+BE | 78 | 72, 73, 74, 75, 488, 553, 554, 555, 556 |
@@ -1407,6 +1407,10 @@ Butir yang paling berdampak (kontradiksi dan selisih keputusan):
 | TC-AC-ACC-1038 | TC-AC-ACC-E2E-329-auto-archive-lalu-delete-client-dengan-trial-non-live | FE+BE |
 | TC-AC-ACC-1039 | TC-AC-ACC-E2E-226-request-retry-akses-langsung-ditolak-server | FE+BE |
 | TC-AC-ACC-1040 | TC-AC-ACC-E2E-265-changelog-dan-activity-log-retry-access-setup-principal-vs-distributor | FE+BE |
+| TC-AC-ACC-1044 | TC-AC-ACC-E2E-042-create-validasi-field-wajib-format-dan-batas-af | FE+BE |
+| TC-AC-ACC-1045 | TC-AC-ACC-E2E-053-create-batas-nilai-tepat-diterima-tcp | FE+BE |
+| TC-AC-ACC-1046 | TC-AC-ACC-E2E-042-create-validasi-field-wajib-format-dan-batas-af | FE+BE |
+| TC-AC-ACC-1047 | TC-AC-ACC-E2E-053-create-batas-nilai-tepat-diterima-tcp | FE+BE |
 
 ## TC hanya-BE
 

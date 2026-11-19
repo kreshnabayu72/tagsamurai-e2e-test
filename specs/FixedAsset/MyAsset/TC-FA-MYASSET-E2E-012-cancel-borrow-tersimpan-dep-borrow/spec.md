@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r31", "§1.2#r33", "§2.1#r4", "§3#p13", "§4.1#p4", "§4.1b#r75", "§4.1b#r77", "§4.1b#r78", "§4.1b#r80", "§Dialog aksi baris (tab Borrowed dan Assigned)#p3", "§4.4#r6", "§4.8#r6", "§7.3#r2", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r8", "§9.4.2#r67", "§9.4.2#r68", "§9.4.2#r70", "§9.6#r2", "§9.7#r3", "EB-FB-1@cancel-borrow"]
+sourceRules: ["§1.2#r31", "§1.2#r33", "§2.1#r4", "§3#p13", "§4.1#p4", "§4.1b#r75", "§4.1b#r77", "§4.1b#r78", "§4.1b#r80", "§Dialog aksi baris (tab Borrowed dan Assigned)#p3", "§4.4#r6", "§4.8#r6", "§7.3#r2", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r8", "§9.4.2#r69", "§9.4.2#r70", "§9.4.2#r72", "§9.6#r2", "§9.7#r3", "EB-FB-1@cancel-borrow"]
 smoke: ["EB-FB-1@cancel-borrow"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -26,9 +26,9 @@ trace:
   "§9.2#r5": 13
   "§9.2#r6": 18
   "§9.2#r8": [14, 17]
-  "§9.4.2#r67": 7
-  "§9.4.2#r68": [17, 18]
-  "§9.4.2#r70": 12
+  "§9.4.2#r69": 7
+  "§9.4.2#r70": [17, 18]
+  "§9.4.2#r72": 12
   "§9.6#r2": [12, 17]
   "§9.7#r3": [14, 17, 21, 24, 25, 29, 32, 33, 38]
   "EB-FB-1@cancel-borrow": 12

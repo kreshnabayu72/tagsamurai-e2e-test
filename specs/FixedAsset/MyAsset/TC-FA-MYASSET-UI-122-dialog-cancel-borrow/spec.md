@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["FI-12", "V-02", "§1.2#r34", "§4.1b#r77", "§4.1b#r80", "§4.1b#r81", "§4.2.5#p14", "§4.2.5#p15", "§4.2.5#r7", "§Dialog aksi baris (tab Borrowed dan Assigned)#p3", "§Dialog aksi baris (tab Borrowed dan Assigned)#p4", "§4.4#r42", "§4.4#r43", "§7.2#r3", "§7.2#r4", "§7.3#r2", "§7.3#r14", "§7.3#r15", "§9.4.2#r72", "§9.4.2#r75", "§9.4.3#b5", "§9.6#r2", "§9.6#p1", "EB-FB-1@cancel-borrow", "EB-FB-2@cancel-borrow", "EB-ERR-1@cancel-borrow"]
+sourceRules: ["FI-12", "V-02", "§1.2#r34", "§4.1b#r77", "§4.1b#r80", "§4.1b#r81", "§4.2.5#p14", "§4.2.5#p15", "§4.2.5#r7", "§Dialog aksi baris (tab Borrowed dan Assigned)#p3", "§Dialog aksi baris (tab Borrowed dan Assigned)#p4", "§4.4#r42", "§4.4#r43", "§7.2#r3", "§7.2#r4", "§7.3#r2", "§7.3#r14", "§7.3#r15", "§9.4.2#r74", "§9.4.2#r77", "§9.4.3#b5", "§9.6#r2", "§9.6#p1", "EB-FB-1@cancel-borrow", "EB-FB-2@cancel-borrow", "EB-ERR-1@cancel-borrow"]
 smoke: []
 dependsOn: []
 trace:
@@ -27,8 +27,8 @@ trace:
   "§7.3#r2": [18, 30]
   "§7.3#r14": 56
   "§7.3#r15": 23
-  "§9.4.2#r72": 44
-  "§9.4.2#r75": 56
+  "§9.4.2#r74": 44
+  "§9.4.2#r77": 56
   "§9.4.3#b5": 10
   "§9.6#r2": [18, 23, 27, 39, 44]
   "§9.6#p1": [23, 24, 26, 35, 36, 38]

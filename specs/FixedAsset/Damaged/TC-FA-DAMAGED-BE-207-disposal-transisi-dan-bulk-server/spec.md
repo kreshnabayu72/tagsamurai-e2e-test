@@ -97,7 +97,7 @@ trace:
   - DU-207-37: Reason `Seluruh unit dihentikan penggunaannya {runId}`.
   - DU-207-38: Reason `Unit masih layak dipakai {runId}`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

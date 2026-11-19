@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r64", "§1.2#r66", "§1.2#r67", "§4.1b#r17", "§4.1b#r48", "§4.1b#r54", "§9.2#b8", "§9.4.2#r7", "§9.4.2#r44", "§9.6#r3", "§9.6#r4", "§9.7#r15", "EB-CON-3", "EB-EDG-1"]
+sourceRules: ["§1.2#r64", "§1.2#r66", "§1.2#r67", "§4.1b#r17", "§4.1b#r48", "§4.1b#r54", "§9.2#b8", "§9.4.2#r7", "§9.4.2#r46", "§9.6#r3", "§9.6#r4", "§9.7#r15", "EB-CON-3", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -17,7 +17,7 @@ trace:
   "§4.1b#r54": [58, 61, 88, 91, 94, 107, 110]
   "§9.2#b8": [23, 25, 31, 33, 35, 73]
   "§9.4.2#r7": 48
-  "§9.4.2#r44": [39, 41]
+  "§9.4.2#r46": [39, 41]
   "§9.6#r3": [6, 14, 16, 64, 65, 67, 68, 70, 103]
   "§9.6#r4": [23, 27, 33, 39, 73, 75]
   "§9.7#r15": [45, 47, 48]

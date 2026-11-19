@@ -50,7 +50,7 @@ coverage:
   - DU-042-11: Input Reason bulk atas record `Panel Listrik {runId} Distribusi Utama Gedung Operasional Cabang Utara`: Reason `Panel listrik sudah tidak layak pakai`.
   - DU-042-12: Input Reason `Admin B {runId}` atas record `Proyektor Epson EB-X06 {runId} - 3` sampai `- 6` dan seluruh record `Panel Listrik {runId} Distribusi Utama Gedung Operasional Cabang Utara`: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
   - Selection Limit bernilai `1000`.
 
 ## Test Steps

@@ -1,14 +1,14 @@
 {
  "schema": "spec-from-prd-audit/v1",
- "putaran": 3,
- "suite": "7195e2f7232ec8ed",
+ "putaran": 1,
+ "suite": "2feb4331136a2620",
  "hitung": {
-  "ok": 577,
-  "parsial": 18,
+  "ok": 581,
+  "parsial": 23,
   "hilang": 0,
   "salah": 0,
-  "na": 270,
-  "skor": 98.5
+  "na": 271,
+  "skor": 98.1
  },
  "siap": [
   "TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state",
@@ -55,10 +55,6 @@
   "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
   "TC-FA-MYASSET-E2E-058-pic-division-berpindah-dep-assignment",
   "TC-FA-MYASSET-E2E-059-aksi-tulis-penugasan-entitas-suspended-dep-assignment",
-  "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow",
-  "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
-  "TC-FA-MYASSET-E2E-062-mobile-seleksi-bulk-dep-borrow",
-  "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow",
   "TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb",
   "TC-FA-MYASSET-UI-102-guided-tooltip-langkah-dan-navigasi",
   "TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi",
@@ -98,7 +94,10 @@
   "TC-FA-MYASSET-BE-213-search-per-kelas-kolom-dep-borrow",
   "TC-FA-MYASSET-BE-214-sort-per-tipe-kolom-dep-borrow",
   "TC-FA-MYASSET-BE-215-filter-opsi-dan-hasil-dep-borrow",
-  "TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow"
+  "TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow",
+  "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow",
+  "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment",
+  "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
  ],
  "draft": {},
  "plan": [
@@ -123,6 +122,17 @@
    "catatan": "E2E-040 langkah 76 (`No tasks` sesudah Task Borrow terakhir dikonfirmasi) ikut menanggung klausa nol dan item terakhir EB-EDG-2, tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "§9.4.2#r41",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow",
+   "langkah": [
+    25,
+    26
+   ],
+   "catatan": "Task hilang sesudah konfirmasi lewat Accept diasersi BE-203 step 25-26 tetapi BE-203 tidak tercatat sebagai penanggung unit ini (hanya E2E-011)."
+  },
+  {
    "unit": "§9.2#r4",
    "verdict": "ok",
    "jenis": "plan",
@@ -136,6 +146,22 @@
     33
    ],
    "catatan": "Klausa 'milik pengguna' (baris orang lain ditolak, termasuk oleh Total Control) diasersi benar di BE-202 langkah 28-33 tetapi BE-202 tidak tercatat sebagai penanggung unit ini; catat BE-202 sebagai pemilik klausa kepemilikan."
+  },
+  {
+   "unit": "§9.4.2#r69",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-UI-122-dialog-cancel-borrow",
+   "langkah": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "catatan": "Isi dialog D-BRW-01 varian Borrower (judul, tombol [Go Back] dan [Cancel Borrow], tanpa Reason dan Save as Draft to edit) diasersi lengkap di UI-122 tetapi UI-122 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.6#r3",
@@ -170,16 +196,6 @@
     41
    ],
    "catatan": "BE-206 mengasersi hasil tinjauan Aktor Borrow: disetujui menaikkan Extensions ke `1 / 2`, diteruskan ke approval menjadi `Extension Approval`, ditolak kembali `Borrowed`; spec ini tidak tercatat sebagai penanggung unit 9.7 r5 padahal menanggung sisi server-nya."
-  },
-  {
-   "unit": "§4.1b#p6",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-BE-208-perpindahan-pic-aturan-server-dep-users",
-   "langkah": [
-    11
-   ],
-   "catatan": "BE-208 mengasersi Borrow Log entri `Extension requested` memuat PIC; tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.6#r6",
@@ -301,6 +317,17 @@
     9
    ],
    "catatan": "Holder `Me` pada data nyata History penugasan diasersi di sini, tidak tercatat sebagai penanggung unit LOGIC-04c."
+  },
+  {
+   "unit": "§1.2#r89",
+   "verdict": "na",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
+   "langkah": [
+    34,
+    37
+   ],
+   "catatan": "MYASSET-LOGIC-09d hanya penunjuk: model approval mengikuti approval-foundation.md dan daftar approver yang berhak dimiliki borrow.md dan assignment.md. Tidak ada perilaku teruji tersendiri; status plan 'dimiliki' sebaiknya 'na'."
   },
   {
    "unit": "§10#r3",
@@ -434,38 +461,6 @@
    "catatan": "`tanpa nama approver` pada Assignment Log My Asset diasersi di UI-124 (node keputusan approver tanpa pelaku); UI-124 tidak tercatat sebagai penanggung unit ini (E2E-056 hanya membuka dialog, langkah 20)."
   },
   {
-   "unit": "§2.1#r11",
-   "verdict": "parsial",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
-   "langkah": [
-    52,
-    53,
-    54
-   ],
-   "catatan": "E2E-057 berplatform web, sedangkan `Borrow an Asset` hanya ada di mobile: langkah 52-54 tidak membuktikan sel PIC Division. Tambahkan spec android PIC Division atau pindahkan penanggung."
-  },
-  {
-   "unit": "§4.1b#p1",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow",
-   "langkah": [
-    4
-   ],
-   "catatan": "Klausa `plan gating: borrow.md §9.11` (plan Basic: tombol Hidden) hanya diasersi E2E-063 langkah 4; E2E-063 tidak tercatat sebagai penanggung unit ini."
-  },
-  {
-   "unit": "§4.3#r4",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow",
-   "langkah": [
-    4
-   ],
-   "catatan": "Cabang `plan tanpa self-service` untuk `S-04` diasersi E2E-063 langkah 4, spec itu tidak tercatat sebagai penanggung; cabang Web Hidden diasersi UI-108 langkah 14, mobile tanpa aset layak E2E-061 langkah 34."
-  },
-  {
    "unit": "§4.2.1#p1",
    "verdict": "ok",
    "jenis": "plan",
@@ -518,12 +513,34 @@
    "catatan": "Arah sebaliknya (baris Borrower tanpa akun dipilih lebih dulu lalu baris `Me` nonaktif dengan `Select assets from one borrower only.`; header dan Select All hanya memilih Borrower pertama) diasersi di E2E-040, tidak di UI-107 yang hanya memilih baris `Me` lebih dulu. E2E-040 belum tercatat sebagai penanggung V-01."
   },
   {
+   "unit": "§4.1b#p1",
+   "verdict": "parsial",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
+   "langkah": [
+    71
+   ],
+   "catatan": "E2E-030 langkah 71 (Borrower) dan E2E-057 langkah 54 (PIC Division) juga mengasersi tombol `Borrow an Asset` tidak tampil di web pada data nyata, tetapi tidak tercatat sebagai penanggung unit ini (belum diperbaiki sejak putaran 1)."
+  },
+  {
    "unit": "§4.5#p1",
    "verdict": "parsial",
    "jenis": "plan",
    "spec": "TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower",
    "langkah": [],
    "catatan": "§4.5#p1 mencakup tabel, Tabs, FilterContainer, menu ⋯, dan dialog, tetapi plan hanya menyerahkannya ke UI-118 (spec dialog). Klausa non-dialog perlu pemilik di spec tabel/tab/filter."
+  },
+  {
+   "unit": "§9.4.2#r91",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment",
+   "langkah": [
+    35,
+    36,
+    37
+   ],
+   "catatan": "Unit merujuk EC-MYA-17 (Assignment) selain EC-MYA-03, tetapi penolakan server pada Expires At untuk Assignment ada di BE-204 (langkah 35-37), yang tidak tercatat sebagai penanggung unit; pemilik be-e2e hanya BE-203 (pinjaman). Dialog D-MYA-02 untuk Assignment juga diasersi E2E-051 dan UI-121 (K7). Catat BE-204 sebagai pemilik tambahan."
   },
   {
    "unit": "EB-EDG-1",
@@ -610,11 +627,46 @@
   },
   {
    "unit": "§4.1b#p6",
-   "verdict": "ok",
+   "verdict": "parsial",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Pencatatan pelaku tiap baris `[PIC] on behalf of [Borrower]` ditetapkan `BORROW-LOGIC-20` (borrow.md, di luar kit); hanya BE-208 langkah 11 yang menyebut PIC pada entri `Extension requested`. Tidak dihitung kurang."
+   "catatan": "Klausa 'baris yang tidak memenuhi syarat Extend (Damage Report, pengajuan menunggu, Extension habis) tampil nonaktif di halaman itu dengan alasannya' ditetapkan `borrow.md` §4.2.7 (layar Extension Request dimiliki modul Borrow, PRD §4.2.3). Dokumen luar kit; ketiadaan asersinya tidak dihitung kurang."
+  },
+  {
+   "unit": "§4.1b#p6",
+   "verdict": "parsial",
+   "jenis": "drift",
+   "spec": "TC-FA-MYASSET-E2E-016-bulk-request-extension-dep-borrow",
+   "langkah": [
+    7
+   ],
+   "catatan": "Foundation prd-conventions §8: tombol 'berubah (toggle) menjadi `Unselect All`' (tanpa jumlah). Kontrak BulkActionButton#11/#60/#41: `Unselect All (N records)` tepat saat jumlah terpilih sama dengan N. Sisi yang berlaku: kontrak komponen. Spec mengasersi sisi kontrak dengan footnote [^drift-1] (sesuai)."
+  },
+  {
+   "unit": "§4.1b#p6",
+   "verdict": "parsial",
+   "jenis": "drift",
+   "spec": "TC-FA-MYASSET-UI-107-tabel-borrowed-seleksi-bulk",
+   "langkah": [
+    42,
+    69,
+    70,
+    94,
+    99,
+    114
+   ],
+   "catatan": "Selisih yang sama (foundation `Unselect All` tanpa jumlah vs kontrak BulkActionButton#11/#60/#41 `Unselect All (N records)`; sisi berlaku: kontrak). Footnote [^drift-1] kini ada dan sesuai; temuan putaran 1 soal footnote yang kurang sudah beres."
+  },
+  {
+   "unit": "§4.1b#p6",
+   "verdict": "parsial",
+   "jenis": "drift",
+   "spec": "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users",
+   "langkah": [
+    29
+   ],
+   "catatan": "Selisih yang sama (foundation `Unselect All` vs kontrak `Unselect All (4 records)`; sisi berlaku: kontrak). Footnote [^drift-1] kini ada dan sesuai."
   },
   {
    "unit": "§4.1b#r34",
@@ -809,14 +861,6 @@
    "catatan": "Isi node (pelaku dan baris detail) dan 'semua peristiwa katalog borrow.md 8.1 (Requested sampai Returned / Canceled)' dimiliki `borrow.md` 8.1; katalog itu di luar kit sehingga kelengkapan peristiwa di User Log Borrow tidak bisa diasersi penuh. Kalimat 'Borrower membaca riwayat yang sama di tab History' tidak punya hasil yang dapat dibedakan dari asersi lain. Nama Activity per aksi My Asset dan scope (termasuk Return oleh Aktor Borrow, BE-209 langkah 15) sudah diasersi."
   },
   {
-   "unit": "§9.4.2#r79",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-MYASSET-E2E-046-aksi-tulis-entitas-suspended-dep-borrow",
-   "langkah": [],
-   "catatan": "EC-MYA-34a mencantumkan `Borrow an Asset (Borrow Now)`: surface-nya mobile dan dimiliki `borrow.md` §4.2.12; toast UI-nya tidak diasersi di spec ui-e2e web (hanya BE-212 langkah 25-26 sisi server). Tidak mengubah verdict."
-  },
-  {
    "unit": "§7.3#r11",
    "verdict": "ok",
    "jenis": "prd",
@@ -883,12 +927,12 @@
    "catatan": "Copy `TS-ASG-29` dimiliki `assignment.md` §7.3 (di luar kit); langkah 14 dan UI-117 langkah 48 hanya mengasersi `toast sukses`, wajar."
   },
   {
-   "unit": "§4.6#p1",
+   "unit": "§2.1#r11",
    "verdict": "parsial",
    "jenis": "prd",
-   "spec": "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
+   "spec": null,
    "langkah": [],
-   "catatan": "`Borrow Now` memerlukan online dan aksi cepat `[Request Extension]` mobile dimiliki `borrow.md` (§9.11, §4.6); di luar kit, tidak dihitung kurang."
+   "catatan": "Pernyataan PIC `D-BRW-21` pada alur `Borrow for` adalah layar `borrow.md` §4.2.12 (surface modul Borrow, mobile). Dokumen luar kit; tidak dihitung kurang."
   },
   {
    "unit": "EB-BLK-1@tabel-borrowed",
@@ -910,6 +954,14 @@
     70
    ],
    "catatan": "foundation prd-conventions §8: tombol berubah menjadi `\"Unselect All\"` (tanpa angka). Kontrak BulkActionButton#11/#60/#41: `Unselect All (N records)`. Sisi yang berlaku: kontrak. UI-107 mengasersi `Unselect All (N records)` tanpa footnote `[^drift-n]` (E2E-016 memakai footnote drift-1)."
+  },
+  {
+   "unit": "§4.1b#p1",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Kelayakan aset (Self service efektif, Allowed borrower) dan plan gating tombol ditetapkan `borrow.md` §4.2.12 dan §9.11 (dokumen luar kit); tidak dihitung kurang."
   },
   {
    "unit": "EB-FLT-2@tabel-borrowed",
@@ -1060,12 +1112,20 @@
    "catatan": "Katalog event, penerima, Title, Body, dan `action_tier` dimiliki `fixed-asset/notification/PRD/notification.md` §5.1a/§5.1b dan peta navigasi §9.2a, dan perilaku Auto-Read dirujuk ke `notification-system.md` §3.2 (di luar kit); tidak bisa diasersi dengan pasti oleh suite ini. Ketiadaan asersinya tidak dihitung kurang. Penerima PIC (Borrower tanpa akun, Assignee Division) dan ketiga pemicu Auto-Read (Confirm, `Cancel Request`, jendela habis) untuk Borrower ber-akun dan PIC sudah diasersi."
   },
   {
-   "unit": "§9.4.2#r65",
+   "unit": "§4.6#p1",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
+   "langkah": [],
+   "catatan": "`Borrow Now` memerlukan online dan aksi cepat `[Request Extension]` mobile dimiliki `borrow.md` (§9.11, §4.6); di luar kit, tidak dihitung kurang."
+  },
+  {
+   "unit": "§9.4.2#r67",
    "verdict": "na",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "PRD bertentangan dengan dirinya: EC-MYA-28b (baris 1291) menyatakan aset tidak tercentang «tidak tampil di tab Borrowed» dan memakai «keterangan Not received», sedangkan MYASSET-LOGIC-01d (baris 102) memasukkan baris Waiting for Handover ke tab Borrowed (satu baris per aset) dan baris 699 menyatakan «tidak ada badge, caption, atau tooltip tambahan pada tabel» («Not received» hanya di Borrow Log/Assignment Log). Tidak ada aturan yang menetapkan sisi berlaku, jadi na (ditahan benar). Catatan: E2E-010 langkah 31-32 mengasersi baris tampil di tab Borrowed berstatus Waiting for Handover tanpa keterangan Not received (mengikuti LOGIC-01d dan baris 699); tidak diberi verdict karena unit ditahan."
+   "catatan": "PRD bertentangan dengan dirinya soal aset tidak tercentang: EC-MYA-28b (baris 1295) berbunyi «tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed», sedangkan MYASSET-LOGIC-01d (baris 102) menyatakan tab Borrowed memuat satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue, §4.1b menyatakan baris Waiting for Handover punya aksi Borrow Log dan Cancel Borrow (jadi tampil di Borrowed), dan baris 700 menyatakan keterangan `Not received` hanya tercatat di Borrow Log / Assignment Log tanpa badge, caption, atau tooltip pada tabel (bukan 'dengan keterangan' pada baris). Tidak ada aturan yang menetapkan sisi yang berlaku, jadi penahanan oleh plan benar. Catatan: BE-203 langkah 61-63 meminta data tab Borrowed lalu mengasersi baris aset tidak tercentang tetap Waiting for Handover, sehingga memihak pembacaan LOGIC-01d; E2E-010 langkah 32 memihak baris 700. Keduanya mengikuti PRD pada salah satu sisi; putuskan di PRD."
   }
  ],
  "rows": [
@@ -1206,8 +1266,16 @@
   },
   {
    "unit": "§9.10#p1",
-   "verdict": "ok",
-   "temuan": [],
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Perbedaan Basic 'tanpa `Borrow an Asset`' (PRD §9.10, EC-MYA-35a) tetap tidak diasersi pada plan Basic. Tombol itu hanya ada di mobile (web selalu Hidden, jadi asersi web tidak bisa gagal dengan data apa pun) dan suite tidak punya spec ber-platform mobile (grep `mobile` di seluruh S kosong). Klausa lain unit sudah diasersi benar: Request Extension (aksi baris dan bulk) dan Return hanya pada baris self-service di E2E-064 langkah 7, 8, 11, 12, 16; susunan tab per plan di UI-101 K1/K3/K4/K5/K13-K15; tab Borrowed/Assigned read-only, tanpa Task Confirm Handover, dan item hilang di E2E-004/005; temuan putaran 1 (kasus hanya salah satu None tanpa baris berjalan) sudah beres lewat E2E-003 langkah 7-20; History tetap memuat dua jenis di UI-101 K9; langkah Guided Tooltip dilewati di UI-102 K3-K6; tab awal Task di E2E-003 langkah 11 dan 18.",
+     "status": "tetap"
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -1336,13 +1404,13 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r64",
+   "unit": "§9.4.2#r66",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r66",
+   "unit": "§9.4.2#r68",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1430,22 +1498,16 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r35",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r36",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
    "unit": "§9.4.2#r37",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r38",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r39",
@@ -1454,10 +1516,26 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r40",
+   "unit": "§9.4.2#r41",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow",
+     "langkah": [
+      25,
+      26
+     ],
+     "catatan": "Task hilang sesudah konfirmasi lewat Accept diasersi BE-203 step 25-26 tetapi BE-203 tidak tercatat sebagai penanggung unit ini (hanya E2E-011)."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r42",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "EB-FB-1@cancel-borrow",
@@ -1583,22 +1661,37 @@
    "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r67",
+   "unit": "§9.4.2#r69",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r68",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-UI-122-dialog-cancel-borrow",
+     "langkah": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "catatan": "Isi dialog D-BRW-01 varian Borrower (judul, tombol [Go Back] dan [Cancel Borrow], tanpa Reason dan Save as Draft to edit) diasersi lengkap di UI-122 tetapi UI-122 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r70",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r72",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r2",
@@ -1704,34 +1797,22 @@
    "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r71",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r72",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
    "unit": "§9.4.2#r73",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r74",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r75",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r76",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r77",
@@ -1743,7 +1824,19 @@
    "unit": "§9.4.2#r78",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r79",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r80",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r58",
@@ -1839,7 +1932,7 @@
    "unit": "§4.3#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§4.4#r2",
@@ -1883,16 +1976,16 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r41",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
-  },
-  {
    "unit": "§9.4.2#r43",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r45",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r3",
@@ -1986,16 +2079,16 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r44",
+   "unit": "§9.4.2#r46",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r45",
+   "unit": "§9.4.2#r47",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r4",
@@ -2056,21 +2149,49 @@
   },
   {
    "unit": "§4.1b#p6",
-   "verdict": "ok",
+   "verdict": "parsial",
    "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa mobile 'di mobile, `[Select All]` dan long-press mengikuti aturan yang sama' (satu Borrower; baris Borrower lain nonaktif dan tidak dihitung di [N]) tidak diasersi: semua spec berplatform web dan tidak ada spec mobile di suite. Temuan putaran 1 lain sudah beres: log `[PIC] on behalf of [Borrower]` untuk Request Extension kini diasersi di E2E-040 langkah 89-101 (Submit lalu Borrow Log `Extension requested` per baris), dan bentuk tunggal `Select All (1 record)` / `Unselect All (1 record)` kini diasersi di UI-107 langkah 112-119 dengan data yang membedakan (K8 dan K3).",
+     "status": "tetap"
+    },
     {
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Pencatatan pelaku tiap baris `[PIC] on behalf of [Borrower]` ditetapkan `BORROW-LOGIC-20` (borrow.md, di luar kit); hanya BE-208 langkah 11 yang menyebut PIC pada entri `Extension requested`. Tidak dihitung kurang."
+     "catatan": "Klausa 'baris yang tidak memenuhi syarat Extend (Damage Report, pengajuan menunggu, Extension habis) tampil nonaktif di halaman itu dengan alasannya' ditetapkan `borrow.md` §4.2.7 (layar Extension Request dimiliki modul Borrow, PRD §4.2.3). Dokumen luar kit; ketiadaan asersinya tidak dihitung kurang."
     },
     {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-BE-208-perpindahan-pic-aturan-server-dep-users",
+     "jenis": "drift",
+     "spec": "TC-FA-MYASSET-E2E-016-bulk-request-extension-dep-borrow",
      "langkah": [
-      11
+      7
      ],
-     "catatan": "BE-208 mengasersi Borrow Log entri `Extension requested` memuat PIC; tidak tercatat sebagai penanggung unit ini."
+     "catatan": "Foundation prd-conventions §8: tombol 'berubah (toggle) menjadi `Unselect All`' (tanpa jumlah). Kontrak BulkActionButton#11/#60/#41: `Unselect All (N records)` tepat saat jumlah terpilih sama dengan N. Sisi yang berlaku: kontrak komponen. Spec mengasersi sisi kontrak dengan footnote [^drift-1] (sesuai)."
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-MYASSET-UI-107-tabel-borrowed-seleksi-bulk",
+     "langkah": [
+      42,
+      69,
+      70,
+      94,
+      99,
+      114
+     ],
+     "catatan": "Selisih yang sama (foundation `Unselect All` tanpa jumlah vs kontrak BulkActionButton#11/#60/#41 `Unselect All (N records)`; sisi berlaku: kontrak). Footnote [^drift-1] kini ada dan sesuai; temuan putaran 1 soal footnote yang kurang sudah beres."
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users",
+     "langkah": [
+      29
+     ],
+     "catatan": "Selisih yang sama (foundation `Unselect All` vs kontrak `Unselect All (4 records)`; sisi berlaku: kontrak). Footnote [^drift-1] kini ada dan sesuai."
     }
    ],
    "juri": "j1"
@@ -2759,12 +2880,6 @@
    "juri": "j5"
   },
   {
-   "unit": "§1.2#r85",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j5"
-  },
-  {
    "unit": "§1.2#r86",
    "verdict": "ok",
    "temuan": [],
@@ -2774,19 +2889,35 @@
    "unit": "§1.2#r87",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r88",
-   "verdict": "na",
+   "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r89",
+   "verdict": "na",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
+     "langkah": [
+      34,
+      37
+     ],
+     "catatan": "MYASSET-LOGIC-09d hanya penunjuk: model approval mengikuti approval-foundation.md dan daftar approver yang berhak dimiliki borrow.md dan assignment.md. Tidak ada perilaku teruji tersendiri; status plan 'dimiliki' sebaiknya 'na'."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r90",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§10#r3",
@@ -2997,24 +3128,9 @@
   },
   {
    "unit": "§4.8#r10",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users",
-     "langkah": [],
-     "catatan": "PRD `Borrow an Asset` PIC Borrower: `Show di mobile lewat Borrow for (web: Hidden)`. Sisi web Hidden untuk PIC Borrower tetap tidak diasersi (E2E-040 tidak punya langkah itu; E2E-030 langkah 71 hanya Borrower, E2E-057 langkah 54 hanya PIC Division).",
-     "status": "tetap"
-    },
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-MYASSET-E2E-042-peran-lain-sebagai-borrower-dep-borrow",
-     "langkah": [],
-     "catatan": "Kolom `Peran lain` = `Mengikuti posisi (Borrower)`: tidak ada langkah yang mengasersi `Borrow an Asset` Hidden di web untuk pengguna ber-role admin sebagai Borrower, dan tidak ada spec android untuk aktor ber-role admin.",
-     "status": "tetap"
-    }
-   ],
-   "juri": "j2"
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§4.8#r13",
@@ -3508,16 +3624,16 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r46",
+   "unit": "§9.4.2#r48",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r47",
+   "unit": "§9.4.2#r49",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§9.7#r11",
@@ -3660,23 +3776,24 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r79",
-   "verdict": "ok",
+   "unit": "§9.4.2#r81",
+   "verdict": "parsial",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": "TC-FA-MYASSET-E2E-046-aksi-tulis-entitas-suspended-dep-borrow",
+     "jenis": "kurang",
+     "spec": null,
      "langkah": [],
-     "catatan": "EC-MYA-34a mencantumkan `Borrow an Asset (Borrow Now)`: surface-nya mobile dan dimiliki `borrow.md` §4.2.12; toast UI-nya tidak diasersi di spec ui-e2e web (hanya BE-212 langkah 25-26 sisi server). Tidak mengubah verdict."
+     "catatan": "EC-MYA-34 memuat 'Borrow an Asset (Borrow Now)' di antara semua aksi tulis, hasil 'Aksi ditolak server dengan toast dan perlakuan UI menurut entity_isolation() §18.8' (toast `Changes can't be saved while this workspace is suspended or expired.`, tanpa redirect, UI di-refresh). Penolakan Borrow Now hanya diasersi di sisi server (BE-212 langkah 22-23, 59-60, 93-94); tidak ada spec UI yang menjalankan Borrow Now pada entitas Suspended atau Expired dan mengasersi toast serta baris baru tidak muncul. E2E-046 dan E2E-059 berplatform web (tombol Borrow an Asset selalu Hidden di web, S-04); E2E-061 (Android) hanya alur normal. Perlu spec Android (atau langkah Android pada spec owner) untuk Borrow Now pada entitas Suspended atau Expired.",
+     "status": "tetap"
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r80",
+   "unit": "§9.4.2#r82",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "EB-FB-1@confirm-handover-assignment",
@@ -3844,34 +3961,34 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r52",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
-  },
-  {
-   "unit": "§9.4.2#r53",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
-  },
-  {
    "unit": "§9.4.2#r54",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r55",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.2#r56",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r57",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r58",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "T-MYA-04",
@@ -4039,16 +4156,16 @@
    "juri": "j8"
   },
   {
-   "unit": "§9.4.2#r59",
+   "unit": "§9.4.2#r61",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r60",
+   "unit": "§9.4.2#r62",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#r30",
@@ -4057,10 +4174,10 @@
    "juri": "j8"
   },
   {
-   "unit": "§9.4.2#r57",
+   "unit": "§9.4.2#r59",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r18",
@@ -4159,23 +4276,19 @@
    "temuan": [
     {
      "jenis": "kurang",
-     "spec": "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
+     "spec": null,
      "langkah": [],
-     "catatan": "Sel PIC Division `❌` untuk `Borrow an Asset` (mobile) tidak diasersi pada platform mobile: tidak ada spec android dengan aktor PIC Division; asersi tunggal E2E-057 langkah 54 berjalan di web, tempat tombol selalu Hidden, sehingga tidak membedakan aturan dari kebalikannya.",
+     "catatan": "Sel Borrower (✅ di mobile bila ada aset self-service yang dapat dipinjam) dan sel PIC Borrower (✅ atas nama lewat `Borrow for`, mobile) tidak diasersi; tidak ada spec mobile. Hanya sel PIC Division (❌) diasersi, di E2E-057 langkah 54 (`Borrow an Asset` tidak tampil, web), dan asersi itu tidak bisa gagal dengan data karena web selalu Hidden (tersirat).",
      "status": "tetap"
     },
     {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
-     "langkah": [
-      52,
-      53,
-      54
-     ],
-     "catatan": "E2E-057 berplatform web, sedangkan `Borrow an Asset` hanya ada di mobile: langkah 52-54 tidak membuktikan sel PIC Division. Tambahkan spec android PIC Division atau pindahkan penanggung."
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Pernyataan PIC `D-BRW-21` pada alur `Borrow for` adalah layar `borrow.md` §4.2.12 (surface modul Borrow, mobile). Dokumen luar kit; tidak dihitung kurang."
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r49",
@@ -4184,132 +4297,16 @@
    "juri": "j8"
   },
   {
-   "unit": "§9.4.2#r62",
+   "unit": "§9.4.2#r64",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r63",
+   "unit": "§9.4.2#r65",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§10#r6",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§4.6#p1",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow",
-     "langkah": [],
-     "catatan": "PRD §4.6: kartu tab Assigned memuat Name, badge Status (+1 badge kontekstual), `Assigned To`, `Assigned Date`, dan menu ⋯. E2E-060 hanya mencakup Task, Borrowed, dan History; tidak ada langkah di tab Assigned pada platform android.",
-     "status": "tetap"
-    },
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
-     "langkah": [],
-     "catatan": "`Borrow Now` memerlukan online dan aksi cepat `[Request Extension]` mobile dimiliki `borrow.md` (§9.11, §4.6); di luar kit, tidak dihitung kurang."
-    }
-   ],
-   "juri": "j2"
-  },
-  {
-   "unit": "§1.2#r43",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§2.2#b1",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§3#p15",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§4.1b#p1",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow",
-     "langkah": [
-      4
-     ],
-     "catatan": "Klausa `plan gating: borrow.md §9.11` (plan Basic: tombol Hidden) hanya diasersi E2E-063 langkah 4; E2E-063 tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j8"
-  },
-  {
-   "unit": "§4.2.4#p1",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§4.3#r4",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-063-mobile-borrow-an-asset-plan-basic-dep-borrow",
-     "langkah": [
-      4
-     ],
-     "catatan": "Cabang `plan tanpa self-service` untuk `S-04` diasersi E2E-063 langkah 4, spec itu tidak tercatat sebagai penanggung; cabang Web Hidden diasersi UI-108 langkah 14, mobile tanpa aset layak E2E-061 langkah 34."
-    }
-   ],
-   "juri": "j8"
-  },
-  {
-   "unit": "§4.4#r12",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§7.3#r4",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.6#r7",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§9.7#r17",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
-  },
-  {
-   "unit": "FI-16",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
-  },
-  {
-   "unit": "§9.4.2#r82",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
    "unit": "EB-KOL-3",
@@ -4550,10 +4547,10 @@
    "juri": "j9"
   },
   {
-   "unit": "§9.4.2#r85",
+   "unit": "§9.4.2#r88",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r32",
@@ -4610,16 +4607,16 @@
    "juri": "j9"
   },
   {
-   "unit": "§9.4.2#r51",
+   "unit": "§9.4.2#r53",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r86",
+   "unit": "§9.4.2#r89",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.3#b3",
@@ -4721,10 +4718,52 @@
    "juri": "j10"
   },
   {
-   "unit": "§9.4.2#r42",
+   "unit": "§9.4.2#r44",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j10"
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.1b#p1",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Kondisi tombol `Borrow an Asset` di mobile tidak diasersi: tampil bila ada >= 1 aset layak (Self service efektif ON, memenuhi Allowed borrower) untuk pengguna sendiri atau salah satu Borrower tanpa akun yang PIC-nya pengguna; tidak tampil bila tidak ada keduanya. UI-108 (pemilik) berplatform web dan hanya mengasersi tombol tidak tampil (langkah 14) serta urutan toolbar Search, Filter, Download dari kiri ke kanan (langkah 13; PRD kanan ke kiri Download, Filter, Search, sesuai). Tidak ada spec mobile di suite.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Kelayakan aset (Self service efektif, Allowed borrower) dan plan gating tombol ditetapkan `borrow.md` §4.2.12 dan §9.11 (dokumen luar kit); tidak dihitung kurang."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
+     "langkah": [
+      71
+     ],
+     "catatan": "E2E-030 langkah 71 (Borrower) dan E2E-057 langkah 54 (PIC Division) juga mengasersi tombol `Borrow an Asset` tidak tampil di web pada data nyata, tetapi tidak tercatat sebagai penanggung unit ini (belum diperbaiki sejak putaran 1)."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.3#r4",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "S-04 sisi mobile tidak diasersi: tombol tidak tampil bila tidak ada aset self-service yang layak, atau plan tanpa self-service (Basic dan None). Sisi web 'selalu Hidden' diasersi di UI-108 langkah 14. Tidak ada spec ber-platform mobile di suite.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§5#r10",
@@ -5043,6 +5082,18 @@
    "juri": "j10"
   },
   {
+   "unit": "§1.2#r85",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§4.3#r9",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
    "unit": "§9.4.3#b10",
    "verdict": "ok",
    "temuan": [],
@@ -5262,10 +5313,21 @@
    "juri": "j11"
   },
   {
-   "unit": "§9.4.2#r88",
+   "unit": "§9.4.2#r91",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j11"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment",
+     "langkah": [
+      35,
+      36,
+      37
+     ],
+     "catatan": "Unit merujuk EC-MYA-17 (Assignment) selain EC-MYA-03, tetapi penolakan server pada Expires At untuk Assignment ada di BE-204 (langkah 35-37), yang tidak tercatat sebagai penanggung unit; pemilik be-e2e hanya BE-203 (pinjaman). Dialog D-MYA-02 untuk Assignment juga diasersi E2E-051 dan UI-121 (K7). Catat BE-204 sebagai pemilik tambahan."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "EB-ERR-1@cancel-borrow",
@@ -5497,10 +5559,10 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r38",
+   "unit": "§9.4.2#r40",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.3#b9",
@@ -5521,16 +5583,16 @@
    "juri": "j12"
   },
   {
-   "unit": "§9.4.2#r69",
+   "unit": "§9.4.2#r71",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r74",
+   "unit": "§9.4.2#r76",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.2#r7",
@@ -5609,16 +5671,16 @@
    "juri": "j12"
   },
   {
-   "unit": "§9.4.2#r58",
+   "unit": "§9.4.2#r60",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r61",
+   "unit": "§9.4.2#r63",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r50",
@@ -5645,16 +5707,16 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r48",
+   "unit": "§9.4.2#r50",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r49",
+   "unit": "§9.4.2#r51",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
    "unit": "§8#p3",
@@ -5741,16 +5803,16 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r84",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
-  },
-  {
    "unit": "§9.4.2#r87",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r90",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r48",
@@ -5772,16 +5834,72 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r81",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
-  },
-  {
    "unit": "§9.4.2#r83",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r92",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r93",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r94",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r95",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r96",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r97",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r84",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "EC-MYA-35a: 'Basic: tombol `Borrow an Asset` dan `Request Extension` tidak tampil'. `Request Extension` diasersi benar (E2E-064 langkah 7, 12 untuk menu baris dan 16 untuk bulk action; data Basic dengan baris Admin Borrowed membedakannya dari Full). `Borrow an Asset` pada plan Basic tidak diasersi: tombol hanya ada di mobile (web selalu Hidden, sehingga asersi web tidak bisa gagal) dan tidak ada spec mobile.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r85",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
+  },
+  {
+   "unit": "§9.4.2#r86",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "D-BRW-01,D-BRW-14(borrow.md);D-DMG-01,D-DMG-08(damaged.md);D-MIS-01,D-MIS-07(missing.md);BorrowLogT-BRW-23(borrow.md§8.1);AssignmentLog(assignment.md§8.1)",
@@ -5802,16 +5920,16 @@
    "juri": "j12"
   },
   {
-   "unit": "EC-MYA-01–EC-MYA-38(IDyangadaditabel)",
+   "unit": "EC-MYA-01–EC-MYA-40(IDyangadaditabel)",
    "verdict": "na",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j2"
   },
   {
-   "unit": "EC-MYA-03a–EC-MYA-03d,EC-MYA-04a–EC-MYA-04b,EC-MYA-05a–EC-MYA-05c,EC-MYA-06a–EC-MYA-06b,EC-MYA-09a–EC-MYA-09b,EC-MYA-10a–EC-MYA-10b,EC-MYA-16a–EC-MYA-16b,EC-MYA-17a–EC-MYA-17c,EC-MYA-19a–EC-MYA-19b,EC-MYA-21a–EC-MYA-21b,EC-MYA-23a–EC-MYA-23c,EC-MYA-25a–EC-MYA-25b,EC-MYA-28a–EC-MYA-28c,EC-MYA-29a–EC-MYA-29d,EC-MYA-30a–EC-MYA-30d,EC-MYA-31a–EC-MYA-31b,EC-MYA-32a–EC-MYA-32b,EC-MYA-34a–EC-MYA-34c,EC-MYA-35a–EC-MYA-35b,EC-MYA-36a–EC-MYA-36c,EC-MYA-37a–EC-MYA-37b",
+   "unit": "EC-MYA-03a–EC-MYA-03d,EC-MYA-04a–EC-MYA-04b,EC-MYA-05a–EC-MYA-05c,EC-MYA-06a–EC-MYA-06b,EC-MYA-09a–EC-MYA-09b,EC-MYA-10a–EC-MYA-10b,EC-MYA-16a–EC-MYA-16b,EC-MYA-17a–EC-MYA-17c,EC-MYA-19a–EC-MYA-19b,EC-MYA-21a–EC-MYA-21b,EC-MYA-23a–EC-MYA-23c,EC-MYA-25a–EC-MYA-25b,EC-MYA-28a–EC-MYA-28c,EC-MYA-29a–EC-MYA-29d,EC-MYA-30a–EC-MYA-30d,EC-MYA-31a–EC-MYA-31b,EC-MYA-32a–EC-MYA-32b,EC-MYA-34a–EC-MYA-34c,EC-MYA-35a–EC-MYA-35c,EC-MYA-36a–EC-MYA-36c,EC-MYA-37a–EC-MYA-37b,EC-MYA-39a–EC-MYA-39c,EC-MYA-40a–EC-MYA-40c",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j2"
   },
   {
    "unit": "F-MYASSET-01–05,07,08,09",
@@ -5856,6 +5974,12 @@
    "juri": "j13"
   },
   {
+   "unit": "FI-16",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
    "unit": "FI-17",
    "verdict": "na",
    "temuan": [],
@@ -5886,10 +6010,10 @@
    "juri": "j13"
   },
   {
-   "unit": "S-01–S-08(§4.3),S-09–S-16(Empty),S-17(Error)",
+   "unit": "S-01–S-08danS-18(§4.3),S-09–S-16(Empty),S-17(Error)",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j2"
   },
   {
    "unit": "T-BRW-07,T-BRW-08,T-BRW-11,T-BRW-18,T-BRW-21,T-BRW-24,T-BRW-26,T-BRW-29(borrow.md);TS-MIS-01,TS-MIS-02,TS-MIS-07(missing.md);TS-DMG-07(damaged.md);TS-ASG-29,TS-ASG-31(assignment.md)",
@@ -6042,6 +6166,12 @@
    "juri": "j13"
   },
   {
+   "unit": "§1.2#r43",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
    "unit": "§1.2#r5",
    "verdict": "na",
    "temuan": [],
@@ -6075,7 +6205,7 @@
    "unit": "§1.2#r8",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r84",
@@ -6106,6 +6236,12 @@
    "verdict": "na",
    "temuan": [],
    "juri": "j13"
+  },
+  {
+   "unit": "§10#r6",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
   },
   {
    "unit": "§11#r1",
@@ -6232,6 +6368,18 @@
    "verdict": "na",
    "temuan": [],
    "juri": "j14"
+  },
+  {
+   "unit": "§2.2#b1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§3#p15",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
   },
   {
    "unit": "§4#p1",
@@ -6546,6 +6694,12 @@
    "juri": "j15"
   },
   {
+   "unit": "§4.2.4#p1",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
    "unit": "§4.2.5#p1",
    "verdict": "na",
    "temuan": [],
@@ -6588,10 +6742,36 @@
    "juri": "j15"
   },
   {
+   "unit": "§4.4#r12",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
+   "unit": "§4.6#p1",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-MYASSET-E2E-060-mobile-kartu-dan-toolbar-dep-borrow",
+     "langkah": [],
+     "catatan": "PRD §4.6: kartu tab Assigned memuat Name, badge Status (+1 badge kontekstual), `Assigned To`, `Assigned Date`, dan menu ⋯. E2E-060 hanya mencakup Task, Borrowed, dan History; tidak ada langkah di tab Assigned pada platform android.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "prd",
+     "spec": "TC-FA-MYASSET-E2E-061-mobile-borrow-an-asset-dep-borrow",
+     "langkah": [],
+     "catatan": "`Borrow Now` memerlukan online dan aksi cepat `[Request Extension]` mobile dimiliki `borrow.md` (§9.11, §4.6); di luar kit, tidak dihitung kurang."
+    }
+   ],
+   "juri": "j2"
+  },
+  {
    "unit": "§4.8#p1",
    "verdict": "na",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j2"
   },
   {
    "unit": "§5#r11",
@@ -6622,6 +6802,12 @@
    "verdict": "na",
    "temuan": [],
    "juri": "j15"
+  },
+  {
+   "unit": "§7.3#r4",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§9#p1",
@@ -6813,7 +6999,7 @@
    "unit": "§9.4.1#r2",
    "verdict": "na",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.1#r3",
@@ -6870,23 +7056,23 @@
    "juri": "j16"
   },
   {
-   "unit": "§9.4.2#r50",
+   "unit": "§9.4.2#r52",
    "verdict": "na",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r65",
+   "unit": "§9.4.2#r67",
    "verdict": "na",
    "temuan": [
     {
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "PRD bertentangan dengan dirinya: EC-MYA-28b (baris 1291) menyatakan aset tidak tercentang «tidak tampil di tab Borrowed» dan memakai «keterangan Not received», sedangkan MYASSET-LOGIC-01d (baris 102) memasukkan baris Waiting for Handover ke tab Borrowed (satu baris per aset) dan baris 699 menyatakan «tidak ada badge, caption, atau tooltip tambahan pada tabel» («Not received» hanya di Borrow Log/Assignment Log). Tidak ada aturan yang menetapkan sisi berlaku, jadi na (ditahan benar). Catatan: E2E-010 langkah 31-32 mengasersi baris tampil di tab Borrowed berstatus Waiting for Handover tanpa keterangan Not received (mengikuti LOGIC-01d dan baris 699); tidak diberi verdict karena unit ditahan."
+     "catatan": "PRD bertentangan dengan dirinya soal aset tidak tercentang: EC-MYA-28b (baris 1295) berbunyi «tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed», sedangkan MYASSET-LOGIC-01d (baris 102) menyatakan tab Borrowed memuat satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue, §4.1b menyatakan baris Waiting for Handover punya aksi Borrow Log dan Cancel Borrow (jadi tampil di Borrowed), dan baris 700 menyatakan keterangan `Not received` hanya tercatat di Borrow Log / Assignment Log tanpa badge, caption, atau tooltip pada tabel (bukan 'dengan keterangan' pada baris). Tidak ada aturan yang menetapkan sisi yang berlaku, jadi penahanan oleh plan benar. Catatan: BE-203 langkah 61-63 meminta data tab Borrowed lalu mengasersi baris aset tidak tercentang tetap Waiting for Handover, sehingga memihak pembacaan LOGIC-01d; E2E-010 langkah 32 memihak baris 700. Keduanya mengikuti PRD pada salah satu sisi; putuskan di PRD."
     }
    ],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.3#b12",
@@ -7006,7 +7192,7 @@
    "unit": "§9.4.4#r20",
    "verdict": "na",
    "temuan": [],
-   "juri": "j16"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.4#r21",
@@ -7117,256 +7303,274 @@
    "juri": "j17"
   },
   {
+   "unit": "§9.6#r7",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j8"
+  },
+  {
    "unit": "§9.7#p1",
    "verdict": "na",
    "temuan": [],
    "juri": "j17"
   },
   {
+   "unit": "§9.7#r17",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j9"
+  },
+  {
+   "unit": "§Changelog#p1",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
    "unit": "§Daftar Isi#b1",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b10",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b11",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b12",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b13",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b14",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b15",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b16",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b17",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b18",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b19",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b2",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b20",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b21",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b22",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b23",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b24",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b25",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b26",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b27",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b28",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b29",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b3",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b30",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b31",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b32",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b33",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b34",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b35",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b36",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b37",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b38",
    "verdict": "na",
    "temuan": [],
-   "juri": "j17"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b39",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b4",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b40",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b5",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b6",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b7",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b8",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#b9",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Daftar Isi#p1",
    "verdict": "na",
    "temuan": [],
-   "juri": "j18"
+   "juri": "j1"
   },
   {
    "unit": "§Dialog aksi baris (tab Borrowed dan Assigned)#p1",

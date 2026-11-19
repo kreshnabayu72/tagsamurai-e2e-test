@@ -173,11 +173,11 @@ coverage:
 77. Pindahkan fokus keyboard ke bantuan label `Destination scope`
 78. Verifikasi teks bantuan label `Destination scope` tersampaikan berbunyi `Which groups an asset can be transferred to.`
 79. Pindahkan fokus keyboard ke bantuan label `Change Cost Center with Group`
-80. Verifikasi teks bantuan label `Change Cost Center with Group` tersampaikan berbunyi `Whether the asset's cost center changes to the destination group's default cost center when received.`
+80. Verifikasi teks bantuan label `Change Cost Center with Group` tersampaikan berbunyi `Whether the asset's cost center changes to the destination group's default cost center when the transfer is completed.`
 81. Pindahkan fokus keyboard ke bantuan label `In-transit overdue after`
 82. Verifikasi teks bantuan label `In-transit overdue after` tersampaikan berbunyi `Days in transit before a transfer is flagged as overdue.`
 83. Pindahkan fokus keyboard ke bantuan label `Destination quota check`
-84. Verifikasi teks bantuan label `Destination quota check` tersampaikan berbunyi `Checks the destination group's asset quota when a transfer is submitted and received.`
+84. Verifikasi teks bantuan label `Destination quota check` tersampaikan berbunyi `Checks the destination group's asset quota when a transfer is submitted and when it is completed.`
 85. Pindahkan fokus keyboard ke bantuan label `Photo at start`
 86. Verifikasi teks bantuan label `Photo at start` tersampaikan berbunyi `Requires a camera photo at the first step of the transaction.`
 87. Pindahkan fokus keyboard ke bantuan label `Photo at end`

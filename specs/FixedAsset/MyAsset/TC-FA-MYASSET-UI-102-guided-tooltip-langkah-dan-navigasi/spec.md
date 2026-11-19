@@ -13,7 +13,7 @@ trace:
   "§4.7#r2": [10, 11, 12]
   "§4.7#r3": [15, 16, 17]
   "§4.7#r4": [20, 21, 22]
-  "§9.10#p1": [55, 56, 57, 61, 62, 64, 65]
+  "§9.10#p1": [55, 56, 57, 61, 62, 64, 65, 69, 72]
   EB-TBL-10: [2, 7, 9, 14, 19, 23, 24, 26, 31, 32, 36, 39, 44, 45, 49]
 anchor: [6, 47, 51, 53, 59]
 coverage:
@@ -28,14 +28,18 @@ coverage:
 - Komponen: Guided Tooltip My Asset
 - Data:
   - DU-102-1: plan dengan Borrowing level `Full` dan Assignment `Tersedia`, dengan flag Guided Tooltip `belum diset`.
-  - DU-102-2: plan dengan Borrowing level `Basic` dan Assignment `Tidak tersedia`, dengan flag Guided Tooltip `belum diset`.
-  - DU-102-3: plan dengan Borrowing level `None` dan Assignment `Tersedia`, dengan flag Guided Tooltip `belum diset`.
+  - DU-102-2: plan dengan Borrowing level `Basic` dan Assignment `Tidak tersedia`, tanpa penugasan berjalan, dengan flag Guided Tooltip `belum diset`.
+  - DU-102-3: plan dengan Borrowing level `None` dan Assignment `Tersedia`, tanpa pinjaman berjalan, dengan flag Guided Tooltip `belum diset`.
   - DU-102-4: plan dengan Borrowing level `Full` dan Assignment `Tersedia`, dengan flag Guided Tooltip `sudah diset`.
+  - DU-102-5: plan dengan Borrowing level `Basic` dan Assignment `Tidak tersedia`, dengan penugasan berjalan, dengan flag Guided Tooltip `belum diset`.
+  - DU-102-6: plan dengan Borrowing level `None` dan Assignment `Tersedia`, dengan pinjaman berjalan, dengan flag Guided Tooltip `belum diset`.
 - Kondisi:
   - K1: plan DU-102-1; keempat tab Task, Borrowed, Assigned, dan History tampil.
   - K2: plan DU-102-4; keempat tab Task, Borrowed, Assigned, dan History tampil.
-  - K3: plan DU-102-2; tab Task, Borrowed, dan History tampil.
-  - K4: plan DU-102-3; tab Task, Assigned, dan History tampil.
+  - K3: plan DU-102-2; tanpa penugasan berjalan; tab Task, Borrowed, dan History tampil.
+  - K4: plan DU-102-3; tanpa pinjaman berjalan; tab Task, Assigned, dan History tampil.
+  - K5: plan DU-102-5; penugasan berjalan; keempat tab Task, Borrowed, Assigned, dan History tampil.
+  - K6: plan DU-102-6; pinjaman berjalan; keempat tab Task, Borrowed, Assigned, dan History tampil.
 
 ## Test Steps
 
@@ -98,7 +102,7 @@ coverage:
 48. Ubah ukuran jendela browser
 49. Verifikasi Guided Tooltip tertutup
 
-### Langkah tab Assigned dilewati pada plan tanpa Assignment
+### Langkah tab Assigned dilewati pada plan tanpa Assignment dan tanpa penugasan berjalan
 50. Tampilkan Guided Tooltip My Asset dengan kondisi K3
 51. Verifikasi judul `Confirm what you received` tampil
 52. Klik `[Next]`
@@ -108,7 +112,7 @@ coverage:
 56. Verifikasi judul `See your assigned assets` tidak tampil
 57. Verifikasi tombol `[Done]` tampil
 
-### Langkah tab Borrowed dilewati pada plan tanpa Borrowing
+### Langkah tab Borrowed dilewati pada plan tanpa Borrowing dan tanpa pinjaman berjalan
 58. Tampilkan Guided Tooltip My Asset dengan kondisi K4
 59. Verifikasi judul `Confirm what you received` tampil
 60. Klik `[Next]`
@@ -117,3 +121,14 @@ coverage:
 63. Klik `[Next]`
 64. Verifikasi judul `Review past activity` tampil
 65. Verifikasi tombol `[Done]` tampil
+
+### Langkah tab Assigned tidak dilewati pada plan tanpa Assignment selama ada penugasan berjalan
+66. Tampilkan Guided Tooltip My Asset dengan kondisi K5
+67. Klik `[Next]`
+68. Klik `[Next]`
+69. Verifikasi judul `See your assigned assets` tampil
+
+### Langkah tab Borrowed tidak dilewati pada plan tanpa Borrowing selama ada pinjaman berjalan
+70. Tampilkan Guided Tooltip My Asset dengan kondisi K6
+71. Klik `[Next]`
+72. Verifikasi judul `Track your borrowed assets` tampil

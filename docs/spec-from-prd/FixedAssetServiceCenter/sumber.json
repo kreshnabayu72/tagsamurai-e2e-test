@@ -1,0 +1,10 @@
+{
+ "suite": "specs/FixedAsset/ServiceCenter",
+ "prd": "fixed-asset@49305e8",
+ "prdSha": "fa3e14a8792946d2",
+ "foundation": "foundation@cce9316-dirty",
+ "kontrakKomponen": "wangs-ui@1.0.0",
+ "kontrakSamaDenganPin": false,
+ "stage": "prd-harness@39b3dc7",
+ "ditutup": "2026-11-19T02:00:39Z"
+}

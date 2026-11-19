@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["FI-05", "T-MYA-01", "V-04", "§1.2#r68", "§1.2#r71", "§9.2#r27", "§9.4.2#r54", "§9.4.3#b9", "§9.6#r10"]
+sourceRules: ["FI-05", "T-MYA-01", "V-04", "§1.2#r68", "§1.2#r71", "§9.2#r27", "§9.4.2#r56", "§9.4.3#b9", "§9.6#r10"]
 smoke: []
 dependsOn: ["Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 trace:
@@ -15,7 +15,7 @@ trace:
   "§1.2#r68": [2, 3, 6, 12, 41, 48]
   "§1.2#r71": 29
   "§9.2#r27": [8, 10, 26, 28]
-  "§9.4.2#r54": [39, 46]
+  "§9.4.2#r56": [39, 46]
   "§9.4.3#b9": [3, 13, 41, 48]
   "§9.6#r10": [13, 16]
 owner: BE

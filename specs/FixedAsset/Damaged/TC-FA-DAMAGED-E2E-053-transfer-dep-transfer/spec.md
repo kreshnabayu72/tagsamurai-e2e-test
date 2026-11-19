@@ -1,6 +1,6 @@
 ---
 id: TC-FA-DAMAGED-E2E-053-transfer-dep-transfer
-title: "Aset Damaged dapat di-Transfer dengan peringatan; selama In Transfer Process Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit, dan record tetap di Active; saat Received record aktif ikut Group tujuan tanpa node dan Mark as Repaired aktif lagi; Report Damaged saat Receive membuat record Source Transfer receive"
+title: "Aset Damaged dapat di-Transfer dengan peringatan; selama In Transfer Process Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit, dan record tetap di Active; saat Completed record aktif ikut Group tujuan tanpa node dan Mark as Repaired aktif lagi; Report Damaged saat Receive membuat record Source Transfer receive"
 layer: ui-e2e
 priority: Critical
 caseType: Positive
@@ -30,7 +30,7 @@ coverage:
   web: automated
 ---
 
-# Aset Damaged dapat di-Transfer dengan peringatan; selama In Transfer Process Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit, dan record tetap di Active; saat Received record aktif ikut Group tujuan tanpa node dan Mark as Repaired aktif lagi; Report Damaged saat Receive membuat record Source Transfer receive
+# Aset Damaged dapat di-Transfer dengan peringatan; selama In Transfer Process Mark as Repaired dan Report Disposal Disabled, Report Missing Disabled selama In Transit, dan record tetap di Active; saat Completed record aktif ikut Group tujuan tanpa node dan Mark as Repaired aktif lagi; Report Damaged saat Receive membuat record Source Transfer receive
 
 ## Prerequisites
 - Aktor: Aktor Transfer pada Group `Head Office` dan Group `Branch Surabaya`, tanpa hak Update Manage asset & TAG pada Group aset, yang juga memegang role Read Only. Untuk kelompok terakhir: Aktor Damaged yang juga Aktor Transfer, role Total Control.
@@ -46,7 +46,7 @@ coverage:
 
 ## Test Steps
 
-### Transfer aset ber-record Damaged, aset ber-laporan scan, dan aset normal sampai Received
+### Transfer aset ber-record Damaged, aset ber-laporan scan, dan aset normal sampai Completed
 1. Buka form Transfer
 2. Pilih aset `Printer Epson L3250 {runId}` pada form Transfer
 3. Verifikasi peringatan `This asset is damaged.` tampil untuk aset `Printer Epson L3250 {runId}`
@@ -60,8 +60,8 @@ coverage:
 11. Isi What happened pada form Receive aset `Scanner Canon DR-C225 {runId}` dengan `Casing scanner retak selama pengiriman`
 12. Pilih Damaged Photo `scanner-casing-retak.jpg`
 13. Selesaikan Receive aset `Scanner Canon DR-C225 {runId}`
-14. Verifikasi Transfer aset `Printer Epson L3250 {runId}` berstatus `Received`
-15. Verifikasi Transfer aset `Router Cisco RV340 {runId}` berstatus `Received`
+14. Verifikasi Transfer aset `Printer Epson L3250 {runId}` berstatus `Completed`
+15. Verifikasi Transfer aset `Router Cisco RV340 {runId}` berstatus `Completed`
 
 ### Record aktif ikut Group tujuan tanpa node baru
 16. Buka halaman Assets, tab `Damaged`
@@ -84,7 +84,7 @@ coverage:
 31. Verifikasi baris detail Damaged Photo pada node itu memuat foto `scanner-casing-retak.jpg`
 32. Tutup dialog Damage Log
 
-### Aksi aset Damaged selama In Transfer Process dan setelah Received
+### Aksi aset Damaged selama In Transfer Process dan setelah Completed
 33. Masuk sebagai Total Control
 34. Buka form Transfer
 35. Pilih aset `Plotter HP DesignJet T630 {runId}` pada form Transfer
@@ -100,7 +100,7 @@ coverage:
 45. Verifikasi aksi `Report Missing` pada menu itu Disabled
 46. Tutup menu `⋯`
 47. Receive aset `Plotter HP DesignJet T630 {runId}` di Group tujuan `Branch Surabaya`
-48. Verifikasi Transfer aset `Plotter HP DesignJet T630 {runId}` berstatus `Received`
+48. Verifikasi Transfer aset `Plotter HP DesignJet T630 {runId}` berstatus `Completed`
 49. Buka halaman Assets, tab `Damaged`
 50. Ketik Search `Plotter HP DesignJet T630 {runId}`, tekan Enter
 51. Verifikasi baris aset `Plotter HP DesignJet T630 {runId}` tampil di sub-tab `Active` dengan Status `Damaged`

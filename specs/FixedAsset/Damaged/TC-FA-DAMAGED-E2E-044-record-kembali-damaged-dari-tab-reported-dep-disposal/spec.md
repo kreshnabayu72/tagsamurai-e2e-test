@@ -34,7 +34,7 @@ coverage:
   - DU-044-3: Input Decline Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki oleh teknisi internal`.
   - DU-044-4: Input Cancel Report atas `Monitor Dell P2422H {runId}`: Reason `Pelaporan dibatalkan karena monitor sudah diperbaiki`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

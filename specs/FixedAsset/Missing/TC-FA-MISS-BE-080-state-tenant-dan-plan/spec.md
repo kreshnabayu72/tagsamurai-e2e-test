@@ -137,7 +137,7 @@ trace:
 48. `Putri Handayani {runId}` menjalankan Scan Found Asset dengan TAG `RFID-080-0409` milik `Switch Cisco SG350 {runId}`
 49. Verifikasi scan itu ditolak karena tipe TAG `RFID` terkunci di Starter, dan hanya jalur `QR` atau `I Can't Scan the TAG` yang tersisa
 
-### Level Disposal Basic di Growth menerima Report Disposal, Bulk Report Disposal, dan Cancel Disposal Report
+### Level Disposal Full di Growth menerima Report Disposal, Bulk Report Disposal, dan Cancel Disposal Report
 50. `Rahmat Hidayat {runId}` mengirim Report Disposal atas record `Stabilizer Lampu Studio {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
 51. `Rahmat Hidayat {runId}` menjalankan Bulk Report Disposal atas `Lampu Sorot Panggung {runId}` dan `Speaker Aktif Yamaha {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
 52. `Rahmat Hidayat {runId}` menjalankan Cancel Disposal Report atas record `Mixer Audio Behringer {runId}`
