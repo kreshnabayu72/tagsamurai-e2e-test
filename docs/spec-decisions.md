@@ -2767,3 +2767,13 @@ Aturan:
 - **Keputusan:** mengikuti D-096. Untuk spec: menempel nilai desimal ke field bilangan bulat yang kosong membuat field tetap kosong, tanpa pesan validasi. Baris yang diketik (`1.5` → `15`, `5,2` → `52`) tetap seperti di spec.
 - **Diputuskan oleh:** Coordinator 2026-11-19.
 - **Status:** berlaku; script spec 030 baris `7.9` mengasersi field kosong (ac).
+
+## D-269 Aturan umum: Esc menutup lapisan paling atas lebih dulu; panel Filter yang terbuka di dalam dialog tertutup oleh Esc pertama (2026-11-19)
+
+- **Spec / langkah:** FixedAsset/SettingsAssetName `TC-FA-FAAM-E2E-147` langkah 28–32. Panel Filter dibuka di langkah 13 dan tidak ditutup sampai langkah 30 (Esc), lalu langkah 32 meminta modal Changelog tertutup.
+- **Spec meminta:** satu Esc menutup modal Changelog walaupun panel Filter di dalam modal masih terbuka.
+- **Kenyataannya:** Esc pertama menutup panel Filter (tombol `Filter`, `aria-expanded=true`), modal tetap terbuka. Esc kedua menutup modal. Klik backdrop tidak memengaruhinya (D-067; story Dialog wangs-ui 4b6e958ff: klik mask dengan `closeOnOverlayClick={false}` lalu satu Esc menutup dialog).
+- **Karena:** Esc menutup lapisan yang paling atas dulu. Begitu juga di Radix (DismissableLayer), MUI (Modal stack), React Aria (useOverlay), dan Mantine. Ini perilaku komponen Wangs UI (D-096).
+- **Keputusan:** Untuk spec: kalau panel, popover, atau dropdown masih terbuka di dalam dialog, setiap Esc hanya menutup satu lapisan. Script menutup lapisan yang masih terbuka dengan Esc terlebih dulu, lalu menjalankan Esc spec yang menutup dialog. Asersi dialog tertutup tetap seperti di spec.
+- **Diputuskan oleh:** Coordinator 2026-11-19.
+- **Status:** berlaku; script FAAM-147 (fa).
