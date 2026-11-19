@@ -2819,3 +2819,15 @@ Aturan:
   - Tanpa perubahan app atau mock.
 - **Diputuskan oleh:** Coordinator 2026-11-19 (gap claim `gap-claims/fa-coordinator-changelog-csv-date.md`).
 - **Status:** berlaku; script CAID-059, LBL-086 (fa).
+
+## D-273 Aturan umum: sel kosong di berkas Download ditulis `-`, mengikuti foundation (2026-11-19)
+
+- **Spec / langkah:** FixedAsset/SettingsCustomAssetId `TC-FA-CAID-E2E-059`, FixedAsset/AssetLabeling `TC-FA-LBL-E2E-086` dan `TC-FA-LBL-E2E-075`, sel kosong di berkas Change Log (Old Value baris Create, Field). Berlaku juga untuk spec lain yang mengharapkan sel kosong (`""`) di berkas CSV/XLSX hasil Download.
+- **Spec meminta:** sel tanpa nilai ditulis kosong (`""`).
+- **Dasar keputusan: foundation.** Foundation `process/prd-process/prd-conventions.md` §9.9 Download, ketentuan data yang diexport: "Empty value (`—`/`null` di tabel) → sel export teks `-` (hyphen tunggal), bukan blank/kosong, bukan `—` (em dash UI), dan bukan teks `null`". Tidak ada override tercatat. Spec yang meminta sel kosong bertentangan dengan foundation, jadi spec yang salah. D-210 sudah menyebut sel kosong `-`; entri ini menjadikannya aturan umum.
+- **Aplikasi:** sudah sesuai. Mock log menulis `EXPORT_EMPTY_VALUE` (`-`) (`packages/infrastructure/log/LogMockDataSource.ts`, `toExportedChangeLog` dan `toExportedSession`). Bila berkas dari backend menulis sel kosong, itu cacat backend (`be-bug`).
+- **Keputusan:**
+  - Untuk spec: nilai kosong di berkas Download ditulis `-`. Script mengasersi `-`.
+  - Tanpa perubahan app atau mock.
+- **Diputuskan oleh:** Coordinator 2026-11-19 (gap claim `gap-claims/fa-coordinator-changelog-csv-empty.md`).
+- **Status:** berlaku; script CAID-059, LBL-086, LBL-075 (fa).
