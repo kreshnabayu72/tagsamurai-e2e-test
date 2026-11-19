@@ -2794,3 +2794,19 @@ Aturan:
   - Tanpa issue BE. Koreksi TC diteruskan ke pemilik TC.
 - **Diputuskan oleh:** Coordinator 2026-11-19.
 - **Status:** berlaku; script GSET 050/143 (gs). BT-GS-GSET-5 ditutup bersamaan.
+
+## D-271 Aturan umum: toast error menetap sampai ditutup dan punya tombol tutup (2026-11-19)
+
+- **Spec / langkah:** FixedAsset/ActivityLog `TC-FA-AL-E2E-004` dan `078`, langkah toast "download gagal". Berlaku juga untuk spec lain yang meminta toast error hilang sendiri atau tanpa tombol tutup.
+- **Spec meminta:** toast download gagal tanpa tombol tutup, hilang sendiri.
+- **Kenyataannya:** toast error di aplikasi memakai `sticky: true`: menetap sampai ditutup dan memiliki tombol tutup (`packages/core/ui/components/log/useLogTable.ts:119-123`, sama di log GS/AC).
+- **Karena:**
+  - D-096: ini tampilan UI, bukan data atau fungsi, jadi aplikasi yang menang.
+  - Pola proyek: toast Error selalu `sticky: true` (binding `ui-patterns` toast). Semua modul memakainya, sehingga perilakunya seragam.
+  - Toast Wangs UI menyediakan opsi `sticky`. Design system lain juga punya mode menetap untuk notifikasi penting: PrimeReact `sticky`, Chakra `duration: null`, Mantine `autoClose: false`.
+- **Keputusan:**
+  - Untuk spec: toast error (severity danger) menetap sampai ditutup dan memiliki tombol tutup. Script mengasersi teks toast, lalu menutupnya lewat tombol tutup.
+  - Toast sukses/info tetap mengikuti spec.
+  - Tanpa perubahan app.
+- **Diputuskan oleh:** Coordinator 2026-11-19.
+- **Status:** berlaku; script FA AL 004/078 (fal).
