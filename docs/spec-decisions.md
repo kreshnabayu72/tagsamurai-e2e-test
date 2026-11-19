@@ -2801,6 +2801,7 @@ Aturan:
 - **Spec meminta:** toast download gagal tanpa tombol tutup, hilang sendiri.
 - **Kenyataannya:** toast error di aplikasi memakai `sticky: true`: menetap sampai ditutup dan memiliki tombol tutup (`packages/core/ui/components/log/useLogTable.ts:119-123`, sama di log GS/AC).
 - **Karena:**
+  - Foundation `functions/toast-copy.md` Aturan Terkunci #12 (dan §7 Auto-dismiss): Success hilang setelah 4 detik; Error menetap sampai di-dismiss manual, berlaku seluruh platform dan tidak boleh di-override PRD. Spec yang meminta toast error hilang sendiri bertentangan dengan foundation. Aturan #13 (toast tanpa tombol aksi) tidak melarang tombol tutup, karena tombol tutup adalah jalan dismiss manual itu.
   - D-096: ini tampilan UI, bukan data atau fungsi, jadi aplikasi yang menang.
   - Pola proyek: toast Error selalu `sticky: true` (binding `ui-patterns` toast). Semua modul memakainya, sehingga perilakunya seragam.
   - Toast Wangs UI menyediakan opsi `sticky`. Design system lain juga punya mode menetap untuk notifikasi penting: PrimeReact `sticky`, Chakra `duration: null`, Mantine `autoClose: false`.
