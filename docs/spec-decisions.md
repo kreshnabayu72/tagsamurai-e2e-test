@@ -2843,3 +2843,14 @@ Aturan:
   - Client Expired yang mendapat `plan_required` alih-alih akses baca adalah cacat backend (`import-service#25`, BT-GS-IMP-27), bukan alasan mengubah aturan ini.
 - **Diputuskan oleh:** Coordinator 2026-11-19 (dari sesi gs, label kerja `D-IMP-PLAN`).
 - **Status:** berlaku; hook `beforeEach` Import dan spec di atas (gs) merujuk D-274.
+
+## D-275 Aturan umum: kolom Row # Staging Table Import dinomori ulang padat setelah baris dihapus atau di-commit (2026-11-20)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-206` langkah 46 (TC-GS-IMPORT-943 Expected c).
+- **Spec meminta:** baris pertama yang tersisa setelah penghapusan tetap `Row # 4`. Notes spec 206 (Temuan) mencatat TC tidak menjelaskan penomoran ulangnya.
+- **Dasar keputusan: spec lain di suite yang sama (mayoritas).** Spec Import lain menegaskan penomoran ulang padat: `TC-GS-IMPORT-E2E-108` (TC-GS-IMPORT-260 "Remove satu baris dengan penomoran ulang"), `TC-GS-IMPORT-E2E-135` (TC-GS-IMPORT-833/834 "Penomoran ulang padat setelah commit"), `TC-GS-IMPORT-E2E-159` (TC-GS-IMPORT-840), `TC-GS-IMPORT-E2E-190` (langkah 10), `TC-GS-IMPORT-E2E-142` langkah 23, `TC-GS-IMPORT-E2E-164` langkah 8. Satu spec yang menyimpan nomor lama tanpa aturan tertulis tidak mengalahkan aturan yang dinyatakan berulang.
+- **Keputusan:**
+  - Untuk spec: Row # pada Staging Table adalah posisi baris di draft, dinomori ulang mulai 1 tanpa celah setelah Remove, Delete Rows, atau commit sebagian. Spec tidak menulis nomor lama baris yang tersisa.
+  - Script 206 langkah 46: menegaskan Row # `1` untuk satu baris yang tersisa, beserta isi dan status baris itu.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, label kerja `D-draft-IMP-ROWNO-1`).
+- **Status:** berlaku; script 206 (gs) merujuk D-275.
