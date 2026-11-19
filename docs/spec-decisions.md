@@ -2854,3 +2854,15 @@ Aturan:
   - Script 206 langkah 46: menegaskan Row # `1` untuk satu baris yang tersisa, beserta isi dan status baris itu.
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, label kerja `D-draft-IMP-ROWNO-1`).
 - **Status:** berlaku; script 206 (gs) merujuk D-275.
+
+## D-276 Aturan umum: date picker Extend period di dialog Reactivate tampil setelah opsi Extend dipilih (2026-11-20)
+
+- **Spec / langkah:** GlobalSettings/User `TC-GS-USER-E2E-048` langkah 12 (TC-GS-USER-252) "Verifikasi Option A memuat date picker".
+- **Spec meminta:** date picker sudah terlihat di dalam Option A `Extend period` sejak dialog dibuka.
+- **App:** dialog membuka dengan radio `Extend period` / `Make permanent`, Cancel dan Reactivate (disabled); date picker "Select date" baru tampil setelah `Extend period` dipilih.
+- **Dasar keputusan: D-096.** Kapan sebuah field di dalam opsi tampil adalah tampilan UI, bukan data atau fungsi; app menang. Fungsi yang diuji spec tetap: Extend butuh tanggal (TC-GS-USER-1039), hari ini dan kemarin ditolak (256/257), Make permanent tanpa tanggal.
+- **Keputusan:**
+  - Untuk spec: field turunan sebuah opsi radio boleh tampil hanya setelah opsi itu dipilih; spec menulis "pilih opsi, lalu verifikasi field-nya", bukan field terlihat sebelum opsi dipilih.
+  - Script 048 langkah 12: memilih `Extend period` lalu menegaskan date picker tampil, setelah langkah 15 (Reactivate disabled) diperiksa pada keadaan awal.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, gap-claims/gs-rerun2-20261120.md).
+- **Status:** berlaku; script 048 (gs) merujuk D-276.
