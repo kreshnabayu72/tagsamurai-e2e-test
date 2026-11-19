@@ -4,13 +4,13 @@ title: "Titik masuk Borrow dan Add to Borrow Draft dari Asset List dan Quick Act
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#p1", "§4.2.13#b1", "§4.2.13#b2"]
 smoke: []
 dependsOn: ["Asset List: aksi Borrow dan Add to Borrow Draft"]
 trace:
   "§4.1#p1": [6, 16, 25, 41, 46]
-  "§4.2.13#b1": [6, 7, 16, 17, 25, 26, 34, 37]
+  "§4.2.13#b1": [6, 7, 16, 17, 25, 26, 34, 37, 52, 56, 57, 61, 64]
   "§4.2.13#b2": [43, 46]
 anchor: []
 coverage:
@@ -30,6 +30,12 @@ coverage:
   - DU-040-5: karyawan `Rina Wulandari {runId}`, Status `Active`, Eligibility `Can borrow`, tanpa Draft yang bisa diedit Aktor.
   - DU-040-6: karyawan `Dewi Lestari {runId}`, Status `Active`, Eligibility `Can borrow`, punya satu Draft yang bisa diedit Aktor (DU-040-7).
   - DU-040-7: Draft Borrower `Dewi Lestari {runId}`, Group `Head Office`, Total Asset `1`, berisi aset DU-040-3, Modified By `Agus Pratama {runId}`.
+  - DU-040-8: Category `Peralatan Berat {runId}` dengan Max assets per borrower `2`; Max assets per borrower Company default bernilai `5`, dan nilai Category menggantikan Company default untuk aset di Category itu.
+  - DU-040-9: aset `Excavator Mini Kubota {runId}`, Group `Head Office`, Category `Peralatan Berat {runId}`, Custody `Available`, Allow Borrow `Allow`.
+  - DU-040-10: karyawan `Teguh Santoso {runId}`, Home Group `Head Office`, Status `Active`, Active Borrows `2 assets` (DU-040-11), alasan Blocked untuk aset di Category berbatas `Teguh Santoso {runId} can borrow up to 2 assets at a time.`
+  - DU-040-11: BRW `Borrowed` Group `Head Office`, Borrower `Teguh Santoso {runId}`, berisi aset `Genset Silent Perkins {runId}` dan `Kompresor Angin Ingersoll {runId}`, keduanya Category `Peralatan Berat {runId}`.
+  - DU-040-12: aset `Kursi Rapat Ergotec {runId}`, Group `Head Office`, Custody `Available`, Allow Borrow `Allow`, Allowed borrower `Same Group only`.
+  - DU-040-13: karyawan `Bagas Prakoso {runId}`, Home Group `Branch Surabaya`, Status `Active`, Eligibility `Can borrow`.
 
 ## Test Steps
 
@@ -91,3 +97,25 @@ coverage:
 45. Klik `Borrow`
 46. Verifikasi form `Borrow Request` tampil dengan tombol `[Select Borrower]` dan keterangan `No assets added` pada tabel aset
 47. Klik `[Cancel]` pada form `Borrow Request` yang belum diubah pengguna
+
+### Max assets dinilai terhadap aset terpilih pada dialog Select Borrower
+48. Buka halaman Asset List lewat sidebar `Assets` > `All`
+49. Ketik Search `{runId}`, tekan Enter
+50. Klik menu ⋯ pada baris aset DU-040-1
+51. Klik `Borrow`
+52. Verifikasi Borrower `Teguh Santoso {runId}` pada dialog Select Borrower berstatus `Can borrow` karena aset terpilih tidak berada di Category berbatas
+53. Tutup dialog Select Borrower
+54. Klik menu ⋯ pada baris aset DU-040-9
+55. Klik `Borrow`
+56. Verifikasi Borrower `Teguh Santoso {runId}` pada dialog Select Borrower berstatus `Blocked` dan tidak dapat dipilih karena 2 aset aktifnya ditambah aset terpilih melebihi Max assets per borrower Category `Peralatan Berat {runId}` yaitu `2`
+57. Verifikasi alasan `Teguh Santoso {runId} can borrow up to 2 assets at a time.` tersampaikan pada Borrower `Teguh Santoso {runId}`
+58. Tutup dialog Select Borrower
+
+### Allowed borrower dinilai pada aset di form, bukan di dialog Select Borrower
+59. Klik menu ⋯ pada baris aset DU-040-12
+60. Klik `Borrow`
+61. Verifikasi Borrower `Bagas Prakoso {runId}` pada dialog Select Borrower berstatus `Can borrow` walau Allowed borrower aset `Same Group only` tidak terpenuhi, karena Allowed borrower tidak dinilai di dialog
+62. Pilih Borrower `Bagas Prakoso {runId}` pada dialog Select Borrower
+63. Klik `[Select]`
+64. Verifikasi baris aset `Kursi Rapat Ergotec {runId}` pada form `Borrow Request` ditandai tidak layak dengan caption `This asset can no longer be borrowed.` karena Borrower `Bagas Prakoso {runId}` bukan dari Group aset
+65. Klik `[Cancel]` pada form `Borrow Request` yang belum diubah pengguna

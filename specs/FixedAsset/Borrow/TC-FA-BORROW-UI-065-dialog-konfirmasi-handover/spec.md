@@ -4,12 +4,12 @@ title: "Popup Waiting for Confirmation dan dialog Confirm Receipt: countdown, ch
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-BRW-19", "D-BRW-20", "D-BRW-21", "DM-BRW-14", "DM-BRW-15", "DO-BRW-01", "DO-BRW-02", "DO-BRW-03", "DO-BRW-04", "DO-BRW-05", "DO-BRW-06", "DO-BRW-07", "DO-BRW-08", "DO-BRW-09", "DO-BRW-10", "FLD-BRW-08", "FLD-BRW-27", "FLD-BRW-28", "V-BRW-32", "V-BRW-33", "§4.3#r8", "§9.5#r11", "EB-ERR-1@handover"]
 smoke: []
 dependsOn: []
 trace:
-  "D-BRW-19": [2, 3, 4, 6, 7, 8, 9, 11, 13, 17, 18, 19, 21, 23, 25, 27, 29, 30, 31, 33, 34, 36, 37, 39]
+  "D-BRW-19": [2, 3, 4, 6, 7, 8, 9, 11, 13, 17, 18, 19, 21, 23, 25, 27, 29, 30, 31, 33, 34, 36, 37, 39, 90, 93]
   "D-BRW-20": [50, 51, 52, 53, 54, 55, 56, 60, 61, 64]
   "D-BRW-21": [66, 67, 68, 69, 70, 73]
   "DM-BRW-14": [2, 15]
@@ -49,6 +49,7 @@ coverage:
   - DU-065-3: aset di sesi Handover, Name `Printer Epson L3110 - 1`, Due Date `10/12/2026`.
   - DU-065-4: aset di sesi Handover, Name `Kamera Canon EOS 200D`, Due Date `15/12/2026`.
   - DU-065-5: aset di sesi Handover, Name `Speaker JBL PartyBox`, Due Date `15/12/2026`.
+  - DU-065-6: 7 aset di sesi Handover, Name `Laptop Lenovo ThinkPad E14 - {n}` (n = 1 sampai 7), Due Date `10/12/2026`.
   - Nilai turunan: pesan aset tidak diterima untuk dua aset, `2 assets not received.`, dari [Not Received] bernilai dua (DU-065-4 dan DU-065-5).
 - Kondisi:
   - K1: Date Format bernilai `DD/MM/YYYY`, popup dibuka dari `[Request Confirmation]`, Borrower DU-065-1, jendela konfirmasi 15 menit baru dimulai, daftar sesi berisi DU-065-2 dan DU-065-3 berstatus `Waiting`.
@@ -59,12 +60,13 @@ coverage:
   - K6: popup hasil, Borrower DU-065-1 mengonfirmasi satu aset, DU-065-2, dan satu aset tidak diterima, DU-065-3.
   - K7: popup hasil, Borrower DU-065-1 mengonfirmasi dua aset, DU-065-2 dan DU-065-3, dan dua aset tidak diterima, DU-065-4 dan DU-065-5.
   - K8: popup hasil karena jendela konfirmasi habis tanpa konfirmasi dari Borrower DU-065-1.
-  - K9: popup dibuka lagi lewat `Hand Over` sesudah tertutup tanpa sengaja, sesi yang sama masih berjalan, Borrower DU-065-1, daftar sesi berisi DU-065-2 berstatus `Confirmed` dan DU-065-3 berstatus `Waiting`.
+  - K9: popup dibuka lagi lewat `Hand Over` sesudah tertutup tanpa sengaja, sesi yang sama masih berjalan dengan sisa jendela konfirmasi 8 menit, Borrower DU-065-1, daftar sesi berisi DU-065-2 berstatus `Confirmed` dan DU-065-3 berstatus `Waiting`.
   - K10: popup menunggu, Borrower DU-065-1, daftar sesi berisi DU-065-2 dan DU-065-3, konfirmasi Borrower lewat Accept masuk lebih dulu sebelum Confirm on This Device.
   - K11: dialog Confirm Receipt Handover dibuka dari `[Confirm on This Device]`, Date Format bernilai `DD/MM/YYYY`, Borrower DU-065-1, daftar sesi berisi DU-065-2, DU-065-3, dan DU-065-4.
   - K12: dialog Confirm Receipt self-service dibuka dari `[Borrow Now]` atas nama Borrower tanpa akun DU-065-1.
   - K13: dialog Confirm Receipt Handover dengan DU-065-2 dan DU-065-3, konfirmasi pertama dijawab error server, konfirmasi berikutnya berhasil.
   - K14: dialog Confirm Receipt Handover dengan DU-065-2 dan DU-065-3, konfirmasi pertama tidak mendapat respons karena koneksi putus, konfirmasi berikutnya berhasil.
+  - K15: popup menunggu, Borrower DU-065-1, daftar sesi berisi seluruh DU-065-6.
 
 ## Test Steps
 
@@ -126,7 +128,7 @@ coverage:
 ### Popup dibuka lagi pada sesi yang sama
 40. Tampilkan Popup Waiting for Confirmation dengan kondisi K9
 41. Verifikasi baris `Laptop Dell Latitude 5420 - 8` menampilkan badge `Confirmed`, sehingga popup adalah sesi yang sama, bukan sesi baru
-42. Verifikasi countdown menampilkan sisa jendela sesi yang sama, bukan jendela penuh 15 menit
+42. Verifikasi countdown menampilkan sisa jendela konfirmasi 8 menit dari sesi yang sama, bukan jendela penuh 15 menit
 
 ### Konfirmasi pertama yang masuk berlaku
 43. Tampilkan Popup Waiting for Confirmation dengan kondisi K10
@@ -185,3 +187,12 @@ coverage:
 86. Verifikasi dialog Confirm Receipt tetap terbuka dan tombol `[Confirm]` aktif lagi setelah gangguan koneksi
 87. Klik `[Confirm]`
 88. Verifikasi toast `Success, 2 assets have been handed over.` tampil sesudah koneksi pulih
+
+### Daftar aset sesi yang panjang dapat di-scroll
+89. Tampilkan Popup Waiting for Confirmation dengan kondisi K15
+90. Verifikasi daftar aset sesi memuat 7 baris `Laptop Lenovo ThinkPad E14` dengan tinggi daftar maksimal 5 baris, sehingga baris lainnya terjangkau lewat scroll
+
+### Done pada hasil konfirmasi menutup popup
+91. Tampilkan Popup Waiting for Confirmation dengan kondisi K6
+92. Klik `[Done]`
+93. Verifikasi popup `Waiting for Confirmation` tertutup sesudah `[Done]`

@@ -4,7 +4,7 @@ title: "Breadcrumb tiap halaman Borrow"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.2#p2", "§4.2#p3", "§4.2#r1", "§4.2#r2", "§4.2#r3", "§4.2#r4", "§4.2#r5", "§4.2#r6", "§4.2#r7", "§4.2#r8", "§4.2#r9", "§4.2#r10", "§4.2#r11", "§4.2#r12", "§4.2#r13", "§4.2.1#p1", "§4.2.3#p1", "§4.2.9#p2", "§4.2.10#p2", "§4.2.10#r1", "§4.2.10#r2", "§4.2.10#r3", "§4.2.10#r4", "EB-TBL-11"]
 smoke: []
 dependsOn: []
@@ -25,7 +25,7 @@ trace:
   "§4.2#r12": 74
   "§4.2#r13": [76, 78, 80]
   "§4.2.1#p1": [2, 3, 4, 6, 7, 9, 10, 12, 14, 15]
-  "§4.2.3#p1": [17, 18, 20, 22]
+  "§4.2.3#p1": [17, 18, 20, 22, 88, 89, 90]
   "§4.2.9#p2": 72
   "§4.2.10#p2": [65, 66, 67, 69, 70]
   "§4.2.10#r1": 65
@@ -137,7 +137,7 @@ coverage:
 ### Breadcrumb Borrow Request baru
 16. Tampilkan Breadcrumb Borrow dengan kondisi K6
 17. Verifikasi breadcrumb menampilkan `Transactions > Borrow > Draft > Borrow Request`
-18. Verifikasi judul `Borrow Request` tampil pada card form
+18. Verifikasi judul `Borrow Request` tampil
 
 ### Breadcrumb Edit draft
 19. Tampilkan Breadcrumb Borrow dengan kondisi K7
@@ -266,3 +266,9 @@ coverage:
 84. Verifikasi segmen `Approvals` pertama pada breadcrumb tidak dapat diklik
 85. Verifikasi segmen `Borrow` pada breadcrumb dapat diklik
 86. Verifikasi segmen `Active` terakhir pada breadcrumb tidak dapat diklik
+
+### Segmen Draft pada breadcrumb Borrow Request menuju tab Drafts
+87. Tampilkan Breadcrumb Borrow dengan kondisi K6
+88. Verifikasi segmen `Draft` pada breadcrumb dapat diklik dan mengarah ke tab Drafts
+89. Verifikasi judul `Borrow Request` tampil
+90. Verifikasi form tidak menampilkan badge Draft, judul `Borrow details`, dan judul `Assets`

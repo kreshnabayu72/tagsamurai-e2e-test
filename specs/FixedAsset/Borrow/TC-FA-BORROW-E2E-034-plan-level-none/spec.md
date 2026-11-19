@@ -4,17 +4,17 @@ title: "Level Feature Suite Borrowing None menampilkan menu disabled, menolak UR
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.11#r21", "§9.11#r22", "§9.11#r23", "§9.11#r24", "§9.11#r25", "§9.11#r26", "§9.11#r27", "§9.11#r28", "§9.11#r29", "§9.11#r30", "§9.11#r31", "§9.11#r32", "§9.11#r33", "§9.11#r34", "§9.11#r35"]
 smoke: []
 dependsOn: []
 trace:
   "§9.11#r21": [8]
   "§9.11#r22": [9, 12]
-  "§9.11#r23": [17, 18, 19, 22]
+  "§9.11#r23": [17, 18, 19, 22, 78, 79, 80, 84]
   "§9.11#r24": [27, 28]
   "§9.11#r25": [39]
-  "§9.11#r26": [61, 62, 63, 64]
+  "§9.11#r26": [61, 62, 63, 64, 71]
   "§9.11#r27": [22]
   "§9.11#r28": [33]
   "§9.11#r29": [42, 43]
@@ -24,7 +24,7 @@ trace:
   "§9.11#r33": [57]
   "§9.11#r34": [58, 59]
   "§9.11#r35": [24, 26, 59]
-anchor: [11, 16, 36, 38, 41, 45, 48]
+anchor: [11, 16, 36, 38, 41, 45, 48, 70, 77]
 coverage:
   web: automated
 ---
@@ -44,10 +44,13 @@ coverage:
   - DU-034-7: BRW berstatus Waiting for Handover, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Laptop Dell Latitude 5420 {runId}`, Duration `3 days`, Purpose `Kunjungan klien`, Requested By `Rina Wulandari {runId}`.
   - DU-034-8: BRW berstatus Borrowed, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Toyota Avanza {runId}`, Duration `5 days`, Purpose `Survei lokasi`, Requested By `Rina Wulandari {runId}`.
   - DU-034-9: BRW berstatus Overdue (Due date terlewat), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Excavator Komatsu PC200 {runId}`, Duration `6 days`, Purpose `Pekerjaan galian`, Requested By `Rina Wulandari {runId}`.
+  - DU-034-10: Karyawan `Dewi Lestari {runId}`, aktif, Home Group `Head Office {runId}`, tanpa pinjaman berjalan dan tanpa Assignment.
+  - DU-034-11: BRW berstatus Borrowed, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Forklift Toyota 8FD {runId}`, Duration `4 days`, Purpose `Angkut material`, Requested By `Rina Wulandari {runId}`.
 - Kondisi:
   - Spec ini memakai entitas khusus `Nusantara Teknik {runId}` yang tidak dipakai spec lain.
   - Level Feature Suite Borrowing entitas itu bernilai `Full` sampai langkah 6 dan bernilai `None` sesudahnya.
-  - Akun `Rudi Hartono {runId}` dan `Rina Wulandari {runId}` aktif dan kredensialnya disediakan fase 2.
+  - Level Feature Suite Assignment entitas itu bernilai `None`.
+  - Akun `Rudi Hartono {runId}`, `Rina Wulandari {runId}`, dan `Dewi Lestari {runId}` aktif dan kredensialnya disediakan fase 2.
 
 ## Test Steps
 
@@ -141,3 +144,24 @@ coverage:
 65. Masuk sebagai pengaju `Rina Wulandari {runId}`
 66. Buka Notification Center
 67. Verifikasi jumlah notifikasi `borrow_auto_canceled` bertambah satu dibanding baseline pengaju
+
+### Borrower tanpa pinjaman berjalan tidak melihat My Asset
+68. Masuk sebagai Borrower `Dewi Lestari {runId}`
+69. Buka menu Profile
+70. Verifikasi menu Profile terbuka
+71. Verifikasi item `My Asset` tidak tampil di menu Profile
+
+### Bulk Action tabel aset tanpa Borrow dan Mark as Returned hanya pada aset Borrowed
+72. Masuk sebagai Total Control `Maya Putri {runId}`
+73. Klik menu `Assets > All`
+74. Ketik Search `{runId}`, tekan Enter
+75. Centang baris aset `Laptop Lenovo T14 {runId}`
+76. Klik `Bulk Action`
+77. Verifikasi menu bulk terbuka
+78. Verifikasi aksi `Borrow` tidak tampil pada menu bulk di level None
+79. Verifikasi aksi `Add to Borrow Draft` tidak tampil pada menu bulk di level None
+80. Verifikasi aksi `Mark as Returned` tidak tampil pada menu bulk untuk aset yang tidak Borrowed
+81. Hilangkan centang baris aset `Laptop Lenovo T14 {runId}`
+82. Centang baris aset `Forklift Toyota 8FD {runId}`
+83. Klik `Bulk Action`
+84. Verifikasi aksi `Mark as Returned` tampil pada menu bulk untuk aset yang Borrowed

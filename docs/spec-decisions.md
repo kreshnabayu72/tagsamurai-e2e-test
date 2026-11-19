@@ -1470,7 +1470,7 @@ Aturan:
 - **Karena:** e2e hanya membangun keadaan yang benar-benar bisa terjadi; ini cacat spec, bukan wrapper-gap atau library-gap.
 - **Keputusan:** blok itu di luar e2e, tanpa langkah dan tanpa gap; tag `@library-gap` dan `@wrapper-gap` dihapus.
 - **Diputuskan oleh:** Wangs-UI Coordinator, 2026-11-09 (dicatat 2026-11-12, D-draft-HHR-INJECT).
-- **Diterapkan di:** `TC-GS-HHR-E2E-029`.
+- **Diterapkan di:** `TC-GS-HHR-E2E-029`; FixedAsset/SettingsAssetName `TC-FA-FAAM-E2E-052` (TC-FA-FAAM-92, -137) dan `TC-FA-FAAM-E2E-088` (TC-FA-FAAM-189, -684): emoji disuntik ke DOM Asset Name / model (2026-11-19).
 - **Sumber:** repo aplikasi `plans/global-settings-hardware/decisions.md` (blok D-draft-HHR-INJECT).
 
 ## D-150 Pesan validasi Custom Field memakai nama field seperti dikonfigurasi (2026-11-12)
@@ -2751,3 +2751,19 @@ Aturan:
 - **Untuk spec:** nilai gambar kosong di tabel ditulis sebagai "—".
 - **Diputuskan oleh:** Coordinator 2026-11-18.
 - **Status:** berlaku, menunggu rilis wangs-ui.
+
+## D-267 Bulk Remove User di Role: semua baris ditolak 403 `target_tier` tampil toast gagal PRD T-10 (2026-11-18)
+
+- **Spec / langkah:** GlobalSettings/Role `TC-GS-ROLE-E2E-106` (High, Negative), TC-299 step 54.
+- **Karena:** PRD T-10 (prd-copy L2013) memberi toast `Error, failed to remove user.` untuk Remove User yang gagal. Saat semua baris bulk ditolak, BE menjawab 403 `{"reason":"target_tier"}`; app memetakan setiap 403 ke teks izin `You don't have permission to edit.` (perbaikan R104-1 untuk Remove satu baris). Kasus parsial (TC-296) sudah 200 dengan `failedUserIds`. Bukti: run local-20261118-175202-48302, slot 3; `gap-claims/gs-role-106-bulk-remove-403.md`.
+- **Keputusan:** FE: Remove User bulk yang dijawab 403 `target_tier` menampilkan T-10; Remove satu baris tetap teks izin (R104-1). Spec tetap.
+- **Diputuskan oleh:** Coordinator 2026-11-18.
+- **Status:** berlaku, perbaikan di modul GlobalSettings Role (gs).
+
+## D-268 Aturan umum: tempel angka desimal ke NumberInput bilangan bulat diabaikan, field tidak berubah (2026-11-19)
+
+- **Spec / langkah:** AdminConsole/LicenseAllocationLicense `TC-AC-LA-E2E-030` (High, Negative), TC-AC-LA-114 langkah 8–10, baris `7.9` "tempel dari clipboard" → `79`.
+- **Karena:** NumberInput Wangs UI bilangan bulat (tanpa digit pecahan) menolak seluruh teks tempelan yang punya digit pecahan, sehingga field tetap seperti sebelum ditempel (Behavior Contract NumberInput sejak rc.320: "pasted text with too many fraction digits is ignored"). Design system lain juga tidak menghasilkan `79`: React Aria NumberField menolak seluruh sisipan yang tidak valid; Mantine (react-number-format, `decimalScale: 0`) memotong jadi `7`; Ant InputNumber menerima `7.9` lalu membulatkannya jadi `8` saat blur. Menyaring digit bisa diam-diam mengubah 7.9 menjadi 79, jadi berbahaya untuk kuantitas. Bukti: run local-20261119-030041-13018 (slot 2), temuan 19 di `plans/admin-console-license-allocation-license/integration-findings.md`.
+- **Keputusan:** mengikuti D-096. Untuk spec: menempel nilai desimal ke field bilangan bulat yang kosong membuat field tetap kosong, tanpa pesan validasi. Baris yang diketik (`1.5` → `15`, `5,2` → `52`) tetap seperti di spec.
+- **Diputuskan oleh:** Coordinator 2026-11-19.
+- **Status:** berlaku; script spec 030 baris `7.9` mengasersi field kosong (ac).

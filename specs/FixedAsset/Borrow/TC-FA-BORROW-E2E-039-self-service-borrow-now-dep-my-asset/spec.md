@@ -4,21 +4,21 @@ title: "Self-service Borrow Now dari My Asset mobile tanpa approval dan tanpa Wa
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-85", "FI-BRW-86", "FLD-BRW-06", "§4.2.12#p1", "§4.2.12#p2", "§4.2.12#p3", "§4.2.12#b1", "§4.2.12#b2", "§4.6#b6"]
 smoke: []
 dependsOn: ["My Asset: Borrow an Asset"]
 trace:
   "FI-BRW-85": [10, 17]
   "FI-BRW-86": [19, 22]
-  "FLD-BRW-06": [8, 60, 61]
+  "FLD-BRW-06": [8, 60, 61, 123]
   "§4.2.12#p1": 4
-  "§4.2.12#p2": [6, 7, 10, 14, 46, 48, 49, 53]
+  "§4.2.12#p2": [6, 7, 10, 14, 46, 48, 49, 53, 104, 105, 113, 115, 123]
   "§4.2.12#p3": [17, 19, 22, 30, 65, 74, 75, 78, 82]
   "§4.2.12#b1": [36, 37, 39]
   "§4.2.12#b2": [95, 97]
   "§4.6#b6": 4
-anchor: [34, 52, 63, 96]
+anchor: [34, 52, 63, 96, 112]
 coverage:
   android: manual
 ---
@@ -47,6 +47,8 @@ coverage:
   - DU-039-16: isian bulk Set Duration & Purpose: Duration `2`, Purpose `Rapat evaluasi`.
   - DU-039-17: isian Borrow Now aset DU-039-8 atas nama `Joko Susilo {runId}`: Duration `1`, Purpose `Inventarisasi aset cabang`.
   - DU-039-18: isian Borrow Now aset DU-039-12: Duration `1`, Purpose `Siaran langsung kegiatan`.
+  - DU-039-19: aset `Printer Brother HL-L2350 {runId}`, Group `Head Office`, TAG `QR`, Category `Peralatan Kantor {runId}`, Self service `ON`, Allow Borrow `Allow`, Allowed borrower `Employee in any Group`, Custody `Available`, Max Duration `7 days`, Photo at start OFF.
+  - DU-039-20: isian `Borrow for` yang diketik Aktor: `Karyawan Fiktif {runId}`, nama yang tidak ada di master Users.
 
 ## Test Steps
 
@@ -98,9 +100,9 @@ coverage:
 39. Verifikasi aset `Laptop Acer Aspire {runId}` masuk tabel aset sehingga scan berikutnya tetap dapat dilakukan
 
 ### Bulk Set Duration & Purpose, alternatif Add Assets untuk aset Non TAG, dan foto hanya dari kamera
-40. Centang baris `Proyektor Epson EB-W06 {runId}`
-41. Centang baris `Laptop Acer Aspire {runId}`
-42. Klik aksi bulk `Set Duration & Purpose`
+40. Tekan lama baris `Proyektor Epson EB-W06 {runId}`
+41. Ketuk baris `Laptop Acer Aspire {runId}`
+42. Ketuk aksi bulk `Set Duration & Purpose` pada bar bawah
 43. Isi Duration pada dialog `Set Duration & Purpose` dengan `2`
 44. Isi Purpose pada dialog `Set Duration & Purpose` dengan `Rapat evaluasi`
 45. Klik `[Apply to 2 assets]`
@@ -163,3 +165,33 @@ coverage:
 96. Verifikasi tombol `[Borrow Now]` masih tampil pada halaman `Borrow an Asset`
 97. Verifikasi aset `Mikrofon Shure SM58 {runId}` tidak ada lagi di tabel aset karena barisnya dikeluarkan dari form
 98. Klik `[Cancel]` pada halaman `Borrow an Asset`
+
+### Borrow Now ditolak bila Duration dan Purpose kosong, dan pesan foto hanya menghitung aset yang butuh foto
+99. Klik `[Borrow an Asset]`
+100. Pindai TAG aset DU-039-5 lewat komponen scan
+101. Pindai TAG aset DU-039-6 lewat komponen scan
+102. Pindai TAG aset DU-039-19 lewat komponen scan
+103. Klik `[Borrow Now]`
+104. Verifikasi caption `Enter a duration of at least 1` tampil di bawah Duration baris `Proyektor Epson EB-W06 {runId}` karena Duration masih kosong
+105. Verifikasi caption `Purpose must not be empty` tampil di bawah Purpose baris `Proyektor Epson EB-W06 {runId}` karena Purpose masih kosong
+106. Isi Duration baris `Proyektor Epson EB-W06 {runId}` dengan `2`
+107. Isi Purpose baris `Proyektor Epson EB-W06 {runId}` dengan `Rapat evaluasi`
+108. Isi Duration baris `Laptop Acer Aspire {runId}` dengan `2`
+109. Isi Purpose baris `Laptop Acer Aspire {runId}` dengan `Rapat evaluasi`
+110. Isi Duration baris `Printer Brother HL-L2350 {runId}` dengan `2`
+111. Isi Purpose baris `Printer Brother HL-L2350 {runId}` dengan `Rapat evaluasi`
+112. Verifikasi tombol ambil foto tampil pada baris `Proyektor Epson EB-W06 {runId}` karena Photo at start ON
+113. Verifikasi tombol ambil foto tidak tampil pada baris `Printer Brother HL-L2350 {runId}` karena Photo at start OFF
+114. Klik `[Borrow Now]`
+115. Verifikasi pesan `2 assets need a handover photo.` tampil di atas `[Borrow Now]` karena hanya aset `Proyektor Epson EB-W06 {runId}` dan aset `Laptop Acer Aspire {runId}` yang butuh foto sedangkan aset `Printer Brother HL-L2350 {runId}` tidak dihitung
+116. Klik `[Cancel]` pada halaman `Borrow an Asset`
+
+### Borrow for tidak dapat diisi bebas
+117. Masuk sebagai `Rudi Hartono {runId}`
+118. Klik menu Profile pada navbar
+119. Klik `My Asset`
+120. Klik tab `Borrowed`
+121. Klik `[Borrow an Asset]`
+122. Ketik `Karyawan Fiktif {runId}` pada pilihan `Borrow for`
+123. Verifikasi pilihan `Borrow for` tetap bernilai `Myself` dan tidak menawarkan `Karyawan Fiktif {runId}` karena daftar berasal dari master Users dan tidak dapat diisi bebas
+124. Klik `[Cancel]` pada halaman `Borrow an Asset`

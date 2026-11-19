@@ -4,21 +4,21 @@ title: "Dialog Select Asset menampilkan kolom, baris Not ready beralasan, dan er
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1d#r5", "§4.1d#r6", "§4.1d#r7", "§4.1d#r8", "§4.1d#r9", "§4.1d#r10", "§4.1d#r11", "§4.1d#r12", "§4.1d#r13", "§4.1d#r14", "§4.1d#r15", "§4.1d#r16", "§4.1d#p6", "EB-TBL-9@dialog-select-asset"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.1d#r5": [2, 5, 8, 9]
+  "§4.1d#r5": [2, 5, 8, 9, 77, 78]
   "§4.1d#r6": [2, 5, 10, 11]
   "§4.1d#r7": [2, 5, 13]
-  "§4.1d#r8": [2, 5, 15, 16, 17, 19]
-  "§4.1d#r9": [2, 5, 20, 21, 23]
+  "§4.1d#r8": [2, 5, 15, 16, 17, 19, 78]
+  "§4.1d#r9": [2, 5, 20, 21, 23, 78]
   "§4.1d#r10": [2, 5, 25, 26, 28]
-  "§4.1d#r11": [3, 6, 61, 62]
-  "§4.1d#r12": [3, 6, 63, 65]
+  "§4.1d#r11": [3, 6, 61, 62, 82, 88]
+  "§4.1d#r12": [3, 6, 63, 65, 84]
   "§4.1d#r13": [2, 5, 30, 31, 32, 33, 35]
-  "§4.1d#r14": [2, 5, 35, 37, 38, 39, 40]
+  "§4.1d#r14": [2, 5, 35, 37, 38, 39, 40, 75]
   "§4.1d#r15": [3, 6, 66, 67]
   "§4.1d#r16": [2, 5, 42, 43, 45, 46, 48]
   "§4.1d#p6": [46, 50, 53, 54, 55]
@@ -41,8 +41,9 @@ coverage:
   - DU-052-5: Aset `Meeting Mic Set - 2`, Asset ID `MIC-2026-0002`, Group `Head Office`, Max Duration `1 day`, Approval `Auto (≤ 1 day)`, Eligibility `Ready`.
   - DU-052-6: Aset `Camera Sony A7 IV - 1`, Asset ID `CAM-2026-0001`, Brand `Sony`, Model/Type `A7 IV`, Group `Jakarta Selatan Distribution Center` (35 karakter) dengan badge `Jakarta Sela..ution Center` dan hierarki `Region Jawa > Jakarta Selatan Distribution Center`, Max Duration `1 hour`, Approval `Needs approval`, Eligibility `Ready`.
   - DU-052-7: Aset `Tripod Manfrotto - 3`, Asset ID `TRI-2026-0003`, Group `Head Office`, Max Duration `4 hours`, Approval `Needs approval`, Eligibility `Ready`.
+  - DU-052-8: Aset `Handheld Scanner Zebra - 5`, Asset ID `HSC-2026-0005`, Group `Head Office`, TAG bertipe `QR` dan `RFID`, Max Duration `2 days`, Approval `Needs approval`, Eligibility `Ready`.
 - Kondisi:
-  - K1: dialog Select Asset memuat DU-052-1 sampai DU-052-7 untuk Borrower `Rudi Hartono`, belum ada baris terpilih, dan Setup Column memakai pengaturan bawaan.
+  - K1: dialog Select Asset memuat DU-052-1 sampai DU-052-8 untuk Borrower `Rudi Hartono`, belum ada baris terpilih, dan Setup Column memakai pengaturan bawaan.
 
 ## Test Steps
 
@@ -139,3 +140,27 @@ coverage:
 70. Klik tombol konfirmasi `Select` tanpa memilih baris
 71. Verifikasi error inline `You must pick an asset` tampil di atas tombol footer
 72. Verifikasi dialog Select Asset tetap terbuka dan tidak ada aset yang dikirim ke form
+
+### Hover sel Approval menampilkan Max extensions dan bukti foto
+73. Tampilkan Dialog Select Asset dengan kondisi K1
+74. Arahkan kursor ke sel Approval baris `Laptop Dell Latitude 5420 - 10`
+75. Verifikasi Max extensions `2` dan bukti foto yang diminta tersampaikan pada sel Approval itu
+
+### Kolom identitas aset berurutan setelah checkbox
+76. Tampilkan Dialog Select Asset dengan kondisi K1
+77. Verifikasi kolom data pertama setelah checkbox adalah Photo
+78. Verifikasi kolom Photo, Name, Asset ID, Brand, dan Model/Type berurutan dari kiri ke kanan, dengan Brand tepat setelah Asset ID dan Model/Type tepat setelah Brand
+
+### Kolom TAG dan Category yang diaktifkan mengikuti urutan kolom
+79. Tampilkan Dialog Select Asset dengan kondisi K1
+80. Klik ikon `⋯` pada header kolom Actions
+81. Centang TAG pada panel Column Visibility
+82. Verifikasi kolom TAG tampil tepat setelah kolom Group
+83. Centang Category pada panel Column Visibility
+84. Verifikasi kolom Category tampil tepat setelah kolom TAG
+
+### Sel TAG menampilkan satu ikon per TAG Type
+85. Tampilkan Dialog Select Asset dengan kondisi K1
+86. Klik ikon `⋯` pada header kolom Actions
+87. Centang TAG pada panel Column Visibility
+88. Verifikasi sel TAG baris `Handheld Scanner Zebra - 5` menampilkan dua ikon, satu untuk TAG Type `QR` dan satu untuk TAG Type `RFID`

@@ -4,14 +4,14 @@ title: "Self-service Borrow Now, Borrower tanpa akun login dengan PIC, dan atura
 layer: be-e2e
 priority: High
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-13aa", "BORROW-LOGIC-13b", "BORROW-LOGIC-13c", "BORROW-LOGIC-13d", "BORROW-LOGIC-13e", "BORROW-LOGIC-13f", "BORROW-LOGIC-13g", "BORROW-LOGIC-13h", "BORROW-LOGIC-13i", "BORROW-LOGIC-13j", "BORROW-LOGIC-13k", "BORROW-LOGIC-13l", "BORROW-LOGIC-13m", "BORROW-LOGIC-13n", "BORROW-LOGIC-13o", "BORROW-LOGIC-13p", "BORROW-LOGIC-13q", "BORROW-LOGIC-13r", "BORROW-LOGIC-13s", "BORROW-LOGIC-13t", "BORROW-LOGIC-13u", "BORROW-LOGIC-13v", "BORROW-LOGIC-13w", "BORROW-LOGIC-13x", "BORROW-LOGIC-13y", "BORROW-LOGIC-13z", "BORROW-LOGIC-20aa", "BORROW-LOGIC-20b", "BORROW-LOGIC-20c", "BORROW-LOGIC-20d", "BORROW-LOGIC-20e", "BORROW-LOGIC-20f", "BORROW-LOGIC-20g", "BORROW-LOGIC-20h", "BORROW-LOGIC-20i", "BORROW-LOGIC-20j", "BORROW-LOGIC-20k", "BORROW-LOGIC-20l", "BORROW-LOGIC-20m", "BORROW-LOGIC-20n", "BORROW-LOGIC-20o", "BORROW-LOGIC-20p", "BORROW-LOGIC-20q", "BORROW-LOGIC-20r", "BORROW-LOGIC-20s", "BORROW-LOGIC-20t", "BORROW-LOGIC-20u", "BORROW-LOGIC-20v", "BORROW-LOGIC-20w", "BORROW-LOGIC-20x", "BORROW-LOGIC-20y", "BORROW-LOGIC-20z", "EC-BRW-121", "EC-BRW-122", "EC-BRW-123", "EC-BRW-124", "EC-BRW-125", "EC-BRW-135", "EC-BRW-136", "EC-BRW-141", "EC-BRW-142", "EC-BRW-143", "EC-BRW-144", "EC-BRW-34", "EC-BRW-85", "EC-BRW-86", "EC-BRW-87", "EC-BRW-88", "F-BORROW-11.k1", "F-BORROW-11.k2", "F-BORROW-11.k3", "F-BORROW-11.k4", "§10#r4"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
   "BORROW-LOGIC-13aa": [67]
-  "BORROW-LOGIC-13b": [63]
+  "BORROW-LOGIC-13b": [63, 164, 165]
   "BORROW-LOGIC-13c": [57, 71]
   "BORROW-LOGIC-13d": [58, 76]
   "BORROW-LOGIC-13e": [78]
@@ -19,16 +19,16 @@ trace:
   "BORROW-LOGIC-13g": [69, 89]
   "BORROW-LOGIC-13h": [80]
   "BORROW-LOGIC-13i": [71]
-  "BORROW-LOGIC-13j": [82, 84]
+  "BORROW-LOGIC-13j": [82, 84, 167]
   "BORROW-LOGIC-13k": [89, 91]
   "BORROW-LOGIC-13l": [89, 91]
   "BORROW-LOGIC-13m": [100, 111]
   "BORROW-LOGIC-13n": [109, 111]
   "BORROW-LOGIC-13o": [112]
-  "BORROW-LOGIC-13p": [105, 107]
+  "BORROW-LOGIC-13p": [105, 107, 175, 177]
   "BORROW-LOGIC-13q": [142]
   "BORROW-LOGIC-13r": [86, 87]
-  "BORROW-LOGIC-13s": [33, 35, 39, 74]
+  "BORROW-LOGIC-13s": [33, 35, 39, 74, 169, 173, 175, 179]
   "BORROW-LOGIC-13t": [59]
   "BORROW-LOGIC-13u": [60]
   "BORROW-LOGIC-13v": [62]
@@ -44,14 +44,14 @@ trace:
   "BORROW-LOGIC-20f": [118, 120]
   "BORROW-LOGIC-20g": [121]
   "BORROW-LOGIC-20h": [116]
-  "BORROW-LOGIC-20i": [125]
+  "BORROW-LOGIC-20i": [125, 192, 194, 196, 198]
   "BORROW-LOGIC-20j": [126]
   "BORROW-LOGIC-20k": [120]
   "BORROW-LOGIC-20l": [121, 122]
-  "BORROW-LOGIC-20m": [105]
+  "BORROW-LOGIC-20m": [105, 175, 177]
   "BORROW-LOGIC-20n": [111]
-  "BORROW-LOGIC-20o": [105, 107]
-  "BORROW-LOGIC-20p": [145]
+  "BORROW-LOGIC-20o": [105, 107, 175, 177]
+  "BORROW-LOGIC-20p": [145, 201]
   "BORROW-LOGIC-20q": [147]
   "BORROW-LOGIC-20r": [151]
   "BORROW-LOGIC-20s": [158, 162]
@@ -64,22 +64,22 @@ trace:
   "BORROW-LOGIC-20z": [142]
   "EC-BRW-121": [2, 3, 11]
   "EC-BRW-122": [25, 35]
-  "EC-BRW-123": [27, 28, 29]
-  "EC-BRW-124": [13, 14, 15]
+  "EC-BRW-123": [27, 28, 29, 171]
+  "EC-BRW-124": [13, 14, 15, 181, 182]
   "EC-BRW-125": [17, 19, 21, 23]
   "EC-BRW-135": [100, 112, 113]
-  "EC-BRW-136": [101, 103]
+  "EC-BRW-136": [101, 103, 184, 186]
   "EC-BRW-141": [43, 44, 46, 47]
   "EC-BRW-142": [49, 50, 51]
   "EC-BRW-143": [54, 55]
-  "EC-BRW-144": [31, 33, 35, 37, 39, 41]
+  "EC-BRW-144": [31, 33, 35, 37, 39, 41, 173, 188, 190]
   "EC-BRW-34": [95]
   "EC-BRW-85": [97, 98]
-  "EC-BRW-86": [144, 145, 147, 149]
+  "EC-BRW-86": [144, 145, 147, 149, 200, 201, 203, 206]
   "EC-BRW-87": [151, 152, 154, 155, 156]
   "EC-BRW-88": [158, 159, 161]
   "F-BORROW-11.k1": [31, 57, 95]
-  "F-BORROW-11.k2": [25, 27, 28, 29, 31, 33, 35, 37, 39]
+  "F-BORROW-11.k2": [25, 27, 28, 29, 31, 33, 35, 37, 39, 171, 173, 188, 190]
   "F-BORROW-11.k3": [57, 58, 101]
   "F-BORROW-11.k4": [91, 97, 98]
   "§10#r4": [4, 8, 114]
@@ -88,7 +88,7 @@ trace:
 # Self-service Borrow Now, Borrower tanpa akun login dengan PIC, dan aturan Return self-service
 
 ## Prerequisites
-- Aktor: `Dewi Lestari {runId}` (Borrower ber-akun, bukan Aktor Borrow); `Bagus Santoso {runId}` (Borrower ber-akun); `Agus Pratama {runId}` (Aktor Borrow, Asset Admin pada Group `Head Office {runId}`); `Siti Aminah {runId}` (Group Manager Group `Head Office {runId}`); `Rina Kusuma {runId}` (PIC).
+- Aktor: `Dewi Lestari {runId}` (Borrower ber-akun, bukan Aktor Borrow); `Bagus Santoso {runId}` (Borrower ber-akun); `Agus Pratama {runId}` (Aktor Borrow, Asset Admin pada Group `Head Office {runId}`); `Siti Aminah {runId}` (Group Manager Group `Head Office {runId}`); `Rina Kusuma {runId}` (PIC); `Nanda Pratiwi {runId}` (PIC); `Hendra Wijaya {runId}` (Borrower ber-akun).
 - Data:
   - DU-082-1: Group asal aset: Name `Head Office {runId}`
   - DU-082-2: Group di luar cakupan Aktor Borrow: Name `Branch Surabaya {runId}`
@@ -136,17 +136,48 @@ trace:
   - DU-082-44: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Lampu Studio Godox SL60 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Source `Admin`, PIC `Rina Kusuma {runId}`
   - DU-082-45: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Kamera Fujifilm X-T30 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Source `Admin`, PIC `Rina Kusuma {runId}`
   - DU-082-46: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Mixer Yamaha MG10 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Source `Admin`, PIC `Rina Kusuma {runId}`
-  - DU-082-47: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Laptop Lenovo ThinkPad T14 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`, Self service `OFF`, Max extensions `2`, Max duration `7`
+  - DU-082-47: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Laptop Lenovo ThinkPad T14 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`, Self service `OFF`, Max extensions `2`, Max duration `7`, Duration berjalan `3 Days sejak handover`, Extension terpakai `0`
   - DU-082-48: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Tablet Apple iPad Air {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`
   - DU-082-49: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Laptop HP EliteBook 840 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`
   - DU-082-50: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Kamera DJI Osmo Pocket 3 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, PIC `Rina Kusuma {runId}`
   - DU-082-51: Pinjaman berjalan: Borrower `Citra Dewanti {runId}`, Aset `Bor Makita HP1630 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`, Due date `T0 + 1 hari`
-  - DU-082-52: Pinjaman berjalan: Borrower `Dian Sastro {runId}`, Aset `Gerinda Bosch GWS 060 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`, Due date `T0 + 1 hari`, Dikonfirmasi handover oleh `Rina Kusuma {runId}`, Notifikasi terkirim sebelum penggantian PIC `Pengingat Due date ke Rina Kusuma {runId}`
+  - DU-082-52: Pinjaman berjalan: Borrower `Dian Sastro {runId}`, Aset `Gerinda Bosch GWS 060 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Rina Kusuma {runId}`, Due date `T0 + 1 hari`, Dikonfirmasi handover oleh `Rina Kusuma {runId}`, Notifikasi terkirim sebelum penggantian PIC `Pengingat Due date D-1 ke Rina Kusuma {runId}`, Pengingat Due date berikutnya `D-day pada tanggal Due date`
   - DU-082-53: Pinjaman berjalan: Borrower `Ratna Sari {runId}`, Aset `Obeng Set Tekiro {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Source `Admin`, PIC `Rina Kusuma {runId}`
+  - DU-082-57: User akun login: Name `Nanda Pratiwi {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow, PIC`, Division `Marketing`
+  - DU-082-58: User akun login: Name `Bayu Saputra {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow, PIC`, Division `Marketing`
+  - DU-082-59: User akun login: Name `Joko Susilo {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow`, Division `Finance`, Temporary Until `T0 - 1 hari`
+  - DU-082-60: User akun login: Name `Hendra Wijaya {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow`, Division `Finance`
+  - DU-082-61: Karyawan tanpa akun login: Name `Wulan Safitri {runId}`, Status `Active`, Division `Finance`, PIC `Nanda Pratiwi {runId}`
+  - DU-082-62: Karyawan tanpa akun login: Name `Yoga Pratama {runId}`, Status `Active`, Division `Finance`, PIC `Nanda Pratiwi {runId}`
+  - DU-082-63: Karyawan tanpa akun login: Name `Tari Utami {runId}`, Status `Active`, Division `Finance`, PIC `Nanda Pratiwi {runId}`
+  - DU-082-64: Karyawan tanpa akun login: Name `Fani Lestari {runId}`, Status `Active`, Division `Finance`, PIC `Bayu Saputra {runId}`
+  - DU-082-65: Aset tersedia: Asset Name `Mesin Label Brother PT-P710 {runId}`, Group `Head Office {runId}`, Category `Office`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Require approval `ON`, Auto-approve `Auto (≤ 3 days)`, Approval type `Any one`, Max duration `7`, Max assets per borrower `10`
+  - DU-082-66: Aset tersedia: Asset Name `Gimbal DJI RS 3 {runId}`, Group `Head Office {runId}`, Category `Camera`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Photo at start `ON`, Max duration `7`, Max assets per borrower `10`
+  - DU-082-67: Aset tersedia: Asset Name `Power Bank Anker 20K {runId}`, Group `Head Office {runId}`, Category `Electronics`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Max duration `7`, Max assets per borrower `1`
+  - DU-082-68: Aset tersedia: Asset Name `Kipas Angin Cosmos {runId}`, Group `Head Office {runId}`, Category `Appliance`, TAG `Non TAG`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Block new borrow when overdue `ON`, Max assets per borrower `10`
+  - DU-082-69: Aset tersedia: Asset Name `Dispenser Miyako {runId}`, Group `Head Office {runId}`, Category `Appliance`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Block new borrow when overdue `ON`, Max assets per borrower `10`
+  - DU-082-70: Aset tersedia: Asset Name `Rice Cooker Philips {runId}`, Group `Head Office {runId}`, Category `Appliance`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Block new borrow when overdue `ON`, Max assets per borrower `10`
+  - DU-082-71: Aset tersedia: Asset Name `Lampu Ring Neewer 18 {runId}`, Group `Head Office {runId}`, Category `Camera`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `ON`, Satuan `Days`, Max duration `7`, Max assets per borrower `10`
+  - DU-082-72: Aset tersedia: Asset Name `Heat Gun Bosch GHG 20 {runId}`, Group `Head Office {runId}`, Category `Tools`, TAG `Ber-tag`, Custody `Borrowed`, Condition `Normal`, Self service `ON`, Satuan `Days`
+  - DU-082-73: Aset tersedia: Asset Name `Oven Listrik Maspion {runId}`, Group `Head Office {runId}`, Category `Appliance`, TAG `Ber-tag`, Custody `In Borrow Process`, Condition `Normal`, Self service `ON`, Satuan `Days`, Activity Lock `In Audit`
+  - DU-082-74: Pinjaman berjalan: Borrower `Wulan Safitri {runId}`, Aset `Charger Laptop Baseus {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Nanda Pratiwi {runId}`
+  - DU-082-75: Pinjaman berjalan: Borrower `Yoga Pratama {runId}`, Aset `Setrika Philips {runId}`, Group `Head Office {runId}`, Status baris `Overdue`, Source `Admin`, PIC `Nanda Pratiwi {runId}`, Due date `T0 - 2 hari`
+  - DU-082-76: Pinjaman berjalan: Borrower `Hendra Wijaya {runId}`, Aset `Kabel Roll Eterna {runId}`, Group `Head Office {runId}`, Status baris `Overdue`, Source `Admin`, Due date `T0 - 2 hari`
+  - DU-082-77: Pinjaman berjalan: Borrower `Siti Aminah {runId}`, Aset `Heat Gun Bosch GHG 20 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`
+  - DU-082-78: Pinjaman berjalan: Borrower `Siti Aminah {runId}`, Aset `Oven Listrik Maspion {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Source `Admin`
+  - DU-082-79: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Webcam Logitech C920 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Max extensions `2`, Max duration `7`, Duration berjalan `2 Days sejak handover`, Extension terpakai `0`
+  - DU-082-80: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Lampu Belajar Philips {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Max extensions `1`, Max duration `7`, Duration berjalan `2 Days sejak handover`, Extension terpakai `1`
+  - DU-082-81: Pinjaman berjalan: Borrower `Tari Utami {runId}`, Aset `Mesin Las Krisbow {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Approval`, Source `Admin`, PIC `Nanda Pratiwi {runId}`, Require approval `ON`, Approval type `Any one`, Approver `Siti Aminah {runId}`, Self service `OFF`
+  - DU-082-82: Pinjaman berjalan: Borrower `Tari Utami {runId}`, Aset `Gerinda Tangan Makita {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Approval`, Source `Admin`, PIC `Nanda Pratiwi {runId}`, Require approval `ON`, Approval type `Any one`, Approver `Siti Aminah {runId}`, Self service `OFF`
+  - DU-082-83: Pinjaman berjalan: Borrower `Tari Utami {runId}`, Aset `Troli Barang Lakoni {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Nanda Pratiwi {runId}`, Self service `OFF`, Max extensions `2`, Max duration `7`, Extension Request `menunggu review Aktor Borrow, Extend by 1, Reason Proyek belum selesai`
+  - DU-082-84: Pinjaman berjalan: Borrower `Tari Utami {runId}`, Aset `Mic Wireless Sennheiser {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Nanda Pratiwi {runId}`, Due date `T0 + 1 hari`
+  - DU-082-85: Pinjaman berjalan: Borrower `Fani Lestari {runId}`, Aset `Gergaji Mesin Stihl {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Admin`, PIC `Bayu Saputra {runId}`, Due date `T0 + 1 hari`
 - Kondisi:
   - T0 adalah waktu permintaan Borrow Now dikirim; semua Due date dihitung relatif terhadap T0 menurut Time Zone General Settings penyewa.
   - Aset yang disebut self-service memakai Self service efektif `ON` pada override asetnya sendiri, kecuali disebut `OFF`; setiap aset punya Max assets per borrower yang dicatat di entri datanya.
-  - Akun Dewi, Bagus, Rina, Maya, Agus, dan Siti aktif dan kredensialnya tersedia untuk fase 2.
+  - Akun Dewi, Bagus, Rina, Maya, Agus, Siti, Nanda, dan Hendra aktif dan kredensialnya tersedia untuk fase 2.
+  - Akun login yang dibuat untuk `Ratna Sari {runId}` berstatus `Active` dengan Activation Status `Activated`, dan kredensialnya tersedia untuk fase 2.
+  - Aset yang memuat Block new borrow when overdue `ON`, Photo at start `ON`, Auto-approve, atau Max extensions memakainya pada override asetnya sendiri.
 
 ## Test Steps
 
@@ -154,7 +185,7 @@ trace:
 1. Agus membuka pilihan Borrower pada form Borrow yang belum berisi aset
 2. Verifikasi `Dewi Lestari {runId}` tidak `Blocked` walau Allowed borrower `Mikrofon Shure SM58 {runId}` tidak terpenuhi olehnya, karena Allowed borrower tidak dinilai di Select Borrower
 3. Verifikasi `Lia Wulandari {runId}` tampil `Blocked` oleh status peminjamannya, yaitu tanpa PIC
-4. Verifikasi pihak eksternal yang bukan karyawan tidak ditawarkan di Select Borrower
+4. Verifikasi setiap Borrower yang ditawarkan di Select Borrower adalah karyawan, ber-akun maupun tanpa akun, misalnya `Dewi Lestari {runId}` dan `Lia Wulandari {runId}`, karena peminjam eksternal yang bukan karyawan tidak didukung
 5. Verifikasi karyawan tanpa akun `Lia Wulandari {runId}` yang PIC-nya kosong tampil di Select Borrower tetapi tidak bisa dipilih, dengan alasan `No login account and no PIC. Set a PIC in Users first.`
 6. Verifikasi karyawan tanpa akun `Tono Hartono {runId}` yang PIC-nya nonaktif tampil di Select Borrower tetapi tidak bisa dipilih, dengan alasan `No login account and no PIC. Set a PIC in Users first.`
 7. Agus mengirim Submit dengan Borrower `Lia Wulandari {runId}` atas `Laptop Dell Latitude 5440 {runId}`
@@ -230,7 +261,7 @@ trace:
 63. Verifikasi baris tidak melalui pengajuan approval walau Require approval aset `ON` dengan Approval type `All`
 64. Verifikasi tidak ada task `Pick up` bagi `Dewi Lestari {runId}` atas baris itu
 65. Verifikasi tidak ada permintaan konfirmasi Borrower atas baris itu
-66. Job Transaction timeout berjalan
+66. Job Transaction timeout berjalan setelah Transaction timeout sejak T0 terlewati
 67. Verifikasi baris tetap `Borrowed` dan tidak ditutup dengan alasan `Not picked up`
 68. Dewi mengirim Cancel Borrow atas baris `Laptop Dell Latitude 5440 {runId}`
 69. Verifikasi Cancel Borrow ditolak dan baris tetap `Borrowed`, karena pinjaman yang sudah `Borrowed` hanya diakhiri lewat Return
@@ -297,7 +328,7 @@ trace:
 114. Verifikasi PIC pada baris adalah `Rina Kusuma {runId}` menurut master data Users dan tidak dipilih per transaksi
 
 ### Konfirmasi handover Borrower tanpa akun oleh PIC dan oleh admin
-115. Accept atas handover `Kamera Fujifilm X-T30 {runId}` dikirim atas nama `Gita Anggraini {runId}`
+115. Rina mengirim permintaan Accept atas handover `Kamera Fujifilm X-T30 {runId}` dengan mengklaim sebagai Borrower `Gita Anggraini {runId}`, yang tidak punya akun login
 116. Verifikasi Accept ditolak karena Borrower tanpa akun, dan baris tetap `Waiting for Handover`
 117. Rina mengirim Confirm Handover atas `Kamera Fujifilm X-T30 {runId}` dari daftar pinjaman Borrower tanpa pernyataan
 118. Verifikasi Confirm Handover tanpa pernyataan `I confirm that Gita Anggraini {runId} has received the checked assets.` ditolak dan baris tetap `Waiting for Handover`
@@ -341,7 +372,7 @@ trace:
 150. PIC `Dian Sastro {runId}` diganti dari `Rina Kusuma {runId}` menjadi `Maya Putri {runId}` di Users
 151. Verifikasi pinjaman `Gerinda Bosch GWS 060 {runId}` pindah ke daftar pinjaman `Maya Putri {runId}`
 152. Verifikasi `Rina Kusuma {runId}` tidak lagi melihat pinjaman itu
-153. Job pengingat Due date harian berjalan
+153. Job pengingat Due date harian berjalan pada tanggal Due date pinjaman `Gerinda Bosch GWS 060 {runId}`, saat pengingat D-day terbit
 154. Verifikasi notifikasi berikutnya dikirim ke `Maya Putri {runId}`
 155. Verifikasi notifikasi yang sudah terkirim ke `Rina Kusuma {runId}` sebelum penggantian tidak dipindahkan
 156. Verifikasi Borrow Log tetap mencatat PIC saat aksi terjadi, `by Rina Kusuma {runId} on behalf of Dian Sastro {runId}`
@@ -354,3 +385,64 @@ trace:
 161. Verifikasi Accept oleh `Ratna Sari {runId}` diterima karena konfirmasi handover berikutnya memakai semua cara
 162. Verifikasi notifikasi berikutnya ditujukan ke `Ratna Sari {runId}`, bukan ke PIC
 
+### Borrow Now self-service tidak menilai Auto-approve dan Approval type
+163. Dewi mengirim Borrow Now atas `Mesin Label Brother PT-P710 {runId}` dengan scan TAG, Duration `2` Days, dan Purpose `Pelabelan arsip`
+164. Verifikasi baris pinjaman langsung `Borrowed` walau Require approval aset `ON` dengan Approval type `Any one` dan Auto-approve terpenuhi oleh Duration `2` Days
+165. Verifikasi baris tidak dicatat `Auto-approved` dan tidak melalui pengajuan approval, karena Source-nya `Self-service`
+
+### Extend pinjaman self-service dari mobile dan batas Max extensions tetap berlaku
+166. Dewi mengajukan Extend atas `Webcam Logitech C920 {runId}` dari mobile dengan Extend by `1` dan Reason `Dipakai untuk rapat daring`
+167. Verifikasi permintaan Extend atas pinjaman self-service dari mobile diterima
+168. Dewi mengajukan Extend atas `Lampu Belajar Philips {runId}` dari web dengan Extend by `1` dan Reason `Dipakai sampai ujian selesai`
+169. Verifikasi permintaan Extend ditolak karena Max extensions aset itu sudah tercapai, dan Due date tidak berubah
+
+### Batas Block when overdue dan Max assets dihitung untuk Borrower pada self-service
+170. Hendra membuka daftar aset yang dapat dipinjam sendiri
+171. Verifikasi `Kipas Angin Cosmos {runId}` yang Non TAG tampil `Not ready` untuk `Hendra Wijaya {runId}` dengan alasan `[Name] has an overdue borrow: [Asset Code], due [Date]. Return it first.` atas pinjaman `Kabel Roll Eterna {runId}`, dan tidak bisa dicentang
+172. Hendra memindai TAG `Dispenser Miyako {runId}` pada Borrow an Asset
+173. Verifikasi aset tidak ditambahkan dan ditolak dengan pesan Borrower `[Name] has an overdue borrow: [Asset Code], due [Date]. Return it first.` atas pinjaman `Kabel Roll Eterna {runId}`
+174. Nanda mengirim Borrow Now atas nama `Wulan Safitri {runId}` atas `Power Bank Anker 20K {runId}` dengan scan TAG, Duration `1` Days, dan Purpose `Dokumentasi lapangan`, disertai pernyataan Confirm Receipt bahwa `Wulan Safitri {runId}` hadir dan menerima aset
+175. Verifikasi permintaan ditolak dengan pesan `Wulan Safitri {runId} can borrow up to 1 assets at a time.`, karena Max assets per borrower dihitung untuk Borrower walau PIC `Nanda Pratiwi {runId}` belum memegang pinjaman
+176. Nanda mengirim Borrow Now atas nama `Yoga Pratama {runId}` atas `Rice Cooker Philips {runId}` dengan scan TAG, Duration `1` Days, dan Purpose `Acara pantry kantor`, disertai pernyataan Confirm Receipt bahwa `Yoga Pratama {runId}` hadir dan menerima aset
+177. Verifikasi permintaan ditolak dengan pesan `[Name] has an overdue borrow: [Asset Code], due [Date]. Return it first.` atas pinjaman `Setrika Philips {runId}`, karena Block new borrow when overdue dihitung untuk Borrower walau PIC `Nanda Pratiwi {runId}` tidak punya baris Overdue
+
+### Evidence foto tetap berlaku pada Borrow Now self-service
+178. Dewi mengirim Borrow Now atas `Gimbal DJI RS 3 {runId}` dengan scan TAG, Duration `2` Days, dan Purpose `Liputan acara` tanpa foto
+179. Verifikasi permintaan ditolak dengan pesan `1 asset needs a handover photo.` dan tidak ada baris pinjaman atas `Gimbal DJI RS 3 {runId}`
+
+### Akun sementara yang sudah lewat batas tidak muncul di Select Borrower
+180. Agus mencari Borrower di Select Borrower dengan Search `{runId}`
+181. Verifikasi `Bagus Santoso {runId}` yang akunnya `Active` dan `Activated` tampil di Select Borrower
+182. Verifikasi `Joko Susilo {runId}` yang akun sementaranya sudah melewati Temporary Until tidak muncul di Select Borrower
+
+### Server menolak Borrow Now atas nama karyawan dengan PIC kosong atau nonaktif
+183. Rina mengirim Borrow Now atas nama `Lia Wulandari {runId}` atas `Lampu Ring Neewer 18 {runId}` dengan scan TAG, Duration `1` Days, dan Purpose `Foto produk`
+184. Verifikasi permintaan atas nama karyawan yang PIC-nya kosong ditolak server dan tidak ada baris pinjaman atas `Lampu Ring Neewer 18 {runId}`
+185. Rina mengirim Borrow Now atas nama `Tono Hartono {runId}` atas `Lampu Ring Neewer 18 {runId}` dengan scan TAG, Duration `1` Days, dan Purpose `Foto produk`
+186. Verifikasi permintaan atas nama karyawan yang PIC-nya nonaktif ditolak server dan tidak ada baris pinjaman atas `Lampu Ring Neewer 18 {runId}`
+
+### Scan aset yang sedang dalam transaksi atau berstatus tidak layak menampilkan alasan berprioritas tertinggi
+187. Dewi memindai TAG `Heat Gun Bosch GHG 20 {runId}` pada Borrow an Asset
+188. Verifikasi aset tidak ditambahkan dan ditolak dengan alasan `This asset is already in another transaction.` karena Custody-nya bukan `Available`
+189. Dewi memindai TAG `Oven Listrik Maspion {runId}` pada Borrow an Asset
+190. Verifikasi aset tidak ditambahkan dan ditolak dengan alasan berprioritas tertinggi `This asset is In Audit and can't be borrowed.`, bukan `This asset is already in another transaction.` walau aset itu juga ada di transaksi lain
+
+### Notifikasi Borrower tanpa akun atas keputusan, Extension, dan Overdue dikirim ke PIC
+191. Siti menyetujui pengajuan approval atas `Mesin Las Krisbow {runId}` milik `Tari Utami {runId}`
+192. Verifikasi notifikasi keputusan Approve yang ditujukan ke Borrower diterima PIC `Nanda Pratiwi {runId}` sebagai notifikasi baru dengan penanda atas nama `Tari Utami {runId}`
+193. Siti menolak pengajuan approval atas `Gerinda Tangan Makita {runId}` milik `Tari Utami {runId}`
+194. Verifikasi notifikasi keputusan Reject yang ditujukan ke Borrower diterima PIC `Nanda Pratiwi {runId}` sebagai notifikasi baru dengan penanda atas nama `Tari Utami {runId}`
+195. Agus menolak Extension Request atas `Troli Barang Lakoni {runId}` milik `Tari Utami {runId}`
+196. Verifikasi notifikasi Extension yang ditujukan ke Borrower diterima PIC `Nanda Pratiwi {runId}` sebagai notifikasi baru dengan penanda atas nama `Tari Utami {runId}`
+197. Job Overdue berjalan setelah Due date pinjaman `Mic Wireless Sennheiser {runId}` milik `Tari Utami {runId}` terlewati
+198. Verifikasi notifikasi Overdue yang ditujukan ke Borrower diterima PIC `Nanda Pratiwi {runId}` sebagai notifikasi baru dengan penanda atas nama `Tari Utami {runId}`
+
+### PIC dinonaktifkan saat pinjaman berjalan lalu PIC diisi kembali
+199. PIC `Bayu Saputra {runId}` dinonaktifkan di Users saat pinjaman `Gergaji Mesin Stihl {runId}` milik `Fani Lestari {runId}` berjalan
+200. Verifikasi pinjaman tetap berjalan dengan status baris `Borrowed`
+201. Verifikasi baris `Gergaji Mesin Stihl {runId}` milik `Fani Lestari {runId}` diberi penanda `No PIC`
+202. Job pengingat Due date harian berjalan
+203. Verifikasi notifikasi untuk Borrower `Fani Lestari {runId}` dialihkan ke Aktor Borrow Group asal `Agus Pratama {runId}` sampai PIC diisi
+204. PIC `Fani Lestari {runId}` diisi kembali di Users dengan `Maya Putri {runId}`
+205. Job pengingat Due date harian berjalan pada tanggal Due date pinjaman `Gergaji Mesin Stihl {runId}`, saat pengingat D-day terbit
+206. Verifikasi notifikasi berikutnya untuk Borrower `Fani Lestari {runId}` dikirim ke PIC `Maya Putri {runId}`, bukan lagi ke `Agus Pratama {runId}`

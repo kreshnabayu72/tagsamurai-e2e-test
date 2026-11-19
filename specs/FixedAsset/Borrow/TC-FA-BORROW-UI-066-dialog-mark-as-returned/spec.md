@@ -4,12 +4,12 @@ title: "Dialog Mark as Returned: pilihan hasil, satu aset dan bulk, serta captio
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-BRW-25", "DM-BRW-16", "FLD-BRW-14", "FLD-BRW-15"]
 smoke: []
 dependsOn: []
 trace:
-  "D-BRW-25": [2, 3, 4, 5, 7, 8, 14, 15, 17, 18, 19, 20, 22, 23, 24, 26, 28, 29]
+  "D-BRW-25": [2, 3, 4, 5, 7, 8, 14, 15, 17, 18, 19, 20, 22, 23, 24, 26, 28, 29, 42, 43, 44, 46, 47, 48, 50, 51]
   "DM-BRW-16": [37, 40]
   "FLD-BRW-14": [5, 6, 10, 12, 18]
   "FLD-BRW-15": [32, 34]
@@ -35,7 +35,7 @@ coverage:
   - DU-066-8: aset terpilih yang Aktor sendiri Borrower-nya, Name `Genset Honda EU20i - 1`, Borrower `Rina W`.
   - DU-066-9: aset terpilih yang Aktor sendiri Borrower-nya, Name `Forklift Toyota 8FD - 1`, Borrower `Rina W`.
 - Kondisi:
-  - K1: Date Format bernilai `DD/MM/YYYY`, dialog dibuka untuk satu aset DU-066-1.
+  - K1: Date Format bernilai `DD/MM/YYYY`, tanggal hari ini `18/11/2026`, dialog dibuka untuk satu aset DU-066-1.
   - K2: Date Format bernilai `DD/MM/YYYY`, tanggal hari ini `18/11/2026`, dialog dibuka untuk satu aset DU-066-2 yang lewat Due Date.
   - K3: dialog dibuka untuk bulk DU-066-3, DU-066-4, dan DU-066-5.
   - K4: dialog dibuka untuk bulk DU-066-3 dan DU-066-4 bersama DU-066-6, DU-066-7, DU-066-8, dan DU-066-9 dalam pilihan.
@@ -43,6 +43,8 @@ coverage:
   - K6: aksi `Mark as Returned` dibuka dari baris aset DU-066-8 yang Aktor sendiri Borrower-nya.
   - K7: dialog dibuka untuk satu aset DU-066-1, lalu dikonfirmasi dan berhasil.
   - K8: dialog dibuka untuk bulk DU-066-3, DU-066-4, dan DU-066-5, lalu dikonfirmasi dan berhasil.
+  - K9: dialog dibuka untuk bulk DU-066-3 dan DU-066-4 bersama DU-066-6 dan DU-066-7 dalam pilihan, tanpa aset milik Aktor sendiri.
+  - K10: dialog dibuka untuk bulk DU-066-3 dan DU-066-4 bersama DU-066-8 dan DU-066-9 dalam pilihan, tanpa aset yang bukan Borrowed.
 
 ## Test Steps
 
@@ -103,3 +105,20 @@ coverage:
 38. Tampilkan Dialog Mark as Returned dengan kondisi K8
 39. Klik `[Mark as Returned]`
 40. Verifikasi toast `Success, 3 assets have been marked as returned.` tampil
+
+### Caption hanya untuk aset yang bukan Borrowed
+41. Tampilkan Dialog Mark as Returned dengan kondisi K9
+42. Verifikasi daftar aset yang diproses memuat `Kamera Canon EOS 200D` dan `Speaker JBL PartyBox`
+43. Verifikasi caption `2 assets skipped because they aren't borrowed.` tampil
+44. Verifikasi caption `2 assets skipped because they're yours.` tidak tampil
+
+### Caption hanya untuk aset milik Aktor sendiri
+45. Tampilkan Dialog Mark as Returned dengan kondisi K10
+46. Verifikasi daftar aset yang diproses memuat `Kamera Canon EOS 200D` dan `Speaker JBL PartyBox`
+47. Verifikasi caption `2 assets skipped because they're yours.` tampil
+48. Verifikasi caption `2 assets skipped because they aren't borrowed.` tidak tampil
+
+### Tanpa caption bila semua aset terpilih Borrowed
+49. Tampilkan Dialog Mark as Returned dengan kondisi K3
+50. Verifikasi daftar aset yang diproses memuat `Kamera Canon EOS 200D`, `Speaker JBL PartyBox`, dan `Drone DJI Mini 3`
+51. Verifikasi dialog bulk tidak menampilkan caption skipped

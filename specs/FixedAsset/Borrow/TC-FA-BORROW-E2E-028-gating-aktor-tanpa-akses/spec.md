@@ -4,7 +4,7 @@ title: "Aktor tanpa capability Borrow tidak melihat item sidebar dan halaman Bor
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [EB-AKS-1, EB-AKS-2]
 smoke: []
 dependsOn: []

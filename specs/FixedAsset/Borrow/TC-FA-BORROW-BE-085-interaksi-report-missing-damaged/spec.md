@@ -4,7 +4,7 @@ title: "Interaksi Borrow dengan laporan Damaged dan Missing saat dipinjam dan se
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-16aa", "BORROW-LOGIC-16ab", "BORROW-LOGIC-16ac", "BORROW-LOGIC-16ad", "BORROW-LOGIC-16ae", "BORROW-LOGIC-16af", "BORROW-LOGIC-16ag", "BORROW-LOGIC-16ah", "BORROW-LOGIC-16ai", "BORROW-LOGIC-16aj", "BORROW-LOGIC-16ak", "BORROW-LOGIC-16al", "BORROW-LOGIC-16at", "BORROW-LOGIC-16au", "BORROW-LOGIC-16ax", "BORROW-LOGIC-16ay", "BORROW-LOGIC-16az", "BORROW-LOGIC-16ba", "BORROW-LOGIC-16bb", "BORROW-LOGIC-16bc", "BORROW-LOGIC-16bd", "BORROW-LOGIC-16be", "BORROW-LOGIC-16bf", "BORROW-LOGIC-16bh", "BORROW-LOGIC-16bi", "BORROW-LOGIC-16bj", "BORROW-LOGIC-16bk", "BORROW-LOGIC-16bl", "BORROW-LOGIC-16c", "BORROW-LOGIC-16d", "BORROW-LOGIC-16e", "BORROW-LOGIC-16f", "BORROW-LOGIC-16g", "BORROW-LOGIC-16h", "BORROW-LOGIC-16i", "BORROW-LOGIC-16j", "BORROW-LOGIC-16k", "BORROW-LOGIC-16l", "BORROW-LOGIC-16m", "BORROW-LOGIC-16n", "BORROW-LOGIC-16r", "BORROW-LOGIC-16s", "BORROW-LOGIC-16t", "BORROW-LOGIC-16u", "BORROW-LOGIC-16w", "BORROW-LOGIC-16x", "BORROW-LOGIC-16y", "BORROW-LOGIC-16z", "EC-BRW-153", "F-BORROW-12.k1", "V-BRW-39", "§9.2#r48", "§9.2#r49", "§9.2#r50", "§9.2#r56"]
 smoke: []
 dependsOn: []
@@ -14,28 +14,28 @@ trace:
   "BORROW-LOGIC-16ab": [50, 69]
   "BORROW-LOGIC-16ac": [38]
   "BORROW-LOGIC-16ad": [52, 74]
-  "BORROW-LOGIC-16ae": [70]
+  "BORROW-LOGIC-16ae": [70, 101, 120, 142]
   "BORROW-LOGIC-16af": [71]
-  "BORROW-LOGIC-16ag": [78]
+  "BORROW-LOGIC-16ag": [78, 103]
   "BORROW-LOGIC-16ah": [80]
   "BORROW-LOGIC-16ai": [79]
   "BORROW-LOGIC-16aj": [82]
   "BORROW-LOGIC-16ak": [83]
   "BORROW-LOGIC-16al": [88]
   "BORROW-LOGIC-16at": [90, 92, 94]
-  "BORROW-LOGIC-16au": [95]
+  "BORROW-LOGIC-16au": [95, 139]
   "BORROW-LOGIC-16ax": [2, 3]
   "BORROW-LOGIC-16ay": [9]
   "BORROW-LOGIC-16az": [12]
   "BORROW-LOGIC-16ba": [15]
   "BORROW-LOGIC-16bb": [24, 28]
-  "BORROW-LOGIC-16bc": [35]
-  "BORROW-LOGIC-16bd": [34]
+  "BORROW-LOGIC-16bc": [35, 107]
+  "BORROW-LOGIC-16bd": [34, 106]
   "BORROW-LOGIC-16be": [39, 48]
-  "BORROW-LOGIC-16bf": [41]
+  "BORROW-LOGIC-16bf": [41, 113]
   "BORROW-LOGIC-16bh": [62]
   "BORROW-LOGIC-16bi": [66]
-  "BORROW-LOGIC-16bj": [57, 75]
+  "BORROW-LOGIC-16bj": [57, 75, 122, 144]
   "BORROW-LOGIC-16bk": [85]
   "BORROW-LOGIC-16bl": [86]
   "BORROW-LOGIC-16c": [3]
@@ -44,27 +44,27 @@ trace:
   "BORROW-LOGIC-16f": [8]
   "BORROW-LOGIC-16g": [14]
   "BORROW-LOGIC-16h": [23, 28]
-  "BORROW-LOGIC-16i": [31]
+  "BORROW-LOGIC-16i": [31, 137, 138]
   "BORROW-LOGIC-16j": [32]
-  "BORROW-LOGIC-16k": [36]
+  "BORROW-LOGIC-16k": [36, 108]
   "BORROW-LOGIC-16l": [17]
-  "BORROW-LOGIC-16m": [26]
+  "BORROW-LOGIC-16m": [26, 111]
   "BORROW-LOGIC-16n": [19, 21]
-  "BORROW-LOGIC-16r": [38, 45]
+  "BORROW-LOGIC-16r": [38, 45, 127, 131, 133]
   "BORROW-LOGIC-16s": [40]
-  "BORROW-LOGIC-16t": [38, 45]
+  "BORROW-LOGIC-16t": [38, 45, 127]
   "BORROW-LOGIC-16u": [47]
-  "BORROW-LOGIC-16w": [57]
+  "BORROW-LOGIC-16w": [57, 125, 129]
   "BORROW-LOGIC-16x": [55, 59]
-  "BORROW-LOGIC-16y": [43, 64]
+  "BORROW-LOGIC-16y": [43, 64, 115, 117]
   "BORROW-LOGIC-16z": [61]
   "EC-BRW-153": [7, 8, 9, 12]
   "F-BORROW-12.k1": [7]
   "V-BRW-39": [88]
   "§9.2#r48": [2, 5, 14]
-  "§9.2#r49": [43]
+  "§9.2#r49": [43, 97, 131, 133, 69, 40, 39]
   "§9.2#r50": [69, 70, 72]
-  "§9.2#r56": [38, 39, 76]
+  "§9.2#r56": [38, 39, 76, 99]
 ---
 
 # Interaksi Borrow dengan laporan Damaged dan Missing saat dipinjam dan sesudah Return
@@ -91,13 +91,23 @@ trace:
   - DU-085-17: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Tablet Samsung Galaxy Tab S9 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
   - DU-085-18: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Drone DJI Mavic 3 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Max extensions `2`
   - DU-085-19: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Handycam Sony FDR-AX43 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
-  - DU-085-20: Pinjaman berjalan: Borrower `Bagus Santoso {runId}`, Aset `Gimbal DJI RS 3 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-085-20: Pinjaman berjalan: Borrower `Bagus Santoso {runId}`, Aset `Gimbal DJI RS 3 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Max extensions `2`
   - DU-085-21: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Headset Logitech H390 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Laporan Missing `Waiting for Confirmation dari Dewi Lestari {runId}`
   - DU-085-22: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Kompresor Ingersoll Rand 2475 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Activity Lock `In Audit`
   - DU-085-23: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Genset Honda EU22i {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Activity Lock `Under Maintenance`
   - DU-085-24: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Bor Listrik Bosch GSB 13 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Activity Lock `In Audit`
   - DU-085-25: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Kursi Gaming Secretlab Titan {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, PIC `Rina Kusuma {runId}`
   - DU-085-26: Aset sudah Missing dengan baris Returned: Asset Name `Gergaji Mesin Stihl MS 170 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Custody `Available`, Condition `Missing`, Status baris terakhir `Returned dengan penanda Missing`
+  - DU-085-29: User akun login: Name `Siti Aminah {runId}`, Status `Active`, Activation Status `Activated`, Role `Group Manager`, Group binaan `Head Office {runId}`
+  - DU-085-30: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Kamera Mirrorless Sony A6400 {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Overdue`, Due date `T0 - 1 hari`, Notifikasi borrow_overdue varian Borrower `belum pernah dikirim`
+  - DU-085-31: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Lampu Meja Philips {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-085-32: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Proyektor Mini Anker {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-085-33: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Kipas Berdiri Cosmos {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 1 hari`
+  - DU-085-34: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Dispenser Mini Sharp {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 1 hari`, PIC `Rina Kusuma {runId}`
+  - DU-085-37: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Pemanggang Roti Cosmos {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-085-38: Pinjaman berjalan: Borrower `Gita Anggraini {runId}`, Aset `Rak Display Lipat {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`, PIC `Rina Kusuma {runId}`
+  - DU-085-39: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Hair Dryer Philips {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-085-42: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Mixer Audio Behringer {runId}`, Group `Head Office {runId}`, TAG `Ber-tag`, Status baris `Borrowed`, Due date `T0 + 3 hari`
 - Kondisi:
   - T0 adalah waktu permintaan dikirim.
   - Aset pada pinjaman berjalan memakai aturan efektif yang mengizinkan Extend; `Monitor LG UltraFine 27 {runId}` sudah Overdue sejak T0 - 1 hari dan Due date reminders D-3 / D-1 / D-day sudah lewat.
@@ -199,7 +209,7 @@ trace:
 73. Maya menolak laporan `Handycam Sony FDR-AX43 {runId}` dengan Approval note `Aset masih di tangan Borrower`
 74. Verifikasi Reject mengembalikan status aset seperti sebelum laporan
 75. Verifikasi penanda `Damaged` pada baris `Returned` hilang karena record di-Reject, satu-satunya cara penanda itu hilang
-76. Verifikasi pelepasan aset (Disposal) atas aset `Handycam Sony FDR-AX43 {runId}` yang Borrowed dan dilaporkan rusak menunggu Return
+76. Verifikasi baris `Handycam Sony FDR-AX43 {runId}` sudah `Returned`, sehingga pelepasan aset (Disposal) atas aset itu tidak lagi menunggu Return
 
 ### Aset Missing ter-scan hanya dicatat sebagai deteksi
 77. Agus memindai TAG `Headset Logitech H390 {runId}` pada halaman Return, sementara laporan `Missing` dari `Dewi Lestari {runId}` masih `Waiting for Confirmation`
@@ -224,3 +234,75 @@ trace:
 94. Verifikasi Report Damaged diterima walau aset `In Audit`
 95. Verifikasi Activity Lock `In Audit` pada `Bor Listrik Bosch GSB 13 {runId}` tidak dijeda oleh laporan, karena laporan tidak menjeda Stock Opname maupun Work Order
 
+### Repair tidak dimulai dan Disposal menunggu Return selama aset Borrowed dan Damaged
+96. Maya memulai Repair atas `Tablet Samsung Galaxy Tab S9 {runId}` yang Borrowed dan record laporannya sudah `Damaged`
+97. Verifikasi Repair tidak dimulai selama aset Borrowed
+98. Aktor yang berhak Disposal mengirim Disposal atas `Tablet Samsung Galaxy Tab S9 {runId}` yang Borrowed dan `Damaged`
+99. Verifikasi Disposal menunggu Return dan tidak dijalankan selama aset Borrowed
+
+### Return atas aset yang record laporannya sudah Damaged
+100. Dewi menjalankan Return atas `Tablet Samsung Galaxy Tab S9 {runId}` dengan scan TAG
+101. Verifikasi baris menjadi `Returned` dengan penanda `Damaged` tanpa badge `Reported Damaged` di samping `Returned`
+
+### Scan di form Borrow atas aset Missing hanya dicatat sebagai deteksi
+102. Agus memindai TAG `Gergaji Mesin Stihl MS 170 {runId}` pada form Borrow
+103. Verifikasi scan dicatat sebagai deteksi, Condition aset tetap `Missing`, dan aset tidak ditambahkan ke form
+
+### Laporan Missing dibatalkan pelapor atas baris Overdue
+104. Dewi mengirim Report Missing atas `Kamera Mirrorless Sony A6400 {runId}` yang barisnya sudah Overdue dengan What happened `Kamera tertinggal di lokasi acara`
+105. Dewi mengirim Cancel Missing Report atas laporan `Kamera Mirrorless Sony A6400 {runId}`
+106. Verifikasi `borrow_overdue` varian Borrower dikirim saat laporan dibatalkan karena baris sudah Overdue dan belum pernah dikirim
+107. Verifikasi ambang Due date yang sudah lewat tidak dikirim mundur
+108. Verifikasi pengingat ke Borrower berjalan lagi sesudah laporan dibatalkan
+
+### Laporan Missing ditolak memulihkan badge dan status baris
+109. Dewi mengirim Report Missing atas `Lampu Meja Philips {runId}` dengan What happened `Lampu meja hilang dari ruang kerja`
+110. Rudi menolak laporan `Missing` atas `Lampu Meja Philips {runId}` dengan Approval note `Aset masih di tangan Borrower`
+111. Verifikasi badge `Reported Missing` hilang dan baris `Lampu Meja Philips {runId}` tetap `Borrowed`
+
+### Extend yang dibatalkan sistem tidak dipulihkan, dan Extend tersedia lagi sesudah laporan Reject atau dibatalkan
+112. Maya menolak laporan `Damaged` atas `Tripod Manfrotto MT055 {runId}` dengan Approval note `Aset masih di tangan Borrower`
+113. Verifikasi pengajuan Extend lama atas `Tripod Manfrotto MT055 {runId}` tetap `Canceled` oleh `System` dengan alasan `Damage reported` dan tidak aktif kembali
+114. Dewi mengajukan Extend atas `Tripod Manfrotto MT055 {runId}` dengan Extend by `1` dan Reason `Proyek belum selesai`
+115. Verifikasi Extend tersedia lagi sesudah laporan di-Reject dan permintaan diterima
+116. Bagus mengajukan Extend atas `Gimbal DJI RS 3 {runId}` dengan Extend by `1` dan Reason `Sesi foto tambahan`
+117. Verifikasi Extend tersedia lagi sesudah laporan dibatalkan pelapornya dan permintaan diterima
+
+### Penanda Damaged pada baris Returned hilang bila laporan dibatalkan pelapor
+118. Dewi mengirim Report Damaged atas `Proyektor Mini Anker {runId}` dengan satu foto dan What happened `Lensa proyektor retak`
+119. Dewi menjalankan Return atas `Proyektor Mini Anker {runId}` dengan scan TAG
+120. Verifikasi baris menjadi `Returned` dengan penanda `Damaged` selama record laporan `Waiting for Confirmation`
+121. Dewi mengirim Cancel Damage Report atas laporan `Proyektor Mini Anker {runId}`
+122. Verifikasi penanda `Damaged` pada baris `Returned` hilang karena laporan dibatalkan pelapor
+
+### Aktor Borrow dan PIC menarik laporan Damaged yang mereka ajukan sendiri
+123. Sinta mengirim Report Damaged atas `Hair Dryer Philips {runId}` dari Borrow Detail dengan satu foto dan What happened `Kabel hair dryer terkelupas`
+124. Sinta mengirim Cancel Damage Report atas laporan yang ia ajukan untuk `Hair Dryer Philips {runId}`
+125. Verifikasi Cancel Damage Report oleh Aktor Borrow atas laporannya sendiri diterima
+126. Rina mengirim Report Damaged atas `Rak Display Lipat {runId}` atas nama `Gita Anggraini {runId}` dengan satu foto dan What happened `Rak display patah engsel`
+127. Verifikasi laporan dari PIC diterima: record `Waiting for Confirmation` dan status global aset langsung `Damaged`
+128. Rina mengirim Cancel Damage Report atas laporan yang ia ajukan atas nama `Gita Anggraini {runId}` untuk `Rak Display Lipat {runId}`
+129. Verifikasi Cancel Damage Report oleh PIC atas laporannya sendiri diterima
+
+### Report Damaged tanpa foto atau tanpa What happened ditolak
+130. Dewi mengirim Report Damaged atas `Pemanggang Roti Cosmos {runId}` dengan What happened `Pegangan pemanggang patah` tanpa foto
+131. Verifikasi Report Damaged tanpa foto ditolak dan tidak ada record laporan
+132. Dewi mengirim Report Damaged atas `Pemanggang Roti Cosmos {runId}` dengan satu foto tanpa What happened
+133. Verifikasi Report Damaged tanpa What happened ditolak dan tidak ada record laporan
+
+### Pengingat Due date tidak dikirim ke Borrower atau PIC selama laporan Missing menunggu
+134. Dewi mengirim Report Missing atas `Kipas Berdiri Cosmos {runId}` dengan What happened `Kipas tidak ada di ruang rapat`
+135. Rina mengirim Report Missing atas `Dispenser Mini Sharp {runId}` atas nama `Gita Anggraini {runId}` dengan What happened `Dispenser tidak ditemukan di pantry`
+136. Job pengingat Due date harian berjalan saat Due date kedua pinjaman tinggal 1 hari
+137. Verifikasi `borrow_due_soon` varian Borrower atas `Kipas Berdiri Cosmos {runId}` tidak dikirim ke `Dewi Lestari {runId}` selama laporan menunggu konfirmasi
+138. Verifikasi `borrow_due_soon` varian Borrower atas `Dispenser Mini Sharp {runId}` tidak dikirim ke PIC `Rina Kusuma {runId}` selama laporan menunggu konfirmasi
+
+### Laporan Missing tidak menjeda Work Order
+139. Verifikasi Activity Lock `Under Maintenance` pada `Genset Honda EU22i {runId}` tidak dijeda oleh Report Missing dan Work Order tetap berjalan
+
+### Penanda Damaged pada baris Returned tidak hilang oleh Confirm
+140. Dewi mengirim Report Damaged atas `Mixer Audio Behringer {runId}` dengan satu foto dan What happened `Knob mixer lepas`
+141. Dewi menjalankan Return atas `Mixer Audio Behringer {runId}` dengan scan TAG sementara laporan `Waiting for Confirmation`
+142. Verifikasi baris menjadi `Returned` dengan penanda `Damaged` selama record laporan `Waiting for Confirmation`
+143. Maya mengonfirmasi laporan `Damaged` atas `Mixer Audio Behringer {runId}` lewat menu `Damaged`
+144. Verifikasi record laporan menjadi `Damaged` dan penanda `Damaged` pada baris `Returned` tetap ada, karena penanda hanya dapat hilang bila record di-Reject atau dibatalkan

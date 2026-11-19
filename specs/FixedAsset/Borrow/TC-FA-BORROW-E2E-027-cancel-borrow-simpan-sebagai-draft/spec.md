@@ -4,7 +4,7 @@ title: "Cancel Borrow dengan Save as Draft to edit membuat Draft baru berisi ase
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["F-BORROW-10.k8", "§9.2#p40", "§9.2#b80", "§9.2#b81", "§9.2#b82", "§9.2#b84", "§9.2#b85", "§9.2#b86", "§9.2#b87"]
 smoke: []
 dependsOn: []
@@ -29,7 +29,7 @@ coverage:
 - Aktor: `Agus Pratama {runId}`, Asset Admin (Aktor Borrow) pada Group `Head Office`; ia bukan Borrower maupun PIC pada BRW di spec ini.
 - Layar awal: halaman utama aplikasi dengan sidebar.
 - Data:
-  - DU-027-1: BRW Group `Head Office`, Borrower `Qori Fadillah {runId}`, Requested By `Agus Pratama {runId}`, Note `Untuk pelatihan Q4`, berisi baris aset DU-027-2 dan DU-027-3 berstatus `Waiting for Handover`; belum ada baris `Borrowed`.
+  - DU-027-1: BRW Group `Head Office`, Borrower `Qori Fadillah {runId}`, Requested By `Bagas Nugroho {runId}` (Aktor Borrow lain, bukan pembatal), Note `Untuk pelatihan Q4`, berisi baris aset DU-027-2 dan DU-027-3 berstatus `Waiting for Handover`; belum ada baris `Borrowed`.
   - DU-027-2: aset `Laptop MSI Modern {runId}`, Duration `3 days`, Purpose `Pelatihan karyawan`.
   - DU-027-3: aset `Proyektor Viewsonic {runId}`, Duration `2 days`, Purpose `Presentasi vendor`.
   - DU-027-4: BRW Group `Head Office`, Borrower `Rosa Anggraini {runId}`, berisi baris aset DU-027-5 berstatus `Borrowed` dan aset DU-027-6 berstatus `Waiting for Handover`.
@@ -37,6 +37,7 @@ coverage:
   - DU-027-6: aset `Scanner Fujitsu {runId}`, Duration `2 days`, Purpose `Pemindaian arsip`.
   - DU-027-7: BRW Group `Head Office`, Borrower `Sinta Wulandari {runId}`, Requested By `Agus Pratama {runId}`, Note `Peminjaman acara kantor`, berisi baris aset DU-027-8 berstatus `Waiting for Handover` yang batas pengambilannya (Transaction timeout) sudah terlewati saat job Transaction timeout berjalan.
   - DU-027-8: aset `Kamera Canon M50 {runId}`, Duration `4 days`, Purpose `Dokumentasi acara`.
+  - DU-027-9: user `Bagas Nugroho {runId}`, Asset Admin (Aktor Borrow) pada Group `Head Office`, aktif.
   - Pada level plan Full, sehingga Draft tersedia.
 
 ## Test Steps
@@ -64,7 +65,7 @@ coverage:
 18. Verifikasi node `Canceled by [Actor]` di Borrow Log aset DU-027-2 memuat baris detail `Saved as draft` berupa tautan ke Draft dengan [Actor] berisi `Agus Pratama {runId}`
 19. Klik tab `Drafts`
 20. Ketik Search `Qori Fadillah {runId}`, tekan Enter
-21. Verifikasi Draft baru atas Borrower `Qori Fadillah {runId}` tampil tanpa nomor BRW dengan Modified By `Agus Pratama {runId}` sebagai pembuat Draft
+21. Verifikasi Draft baru atas Borrower `Qori Fadillah {runId}` tampil tanpa nomor BRW dengan Modified By `Agus Pratama {runId}` sebagai pembuat Draft, bukan pengaju BRW asal `Bagas Nugroho {runId}`
 22. Buka Draft atas Borrower `Qori Fadillah {runId}`
 23. Verifikasi Draft menampilkan `Restored from [BRW No.]` dengan [BRW No.] berisi Transaction ID milik DU-027-1
 24. Verifikasi Draft memuat aset DU-027-2 dengan Duration `3 days` dan Purpose `Pelatihan karyawan` serta aset DU-027-3 dengan Duration `2 days` dan Purpose `Presentasi vendor`

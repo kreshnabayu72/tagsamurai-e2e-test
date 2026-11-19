@@ -4,7 +4,7 @@ title: "Tabel Approvals > Borrow Active dan History: konfigurasi kolom dan state
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1f#p2", "§4.1f#r1", "§4.1f#r2", "§4.1f#r3", "§4.1f#r4", "§4.1f#r5", "§4.1f#r6", "§4.1f#r7", "§4.1f#r11", "§4.1f#r12", "§4.1f#r13", "§4.1f#r14", "§4.1f#r15", "§4.1f#r16", "§4.1f#r17", "§4.1f#r18", "§4.1f#r19", "EB-TBL-1@tabel-approvals", "EB-TBL-2@tabel-approvals", "EB-TBL-4@tabel-approvals"]
 smoke: []
 dependsOn: []

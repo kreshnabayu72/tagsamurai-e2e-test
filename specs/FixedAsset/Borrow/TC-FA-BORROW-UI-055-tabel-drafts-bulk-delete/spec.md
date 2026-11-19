@@ -4,16 +4,16 @@ title: "Tabel Drafts: konfigurasi kolom dan mekanik bulk Delete dengan bar selek
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1l#p3", "§4.1l#r1", "§4.1l#r2", "§4.1l#r3", "§4.1l#r4", "§4.1l#r5", "§4.1l#r6", "§4.1l#p8", "§4.1l#p10", "§5#r6", "EB-TBL-1@tabel-drafts", "EB-TBL-2@tabel-drafts", "EB-TBL-4@tabel-drafts", "EB-BLK-1@tabel-drafts", "EB-BLK-4", "EB-BLK-6"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.1l#p3": [14, 16]
+  "§4.1l#p3": [14, 16, 139, 140, 141]
   "§4.1l#r1": [18, 20, 22, 23, 24, 25, 26, 59, 71]
   "§4.1l#r2": [28, 29, 31, 32, 60, 61, 72]
-  "§4.1l#r3": [34, 35, 37, 38, 62, 72]
-  "§4.1l#r4": [40, 41, 42, 44, 45, 63, 72]
+  "§4.1l#r3": [34, 35, 37, 38, 62, 72, 131, 133]
+  "§4.1l#r4": [40, 41, 42, 44, 45, 63, 72, 136]
   "§4.1l#r5": [46, 48, 49, 50, 64, 72]
   "§4.1l#r6": [18, 51, 53, 55, 56, 65, 72]
   "§4.1l#p8": [63, 67]
@@ -45,6 +45,7 @@ coverage:
   - DU-055-7: 12 Draft Borrower `Peminjam{n} Pratama` (tampil `Peminjam{n} P`), Group `Head Office`, Total Asset `1`, Origin `New`.
   - DU-055-8: 1.500 Draft Borrower `Peminjam{n} Pratama` (tampil `Peminjam{n} P`), Group `Head Office`, Total Asset `1`, Origin `New`.
   - DU-055-9: kata kunci tanpa hasil `Tidak Ada` dan nomor halaman `101`.
+  - DU-055-10: Draft Borrower `Dewi Lestari` (tampil `Dewi L`), Group `Head Office`, Total Asset `1 ⚠` dengan aset `Laptop Dell Latitude 5420 - 3` yang tidak layak karena berada di transaksi aktif lain, Origin `New`, Modified By `Rina Wijaya` (tampil `Rina W`), Last Updated `09/11/26, 08:30`.
 - Kondisi:
   - K1: tabel dimuat berisi DU-055-1 sampai DU-055-6; waktu sekarang `09/11/26, 20:30`; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
   - K2: tabel dimuat tanpa data sama sekali.
@@ -55,6 +56,7 @@ coverage:
   - K7: seperti K5; Bulk Delete dikonfirmasi dan dijawab gagal karena error server.
   - K8: seperti K5; Bulk Delete dikonfirmasi dan dijawab gagal karena koneksi terputus.
   - K9: Selection Limit bernilai `1000`; tabel dimuat dengan total 1.500 baris DU-055-8.
+  - K10: tabel dimuat berisi DU-055-10; waktu sekarang `09/11/26, 20:30`; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
 
 ## Test Steps
 
@@ -218,5 +220,24 @@ coverage:
 127. Isi nomor halaman dengan `101`, tekan Enter
 128. Arahkan kursor ke checkbox salah satu baris pada halaman 101
 129. Verifikasi checkbox baris itu disabled dengan tooltip `You've reached the maximum selection of 1000 rows.`
+
+### Total Asset pada Draft dengan aset tidak layak
+130. Tampilkan Tabel Drafts dengan kondisi K10
+131. Verifikasi Total Asset baris `Dewi L` tampil `1 ⚠`
+132. Arahkan kursor ke Total Asset baris `Dewi L`
+133. Verifikasi aset `Laptop Dell Latitude 5420 - 3` tampil beserta keterangan kelayakannya
+
+### Rincian asal Draft Restored by system
+134. Tampilkan Tabel Drafts dengan kondisi K1
+135. Arahkan kursor ke badge Origin baris `Sari D`
+136. Verifikasi nomor BRW asal `BRW-2026-0153` tampil pada tooltip Origin
+
+### Urutan dan severity row action Drafts
+137. Tampilkan Tabel Drafts dengan kondisi K1
+138. Klik `⋯` pada baris `Andi P`
+139. Verifikasi urutan aksi pada menu: `Edit`, lalu `Delete`
+140. Verifikasi aksi `Edit` memakai severity `dark`
+141. Verifikasi aksi `Delete` memakai severity `danger`
+142. Tekan Esc
 
 [^drift-1]: Drift PRD vs foundation. PRD §4.1l (T-BRW-20 Setup Column, kolom Borrower): Toggle `☐ Always visible (checked, disabled)`. foundation `prd-conventions.md` §9.3: tidak ada kolom Locked, semua kolom data Hideable (`☑ Hideable (checked, enabled)`), dan satu-satunya guard adalah kolom visible terakhir. Diasersi: foundation, karena Setup Column adalah pola bersama (SB-4).

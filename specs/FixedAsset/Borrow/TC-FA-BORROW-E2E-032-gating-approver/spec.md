@@ -4,7 +4,7 @@ title: "Approver hanya melihat menu Approvals > Borrow dan keputusan atas aset y
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§2.1#r13", "§2.1#r14", "§2.1#r15", "§2.1#r16", "§2.1#r17", "§2.1#r18", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r15", "§4.8#r16", "§4.8#r17", "§4.8#r18"]
 smoke: []
 dependsOn: []
@@ -16,7 +16,7 @@ trace:
   "§2.1#r3": [5]
   "§4.8#r3": [5]
   "§2.1#r4": [5]
-  "§4.8#r4": [5]
+  "§4.8#r4": [5, 23, 28, 29]
   "§2.1#r5": [5]
   "§4.8#r5": [5]
   "§2.1#r6": [14, 15]
@@ -45,7 +45,7 @@ trace:
   "§4.8#r17": [14]
   "§2.1#r18": [8, 10, 11]
   "§4.8#r18": [9, 20]
-anchor: [4]
+anchor: [4, 22, 27]
 coverage:
   web: automated
 ---
@@ -67,6 +67,7 @@ coverage:
   - DU-032-9: BRW berstatus Waiting for Approval dengan `Budi Santoso {runId}` sebagai approver aset itu, Group `IT Support {runId}`, Borrower `Rudi Hartono {runId}`, aset `Router Cisco ISR {runId}`, Duration `3 days`, Purpose `Pemasangan jaringan`, Requested By `Agus Pratama {runId}`.
   - DU-032-10: BRW berstatus Waiting for Approval dengan approver lain, Group `Branch Surabaya {runId}`, Borrower `Dewi Lestari {runId}`, aset `Genset Perkins 20 kVA {runId}`, Duration `7 days`, Purpose `Cadangan listrik`, Requested By `Agus Pratama {runId}`.
   - DU-032-11: BRW berstatus Waiting for Handover setelah disetujui `Budi Santoso {runId}` (riwayat approval: Approved), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Projector Epson EB-X06 {runId}`, Duration `4 days`, Purpose `Presentasi vendor`, Requested By `Agus Pratama {runId}`.
+  - DU-032-12: Aset `Laptop Lenovo T14 {runId}`, Group `Head Office {runId}`, status Available.
 - Kondisi:
   - Level Feature Suite Borrowing entitas aktor bernilai `Full`.
 
@@ -101,3 +102,14 @@ coverage:
 18. Ketik Search `{runId}`, tekan Enter
 19. Verifikasi pengajuan BRW milik DU-032-11 tampil di tab `History`
 20. Verifikasi `Download` tampil di toolbar tab `History`
+
+### Quick Action dan Asset List tanpa aksi Borrow bagi Approver
+21. Buka menu Quick Action pada navbar
+22. Verifikasi menu Quick Action terbuka untuk Approver
+23. Verifikasi item `Borrow` tidak tampil di menu Quick Action bagi Approver
+24. Klik menu `Assets > All`
+25. Ketik Search `{runId}`, tekan Enter
+26. Buka menu ⋯ pada baris aset `Laptop Lenovo T14 {runId}`
+27. Verifikasi baris aset `Laptop Lenovo T14 {runId}` tampil di tabel aset untuk Approver
+28. Verifikasi aksi `Borrow` tidak tampil bagi Approver
+29. Verifikasi aksi `Add to Borrow Draft` tidak tampil bagi Approver

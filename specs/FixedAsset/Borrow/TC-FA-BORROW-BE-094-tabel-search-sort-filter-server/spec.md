@@ -4,7 +4,7 @@ title: "Server mencari, mengurutkan, dan menyaring tabel Borrow per kelas kolom 
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: [EB-SRC-1, EB-FLT-3, EB-SRT-1, EB-SRT-2]
 smoke: []
@@ -33,7 +33,7 @@ anchor: []
   - DU-094-5: Borrower `Elan Kusuma {runId}`, Group `Head Office`, Status `Waiting for Approval`, Total Asset `1`, Source `Admin`, Requested By `Hendra Wijaya {runId}`.
   - DU-094-6: Borrower `Ezra Mahendra {runId}`, Group `Head Office`, Status `Waiting for Handover`, Total Asset `1`, Source `Self-service`, Requested By `—`.
 - Kondisi:
-  - Aset DU-094-2 dan DU-094-5 memakai aturan approval yang belum diputuskan; aset DU-094-1, DU-094-4, dan DU-094-6 tanpa approval; aset DU-094-3 sudah di-Hand Over.
+  - Aset DU-094-2 dan DU-094-5 memakai aturan approval `Needs approval`, sehingga BRW-nya berstatus `Waiting for Approval` saat diajukan; aset DU-094-1, DU-094-4, dan DU-094-6 tanpa approval; aset DU-094-3 sudah di-Hand Over.
   - Tidak ada Sort aktif kecuali yang disebut langkah; kolom Source tersembunyi seperti pengaturan awal tabel.
 
 ## Test Steps

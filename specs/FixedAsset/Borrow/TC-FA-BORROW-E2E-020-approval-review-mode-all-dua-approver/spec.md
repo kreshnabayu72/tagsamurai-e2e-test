@@ -4,22 +4,22 @@ title: "Approval mode Any one dan All antar dua approver menentukan hasil aset d
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["EC-BRW-105", "EC-BRW-106", "EC-BRW-11", "EC-BRW-115", "EC-BRW-12", "F-BORROW-04.k6", "F-BORROW-04.k7", "FI-BRW-207", "FI-BRW-208", "FI-BRW-209", "FI-BRW-210"]
 smoke: []
 dependsOn: []
 trace:
-  "EC-BRW-105": 48
-  "EC-BRW-106": [87, 96]
-  "EC-BRW-11": [15, 20, 38]
-  "EC-BRW-115": [64, 67, 70, 79]
-  "EC-BRW-12": [125, 134]
-  "F-BORROW-04.k6": [15, 20, 38, 48]
-  "F-BORROW-04.k7": [64, 70, 79, 96, 125, 134]
-  "FI-BRW-207": [37, 46]
-  "FI-BRW-208": [94, 104, 111]
-  "FI-BRW-209": [63, 77]
-  "FI-BRW-210": [32, 33]
+  "EC-BRW-105": 51
+  "EC-BRW-106": [93, 102]
+  "EC-BRW-11": [14, 15, 17, 22, 40, 42]
+  "EC-BRW-115": [69, 71, 73, 76, 85]
+  "EC-BRW-12": [131, 140]
+  "F-BORROW-04.k6": [14, 15, 17, 22, 40, 51]
+  "F-BORROW-04.k7": [69, 76, 85, 102, 131, 140]
+  "FI-BRW-207": [39, 49]
+  "FI-BRW-208": [100, 110, 117]
+  "FI-BRW-209": [68, 83]
+  "FI-BRW-210": [34, 35]
 anchor: []
 coverage:
   web: automated
@@ -54,132 +54,140 @@ coverage:
 11. Rina W: Klik `[Submit]`
 12. Wawan Setiawan {runId}: Klik `[Submit]`
 13. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
-14. Wawan Setiawan {runId}: Klik `[Submit]` pada dialog `Submit Approval`
-15. Verifikasi tepat satu dari Rina W dan Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.`
-16. Rina W: Klik tab `History`
-17. Rina W: Ketik Search `Citra Lestari {runId}`, tekan Enter
-18. Wawan Setiawan {runId}: Klik tab `History`
-19. Wawan Setiawan {runId}: Ketik Search `Citra Lestari {runId}`, tekan Enter
-20. Verifikasi baris DU-020-1 tampil di tab `History` tepat satu dari Rina W dan Wawan Setiawan {runId}, sehingga aset DU-020-2 hanya memiliki satu keputusan final
+14. Verifikasi Rina W menerima toast `Success, borrow has been approved.`
+15. Verifikasi Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.` pada Review yang sedang terbuka, karena keputusan Rina W dikomit server lebih dulu
+16. Wawan Setiawan {runId}: Klik `[OK]`
+17. Verifikasi Wawan Setiawan {runId} kembali ke halaman `Approvals > Borrow` sesudah `[OK]`
+18. Rina W: Klik tab `History`
+19. Rina W: Ketik Search `Citra Lestari {runId}`, tekan Enter
+20. Wawan Setiawan {runId}: Klik tab `History`
+21. Wawan Setiawan {runId}: Ketik Search `Citra Lestari {runId}`, tekan Enter
+22. Verifikasi baris DU-020-1 tampil di tab `History` Rina W dan tidak tampil di tab `History` Wawan Setiawan {runId}, sehingga aset DU-020-2 hanya memiliki satu keputusan final
 
 ### Rina W memutuskan aset Any one lebih dulu saat Review Wawan terbuka
-21. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
-22. Wawan Setiawan {runId}: Klik `Borrow`
-23. Wawan Setiawan {runId}: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
-24. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-3
-25. Wawan Setiawan {runId}: Klik `Review`
-26. Rina W: Klik `Approvals` pada sidebar
-27. Rina W: Klik `Borrow`
-28. Rina W: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
-29. Rina W: Klik menu ⋯ pada baris DU-020-3
-30. Rina W: Klik `Review`
-31. Rina W: Isi Approve Duration baris DU-020-4 dengan `3`
-32. Verifikasi caption `Max. 2 days` tampil di bawah input Approve Duration baris DU-020-4 sehingga durasi tidak dapat ditambah
-33. Verifikasi baris DU-020-4 tidak memiliki kontrol untuk mengganti aset
-34. Rina W: Isi Approve Duration baris DU-020-4 dengan `1`
-35. Rina W: Klik `[Submit]`
-36. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
-37. Verifikasi Rina W menerima toast `Success, borrow has been approved.`
-38. Verifikasi Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.` tanpa menunggu `[Submit]`
-39. Wawan Setiawan {runId}: Klik `[OK]`
-40. Rina W: Klik `Approvals` pada sidebar
-41. Rina W: Klik `Borrow`
-42. Rina W: Klik tab `History`
-43. Rina W: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
-44. Rina W: Klik menu ⋯ pada baris DU-020-3
-45. Rina W: Klik `Detail`
-46. Verifikasi keputusan aset DU-020-4 `Approved` pada halaman Detail read-only tanpa kontrol keputusan yang dapat diubah
-47. Rina W: Klik sel `Approval Rule` aset DU-020-4
-48. Verifikasi dialog `Approval Progress` menampilkan Rina W `Approved` dan Wawan Setiawan {runId} `Not Involved`
+23. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
+24. Wawan Setiawan {runId}: Klik `Borrow`
+25. Wawan Setiawan {runId}: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
+26. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-3
+27. Wawan Setiawan {runId}: Klik `Review`
+28. Rina W: Klik `Approvals` pada sidebar
+29. Rina W: Klik `Borrow`
+30. Rina W: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
+31. Rina W: Klik menu ⋯ pada baris DU-020-3
+32. Rina W: Klik `Review`
+33. Rina W: Isi Approve Duration baris DU-020-4 dengan `3`
+34. Verifikasi Approve Duration baris DU-020-4 menjadi `2`, dijepit ke durasi yang diminta, tanpa pesan di bawah input, sehingga durasi tidak dapat ditambah[^drift-1]
+35. Verifikasi baris DU-020-4 tidak memiliki kontrol untuk mengganti aset
+36. Rina W: Isi Approve Duration baris DU-020-4 dengan `1`
+37. Rina W: Klik `[Submit]`
+38. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
+39. Verifikasi Rina W menerima toast `Success, borrow has been approved.`
+40. Verifikasi Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.` tanpa menunggu `[Submit]`
+41. Wawan Setiawan {runId}: Klik `[OK]`
+42. Verifikasi Wawan Setiawan {runId} kembali ke halaman `Approvals > Borrow` sesudah `[OK]`
+43. Rina W: Klik `Approvals` pada sidebar
+44. Rina W: Klik `Borrow`
+45. Rina W: Klik tab `History`
+46. Rina W: Ketik Search `Dimas Prakoso {runId}`, tekan Enter
+47. Rina W: Klik menu ⋯ pada baris DU-020-3
+48. Rina W: Klik `Detail`
+49. Verifikasi keputusan aset DU-020-4 `Approved` pada halaman Detail read-only tanpa kontrol keputusan yang dapat diubah
+50. Rina W: Klik sel `Approval Rule` aset DU-020-4
+51. Verifikasi dialog `Approval Progress` berjudul `Approval Progress` dengan identitas berlabel `Asset` bernilai `Printer Canon {runId}` di bawah judul, hanya memuat bagian Approval Progress, dan menampilkan Rina W `Approved` dan Wawan Setiawan {runId} `Not Involved`
 
 ### Rina W me-Reject aset All saat Review Wawan terbuka dan sudah diisi Approve
-49. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
-50. Wawan Setiawan {runId}: Klik `Borrow`
-51. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
-52. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-5
-53. Wawan Setiawan {runId}: Klik `Review`
-54. Rina W: Klik `Approvals` pada sidebar
-55. Rina W: Klik `Borrow`
-56. Rina W: Ketik Search `Eka Wijaya {runId}`, tekan Enter
-57. Rina W: Klik menu ⋯ pada baris DU-020-5
-58. Rina W: Klik `Review`
-59. Rina W: Ubah toggle Approval baris DU-020-6 menjadi `Reject`
-60. Rina W: Isi Approval Note baris DU-020-6 dengan `Scanner dipakai kegiatan lain`
-61. Rina W: Klik `[Submit]`
-62. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
-63. Verifikasi Rina W menerima toast `Success, borrow has been rejected.`
-64. Verifikasi Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.` tanpa menunggu `[Submit]`
-65. Wawan Setiawan {runId}: Klik `[OK]`
-66. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
-67. Verifikasi tabel Active Wawan Setiawan {runId} menampilkan `No results found`
-68. Wawan Setiawan {runId}: Klik tab `History`
-69. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
-70. Verifikasi tabel History Wawan Setiawan {runId} menampilkan `No results found` sehingga keputusan yang belum dikirim tidak tersimpan
-71. Rina W: Klik `Approvals` pada sidebar
-72. Rina W: Klik `Borrow`
-73. Rina W: Klik tab `History`
-74. Rina W: Ketik Search `Eka Wijaya {runId}`, tekan Enter
-75. Rina W: Klik menu ⋯ pada baris DU-020-5
-76. Rina W: Klik `Detail`
-77. Verifikasi keputusan aset DU-020-6 `Rejected` karena satu penolakan
-78. Rina W: Klik sel `Approval Rule` aset DU-020-6
-79. Verifikasi dialog `Approval Progress` menampilkan Rina W `Rejected` dan Wawan Setiawan {runId} `Not Involved`
+52. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
+53. Wawan Setiawan {runId}: Klik `Borrow`
+54. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
+55. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-5
+56. Wawan Setiawan {runId}: Klik `Review`
+57. Wawan Setiawan {runId}: Isi Approve Duration baris DU-020-6 dengan `2`
+58. Wawan Setiawan {runId}: Isi Approval Note baris DU-020-6 dengan `Scanner siap dipakai`
+59. Rina W: Klik `Approvals` pada sidebar
+60. Rina W: Klik `Borrow`
+61. Rina W: Ketik Search `Eka Wijaya {runId}`, tekan Enter
+62. Rina W: Klik menu ⋯ pada baris DU-020-5
+63. Rina W: Klik `Review`
+64. Rina W: Ubah toggle Approval baris DU-020-6 menjadi `Reject`
+65. Rina W: Isi Approval Note baris DU-020-6 dengan `Scanner dipakai kegiatan lain`
+66. Rina W: Klik `[Submit]`
+67. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
+68. Verifikasi Rina W menerima toast `Success, borrow has been rejected.`
+69. Verifikasi Wawan Setiawan {runId} menerima dialog `Approval cannot be made` dengan teks `You can no longer approve this request because it has already been done by another approver.` tanpa menunggu `[Submit]`
+70. Wawan Setiawan {runId}: Klik `[OK]`
+71. Verifikasi Wawan Setiawan {runId} kembali ke halaman `Approvals > Borrow` sesudah `[OK]`
+72. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
+73. Verifikasi tabel Active Wawan Setiawan {runId} menampilkan `No results found`
+74. Wawan Setiawan {runId}: Klik tab `History`
+75. Wawan Setiawan {runId}: Ketik Search `Eka Wijaya {runId}`, tekan Enter
+76. Verifikasi tabel History Wawan Setiawan {runId} menampilkan `No results found` sehingga keputusan yang belum dikirim tidak tersimpan
+77. Rina W: Klik `Approvals` pada sidebar
+78. Rina W: Klik `Borrow`
+79. Rina W: Klik tab `History`
+80. Rina W: Ketik Search `Eka Wijaya {runId}`, tekan Enter
+81. Rina W: Klik menu ⋯ pada baris DU-020-5
+82. Rina W: Klik `Detail`
+83. Verifikasi keputusan aset DU-020-6 `Rejected` karena satu penolakan
+84. Rina W: Klik sel `Approval Rule` aset DU-020-6
+85. Verifikasi dialog `Approval Progress` berjudul `Approval Progress` dengan identitas berlabel `Asset` bernilai `Scanner Epson {runId}` di bawah judul, hanya memuat bagian Approval Progress, dan menampilkan Rina W `Rejected` dan Wawan Setiawan {runId} `Not Involved`
 
 ### Aset All menjadi Approved hanya bila kedua approver menyetujui
-80. Rina W: Klik `Approvals` pada sidebar
-81. Rina W: Klik `Borrow`
-82. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
-83. Rina W: Klik menu ⋯ pada baris DU-020-7
-84. Rina W: Klik `Review`
-85. Rina W: Klik `[Submit]`
-86. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
-87. Verifikasi Rina W menerima toast `Success, your approval has been recorded. Waiting for the other approvers.`
-88. Rina W: Klik `Approvals` pada sidebar
-89. Rina W: Klik `Borrow`
-90. Rina W: Klik tab `History`
-91. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
-92. Rina W: Klik menu ⋯ pada baris DU-020-7
-93. Rina W: Klik `Detail`
-94. Verifikasi kolom Approval Rule aset DU-020-8 `All approvers · 1 of 2 approved` dan keputusannya `Waiting`, bukan `Approved`
-95. Rina W: Klik sel `Approval Rule` aset DU-020-8
-96. Verifikasi dialog `Approval Progress` menampilkan Rina W `Approved` dan Wawan Setiawan {runId} `Waiting for Approval`
-97. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
-98. Wawan Setiawan {runId}: Klik `Borrow`
-99. Wawan Setiawan {runId}: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
-100. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-7
-101. Wawan Setiawan {runId}: Klik `Review`
-102. Wawan Setiawan {runId}: Klik `[Submit]`
-103. Wawan Setiawan {runId}: Klik `[Submit]` pada dialog `Submit Approval`
-104. Verifikasi Wawan Setiawan {runId} menerima toast `Success, borrow has been approved.`
-105. Rina W: Klik `Approvals` pada sidebar
-106. Rina W: Klik `Borrow`
-107. Rina W: Klik tab `History`
-108. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
-109. Rina W: Klik menu ⋯ pada baris DU-020-7
-110. Rina W: Klik `Detail`
-111. Verifikasi keputusan aset DU-020-8 `Approved` karena semua approver menyetujui
+86. Rina W: Klik `Approvals` pada sidebar
+87. Rina W: Klik `Borrow`
+88. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
+89. Rina W: Klik menu ⋯ pada baris DU-020-7
+90. Rina W: Klik `Review`
+91. Rina W: Klik `[Submit]`
+92. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
+93. Verifikasi Rina W menerima toast `Success, your approval has been recorded. Waiting for the other approvers.`
+94. Rina W: Klik `Approvals` pada sidebar
+95. Rina W: Klik `Borrow`
+96. Rina W: Klik tab `History`
+97. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
+98. Rina W: Klik menu ⋯ pada baris DU-020-7
+99. Rina W: Klik `Detail`
+100. Verifikasi kolom Approval Rule aset DU-020-8 `All approvers · 1 of 2 approved` dan keputusannya `Waiting`, bukan `Approved`
+101. Rina W: Klik sel `Approval Rule` aset DU-020-8
+102. Verifikasi dialog `Approval Progress` berjudul `Approval Progress` dengan identitas berlabel `Asset` bernilai `Monitor LG {runId}` di bawah judul, hanya memuat bagian Approval Progress, dan menampilkan Rina W `Approved` dan Wawan Setiawan {runId} `Waiting for Approval`
+103. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
+104. Wawan Setiawan {runId}: Klik `Borrow`
+105. Wawan Setiawan {runId}: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
+106. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-7
+107. Wawan Setiawan {runId}: Klik `Review`
+108. Wawan Setiawan {runId}: Klik `[Submit]`
+109. Wawan Setiawan {runId}: Klik `[Submit]` pada dialog `Submit Approval`
+110. Verifikasi Wawan Setiawan {runId} menerima toast `Success, borrow has been approved.`
+111. Rina W: Klik `Approvals` pada sidebar
+112. Rina W: Klik `Borrow`
+113. Rina W: Klik tab `History`
+114. Rina W: Ketik Search `Fajar Nugroho {runId}`, tekan Enter
+115. Rina W: Klik menu ⋯ pada baris DU-020-7
+116. Rina W: Klik `Detail`
+117. Verifikasi keputusan aset DU-020-8 `Approved` karena semua approver menyetujui
 
 ### Aset All yang tidak diputuskan salah satu approver ditutup oleh timeout
-112. Rina W: Klik `Approvals` pada sidebar
-113. Rina W: Klik `Borrow`
-114. Rina W: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
-115. Rina W: Klik menu ⋯ pada baris DU-020-9
-116. Rina W: Klik `Review`
-117. Rina W: Klik `[Submit]`
-118. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
-119. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
-120. Wawan Setiawan {runId}: Klik `Borrow`
-121. Wawan Setiawan {runId}: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
-122. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-9
-123. Wawan Setiawan {runId}: Klik `Review`
-124. Job Transaction timeout berjalan sesudah batas Transaction timeout baris DU-020-10 terlewati
-125. Verifikasi Wawan Setiawan {runId} menerima dialog `Borrow Canceled` dengan teks `This borrow was canceled automatically (Timed out (Waiting for Approval)).`
-126. Wawan Setiawan {runId}: Klik `[OK]`
-127. Rina W: Klik `Approvals` pada sidebar
-128. Rina W: Klik `Borrow`
-129. Rina W: Klik tab `History`
-130. Rina W: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
-131. Rina W: Klik menu ⋯ pada baris DU-020-9
-132. Rina W: Klik `Detail`
-133. Rina W: Klik sel `Approval Rule` aset DU-020-10
-134. Verifikasi dialog `Approval Progress` menampilkan Rina W `Approved` dengan waktu keputusannya dan Wawan Setiawan {runId} `Not Involved` dengan keterangan `Canceled by system`
+118. Rina W: Klik `Approvals` pada sidebar
+119. Rina W: Klik `Borrow`
+120. Rina W: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
+121. Rina W: Klik menu ⋯ pada baris DU-020-9
+122. Rina W: Klik `Review`
+123. Rina W: Klik `[Submit]`
+124. Rina W: Klik `[Submit]` pada dialog `Submit Approval`
+125. Wawan Setiawan {runId}: Klik `Approvals` pada sidebar
+126. Wawan Setiawan {runId}: Klik `Borrow`
+127. Wawan Setiawan {runId}: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
+128. Wawan Setiawan {runId}: Klik menu ⋯ pada baris DU-020-9
+129. Wawan Setiawan {runId}: Klik `Review`
+130. Job Transaction timeout berjalan sesudah batas Transaction timeout baris DU-020-10 terlewati
+131. Verifikasi Wawan Setiawan {runId} menerima dialog `Borrow Canceled` dengan teks `This borrow was canceled automatically (Timed out (Waiting for Approval)).`
+132. Wawan Setiawan {runId}: Klik `[OK]`
+133. Rina W: Klik `Approvals` pada sidebar
+134. Rina W: Klik `Borrow`
+135. Rina W: Klik tab `History`
+136. Rina W: Ketik Search `Gita Ramadhani {runId}`, tekan Enter
+137. Rina W: Klik menu ⋯ pada baris DU-020-9
+138. Rina W: Klik `Detail`
+139. Rina W: Klik sel `Approval Rule` aset DU-020-10
+140. Verifikasi dialog `Approval Progress` berjudul `Approval Progress` dengan identitas berlabel `Asset` bernilai `Tablet Samsung {runId}` di bawah judul, hanya memuat bagian Approval Progress, dan menampilkan Rina W `Approved` dengan waktu keputusannya dan Wawan Setiawan {runId} `Not Involved` dengan keterangan `Canceled by system`
+
+[^drift-1]: Drift PRD vs kontrak komponen. PRD §4.1g (kontrol keputusan T-BRW-08), V-BRW-27, dan FLD-BRW-17: Approve Duration yang melebihi durasi diminta ditolak dengan caption `Max. [Requested] [Unit]` di bawah input. Kontrak `NumberInput#1`: `min` dan `max` adalah rentang, bukan filter ketik; nilai di luar rentang dijepit ke batas terdekat saat blur atau Enter. Kontrak `NumberInput#15`: tidak ada pesan rentang dan tidak ada state invalid untuk nilai di luar `min`/`max`. Diasersi: kontrak, nilai dijepit ke durasi diminta tanpa caption (SB-7).

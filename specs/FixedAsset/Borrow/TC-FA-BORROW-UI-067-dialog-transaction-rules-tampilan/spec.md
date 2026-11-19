@@ -4,7 +4,7 @@ title: "Dialog Transaction Rules: identitas aset, batas efektif, dan status per 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-BRW-10"]
 smoke: []
 dependsOn: []

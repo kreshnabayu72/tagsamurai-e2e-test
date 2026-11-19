@@ -9,16 +9,16 @@ sourceRules: ["D-BRW-03", "D-BRW-06", "D-BRW-09", "D-BRW-13", "D-BRW-14", "D-BRW
 smoke: []
 dependsOn: []
 trace:
-  "D-BRW-03": [2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 14]
+  "D-BRW-03": [2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 14, 114, 115, 116, 152, 153, 154, 155, 156]
   "D-BRW-06": [25, 26, 27]
-  "D-BRW-09": [35, 36, 37, 39]
+  "D-BRW-09": [35, 36, 37, 39, 119]
   "D-BRW-13": [41, 42, 43]
   "D-BRW-14": [47, 48, 49, 50]
-  "D-BRW-16": [54, 55, 56, 58]
+  "D-BRW-16": [54, 55, 56, 58, 121, 123, 126]
   "D-BRW-17": [69, 70, 71, 72]
   "D-BRW-18": [88, 89]
-  "D-BRW-22": [93, 94, 95, 96, 98]
-  "D-BRW-23": [102, 103, 104]
+  "D-BRW-22": [93, 94, 95, 96, 98, 129]
+  "D-BRW-23": [102, 103, 104, 131, 132, 134, 135, 137, 138, 140, 141, 143, 144, 146, 147, 150]
   "D-BRW-24": [106, 107, 108]
   "DM-BRW-04": [47, 52]
   "DM-BRW-05": [2, 17, 20, 23]
@@ -38,12 +38,12 @@ trace:
   "FLD-BRW-18": [75, 77, 79]
   "FLD-BRW-19": [74, 83]
   "§4.2.3#p2": [7, 8]
-  "§4.2.3#b1": 7
-  "§4.2.3#b2": 8
+  "§4.2.3#b1": [7, 152, 153]
+  "§4.2.3#b2": [8, 154, 155, 156]
   "§7.2#p1": [39, 60, 63, 110]
   "§7.2#p2": 112
   "§9.5#r19": 9
-anchor: [66]
+anchor: [66, 131, 134, 137, 140, 143, 146]
 coverage:
   web: automated
 ---
@@ -64,20 +64,24 @@ coverage:
   - DU-064-7: aset di daftar Return `Tablet Samsung Galaxy Tab A8`, tanpa laporan Damaged.
   - DU-064-8: BRW `BRW-2026-0153`, Group `Finance`.
   - DU-064-9: Draft `Draft Peminjaman Gudang 03` di luar cakupan Aktor.
+  - DU-064-14: isian Borrow Request tersimpan: Borrower `Budi Santoso`, aset `Printer Epson L3110 - 1`, Duration `2 days`, Purpose `Presentasi klien`, Note `Dipakai untuk presentasi di kantor klien`.
+  - DU-064-15: BRW untuk Group `Finance` dengan satu aset `Printer Epson L3110 - 1` (Duration `2 days`, Purpose `Presentasi klien`, tanpa approval).
+  - DU-064-16: BRW untuk Group `Gudang Pusat` dengan satu aset `Hand Pallet Yale MP20 - 1` (Duration `1 day`, Purpose `Bongkar muat gudang`, tanpa approval).
+  - DU-064-17: BRW untuk Group `Finance` dengan lima aset menurut aturan approval: `Printer Epson L3110 - 1` (Auto-approve terpenuhi), `Proyektor BenQ MW550 - 2` (Self service aktif), `Laptop Dell Latitude 5420 - 8` (perlu approval, satu approver), `Laptop HP ProBook 440 - 3` (perlu approval, beberapa approver), dan `Meja Rapat Kayu Jati - 4` (perlu approval, tanpa approver di Group sehingga dirutekan ke Group Manager atau Total Control).
 - Kondisi:
   - K1: Date Format bernilai `DD/MM/YYYY`; dialog Submit Borrow dibuka dari `[Submit]` form Borrow Request dengan DU-064-1 dan DU-064-2.
   - K2: dialog Submit Borrow dibuka dari `[Submit]` form Borrow Request dengan DU-064-1 saja.
-  - K3: dialog Submit Borrow dengan DU-064-1 dan DU-064-2 dikonfirmasi, semua BRW langsung Waiting for Handover.
-  - K4: dialog Submit Borrow dengan DU-064-1 dikonfirmasi, semua BRW menunggu approval.
-  - K5: dialog Submit Borrow dengan DU-064-1 dikonfirmasi, sebagian aset langsung disetujui dan sebagian menunggu approval (1 dari 3 aset disetujui, 2 menunggu approval).
+  - K3: dialog Submit Borrow dengan DU-064-15 dan DU-064-16 dikonfirmasi, semua BRW langsung Waiting for Handover.
+  - K4: dialog Submit Borrow dengan DU-064-2 dikonfirmasi, satu BRW yang seluruh asetnya menunggu approval.
+  - K5: dialog Submit Borrow dengan DU-064-1 dan DU-064-2 dikonfirmasi, dua BRW dengan total 3 aset, sebagian aset langsung disetujui dan sebagian menunggu approval (1 dari 3 aset disetujui, 2 menunggu approval).
   - K6: dialog Submit Approval dibuka dari `[Submit]` halaman Review Approval, lalu dikonfirmasi dan berhasil.
   - K7: dialog Submit Approval dibuka dari `[Submit]` halaman Review Extension Request, lalu dikonfirmasi dan berhasil.
   - K8: dialog Borrow Canceled dibuka saat halaman Review Approval terbuka karena pengajuan dibatalkan oleh `Budi Santoso`.
   - K9: dialog Borrow Canceled dibuka saat halaman Review Approval terbuka karena pengajuan dibatalkan otomatis dengan alasan DU-064-6.
-  - K10: dialog Draft Changed dibuka dari `[Save Draft]` pada Draft yang diubah oleh DU-064-4.
-  - K11: dialog Draft Changed dibuka dari `[Submit]` pada Draft yang diubah oleh DU-064-4.
+  - K10: Time Format bernilai `24h`, dialog Draft Changed dibuka dari `[Save Draft]` pada Draft yang diubah oleh DU-064-4.
+  - K11: Time Format bernilai `24h`, dialog Draft Changed dibuka dari `[Submit]` pada Draft yang diubah oleh DU-064-4.
   - K12: dialog Cancel Extension dibuka dari row action `Cancel Extension` untuk DU-064-5, Date Format bernilai `DD/MM/YYYY`, lalu dikonfirmasi dan berhasil.
-  - K13: dialog Approval cannot be made dibuka karena approver lain sudah memutuskan pengajuan Borrow atau Extension approval.
+  - K13: dialog Approval cannot be made dibuka karena approver lain sudah memutuskan pengajuan Borrow.
   - K14: dialog Approval cannot be made dibuka karena Aktor Borrow lain sudah mengirim review Extension Request.
   - K15: halaman Review Approval terbuka dan approver lain lebih dulu memutuskan aset mode Any one approver yang sama.
   - K16: halaman Review Approval terbuka dan salah satu approver me-Reject aset mode All approvers.
@@ -91,6 +95,17 @@ coverage:
   - K24: dialog Borrow Already Canceled dibuka saat Aktor Borrow menjalankan Remind Borrower pada baris yang sudah dibatalkan DU-064-3 `Budi Santoso`.
   - K25: dialog Restore Unsent Borrow dibuka saat Borrow Request dibuka di perangkat yang sama oleh pengguna yang sama dan ada isian tersimpan.
   - K26: dialog Cannot Delete Drafts dibuka dari Bulk Delete Draft untuk DU-064-9 saja.
+  - K27: dialog Approval cannot be made dibuka karena approver lain sudah memutuskan pengajuan Extension approval.
+  - K28: dialog Approval cannot be made dibuka karena keputusan override Group Manager atau Total Control sudah masuk lebih dulu.
+  - K29: dialog Borrow Already Canceled dibuka saat Aktor Borrow menjalankan Cancel Borrow pada DU-064-8 yang sudah dibatalkan `Budi Santoso`.
+  - K30: Borrow Request dibuka di perangkat yang sama oleh pengguna yang sama, tanpa isian tersimpan.
+  - K31: Borrow Request dibuka di perangkat yang sama oleh pengguna lain, sedangkan isian tersimpan milik pengguna sebelumnya.
+  - K32: Borrow Request dibuka di perangkat lain oleh pengguna yang sama, sedangkan isian tersimpan hanya ada di perangkat sebelumnya.
+  - K33: Borrow Request dibuka lagi sesudah `[Submit]` berhasil pada isian yang sebelumnya tersimpan.
+  - K34: Borrow Request dibuka lagi sesudah `[Discard]` diklik pada dialog Restore Unsent Borrow.
+  - K35: Borrow Request dibuka lagi sesudah pengguna yang sama logout, padahal isian sebelumnya tersimpan.
+  - K36: dialog Restore Unsent Borrow dibuka, isian tersimpan diperbarui tiap perubahan: pertama dengan Duration `1 day`, lalu dengan seluruh isian DU-064-14.
+  - K37: dialog Submit Borrow dibuka dari `[Submit]` form Borrow Request dengan DU-064-17.
 
 ## Test Steps
 
@@ -214,7 +229,7 @@ coverage:
 83. Verifikasi thumbnail foto tampil pada field `Photo`
 84. Isi field `What happened` dengan `Layar retak setelah terjatuh saat dipindahkan`
 85. Klik `[Report]`
-86. Verifikasi toast `Success, damage report has been sent to the Asset Admin.` tampil
+86. Verifikasi dialog `Report Damaged` tertutup dan baris `Tablet Samsung Galaxy Tab A8` menampilkan badge `Reported Damaged`
 
 ### Dialog Bulk Transaction Row Limit dari Submit
 87. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K20
@@ -257,3 +272,73 @@ coverage:
 110. Verifikasi urutan dialog real-time mengikuti Aturan Urutan Dialog: `Approval cannot be made` terbuka tanpa menunggu `[Submit]`
 111. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K26
 112. Verifikasi dialog `Cannot Delete Drafts` tampil sebagai hasil skenario Bulk Delete Draft menurut Matriks Skenario, Dialog, dan Hasil
+
+### Jumlah aset dan baris approval kartu BRW Gudang Pusat
+113. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K1
+114. Verifikasi kartu BRW `Finance` menampilkan jumlah aset `2`
+115. Verifikasi kartu BRW `Gudang Pusat` menampilkan jumlah aset `1`
+116. Verifikasi kartu BRW `Gudang Pusat` menampilkan baris approval `Needs approval: Forklift Toyota 8FD - 1.`
+
+### Dialog Borrow Canceled ditutup lewat OK
+117. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K8
+118. Klik `[OK]` pada dialog Borrow Canceled
+119. Verifikasi dialog `Borrow Canceled` tertutup
+
+### Dialog Approval cannot be made untuk Extension approval dan keputusan override
+120. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K27
+121. Verifikasi teks `You can no longer approve this request because it has already been done by another approver.` tampil untuk pengajuan Extension approval
+122. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K28
+123. Verifikasi teks `You can no longer approve this request because it has already been done by another approver.` tampil untuk keputusan override Group Manager atau Total Control
+
+### Dialog Approval cannot be made ditutup lewat OK
+124. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K13
+125. Klik `[OK]` pada dialog Approval cannot be made
+126. Verifikasi dialog `Approval cannot be made` tertutup
+
+### Dialog Borrow Already Canceled ditutup lewat OK
+127. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K29
+128. Klik `[OK]` pada dialog Borrow Already Canceled
+129. Verifikasi dialog `Borrow Already Canceled` tertutup
+
+### Dialog Restore Unsent Borrow tidak muncul tanpa isian tersimpan
+130. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K30
+131. Verifikasi form Borrow Request tampil
+132. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena tidak ada isian tersimpan
+
+### Dialog Restore Unsent Borrow tidak muncul bagi pengguna lain di perangkat yang sama
+133. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K31
+134. Verifikasi form Borrow Request tampil
+135. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena isian tersimpan bukan milik pengguna ini
+
+### Dialog Restore Unsent Borrow tidak muncul di perangkat lain
+136. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K32
+137. Verifikasi form Borrow Request tampil
+138. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena isian tersimpan hanya ada di perangkat lain
+
+### Dialog Restore Unsent Borrow tidak muncul sesudah Submit berhasil
+139. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K33
+140. Verifikasi form Borrow Request tampil
+141. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena isian sudah dihapus sesudah Submit berhasil
+
+### Dialog Restore Unsent Borrow tidak muncul sesudah Discard
+142. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K34
+143. Verifikasi form Borrow Request tampil
+144. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena isian sudah dihapus sesudah Discard
+
+### Dialog Restore Unsent Borrow tidak muncul sesudah logout
+145. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K35
+146. Verifikasi form Borrow Request tampil
+147. Verifikasi dialog `Restore Unsent Borrow` tidak tampil karena isian tersimpan sudah dihapus
+
+### Restore memuat isian tersimpan terakhir
+148. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K36
+149. Klik `[Restore]`
+150. Verifikasi form Borrow Request memuat Borrower `Budi Santoso`, aset `Printer Epson L3110 - 1`, Duration `2 days`, Purpose `Presentasi klien`, dan Note `Dipakai untuk presentasi di kantor klien`
+
+### Baris approval kartu BRW menurut aturan approval aset
+151. Tampilkan Dialog konfirmasi dan blok Borrow dengan kondisi K37
+152. Verifikasi kartu BRW `Finance` menampilkan baris approval `No approval needed: Printer Epson L3110 - 1.` untuk aset Auto-approve
+153. Verifikasi kartu BRW `Finance` menampilkan baris approval `No approval needed: Proyektor BenQ MW550 - 2.` untuk aset Self service
+154. Verifikasi kartu BRW `Finance` menampilkan baris approval `Needs approval: Laptop Dell Latitude 5420 - 8.` untuk aset dengan satu approver
+155. Verifikasi kartu BRW `Finance` menampilkan baris approval `Needs approval: Laptop HP ProBook 440 - 3.` untuk aset dengan beberapa approver
+156. Verifikasi kartu BRW `Finance` menampilkan baris approval `Needs approval: Meja Rapat Kayu Jati - 4.` untuk aset tanpa approver di Group

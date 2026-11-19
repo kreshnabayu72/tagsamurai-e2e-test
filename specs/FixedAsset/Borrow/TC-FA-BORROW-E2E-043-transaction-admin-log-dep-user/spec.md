@@ -4,21 +4,21 @@ title: "Transaction admin log di User Detail memuat tindakan admin atas transaks
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§8.2#p1", "§8.2#r1", "§8.2#r2", "§8.2#r3", "§8.2#r4", "§8.2#r5", "§8.2#r6", "§8.2#p2", "§8.2#p3"]
 smoke: []
 dependsOn: ["User: Detail User > Transaction admin log"]
 trace:
-  "§8.2#p1": [21, 22, 45, 47, 81]
+  "§8.2#p1": [21, 22, 45, 47, 81, 162, 182, 184, 186, 188, 190]
   "§8.2#r1": [22, 23, 34]
   "§8.2#r2": [45, 47]
   "§8.2#r3": [88, 90, 92, 94]
   "§8.2#r4": [117, 119, 121]
   "§8.2#r5": [60, 62]
   "§8.2#r6": [81, 83]
-  "§8.2#p2": [133, 143, 152]
+  "§8.2#p2": [133, 143, 152, 204, 206, 208, 218, 229, 258, 260, 262, 276]
   "§8.2#p3": [18, 24]
-anchor: [147]
+anchor: [147, 274]
 coverage:
   web: automated
 ---
@@ -67,6 +67,20 @@ coverage:
   - DU-043-36: BRW `Borrowed` Group `Head Office`, Borrower `Hendra Kusuma {runId}`, berisi aset DU-043-37.
   - DU-043-37: aset `Kamera Fujifilm X-T5 {runId}`, Group `Head Office`.
   - DU-043-38: isian Report Damaged: Photo `layar-pecah.jpg`, What happened `Layar kamera pecah terkena benturan`.
+  - DU-043-39: karyawan `Rina Wulandari {runId}`, Status `Active`, Eligibility `Can borrow`, tanpa Draft.
+  - DU-043-40: aset `Pemanas Air Modena {runId}`, Group `Head Office`, Custody `Available`, Approval `Auto-approve`.
+  - DU-043-41: aset `Dispenser Cosmos {runId}`, Group `Head Office`, Custody `Available`, Approval `Auto-approve`.
+  - DU-043-42: BRW `Waiting for Handover` Group `Head Office`, Borrower `Hendra Kusuma {runId}`, Photo at start OFF, berisi dua aset ber-TAG `QR`: `Kompor Portable Rinnai {runId}` dan `Blender Philips {runId}`.
+  - DU-043-43: BRW `Borrowed` Group `Head Office`, Borrower `Hendra Kusuma {runId}`, Photo at end OFF, berisi dua aset ber-TAG `QR`: `Setrika Philips {runId}` dan `Mixer Sharp {runId}`.
+  - DU-043-44: BRW `Extension Request` Group `Head Office`, Borrower `Hendra Kusuma {runId}`, Due date T0 + 1 hari, berisi tiga pengajuan Extend yang menunggu review dengan Extend By `2 days` dan Reason `Proyek belum selesai`: aset `Genset Kipor {runId}` (Approval Extend `Auto-approve`), aset `Pompa Air Shimizu {runId}` (Approval Extend `Needs approval`), dan aset `Kipas Angin Cosmos {runId}`.
+  - DU-043-45: isian Review Extension Request: Approve Duration `2` dan Approval Note `Kebutuhan proyek belum mendesak` untuk penolakan.
+  - DU-043-46: BRW `Waiting for Handover` Group `Head Office`, Borrower `Maya Pertiwi {runId}`, Photo at start OFF, aset `Teropong Bushnell {runId}`, TAG `QR`.
+  - DU-043-47: karyawan tanpa akun login `Joko Susilo {runId}`, Status `Active`, PIC `Maya Pertiwi {runId}`.
+  - DU-043-48: BRW `Waiting for Handover` Group `Head Office`, Borrower `Joko Susilo {runId}`, PIC `Maya Pertiwi {runId}`, Photo at start OFF, aset `Walkie Talkie Baofeng {runId}`, TAG `QR`.
+  - DU-043-49: BRW `Borrowed` Group `Head Office`, Borrower `Joko Susilo {runId}`, PIC `Maya Pertiwi {runId}`, Photo at end OFF, aset `Proyektor Mini Xiaomi {runId}`, TAG `QR`.
+  - DU-043-50: BRW `Waiting for Handover` Group `Head Office`, Borrower `Hendra Kusuma {runId}`, Photo at start OFF, aset `Tablet Samsung Tab A9 {runId}`, TAG `QR`.
+  - DU-043-51: isian Report TAG: Report Type `Unreadable`.
+  - DU-043-52: BRW `Borrowed` Group `Head Office`, Borrower `Maya Pertiwi {runId}`, aset `Gitar Yamaha F310 {runId}`.
 
 ## Test Steps
 
@@ -83,11 +97,11 @@ coverage:
 10. Klik `[Save Draft]`
 11. Klik tab `Drafts` pada halaman Borrow
 12. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
-13. Klik menu ⋯ pada Draft milik Borrower `Hendra Kusuma {runId}`
+13. Klik menu ⋯ pada Draft berisi aset `Laptop Dell Latitude {runId}`
 14. Klik `Edit`
 15. Isi Note dengan `Peminjaman untuk presentasi klien`
 16. Klik `[Save Draft]`
-17. Klik `[Save Draft]` lagi tanpa mengubah isi Draft
+17. Klik `[Save Draft]` lagi pada Draft yang sama tanpa mengubah isi Draft
 18. Verifikasi toast `No changes to save.` tampil
 19. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
 20. Ketik Search `Laptop Dell Latitude {runId}`, tekan Enter
@@ -101,7 +115,7 @@ coverage:
 26. Klik `Borrow`
 27. Klik tab `Drafts` pada halaman Borrow
 28. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
-29. Klik menu ⋯ pada Draft milik Borrower `Hendra Kusuma {runId}`
+29. Klik menu ⋯ pada Draft berisi aset `Laptop Dell Latitude {runId}`
 30. Klik `Delete`
 31. Klik `[Delete]` pada dialog Delete Draft
 32. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
@@ -241,3 +255,143 @@ coverage:
 150. Buka User Detail `Dewi Lestari {runId}` pada tab `Transaction admin log`
 151. Ketik Search `{runId}`, tekan Enter
 152. Verifikasi jumlah baris hasil Search sama dengan jumlah awal karena tindakan Borrower atas pinjamannya sendiri tidak masuk Transaction admin log
+
+### Add to Borrow Draft bulk tercatat satu baris per Draft yang memuat semua aset di Draft
+153. Buka daftar aset lewat sidebar `Assets` > `All`
+154. Ketik Search `{runId}`, tekan Enter
+155. Centang baris `Pemanas Air Modena {runId}`
+156. Centang baris `Dispenser Cosmos {runId}`
+157. Klik aksi bulk `Add to Borrow Draft`
+158. Pilih Borrower `Rina Wulandari {runId}` pada dialog Select Borrower
+159. Klik `[Select]`
+160. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+161. Ketik Search `Pemanas Air Modena {runId}`, tekan Enter
+162. Verifikasi tabel memuat satu baris Add to Borrow Draft oleh `Maya Pertiwi {runId}` dengan Transaction No. `—` dan Asset(s) yang memuat `Pemanas Air Modena {runId}` dan `Dispenser Cosmos {runId}` sekaligus karena satu Draft menjadi satu baris
+
+### Hand Over dan Return dengan beberapa aset tercatat satu baris per aset
+163. Klik `Transactions` pada sidebar
+164. Klik `Borrow`
+165. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
+166. Klik menu ⋯ pada baris BRW milik DU-043-42
+167. Klik `Hand Over`
+168. Scan TAG aset `Kompor Portable Rinnai {runId}` lewat `[Verify Asset]`
+169. Scan TAG aset `Blender Philips {runId}` lewat `[Verify Asset]`
+170. Klik `[Request Confirmation]`
+171. Klik `[Confirm on This Device]`
+172. Centang checkbox pernyataan pada dialog `Confirm Receipt`
+173. Klik `[Confirm]`
+174. Klik `[Done]`
+175. Klik menu ⋯ pada baris BRW milik DU-043-43
+176. Klik `Return`
+177. Scan TAG aset `Setrika Philips {runId}` lewat `[Verify Asset]`
+178. Scan TAG aset `Mixer Sharp {runId}` lewat `[Verify Asset]`
+179. Klik `[Submit]`
+180. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+181. Ketik Search `Kompor Portable Rinnai {runId}`, tekan Enter
+182. Verifikasi tabel memuat baris `Handed over by [Giver]` dengan [Giver] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-42, dan Asset(s) `Kompor Portable Rinnai {runId}` saja
+183. Ketik Search `Blender Philips {runId}`, tekan Enter
+184. Verifikasi tabel memuat baris `Handed over by [Giver]` terpisah dengan [Giver] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-42, dan Asset(s) `Blender Philips {runId}` saja
+185. Ketik Search `Setrika Philips {runId}`, tekan Enter
+186. Verifikasi tabel memuat baris `Returned to [Receiver]` dengan [Receiver] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-43, dan Asset(s) `Setrika Philips {runId}` saja
+187. Ketik Search `Mixer Sharp {runId}`, tekan Enter
+188. Verifikasi tabel memuat baris `Returned to [Receiver]` terpisah dengan [Receiver] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-43, dan Asset(s) `Mixer Sharp {runId}` saja
+
+### Description baris log berpola Label: nilai dipisah titik tengah dengan lebih dari satu label
+189. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
+190. Verifikasi Description baris `Extension requested by [Pelaku]` untuk aset `Projector Epson EB-X06 {runId}` berpola `Label: nilai · Label: nilai` dengan `Extend duration: 2 Day(s)` dan `Proposed due date` bernilai T0 + 3 hari
+
+### Review Extension Request oleh Aktor Borrow tercatat satu baris per aset
+191. Klik `Transactions` pada sidebar
+192. Klik `Borrow`
+193. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
+194. Klik menu ⋯ pada baris BRW milik DU-043-44
+195. Klik `Review`
+196. Isi Approve Duration baris `Genset Kipor {runId}` dengan `2`
+197. Isi Approve Duration baris `Pompa Air Shimizu {runId}` dengan `2`
+198. Ubah toggle Approval baris `Kipas Angin Cosmos {runId}` menjadi `Reject`
+199. Isi Approval Note baris `Kipas Angin Cosmos {runId}` dengan `Kebutuhan proyek belum mendesak`
+200. Klik `[Submit]`
+201. Klik `[Submit]` pada dialog `Submit Approval`
+202. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+203. Ketik Search `Genset Kipor {runId}`, tekan Enter
+204. Verifikasi tabel memuat baris `Extension applied by [Actor]` dengan [Actor] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-44, dan Asset(s) `Genset Kipor {runId}` untuk aset yang Approval Rule-nya Auto-approve
+205. Ketik Search `Pompa Air Shimizu {runId}`, tekan Enter
+206. Verifikasi tabel memuat baris `Extension forwarded to approval by [Actor]` dengan [Actor] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-44, dan Asset(s) `Pompa Air Shimizu {runId}` untuk aset yang Approval Rule-nya Needs approval
+207. Ketik Search `Kipas Angin Cosmos {runId}`, tekan Enter
+208. Verifikasi tabel memuat baris `Extension rejected by [Actor]` dengan [Actor] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-44, dan Asset(s) `Kipas Angin Cosmos {runId}`
+
+### Cancel Damage Report atas laporannya sendiri tercatat di log admin
+209. Klik `Transactions` pada sidebar
+210. Klik `Borrow`
+211. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
+212. Buka Borrow Detail BRW milik DU-043-36 dari tabel Transactions
+213. Klik menu ⋯ pada baris aset DU-043-37
+214. Klik `Cancel Damage Report`
+215. Konfirmasi pembatalan laporan pada dialog yang tampil
+216. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+217. Ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter
+218. Verifikasi tabel memuat baris `Damage report canceled by [Actor]` dengan [Actor] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-36, dan Asset(s) `Kamera Fujifilm X-T5 {runId}`
+
+### TAG reported dari Hand Over tercatat di log admin
+219. Klik `Transactions` pada sidebar
+220. Klik `Borrow`
+221. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
+222. Klik menu ⋯ pada baris BRW milik DU-043-50
+223. Klik `Hand Over`
+224. Klik menu ⋯ pada baris aset `Tablet Samsung Tab A9 {runId}` di halaman Hand Over
+225. Klik `I Can't Scan the TAG`
+226. Kirim laporan pada dialog Report TAG dengan Report Type `Unreadable`
+227. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+228. Ketik Search `Tablet Samsung Tab A9 {runId}`, tekan Enter
+229. Verifikasi tabel memuat baris `TAG reported by [Reporter]` dengan [Reporter] berisi `Maya Pertiwi {runId}`, Transaction No. BRW milik DU-043-50, dan Asset(s) `Tablet Samsung Tab A9 {runId}`
+
+### Hand Over dan Return yang diproses sendiri oleh Aktor sebagai Borrower atau PIC ditandai Self-processed
+230. Klik `Transactions` pada sidebar
+231. Klik `Borrow`
+232. Ketik Search `Maya Pertiwi {runId}`, tekan Enter
+233. Klik menu ⋯ pada baris BRW milik DU-043-46
+234. Klik `Hand Over`
+235. Scan TAG aset `Teropong Bushnell {runId}` lewat `[Verify Asset]`
+236. Klik `[Request Confirmation]`
+237. Klik `[Confirm on This Device]`
+238. Centang checkbox pernyataan pada dialog `Confirm Receipt`
+239. Klik `[Confirm]`
+240. Klik `[Done]`
+241. Klik `Transactions` pada sidebar
+242. Klik `Borrow`
+243. Ketik Search `Joko Susilo {runId}`, tekan Enter
+244. Klik menu ⋯ pada baris BRW milik DU-043-48
+245. Klik `Hand Over`
+246. Scan TAG aset `Walkie Talkie Baofeng {runId}` lewat `[Verify Asset]`
+247. Klik `[Request Confirmation]`
+248. Klik `[Confirm on This Device]`
+249. Centang checkbox pernyataan pada dialog `Confirm Receipt`
+250. Klik `[Confirm]`
+251. Klik `[Done]`
+252. Klik menu ⋯ pada baris BRW milik DU-043-49
+253. Klik `Return`
+254. Scan TAG aset `Proyektor Mini Xiaomi {runId}` lewat `[Verify Asset]`
+255. Klik `[Submit]`
+256. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+257. Ketik Search `Teropong Bushnell {runId}`, tekan Enter
+258. Verifikasi tabel memuat baris `Handed over by [Giver]` untuk Asset(s) `Teropong Bushnell {runId}` dengan [Giver] berisi `Maya Pertiwi {runId}` dan penanda `Self-processed` karena Aktor juga Borrower
+259. Ketik Search `Walkie Talkie Baofeng {runId}`, tekan Enter
+260. Verifikasi tabel memuat baris `Handed over by [Giver]` untuk Asset(s) `Walkie Talkie Baofeng {runId}` dengan [Giver] berisi `Maya Pertiwi {runId}` dan penanda `Self-processed` karena Aktor menjadi PIC Borrower
+261. Ketik Search `Proyektor Mini Xiaomi {runId}`, tekan Enter
+262. Verifikasi tabel memuat baris `Returned to [Receiver]` untuk Asset(s) `Proyektor Mini Xiaomi {runId}` dengan [Receiver] berisi `Maya Pertiwi {runId}` dan penanda `Self-processed` karena Aktor menjadi PIC Borrower
+
+### Report dari halaman pinjamannya oleh Aktor dalam peran Borrower tidak masuk log admin
+263. Masuk sebagai `Maya Pertiwi {runId}`
+264. Klik menu Profile pada navbar
+265. Klik `My Asset`
+266. Klik tab `Borrowed`
+267. Klik menu ⋯ pada baris aset `Gitar Yamaha F310 {runId}`
+268. Klik `Report Damaged`
+269. Unggah foto `layar-pecah.jpg` pada dialog `Report Damaged`
+270. Isi What happened dengan `Layar kamera pecah terkena benturan`
+271. Kirim laporan pada dialog `Report Damaged`
+272. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
+273. Ketik Search `{runId}`, tekan Enter
+274. Verifikasi tabel memuat baris tindakan admin `Maya Pertiwi {runId}` untuk aset `Kamera Fujifilm X-T5 {runId}`
+275. Ketik Search `Gitar Yamaha F310 {runId}`, tekan Enter
+276. Verifikasi tidak ada baris untuk aset `Gitar Yamaha F310 {runId}` di Transaction admin log `Maya Pertiwi {runId}` karena laporan dari halaman pinjamannya oleh Aktor dalam peran Borrower hanya masuk User log

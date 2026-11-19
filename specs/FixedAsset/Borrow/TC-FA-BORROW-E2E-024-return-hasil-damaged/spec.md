@@ -4,22 +4,22 @@ title: "Report Damaged dari halaman Return memasang penanda Damaged pada baris R
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-137", "FI-BRW-138", "FI-BRW-139", "FI-BRW-140", "FI-BRW-141", "FI-BRW-142", "FI-BRW-143", "FI-BRW-144", "FI-BRW-145", "V-BRW-36"]
 smoke: []
 dependsOn: []
 trace:
   "FI-BRW-137": 17
   "FI-BRW-138": 23
-  "FI-BRW-139": [26, 36, 51]
-  "FI-BRW-140": [38, 41]
-  "FI-BRW-141": 44
-  "FI-BRW-142": 47
-  "FI-BRW-143": [48, 49]
-  "FI-BRW-144": [48, 49, 50]
-  "FI-BRW-145": 52
+  "FI-BRW-139": [26, 31, 40, 44, 46, 63]
+  "FI-BRW-140": [49, 52]
+  "FI-BRW-141": [55, 56]
+  "FI-BRW-142": 59
+  "FI-BRW-143": [60, 61]
+  "FI-BRW-144": [60, 61, 62]
+  "FI-BRW-145": 64
   "V-BRW-36": 19
-anchor: [14, 43]
+anchor: [14, 54]
 coverage:
   web: automated
 ---
@@ -68,34 +68,46 @@ coverage:
 ### Laporan yang dibuat di halaman Return diperbaiki atau dibuang bersama asetnya
 24. Klik menu ⋯ pada baris DU-024-2
 25. Klik `Edit Damage Report`
-26. Verifikasi dialog `Report Damaged` terisi What happened `Layar retak setelah terjatuh`
+26. Verifikasi dialog `Report Damaged` terisi Photo `foto-kerusakan-laptop.jpg` dan What happened `Layar retak setelah terjatuh`
 27. Isi What happened dengan `Layar retak dan engsel longgar setelah terjatuh`
 28. Klik `[Report]`
-29. Klik menu ⋯ pada baris DU-024-3
-30. Klik `Report Damaged`
-31. Unggah Photo `foto-kerusakan-kamera.jpg`
-32. Isi What happened dengan `Lensa tergores`
-33. Klik `[Report]`
-34. Klik menu ⋯ pada baris DU-024-3
-35. Klik `Remove from List`
-36. Verifikasi baris DU-024-3 hilang dari daftar beserta laporannya
+29. Klik menu ⋯ pada baris DU-024-2
+30. Klik `Edit Damage Report`
+31. Verifikasi dialog `Report Damaged` terisi What happened `Layar retak dan engsel longgar setelah terjatuh`
+32. Klik `[Report]`
+33. Klik menu ⋯ pada baris DU-024-3
+34. Klik `Report Damaged`
+35. Unggah Photo `foto-kerusakan-kamera.jpg`
+36. Isi What happened dengan `Lensa tergores`
+37. Klik `[Report]`
+38. Klik menu ⋯ pada baris DU-024-3
+39. Klik `Remove from List`
+40. Verifikasi baris DU-024-3 hilang dari daftar beserta laporannya
+41. Klik `[+ Asset]`
+42. Pilih aset DU-024-3 pada dialog Select Asset
+43. Klik `[Select]`
+44. Verifikasi baris DU-024-3 kembali ke daftar dengan Verification `Unverified`
+45. Klik menu ⋯ pada baris DU-024-3
+46. Verifikasi menu ⋯ baris DU-024-3 memuat `Report Damaged` dan `Remove from List`, serta tidak memuat `Edit Damage Report`, karena laporan yang terbuang tidak ikut kembali
+47. Klik `Remove from List`
 
 ### Cancel Damage Report hanya untuk laporan milik pengguna sendiri
-37. Klik menu ⋯ pada baris DU-024-4
-38. Verifikasi menu ⋯ baris DU-024-4 memuat `Cancel Damage Report` karena laporannya milik Aktor ini dan masih `Waiting for Confirmation`
-39. Klik `Cancel Damage Report`
-40. Klik tombol konfirmasi pada dialog Cancel Damage Report
-41. Verifikasi badge `Reported Damaged` pada baris DU-024-4 hilang
-42. Klik menu ⋯ pada baris DU-024-5
-43. Verifikasi menu ⋯ baris DU-024-5 memuat `Remove from List`
-44. Verifikasi menu ⋯ baris DU-024-5 tidak memuat `Cancel Damage Report` karena laporan Borrower tidak diubah dari halaman ini
-45. Tekan Esc untuk menutup menu ⋯
+48. Klik menu ⋯ pada baris DU-024-4
+49. Verifikasi menu ⋯ baris DU-024-4 memuat `Cancel Damage Report` karena laporannya milik Aktor ini dan masih `Waiting for Confirmation`
+50. Klik `Cancel Damage Report`
+51. Klik tombol konfirmasi pada dialog Cancel Damage Report
+52. Verifikasi badge `Reported Damaged` pada baris DU-024-4 hilang
+53. Klik menu ⋯ pada baris DU-024-5
+54. Verifikasi menu ⋯ baris DU-024-5 memuat `Remove from List`
+55. Verifikasi menu ⋯ baris DU-024-5 tidak memuat `Cancel Damage Report` karena laporan Borrower tidak diubah dari halaman ini
+56. Verifikasi menu ⋯ baris DU-024-5 tidak memuat `Edit Damage Report` dan `Report Damaged` karena laporan Borrower tidak diubah dari halaman ini
+57. Tekan Esc untuk menutup menu ⋯
 
 ### Submit mengembalikan semua aset dengan penanda Damaged mengikuti record
-46. Klik `[Submit]`
-47. Verifikasi halaman Borrow Detail BRW milik DU-024-1 tampil dengan baris aset DU-024-2, DU-024-4, dan DU-024-5 `Returned`
-48. Verifikasi baris aset DU-024-2 `Returned` dengan penanda `Damaged` dari laporan yang dibuat pada halaman Return
-49. Verifikasi baris aset DU-024-5 `Returned` dengan penanda `Damaged` dari laporan Borrower yang ditautkan, tanpa laporan kedua
-50. Verifikasi baris aset DU-024-4 `Returned` tanpa penanda `Damaged` karena laporannya dibatalkan
-51. Verifikasi baris aset DU-024-3 tetap `Borrowed` tanpa badge `Reported Damaged`
-52. Verifikasi baris aset DU-024-2 dan DU-024-5 `Returned` tanpa menunggu keputusan atas laporan `Waiting for Confirmation`
+58. Klik `[Submit]`
+59. Verifikasi halaman Borrow Detail BRW milik DU-024-1 tampil dengan baris aset DU-024-2, DU-024-4, dan DU-024-5 `Returned`
+60. Verifikasi baris aset DU-024-2 `Returned` dengan penanda `Damaged` dari laporan yang dibuat pada halaman Return
+61. Verifikasi baris aset DU-024-5 `Returned` dengan penanda `Damaged` dari laporan Borrower yang ditautkan
+62. Verifikasi baris aset DU-024-4 `Returned` tanpa penanda `Damaged` karena laporannya dibatalkan
+63. Verifikasi baris aset DU-024-3 tetap `Borrowed` tanpa badge `Reported Damaged`
+64. Verifikasi baris aset DU-024-2 dan DU-024-5 `Returned` tanpa menunggu keputusan atas laporan `Waiting for Confirmation`

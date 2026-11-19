@@ -4,19 +4,19 @@ title: "Tab Transactions menampilkan BRW dengan kolom, status header turunan, ur
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1a#p1", "§4.1a#r1", "§4.1a#r2", "§4.1a#r3", "§4.1a#r4", "§4.1a#r5", "§4.1a#r6", "§4.1a#r7", "§4.1a#r8", "§4.1a#r9", "§4.1a#p5", "§4.1a#p10", "§5#r1", "§5#r12", "§9.5#r1", "§9.5#r7", "§9.5#r18"]
 smoke: []
 dependsOn: []
 trace:
   "§4.1a#p1": [9, 23, 24, 25, 47]
-  "§4.1a#r1": [51, 53]
+  "§4.1a#r1": [51, 53, 60, 62]
   "§4.1a#r2": [9, 10, 13, 26, 27, 28, 29, 30, 31, 32, 33, 44, 56]
   "§4.1a#r3": [34, 35]
   "§4.1a#r4": [23]
   "§4.1a#r5": [36, 37, 38, 39, 57]
   "§4.1a#r6": [50]
-  "§4.1a#r7": [40, 41]
+  "§4.1a#r7": [40, 41, 64, 65]
   "§4.1a#r8": [42]
   "§4.1a#r9": [43, 44]
   "§4.1a#p5": [2, 45, 46]
@@ -25,7 +25,7 @@ trace:
   "§5#r12": [17, 20]
   "§9.5#r1": [1]
   "§9.5#r7": [44]
-  "§9.5#r18": [7]
+  "§9.5#r18": [7, 68, 72, 76, 82, 87]
 anchor: []
 coverage:
   web: automated
@@ -135,3 +135,42 @@ coverage:
 ### Extension Request dan baris Rejected pada BRW
 56. Verifikasi baris Borrower `Tono H` menampilkan status header `Extension Request`
 57. Verifikasi baris Borrower `Tono H` menampilkan Total Asset `2`, tanpa menghitung baris Rejected
+
+### Transaction ID dan Requested By ditemukan lewat Search
+58. Klik menu `Borrow` pada sidebar
+59. Ketik Search `{runId}`, tekan Enter
+60. Verifikasi BRW dengan Borrower `Rudi H` tampil di tabel sebelum Search diganti
+61. Ganti isi kotak search dengan Transaction ID baris Borrower `Rudi H`, tekan Enter
+62. Verifikasi hasil Search memuat satu baris dengan Borrower `Rudi H`
+63. Ganti isi kotak search dengan `Rina W`, tekan Enter
+64. Verifikasi baris Borrower `Maya P` dan `Dewi L` tampil dengan Requested By `Rina W`
+65. Verifikasi tidak ada baris dengan Borrower `Budi S`
+
+### Tidak ada saringan awal pada tab Drafts dan Borrowed Assets
+66. Klik tab `Drafts`
+67. Klik `Filter`
+68. Verifikasi tidak ada nilai terpilih pada semua field di Filter Panel tab `Drafts`
+69. Tutup Filter Panel tanpa klik `[Apply]`
+70. Klik tab `Borrowed Assets`
+71. Klik `Filter`
+72. Verifikasi tidak ada nilai terpilih pada semua field di Filter Panel sub-tab `By Asset`
+73. Tutup Filter Panel tanpa klik `[Apply]`
+74. Klik sub-tab `By Borrower`
+75. Klik `Filter`
+76. Verifikasi tidak ada nilai terpilih pada semua field di Filter Panel sub-tab `By Borrower`
+77. Tutup Filter Panel tanpa klik `[Apply]`
+
+### Tidak ada saringan awal pada tabel Assets Borrow Detail
+78. Klik menu `Borrow` pada sidebar
+79. Ketik Search `{runId}`, tekan Enter
+80. Klik Transaction ID baris Borrower `Rudi H`
+81. Klik `Filter`
+82. Verifikasi tidak ada nilai terpilih pada semua field di Filter Panel tabel Assets Borrow Detail
+83. Tutup Filter Panel tanpa klik `[Apply]`
+
+### Tidak ada saringan awal pada antrean Approvals Borrow
+84. Klik `Approvals` pada sidebar
+85. Klik `Borrow`
+86. Klik `Filter`
+87. Verifikasi tidak ada nilai terpilih pada semua field di Filter Panel antrean Approvals tab `Active`
+88. Tutup Filter Panel tanpa klik `[Apply]`

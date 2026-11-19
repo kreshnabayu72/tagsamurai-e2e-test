@@ -4,7 +4,7 @@ title: "Asset Admin melihat aksi Borrow dalam Group penugasan menurut matriks ak
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§2.1#r13", "§2.1#r14", "§2.1#r15", "§2.1#r16", "§2.1#r17", "§2.1#r18", "§2.1#b2", "§2.1#p5", "§2.1#p7", "§2.1#p8", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r15", "§4.8#r16", "§4.8#r17", "§4.8#r18"]
 smoke: []
 dependsOn: []
@@ -14,7 +14,7 @@ trace:
   "§2.1#r3": [33, 35, 61]
   "§2.1#r4": [36, 38, 41, 43]
   "§2.1#r5": [13]
-  "§2.1#r6": [71]
+  "§2.1#r6": [2]
   "§2.1#r7": [11]
   "§2.1#r8": [12]
   "§2.1#r9": [15]
@@ -26,11 +26,11 @@ trace:
   "§2.1#r15": [65]
   "§2.1#r16": [25]
   "§2.1#r17": [9]
-  "§2.1#r18": [7, 8]
-  "§2.1#b2": [45, 60]
+  "§2.1#r18": [7, 8, 73]
+  "§2.1#b2": [45, 60, 79, 80]
   "§2.1#p5": [13]
-  "§2.1#p7": [2, 71]
-  "§2.1#p8": [71]
+  "§2.1#p7": [2]
+  "§2.1#p8": [2]
   "§4.8#r1": [1, 4]
   "§4.8#r2": [5, 31, 32, 33]
   "§4.8#r3": [24, 25]
@@ -47,9 +47,9 @@ trace:
   "§4.8#r14": [28]
   "§4.8#r15": [26]
   "§4.8#r16": [2]
-  "§4.8#r17": [71]
+  "§4.8#r17": [2]
   "§4.8#r18": [9]
-anchor: [64]
+anchor: [64, 78]
 coverage:
   web: automated
 ---
@@ -57,7 +57,7 @@ coverage:
 # Asset Admin melihat aksi Borrow dalam Group penugasan menurut matriks akses dan visibilitas UI
 
 ## Prerequisites
-- Aktor: Asset Admin (cakupan Group penugasan `Head Office {runId}`).
+- Aktor: Asset Admin (cakupan Group penugasan `Head Office {runId}`), dan pemegang hak Update Manage asset & TAG saja `Bagas Prasetyo {runId}`.
 - Layar awal: halaman utama aplikasi Fixed Asset.
 - Data:
   - DU-031-1: User `Agus Pratama {runId}`, role Asset Admin, Group penugasan `Head Office {runId}`, aktif.
@@ -79,8 +79,12 @@ coverage:
   - DU-031-17: Draft milik Borrower `Dewi Lestari {runId}`, berisi aset `Mixer Beton Portable {runId}` (Group `Head Office {runId}`), Total Asset `1`, Modified By `Lina Sari {runId}`.
   - DU-031-18: Draft milik Borrower `Dewi Lestari {runId}`, berisi aset `Compressor Atlas Copco {runId}` (Group `Branch Surabaya {runId}`), Total Asset `1`, Modified By `Lina Sari {runId}`.
   - DU-031-19: Draft baru untuk Borrower `Rudi Hartono {runId}` tanpa aset, dibuat `Agus Pratama {runId}` lewat langkah spec.
+  - DU-031-20: Group `IT Support {runId}`, turunan dari Group penugasan `Head Office {runId}`.
+  - DU-031-21: BRW berstatus Waiting for Handover, Group `IT Support {runId}`, Borrower `Rudi Hartono {runId}`, aset `Server Dell PowerEdge R740 {runId}`, Duration `2 days`, Purpose `Migrasi server`, Requested By `Lina Sari {runId}`.
+  - DU-031-22: User `Bagas Prasetyo {runId}`, hanya memegang hak Update Manage asset & TAG (bukan Total Control, Group Manager, maupun Asset Admin), Group `Head Office {runId}`, aktif.
 - Kondisi:
   - Level Feature Suite Borrowing entitas aktor bernilai `Full`.
+  - Akun `Bagas Prasetyo {runId}` aktif dan kredensialnya disediakan fase 2.
 
 ## Test Steps
 
@@ -171,10 +175,23 @@ coverage:
 64. Verifikasi aset `Toyota Avanza {runId}` di Group penugasan berstatus `Borrowed` tampil di tabel aset
 65. Verifikasi aksi `Mark as Returned` tidak tampil karena level Feature Suite Borrowing bukan `None`
 
-### Asset Admin tidak memutuskan approval
+### BRW yang menunggu approval dapat dibuka dari halaman Borrow
 66. Klik menu `Transactions > Borrow`
 67. Ketik Search `{runId}`, tekan Enter
 68. Buka menu ⋯ pada baris BRW milik DU-031-14
 69. Klik `Detail`
 70. Verifikasi halaman Borrow Detail BRW milik DU-031-14 dengan status `Waiting for Approval` terbuka
-71. Verifikasi tombol keputusan `Approve` dan `Reject` tidak tampil pada Borrow Detail BRW milik DU-031-14
+
+### BRW dalam Group turunan dari Group penugasan tampil
+71. Klik menu `Transactions > Borrow`
+72. Ketik Search `{runId}`, tekan Enter
+73. Verifikasi BRW milik DU-031-21 dengan Group `IT Support {runId}`, turunan dari `Head Office {runId}`, tampil di tabel
+
+### Pemegang hak Update Manage asset & TAG saja bukan Aktor Borrow
+74. Masuk sebagai `Bagas Prasetyo {runId}`
+75. Klik menu `Assets > All`
+76. Ketik Search `{runId}`, tekan Enter
+77. Buka menu ⋯ pada baris aset `Laptop Lenovo T14 {runId}`
+78. Verifikasi baris aset `Laptop Lenovo T14 {runId}` tampil di tabel aset
+79. Verifikasi aksi `Borrow` tidak tampil bagi pemegang hak Update Manage asset & TAG saja
+80. Verifikasi aksi `Add to Borrow Draft` tidak tampil bagi pemegang hak Update Manage asset & TAG saja

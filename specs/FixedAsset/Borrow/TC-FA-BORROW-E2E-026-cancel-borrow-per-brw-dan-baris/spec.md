@@ -4,13 +4,13 @@ title: "Cancel Borrow per BRW atau per baris membatalkan baris sebelum handover 
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["F-BORROW-10.k1", "§9.2#r44"]
 smoke: []
 dependsOn: []
 trace:
   "F-BORROW-10.k1": [19, 34]
-  "§9.2#r44": [7, 8, 10, 11, 14, 16, 27, 29, 30, 31]
+  "§9.2#r44": [7, 8, 10, 11, 14, 16, 27, 29, 30, 31, 40, 42, 44, 50, 51]
 anchor: [4, 24]
 coverage:
   web: automated
@@ -29,6 +29,9 @@ coverage:
   - DU-026-5: aset `Kamera Panasonic {runId}`.
   - DU-026-6: aset `Lensa Canon {runId}`.
   - DU-026-7: aset `Flash Godox {runId}`.
+  - DU-026-8: BRW Group `Head Office`, Borrower `Hasan Basri {runId}`, berisi baris aset DU-026-9 berstatus `Borrowed` dan aset DU-026-10 berstatus `Waiting for Handover`.
+  - DU-026-9: aset `Mixer Behringer {runId}`.
+  - DU-026-10: aset `Speaker Yamaha {runId}`.
 
 ## Test Steps
 
@@ -69,3 +72,24 @@ coverage:
 32. Klik menu ⋯ pada baris aset DU-026-5
 33. Klik `Borrow Log`
 34. Verifikasi Borrow Log aset DU-026-5 memuat node `Canceled by [Actor]` dengan [Actor] berisi `Agus Pratama {runId}`
+
+### Cancel Borrow per BRW pada BRW campuran hanya membatalkan baris yang belum Borrowed
+35. Klik `Transactions` pada sidebar
+36. Klik `Borrow`
+37. Ketik Search `Hasan Basri {runId}`, tekan Enter
+38. Klik menu ⋯ pada baris BRW milik DU-026-8
+39. Klik `Cancel Borrow`
+40. Verifikasi dialog `Cancel Borrow` tampil dengan bullet BRW milik DU-026-8 dan tanpa field Reason
+41. Klik `[Cancel Borrow]`
+42. Verifikasi toast `Success, borrow has been canceled.` tampil
+43. Buka Borrow Detail BRW milik DU-026-8 dari tabel Transactions
+44. Verifikasi baris aset DU-026-10 berstatus `Canceled` dan baris aset DU-026-9 tetap `Borrowed`
+
+### Custody aset yang dibatalkan kembali Available
+45. Klik `Transactions` pada sidebar
+46. Klik `Borrow`
+47. Klik `[+ Borrow]`
+48. Klik `[+ Asset]`
+49. Ketik Search `{runId}`, tekan Enter
+50. Verifikasi baris aset DU-026-2, DU-026-3, dan DU-026-10 tampil di dialog Select Asset karena Custody kembali `Available` sesudah Cancel Borrow
+51. Verifikasi baris aset DU-026-9 yang masih `Borrowed` tidak tampil di dialog Select Asset

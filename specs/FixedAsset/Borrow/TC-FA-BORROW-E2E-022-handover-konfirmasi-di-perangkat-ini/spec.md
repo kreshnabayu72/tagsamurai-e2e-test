@@ -4,7 +4,7 @@ title: "Request Confirmation dan Confirm on This Device menyelesaikan handover d
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-75", "FI-BRW-76", "FI-BRW-77", "FI-BRW-78"]
 smoke: []
 dependsOn: []

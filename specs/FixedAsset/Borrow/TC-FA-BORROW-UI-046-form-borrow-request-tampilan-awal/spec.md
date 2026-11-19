@@ -4,7 +4,7 @@ title: "Form Borrow Request menampilkan field, alert Borrower Overdue, teks bant
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-01", "FI-BRW-02", "FI-BRW-03", "FI-BRW-53", "FI-BRW-54", "FLD-BRW-01", "§4.2#p4", "§9.9#p2", "§9.9#p3", "§9.9#p13", "EB-FRM-7@form-borrow-request"]
 smoke: []
 dependsOn: []
@@ -12,15 +12,15 @@ trace:
   "FI-BRW-01": [3, 6]
   "FI-BRW-02": 9
   "FI-BRW-03": 10
-  "FI-BRW-53": 34
+  "FI-BRW-53": [34, 52]
   "FI-BRW-54": [35, 38]
   "FLD-BRW-01": [23, 26, 29, 32]
   "§4.2#p4": 2
   "§9.9#p2": 12
   "§9.9#p3": [7, 8]
-  "§9.9#p13": [13, 14, 16]
+  "§9.9#p13": [13, 14, 16, 55]
   "EB-FRM-7@form-borrow-request": [40, 42, 43, 45, 47, 49]
-anchor: [5, 11, 21, 37]
+anchor: [5, 11, 21, 37, 51]
 coverage:
   web: automated
 ---
@@ -45,6 +45,7 @@ coverage:
   - K3: form dengan Borrower DU-046-4; simpan Draft ditolak karena Borrower tidak punya akun login dan tidak punya PIC.
   - K4: halaman Handover untuk transaksi dengan Borrower DU-046-5; Block new borrow when overdue bernilai ON.
   - K5: halaman Handover untuk transaksi dengan Borrower DU-046-6; Block new borrow when overdue bernilai ON.
+  - K6: halaman Handover untuk transaksi dengan Borrower DU-046-5; Block new borrow when overdue bernilai OFF.
 
 ## Test Steps
 
@@ -112,3 +113,13 @@ coverage:
 47. Verifikasi fokus tetap berada di dalam dialog Select Borrower
 48. Tekan Esc
 49. Verifikasi dialog Select Borrower tertutup dan fokus kembali ke tombol `[Select Borrower]`
+
+### Alert Borrower Overdue tidak tampil bila Block new borrow when overdue OFF
+50. Tampilkan halaman Handover dengan kondisi K6
+51. Verifikasi tombol `[Request Confirmation]` tampil
+52. Verifikasi alert Borrower Overdue tidak tampil pada halaman Handover walaupun Borrower punya baris Overdue
+
+### Placeholder Search pada halaman Handover
+53. Tampilkan halaman Handover dengan kondisi K4
+54. Klik ikon Search pada toolbar halaman Handover
+55. Verifikasi placeholder `Search asset name or ID...` tampil pada kotak Search halaman Handover

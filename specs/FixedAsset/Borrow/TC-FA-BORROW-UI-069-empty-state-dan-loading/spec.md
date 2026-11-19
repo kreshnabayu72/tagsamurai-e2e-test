@@ -4,7 +4,7 @@ title: "State kosong, loading, dan gagal muat surface Borrow"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["S-BRW-01", "S-BRW-02", "S-BRW-03", "S-BRW-04", "S-BRW-05", "S-BRW-06", "S-BRW-07", "S-BRW-08", "S-BRW-09", "S-BRW-10", "S-BRW-11", "S-BRW-12", "S-BRW-13"]
 smoke: []
 dependsOn: []

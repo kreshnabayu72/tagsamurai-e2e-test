@@ -4,55 +4,55 @@ title: "Ketersediaan Borrow per level None, Basic, dan Full dan penolakan server
 layer: be-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-19a", "BORROW-LOGIC-19b", "BORROW-LOGIC-19c", "BORROW-LOGIC-19d", "BORROW-LOGIC-19e", "BORROW-LOGIC-19f", "BORROW-LOGIC-19g", "BORROW-LOGIC-19i", "BORROW-LOGIC-19k", "BORROW-LOGIC-19l", "BORROW-LOGIC-19m", "BORROW-LOGIC-19o", "BORROW-LOGIC-19p", "BORROW-LOGIC-19q", "BORROW-LOGIC-19s", "BORROW-LOGIC-19t", "BORROW-LOGIC-19u", "BORROW-LOGIC-19v", "BORROW-LOGIC-19y", "BORROW-LOGIC-19z", "§9.11#p2", "§9.11#r1", "§9.11#r2", "§9.11#r3", "§9.11#r4", "§9.11#r5", "§9.11#r6", "§9.11#r7", "§9.11#r8", "§9.11#r9", "§9.11#r10", "§9.11#r11", "§9.11#r12", "§9.11#r13", "§9.11#r14", "§9.11#r15", "§9.11#r16", "§9.11#r17", "§9.11#r18", "§9.11#r19", "§9.11#r20", "§9.11#p6", "§9.11#p8"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "BORROW-LOGIC-19a": [2, 7, 61, 98]
+  "BORROW-LOGIC-19a": [2, 7, 65, 103]
   "BORROW-LOGIC-19b": 3
   "BORROW-LOGIC-19c": 4
-  "BORROW-LOGIC-19d": 100
-  "BORROW-LOGIC-19e": 101
-  "BORROW-LOGIC-19f": [103, 104, 105, 106]
-  "BORROW-LOGIC-19g": [108, 110]
-  "BORROW-LOGIC-19i": [118, 119, 120]
-  "BORROW-LOGIC-19k": [112, 113]
-  "BORROW-LOGIC-19l": 114
-  "BORROW-LOGIC-19m": 115
-  "BORROW-LOGIC-19o": [22, 40, 46, 48, 50, 53, 56, 57]
+  "BORROW-LOGIC-19d": 105
+  "BORROW-LOGIC-19e": 106
+  "BORROW-LOGIC-19f": [108, 109, 110, 111, 135]
+  "BORROW-LOGIC-19g": [113, 115]
+  "BORROW-LOGIC-19i": [123, 124, 125]
+  "BORROW-LOGIC-19k": [117, 118]
+  "BORROW-LOGIC-19l": 119
+  "BORROW-LOGIC-19m": 120
+  "BORROW-LOGIC-19o": [22, 44, 50, 52, 54, 57, 60, 61]
   "BORROW-LOGIC-19p": 10
   "BORROW-LOGIC-19q": 11
-  "BORROW-LOGIC-19s": 58
-  "BORROW-LOGIC-19t": [21, 40, 48, 53, 59, 111]
-  "BORROW-LOGIC-19u": 102
-  "BORROW-LOGIC-19v": 121
-  "BORROW-LOGIC-19y": 116
-  "BORROW-LOGIC-19z": 122
+  "BORROW-LOGIC-19s": 62
+  "BORROW-LOGIC-19t": [21, 44, 52, 57, 63, 116]
+  "BORROW-LOGIC-19u": 107
+  "BORROW-LOGIC-19v": 126
+  "BORROW-LOGIC-19y": [121, 132]
+  "BORROW-LOGIC-19z": 127
   "§9.11#p2": 5
   "§9.11#r1": 2
   "§9.11#r2": 7
-  "§9.11#r3": 61
-  "§9.11#r4": 98
-  "§9.11#r5": [9, 13, 15, 18, 25, 29, 33, 35, 37, 42]
-  "§9.11#r6": [9, 13, 29, 33, 42]
+  "§9.11#r3": 65
+  "§9.11#r4": 103
+  "§9.11#r5": [9, 13, 15, 18, 25, 29, 33, 38, 40, 46]
+  "§9.11#r6": [9, 13, 29, 33, 46]
   "§9.11#r7": 15
   "§9.11#r8": [18, 19]
-  "§9.11#r9": [35, 36]
-  "§9.11#r10": 37
+  "§9.11#r9": [38, 39]
+  "§9.11#r10": [37, 40, 41, 84]
   "§9.11#r11": [25, 27]
   "§9.11#r12": 10
-  "§9.11#r13": [48, 50, 63, 65]
-  "§9.11#r14": [51, 66]
-  "§9.11#r15": [40, 69]
-  "§9.11#r16": [46, 74]
-  "§9.11#r17": [53, 76]
-  "§9.11#r18": [56, 78]
-  "§9.11#r19": [57, 79]
-  "§9.11#r20": [21, 85]
-  "§9.11#p6": [123, 124]
-  "§9.11#p8": [23, 34, 54, 117]
+  "§9.11#r13": [52, 54, 67, 69]
+  "§9.11#r14": [55, 70]
+  "§9.11#r15": [44, 73]
+  "§9.11#r16": [50, 78]
+  "§9.11#r17": [57, 80]
+  "§9.11#r18": [60, 82]
+  "§9.11#r19": [61, 83]
+  "§9.11#r20": [21, 90]
+  "§9.11#p6": [128, 129]
+  "§9.11#p8": [23, 34, 58, 122, 133, 134]
 ---
 
 # Ketersediaan Borrow per level None, Basic, dan Full dan penolakan server atas fitur terkunci
@@ -91,6 +91,9 @@ trace:
   - DU-088-24: Transaction Settings Borrow, Nilai Transaction Settings yang disimpan sebelum downgrade; Self service `ON`; Duration unit `Hours`.
   - DU-088-25: Deskripsi kerusakan plan, Description laporan kerusakan; Description `Layar retak di pojok kiri bawah {runId}`.
   - DU-088-26: Reason kehilangan plan, Reason laporan kehilangan; Reason `Aset tidak ditemukan di meja kerja sejak pagi {runId}`.
+  - DU-088-27: Asset, aset bersih yang belum pernah dipakai transaksi untuk pengajuan yang ditolak pada level None; Asset Name `Kamera Canon EOS M50 {runId}`; Group `Head Office`.
+  - DU-088-28: Asset, aset belum ada di Draft untuk Add to Borrow Draft pada level Full; Asset Name `Monitor Dell P2723QE {runId}`; Group `Head Office`.
+  - DU-088-29: Asset, aset pada baris Waiting for Handover dengan sesi Handover berjalan saat level Basic; Asset Name `Kamera Panasonic Lumix G7 {runId}`; Group `Head Office`.
 - Kondisi:
   - Spec ini memakai entitas khusus DU-088-1 yang tidak dipakai spec lain.
   - Plan entitas DU-088-1 awalnya berada di slot `free`.
@@ -147,114 +150,131 @@ trace:
 33. Verifikasi baris aset DU-088-6 berstatus `Overdue`
 34. Verifikasi notifikasi `borrow_overdue` untuk aset DU-088-6 dikirim ke Borrower DU-088-4 pada level Basic
 
+### Task Confirm Handover tersedia selama sesi Handover pada level Basic
+35. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-29 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+36. Asset Admin DU-088-2 memulai handover aset DU-088-29
+37. Verifikasi Task `Confirm Handover` untuk aset DU-088-29 tersedia di My Asset Borrower DU-088-4 pada level Basic
+
 ### Tab Transactions, History, Borrowed Assets By Asset dan kontribusi ke halaman pinjaman Borrower pada level Basic
-35. Verifikasi BRW aset DU-088-5 terbaca di daftar Transactions dan History pada level Basic
-36. Verifikasi aset DU-088-6 terbaca di Borrowed Assets By Asset pada level Basic
-37. Verifikasi aset DU-088-6 terbaca di daftar Borrowed milik Borrower DU-088-4 dan Task Confirm Handover tersedia
+38. Verifikasi BRW aset DU-088-5 terbaca di daftar Transactions dan History pada level Basic
+39. Verifikasi aset DU-088-6 terbaca di Borrowed Assets By Asset pada level Basic
+40. Verifikasi aset DU-088-6 terbaca di daftar Borrowed milik Borrower DU-088-4
+41. Verifikasi aset DU-088-5 yang berstatus `Returned` terbaca di History milik Borrower DU-088-4 pada level Basic
 
 ### Cancel dan timeout tidak membentuk Draft pada level Basic
-38. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-9 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-39. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-9 dengan opsi `Save as Draft to edit`
-40. Verifikasi opsi `Save as Draft to edit` ditolak dan tidak ada Draft baru berisi aset DU-088-9
-41. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-9 tanpa opsi Draft
-42. Verifikasi baris aset DU-088-9 berstatus `Canceled` pada level Basic
-43. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-10 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-44. Waktu berlalu sampai batas `Not picked up` aset DU-088-10 terlewati
-45. Job Transaction timeout berjalan
-46. Verifikasi baris aset DU-088-10 ditutup `Canceled` tanpa Draft baru
+42. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-9 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+43. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-9 dengan opsi `Save as Draft to edit`
+44. Verifikasi opsi `Save as Draft to edit` ditolak dan tidak ada Draft baru berisi aset DU-088-9
+45. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-9 tanpa opsi Draft
+46. Verifikasi baris aset DU-088-9 berstatus `Canceled` pada level Basic
+47. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-10 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+48. Waktu berlalu sampai batas `Not picked up` aset DU-088-10 terlewati
+49. Job Transaction timeout berjalan
+50. Verifikasi baris aset DU-088-10 ditutup `Canceled` tanpa Draft baru
 
 ### Draft tidak tersedia pada level Basic
-47. Asset Admin DU-088-2 menyimpan Draft berisi aset DU-088-8 untuk Borrower DU-088-4
-48. Verifikasi penyimpanan Draft ditolak dan tidak ada Draft baru
-49. Asset Admin DU-088-2 menjalankan `Add to Borrow Draft` untuk aset DU-088-8
-50. Verifikasi `Add to Borrow Draft` ditolak dan tidak ada Draft baru
-51. Verifikasi tab Drafts tidak tersedia dan permintaan tab Drafts menampilkan tab Transactions
+51. Asset Admin DU-088-2 menyimpan Draft berisi aset DU-088-8 untuk Borrower DU-088-4
+52. Verifikasi penyimpanan Draft ditolak dan tidak ada Draft baru
+53. Asset Admin DU-088-2 menjalankan `Add to Borrow Draft` untuk aset DU-088-8
+54. Verifikasi `Add to Borrow Draft` ditolak dan tidak ada Draft baru
+55. Verifikasi tab Drafts tidak tersedia dan permintaan tab Drafts menampilkan tab Transactions
 
 ### Self-service, satuan Hours, dan By Borrower tidak tersedia pada level Basic
-52. Borrower DU-088-4 meminjam aset DU-088-11 lewat `Borrow Now` self-service dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-53. Verifikasi peminjaman self-service aset DU-088-11 ditolak dan baris tidak terbentuk
-54. Verifikasi notifikasi self-service baru tidak dikirim pada level Basic
-55. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-12 atas nama Borrower DU-088-4 dengan Duration `6 Hour(s)` dan Purpose `Kunjungan klien {runId}`
-56. Verifikasi pengajuan aset DU-088-12 dengan satuan Hours ditolak karena Duration hanya Days
-57. Verifikasi permintaan Borrowed Assets By Borrower mengembalikan tampilan By Asset
+56. Borrower DU-088-4 meminjam aset DU-088-11 lewat `Borrow Now` self-service dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+57. Verifikasi peminjaman self-service aset DU-088-11 ditolak dan baris tidak terbentuk
+58. Verifikasi notifikasi self-service baru tidak dikirim pada level Basic
+59. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-12 atas nama Borrower DU-088-4 dengan Duration `6 Hour(s)` dan Purpose `Kunjungan klien {runId}`
+60. Verifikasi pengajuan aset DU-088-12 dengan satuan Hours ditolak karena Duration hanya Days
+61. Verifikasi permintaan Borrowed Assets By Borrower mengembalikan tampilan By Asset
 
 ### Field terkunci tampil disabled dan server menolak aksi terkunci pada level Basic
-58. Verifikasi field Self service dan Duration unit di Transaction Settings tampil disabled dengan tooltip `Available on plans with full Borrowing.`
-59. Verifikasi server menolak setiap aksi fitur terkunci walau permintaannya lolos dari UI
+62. Verifikasi field Self service dan Duration unit di Transaction Settings tampil disabled dengan tooltip `Available on plans with full Borrowing.`
+63. Verifikasi server menolak setiap aksi fitur terkunci walau permintaannya lolos dari UI
 
 ### Slot plan paid_2 memetakan Borrowing ke level Full dan Draft tersedia
-60. Principal menetapkan plan entitas DU-088-1 ke slot `paid_2`
-61. Verifikasi level Feature Suite Borrowing entitas DU-088-1 adalah `Full`
-62. Asset Admin DU-088-2 menyimpan Draft berisi aset DU-088-8 untuk Borrower DU-088-4
-63. Verifikasi Draft berisi aset DU-088-8 tersimpan pada level Full
-64. Asset Admin DU-088-2 menjalankan `Add to Borrow Draft` untuk aset DU-088-8
-65. Verifikasi aset DU-088-8 masuk Draft bersama pada level Full
-66. Verifikasi Draft berisi aset DU-088-8 terbaca di tab Drafts
+64. Principal menetapkan plan entitas DU-088-1 ke slot `paid_2`
+65. Verifikasi level Feature Suite Borrowing entitas DU-088-1 adalah `Full`
+66. Asset Admin DU-088-2 menyimpan Draft berisi aset DU-088-8 untuk Borrower DU-088-4
+67. Verifikasi Draft berisi aset DU-088-8 tersimpan pada level Full
+68. Asset Admin DU-088-2 menjalankan `Add to Borrow Draft` untuk aset DU-088-28
+69. Verifikasi aset DU-088-28 masuk Draft bersama pada level Full
+70. Verifikasi Draft berisi aset DU-088-8 terbaca di tab Drafts
 
 ### Cancel dan timeout membentuk Draft pada level Full
-67. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-13 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-68. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-13 dengan opsi `Save as Draft to edit`
-69. Verifikasi baris aset DU-088-13 berstatus `Canceled` dan Draft baru berisi aset DU-088-13 terbentuk
-70. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-14 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-71. Approver DU-088-3 menyetujui aset DU-088-14
-72. Waktu berlalu sampai batas `Not picked up` aset DU-088-14 terlewati
-73. Job Transaction timeout berjalan
-74. Verifikasi baris aset DU-088-14 ditutup `Canceled` dan Draft baru berisi aset DU-088-14 terbentuk
+71. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-13 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+72. Asset Admin DU-088-2 menjalankan Cancel Borrow atas baris aset DU-088-13 dengan opsi `Save as Draft to edit`
+73. Verifikasi baris aset DU-088-13 berstatus `Canceled` dan Draft baru berisi aset DU-088-13 terbentuk
+74. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-14 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+75. Approver DU-088-3 menyetujui aset DU-088-14
+76. Waktu berlalu sampai batas `Not picked up` aset DU-088-14 terlewati
+77. Job Transaction timeout berjalan
+78. Verifikasi baris aset DU-088-14 ditutup `Canceled` dan Draft baru berisi aset DU-088-14 terbentuk
 
 ### Self-service, satuan Hours, dan By Borrower tersedia pada level Full
-75. Borrower DU-088-4 meminjam aset DU-088-15 lewat `Borrow Now` self-service dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-76. Verifikasi peminjaman self-service aset DU-088-15 diterima dan baris berstatus `Borrowed`
-77. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-16 atas nama Borrower DU-088-4 dengan Duration `6 Hour(s)` dan Purpose `Kunjungan klien {runId}`
-78. Verifikasi pengajuan aset DU-088-16 dengan satuan Hours diterima
-79. Verifikasi Borrowed Assets By Borrower terbaca dengan Borrower DU-088-4
+79. Borrower DU-088-4 meminjam aset DU-088-15 lewat `Borrow Now` self-service dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+80. Verifikasi peminjaman self-service aset DU-088-15 diterima dan baris berstatus `Borrowed`
+81. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-16 atas nama Borrower DU-088-4 dengan Duration `6 Hour(s)` dan Purpose `Kunjungan klien {runId}`
+82. Verifikasi pengajuan aset DU-088-16 dengan satuan Hours diterima
+83. Verifikasi Borrowed Assets By Borrower terbaca dengan Borrower DU-088-4
+84. Verifikasi aset DU-088-5 yang berstatus `Returned` terbaca di History milik Borrower DU-088-4 pada level Full
 
 ### Request Extension oleh Borrower diterima pada level Full dan baris disiapkan untuk downgrade
-80. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-19 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-81. Approver DU-088-3 menyetujui aset DU-088-19
-82. Asset Admin DU-088-2 menyerahkan aset DU-088-19 kepada Borrower DU-088-4 dengan Condition `Normal`
-83. Borrower DU-088-4 mengonfirmasi handover aset DU-088-19
-84. Borrower DU-088-4 mengajukan Request Extension dari halaman pinjamannya untuk aset DU-088-19 dengan Extend duration `2 Day(s)`
-85. Verifikasi Request Extension oleh Borrower atas aset DU-088-19 diterima dan menunggu review
-86. Due date aset DU-088-19 dicatat sebagai Due date sebelum downgrade
-87. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-17 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-88. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-18 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-89. Approver DU-088-3 menyetujui aset DU-088-18
-90. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-20 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-91. Approver DU-088-3 menyetujui aset DU-088-20
-92. Asset Admin DU-088-2 menyerahkan aset DU-088-20 kepada Borrower DU-088-4 dengan Condition `Normal`
-93. Borrower DU-088-4 mengonfirmasi handover aset DU-088-20
-94. Waktu berlalu sampai 1 hari sesudah Due date aset DU-088-20
-95. Job Overdue berjalan
-96. Total Control menyimpan Transaction Settings Borrow dengan Self service `ON` dan Duration unit `Hours`
+85. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-19 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+86. Approver DU-088-3 menyetujui aset DU-088-19
+87. Asset Admin DU-088-2 menyerahkan aset DU-088-19 kepada Borrower DU-088-4 dengan Condition `Normal`
+88. Borrower DU-088-4 mengonfirmasi handover aset DU-088-19
+89. Borrower DU-088-4 mengajukan Request Extension dari halaman pinjamannya untuk aset DU-088-19 dengan Extend duration `2 Day(s)`
+90. Verifikasi Request Extension oleh Borrower atas aset DU-088-19 diterima dan menunggu review
+91. Due date aset DU-088-19 dicatat sebagai Due date sebelum downgrade
+92. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-17 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+93. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-18 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+94. Approver DU-088-3 menyetujui aset DU-088-18
+95. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-20 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+96. Approver DU-088-3 menyetujui aset DU-088-20
+97. Asset Admin DU-088-2 menyerahkan aset DU-088-20 kepada Borrower DU-088-4 dengan Condition `Normal`
+98. Borrower DU-088-4 mengonfirmasi handover aset DU-088-20
+99. Waktu berlalu sampai 1 hari sesudah Due date aset DU-088-20
+100. Job Overdue berjalan
+101. Total Control menyimpan Transaction Settings Borrow dengan Self service `ON` dan Duration unit `Hours`
 
 ### Slot plan paid_3 memetakan Borrowing ke level Full
-97. Principal menetapkan plan entitas DU-088-1 ke slot `paid_3`
-98. Verifikasi level Feature Suite Borrowing entitas DU-088-1 adalah `Full`
+102. Principal menetapkan plan entitas DU-088-1 ke slot `paid_3`
+103. Verifikasi level Feature Suite Borrowing entitas DU-088-1 adalah `Full`
 
 ### Downgrade ke None menutup menunggu, menjaga yang berjalan, dan menolak transaksi baru
-99. Principal menetapkan plan entitas DU-088-1 ke slot `free` dan downgrade berlaku di T-0
-100. Verifikasi menu `Transactions > Borrow` tampil disabled dengan chip Upgrade
-101. Verifikasi permintaan langsung ke halaman Borrow tidak membuka fitur
-102. Verifikasi halaman Borrow menampilkan state tidak tersedia mengikuti pola fitur lain yang terkunci
-103. Verifikasi menu `Approvals > Borrow` tidak tampil
-104. Verifikasi Quick Action Borrow tidak tampil
-105. Verifikasi aksi `Borrow` dan `Add to Borrow Draft` di daftar aset tidak tampil
-106. Verifikasi bagian Borrow di Transaction Settings tidak tampil
-107. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-5 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
-108. Verifikasi pengajuan BRW baru ditolak dengan kode galat `PLAN_FEATURE_UNAVAILABLE`
-109. Asset Admin DU-088-2 menyerahkan aset DU-088-18 kepada Borrower DU-088-4 dengan Condition `Normal`
-110. Verifikasi aksi Handover ditolak dengan kode galat `PLAN_FEATURE_UNAVAILABLE`
-111. Verifikasi server menolak setiap aksi Borrow pada level None walau permintaannya lolos dari UI
-112. Verifikasi Request Extension aset DU-088-19 yang menunggu ikut `Canceled` dengan Reason `Borrowing not available on plan`
-113. Verifikasi Due date aset DU-088-19 sama dengan Due date yang dicatat sebelum downgrade
-114. Verifikasi baris aset DU-088-17 dan aset DU-088-18 ditutup `Canceled` dan Custody kedua aset kembali `Available` karena aset belum diserahkan
-115. Verifikasi baris aset DU-088-19 tetap `Borrowed` dan baris aset DU-088-20 tetap `Overdue` tanpa ditutup otomatis
-116. Verifikasi status `Overdue` aset DU-088-20 tetap dihitung tanpa notifikasi `borrow_overdue` baru ke Borrower DU-088-4
-117. Verifikasi notifikasi `borrow_due_soon` dan `borrow_overdue` tidak dikirim pada level None
-118. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di Transaction log aset
-119. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di Transaction admin log
-120. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di log pengguna Borrower DU-088-4
-121. Verifikasi Transaction Settings Borrow tersimpan dengan Self service `ON` dan Duration unit `Hours` dipertahankan
-122. Verifikasi nilai tersimpan dan transaksi berjalan aset DU-088-19 dan aset DU-088-20 tidak diubah oleh fitur yang terkunci
-123. Verifikasi laporan dan widget Borrow di Reports dan Dashboard disembunyikan sementara riwayat tetap terbaca di Transaction log aset
-124. Verifikasi tab Borrowed milik Borrower DU-088-4 tampil read-only tanpa Cancel, Return, Report, dan Extension selama aset DU-088-19 masih berjalan
+104. Principal menetapkan plan entitas DU-088-1 ke slot `free` dan downgrade berlaku di T-0
+105. Verifikasi menu `Transactions > Borrow` tampil disabled dengan chip Upgrade
+106. Verifikasi permintaan langsung ke halaman Borrow tidak membuka fitur
+107. Verifikasi halaman Borrow menampilkan state tidak tersedia mengikuti pola fitur lain yang terkunci
+108. Verifikasi menu `Approvals > Borrow` tidak tampil
+109. Verifikasi Quick Action Borrow tidak tampil
+110. Verifikasi aksi `Borrow` dan `Add to Borrow Draft` di daftar aset tidak tampil
+111. Verifikasi bagian Borrow di Transaction Settings tidak tampil
+112. Asset Admin DU-088-2 mengajukan BRW untuk aset DU-088-27 atas nama Borrower DU-088-4 dengan Duration `4 Day(s)` dan Purpose `Kunjungan klien {runId}`
+113. Verifikasi pengajuan BRW baru ditolak dengan kode galat `PLAN_FEATURE_UNAVAILABLE`
+114. Asset Admin DU-088-2 menerima kembali aset DU-088-19 dengan Condition `Normal`
+115. Verifikasi aksi Return atas baris aset DU-088-19 yang masih `Borrowed` ditolak dengan kode galat `PLAN_FEATURE_UNAVAILABLE`
+116. Verifikasi server menolak setiap aksi Borrow pada level None walau permintaannya lolos dari UI
+117. Verifikasi Request Extension aset DU-088-19 yang menunggu ikut `Canceled` dengan Reason `Borrowing not available on plan`
+118. Verifikasi Due date aset DU-088-19 sama dengan Due date yang dicatat sebelum downgrade
+119. Verifikasi baris aset DU-088-17 dan aset DU-088-18 ditutup `Canceled` dan Custody kedua aset kembali `Available` karena aset belum diserahkan
+120. Verifikasi baris aset DU-088-19 tetap `Borrowed` dan baris aset DU-088-20 tetap `Overdue` tanpa ditutup otomatis
+121. Verifikasi status `Overdue` aset DU-088-20 tetap dihitung tanpa notifikasi `borrow_overdue` baru ke Borrower DU-088-4
+122. Verifikasi notifikasi `borrow_due_soon` dan `borrow_overdue` tidak dikirim pada level None
+123. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di Transaction log aset
+124. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di Transaction admin log
+125. Verifikasi riwayat Borrow aset DU-088-19 tetap terbaca di log pengguna Borrower DU-088-4
+126. Verifikasi Transaction Settings Borrow tersimpan dengan Self service `ON` dan Duration unit `Hours` dipertahankan
+127. Verifikasi nilai tersimpan dan transaksi berjalan aset DU-088-19 dan aset DU-088-20 tidak diubah oleh fitur yang terkunci
+128. Verifikasi laporan dan widget Borrow di Reports dan Dashboard disembunyikan sementara riwayat tetap terbaca di Transaction log aset
+129. Verifikasi tab Borrowed milik Borrower DU-088-4 tampil read-only tanpa Cancel, Return, Report, dan Extension selama aset DU-088-19 masih berjalan
+
+### Overdue tetap dihitung tanpa notifikasi sesudah downgrade ke None
+130. Waktu berlalu sampai 1 hari sesudah Due date aset DU-088-19
+131. Job Overdue berjalan
+132. Verifikasi baris aset DU-088-19 berstatus `Overdue` pada level None
+133. Verifikasi notifikasi `borrow_overdue` untuk aset DU-088-19 tidak dikirim ke Borrower DU-088-4 sesudah job berjalan
+134. Verifikasi notifikasi `borrow_due_soon` untuk aset DU-088-19 tidak dikirim ke Borrower DU-088-4 sesudah job berjalan
+
+### Entri Borrow di aplikasi mobile tidak tampil pada level None
+135. Verifikasi entri Borrow di aplikasi mobile tidak tampil pada level None, yaitu `Scan > Borrow` dan `Borrow an Asset`

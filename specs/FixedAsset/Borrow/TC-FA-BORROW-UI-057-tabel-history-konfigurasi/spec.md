@@ -4,7 +4,7 @@ title: "Tabel History By Transaction dan By Asset: konfigurasi kolom dan rentang
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1k#p3", "§4.1k#p4", "§4.1k#r1", "§4.1k#r2", "§4.1k#r3", "§4.1k#r4", "§4.1k#r5", "§4.1k#r6", "§4.1k#r7", "§4.1k#r8", "§4.1k#r9", "§4.1k#p7", "§4.1k#r16", "§4.1k#r17", "§4.1k#r18", "§4.1k#r19", "§4.1k#r20", "§4.1k#r21", "§4.1k#r22", "§4.1k#r23", "§4.1k#r24", "§4.1k#r25", "§4.1k#r26", "§4.1k#r27", "§4.1k#r28", "§4.1k#r29", "§4.1k#r30", "§4.1k#r31", "§4.1k#r32", "§4.1k#r33", "§4.1k#r34", "§4.1k#r35", "EB-TBL-1@tabel-history", "EB-TBL-2@tabel-history", "EB-TBL-4@tabel-history", "EB-TBL-12"]
 smoke: []
 dependsOn: []
@@ -12,12 +12,12 @@ trace:
   "§4.1k#p3": [25, 27, 80, 82]
   "§4.1k#p4": 30
   "§4.1k#r1": [29, 32, 33, 62]
-  "§4.1k#r2": [29, 34, 35, 37, 38, 39, 62, 70]
+  "§4.1k#r2": [29, 34, 35, 37, 38, 39, 62, 70, 195]
   "§4.1k#r3": [29, 40, 42, 43, 62, 71, 72]
-  "§4.1k#r4": [29, 45, 47, 48, 62, 73]
+  "§4.1k#r4": [29, 45, 47, 48, 62, 73, 196, 198, 200]
   "§4.1k#r5": [29, 49, 51, 52, 62, 74]
   "§4.1k#r6": [63, 65, 66, 67, 75]
-  "§4.1k#r7": [29, 53, 55, 56, 62, 76]
+  "§4.1k#r7": [29, 53, 55, 56, 62, 76, 202]
   "§4.1k#r8": [29, 57, 59, 62, 77]
   "§4.1k#r9": [29, 58, 59, 62, 78]
   "§4.1k#p7": 85
@@ -28,8 +28,8 @@ trace:
   "§4.1k#r20": [84, 98, 100, 101, 134, 172]
   "§4.1k#r21": [84, 103, 104, 134, 173, 174]
   "§4.1k#r22": [84, 105, 106, 107, 108, 109, 110, 134, 175, 185]
-  "§4.1k#r23": [135, 137, 138, 176]
-  "§4.1k#r24": [135, 139, 141, 142, 177]
+  "§4.1k#r23": [135, 137, 138, 176, 215, 220]
+  "§4.1k#r24": [135, 139, 141, 142, 177, 216]
   "§4.1k#r25": [84, 112, 113, 134, 186]
   "§4.1k#r26": [84, 114, 116, 117, 134, 178]
   "§4.1k#r27": [84, 118, 120, 121, 134, 179]
@@ -38,12 +38,12 @@ trace:
   "§4.1k#r30": [135, 143, 145, 146, 147, 148, 186]
   "§4.1k#r31": [135, 149, 151, 153, 186]
   "§4.1k#r32": [135, 154, 156, 158, 186]
-  "§4.1k#r33": [135, 159, 160, 162, 163, 182]
+  "§4.1k#r33": [135, 159, 160, 162, 163, 182, 207]
   "§4.1k#r34": [135, 164, 166, 167, 186]
-  "§4.1k#r35": [84, 130, 131, 134, 183]
+  "§4.1k#r35": [84, 130, 131, 134, 183, 210]
   "EB-TBL-1@tabel-history": [2, 3, 7, 8, 10, 11, 12, 14, 15, 19, 20, 22, 23]
   "EB-TBL-2@tabel-history": [56, 88, 97, 101, 121, 127, 129, 138, 147, 148, 153, 158, 167]
-  "EB-TBL-4@tabel-history": [45, 47, 53, 55, 114, 116]
+  "EB-TBL-4@tabel-history": [45, 47, 53, 55, 114, 116, 200]
   "EB-TBL-12": [190, 191, 192]
 anchor: []
 coverage:
@@ -58,26 +58,30 @@ coverage:
 - Data:
   - DU-057-1: BRW selesai Returned dengan satu baris Rejected: Transaction ID `BRW-2026-0140`, Status `Returned`, Group `Head Office`, Hierarki Group `Head Office`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Total Asset `3`, Requested By `Rina Wijaya`, Requested By tampil `Rina W`, Source `Admin`, Request Date `20/10/26, 09:00`, Last Updated `25/10/26, 16:30`, Rincian baris `2 Returned, 1 Rejected`, Aset `Laptop Dell Latitude 5420 - 5 (Returned); Camera Sony A7 IV - 2 (Returned · Damaged); Projector Epson EB-X06 - 5 (Rejected)`, Nama pembuat `Rina Wijaya`.
   - DU-057-2: BRW Rejected dari pinjaman self-service: Transaction ID `BRW-2026-0141`, Status `Rejected`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Total Asset `2`, Requested By `kosong`, Requested By tampil `—`, Source `Self-service`, Request Date `21/10/26, 10:00`, Last Updated `21/10/26, 15:00`.
-  - DU-057-3: BRW Canceled atas nama Borrower tanpa akun login dengan PIC: Transaction ID `BRW-2026-0142`, Status `Canceled`, Group `Head Office`, Hierarki Group `Head Office`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Total Asset `1`, Requested By `Rina Wijaya`, Requested By tampil `Rina W`, Source `Self-service`, Request Date `22/10/26, 08:00`, Last Updated `22/10/26, 08:20`, PIC `Rina Wijaya`.
-  - DU-057-4: Baris Returned terlambat dua hari dengan kolom curated terisi: Name `Laptop Dell Latitude 5420 - 5`, Asset ID `LPT-2026-0005`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `21/10/26, 09:30`, Returned At `24/10/26, 17:00`, Extensions `1 / 1`, Last Updated `24/10/26, 17:00`, Due Date `22/10/26`, Keterlambatan `late 2 days`, TAG `RFID`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Reason `kosong`, Handover Photo `ada`, Return Photo `ada`, Source `Admin`, Nama pembuat `Rina Wijaya`, Purpose `Kunjungan lapangan`, Handed Over By `Agus Prasetyo`.
-  - DU-057-5: Baris Returned dengan penanda Damaged, tepat waktu, tanpa foto: Name `Camera Sony A7 IV - 2`, Asset ID `CAM-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned + Damaged`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `21/10/26, 09:35`, Returned At `25/10/26, 16:30`, Extensions `0 / 2`, Last Updated `25/10/26, 16:30`, Due Date `25/10/26`, TAG `Non TAG`, Reason `kosong`, Handover Photo `kosong`, Return Photo `kosong`, Source `Self-service`, Purpose `kosong`.
-  - DU-057-6: Baris satuan jam Returned terlambat 3 jam: Name `Handheld Scanner Zebra - 5`, Asset ID `HHS-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0143`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `24/10/26, 08:00`, Returned At `24/10/26, 12:20`, Extensions `0 / 2`, Last Updated `24/10/26, 12:20`, Due Date `24/10/26, 10:00`, Keterlambatan `late 3 hours`.
-  - DU-057-7: Baris satuan jam Returned terlambat 1 jam: Name `Handheld Scanner Zebra - 6`, Asset ID `HHS-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0143`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `24/10/26, 08:00`, Returned At `24/10/26, 10:40`, Extensions `0 / 2`, Last Updated `24/10/26, 10:40`, Due Date `24/10/26, 10:00`, Keterlambatan `late 1 hour`.
-  - DU-057-8: Baris Rejected dengan alasan Reject: Name `Projector Epson EB-X06 - 5`, Asset ID `PRJ-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Rejected`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `21/10/26, 11:00`, Reason `Aset sedang menunggu perbaikan dan belum boleh dipinjamkan sampai pemeriksaan ulang oleh Asset Admin selesai`.
-  - DU-057-9: Baris Canceled otomatis oleh sistem: Name `Toyota Avanza - 7`, Asset ID `VEH-2026-0007`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Canceled`, Transaction ID `BRW-2026-0142`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `22/10/26, 08:20`, Reason `Not picked up`.
-  - DU-057-10: Baris Canceled manual tanpa Reason: Name `Toyota Avanza - 8`, Asset ID `VEH-2026-0008`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Canceled`, Transaction ID `BRW-2026-0142`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `22/10/26, 08:20`, Reason `kosong`.
-  - DU-057-11: Baris Returned dengan penanda Missing: Name `Laptop Dell Latitude 5420 - 6`, Asset ID `LPT-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned + Missing`, Transaction ID `BRW-2026-0144`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `20/10/26, 09:00`, Returned At `23/10/26, 15:00`, Extensions `0 / 2`, Last Updated `23/10/26, 15:00`, Due Date `23/10/26`.
+  - DU-057-3: BRW Canceled atas nama Borrower tanpa akun login dengan PIC: Transaction ID `BRW-2026-0142`, Status `Canceled`, Group `Head Office`, Hierarki Group `Head Office`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Total Asset `2`, Requested By `Rina Wijaya`, Requested By tampil `Rina W`, Source `Self-service`, Request Date `22/10/26, 08:00`, Last Updated `22/10/26, 08:20`, PIC `Rina Wijaya`.
+  - DU-057-4: Baris Returned terlambat dua hari dengan kolom curated terisi: Name `Laptop Dell Latitude 5420 - 5`, Asset ID `LPT-2026-0005`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `21/10/26, 09:30`, Returned At `24/10/26, 17:00`, Extensions `1 / 1`, Last Updated `24/10/26, 17:00`, Pelaku Last Updated `Rina Wijaya`, Due Date `22/10/26`, Keterlambatan `late 2 days`, TAG `RFID`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Reason `kosong`, Handover Photo `ada`, Return Photo `ada`, Source `Admin`, Nama pembuat `Rina Wijaya`, Purpose `Kunjungan lapangan`, Handed Over By `Agus Prasetyo`.
+  - DU-057-5: Baris Returned dengan penanda Damaged, tepat waktu, tanpa foto: Name `Camera Sony A7 IV - 2`, Asset ID `CAM-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned + Damaged`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `21/10/26, 09:35`, Returned At `25/10/26, 16:30`, Extensions `0 / 2`, Last Updated `25/10/26, 16:30`, Due Date `25/10/26`, TAG `Non TAG`, Reason `kosong`, Handover Photo `kosong`, Return Photo `kosong`, Source `Admin`, Purpose `kosong`.
+  - DU-057-6: Baris satuan jam Returned terlambat 3 jam: Name `Handheld Scanner Zebra - 5`, Asset ID `HHS-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0143`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `24/10/26, 08:00`, Returned At `24/10/26, 12:20`, Extensions `0 / 2`, Last Updated `24/10/26, 12:20`, Due Date `24/10/26, 10:00`, Keterlambatan `late 3 hours`, Source `Self-service`.
+  - DU-057-7: Baris satuan jam Returned terlambat 1 jam: Name `Handheld Scanner Zebra - 6`, Asset ID `HHS-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0143`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `24/10/26, 08:00`, Returned At `24/10/26, 10:40`, Extensions `0 / 2`, Last Updated `24/10/26, 10:40`, Due Date `24/10/26, 10:00`, Keterlambatan `late 1 hour`, Source `Self-service`.
+  - DU-057-8: Baris Rejected dengan alasan Reject: Name `Projector Epson EB-X06 - 5`, Asset ID `PRJ-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Rejected`, Transaction ID `BRW-2026-0140`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `21/10/26, 11:00`, Reason `Aset sedang menunggu perbaikan dan belum boleh dipinjamkan sampai pemeriksaan ulang oleh Asset Admin selesai`, Source `Admin`.
+  - DU-057-9: Baris Canceled otomatis oleh sistem: Name `Toyota Avanza - 7`, Asset ID `VEH-2026-0007`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Canceled`, Transaction ID `BRW-2026-0142`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `22/10/26, 08:20`, Reason `Not picked up`, Source `Self-service`.
+  - DU-057-10: Baris Canceled manual tanpa Reason: Name `Toyota Avanza - 8`, Asset ID `VEH-2026-0008`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Canceled`, Transaction ID `BRW-2026-0142`, Borrower `Wawan Setiadi`, Borrower tampil `Wawan S`, Handed Over At `kosong`, Returned At `kosong`, Extensions `0 / 2`, Last Updated `22/10/26, 08:20`, Reason `kosong`, Source `Self-service`.
+  - DU-057-11: Baris Returned dengan penanda Missing: Name `Laptop Dell Latitude 5420 - 6`, Asset ID `LPT-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Status `Returned + Missing`, Transaction ID `BRW-2026-0144`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Handed Over At `20/10/26, 09:00`, Returned At `23/10/26, 15:00`, Extensions `0 / 2`, Last Updated `23/10/26, 15:00`, Due Date `23/10/26`, Source `Admin`.
   - DU-057-12: Kata kunci tanpa hasil yang diketik pada tabel: Search tanpa hasil `Tidak Ada`.
+  - DU-057-13: BRW Returned dengan Borrower bernama panjang: Transaction ID `BRW-2026-0145`, Status `Returned`, Group `Head Office`, Hierarki Group `Head Office`, Borrower `Bartholomeus Wijayakusuma`, Borrower tampil `Bartholomeus W`, Total Asset `1`, Requested By `Rina Wijaya`, Requested By tampil `Rina W`, Source `Admin`, Request Date `18/10/26, 09:00`, Last Updated `19/10/26, 10:00`.
+  - DU-057-14: Baris Returned tepat waktu dengan dua TAG Type: Name `Laptop Dell Latitude 5420 - 7`, Asset ID `LPT-2026-0007`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Returned`, Transaction ID `BRW-2026-0146`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Handed Over At `19/10/26, 09:00`, Returned At `21/10/26, 15:00`, Extensions `0 / 2`, Last Updated `21/10/26, 15:00`, Due Date `22/10/26`, TAG `RFID dan QR`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Reason `kosong`, Handover Photo `kosong`, Return Photo `kosong`, Source `Admin`, Purpose `kosong`.
 - Kondisi:
   - K1: tabel By Transaction dimuat berisi DU-057-1 sampai DU-057-3; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
   - K2: tabel By Transaction dimuat tanpa data sama sekali.
   - K3: memuat tabel By Transaction gagal karena error server.
   - K4: seperti K1; pencarian `Tidak Ada` dijawab tanpa baris.
-  - K5: tabel By Asset dimuat berisi DU-057-4 sampai DU-057-11; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`; jatah Extend maksimum aset bernilai `2`.
+  - K5: tabel By Asset dimuat berisi DU-057-4 sampai DU-057-11; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`; jatah Extend maksimum aset DU-057-4 bernilai `1` dan jatah Extend maksimum aset lainnya bernilai `2`.
   - K6: tabel By Asset dimuat tanpa data sama sekali.
   - K7: memuat tabel By Asset gagal karena error server.
   - K8: seperti K5; pencarian `Tidak Ada` dijawab tanpa baris.
   - K9: seperti K5; bahasa aktif pengguna adalah bahasa selain English.
+  - K10: tabel By Transaction dimuat berisi DU-057-13; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`; lebar kolom `Borrower` lebih sempit daripada teks Borrower yang tampil.
+  - K11: tabel By Asset dimuat berisi DU-057-14; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
 
 ## Test Steps
 
@@ -271,7 +275,7 @@ coverage:
 157. Tekan Esc
 158. Verifikasi Return Photo baris `Camera Sony A7 IV - 2` tampil `—` karena foto tidak ada
 159. Verifikasi badge Source `Admin` baris `Laptop Dell Latitude 5420 - 5` memakai severity `dark` pada tabel History By Asset
-160. Verifikasi badge Source `Self-service` baris `Camera Sony A7 IV - 2` memakai severity `primary` pada tabel History By Asset
+160. Verifikasi badge Source `Self-service` baris `Handheld Scanner Zebra - 5` memakai severity `primary` pada tabel History By Asset
 161. Arahkan kursor ke badge Source `Admin` baris `Laptop Dell Latitude 5420 - 5`
 162. Verifikasi nama pembuat `Rina Wijaya` tampil pada tooltip Source tabel History By Asset
 163. Verifikasi setiap baris tabel History By Asset memuat badge Source
@@ -308,3 +312,45 @@ coverage:
 190. Verifikasi Reason Reject baris `Projector Epson EB-X06 - 5` tampil persis `Aset sedang menunggu perbaikan dan belum boleh dipinjamkan sampai pemeriksaan ulang oleh Asset Admin selesai` seperti yang diinput
 191. Verifikasi Name `Projector Epson EB-X06 - 5` tampil persis seperti yang diinput
 192. Verifikasi alasan sistem pada baris `Toyota Avanza - 7` tampil dalam bahasa aktif
+
+### By Transaction: tipe field Status dan Borrower pada Filter Panel
+193. Tampilkan Tabel History By Transaction dengan kondisi K1
+194. Klik ikon Filter pada toolbar By Transaction
+195. Verifikasi field `Status` di Filter Panel History By Transaction berupa dropdown multi-pilih dengan kotak cari
+196. Verifikasi field `Borrower` di Filter Panel History By Transaction berupa dropdown multi-pilih dengan kotak cari
+
+### By Transaction: Borrower dipotong satu baris
+197. Tampilkan Tabel History By Transaction dengan kondisi K10
+198. Verifikasi Borrower baris `BRW-2026-0145` tampil dalam satu baris tanpa membungkus ke baris kedua
+199. Arahkan kursor ke Borrower baris `BRW-2026-0145`
+200. Verifikasi nama lengkap `Bartholomeus Wijayakusuma` tampil pada tooltip Borrower tabel History By Transaction
+
+### By Transaction: Requested By atas nama Borrower tanpa akun
+201. Tampilkan Tabel History By Transaction dengan kondisi K1
+202. Verifikasi Requested By baris `BRW-2026-0142` tampil `Rina W`, nama PIC Borrower baris itu
+
+### By Asset: keterangan badge Source Self-service
+203. Tampilkan Tabel History By Asset dengan kondisi K5
+204. Klik header kolom Actions `⋯`
+205. Centang kolom `Source`
+206. Arahkan kursor ke badge Source `Self-service` baris `Handheld Scanner Zebra - 5`
+207. Verifikasi keterangan bahwa BRW dipinjam sendiri oleh Borrower tampil pada tooltip Source tabel History By Asset
+
+### By Asset: pelaku pada tooltip Last Updated
+208. Tampilkan Tabel History By Asset dengan kondisi K5
+209. Arahkan kursor ke Last Updated baris `Laptop Dell Latitude 5420 - 5`
+210. Verifikasi nama pelaku `Rina Wijaya` tampil pada tooltip Last Updated tabel History By Asset
+
+### By Asset: posisi kolom TAG dan Category saat ditampilkan
+211. Tampilkan Tabel History By Asset dengan kondisi K5
+212. Klik header kolom Actions `⋯`
+213. Centang kolom `TAG` pada daftar Column Visibility
+214. Centang kolom `Category` pada daftar Column Visibility
+215. Verifikasi kolom `TAG` tampil tepat setelah kolom `Status` pada tabel History By Asset
+216. Verifikasi kolom `Category` tampil tepat setelah kolom `TAG` pada tabel History By Asset
+
+### By Asset: satu ikon per TAG Type
+217. Tampilkan Tabel History By Asset dengan kondisi K11
+218. Klik header kolom Actions `⋯`
+219. Centang kolom `TAG` pada daftar Column Visibility
+220. Verifikasi baris `Laptop Dell Latitude 5420 - 7` menampilkan dua ikon TAG dengan label `RFID` dan `QR`
