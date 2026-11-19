@@ -2831,3 +2831,15 @@ Aturan:
   - Tanpa perubahan app atau mock.
 - **Diputuskan oleh:** Coordinator 2026-11-19 (gap claim `gap-claims/fa-coordinator-changelog-csv-empty.md`).
 - **Status:** berlaku; script CAID-059, LBL-086, LBL-075 (fa).
+
+## D-274 Aturan umum: Client yang memakai Import punya term berbayar aktif (2026-11-19)
+
+- **Spec / langkah:** GlobalSettings/Import (semua spec, Client A dan client lain yang membuka Import), serta spec modul lain yang memakai Import sebagai langkah atau setup: Division `TC-GS-DIV-E2E-072`, Position `TC-GS-POS-E2E-044`, CustomFieldUser `TC-GS-UCF-E2E-074`, FileManager `TC-GS-FILEMGR-E2E-060`.
+- **Spec meminta:** Prerequisites menyebut Client "Active" tanpa menyebut plan. Reset client (Kontrak Fixture R1/R2 `tc-import.md`) diserahkan ke tim FE/BE.
+- **Dasar keputusan: LLD.** Import LLD `import-draft.md` L15-L16: "Free plan -> `403` (`plan_required`) on every endpoint". Client tanpa term berbayar tidak bisa membuka Import sama sekali, jadi "Client Active" di spec Import hanya bermakna bila Client punya term berbayar aktif.
+- **Keputusan:**
+  - Untuk spec: Client yang membuka Import (sebagai langkah atau setup) adalah Client Active dengan term berbayar aktif. Spec yang menguji plan gating atau status Suspended/Expired menyebut plan atau status itu di `## Prerequisites`-nya sendiri.
+  - Script: setup memberi term berbayar (Growth) setelah reset status tenant, karena reset status menghapus subscription tenant.
+  - Client Expired yang mendapat `plan_required` alih-alih akses baca adalah cacat backend (`import-service#25`, BT-GS-IMP-27), bukan alasan mengubah aturan ini.
+- **Diputuskan oleh:** Coordinator 2026-11-19 (dari sesi gs, label kerja `D-IMP-PLAN`).
+- **Status:** berlaku; hook `beforeEach` Import dan spec di atas (gs) merujuk D-274.
