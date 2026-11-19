@@ -4,7 +4,7 @@ title: "Save Draft, Edit draft, dan Add to Borrow Draft menyimpan isi Draft tanp
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-39", "FI-BRW-40", "FI-BRW-41", "FI-BRW-43", "FI-BRW-44", "§4.1b#p1", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#p4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.4#r4", "EB-FRM-9"]
 smoke: []
 dependsOn: []
@@ -37,8 +37,8 @@ coverage:
 - Layar awal: Transactions > Borrow.
 - Data:
   - DU-015-1: Borrower `Kirana Peminjam {runId}`, Email `kirana.peminjam{runId}@example.com`, Position `Staff {runId}`, Division `Finance {runId}`, Home Group `Head Office`, akun ber-login Status `Active` dan Activation Status `Activated`, Active Borrows `0 assets`; subjudul dialog Add to Borrow Draft bila ia punya dua Draft adalah `Kirana Peminjam {runId} has 2 drafts you can edit.`.
-  - DU-015-2: Aktor `Asset Admin Draft {runId}`, role Asset Admin, Group penugasan `Head Office` dan `Branch Surabaya`; teks pada form Draft yang terakhir ia ubah adalah `Last modified by Asset Admin Draft {runId}, [Time]`.
-  - DU-015-3: Asset Admin `Admin Draft Lain {runId}`, role Asset Admin, Group penugasan `Head Office`; teks pada form Draft yang terakhir ia ubah adalah `Last modified by Admin Draft Lain {runId}, [Time]`.
+  - DU-015-2: Aktor `Asset Admin Draft {runId}`, role Asset Admin, Group penugasan `Head Office` dan `Branch Surabaya`; teks pada form Draft yang terakhir ia ubah adalah `Last modified by Asset Admin Draft {runId}, [Time]`; sel `Modified By` tabel menampilkan `Asset A`.
+  - DU-015-3: Asset Admin `Admin Draft Lain {runId}`, role Asset Admin, Group penugasan `Head Office`; teks pada form Draft yang terakhir ia ubah adalah `Last modified by Admin Draft Lain {runId}, [Time]`; sel `Modified By` tabel menampilkan `Admin D`.
   - DU-015-4: aset `Laptop HP ProBook {runId}`, Brand `HP {runId}`, Model/Type `ProBook 450 {runId}`, Group `Head Office`, Category `Laptop {runId}`, Custody `Available`, Max Duration `7 days`, Approval `Needs approval`.
   - DU-015-5: aset `Proyektor Optoma {runId}`, Brand `Optoma {runId}`, Model/Type `HD146X {runId}`, Group `Head Office`, Category `Projector {runId}`, Custody `Available`, Max Duration `7 days`, Approval `Needs approval`.
   - DU-015-6: aset `Toyota Rush {runId}`, Brand `Toyota {runId}`, Model/Type `Rush {runId}`, Group `Branch Surabaya`, Category `Car {runId}`, Custody `Available`, Max Duration `14 days`, Approval `Needs approval`.
@@ -130,7 +130,7 @@ coverage:
 66. Verifikasi kolom `Group` pada baris Draft yang Modified By-nya `Asset Admin Draft {runId}` memuat `Branch Surabaya` dan `Head Office`
 67. Verifikasi kolom `Group` pada baris Draft yang Modified By-nya `Admin Draft Lain {runId}` memuat `Head Office`
 68. Verifikasi kolom `Total Asset` pada baris Draft yang Modified By-nya `Asset Admin Draft {runId}` memuat `3` dan pada baris Draft yang Modified By-nya `Admin Draft Lain {runId}` memuat `10`
-69. Verifikasi kolom `Modified By` pada baris Draft yang Modified By-nya `Asset Admin Draft {runId}` memuat `Asset Admin Draft {runId}` dan pada baris Draft yang Modified By-nya `Admin Draft Lain {runId}` memuat `Admin Draft Lain {runId}`
+69. Verifikasi kolom `Modified By` pada baris Draft yang Modified By-nya `Asset Admin Draft {runId}` memuat `Asset A` dan pada baris Draft yang Modified By-nya `Admin Draft Lain {runId}` memuat `Admin D`, dan nama lengkap `Asset Admin Draft {runId}` serta `Admin Draft Lain {runId}` tersampaikan saat kursor diarahkan ke sel `Modified By` baris masing-masing
 70. Verifikasi kolom `Last Updated` pada baris Draft yang Modified By-nya `Admin Draft Lain {runId}` memuat waktu `T0 − 2 hari` menurut format General Settings
 71. Verifikasi baris Draft yang Modified By-nya `Asset Admin Draft {runId}` tampil di atas baris Draft yang Modified By-nya `Admin Draft Lain {runId}` menurut urutan bawaan kolom `Last Updated` dari terbaru ke terlama
 

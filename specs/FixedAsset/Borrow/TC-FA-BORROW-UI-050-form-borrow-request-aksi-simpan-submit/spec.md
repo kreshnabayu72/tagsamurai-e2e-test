@@ -4,13 +4,13 @@ title: "Aksi Save Draft dan Submit di form Borrow Request: saving, dialog Unsave
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["D-BRW-11", "DM-BRW-18", "FI-BRW-36", "FI-BRW-37", "FI-BRW-38", "FLD-BRW-11", "V-BRW-19", "§4.3#p2", "EB-FB-3@edit-draft", "EB-FRM-1@form-borrow-request", "EB-FRM-2@form-borrow-request", "EB-TBL-5@submit-borrow-request", "EB-ERR-1@save-draft", "EB-ERR-1@submit-borrow"]
 smoke: []
 dependsOn: []
 trace:
   "D-BRW-11": [11, 12, 19]
-  "DM-BRW-18": [11, 19, 21, 22, 24, 27]
+  "DM-BRW-18": [11, 19, 21, 22, 24, 27, 79, 80]
   "FI-BRW-36": [69, 70]
   "FI-BRW-37": [75, 76]
   "FI-BRW-38": 29
@@ -19,10 +19,10 @@ trace:
   "§4.3#p2": 3
   "EB-FB-3@edit-draft": [32, 33]
   "EB-FRM-1@form-borrow-request": [40, 41, 43, 44]
-  "EB-FRM-2@form-borrow-request": [6, 7, 11, 12, 14, 16, 19]
+  "EB-FRM-2@form-borrow-request": [6, 7, 11, 12, 14, 16, 19, 88, 89, 92, 93, 97, 98, 102, 103]
   "EB-TBL-5@submit-borrow-request": [36, 37]
   "EB-ERR-1@save-draft": [47, 48, 49, 50, 52, 55, 56]
-  "EB-ERR-1@submit-borrow": [60, 61, 62, 63, 66]
+  "EB-ERR-1@submit-borrow": [60, 61, 62, 63, 66, 84, 85]
 anchor: [2]
 coverage:
   web: automated
@@ -37,8 +37,8 @@ coverage:
   - DU-050-1: Borrower `Budi Setiawan`, Position `Staff`, Division `Finance`, aktif, Eligibility `Can borrow`.
   - DU-050-2: Baris aset `Laptop Dell Latitude 5420 - 10`, Asset ID `LPT-2026-0010`, Group `Head Office`, Max Duration `3 days`, Duration `2`, Purpose `Rapat vendor`.
   - DU-050-3: Draft tersimpan milik Borrower DU-050-1 dengan baris DU-050-2, Modified By `Rina W`.
-  - DU-050-4: Draft tersimpan milik Borrower DU-050-1 yang memuat aset `Toyota Avanza - 6` dari Group `Branch Surabaya` di luar cakupan Aktor, Modified By `Rina W`. Alasan Submit disabled yang diharapkan `Some assets are outside your groups. Ask Rina W to submit.`, dari template `Some assets are outside your groups. Ask [Name] to submit.`.
-  - DU-050-5: Isian lokal tersimpan di perangkat ini berisi Borrower DU-050-1 dan baris DU-050-2.
+  - DU-050-4: Draft tersimpan milik Borrower DU-050-1 yang memuat aset `Toyota Avanza - 6` dari Group `Branch Surabaya` di luar cakupan Aktor, Modified By `Sari D`. Aktor yang bisa Submit Draft ini adalah `Rina W`, Total Control dengan cakupan Group `Head Office` dan `Branch Surabaya`. Alasan Submit disabled yang diharapkan `Some assets are outside your groups. Ask Rina W to submit.`, dari template `Some assets are outside your groups. Ask [Name] to submit.` dengan Name `Rina W`, Aktor yang bisa Submit Draft itu.
+  - DU-050-5: Isian lokal tersimpan di perangkat ini berisi Borrower DU-050-1, baris DU-050-2 dengan Duration `2` dan Purpose `Rapat vendor`, dan Note `Mohon disiapkan sebelum jam delapan`.
   - DU-050-6: Isian Note `Mohon disiapkan sebelum jam delapan`.
 - Kondisi:
   - K1: form Borrow Request baru yang belum diisi.
@@ -50,6 +50,7 @@ coverage:
   - K7: Draft DU-050-3 dibuka tanpa perubahan apa pun.
   - K8: Draft DU-050-4 dibuka oleh Aktor Borrow yang cakupan Group-nya tidak meliputi `Branch Surabaya`.
   - K9: Borrow Request dibuka di perangkat yang sama dengan isian lokal DU-050-5 tersimpan.
+  - K10: seperti K2, dengan semua aset menunggu approval dalam satu BRW; Submit gagal karena koneksi terputus tanpa respons, lalu Submit berikutnya berhasil.
 
 ## Test Steps
 
@@ -156,3 +157,42 @@ coverage:
 74. Klik `[Save Draft]`
 75. Verifikasi toast `Success, borrow has been saved as draft.` tampil
 76. Verifikasi dialog `Bulk Transaction Row Limit` tidak tampil
+
+### Isian lokal yang dipulihkan memuat Duration, Purpose, dan Note
+77. Tampilkan Form Borrow Request dengan kondisi K9
+78. Klik `[Restore]`
+79. Verifikasi Duration `2` dan Purpose `Rapat vendor` baris `Laptop Dell Latitude 5420 - 10` dipulihkan di form
+80. Verifikasi Note `Mohon disiapkan sebelum jam delapan` dipulihkan di form
+
+### Submit gagal karena koneksi terputus
+81. Tampilkan Form Borrow Request dengan kondisi K10
+82. Klik `[Submit]` pada form
+83. Klik `[Submit]` pada dialog `Submit Borrow`
+84. Verifikasi toast `Connection problem. Please try again.` tampil
+85. Verifikasi form tetap terbuka dengan Borrower `Budi Setiawan` dan baris `Laptop Dell Latitude 5420 - 10` dipertahankan, dan tombol `[Submit]` aktif kembali
+
+### Form bersih ditutup dengan ✕ langsung tanpa dialog
+86. Tampilkan Form Borrow Request dengan kondisi K1
+87. Klik `✕` pada form
+88. Verifikasi form Borrow Request tidak lagi tampil
+89. Verifikasi dialog `Unsaved Changes` tidak tampil
+
+### Form bersih ditutup dengan Esc langsung tanpa dialog
+90. Tampilkan Form Borrow Request dengan kondisi K1
+91. Tekan Esc
+92. Verifikasi form Borrow Request tidak lagi tampil
+93. Verifikasi dialog `Unsaved Changes` tidak tampil
+
+### Form kotor ditutup dengan ✕ meminta konfirmasi
+94. Tampilkan Form Borrow Request dengan kondisi K1
+95. Isi Note dengan `Mohon disiapkan sebelum jam delapan`
+96. Klik `✕` pada form
+97. Verifikasi dialog `Unsaved Changes` tampil dengan teks `You have unsaved changes. Are you sure you want to leave?`
+98. Verifikasi form tetap terbuka dan isian Note tetap `Mohon disiapkan sebelum jam delapan`
+
+### Form kotor ditutup dengan Esc meminta konfirmasi
+99. Tampilkan Form Borrow Request dengan kondisi K1
+100. Isi Note dengan `Mohon disiapkan sebelum jam delapan`
+101. Tekan Esc
+102. Verifikasi dialog `Unsaved Changes` tampil dengan teks `You have unsaved changes. Are you sure you want to leave?`
+103. Verifikasi form tetap terbuka dan isian Note tetap `Mohon disiapkan sebelum jam delapan`

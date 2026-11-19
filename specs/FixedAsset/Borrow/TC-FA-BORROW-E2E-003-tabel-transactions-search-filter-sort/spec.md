@@ -4,7 +4,7 @@ title: "Search, Filter, dan Sort tabel Transactions mengikuti kolom Searchable, 
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#r22", "§5#r2", "§5#r4", "§5#r5", "EB-SRC-2@tabel-transactions", "EB-SRC-3@tabel-transactions", "EB-SRC-5@tabel-transactions", "EB-FLT-1@tabel-transactions", "EB-FLT-4@tabel-transactions", "EB-FLT-5@tabel-transactions", "EB-SRC-1", "EB-FLT-3", "EB-SRT-1", "EB-SRT-2"]
 smoke: ["EB-SRC-1", "EB-FLT-3", "EB-SRT-1", "EB-SRT-2"]
 dependsOn: []
@@ -16,8 +16,8 @@ trace:
   "EB-SRC-2@tabel-transactions": [14, 27, 29]
   "EB-SRC-3@tabel-transactions": [25, 31, 32, 34, 36, 38, 39]
   "EB-SRC-5@tabel-transactions": [45, 48, 49, 113]
-  "EB-FLT-1@tabel-transactions": [88, 237, 239]
-  "EB-FLT-4@tabel-transactions": [109, 152, 155, 156, 160, 164, 166, 170, 173, 176, 180, 184, 192, 240]
+  "EB-FLT-1@tabel-transactions": [88, 237, 241]
+  "EB-FLT-4@tabel-transactions": [109, 152, 155, 156, 160, 164, 166, 170, 173, 176, 180, 184, 192, 242]
   "EB-FLT-5@tabel-transactions": [117, 120]
   "EB-SRC-1": [18, 19, 21, 23]
   "EB-FLT-3": [91, 92, 95, 102, 105, 106, 126, 129, 134, 135, 139, 143, 147, 148, 215, 216]
@@ -339,5 +339,7 @@ coverage:
 236. Klik field `Borrower`
 237. Verifikasi opsi `Hendra W` tampil dan opsi `Zahra L` tidak tampil
 238. Agus Pratama mengajukan BRW baru untuk Borrower `Zahra Lubis` dengan aset `Webcam Logitech C920 {runId}` lewat form Borrow Request, sehingga BRW itu berstatus `Waiting for Approval`
-239. Verifikasi opsi `Zahra L` tampil pada field `Borrower` tanpa muat ulang halaman
-240. Verifikasi baris Borrower `Hendra W` tampil dan baris Borrower `Zahra L` tidak tampil
+239. Tutup daftar opsi field `Borrower`
+240. Klik field `Borrower`
+241. Verifikasi opsi `Zahra L` tampil pada field `Borrower` tanpa muat ulang halaman
+242. Verifikasi baris Borrower `Hendra W` tampil dan baris Borrower `Zahra L` tidak tampil

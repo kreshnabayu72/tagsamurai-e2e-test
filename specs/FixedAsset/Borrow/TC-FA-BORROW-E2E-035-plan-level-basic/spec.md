@@ -4,7 +4,7 @@ title: "Level Basic menyembunyikan Draft, Self-service, Duration Hours, dan Requ
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§9.11#b1", "§9.11#b2", "§9.11#b4", "§9.11#b5", "§9.11#b6", "§9.11#b7"]
 smoke: []
 dependsOn: []
@@ -36,7 +36,7 @@ coverage:
   - DU-035-8: Aset `Forklift Toyota 8FD {runId}`, Group `Branch Surabaya {runId}`, status Available.
   - DU-035-9: BRW berstatus Waiting for Handover (dibuat saat level `Full`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Laptop Dell Latitude 5420 {runId}`, Duration `3 days`, Purpose `Kunjungan klien`, Requested By `Maya Putri {runId}`.
   - DU-035-10: BRW berstatus Waiting for Handover (melewati batas pengambilan `Not picked up`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Meeting Mic Set {runId}`, Duration `2 days`, Purpose `Rapat tahunan`, Requested By `Maya Putri {runId}`.
-  - DU-035-11: BRW berstatus Borrowed dengan Source `Self-service` (dibuat saat level `Full`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Projector Epson EB-X06 {runId}`, Duration `4 days`, Purpose `Presentasi vendor`, Requested By `Maya Putri {runId}`.
+  - DU-035-11: BRW berstatus Borrowed dengan Source `Self-service` (dibuat saat level `Full`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Projector Epson EB-X06 {runId}`, Duration `4 days`, Purpose `Presentasi vendor`, dipinjam sendiri oleh Borrower tanpa pengaju (Requested By `—`).
   - DU-035-12: Transaction Settings tersimpan: Self service `ON` dan Duration unit `Hours`.
   - DU-035-13: BRW dibuat langkah spec: Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Scanner Epson DS-530 {runId}`, Duration `2`, Purpose `Pengukuran lapangan`.
   - DU-035-14: BRW dibuat langkah spec: Group `Branch Surabaya {runId}`, Borrower `Rudi Hartono {runId}`, aset `Forklift Toyota 8FD {runId}`, Duration `3`, Purpose `Angkut material`.

@@ -4,50 +4,50 @@ title: "Monitoring & Report dan Read Only hanya membaca dan Download tanpa aksi 
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§2.1#r13", "§2.1#r14", "§2.1#r15", "§2.1#r16", "§2.1#r17", "§2.1#r18", "§4.1l#p4", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r15", "§4.8#r16", "§4.8#r17", "§4.8#r18", EB-AKS-4]
 smoke: []
 dependsOn: []
 trace:
-  "§2.1#r1": [9, 14, 55, 60]
-  "§2.1#r2": [12, 58]
-  "§2.1#r3": [5, 7, 53]
-  "§2.1#r4": [5, 7, 53]
-  "§2.1#r5": [17]
-  "§2.1#r6": [2, 50]
-  "§2.1#r7": [15, 61]
+  "§2.1#r1": [9, 14, 58, 63]
+  "§2.1#r2": [12, 61]
+  "§2.1#r3": [5, 7, 56]
+  "§2.1#r4": [5, 7, 56]
+  "§2.1#r5": [17, 73]
+  "§2.1#r6": [2, 53]
+  "§2.1#r7": [15, 64]
   "§2.1#r8": [16]
   "§2.1#r9": [20]
-  "§2.1#r10": [34]
+  "§2.1#r10": [34, 83]
   "§2.1#r11": [24]
   "§2.1#r12": [27]
-  "§2.1#r13": [37]
-  "§2.1#r14": [21, 32]
-  "§2.1#r15": [47]
-  "§2.1#r16": [33]
-  "§2.1#r17": [11, 57]
-  "§2.1#r18": [9, 10, 55, 56]
-  "§4.1l#p4": [5, 7, 53]
-  "§4.8#r1": [1, 4, 49, 52]
-  "§4.8#r2": [5, 7, 53]
-  "§4.8#r3": [32, 33]
-  "§4.8#r4": [12, 42, 43, 58]
+  "§2.1#r13": [37, 86]
+  "§2.1#r14": [21, 32, 81]
+  "§2.1#r15": [50]
+  "§2.1#r16": [33, 82]
+  "§2.1#r17": [11, 60]
+  "§2.1#r18": [9, 10, 58, 59]
+  "§4.1l#p4": [5, 7, 56]
+  "§4.8#r1": [1, 4, 52, 55]
+  "§4.8#r2": [5, 7, 56]
+  "§4.8#r3": [32, 33, 81, 82]
+  "§4.8#r4": [12, 40, 45, 46, 61, 89, 94, 95]
   "§4.8#r5": [5]
   "§4.8#r6": [5]
-  "§4.8#r7": [17]
-  "§4.8#r8": [15, 21, 33]
-  "§4.8#r9": [47]
+  "§4.8#r7": [17, 73]
+  "§4.8#r8": [15, 21, 33, 64, 76, 81, 82]
+  "§4.8#r9": [50]
   "§4.8#r10": [16]
   "§4.8#r11": [20]
   "§4.8#r12": [24]
   "§4.8#r13": [27]
-  "§4.8#r14": [37]
-  "§4.8#r15": [34]
-  "§4.8#r16": [2, 50]
+  "§4.8#r14": [37, 86]
+  "§4.8#r15": [34, 83]
+  "§4.8#r16": [2, 53]
   "§4.8#r17": [2]
-  "§4.8#r18": [11, 57]
-  EB-AKS-4: [55, 62, 63, 64, 65]
-anchor: [19, 23, 26, 31, 36, 41, 46]
+  "§4.8#r18": [11, 60]
+  EB-AKS-4: [58, 65, 66, 67, 68]
+anchor: [19, 23, 26, 31, 36, 39, 44, 49, 72, 75, 80, 85, 88, 93]
 coverage:
   web: automated
 ---
@@ -124,38 +124,74 @@ coverage:
 36. Verifikasi aksi `Borrow Log` tampil pada baris aset dengan Damage Report
 37. Verifikasi aksi `Cancel Damage Report` tidak tampil
 
+### Monitoring & Report: Quick Action tanpa item Borrow
+38. Buka menu Quick Action pada navbar
+39. Verifikasi menu Quick Action terbuka untuk Monitoring & Report
+40. Verifikasi item `Borrow` tidak tampil di menu Quick Action untuk Monitoring & Report
+
 ### Monitoring & Report: tabel aset tanpa aksi Borrow dan Mark as Returned
-38. Klik menu `Assets > All`
-39. Ketik Search `{runId}`, tekan Enter
-40. Buka menu ⋯ pada baris aset `Laptop Lenovo T14 {runId}`
-41. Verifikasi aset `Laptop Lenovo T14 {runId}` berstatus `Available` tampil di tabel aset
-42. Verifikasi aksi `Borrow` tidak tampil
-43. Verifikasi aksi `Add to Borrow Draft` tidak tampil
-44. Ganti isi kotak search dengan `Toyota Avanza {runId}`, tekan Enter
-45. Buka menu ⋯ pada baris aset `Toyota Avanza {runId}`
-46. Verifikasi aset `Toyota Avanza {runId}` berstatus `Borrowed` tampil di tabel aset
-47. Verifikasi aksi `Mark as Returned` tidak tampil karena level Feature Suite Borrowing bukan `None`
+41. Klik menu `Assets > All`
+42. Ketik Search `{runId}`, tekan Enter
+43. Buka menu ⋯ pada baris aset `Laptop Lenovo T14 {runId}`
+44. Verifikasi aset `Laptop Lenovo T14 {runId}` berstatus `Available` tampil di tabel aset
+45. Verifikasi aksi `Borrow` tidak tampil
+46. Verifikasi aksi `Add to Borrow Draft` tidak tampil
+47. Ganti isi kotak search dengan `Toyota Avanza {runId}`, tekan Enter
+48. Buka menu ⋯ pada baris aset `Toyota Avanza {runId}`
+49. Verifikasi aset `Toyota Avanza {runId}` berstatus `Borrowed` tampil di tabel aset
+50. Verifikasi aksi `Mark as Returned` tidak tampil karena level Feature Suite Borrowing bukan `None`
 
 ### Read Only: menu dan tab Borrow
-48. Masuk sebagai Read Only `Tomi Wijaya {runId}`
-49. Verifikasi menu `Transactions > Borrow` tampil di sidebar untuk Read Only
-50. Verifikasi menu `Approvals > Borrow` tidak tampil di sidebar untuk Read Only
-51. Klik menu `Transactions > Borrow`
-52. Verifikasi tab `Transactions`, `Borrowed Assets`, dan `History` tampil untuk Read Only
-53. Verifikasi tab `Drafts` tidak tampil untuk Read Only
+51. Masuk sebagai Read Only `Tomi Wijaya {runId}`
+52. Verifikasi menu `Transactions > Borrow` tampil di sidebar untuk Read Only
+53. Verifikasi menu `Approvals > Borrow` tidak tampil di sidebar untuk Read Only
+54. Klik menu `Transactions > Borrow`
+55. Verifikasi tab `Transactions`, `Borrowed Assets`, dan `History` tampil untuk Read Only
+56. Verifikasi tab `Drafts` tidak tampil untuk Read Only
 
 ### Read Only: cakupan seluruh client, hanya membaca dan Download
-54. Ketik Search `{runId}`, tekan Enter
-55. Verifikasi BRW milik DU-033-9 dengan Group `Head Office {runId}` tampil di tabel untuk Read Only
-56. Verifikasi BRW milik DU-033-14 dengan Group `Branch Surabaya {runId}` tampil di tabel untuk Read Only
-57. Verifikasi `Download` tampil di toolbar tab `Transactions` untuk Read Only
-58. Verifikasi tombol `[+ Borrow]` tidak tampil di toolbar tab `Transactions` untuk Read Only
-59. Buka menu ⋯ pada baris BRW milik DU-033-9
-60. Verifikasi aksi `Detail` tampil dan aktif untuk Read Only
-61. Verifikasi aksi `Hand Over` tidak tampil untuk Read Only
+57. Ketik Search `{runId}`, tekan Enter
+58. Verifikasi BRW milik DU-033-9 dengan Group `Head Office {runId}` tampil di tabel untuk Read Only
+59. Verifikasi BRW milik DU-033-14 dengan Group `Branch Surabaya {runId}` tampil di tabel untuk Read Only
+60. Verifikasi `Download` tampil di toolbar tab `Transactions` untuk Read Only
+61. Verifikasi tombol `[+ Borrow]` tidak tampil di toolbar tab `Transactions` untuk Read Only
+62. Buka menu ⋯ pada baris BRW milik DU-033-9
+63. Verifikasi aksi `Detail` tampil dan aktif untuk Read Only
+64. Verifikasi aksi `Hand Over` tidak tampil untuk Read Only
 
 ### Read Only: Search, Filter, Sort, Pagination, dan Setup Column tampil dan aktif
-62. Verifikasi tombol `Filter` tampil dan aktif di toolbar tab `Transactions`
-63. Verifikasi kontrol sort pada header kolom `Transaction ID` tampil dan aktif
-64. Verifikasi paginasi `Table pagination` tampil dan aktif
-65. Verifikasi tombol `Column Visibility` tampil dan aktif di header tabel
+65. Verifikasi tombol `Filter` tampil dan aktif di toolbar tab `Transactions`
+66. Verifikasi kontrol sort pada header kolom `Transaction ID` tampil dan aktif
+67. Verifikasi paginasi `Table pagination` tampil dan aktif
+68. Verifikasi tombol `Column Visibility` tampil dan aktif di header tabel
+
+### Read Only: aksi tulis baris BRW dan baris aset tidak tampil
+69. Klik tab `Transactions`
+70. Ketik Search `{runId}`, tekan Enter
+71. Buka menu ⋯ pada baris BRW milik DU-033-9
+72. Verifikasi aksi `Detail` tampil pada baris BRW yang Waiting for Handover untuk Read Only
+73. Verifikasi aksi `Cancel Borrow` tidak tampil untuk Read Only
+74. Buka menu ⋯ pada baris BRW milik DU-033-10
+75. Verifikasi aksi `Detail` tampil pada baris BRW yang Borrowed untuk Read Only
+76. Verifikasi aksi `Return` tidak tampil pada baris BRW untuk Read Only
+77. Klik tab `Borrowed Assets`
+78. Ketik Search `{runId}`, tekan Enter
+79. Buka menu ⋯ pada baris aset `Toyota Avanza {runId}`
+80. Verifikasi aksi `Borrow Log` tampil pada baris aset yang Borrowed untuk Read Only
+81. Verifikasi aksi `Return` tidak tampil pada baris aset yang Borrowed untuk Read Only
+82. Verifikasi aksi `Report Missing` tidak tampil untuk Read Only
+83. Verifikasi aksi `Report Damaged` tidak tampil untuk Read Only
+84. Buka menu ⋯ pada baris aset `Excavator Komatsu PC200 {runId}`
+85. Verifikasi aksi `Borrow Log` tampil pada baris aset dengan Damage Report untuk Read Only
+86. Verifikasi aksi `Cancel Damage Report` tidak tampil untuk Read Only
+
+### Read Only: Quick Action dan Asset List tanpa aksi Borrow
+87. Buka menu Quick Action pada navbar
+88. Verifikasi menu Quick Action terbuka untuk Read Only
+89. Verifikasi item `Borrow` tidak tampil di menu Quick Action untuk Read Only
+90. Klik menu `Assets > All`
+91. Ketik Search `{runId}`, tekan Enter
+92. Buka menu ⋯ pada baris aset `Laptop Lenovo T14 {runId}`
+93. Verifikasi baris aset `Laptop Lenovo T14 {runId}` tampil di tabel aset untuk Read Only
+94. Verifikasi aksi `Borrow` tidak tampil untuk Read Only
+95. Verifikasi aksi `Add to Borrow Draft` tidak tampil untuk Read Only

@@ -4,7 +4,7 @@ title: "Draft bersama dapat dibaca dan diubah Aktor Borrow dalam cakupan Group, 
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-45", "FI-BRW-46", "FI-BRW-47", "FI-BRW-48", "FI-BRW-49", "§2.2#p6", "§2.2#p7", "§2.2#p8", "§2.2#p9", "EB-AKS-6"]
 smoke: []
 dependsOn: []
@@ -12,8 +12,8 @@ trace:
   "FI-BRW-45": 18
   "FI-BRW-46": 19
   "FI-BRW-47": [21, 22]
-  "FI-BRW-48": [38, 41]
-  "FI-BRW-49": [41, 42, 44, 45]
+  "FI-BRW-48": [38, 41, 63, 67]
+  "FI-BRW-49": [41, 42, 44, 45, 65, 69, 72]
   "§2.2#p6": [3, 7]
   "§2.2#p7": [18, 20, 21]
   "§2.2#p8": [25, 28, 30]
@@ -44,6 +44,7 @@ coverage:
   - DU-016-12: Draft pertama untuk Borrower `Sari Dewi {runId}` dengan empat aset (`Laptop Dell Inspiron {runId}`, `Proyektor Acer {runId}`, `Toyota Calya {runId}`, `Daihatsu Gran Max {runId}`), Total Asset `4`, Duration `3` dan Purpose `Training` pada setiap baris, Modified By `Tia Total Control {runId}`.
   - DU-016-13: Draft kedua untuk Borrower `Sari Dewi {runId}` hanya berisi aset `Honda Brio {runId}`, Total Asset `1`, Duration `2` dan Purpose `Kunjungan cabang`, Modified By `Tia Total Control {runId}`.
   - DU-016-14: ubahan Draft pertama: Purpose `Laptop Dell Inspiron {runId}` menjadi `Perubahan Tia` oleh `Tia Total Control {runId}`; Purpose `Proyektor Acer {runId}` menjadi `Perubahan Agus` oleh `Agus Pratama {runId}` yang tidak tersimpan; teks dialog Draft Changed `This draft was changed by Tia Total Control {runId} at [Time]. Reload to see the latest version; your unsaved changes will be lost.`; ubahan Draft kedua oleh `Hendra Kurnia {runId}`: Purpose `Honda Brio {runId}` menjadi `Perubahan Hendra` yang ditolak.
+  - DU-016-15: ubahan Draft pertama oleh Submit: Purpose `Proyektor Acer {runId}` menjadi `Pembaruan Agus` oleh `Agus Pratama {runId}` dan tersimpan; teks dialog Draft Changed bagi `Tia Total Control {runId}` `This draft was changed by Agus Pratama {runId} at [Time]. Reload to see the latest version; your unsaved changes will be lost.`.
 - Kondisi:
   - Akun `Agus Pratama {runId}`, `Hendra Kurnia {runId}`, `Tia Total Control {runId}`, `Monita Monitoring {runId}`, dan `Raka Read Only {runId}` aktif dan kredensialnya disediakan fase 2.
 
@@ -114,3 +115,23 @@ coverage:
 52. Klik `[Save Draft]`
 53. Verifikasi toast error `You don't have permission to do this.` tampil
 54. Verifikasi aksi `[Save Draft]` dan `[Submit]` tidak lagi tersedia pada form karena Aktor tidak lagi berhak
+
+### Submit atas Draft yang sudah diubah orang lain mendapat dialog Draft Changed
+55. Konteks `Tia Total Control {runId}`: Buka tab Drafts
+56. Ketik Search `Sari Dewi {runId}`, tekan Enter
+57. Klik ikon pensil `Edit` pada baris Draft dengan Total Asset `4`
+58. Konteks `Agus Pratama {runId}`: Buka tab Drafts
+59. Ketik Search `Sari Dewi {runId}`, tekan Enter
+60. Klik ikon pensil `Edit` pada baris Draft dengan Total Asset `4`
+61. Ganti Purpose baris `Proyektor Acer {runId}` dengan `Pembaruan Agus`
+62. Klik `[Save Draft]`
+63. Verifikasi toast `Success, borrow has been saved as draft.` tampil bagi Asset Admin `Agus Pratama {runId}`
+64. Konteks `Tia Total Control {runId}`: Klik `[Submit]`
+65. Verifikasi dialog `Draft Changed` tampil dengan teks `This draft was changed by Agus Pratama {runId} at [Time]. Reload to see the latest version; your unsaved changes will be lost.`
+66. Klik `[Reload]`
+67. Verifikasi baris `Proyektor Acer {runId}` berisi Purpose `Pembaruan Agus` sesudah Draft dimuat ulang
+68. Klik `[Cancel]` pada form yang belum diubah
+69. Verifikasi baris Draft dengan Total Asset `4` untuk Borrower `Sari Dewi {runId}` masih tampil di tab Drafts karena Submit tidak diproses
+70. Buka tab Transactions
+71. Ketik Search `Sari Dewi {runId}`, tekan Enter
+72. Verifikasi empty state `No results found` tampil di tab Transactions karena tidak ada BRW untuk Borrower `Sari Dewi {runId}`

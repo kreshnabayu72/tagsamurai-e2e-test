@@ -4,7 +4,7 @@ title: "Perubahan aset, tag, Borrower, Group, dan lock aktivitas saat transaksi 
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-16am", "BORROW-LOGIC-16an", "BORROW-LOGIC-16ao", "BORROW-LOGIC-16ap", "BORROW-LOGIC-16aq", "BORROW-LOGIC-16ar", "BORROW-LOGIC-16as", "BORROW-LOGIC-16av", "BORROW-LOGIC-16aw", "BORROW-LOGIC-16bg", "BORROW-LOGIC-16bm", "BORROW-LOGIC-16bn", "BORROW-LOGIC-16o", "BORROW-LOGIC-16p", "BORROW-LOGIC-16q", "BORROW-LOGIC-16v", "EC-BRW-01", "EC-BRW-160", "EC-BRW-36", "F-BORROW-12.k2", "F-BORROW-12.k3", "F-BORROW-12.k4", "F-BORROW-12.k5", "F-BORROW-12.k6", "F-BORROW-12.k7", "§9.2#r52", "§9.2#r54", "§9.2#r55", "§9.2#r57", "§9.2#r58", "§9.2#r59", "EB-EDG-3"]
 smoke: []
 dependsOn: []
@@ -32,13 +32,13 @@ trace:
   "F-BORROW-12.k2": [3]
   "F-BORROW-12.k3": [42, 45]
   "F-BORROW-12.k4": [5, 11, 12, 16]
-  "F-BORROW-12.k5": [47, 49, 51]
+  "F-BORROW-12.k5": [47, 49, 51, 62, 63]
   "F-BORROW-12.k6": [53, 55, 57]
   "F-BORROW-12.k7": [59]
   "§9.2#r52": [3]
   "§9.2#r54": [42, 45]
   "§9.2#r55": [5, 12, 16]
-  "§9.2#r57": [47, 49, 51]
+  "§9.2#r57": [47, 49, 51, 62, 63]
   "§9.2#r58": [53, 55, 57]
   "§9.2#r59": [59]
   "EB-EDG-3": [60]
@@ -47,12 +47,12 @@ trace:
 # Perubahan aset, tag, Borrower, Group, dan lock aktivitas saat transaksi berjalan
 
 ## Prerequisites
-- Aktor: `Agus Pratama {runId}` (Asset Admin, pengaju, Group `Head Office {runId}`); `Sinta Maharani {runId}` (Asset Admin, Aktor Borrow Group `Head Office {runId}`); `Maya Putri {runId}` (Aktor Damaged); `Rudi Hartono {runId}` (Aktor Missing); `Dewi Lestari {runId}` (Borrower ber-akun).
+- Aktor: `Agus Pratama {runId}` (Asset Admin, pengaju, Group `Head Office {runId}` dan `Gudang Arsip {runId}`); `Wulan Sari {runId}` (Total Control); `Sinta Maharani {runId}` (Asset Admin, Aktor Borrow Group `Head Office {runId}`); `Maya Putri {runId}` (Aktor Damaged); `Rudi Hartono {runId}` (Aktor Missing); `Dewi Lestari {runId}` (Borrower ber-akun).
 - Data:
   - DU-086-1: Group asal aset: Name `Head Office {runId}`
   - DU-086-2: Group punya baris aktif: Name `Gudang Cabang {runId}`
   - DU-086-3: Group hanya punya Draft berisi asetnya: Name `Gudang Arsip {runId}`
-  - DU-086-4: User akun login: Name `Agus Pratama {runId}`, Status `Active`, Activation Status `Activated`, Role `Asset Admin, pengaju`, Group penugasan `Head Office {runId}`
+  - DU-086-4: User akun login: Name `Agus Pratama {runId}`, Status `Active`, Activation Status `Activated`, Role `Asset Admin, pengaju`, Group penugasan `Head Office {runId} dan Gudang Arsip {runId}`
   - DU-086-5: User akun login: Name `Sinta Maharani {runId}`, Status `Active`, Activation Status `Activated`, Role `Asset Admin, Aktor Borrow Group aset`, Group penugasan `Head Office {runId}`
   - DU-086-6: User akun login: Name `Maya Putri {runId}`, Status `Active`, Activation Status `Activated`, Role `Aktor Damaged`, Group penugasan `Head Office {runId}`
   - DU-086-7: User akun login: Name `Rudi Hartono {runId}`, Status `Active`, Activation Status `Activated`, Role `Aktor Missing`, Group penugasan `Head Office {runId}`
@@ -66,7 +66,7 @@ trace:
   - DU-086-15: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Kamera Fujifilm X-T30 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Tag lama `RFID-A1B2 {runId}`, Tag baru `RFID-C3D4 {runId}`, Due date `T0 + 3 hari`
   - DU-086-16: Pinjaman berjalan: Borrower `Fajar Nugroho {runId}`, Aset `Laptop Dell Latitude 5440 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Approval`, Pengaju `Agus Pratama {runId}`
   - DU-086-17: Pinjaman berjalan: Borrower `Fajar Nugroho {runId}`, Aset `Printer Epson L3250 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Pengaju `Agus Pratama {runId}`
-  - DU-086-18: Pinjaman berjalan: Borrower `Fajar Nugroho {runId}`, Aset `Proyektor Epson EB-X49 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Pengaju `Agus Pratama {runId}`, Due date `T0 + 1 hari`
+  - DU-086-18: Pinjaman berjalan: Borrower `Fajar Nugroho {runId}`, Aset `Proyektor Epson EB-X49 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Pengaju `Agus Pratama {runId}`, Due date `T0 + 1 hari`, TAG `Ber-tag`
   - DU-086-19: Draft tersimpan: Pembuat `Agus Pratama {runId}`, Borrower `Fajar Nugroho {runId}`, Aset `Head Office: Speaker JBL PartyBox 310 {runId}`, Duration `2`, Purpose `Acara pelatihan`
   - DU-086-20: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Tablet Samsung Galaxy Tab S9 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Lifecycle aset `Unmanaged`
   - DU-086-21: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Lensa Canon RF 24-70 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Lifecycle aset `Unmanaged`
@@ -84,10 +84,16 @@ trace:
   - DU-086-33: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Rak Besi Heavy Duty {runId}`, Group `Gudang Cabang {runId}`, Status baris `Borrowed`, Due date `T0 + 3 hari`
   - DU-086-34: Draft tersimpan: Pembuat `Agus Pratama {runId}`, Borrower `Dewi Lestari {runId}`, Aset `Gudang Arsip: Lemari Arsip Besi {runId}`, Duration `2`, Purpose `Penataan arsip`
   - DU-086-35: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Scanner Fujitsu fi-8170 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Due date `T0 + 3 hari`
+  - DU-086-38: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Printer Portable HP Sprocket {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Due date `T0 + 3 hari`, Lifecycle aset `Unmanaged`, Max extensions `2`
+  - DU-086-39: User akun login: Name `Bagus Santoso {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow`, Division `Finance`
+  - DU-086-40: User akun login: Name `Wulan Sari {runId}`, Status `Active`, Activation Status `Activated`, Role `Total Control`, Scope `Seluruh client`
+  - DU-086-41: User akun login: Name `Tika Handayani {runId}`, Status `Active`, Activation Status `Activated`, Role `Karyawan biasa bukan Aktor Borrow, PIC`, Division `Marketing`
+  - DU-086-42: Karyawan tanpa akun login: Name `Eko Saputra {runId}`, Status `Active`, Division `Finance`, PIC `Tika Handayani {runId}`
+  - DU-086-43: Pinjaman berjalan: Borrower `Eko Saputra {runId}`, Aset `Whiteboard Standing Quartet {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, PIC `Tika Handayani {runId}`, Due date `T0 + 1 hari`
 - Kondisi:
   - T0 adalah waktu permintaan dikirim.
   - Aset `Gimbal DJI RS 3 {runId}`, `Lensa Canon RF 24-70 {runId}`, dan `Tablet Samsung Galaxy Tab S9 {runId}` berstatus seperti disebut di entri datanya sebelum langkah dimulai.
-  - Akun Agus, Sinta, Maya, Rudi, dan Dewi aktif dan kredensialnya tersedia untuk fase 2.
+  - Akun Agus, Sinta, Maya, Rudi, Wulan, dan Dewi aktif dan kredensialnya tersedia untuk fase 2.
 
 ## Test Steps
 
@@ -114,8 +120,8 @@ trace:
 ### Aset Unmanaged saat dipinjam
 17. Dewi menjalankan Return atas `Tablet Samsung Galaxy Tab S9 {runId}` yang Unmanaged dengan scan TAG
 18. Verifikasi Return tetap diterima untuk menyelesaikan transaksi berjalan dan baris menjadi `Returned`
-19. Dewi mengajukan Extend atas `Tablet Samsung Galaxy Tab S9 {runId}` yang Unmanaged dengan Extend by `1` dan Reason `Perlu satu hari lagi`
-20. Verifikasi Extend tidak ditawarkan dan ditolak dengan alasan `This asset is Unmanaged and can't be extended.`
+19. Dewi mengajukan Extend atas `Printer Portable HP Sprocket {runId}` yang Unmanaged dan masih `Borrowed` dengan Extend by `1` dan Reason `Perlu satu hari lagi`
+20. Verifikasi Extend atas `Printer Portable HP Sprocket {runId}` tidak ditawarkan dan ditolak dengan alasan `This asset is Unmanaged and can't be extended.`
 21. Sinta menyelesaikan Handover atas `Lensa Canon RF 24-70 {runId}` yang Unmanaged
 22. Verifikasi Handover atas aset Unmanaged ditolak dan baris tetap `Waiting for Handover` sampai timeout
 23. Sinta mengirim Cancel Borrow atas `Lensa Canon RF 24-70 {runId}` yang Unmanaged
@@ -130,7 +136,7 @@ trace:
 30. Verifikasi baris `Bor Listrik Bosch GSB 13 {runId}` berstatus `Overdue` walau aset masih `In Audit`, karena Overdue tetap dihitung
 
 ### Laporan Damaged: status baris tetap Borrowed dan Mark as Repaired memulihkan Condition
-31. Dewi mengirim Report Damaged atas `Drone DJI Mavic 3 {runId}` dengan satu foto dan What happened `Baling-baling patah`
+31. Maya mengirim Report Damaged atas `Drone DJI Mavic 3 {runId}` dengan satu foto dan What happened `Baling-baling patah`, sehingga record laporan langsung berstatus `Damaged`
 32. Verifikasi status baris `Drone DJI Mavic 3 {runId}` tetap `Borrowed` sampai Return
 33. Maya menjalankan Mark as Repaired atas `Drone DJI Mavic 3 {runId}`
 34. Verifikasi status global aset kembali ke Condition sebelumnya, yaitu `Normal`
@@ -147,11 +153,11 @@ trace:
 41. Dewi mengajukan Extend atas `Headset Logitech H390 {runId}` dengan Extend by `1` dan Reason `Proyek belum selesai`
 42. Verifikasi pinjaman berjalan tidak terpengaruh: Extend atas baris `Headset Logitech H390 {runId}` tetap diterima menurut snapshot
 43. Allowed borrower `Mikrofon Shure SM58 {runId}` diubah menjadi `Division Marketing`
-44. Dewi mengirim Submit dengan Borrower `Dewi Lestari {runId}` atas `Mikrofon Shure SM58 {runId}` dengan Duration `2` Days dan Purpose `Rekaman siniar`
+44. Agus mengirim Submit dengan Borrower `Dewi Lestari {runId}` atas `Mikrofon Shure SM58 {runId}` dengan Duration `2` Days dan Purpose `Rekaman siniar`
 45. Verifikasi pengajuan berikutnya memakai aturan baru dan ditolak dengan alasan `Dewi Lestari {runId} can't borrow assets from Head Office {runId}.`
 
 ### PIC dikosongkan, diganti, atau Borrower dibuatkan akun tidak menghentikan pinjaman
-46. PIC `Ayu Lestari {runId}` dikosongkan di Users saat barisnya `Borrowed`
+46. Isian PIC milik Borrower `Ayu Lestari {runId}`, yaitu `Rina Kusuma {runId}`, dikosongkan di Users saat barisnya `Borrowed`
 47. Verifikasi pinjaman `Kursi Ergonomis Ergotec {runId}` tidak dihentikan dan tetap `Borrowed`
 48. PIC `Bima Prakoso {runId}` diganti menjadi `Maya Putri PIC pengganti {runId}` di Users saat barisnya `Borrowed`
 49. Verifikasi pinjaman `Meja Rapat Kayu Jati {runId}` tidak dihentikan dan tampil serta ditujukan ke `Maya Putri PIC pengganti {runId}` sebagai PIC saat ini
@@ -159,9 +165,9 @@ trace:
 51. Verifikasi pinjaman `Papan Tulis Magnetik {runId}` tidak dihentikan dan tampil serta ditujukan ke akun `Cici Paramitha {runId}` saat ini
 
 ### Penghapusan Group ditolak selama ada baris aktif dan Draft dibiarkan
-52. Sinta mengirim penghapusan Group `Gudang Cabang {runId}` yang punya baris aktif `Rak Besi Heavy Duty {runId}`
+52. Wulan mengirim penghapusan Group `Gudang Cabang {runId}` yang punya baris aktif `Rak Besi Heavy Duty {runId}`
 53. Verifikasi penghapusan Group ditolak sampai semua baris aktif selesai dan baris tetap `Borrowed`
-54. Sinta mengirim penghapusan Group `Gudang Arsip {runId}` yang hanya punya Draft berisi `Lemari Arsip Besi {runId}`
+54. Wulan mengirim penghapusan Group `Gudang Arsip {runId}` yang hanya punya Draft berisi `Lemari Arsip Besi {runId}`
 55. Verifikasi Draft atas nama `Dewi Lestari {runId}` dibiarkan tidak berubah dan tetap tersimpan
 56. Agus membuka Draft `Dewi Lestari {runId}` yang memuat `Lemari Arsip Besi {runId}`
 57. Verifikasi aset `Lemari Arsip Besi {runId}` ditandai saat Draft dibuka
@@ -171,3 +177,7 @@ trace:
 59. Verifikasi penghapusan ditolak selama ada transaksi berjalan karena Custody aset bukan `Available`
 60. Verifikasi nasib data dependen saat induknya dihapus mengikuti PRD: baris `Scanner Fujitsu fi-8170 {runId}` tetap `Borrowed` dan tidak ikut terhapus
 
+### PIC dinonaktifkan saat pinjaman berjalan
+61. PIC `Tika Handayani {runId}` dinonaktifkan di Users saat pinjaman `Whiteboard Standing Quartet {runId}` milik `Eko Saputra {runId}` berstatus `Borrowed`
+62. Verifikasi pinjaman `Whiteboard Standing Quartet {runId}` tidak dihentikan dan tetap `Borrowed`
+63. Verifikasi baris `Whiteboard Standing Quartet {runId}` diberi penanda `No PIC`

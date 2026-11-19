@@ -4,7 +4,7 @@ title: "Server memecah Submit menjadi satu BRW per Group asal dengan Transaction
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 owner: BE
 sourceRules: ["BORROW-LOGIC-05a", "BORROW-LOGIC-05b", "BORROW-LOGIC-05c", "BORROW-LOGIC-05d", "BORROW-LOGIC-05e", "BORROW-LOGIC-05f", "BORROW-LOGIC-05g", "BORROW-LOGIC-05h", "BORROW-LOGIC-05i", "BORROW-LOGIC-05j", "F-BORROW-03.k11", "F-BORROW-03.k12", "§9.2#b20", "§9.2#b21", "§10#r2"]
 smoke: []
@@ -74,5 +74,5 @@ trace:
 16. Verifikasi Due date baris `Laptop Dell Latitude {runId}` adalah tanggal handover ditambah 6 hari, berakhir pukul 23:59:59 menurut Time Zone penyewa, dan Due date baris `Meeting Mic Set {runId}` adalah jam handover ditambah 3 jam
 17. Waktu berlalu sampai 1 jam sebelum Due date baris `Meeting Mic Set {runId}`
 18. Verifikasi pengingat Due date dikirim ke Borrower untuk baris `Meeting Mic Set {runId}`, dan tidak ada pengingat untuk baris `Laptop Dell Latitude {runId}` dalam 5 detik
-19. Waktu berlalu sampai Due date baris `Meeting Mic Set {runId}` terlewati
+19. Waktu berlalu sampai 1 jam setelah Due date baris `Meeting Mic Set {runId}`
 20. Verifikasi baris `Meeting Mic Set {runId}` berstatus `Overdue` sedangkan baris `Laptop Dell Latitude {runId}` tetap `Borrowed`

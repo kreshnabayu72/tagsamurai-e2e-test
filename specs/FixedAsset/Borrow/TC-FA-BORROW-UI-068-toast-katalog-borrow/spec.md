@@ -4,7 +4,7 @@ title: "Katalog toast Borrow: copy sukses, gagal server, gangguan jaringan, dan 
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["T-BRW-01", "T-BRW-02", "T-BRW-03", "T-BRW-04", "T-BRW-05", "T-BRW-06", "T-BRW-07", "T-BRW-08", "T-BRW-09", "T-BRW-10", "T-BRW-11", "T-BRW-17", "T-BRW-18", "T-BRW-21", "T-BRW-22", "T-BRW-24", "T-BRW-25", "T-BRW-26", "T-BRW-27", "T-BRW-28", "T-BRW-29", "T-BRW-30", "T-BRW-31", "T-BRW-32", "EB-FB-4"]
 smoke: []
 dependsOn: []
@@ -18,23 +18,23 @@ trace:
   "T-BRW-07": [29, 31]
   "T-BRW-08": [33, 35]
   "T-BRW-09": [37, 39]
-  "T-BRW-10": [41, 44]
-  "T-BRW-11": [46, 48, 50]
-  "T-BRW-17": 52
-  "T-BRW-18": 54
-  "T-BRW-21": [56, 58]
-  "T-BRW-22": 60
-  "T-BRW-24": 42
-  "T-BRW-25": 62
-  "T-BRW-26": [64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86]
-  "T-BRW-27": 88
-  "T-BRW-28": 90
-  "T-BRW-29": 92
-  "T-BRW-30": 94
-  "T-BRW-31": [96, 98]
-  "T-BRW-32": [100, 102]
-  "EB-FB-4": [106, 110, 112]
-anchor: [104, 108]
+  "T-BRW-10": [41, 43]
+  "T-BRW-11": [45, 47, 49]
+  "T-BRW-17": 51
+  "T-BRW-18": 53
+  "T-BRW-21": [55, 57]
+  "T-BRW-22": 59
+  "T-BRW-24": [115]
+  "T-BRW-25": 61
+  "T-BRW-26": [63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 113]
+  "T-BRW-27": 87
+  "T-BRW-28": 89
+  "T-BRW-29": 91
+  "T-BRW-30": 93
+  "T-BRW-31": [95, 97]
+  "T-BRW-32": [99, 101]
+  "EB-FB-4": [105, 109, 111]
+anchor: [103, 107]
 coverage:
   web: automated
 ---
@@ -60,7 +60,7 @@ coverage:
   - K7: Submit dua BRW berhasil dan semua aset langsung Waiting for Handover.
   - K8: Submit satu BRW berhasil dan semua aset menunggu approval.
   - K9: Submit dua BRW berhasil dan semua aset menunggu approval.
-  - K10: Submit berhasil dengan hasil campuran: 1 dari 3 aset disetujui langsung dan 2 menunggu approval.
+  - K10: Submit berhasil menghasilkan dua BRW dengan total 3 aset, dengan hasil campuran: 1 dari 3 aset disetujui langsung dan 2 menunggu approval.
   - K11: keputusan approval berhasil dengan semua aset diputuskan Approve.
   - K12: keputusan approval berhasil dengan semua aset yang diputuskan ditolak.
   - K13: keputusan approval berhasil dan pengajuan masih menunggu approver lain.
@@ -103,6 +103,8 @@ coverage:
   - K50: Mark as Returned tiga aset selesai.
   - K51: Cancel Borrow berhasil.
   - K52: aksi cancel gagal karena error server.
+  - K54: aksi remind Borrower gagal karena error server.
+  - K56: Submit Extend dari My Asset berhasil dan seluruh aset menunggu review.
 
 ## Test Steps
 
@@ -145,7 +147,7 @@ coverage:
 
 ### Submit campuran lintas BRW
 20. Tampilkan Toast Borrow dengan kondisi K10
-21. Verifikasi toast `Success, 1 of 3 assets have been approved. 2 submitted for approval.` tampil sesuai katalog toast
+21. Verifikasi toast `Success, 1 of 3 assets have been approved. 2 submitted for approval.` tampil sesuai katalog toast, dengan hitungan gabungan seluruh aset dari kedua BRW
 
 ### Keputusan approval Approve
 22. Tampilkan Toast Borrow dengan kondisi K11
@@ -186,138 +188,145 @@ coverage:
 ### Extend diajukan untuk satu BRW
 40. Tampilkan Toast Borrow dengan kondisi K20
 41. Verifikasi toast `Success, extension has been submitted for approval.` tampil sesuai katalog toast
-42. Verifikasi katalog Borrow tidak memuat copy toast pengajuan Extend dari sisi Borrower karena copy itu dimiliki dokumen lain
 
 ### Extend diajukan untuk beberapa BRW
-43. Tampilkan Toast Borrow dengan kondisi K21
-44. Verifikasi toast `Success, extension has been submitted for approval in 2 borrows.` tampil sesuai katalog toast
+42. Tampilkan Toast Borrow dengan kondisi K21
+43. Verifikasi toast `Success, extension has been submitted for approval in 2 borrows.` tampil sesuai katalog toast
 
 ### Cancel Borrow berhasil
-45. Tampilkan Toast Borrow dengan kondisi K22
-46. Verifikasi toast `Success, borrow has been canceled.` tampil sesuai katalog toast
+44. Tampilkan Toast Borrow dengan kondisi K22
+45. Verifikasi toast `Success, borrow has been canceled.` tampil sesuai katalog toast
 
 ### Delete Draft berhasil
-47. Tampilkan Toast Borrow dengan kondisi K23
-48. Verifikasi toast `Success, draft has been deleted.` tampil sesuai katalog toast
+46. Tampilkan Toast Borrow dengan kondisi K23
+47. Verifikasi toast `Success, draft has been deleted.` tampil sesuai katalog toast
 
 ### Bulk Delete Draft sebagian terhapus
-49. Tampilkan Toast Borrow dengan kondisi K24
-50. Verifikasi toast `Success, draft has been deleted. Some items were skipped (outside your groups).` tampil sesuai katalog toast
+48. Tampilkan Toast Borrow dengan kondisi K24
+49. Verifikasi toast `Success, draft has been deleted. Some items were skipped (outside your groups).` tampil sesuai katalog toast
 
 ### Salin Transaction ID
-51. Tampilkan Toast Borrow dengan kondisi K25
-52. Verifikasi toast `Success, Transaction ID has been copied.` tampil sesuai katalog toast
+50. Tampilkan Toast Borrow dengan kondisi K25
+51. Verifikasi toast `Success, Transaction ID has been copied.` tampil sesuai katalog toast
 
 ### Cancel Extension Request berhasil
-53. Tampilkan Toast Borrow dengan kondisi K26
-54. Verifikasi toast `Success, extension request has been canceled.` tampil sesuai katalog toast
+52. Tampilkan Toast Borrow dengan kondisi K26
+53. Verifikasi toast `Success, extension request has been canceled.` tampil sesuai katalog toast
 
 ### Hasil Borrow Now untuk satu aset
-55. Tampilkan Toast Borrow dengan kondisi K27
-56. Verifikasi panel hasil `Success, 1 asset is now borrowed. Return by 20/12/2026.` tampil di halaman
+54. Tampilkan Toast Borrow dengan kondisi K27
+55. Verifikasi panel hasil `Success, 1 asset is now borrowed. Return by 20/12/2026.` tampil di halaman
 
 ### Hasil Borrow Now untuk beberapa aset
-57. Tampilkan Toast Borrow dengan kondisi K28
-58. Verifikasi panel hasil `Success, 3 assets are now borrowed. Return by 20/12/2026.` tampil di halaman
+56. Tampilkan Toast Borrow dengan kondisi K28
+57. Verifikasi panel hasil `Success, 3 assets are now borrowed. Return by 20/12/2026.` tampil di halaman
 
 ### Cancel dengan Save as Draft to edit
-59. Tampilkan Toast Borrow dengan kondisi K29
-60. Verifikasi toast `Success, borrow has been canceled and saved as a draft.` tampil sesuai katalog toast
+58. Tampilkan Toast Borrow dengan kondisi K29
+59. Verifikasi toast `Success, borrow has been canceled and saved as a draft.` tampil sesuai katalog toast
 
 ### Review Extension Request selesai
-61. Tampilkan Toast Borrow dengan kondisi K30
-62. Verifikasi toast `Success, extension request has been reviewed.` tampil sesuai katalog toast
+60. Tampilkan Toast Borrow dengan kondisi K30
+61. Verifikasi toast `Success, extension request has been reviewed.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi save
-63. Tampilkan Toast Borrow dengan kondisi K31
-64. Verifikasi toast `Error, failed to save borrow.` tampil sesuai katalog toast
+62. Tampilkan Toast Borrow dengan kondisi K31
+63. Verifikasi toast `Error, failed to save borrow.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi add
-65. Tampilkan Toast Borrow dengan kondisi K32
-66. Verifikasi toast `Error, failed to add assets.` tampil sesuai katalog toast
+64. Tampilkan Toast Borrow dengan kondisi K32
+65. Verifikasi toast `Error, failed to add assets.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi submit
-67. Tampilkan Toast Borrow dengan kondisi K33
-68. Verifikasi toast `Error, failed to submit borrow.` tampil sesuai katalog toast
+66. Tampilkan Toast Borrow dengan kondisi K33
+67. Verifikasi toast `Error, failed to submit borrow.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi approve
-69. Tampilkan Toast Borrow dengan kondisi K34
-70. Verifikasi toast `Error, failed to approve borrow.` tampil sesuai katalog toast
+68. Tampilkan Toast Borrow dengan kondisi K34
+69. Verifikasi toast `Error, failed to approve borrow.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi reject
-71. Tampilkan Toast Borrow dengan kondisi K35
-72. Verifikasi toast `Error, failed to reject borrow.` tampil sesuai katalog toast
+70. Tampilkan Toast Borrow dengan kondisi K35
+71. Verifikasi toast `Error, failed to reject borrow.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi hand over
-73. Tampilkan Toast Borrow dengan kondisi K36
-74. Verifikasi toast `Error, failed to hand over assets.` tampil sesuai katalog toast
+72. Tampilkan Toast Borrow dengan kondisi K36
+73. Verifikasi toast `Error, failed to hand over assets.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi return
-75. Tampilkan Toast Borrow dengan kondisi K37
-76. Verifikasi toast `Error, failed to return assets.` tampil sesuai katalog toast
+74. Tampilkan Toast Borrow dengan kondisi K37
+75. Verifikasi toast `Error, failed to return assets.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi extend
-77. Tampilkan Toast Borrow dengan kondisi K38
-78. Verifikasi toast `Error, failed to extend assets.` tampil sesuai katalog toast
+76. Tampilkan Toast Borrow dengan kondisi K38
+77. Verifikasi toast `Error, failed to extend assets.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi cancel
-79. Tampilkan Toast Borrow dengan kondisi K39
-80. Verifikasi toast `Error, failed to cancel borrow.` tampil sesuai katalog toast
+78. Tampilkan Toast Borrow dengan kondisi K39
+79. Verifikasi toast `Error, failed to cancel borrow.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi delete
-81. Tampilkan Toast Borrow dengan kondisi K40
-82. Verifikasi toast `Error, failed to delete draft.` tampil sesuai katalog toast
+80. Tampilkan Toast Borrow dengan kondisi K40
+81. Verifikasi toast `Error, failed to delete draft.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi remove
-83. Tampilkan Toast Borrow dengan kondisi K41
-84. Verifikasi toast `Error, failed to remove assets.` tampil sesuai katalog toast
+82. Tampilkan Toast Borrow dengan kondisi K41
+83. Verifikasi toast `Error, failed to remove assets.` tampil sesuai katalog toast
 
 ### Gagal server pada aksi review
-85. Tampilkan Toast Borrow dengan kondisi K42
-86. Verifikasi toast `Error, failed to review extension request.` tampil sesuai katalog toast
+84. Tampilkan Toast Borrow dengan kondisi K42
+85. Verifikasi toast `Error, failed to review extension request.` tampil sesuai katalog toast
 
 ### Gangguan jaringan
-87. Tampilkan Toast Borrow dengan kondisi K43
-88. Verifikasi toast `Connection problem. Please try again.` tampil sesuai katalog toast
+86. Tampilkan Toast Borrow dengan kondisi K43
+87. Verifikasi toast `Connection problem. Please try again.` tampil sesuai katalog toast
 
 ### Submit tanpa perubahan
-89. Tampilkan Toast Borrow dengan kondisi K44
-90. Verifikasi toast `No changes to save.` tampil sesuai katalog toast
+88. Tampilkan Toast Borrow dengan kondisi K44
+89. Verifikasi toast `No changes to save.` tampil sesuai katalog toast
 
 ### Report Damaged dikirim
-91. Tampilkan Toast Borrow dengan kondisi K45
-92. Verifikasi toast `Success, damage report has been sent to the Asset Admin.` tampil sesuai katalog toast
+90. Tampilkan Toast Borrow dengan kondisi K45
+91. Verifikasi toast `Success, damage report has been sent to the Asset Admin.` tampil sesuai katalog toast
 
 ### Remind Borrower berhasil
-93. Tampilkan Toast Borrow dengan kondisi K46
-94. Verifikasi toast `Success, reminder has been sent to Budi Santoso.` tampil sesuai katalog toast
+92. Tampilkan Toast Borrow dengan kondisi K46
+93. Verifikasi toast `Success, reminder has been sent to Budi Santoso.` tampil sesuai katalog toast
 
 ### Submit Extend campuran oleh Aktor Borrow
-95. Tampilkan Toast Borrow dengan kondisi K47
-96. Verifikasi toast `Success, due date has been changed for 1 of 2 assets. 1 submitted for approval.` tampil sesuai katalog toast
+94. Tampilkan Toast Borrow dengan kondisi K47
+95. Verifikasi toast `Success, due date has been changed for 1 of 2 assets. 1 submitted for approval.` tampil sesuai katalog toast
 
 ### Submit Extend campuran dari My Asset
-97. Tampilkan Toast Borrow dengan kondisi K48
-98. Verifikasi toast `Success, due date has been changed for 1 of 2 assets. 1 sent for review.` tampil sesuai katalog toast
+96. Tampilkan Toast Borrow dengan kondisi K48
+97. Verifikasi toast `Success, due date has been changed for 1 of 2 assets. 1 sent for review.` tampil sesuai katalog toast
 
 ### Mark as Returned selesai untuk satu aset
-99. Tampilkan Toast Borrow dengan kondisi K49
-100. Verifikasi toast `Success, asset has been marked as returned.` tampil sesuai katalog toast
+98. Tampilkan Toast Borrow dengan kondisi K49
+99. Verifikasi toast `Success, asset has been marked as returned.` tampil sesuai katalog toast
 
 ### Mark as Returned selesai untuk beberapa aset
-101. Tampilkan Toast Borrow dengan kondisi K50
-102. Verifikasi toast `Success, 3 assets have been marked as returned.` tampil sesuai katalog toast
+100. Tampilkan Toast Borrow dengan kondisi K50
+101. Verifikasi toast `Success, 3 assets have been marked as returned.` tampil sesuai katalog toast
 
 ### Toast sukses hilang sendiri
-103. Tampilkan Toast Borrow dengan kondisi K51
-104. Verifikasi toast `Success, borrow has been canceled.` tampil sesuai katalog toast sebelum waktu berlalu
-105. Waktu berlalu sampai 4 detik sejak toast tampil
-106. Verifikasi toast `Success, borrow has been canceled.` hilang sendiri
+102. Tampilkan Toast Borrow dengan kondisi K51
+103. Verifikasi toast `Success, borrow has been canceled.` tampil sesuai katalog toast sebelum waktu berlalu
+104. Waktu berlalu sampai 4 detik sejak toast tampil
+105. Verifikasi toast `Success, borrow has been canceled.` hilang sendiri
 
 ### Toast error bertahan sampai ditutup
-107. Tampilkan Toast Borrow dengan kondisi K52
-108. Verifikasi toast `Error, failed to cancel borrow.` tampil sesuai katalog toast sebelum waktu berlalu
-109. Waktu berlalu sampai 60 detik sejak toast tampil
-110. Verifikasi toast `Error, failed to cancel borrow.` masih tampil
-111. Klik tombol tutup pada toast `Error, failed to cancel borrow.`
-112. Verifikasi toast `Error, failed to cancel borrow.` hilang sesudah ditutup
+106. Tampilkan Toast Borrow dengan kondisi K52
+107. Verifikasi toast `Error, failed to cancel borrow.` tampil sesuai katalog toast sebelum waktu berlalu
+108. Waktu berlalu sampai 60 detik sejak toast tampil
+109. Verifikasi toast `Error, failed to cancel borrow.` masih tampil
+110. Klik tombol tutup pada toast `Error, failed to cancel borrow.`
+111. Verifikasi toast `Error, failed to cancel borrow.` hilang sesudah ditutup
+
+### Gagal server pada aksi remind
+112. Tampilkan Toast Borrow dengan kondisi K54
+113. Verifikasi toast `Error, failed to remind borrower.` tampil sesuai katalog toast
+
+### Submit Extend dari My Asset yang seluruhnya menunggu review
+114. Tampilkan Toast Borrow dengan kondisi K56
+115. Verifikasi toast pengajuan Extend untuk seluruh aset yang menunggu review tampil, dengan copy yang dimiliki katalog lain

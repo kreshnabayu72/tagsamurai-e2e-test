@@ -4,7 +4,7 @@ title: "Report Missing saat dipinjam menutup baris Returned dengan penanda Missi
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["DM-BRW-13"]
 smoke: []
 dependsOn: ["Missing: dialog Report Missing dan keputusan laporan"]

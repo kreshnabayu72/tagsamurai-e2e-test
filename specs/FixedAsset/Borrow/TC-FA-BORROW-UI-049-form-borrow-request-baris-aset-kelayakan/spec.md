@@ -4,7 +4,7 @@ title: "Baris aset di form Borrow Request menampilkan state Ready atau Not ready
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-20", "FI-BRW-21", "FI-BRW-22", "FI-BRW-23", "FI-BRW-24", "FI-BRW-25", "FI-BRW-26", "FI-BRW-27", "FI-BRW-28", "FI-BRW-34", "FI-BRW-35", "FLD-BRW-05", "§4.3#r1", "§4.3#r2", "§4.3#r3", "§4.3#r7", "§4.4#r1", "§4.4#r2", "§9.5#r12"]
 smoke: []
 dependsOn: []
@@ -12,13 +12,13 @@ trace:
   "FI-BRW-20": [3, 18, 45]
   "FI-BRW-21": 2
   "FI-BRW-22": 3
-  "FI-BRW-23": [8, 9, 11]
+  "FI-BRW-23": [8, 9, 11, 60, 62]
   "FI-BRW-24": 4
-  "FI-BRW-25": 5
+  "FI-BRW-25": [5, 67]
   "FI-BRW-26": 14
   "FI-BRW-27": [18, 19]
   "FI-BRW-28": [20, 23, 24]
-  "FI-BRW-34": [51, 52, 56]
+  "FI-BRW-34": [51, 52, 56, 66, 71, 74, 75]
   "FI-BRW-35": [50, 51]
   "FLD-BRW-05": 28
   "§4.3#r1": 5
@@ -26,9 +26,9 @@ trace:
   "§4.3#r3": [16, 18]
   "§4.3#r7": [3, 19]
   "§4.4#r1": [33, 34, 35]
-  "§4.4#r2": [56, 57]
+  "§4.4#r2": [56, 57, 66, 71, 74]
   "§9.5#r12": [41, 44]
-anchor: [22, 40]
+anchor: [22, 40, 65]
 coverage:
   web: automated
 ---
@@ -126,3 +126,29 @@ coverage:
 55. Klik `[Submit]`
 56. Verifikasi blok Approval memuat `Needs approval: Meeting Mic Set - 2.` karena Duration baris itu `4`
 57. Verifikasi blok Approval tidak memuat `No approval needed: Meeting Mic Set - 2.`
+
+### Fokus keyboard pada ⚠ membuka tooltip alasan
+58. Tampilkan Tabel aset form Borrow Request dengan kondisi K1
+59. Arahkan fokus keyboard ke ikon ⚠ pada baris `Toyota Avanza - 6`
+60. Verifikasi alasan `This asset has been deleted.` tersampaikan pada ikon ⚠ baris `Toyota Avanza - 6`
+61. Arahkan fokus keyboard ke ikon ⚠ pada baris `Kursi B - 1`
+62. Verifikasi alasan `Rudi Hartono can't borrow assets from Branch Surabaya.` tersampaikan pada ikon ⚠ baris `Kursi B - 1`
+
+### Mengubah Duration menghitung ulang kelayakan baris itu tanpa mengubah baris lain
+63. Tampilkan Tabel aset form Borrow Request dengan kondisi K2
+64. Isi Duration baris `Meeting Mic Set - 2` dengan `4`
+65. Verifikasi baris `Meeting Mic Set - 2` tampil dengan Duration `4`
+66. Verifikasi ikon ⚠ dan caption `This asset can no longer be borrowed.` tidak tampil pada baris `Meeting Mic Set - 2` sesudah Duration berubah
+67. Verifikasi ikon ⚠ dan caption `This asset can no longer be borrowed.` tetap tidak tampil pada baris `Projector Epson EB-X06 - 14`
+
+### Batas Duration dihitung per baris saat Duration berubah
+68. Tampilkan Tabel aset form Borrow Request dengan kondisi K2
+69. Isi Duration baris `Meeting Mic Set - 2` dengan `10`
+70. Pindahkan fokus keluar dari Duration baris `Meeting Mic Set - 2`
+71. Verifikasi Duration baris `Meeting Mic Set - 2` berisi `7` sesuai Max Duration `7 days` baris itu[^drift-1]
+72. Isi Duration baris `Projector Epson EB-X06 - 14` dengan `10`
+73. Pindahkan fokus keluar dari Duration baris `Projector Epson EB-X06 - 14`
+74. Verifikasi Duration baris `Projector Epson EB-X06 - 14` berisi `3` sesuai Max Duration `3 days` baris itu[^drift-1]
+75. Verifikasi Duration baris `Meeting Mic Set - 2` tetap `7` sesudah Duration baris `Projector Epson EB-X06 - 14` berubah
+
+[^drift-1]: Drift PRD vs kontrak komponen. PRD §4.4 (Ubah Duration: kelayakan, hint batas, dan blok Approval dihitung ulang), §6 V-BRW-16, dan §9.9 FLD-BRW-02: Duration bilangan bulat `1` sampai Max duration aset itu, dengan caption `Max. [Limit] [Unit] for [Category]` langsung di bawah field saat Duration melewati batas. Kontrak komponen `NumberInput#1`: min dan max adalah rentang, saat blur atau Enter nilai di atas max dijepit ke max; `NumberInput#15`: tidak ada pesan rentang dan tidak ada invalid state untuk nilai di luar min/max. Diasersi: kontrak, karena field Duration dirender NumberInput (SB-7).

@@ -4,13 +4,13 @@ title: "Setup Column bertahan sesudah muat ulang, paginasi, dan Download tabel T
 layer: ui-e2e
 priority: High
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["F-BORROW-17", "§5#r3", "§5#r7", "§5#r9", "EB-FB-2@download", "EB-KOL-2@tabel-transactions", "EB-DL-1@tabel-transactions", "EB-DL-2@tabel-transactions", "EB-DL-3@tabel-transactions", "EB-DL-4"]
 smoke: ["EB-DL-4"]
 dependsOn: []
 trace:
   "F-BORROW-17": [41, 51, 56]
-  "§5#r3": [1, 3, 5, 8, 10, 13, 15, 17, 19, 22, 28, 32, 73, 74, 76, 79, 81, 82]
+  "§5#r3": [1, 3, 5, 8, 10, 13, 15, 17, 19, 22, 28, 32, 73, 74, 76, 79, 81, 82, 134, 135, 139, 140]
   "§5#r7": [37, 40, 45]
   "§5#r9": [127]
   "EB-FB-2@download": [42]
@@ -190,3 +190,18 @@ coverage:
 125. Hapus centang `Last Updated` pada panel Column Visibility
 126. Hapus centang `Source` pada panel Column Visibility
 127. Verifikasi kotak centang `Transaction ID` disabled dengan tooltip `At least one column must remain visible.`
+
+### Ukuran halaman dan state List dipulihkan lewat sidebar dari Detail dan dari menu lain
+128. Ketik Search `{runId}`, tekan Enter
+129. Klik pilihan jumlah baris per halaman
+130. Pilih `25`
+131. Pindah ke halaman 2
+132. Klik Transaction ID pada baris di halaman 2
+133. Klik menu `Borrow` di bawah `Transactions` pada sidebar
+134. Verifikasi isi kotak search tetap `{runId}` dan halaman aktif tetap halaman 2
+135. Verifikasi halaman 2 memuat 25 baris, sehingga ukuran halaman `25` ikut dipulihkan
+136. Klik `Approvals` pada sidebar
+137. Klik `Borrow`
+138. Klik menu `Borrow` di bawah `Transactions` pada sidebar
+139. Verifikasi isi kotak search tetap `{runId}` dan halaman aktif tetap halaman 2
+140. Verifikasi halaman 2 memuat 25 baris, sehingga ukuran halaman `25` ikut dipulihkan

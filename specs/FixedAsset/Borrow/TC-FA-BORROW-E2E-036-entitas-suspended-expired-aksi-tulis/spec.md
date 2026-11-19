@@ -4,12 +4,12 @@ title: "Entitas Suspended atau Expired menolak setiap aksi tulis Borrow dan teta
 layer: ui-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: [EB-AKS-7]
 smoke: []
 dependsOn: []
 trace:
-  EB-AKS-7: [6, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 32, 33, 35, 41, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 67, 68, 70, 76, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 102, 103, 105]
+  EB-AKS-7: [6, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 52, 54, 55, 58, 62, 64, 66, 70, 71, 72, 77, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 119, 120, 121, 122, 123, 125, 126, 129, 133, 135, 137, 141, 142, 143, 148, 149, 151, 153, 155, 157, 159, 161, 163, 165, 167, 169, 171, 173, 175, 177, 179, 181, 183, 185, 187, 189, 190, 191, 192, 193, 194, 196, 197, 200, 204, 206, 208, 212, 213, 214]
 anchor: []
 coverage:
   web: automated
@@ -18,26 +18,34 @@ coverage:
 # Entitas Suspended atau Expired menolak setiap aksi tulis Borrow dan tetap membaca data
 
 ## Prerequisites
-- Aktor: Total Control; operator Admin Console `Operator Admin Console {runId}` mengubah status entitas dari luar tenant.
+- Aktor: Total Control, lalu Borrower pada langkah «Masuk sebagai Borrower»; operator Admin Console `Operator Admin Console {runId}` mengubah status entitas dari luar tenant.
 - Layar awal: halaman utama aplikasi Fixed Asset.
 - Data:
   - DU-036-1: Entitas `Samudra Logistik {runId}`, level Feature Suite Borrowing `Full`, status awal Active.
   - DU-036-2: User `Maya Putri {runId}`, role Total Control, cakupan seluruh client, aktif.
   - DU-036-3: User `Operator Admin Console {runId}`, operator Admin Console di luar tenant, aktif.
-  - DU-036-4: Karyawan `Rudi Hartono {runId}`, aktif, Home Group `Head Office {runId}`.
+  - DU-036-4: User `Rudi Hartono {runId}`, karyawan tanpa role Borrow, aktif, Home Group `Head Office {runId}`.
   - DU-036-5: Group `Head Office {runId}`.
   - DU-036-6: Aset `Laptop Lenovo T14 {runId}`, Group `Head Office {runId}`, status Available.
   - DU-036-7: BRW berstatus Waiting for Handover, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Laptop Dell Latitude 5420 {runId}`, Duration `3 days`, Purpose `Kunjungan klien`, Requested By `Maya Putri {runId}`.
   - DU-036-8: BRW berstatus Borrowed, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Toyota Avanza {runId}`, Duration `5 days`, Purpose `Survei lokasi`, Requested By `Maya Putri {runId}`.
-  - DU-036-9: BRW berstatus Waiting for Approval yang approval-nya dirutekan ke `Maya Putri {runId}` (alasan `No eligible approver`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Meeting Mic Set {runId}`, Duration `2 days`, Purpose `Rapat tahunan`, Requested By `Maya Putri {runId}`.
+  - DU-036-9: BRW berstatus Waiting for Approval yang approval-nya dirutekan ke `Maya Putri {runId}` (alasan `No eligible approver`), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Meeting Mic Set {runId}`, Duration `2 days`, Purpose `Rapat tahunan`, Requested By `Rina Wulandari {runId}`.
   - DU-036-10: Draft milik Borrower `Rudi Hartono {runId}`, berisi aset `Scanner Epson DS-530 {runId}` (Group `Head Office {runId}`), Total Asset `1`, Modified By `Maya Putri {runId}`.
   - DU-036-11: Percobaan Create BRW untuk Borrower `Rudi Hartono {runId}`, aset `Laptop Lenovo T14 {runId}`, Duration `2`, Purpose `Kunjungan tamu`.
   - DU-036-12: Percobaan ubah Draft DU-036-10: Duration aset `Scanner Epson DS-530 {runId}` menjadi `4`.
   - DU-036-13: Percobaan Request Extension untuk aset `Toyota Avanza {runId}`: Extend By `2 days`, Reason `Pekerjaan belum selesai`.
+  - DU-036-14: User `Rina Wulandari {runId}`, role Asset Admin, Group penugasan `Head Office {runId}`, aktif.
+  - DU-036-15: BRW berstatus Extension Approval (Extend menunggu approval), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Projector Epson EB-X06 {runId}`, Duration `4 days`, Purpose `Presentasi vendor`, Requested By `Rina Wulandari {runId}`.
+  - DU-036-16: BRW berstatus Extension Request (pengajuan Extend dari My Asset menunggu review), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Printer Canon G3010 {runId}`, Duration `4 days`, Purpose `Cetak dokumen audit`, Requested By `Rina Wulandari {runId}`.
+  - DU-036-17: BRW berstatus Borrowed dengan Damage Report Waiting for Confirmation yang dilaporkan `Maya Putri {runId}`, Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Excavator Komatsu PC200 {runId}`, Duration `6 days`, Purpose `Pekerjaan galian`, Requested By `Rina Wulandari {runId}`.
+  - DU-036-18: Draft milik Borrower `Rudi Hartono {runId}`, berisi aset `Mixer Beton Portable {runId}` (Group `Head Office {runId}`), Total Asset `1`, Modified By `Maya Putri {runId}`.
+  - DU-036-19: Percobaan Add to Borrow Draft untuk Borrower `Rudi Hartono {runId}`, aset `Laptop Lenovo T14 {runId}`, ke Draft DU-036-10.
+  - DU-036-20: BRW berstatus Waiting for Handover dengan serah-terima yang sedang berlangsung dan menunggu konfirmasi Borrower (Task `Confirm Handover` tersedia bagi Borrower), Group `Head Office {runId}`, Borrower `Rudi Hartono {runId}`, aset `Camera Sony A7 {runId}`, Duration `2 days`, Purpose `Dokumentasi acara`, Requested By `Maya Putri {runId}`.
+  - DU-036-21: BRW berstatus Borrowed dengan Missing Report Waiting for Confirmation yang dilaporkan Borrower `Rudi Hartono {runId}`, Group `Head Office {runId}`, aset `Drone DJI Mavic {runId}`, Duration `5 days`, Purpose `Pemetaan lahan`, Requested By `Maya Putri {runId}`.
 - Kondisi:
   - Spec ini memakai entitas khusus `Samudra Logistik {runId}` yang tidak dipakai spec lain.
   - Level Feature Suite Borrowing entitas itu bernilai `Full`.
-  - Akun `Maya Putri {runId}` aktif dan kredensialnya disediakan fase 2.
+  - Akun `Maya Putri {runId}` dan `Rudi Hartono {runId}` aktif dan kredensialnya disediakan fase 2.
 
 ## Test Steps
 
@@ -71,84 +79,198 @@ coverage:
 27. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
 28. Kirim keputusan `Approve` atas aset `Meeting Mic Set {runId}` milik DU-036-9
 29. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-30. Ketik Search `{runId}`, tekan Enter
-31. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
-32. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
-33. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
-34. Klik tab `Drafts`
-35. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
-36. Klik tab `Transactions`
+30. Kirim Submit atas Draft milik DU-036-10
+31. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+32. Kirim Add to Borrow Draft atas aset `Laptop Lenovo T14 {runId}` dengan nilai dari DU-036-19
+33. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+34. Kirim Cancel Extension atas BRW milik DU-036-15
+35. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+36. Kirim keputusan `Approve` atas pengajuan Extension Request milik DU-036-16
+37. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+38. Kirim keputusan `Reject` atas pengajuan Extension Request milik DU-036-16
+39. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+40. Kirim Cancel Damage Report atas aset `Excavator Komatsu PC200 {runId}` milik DU-036-17
+41. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+42. Kirim keputusan `Reject` atas aset `Meeting Mic Set {runId}` milik DU-036-9
+43. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+44. Kirim Bulk Delete atas Draft milik DU-036-10 dan DU-036-18
+45. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+46. Ketik Search `{runId}`, tekan Enter
+47. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+48. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
+49. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
+50. Verifikasi BRW milik DU-036-15 masih berstatus `Extension Approval`
+51. Verifikasi BRW milik DU-036-16 masih berstatus `Extension Request`
+52. Verifikasi BRW milik DU-036-17 masih memuat Damage Report `Waiting for Confirmation`
+53. Klik tab `Drafts`
+54. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
+55. Verifikasi Draft milik DU-036-18 masih tampil dengan Total Asset `1`
+56. Klik tab `Transactions`
+
+### Entitas Suspended: Cancel Borrow ke Draft dan aksi tulis Borrower dari halaman pinjaman pribadi ditolak
+57. Kirim Cancel Borrow dengan `Save as Draft to edit` atas BRW milik DU-036-7
+58. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+59. Masuk sebagai Borrower `Rudi Hartono {runId}`
+60. Buka halaman pinjaman pribadi Borrower dari menu Profile
+61. Kirim Confirm Handover atas BRW milik DU-036-20 sebagai Borrower
+62. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+63. Kirim Cancel Borrow atas BRW milik DU-036-7 sebagai Borrower
+64. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+65. Kirim Cancel Missing Report atas aset `Drone DJI Mavic {runId}` milik DU-036-21 sebagai Borrower
+66. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+67. Masuk sebagai Total Control `Maya Putri {runId}`
+68. Klik menu `Transactions > Borrow`
+69. Ketik Search `{runId}`, tekan Enter
+70. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+71. Verifikasi BRW milik DU-036-20 masih berstatus `Waiting for Handover`
+72. Verifikasi BRW milik DU-036-21 masih memuat Missing Report `Waiting for Confirmation`
 
 ### Entitas Expired: modul terbuka, data terbaca, dan setiap aksi tulis ditolak
-37. Operator Admin Console `Operator Admin Console {runId}` mengubah status entitas `Samudra Logistik {runId}` menjadi `Expired`
-38. Muat ulang halaman
-39. Klik menu `Transactions > Borrow`
-40. Ketik Search `{runId}`, tekan Enter
-41. Verifikasi halaman Borrow terbuka tanpa gerbang akses dan tanpa redirect pada entitas `Expired`
-42. Verifikasi BRW milik DU-036-7 tampil di tabel pada entitas `Expired`
-43. Kirim Create BRW dengan nilai dari DU-036-11
-44. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-45. Kirim Save Draft pada Draft milik DU-036-10 dengan nilai dari DU-036-12
-46. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-47. Kirim Delete atas Draft milik DU-036-10
-48. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-49. Kirim Cancel Borrow atas BRW milik DU-036-7
-50. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-51. Kirim Hand Over atas BRW milik DU-036-7
-52. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-53. Kirim Remind Borrower atas BRW milik DU-036-7
-54. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-55. Kirim Request Extension atas BRW milik DU-036-8 dengan nilai dari DU-036-13
-56. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-57. Kirim Return atas BRW milik DU-036-8
-58. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-59. Kirim Report Damaged atas aset `Toyota Avanza {runId}`
-60. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-61. Kirim Report Missing atas aset `Toyota Avanza {runId}`
-62. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-63. Kirim keputusan `Approve` atas aset `Meeting Mic Set {runId}` milik DU-036-9
-64. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-65. Ketik Search `{runId}`, tekan Enter
-66. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
-67. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
-68. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
-69. Klik tab `Drafts`
-70. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
-71. Klik tab `Transactions`
+73. Operator Admin Console `Operator Admin Console {runId}` mengubah status entitas `Samudra Logistik {runId}` menjadi `Expired`
+74. Muat ulang halaman
+75. Klik menu `Transactions > Borrow`
+76. Ketik Search `{runId}`, tekan Enter
+77. Verifikasi halaman Borrow terbuka tanpa gerbang akses dan tanpa redirect pada entitas `Expired`
+78. Verifikasi BRW milik DU-036-7 tampil di tabel pada entitas `Expired`
+79. Kirim Create BRW dengan nilai dari DU-036-11
+80. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+81. Kirim Save Draft pada Draft milik DU-036-10 dengan nilai dari DU-036-12
+82. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+83. Kirim Delete atas Draft milik DU-036-10
+84. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+85. Kirim Cancel Borrow atas BRW milik DU-036-7
+86. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+87. Kirim Hand Over atas BRW milik DU-036-7
+88. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+89. Kirim Remind Borrower atas BRW milik DU-036-7
+90. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+91. Kirim Request Extension atas BRW milik DU-036-8 dengan nilai dari DU-036-13
+92. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+93. Kirim Return atas BRW milik DU-036-8
+94. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+95. Kirim Report Damaged atas aset `Toyota Avanza {runId}`
+96. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+97. Kirim Report Missing atas aset `Toyota Avanza {runId}`
+98. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+99. Kirim keputusan `Approve` atas aset `Meeting Mic Set {runId}` milik DU-036-9
+100. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+101. Kirim Submit atas Draft milik DU-036-10
+102. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+103. Kirim Add to Borrow Draft atas aset `Laptop Lenovo T14 {runId}` dengan nilai dari DU-036-19
+104. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+105. Kirim Cancel Extension atas BRW milik DU-036-15
+106. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+107. Kirim keputusan `Approve` atas pengajuan Extension Request milik DU-036-16
+108. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+109. Kirim keputusan `Reject` atas pengajuan Extension Request milik DU-036-16
+110. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+111. Kirim Cancel Damage Report atas aset `Excavator Komatsu PC200 {runId}` milik DU-036-17
+112. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+113. Kirim keputusan `Reject` atas aset `Meeting Mic Set {runId}` milik DU-036-9
+114. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+115. Kirim Bulk Delete atas Draft milik DU-036-10 dan DU-036-18
+116. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+117. Ketik Search `{runId}`, tekan Enter
+118. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+119. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
+120. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
+121. Verifikasi BRW milik DU-036-15 masih berstatus `Extension Approval`
+122. Verifikasi BRW milik DU-036-16 masih berstatus `Extension Request`
+123. Verifikasi BRW milik DU-036-17 masih memuat Damage Report `Waiting for Confirmation`
+124. Klik tab `Drafts`
+125. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
+126. Verifikasi Draft milik DU-036-18 masih tampil dengan Total Asset `1`
+127. Klik tab `Transactions`
+
+### Entitas Expired: Cancel Borrow ke Draft dan aksi tulis Borrower dari halaman pinjaman pribadi ditolak
+128. Kirim Cancel Borrow dengan `Save as Draft to edit` atas BRW milik DU-036-7
+129. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+130. Masuk sebagai Borrower `Rudi Hartono {runId}`
+131. Buka halaman pinjaman pribadi Borrower dari menu Profile
+132. Kirim Confirm Handover atas BRW milik DU-036-20 sebagai Borrower
+133. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+134. Kirim Cancel Borrow atas BRW milik DU-036-7 sebagai Borrower
+135. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+136. Kirim Cancel Missing Report atas aset `Drone DJI Mavic {runId}` milik DU-036-21 sebagai Borrower
+137. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+138. Masuk sebagai Total Control `Maya Putri {runId}`
+139. Klik menu `Transactions > Borrow`
+140. Ketik Search `{runId}`, tekan Enter
+141. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+142. Verifikasi BRW milik DU-036-20 masih berstatus `Waiting for Handover`
+143. Verifikasi BRW milik DU-036-21 masih memuat Missing Report `Waiting for Confirmation`
 
 ### Entitas Grace: modul terbuka, data terbaca, dan setiap aksi tulis ditolak
-72. Operator Admin Console `Operator Admin Console {runId}` mengubah status entitas `Samudra Logistik {runId}` menjadi `Expired (Grace)`
-73. Muat ulang halaman
-74. Klik menu `Transactions > Borrow`
-75. Ketik Search `{runId}`, tekan Enter
-76. Verifikasi halaman Borrow terbuka tanpa gerbang akses dan tanpa redirect pada entitas `Expired (Grace)`
-77. Verifikasi BRW milik DU-036-7 tampil di tabel pada entitas `Expired (Grace)`
-78. Kirim Create BRW dengan nilai dari DU-036-11
-79. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-80. Kirim Save Draft pada Draft milik DU-036-10 dengan nilai dari DU-036-12
-81. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-82. Kirim Delete atas Draft milik DU-036-10
-83. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-84. Kirim Cancel Borrow atas BRW milik DU-036-7
-85. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-86. Kirim Hand Over atas BRW milik DU-036-7
-87. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-88. Kirim Remind Borrower atas BRW milik DU-036-7
-89. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-90. Kirim Request Extension atas BRW milik DU-036-8 dengan nilai dari DU-036-13
-91. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-92. Kirim Return atas BRW milik DU-036-8
-93. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-94. Kirim Report Damaged atas aset `Toyota Avanza {runId}`
-95. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-96. Kirim Report Missing atas aset `Toyota Avanza {runId}`
-97. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-98. Kirim keputusan `Approve` atas aset `Meeting Mic Set {runId}` milik DU-036-9
-99. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
-100. Ketik Search `{runId}`, tekan Enter
-101. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
-102. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
-103. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
-104. Klik tab `Drafts`
-105. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
-106. Klik tab `Transactions`
+144. Operator Admin Console `Operator Admin Console {runId}` mengubah status entitas `Samudra Logistik {runId}` menjadi `Expired (Grace)`
+145. Muat ulang halaman
+146. Klik menu `Transactions > Borrow`
+147. Ketik Search `{runId}`, tekan Enter
+148. Verifikasi halaman Borrow terbuka tanpa gerbang akses dan tanpa redirect pada entitas `Expired (Grace)`
+149. Verifikasi BRW milik DU-036-7 tampil di tabel pada entitas `Expired (Grace)`
+150. Kirim Create BRW dengan nilai dari DU-036-11
+151. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+152. Kirim Save Draft pada Draft milik DU-036-10 dengan nilai dari DU-036-12
+153. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+154. Kirim Delete atas Draft milik DU-036-10
+155. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+156. Kirim Cancel Borrow atas BRW milik DU-036-7
+157. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+158. Kirim Hand Over atas BRW milik DU-036-7
+159. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+160. Kirim Remind Borrower atas BRW milik DU-036-7
+161. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+162. Kirim Request Extension atas BRW milik DU-036-8 dengan nilai dari DU-036-13
+163. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+164. Kirim Return atas BRW milik DU-036-8
+165. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+166. Kirim Report Damaged atas aset `Toyota Avanza {runId}`
+167. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+168. Kirim Report Missing atas aset `Toyota Avanza {runId}`
+169. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+170. Kirim keputusan `Approve` atas aset `Meeting Mic Set {runId}` milik DU-036-9
+171. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+172. Kirim Submit atas Draft milik DU-036-10
+173. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+174. Kirim Add to Borrow Draft atas aset `Laptop Lenovo T14 {runId}` dengan nilai dari DU-036-19
+175. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+176. Kirim Cancel Extension atas BRW milik DU-036-15
+177. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+178. Kirim keputusan `Approve` atas pengajuan Extension Request milik DU-036-16
+179. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+180. Kirim keputusan `Reject` atas pengajuan Extension Request milik DU-036-16
+181. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+182. Kirim Cancel Damage Report atas aset `Excavator Komatsu PC200 {runId}` milik DU-036-17
+183. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+184. Kirim keputusan `Reject` atas aset `Meeting Mic Set {runId}` milik DU-036-9
+185. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+186. Kirim Bulk Delete atas Draft milik DU-036-10 dan DU-036-18
+187. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+188. Ketik Search `{runId}`, tekan Enter
+189. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+190. Verifikasi BRW milik DU-036-8 masih berstatus `Borrowed`
+191. Verifikasi BRW milik DU-036-9 masih berstatus `Waiting for Approval`
+192. Verifikasi BRW milik DU-036-15 masih berstatus `Extension Approval`
+193. Verifikasi BRW milik DU-036-16 masih berstatus `Extension Request`
+194. Verifikasi BRW milik DU-036-17 masih memuat Damage Report `Waiting for Confirmation`
+195. Klik tab `Drafts`
+196. Verifikasi Draft milik DU-036-10 masih tampil dengan Total Asset `1`
+197. Verifikasi Draft milik DU-036-18 masih tampil dengan Total Asset `1`
+198. Klik tab `Transactions`
+
+### Entitas Grace: Cancel Borrow ke Draft dan aksi tulis Borrower dari halaman pinjaman pribadi ditolak
+199. Kirim Cancel Borrow dengan `Save as Draft to edit` atas BRW milik DU-036-7
+200. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+201. Masuk sebagai Borrower `Rudi Hartono {runId}`
+202. Buka halaman pinjaman pribadi Borrower dari menu Profile
+203. Kirim Confirm Handover atas BRW milik DU-036-20 sebagai Borrower
+204. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+205. Kirim Cancel Borrow atas BRW milik DU-036-7 sebagai Borrower
+206. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+207. Kirim Cancel Missing Report atas aset `Drone DJI Mavic {runId}` milik DU-036-21 sebagai Borrower
+208. Verifikasi toast `Changes can't be saved while this workspace is suspended or expired.` tampil
+209. Masuk sebagai Total Control `Maya Putri {runId}`
+210. Klik menu `Transactions > Borrow`
+211. Ketik Search `{runId}`, tekan Enter
+212. Verifikasi BRW milik DU-036-7 masih berstatus `Waiting for Handover`
+213. Verifikasi BRW milik DU-036-20 masih berstatus `Waiting for Handover`
+214. Verifikasi BRW milik DU-036-21 masih memuat Missing Report `Waiting for Confirmation`

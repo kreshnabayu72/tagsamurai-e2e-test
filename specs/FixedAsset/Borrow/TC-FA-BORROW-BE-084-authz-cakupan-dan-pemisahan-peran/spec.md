@@ -4,7 +4,7 @@ title: "Server menolak aksi di luar cakupan Group, pemrosesan transaksi sendiri 
 layer: be-e2e
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-15a", "BORROW-LOGIC-15b", "BORROW-LOGIC-15c", "BORROW-LOGIC-15d", "BORROW-LOGIC-15e", "BORROW-LOGIC-15f", "BORROW-LOGIC-15g", "BORROW-LOGIC-15h", "BORROW-LOGIC-15i", "BORROW-LOGIC-18a", "BORROW-LOGIC-18b", "BORROW-LOGIC-18c", "BORROW-LOGIC-18d", "BORROW-LOGIC-18e", "BORROW-LOGIC-18f", "BORROW-LOGIC-18g", "BORROW-LOGIC-18h", "BORROW-LOGIC-18i", "BORROW-LOGIC-18j", "BORROW-LOGIC-18k", "BORROW-LOGIC-18l", "BORROW-LOGIC-18m", "BORROW-LOGIC-18n", "FI-BRW-119", "FI-BRW-120", "FI-BRW-121", "FI-BRW-122", "§2.2#r1", "§2.2#p1", "§9.3#b1", "§9.3#b3", "§9.4.3#b5", "EB-AKS-3@submit-borrow", "EB-AKS-3@approve-reject", "EB-AKS-3@handover", "EB-AKS-3@return", "EB-AKS-3@extend", "EB-AKS-3@cancel-borrow", "EB-AKS-3@delete-draft"]
 smoke: []
 dependsOn: []
@@ -20,9 +20,9 @@ trace:
   "BORROW-LOGIC-15h": [74, 83]
   "BORROW-LOGIC-15i": [40, 42, 44, 46, 48, 50, 52, 54]
   "BORROW-LOGIC-18a": [74, 83, 87]
-  "BORROW-LOGIC-18b": [89, 91]
-  "BORROW-LOGIC-18c": [70, 74, 79]
-  "BORROW-LOGIC-18d": [72, 81]
+  "BORROW-LOGIC-18b": [89, 91, 107]
+  "BORROW-LOGIC-18c": [70, 74, 79, 103]
+  "BORROW-LOGIC-18d": [72, 81, 105]
   "BORROW-LOGIC-18e": [70]
   "BORROW-LOGIC-18f": [75]
   "BORROW-LOGIC-18g": [77, 84, 85]
@@ -35,8 +35,8 @@ trace:
   "BORROW-LOGIC-18n": [76]
   "FI-BRW-119": [7]
   "FI-BRW-120": [8]
-  "FI-BRW-121": [72, 81, 83, 91]
-  "FI-BRW-122": [77, 84, 85]
+  "FI-BRW-121": [72, 81, 83, 91, 103, 105, 107]
+  "FI-BRW-122": [77, 84, 85, 108]
   "§2.2#r1": [2]
   "§2.2#p1": [11, 13, 15]
   "§9.3#b1": [31, 33]
@@ -83,7 +83,7 @@ trace:
   - DU-084-25: Pinjaman berjalan: Borrower `Agus Pratama {runId}`, Aset `Pengeras Suara Yamaha {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, Pengaju `Agus Pratama {runId}`
   - DU-084-26: Pinjaman berjalan: Borrower `Agus Pratama {runId}`, Aset `Mesin Bor Pasir Makita {runId}`, Group `Branch Surabaya {runId}`, Status baris `Waiting for Handover`, Pengaju `Hendra Kusuma {runId}`
   - DU-084-27: Pinjaman berjalan: Borrower `Tari Wulandari {runId}`, Aset `Mikrofon Shure SM58 {runId}`, Group `Head Office {runId}`, Status baris `Waiting for Handover`, PIC `Sinta Maharani {runId}`
-  - DU-084-28: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Gerinda Bosch GWS 060 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`
+  - DU-084-28: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Gerinda Bosch GWS 060 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`, Photo at start `ON`, Photo at end `ON`, Foto handover `ada`
   - DU-084-29: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Bor Listrik Bosch GSB 13 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`
   - DU-084-30: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Tripod Manfrotto MT055 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`, Max extensions `2`
   - DU-084-31: Pinjaman berjalan: Borrower `Dewi Lestari {runId}`, Aset `Kamera DJI Osmo Pocket 3 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`
@@ -91,11 +91,13 @@ trace:
   - DU-084-33: Pinjaman berjalan: Borrower `Bagus Santoso {runId}`, Aset `Headset Logitech H390 {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Source `Self-service`, Due date `T0 + 3 hari`
   - DU-084-34: Aset butuh approval: Asset Name `Genset Honda EU22i {runId}`, Group `Head Office {runId}`, Category `Tools`, TAG `Ber-tag`, Custody `Available`, Require approval `ON`, Approval type `Any one`, Approver `Bambang Hartono {runId}`, Max duration `7`
   - DU-084-35: Aset di Group lain: Asset Name `Gergaji Mesin Stihl MS 170 {runId}`, Group `Branch Surabaya {runId}`, Category `Tools`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`
+  - DU-084-38: Pinjaman berjalan: Borrower `Tari Wulandari {runId}`, Aset `Kipas Meja Maspion {runId}`, Group `Head Office {runId}`, Status baris `Borrowed`, Due date `T0 + 3 hari`, PIC `Sinta Maharani {runId}`
 - Kondisi:
   - T0 adalah waktu permintaan dikirim.
   - Aset pada pinjaman berjalan memakai aturan efektif yang mengizinkan pinjaman; aset `Kamera Canon EOS 90D {runId}` memenuhi Allowed borrower bagi `Dewi Lestari {runId}`.
   - Draft milik `Agus Pratama {runId}` yang memuat `Genset Honda EU22i {runId}` tersimpan.
   - Akun Agus, Hendra, Sinta, Siti, Wulan, Bambang, Candra, Nina, Oscar, dan Dewi aktif dan kredensialnya tersedia untuk fase 2.
+  - Lokasi perangkat `Dewi Lestari {runId}` saat Return `Bor Listrik Bosch GSB 13 {runId}` berjarak jauh dari lokasi Group `Head Office {runId}`.
 
 ## Test Steps
 
@@ -167,9 +169,9 @@ trace:
 
 ### Return self-service di Group asal tanpa cek radius lokasi
 55. Dewi menjalankan Return atas `Kamera DJI Osmo Pocket 3 {runId}` di Group asal `Head Office {runId}` dengan scan TAG
-56. Verifikasi Return self-service di Group asal diterima tanpa pengecekan radius lokasi dan baris menjadi `Returned`
-57. Dewi menjalankan Return atas `Bor Listrik Bosch GSB 13 {runId}` di Group `Branch Surabaya {runId}` dengan scan TAG
-58. Verifikasi Return di Group yang bukan Group asal ditolak dengan pesan `Error, return this asset to Head Office {runId}.`
+56. Verifikasi Return self-service di Group asal diterima dan baris menjadi `Returned`
+57. Dewi menjalankan Return atas `Bor Listrik Bosch GSB 13 {runId}` dari lokasi perangkat yang berjarak jauh dari Group asal `Head Office {runId}` dengan scan TAG
+58. Verifikasi Return diterima dan baris menjadi `Returned` walau lokasi perangkat jauh dari Group asal, karena v1 tanpa cek radius lokasi
 
 ### Tombol disabled bukan satu-satunya penjaga
 59. Dewi mengirim Extend langsung ke server atas baris `Handycam Sony FDR-AX43 {runId}` yang punya laporan kerusakan aktif
@@ -220,9 +222,17 @@ trace:
 96. Verifikasi Approve oleh Agus ditolak karena approval tetap tunduk pada self-approval guard
 
 ### Return self-service oleh Borrower mengirim notifikasi Review tanpa menahan proses
-97. Dewi menjalankan Return atas `Gerinda Bosch GWS 060 {runId}` dengan scan TAG
+97. Dewi menjalankan Return atas `Gerinda Bosch GWS 060 {runId}` dengan scan TAG dan satu foto return
 98. Verifikasi notifikasi `borrow_returned` varian Review dikirim ke Aktor Borrow Group asal `Head Office {runId}`, beserta pasangan foto handover dan return
 99. Verifikasi baris menjadi `Returned` tanpa menunggu Review, karena Review tidak menahan proses
 100. Agus membuat Damage Report atas `Gerinda Bosch GWS 060 {runId}` dari detail aset setelah menemukan kerusakan
 101. Verifikasi Damage Report oleh Aktor Borrow atas aset itu diterima
 
+### PIC yang adalah Aktor Borrow memproses Return sendiri dengan syarat pemrosesan sendiri
+102. Sinta mengirim Return atas `Kipas Meja Maspion {runId}` milik `Tari Wulandari {runId}` tanpa scan TAG
+103. Verifikasi Return tanpa scan TAG oleh PIC ditolak server dan baris tetap `Borrowed`
+104. Sinta mengirim Return atas `Kipas Meja Maspion {runId}` milik `Tari Wulandari {runId}` dengan `I Can't Scan the TAG`
+105. Verifikasi `I Can't Scan the TAG` tidak tersedia bagi PIC pada pemrosesan sendiri, dan Return ditolak
+106. Sinta mengirim Return atas `Kipas Meja Maspion {runId}` milik `Tari Wulandari {runId}` dengan scan TAG
+107. Verifikasi Return diterima dan baris menjadi `Returned`
+108. Verifikasi node Returned di Borrow Log atas Return oleh PIC `Sinta Maharani {runId}` memuat penanda `Self-processed`

@@ -4,7 +4,7 @@ title: "Form Borrow Request mengelompokkan aset per Group, dan Submit membuat sa
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-33", "V-BRW-18", "§4.4#r3"]
 smoke: []
 dependsOn: []

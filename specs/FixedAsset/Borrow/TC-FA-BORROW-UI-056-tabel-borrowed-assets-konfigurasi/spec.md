@@ -4,12 +4,12 @@ title: "Tabel Borrowed Assets By Asset dan By Borrower: konfigurasi kolom, Remai
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1j#p3", "§4.1j#p4", "§4.1j#r1", "§4.1j#r2", "§4.1j#r3", "§4.1j#r4", "§4.1j#r5", "§4.1j#r6", "§4.1j#r7", "§4.1j#r8", "§4.1j#r9", "§4.1j#r10", "§4.1j#r11", "§4.1j#r12", "§4.1j#r13", "§4.1j#r14", "§4.1j#r15", "§4.1j#r16", "§4.1j#r17", "§4.1j#r18", "§4.1j#p7", "§4.1j#r34", "§4.1j#r35", "§4.1j#r36", "§4.3#r6", "EB-TBL-1@tabel-borrowed-assets", "EB-TBL-2@tabel-borrowed-assets", "EB-TBL-3@tabel-borrowed-assets", "EB-TBL-4@tabel-borrowed-assets", "EB-KOL-3"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.1j#p3": [25, 27]
+  "§4.1j#p3": [25, 27, 197, 198, 208, 209]
   "§4.1j#p4": 30
   "§4.1j#r1": [29, 32, 33, 34, 95]
   "§4.1j#r2": [29, 35, 36, 95, 124]
@@ -18,26 +18,26 @@ trace:
   "§4.1j#r5": [29, 45, 46, 48, 49, 95, 126]
   "§4.1j#r6": [29, 50, 52, 53, 95, 127]
   "§4.1j#r7": [29, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 95, 128]
-  "§4.1j#r8": [96, 97, 99, 100, 129]
-  "§4.1j#r9": [96, 101, 102, 104, 105, 130]
+  "§4.1j#r8": [96, 97, 99, 100, 129, 204]
+  "§4.1j#r9": [96, 101, 102, 104, 105, 130, 205]
   "§4.1j#r10": [29, 66, 67, 68, 69, 71, 72, 95, 131]
   "§4.1j#r11": [29, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 95, 137]
   "§4.1j#r12": [29, 87, 88, 95, 137]
   "§4.1j#r13": [29, 89, 91, 92, 95, 132]
-  "§4.1j#r14": [96, 106, 108, 133]
+  "§4.1j#r14": [96, 106, 108, 133, 177, 178]
   "§4.1j#r15": [96, 109, 110, 134]
-  "§4.1j#r16": [96, 111, 112, 114, 115, 135]
-  "§4.1j#r17": [96, 117, 118, 137]
-  "§4.1j#r18": [96, 119, 120, 121, 136]
+  "§4.1j#r16": [96, 111, 112, 114, 115, 135, 185]
+  "§4.1j#r17": [96, 117, 118, 137, 179, 180]
+  "§4.1j#r18": [96, 119, 120, 121, 136, 189, 191]
   "§4.1j#p7": [140, 141, 142, 144]
   "§4.1j#r34": [139, 147, 149, 150, 163]
-  "§4.1j#r35": [151, 152, 153, 154, 155, 157, 158, 164]
+  "§4.1j#r35": [151, 152, 153, 154, 155, 157, 158, 164, 194]
   "§4.1j#r36": [139, 159, 160, 165]
   "§4.3#r6": [68, 69]
   "EB-TBL-1@tabel-borrowed-assets": [2, 3, 7, 8, 10, 11, 12, 14, 15, 19, 20, 22, 23]
   "EB-TBL-2@tabel-borrowed-assets": [33, 44, 49, 100, 110]
   "EB-TBL-3@tabel-borrowed-assets": [151, 153, 154, 155]
-  "EB-TBL-4@tabel-borrowed-assets": [89, 91, 147, 149]
+  "EB-TBL-4@tabel-borrowed-assets": [89, 91, 147, 149, 189, 191]
   "EB-KOL-3": [170, 172]
 anchor: [169]
 coverage:
@@ -50,20 +50,20 @@ coverage:
 - Layar awal: halaman `Transactions > Borrow`, tab Borrowed Assets.
 - Komponen: Tabel Borrowed Assets
 - Data:
-  - DU-056-1: Baris Overdue dengan kolom curated terisi: Name `Laptop Dell Latitude 5420 - 3`, Asset ID `LPT-2026-0003`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `06/11/26`, Remaining `3 days overdue`, Transaction ID `BRW-2026-0149`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Employee ID `10250`, Due date asal `04/11/26`, TAG `RFID`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Handed Over At `01/11/26, 10:00`, Handed Over By `Agus Prasetyo`, Extensions `1 / 1`, Source `Admin`, Nama pembuat `Rina Wijaya`, Purpose `Presentasi proposal pengadaan jaringan kepada klien di Surabaya`.
+  - DU-056-1: Baris Overdue dengan kolom curated terisi: Name `Laptop Dell Latitude 5420 - 3`, Asset ID `LPT-2026-0003`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `06/11/26`, Remaining `3 days overdue`, Transaction ID `BRW-2026-0149`, Borrower `Andi Pratama`, Borrower tampil `Andi P`, Employee ID `10250`, Due date asal `04/11/26`, TAG `RFID`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Handed Over At `01/11/26, 10:00`, Handed Over By `Agus Prasetyo` (tampil `Agus P`), Extensions `1 / 1`, Source `Admin`, Nama pembuat `Rina Wijaya`, Purpose `Presentasi proposal pengadaan jaringan kepada klien di Surabaya`.
   - DU-056-2: Baris Borrowed sisa satu hari, Brand dan Model kosong: Name `Laptop Dell Latitude 5420 - 2`, Asset ID `LPT-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `10/11/26`, Remaining `Due in 1 day`, Transaction ID `BRW-2026-0147`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, TAG `Non TAG`, Category `Laptop`, Hierarki Category `IT Equipment > Laptop`, Handed Over At `07/11/26, 09:10`, Handed Over By `Self-service`, Extensions `0 / 2`, Source `Self-service`, Purpose `Kunjungan lapangan`.
-  - DU-056-3: Baris Extension Approval: Name `Toyota Avanza - 2`, Asset ID `VEH-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Extension Approval`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0150`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`.
-  - DU-056-4: Baris Borrowed dalam BRW yang sama dengan Extension Approval: Name `Toyota Avanza - 3`, Asset ID `VEH-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0150`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`.
-  - DU-056-5: Baris Extension Request: Name `Projector Epson EB-X06 - 3`, Asset ID `PRJ-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Extension Request`, Due Date `12/11/26`, Remaining `Due in 3 days`, Transaction ID `BRW-2026-0161`, Borrower `Rudi Hartono`, Borrower tampil `Rudi H`, Employee ID `10262`.
-  - DU-056-6: Baris Borrowed dengan Reported Damaged: Name `Toyota Avanza - 4`, Asset ID `VEH-2026-0004`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Reported Damaged`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`.
-  - DU-056-7: Baris Borrowed dengan Reported Missing: Name `Toyota Avanza - 5`, Asset ID `VEH-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Reported Missing`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`.
-  - DU-056-8: Baris Borrowed dengan record Damaged: Name `Toyota Avanza - 6`, Asset ID `VEH-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Damaged`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`.
-  - DU-056-9: Baris Overdue dengan pengajuan Extend: Name `Projector Epson EB-X06 - 9`, Asset ID `PRJ-2026-0009`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue + Extension Request`, Due Date `05/11/26`, Remaining `4 days overdue`, Transaction ID `BRW-2026-0163`, Borrower `Rudi Hartono`, Borrower tampil `Rudi H`, Employee ID `10262`.
-  - DU-056-10: Baris Borrowed jatuh tempo hari ini tanpa foto: Name `Camera Sony A7 IV - 1`, Asset ID `CAM-2026-0001`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26`, Remaining `Due today`, Transaction ID `BRW-2026-0168`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Foto `kosong`.
-  - DU-056-11: Baris satuan jam sisa 3 jam: Name `Handheld Scanner Zebra - 1`, Asset ID `HHS-2026-0001`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26, 23:10`, Remaining `Due in 3 hours`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`.
-  - DU-056-12: Baris satuan jam sisa 1 jam: Name `Handheld Scanner Zebra - 2`, Asset ID `HHS-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26, 21:00`, Remaining `Due in 1 hour`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`.
-  - DU-056-13: Baris satuan jam terlambat 2 jam: Name `Handheld Scanner Zebra - 3`, Asset ID `HHS-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `09/11/26, 19:10`, Remaining `2 hours overdue`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`.
-  - DU-056-14: Baris satuan jam terlambat 1 jam: Name `Handheld Scanner Zebra - 4`, Asset ID `HHS-2026-0004`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `09/11/26, 19:45`, Remaining `1 hour overdue`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`.
+  - DU-056-3: Baris Extension Approval: Name `Toyota Avanza - 2`, Asset ID `VEH-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Extension Approval`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0150`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-4: Baris Borrowed dalam BRW yang sama dengan Extension Approval: Name `Toyota Avanza - 3`, Asset ID `VEH-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0150`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-5: Baris Extension Request: Name `Projector Epson EB-X06 - 3`, Asset ID `PRJ-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Extension Request`, Due Date `12/11/26`, Remaining `Due in 3 days`, Transaction ID `BRW-2026-0161`, Borrower `Rudi Hartono`, Borrower tampil `Rudi H`, Employee ID `10262`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-6: Baris Borrowed dengan Reported Damaged: Name `Toyota Avanza - 4`, Asset ID `VEH-2026-0004`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Reported Damaged`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-7: Baris Borrowed dengan Reported Missing: Name `Toyota Avanza - 5`, Asset ID `VEH-2026-0005`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Reported Missing`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-8: Baris Borrowed dengan record Damaged: Name `Toyota Avanza - 6`, Asset ID `VEH-2026-0006`, Brand `kosong`, Model/Type `kosong`, Group `Branch Surabaya`, Hierarki Group `Head Office > Branch Surabaya`, Status `Borrowed + Damaged`, Due Date `11/11/26`, Remaining `Due in 2 days`, Transaction ID `BRW-2026-0166`, Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-9: Baris Overdue dengan pengajuan Extend: Name `Projector Epson EB-X06 - 9`, Asset ID `PRJ-2026-0009`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue + Extension Request`, Due Date `05/11/26`, Remaining `4 days overdue`, Transaction ID `BRW-2026-0163`, Borrower `Rudi Hartono`, Borrower tampil `Rudi H`, Employee ID `10262`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-10: Baris Borrowed jatuh tempo hari ini tanpa foto: Name `Camera Sony A7 IV - 1`, Asset ID `CAM-2026-0001`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26`, Remaining `Due today`, Transaction ID `BRW-2026-0168`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Foto `kosong`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-11: Baris satuan jam sisa 3 jam: Name `Handheld Scanner Zebra - 1`, Asset ID `HHS-2026-0001`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26, 23:10`, Remaining `Due in 3 hours`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-12: Baris satuan jam sisa 1 jam: Name `Handheld Scanner Zebra - 2`, Asset ID `HHS-2026-0002`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Borrowed`, Due Date `09/11/26, 21:00`, Remaining `Due in 1 hour`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-13: Baris satuan jam terlambat 2 jam: Name `Handheld Scanner Zebra - 3`, Asset ID `HHS-2026-0003`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `09/11/26, 19:10`, Remaining `2 hours overdue`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
+  - DU-056-14: Baris satuan jam terlambat 1 jam: Name `Handheld Scanner Zebra - 4`, Asset ID `HHS-2026-0004`, Brand `kosong`, Model/Type `kosong`, Group `Head Office`, Hierarki Group `Head Office`, Status `Overdue`, Due Date `09/11/26, 19:45`, Remaining `1 hour overdue`, Transaction ID `BRW-2026-0169`, Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Handed Over At `05/11/26, 09:00`, Purpose `Kebutuhan operasional harian`.
   - DU-056-15: Borrower dengan aset terbanyak: Borrower `Budi Setiawan`, Borrower tampil `Budi S`, Employee ID `10231`, Group `Head Office`, Total Asset `6`.
   - DU-056-16: Borrower dengan Total Asset sama di Group cabang: Borrower `Dewi Lestari`, Borrower tampil `Dewi L`, Employee ID `20318`, Group `Branch Surabaya`, Total Asset `6`.
   - DU-056-17: Borrower Group cabang: Borrower `Maya Putri`, Borrower tampil `Maya P`, Employee ID `20325`, Group `Branch Surabaya`, Total Asset `4`.
@@ -124,7 +124,7 @@ coverage:
 24. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
 25. Verifikasi kolom pertama tabel By Asset adalah kolom Checkbox
 26. Klik `⋯` pada baris `Laptop Dell Latitude 5420 - 3`
-27. Verifikasi menu baris memuat aksi `Borrow Log`, `Return`, `Request Extension`, `Report Damaged`, dan `Report Missing`
+27. Verifikasi urutan aksi pada menu baris: `Borrow Log`, `Return`, `Request Extension`, `Report Damaged`, dan `Report Missing`
 28. Tekan Esc
 29. Verifikasi urutan kolom data dari kiri ke kanan sesudah Checkbox: `Photo`, `Name`, `Asset ID`, `Brand`, `Model/Type`, `Group`, `Status`, `Due Date`, `Remaining`, `Transaction ID`, `Borrower`
 30. Verifikasi baris `Toyota Avanza - 2` dan baris `Toyota Avanza - 3` sama-sama memuat Transaction ID `BRW-2026-0150`, satu baris untuk tiap aset
@@ -292,3 +292,55 @@ coverage:
 170. Verifikasi kolom `Group` tidak tampil pada tabel By Asset sesudah dihilangkan
 171. Tampilkan Tabel Borrowed Assets By Borrower dengan kondisi K5
 172. Verifikasi kolom `Group` tampil pada tabel By Borrower
+
+### By Asset: Handed Over At dan Purpose tidak pernah kosong
+173. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+174. Klik header kolom Actions `⋯`
+175. Centang kolom `Handed Over At`
+176. Centang kolom `Purpose`
+177. Verifikasi Handed Over At baris `Toyota Avanza - 2` tampil `05/11/26, 09:00`
+178. Verifikasi setiap baris tabel By Asset memuat Handed Over At
+179. Verifikasi Purpose baris `Toyota Avanza - 2` tampil `Kebutuhan operasional harian`
+180. Verifikasi setiap baris tabel By Asset memuat Purpose
+
+### By Asset: keterangan badge Source Self-service
+181. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+182. Klik header kolom Actions `⋯`
+183. Centang kolom `Source`
+184. Arahkan kursor ke badge Source `Self-service` baris `Laptop Dell Latitude 5420 - 2`
+185. Verifikasi keterangan bahwa BRW dipinjam sendiri oleh Borrower tampil pada tooltip badge Source
+
+### By Asset: Handed Over By tampil singkat dengan nama lengkap saat hover
+186. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+187. Klik header kolom Actions `⋯`
+188. Centang kolom `Handed Over By`
+189. Verifikasi Handed Over By baris `Laptop Dell Latitude 5420 - 3` tampil `Agus P`
+190. Arahkan kursor ke Handed Over By baris `Laptop Dell Latitude 5420 - 3`
+191. Verifikasi nama lengkap `Agus Prasetyo` tampil
+
+### By Borrower: chip +N more membuka daftar semua Group
+192. Tampilkan Tabel Borrowed Assets By Borrower dengan kondisi K5
+193. Klik chip `+1 more` pada baris `Sari D`
+194. Verifikasi daftar semua Group `Branch Bandung`, `Branch Surabaya`, dan `Head Office` tampil pada popover
+
+### By Asset: menu baris tidak memuat aksi Detail
+195. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+196. Klik `⋯` pada baris `Laptop Dell Latitude 5420 - 3`
+197. Verifikasi menu baris memuat aksi `Borrow Log`
+198. Verifikasi menu baris tidak memuat aksi `Detail` karena transaksinya dibuka lewat tautan Transaction ID
+199. Tekan Esc
+
+### By Asset: posisi kolom TAG dan Category saat ditampilkan
+200. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+201. Klik header kolom Actions `⋯`
+202. Centang kolom `TAG` pada daftar Column Visibility
+203. Centang kolom `Category` pada daftar Column Visibility
+204. Verifikasi kolom `TAG` tampil tepat setelah kolom `Status` pada tabel By Asset
+205. Verifikasi kolom `Category` tampil tepat setelah kolom `TAG` pada tabel By Asset
+
+### By Asset: severity aksi baris
+206. Tampilkan Tabel Borrowed Assets By Asset dengan kondisi K1
+207. Klik `⋯` pada baris `Laptop Dell Latitude 5420 - 3`
+208. Verifikasi aksi `Borrow Log`, `Return`, dan `Request Extension` memakai severity `dark`
+209. Verifikasi aksi `Report Damaged` dan `Report Missing` memakai severity `danger`
+210. Tekan Esc

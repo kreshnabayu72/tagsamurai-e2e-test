@@ -4,7 +4,7 @@ title: "Daftar aset self-service di mobile hanya memuat aset Non TAG yang terjan
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1d#b3", "§4.1d#b4", "§4.1d#b7"]
 smoke: []
 dependsOn: ["My Asset: Borrow an Asset"]

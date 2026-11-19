@@ -4,7 +4,7 @@ title: "Tabel Transactions: state kosong dan gagal muat, format sel, mekanik Sea
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1#p2", "§4.1#p4", "§4.1#p5", "§4.1#p6", "§4.1a#r1", "§4.1a#r2", "§4.1a#r3", "§4.1a#r4", "§4.1a#r5", "§4.1a#r6", "§4.1a#r7", "§4.1a#r8", "§4.1a#r9", "§4.1a#p6", "§4.1a#p7", "§4.1a#p8", "§4.1a#p9", "§4.2.1#p2", "§4.3#r5", "§5#r10", "§5#r11", "§12#r2", "EB-TBL-1@tabel-transactions", "EB-TBL-2@tabel-transactions", "EB-TBL-4@tabel-transactions", "EB-TBL-5@aksi-baris-transactions", "EB-TBL-7@tabel-transactions", "EB-TBL-8@tabel-transactions", "EB-SRC-4@tabel-transactions", "EB-FLT-2@tabel-transactions", "EB-FLT-6@tabel-transactions", "EB-SRT-3@tabel-transactions", "EB-KOL-1@tabel-transactions", "EB-DL-5", "EB-XM-1"]
 smoke: []
 dependsOn: []
@@ -13,13 +13,13 @@ trace:
   "§4.1#p4": [38, 39, 40]
   "§4.1#p5": [24, 25, 26]
   "§4.1#p6": 27
-  "§4.1a#r1": [17, 18, 19, 139]
-  "§4.1a#r2": [17, 20, 21, 23, 59, 69, 139]
+  "§4.1a#r1": [17, 18, 19, 139, 226, 228]
+  "§4.1a#r2": [17, 20, 21, 23, 59, 69, 139, 232]
   "§4.1a#r3": [29, 31, 32, 33, 60, 61, 139]
   "§4.1a#r4": [34, 36, 41, 62, 139]
   "§4.1a#r5": [43, 45, 46, 63, 139]
   "§4.1a#r6": [64, 140, 142, 145, 146, 147, 149, 151]
-  "§4.1a#r7": [47, 49, 50, 65, 139]
+  "§4.1a#r7": [47, 49, 50, 65, 139, 244, 246]
   "§4.1a#r8": [51, 53, 66, 139]
   "§4.1a#r9": [17, 52, 67, 139]
   "§4.1a#p6": [210, 213, 220]
@@ -38,12 +38,12 @@ trace:
   "EB-TBL-7@tabel-transactions": [186, 189, 191, 193, 195, 198, 201]
   "EB-TBL-8@tabel-transactions": 54
   "EB-SRC-4@tabel-transactions": [109, 112, 115, 117, 119, 122]
-  "EB-FLT-2@tabel-transactions": [6, 71, 74, 80, 82, 83, 86, 87, 93, 96]
+  "EB-FLT-2@tabel-transactions": [6, 71, 74, 80, 82, 83, 86, 87, 93, 96, 241, 242]
   "EB-FLT-6@tabel-transactions": [104, 105]
   "EB-SRT-3@tabel-transactions": [125, 127, 129, 132, 133, 134]
   "EB-KOL-1@tabel-transactions": [137, 144, 153, 157, 158, 159, 164, 166, 168, 170, 173, 178, 183, 184]
   "EB-DL-5": [205, 206, 207]
-  "EB-XM-1": [51, 56]
+  "EB-XM-1": [51, 56, 248, 249, 251, 252]
 anchor: [85, 92, 107, 114]
 coverage:
   web: automated
@@ -68,6 +68,7 @@ coverage:
   - DU-054-11: kata kunci Search `Andi`, kata kunci tanpa hasil `Tidak Ada`, nomor halaman `99`, `0`, `-1`, dan `abc`, serta Rows per page `25`.
   - DU-054-12: 5.001 BRW berstatus `Borrowed` dengan Transaction ID `BRW-2026-{n}`, Group `Head Office`, Borrower `Budi Setiawan`.
   - DU-054-13: BRW `BRW-2026-0173`, Status `Borrowed`, Group `Head Office`, Borrower `Budi Setiawan`, Total Asset `1`, seluruh aset Borrowed sudah memiliki Damage Report.
+  - DU-054-14: BRW `BRW-2026-10000`, Status `Borrowed`, Group `Head Office`, Borrower `Budi Setiawan` (tampil `Budi S`), Total Asset `1`, Source `Admin`, Requested By `Agus Prasetyo` (tampil `Agus P`), Request Date waktu absolut `31/10/26, 02:00`, Last Updated waktu absolut `06/11/26, 10:00`.
 - Kondisi:
   - K1: tabel dimuat berisi DU-054-1 sampai DU-054-8 dan DU-054-10; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
   - K2: tabel dimuat tanpa data sama sekali.
@@ -79,6 +80,9 @@ coverage:
   - K8: seperti K1; Date Format bernilai `M/d/yy` dan Time Format bernilai `24h`. Request Date DU-054-1 yang diharapkan `10/31/26, 09:00`, dari Request Date `31/10/26, 09:00` dengan Date Format `M/d/yy`.
   - K9: tabel dimuat dengan total DU-054-12 (5.001 baris); berkas Download siap beberapa saat sesudah format dipilih.
   - K10: tabel dimuat berisi DU-054-13.
+  - K11: seperti K1; Date Format bernilai `dd/MM/yy` dan Time Format bernilai `12h`. Last Updated DU-054-1 yang diharapkan menampilkan jam lima sore dengan penanda `PM`, dari Last Updated `06/11/26, 17:00` dengan Time Format `12h`.
+  - K12: tabel dimuat berisi DU-054-14; Date Format bernilai `dd/MM/yy`, Time Format bernilai `24h`, dan Time Zone bernilai `UTC+7`. Request Date DU-054-14 yang diharapkan `31/10/26, 09:00`, dari waktu absolut `31/10/26, 02:00` dengan Time Zone `UTC+7`. Last Updated yang diharapkan `06/11/26, 17:00`, dari waktu absolut `06/11/26, 10:00` dengan Time Zone `UTC+7`.
+  - K13: seperti K1; lebar field `Status` pada Filter Panel tidak memuat chip kelima opsi terpilih sekaligus.
 
 ## Test Steps
 
@@ -327,19 +331,59 @@ coverage:
 208. Tampilkan Tabel Transactions dengan kondisi K1
 209. Klik `⋯` pada baris `BRW-2026-0152`
 210. Verifikasi urutan aksi pada menu: `Detail`, `Hand Over`, `Remind Borrower`, `Cancel Borrow`
-211. Verifikasi aksi `Detail` memakai icon `FileInfoLine`
+211. Verifikasi aksi `Detail` memakai severity `dark`
 212. Verifikasi aksi `Hand Over` dan `Remind Borrower` memakai severity `dark`
-213. Verifikasi aksi `Cancel Borrow` memakai icon `CloseLine` dan severity `danger`
+213. Verifikasi aksi `Cancel Borrow` memakai severity `danger`
 214. Tekan Esc
 215. Klik `⋯` pada baris `BRW-2026-0149`
-216. Verifikasi aksi `Request Extension` memakai icon `ExtensionBorrow` dan severity `dark`
+216. Verifikasi aksi `Request Extension` memakai severity `dark`
 217. Verifikasi menu aksi baris `BRW-2026-0149` tidak memuat `Report Damaged`, `Report Missing`, maupun `I Can't Scan the TAG`
 218. Tekan Esc
 219. Klik `⋯` pada baris `BRW-2026-0165`
-220. Verifikasi aksi `Cancel Extension` memakai icon `CloseLine` dan severity `danger`
+220. Verifikasi aksi `Cancel Extension` memakai severity `danger`
 
 ### Alasan tersampaikan pada aksi baris yang disabled
 221. Tampilkan Tabel Transactions dengan kondisi K10
 222. Klik `⋯` pada baris `BRW-2026-0173`
 223. Arahkan kursor ke aksi `Request Extension`
 224. Verifikasi alasan tersampaikan pada aksi `Request Extension` yang disabled
+
+### Format nomor BRW dan bertambah digit sesudah 9999
+225. Tampilkan Tabel Transactions dengan kondisi K1
+226. Verifikasi Transaction ID baris `BRW-2026-0149` berformat `BRW-YYYY-NNNN` dengan tahun `2026` dan nomor berjalan empat digit `0149`
+227. Tampilkan Tabel Transactions dengan kondisi K12
+228. Verifikasi Transaction ID baris `BRW-2026-10000` tampil utuh dengan nomor berjalan lima digit karena nomor sudah melewati `9999`
+
+### Opsi filter Status memuat Extension Request bila ada barisnya
+229. Tampilkan Tabel Transactions dengan kondisi K1
+230. Klik ikon Filter pada toolbar
+231. Klik field `Status` pada Filter Panel
+232. Verifikasi opsi `Extension Request`, `Waiting for Handover`, `Waiting for Approval`, `Extension Approval`, dan `Borrowed` tampil pada field `Status` karena setiap status itu ada pada baris tabel
+
+### Chip overflow pada field Status
+233. Tampilkan Tabel Transactions dengan kondisi K13
+234. Klik ikon Filter pada toolbar
+235. Klik field `Status` pada Filter Panel
+236. Centang opsi `Extension Request`
+237. Centang opsi `Waiting for Handover`
+238. Centang opsi `Waiting for Approval`
+239. Centang opsi `Extension Approval`
+240. Centang opsi `Borrowed`
+241. Verifikasi satu chip `+N more` tampil pada field `Status` untuk opsi terpilih yang tidak muat
+242. Verifikasi jumlah chip opsi yang tampil ditambah N pada chip `+N more` sama dengan `5`, jumlah opsi terpilih
+
+### Requested By pada BRW atas nama Borrower tanpa akun
+243. Tampilkan Tabel Transactions dengan kondisi K1
+244. Verifikasi Requested By baris `BRW-2026-0170` tampil `Rina W`, nama PIC Borrower baris itu
+245. Arahkan kursor ke Requested By baris `BRW-2026-0170`
+246. Verifikasi nama lengkap `Rina Wijaya` tampil
+
+### Time Format 12 jam mengikuti General Settings
+247. Tampilkan Tabel Transactions dengan kondisi K11
+248. Verifikasi Last Updated baris `BRW-2026-0149` menampilkan jam lima sore dengan penanda `PM`
+249. Verifikasi Last Updated baris `BRW-2026-0149` tidak menampilkan `17:00`
+
+### Time Zone mengikuti General Settings
+250. Tampilkan Tabel Transactions dengan kondisi K12
+251. Verifikasi Request Date baris `BRW-2026-10000` tampil `31/10/26, 09:00`
+252. Verifikasi Last Updated baris `BRW-2026-10000` tampil `06/11/26, 17:00`

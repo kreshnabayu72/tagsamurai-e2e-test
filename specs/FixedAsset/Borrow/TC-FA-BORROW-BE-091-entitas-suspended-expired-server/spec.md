@@ -4,7 +4,7 @@ title: "Server menolak aksi tulis Aktor saat entitas Suspended, Expired, atau Gr
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["EC-BRW-163", "F-BORROW-03.k10"]
 smoke: []
 dependsOn: []

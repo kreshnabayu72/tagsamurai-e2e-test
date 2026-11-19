@@ -4,7 +4,7 @@ title: "Validasi Borrower, Duration, Purpose, dan Note di form Borrow Request se
 layer: ui-client
 priority: Medium
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["FI-BRW-04", "FI-BRW-05", "FI-BRW-06", "FI-BRW-07", "FI-BRW-08", "FI-BRW-09", "FI-BRW-10", "FI-BRW-17", "FI-BRW-18", "FI-BRW-19", "FLD-BRW-02", "FLD-BRW-03", "FLD-BRW-04", "V-BRW-07", "V-BRW-16", "V-BRW-20", "§9.5#r10", "EB-FRM-4@form-borrow-request"]
 smoke: []
 dependsOn: []
@@ -19,11 +19,11 @@ trace:
   "FI-BRW-17": 24
   "FI-BRW-18": 25
   "FI-BRW-19": [36, 37, 38, 41]
-  "FLD-BRW-02": [24, 29, 36]
+  "FLD-BRW-02": [24, 29, 36, 77, 81]
   "FLD-BRW-03": [46, 50, 53, 57, 61, 66]
   "FLD-BRW-04": [70, 73]
   "V-BRW-07": 38
-  "V-BRW-16": [24, 36]
+  "V-BRW-16": [24, 36, 77, 81]
   "V-BRW-20": [37, 46, 53]
   "§9.5#r10": [50, 53, 70, 73]
   "EB-FRM-4@form-borrow-request": [50, 53, 70, 73]
@@ -40,10 +40,13 @@ coverage:
 - Data:
   - DU-047-1: Aset `Laptop Dell Latitude 5420 - 10`, Asset ID `LPT-2026-0010`, Group `Head Office`, Max Duration `3 days`, satuan Duration `days`, Duration dan Purpose kosong.
   - DU-047-2: Aset `Camera Sony A7 IV - 1`, Asset ID `CAM-2026-0001`, Group `Head Office`, Max Duration `4 hours`, satuan Duration `hours`, Duration dan Purpose kosong.
-  - DU-047-3: Aset `Meeting Mic Set - 2`, Asset ID `MIC-2026-0002`, Group `Head Office`, Max Duration `8 hours`, satuan efektif `hours`; Draft menyimpan Duration `3` pada satuan lama `days`.
+  - DU-047-3: Aset `Meeting Mic Set - 2`, Asset ID `MIC-2026-0002`, Group `Head Office`, Max Duration `8 hours`, satuan efektif `hours`; Draft menyimpan Duration `3` pada satuan lama `days`, dan Purpose `Rapat koordinasi vendor`.
+  - DU-047-18: Karyawan `Budi Setiawan`, Position `Staff`, Division `Finance`, aktif, Borrower pada Draft DU-047-3.
+  - DU-047-19: Isian Duration `0` untuk baris DU-047-1, di bawah batas bawah `1`.
+  - DU-047-20: Isian Duration `3` untuk baris DU-047-1, tepat di Max Duration `3 days`.
 - Kondisi:
   - K1: form Borrow Request baru, Borrower belum dipilih, berisi baris aset DU-047-1 dan DU-047-2 yang baru ditambahkan.
-  - K2: Draft dibuka berisi baris aset DU-047-3 yang satuan efektifnya sudah berubah dari `days` menjadi `hours` sejak Draft disimpan.
+  - K2: Draft dibuka dengan Borrower DU-047-18 dan Purpose baris DU-047-3 sudah terisi, berisi baris aset DU-047-3 yang satuan efektifnya sudah berubah dari `days` menjadi `hours` sejak Draft disimpan.
   - K3: form Borrow Request baru tanpa baris aset dan tanpa Borrower.
 
 ## Test Steps
@@ -151,4 +154,18 @@ coverage:
 72. Isi Note dengan `Aset dipakai tim audit internal untuk verifikasi fisik di gudang pusat dan beberapa kantor cabang, harap disiapkan lengkap dengan charger dan tas pelindung. Mohon cek kondisi fisik sebelum diserahkan kepada peminjam dan didokumentasikan dengan foto singkat untuk arsip. Pengembalian dilakukan paling telat menurut batas durasi yang disepakati bersama oleh tim.!` (361 karakter)
 73. Verifikasi caption `Max. 360 characters` tampil di bawah Note
 
+### Duration `0` dijepit ke batas bawah 1
+74. Tampilkan Form Borrow Request dengan kondisi K1
+75. Isi Duration baris `Laptop Dell Latitude 5420 - 10` dengan `0`
+76. Pindahkan fokus keluar dari field Duration baris `Laptop Dell Latitude 5420 - 10`
+77. Verifikasi Duration baris `Laptop Dell Latitude 5420 - 10` berisi `1` sesuai batas bawah Duration `1`[^drift-2]
+
+### Duration tepat di Max duration aset diterima
+78. Tampilkan Form Borrow Request dengan kondisi K1
+79. Isi Duration baris `Laptop Dell Latitude 5420 - 10` dengan `3`
+80. Pindahkan fokus keluar dari field Duration baris `Laptop Dell Latitude 5420 - 10`
+81. Verifikasi Duration baris `Laptop Dell Latitude 5420 - 10` berisi `3` karena tepat di Max Duration `3 days` aset itu
+
 [^drift-1]: Drift PRD vs kontrak komponen. PRD §6 V-BRW-16 dan §9.9 FLD-BRW-02: caption `Max. [Limit] [Unit] for [Category]` tampil langsung di bawah field Duration saat Duration melewati Max duration aset. Kontrak komponen `NumberInput#1`: min dan max adalah rentang, saat blur atau Enter nilai dijepit ke batas terdekat; `NumberInput#15`: tidak ada pesan rentang dan tidak ada invalid state untuk nilai di luar min/max. Diasersi: kontrak, karena field Duration dirender NumberInput (SB-7).
+
+[^drift-2]: Drift PRD vs kontrak komponen. PRD §6 V-BRW-16 dan §9.9 FLD-BRW-02: Duration bilangan bulat `1` sampai Max duration aset, dengan caption `Enter a duration of at least 1` langsung di bawah field untuk nilai di bawah batas. Kontrak komponen `NumberInput#1`: min dan max adalah rentang, saat blur atau Enter nilai di bawah min dijepit ke min; `NumberInput#15`: tidak ada pesan rentang dan tidak ada invalid state untuk nilai di luar min/max. Diasersi: kontrak, karena field Duration dirender NumberInput (SB-7).

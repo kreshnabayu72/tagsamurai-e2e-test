@@ -4,19 +4,19 @@ title: "Guided Tooltip halaman Borrow dan halaman Review"
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.7#p1", "§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#p2", "§4.7#p3", "§4.7#r4", "EB-TBL-10"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.7#p1": 2
+  "§4.7#p1": [2, 58, 63]
   "§4.7#r1": [4, 5, 6]
   "§4.7#r2": [11, 12, 13]
   "§4.7#r3": [17, 18, 19]
   "§4.7#p2": [42, 45]
   "§4.7#p3": [47, 48]
   "§4.7#r4": [49, 50, 51]
-  "EB-TBL-10": [2, 3, 7, 8, 10, 14, 16, 20, 22, 25, 28, 31, 34, 37, 39, 47, 52, 55]
+  "EB-TBL-10": [2, 3, 7, 8, 10, 14, 16, 20, 22, 25, 28, 31, 34, 37, 39, 47, 52, 55, 58, 63, 65, 67, 68, 70, 72, 73]
 anchor: [30, 41, 44, 54]
 coverage:
   web: automated
@@ -32,8 +32,8 @@ coverage:
   - DU-070-1: walkthrough Halaman Borrow dengan tiga step: Step 1 target tombol `+ Borrow`, Step 2 target Tabs halaman Borrow, Step 3 target kolom Status.
   - DU-070-2: walkthrough Halaman Review dengan satu step: Step 1 target kolom Approval Rule tabel T-BRW-08.
 - Kondisi:
-  - K1: kunjungan pertama ke Halaman Borrow, flag walkthrough belum diset, plan Full, Aktor memiliki tombol `+ Borrow`.
-  - K2: kunjungan ke Halaman Borrow, flag walkthrough sudah diset karena walkthrough sebelumnya di-Skip atau selesai, plan Full, Aktor memiliki tombol `+ Borrow`.
+  - K1: kunjungan pertama ke Halaman Borrow, flag `guided_tooltip_seen_fa-borrow-transaction` untuk akun Aktor belum diset, plan Full, Aktor memiliki tombol `+ Borrow`.
+  - K2: kunjungan ke Halaman Borrow, flag `guided_tooltip_seen_fa-borrow-transaction` sudah bernilai `true` karena walkthrough sebelumnya di-Skip atau selesai, plan Full, Aktor memiliki tombol `+ Borrow`.
   - K3: kunjungan pertama ke Halaman Borrow sesudah walkthrough sebelumnya ditutup lewat perubahan ukuran jendela sehingga flag belum diset, plan Full, Aktor memiliki tombol `+ Borrow`.
   - K4: kunjungan pertama ke Halaman Borrow, flag belum diset, plan Full, Aktor tidak memiliki tombol `+ Borrow`.
   - K5: kunjungan pertama ke Halaman Borrow, flag belum diset, plan Basic.
@@ -116,3 +116,29 @@ coverage:
 53. Tampilkan Guided Tooltip Borrow dengan kondisi K7
 54. Verifikasi tabel T-BRW-08 tampil di Halaman Review
 55. Verifikasi walkthrough Halaman Review tidak muncul otomatis
+
+### Skip menyetel flag
+56. Tampilkan Guided Tooltip Borrow dengan kondisi K1
+57. Klik `[Skip]`
+58. Verifikasi flag `guided_tooltip_seen_fa-borrow-transaction` untuk akun Aktor tersimpan bernilai `true`
+
+### Done menyetel flag
+59. Tampilkan Guided Tooltip Borrow dengan kondisi K1
+60. Klik `[Next]`
+61. Klik `[Next]`
+62. Klik `[Done]`
+63. Verifikasi flag `guided_tooltip_seen_fa-borrow-transaction` untuk akun Aktor tersimpan bernilai `true`
+
+### Replay tidak mereset flag
+64. Tampilkan Guided Tooltip Borrow dengan kondisi K2
+65. Verifikasi flag `guided_tooltip_seen_fa-borrow-transaction` bernilai `true` sebelum replay
+66. Klik tombol `[?]` untuk memutar ulang walkthrough
+67. Verifikasi walkthrough Halaman Borrow dimulai dari `Step 1 of 3`
+68. Verifikasi flag `guided_tooltip_seen_fa-borrow-transaction` tetap bernilai `true` selama replay
+
+### Walkthrough yang ditutup saat resize tidak menyetel flag
+69. Tampilkan Guided Tooltip Borrow dengan kondisi K1
+70. Verifikasi indikator `Step 1 of 3` tampil
+71. Ubah ukuran jendela browser
+72. Verifikasi walkthrough Halaman Borrow tertutup sesudah ukuran jendela diubah
+73. Verifikasi flag `guided_tooltip_seen_fa-borrow-transaction` belum diset sesudah walkthrough ditutup tanpa selesai

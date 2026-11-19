@@ -4,7 +4,7 @@ title: "Aksi baris tabel Transactions tampil menurut status baris, aktor, dan sy
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§4.1a#p3", "§4.1a#r10", "§4.1a#r11", "§4.1a#r12", "§4.1a#r13", "§4.1a#r14", "§4.1a#r15", "§4.1a#r16", "§4.1a#r17", "§4.1a#r18", "§4.1a#r19", "§4.1a#p4"]
 smoke: []
 dependsOn: []

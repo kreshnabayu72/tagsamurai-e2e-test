@@ -4,7 +4,7 @@ title: "Draft bersama: cakupan Group, Draft tanpa aset, optimistic lock, dan has
 layer: be-e2e
 priority: Critical
 caseType: Negative
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-14a", "BORROW-LOGIC-14b", "BORROW-LOGIC-14c", "BORROW-LOGIC-14d", "BORROW-LOGIC-14e", "BORROW-LOGIC-14f", "BORROW-LOGIC-14g", "BORROW-LOGIC-14h", "BORROW-LOGIC-14i", "BORROW-LOGIC-14j", "BORROW-LOGIC-14k", "BORROW-LOGIC-14l", "BORROW-LOGIC-14m", "BORROW-LOGIC-14n", "BORROW-LOGIC-14o", "BORROW-LOGIC-14p", "BORROW-LOGIC-14q", "BORROW-LOGIC-14r", "BORROW-LOGIC-14s", "BORROW-LOGIC-14t", "BORROW-LOGIC-14u", "BORROW-LOGIC-14v", "EC-BRW-114", "EC-BRW-140", "EC-BRW-32", "EC-BRW-74", "EC-BRW-75", "EC-BRW-76", "EC-BRW-77", "EC-BRW-79", "EC-BRW-90", "F-BORROW-01.k1", "F-BORROW-01.k2", "F-BORROW-01.k3", "F-BORROW-01.k4", "F-BORROW-01.k5", "F-BORROW-01.k6", "§2.2#r4", "§9.2#b73", "§9.2#b78", "§9.4.3#b2", "§9.4.3#b3", "EB-CON-1"]
 smoke: []
 dependsOn: []
@@ -17,11 +17,11 @@ trace:
   "BORROW-LOGIC-14e": [28]
   "BORROW-LOGIC-14f": [5]
   "BORROW-LOGIC-14g": [28]
-  "BORROW-LOGIC-14h": [15, 21]
+  "BORROW-LOGIC-14h": [15, 21, 132]
   "BORROW-LOGIC-14i": [17, 19, 24]
-  "BORROW-LOGIC-14j": [36, 41, 43]
+  "BORROW-LOGIC-14j": [36, 41, 43, 135, 136]
   "BORROW-LOGIC-14k": [22]
-  "BORROW-LOGIC-14l": [30, 32]
+  "BORROW-LOGIC-14l": [30, 32, 121, 123, 125]
   "BORROW-LOGIC-14m": [32]
   "BORROW-LOGIC-14n": [34, 36, 43, 45]
   "BORROW-LOGIC-14o": [48, 50, 54]
@@ -30,21 +30,21 @@ trace:
   "BORROW-LOGIC-14r": [60]
   "BORROW-LOGIC-14s": [55]
   "BORROW-LOGIC-14t": [56]
-  "BORROW-LOGIC-14u": [39]
+  "BORROW-LOGIC-14u": [39, 132, 133]
   "BORROW-LOGIC-14v": [97, 100]
-  "EC-BRW-114": [65, 67, 68]
+  "EC-BRW-114": [65, 67, 68, 127, 129, 130]
   "EC-BRW-140": [111, 113, 115, 117, 119]
   "EC-BRW-32": [70, 71, 74]
   "EC-BRW-74": [79, 81, 83, 85, 87]
   "EC-BRW-75": [48, 50, 51, 52]
-  "EC-BRW-76": [30, 34, 36, 38]
+  "EC-BRW-76": [30, 34, 36, 38, 132]
   "EC-BRW-77": [91, 92]
   "EC-BRW-79": [94, 96, 97, 98, 100, 101]
   "EC-BRW-90": [104, 105]
   "F-BORROW-01.k1": [28, 41, 91]
   "F-BORROW-01.k2": [48, 50, 52]
   "F-BORROW-01.k3": [11, 12, 13]
-  "F-BORROW-01.k4": [65, 70, 72, 77]
+  "F-BORROW-01.k4": [65, 70, 72, 77, 127]
   "F-BORROW-01.k5": [117, 119]
   "F-BORROW-01.k6": [94, 96, 97, 100, 101, 109]
   "§2.2#r4": [21, 26]
@@ -58,7 +58,7 @@ trace:
 # Draft bersama: cakupan Group, Draft tanpa aset, optimistic lock, dan hasil saat pembuat dinonaktifkan
 
 ## Prerequisites
-- Aktor: `Agus Pratama {runId}` (Asset Admin, Group `Head Office {runId}`); `Hendra Kusuma {runId}` (Asset Admin, Group `Head Office {runId}` dan `Branch Surabaya {runId}`); `Siti Aminah {runId}` (Group Manager Group `Head Office {runId}`); `Wulan Sari {runId}` (Total Control); `Nina Rahma {runId}` (Monitoring & Report); `Oscar Wijaya {runId}` (Read Only).
+- Aktor: `Agus Pratama {runId}` (Asset Admin, Group `Head Office {runId}`); `Hendra Kusuma {runId}` (Asset Admin, Group `Head Office {runId}` dan `Branch Surabaya {runId}`); `Putri Ayu {runId}` (Asset Admin, Group `Branch Surabaya {runId}`); `Siti Aminah {runId}` (Group Manager Group `Head Office {runId}`); `Wulan Sari {runId}` (Total Control); `Nina Rahma {runId}` (Monitoring & Report); `Oscar Wijaya {runId}` (Read Only).
 - Data:
   - DU-083-1: Group asal aset: Name `Head Office {runId}`
   - DU-083-2: Group di luar cakupan sebagian Aktor: Name `Branch Surabaya {runId}`
@@ -102,23 +102,33 @@ trace:
   - DU-083-40: Draft tersimpan: Pembuat `Sistem`, Borrower `Dewi Lestari {runId}`, Aset `Head Office: Lampu Studio Godox SL60 {runId}`, Origin `Restored by system`
   - DU-083-41: Draft tersimpan: Pembuat `Agus Pratama {runId}`, Borrower `Dewi Lestari {runId}`, Aset `Head Office: Mixer Yamaha MG10 {runId}`, Origin `Restored`
   - DU-083-42: Draft tersimpan: Pembuat `Agus Pratama {runId}`, Borrower `Dewi Lestari {runId}`, Aset `Head Office: Tablet Samsung Galaxy Tab S9 {runId}`, Origin `New`
+  - DU-083-45: Aset tersedia: Asset Name `Dispenser Sanken HWD-77 {runId}`, Group `Head Office {runId}`, Category `Appliance`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `OFF`, Satuan `Days`, Require approval `OFF`
+  - DU-083-46: User akun login: Name `Putri Ayu {runId}`, Status `Active`, Activation Status `Activated`, Role `Asset Admin`, Group penugasan `Branch Surabaya {runId}`
+  - DU-083-47: Aset tersedia: Asset Name `Webcam Logitech C920 {runId}`, Group `Head Office {runId}`, Category `Electronics`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `OFF`, Satuan `Days`, Allow Borrow `Allow`
+  - DU-083-48: Draft tersimpan: Pembuat `Wulan Sari {runId}`, Borrower `Dewi Lestari {runId}`, Aset `Head Office: Gerinda Tangan Bosch GWS 060 {runId}; Branch Surabaya: Kompresor Udara Ingco {runId}`, Duration dan Purpose `terisi pada kedua baris`
+  - DU-083-49: Aset di Group lain: Asset Name `Bor Tangan Hitachi DV16V {runId}`, Group `Branch Surabaya {runId}`, Category `Tools`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `OFF`, Satuan `Days`
+  - DU-083-50: Category: Name `Peralatan Studio {runId}`, Allow Borrow `Allow`
+  - DU-083-51: Aset tersedia: Asset Name `Softbox Godox 60 cm {runId}`, Group `Head Office {runId}`, Category `Peralatan Studio {runId}`, TAG `Ber-tag`, Custody `Available`, Condition `Normal`, Self service `OFF`, Satuan `Days`
+  - DU-083-52: Draft tersimpan: Pembuat `Agus Pratama {runId}`, Borrower `Dewi Lestari {runId}`, Aset `Head Office: Softbox Godox 60 cm {runId}`, Duration `2`, Purpose `Pemotretan katalog`
+  - DU-083-53: Draft tersimpan: Pembuat `Hendra Kusuma {runId}`, Borrower `Dewi Lestari {runId}`, Aset `(tanpa aset)`, Group `—`
 - Kondisi:
   - T0 adalah waktu permintaan dikirim.
   - Sesudah disimpan, Allow Borrow `Scanner Fujitsu fi-8170 {runId}` bernilai Deny pada override aset, `Kursi Lipat Chitose {runId}` berstatus Lifecycle Disposed, dan `Papan Info Akrilik {runId}` sudah dihapus.
   - Block new borrow when overdue bernilai `ON` pada aset di Draft `Bagus Santoso {runId}`.
-  - Akun Agus, Hendra, Siti, Wulan, Nina, Oscar, Joko, dan Yuli aktif dan kredensialnya tersedia untuk fase 2.
+  - Akun Agus, Hendra, Putri, Siti, Wulan, Nina, Oscar, Joko, dan Yuli aktif dan kredensialnya tersedia untuk fase 2.
+  - Sesudah disimpan, Allow Borrow Category `Peralatan Studio {runId}` bernilai Deny.
 
 ## Test Steps
 
 ### Save Draft memerlukan Borrower dan tidak mengunci aset
-1. Agus mengirim Save Draft tanpa Borrower atas `Genset Honda EU22i {runId}`
+1. Agus mengirim Save Draft tanpa Borrower atas `Dispenser Sanken HWD-77 {runId}`
 2. Verifikasi Save Draft ditolak dengan pesan `You must pick a borrower`
-3. Agus mengirim Save Draft dengan Borrower `Dewi Lestari {runId}` atas `Genset Honda EU22i {runId}` dengan Duration dan Purpose dikosongkan
+3. Agus mengirim Save Draft dengan Borrower `Dewi Lestari {runId}` atas `Dispenser Sanken HWD-77 {runId}` dengan Duration dan Purpose dikosongkan
 4. Verifikasi pengajuan tersimpan sebagai Draft, yaitu pengajuan yang disimpan tetapi belum di-Submit
 5. Verifikasi Draft tersimpan walau Duration dan Purpose kosong
 6. Verifikasi Draft hanya memuat satu Borrower, yaitu `Dewi Lestari {runId}`
 7. Verifikasi Draft belum punya nomor BRW dan belum punya snapshot aturan efektif
-8. Verifikasi Custody `Genset Honda EU22i {runId}` tetap `Available`, karena Draft tidak mengunci aset
+8. Verifikasi Custody `Dispenser Sanken HWD-77 {runId}` tetap `Available`, karena Draft tidak mengunci aset
 9. Verifikasi tidak ada fitur Prelist: pengajuan yang disimpan hanya berbentuk Draft
 
 ### Add to Borrow Draft ke Draft yang sudah ada bersifat idempoten
@@ -152,15 +162,15 @@ trace:
 31. Agus mengubah Purpose baris `Kamera Sony ZV-E10 {runId}` yang di luar cakupannya
 32. Verifikasi perubahan baris di luar cakupan ditolak dan baris itu hanya terbaca nama aset `Kamera Sony ZV-E10 {runId}` dan Group `Branch Surabaya {runId}`
 33. Agus mengirim Submit atas Draft itu
-34. Verifikasi Submit ditolak dengan pesan `Some assets are outside your groups. Ask Wulan Sari {runId} to submit.` dan tidak ada BRW yang dibuat
+34. Verifikasi Submit ditolak karena sebagian aset di luar cakupan Group Agus, dan tidak ada BRW yang dibuat
 35. Agus mengirim Delete atas Draft itu
-36. Verifikasi Delete ditolak dengan pesan `Some assets are outside your groups. Ask Wulan Sari {runId} to delete.` dan Draft tetap ada
+36. Verifikasi Delete ditolak karena sebagian aset di luar cakupan Group Agus, dan Draft tetap ada
 37. Agus mengirim Bulk Delete atas Draft `Dewi Lestari {runId}` multi-Group dan Draft tanpa aset buatannya
 38. Verifikasi Draft multi-Group yang tidak memenuhi syarat dilewati dan tetap ada
 39. Verifikasi Draft tanpa aset buatan `Agus Pratama {runId}` ikut terhapus karena memenuhi syarat bagi pembuatnya
-40. Hendra mengubah Purpose baris `Kamera Sony ZV-E10 {runId}` pada Draft multi-Group
+40. Putri mengubah Purpose baris `Kamera Sony ZV-E10 {runId}` pada Draft multi-Group
 41. Verifikasi Edit oleh Aktor yang cakupannya meliputi minimal satu Group di Draft diterima untuk barisnya sendiri
-42. Hendra mengirim Delete atas Draft multi-Group
+42. Putri mengirim Delete atas Draft multi-Group
 43. Verifikasi Delete oleh Aktor yang cakupannya tidak meliputi semua Group di Draft ditolak
 44. Wulan mengirim Delete atas Draft multi-Group
 45. Verifikasi Delete oleh Aktor yang cakupannya meliputi semua Group di Draft diterima dan Draft terhapus
@@ -255,3 +265,27 @@ trace:
 118. Agus mengirim Bulk Delete atas ketiga Draft
 119. Verifikasi ketiga Draft terhapus lewat Delete manual
 
+### Aktor hanya dapat menambah dan mengeluarkan baris aset dalam cakupannya
+120. Agus menambahkan `Bor Tangan Hitachi DV16V {runId}` yang berada di Group `Branch Surabaya {runId}` ke Draft yang memuat `Gerinda Tangan Bosch GWS 060 {runId}` dan `Kompresor Udara Ingco {runId}`
+121. Verifikasi penambahan baris aset di luar cakupan ditolak dan Draft tidak memuat `Bor Tangan Hitachi DV16V {runId}`
+122. Agus mengeluarkan baris `Kompresor Udara Ingco {runId}` yang di luar cakupannya dari Draft itu
+123. Verifikasi pengeluaran baris di luar cakupan ditolak dan baris `Kompresor Udara Ingco {runId}` tetap ada di Draft
+124. Agus mengeluarkan baris `Gerinda Tangan Bosch GWS 060 {runId}` yang dalam cakupannya dari Draft itu
+125. Verifikasi pengeluaran baris dalam cakupan diterima: Draft tidak lagi memuat `Gerinda Tangan Bosch GWS 060 {runId}` dan tetap memuat `Kompresor Udara Ingco {runId}`
+
+### Baris Draft ditandai tidak layak bila Allow Borrow Category diubah menjadi Deny
+126. Agus membuka Draft `Dewi Lestari {runId}` yang memuat `Softbox Godox 60 cm {runId}` setelah Allow Borrow Category `Peralatan Studio {runId}` menjadi Deny
+127. Verifikasi baris `Softbox Godox 60 cm {runId}` ditandai dengan `This asset can no longer be borrowed.` dan `Remove from List`
+128. Agus mengirim Submit atas Draft yang memuat `Softbox Godox 60 cm {runId}`
+129. Verifikasi Submit diblokir sampai baris dikeluarkan dan tidak ada BRW yang dibuat
+130. Verifikasi Draft tetap tersimpan
+
+### Draft tanpa aset milik orang lain dilewati pada Bulk Delete
+131. Agus mengirim Bulk Delete atas Draft tanpa aset buatan `Hendra Kusuma {runId}` dan Draft `Dewi Lestari {runId}` yang memuat `Kabel HDMI Ugreen 5 m {runId}`
+132. Verifikasi Draft tanpa aset buatan `Hendra Kusuma {runId}` dilewati dan tetap ada, karena Draft tanpa aset hanya memenuhi syarat bagi pembuatnya dan Agus bukan pembuatnya
+133. Verifikasi Draft `Dewi Lestari {runId}` yang memuat `Kabel HDMI Ugreen 5 m {runId}` dan seluruh asetnya dalam cakupan Group Agus terhapus
+
+### Edit atas Draft berisi aset ditolak bagi Aktor yang cakupannya tidak meliputi satu Group pun di Draft
+134. Putri mengubah Purpose baris `Laptop Asus ExpertBook B1 {runId}` menjadi `Perubahan oleh Putri` pada Draft `Dewi Lestari {runId}` yang memuat `Laptop Asus ExpertBook B1 {runId}` dan `Mouse Logitech MX Master 3 {runId}`
+135. Verifikasi Edit ditolak karena cakupan Group Putri (`Branch Surabaya {runId}`) tidak meliputi satu Group pun di Draft yang sudah memuat aset, yang hanya memuat aset Group `Head Office {runId}`
+136. Verifikasi Purpose baris `Laptop Asus ExpertBook B1 {runId}` tetap `Dukungan pelatihan`

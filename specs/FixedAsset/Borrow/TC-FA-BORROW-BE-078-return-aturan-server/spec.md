@@ -4,26 +4,26 @@ title: "Return: tempat Group asal, partial return, penanda status akhir, dan aks
 layer: be-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["BORROW-LOGIC-09a", "BORROW-LOGIC-09b", "BORROW-LOGIC-09c", "BORROW-LOGIC-09d", "BORROW-LOGIC-09e", "BORROW-LOGIC-09f", "BORROW-LOGIC-09g", "BORROW-LOGIC-09h", "BORROW-LOGIC-09i", "BORROW-LOGIC-09j", "BORROW-LOGIC-09k", "BORROW-LOGIC-09l", "BORROW-LOGIC-09m", "BORROW-LOGIC-09n", "BORROW-LOGIC-09o", "BORROW-LOGIC-09p", "BORROW-LOGIC-09q", "BORROW-LOGIC-09r", "EC-BRW-104", "EC-BRW-154", "EC-BRW-157", "EC-BRW-161", "EC-BRW-162", "EC-BRW-25", "EC-BRW-26", "EC-BRW-27", "EC-BRW-28", "EC-BRW-29", "EC-BRW-30a", "EC-BRW-91", "F-BORROW-08.k1", "F-BORROW-08.k2", "F-BORROW-08.k3", "F-BORROW-08.k4", "F-BORROW-08.k5", "F-BORROW-08.k6", "F-BORROW-08.k7", "V-BRW-38", "§9.2#b42", "§9.2#b43", "§9.2#b45", "§9.2#r51", "§9.2#r53", "§9.4.3#b8"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "BORROW-LOGIC-09a": [2, 87]
+  "BORROW-LOGIC-09a": [2, 87, 104]
   "BORROW-LOGIC-09b": 90
-  "BORROW-LOGIC-09c": [88, 91]
-  "BORROW-LOGIC-09d": 12
-  "BORROW-LOGIC-09e": [14, 20]
-  "BORROW-LOGIC-09f": [29, 31]
+  "BORROW-LOGIC-09c": [88, 91, 108]
+  "BORROW-LOGIC-09d": [12, 105]
+  "BORROW-LOGIC-09e": [14, 20, 106]
+  "BORROW-LOGIC-09f": [29, 31, 100, 102]
   "BORROW-LOGIC-09g": 32
   "BORROW-LOGIC-09h": 37
-  "BORROW-LOGIC-09i": 54
+  "BORROW-LOGIC-09i": [54, 110]
   "BORROW-LOGIC-09j": 58
   "BORROW-LOGIC-09k": 61
   "BORROW-LOGIC-09l": 56
   "BORROW-LOGIC-09m": 63
-  "BORROW-LOGIC-09n": 65
+  "BORROW-LOGIC-09n": [65, 112, 113]
   "BORROW-LOGIC-09o": 47
   "BORROW-LOGIC-09p": 40
   "BORROW-LOGIC-09q": 34
@@ -32,7 +32,7 @@ trace:
   "EC-BRW-154": [73, 75, 77]
   "EC-BRW-157": [67, 69, 71]
   "EC-BRW-161": [79, 82]
-  "EC-BRW-162": [8, 10]
+  "EC-BRW-162": [8, 10, 116, 118]
   "EC-BRW-25": [2, 3, 4]
   "EC-BRW-26": [15, 16, 18]
   "EC-BRW-27": 22
@@ -40,16 +40,16 @@ trace:
   "EC-BRW-29": [34, 35, 36]
   "EC-BRW-30a": [73, 74, 75, 76]
   "EC-BRW-91": [90, 91, 92, 93, 94]
-  "F-BORROW-08.k1": [2, 3, 8]
+  "F-BORROW-08.k1": [2, 3, 8, 116]
   "F-BORROW-08.k2": [14, 16, 24, 29, 32]
   "F-BORROW-08.k3": [67, 69, 71, 73]
-  "F-BORROW-08.k4": [51, 52]
+  "F-BORROW-08.k4": [51, 52, 120, 121]
   "F-BORROW-08.k5": [34, 35, 36, 41, 42]
   "F-BORROW-08.k6": [87, 90]
   "F-BORROW-08.k7": [79, 82]
-  "V-BRW-38": 51
-  "§9.2#b42": [38, 51, 55]
-  "§9.2#b43": [45, 48, 49]
+  "V-BRW-38": [51, 120]
+  "§9.2#b42": [38, 51, 55, 120]
+  "§9.2#b43": [45, 48, 49, 123, 124, 125]
   "§9.2#b45": 39
   "§9.2#r51": [84, 85]
   "§9.2#r53": [26, 27]
@@ -59,11 +59,11 @@ trace:
 # Return: tempat Group asal, partial return, penanda status akhir, dan aksi pada baris yang sudah Returned
 
 ## Prerequisites
-- Aktor: Asset Admin `Agus Pratama {runId}` dengan Group penugasan `Head Office {runId}` sebagai penerima Return (DU-078-1); Borrower `Rina Wijaya {runId}` (DU-078-2); Asset Admin `Hendra Kusuma {runId}` dengan Group penugasan `Branch Surabaya {runId}` (DU-078-3); Requester BRW `Tika Rahma {runId}`, Asset Admin dengan Group penugasan `Head Office {runId}` (DU-078-4); Borrower self-service `Sari Dewi {runId}` (DU-078-5); Asset Admin `Joko Susilo {runId}` dengan Group penugasan `Region Timur {runId}` (DU-078-6); Asset Admin `Wawan Hartono {runId}` dengan Group penugasan `Region Barat {runId}` (DU-078-7); Asset Admin `Maya Putri {runId}` dengan hak Aktor Missing dan Aktor Damaged (DU-078-8).
+- Aktor: Asset Admin `Agus Pratama {runId}` dengan Group penugasan `Head Office {runId}` sebagai penerima Return (DU-078-1); Borrower `Rina Wijaya {runId}` (DU-078-2); Asset Admin `Hendra Kusuma {runId}` dengan Group penugasan `Branch Surabaya {runId}` (DU-078-3); Requester BRW `Tika Rahma {runId}`, Asset Admin dengan Group penugasan `Head Office {runId}` (DU-078-4); Borrower self-service `Sari Dewi {runId}` (DU-078-5); Asset Admin `Joko Susilo {runId}` dengan Group penugasan `Region Timur {runId}` (DU-078-6); Asset Admin `Wawan Hartono {runId}` dengan Group penugasan `Region Barat {runId}` (DU-078-7); Asset Admin `Maya Putri {runId}` dengan hak Aktor Missing dan Aktor Damaged (DU-078-8); karyawan aktif tanpa akun login `Budi Santoso {runId}` dengan PIC `Agus Pratama {runId}` (DU-078-29); Group Manager `Rudi Hartanto {runId}` untuk `Region Barat {runId}` (DU-078-31); Group Manager `Dewi Anggraini {runId}` untuk `Region Timur {runId}` (DU-078-32).
 - Data:
-  - DU-078-1 sampai DU-078-8: pengguna seperti di Aktor.
-  - DU-078-9: baris `Borrowed` aset `Laptop Dell Latitude {runId}`, Category `Laptop`, Duration `3 Days`, Photo at end `ON`, foto handover tersimpan, Borrower `Rina Wijaya {runId}`, di BRW A dengan Requester `Tika Rahma {runId}`.
-  - DU-078-10: baris `Borrowed` aset `Proyektor Epson {runId}`, Category `Proyektor`, Duration `5 Days`, Photo at end `OFF`, di BRW A.
+  - DU-078-1 sampai DU-078-8, DU-078-29, DU-078-31, dan DU-078-32: pengguna seperti di Aktor.
+  - DU-078-9: baris `Borrowed` aset `Laptop Dell Latitude {runId}`, Category `Laptop`, Group asal `Head Office {runId}`, Duration `3 Days`, Photo at end `ON`, foto handover tersimpan, Borrower `Rina Wijaya {runId}`, di BRW A dengan Requester `Tika Rahma {runId}`.
+  - DU-078-10: baris `Borrowed` aset `Proyektor Epson {runId}`, Category `Proyektor`, Group asal `Head Office {runId}`, Duration `5 Days`, Photo at end `OFF`, di BRW A.
   - DU-078-11: baris `Overdue` aset `Monitor Samsung {runId}`, Category `Monitor`, Duration `1 Days`, Photo at end `OFF`, di BRW A.
   - DU-078-12: baris `Borrowed` aset ber-tag `Kamera Canon EOS {runId}` yang tagnya tidak terbaca dan belum punya laporan terbuka, di BRW B bersama DU-078-13.
   - DU-078-13: baris `Borrowed` aset ber-tag `Lensa Sigma {runId}` yang tagnya tidak terbaca dan sudah punya laporan terbuka, di BRW B.
@@ -75,16 +75,22 @@ trace:
   - DU-078-19: baris `Borrowed` aset `Printer Warna Epson {runId}` berstatus `Unmanaged`, di BRW E bersama DU-078-20 dan DU-078-21.
   - DU-078-20: baris `Borrowed` aset `Server Rack Mini {runId}` dengan Activity Lock `In Audit`.
   - DU-078-21: baris `Borrowed` aset `Mesin Bor Listrik {runId}` dengan Activity Lock `Under Maintenance`.
-  - DU-078-22: baris `Borrowed` aset ber-tag `Walkie Talkie Motorola {runId}`, di BRW F.
+  - DU-078-22: baris `Borrowed` aset ber-tag `Walkie Talkie Motorola {runId}`, Group asal `Head Office {runId}`, di BRW F.
   - DU-078-23: baris `Borrowed` aset `Kursi Lipat Rapat {runId}` di Group `Gudang Timur {runId}` yang parent-nya awalnya `Region Barat {runId}` dan dipindah ke parent `Region Timur {runId}`.
-  - DU-078-24: baris `Borrowed` self-service aset ber-tag `Camera Sony Alpha {runId}`, Borrower `Sari Dewi {runId}`, Photo at end `ON`.
-  - DU-078-25: baris `Borrowed` self-service aset ber-tag `Gimbal DJI {runId}`, Borrower `Sari Dewi {runId}`, Photo at end `OFF`.
-  - DU-078-26: aset `Aset Pinjam Batas {n} {runId}` berstatus `Borrowed` dalam satu BRW; jumlah aset di daftar Return sama dengan Bulk Transaction Row Limit ditambah satu.
+  - DU-078-24: baris `Borrowed` self-service aset ber-tag `Camera Sony Alpha {runId}`, Group asal `Head Office {runId}`, Borrower `Sari Dewi {runId}`, Requester `Sari Dewi {runId}`, Photo at end `ON`.
+  - DU-078-25: baris `Borrowed` self-service aset ber-tag `Gimbal DJI {runId}`, Group asal `Head Office {runId}`, Borrower `Sari Dewi {runId}`, Photo at end `OFF`.
+  - DU-078-26: aset `Aset Pinjam Batas {n} {runId}` berstatus `Borrowed`, tersebar di beberapa BRW Borrower `Rina Wijaya {runId}` (tiap BRW tidak melebihi Bulk Transaction Row Limit); jumlah aset di daftar Return sama dengan Bulk Transaction Row Limit ditambah satu.
   - DU-078-27: aset `Drone DJI Mavic {runId}`, Category `Drone`, record Missing berstatus `Missing`.
+  - DU-078-28: baris `Borrowed` aset ber-tag `Kamera Mirrorless {runId}`, Category `Kamera`, Group asal `Head Office {runId}`, Duration `3 Days`, Photo at end `ON`, Borrower `Rina Wijaya {runId}`, dalam BRW sendiri.
+  - DU-078-30: baris `Borrowed` aset ber-tag `Pompa Air Portable {runId}`, Category `Peralatan Lapangan`, Group asal `Head Office {runId}`, Duration `3 Days`, Photo at end `OFF`, Borrower `Budi Santoso {runId}`, dalam BRW sendiri.
+  - DU-078-33: baris `Borrowed` aset ber-tag `Meja Rapat Lipat {runId}`, Category `Furnitur`, Duration `3 Days`, Photo at end `OFF`, Borrower `Rina Wijaya {runId}`, di Group `Gudang Utara {runId}` yang parent-nya awalnya `Region Barat {runId}` dan dipindah ke parent `Region Timur {runId}`.
+  - DU-078-34: baris `Borrowed` aset ber-tag `Kipas Industri {runId}`, Category `Peralatan Gudang`, Group asal `Head Office {runId}`, Duration `3 Days`, Photo at end `OFF`, Borrower `Rina Wijaya {runId}`, dengan record Damaged berstatus `Damaged` yang dilaporkan Pelapor admin `Maya Putri {runId}`.
+  - DU-078-35: baris `Borrowed` aset ber-tag `Printer Label Zebra {runId}`, Category `Printer`, Group asal `Head Office {runId}`, Duration `3 Days`, Photo at end `OFF`, Borrower `Rina Wijaya {runId}`, Requester `Tika Rahma {runId}`, dalam BRW sendiri.
 - Kondisi:
   - Bulk Transaction Row Limit berlaku sebagai nilai lingkungan.
-  - Photo at end bernilai `ON` untuk `Laptop Dell Latitude {runId}` dan `Camera Sony Alpha {runId}`, dan `OFF` untuk aset lain di spec ini.
+  - Photo at end bernilai `ON` untuk `Laptop Dell Latitude {runId}`, `Camera Sony Alpha {runId}`, dan `Kamera Mirrorless {runId}`, dan `OFF` untuk aset lain di spec ini.
   - Group `Gudang Timur {runId}` dipindah dari parent `Region Barat {runId}` ke parent `Region Timur {runId}` hanya pada langkah yang menyebutnya.
+  - Group `Gudang Utara {runId}` dipindah dari parent `Region Barat {runId}` ke parent `Region Timur {runId}` hanya pada langkah yang menyebutnya.
 
 ## Test Steps
 
@@ -101,7 +107,7 @@ trace:
 10. Verifikasi baris berjalan ikut cakupan baru sehingga Aktor Borrow berwenang di posisi Group yang baru dapat menyelesaikan Return
 
 ### Scan tag wajib, identifikasi manual, tag diganti, aset hilang, dan aset tertukar
-11. Asset Admin `Agus Pratama {runId}` mengirim Return `Laptop Dell Latitude {runId}` tanpa memindai tag
+11. Asset Admin `Agus Pratama {runId}` mengirim Return `Laptop Dell Latitude {runId}` dengan 1 foto Return terlampir tetapi tanpa memindai tag
 12. Verifikasi server menolak Return karena scan tag wajib
 13. Asset Admin memilih `I Can't Scan the TAG` pada langkah scan Return atas `Kamera Canon EOS {runId}`
 14. Verifikasi identifikasi manual diperbolehkan pada langkah scan Return
@@ -120,11 +126,11 @@ trace:
 27. Verifikasi baris `Gimbal DJI {runId}` tetap `Borrowed` setelah scan aset tertukar
 
 ### Foto Return satu per aset ditampilkan berdampingan dengan foto handover
-28. Asset Admin mengirim Return `Laptop Dell Latitude {runId}` tanpa foto Return
+28. Asset Admin yang sudah memindai tag `Laptop Dell Latitude {runId}` mengirim Return tanpa foto Return
 29. Verifikasi server menolak Return karena foto 1 per aset wajib bila Photo at end `ON`
 30. Asset Admin mengambil 1 foto Return `Laptop Dell Latitude {runId}` dari kamera langsung
 31. Verifikasi foto Return diterima 1 per aset
-32. Verifikasi foto handover dan foto Return aset yang sama tersedia berdampingan
+32. Verifikasi foto handover dan foto Return aset yang sama keduanya tersimpan dan terhubung pada baris `Laptop Dell Latitude {runId}`
 
 ### Kembali lebih awal dan Return sebagian
 33. Asset Admin memindai tag `Laptop Dell Latitude {runId}` dan menyelesaikan Return sebelum Due date
@@ -182,9 +188,9 @@ trace:
 ### Return offline di perangkat
 78. Asset Admin menyimpan scan dan foto Return `Walkie Talkie Motorola {runId}` saat HP offline
 79. Verifikasi scan dan foto Return disimpan lokal dengan status `Pending sync`
-80. Aktor lain mengubah baris `Walkie Talkie Motorola {runId}`
+80. Asset Admin `Tika Rahma {runId}` dari perangkat lain menyelesaikan Return `Walkie Talkie Motorola {runId}`
 81. HP terhubung kembali dan sinkron
-82. Verifikasi konflik saat sinkron Return dimenangkan server dan Aktor Return diberi tahu
+82. Verifikasi konflik saat sinkron Return dimenangkan server, sehingga baris `Walkie Talkie Motorola {runId}` tetap `Returned` sesuai Return `Tika Rahma {runId}`, dan Aktor Return diberi tahu
 
 ### Return self-service oleh Borrower atau dititipkan ke Aktor Borrow
 83. Borrower `Sari Dewi {runId}` mengembalikan `Gimbal DJI {runId}` ke Group `Branch Surabaya {runId}`
@@ -202,6 +208,45 @@ trace:
 95. Verifikasi tidak ada kolom Received By di tabel karena penerima hanya tampil di node `Returned`
 
 ### Jumlah aset di daftar Return melebihi batas
-96. Asset Admin mengirim Return atas `Aset Pinjam Batas {n} {runId}` sejumlah Bulk Transaction Row Limit ditambah satu
+96. Asset Admin mengirim Return atas `Aset Pinjam Batas {n} {runId}` sejumlah Bulk Transaction Row Limit ditambah satu, yang tersebar di beberapa BRW Borrower `Rina Wijaya {runId}`
 97. Verifikasi server menolak Return itu dengan Dialog Blok `D-BRW-18` dan tidak ada baris yang diproses
-98. Verifikasi daftar aset tidak direset
+98. Verifikasi semua baris `Aset Pinjam Batas {n} {runId}` tetap `Borrowed` setelah Return ditolak
+
+### Foto Return hanya dari kamera langsung dan tanpa fallback
+99. Asset Admin yang sudah memindai tag `Kamera Mirrorless {runId}` mengirim Return dengan berkas foto dari galeri sebagai foto Return
+100. Verifikasi foto Return hanya diterima dari kamera langsung, tanpa unggah file atau galeri, sehingga Return itu ditolak
+101. Asset Admin yang sudah memindai tag `Kamera Mirrorless {runId}` mengirim Return tanpa foto karena kamera tidak tersedia
+102. Verifikasi tidak ada fallback ketika kamera langsung tidak tersedia dan Return `Kamera Mirrorless {runId}` tidak dapat diselesaikan
+
+### PIC Borrower tanpa akun memproses Return sendiri
+103. Asset Admin `Agus Pratama {runId}` yang menjadi PIC `Budi Santoso {runId}` membuka Return atas baris `Pompa Air Portable {runId}`
+104. Verifikasi PIC Borrower tanpa akun diizinkan memproses Return dengan syarat pemrosesan sendiri
+105. Verifikasi scan TAG wajib untuk `Pompa Air Portable {runId}` yang diproses sendiri oleh PIC
+106. Verifikasi `I Can't Scan the TAG` tidak tersedia untuk Return `Pompa Air Portable {runId}` yang diproses sendiri oleh PIC
+107. Asset Admin `Agus Pratama {runId}` memindai tag `Pompa Air Portable {runId}` dan menyelesaikan Return
+108. Verifikasi node `Returned` Borrow Log `Pompa Air Portable {runId}` ditandai `Self-processed`
+
+### Penanda Damaged dari record berstatus Damaged tidak berubah setelah Mark as Repaired
+109. Asset Admin menyelesaikan Return `Kipas Industri {runId}` yang punya laporan rusak berstatus `Damaged` dari Pelapor admin
+110. Verifikasi baris `Kipas Industri {runId}` menjadi `Returned` dengan penanda `Damaged`
+111. Asset Admin `Maya Putri {runId}` menjalankan Mark as Repaired atas `Kipas Industri {runId}`
+112. Verifikasi status global aset `Kipas Industri {runId}` berubah: Condition tidak lagi `Damaged`
+113. Verifikasi penanda `Damaged` pada baris `Kipas Industri {runId}` tersimpan sebagai riwayat dan tidak berubah
+
+### Group Manager mengikuti hierarki Group yang baru
+114. Group `Gudang Utara {runId}` dipindah dari parent `Region Barat {runId}` ke parent `Region Timur {runId}` saat baris `Meja Rapat Lipat {runId}` berjalan
+115. Group Manager `Rudi Hartanto {runId}` untuk `Region Barat {runId}` memindai tag `Meja Rapat Lipat {runId}` pada Return
+116. Verifikasi Return ditolak karena cakupan Group Manager dihitung ulang mengikuti hierarki baru
+117. Group Manager `Dewi Anggraini {runId}` untuk `Region Timur {runId}` memindai tag `Meja Rapat Lipat {runId}` pada Return dan menyelesaikannya
+118. Verifikasi Group Manager berwenang di posisi Group yang baru dapat menyelesaikan Return dan baris `Meja Rapat Lipat {runId}` menjadi `Returned`
+
+### Aksi lain pada baris yang sudah Returned ditolak
+119. Asset Admin mengirim Extend atas baris `Laptop Dell Latitude {runId}` yang sudah `Returned`
+120. Verifikasi server menolak Extend itu dengan Dialog Blok `This asset has already been returned.`
+121. Verifikasi baris `Laptop Dell Latitude {runId}` tetap `Returned` dan tidak berubah oleh Extend yang ditolak
+
+### Notifikasi Return tidak ganda bila Requester sama dengan pelaku Return atau Borrower
+122. Asset Admin `Tika Rahma {runId}` menyelesaikan Return `Printer Label Zebra {runId}` pada BRW yang Requester-nya adalah dirinya sendiri
+123. Verifikasi Borrower `Rina Wijaya {runId}` menerima `borrow_returned` untuk Return itu
+124. Verifikasi Requester `Tika Rahma {runId}` yang juga pelaku Return tidak menerima `borrow_returned` tambahan sebagai Requester
+125. Verifikasi Requester BRW self-service `Camera Sony Alpha {runId}` adalah Borrower `Sari Dewi {runId}` sendiri, sehingga `borrow_returned` diterima satu kali tanpa notifikasi ganda

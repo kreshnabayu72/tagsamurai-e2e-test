@@ -4,14 +4,14 @@ title: "Submit form Borrow Request ditolak seluruhnya bila ada aset tidak layak,
 layer: ui-e2e
 priority: Critical
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["F-BORROW-02", "FI-BRW-42", "§4.4#r5", "§4.4#r6", "EB-ERR-4"]
 smoke: ["EB-ERR-4"]
 dependsOn: []
 trace:
   "F-BORROW-02": [34, 36]
   "FI-BRW-42": [24, 27, 31, 36, 37]
-  "§4.4#r5": [24, 25, 26]
+  "§4.4#r5": [24, 25, 26, 58, 59, 61, 63]
   "§4.4#r6": [34, 35]
   "EB-ERR-4": [28, 29, 40, 41]
 anchor: []
@@ -35,6 +35,9 @@ coverage:
   - DU-013-8: aset `Kamera Canon EOS {runId}`, Brand `Canon {runId}`, Model/Type `EOS R6 {runId}`, Group `Head Office`, Category `Camera {runId}`, Custody `Available`, Max Duration `3 days`, Approval `Needs approval`.
   - DU-013-9: isian form Borrow Request: Duration `2` dan Purpose `Training` untuk `Kamera Canon EOS {runId}`; Duration `3` dan Purpose `Training` untuk `Notebook Lenovo ThinkPad {runId}`; Duration `3` dan Purpose `Training` untuk `Proyektor BenQ {runId}`; Duration `2` dan Purpose `Training` untuk `Tripod Manfrotto {runId}`. Baris aset di form berurutan menurut urutan dicentang: `Kamera Canon EOS {runId}`, `Notebook Lenovo ThinkPad {runId}`, `Proyektor BenQ {runId}`, `Tripod Manfrotto {runId}`.
   - DU-013-10: aset `Tripod Manfrotto {runId}`, Brand `Manfrotto {runId}`, Model/Type `MT190 {runId}`, Group `Head Office`, Category `Camera Accessory {runId}`, Custody `Available`, Max Duration `3 days`, Approval `Needs approval`; diambil `Admin Lain {runId}` bersama `Kamera Canon EOS {runId}` sebelum Submit.
+  - DU-013-11: aset `Mikrofon Rode {runId}`, Brand `Rode {runId}`, Model/Type `NT-USB {runId}`, Group `Head Office`, Category `Audio {runId}`, Custody `Available`, Max Duration `3 days`, Approval `Needs approval`; diambil `Admin Lain {runId}` untuk Borrower `Gita Lain {runId}` sementara form Borrow Request kedua terbuka.
+  - DU-013-12: aset `Speaker JBL {runId}`, Brand `JBL {runId}`, Model/Type `Flip 6 {runId}`, Group `Head Office`, Category `Audio {runId}`, Custody `Available`, Max Duration `3 days`, Approval `Needs approval`; tidak diambil siapa pun.
+  - DU-013-13: isian form Borrow Request kedua: Duration `2` dan Purpose `Training` untuk `Mikrofon Rode {runId}`; Duration `2` dan Purpose `Training` untuk `Speaker JBL {runId}`.
 
 ## Test Steps
 
@@ -84,3 +87,27 @@ coverage:
 39. Ketik Search `Rina Peminjam {runId}`, tekan Enter
 40. Verifikasi tabel Transactions memuat tepat satu baris BRW untuk Borrower `Rina Peminjam {runId}`
 41. Verifikasi BRW itu hanya memuat aset `Notebook Lenovo ThinkPad {runId}` dan `Proyektor BenQ {runId}` serta tidak memuat `Kamera Canon EOS {runId}`
+
+### Kelayakan dicek ulang saat tab form aktif kembali
+42. Klik `[+ Borrow]`
+43. Klik `[Select Borrower]`
+44. Ketik Search `Rina Peminjam {runId}`, tekan Enter
+45. Pilih baris `Rina Peminjam {runId}`
+46. Klik `[Select]`
+47. Klik `[+ Asset]`
+48. Ketik Search `{runId}`, tekan Enter
+49. Centang baris `Mikrofon Rode {runId}`
+50. Centang baris `Speaker JBL {runId}`
+51. Klik `[Select]`
+52. Isi Duration baris `Mikrofon Rode {runId}` dengan `2`
+53. Isi Purpose baris `Mikrofon Rode {runId}` dengan `Training`
+54. Isi Duration baris `Speaker JBL {runId}` dengan `2`
+55. Isi Purpose baris `Speaker JBL {runId}` dengan `Training`
+56. Asset Admin `Admin Lain {runId}` men-Submit BRW untuk Borrower `Gita Lain {runId}` berisi aset `Mikrofon Rode {runId}`
+57. Pindah ke tab browser lain, lalu kembali ke tab form Borrow Request
+58. Verifikasi baris `Mikrofon Rode {runId}` ditandai dengan caption `This asset can no longer be borrowed.` tanpa menekan `[Submit]`
+59. Verifikasi baris `Speaker JBL {runId}` tidak ditandai dan tetap berisi Duration `2` dan Purpose `Training`
+60. Klik `[Submit]`
+61. Verifikasi caption error `Remove the unavailable assets to continue.` tampil dan form Borrow Request tetap terbuka tanpa dialog `Submit Borrow` (Submit diblokir)
+62. Klik `[Remove Unavailable]`
+63. Verifikasi baris `Mikrofon Rode {runId}` tidak lagi ada di tabel aset form sedangkan baris `Speaker JBL {runId}` tetap ada

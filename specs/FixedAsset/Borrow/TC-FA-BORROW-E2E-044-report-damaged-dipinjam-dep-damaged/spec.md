@@ -4,7 +4,7 @@ title: "Report Damaged saat dipinjam membuat laporan Waiting for Confirmation da
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["DM-BRW-11"]
 smoke: []
 dependsOn: ["Damaged: dialog Report Damaged dan keputusan laporan"]

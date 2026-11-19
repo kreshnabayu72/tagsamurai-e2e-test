@@ -4,7 +4,7 @@ title: "Group Manager melihat aksi Borrow dalam Group binaan menurut matriks aks
 layer: ui-e2e
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§2.1#r13", "§2.1#r14", "§2.1#r15", "§2.1#r16", "§2.1#r17", "§2.1#r18", "§2.1#b1", "§2.1#p6", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§4.8#r15", "§4.8#r16", "§4.8#r17", "§4.8#r18"]
 smoke: []
 dependsOn: []
@@ -26,7 +26,7 @@ trace:
   "§2.1#r15": [64]
   "§2.1#r16": [24]
   "§2.1#r17": [8]
-  "§2.1#r18": [6, 7]
+  "§2.1#r18": [6, 7, 82]
   "§2.1#b1": [68, 69]
   "§2.1#p6": [65, 72]
   "§4.8#r1": [1, 3]
@@ -77,6 +77,8 @@ coverage:
   - DU-030-17: Draft milik Borrower `Dewi Lestari {runId}`, berisi aset `Mixer Beton Portable {runId}` (Group `Head Office {runId}`), Total Asset `1`, Modified By `Rina Wulandari {runId}`.
   - DU-030-18: Draft milik Borrower `Dewi Lestari {runId}`, berisi aset `Compressor Atlas Copco {runId}` (Group `Branch Surabaya {runId}`), Total Asset `1`, Modified By `Rina Wulandari {runId}`.
   - DU-030-19: Draft baru untuk Borrower `Rudi Hartono {runId}` tanpa aset, dibuat `Siti Aminah {runId}` lewat langkah spec.
+  - DU-030-20: Group `IT Support {runId}`, sub-group dari Group binaan `Head Office {runId}`.
+  - DU-030-21: BRW berstatus Waiting for Handover, Group `IT Support {runId}`, Borrower `Rudi Hartono {runId}`, aset `Server Dell PowerEdge R740 {runId}`, Duration `2 days`, Purpose `Migrasi server`, Requested By `Rina Wulandari {runId}`.
 - Kondisi:
   - Level Feature Suite Borrowing entitas aktor bernilai `Full`.
 
@@ -186,3 +188,8 @@ coverage:
 77. Buka menu ⋯ pada baris BRW milik DU-030-8
 78. Klik `Detail`
 79. Verifikasi halaman Borrow Detail BRW milik DU-030-8 terbuka dengan Borrower `Rudi Hartono {runId}`
+
+### BRW dalam sub-group dari Group binaan tampil
+80. Klik menu `Transactions > Borrow`
+81. Ketik Search `{runId}`, tekan Enter
+82. Verifikasi BRW milik DU-030-21 dengan Group `IT Support {runId}`, sub-group dari `Head Office {runId}`, tampil di tabel
