@@ -2935,3 +2935,14 @@ Aturan:
   - Setelah event ada: app berlangganan dan me-refetch banner serta Email (pemilik: gs), lalu tag dicabut.
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
 - **Status:** berlaku.
+
+## D-283 Client: Delete atas Client yang sudah dihapus sesi lain ditolak 404, bukan sukses (2026-11-20)
+
+- **Spec / langkah:** `TC-AC-ACC-E2E-146` blok TC-AC-ACC-961 langkah 26–27.
+- **Spec meminta:** Sesi A menampilkan toast sukses "Success, client has been deleted." tanpa toast error setelah Sesi B menghapus Client lebih dulu.
+- **Kenyataannya:** `DELETE /clients/{id}` membalas 404 `Client not found`. App menampilkan toast danger "Client not found", menutup dialog, me-refresh List, dan tidak menulis baris log.
+- **Karena:** PRD Client L2542 EC-87: "Ditolak 404 "Client not found" tanpa baris log baru"; L2406 butir 2 dan L2690 (Delete tidak idempoten). TC-961 sendiri mengutip EC-87, jadi Expected b bertentangan dengan sumbernya.
+- **Keputusan:** langkah 26–27 memverifikasi toast "Client not found" (bukan toast sukses) dan tidak ada baris log baru. Langkah 28–33 tetap.
+- **Untuk spec:** TC-961 Expected b mengikuti EC-87.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi client).
+- **Status:** berlaku.
