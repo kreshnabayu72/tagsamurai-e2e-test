@@ -84,12 +84,12 @@ coverage:
 28. Verifikasi dialog Unsaved Changes dengan pesan "You have unsaved changes. Are you sure you want to leave?" dan tombol `[Cancel]` dan `[Leave]`
 29. Klik `[Leave]`
 
-### TC-AC-ACHS-119: Driver tidak terpasang
+### TC-AC-ACHS-119: Driver tidak terdeteksi
 
 30. Atur simulator ke mode driver tidak terpasang (Pre-setup #25b)
 31. Klik `[Add Stock]` pada toolbar Tab Available SKU `{skuLong}` (form baru)
-32. Verifikasi banner warning persisten "Driver not installed. Install the Zebra driver to register Handheld Reader units."
-33. Verifikasi link `[Download driver]` selalu tampil pada banner
+32. Verifikasi banner warning persisten (bukan dialog) dengan judul tebal "Driver isn't connected." dan isi "Install the reader driver to connect your reader. Already installed? Open it, or paste the code below into the driver."
+33. Verifikasi banner memuat link `[Open it]`, baris "Driver Code:" berisi kode, tombol ikon Copy tanpa label teks dengan aria-label "Copy driver code", dan tombol outline `[Download driver]` di kanan banner yang selalu tampil
 34. Klik `[Sync]`
 35. Verifikasi `[Sync]` tetap bisa diklik ulang (retry manual) dan banner tetap tampil
 36. Verifikasi tidak ada baris ditambahkan

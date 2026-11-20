@@ -7,7 +7,7 @@ Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (176 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (178 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -187,6 +187,8 @@ Status semua spec: `draft`.
 | TC-FA-CF-E2E-179-absence-log-request-ditolak-grace-period-dan-create-gagal-5xx | Absence Log: Request Tulis Field Accounting Ditolak Saat Grace Period dan Create Gagal 5xx | FE+BE | 60 | TC-FA-CF-184, TC-FA-CF-665, TC-FA-CF-666 |
 | TC-FA-CF-E2E-180-grace-period-fa7-berakhir-tab-accounting-terkunci-dan-field-tidak-tampil | Grace Period FA-7 Berakhir: Tab Accounting Terkunci dan Field Accounting Tidak Tampil | FE+BE | 13 | TC-FA-CF-670 |
 | TC-FA-CF-E2E-181-request-langsung-validasi-opsi-duplikat-panjang-dan-kode-negara | Request Langsung Ditolak: Opsi Duplikat, Panjang Field Name, dan Kode Negara | FE+BE | 10 | TC-FA-CF-573, TC-FA-CF-574, TC-FA-CF-593 |
+| TC-FA-CF-E2E-182-storage-penuh-global-value-document-create-edit-dan-urutan-validasi | Global Value Document: Storage Penuh Menolak Create dan Edit Tanpa Mutasi, Format dan Ukuran Didahulukan | FE+BE | 42 | PRD: FACF-LOGIC-12c, VAL-FACF-36, TOAST-FACF-17, E-FACF-46, E-FACF-47, F-FACF-11.k8 |
+| TC-FA-CF-E2E-183-global-value-document-tidak-terdaftar-di-file-manager-dan-recycle-bin | Global Value Document: Tidak Terdaftar di File Manager dan Tidak Masuk Recycle Bin Saat Diganti | FE+BE | 28 | PRD: FACF-LOGIC-12a |
 
 ---
 
@@ -875,3 +877,18 @@ Tidak ada. Semua TC masuk tepat satu spec E2E.
 | TC-FA-CF-673 | E2E | TC-FA-CF-E2E-147-request-langsung-accounting-403-saat-fa7-tidak-aktif-dan-grace | FE+BE |
 | TC-FA-CF-674 | E2E | TC-FA-CF-E2E-145-grace-period-fa7-tab-accounting-read-only-dan-aset | FE+BE |
 | TC-FA-CF-675 | E2E | TC-FA-CF-E2E-144-lisensi-fa7-lapse-tab-accounting-dan-form-aset | FE+BE |
+
+---
+
+## 4. Aturan PRD Tanpa TestCase (FACF-LOGIC-12, sumber PRD)
+
+Spec 182 dan 183 bersumber langsung dari PRD `fixed-asset/settings-custom-fields/PRD/settings-custom-fields.md` (belum ada TC untuk `FACF-LOGIC-12`); frontmatter memakai `sourceRules` tanpa `sourceTc`, sehingga tidak masuk hitungan 675 TC di atas.
+
+| Aturan PRD | Spec | Status |
+|---|---|---|
+| FACF-LOGIC-12a (sisi File Manager: tidak terdaftar, tidak ke Recycle Bin) | TC-FA-CF-E2E-183 | Diotomasi |
+| FACF-LOGIC-12c, VAL-FACF-36, TOAST-FACF-17, E-FACF-46, E-FACF-47 (format/ukuran didahulukan), F-FACF-11.k8 (sisi Global Value) | TC-FA-CF-E2E-182 | Diotomasi |
+| FACF-LOGIC-12a (hard-delete dari penyimpanan, kaskade hapus field, ganti Data Type, Value Type ke Specific, Asset Name keluar Scope) | - | Tidak diotomasi: penghapusan fisik tidak teramati lewat UI (kartu Storage Usage adalah snapshot berkala, `FAFM-LOGIC-06`) |
+| FACF-LOGIC-12b, FACF-LOGIC-12d, E-FACF-48, F-FACF-11.k9, F-FACF-11.k8 (sisi nilai Specific di form aset) | - | Tidak diotomasi di suite ini: dijalankan lewat form aset dan File Manager (modul `asset-registration`, `asset-detail`, `file-manager`), dimiliki suite modul itu |
+| E-FACF-47 (client tanpa kuota Storage tidak diblokir) | - | Tidak diotomasi: butuh Client tanpa kuota Storage yang belum tercatat di Pre-setup; aturan dasar dimiliki `plans.md` §2.5b |
+| Perubahan wording baris `F-FACF-11.k7` (cek Storage saat Save) | TC-FA-CF-E2E-182 | Terwakili oleh langkah 12 dan 14 spec 182; spec 046 sampai 048 dan 078 tidak berubah (tidak bertentangan) |

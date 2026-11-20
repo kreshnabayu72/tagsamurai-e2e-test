@@ -8,6 +8,28 @@ Plan, unit PRD, data, dan vonis per unit: `docs/spec-from-prd/FixedAssetAssignme
 - Skor: 97.4% (ok + setengah parsial, dibagi unit berperilaku).
 - Spec `ready-for-automation`: 117. Spec tetap `draft`: 0.
 
+## Spec tambahan untuk aturan Storage dan File Manager (PRD 2026-11-20, belum diaudit)
+
+Angka audit di atas hanya mencakup 117 spec hasil run stage. Sesudahnya suite memuat 123 folder spec: 117 di atas dan 6 spec `draft` di bawah. Keenamnya disusun langsung dari PRD (`ASSIGN-LOGIC-21a` s.d. `21l`, `V-ASG-37`, `TS-ASG-36`, `EC-ASG-121` s.d. `EC-ASG-127`; tanpa TestCase) dan belum masuk `plan.json`, `units.json`, maupun `audit.json`. Unit-unit itu belum dinilai juri, jadi skor di atas belum memuatnya.
+
+| Spec | Layer | Langkah | Aturan |
+|---|---|---|---|
+| `TC-FA-ASSIGN-BE-226-storage-penuh-handover-dan-unassign-server` | be-e2e | 34 | `ASSIGN-LOGIC-21b` s.d. `21h`, `V-ASG-37`, `EC-ASG-121` s.d. `EC-ASG-124`, `EC-ASG-126` |
+| `TC-FA-ASSIGN-E2E-069-handover-storage-penuh` | ui-e2e | 30 | `TS-ASG-36`, `V-ASG-37`, `ASSIGN-LOGIC-21e`, `21g`, `EC-ASG-121`, `EC-ASG-122`, `EC-ASG-126` |
+| `TC-FA-ASSIGN-E2E-070-unassign-storage-penuh` | ui-e2e | 35 | `TS-ASG-36`, `V-ASG-37`, `ASSIGN-LOGIC-21d`, `21f`, `21g`, `21h`, `EC-ASG-123`, `EC-ASG-126` |
+| `TC-FA-ASSIGN-E2E-071-mobile-offline-storage-penuh-pending-sync` | ui-e2e (Android, manual) | 19 | `ASSIGN-LOGIC-21g`, `21h`, `21l`, `TS-ASG-36`, `EC-ASG-125` |
+| `TC-FA-ASSIGN-E2E-072-foto-dihapus-admin-di-file-manager-dep-file-manager` | ui-e2e (`dependsOn` File Manager) | 35 | `ASSIGN-LOGIC-21a`, `21j`, `21k`, `EC-ASG-127` |
+| `TC-FA-ASSIGN-E2E-073-foto-handover-dan-unassign-sekali-kirim` | ui-e2e | 22 | `ASSIGN-LOGIC-21a`, `21i` |
+
+Aturan baru yang tidak diasersi (tidak ada langkah yang mengutipnya, atau hanya sebagian klausa):
+
+- `ASSIGN-LOGIC-21c` (klausa dasar cek dan pengecualian client tanpa kuota): dasar cek dimiliki `plans.md` §2.5b; hanya hasil di Assignment yang diasersi (BE-226 langkah 3, 15, 27, 34).
+- `ASSIGN-LOGIC-21i` (klausa kedua: Edit atau Delete foto di form sebelum langkah dikirim hanya membuang foto yang belum tersimpan dan tidak pernah menjadi record File Manager): PRD tidak menetapkan label aksi buang foto di form, dan perilaku sisi File Manager (`FAFM-LOGIC-07`) milik modul File Manager.
+- `ASSIGN-LOGIC-21j` dan `EC-ASG-127` (klausa tampilan berdampingan, pratinjau, tab Assigned Assets dan History): PRD tidak menetapkan letak tampilan berdampingan; yang diasersi hanya kolom `Handover Photo` / `Unassign Photo`, Status, dan thumbnail foto lain di Assignment Detail (E2E-072). Tab Assigned Assets dan History belum diasersi.
+- `ASSIGN-LOGIC-21h` (klausa Delete di File Manager sebagai cara membebaskan Storage): Delete memindahkan file ke Recycle Bin yang tetap dihitung ke pemakaian Storage sampai dihapus permanen (`FAFM-LOGIC-03`), sedangkan `ASSIGN-LOGIC-21h` menyebut Delete di File Manager sebagai pembebas; spec memakai kuota ditambah sebagai pembebas dan tidak mengasersi jalur Delete. Perlu keputusan pemilik PRD.
+- Persistensi toast Error `TS-ASG-36` ("Error persisten"): tidak ada asersi waktu tampil; PRD tidak menetapkan durasi, dan spec tidak menulis asersi waktu (LR-5).
+- Isi kartu Storage Usage dan alert Storage penuh di File Manager: milik modul File Manager, tidak diasersi di suite ini.
+
 ## Keputusan pemilik PRD (103)
 
 Hanya bagian ini yang butuh manusia: sumber bertentangan atau belum memutuskan. Keputusannya ditulis di PRD, lalu spec yang ditahan dibuat.

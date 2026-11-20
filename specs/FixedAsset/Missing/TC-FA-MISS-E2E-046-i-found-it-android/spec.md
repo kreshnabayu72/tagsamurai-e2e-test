@@ -216,3 +216,6 @@ coverage:
 119. Verifikasi `[View Missing Log]` tidak dirender pada sheet hasil scan
 120. Klik `[I found it]`
 121. Verifikasi toast `Success, asset has been reported found.` tampil
+
+## Notes
+- Storage penuh pada `[I found it]` (`MISS-LOGIC-10c`, `MISS-LOGIC-10e`, `V-16`, `TS-MIS-11`, `EC-MIS-37`, `F-MISS-07.k3`) tidak diotomasi: spec ini berjalan manual di aplikasi native (`coverage.android: manual`) dan tidak ada TestCase sumber. Hasil yang diharapkan menurut PRD: toast Error persisten `Error, failed to report asset as found. Storage is full ([Used Storage] of [Storage Quota] used).`, sheet tetap terbuka dengan Photo tidak direset, tanpa node `Reported found by [User Name]` dan tanpa notifikasi `missing_found_reported`; tanpa Photo tidak dicek.

@@ -1,7 +1,7 @@
 ---
 name: Fixed Asset Settings Custom Fields
 id: suite-fixed-asset-settings-custom-fields
-description: Spec e2e turunan tc-settings-custom-fields.md untuk Fixed Asset > Settings > Custom Fields
+description: Spec e2e turunan tc-settings-custom-fields.md (spec 182 dan 183 turunan langsung PRD) untuk Fixed Asset > Settings > Custom Fields
 executionOrder: 1.0
 parallel: false
 ---
@@ -23,3 +23,5 @@ Suite ini mencakup halaman Fixed Asset > Settings > Custom Fields (tab General, 
 - **State global:** hook `after` memulihkan state global yang diubah spec (limit, cap, format General Settings, capability role, lisensi FA-7 dan waktu seed, status Client, jam server bila digeser).
 
 Setiap spec menyiapkan dan membersihkan datanya sendiri dan tidak bergantung pada hasil spec lain.
+
+Spec 182 dan 183 bersumber langsung dari PRD (aturan `FACF-LOGIC-12`, belum ada TestCase) dan memakai `sourceRules` tanpa `sourceTc`. Spec 182 membutuhkan Company Storage Penuh (hook `before` memulihkan baseline lewat seed reset Company, disediakan tim FE/BE) dan akun dengan env `FA_CFSTORAGE_TC_PASSWORD`; spec 183 memakai Company Alpha dan membuka File Manager. Rincian aturan yang tidak diotomasi: `docs/coverage/FixedAssetSettingsCustomFields.md` bagian 4.
