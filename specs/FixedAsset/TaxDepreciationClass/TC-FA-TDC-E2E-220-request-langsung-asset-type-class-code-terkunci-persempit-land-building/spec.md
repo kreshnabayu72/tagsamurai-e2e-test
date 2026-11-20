@@ -11,7 +11,8 @@ sourceTc:
   - TC-FA-TDC-841
   - TC-FA-TDC-842
   - TC-FA-TDC-843
-sourceRules: ["F-FATDC-02.k13", "FATDC-LOGIC-03a.3", "F-FATDC-02.k1", "FATDC-LOGIC-07c", "FATDC-LOGIC-10b.3", "FATDC-LOGIC-10a", "V-18", "FATDC-LOGIC-03b", "V-14", "FATDC-LOGIC-03c"]
+  - TC-FA-TDC-964
+sourceRules: ["F-FATDC-02.k13", "FATDC-LOGIC-03a.3", "F-FATDC-02.k1", "FATDC-LOGIC-07c", "FATDC-LOGIC-10b.3", "FATDC-LOGIC-10a", "V-18", "FATDC-LOGIC-03b", "V-14", "FATDC-LOGIC-03c", "FATDC-LOGIC-10c", "F-FATDC-02.k6d"]
 smoke: []
 dependsOn: []
 trace:
@@ -25,6 +26,8 @@ trace:
   "FATDC-LOGIC-03b": 21
   "V-14": 23
   "FATDC-LOGIC-03c": [23, 26]
+  "FATDC-LOGIC-10c": 29
+  "F-FATDC-02.k6d": 29
 anchor: [20, 25]
 coverage:
   web: automated
@@ -45,6 +48,7 @@ coverage:
 | `nbKhs` | `NB-KHS` | Last Posted Tax Year 2026, Used By 0 |
 | `nb2` | `NB-2` | Allowed Methods Straight Line dan Declining Balance |
 | `assetClassPemakai` | Asset Class `AC-MESIN` | memakai `NB-2` dengan Tax Method Declining Balance (Used By lebih dari 0) |
+| `khsV18` | `KHS-V18` | Allowed Methods Straight Line dan Declining Balance, Used By 1: Asset Class `AC-SCH7 – Boiler` memakai Straight Line pada versi Current dan Declining Balance pada versi Scheduled Jan 2027 Asset Class (TC-964) |
 | `land2` | `LAND2` | belum ada di daftar |
 | `bldX` | `BLD-X` | belum ada di daftar |
 
@@ -94,14 +98,25 @@ coverage:
 25. Verifikasi daftar class memuat sedikitnya satu class lain
 26. Verifikasi class `BLD-X` tidak ada di daftar
 
+### TC-FA-TDC-964: Request langsung mempersempit Allowed Methods yang dipakai hanya pada versi Scheduled Asset Class ditolak
+
+27. Baca jumlah versi class `KHS-V18` lewat request baca dan catat sebagai baseline
+28. Kirim request langsung dengan sesi API aktor Total Control untuk mengubah Allowed Methods `KHS-V18` menjadi Straight Line saja dengan Effective From awal tahun pajak berjalan tanpa melalui UI
+29. Verifikasi server menolak request dengan blok D-08 yang sama (memuat `AC-SCH7 – Boiler`) tanpa membentuk versi baru
+30. Baca ulang daftar versi `KHS-V18` lewat request baca
+31. Verifikasi jumlah versi `KHS-V18` sama dengan baseline langkah 27
+32. Verifikasi Allowed Methods versi Current `KHS-V18` tetap Straight Line dan Declining Balance
+
 ## Notes
 
 - K-1: TC kelas a dengan Expected respons API tetap masuk spec FE+BE; spec hanya mengasersi status respons dan state data lewat request baca (8b.1). Tidak ada tampilan UI yang diasersi.
-- Klausa Expected c TC-FA-TDC-839, TC-FA-TDC-840, dan TC-FA-TDC-841 (tidak ada entri log baru di Changelog dan Activity Log) tidak diasersi di spec ini; asersinya ada di spec absence 261 (TC-FA-TDC-839, TC-FA-TDC-840) dan 270 (TC-FA-TDC-841) dengan aksi nyata dan baseline sendiri per TC (S-05). Klausa yang sama pada TC-FA-TDC-842 dan TC-FA-TDC-843 ada di spec absence 273.
-- Langkah penghubung (S-03): langkah 1 dan 11 (baseline jumlah versi untuk asersi "versi tidak berubah" dan "tanpa versi baru"); langkah 4, 9, 14, 19, dan 24 (membaca state data lewat request baca). Langkah 20 dan 25 adalah anchor positif untuk asersi absence langkah 21 dan 26 (8b.2).
+- Klausa Expected c TC-FA-TDC-839, TC-FA-TDC-840, TC-FA-TDC-841, dan TC-FA-TDC-964 (tidak ada entri log baru di Changelog dan Activity Log) tidak diasersi di spec ini; asersinya ada di spec absence 261 (TC-FA-TDC-839, TC-FA-TDC-840) dan 270 (TC-FA-TDC-841 dan TC-FA-TDC-964) dengan aksi nyata dan baseline sendiri per TC (S-05). Klausa yang sama pada TC-FA-TDC-842 dan TC-FA-TDC-843 ada di spec absence 273.
+- Langkah penghubung (S-03): langkah 1, 11, dan 27 (baseline jumlah versi untuk asersi "versi tidak berubah" dan "tanpa versi baru"); langkah 4, 9, 14, 19, 24, dan 30 (membaca state data lewat request baca). Langkah 20 dan 25 adalah anchor positif untuk asersi absence langkah 21 dan 26 (8b.2).
 - Temuan untuk QA:
   - TC-FA-TDC-839 sampai 843 menulis "Server menolak request" tanpa status HTTP; spec mengasersi penolakan tanpa kode status.
   - TC-FA-TDC-841 menyebut "Effective From awal tahun pajak berjalan" tanpa nilai tanggal dan tanpa tanggal sistem uji; spec mengikuti TC.
   - TC-FA-TDC-841 menyebut Asset Class `AC-MESIN`; spec memakainya sebagai Asset Class pemakai yang disediakan tim FE.
+  - TC-FA-TDC-964 menyebut "dialog blok D-08 yang sama" pada request langsung tanpa UI dan tidak menyebut bentuk respons; spec mengasersi penolakan server dengan muatan blok D-08 yang memuat `AC-SCH7 – Boiler`, tanpa kode status.
+  - TC-FA-TDC-964 tidak menyebut tanggal sistem uji dan menulis "Effective From awal tahun pajak berjalan" tanpa nilai tanggal (sama dengan TC-FA-TDC-841); spec mengikuti TC.
   - Email akun Total Control dan identitas company uji tidak tertulis di TC.
   - Class Code dibatasi 15 karakter (TC-136, 137), sehingga data milik spec memakai kode literal tanpa suffix `{runId}-<NNN>` (S-12); perlu konfirmasi QA.

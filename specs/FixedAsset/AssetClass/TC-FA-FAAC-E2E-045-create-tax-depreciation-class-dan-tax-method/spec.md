@@ -8,7 +8,7 @@ status: draft
 sourceTc:
   - TC-FA-FAAC-126
   - TC-FA-FAAC-127
-sourceRules: ["§4.1.2#r16", "§4.1.2#r14", "§4.1.2#r15", "FAAC-LOGIC-02f", "FI-03", "FLD-15", "V-20", "§4.2f#b2", "§4.1.2#p11"]
+sourceRules: ["§4.1.2#r16", "§4.1.2#r14", "§4.1.2#r15", "FAAC-LOGIC-02f", "FAAC-LOGIC-02l", "FI-03", "FLD-15", "V-20", "§4.2f#b2", "§4.1.2#p11"]
 smoke: []
 dependsOn: []
 trace:
@@ -16,6 +16,7 @@ trace:
   "§4.1.2#r14": 5
   "§4.1.2#r15": [8, 9]
   "FAAC-LOGIC-02f": [9, 11]
+  "FAAC-LOGIC-02l": [9, 15, 20]
   "FI-03": [11, 15, 20]
   "FLD-15": 12
   "V-20": 17

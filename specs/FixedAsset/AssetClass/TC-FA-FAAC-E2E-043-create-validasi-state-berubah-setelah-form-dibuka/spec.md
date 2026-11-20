@@ -9,7 +9,7 @@ sourceTc:
   - TC-FA-FAAC-118
   - TC-FA-FAAC-119
   - TC-FA-FAAC-120
-sourceRules: ["V-35", "§4.1.2#r14", "FAAC-LOGIC-02e", "F-FAAC-01.k7", "V-36", "§4.1.2#r15", "FAAC-LOGIC-02f", "V-28", "§4.1.2#r20", "F-FAAC-01.k8", "§4.2f#b2", "§4.1.2#p11"]
+sourceRules: ["V-35", "§4.1.2#r14", "FAAC-LOGIC-02e", "F-FAAC-01.k7", "V-36", "§4.1.2#r15", "FAAC-LOGIC-02f", "FAAC-LOGIC-02l", "V-28", "§4.1.2#r20", "F-FAAC-01.k8", "§4.2f#b2", "§4.1.2#p11"]
 smoke: []
 dependsOn: []
 trace:
@@ -20,6 +20,7 @@ trace:
   "V-36": 16
   "§4.1.2#r15": 18
   "FAAC-LOGIC-02f": 19
+  "FAAC-LOGIC-02l": [16, 19]
   "V-28": 25
   "§4.1.2#r20": [28, 29]
   "F-FAAC-01.k8": 30

@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Tax Depreciation Class
 
-Sumber: `fixed-asset/tax-depreciation-class/TestCases/tc-tax-depreciation-class.md` (934 TC aktif `TC-FA-TDC-1`–`934`, sha256 `4d13bf8c03ad4c29ea74a962facdc5cb8ab39e36c6200fdeb9c3d2cc9ad36560`). Suite: `specs/FixedAsset/TaxDepreciationClass/`. Prefix: `FA` + `TDC` (`TC-FA-TDC-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-tax-depreciation-class-backend.md`.
+Sumber: `fixed-asset/tax-depreciation-class/TestCases/tc-tax-depreciation-class.md` (963 TC aktif `TC-FA-TDC-1`–`967` tanpa TC-349, 581, 582, dan 745 yang dihapus pada 2026-11-20; TC-935 s/d TC-961 (27 TC, perubahan 2026-11-11) belum dipetakan ke spec, sha256 `4b1b300e4f9bfd2a39281528a8cb3f951b4c0a7abda26120b5bf1bd1e152bbd1`). Suite: `specs/FixedAsset/TaxDepreciationClass/`. Prefix: `FA` + `TDC` (`TC-FA-TDC-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-tax-depreciation-class-backend.md`.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 934 TC masuk 272 spec (226 nomor rencana 001-226, 30 dari 32 nomor cadangan 227-258, 2 cadangan tidak terpakai: 230, 254, dan 16 nomor tambahan 259-274: 259-263 dari keputusan user 2026-11-04, 264 dari fix pass 1, dan 265-274 dari fix pass 2), tidak ada TC hanya-BE. Setiap TC terpetakan satu spec primer (diverifikasi dengan skrip: tidak ada TC hilang atau ID asing); 70 TC kelas a juga muncul di `sourceTc` satu spec absence (14 spec: 260-263 dan 265-274) untuk klausa "tidak ada entri log baru" (lihat "Pembagian TC lintas spec"), dan "Lapisan per TC" menunjuk spec primer. Semua spec bermode FE+BE. Kegagalan 5xx, timeout, dan 429 dipaksa lewat `Spectra.intercept()` di atas backend nyata karena asersinya memuat state server (Q-06). Spec 185 dan 186 (TC Android) memakai `coverage.mobile` saja; spec lain `coverage.web`. Kolom TC sumber memakai nomor TC (`TC-FA-TDC-n`); urutan TC dalam satu spec mengikuti `## Test Steps`, yang kadang berbeda dari urutan nomor.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 936 TC (dari 963 TC aktif; TC-935 s/d TC-961 belum dipetakan) masuk 276 spec (226 nomor rencana 001-226, 30 dari 32 nomor cadangan 227-258, 2 cadangan tidak terpakai: 230, 254, dan 20 nomor tambahan 259-278: 259-263 dari keputusan user 2026-11-04, 264 dari fix pass 1, 265-274 dari fix pass 2, dan 275-278 dari sinkronisasi TC 2026-11-20 untuk TC-962 s/d TC-967), tidak ada TC hanya-BE. Setiap TC terpetakan satu spec primer (diverifikasi dengan skrip: tidak ada TC hilang atau ID asing); 72 TC juga muncul di `sourceTc` satu spec absence (14 spec: 260-263 dan 265-274, ditambah spec 253 untuk TC-962; TC-964 di spec 270) untuk klausa "tidak ada entri log baru" (lihat "Pembagian TC lintas spec"), dan "Lapisan per TC" menunjuk spec primer. Semua spec bermode FE+BE. Kegagalan 5xx, timeout, dan 429 dipaksa lewat `Spectra.intercept()` di atas backend nyata karena asersinya memuat state server (Q-06). Spec 185 dan 186 (TC Android) memakai `coverage.mobile` saja; spec lain `coverage.web`. Kolom TC sumber memakai nomor TC (`TC-FA-TDC-n`); urutan TC dalam satu spec mengikuti `## Test Steps`, yang kadang berbeda dari urutan nomor.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -104,7 +104,7 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-090-cancel-version-batas-tahun-pajak-dan-time-zone-entitas | Cancel Version: Batas Tahun Pajak Dimulai Menurut Time Zone Entitas | FE+BE | 33 | 307, 308, 309, 310 |
 | TC-FA-TDC-E2E-091-seed-gagal-dan-job-j-01-harian-time-zone-entitas | Job J-01 Harian: Seed Tidak Dibuat Ulang Setelah Dihapus, Dicoba Ulang Setelah Gagal, pada 00:00 Menurut Time Zone Entitas | FE+BE | 26 | 340, 341, 342 |
 | TC-FA-TDC-E2E-092-job-j-02-menerapkan-versi-scheduled-pada-effective-from | Job J-02: Menerapkan Versi Scheduled Menjadi Current pada 00:00 Effective From Menurut Time Zone Entitas | FE+BE | 33 | 343, 344, 345, 346 |
-| TC-FA-TDC-E2E-093-job-j-02-class-inactive-job-gagal-dan-penanda-used-by | Job J-02: Class Inactive, Job Gagal Dicoba Lagi, dan Penanda Peringatan pada Modal Used By | FE+BE | 22 | 347, 348, 349 |
+| TC-FA-TDC-E2E-093-job-j-02-class-inactive-dan-job-gagal-dicoba-lagi | Job J-02: Class Inactive dan Job Gagal Dicoba Lagi | FE+BE | 16 | 347, 348 |
 | TC-FA-TDC-E2E-094-hari-ini-menurut-time-zone-entitas-bukan-utc-dan-versi-pertama | Hari Ini Menurut Time Zone Entitas Menentukan Versi Current atau Scheduled dan Versi Pertama Tidak Mengunci Fiscal Year Start | FE+BE | 26 | 350, 351, 352 |
 | TC-FA-TDC-E2E-095-job-j-03-last-posted-tax-year-memajukan-nilai-dan-kunci-class-code | Job J-03: Posting Penyusutan Fiskal Memajukan Last Posted Tax Year dan Mengunci Class Code | FE+BE | 26 | 353, 354, 355, 356, 357 |
 | TC-FA-TDC-E2E-096-log-job-j-02-j-03-modified-by-system-dan-job-dua-kali | Log Job J-02 (L-08) dan J-03 (L-10): Modified By System di Changelog dan Activity Log, Tidak di System Log, serta J-02 Dua Kali Tidak Menulis Log Ganda | FE+BE | 49 | 690, 691, 692, 693, 913 |
@@ -174,10 +174,10 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-160-download-isi-berkas-kolom-tampil-teks-active-strip-format-effective-from-dan-angka | Download Isi Berkas: Kolom Tampil, Teks Active, Strip, Format Effective From, dan Angka | FE+BE | 32 | 569, 570, 571, 572, 573 |
 | TC-FA-TDC-E2E-161-download-isi-berkas-modified-by-bom-escaping-urutan-dan-hasil-kosong | Download Isi Berkas: Modified By, BOM, Escaping, Urutan, dan Hasil Kosong | FE+BE | 30 | 574, 575, 576, 577 |
 | TC-FA-TDC-E2E-162-download-gagal-toast-error-tabel-used-by-dan-changelog | Download Gagal: Toast Error Tabel, Used By, dan Changelog | FE+BE | 24 | 578, 594, 930 |
-| TC-FA-TDC-E2E-163-popup-used-by-screening-isi-kolom-dan-penanda-warning | Popup Used By: Screening, Isi Kolom, dan Penanda Warning | FE+BE | 28 | 579, 580, 581, 582 |
+| TC-FA-TDC-E2E-163-popup-used-by-screening-dan-isi-kolom | Popup Used By: Screening dan Isi Kolom | FE+BE | 16 | 579, 580 |
 | TC-FA-TDC-E2E-164-popup-used-by-search-sort-pagination-dan-empty-state-hasil | Popup Used By: Search, Sort, Pagination, dan Empty State Hasil | FE+BE | 31 | 583, 584, 585, 587, 588 |
 | TC-FA-TDC-E2E-165-popup-used-by-menutup-dan-hanya-dibuka-dari-angka-lebih-dari-nol | Popup Used By: Menutup dan Hanya Dibuka dari Angka Lebih dari Nol | FE+BE | 13 | 589, 590 |
-| TC-FA-TDC-E2E-166-popup-used-by-download-opsi-nama-berkas-dan-isi-tanpa-penanda-warning | Popup Used By Download: Opsi, Nama Berkas, dan Isi Tanpa Penanda Warning | FE+BE | 38 | 591, 592, 593, 929 |
+| TC-FA-TDC-E2E-166-popup-used-by-download-opsi-nama-berkas-dan-isi-berkas | Popup Used By Download: Opsi, Nama Berkas, dan Isi Berkas | FE+BE | 38 | 591, 592, 593, 929 |
 | TC-FA-TDC-E2E-167-popup-used-by-column-visibility-dan-setup-column-screening-reset-dan-tutup-tanpa-save | Popup Used By: Column Visibility, Setup Column Screening, Reset, dan Tutup Tanpa Save | FE+BE | 40 | 595, 596, 600, 601 |
 | TC-FA-TDC-E2E-168-popup-used-by-setup-column-ceklis-unceklis-dan-guard-satu-kolom-tersisa | Popup Used By Setup Column: Ceklis dan Unceklis serta Guard Satu Kolom Tersisa | FE+BE | 33 | 597, 602 |
 | TC-FA-TDC-E2E-169-popup-versions-screening-badge-status-isi-kolom-dan-class-land | Popup Versions: Screening, Badge Status, Isi Kolom, dan Class Land | FE+BE | 32 | 603, 604, 605, 606 |
@@ -213,7 +213,7 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-199-asset-class-dropdown-hanya-class-active-serta-aktivasi-deaktivasi-dan-penghapusan-class | Asset Class: Dropdown Tax Depreciation Class Hanya Memuat Class Active dan Mengikuti Aktivasi, Deaktivasi, dan Penghapusan | FE+BE | 39 | 725, 726, 727, 728 |
 | TC-FA-TDC-E2E-200-asset-class-tax-method-useful-life-rate-dan-opsi-land | Asset Class: Opsi Tax Method, Useful Life dan Rate, serta Opsi Class Land | FE+BE | 32 | 733, 734, 735, 736, 737, 738, 739 |
 | TC-FA-TDC-E2E-201-used-by-bertambah-berkurang-dihapus-inactive-dan-banyak-asset-name | Used By: Bertambah, Berkurang, Asset Class Dihapus, Asset Class Inactive, dan Banyak Asset Name | FE+BE | 45 | 740, 741, 742, 743, 744 |
-| TC-FA-TDC-E2E-202-used-by-penanda-warning-guard-deactivate-delete-lolos-dan-label-modal | Used By: Penanda Warning Hilang, Guard Deactivate dan Delete Menjadi Lolos, dan Label Modal Mengikuti Class Name | FE+BE | 50 | 745, 746, 747, 748 |
+| TC-FA-TDC-E2E-202-used-by-guard-deactivate-delete-lolos-dan-label-modal | Used By: Guard Deactivate dan Delete Menjadi Lolos, dan Label Modal Mengikuti Class Name | FE+BE | 37 | 746, 747, 748 |
 | TC-FA-TDC-E2E-203-fiscal-year-start-terkunci-oleh-versi-bertanggal | Preferences: Fiscal Year Start Terkunci oleh Versi Bertanggal dan Tidak Terkunci oleh Versi Pertama | FE+BE | 41 | 749, 750, 751, 752 |
 | TC-FA-TDC-E2E-204-fiscal-year-start-terbuka-kembali-dan-pilihan-effective-from-mengikuti | Preferences: Fiscal Year Start Terbuka Kembali dan Pilihan Effective From Mengikuti Fiscal Year Start | FE+BE | 68 | 753, 754, 755, 924, 925 |
 | TC-FA-TDC-E2E-205-sinkron-tab-asset-class-activity-log-approval-dan-lifecycle-aset | Sinkronisasi Lintas Modul: Tab Asset Class, Activity Log, Approvals, Asset Name, dan Lifecycle Aset | FE+BE | 59 | 770, 777, 778, 784, 785, 786 |
@@ -231,7 +231,7 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-217-request-langsung-starter-suspended-bypass-ui-dan-rate-dari-klien-diabaikan | Request Langsung: Plan Starter dan Entitas Suspended Ditolak serta Rate dari Klien Diabaikan | FE+BE | 27 | 173, 831, 888 |
 | TC-FA-TDC-E2E-218-request-langsung-pemanggil-terotorisasi-tercatat-di-tiga-surface | Request Langsung Pemanggil Terotorisasi Tercatat di Tiga Surface: Create, Deactivate, dan Delete | FE+BE | 36 | 832, 833, 909 |
 | TC-FA-TDC-E2E-219-request-langsung-guard-deactivate-delete-dan-bulk-hanya-yang-lolos | Request Langsung: Guard Deactivate dan Delete serta Bulk Memproses Hanya Class yang Lolos | FE+BE | 31 | 834, 835, 836, 837, 838 |
-| TC-FA-TDC-E2E-220-request-langsung-asset-type-class-code-terkunci-persempit-land-building | Request Langsung: Asset Type, Class Code Terkunci, Persempit Allowed Methods, serta Land dan Building Ditolak | FE+BE | 26 | 839, 840, 841, 842, 843 |
+| TC-FA-TDC-E2E-220-request-langsung-asset-type-class-code-terkunci-persempit-land-building | Request Langsung: Asset Type, Class Code Terkunci, Persempit Allowed Methods, serta Land dan Building Ditolak | FE+BE | 32 | 839, 840, 841, 842, 843, 964 |
 | TC-FA-TDC-E2E-221-request-langsung-class-code-kembar-effective-from-dan-cancel-version | Request Langsung: Class Code Kembar, Effective From Tidak Valid, dan Cancel Version Ditolak | FE+BE | 29 | 844, 845, 846, 847, 848, 849 |
 | TC-FA-TDC-E2E-222-request-langsung-validasi-class-name-class-code-dan-regulation-reference | Request Langsung: Validasi Class Name, Class Code, dan Regulation Reference Ditolak Server | FE+BE | 25 | 851, 852, 853, 854, 855 |
 | TC-FA-TDC-E2E-223-request-langsung-validasi-useful-life-field-wajib-dan-rentang-effective-from | Request Langsung: Validasi Useful Life, Field Wajib, dan Rentang Effective From | FE+BE | 31 | 856, 857, 858, 926, 927, 928 |
@@ -263,7 +263,7 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-250-popup-used-by-setup-column-pin-dan-unpin-kolom | Popup Used By Setup Column: Pin dan Unpin Kolom | FE+BE | 18 | 599 |
 | TC-FA-TDC-E2E-251-popup-changelog-setup-column-ceklis-dan-unceklis-tujuh-kolom-default | Popup Changelog Setup Column: Ceklis dan Unceklis Tujuh Kolom Default | FE+BE | 16 | 642 |
 | TC-FA-TDC-E2E-252-popup-changelog-setup-column-pin-dan-unpin-tujuh-kolom-default | Popup Changelog Setup Column: Pin dan Unpin Tujuh Kolom Default | FE+BE | 18 | 644 |
-| TC-FA-TDC-E2E-253-absence-log-submit-save-ditolak-validasi-dan-d-08 | Absence Log: Submit dan Save yang Ditolak (Validasi Create dan Edit, Dialog D-08) Tidak Menulis Entri | FE+BE | 41 | 695, 696 |
+| TC-FA-TDC-E2E-253-absence-log-submit-save-ditolak-validasi-dan-d-08 | Absence Log: Submit dan Save yang Ditolak (Validasi Create dan Edit, Dialog D-08) Tidak Menulis Entri | FE+BE | 54 | 695, 696, 962 |
 | TC-FA-TDC-E2E-255-asset-class-dropdown-class-baru-nama-diubah-restore-dan-disabled-tanpa-class-active | Asset Class: Dropdown Tax Depreciation Class Mengikuti Class Baru, Nama Diubah, Restore, dan Disabled Tanpa Class Active | FE+BE | 47 | 729, 730, 731, 732 |
 | TC-FA-TDC-E2E-256-versi-baru-current-scheduled-dan-allowed-methods-dipersempit-pada-asset-class-pemakai | Asset Class Pemakai: Versi Current dan Scheduled Memengaruhi Useful Life dan Rate, serta Allowed Methods Dipersempit | FE+BE | 37 | 788, 789, 790 |
 | TC-FA-TDC-E2E-257-bypass-ui-edit-building-declining-balance-dan-land-terisi-ditolak-server | Bypass UI Edit: Building dengan Declining Balance dan Land Terisi Ditolak Server | FE+BE | 16 | 244, 245 |
@@ -279,11 +279,15 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-267-absence-log-request-langsung-role-matrix-create-dan-edit-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Role Matrix Create dan Edit yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 12 | 815, 816, 817, 818, 819, 820, 821, 822 |
 | TC-FA-TDC-E2E-268-absence-log-request-langsung-role-matrix-cancel-scheduled-version-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Role Matrix Cancel Scheduled Version yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 6 | 823, 824, 825, 826 |
 | TC-FA-TDC-E2E-269-absence-log-request-langsung-role-matrix-restore-default-classes-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Role Matrix Restore Default Classes pada Tabel Kosong yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 8 | 827, 828, 829, 830 |
-| TC-FA-TDC-E2E-270-absence-log-request-langsung-effective-from-dan-allowed-methods-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Allowed Methods dan Effective From Tidak Valid yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 30 | 841, 845, 846, 927 |
+| TC-FA-TDC-E2E-270-absence-log-request-langsung-effective-from-dan-allowed-methods-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Allowed Methods dan Effective From Tidak Valid yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 38 | 841, 845, 846, 927, 964 |
 | TC-FA-TDC-E2E-271-absence-log-request-langsung-cancel-version-dan-effective-from-sebelum-tahun-pajak-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Cancel Version dan Effective From Sebelum Tahun Pajak Berjalan yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 22 | 848, 849, 928 |
 | TC-FA-TDC-E2E-272-absence-log-request-langsung-create-payload-tidak-valid-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Create dengan Payload Tidak Valid yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 6 | 851, 852, 853, 854, 855, 856, 857, 858 |
 | TC-FA-TDC-E2E-273-absence-log-request-langsung-create-melanggar-aturan-data-ditolak-tidak-menulis-entri | Absence Log: Request Langsung Create yang Melanggar Aturan Data (Land, Building, Class Code Kembar) yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 18 | 842, 843, 844 |
 | TC-FA-TDC-E2E-274-absence-log-bypass-ui-edit-ditolak-server-tidak-menulis-entri | Absence Log: Edit Hasil Bypass UI (Building dengan Declining Balance dan Land Terisi) yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log | FE+BE | 20 | 244, 245 |
+| TC-FA-TDC-E2E-275-d-08-versi-scheduled-asset-class-blok-save-dan-daftar-satu-kali-per-asset-class | Dialog D-08 karena Versi Scheduled Asset Class: Blok Save dan Daftar Satu Kali per Asset Class | FE+BE | 27 | 962, 965 |
+| TC-FA-TDC-E2E-276-konflik-d-09-d-08-versi-scheduled-asset-class-terbentuk-antara-save-dan-apply | Konflik D-09 dan D-08: Versi Scheduled Asset Class Terbentuk Antara Save dan Apply | FE+BE | 18 | 963 |
+| TC-FA-TDC-E2E-277-picker-tax-method-asset-class-disabled-dan-tooltip-karena-versi-scheduled | Picker Tax Method Asset Class: Metode yang Dibuang Versi Scheduled Disabled dengan Tooltip | FE+BE | 23 | 966 |
+| TC-FA-TDC-E2E-278-picker-tax-method-asset-class-pulih-setelah-cancel-scheduled-version | Picker Tax Method Asset Class: Metode yang Semula Disabled Dapat Dipilih Lagi Setelah Cancel Scheduled Version | FE+BE | 26 | 967 |
 
 ## Pembagian TC lintas spec
 
@@ -331,7 +335,7 @@ Nomor cadangan terpakai (30): 227-229, 231-253, 255-258. Nomor cadangan tidak te
 
 ## Spec yang melewati ~35 langkah
 
-Jumlah langkah dihitung dari baris bernomor pada `## Test Steps` (nominal; perulangan idiom 8b.7 tidak diekspansi). 79 dari 272 spec melewati ~35 langkah, terutama karena S-01 (satu `Verifikasi` per klausa Expected) membuat langkah jauh di atas perkiraan Est rencana, sedangkan nomor cadangan tiap slice sudah habis. Alasan tertulis di Notes tiap spec; ringkasannya:
+Jumlah langkah dihitung dari baris bernomor pada `## Test Steps` (nominal; perulangan idiom 8b.7 tidak diekspansi). 80 dari 276 spec melewati ~35 langkah, terutama karena S-01 (satu `Verifikasi` per klausa Expected) membuat langkah jauh di atas perkiraan Est rencana, sedangkan nomor cadangan tiap slice sudah habis. Alasan tertulis di Notes tiap spec; ringkasannya:
 
 | Spec | Langkah | Alasan penulis |
 |---|:---:|---|
@@ -344,10 +348,10 @@ Jumlah langkah dihitung dari baris bernomor pada `## Test Steps` (nominal; perul
 | 205 | 59 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
 | 155 | 57 | perulangan per kolom/field (8b.7), satu topik |
 | 188 | 55 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
+| 253 | 54 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
 | 135 | 51 | kelas c (dua sesi): blok berdiri sendiri dengan seed ulang |
 | 146 | 51 | satu topik; satu Verifikasi per klausa (S-01); blok berdiri sendiri |
 | 108 | 50 | kelas b (kegagalan dipaksa): satu klausa per Verifikasi, blok berdiri sendiri |
-| 202 | 50 | perulangan per kolom/field (8b.7), satu topik |
 | 096 | 49 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
 | 196 | 49 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
 | 122 | 47 | alasan tertulis di Notes spec |
@@ -375,7 +379,6 @@ Jumlah langkah dihitung dari baris bernomor pada `## Test Steps` (nominal; perul
 | 060 | 41 | satu topik; satu Verifikasi per klausa (S-01); blok berdiri sendiri |
 | 078 | 41 | alasan tertulis di Notes spec |
 | 203 | 41 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
-| 253 | 41 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
 | 004 | 40 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
 | 077 | 40 | alasan tertulis di Notes spec |
 | 105 | 40 | kelas b (kegagalan dipaksa): satu klausa per Verifikasi, blok berdiri sendiri |
@@ -402,6 +405,8 @@ Jumlah langkah dihitung dari baris bernomor pada `## Test Steps` (nominal; perul
 | 147 | 38 | satu topik; satu Verifikasi per klausa (S-01); blok berdiri sendiri |
 | 166 | 38 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
 | 224 | 38 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
+| 270 | 38 | blok baca-log berpola pada tiga surface log; satu topik pencatatan log |
+| 202 | 37 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
 | 034 | 37 | kelas h (write-lockdown): asersi penolakan sama, blok berdiri sendiri |
 | 089 | 37 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
 | 101 | 37 | satu topik dan blok berdiri sendiri; langkah berulang berupa navigasi/seeding |
@@ -865,7 +870,6 @@ Setelah audit ulang, spec diperbaiki dalam fix pass kedua: temuan, keputusan, da
 | TC-FA-TDC-346 | TC-FA-TDC-E2E-092 | FE+BE |
 | TC-FA-TDC-347 | TC-FA-TDC-E2E-093 | FE+BE |
 | TC-FA-TDC-348 | TC-FA-TDC-E2E-093 | FE+BE |
-| TC-FA-TDC-349 | TC-FA-TDC-E2E-093 | FE+BE |
 | TC-FA-TDC-350 | TC-FA-TDC-E2E-094 | FE+BE |
 | TC-FA-TDC-351 | TC-FA-TDC-E2E-094 | FE+BE |
 | TC-FA-TDC-352 | TC-FA-TDC-E2E-094 | FE+BE |
@@ -1097,8 +1101,6 @@ Setelah audit ulang, spec diperbaiki dalam fix pass kedua: temuan, keputusan, da
 | TC-FA-TDC-578 | TC-FA-TDC-E2E-162 | FE+BE |
 | TC-FA-TDC-579 | TC-FA-TDC-E2E-163 | FE+BE |
 | TC-FA-TDC-580 | TC-FA-TDC-E2E-163 | FE+BE |
-| TC-FA-TDC-581 | TC-FA-TDC-E2E-163 | FE+BE |
-| TC-FA-TDC-582 | TC-FA-TDC-E2E-163 | FE+BE |
 | TC-FA-TDC-583 | TC-FA-TDC-E2E-164 | FE+BE |
 | TC-FA-TDC-584 | TC-FA-TDC-E2E-164 | FE+BE |
 | TC-FA-TDC-585 | TC-FA-TDC-E2E-164 | FE+BE |
@@ -1261,7 +1263,6 @@ Setelah audit ulang, spec diperbaiki dalam fix pass kedua: temuan, keputusan, da
 | TC-FA-TDC-742 | TC-FA-TDC-E2E-201 | FE+BE |
 | TC-FA-TDC-743 | TC-FA-TDC-E2E-201 | FE+BE |
 | TC-FA-TDC-744 | TC-FA-TDC-E2E-201 | FE+BE |
-| TC-FA-TDC-745 | TC-FA-TDC-E2E-202 | FE+BE |
 | TC-FA-TDC-746 | TC-FA-TDC-E2E-202 | FE+BE |
 | TC-FA-TDC-747 | TC-FA-TDC-E2E-202 | FE+BE |
 | TC-FA-TDC-748 | TC-FA-TDC-E2E-202 | FE+BE |
@@ -1451,3 +1452,9 @@ Setelah audit ulang, spec diperbaiki dalam fix pass kedua: temuan, keputusan, da
 | TC-FA-TDC-932 | TC-FA-TDC-E2E-190 | FE+BE |
 | TC-FA-TDC-933 | TC-FA-TDC-E2E-184 | FE+BE |
 | TC-FA-TDC-934 | TC-FA-TDC-E2E-075 | FE+BE |
+| TC-FA-TDC-962 | TC-FA-TDC-E2E-275 | FE+BE |
+| TC-FA-TDC-963 | TC-FA-TDC-E2E-276 | FE+BE |
+| TC-FA-TDC-964 | TC-FA-TDC-E2E-220 | FE+BE |
+| TC-FA-TDC-965 | TC-FA-TDC-E2E-275 | FE+BE |
+| TC-FA-TDC-966 | TC-FA-TDC-E2E-277 | FE+BE |
+| TC-FA-TDC-967 | TC-FA-TDC-E2E-278 | FE+BE |

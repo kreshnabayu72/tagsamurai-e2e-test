@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Asset Class
 
-Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (739 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
+Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (746 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
 Suite: `specs/FixedAsset/AssetClass/` (beserta `suite.md`).
 Prefix Modul: `FA` + `AC` (`TC-FA-FAAC-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (198 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (206 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -95,8 +95,8 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-082-mode-create-draft-asset-name-hapus-satu-dan-clear-field | Mode Create: Hapus Satu Draft Asset Name dan Clear Field Membuang Seluruh Draft | FE+BE | 16 | TC-FA-FAAC-257, TC-FA-FAAC-258 |
 | TC-FA-FAAC-E2E-083-mode-create-draft-asset-name-unsaved-changes-cancel-dan-leave | Mode Create: Draft Asset Name sebagai Perubahan Belum Disimpan pada Dialog Unsaved Changes | FE+BE | 17 | TC-FA-FAAC-260, TC-FA-FAAC-261 |
 | TC-FA-FAAC-E2E-084-mode-create-draft-asset-name-submit | Mode Create: Submit Asset Class Baru dengan Draft Asset Name | FE+BE | 39 | TC-FA-FAAC-259, TC-FA-FAAC-654, TC-FA-FAAC-655 |
-| TC-FA-FAAC-E2E-085-edit-kasus-tepi-kapitalisasi-class-code-dan-tax-depreciation-class | Edit Asset Class: Kapitalisasi Class Code serta Tax Depreciation Class dan Tax Method yang Tidak Lagi Valid | FE+BE | 33 | TC-FA-FAAC-173, TC-FA-FAAC-179, TC-FA-FAAC-653 |
-| TC-FA-FAAC-E2E-086-duplicate-nilai-sumber-tidak-valid-dan-versi-scheduled | Duplicate Asset Class: Nilai Sumber Tidak Valid Dikosongkan dan Pre-fill dari Versi Terakhir | FE+BE | 31 | TC-FA-FAAC-265, TC-FA-FAAC-266, TC-FA-FAAC-674 |
+| TC-FA-FAAC-E2E-085-edit-kasus-tepi-kapitalisasi-class-code-dan-tax-depreciation-class | Edit Asset Class: Kapitalisasi Class Code dan Tax Depreciation Class yang Tidak Lagi Valid | FE+BE | 24 | TC-FA-FAAC-173, TC-FA-FAAC-179 |
+| TC-FA-FAAC-E2E-086-duplicate-nilai-sumber-tidak-valid-dan-versi-scheduled | Duplicate Asset Class: Nilai Sumber Tidak Valid Dikosongkan dan Pre-fill dari Versi Terakhir | FE+BE | 22 | TC-FA-FAAC-265, TC-FA-FAAC-674 |
 | TC-FA-FAAC-E2E-087-delete-guard-d05-d04-dan-deactivate-instead | Delete Guard D-05 dan D-04: Dialog Blok Asset Class yang Pernah Diposting dan Deactivate Instead | FE+BE | 22 | TC-FA-FAAC-216, TC-FA-FAAC-217, TC-FA-FAAC-218, TC-FA-FAAC-226 |
 | TC-FA-FAAC-E2E-088-delete-guard-asset-name-dialog-dan-berhasil | Delete Guard D-06 Asset Name, Cancel Dialog Delete, dan Delete Berhasil | FE+BE | 33 | TC-FA-FAAC-214, TC-FA-FAAC-215, TC-FA-FAAC-219, TC-FA-FAAC-220, TC-FA-FAAC-221 |
 | TC-FA-FAAC-E2E-089-delete-race-dan-halaman-terakhir | Delete: Cek Ulang Server Saat Kondisi Berubah dan Halaman Terakhir Setelah Delete | FE+BE | 26 | TC-FA-FAAC-223, TC-FA-FAAC-224, TC-FA-FAAC-703 |
@@ -209,6 +209,14 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-196-log-absence-request-langsung-asset-class-ditolak-server | Log Absence: Request Langsung Deactivate, Delete, Edit Class Code, dan Create Melampaui Batas yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 26 | TC-FA-FAAC-601, TC-FA-FAAC-602, TC-FA-FAAC-603, TC-FA-FAAC-604 |
 | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | Tab Asset Names: Caption per Mode dan Assign pada Mode Edit Berlaku Tanpa Save | FE+BE | 21 | TC-FA-FAAC-737, TC-FA-FAAC-736, TC-FA-FAAC-739 |
 | TC-FA-FAAC-E2E-198-role-matrix-caption-tab-asset-names-read-only | Role Matrix: Caption Tab Asset Names Tidak Tampil bagi Read Only | FE+BE | 6 | TC-FA-FAAC-738 |
+| TC-FA-FAAC-E2E-199-create-tax-method-opsi-disabled-tooltip-dan-metode-hanya-scheduled-tidak-ditawarkan | Create Asset Class: Opsi Tax Method di Luar Irisan Disabled dengan Tooltip dan Metode yang Hanya Ada di Versi Scheduled Tidak Ditawarkan | FE+BE | 25 | TC-FA-FAAC-740, TC-FA-FAAC-741 |
+| TC-FA-FAAC-E2E-200-create-tax-method-tooltip-versi-scheduled-paling-awal-dan-ganti-tax-depreciation-class | Create Asset Class: Tooltip Opsi Disabled Memakai Effective From Versi Scheduled Paling Awal dan Ganti Tax Depreciation Class Menghitung Ulang Tax Method | FE+BE | 29 | TC-FA-FAAC-742, TC-FA-FAAC-743 |
+| TC-FA-FAAC-E2E-201-create-tax-method-irisan-kosong-semua-opsi-disabled-dan-submit-ditolak | Create Asset Class: Irisan Tax Method Kosong Membuat Semua Opsi Disabled dan Submit Ditolak | FE+BE | 24 | TC-FA-FAAC-746 |
+| TC-FA-FAAC-E2E-202-use-recommended-classes-baris-tax-method-di-luar-irisan-disabled | Use Recommended Classes: Baris dengan Tax Method di Luar Irisan Disabled dengan Tooltip | FE+BE | 12 | TC-FA-FAAC-744 |
+| TC-FA-FAAC-E2E-203-edit-versi-scheduled-tax-method-memakai-irisan-yang-sama | Edit Asset Class: Versi Scheduled Memakai Irisan Tax Method yang Sama | FE+BE | 18 | TC-FA-FAAC-745 |
+| TC-FA-FAAC-E2E-204-defense-in-depth-request-langsung-tax-method-di-luar-irisan-ditolak-v-36 | Defense-in-Depth: Request Langsung dengan Tax Method di Luar Irisan Ditolak V-36 pada Create, Edit Versi Scheduled, dan Recommended Classes | FE+BE | 12 | TC-FA-FAAC-747 |
+| TC-FA-FAAC-E2E-205-sinkron-cancel-scheduled-version-tax-depreciation-class-menghitung-ulang-opsi-tax-method | Sinkronisasi Tax Depreciation Class: Membatalkan dan Membuat Versi Scheduled Menghitung Ulang Opsi Tax Method pada Asset Class | FE+BE | 38 | TC-FA-FAAC-748 |
+| TC-FA-FAAC-E2E-206-log-absence-request-langsung-tax-method-di-luar-irisan-ditolak-server | Log Absence: Request Langsung dengan Tax Method di Luar Irisan yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 12 | TC-FA-FAAC-747 |
 
 ## 2. Daftar TC hanya-BE (Excluded dari E2E — 0 TC)
 
@@ -485,7 +493,6 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-263 | E2E | TC-FA-FAAC-E2E-080-duplicate-asset-class | FE+BE |
 | TC-FA-FAAC-264 | E2E | TC-FA-FAAC-E2E-080-duplicate-asset-class | FE+BE |
 | TC-FA-FAAC-265 | E2E | TC-FA-FAAC-E2E-086-duplicate-nilai-sumber-tidak-valid-dan-versi-scheduled | FE+BE |
-| TC-FA-FAAC-266 | E2E | TC-FA-FAAC-E2E-086-duplicate-nilai-sumber-tidak-valid-dan-versi-scheduled | FE+BE |
 | TC-FA-FAAC-267 | E2E | TC-FA-FAAC-E2E-059-batas-jumlah-asset-class-master-data-count-limit | FE+BE |
 | TC-FA-FAAC-268 | E2E | TC-FA-FAAC-E2E-096-aksi-form-dan-status-pada-asset-class-dihapus-pengguna-lain | FE+BE |
 | TC-FA-FAAC-269 | E2E | TC-FA-FAAC-E2E-183-resilience-create-edit-duplicate | FE+BE |
@@ -888,7 +895,6 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-650 | E2E | TC-FA-FAAC-E2E-169-sinkron-tax-depreciation-class-dan-used-by | FE+BE |
 | TC-FA-FAAC-651 | E2E | TC-FA-FAAC-E2E-169-sinkron-tax-depreciation-class-dan-used-by | FE+BE |
 | TC-FA-FAAC-652 | E2E | TC-FA-FAAC-E2E-169-sinkron-tax-depreciation-class-dan-used-by | FE+BE |
-| TC-FA-FAAC-653 | E2E | TC-FA-FAAC-E2E-085-edit-kasus-tepi-kapitalisasi-class-code-dan-tax-depreciation-class | FE+BE |
 | TC-FA-FAAC-654 | E2E | TC-FA-FAAC-E2E-084-mode-create-draft-asset-name-submit | FE+BE |
 | TC-FA-FAAC-655 | E2E | TC-FA-FAAC-E2E-084-mode-create-draft-asset-name-submit | FE+BE |
 | TC-FA-FAAC-656 | E2E | TC-FA-FAAC-E2E-129-download-isi-berkas-csv-xlsx | FE+BE |
@@ -959,10 +965,20 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-737 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
 | TC-FA-FAAC-738 | E2E | TC-FA-FAAC-E2E-198-role-matrix-caption-tab-asset-names-read-only | FE+BE |
 | TC-FA-FAAC-739 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
+| TC-FA-FAAC-740 | E2E | TC-FA-FAAC-E2E-199-create-tax-method-opsi-disabled-tooltip-dan-metode-hanya-scheduled-tidak-ditawarkan | FE+BE |
+| TC-FA-FAAC-741 | E2E | TC-FA-FAAC-E2E-199-create-tax-method-opsi-disabled-tooltip-dan-metode-hanya-scheduled-tidak-ditawarkan | FE+BE |
+| TC-FA-FAAC-742 | E2E | TC-FA-FAAC-E2E-200-create-tax-method-tooltip-versi-scheduled-paling-awal-dan-ganti-tax-depreciation-class | FE+BE |
+| TC-FA-FAAC-743 | E2E | TC-FA-FAAC-E2E-200-create-tax-method-tooltip-versi-scheduled-paling-awal-dan-ganti-tax-depreciation-class | FE+BE |
+| TC-FA-FAAC-744 | E2E | TC-FA-FAAC-E2E-202-use-recommended-classes-baris-tax-method-di-luar-irisan-disabled | FE+BE |
+| TC-FA-FAAC-745 | E2E | TC-FA-FAAC-E2E-203-edit-versi-scheduled-tax-method-memakai-irisan-yang-sama | FE+BE |
+| TC-FA-FAAC-746 | E2E | TC-FA-FAAC-E2E-201-create-tax-method-irisan-kosong-semua-opsi-disabled-dan-submit-ditolak | FE+BE |
+| TC-FA-FAAC-747 | E2E | TC-FA-FAAC-E2E-204-defense-in-depth-request-langsung-tax-method-di-luar-irisan-ditolak-v-36 | FE+BE |
+| TC-FA-FAAC-747 | E2E | TC-FA-FAAC-E2E-206-log-absence-request-langsung-tax-method-di-luar-irisan-ditolak-server | FE+BE |
+| TC-FA-FAAC-748 | E2E | TC-FA-FAAC-E2E-205-sinkron-cancel-scheduled-version-tax-depreciation-class-menghitung-ulang-opsi-tax-method | FE+BE |
 
 ## 4. Pertanyaan terbuka dan Temuan untuk QA
 
-Spec yang memuat butir "Temuan untuk QA" di Notes: 182 dari seluruh spec. Temuan ditulis di Notes tiap spec; TC sumber tidak ditambal diam-diam. Status keputusan: D-1 (klausa log kelas g) dan D-2 (breadcrumb untuk form halaman penuh) diputuskan 2026-11-04 dan diterapkan di konvensi serta fix pass 1; butir lain di bawah belum diputuskan.
+Spec yang memuat butir "Temuan untuk QA" di Notes: 191 dari seluruh spec. Temuan ditulis di Notes tiap spec; TC sumber tidak ditambal diam-diam. Status keputusan: D-1 (klausa log kelas g) dan D-2 (breadcrumb untuk form halaman penuh) diputuskan 2026-11-04 dan diterapkan di konvensi serta fix pass 1; butir lain di bawah belum diputuskan.
 
 ### 4.1 Pertanyaan terbuka (butuh keputusan QA/FE)
 
@@ -977,11 +993,11 @@ Spec yang memuat butir "Temuan untuk QA" di Notes: 182 dari seluruh spec. Temuan
 
 ### 4.2 Spec di atas ~35 langkah (alasan di Notes tiap spec)
 
-Nomor cadangan tiap slice habis. Terbesar: 170 (127), 123 (~100 terekspansi), 171 (105), 168 (88), 169 (85), 166 (83), 167 (78), 060 (63), 185 (60), 010 (59), 159 (57), 005 (54), 059 (54), 105 (50), 155 (50), 180 (50). Memecahnya butuh nomor spec tambahan atau fix pass; audit bisa menolak alasan pada spec seperti 155, 148/149, 185.
+Nomor cadangan tiap slice habis. Terbesar: 170 (127), 123 (~100 terekspansi), 171 (105), 168 (88), 169 (85), 166 (83), 167 (78), 060 (63), 185 (60), 010 (59), 159 (57), 005 (54), 059 (54), 105 (50), 155 (50), 180 (50), 205 (38). Memecahnya butuh nomor spec tambahan atau fix pass; audit bisa menolak alasan pada spec seperti 155, 148/149, 185.
 
 ### 4.3 Temuan TC sumber utama
 
-- TC-100, 129, 118-120 (Manual Only (d)), 125, 128, 179, 653, 265, 266: pengamatan atau langkah tidak lengkap; spec memakai kemampuan BE atau teks PRD §6.
+- TC-100, 129, 118-120 (Manual Only (d)), 125, 128, 179, 265: pengamatan atau langkah tidak lengkap; spec memakai kemampuan BE atau teks PRD §6.
 - TC-144 vs 145 (B-PE6/B-PE7), TC-401 (refresh), TC-434 (urutan Z-A), TC-439 (judul Filter, langkah Search), TC-705/706 (bergantung TC-704), TC-611 (judul Suspended atau Expired, hanya Suspended diuji), TC-607 (judul klik ganda Save, langkah Apply dan Create).
 - TC-40: spec hanya memeriksa fokus keyboard pada toggle Active.
 
@@ -1013,3 +1029,7 @@ Menutup H1-1, H1-2, H2-1..H2-3 (rujukan langkah 084, pemulihan Meeting Table 072
 
 Menutup J-1 (169) dan J-2 (169, 170, 190: Create/Submit dan aksi di Detail tetap di Detail; kembali ke tabel lewat breadcrumb), R3-a (147 zona waktu) dan TC-569/650-652 (T-S5). Save tanpa versi Scheduled kembali ke tabel (PRD asset-class.md ~L373-375), jadi Save lalu Search di tabel (170) tidak diubah. Tanpa audit atau delta lanjutan atas permintaan user. Asumsi UI yang belum terbukti: Search bertahan lewat breadcrumb (170 langkah 14, 190 langkah 27), Search bertahan antar-tab (TC-415).
 
+
+### 4.11 Sinkron perubahan TC 2026-11-20 (irisan Tax Method)
+
+Tax Method dibatasi irisan metode versi Current dan semua versi Scheduled Tax Depreciation Class. TC-653 dihapus (spec 085 kehilangan blok keadaan Tax Method tersimpan yang tidak diizinkan; langkah dan trace dinomori ulang). TC-266 dihapus (aturan Duplicate yang mengosongkan Tax Method di luar irisan dicabut; spec 086 kehilangan blok TC-266 dan seed `B-DUPTM`); TC-119 dan TC-126/127 (spec 043, 045) hanya menambah rujukan FAAC-LOGIC-02l. TC baru 740-748 masuk spec 199-206: 199 (740, 741), 200 (742, 743), 201 (746), 202 (744), 203 (745), 204 (747 respons dan state data), 205 (748, di atas 35 langkah dengan alasan di Notes), 206 (747 klausa tidak ada log, pasangan S-05 dengan 204). Seed baru: `Seed Irisan A` sampai `D` dan `B-IRISAN` (nama literal tanpa suffix, disediakan fixture BE di bawah suite serial). Asumsi yang belum terbukti: cara pembuatan versi Scheduled `Seed Irisan A` pada tab Tax Depreciation Class (spec 205) dan nilai field wajib lain permintaan Create TC-747 (spec 204, 206).
