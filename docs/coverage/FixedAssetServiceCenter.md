@@ -6,7 +6,7 @@ Plan, unit PRD, data, dan vonis per unit: `docs/spec-from-prd/FixedAssetServiceC
 
 - Putaran: 3. Unit dinilai: 872 (ok 705, parsial 37, hilang 0, salah 0, na 130).
 - Skor: 97.5% (ok + setengah parsial, dibagi unit berperilaku).
-- Spec `ready-for-automation`: 78. Spec tetap `draft`: 0.
+- Spec `ready-for-automation`: 77. Spec `draft`: 4 (UI-056 disunting dan E2E-079, E2E-080, BE-081 ditambah sesudah putaran 3; belum diaudit, lihat «Revisi File Manager dan Storage»). Skor dan hitungan unit di atas berasal dari putaran 3 dan belum memuat revisi itu.
 
 ## Keputusan pemilik PRD (31)
 
@@ -143,11 +143,28 @@ Spec yang memuatnya benar, tetapi klausa di bawah belum diasersi. Ini yang menur
 - unit `T-FASVC-02` (parsial; kurang; langkah 8, 9, 10, 11): Sort per kolom tab Usage selain default tidak diuji (kolom Sort: Alphabetical A-Z, Reference Natural, Finished At Newest/Oldest First, Cost Numeric). Hanya urutan default Finished At terbaru (langkah 8-11). Filter per kolom (Type, Name, Brand, Group, Status, Result, Recorded By, Cost, Finished At manual) juga hanya diasersi keberadaan label dan placeholder-nya (langkah 22-34), bukan hasil penyaringannya; tidak ada spec ui-e2e yang menerapkannya di tab Usage.
 - unit `T-FASVC-03` (parsial; kurang; langkah 79, 80, 81, 82): Sort per kolom Changelog selain default tidak diuji: PRD §4.1c mensyaratkan Date Newest/Oldest First, Action dan Field A-Z, Service Center Name A-Z case-insensitive, Old/New Value mengikuti §9.15, Modified By A-Z menurut nama lengkap. Langkah 79-82 hanya mengklik header `Action` untuk memeriksa nomor halaman, tanpa urutan baris; E2E-016 hanya menguji urutan default Date terbaru (langkah 34). Tambahkan asersi urutan hasil klik header (minimal Service Center Name case-insensitive dan Modified By menurut nama lengkap).
 
-## Spec yang tetap draft (0)
+## Revisi File Manager dan Storage (2026-11-20, disunting tangan)
 
-Asersi yang masih salah atau tidak bisa dijalankan sesudah perbaikan penutup.
+Sumber: `fixed-asset/service-center/PRD/service-center.md` (`FASVC-LOGIC-13a` sampai `13e`, `FASVC-LOGIC-06d`, `RX-FASVC-02`, `RX-FASVC-33`, `RX-FASVC-34`, `V-FASVC-40`, `ER-FASVC-10`, `TS-FASVC-10`, `EC-FASVC-60` sampai `EC-FASVC-63`) dan `fixed-asset/file-manager/PRD/file-manager.md` §4.2d. Unit baru belum ada di `units.json` dan `plan.json` suite ini; spec berikut mengutip ID PRD apa adanya sampai stage `revisi` dijalankan. Tidak ada TestCase untuk aturan ini.
 
-- Tidak ada.
+| Spec | Perubahan | Aturan |
+|---|---|---|
+| `TC-FA-FASVC-UI-056-form-lampiran-unggah` | Disunting: kondisi K10 dan K11, dua kelompok langkah 132 sampai 156 (toast Error persisten, dialog dan isian terjaga, baris file dapat dihapus lalu Submit ulang) | `V-FASVC-40`, `ER-FASVC-10`, `TS-FASVC-10`, `FASVC-LOGIC-13c`, `EC-FASVC-60`, `F-FASVC-07.k4` (sisi klien) |
+| `TC-FA-FASVC-E2E-079-storage-penuh-lampiran-baru-ditolak` | Baru, `ui-e2e`, entitas khusus Storage penuh | `FASVC-LOGIC-13a`, `13b`, `13c`, `V-FASVC-40`, `ER-FASVC-10`, `TS-FASVC-10`, `EC-FASVC-60`, `61`, `62`, `RX-FASVC-33`, `F-FASVC-07.k4` |
+| `TC-FA-FASVC-E2E-080-lampiran-lama-dihapus-dan-bukan-record-file-manager` | Baru, `ui-e2e`; lampiran tidak tampil di File Manager (tab Files, Recycle Bin) dan berkas lama tidak dapat dibuka sesudah Save | `FASVC-LOGIC-13d`, `13e`, `06d`, `RX-FASVC-02`, `RX-FASVC-34`, `EC-FASVC-63`, `F-FASVC-07.k5` |
+| `TC-FA-FASVC-BE-081-be-storage-penuh-lampiran-dan-hapus-berkas-lama` | Baru, `be-e2e`; penolakan server, urutan format dan ukuran, client tanpa kuota, berkas lama dihapus dalam transaksi Save | `FASVC-LOGIC-13a`, `13b`, `13c`, `13d`, `V-FASVC-40`, `EC-FASVC-60` sampai `63`, `RX-FASVC-02`, `33`, `34`, `F-FASVC-07.k4`, `k5` |
+
+Tidak diotomasi di suite ini:
+
+- Bagian `FASVC-LOGIC-13e` dan `FASVC-LOGIC-06d` yang menyatakan lampiran hanya dihitung pada komponen `Other files` kartu Storage Usage: angka kartu adalah snapshot perhitungan berkala (`FAFM-LOGIC-06`) dan tidak berubah seketika; pengamatannya milik suite File Manager FAMS, yang belum ada.
+- Isi `TS-FASVC-10` untuk satuan selain `GB` (format Size `T-FAFM-01`): spec memakai satu pasangan nilai `10.0 GB`.
+- Pembatalan atomik `FASVC-LOGIC-13d` bila komit gagal di tengah penghapusan berkas: PRD tidak menyatakan perilakunya, jadi tidak diasersi.
+
+Temuan 2 «Keputusan pemilik PRD» dan butir Juri `FASVC-LOGIC-06d` dan `§12#r3` di atas selesai: PRD File Manager FAMS (`file-manager.md` §4.2d) menyatakan lampiran tidak ditampilkan di File Manager; `FASVC-LOGIC-06d` diasersi `TC-FA-FASVC-E2E-080`.
+
+## Spec yang tetap draft (4)
+
+Asersi yang masih salah atau tidak bisa dijalankan sesudah perbaikan penutup: tidak ada. Empat spec pada bagian «Revisi File Manager dan Storage» berstatus `draft` karena belum diaudit.
 
 ## Catatan tingkat plan (125)
 

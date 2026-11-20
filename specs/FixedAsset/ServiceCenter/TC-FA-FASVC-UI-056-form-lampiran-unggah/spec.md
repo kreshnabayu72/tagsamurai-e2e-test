@@ -1,11 +1,11 @@
 ---
 id: TC-FA-FASVC-UI-056-form-lampiran-unggah
-title: "Form: Lampiran: Upload Satu File, Ukuran, Tipe, Gagal, Retry, dan Submit Menunggu Unggahan"
+title: "Form: Lampiran: Upload Satu File, Ukuran, Tipe, Gagal, Retry, dan Submit Menunggu Unggahan, dan Storage Penuh"
 layer: ui-client
 priority: High
 caseType: Negative
-status: ready-for-automation
-sourceRules: ["V-FASVC-12", "V-FASVC-37", "V-FASVC-38", "FLD-FASVC-18", "S-FASVC-07", "S-FASVC-10", "FI-FASVC-05", "TS-FASVC-06", "EC-FASVC-21a", "EC-FASVC-21b", "EC-FASVC-21c", "EC-FASVC-22", "EC-FASVC-41", "F-FASVC-07.k1", "F-FASVC-07.k2", "F-FASVC-07.k3", "§4.3#p1", "§4.4#r3", "§6#p1"]
+status: draft
+sourceRules: ["V-FASVC-12", "V-FASVC-37", "V-FASVC-38", "FLD-FASVC-18", "S-FASVC-07", "S-FASVC-10", "FI-FASVC-05", "TS-FASVC-06", "EC-FASVC-21a", "EC-FASVC-21b", "EC-FASVC-21c", "EC-FASVC-22", "EC-FASVC-41", "F-FASVC-07.k1", "F-FASVC-07.k2", "F-FASVC-07.k3", "§4.3#p1", "§4.4#r3", "§6#p1", "V-FASVC-40", "ER-FASVC-10", "TS-FASVC-10", "FASVC-LOGIC-13c", "EC-FASVC-60", "F-FASVC-07.k4"]
 smoke: []
 dependsOn: []
 trace:
@@ -28,12 +28,18 @@ trace:
   "§4.3#p1": [47, 48, 50, 51, 53, 86, 87, 121, 123, 127, 128, 130, 131]
   "§4.4#r3": [32, 35, 45, 60, 62, 72, 74, 118, 119, 123]
   "§6#p1": [102, 103, 104, 112, 113, 114]
+  "V-FASVC-40": [139, 142, 154]
+  "ER-FASVC-10": [142, 143, 144, 146, 148, 149, 155, 156]
+  "TS-FASVC-10": [139, 141, 154]
+  "FASVC-LOGIC-13c": [141, 143, 144, 155, 156]
+  "EC-FASVC-60": [139, 143, 144, 154, 155]
+  "F-FASVC-07.k4": [139, 154]
 anchor: []
 coverage:
   web: automated
 ---
 
-# Form: Lampiran: Upload Satu File, Ukuran, Tipe, Gagal, Retry, dan Submit Menunggu Unggahan
+# Form: Lampiran: Upload Satu File, Ukuran, Tipe, Gagal, Retry, dan Submit Menunggu Unggahan, dan Storage Penuh
 
 ## Prerequisites
 - Aktor: Total Control.
@@ -53,6 +59,8 @@ coverage:
   - K7: seperti K1, dan permintaan simpan ditolak karena berkas lebih dari 1.
   - K8: seperti K5, dan jawaban unggahan ditahan sampai langkah menjawabnya.
   - K9: seperti K5, dan unggahan berkas pertama gagal karena jaringan.
+  - K10: seperti K1, dan permintaan simpan pertama ditolak karena Storage penuh dengan Used Storage `10.0 GB` dan Storage Quota `10.0 GB`; permintaan simpan berikutnya dijawab sukses.
+  - K11: seperti K5, dan permintaan simpan ditolak karena Storage penuh dengan Used Storage `10.0 GB` dan Storage Quota `10.0 GB`.
 
 ## Test Steps
 
@@ -212,3 +220,32 @@ coverage:
 129. Klik `[Save]`
 130. Verifikasi dialog Edit tertutup
 131. Verifikasi permintaan simpan tidak memuat berkas `kontrak-gagal.pdf`
+
+### Storage penuh ditolak server saat Submit: toast persisten, dialog dan isian terjaga
+132. Tampilkan Dialog Create / Edit Service Center dengan kondisi K10
+133. Isi Name `Bengkel Lampiran Servis {runId}`
+134. Centang checkbox `Routine`
+135. Isi City `Pekanbaru`
+136. Isi Company email `admin@lampiranservis-pekanbaru.co.id`
+137. Pilih berkas `kontrak-servis.pdf` (500 KB) pada kontrol unggah `Attachments`
+138. Klik `[Submit]`
+139. Verifikasi toast error `Error, failed to upload attachment. Storage is full (10.0 GB of 10.0 GB used).` tampil
+140. Tunggu 10 detik tanpa menutup toast
+141. Verifikasi toast error `Error, failed to upload attachment. Storage is full (10.0 GB of 10.0 GB used).` masih tampil
+142. Verifikasi tidak ada pesan inline di bawah field `Attachments`
+143. Verifikasi dialog Create masih terbuka dengan field `Name` berisi `Bengkel Lampiran Servis {runId}`
+144. Verifikasi baris file `kontrak-servis.pdf` masih tampil pada field `Attachments`
+145. Klik ikon hapus pada baris file `kontrak-servis.pdf`
+146. Verifikasi baris file `kontrak-servis.pdf` tidak tampil pada field `Attachments`
+147. Klik `[Submit]`
+148. Verifikasi dialog Create tertutup
+149. Verifikasi permintaan simpan tidak memuat berkas `kontrak-servis.pdf`
+
+### Storage penuh ditolak server saat Save pada dialog Edit
+150. Tampilkan Dialog Create / Edit Service Center dengan kondisi K11
+151. Klik ikon hapus pada baris file `dokumen-kontrak-edit.pdf`
+152. Pilih berkas `kontrak-baru.pdf` (300 KB) pada kontrol unggah `Attachments`
+153. Klik `[Save]`
+154. Verifikasi toast error `Error, failed to upload attachment. Storage is full (10.0 GB of 10.0 GB used).` tampil
+155. Verifikasi dialog Edit masih terbuka
+156. Verifikasi baris file `kontrak-baru.pdf` masih tampil pada field `Attachments`
