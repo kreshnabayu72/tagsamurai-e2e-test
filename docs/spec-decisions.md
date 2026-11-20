@@ -2866,3 +2866,15 @@ Aturan:
   - Script 048 langkah 12: memilih `Extend period` lalu menegaskan date picker tampil, setelah langkah 15 (Reactivate disabled) diperiksa pada keadaan awal.
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, gap-claims/gs-rerun2-20261120.md).
 - **Status:** berlaku; script 048 (gs) merujuk D-276.
+
+## D-277 Aturan umum: entitas tanpa produk diarahkan ke /portal, bukan halaman no-access (2026-11-20)
+
+- **Spec / langkah:** AdminConsole/DeviceAllocation `TC-AC-ACHA-E2E-009` TC-AC-ACHA-48 dan TC-AC-ACHA-49 (akun Pre-setup #39 dan #40, entitas Client PT Sejahtera Logistik).
+- **Spec meminta:** akun Client mendarat di Dashboard Admin Console; menu Allocation tidak tampil; URL langsung Device Allocation memunculkan halaman no-access. Spec sendiri menandai Dashboard sebagai asumsi (catatan "Layar awal … tidak dinyatakan TC").
+- **App:** entitas Client tidak punya produk Admin Console. Setelah login, aplikasi berhenti di /portal dan Admin Console tidak ditawarkan. URL langsung ke /admin-console/* diarahkan ke /portal (`apps/web/src/shell/guards/ProductAccessGuard.tsx:9-21`). Backend juga tidak bisa memberi role Admin Console kepada user Client (`POST /v2/iam/products/admin_console/roles/capabilities/users` 422 `stale`).
+- **Dasar keputusan:** gerbang entitas yang diuji spec ("Entity Gate menang atas role") tetap terpenuhi, bahkan lebih awal, di tingkat produk. D-015 (halaman no-access) berlaku untuk user yang punya produk tetapi tidak punya capability, bukan untuk entitas yang tidak punya produk sama sekali. Sejalan dengan D-entry Expired: entitas tanpa sesi produk berhenti di /portal.
+- **Keputusan:**
+  - Untuk spec: user dari entitas yang tidak memiliki produk tidak pernah masuk ke produk itu. Spec memverifikasi bahwa produk tidak ditawarkan di /portal dan URL langsung kembali ke /portal tanpa data modul termuat. Jangan tulis Dashboard produk atau halaman no-access untuk aktor seperti ini, dan jangan tulis pemberian role produk kepada user entitas yang tidak memiliki produk itu.
+  - Script 009: TC-48 dan TC-49 memverifikasi /portal tanpa Admin Console, dan URL langsung kembali ke /portal tanpa baris Device Allocation. #40 dipakai tanpa grant Manage allocation; tidak ada `helper-gap:be` atau draf BE untuk grant itu.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi ac).
+- **Status:** berlaku; script 009 (ac) merujuk D-277.
