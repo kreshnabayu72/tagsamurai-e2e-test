@@ -2899,10 +2899,11 @@ Aturan:
 - **Keputusan:**
   - App: `onReject` karena tipe file menampilkan toast T-06, foto tidak berubah, tanpa request (pemilik: gs). Penolakan karena ukuran tetap mengikuti baris ukuran V-08.
   - File berekstensi di luar allowlist (pdf, gif): spec memverifikasi toast T-06, foto tidak berubah, dan tidak ada request upload. Asersi 422 untuk file ini tidak berlaku, karena picker menolaknya lebih dulu.
-  - File berekstensi `.png` dengan isi bukan gambar (TC-279): lolos filter picker, server menolak 422, toast T-06. Asersi 422 tetap berlaku.
+  - File berekstensi `.png` dengan isi bukan gambar (TC-279): ~~lolos filter picker, server menolak 422, toast T-06~~ diubah 2026-11-21, lihat Pembaruan.
   - Fixture `document.pdf`, `animated.gif`, `not-an-image.png` ditambahkan di apps/e2e/fixtures (gs).
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
 - **Status:** berlaku.
+- **Pembaruan 2026-11-21 (TC-279, gap claim thor-myprofile-067-imagepicker):** file `.png` berisi teks tidak pernah sampai ke server. ImagePicker mendekode file di klien; dialog cropper "Adjust photo" menampilkan "The image could not be read" dan Apply nonaktif, tanpa request. Menolak isi palsu = fungsi (foto tidak berubah, tidak ada upload) tetap terpenuhi; bentuk pesannya (pesan di cropper, bukan toast T-06) = tampilan UI, app menang (D-096). Untuk TC-279: spec memverifikasi pesan "The image could not be read", Apply nonaktif, tidak ada request upload, dan foto tidak berubah setelah dialog ditutup. Asersi 422 + toast T-06 tidak berlaku lewat UI (state tak bisa dibangun dari klien; aturan 422 server di luar cakupan `ui-e2e`). Callback ImagePicker untuk file tak terbaca tidak dibutuhkan; tanpa issue library.
 
 ## D-280 My Profile: uji IDOR dengan menulis ulang id user tidak berlaku untuk rute own-profile (2026-11-20)
 
