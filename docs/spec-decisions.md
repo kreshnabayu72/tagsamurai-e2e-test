@@ -2958,3 +2958,18 @@ Aturan:
 - **Untuk spec:** "Read the full Privacy Policy" membuka dialog berisi Privacy Policy versi aktif, bukan tab baru.
 - **Diputuskan oleh:** owner 2026-11-23 (lewat Coordinator).
 - **Status:** berlaku.
+
+## D-285 Session Management: TC biometric iOS TC-AUTH-SES-260 dan 261 ditahan; spec 045 hanya Android (2026-11-23)
+
+- **Spec / langkah:** `TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios`, semula memuat TC-AUTH-SES-260 dan 261 (enroll dan re-login biometric iOS dengan Face ID atau Touch ID di perangkat iOS uji F).
+- **Spec meminta:** Prompt Enable Biometric dan Screen biometric sign-in di iOS memakai Face ID atau Touch ID, dan re-login biometric iOS yang sukses membuat sesi baru.
+- **Kenyataannya:** PRD session-management §4.6 menetapkan rilis pertama aplikasi seluler hanya Android. Dukungan iOS (Face ID / Touch ID, Keychain) menjadi Open Item §12 #4, rencana rilis berikutnya; iOS juga belum punya layar Login with Password atau OTP sebagai jalur fallback.
+- **Karena:** jawaban PRD atas asumsi dan pertanyaan tim mobile (changelog PRD session-management 2026-11-23). Perangkat iOS uji tidak ada di lingkup rilis pertama, sehingga kedua TC tidak bisa dijalankan.
+- **Keputusan:**
+  - TC-AUTH-SES-260 dan 261 tetap ada di sumber TC (`auth/session-management/TestCases/tc-session-management.md`) dengan tanda Ditahan, tidak dihapus.
+  - Spec untuk kedua TC ditahan sampai iOS masuk lingkup (Open Item §12 #4 ditutup); saat itu keduanya ditulis kembali lewat entri baru yang merujuk entri ini.
+  - Spec 045 sekarang hanya Android (TC-AUTH-SES-147, 148, 337, 149; `coverage.mobile` Android) dan judulnya disesuaikan.
+  - Folder 045 mempertahankan slug `...-dan-ios` supaya ID dan path spec tidak berubah dan rujukan dari dokumen lain tidak putus.
+- **Diterapkan di:** spec SES 045 (Notes "Ditahan"), tabel `## Ditahan` di `docs/coverage/AuthSessionManagement.md`, dan entri 045 di `docs/mobile-specs-review.md` (dipindah ke kelompok Murni mobile).
+- **Diputuskan oleh:** pemilik spec 2026-11-23 (sinkronisasi jawaban tim mobile).
+- **Status:** berlaku.

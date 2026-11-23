@@ -31,8 +31,8 @@ coverage:
     - TC-AUTH-OTP-104: `Fajar Cahyono` (`fajarcahyono+{runId}-031@qwertysystem.net`)
     - TC-AUTH-OTP-109: `Intan Nasution` (`intannasution+{runId}-031@qwertysystem.net`)
     - TC-AUTH-OTP-102: `Hendra Maulana` (`hendramaulana+{runId}-031@qwertysystem.net`)
-- Baseline log: hook `before` mencatat jumlah baris `Hendra Maulana` di `Global Settings > Activity Log > Session` dan di `Global Settings > User > Detail > User Log`; "tepat satu baris baru" pada langkah 57 dan 59 dihitung terhadap baseline itu (S-12). Baseline `Intan Nasution` (TC-AUTH-OTP-109) dicatat di langkah 28.
-- Kemampuan teknis: mail-catcher lingkungan uji untuk membaca kode OTP; klien HTTP yang mengirim permintaan Verify OTP langsung ke server tanpa melalui UI dengan email dan kode OTP yang sudah dipakai (TC-AUTH-OTP-109); versi baru Privacy Policy diterbitkan Principal di hook `before` sebelum profil POLICY dipakai; dua konteks browser (browser admin dan jendela privat publik); konteks browser persisten yang sama dipakai bersama antar tab dalam satu TC, yaitu menutup tab lalu membuka tab baru tanpa menutup konteks sehingga tidak ada sesi tersisa (TC-AUTH-OTP-109) dan membuka Portal — Product Hub di tab lain (TC-AUTH-OTP-97); reCAPTCHA mode uji.
+- Baseline log: hook `before` mencatat jumlah baris `Hendra Maulana` di `Global Settings > Activity Log > Session` dan di `Global Settings > User > Detail > User Log`; "tepat satu baris baru" pada langkah 62 dan 64 dihitung terhadap baseline itu (S-12). Baseline `Intan Nasution` (TC-AUTH-OTP-109) dicatat di langkah 33.
+- Kemampuan teknis: mail-catcher lingkungan uji untuk membaca kode OTP; klien HTTP yang mengirim permintaan Verify OTP langsung ke server tanpa melalui UI dengan email dan kode OTP yang sudah dipakai (TC-AUTH-OTP-109); versi baru Privacy Policy diterbitkan Principal di hook `before` sebelum profil POLICY dipakai; dua konteks browser (browser admin dan jendela privat publik); konteks browser persisten yang sama dipakai bersama antar tab dalam satu TC, yaitu menutup tab lalu membuka tab baru tanpa menutup konteks sehingga tidak ada sesi tersisa (TC-AUTH-OTP-109) dan membuka Portal — Product Hub di tab lain (TC-AUTH-OTP-97); tab baru dari tautan "Read the full Privacy Policy" dan kembali ke tab semula (TC-AUTH-OTP-104); reCAPTCHA mode uji.
 - State global: versi Privacy Policy terbaru yang diterbitkan hook `before` tidak ditarik kembali oleh hook `after`; suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -63,58 +63,63 @@ coverage:
 19. Buka Portal — Product Hub langsung di tab lain
 20. Verifikasi sesi penuh belum dibuat: browser dialihkan ke halaman login
 
-### TC-AUTH-OTP-104: Tautan Privacy Policy pada checkbox Agreement membuka halaman Privacy Policy
+### TC-AUTH-OTP-104: Tautan Read the full Privacy Policy pada layar Agreement membuka dokumen di tab baru tanpa me-reset centang
 
 21. Buka jendela privat baru (tanpa sesi), buka halaman `Auth > Login with OTP > Request OTP`
 22. Ketik `fajarcahyono+{runId}-031@qwertysystem.net` pada field Email
 23. Centang widget reCAPTCHA "I'm not a robot"
 24. Klik button [Request OTP]
 25. Ketik 6 digit kode OTP dari email pada kotak digit
-26. Klik teks tautan "Privacy Policy" pada label checkbox
-27. Verifikasi halaman Privacy Policy terbuka
+26. Centang checkbox "I have read and agree to the Privacy Policy *"
+27. Klik tautan "Read the full Privacy Policy" pada Content Box
+28. Verifikasi dokumen Privacy Policy versi aktif terbuka di tab baru
+29. Kembali ke tab semula
+30. Verifikasi layar Confirm to Continue tetap terbuka di tab semula
+31. Verifikasi checkbox "I have read and agree to the Privacy Policy *" tetap tercentang
+32. Verifikasi teks "Privacy Policy" pada label checkbox bukan tautan
 
 ### TC-AUTH-OTP-109: Menutup layar Confirm to Continue tanpa Continue membatalkan upaya login tanpa sesi
 
-28. Ganti konteks ke browser admin (sudah login sebagai akun aktor Total Control (Global Settings) lewat hook `before`), buka `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` untuk `Intan Nasution`, lalu catat baris teratas masing-masing sebagai baseline
-29. Buka jendela privat baru (tanpa sesi), buka halaman `Auth > Login with OTP > Request OTP`
-30. Ketik `intannasution+{runId}-031@qwertysystem.net` pada field Email
-31. Centang widget reCAPTCHA "I'm not a robot"
-32. Klik button [Request OTP]
-33. Ketik 6 digit kode OTP dari email pada kotak digit
-34. Tutup tab browser tanpa mencentang checkbox dan tanpa klik Continue
-35. Buka tab baru dan buka Portal — Product Hub langsung
-36. Verifikasi Portal — Product Hub tidak terbuka; browser dialihkan ke halaman login
-37. Verifikasi tidak ada sesi aktif untuk `Intan Nasution` pada browser
-38. Ganti konteks ke browser admin dan muat ulang `Global Settings > Activity Log > Session` serta `Global Settings > User > Detail > User Log` untuk `Intan Nasution`
-39. Verifikasi tidak ada baris baru untuk percobaan ini di `Global Settings > Activity Log > Session` dibanding baseline
-40. Verifikasi tidak ada baris baru untuk percobaan ini di `Global Settings > User > Detail > User Log` dibanding baseline
-41. Verifikasi tidak ada entri log untuk penutupan layar di kedua surface log
-42. Kirim permintaan Verify OTP langsung ke server dengan email `intannasution+{runId}-031@qwertysystem.net` dan kode OTP yang sama yang sudah dipakai pada langkah 33
-43. Verifikasi permintaan Verify OTP dengan kode yang sudah dipakai ditolak server
-44. Verifikasi tidak ada sesi yang dibuat
+33. Ganti konteks ke browser admin (sudah login sebagai akun aktor Total Control (Global Settings) lewat hook `before`), buka `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` untuk `Intan Nasution`, lalu catat baris teratas masing-masing sebagai baseline
+34. Buka jendela privat baru (tanpa sesi), buka halaman `Auth > Login with OTP > Request OTP`
+35. Ketik `intannasution+{runId}-031@qwertysystem.net` pada field Email
+36. Centang widget reCAPTCHA "I'm not a robot"
+37. Klik button [Request OTP]
+38. Ketik 6 digit kode OTP dari email pada kotak digit
+39. Tutup tab browser tanpa mencentang checkbox dan tanpa klik Continue
+40. Buka tab baru dan buka Portal — Product Hub langsung
+41. Verifikasi Portal — Product Hub tidak terbuka; browser dialihkan ke halaman login
+42. Verifikasi tidak ada sesi aktif untuk `Intan Nasution` pada browser
+43. Ganti konteks ke browser admin dan muat ulang `Global Settings > Activity Log > Session` serta `Global Settings > User > Detail > User Log` untuk `Intan Nasution`
+44. Verifikasi tidak ada baris baru untuk percobaan ini di `Global Settings > Activity Log > Session` dibanding baseline
+45. Verifikasi tidak ada baris baru untuk percobaan ini di `Global Settings > User > Detail > User Log` dibanding baseline
+46. Verifikasi tidak ada entri log untuk penutupan layar di kedua surface log
+47. Kirim permintaan Verify OTP langsung ke server dengan email `intannasution+{runId}-031@qwertysystem.net` dan kode OTP yang sama yang sudah dipakai pada langkah 38
+48. Verifikasi permintaan Verify OTP dengan kode yang sudah dipakai ditolak server
+49. Verifikasi tidak ada sesi yang dibuat
 
 ### TC-AUTH-OTP-102: Klik Continue tanpa mencentang checkbox ditolak server dengan caption dan token tetap valid
 
-45. Buka jendela privat baru (tanpa sesi), buka halaman `Auth > Login with OTP > Request OTP`
-46. Ketik `hendramaulana+{runId}-031@qwertysystem.net` pada field Email
-47. Centang widget reCAPTCHA "I'm not a robot"
-48. Klik button [Request OTP]
-49. Ketik 6 digit kode OTP dari email pada kotak digit
-50. Biarkan checkbox "I have read and agree to the Privacy Policy *" tidak dicentang
-51. Klik button [Continue ➔]
-52. Verifikasi permintaan konfirmasi ditolak server
-53. Verifikasi caption error: "You need to agree to the Privacy Policy to continue"
-54. Verifikasi button [Continue ➔] tetap enabled
-55. Verifikasi layar Confirm to Continue tetap tampil
-56. Ganti konteks ke browser admin (sudah login sebagai akun aktor Total Control (Global Settings) lewat hook `before`), buka `Global Settings > Activity Log > Session` dan cari entri untuk `Hendra Maulana`
-57. Verifikasi tepat satu baris baru dibanding baseline hook `before` dengan Activity `Login`, Status `Failed`, Note `Consent not given` di `Global Settings > Activity Log > Session`
-58. Buka `Global Settings > User > Detail > User Log` untuk `Hendra Maulana`
-59. Verifikasi tepat satu baris baru dibanding baseline hook `before` dengan Activity `Login`, Status `Failed`, Note `Consent not given` di `Global Settings > User > Detail > User Log`
-60. Ganti konteks kembali ke jendela publik pada layar Confirm to Continue
-61. Centang checkbox "I have read and agree to the Privacy Policy *"
-62. Klik button [Continue ➔]
-63. Verifikasi token pra-autentikasi masih valid dan persetujuan diterima: browser dialihkan ke Portal — Product Hub
-64. Verifikasi sesi aktif untuk `Hendra Maulana`
+50. Buka jendela privat baru (tanpa sesi), buka halaman `Auth > Login with OTP > Request OTP`
+51. Ketik `hendramaulana+{runId}-031@qwertysystem.net` pada field Email
+52. Centang widget reCAPTCHA "I'm not a robot"
+53. Klik button [Request OTP]
+54. Ketik 6 digit kode OTP dari email pada kotak digit
+55. Biarkan checkbox "I have read and agree to the Privacy Policy *" tidak dicentang
+56. Klik button [Continue ➔]
+57. Verifikasi permintaan konfirmasi ditolak server
+58. Verifikasi caption error: "You need to agree to the Privacy Policy to continue"
+59. Verifikasi button [Continue ➔] tetap enabled
+60. Verifikasi layar Confirm to Continue tetap tampil
+61. Ganti konteks ke browser admin (sudah login sebagai akun aktor Total Control (Global Settings) lewat hook `before`), buka `Global Settings > Activity Log > Session` dan cari entri untuk `Hendra Maulana`
+62. Verifikasi tepat satu baris baru dibanding baseline hook `before` dengan Activity `Login`, Status `Failed`, Note `Consent not given` di `Global Settings > Activity Log > Session`
+63. Buka `Global Settings > User > Detail > User Log` untuk `Hendra Maulana`
+64. Verifikasi tepat satu baris baru dibanding baseline hook `before` dengan Activity `Login`, Status `Failed`, Note `Consent not given` di `Global Settings > User > Detail > User Log`
+65. Ganti konteks kembali ke jendela publik pada layar Confirm to Continue
+66. Centang checkbox "I have read and agree to the Privacy Policy *"
+67. Klik button [Continue ➔]
+68. Verifikasi token pra-autentikasi masih valid dan persetujuan diterima: browser dialihkan ke Portal — Product Hub
+69. Verifikasi sesi aktif untuk `Hendra Maulana`
 
 ## Notes
 
@@ -123,9 +128,11 @@ coverage:
 - `caseType` `Positive`: TC sumber campuran (Positive: TC-97 dan TC-104; Negative: TC-101, TC-102, dan TC-109) dan prioritas tertinggi (P0) dimiliki TC-97 (Positive) dan TC-102 (Negative), sehingga spec mengikuti tujuan akhir alur (bagian 8): alur ditutup oleh TC-102 yang berakhir dengan Continue diterima dan sesi aktif.
 - Urutan TC di dalam spec berbeda dari urutan TC sumber (97, 101, 102, 104, 109): screening tanpa aksi (checkbox tidak pernah tampil di halaman publik) di awal, kasus menutup layar (109) sebelum aksi yang berakhir dengan sesi aktif (102) (prinsip 3: screening → blokir → aksi sukses di akhir, S-10).
 - Pengecualian P-1 (state berat): asersi absence TC-AUTH-OTP-109 (Expected c dan Post Condition b: "tidak ada baris baru untuk percobaan ini di kedua surface log" dan "tidak ada entri log untuk penutupan layar") tetap di spec ini dan tidak dipindah ke spec absence E2E-040, karena bergantung pada state Agreement (token pra-autentikasi yang baru diterbitkan dan layar Confirm to Continue yang ditutup) yang baru dibangun di blok ini. Asersi pencatatan `Consent not given` pada TC-AUTH-OTP-102 tetap di sini dan dicakup juga oleh TC-AUTH-OTP-126 di spec pencatatan.
-- Pengecualian P-2 (pemicu bukan objek uji): langkah 42 memutar ulang kode yang sudah terpakai langsung ke server hanya sebagai langkah observasi Expected d dan Post Condition a TC-AUTH-OTP-109 ("kode OTP yang sudah dipakai tidak dapat dipakai lagi"), bukan sebagai objek uji replay (kelas a).
-- Langkah 60 adalah langkah penghubung untuk kembali ke jendela publik setelah memeriksa log di browser admin (S-03). Langkah 28 (baseline) dan langkah 38 sampai 41 (ganti konteks dan verifikasi) pada TC-AUTH-OTP-109 ditambahkan di sekitar Expected c dan Post Condition b (diamati sebelum Verify langsung pada langkah 42, sesuai TC); TC sumber hanya memuat langkah membuka log tanpa baseline (S-03, S-14). Langkah 2 memenuhi bagian "sebelum" dari Expected a TC-AUTH-OTP-101 ("sebelum maupun sesudah email diketik"); langkah 5 memenuhi bagian "sesudah".
+- Pengecualian P-2 (pemicu bukan objek uji): langkah 47 memutar ulang kode yang sudah terpakai langsung ke server hanya sebagai langkah observasi Expected d dan Post Condition a TC-AUTH-OTP-109 ("kode OTP yang sudah dipakai tidak dapat dipakai lagi"), bukan sebagai objek uji replay (kelas a).
+- Langkah 65 adalah langkah penghubung untuk kembali ke jendela publik setelah memeriksa log di browser admin (S-03). Langkah 33 (baseline) dan langkah 43 sampai 46 (ganti konteks dan verifikasi) pada TC-AUTH-OTP-109 ditambahkan di sekitar Expected c dan Post Condition b (diamati sebelum Verify langsung pada langkah 47, sesuai TC); TC sumber hanya memuat langkah membuka log tanpa baseline (S-03, S-14). Langkah 2 memenuhi bagian "sebelum" dari Expected a TC-AUTH-OTP-101 ("sebelum maupun sesudah email diketik"); langkah 5 memenuhi bagian "sesudah".
+- Tab dokumen pada TC-AUTH-OTP-104 hanya memuat URL dokumen Privacy Policy dan tidak bertindak lintas tab dengan tab semula (bukan konteks kedua kelas c). Centang pada langkah 26 tidak disusul Continue, sehingga persetujuan `Fajar Cahyono` tidak tersimpan.
 - Temuan untuk QA:
+  - TC-AUTH-OTP-104 tidak menyebut judul atau URL dokumen Privacy Policy yang diharapkan di tab baru; asersi langkah 28 memakai "dokumen Privacy Policy versi aktif terbuka di tab baru" sesuai Expected TC.
   - TC-AUTH-OTP-109 langkah 9 mengirim Verify OTP langsung dengan kode terpakai saat user berada di layar Confirm to Continue yang ditutup. Penolakan server pada keadaan itu diasumsikan; di PRD baru terbukti untuk kode terpakai setelah login sukses (TC-AUTH-OTP-155). Mohon QA mengonfirmasi bahwa PRD juga menetapkannya pada keadaan ini.
   - TC-AUTH-OTP-102 Expected d menyebut "persetujuan tersimpan", tetapi tidak ada langkah observasinya; spec hanya memverifikasi hasil yang teramati (dialihkan ke Portal — Product Hub dengan sesi aktif). Bukti persistensi persetujuan ada pada TC-AUTH-OTP-142.
   - TC-AUTH-OTP-97 Post Condition menyebut token pra-autentikasi diterbitkan 10 menit dan kode OTP terpakai tanpa langkah observasi; spec tidak menambah asersi (batas 10 menit dicakup spec kedaluwarsa token).

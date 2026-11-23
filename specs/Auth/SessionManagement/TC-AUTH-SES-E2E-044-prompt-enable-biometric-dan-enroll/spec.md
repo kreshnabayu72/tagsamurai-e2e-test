@@ -50,7 +50,7 @@ coverage:
 8. Verifikasi Tidak ada kredensial biometric yang tersimpan untuk `Irfan Santoso`
 9. Hapus app dari recent apps
 10. Buka kembali app
-11. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with Face ID / Touch ID"
+11. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with biometrics"
 
 ### TC-AUTH-SES-324: Prompt Enable Biometric tidak muncul lagi pada login berikutnya setelah Not now
 
@@ -64,7 +64,7 @@ coverage:
 19. Verifikasi Tidak ada kredensial biometric yang tersimpan untuk `Irfan Santoso`
 20. Hapus app dari recent apps
 21. Buka kembali app
-22. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with Face ID / Touch ID"
+22. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with biometrics"
 23. Ketik `irfansantoso+{runId}-044@qwertysystem.net` pada field Email
 24. Ketik `Spectra.env.SES_PASSWORD` pada field Password
 25. Klik [Login]
@@ -106,7 +106,7 @@ coverage:
 52. Verifikasi Tidak ada toast error
 53. Hapus app dari recent apps
 54. Buka kembali app
-55. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with Face ID / Touch ID"
+55. Verifikasi Setelah app dibuka kembali halaman Login (form) tampil, bukan Screen "Sign in with biometrics"
 
 ### TC-AUTH-SES-145: Accept pada Prompt Enable Biometric menyimpan token gated biometric dan re-entry berikutnya memakai biometric
 
@@ -121,7 +121,7 @@ coverage:
 64. Verifikasi Tidak ada toast sukses
 65. Hapus app dari recent apps
 66. Buka kembali app
-67. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil menggantikan form Login
+67. Verifikasi Screen "Sign in with biometrics" tampil menggantikan form Login
 
 ### TC-AUTH-SES-315: Enroll biometric belakangan lewat toggle Settings > Security setelah memilih Not now
 
@@ -131,13 +131,13 @@ coverage:
 71. Klik [Login] → Prompt Enable Biometric muncul
 72. Ketuk [Not now] → app masuk Portal — Product Hub
 73. Buka Settings > Security
-74. Nyalakan toggle "Face ID / Touch ID" → OS biometric prompt muncul
+74. Nyalakan toggle "Biometric sign-in" → OS biometric prompt muncul
 75. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-76. Verifikasi Toggle "Face ID / Touch ID" tampil aktif
+76. Verifikasi Toggle "Biometric sign-in" tampil aktif
 77. Verifikasi toast sukses: "Success, biometric enabled."
 78. Hapus app dari recent apps
 79. Buka kembali app
-80. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil
+80. Verifikasi Screen "Sign in with biometrics" tampil
 
 ## Notes
 

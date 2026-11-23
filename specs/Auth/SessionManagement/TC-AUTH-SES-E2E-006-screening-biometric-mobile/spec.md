@@ -37,14 +37,14 @@ coverage:
 1. Buka aplikasi mobile di perangkat Android uji B → halaman Login tampil
 2. Login dengan `putrirahayu+{runId}-006@qwertysystem.net` dan password `Spectra.env.SES_PASSWORD` → Prompt muncul
 3. Susuri prompt dari atas ke bawah
-4. Verifikasi **Header**: Title "Enable Face ID / Touch ID?"
+4. Verifikasi **Header**: Title "Enable biometric sign-in?"
 5. Verifikasi **Header**: Prompt modal mobile
 6. Verifikasi **Header**: Prompt dapat ditutup
 7. Verifikasi **Body**: Body "Sign in faster next time without typing your password"
 8. Verifikasi **Footer**: [Enable] (variant solid, severity primary)
 9. Verifikasi **Footer**: [Not now] (variant text, severity contrast)
 
-### TC-AUTH-SES-15: Screening Screen Sign in with Face ID / Touch ID saat app dibuka tanpa sesi
+### TC-AUTH-SES-15: Screening Screen Sign in with biometrics saat app dibuka tanpa sesi
 
 10. Tutup paksa aplikasi mobile di perangkat Android uji B, hapus data aplikasi, lalu buka aplikasi mobile → halaman Login tampil
 11. Ketik `ekoanggraini+{runId}-006@qwertysystem.net` pada field Email
@@ -57,7 +57,7 @@ coverage:
 18. Buka aplikasi mobile di perangkat Android uji B → layar tampil
 19. Susuri layar dari atas ke bawah sebelum menyentuh sensor
 20. Verifikasi **Header**: Logo aplikasi di bagian atas
-21. Verifikasi **Body**: Title "Sign in with Face ID / Touch ID"
+21. Verifikasi **Body**: Title "Sign in with biometrics"
 22. Verifikasi **Body**: Body "Sign in as ekoanggraini+{runId}-006@qwertysystem.net"
 23. Verifikasi **Body**: OS biometric prompt tampil otomatis (hanya biometric; tanpa opsi passcode perangkat)
 24. Verifikasi **Footer**: Layar blocking full-screen menggantikan form Login
@@ -81,8 +81,9 @@ coverage:
 39. Verifikasi **Header**: Body "By accessing TAG Samurai, you agree to comply with our Privacy Policy. Please read the full document before continuing. Your continued use of the platform means you accept the terms described in the Privacy Policy."
 40. Verifikasi **Header**: Tautan "Read the full Privacy Policy" tampil pada Body
 41. Verifikasi **Body**: checkbox "I have read and agree to the Privacy Policy *" (default tidak dicentang)
-42. Verifikasi **Footer**: button [Continue ➔]
-43. Verifikasi Tidak ada tombol Cancel atau Back
+42. Verifikasi **Body**: Label checkbox "I have read and agree to the Privacy Policy *" bukan tautan
+43. Verifikasi **Footer**: button [Continue ➔]
+44. Verifikasi Tidak ada tombol Cancel atau Back
 
 ## Notes
 

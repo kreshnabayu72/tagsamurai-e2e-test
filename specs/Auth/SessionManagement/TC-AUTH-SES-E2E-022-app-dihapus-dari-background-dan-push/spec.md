@@ -56,7 +56,7 @@ coverage:
 7. Ketuk [Enable] pada Prompt Enable Biometric dan selesaikan OS biometric prompt dengan sidik jari terdaftar → masuk Portal — Product Hub (biometric ter-enroll, user sedang login) → halaman Portal — Product Hub tampil
 8. Hapus app dari recent apps di perangkat Android uji B
 9. Buka kembali app
-10. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil menggantikan form Login
+10. Verifikasi Screen "Sign in with biometrics" tampil menggantikan form Login
 11. Verifikasi Body "Sign in as rinarahayu+{runId}-022@qwertysystem.net"
 
 ### TC-AUTH-SES-317: Notifikasi push tetap masuk setelah app dihapus dari background

@@ -1,6 +1,6 @@
 ---
 id: TC-AUTH-OTP-E2E-028-rate-limit-ip-429
-title: "Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend"
+title: "Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend serta Kuota per Endpoint"
 priority: High
 caseType: Negative
 status: draft
@@ -10,22 +10,24 @@ sourceTc:
   - TC-AUTH-OTP-63
   - TC-AUTH-OTP-85
   - TC-AUTH-OTP-34
+  - TC-AUTH-OTP-196
 coverage:
   web: automated
 ---
 
-# Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend
+# Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend serta Kuota per Endpoint
 
 ## Prerequisites
 
 - Mode: FE+BE (flood nyata ke server dari IP browser uji; bukan mock, sesuai bagian 6 konvensi).
-- Suite berjalan serial (`parallel: false`) karena spec ini mengubah state global: counter IP rate limit (direset sebelum tiap TC dan di hook `after`) serta jam server dan jam browser (digeser pada TC-AUTH-OTP-85, dipulihkan di langkah 43 dan di hook `after`).
-- Akun aktor: Total Control (Global Settings), pre-setup `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup #1); password dari `Spectra.env.GS_TC_PASSWORD`. Dipakai untuk membaca `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log`.
+- Suite berjalan serial (`parallel: false`) karena spec ini mengubah state global: counter IP rate limit (direset sebelum tiap TC dan di hook `after`) serta jam server dan jam browser (digeser pada TC-AUTH-OTP-85, dipulihkan di langkah 43 dan di hook `after`) dan jam server (dibekukan lalu dimajukan pada TC-AUTH-OTP-196, dipulihkan di langkah 71 dan di hook `after`).
+- Akun aktor: Total Control (Global Settings), pre-setup `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup #1); password dari `Spectra.env.GS_TC_PASSWORD`. Dipakai untuk membaca `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` (Tabel Data Uji Pre-setup #1 juga disebut TC-AUTH-OTP-196 prasyarat d).
 - Environment variable: `GS_TC_PASSWORD` (akun aktor), `OTP_PASSWORD` (password yang dipasang ke user uji saat seeding aktivasi; tidak dipakai langkah uji).
 - Tanpa login (halaman publik, tidak ada sesi aktif di browser) untuk semua langkah publik. reCAPTCHA memakai mode uji environment.
 - Ambang: 20 request per menit per IP, jendela tetap 1 menit, counter terpisah per endpoint (`request`, `verify`); Resend OTP memakai endpoint Request OTP sehingga dihitung ke counter `request`; semua request yang mencapai limiter dihitung apa pun hasilnya (NC-15, `AUTHOTP-LOGIC-04c`). Request ke-21 dalam jendela yang sama ditolak.
 - Kemampuan teknis:
   - Klien HTTP yang mengirim request beruntun dari IP yang sama dengan browser uji untuk mencapai 20 request ke endpoint `request` atau `verify` dalam 1 menit.
+  - TC-AUTH-OTP-196: seluruh permintaan dikirim langsung ke server dari IP uji yang sama dengan klien HTTP di atas, beserta token reCAPTCHA mode uji yang valid; 19 permintaan pertama ke endpoint `request` adalah campuran Request OTP dan Resend code untuk email user uji (Resend dihitung ke counter `request`), lalu 20 permintaan Verify OTP dengan kode salah. Status respons (429 `RATE_LIMITED` atau bukan) dibaca dari respons klien HTTP. Jam server uji dibekukan sebelum permintaan pertama (langkah 56) supaya permintaan pertama sampai Request ke-21 berada dalam satu jendela 1 menit walau ada jeda membaca log di browser admin (R-10), lalu dimajukan 60 detik untuk menutup jendela (langkah 68).
   - Isi 20 request flood pada TC-AUTH-OTP-33, TC-AUTH-OTP-135, dan TC-AUTH-OTP-85: 20 Request OTP dengan 20 email tak terdaftar yang berbeda, `floodtakterdaftar01@qwertysystem.net` sampai `floodtakterdaftar20@qwertysystem.net` (alamat literal dari TC, tanpa suffix `{runId}`; tidak di-seed), tiap request dihitung dalam batas IP apa pun hasilnya, bukan email user uji, supaya tidak ada kode terkirim ke user uji dan tidak ada cooldown aktif pada user uji (asersi tidak ada email OTP, langkah 8 dan 42). Token reCAPTCHA mode uji disertakan bila endpoint mewajibkannya.
   - 20 Request OTP sukses pada TC-AUTH-OTP-34: dikirim lewat UI otomatis (isi Email, centang widget reCAPTCHA mode uji, klik [Request OTP]) satu per satu untuk 20 email berbeda tanpa jeda tunggu, seluruhnya selesai dalam 60 detik; toast sukses "Success, the code has been sent." diamati langsung di UI pada tiap request sebelum request berikutnya. Request ke-21 dikirim dengan cara yang sama.
   - Akses untuk mereset counter IP rate limit environment (sebelum tiap TC, supaya request TC sebelumnya tidak ikut terhitung).
@@ -37,9 +39,10 @@ coverage:
   - TC-AUTH-OTP-135: `Andi Susanti` (`andisusanti+{runId}-028@qwertysystem.net`).
   - TC-AUTH-OTP-63: `Fajar Harahap` (`fajarharahap+{runId}-028@qwertysystem.net`).
   - TC-AUTH-OTP-85: `Mega Setiawan` (`megasetiawan+{runId}-028@qwertysystem.net`).
+  - TC-AUTH-OTP-196: `Sinta Wulandari` (`sintawulandari+{runId}-028@qwertysystem.net`).
   - TC-AUTH-OTP-34: 21 user BASE bernama `Pengguna Flood 01` sampai `Pengguna Flood 21` dengan email `penggunaflood01+{runId}-028@qwertysystem.net` sampai `penggunaflood21+{runId}-028@qwertysystem.net` (user ke-1 sampai ke-20 untuk request sukses, user ke-21 untuk request ke-21 yang ditolak dan dipakai untuk membuka User Log).
-- Baseline log: hook `before` mencatat jumlah baris `Wulan Hakim`, `Andi Susanti`, `Fajar Harahap`, `Mega Setiawan`, dan `Pengguna Flood 21` di `Global Settings > Activity Log > Session` dan di `Global Settings > User > Detail > User Log`; "tidak ada entri log baru" pada tiap TC dihitung terhadap baseline itu (S-12).
-- Hook `after`: reset counter IP rate limit, kembalikan jam server uji dan jam browser uji ke waktu nyata, dan hapus semua user yang dibuat. Hook ini tetap jalan walau spec gagal di tengah.
+- Baseline log: hook `before` mencatat jumlah baris `Wulan Hakim`, `Andi Susanti`, `Fajar Harahap`, `Mega Setiawan`, dan `Pengguna Flood 21` di `Global Settings > Activity Log > Session` dan di `Global Settings > User > Detail > User Log`; "tidak ada entri log baru" pada tiap TC dihitung terhadap baseline itu (S-12). TC-AUTH-OTP-196 tidak memakai baseline hook: 20 Verify dengan kode salah menulis baris Failed sebelum Request ke-21, sehingga jumlah baris `Sinta Wulandari` dicatat ulang di langkah 62 tepat sebelum Request ke-21.
+- Hook `after`: reset counter IP rate limit, kembalikan jam server uji dan jam browser uji ke waktu nyata (termasuk membatalkan pembekuan jam server), dan hapus semua user yang dibuat. Hook ini tetap jalan walau spec gagal di tengah.
 
 ## Test Steps
 
@@ -112,13 +115,35 @@ coverage:
 53. Ganti konteks ke browser admin dan buka `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` untuk `Pengguna Flood 21`
 54. Verifikasi tidak ada entri log baru untuk percobaan ini di kedua surface log dibanding baseline hook `before`
 
+### TC-AUTH-OTP-196: Kuota IP endpoint `request` terpisah dari `verify`, Resend dihitung pada `request`, dan jendela 1 menit di-reset
+
+55. Reset counter IP rate limit
+56. Bekukan jam server uji
+57. Kirim 19 permintaan ke endpoint `request` langsung ke server untuk `sintawulandari+{runId}-028@qwertysystem.net` dengan token reCAPTCHA valid (campuran Request OTP dan Resend code; Resend dihitung sebagai `request`)
+58. Kirim 20 permintaan Verify OTP langsung ke server untuk `sintawulandari+{runId}-028@qwertysystem.net` dengan kode salah
+59. Verifikasi ke-20 permintaan Verify ditolak sebagai kode salah dan tidak ada yang berstatus 429 (kuota `verify` terpisah dari `request`)
+60. Kirim Request OTP ke-20 langsung ke server untuk email yang sama pada menit yang sama
+61. Verifikasi Request ke-20 tidak berstatus 429 (hanya dapat ditolak oleh cooldown sesi bila berlaku)
+62. Ganti konteks ke browser admin, buka `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` untuk `Sinta Wulandari`, lalu catat jumlah baris saat ini dan jumlah email di mail-catcher `sintawulandari+{runId}-028@qwertysystem.net`
+63. Kirim Request OTP ke-21 langsung ke server untuk email yang sama pada menit yang sama
+64. Verifikasi Request ke-21 ditolak 429 dengan kode `RATE_LIMITED`
+65. Verifikasi tidak ada email OTP baru terkirim ke `sintawulandari+{runId}-028@qwertysystem.net` di mail-catcher dibanding jumlah email langkah 62
+66. Muat ulang `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` untuk `Sinta Wulandari` di browser admin
+67. Verifikasi tidak ada entri log baru untuk Request ke-21 di kedua surface log dibanding jumlah baris langkah 62
+68. Majukan jam server uji 60 detik sehingga jendela 1 menit sejak permintaan pertama berakhir
+69. Kirim Request OTP langsung ke server untuk `sintawulandari+{runId}-028@qwertysystem.net`
+70. Verifikasi Request diterima kembali dan tidak berstatus 429 (jendela 1 menit di-reset)
+71. Pulihkan jam server uji ke waktu nyata
+
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/login-otp/TestCases/tc-login-otp.md`.
 - Spec ini memuat dua kelas harness sekaligus: kelas c (flood rate limit, objek uji) dan kelas d (mail-catcher untuk asersi tidak ada email OTP, serta pengaturan jam untuk menunggu countdown 60 detik pada TC-AUTH-OTP-85). Kelas d di sini hanya langkah rutin yang bukan objek uji (konvensi bagian 3 butir 13 d dan bagian 6), sehingga tidak memicu pemisahan spec; TC-85 memerlukan Resend, yang hanya mungkin sesudah countdown selesai, di jendela flood yang sama.
-- Kelas harness c. Suite berjalan serial (lihat Prerequisites), jadi flood tidak mengganggu spec lain; counter direset di awal tiap TC dan di `after`. TC-34 ditaruh paling akhir karena membuat paling banyak state (21 request dan kode aktif).
-- Pengecualian P-1 (state berat): Expected "tidak ada entri log baru" pada TC-33, 34, 63, 85, dan TC-135 (seluruhnya asersi absence yang bergantung pada penolakan IP rate limit hasil flood) tetap di spec ini dan tidak dipindah ke spec absence E2E-040, karena memerlukan state flood yang baru dibangun. Pembagian ini dicatat juga di Notes E2E-040.
-- Langkah penghubung (S-03): langkah 1, 12, 21, 33, 46 (reset counter), langkah 43 (memulihkan jam), serta langkah 9, 13, 19, 22, 31, 34, 44, 47, 53 (ganti konteks). Pengiriman 20 request pada TC-33 dan TC-135 dilakukan setelah email dan reCAPTCHA terisi (urutan prasyarat "IP sudah mengirim 20 request" digeser tepat sebelum klik [Request OTP]) supaya request ke-21 jatuh dalam jendela 1 menit yang sama.
+- Kelas harness c. Suite berjalan serial (lihat Prerequisites), jadi flood tidak mengganggu spec lain; counter direset di awal tiap TC dan di `after`. TC-34 ditaruh sesudah TC lain yang memakai UI karena membuat paling banyak state (21 request dan kode aktif); TC-196 ditaruh terakhir karena seluruh permintaannya langsung ke server dan membekukan jam server.
+- P-4: keenam TC berbagi state global counter IP rate limit per IP penguji dan membangunnya berurutan (flood lalu request ke-21; TC-196 juga jendela 1 menit yang di-reset). Hook `before` dan langkah reset di awal tiap blok me-reset counter, dan state awal tiap bagian ditulis di Prerequisites.
+- Spec ini 71 langkah, di atas smell sekitar 35 langkah (prinsip 13), sebagian besar blok baca-log berpola dan langkah reset. Dipertahankan karena seluruh blok satu kelas harness c pada counter yang sama (P-4), dan tiap blok berdiri sendiri: counter direset di awal tiap blok dan tiap blok memakai user sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+- Pengecualian P-1 (state berat): Expected "tidak ada entri log baru" pada TC-33, 34, 63, 85, dan TC-135 (seluruhnya asersi absence yang bergantung pada penolakan IP rate limit hasil flood) tetap di spec ini dan tidak dipindah ke spec absence E2E-040, karena memerlukan state flood yang baru dibangun. Asersi "tidak dicatat" TC-196 Expected c (langkah 67) memakai pengecualian yang sama karena bergantung pada penolakan 429 hasil 20 permintaan beruntun. Pembagian ini dicatat juga di Notes E2E-040.
+- Langkah penghubung (S-03): langkah 1, 12, 21, 33, 46, 55 (reset counter), langkah 43 dan 71 (memulihkan jam), langkah 56 dan 68 (membekukan dan memajukan jam server), langkah 62 dan 66 (mencatat dan memuat ulang log), serta langkah 9, 13, 19, 22, 31, 34, 44, 47, 53 (ganti konteks). Pengiriman 20 request pada TC-33 dan TC-135 dilakukan setelah email dan reCAPTCHA terisi (urutan prasyarat "IP sudah mengirim 20 request" digeser tepat sebelum klik [Request OTP]) supaya request ke-21 jatuh dalam jendela 1 menit yang sama.
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Urutan periksa mail-catcher berbeda dari TC sumber: TC-AUTH-OTP-33 langkah 6, TC-AUTH-OTP-85 langkah 9, dan TC-AUTH-OTP-34 langkah 5 menaruh "Periksa mail-catcher" sesudah membuka log di sesi admin. Spec memeriksa mail-catcher (langkah 8, 42, 52) sebelum ganti konteks ke browser admin, supaya asersi email dibaca pada konteks publik yang sama dengan request yang ditolak tanpa kembali dari browser admin; tidak ada Expected yang bergantung pada urutan ini.
 - Aturan suffix `{runId}-028` tidak berlaku untuk email flood: TC menetapkan alamat literal `floodtakterdaftar01@qwertysystem.net` sampai `floodtakterdaftar20@qwertysystem.net` (tak terdaftar, tidak di-seed), dan spec mengikuti TC. Karena suite berjalan serial dan counter IP direset di awal tiap TC, alamat yang sama dipakai ulang pada TC-33, TC-135, dan TC-85.
@@ -127,3 +152,7 @@ coverage:
   - TC-34 langkah 2 tidak menyebut cara 20 Request OTP dikirim dan toast diamati dalam 1 menit dengan reCAPTCHA per request, atau cara form Request OTP dipakai ulang sesudah request sukses; spec memakai pengiriman UI otomatis (lihat Prerequisites).
   - TC-33 dan TC-135 hampir identik (request ke-21 ditolak dan tidak dicatat); keduanya dipertahankan karena sumbernya terpisah di Section 3b dan 5c.
   - TC-85 langkah 5 ("Tunggu countdown 60 detik selesai") tidak menyebut cara jam diatur. NC-11 (keputusan user 2026-10-06) menetapkan countdown dihitung dari timestamp server dan bertahan setelah refresh, tetapi tidak menyatakan jam yang dibaca penghitung mundur di UI; spec memajukan jam server dan jam browser bersama agar hasil tidak bergantung pada jawabannya. Mohon QA memastikan jam yang dipakai penghitung mundur.
+  - TC-196 Expected c meminta caption "Too many requests. Please try again later." pada Alert di atas [Request OTP], padahal seluruh permintaan TC itu dikirim langsung ke server tanpa UI, sehingga tidak ada Alert yang dapat diamati. Spec hanya mengasersi respons 429 `RATE_LIMITED`, tidak ada email baru, dan tidak ada entri log; caption untuk penolakan IP rate limit lewat UI sudah diasersi pada TC-33 dan TC-34.
+  - TC-196 langkah 5 ("Tunggu sampai 60 detik sejak permintaan pertama menit tersebut berakhir") tidak menyebut cara jam diatur; spec membekukan jam server sebelum permintaan pertama lalu memajukannya 60 detik (R-10).
+  - TC-196 langkah 1 tidak menyebut komposisi campuran Request OTP dan Resend code pada 19 permintaan, dan Resend yang dikirim sebelum cooldown 60 detik selesai ditolak cooldown sesi (tetap dihitung limiter); spec tidak menentukan komposisinya dan hanya mengasersi akibat pada Request ke-20 dan ke-21.
+  - TC-196 tidak menyebut baseline untuk "tidak dicatat", padahal 20 Verify dengan kode salah sebelumnya menulis baris Failed; spec mencatat jumlah baris tepat sebelum Request ke-21 (langkah 62).

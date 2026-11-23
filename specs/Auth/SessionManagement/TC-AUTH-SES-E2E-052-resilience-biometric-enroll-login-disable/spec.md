@@ -65,7 +65,7 @@ coverage:
 22. Tutup paksa aplikasi mobile di perangkat Android uji B, hapus data aplikasi, lalu siapkan enrollment `fajaranggraini+{runId}-052@qwertysystem.net` sebagai user yang sudah enroll biometric di perangkat (email cache lokal = email itu) dengan sesi mobile aktif
 23. Aktifkan failure injection 5xx pada request disable
 24. Buka Settings > Security di aplikasi mobile perangkat Android uji B
-25. Matikan toggle "Face ID / Touch ID"
+25. Matikan toggle "Biometric sign-in"
 26. Verifikasi Toast error "Error, failed to disable biometric."
 27. Verifikasi Toggle kembali ke posisi aktif
 28. Nonaktifkan failure injection 5xx pada request disable

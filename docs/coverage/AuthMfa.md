@@ -1,14 +1,14 @@
 # Coverage E2E — Auth > MFA
 
-Sumber: `auth/mfa/TestCases/tc-mfa.md` (217 TC aktif, `TC-AUTH-MFA-01`–`217`). Suite: `specs/Auth/Mfa/`. Status seluruh spec: `draft`, belum ada script TestSpectra.
+Sumber: `auth/mfa/TestCases/tc-mfa.md` (219 TC aktif, `TC-AUTH-MFA-01`–`219`). Suite: `specs/Auth/Mfa/`. Status seluruh spec: `draft`, belum ada script TestSpectra.
 
-**Verifikasi lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 56 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+**Verifikasi lint:** `npx spectra lint --strict specs/Auth/Mfa` → `✓ 57 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.` (2026-11-23)
 
-**Seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, seluruh 217 TC masuk spec; tidak ada TC hanya-BE. Sembilan TC yang menembak endpoint secara langsung tanpa UI (TC-85, 86, 104, 124, 188, 189, 190, 193, 214) tetap masuk sebagai spec kelas a (defense-in-depth, client HTTP) di spec 041 dan 042; TC-204 dan 205 juga mengirim request klien HTTP langsung (20 request per menit per IP) di spec 049. Hambatan teknis dan label `Manual Only` di TC (jam server, jam authenticator, geo-IP, email service, rate limit, Android, mail-catcher, decode QR, proxy `X-Forwarded-For`) bukan alasan mengeluarkan TC; semua kebutuhan ditulis di `## Prerequisites` tiap spec.
+**Seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, seluruh 219 TC masuk spec; tidak ada TC hanya-BE. Sembilan TC yang menembak endpoint secara langsung tanpa UI (TC-85, 86, 104, 124, 188, 189, 190, 193, 214) tetap masuk sebagai spec kelas a (defense-in-depth, client HTTP) di spec 041 dan 042; TC-204 dan 205 juga mengirim request klien HTTP langsung (20 request per menit per IP) di spec 049. Hambatan teknis dan label `Manual Only` di TC (jam server, jam authenticator, geo-IP, email service, rate limit, Android, mail-catcher, decode QR, proxy `X-Forwarded-For`) bukan alasan mengeluarkan TC; semua kebutuhan ditulis di `## Prerequisites` tiap spec.
 
 **Mode:** semua spec `FE+BE`. Kegagalan 5xx dan timeout dipaksa lewat `Spectra.intercept()` di atas backend nyata atau dipicu di sisi server (geo-IP, email service), sehingga tidak ada spec `Mode: mock`. Spec mobile memakai `coverage.mobile: automated`.
 
-**Nomor spec:** prefix `TC-AUTH-MFA-E2E-` dari `AUTH` + `MFA` pada `foundation/tc-prefix-registry.md`; `001`–`056` adalah nomor urut spec dalam suite. Spec lama `specs/Auth/Mfa/` (36 spec dari 210 TC) sudah dihapus dan digantikan seluruhnya.
+**Nomor spec:** prefix `TC-AUTH-MFA-E2E-` dari `AUTH` + `MFA` pada `foundation/tc-prefix-registry.md`; `001`–`057` adalah nomor urut spec dalam suite. Spec lama `specs/Auth/Mfa/` (36 spec dari 210 TC) sudah dihapus dan digantikan seluruhnya.
 
 **Pembagian TC lintas spec (prinsip 10):** dua TC terbelah dan dicatat di `sourceTc` kedua spec serta `## Notes`: TC-151 (butir a absence log di spec 035; butir b tepat satu entri Success di spec 031, utama); TC-48 (tampilan dan tanpa email di spec 027, utama; absence log langkah 8 di spec 035). TC-22 dan TC-23 seluruhnya di spec 019; Post Condition entri Success faktor-1 keduanya tidak punya Expected padanan atau langkah observasi di TC sehingga tidak diasersi (dicatat sebagai temuan QA). TC-AUTH-MFA-160 dan 161 (asersi log Failed) ditaruh di spec kondisi asalnya (008 dan 055), bukan di spec pencatatan 033, karena kondisinya memakai harness waktu dan akun aktor admin yang sama.
 
@@ -74,8 +74,9 @@ Sumber: `auth/mfa/TestCases/tc-mfa.md` (217 TC aktif, `TC-AUTH-MFA-01`–`217`).
 | TC-AUTH-MFA-E2E-054-window-90-hari-pasangan-negara | Window 90 Hari Pasangan Negara | 40, 215 | web |
 | TC-AUTH-MFA-E2E-055-ganti-email-saat-otp-mfa | Ganti Email User Saat OTP Faktor Kedua MFA Berlangsung | 75, 161 | web |
 | TC-AUTH-MFA-E2E-056-aksesibilitas-screen-reader-validasi-kode | Aksesibilitas Screen Reader pada Pesan Validasi Kode Authenticator | 12 | web |
+| TC-AUTH-MFA-E2E-057-mobile-hapus-data-dan-restore-backup | Hapus Data Aplikasi dan Restore Backup ke Perangkat Lain Membuat Device Baru | 218, 219 | mobile |
 
-**Total:** 217 dari 217 TC granular tercakup; 56 spec. TC-48 dan 151 muncul di dua spec (spec utama di tabel Lapisan per TC); selebihnya satu spec per TC.
+**Total:** 219 dari 219 TC granular tercakup; 57 spec. TC-48 dan 151 muncul di dua spec (spec utama di tabel Lapisan per TC); selebihnya satu spec per TC.
 
 ---
 
@@ -300,6 +301,8 @@ Sumber: `auth/mfa/TestCases/tc-mfa.md` (217 TC aktif, `TC-AUTH-MFA-01`–`217`).
 | TC-AUTH-MFA-215 | TC-AUTH-MFA-E2E-054-window-90-hari-pasangan-negara | FE+BE |
 | TC-AUTH-MFA-216 | TC-AUTH-MFA-E2E-025-decay-dan-refresh-trust-pasangan-negara | FE+BE |
 | TC-AUTH-MFA-217 | TC-AUTH-MFA-E2E-030-user-dinonaktifkan-atau-dihapus-saat-mfa | FE+BE |
+| TC-AUTH-MFA-218 | TC-AUTH-MFA-E2E-057-mobile-hapus-data-dan-restore-backup | FE+BE |
+| TC-AUTH-MFA-219 | TC-AUTH-MFA-E2E-057-mobile-hapus-data-dan-restore-backup | FE+BE |
 
 ---
 

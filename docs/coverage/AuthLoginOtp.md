@@ -1,10 +1,10 @@
 # Coverage E2E — Auth > Login with OTP
 
-Sumber: `auth/login-otp/TestCases/tc-login-otp.md` (194 TC, `TC-AUTH-OTP-01`–`194`). Suite: `specs/Auth/LoginOtp/` (50 spec, `suite.md` dengan `parallel: false`). Status semua spec: `draft`, belum ada script.
+Sumber: `auth/login-otp/TestCases/tc-login-otp.md` (199 TC, `TC-AUTH-OTP-01`–`199`, hash SHA-256 `7a6af948b9b36870…`). Suite: `specs/Auth/LoginOtp/` (50 spec, `suite.md` dengan `parallel: false`). Status semua spec: `draft`, belum ada script.
 
-**Verifikasi lint:** `spectra lint --strict specs/Auth/LoginOtp` → `✓ 50 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+**Verifikasi lint:** `npx spectra lint --strict specs/Auth/LoginOtp` → `✓ 50 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.` (2026-11-23)
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 190 TC masuk spec, 4 TC hanya-BE. Setiap TC punya satu spec utama (tabel "Lapisan per TC"). Sisi absence pencatatan (kelas g, prinsip 13) dari TC fungsional dicatat tambahan di spec 040 dan 047 melalui `sourceTc`, dan dicatat di `## Notes` spec asal. Asersi absence yang bergantung pada state berat (flood rate limit, TTL token, Agreement, MFA, Geo-IP, attestation, fixture BE) tetap di spec asalnya sebagai pengecualian prinsip 13 (E2E-004, 027, 028, 030–035).
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 195 TC masuk spec, 4 TC hanya-BE, 0 TC belum terpetakan. Setiap TC punya satu spec utama (tabel "Lapisan per TC"). Sisi absence pencatatan (kelas g, prinsip 13) dari TC fungsional dicatat tambahan di spec 040 dan 047 melalui `sourceTc`, dan dicatat di `## Notes` spec asal. Asersi absence yang bergantung pada state berat (flood rate limit, TTL token, Agreement, MFA, Geo-IP, attestation, fixture BE) tetap di spec asalnya sebagai pengecualian prinsip 13 (E2E-004, 027, 028, 030–035).
 
 **Nomor spec:** prefix `TC-AUTH-OTP-E2E-` dari `AUTH` + `OTP` pada `foundation/tc-prefix-registry.md`. Nomor `001`–`050` adalah nomor urut spec dalam suite. Spec lama di `specs_dummy/Auth/LoginOtp/` (27 spec dari 189 TC) tidak dipakai lagi dan tidak diubah.
 
@@ -31,7 +31,7 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 190 TC masuk spec, 4 TC hanya
 | TC-AUTH-OTP-E2E-013-paste-dan-auto-submit | Paste Kode OTP dan Verifikasi Otomatis pada Digit ke-6 | web | 42, 43, 44, 45 |
 | TC-AUTH-OTP-E2E-014-verify-kode-salah-dan-fallback | Verify OTP dengan Kode Salah dan Button Verify Fallback | web | 49, 56, 60, 69, 177 |
 | TC-AUTH-OTP-E2E-015-verify-percobaan-salah-5x | Batas 5 Kali Verify Salah pada Kode yang Sama dan Dampaknya terhadap Login with Password | web | 65, 66, 68 |
-| TC-AUTH-OTP-E2E-016-verify-sukses-tanpa-gate | Verify OTP Berhasil Langsung ke Product Hub tanpa Agreement dan MFA | web | 10, 48, 100 |
+| TC-AUTH-OTP-E2E-016-verify-sukses-tanpa-gate | Verify OTP Berhasil Langsung ke Product Hub tanpa Agreement dan MFA | web | 10, 48, 100, 197 |
 | TC-AUTH-OTP-E2E-017-edit-email-dan-kode-email-lama | Edit Email dari Layar Verify OTP dan Penolakan Kode dari Request OTP Sebelumnya | web | 54, 64, 86, 88, 89 |
 | TC-AUTH-OTP-E2E-018-state-halaman-f5-back-dan-sesi | State Layar Verify OTP dan Confirm to Continue terhadap F5, Tombol Back/Forward, dan Sesi Email-Request | web | 70, 71, 72, 179 |
 | TC-AUTH-OTP-E2E-019-verify-setelah-perubahan-akun-oleh-admin | Verify OTP Setelah Akun Diubah di Global Settings: Belum Aktivasi, Email Diganti, Dihapus, dan Dinonaktifkan | web | 61, 62, 141, 184 |
@@ -43,14 +43,14 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 190 TC masuk spec, 4 TC hanya
 | TC-AUTH-OTP-E2E-025-sesi-email-request-menghitung-resend | Sesi Email-Request: Request OTP Setelah Cooldown Dihitung sebagai Resend dan Penolakan Tidak Menambah Hitungan | web | 91, 182 |
 | TC-AUTH-OTP-E2E-026-ttl-kode-otp-5-menit | Masa Berlaku Kode OTP 5 Menit: Expired, Batas 4:59 dan 5:00, dan Kode yang Sudah Diganti | web | 50, 123, 194, 55, 51, 193 |
 | TC-AUTH-OTP-E2E-027-ttl-token-pra-autentikasi-10-menit | Masa Berlaku Token Pra-Autentikasi 10 Menit pada Layar Confirm to Continue | web | 107, 111, 108 |
-| TC-AUTH-OTP-E2E-028-rate-limit-ip-429 | Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend | web | 33, 135, 63, 85, 34 |
+| TC-AUTH-OTP-E2E-028-rate-limit-ip-429 | Penolakan IP Rate Limit pada Request OTP, Verify OTP, dan Resend serta Kuota per Endpoint | web | 33, 135, 63, 85, 34, 196 |
 | TC-AUTH-OTP-E2E-029-resilience-request-dan-resend | Ketahanan Request OTP dan Resend terhadap Error Server dan Timeout | web | 31, 32, 83, 93, 183 |
 | TC-AUTH-OTP-E2E-030-resilience-verify-dan-agreement | Ketahanan Verify OTP dan Konfirmasi Agreement terhadap Error Server dan Timeout | web | 57, 58, 59, 105, 106, 188 |
 | TC-AUTH-OTP-E2E-031-agreement-gate-first-login | Layar Confirm to Continue: Pemicu Login Pertama, Checkbox, Tautan Privacy Policy, dan Konfirmasi | web | 97, 101, 102, 104, 109 |
 | TC-AUTH-OTP-E2E-032-agreement-gate-policy-baru-dan-konfirmasi-sukses | Layar Confirm to Continue: Pemicu Versi Privacy Policy Baru dan Konfirmasi Sukses | web | 99, 103, 142 |
 | TC-AUTH-OTP-E2E-033-handoff-mfa-first-login-dan-final | Handoff ke MFA Authenticator setelah Agreement dan Pencatatan Success di Titik Final | web | 112, 115, 129 |
 | TC-AUTH-OTP-E2E-034-handoff-mfa-idle-device-baru-dan-alert | Handoff ke MFA untuk Idle 30 Hari, Device Baru, dan Email Alert Login Tak Biasa | web | 98, 113, 114, 174 |
-| TC-AUTH-OTP-E2E-035-handoff-mfa-geo-ip | Handoff ke MFA berdasarkan Jarak dan Negara Login | web | 190, 191 |
+| TC-AUTH-OTP-E2E-035-handoff-mfa-geo-ip | Handoff ke MFA berdasarkan Jarak dan Negara Login serta Pasangan Negara Tepercaya | web | 190, 191, 199 |
 | TC-AUTH-OTP-E2E-036-pencatatan-failed-request-otp | Pencatatan Failed pada Request OTP: Captcha not completed, Account is not activated, Account is inactive | web | 116, 117, 118 |
 | TC-AUTH-OTP-E2E-037-pencatatan-failed-verify-otp | Pencatatan Failed pada Verify OTP: Empty OTP dan Incorrect OTP | web | 119, 120, 121, 122 |
 | TC-AUTH-OTP-E2E-038-pencatatan-failed-consent-dan-email-changed | Pencatatan Failed: Account is inactive saat Verify, OTP invalid — email changed, dan Consent not given | web | 124, 125, 126 |
@@ -58,14 +58,14 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 190 TC masuk spec, 4 TC hanya
 | TC-AUTH-OTP-E2E-040-tidak-dicatat-absence | Kondisi yang Tidak Dicatat di Surface Log: Penolakan Pra-Lookup, Kegagalan Server, Cooldown, dan Akun Terhapus | web | 130, 131, 132, 133, 134, 128, 11, 12, 13, 16, 19, 23, 24, 28, 89, 167, 168 |
 | TC-AUTH-OTP-E2E-041-duplicate-login-attempt | Login with OTP saat Sesi Web Lain Aktif: Duplicate Login Attempt Dikonfirmasi atau Dibatalkan | web | 143, 175, 176 |
 | TC-AUTH-OTP-E2E-042-entitas-plan-dan-status-client | Login with OTP Identik untuk Berbagai Plan dan Entitas | web | 144, 145, 146, 147, 148, 149, 150 |
-| TC-AUTH-OTP-E2E-043-defense-in-depth-request-dan-verify | Defense-in-Depth: Payload Script, Klaim Mobile Tanpa Bukti, Resend Sebelum Cooldown, Token Diubah, dan Kode Terpakai | web | 157, 154, 84, 161, 155 |
+| TC-AUTH-OTP-E2E-043-defense-in-depth-request-dan-verify | Defense-in-Depth: Payload Script, Klaim Mobile Tanpa Bukti, Resend Sebelum Cooldown, Token Diubah, Kode Terpakai, dan Entry di Luar Enum | web | 157, 154, 84, 161, 155, 198 |
 | TC-AUTH-OTP-E2E-044-defense-in-depth-kuota-resend | Defense-in-Depth setelah Kuota Resend Habis: Resend Langsung, Request Tanpa Entry, Hapus Data Browser, dan Entry edit_email | web | 163, 171, 162, 178 |
 | TC-AUTH-OTP-E2E-045-sesi-penuh-tidak-terbentuk-sebelum-gate | Sesi Penuh Tidak Terbentuk sebelum Agreement Dikonfirmasi dan sebelum MFA Selesai | web | 158, 159 |
 | TC-AUTH-OTP-E2E-046-multi-tab-race | Multi-Tab dan Multi-Browser: Cooldown Lintas Konteks, Resend, Request, dan Verify Bersamaan | web | 170, 165, 173, 164 |
 | TC-AUTH-OTP-E2E-047-tidak-dicatat-absence-penolakan-navigasi-dan-kegagalan | Tidak Ada Pencatatan di Surface Log untuk Navigasi, Edit Email, Penolakan Cooldown, Akun Terhapus, Kegagalan Server, dan Resend | web | 35, 36, 86, 30, 90, 140, 62, 157, 31, 32, 78, 68 |
 | TC-AUTH-OTP-E2E-048-status-client-suspended-dan-expired | Login with OTP untuk User dari Client Berstatus Suspended dan Expired | web | 151, 152 |
 | TC-AUTH-OTP-E2E-049-duplikasi-tab-konfirmasi-token-sekali-pakai | Duplikasi Tab pada Layar Confirm to Continue: Konfirmasi Kedua dengan Token yang Sama Ditolak | web | 110 |
-| TC-AUTH-OTP-E2E-050-geo-ip-service-tidak-tersedia | Geo-IP Service Tidak Tersedia: Trigger Jarak dan Negara Dilewati, Verify OTP Lanjut ke Portal tanpa MFA | web | 192 |
+| TC-AUTH-OTP-E2E-050-geo-ip-service-tidak-tersedia | Geo-IP Service Tidak Tersedia: Trigger Jarak Dilewati, Trigger Negara dari Header Edge Tetap Berlaku | web | 192, 195 |
 
 ## Lapisan per TC
 
@@ -261,6 +261,11 @@ Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 190 TC masuk spec, 4 TC hanya
 | TC-AUTH-OTP-192 | TC-AUTH-OTP-E2E-050-geo-ip-service-tidak-tersedia | FE+BE |
 | TC-AUTH-OTP-193 | TC-AUTH-OTP-E2E-026-ttl-kode-otp-5-menit | FE+BE |
 | TC-AUTH-OTP-194 | TC-AUTH-OTP-E2E-026-ttl-kode-otp-5-menit | FE+BE |
+| TC-AUTH-OTP-195 | TC-AUTH-OTP-E2E-050-geo-ip-service-tidak-tersedia | FE+BE |
+| TC-AUTH-OTP-196 | TC-AUTH-OTP-E2E-028-rate-limit-ip-429 | FE+BE |
+| TC-AUTH-OTP-197 | TC-AUTH-OTP-E2E-016-verify-sukses-tanpa-gate | FE+BE |
+| TC-AUTH-OTP-198 | TC-AUTH-OTP-E2E-043-defense-in-depth-request-dan-verify | FE+BE |
+| TC-AUTH-OTP-199 | TC-AUTH-OTP-E2E-035-handoff-mfa-geo-ip | FE+BE |
 
 ## TC hanya-BE (tidak masuk spec)
 

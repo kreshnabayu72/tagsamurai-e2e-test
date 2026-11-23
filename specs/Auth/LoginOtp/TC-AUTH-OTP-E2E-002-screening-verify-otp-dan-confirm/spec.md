@@ -66,12 +66,14 @@ coverage:
 29. Ambil kode OTP 6 digit dari email yang masuk ke mail-catcher untuk `nurwibowo+{runId}-002@qwertysystem.net`
 30. Ketik 6 digit kode pada kotak digit sehingga verifikasi otomatis berjalan
 31. Verifikasi layar Confirm to Continue tampil dengan Title "Confirm to Continue"
-32. Verifikasi checkbox "I have read and agree to the Privacy Policy *" dalam keadaan unchecked
-33. Verifikasi teks "Privacy Policy" pada checkbox berupa tautan ke halaman Privacy Policy
-34. Verifikasi tidak ada caption error pada layar
-35. Verifikasi button [Continue ➔] full-width (variant solid, severity primary)
-36. Verifikasi button [Continue ➔] dalam keadaan enabled
-37. Verifikasi tidak ada kotak digit OTP, field Email, widget reCAPTCHA, button [Request OTP], area Resend, tautan [Edit email], tautan [Use password instead], tautan [Back to Login with Password], dan button [Verify]
+32. Verifikasi Content Box scrollable berisi teks "By accessing TAG Samurai, you agree to comply with our Privacy Policy. Please read the full document before continuing. Your continued use of the platform means you accept the terms described in the Privacy Policy."
+33. Verifikasi Content Box berisi tautan terpisah "Read the full Privacy Policy"
+34. Verifikasi checkbox "I have read and agree to the Privacy Policy *" dalam keadaan unchecked
+35. Verifikasi teks "Privacy Policy" pada label checkbox bukan tautan
+36. Verifikasi tidak ada caption error pada layar
+37. Verifikasi button [Continue ➔] full-width (variant solid, severity primary)
+38. Verifikasi button [Continue ➔] dalam keadaan enabled
+39. Verifikasi tidak ada kotak digit OTP, field Email, widget reCAPTCHA, button [Request OTP], area Resend, tautan [Edit email], tautan [Use password instead], tautan [Back to Login with Password], dan button [Verify]
 
 ## Notes
 

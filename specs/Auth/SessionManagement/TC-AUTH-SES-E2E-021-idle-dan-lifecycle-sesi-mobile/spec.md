@@ -116,7 +116,7 @@ coverage:
 52. Verifikasi Dialog "Session Expired" tampil dengan Body "Your session has expired due to inactivity."
 53. Verifikasi Dialog memuat satu tombol [OK]
 54. Ketuk [OK]
-55. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil menggantikan form Login
+55. Verifikasi Screen "Sign in with biometrics" tampil menggantikan form Login
 56. Verifikasi OS biometric prompt muncul otomatis
 
 ## Notes

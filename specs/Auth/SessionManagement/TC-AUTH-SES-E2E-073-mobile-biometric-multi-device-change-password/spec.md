@@ -74,7 +74,7 @@ coverage:
 41. Hapus app dari recent apps lalu buka kembali aplikasi mobile di perangkat E
 42. Verifikasi Halaman Login penuh tampil pada pembukaan app berikutnya di perangkat E
 43. Di perangkat Android uji B login dengan `lestariramadhan+{runId}-073@qwertysystem.net` dan password baru `Spectra.env.SES_PASSWORD_NEW` → Prompt muncul
-44. Verifikasi Prompt "Enable Face ID / Touch ID?" muncul lagi (opt-in ulang diperlukan)
+44. Verifikasi Prompt "Enable biometric sign-in?" muncul lagi (opt-in ulang diperlukan)
 
 ## Notes
 

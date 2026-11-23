@@ -39,8 +39,8 @@ coverage:
 ### TC-AUTH-SES-177: Disable biometric lewat toggle Settings > Security
 
 1. Buka Settings > Security di aplikasi mobile perangkat Android uji B
-2. Matikan toggle "Face ID / Touch ID"
-3. Verifikasi Toggle berlabel "Face ID / Touch ID" dinonaktifkan langsung
+2. Matikan toggle "Biometric sign-in"
+3. Verifikasi Toggle berlabel "Biometric sign-in" dinonaktifkan langsung
 4. Verifikasi Tanpa dialog konfirmasi saat toggle dinonaktifkan
 5. Verifikasi Toast sukses "Success, biometric disabled."
 6. Hapus app dari recent apps lalu buka kembali aplikasi mobile
@@ -99,7 +99,7 @@ coverage:
 50. Verifikasi Token lokal dihapus di perangkat E: halaman Login (form) tampil, bukan Screen biometric sign-in
 51. Di perangkat Android uji B login dengan `budiwijaya+{runId}-051@qwertysystem.net` dan password baru `Spectra.env.SES_PASSWORD_NEW` → Prompt muncul
 52. Verifikasi Opt-in ulang diperlukan setelah login berikutnya: biometric belum aktif sehingga login memakai password dan menawarkan Prompt
-53. Verifikasi Prompt "Enable Face ID / Touch ID?" muncul lagi
+53. Verifikasi Prompt "Enable biometric sign-in?" muncul lagi
 
 ## Notes
 

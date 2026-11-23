@@ -47,56 +47,58 @@ coverage:
 9. Verifikasi **Body**: Content Box scrollable berisi teks persetujuan "By accessing TAG Samurai, you agree to comply with our Privacy Policy. Please read the full document before continuing. Your continued use of the platform means you accept the terms described in the Privacy Policy."
 10. Verifikasi **Body**: Content Box berisi tautan "Read the full Privacy Policy"
 11. Verifikasi **Body**: Checkbox berstatus unchecked dengan label "I have read and agree to the Privacy Policy *"
-12. Verifikasi **Footer**: Button [Continue ➔] (solid, primary, lebar penuh, enabled)
-13. Verifikasi field Email, field Password, dan Button [Log in] tidak tampil
-14. Verifikasi sesi penuh belum dibuat
-15. Tutup semua jendela privat dan hapus sesi browser terkait
+12. Verifikasi **Body**: label checkbox bukan tautan
+13. Verifikasi **Footer**: Button [Continue ➔] (solid, primary, lebar penuh, enabled)
+14. Verifikasi field Email, field Password, dan Button [Log in] tidak tampil
+15. Verifikasi sesi penuh belum dibuat
+16. Tutup semua jendela privat dan hapus sesi browser terkait
 
 ### TC-AUTH-LP-08: Urutan Tab keyboard pada layar Confirm to Continue
 
-16. Buka jendela privat baru (tanpa sesi login)
-17. Buka halaman Login with Password
-18. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email
-19. Ketik password nilai `Spectra.env.LP_PASSWORD` di field Password
-20. Selesaikan reCAPTCHA
-21. Klik [Log in] sampai layar Confirm to Continue tampil
-22. Tekan Tab berulang kali sambil mencatat elemen yang fokus
-23. Verifikasi urutan fokus: Checkbox persetujuan, tautan dokumen, Button [Continue ➔]
-24. Tutup semua jendela privat dan hapus sesi browser terkait
+17. Buka jendela privat baru (tanpa sesi login)
+18. Buka halaman Login with Password
+19. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email
+20. Ketik password nilai `Spectra.env.LP_PASSWORD` di field Password
+21. Selesaikan reCAPTCHA
+22. Klik [Log in] sampai layar Confirm to Continue tampil
+23. Tekan Tab berulang kali sambil mencatat elemen yang fokus
+24. Verifikasi urutan fokus: Checkbox persetujuan, tautan dokumen, Button [Continue ➔]
+25. Tutup semua jendela privat dan hapus sesi browser terkait
 
 ### TC-AUTH-LP-91: Tautan baca dokumen penuh pada layar Confirm to Continue
 
-25. Buka jendela privat baru (tanpa sesi login)
-26. Buka halaman Login with Password
-27. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email
-28. Ketik password nilai `Spectra.env.LP_PASSWORD` di field Password
-29. Selesaikan reCAPTCHA
-30. Klik [Log in] sampai layar Confirm to Continue tampil
-31. Klik tautan "Read the full Privacy Policy" pada Content Box
-32. Verifikasi dokumen Privacy Policy versi aktif terbuka di tab baru
-33. Verifikasi layar Confirm to Continue tetap terbuka di tab semula
-34. Verifikasi checkbox pada layar Confirm to Continue di tab semula berstatus unchecked
-35. Tutup tab dokumen Privacy Policy
-36. Tutup semua jendela privat dan hapus sesi browser terkait
+26. Buka jendela privat baru (tanpa sesi login)
+27. Buka halaman Login with Password
+28. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email
+29. Ketik password nilai `Spectra.env.LP_PASSWORD` di field Password
+30. Selesaikan reCAPTCHA
+31. Klik [Log in] sampai layar Confirm to Continue tampil
+32. Klik tautan "Read the full Privacy Policy" pada Content Box
+33. Verifikasi dokumen Privacy Policy versi aktif terbuka di tab baru
+34. Verifikasi layar Confirm to Continue tetap terbuka di tab semula
+35. Verifikasi checkbox pada layar Confirm to Continue di tab semula berstatus unchecked
+36. Tutup tab dokumen Privacy Policy
+37. Tutup semua jendela privat dan hapus sesi browser terkait
 
 ### TC-AUTH-LP-77: Checkbox Agreement tidak dirender di form Login walau akun wajib Agreement
 
-37. Buka jendela privat baru (tanpa sesi login)
-38. Buka halaman Login with Password
-39. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email tanpa mengisi Password
-40. Verifikasi Checkbox Agreement tidak tampil di form Login
-41. Ketik password nilai `Spectra.env.LP_PASSWORD_WRONG` di field Password
-42. Selesaikan reCAPTCHA
-43. Klik [Log in]
-44. Verifikasi Alert Danger "Incorrect email or password" tampil di atas Button [Log in]
-45. Verifikasi Checkbox Agreement tetap tidak tampil
-46. Verifikasi layar Confirm to Continue tidak tampil
+38. Buka jendela privat baru (tanpa sesi login)
+39. Buka halaman Login with Password
+40. Ketik email `tonokurniawan+{runId}-020@qwertysystem.net` di field Email tanpa mengisi Password
+41. Verifikasi Checkbox Agreement tidak tampil di form Login
+42. Ketik password nilai `Spectra.env.LP_PASSWORD_WRONG` di field Password
+43. Selesaikan reCAPTCHA
+44. Klik [Log in]
+45. Verifikasi Alert Danger "Incorrect email or password" tampil di atas Button [Log in]
+46. Verifikasi Checkbox Agreement tetap tidak tampil
+47. Verifikasi layar Confirm to Continue tidak tampil
 
 ## Notes
 
 - Mode: FE+BE. Sumber: `auth/login-password/TestCases/tc-login-password.md`.
 - Urutan: screening layar Confirm to Continue (TC-AUTH-LP-07, 08, 91) lebih dulu, lalu validasi diblokir (TC-AUTH-LP-77), sesuai prinsip 2 dan 3. Layar Confirm to Continue hanya dapat dicapai lewat login ulang, sehingga setiap TC dimulai di jendela privat baru (langkah penghubung, S-03; S-09), termasuk TC-AUTH-LP-77 yang tidak boleh mewarisi sesi pra-auth TC sebelumnya.
 - TC-AUTH-LP-141 (sesi penuh tidak dibuat sebelum Agreement dikonfirmasi) diuji di spec defense-in-depth sesi pra-auth, bukan di sini.
-- Langkah 35 (menutup tab dokumen) adalah langkah penghubung tanpa awalan `Verifikasi` (S-03).
-- Langkah 15, 24, dan 36 (menutup semua jendela privat dan menghapus sesi browser terkait) adalah langkah penghubung tanpa awalan `Verifikasi` supaya TC berikutnya mulai dari konteks browser bersih (S-03; S-09).
-- Temuan untuk QA: TC-AUTH-LP-91 tidak menyebut judul atau URL dokumen Privacy Policy yang diharapkan di tab baru; asersi langkah 32 memakai "dokumen Privacy Policy versi aktif terbuka di tab baru" sesuai Expected TC. Expected TC-AUTH-LP-08 tidak menyebut apakah Button [Continue ➔] termasuk urutan Tab saat checkbox unchecked; spec mengikuti urutan yang tertulis.
+- Langkah 36 (menutup tab dokumen) adalah langkah penghubung tanpa awalan `Verifikasi` (S-03).
+- Tab dokumen pada TC-AUTH-LP-91 hanya memuat URL dokumen Privacy Policy dan tidak bertindak lintas tab dengan tab semula (bukan konteks kedua kelas c).
+- Langkah 16, 25, dan 37 (menutup semua jendela privat dan menghapus sesi browser terkait) adalah langkah penghubung tanpa awalan `Verifikasi` supaya TC berikutnya mulai dari konteks browser bersih (S-03; S-09).
+- Temuan untuk QA: TC-AUTH-LP-91 tidak menyebut judul atau URL dokumen Privacy Policy yang diharapkan di tab baru; asersi langkah 33 memakai "dokumen Privacy Policy versi aktif terbuka di tab baru" sesuai Expected TC. Expected TC-AUTH-LP-08 tidak menyebut apakah Button [Continue ➔] termasuk urutan Tab saat checkbox unchecked; spec mengikuti urutan yang tertulis.

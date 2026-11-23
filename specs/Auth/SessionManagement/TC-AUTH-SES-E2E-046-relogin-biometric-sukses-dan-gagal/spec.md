@@ -57,7 +57,7 @@ coverage:
 7. Majukan jam server dan jam browser/perangkat bersama 16 menit tanpa aktivitas di app sehingga sesi mobile berakhir karena idle
 8. Hapus app dari recent apps
 9. Buka aplikasi mobile di perangkat Android uji B
-10. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil menggantikan form Login
+10. Verifikasi Screen "Sign in with biometrics" tampil menggantikan form Login
 11. Verifikasi OS biometric prompt muncul otomatis
 12. Pulihkan jam server dan jam browser/perangkat ke waktu nyata
 
@@ -126,7 +126,7 @@ coverage:
 64. Verifikasi Halaman Login penuh tampil setelah tautan diketuk
 65. Hapus app dari recent apps
 66. Buka kembali app
-67. Verifikasi Screen "Sign in with Face ID / Touch ID" tampil lagi karena refresh token tetap tersimpan
+67. Verifikasi Screen "Sign in with biometrics" tampil lagi karena refresh token tetap tersimpan
 
 ### TC-AUTH-SES-159: OS biometric prompt tidak menerima passcode perangkat sebagai pengganti
 

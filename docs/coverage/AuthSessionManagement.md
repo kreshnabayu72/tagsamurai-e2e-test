@@ -1,16 +1,16 @@
 # Coverage E2E — Auth > Session Management
 
-Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC aktif, `TC-AUTH-SES-1`–`328`). Suite: `specs/Auth/SessionManagement/`. Status seluruh spec: `draft`, belum ada script TestSpectra.
+Sumber: `auth/session-management/TestCases/tc-session-management.md` (349 TC aktif, `TC-AUTH-SES-1`–`349`, hash SHA-256 `5cf488596291c1f8…`). Suite: `specs/Auth/SessionManagement/`. Status seluruh spec: `draft`, belum ada script TestSpectra.
 
-**Verifikasi lint:** `npx spectra lint --strict specs/Auth/SessionManagement` → `✓ 77 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.`
+**Verifikasi lint:** `npx spectra lint --strict specs/Auth/SessionManagement` → `✓ 84 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.` (2026-11-23)
 
-**Seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, seluruh 328 TC masuk spec; tidak ada TC hanya-BE. TC yang menembak endpoint langsung tanpa UI (antara lain TC-233, 234, 235, 322, 231, 232, 250, 320, 256) tetap masuk sebagai spec kelas a. Hambatan teknis dan label `Manual Only` (jam server, perangkat Android/iOS, biometrik, SSE, failure injection, status Client dan subscription, seat dan kuota) bukan alasan mengeluarkan TC; semua kebutuhan ditulis di `## Prerequisites` tiap spec.
+**Seleksi:** sesuai `docs/e2e-conventions.md` bagian 2, 347 dari 349 TC masuk spec; tidak ada TC hanya-BE. TC-AUTH-SES-260 dan 261 (iOS) Ditahan karena PRD §12 #4 menyatakan iOS di luar scope rilis pertama (bagian "Ditahan" di bawah). TC yang menembak endpoint langsung tanpa UI (antara lain TC-233, 234, 235, 322, 231, 232, 250, 320, 256) tetap masuk sebagai spec kelas a. Hambatan teknis dan label `Manual Only` (jam server, perangkat Android/iOS, biometrik, SSE, failure injection, status Client dan subscription, seat dan kuota) bukan alasan mengeluarkan TC; semua kebutuhan ditulis di `## Prerequisites` tiap spec.
 
 **Mode:** semua spec `FE+BE`. Kegagalan 5xx dan timeout dipaksa lewat `Spectra.intercept()` di atas backend nyata atau dipicu di sisi server, sehingga tidak ada spec `Mode: mock`. Spec mobile memakai `coverage.mobile: automated`; spec yang memakai web dan mobile memakai keduanya.
 
-**Nomor spec:** prefix `TC-AUTH-SES-E2E-` dari `AUTH` + `SES` pada `foundation/tc-prefix-registry.md`; `001`–`076` adalah nomor urut spec dalam suite.
+**Nomor spec:** prefix `TC-AUTH-SES-E2E-` dari `AUTH` + `SES` pada `foundation/tc-prefix-registry.md`; `001`–`084` adalah nomor urut spec dalam suite.
 
-**Asersi absence log (kelas g, prinsip 13):** spec fungsional tidak menulis asersi "tidak ada pencatatan" dan merujuknya ke spec absence (S-05). Spec absence: 060 (TC sendiri: 190, 195, 196, 202, 203, 211, 267), 059 (TC-212), serta lima spec absence per domain 066 (duplicate login dan session expired), 067 (sesi-produk dan concurrent), 068 (subscription tidak aktif), 069 (penolakan, force-logout, dan aksi admin), dan 070 (biometric). TC yang klausa absence-nya dipindah ke 066–070 tercatat di `sourceTc` kedua spec (spec utama di tabel Lapisan per TC) dan di `## Notes` kedua spec (prinsip 10).
+**Asersi absence log (kelas g, prinsip 13):** spec fungsional tidak menulis asersi "tidak ada pencatatan" dan merujuknya ke spec absence (S-05). Spec absence: 060 (TC sendiri: 190, 195, 196, 202, 203, 211, 267), 059 (TC-212), serta lima spec absence per domain 066 (duplicate login dan session expired), 067 (sesi-produk dan concurrent), 068 (subscription tidak aktif), 069 (penolakan, force-logout, dan aksi admin), dan 070 (biometric, termasuk Expected d TC-335 dan 336 dari spec 080). TC yang klausa absence-nya dipindah ke 066–070 tercatat di `sourceTc` kedua spec (spec utama di tabel Lapisan per TC) dan di `## Notes` kedua spec (prinsip 10).
 
 ---
 
@@ -62,7 +62,7 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-042-admin-force-logout-license-concurrent-user | Admin Force-Logout di License > Concurrent User | 133, 134, 136, 138, 322 | web |
 | TC-AUTH-SES-E2E-043-manual-logout | Manual Logout di Web: Akhiri Sesi, Sesi-Produk Anak, dan Logout Saat Sesi Expired | 140, 141, 142 | web |
 | TC-AUTH-SES-E2E-044-prompt-enable-biometric-dan-enroll | Prompt Enable Biometric: Not now, Tutup Prompt, Cancel OS Prompt, dan Enroll | 145, 146, 324, 259, 313, 315, 314 | mobile |
-| TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios | Ketersediaan Biometric Perangkat Android, Enroll dan Re-login iOS, serta Enroll Ulang | 147, 148, 149, 260, 261 | web + mobile |
+| TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios | Ketersediaan Biometric Perangkat Android (Prompt dan Toggle) serta Enroll Ulang | 147, 148, 149, 337 | mobile |
 | TC-AUTH-SES-E2E-046-relogin-biometric-sukses-dan-gagal | Re-login Biometric Android: Screen Sign In, Kegagalan, Fallback Password, dan Sukses | 152, 153, 154, 155, 156, 157, 158, 159, 160 | web + mobile |
 | TC-AUTH-SES-E2E-047-biometric-agreement-dan-mfa | Re-login Biometric dengan Agreement dan MFA | 161, 162, 163, 164, 247 | web + mobile |
 | TC-AUTH-SES-E2E-048-biometric-token-agreement-dan-privacy-policy | Re-login Biometric: Navigasi Back pada Confirm to Continue, Kegagalan Server Confirm Agreement, dan Privacy Policy Tidak Ter-resolve | 166, 167, 325 | mobile |
@@ -87,7 +87,7 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-067-absence-sesi-produk-dan-concurrent | Absence Pencatatan Sesi-produk dan Concurrent: Reuse, Limit Reached, dan End Product Berulang | 101, 102, 104, 204, 263 | web + mobile |
 | TC-AUTH-SES-E2E-068-absence-subscription-tidak-aktif | Absence Pencatatan: Pembukaan Produk Diblok karena Subscription Tidak Aktif Tidak Menulis Log | 113, 114, 115, 274, 275, 276, 277, 278 | web |
 | TC-AUTH-SES-E2E-069-absence-penolakan-force-logout-dan-aksi-admin | Absence Pencatatan: Penolakan Server, Force-logout Idempotent, dan Aksi Admin | 136, 142, 233, 234, 239, 250, 320, 322, 327 | web |
-| TC-AUTH-SES-E2E-070-absence-biometric | Absence Pencatatan Biometric: Kondisi Re-login, Enroll, dan Disable yang Tidak Menulis Session Log Entry | 154, 160, 162, 170, 173, 175, 176, 177, 212, 257, 258, 325, 328 | web + mobile |
+| TC-AUTH-SES-E2E-070-absence-biometric | Absence Pencatatan Biometric: Kondisi Re-login, Enroll, dan Disable yang Tidak Menulis Session Log Entry | 154, 160, 162, 170, 173, 175, 176, 177, 212, 257, 258, 325, 328, 335, 336 | web + mobile |
 | TC-AUTH-SES-E2E-071-admin-triggered-dialog-focus-trap | Accessibility Focus Trap dan Role Alertdialog Dialog Lifecycle yang Dipicu Aksi Admin | 306, 307, 308 | web |
 | TC-AUTH-SES-E2E-072-resilience-log-write-failure | Resilience: Kegagalan Penulisan Log Tidak Membatalkan Log Out | 216 | web |
 | TC-AUTH-SES-E2E-073-mobile-biometric-multi-device-change-password | Mobile Biometric Multi-Device: Change Password Mencabut Sesi Lain dan Kredensial Biometric | 223 | web + mobile |
@@ -95,8 +95,15 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-E2E-075-biometric-agreement-token-ttl-boundary | Re-login Biometric: Umur Token Pra-autentikasi Agreement 10 Menit (Kedaluwarsa dan Batas Eksak) | 165, 286 | mobile |
 | TC-AUTH-SES-E2E-076-product-session-sweep-and-time-travel | Sesi-Produk: Tab Ditutup, Kedaluwarsa Sesi Platform, dan Sweep Dinonaktifkan (Time-Travel) | 130, 131 | web |
 | TC-AUTH-SES-E2E-077-expired-grace-buka-produk-tanpa-popup | Subscription Expired dan Grace: Pembukaan Produk Baru Membuat Sesi-Produk Tanpa Popup Subscription Not Active | 111, 112 | web |
+| TC-AUTH-SES-E2E-078-end-product-admin-console-dan-global-settings | End Product Admin Console dan Global Settings lewat App Switcher Tanpa Seat | 329, 330 | web |
+| TC-AUTH-SES-E2E-079-logout-manual-mobile-dan-ganti-akun | Logout Manual di Mobile dengan dan tanpa Biometric serta Ganti Akun di Perangkat yang Sama | 331, 332, 333 | web + mobile |
+| TC-AUTH-SES-E2E-080-keamanan-token-biometric-revoke-dan-integrity-token | Keamanan Token Biometric: Pencabutan Kredensial User Lama dan integrityToken Kosong atau Invalid | 334, 335, 336 | mobile |
+| TC-AUTH-SES-E2E-081-toggle-biometric-sign-in-resilience | Toggle Biometric Sign-in: Disabled Selama Request, Kegagalan Server, dan Cancel Prompt | 338, 339, 340 | mobile |
+| TC-AUTH-SES-E2E-082-kembali-ke-foreground-setelah-sesi-diakhiri-server | Kembali ke Foreground Setelah Sesi Diakhiri Server Saat App di Background | 341, 342, 343 | web + mobile |
+| TC-AUTH-SES-E2E-083-cek-sesi-foreground-background-dan-sse-mobile | Cek Sesi Mobile di Foreground dan Background: Hitungan Mundur Lokal, SSE, dan Pembaruan Kedaluwarsa | 344, 347, 348 | web + mobile |
+| TC-AUTH-SES-E2E-084-os-kill-app-mobile-dan-sesi-tanpa-cookie | OS Kill App Mobile di Background Diperlakukan sebagai App-kill dan Sesi Mobile Tanpa Cookie | 345, 346, 349 | mobile |
 
-**Total:** 328 dari 328 TC granular tercakup oleh 77 spec. TC yang klausa absence-nya ada di spec 066–070 muncul di dua spec; selebihnya satu spec per TC.
+**Total:** 347 dari 349 TC granular tercakup oleh 84 spec; 2 TC Ditahan (TC-AUTH-SES-260 dan 261). TC yang klausa absence-nya ada di spec 066–070 muncul di dua spec; selebihnya satu spec per TC.
 
 ---
 
@@ -363,8 +370,6 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-257 | TC-AUTH-SES-E2E-049-biometric-keamanan-penolakan-server | FE+BE |
 | TC-AUTH-SES-258 | TC-AUTH-SES-E2E-049-biometric-keamanan-penolakan-server | FE+BE |
 | TC-AUTH-SES-259 | TC-AUTH-SES-E2E-044-prompt-enable-biometric-dan-enroll | FE+BE |
-| TC-AUTH-SES-260 | TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios | FE+BE |
-| TC-AUTH-SES-261 | TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios | FE+BE |
 | TC-AUTH-SES-262 | TC-AUTH-SES-E2E-012-dialog-lifecycle-multi-tab | FE+BE |
 | TC-AUTH-SES-263 | TC-AUTH-SES-E2E-033-cascade-sesi-produk-dan-pelepasan-seat | FE+BE |
 | TC-AUTH-SES-264 | TC-AUTH-SES-E2E-055-change-dan-reset-password-meng-invalidate-sesi | FE+BE |
@@ -432,6 +437,36 @@ Sumber: `auth/session-management/TestCases/tc-session-management.md` (328 TC akt
 | TC-AUTH-SES-326 | TC-AUTH-SES-E2E-027-user-dinonaktifkan-di-produk-fixed-asset | FE+BE |
 | TC-AUTH-SES-327 | TC-AUTH-SES-E2E-027-user-dinonaktifkan-di-produk-fixed-asset | FE+BE |
 | TC-AUTH-SES-328 | TC-AUTH-SES-E2E-053-duplicate-login-dari-biometric-re-login | FE+BE |
+| TC-AUTH-SES-329 | TC-AUTH-SES-E2E-078-end-product-admin-console-dan-global-settings | FE+BE |
+| TC-AUTH-SES-330 | TC-AUTH-SES-E2E-078-end-product-admin-console-dan-global-settings | FE+BE |
+| TC-AUTH-SES-331 | TC-AUTH-SES-E2E-079-logout-manual-mobile-dan-ganti-akun | FE+BE |
+| TC-AUTH-SES-332 | TC-AUTH-SES-E2E-079-logout-manual-mobile-dan-ganti-akun | FE+BE |
+| TC-AUTH-SES-333 | TC-AUTH-SES-E2E-079-logout-manual-mobile-dan-ganti-akun | FE+BE |
+| TC-AUTH-SES-334 | TC-AUTH-SES-E2E-080-keamanan-token-biometric-revoke-dan-integrity-token | FE+BE |
+| TC-AUTH-SES-335 | TC-AUTH-SES-E2E-080-keamanan-token-biometric-revoke-dan-integrity-token | FE+BE |
+| TC-AUTH-SES-336 | TC-AUTH-SES-E2E-080-keamanan-token-biometric-revoke-dan-integrity-token | FE+BE |
+| TC-AUTH-SES-337 | TC-AUTH-SES-E2E-045-ketersediaan-biometric-perangkat-dan-ios | FE+BE |
+| TC-AUTH-SES-338 | TC-AUTH-SES-E2E-081-toggle-biometric-sign-in-resilience | FE+BE |
+| TC-AUTH-SES-339 | TC-AUTH-SES-E2E-081-toggle-biometric-sign-in-resilience | FE+BE |
+| TC-AUTH-SES-340 | TC-AUTH-SES-E2E-081-toggle-biometric-sign-in-resilience | FE+BE |
+| TC-AUTH-SES-341 | TC-AUTH-SES-E2E-082-kembali-ke-foreground-setelah-sesi-diakhiri-server | FE+BE |
+| TC-AUTH-SES-342 | TC-AUTH-SES-E2E-082-kembali-ke-foreground-setelah-sesi-diakhiri-server | FE+BE |
+| TC-AUTH-SES-343 | TC-AUTH-SES-E2E-082-kembali-ke-foreground-setelah-sesi-diakhiri-server | FE+BE |
+| TC-AUTH-SES-344 | TC-AUTH-SES-E2E-083-cek-sesi-foreground-background-dan-sse-mobile | FE+BE |
+| TC-AUTH-SES-345 | TC-AUTH-SES-E2E-084-os-kill-app-mobile-dan-sesi-tanpa-cookie | FE+BE |
+| TC-AUTH-SES-346 | TC-AUTH-SES-E2E-084-os-kill-app-mobile-dan-sesi-tanpa-cookie | FE+BE |
+| TC-AUTH-SES-347 | TC-AUTH-SES-E2E-083-cek-sesi-foreground-background-dan-sse-mobile | FE+BE |
+| TC-AUTH-SES-348 | TC-AUTH-SES-E2E-083-cek-sesi-foreground-background-dan-sse-mobile | FE+BE |
+| TC-AUTH-SES-349 | TC-AUTH-SES-E2E-084-os-kill-app-mobile-dan-sesi-tanpa-cookie | FE+BE |
+
+---
+
+## Ditahan
+
+| TC | Temuan | Catatan |
+|---|---|---|
+| TC-AUTH-SES-260 | baru: PRD §12 #4 menyatakan iOS di luar scope rilis pertama | Enroll dan re-login biometric iOS; dikeluarkan dari spec 045, kembali ke spec sesudah iOS masuk scope |
+| TC-AUTH-SES-261 | baru: PRD §12 #4 menyatakan iOS di luar scope rilis pertama | Biometric iOS; dikeluarkan dari spec 045, kembali ke spec sesudah iOS masuk scope |
 
 ---
 

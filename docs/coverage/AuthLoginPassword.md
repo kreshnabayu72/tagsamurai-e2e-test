@@ -1,10 +1,10 @@
 # Coverage E2E — Auth > Login with Password
 
-Sumber: `auth/login-password/TestCases/tc-login-password.md` (163 TC, `TC-AUTH-LP-01`–`163`, hash SHA-256 `6a8da5772ff049b8…`). Suite: `specs/Auth/LoginPassword/`. Status semua spec: `draft`, belum ada script.
+Sumber: `auth/login-password/TestCases/tc-login-password.md` (165 TC, `TC-AUTH-LP-01`–`165`, hash SHA-256 `aecca66006b27d8c…`). Suite: `specs/Auth/LoginPassword/`. Status semua spec: `draft`, belum ada script.
 
-**Verifikasi lint:** `spectra lint --strict specs/Auth/LoginPassword` → `✓ 53 specs and 1 suites verified. 0 lint errors found.`
+**Verifikasi lint:** `npx spectra lint --strict specs/Auth/LoginPassword` → `✓ 55 specs and 1 suites verified. All spec schemas are valid. 0 lint errors found.` (2026-11-23)
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 163 TC masuk spec, 0 TC hanya-BE (`tc-login-password-backend.md` tidak merujuk id TC granular). Setiap TC terpetakan ke satu spec; dua TC punya bagian di dua spec karena asersi absence pencatatan dipindah ke spec absence (S-05): TC-161 (spec 002 dan 042) dan TC-157 (spec 028 dan 043); asersi jumlah/state TC-114 dan TC-116 berada di spec 038 dan TC-153 di spec 041 (konvensi §3 baris 90). Prefix `TC-AUTH-LP-E2E-` berasal dari `AUTH` + `LP` di `foundation/tc-prefix-registry.md`; nomor adalah urutan spec, bukan nomor TC sumber.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 165 TC masuk spec, 0 TC hanya-BE, 0 TC belum terpetakan (`tc-login-password-backend.md` tidak merujuk id TC granular). Setiap TC terpetakan ke satu spec; dua TC punya bagian di dua spec karena asersi absence pencatatan dipindah ke spec absence (S-05): TC-161 (spec 002 dan 042) dan TC-157 (spec 028 dan 043); asersi jumlah/state TC-114 dan TC-116 berada di spec 038, TC-153 di spec 041, dan TC-164 di spec 057 (konvensi §3 baris 90). Prefix `TC-AUTH-LP-E2E-` berasal dari `AUTH` + `LP` di `foundation/tc-prefix-registry.md`; nomor adalah urutan spec, bukan nomor TC sumber.
 
 Spec lama generasi sebelumnya ada di `specs_dummy/Auth/LoginPassword/` dan tidak dipakai.
 
@@ -65,6 +65,8 @@ Spec lama generasi sebelumnya ada di `specs_dummy/Auth/LoginPassword/` dan tidak
 | TC-AUTH-LP-E2E-051-agreement-confirm-and-mfa-handoff | Konfirmasi Agreement ke Portal, Login Berikutnya, dan Handoff ke MFA | 84, 85, 86 | web | FE+BE |
 | TC-AUTH-LP-E2E-052-lock-daily-reset-keeps-consecutive-days | Password Benar Mengatur Ulang Data Lock Harian Tanpa Mengubah Hitungan Hari Berturut-turut | 163 | web | FE+BE |
 | TC-AUTH-LP-E2E-055-lock-platform-independence-web | Lock Login di Aplikasi Mobile Tidak Mengunci Login di Web | 65 | web | FE+BE |
+| TC-AUTH-LP-E2E-056-mobile-agreement-tautan-dokumen | Tautan Dokumen Privacy Policy pada Layar Confirm to Continue di Aplikasi Mobile | 165 | mobile | FE+BE |
+| TC-AUTH-LP-E2E-057-duplicate-login-tanpa-sesi-baru | Password Benar saat Sesi Web Lain Aktif: Duplicate Login tanpa Sesi Baru dan tanpa Log Success | 164 | web | FE+BE |
 
 ## Lapisan per TC
 
@@ -235,6 +237,8 @@ Spec lama generasi sebelumnya ada di `specs_dummy/Auth/LoginPassword/` dan tidak
 | TC-AUTH-LP-161 | TC-AUTH-LP-E2E-042 | FE+BE |
 | TC-AUTH-LP-162 | TC-AUTH-LP-E2E-039 | FE+BE |
 | TC-AUTH-LP-163 | TC-AUTH-LP-E2E-052 | FE+BE |
+| TC-AUTH-LP-164 | TC-AUTH-LP-E2E-057 | FE+BE |
+| TC-AUTH-LP-165 | TC-AUTH-LP-E2E-056 | FE+BE |
 
 ## TC hanya-BE
 

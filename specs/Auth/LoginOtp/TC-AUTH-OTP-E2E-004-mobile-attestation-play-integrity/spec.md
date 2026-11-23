@@ -16,7 +16,7 @@ coverage:
 ## Prerequisites
 
 - Mode: FE+BE (mobile Android, ditambah satu konteks browser admin). Aplikasi mobile TAG Samurai terpasang pada perangkat Android dengan Play Integrity yang valid, belum login.
-- Kemampuan teknis (kelas harness eksternal): kemampuan mengganti token attestation yang dikirim aplikasi menjadi kosong atau invalid lewat failure injection, lalu memulihkannya menjadi valid; pengaturan jam server dan jam perangkat/emulator Android bersama (countdown Resend berjalan di jam perangkat, bagian 6 konvensi); mail-catcher lingkungan uji dapat dibaca.
+- Kemampuan teknis (kelas harness eksternal): kemampuan mengganti token attestation (field `integrityToken`) yang dikirim aplikasi pada Request OTP dan Resend menjadi kosong atau invalid lewat failure injection, lalu memulihkannya menjadi valid; pengaturan jam server dan jam perangkat/emulator Android bersama (countdown Resend berjalan di jam perangkat, bagian 6 konvensi); mail-catcher lingkungan uji dapat dibaca.
 - Akun aktor: Total Control (Global Settings), pre-setup `totalControlGlobalSettings_automated_{namaCompany}@qwertysystem.net`; password dari `Spectra.env.GS_TC_PASSWORD`. Hook `before` membuka browser admin dan login sebagai akun aktor itu; langkah uji hanya berpindah konteks ke browser itu.
 - State global yang diubah: jam server dan jam perangkat/emulator. Suite berjalan serial (`parallel: false`).
 - Environment variable: `GS_TC_PASSWORD` (akun aktor), `OTP_PASSWORD` (password user uji Activated yang di-seed). Tidak ada password atau token di spec atau fixture.
@@ -31,7 +31,7 @@ coverage:
 
 1. Ganti konteks ke browser admin (sudah login sebagai akun aktor Total Control (Global Settings) lewat hook `before`), buka `Global Settings > Activity Log > Session`, dan catat jumlah entri user `Tari Wicaksono` sebagai baseline
 2. Ganti konteks ke aplikasi mobile
-3. Atur token attestation yang dikirim aplikasi menjadi kosong atau invalid (failure injection)
+3. Atur token attestation (`integrityToken`) yang dikirim aplikasi menjadi kosong atau invalid (failure injection)
 4. Buka halaman Request OTP di aplikasi mobile
 5. Ketik `tariwicaksono+{runId}-004@qwertysystem.net` pada field Email
 6. Ketuk button [Request OTP]
