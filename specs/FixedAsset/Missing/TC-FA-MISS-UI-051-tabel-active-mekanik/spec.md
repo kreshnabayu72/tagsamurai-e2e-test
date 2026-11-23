@@ -46,9 +46,9 @@ coverage:
   - DU-051-7: Record Missing dengan TAG NFC dan QR. Name `Printer Canon Pixma - 2`; Asset ID `PRN-2026-0102`; Group `Branch Surabaya`; Status `Missing`; Source `Manual`; Last Holder `null`; Last Seen `2026-11-05T10:00:00Z · Lobby reader`; Reported By `Agus Prasetyo`; Reported Date `2026-11-06T09:00:00Z`; Days Missing `5`; Last Updated `2026-11-06T09:00:00Z`; TAG `NFC, QR`.
   - DU-051-8: Record Missing dengan TAG QR. Name `Scanner Honeywell - 3`; Asset ID `SCN-2026-0103`; Group `Warehouse`; Status `Missing`; Source `Borrow`; Last Holder `Andi Pratama`; Last Seen `2026-10-05T09:00:00Z · Gate A reader`; Reported By `Andi Pratama`; Reported Date `2026-10-05T09:00:00Z`; Days Missing `37`; Last Updated `2026-11-07T00:00:00Z`; TAG `QR`.
   - DU-051-9: Record History Rejected. Name `Camera Canon EOS - 1`; Asset ID `CAM-2026-0001`; Group `Head Office`; Status `Rejected`; Source `Reported by holder`; Last Holder `Budi Santoso`; Reported By `Budi Santoso`; Reported Date `2026-11-05T08:30:00Z`; Duration `1`; Resolved By `Rina Wulandari`; Resolved Date `2026-11-06T09:15:00Z`.
-  - DU-051-10: Opsi filter Source: nilai DISTINCT dari baris DU-051-6 sampai DU-051-8 dan DU-051-12 sampai DU-051-15. Source `Borrow, Reported by holder, Stock opname, Transfer, Manual, Work order, Reconciliation`.
+  - DU-051-10: Opsi filter Source: nilai DISTINCT dari baris DU-051-6 sampai DU-051-8 dan DU-051-12 sampai DU-051-15. Source `Borrow, Reported by holder, Audit, Transfer, Manual, Work order, Reconciliation`.
   - DU-051-11: Kata kunci Search dan kata kunci opsi filter. Kata kunci Search `Canon`; Kata kunci Search tersaring `Aset Tersaring`; Kata kunci opsi filter tanpa hasil `ZZZ-TIDAK-ADA`.
-  - DU-051-12: Record Reported Disposal dengan Source Stock opname. Name `Projector Epson EB-X06 - 7`; Asset ID `PRJ-2026-0007`; Group `Branch Surabaya`; Status `Reported Disposal`; Source `Stock opname`; Last Holder `null`; Last Seen `2026-09-15T14:05:00Z · Agus P`; Reported By `Agus Prasetyo`; Reported Date `2026-10-01T08:00:00Z`; Days Missing `41`; Last Updated `2026-11-05T15:30:00Z`.
+  - DU-051-12: Record Reported Disposal dengan Source Audit. Name `Projector Epson EB-X06 - 7`; Asset ID `PRJ-2026-0007`; Group `Branch Surabaya`; Status `Reported Disposal`; Source `Audit`; Last Holder `null`; Last Seen `2026-09-15T14:05:00Z · Agus P`; Reported By `Agus Prasetyo`; Reported Date `2026-10-01T08:00:00Z`; Days Missing `41`; Last Updated `2026-11-05T15:30:00Z`.
   - DU-051-13: Record In Disposal Process dengan Source Work order. Name `Printer HP LaserJet M404 - 5`; Asset ID `PRN-2026-0005`; Group `Head Office`; Status `In Disposal Process`; Source `Work order`; Last Holder `null`; Last Seen `2026-08-20T16:40:00Z · Lobby reader`; Reported By `Rina Wulandari`; Reported Date `2026-08-25T10:00:00Z`; Days Missing `78`; Last Updated `2026-11-02T11:20:00Z`.
   - DU-051-14: Record Missing dengan Source Transfer. Name `Toyota Innova - 2`; Asset ID `VEH-2026-0002`; Group `Branch Surabaya`; Status `Missing`; Source `Transfer`; Last Holder `null`; Last Seen `2026-10-31T16:20:00Z · Gate B reader`; Reported By `Agus Prasetyo`; Reported Date `2026-11-01T09:00:00Z`; Days Missing `10`; Last Updated `2026-11-04T16:10:00Z`.
   - DU-051-15: Record Missing dengan Source Reconciliation. Name `Tablet Samsung Galaxy Tab - 6`; Asset ID `TAB-2026-0106`; Group `Head Office`; Status `Missing`; Source `Reconciliation`; Last Holder `null`; Last Seen `Unknown`; Reported By `Rina Wulandari`; Reported Date `2026-11-01T08:00:00Z`; Days Missing `10`; Last Updated `2026-11-01T08:00:00Z`.
@@ -135,7 +135,7 @@ coverage:
 62. Klik field `Source`
 63. Centang opsi `Borrow`
 64. Centang opsi `Reported by holder`
-65. Centang opsi `Stock opname`
+65. Centang opsi `Audit`
 66. Centang opsi `Transfer`
 67. Centang opsi `Manual`
 68. Centang opsi `Work order`

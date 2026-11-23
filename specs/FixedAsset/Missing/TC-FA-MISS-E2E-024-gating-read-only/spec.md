@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b7", "§4.8#b2", "§4.3#r5", "EB-AKS-4", "§2.1#b9"]
+sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b8", "§4.8#b2", "§4.3#r5", "EB-AKS-4", "§2.1#b10"]
 smoke: []
 dependsOn: []
 trace:
   "§2.1#r1": [3, 8, 12, 77]
-  "§2.1#r2": 45
+  "§2.1#r2": [45, 168]
   "§2.1#r5": [16, 81]
   "§2.1#r6": 22
   "§2.1#r7": [17, 82]
@@ -19,22 +19,22 @@ trace:
   "§2.1#r11": 30
   "§2.1#r12": [5, 6, 74, 75]
   "§4.8#r1": [1, 3]
-  "§4.8#r2": 45
+  "§4.8#r2": [45, 168]
   "§4.8#r5": [16, 81]
   "§4.8#r6": [17, 22, 91, 125]
-  "§4.8#r8": [18, 26]
-  "§4.8#r9": [35, 39, 87, 138, 139, 140, 143, 151, 152, 153, 156]
-  "§4.8#r10": 32
-  "§4.8#r11": 30
+  "§4.8#r9": [18, 26]
+  "§4.8#r10": [35, 39, 87, 138, 139, 140, 143, 151, 152, 153, 156]
+  "§4.8#r11": 32
+  "§4.8#r12": [30, 160, 162]
   "§9.11#r1": [8, 77]
   "§9.11#r2": [35, 118, 130]
   "§9.11#b1": [35, 39, 87]
-  "§2.1#b7": [35, 39, 87, 138, 139, 140, 143, 151, 152, 153, 156]
+  "§2.1#b8": [35, 39, 87, 138, 139, 140, 143, 151, 152, 153, 156]
   "§4.8#b2": 30
   "§4.3#r5": [35, 39, 87]
   "EB-AKS-4": [50, 51, 56, 57, 60, 63, 64, 66, 69, 94, 95, 100, 101, 104, 107, 108, 110, 113]
-  "§2.1#b9": [74, 75, 81, 82, 83]
-anchor: [15, 21, 25, 28, 34, 38, 43, 80, 86, 90, 117, 124, 129]
+  "§2.1#b10": [74, 75, 81, 82, 83]
+anchor: [15, 21, 25, 28, 34, 38, 43, 80, 86, 90, 117, 124, 129, 166]
 coverage:
   web: automated
 ---
@@ -48,10 +48,11 @@ coverage:
   - DU-024-1: Missing record, Name `Laptop Dell Latitude 5420 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-024-2: Missing record, Name `Hand Pallet Truck {runId}`, Group `Warehouse {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-024-3: Missing record, Name `Monitor LG 27UL500 {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing). Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
-  - DU-024-4: Missing record, Name `Projector Epson EB-X06 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
+  - DU-024-4: Missing record, Name `Projector Epson EB-X06 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-024-5: Missing record, Name `Camera Canon EOS {runId}`, Group `Head Office {runId}`, Status `Found`, Source `Borrow`, Last Holder `—`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-024-6: Asset, Name `Scanner Zebra DS2208 {runId}`, Group `Finance Room {runId}`, Status `Available`, tanpa record Missing berjalan. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-024-7: Missing record, Name `Tablet Samsung Galaxy Tab {runId}`, Group `Warehouse {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing). Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
+  - DU-024-8: Asset, Name `Pallet Jack Crown PE {runId}`, Group `Warehouse {runId}`, Status `Available`, tanpa record Missing berjalan. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
 
 ## Test Steps
 
@@ -251,3 +252,17 @@ coverage:
 155. Klik `Filter`
 156. Verifikasi Filter Panel memuat field `Purchase Cost`, `Asset Value (Commercial)`, dan `Asset Value (Fiscal)`
 157. Klik `Filter`
+
+### Manage asset & TAG (Read): Download tampil dan Report Missing tidak tampil
+158. Masuk sebagai pemegang Manage asset & TAG dengan Read pada Group `Warehouse {runId}`
+159. Klik tab `Missing`
+160. Verifikasi tombol `Download` tampil di toolbar tab Active
+161. Klik `Download`
+162. Verifikasi opsi `Download as CSV` dan `Download as XLSX` tampil
+163. Tekan `Esc`
+164. Klik tab `Assets`
+165. Ketik Search `{runId}`, tekan Enter
+166. Verifikasi baris `Pallet Jack Crown PE {runId}` tampil
+167. Klik menu ⋯ pada baris `Pallet Jack Crown PE {runId}`
+168. Verifikasi aksi `Report Missing` tidak tampil
+169. Tekan `Esc`

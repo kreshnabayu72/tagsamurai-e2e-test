@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.8#p1", "§9.8#r1", "§9.8#r2", "§9.8#r3", "§9.8#r4", "§9.8#r5", "§9.8#r6", "§9.8#r7", "§9.8#p2", "§9.8#p3", "§11#r16", "§11#r17", "§1.2#r62", "§1.2#r106", "§1.2#r111", "§9.4.4#r2", "§9.4.4#r18", "§9.4.4#r19", "§9.2#b33", "§9.7#r1", "§9.7#r2", "§9.7#r3", "§9.7#r4", "§9.7#r5", "§9.7#r7", "§9.7#r10", "§9.4.2#r7", "§3#p2", "§4.2.4#r15", "§4.2.4#r16", "§9.2#b15"]
+sourceRules: ["§9.8#p1", "§9.8#r1", "§9.8#r2", "§9.8#r3", "§9.8#r4", "§9.8#r5", "§9.8#r6", "§9.8#r7", "§9.8#p2", "§9.8#p3", "§11#r18", "§11#r19", "§1.2#r63", "§1.2#r109", "§1.2#r115", "§9.4.4#r2", "§9.4.4#r20", "§9.4.4#r21", "§9.2#b35", "§9.7#r1", "§9.7#r2", "§9.7#r3", "§9.7#r4", "§9.7#r5", "§9.7#r7", "§9.7#r10", "§9.4.2#r7", "§3#p2", "§4.2.4#r15", "§4.2.4#r16", "§9.2#b15", "§1.2#r72", "§9.2#b38", "§9.4.2#r39", "§9.4.4#r24"]
 smoke: []
 dependsOn: ["Notification: daftar notifikasi in-app"]
 trace:
@@ -19,15 +19,15 @@ trace:
   "§9.8#r7": [34, 38]
   "§9.8#p2": [41]
   "§9.8#p3": [35]
-  "§11#r16": [17, 22, 29, 34, 42, 43, 44]
-  "§11#r17": [23, 24]
-  "§1.2#r62": [45]
-  "§1.2#r106": [42]
-  "§1.2#r111": [43]
+  "§11#r18": [17, 22, 29, 34, 42, 43, 44]
+  "§11#r19": [23, 24]
+  "§1.2#r63": [45]
+  "§1.2#r109": [42]
+  "§1.2#r115": [43]
   "§9.4.4#r2": [17, 18, 22]
-  "§9.4.4#r18": [23, 24]
-  "§9.4.4#r19": [29, 30]
-  "§9.2#b33": [29, 30]
+  "§9.4.4#r20": [23, 24]
+  "§9.4.4#r21": [29, 30]
+  "§9.2#b35": [29, 30]
   "§9.7#r1": [17]
   "§9.7#r2": [22]
   "§9.7#r3": [30]
@@ -40,6 +40,10 @@ trace:
   "§4.2.4#r15": [6]
   "§4.2.4#r16": [12]
   "§9.2#b15": [53, 56]
+  "§1.2#r72": [60]
+  "§9.2#b38": [60]
+  "§9.4.2#r39": [60]
+  "§9.4.4#r24": [60]
 anchor: []
 coverage:
   web: automated
@@ -48,7 +52,7 @@ coverage:
 # Event notifikasi Missing: tiap aksi memicu event yang dinyatakan dan transisi Disposal tidak memicu event missing_*
 
 ## Prerequisites
-- Aktor: Total Control `Rina W` sebagai penerima notifikasi. Aktor lain yang memicu perubahan: Total Control `Dewi Anggraini {runId}`, pemegang `Joko Santoso {runId}` tanpa hak Aktor Missing, dan pemegang `Andi Pratama {runId}` dengan hak Manage asset & TAG (Update) pada Group asetnya.
+- Aktor: Total Control `Rina W` sebagai penerima notifikasi. Aktor lain yang memicu perubahan: Total Control `Dewi Anggraini {runId}`, pemegang `Joko Santoso {runId}` tanpa hak Aktor Missing, dan pemegang `Andi Pratama {runId}` dengan hak Manage asset & TAG (Update) pada Group asetnya, dan Asset Admin sub-tab Audit `Lia Kartika {runId}` tanpa hak Aktor Missing pada Group aset.
 - Layar awal: daftar notifikasi in-app.
 - Data:
   - DU-041-1: Asset `Monitor LG 27UL500 {runId}`, Group `Head Office`, dipegang `Sari Dewanti {runId}`, tanpa record Missing.
@@ -78,8 +82,12 @@ coverage:
   - DU-041-25: Reason `Aset tidak ditemukan setelah penelusuran`.
   - DU-041-26: What happened `Server tidak ditemukan di rak setelah pemindahan ruang server`.
   - DU-041-27: What happened `Server tidak ada di ruang server saat inventarisasi`.
+  - DU-041-28: Task Audit `Audit Gudang Utama {runId}` yang memuat item `Rak Server APC {runId}` berstatus `Not found`.
+  - DU-041-29: Asset `Rak Server APC {runId}`, Group `Warehouse`, tanpa record Missing.
+  - DU-041-30: Pengguna `Lia Kartika {runId}`, Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group `Warehouse`.
+  - DU-041-31: What happened `Rak server tidak ada di ruang server saat penghitungan fisik`.
 - Kondisi:
-  - Akun `Rina W`, `Dewi Anggraini {runId}`, `Joko Santoso {runId}`, dan `Andi Pratama {runId}` aktif dan kredensialnya disediakan fase 2.
+  - Akun `Rina W`, `Dewi Anggraini {runId}`, `Joko Santoso {runId}`, `Andi Pratama {runId}`, dan `Lia Kartika {runId}` aktif dan kredensialnya disediakan fase 2.
 
 ## Test Steps
 
@@ -154,3 +162,9 @@ coverage:
 54. Klik `[Cancel]` pada dialog
 55. Buka daftar notifikasi
 56. Verifikasi notifikasi event `missing_reported` atas `Server Dell PowerEdge {runId}` hanya satu di daftar notifikasi
+
+### Laporan pelapor Audit tanpa hak Aktor Missing memicu missing_holder_reported ke Aktor Missing
+57. `Lia Kartika {runId}` melaporkan `Rak Server APC {runId}` hilang lewat Report Missing dari Task Detail Audit `Audit Gudang Utama {runId}` dengan What happened `Rak server tidak ada di ruang server saat penghitungan fisik`
+58. Masuk sebagai `Rina W`
+59. Buka daftar notifikasi
+60. Verifikasi notifikasi event `missing_holder_reported` atas `Rak Server APC {runId}` tampil di daftar notifikasi

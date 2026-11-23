@@ -6,30 +6,30 @@ priority: High
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: [§1.2#r103, §1.2#r104, §1.2#r105, §1.2#r106, §1.2#r107, §1.2#r108, §1.2#r109, §9.2#b35, §9.2#b36, §9.2#b37, §9.2#b38, §9.2#b39, §9.2#b40, §9.2#b41, §9.2#b42, §9.2#b43, §9.2#b44, §9.2#b45, §9.2#b46, §9.2#b47, §9.2#p21, §9.4.2#r13, §9.4.2#r14, §9.4.2#r15, §9.4.2#r25, §9.4.2#r29, §9.4.3#b1, §9.4.4#r21, §9.4.4#r22, §9.4.1#r12, §9.4.1#r15, §9.4.1#r5, §9.5#r6, §9.6#r6, §9.7#r6, §9.8#r4, §8#r8, §8.1#r11, §6#r9, §4.1a#r12, §9.9#p3, §10#r3, §3#p6, §9.1#r7, §4.7#r3, §1.2#r65]
+sourceRules: [§1.2#r106, §1.2#r107, §1.2#r108, §1.2#r109, §1.2#r110, §1.2#r111, §1.2#r112, §9.2#b39, §9.2#b40, §9.2#b41, §9.2#b42, §9.2#b43, §9.2#b44, §9.2#b45, §9.2#b46, §9.2#b47, §9.2#b48, §9.2#b49, §9.2#b50, §9.2#b51, §9.2#p21, §9.4.2#r13, §9.4.2#r14, §9.4.2#r15, §9.4.2#r25, §9.4.2#r29, §9.4.3#b1, §9.4.4#r25, §9.4.4#r26, §9.4.1#r12, §9.4.1#r15, §9.4.1#r5, §9.5#r6, §9.6#r6, §9.7#r6, §9.8#r4, §8#r8, §8.1#r11, §6#r9, §4.1a#r12, §9.9#p3, §10#r3, §3#p6, §9.1#r7, §4.7#r3, §1.2#r66]
 smoke: []
 dependsOn: []
 trace:
-  §1.2#r103: 8
-  §1.2#r104: [3, 18]
-  §1.2#r105: 4
-  §1.2#r106: 6
-  §1.2#r107: 11
-  §1.2#r108: 32
-  §1.2#r109: 33
-  §9.2#b35: [3, 22]
-  §9.2#b36: [3, 32]
-  §9.2#b37: 32
-  §9.2#b38: [35, 37]
-  §9.2#b39: [32, 48, 50]
-  §9.2#b40: [39, 40]
-  §9.2#b41: 42
-  §9.2#b42: 22
-  §9.2#b43: [14, 18, 19]
-  §9.2#b44: [11, 14, 15]
-  §9.2#b45: [22, 23]
-  §9.2#b46: [5, 16, 24]
-  §9.2#b47: [32, 47, 50]
+  §1.2#r106: 8
+  §1.2#r107: [3, 18]
+  §1.2#r108: 4
+  §1.2#r109: 6
+  §1.2#r110: 11
+  §1.2#r111: 32
+  §1.2#r112: 33
+  §9.2#b39: [3, 22]
+  §9.2#b40: [3, 32]
+  §9.2#b41: 32
+  §9.2#b42: [35, 37]
+  §9.2#b43: [32, 48, 50]
+  §9.2#b44: [39, 40]
+  §9.2#b45: 42
+  §9.2#b46: 22
+  §9.2#b47: [14, 18, 19]
+  §9.2#b48: [11, 14, 15]
+  §9.2#b49: [22, 23]
+  §9.2#b50: [5, 16, 24]
+  §9.2#b51: [32, 47, 50]
   §9.2#p21: 33
   §9.4.2#r13: [4, 11]
   §9.4.2#r14: [47, 48]
@@ -37,8 +37,8 @@ trace:
   §9.4.2#r25: [39, 40]
   §9.4.2#r29: [1, 51]
   §9.4.3#b1: [8, 33]
-  §9.4.4#r21: [3, 4, 6]
-  §9.4.4#r22: [47, 48]
+  §9.4.4#r25: [3, 4, 6]
+  §9.4.4#r26: [47, 48, 59, 60, 61]
   §9.4.1#r12: 3
   §9.4.1#r15: 3
   §9.4.1#r5: [1, 51]
@@ -55,17 +55,17 @@ trace:
   §3#p6: [4, 6]
   §9.1#r7: 3
   §4.7#r3: 5
-  §1.2#r65: [53, 55]
+  §1.2#r66: [53, 55]
 ---
 
 # Server: setiap scan TAG aset berjalan dicatat sebagai deteksi, penggabungan per jendela 1 jam per sumber, Last seen, pengecualian di luar cakupan, dan scan tidak menemukan aset
 
 ## Prerequisites
-- Aktor: Rina W, Total Control dengan cakupan seluruh client dan penerima `missing_detected`; `Maya Anggraini {runId}` (DU-074-1), Group Manager dengan Group binaan Head Office beserta sub-group, penerima `missing_detected`, dan pemindai Aktor Missing dalam cakupan Group aset; `Fajar Nugroho {runId}` (DU-074-2), Read Only dengan cakupan seluruh client; `Agus Pratama {runId}` (DU-074-3), pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Stock Opname, sebagai pemindai; `Dedi Kurnia {runId}` (DU-074-4), Group Manager dengan Group binaan Head Office sebagai Last holder; `Joko Susilo {runId}` (DU-074-5), pemegang tanpa hak Aktor Missing.
+- Aktor: Rina W, Total Control dengan cakupan seluruh client dan penerima `missing_detected`; `Maya Anggraini {runId}` (DU-074-1), Group Manager dengan Group binaan Head Office beserta sub-group, penerima `missing_detected`, dan pemindai Aktor Missing dalam cakupan Group aset; `Fajar Nugroho {runId}` (DU-074-2), Read Only dengan cakupan seluruh client; `Agus Pratama {runId}` (DU-074-3), pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Audit, sebagai pemindai; `Dedi Kurnia {runId}` (DU-074-4), Group Manager dengan Group binaan Head Office sebagai Last holder; `Joko Susilo {runId}` (DU-074-5), pemegang tanpa hak Aktor Missing.
 - Data:
   - DU-074-1: User Name `Maya Anggraini {runId}`, Peran `Group Manager`, Cakupan `Group Head Office beserta sub-group`.
   - DU-074-2: User Name `Fajar Nugroho {runId}`, Peran `Read Only`, Cakupan `seluruh client`.
-  - DU-074-3: User Name `Agus Pratama {runId}`, Peran `pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Stock Opname`, Cakupan `tanpa cakupan Group Missing`.
+  - DU-074-3: User Name `Agus Pratama {runId}`, Peran `pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Audit`, Cakupan `tanpa cakupan Group Missing`.
   - DU-074-4: User Name `Dedi Kurnia {runId}`, Peran `Group Manager`, Cakupan `Group Head Office beserta sub-group`.
   - DU-074-5: User Name `Joko Susilo {runId}`, Peran `pemegang tanpa hak Aktor Missing`, Cakupan `aset yang ia pegang`.
   - DU-074-6: Reader Name `Gate A reader`, Jenis `reader tetap tanpa pengguna`.
@@ -79,7 +79,7 @@ trace:
   - DU-074-14: Asset Name `Printer HP LaserJet M404 {runId}`, Asset ID `FA074-007`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, TAG terpasang `QR-074-0007`.
   - DU-074-15: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA074-008`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, TAG terpasang `tidak ada`.
   - DU-074-16: Asset Name `Meja Kerja Kayu {runId}`, Asset ID `FA074-009`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Tagging `Tag Reported`, Activity Lock `In Audit`, Custody `dipegang Joko Susilo {runId}`.
-  - DU-074-19: Sesi Stock Opname Sesi sebelumnya `Monitor LG 27UL500 {runId} berstatus Not found`, Sesi berikutnya `berjalan dengan pemindai Agus Pratama {runId}`.
+  - DU-074-19: Sesi Audit Sesi sebelumnya `Monitor LG 27UL500 {runId} berstatus Not found`, Sesi berikutnya `berjalan dengan pemindai Agus Pratama {runId}`.
   - DU-074-17: Asset Name `Kursi Ergonomis {runId}`, Asset ID `FA074-010`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Tagging `Tag Reported`, Activity Lock `In Audit`, Custody `dipegang Joko Susilo {runId}`.
 - Kondisi:
   - Date Format bernilai `DD/MM/YY`
@@ -139,15 +139,15 @@ trace:
 41. `Maya Anggraini {runId}` memindai TAG `QR-074-0005` milik `Hand Truck Gudang {runId}` lewat Search by Scan
 42. Verifikasi hasil pemindaian itu hanya menawarkan `[I found it]` tanpa `[Mark as Found]`, dan record `Hand Truck Gudang {runId}` tidak memuat node `Detected by scan` baru
 
-### Scan di layar transaksi dan Stock Opname hanya mencatat deteksi
+### Scan di layar transaksi dan pemeriksaan aset hanya mencatat deteksi
 43. `Agus Pratama {runId}` memindai TAG `QR-074-0007` milik `Printer HP LaserJet M404 {runId}` pada layar Handover aset lain
 44. `Agus Pratama {runId}` memindai TAG `QR-074-0007` milik `Printer HP LaserJet M404 {runId}` pada layar Return
 45. `Agus Pratama {runId}` memindai TAG `QR-074-0007` milik `Printer HP LaserJet M404 {runId}` pada layar Send Transfer
 46. `Agus Pratama {runId}` memindai TAG `QR-074-0007` milik `Printer HP LaserJet M404 {runId}` pada layar Receive Transfer
 47. Verifikasi keempat scan itu ditolak dengan pesan `[Asset Name] is reported missing.` dan status record `Printer HP LaserJet M404 {runId}` tidak berubah
 48. Verifikasi record `Printer HP LaserJet M404 {runId}` memuat satu node `Detected by scan` dengan pemindai `Agus Pratama {runId}` yang Count-nya `4`
-49. `Agus Pratama {runId}` memindai TAG `QR-074-0006` milik `Monitor LG 27UL500 {runId}` pada sesi Stock Opname berikutnya setelah aset itu berstatus Not found
-50. Verifikasi record `Monitor LG 27UL500 {runId}` memuat node `Detected by scan` baru dan tetap `Missing`, tanpa aksi apa pun dari layar Stock Opname
+49. `Agus Pratama {runId}` memindai TAG `QR-074-0006` milik `Monitor LG 27UL500 {runId}` pada sesi pemeriksaan aset berikutnya setelah aset itu berstatus Not found
+50. Verifikasi record `Monitor LG 27UL500 {runId}` memuat node `Detected by scan` baru dan tetap `Missing`, tanpa aksi apa pun dari layar pemeriksaan aset
 
 ### Aset tanpa TAG menampilkan Last Seen tanpa nilai
 51. Verifikasi Last Seen record `Hand Pallet Truck {runId}` bernilai `—` karena aset tidak punya TAG
@@ -162,3 +162,8 @@ trace:
 56. Reader `Gate A reader` membaca TAG `QR-074-0004` milik `Genset Honda EU22 {runId}`
 57. Verifikasi record `Genset Honda EU22 {runId}` memuat node `Detected by scan` dengan pemindai `Gate A reader` dan Count `1`
 58. Verifikasi Last seen record `Genset Honda EU22 {runId}` langsung berisi waktu deteksi itu dan pemindai `Gate A reader`, tanpa menunggu job terjadwal
+
+### Scan yang ditolak layar pemindai tetap mengirim missing_detected untuk node barunya
+59. Verifikasi Rina W menerima satu notifikasi `missing_detected` atas record `Toyota Innova {runId}` untuk node `Detected by scan` dengan pemindai `Maya Anggraini {runId}` dari Scan Found Asset yang diblok
+60. Verifikasi Rina W menerima satu notifikasi `missing_detected` atas record `Genset Honda EU22 {runId}` untuk node `Detected by scan` dengan pemindai `Dedi Kurnia {runId}` dari Scan Found Asset yang diblok karena Last holder
+61. Verifikasi Rina W menerima satu notifikasi `missing_detected` atas record `Printer HP LaserJet M404 {runId}` untuk node `Detected by scan` dengan pemindai `Agus Pratama {runId}` dari layar Handover, Return, Send Transfer, dan Receive Transfer yang ditolak, tanpa notifikasi tambahan per layar

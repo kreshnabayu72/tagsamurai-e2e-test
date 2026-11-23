@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§6#r15", "§9.2#b19", "§9.4.2#r18", "§9.4.4#r6", "§10#r6", "§9.4.1#r14", "§11#r14", "EB-EDG-3"]
+sourceRules: ["§6#r15", "§9.2#b19", "§9.4.2#r18", "§9.4.4#r6", "§10#r6", "§9.4.1#r14", "§11#r16", "EB-EDG-3"]
 smoke: []
 dependsOn: ["Settings Groups: aksi Delete Group"]
 trace:
@@ -15,7 +15,7 @@ trace:
   "§9.4.4#r6": [4, 27]
   "§10#r6": [13, 14, 19, 21]
   "§9.4.1#r14": [4, 13, 14]
-  "§11#r14": [4]
+  "§11#r16": [4]
   "EB-EDG-3": [4, 13, 14, 19]
 anchor: [12, 26]
 coverage:

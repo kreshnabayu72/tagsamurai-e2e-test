@@ -6,7 +6,7 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [§4.1a#p9, §6#r11, §6#r12, §6#r13, §9.2#b17, §9.4.2#r21, §9.4.4#r4, §9.6#r10, §8#r6, §9.1#r5, §2.1#r9, §2.1#r10, §4.8#r8, EB-BLK-3, EB-AKS-3@bulk-report-disposal, §9.2#b30, §9.2#b31, §9.4.4#r16, §9.4.4#r17, §9.4.2#r3]
+sourceRules: [§4.1a#p9, §6#r11, §6#r12, §6#r13, §9.2#b17, §9.4.2#r21, §9.4.4#r4, §9.6#r10, §8#r6, §9.1#r5, §2.1#r9, §2.1#r10, §4.8#r9, EB-BLK-3, EB-AKS-3@bulk-report-disposal, §9.2#b32, §9.2#b33, §9.4.4#r18, §9.4.4#r19, §9.4.2#r3]
 smoke: []
 dependsOn: ["Transactions Disposal: Disposal Report"]
 trace:
@@ -20,15 +20,15 @@ trace:
   §9.6#r10: [3, 5, 8]
   §8#r6: [4, 10]
   §9.1#r5: 3
-  §2.1#r9: [18, 20]
+  §2.1#r9: [18, 20, 40, 42]
   §2.1#r10: [22, 24, 26, 28]
-  §4.8#r8: [18, 20, 22, 24, 26, 28]
+  §4.8#r9: [18, 20, 22, 24, 26, 28, 40, 42]
   EB-BLK-3: [3, 4]
   EB-AKS-3@bulk-report-disposal: 18
-  §9.2#b30: 30
-  §9.2#b31: [32, 34, 36, 37]
-  §9.4.4#r16: [30, 38]
-  §9.4.4#r17: [32, 34, 37, 38]
+  §9.2#b32: 30
+  §9.2#b33: [32, 34, 36, 37]
+  §9.4.4#r18: [30, 38]
+  §9.4.4#r19: [32, 34, 37, 38]
   §9.4.2#r3: [30, 32]
 ---
 
@@ -90,8 +90,8 @@ trace:
 16. Verifikasi `Drill Bosch GSB {runId}` dan `Genset Honda EU22 {runId}` tetap berstatus `Missing` tanpa node baru
 
 ### Aktor tanpa hak Report Disposal ditolak walau UI dilewati
-17. `Fajar Nugroho {runId}`, `Dewi Anindita {runId}`, dan `Joko Susilo {runId}` masing-masing menjalankan Bulk Report Disposal atas `Kursi Ergonomis {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
-18. Verifikasi semua permintaan itu ditolak, termasuk dari `Dewi Anindita {runId}` yang punya Update karena Manage asset & TAG saja tidak cukup, dan record `Kursi Ergonomis {runId}` tetap `Missing`
+17. `Fajar Nugroho {runId}` dan `Joko Susilo {runId}` masing-masing menjalankan Bulk Report Disposal atas `Kursi Ergonomis {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
+18. Verifikasi kedua permintaan itu ditolak dan record `Kursi Ergonomis {runId}` tetap `Missing`
 
 ### Accounting melaporkan hanya aset Missing dan membatalkan hanya laporan miliknya
 19. `Eko Wibowo {runId}` menjalankan Bulk Report Disposal atas `Meja Kerja Kayu {runId}` dan `Papan Tulis {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
@@ -118,3 +118,9 @@ trace:
 36. Verifikasi permintaan itu ditolak dengan keterangan `Already reported missing` karena aset sudah punya record berjalan `Reported Disposal`, dan tidak ada record Missing kedua
 37. Verifikasi Draft Disposal aset `Lemari Arsip Besi {runId}` tidak berubah dan aset ditandai ⚠
 38. Verifikasi pembatalan oleh `System` pada `Brankas Besi {runId}` dan `Lemari Arsip Besi {runId}` tidak mengirim event `missing_*` selain `missing_reported` untuk laporan baru
+
+### Manage asset & TAG dengan Update melaporkan disposal aset Missing hanya di Group yang ia pegang Update
+39. `Dewi Anindita {runId}` menjalankan Bulk Report Disposal atas `Kursi Ergonomis {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
+40. Verifikasi permintaan itu diterima dan record `Kursi Ergonomis {runId}` berstatus `Reported Disposal`
+41. `Dewi Anindita {runId}` menjalankan Bulk Report Disposal atas `Toyota Innova {runId}` di Group `Warehouse` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
+42. Verifikasi permintaan itu ditolak dengan pesan `None of the selected records can be reported for disposal.` karena Group `Warehouse` di luar hak Update `Dewi Anindita {runId}`, dan record `Toyota Innova {runId}` tetap `Missing`

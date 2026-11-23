@@ -1,10 +1,10 @@
 {
  "module": "Missing",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-16",
- "prd": "fixed-asset@12ddb49",
- "prdSha": "a8d8637595c8aa03",
- "foundation": "foundation@8ec9ed8-dirty",
+ "disetujui": "Intan, 2026-11-23",
+ "prd": "fixed-asset@ea04860",
+ "prdSha": "db4637b30cc75d5d",
+ "foundation": "foundation@757d6be",
  "specs": [
   {
    "id": "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel",
@@ -70,7 +70,7 @@
     "§4.3#r3",
     "§4.3#r6",
     "§4.1a#r34",
-    "§1.2#r112",
+    "§1.2#r116",
     "EB-AKS-4",
     "EB-TBL-12",
     "§9.11#r2",
@@ -249,7 +249,7 @@
     "§9.5#r3",
     "§5#r5",
     "§4.1#p3",
-    "§1.2#r16",
+    "§1.2#r17",
     "§4.1#r2",
     "§9.2#b16",
     "§4.4#r1",
@@ -389,9 +389,9 @@
     "§4.1#r4",
     "§4.1a#r29",
     "§4.4#r10",
-    "§1.2#r10",
-    "§1.2#r104",
-    "§1.2#r105",
+    "§1.2#r11",
+    "§1.2#r107",
+    "§1.2#r108",
     "§7.1#r3",
     "§9.6#r6",
     "§9.7#r6",
@@ -417,7 +417,7 @@
    "layer": "ui-e2e",
    "units": [
     "§9.1#r9",
-    "§9.2#b59",
+    "§9.2#b64",
     "§4.1a#r30",
     "§4.4#r8",
     "§7.3#r9",
@@ -457,17 +457,18 @@
     "§9.6#r2",
     "§9.2#r1",
     "§9.2#r2",
+    "§1.2#r60",
     "§1.2#r59",
-    "§1.2#r58",
     "§2.1#r6",
     "§4.8#r6",
-    "§9.2#b33",
+    "§9.2#b35",
     "§9.1#r6",
     "§3#p4",
     "§9.8#r3",
     "§9.8#p3",
-    "§9.4.4#r19",
-    "EB-FB-1@confirm"
+    "§9.4.4#r21",
+    "EB-FB-1@confirm",
+    "§8.2#p6"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -475,7 +476,7 @@
    "priority": "High",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu mutasi: Confirm. Efek ke baris Borrow (MISS-LOGIC-04) dan notifikasi pemegang milik spec -dep-. §9.2#b33, §9.4.4#r19, §9.8#r3 shared: klausa Confirm/Reject status record di sini, klausa efek baris Borrow dan notifikasi di spec -dep-borrow / -dep-notification.",
+   "alasan": "Satu mutasi: Confirm. Efek ke baris Borrow (MISS-LOGIC-04) dan notifikasi pemegang milik spec -dep-. §9.2#b35, §9.4.4#r21, §9.8#r3 shared: klausa Confirm/Reject status record di sini, klausa efek baris Borrow dan notifikasi di spec -dep-borrow / -dep-notification.",
    "coverage": {
     "web": "automated"
    }
@@ -489,16 +490,18 @@
     "§4.2.4#r20",
     "§7.2#r15",
     "§7.2#r7",
-    "§4.2.4#p11",
+    "§4.2.4#p12",
     "§8.1#r9",
     "§9.6#r3",
     "§9.2#r7",
-    "§1.2#r18",
-    "§1.2#r60",
+    "§1.2#r19",
+    "§1.2#r61",
     "§9.4.2#r7",
     "§9.9#r7",
     "EB-FB-1@reject",
-    "§8.1#r3"
+    "§8.1#r3",
+    "§8.2#p7",
+    "§3#p4"
    ],
    "smoke": [
     "EB-FRM-4@reject-report"
@@ -524,20 +527,20 @@
     "§7.3#r8",
     "§9.6#r4",
     "§9.2#r5",
-    "§1.2#r36",
-    "§1.2#r72",
-    "§1.2#r79",
-    "§1.2#r81",
-    "§1.2#r89",
-    "§1.2#r90",
-    "§1.2#r91",
+    "§1.2#r37",
+    "§1.2#r75",
+    "§1.2#r82",
+    "§1.2#r84",
     "§1.2#r92",
-    "§1.2#r101",
-    "§1.2#r102",
-    "§1.2#r30",
-    "§9.2#b24",
+    "§1.2#r93",
+    "§1.2#r94",
+    "§1.2#r95",
+    "§1.2#r104",
+    "§1.2#r105",
+    "§1.2#r31",
     "§9.2#b25",
     "§9.2#b26",
+    "§9.2#b27",
     "§8.1#r14",
     "§9.4.2#r8",
     "§9.4.2#r5",
@@ -549,14 +552,16 @@
     "§2.1#r7",
     "§9.1#r4",
     "§3#p8",
-    "§9.4.4#r11",
     "§9.4.4#r12",
+    "§9.4.4#r13",
     "§9.7#r4",
     "§9.8#r7",
     "§10#r3",
-    "§1.2#r103",
+    "§1.2#r106",
     "EB-FB-1@mark-as-found",
-    "EB-EDG-2"
+    "EB-EDG-2",
+    "§8.2#p8",
+    "§3#p4"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -574,23 +579,23 @@
    "title": "Pemisahan tugas: Review, Mark as Found, dan Report Disposal Disabled bagi Last holder, aktif bagi admin lain",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r114",
-    "§1.2#r115",
-    "§1.2#r116",
-    "§1.2#r117",
-    "§1.2#r71",
+    "§1.2#r118",
+    "§1.2#r119",
+    "§1.2#r120",
+    "§1.2#r121",
+    "§1.2#r74",
     "§6#r1",
     "§4.3#r4",
     "§9.4.2#r17",
-    "§9.2#b27",
-    "§2.1#b8",
+    "§9.2#b28",
+    "§2.1#b9",
     "§2.1#p12",
     "§2.1#p17",
     "§2.1#p18",
     "§2.1#p19",
     "§2.1#p20",
     "§9.4.3#b6",
-    "§9.4.4#r13",
+    "§9.4.4#r14",
     "§8.1#r6",
     "§4.8#r6",
     "EB-TBL-5@aksi-last-holder",
@@ -615,7 +620,7 @@
     "§6#r10",
     "§7.2#r9",
     "§7.2#r13",
-    "§4.2.4#p13",
+    "§4.2.4#p14",
     "§4.2.4#r23",
     "§4.4#r13",
     "§9.2#b20",
@@ -672,14 +677,14 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
     "§2#b1",
     "§2.1#b4",
@@ -714,14 +719,14 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
     "§2#b1"
    ],
@@ -738,7 +743,7 @@
   },
   {
    "id": "TC-FA-MISS-E2E-022-gating-manage-asset-tag-update",
-   "title": "Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tidak tersedia",
+   "title": "Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tersedia pada Group Update",
    "layer": "ui-e2e",
    "units": [
     "§2.1#r1",
@@ -754,17 +759,17 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
     "§2#b1",
-    "§2.1#b9",
+    "§2.1#b10",
     "§2.1#p2",
     "§2.1#p7",
     "§2.1#p8",
@@ -805,17 +810,17 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
     "§2#b4",
-    "§2.1#b5"
+    "§2.1#b6"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -846,18 +851,18 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
     "§4.3#r5",
     "EB-AKS-4",
-    "§2.1#b9"
+    "§2.1#b10"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -888,16 +893,16 @@
     "§4.8#r2",
     "§4.8#r5",
     "§4.8#r6",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
     "§4.8#r11",
+    "§4.8#r12",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
-    "§2.1#b7",
+    "§2.1#b8",
     "§4.8#b2",
-    "§2.1#b6"
+    "§2.1#b7"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1011,20 +1016,21 @@
     "§6#p3",
     "§7.2#r6",
     "§7.2#r12",
-    "§4.2.4#p10",
+    "§4.2.4#p11",
     "§9.4.2#r24",
     "§9.4.2#r25",
     "§9.4.2#r26",
     "§9.4.4#r5",
     "§2.1#r12",
-    "§9.2#b37",
-    "§9.2#b38",
-    "§9.2#b40",
-    "§4.8#r10",
+    "§9.2#b41",
+    "§9.2#b42",
+    "§9.2#b44",
+    "§4.8#r11",
     "§9.9#r2",
     "§6#r4",
     "§4.3#r8",
-    "§9.9#p3"
+    "§9.9#p3",
+    "§1.2#r113"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1032,7 +1038,7 @@
    "priority": "Critical",
    "harness": "eksternal",
    "varianPlatform": [],
-   "alasan": "Butuh pembaca TAG fisik (harness eksternal, coverage manual). Semua guard scan digabung karena tidak mengubah data; blok terakhir menyelesaikan Mark as Found dari scan. §9.2#b37/b38/b40 shared: klausa deteksi tercatat di be-e2e.",
+   "alasan": "Butuh pembaca TAG fisik (harness eksternal, coverage manual). Semua guard scan digabung karena tidak mengubah data; blok terakhir menyelesaikan Mark as Found dari scan. §9.2#b41/b38/b40 shared: klausa deteksi tercatat di be-e2e.",
    "coverage": {
     "web": "manual"
    }
@@ -1078,20 +1084,20 @@
     "§9.4.2#r16",
     "§9.4.4#r1",
     "§9.4.4#r2",
-    "§1.2#r11",
     "§1.2#r12",
     "§1.2#r13",
     "§1.2#r14",
-    "§1.2#r16",
-    "§1.2#r23",
+    "§1.2#r15",
+    "§1.2#r17",
     "§1.2#r24",
     "§1.2#r25",
     "§1.2#r26",
-    "§1.2#r31",
+    "§1.2#r27",
     "§1.2#r32",
-    "§1.2#r39",
-    "§1.2#r47",
-    "§1.2#r53",
+    "§1.2#r33",
+    "§1.2#r40",
+    "§1.2#r48",
+    "§1.2#r54",
     "§9.2#r2",
     "§10#r1",
     "§10#r2",
@@ -1102,7 +1108,9 @@
     "§9.8#r1",
     "§9.2#b12",
     "§9.2#b15",
-    "§11#r1"
+    "§11#r1",
+    "§8.2#p4",
+    "§8.1#p1"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1124,13 +1132,13 @@
    "layer": "ui-e2e",
    "units": [
     "§9.1#r6",
-    "§9.2#b32",
+    "§9.2#b34",
     "§3#p4",
     "§7.3#r6",
     "§7.3#r11",
     "§7.2#r3",
     "§7.2#r18",
-    "§4.2.4#p7",
+    "§4.2.4#p8",
     "§9.6#r7",
     "§9.7#r2",
     "§9.7#r8",
@@ -1138,16 +1146,16 @@
     "§9.2#r8",
     "§8.1#r7",
     "§8.1#r8",
-    "§1.2#r17",
-    "§1.2#r19",
-    "§1.2#r52",
-    "§1.2#r54",
-    "§1.2#r56",
+    "§1.2#r18",
+    "§1.2#r20",
+    "§1.2#r53",
+    "§1.2#r55",
     "§1.2#r57",
-    "§1.2#r69",
+    "§1.2#r58",
     "§1.2#r70",
-    "§1.2#r118",
-    "§1.2#r119",
+    "§1.2#r73",
+    "§1.2#r122",
+    "§1.2#r123",
     "§2#b3",
     "§2.1#r3",
     "§2.1#r8",
@@ -1157,9 +1165,9 @@
     "§9.11#r3",
     "§9.4.2#r27",
     "§9.4.2#r22",
-    "§9.2#b34",
-    "§9.4.4#r18",
+    "§9.2#b36",
     "§9.4.4#r20",
+    "§9.4.4#r22",
     "§9.4.3#b5",
     "§11#r4",
     "§4.2.3#p2",
@@ -1172,7 +1180,12 @@
     "EB-FB-2@go-back-cancel-report",
     "§9.3#b1",
     "§4.6#b3",
-    "§4.6#b6"
+    "§4.6#b6",
+    "§8.2#p5",
+    "§8.2#p10",
+    "§8.2#p27",
+    "§2.1#r2",
+    "§4.8#r12"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1206,35 +1219,35 @@
    "title": "Efek Missing pada Borrow: baris ditutup saat Report admin dan Confirm, baris tetap terbuka berbadge Reported Missing saat laporan pemegang, badge hilang saat Reject dan Found",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r39",
     "§1.2#r40",
     "§1.2#r41",
-    "§1.2#r45",
+    "§1.2#r42",
     "§1.2#r46",
-    "§1.2#r51",
-    "§1.2#r55",
+    "§1.2#r47",
+    "§1.2#r52",
+    "§1.2#r56",
+    "§1.2#r69",
     "§1.2#r68",
-    "§1.2#r67",
     "§9.2#b10",
     "§9.2#b11",
     "§9.2#b13",
-    "§9.2#b26",
-    "§9.2#b33",
+    "§9.2#b27",
+    "§9.2#b35",
     "§9.4.2#r3",
     "§9.4.2#r5",
     "§9.4.2#r6",
     "§9.4.2#r7",
     "§9.4.2#r16",
     "§9.4.3#b2",
-    "§9.4.4#r12",
-    "§9.4.4#r19",
+    "§9.4.4#r13",
+    "§9.4.4#r21",
     "§9.7#r1",
     "§9.7#r3",
     "§9.7#r4",
     "§9.7#r8",
     "§8.1#r9",
     "§11#r3",
-    "§11#r18",
+    "§11#r20",
     "§3#p2",
     "§4.2.3#p2",
     "§2.1#b1",
@@ -1243,7 +1256,8 @@
     "§4.2.4#r15",
     "§9.4.1#r8",
     "§9.4.1#r13",
-    "§9.7#r2"
+    "§9.7#r2",
+    "§4.8#r2"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1264,13 +1278,17 @@
    "title": "Efek Missing pada Assignment: baris Assigned ditutup, permintaan menunggu dibatalkan, pintu masuk Report Missing",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r42",
+    "§1.2#r43",
     "§9.4.2#r4",
     "§11#r5",
     "§9.7#r1",
-    "§9.2#b32",
+    "§9.2#b34",
     "§4.2.3#b5",
-    "§9.4.2#r6"
+    "§9.4.2#r6",
+    "§4.8#r2",
+    "§2#b2",
+    "§2.1#b2",
+    "§4.8#b1"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1291,10 +1309,14 @@
    "title": "Efek Missing pada Transfer: baris In transit ditutup dan pintu masuk Report Missing",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r43",
+    "§1.2#r44",
     "§11#r6",
     "§9.7#r1",
-    "§4.2.3#b5"
+    "§4.2.3#b5",
+    "§4.8#r2",
+    "§2#b2",
+    "§2.1#b2",
+    "§4.8#b1"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1321,8 +1343,8 @@
     "§4.4#r11",
     "§4.2.4#r21",
     "§4.2.4#r22",
-    "§4.2.4#p8",
-    "§4.2.4#p14",
+    "§4.2.4#p9",
+    "§4.2.4#p15",
     "§7.2#r4",
     "§7.2#r16",
     "§7.2#r17",
@@ -1330,12 +1352,12 @@
     "§9.6#r9",
     "§9.2#r3",
     "§9.2#r4",
-    "§9.2#b28",
-    "§9.2#b29",
+    "§9.2#b30",
+    "§9.2#b31",
     "§9.4.2#r11",
     "§9.4.2#r12",
-    "§9.4.4#r14",
-    "§9.4.4#r15",
+    "§9.4.4#r16",
+    "§9.4.4#r17",
     "§8.1#r15",
     "§8.1#r16",
     "§8.1#r17",
@@ -1349,8 +1371,8 @@
     "§4.3#r6",
     "§2.1#r9",
     "§2.1#r10",
-    "§2.1#b5",
-    "§4.8#r8",
+    "§2.1#b6",
+    "§4.8#r9",
     "§4.1#r11",
     "§4.1#r8",
     "§6#r2",
@@ -1360,32 +1382,32 @@
     "§9.2#p13",
     "§11#r7",
     "§1#b4",
-    "§1.2#r17",
-    "§1.2#r20",
+    "§1.2#r18",
     "§1.2#r21",
-    "§1.2#r93",
-    "§1.2#r94",
-    "§1.2#r95",
+    "§1.2#r22",
     "§1.2#r96",
     "§1.2#r97",
     "§1.2#r98",
     "§1.2#r99",
     "§1.2#r100",
-    "§1.2#r34",
+    "§1.2#r101",
+    "§1.2#r102",
+    "§1.2#r103",
     "§1.2#r35",
-    "§1.2#r112",
+    "§1.2#r36",
+    "§1.2#r116",
     "§10#r4",
     "§8.2#b2",
     "§9.4.1#r3",
     "EB-FB-1@report-disposal",
     "EB-FB-1@cancel-disposal-report",
-    "§1.2#r44"
+    "§1.2#r45"
    ],
    "smoke": [],
    "dependsOn": [
     "Transactions Disposal: dialog Report Disposal D-DISP-13",
     "Transactions Disposal: tab Reported > Decline dan Cancel Report",
-    "Transactions Disposal: Dispose > form Request Lost / Write-off"
+    "Transactions Disposal: Dispose > form Request Write-off"
    ],
    "batch": "b4",
    "priority": "Critical",
@@ -1413,7 +1435,7 @@
     "§7.2#r11",
     "§7.3#r4",
     "§7.3#r13",
-    "§4.2.4#p9",
+    "§4.2.4#p10",
     "§9.2#b17",
     "§9.4.2#r21",
     "§9.4.4#r4",
@@ -1447,18 +1469,18 @@
    "title": "Mark as Found dengan Asset Status Damaged dan asal Damaged + Missing: Damage Report, Damage record ditahan, toast varian",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r27",
     "§1.2#r28",
-    "§1.2#r49",
+    "§1.2#r29",
     "§1.2#r50",
-    "§1.2#r63",
+    "§1.2#r51",
     "§1.2#r64",
-    "§1.2#r80",
-    "§1.2#r84",
-    "§1.2#r85",
-    "§1.2#r86",
+    "§1.2#r65",
+    "§1.2#r83",
     "§1.2#r87",
     "§1.2#r88",
+    "§1.2#r89",
+    "§1.2#r90",
+    "§1.2#r91",
     "§9.4.2#r10",
     "§9.4.2#r33",
     "§9.4.2#r7",
@@ -1472,8 +1494,9 @@
     "§9.7#r4",
     "§4.1b#p5",
     "§8.1#r14",
-    "§11#r12",
-    "§9.4.4#r11"
+    "§11#r13",
+    "§9.4.4#r12",
+    "§3#p8"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1494,16 +1517,16 @@
    "title": "Mark as Found lewat I Can't Scan the TAG: dialog Report TAG, badge TAG Reported, Manual identification, dan toast marked as found",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r73",
-    "§1.2#r74",
-    "§1.2#r75",
     "§1.2#r76",
     "§1.2#r77",
     "§1.2#r78",
-    "§1.2#r82",
-    "§1.2#r83",
-    "§1.2#r29",
-    "§1.2#r65",
+    "§1.2#r79",
+    "§1.2#r80",
+    "§1.2#r81",
+    "§1.2#r85",
+    "§1.2#r86",
+    "§1.2#r30",
+    "§1.2#r66",
     "§4.2.4#r1",
     "§4.2.4#r2",
     "§4.2.4#r3",
@@ -1511,15 +1534,15 @@
     "§4.2.4#p2",
     "§9.4.2#r9",
     "§9.4.2#r23",
-    "§9.4.4#r10",
+    "§9.4.4#r11",
     "§4.3#r8",
     "§9.2#r5",
     "§9.9#r2",
     "§8.1#r14",
     "§8.2#b3",
-    "§11#r11",
+    "§11#r12",
     "§3#p8",
-    "§9.2#b24"
+    "§9.2#b25"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1546,7 +1569,7 @@
     "§9.4.4#r6",
     "§10#r6",
     "§9.4.1#r14",
-    "§11#r14",
+    "§11#r16",
     "EB-EDG-3"
    ],
    "smoke": [],
@@ -1577,15 +1600,15 @@
     "§9.8#r7",
     "§9.8#p2",
     "§9.8#p3",
-    "§11#r16",
-    "§11#r17",
-    "§1.2#r62",
-    "§1.2#r106",
-    "§1.2#r111",
+    "§11#r18",
+    "§11#r19",
+    "§1.2#r63",
+    "§1.2#r109",
+    "§1.2#r115",
     "§9.4.4#r2",
-    "§9.4.4#r18",
-    "§9.4.4#r19",
-    "§9.2#b33",
+    "§9.4.4#r20",
+    "§9.4.4#r21",
+    "§9.2#b35",
     "§9.7#r1",
     "§9.7#r2",
     "§9.7#r3",
@@ -1597,7 +1620,11 @@
     "§3#p2",
     "§4.2.4#r15",
     "§4.2.4#r16",
-    "§9.2#b15"
+    "§9.2#b15",
+    "§1.2#r72",
+    "§9.2#b38",
+    "§9.4.2#r39",
+    "§9.4.4#r24"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1614,7 +1641,7 @@
   },
   {
    "id": "TC-FA-MISS-E2E-042-stock-opname-dep-audit",
-   "title": "Report Missing dari sesi Stock Opname dan item Audited dengan badge Reported Missing bertautan ke Missing Log",
+   "title": "Report Missing dari Task Detail Audit oleh pelapor dengan hak Aktor Missing (Total Control, Group Manager) langsung Missing tanpa aksi Cancel my report, dan item Audited dengan badge Reported Missing bertautan ke Missing Log",
    "layer": "ui-e2e",
    "units": [
     "§4.2.3#b4",
@@ -1622,19 +1649,24 @@
     "§2#b2",
     "§2.1#b1",
     "§11#r9",
-    "§9.2#b47",
-    "§3#p2"
+    "§9.2#b51",
+    "§3#p2",
+    "§1.2#r71",
+    "§4.8#r8",
+    "§9.4.2#r37",
+    "§4.8#r2",
+    "§1.2#r57"
    ],
    "smoke": [],
    "dependsOn": [
-    "Audit: sesi Stock Opname > Report Missing",
+    "Audit: Task Detail Audit > Report Missing",
     "Audit: item Audited"
    ],
    "batch": "b4",
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Audit (Stock Opname). Deteksi lewat scan di sesi SO butuh perangkat; diasersi badge pada item yang dibentuk data awal.",
+   "alasan": "Satu modul luar: Audit (nama modul menggantikan Stock Opname; slug id dipertahankan agar revisi hanya mengubah langkahnya). Deteksi lewat scan di sesi Audit butuh perangkat; diasersi badge pada item yang dibentuk data awal. Pelapor dengan hak Aktor Missing langsung Missing; pelapor Asset Admin sub-tab Audit atau Staff Auditor tanpa hak itu (Waiting for Confirmation, Cancel my report) dimiliki spec 049.",
    "coverage": {
     "web": "automated"
    }
@@ -1645,7 +1677,7 @@
    "layer": "ui-e2e",
    "units": [
     "§4.2.3#b4",
-    "§11#r10",
+    "§11#r11",
     "§4.1a#p11"
    ],
    "smoke": [],
@@ -1656,7 +1688,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Wizard Reconciliation. §4.2.3#b4 shared per titik masuk (Stock Opname vs Reconciliation).",
+   "alasan": "Satu modul luar: Wizard Reconciliation. §4.2.3#b4 shared per titik masuk (Audit vs Reconciliation).",
    "coverage": {
     "web": "automated"
    }
@@ -1673,10 +1705,23 @@
     "§9.6#r3",
     "§9.6#r4",
     "§9.6#r5",
-    "§11#r13",
+    "§11#r15",
     "§9.2#b21",
     "§8#r6",
-    "EB-LOG-1"
+    "EB-LOG-1",
+    "§8.2#p14",
+    "§8.2#p15",
+    "§8.2#p16",
+    "§8.2#p17",
+    "§8.2#p18",
+    "§8.2#p21",
+    "§8.2#p22",
+    "§8.2#p23",
+    "§8.2#p24",
+    "§8.2#p25",
+    "§8.2#p26",
+    "§8.2#p27",
+    "§9.6#r7"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1698,12 +1743,12 @@
    "units": [
     "§9.5#r5",
     "§11#r8",
-    "§1.2#r110",
-    "§1.2#r113",
+    "§1.2#r114",
+    "§1.2#r117",
     "§9.4.2#r19",
     "§9.4.1#r11",
-    "§9.2#b50",
-    "§9.2#b55"
+    "§9.2#b55",
+    "§9.2#b60"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1739,14 +1784,24 @@
     "§9.5#r7",
     "§8#r10",
     "§8.1#r12",
-    "§9.2#b41",
-    "§9.2#b47",
+    "§9.2#b45",
+    "§9.2#b51",
     "§10#r7",
     "§9.3#b1",
     "§4.2.4#p2",
     "§9.9#p4",
     "EB-FB-1@i-found-it",
-    "EB-ERR-1@i-found-it"
+    "EB-ERR-1@i-found-it",
+    "§1.2#r126",
+    "§1.2#r127",
+    "§1.2#r128",
+    "§6#r16",
+    "§7.3#r15",
+    "§7.3#p1",
+    "§9.2#b52",
+    "§9.4.2#r35",
+    "§9.4.4#r27",
+    "§9.4.1#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1754,10 +1809,11 @@
    "priority": "High",
    "harness": "eksternal",
    "varianPlatform": [],
-   "alasan": "Hanya Android native (§10#r7); pemindaian TAG butuh perangkat (eksternal, manual). Reaksi gagal 5xx sheet (EB-ERR-1@i-found-it) ada di sini sebagai Kondisi karena tidak ada component test mobile (PF-7).",
+   "alasan": "Hanya Android native (§10#r7); pemindaian TAG butuh perangkat (eksternal, manual). Reaksi gagal 5xx sheet (EB-ERR-1@i-found-it) ada di sini sebagai Kondisi karena tidak ada component test mobile (PF-7). Amandemen (PB-7): penolakan I found it saat Storage penuh (MISS-LOGIC-10c, §1.2#r126) mengubah ledger Storage seluruh entitas, jadi spec ini diberi entitas sendiri (status-entitas). Node Missing Log tidak teramati di Android; asersi tanpa node dan tanpa notifikasi (§9.4.4#r27) ada di BE-080.",
    "coverage": {
     "android": "manual"
-   }
+   },
+   "entitasKhusus": "status-entitas"
   },
   {
    "id": "TC-FA-MISS-UI-050-tabel-active-tampilan-awal",
@@ -1881,14 +1937,15 @@
     "EB-BLK-4",
     "§4.1a#p8",
     "§4.1a#p9",
-    "§4.2.4#p9",
+    "§4.2.4#p10",
     "§7.2#r5",
     "§7.3#r13",
     "§6#r11",
     "§6#r13",
     "§4.4#r12",
     "§4.1#r9",
-    "§5#r5"
+    "§5#r5",
+    "§4.2.4#p14"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1989,7 +2046,7 @@
     "§9.6#r1",
     "§4.1#r5",
     "§4.1#p1",
-    "§1.2#r15",
+    "§1.2#r16",
     "§4.3#r1",
     "EB-FRM-1@report-missing",
     "EB-FRM-2@report-missing",
@@ -2040,7 +2097,7 @@
     "§7.3#r8",
     "§9.6#r4",
     "§4.1#r6",
-    "§4.2.4#p6",
+    "§4.2.4#p7",
     "§9.4.2#r33",
     "§9.4.2#r8",
     "EB-FRM-1@mark-as-found",
@@ -2068,7 +2125,7 @@
    "title": "Dialog Reject Report: bullet aset, placeholder Reason, validasi kosong dan 360, Unsaved, toast, dan respons gagal",
    "layer": "ui-client",
    "units": [
-    "§4.2.4#p11",
+    "§4.2.4#p12",
     "§7.2#r7",
     "§9.9#r7",
     "§7.3#r7",
@@ -2079,7 +2136,8 @@
     "EB-FRM-4@reject-report",
     "EB-FRM-7@reject-report",
     "EB-FB-1@reject",
-    "EB-ERR-1@reject"
+    "EB-ERR-1@reject",
+    "§1.2#r61"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2098,12 +2156,12 @@
    "title": "Dialog Add Update: header record dengan badge dan penanda, placeholder Update, validasi kosong dan 360, Unsaved, toast, dan respons gagal",
    "layer": "ui-client",
    "units": [
-    "§4.2.4#p12",
+    "§4.2.4#p13",
     "§7.2#r8",
     "§9.9#r8",
-    "§9.2#b60",
+    "§9.2#b65",
     "§9.4.2#r32",
-    "§9.4.4#r24",
+    "§9.4.4#r29",
     "§7.3#r9",
     "§9.6#r5",
     "§4.1#r6",
@@ -2154,7 +2212,8 @@
     "EB-TBL-5@aksi-last-holder",
     "EB-FB-1@confirm",
     "EB-ERR-1@confirm",
-    "EB-FB-2@tutup-missing-log"
+    "EB-FB-2@tutup-missing-log",
+    "§1.2#r113"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2173,9 +2232,9 @@
    "title": "Dialog Cancel Report, Cannot Mark as Found, dan Already Changed: judul, body, tombol, dan Reload",
    "layer": "ui-client",
    "units": [
-    "§4.2.4#p7",
-    "§4.2.4#p10",
-    "§4.2.4#p13",
+    "§4.2.4#p8",
+    "§4.2.4#p11",
+    "§4.2.4#p14",
     "§7.2#r3",
     "§7.2#r6",
     "§7.2#r9",
@@ -2188,7 +2247,8 @@
     "§7.3#r2",
     "§7.3#r3",
     "EB-FB-1@cancel-report",
-    "EB-ERR-1@cancel-report"
+    "EB-ERR-1@cancel-report",
+    "§9.6#r7"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2207,20 +2267,20 @@
    "title": "Server: kelayakan Report Missing per aset, satu record berjalan, atomik per aset, race dua laporan, dan efek pada Report atau baris Disposal berjalan",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r11",
     "§1.2#r12",
     "§1.2#r13",
-    "§1.2#r15",
-    "§1.2#r39",
-    "§1.2#r45",
+    "§1.2#r14",
+    "§1.2#r16",
+    "§1.2#r40",
     "§1.2#r46",
     "§1.2#r47",
     "§1.2#r48",
-    "§1.2#r53",
+    "§1.2#r49",
     "§1.2#r54",
-    "§1.2#r63",
-    "§1.2#r25",
-    "§1.2#r27",
+    "§1.2#r55",
+    "§1.2#r64",
+    "§1.2#r26",
+    "§1.2#r28",
     "§9.2#b1",
     "§9.2#b2",
     "§9.2#b3",
@@ -2248,7 +2308,10 @@
     "EB-CON-3",
     "EB-EDG-1",
     "EB-EDG-3",
-    "EB-ERR-4"
+    "EB-ERR-4",
+    "§1.2#r71",
+    "§9.4.2#r37",
+    "§9.2#b33"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2263,20 +2326,20 @@
    "title": "Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, record selesai tidak dibuka ulang",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r17",
     "§1.2#r18",
     "§1.2#r19",
     "§1.2#r20",
     "§1.2#r21",
     "§1.2#r22",
-    "§1.2#r101",
-    "§1.2#r102",
-    "§1.2#r61",
+    "§1.2#r23",
+    "§1.2#r104",
+    "§1.2#r105",
     "§1.2#r62",
-    "§1.2#r99",
-    "§1.2#r100",
-    "§1.2#r66",
-    "§1.2#r58",
+    "§1.2#r63",
+    "§1.2#r102",
+    "§1.2#r103",
+    "§1.2#r67",
+    "§1.2#r59",
     "§9.2#r1",
     "§9.2#r2",
     "§9.2#r3",
@@ -2302,17 +2365,23 @@
     "§9.6#r7",
     "§9.6#p2",
     "§9.4.4#r7",
-    "§9.4.4#r15",
-    "§9.4.4#r20",
+    "§9.4.4#r17",
+    "§9.4.4#r22",
     "§9.4.1#r7",
-    "§9.2#b34",
+    "§9.2#b36",
     "§10#r4",
     "§10#r5",
     "EB-CON-3",
     "EB-EDG-1",
-    "§4.2.4#p13",
-    "§9.2#b28",
-    "§9.2#b29"
+    "§4.2.4#p14",
+    "§9.2#b30",
+    "§9.2#b31",
+    "§9.2#b37",
+    "§9.4.2#r38",
+    "§3#p4",
+    "§9.4.2#r11",
+    "§1.2#r71",
+    "§9.4.2#r37"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2320,7 +2389,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Matriks transisi dan konflik milik be-e2e (LY-7). Transisi lewat Disposal dibentuk sebagai keadaan awal record. EB-FB-3, EB-FRM-8, EB-FRM-9, EB-CON-1, EB-LOG-2 tidak punya form Edit di modul ini (§9.6#p2); dinyatakan tidak berlaku, lihat ekspektasiBaku."
+   "alasan": "Matriks transisi dan konflik milik be-e2e (LY-7). Transisi lewat Disposal dibentuk sebagai keadaan awal record. EB-FB-3, EB-FRM-8, EB-FRM-9, EB-CON-1, EB-LOG-2 tidak punya form Edit di modul ini (§9.6#p2); dinyatakan tidak berlaku, lihat ekspektasiBaku. Catatan layer (§9.6#r4): dialog D-MIS-06 dan toast diasersi di E2E-018/UI-059; di sini cukup hasil keadaan. §1.2#r71 dan §9.4.2#r37: penulis perlu Confirm atas record Audit dari aset yang dipegang dengan baris transaksi terbuka dan mengasersi penutupan baris (MISS-LOGIC-04). §1.2#r58: cabang tidak dipegang bertagging Tag Reported menghasilkan status global TAG Reported, perlu ditambah di E2E-049."
   },
   {
    "id": "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas",
@@ -2332,7 +2401,7 @@
     "§9.2#b23",
     "§9.4.2#r20",
     "§9.4.4#r9",
-    "§9.4.4#r13",
+    "§9.4.4#r14",
     "§9.11#r1",
     "§9.11#r2",
     "§9.11#b1",
@@ -2343,25 +2412,25 @@
     "§2.1#p20",
     "§9.4.1#r4",
     "§9.4.3#b6",
-    "§9.2#b27",
+    "§9.2#b28",
     "§2#b1",
     "§2#b2",
     "§2#b3",
     "§2#b4",
-    "§2.1#b9",
+    "§2.1#b10",
     "§7.1#p2",
     "§2.2#p1",
-    "§1.2#r114",
-    "§1.2#r115",
-    "§1.2#r116",
-    "§1.2#r117",
     "§1.2#r118",
     "§1.2#r119",
-    "§1.2#r56",
-    "§1.2#r69",
+    "§1.2#r120",
+    "§1.2#r121",
+    "§1.2#r122",
+    "§1.2#r123",
+    "§1.2#r57",
     "§1.2#r70",
-    "§1.2#r71",
-    "§1.2#r52",
+    "§1.2#r73",
+    "§1.2#r74",
+    "§1.2#r53",
     "§9.4.2#r17",
     "§9.4.2#r27",
     "§2.1#r2",
@@ -2385,7 +2454,11 @@
     "EB-AKS-3@cancel-disposal-report",
     "EB-AKS-6",
     "EB-AKS-2",
-    "§11#r15"
+    "§11#r17",
+    "§1.2#r71",
+    "§2.1#b5",
+    "§4.8#r12",
+    "§2.1#b6"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2410,12 +2483,12 @@
     "§9.9#r8",
     "§9.9#p3",
     "§9.9#p4",
-    "§9.2#b60",
+    "§9.2#b65",
     "§9.4.2#r32",
-    "§9.4.4#r24",
+    "§9.4.4#r29",
     "§6#r4",
     "§6#p1",
-    "§1.2#r86",
+    "§1.2#r89",
     "EB-FRM-4@report-missing",
     "EB-FRM-4@reject-report",
     "EB-FRM-4@add-update",
@@ -2435,17 +2508,13 @@
    "title": "Server: setiap scan TAG aset berjalan dicatat sebagai deteksi, penggabungan per jendela 1 jam per sumber, Last seen, pengecualian di luar cakupan, dan scan tidak menemukan aset",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r103",
-    "§1.2#r104",
-    "§1.2#r105",
     "§1.2#r106",
     "§1.2#r107",
     "§1.2#r108",
     "§1.2#r109",
-    "§9.2#b35",
-    "§9.2#b36",
-    "§9.2#b37",
-    "§9.2#b38",
+    "§1.2#r110",
+    "§1.2#r111",
+    "§1.2#r112",
     "§9.2#b39",
     "§9.2#b40",
     "§9.2#b41",
@@ -2455,6 +2524,10 @@
     "§9.2#b45",
     "§9.2#b46",
     "§9.2#b47",
+    "§9.2#b48",
+    "§9.2#b49",
+    "§9.2#b50",
+    "§9.2#b51",
     "§9.2#p21",
     "§9.4.2#r13",
     "§9.4.2#r14",
@@ -2462,8 +2535,8 @@
     "§9.4.2#r25",
     "§9.4.2#r29",
     "§9.4.3#b1",
-    "§9.4.4#r21",
-    "§9.4.4#r22",
+    "§9.4.4#r25",
+    "§9.4.4#r26",
     "§9.4.1#r12",
     "§9.4.1#r15",
     "§9.4.1#r5",
@@ -2480,7 +2553,7 @@
     "§3#p6",
     "§9.1#r7",
     "§4.7#r3",
-    "§1.2#r65"
+    "§1.2#r66"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2495,23 +2568,23 @@
    "title": "Server: job harian Long missing, penanda dihitung ulang, notifikasi sekali, Days Missing dan Duration sebagai selisih kalender",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r110",
-    "§1.2#r111",
-    "§1.2#r112",
-    "§1.2#r113",
-    "§9.2#b48",
-    "§9.2#b49",
-    "§9.2#b50",
-    "§9.2#b51",
-    "§9.2#b52",
+    "§1.2#r114",
+    "§1.2#r115",
+    "§1.2#r116",
+    "§1.2#r117",
     "§9.2#b53",
     "§9.2#b54",
     "§9.2#b55",
     "§9.2#b56",
     "§9.2#b57",
     "§9.2#b58",
+    "§9.2#b59",
+    "§9.2#b60",
+    "§9.2#b61",
+    "§9.2#b62",
+    "§9.2#b63",
     "§9.4.2#r19",
-    "§9.4.4#r23",
+    "§9.4.4#r28",
     "§9.6#r11",
     "§9.7#r7",
     "§9.8#r6",
@@ -2541,47 +2614,47 @@
    "title": "Server: hasil Mark as Found per Asset Status, asal Damaged + Missing, TAG Reported, Found at hanya data, pemulihan Condition pada Reject dan Cancel",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r36",
     "§1.2#r37",
     "§1.2#r38",
-    "§1.2#r28",
+    "§1.2#r39",
     "§1.2#r29",
     "§1.2#r30",
-    "§1.2#r32",
+    "§1.2#r31",
     "§1.2#r33",
-    "§1.2#r49",
+    "§1.2#r34",
     "§1.2#r50",
-    "§1.2#r57",
-    "§1.2#r64",
+    "§1.2#r51",
+    "§1.2#r58",
     "§1.2#r65",
     "§1.2#r66",
-    "§1.2#r68",
-    "§1.2#r76",
-    "§1.2#r78",
-    "§1.2#r80",
+    "§1.2#r67",
+    "§1.2#r69",
+    "§1.2#r79",
     "§1.2#r81",
-    "§1.2#r82",
     "§1.2#r83",
     "§1.2#r84",
     "§1.2#r85",
+    "§1.2#r86",
     "§1.2#r87",
     "§1.2#r88",
-    "§1.2#r89",
     "§1.2#r90",
     "§1.2#r91",
     "§1.2#r92",
-    "§9.2#b24",
+    "§1.2#r93",
+    "§1.2#r94",
+    "§1.2#r95",
     "§9.2#b25",
     "§9.2#b26",
+    "§9.2#b27",
     "§9.4.2#r5",
     "§9.4.2#r8",
     "§9.4.2#r10",
     "§9.4.2#r23",
     "§9.4.2#r33",
     "§9.4.2#r7",
-    "§9.4.4#r10",
     "§9.4.4#r11",
     "§9.4.4#r12",
+    "§9.4.4#r13",
     "§9.6#r4",
     "§9.7#r3",
     "§9.7#r4",
@@ -2591,11 +2664,12 @@
     "§9.2#r8",
     "§7.3#r8",
     "§9.4.3#b2",
-    "§9.2#b33",
-    "§9.4.4#r19",
+    "§9.2#b35",
+    "§9.4.4#r21",
     "§9.5#r8",
     "§9.9#r3",
-    "§4.2.4#p6"
+    "§4.2.4#p7",
+    "§3#p8"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2603,7 +2677,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Kelompok aturan server penyelesaian record; status global aset dan Damage Report diasersi sebagai state tersimpan (black-box)."
+   "alasan": "Kelompok aturan server penyelesaian record; status global aset dan Damage Report diasersi sebagai state tersimpan (black-box). Catatan layer (§9.6#r4): teks toast UI literal tidak diasersi di be-e2e; di sini cukup hasil keadaan, copy toast milik E2E-016/038/039 dan UI-055."
   },
   {
    "id": "TC-FA-MISS-BE-077-log-dan-notifikasi",
@@ -2627,9 +2701,9 @@
     "§8.2#b2",
     "§8.2#b3",
     "§9.2#b21",
-    "§9.4.4#r14",
     "§9.4.4#r16",
-    "§9.4.4#r17",
+    "§9.4.4#r18",
+    "§9.4.4#r19",
     "§9.8#p1",
     "§9.8#r1",
     "§9.8#r2",
@@ -2669,7 +2743,36 @@
     "§9.4.1#r10",
     "§9.4.1#r9",
     "§9.4.1#r2",
-    "§1.2#r111"
+    "§1.2#r115",
+    "§9.4.4#r23",
+    "§1.2#r72",
+    "§9.2#b38",
+    "§9.4.2#r39",
+    "§9.4.4#r24",
+    "§8.2#p4",
+    "§8.2#p5",
+    "§8.2#p6",
+    "§8.2#p7",
+    "§8.2#p8",
+    "§8.2#p9",
+    "§8.2#p10",
+    "§8.2#p14",
+    "§8.2#p15",
+    "§8.2#p16",
+    "§8.2#p17",
+    "§8.2#p18",
+    "§8.2#p21",
+    "§8.2#p22",
+    "§8.2#p23",
+    "§8.2#p24",
+    "§8.2#p25",
+    "§8.2#p26",
+    "§8.2#p27",
+    "§8.1#r12",
+    "§3#p4",
+    "§1.2#r61",
+    "§3#p8",
+    "§9.4.2#r11"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2748,7 +2851,17 @@
     "§9.4.4#r8",
     "§9.10#p1",
     "§8#r8",
-    "§8#r9"
+    "§8#r9",
+    "§1.2#r126",
+    "§9.4.2#r34",
+    "§9.4.4#r27",
+    "§1.2#r128",
+    "§4.6#b2",
+    "§6#r16",
+    "§9.2#b52",
+    "§9.4.2#r35",
+    "§9.6#r8",
+    "§9.9#p4"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2756,7 +2869,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Keadaan seluruh entitas (status-entitas): Suspended, Expired, dan plan tier dibentuk sebagai keadaan entitas uji, seperti spec ui-e2e 028 dan 029.",
+   "alasan": "Keadaan seluruh entitas (status-entitas): Suspended, Expired, dan plan tier dibentuk sebagai keadaan entitas uji, seperti spec ui-e2e 028 dan 029. Amandemen: juga memuat penolakan I found it saat Storage penuh tanpa node Missing Log dan tanpa notifikasi (§9.4.4#r27, spec penulis perlu menambah langkah), dan varian client tanpa baris ledger Storage (kuota 0, §1.2#r126, §9.4.2#r34). Amandemen 5: (1) memuat §9.6#r8, §1.2#r128, §4.6#b2, §9.2#b52, §9.4.2#r35: Submit I found it saat Storage penuh ditolak sebelum transaksi, tanpa node `Reported found by` dan tanpa notifikasi `missing_found_reported` (langkah 65-67). (2) Urutan evaluasi (§9.4.2#r34, §9.9#p4, §6#r16, MISS-LOGIC-10c): berkas berformat tidak diterima ditolak lebih dulu atas penolakan Storage penuh; hanya server yang bisa menguji karena picker UI hanya menerima PNG/JPG/JPEG. Penulis perlu menambah langkah: kirim Photo / Damaged Photo berformat tidak diterima ke client Storage penuh dan asersikan penolakan format, bukan penolakan Storage penuh. (3) Level Disposal Basic tidak ada di foundation (plans.md §3.4a hanya None dan Full), jadi target varian plan@missing:per-level Basic tidakBerlaku (temuan 11).",
    "entitasKhusus": "status-entitas"
   },
   {
@@ -2776,13 +2889,13 @@
     "§9.1#r5",
     "§2.1#r9",
     "§2.1#r10",
-    "§4.8#r8",
+    "§4.8#r9",
     "EB-BLK-3",
     "EB-AKS-3@bulk-report-disposal",
-    "§9.2#b30",
-    "§9.2#b31",
-    "§9.4.4#r16",
-    "§9.4.4#r17",
+    "§9.2#b32",
+    "§9.2#b33",
+    "§9.4.4#r18",
+    "§9.4.4#r19",
     "§9.4.2#r3"
    ],
    "smoke": [],
@@ -2794,6 +2907,140 @@
    "harness": "fungsional",
    "varianPlatform": [],
    "alasan": "Satu modul luar: Disposal. Matriks skip per sebab (status, Last holder, hak Group)."
+  },
+  {
+   "id": "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager",
+   "title": "Mark as Found saat Storage penuh: Photo / Damaged Photo baru ditolak dengan toast Error, dialog dan isian tetap, tanpa perubahan record; tanpa Photo tidak ditolak",
+   "layer": "ui-e2e",
+   "units": [
+    "§1.2#r124",
+    "§1.2#r126",
+    "§1.2#r127",
+    "§1.2#r128",
+    "§4.2.4#p4",
+    "§6#r16",
+    "§7.3#r14",
+    "§7.3#p1",
+    "§9.2#b29",
+    "§9.4.2#r34",
+    "§9.4.4#r15",
+    "§10#r8",
+    "§11#r14",
+    "§9.4.1#r2",
+    "§9.9#p4",
+    "§9.6#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "File Manager: Storage Usage",
+    "Damaged: Damage Log"
+   ],
+   "batch": "b5",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "coverage": {
+    "web": "automated"
+   },
+   "entitasKhusus": "status-entitas",
+   "alasan": "Storage penuh adalah keadaan seluruh entitas (usage ledger Storage client melawan kuota; client tanpa baris ledger berkuota 0, MISS-LOGIC-10c), sehingga spec memakai entitas khusus (IN-2, status-entitas). Spec ini sudah ada di suite (commit bc87d98c, di luar plan sebelumnya) dan id-nya dipertahankan. Damage Log dipakai hanya untuk mengamati bahwa penolakan tidak membuat Damage Report atau node baru pada Damage record yang ditahan (MISS-LOGIC-10e); itu modul luar kedua (IS-4), dicatat untuk keputusan pemilik run: dipisah ke spec -dep-damaged atau diterima. Saat Storage penuh Mark as Found tanpa Photo tidak dicek (MISS-LOGIC-10d). Reaksi UI atas Submit ditolak diasersi di sini sebagai spec ui-e2e nyata karena keadaan Storage dibentuk lewat entitas khusus; TS-MIS-10 dan toast Error persisten mengikuti kontrak Toast (SB-7, temuan beda-kontrak). Keputusan amandemen (PB-7): varian client tanpa baris ledger Storage (kuota 0) tidak diasersi di 047, diasersi di BE-080 (DU-080-49) yang sudah berentitas status-entitas; usage melebihi kuota tidak dibentuk sebagai varian sendiri, keadaan Storage penuh cukup satu bentuk.",
+   "priority": "Critical"
+  },
+  {
+   "id": "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager",
+   "title": "Hapus Photo / Damaged Photo lewat File Manager: foto tampil kosong pada node Missing Log, status record, status global aset, dan Damage Report tidak berubah",
+   "layer": "ui-e2e",
+   "units": [
+    "§1.2#r124",
+    "§1.2#r125",
+    "§1.2#r129",
+    "§9.2#b24",
+    "§9.4.2#r36",
+    "§9.4.4#r10",
+    "§9.7#r11",
+    "§10#r8",
+    "§11#r14",
+    "§9.4.1#r14",
+    "§8.1#r14",
+    "§8.1#r12"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "File Manager: Delete File",
+    "Damaged: Damage Log"
+   ],
+   "batch": "b5",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "coverage": {
+    "web": "automated"
+   },
+   "alasan": "Satu journey atas record Found yang dibentuk sebagai data awal: mutasi utamanya Delete File Manager atas Photo dan Damaged Photo. Spec ini sudah ada di suite (commit bc87d98c, di luar plan sebelumnya) dan id-nya dipertahankan. Damage Log dipakai hanya untuk mengamati Damage Report asal Missing tidak berubah; itu modul luar kedua (IS-4), dicatat untuk keputusan pemilik run. Amandemen 5: pada record asal Damaged + Missing, sesudah Delete Damaged Photo, spec ini juga membuka dialog Damage Log (Damaged: Damage Log, sudah di dependsOn) dan mengasersi bahwa node Damage record yang ditahan tidak lagi menampilkan Damaged Photo (§9.7#r11, MISS-LOGIC-10f); tanpa mutasi baru.",
+   "priority": "Critical"
+  },
+  {
+   "id": "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit",
+   "title": "Pelapor dari Task Detail Audit tanpa hak Aktor Missing (Asset Admin sub-tab Audit atau Staff Auditor) melapor: record Waiting for Confirmation Source Audit dengan status global aset langsung Missing, lalu Cancel my report membatalkan laporan, status global aset dihitung ulang, dan baris Audit kembali Pending",
+   "layer": "ui-e2e",
+   "units": [
+    "§1.2#r71",
+    "§2.1#b5",
+    "§4.8#r8",
+    "§9.2#b37",
+    "§9.4.2#r37",
+    "§9.4.2#r38",
+    "§9.4.4#r23",
+    "§1.2#r57",
+    "§3#p4",
+    "§4.2.4#p8",
+    "§7.2#r18",
+    "§2.1#b1",
+    "§2.1#b2",
+    "§4.8#b1",
+    "§2#b2",
+    "§2.1#r8",
+    "§9.3#b1",
+    "§9.2#r1",
+    "§11#r9",
+    "§8.2#p5",
+    "§8.1#r7",
+    "§4.8#r2",
+    "§1.2#r58"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Audit: Task Detail Audit (Report Missing, Cancel my report)"
+   ],
+   "batch": "b4",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "coverage": {
+    "web": "automated"
+   },
+   "alasan": "Satu modul luar: Audit. Satu journey pelapor Audit tanpa hak Aktor Missing (Report lalu Cancel my report atas laporan yang sama); aktor berbeda dari spec 042 (pelapor dengan hak Aktor Missing langsung Missing, RC-2). Entri Transaction admin log pelapor (`Reported missing`, `Report canceled`) diasersi di spec -dep-settings-user (044), dan penerima notifikasi di spec -dep-notification (041), bukan di sini (IS-4).",
+   "priority": "High"
+  },
+  {
+   "id": "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine",
+   "title": "Task Maintenance aset dengan record Missing: penanda Asset missing tampil dan Start Maintenance diblokir saat aset dilaporkan Missing, penanda hilang sesudah Mark as Found",
+   "layer": "ui-e2e",
+   "units": [
+    "§11#r10",
+    "§9.7#r1",
+    "§9.7#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Maintenance Routine: Task Maintenance (penanda Asset missing, Start Maintenance)",
+    "My Asset: aksi Cancel Report"
+   ],
+   "batch": "b4",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "coverage": {
+    "web": "automated"
+   },
+   "alasan": "Satu modul luar: Maintenance Routine (konsumen baru yang PRD nyatakan menerima efek Missing, RC-16). Satu journey: Report Missing atas aset yang punya task lalu Mark as Found. Amandemen 5: Cancel Report oleh pemegang (§11#r10: penanda Asset missing hilang) diasersi di spec ini lewat My Asset: aksi Cancel Report (dependsOn kedua, IS-4 dicatat untuk keputusan pemilik run). Klausa Task Maintenance pada Reject dan laporan pelapor Audit (§9.7#r2, §9.7#r3) tidak diasersi di spec ini (satu mutasi utama per spec, RC-2) dan dicatat untuk keputusan pemilik run.",
+   "priority": "Medium"
   }
  ],
  "na": {
@@ -2803,13 +3050,13 @@
   "F-MISS-01s.d.F-MISS-09;keyF-MISS-nn.kn": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "FI-01s.d.FI-16": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "FLD-01s.d.FLD-08": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
-  "MISS-LOGIC-01s.d.MISS-LOGIC-09;sub-ruleMISS-LOGIC-01as.d.MISS-LOGIC-09f": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
+  "MISS-LOGIC-01s.d.MISS-LOGIC-10;sub-ruleMISS-LOGIC-01as.d.MISS-LOGIC-10f": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "Node": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "S-01s.d.S-15": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "Step1s.d.4": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "T-MIS-01,T-MIS-02": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
-  "TS-MIS-01s.d.TS-MIS-09": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
-  "V-01s.d.V-15": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
+  "TS-MIS-01s.d.TS-MIS-11": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
+  "V-01s.d.V-16": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "missing_": "penunjuk: §4.9 (indeks navigasi, bukan sumber aturan)",
   "§1.1#b1": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b2": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
@@ -2820,7 +3067,6 @@
   "§1.1#b7": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b8": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b9": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
-  "§1.1#b10": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b11": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b12": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b13": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
@@ -2832,6 +3078,7 @@
   "§1.1#b19": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b20": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1.1#b21": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
+  "§1.1#b22": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
   "§1#b1": "ringkasan cepat: «Apa ini», isinya dimiliki §9.1",
   "§1#b3": "penunjuk: §9.1 (daftar operasi, tiap operasi punya unit sendiri)",
   "§1.2#p1": "judul tabel Sub-rule atomik",
@@ -2839,8 +3086,8 @@
   "§3#p9": "penunjuk: §4.2.4 DO-01 s.d. DO-07",
   "§4.1a#p4": "judul tabel Matriks Aksi",
   "§4.1a#p10": "judul tabel Example Data: «contoh tanggal pada Example Data bukan format tetap» (§4.1#p3)",
-  "§4.2.4#p5": "catatan metadata tabel FI: «Bukan sumber aturan baru»",
-  "§4.2.4#p16": "catatan metadata tabel DO: «teks asalnya ada di kolom Sumber»",
+  "§4.2.4#p6": "catatan metadata tabel FI: «Bukan sumber aturan baru»",
+  "§4.2.4#p17": "catatan metadata tabel DO: «teks asalnya ada di kolom Sumber»",
   "§7.2#p3": "catatan tabel: «Menunjuk hasil kanonikal tanpa mengulang rinciannya»",
   "§7.3#r1": "penunjuk: §7.3 tabel toast (argumen `actions[]` hanya daftar aksi yang barisnya diasersi per TS-MIS)",
   "§9#p1": "penunjuk: §9.2 (catatan «Acuan foundation (jangan tulis ulang aturannya)»; seksi yang dirujuk dibawa unit §9.2 pemiliknya)",
@@ -2859,9 +3106,9 @@
   "§9.6#p1": "catatan dokumen: «Tidak ada kolom Method/Endpoint/route literal; API Response Contract (M-2) dimiliki backend»",
   "§12#r1": "open item dokumen",
   "§12#r2": "open item dokumen",
-  "§12#r3": "backlog «Setelah v1»",
   "§12#r4": "backlog «Setelah v1»",
   "§12#r5": "backlog «Setelah v1»",
+  "§12#r6": "backlog «Setelah v1»",
   "§12#p1": "metadata dokumen: rujukan berkas resolusi (tidak dibaca, SB-5)",
   "§2.1#p4": "contoh skenario: «Dewi membuka tab Missing» (langkah contoh; hasilnya dimiliki §2.1#p7-p10)",
   "§2.1#p6": "contoh skenario: judul «Hasil yang terlihat / berlaku»",
@@ -2877,7 +3124,16 @@
   "§4.1b#r28": "contoh: baris «T-MIS-02 Example Data»",
   "§4.1b#r29": "contoh: baris «T-MIS-02 Example Data»",
   "§4.1b#r30": "contoh: baris «T-MIS-02 Example Data»",
-  "§4.1b#r31": "contoh: baris «T-MIS-02 Example Data»"
+  "§4.1b#r31": "contoh: baris «T-MIS-02 Example Data»",
+  "§1.1#b10": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
+  "§1.1#b23": "penunjuk: §11 (daftar dependency; hubungannya diuraikan di tabel §11)",
+  "§8.2#p2": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§8.2#p3": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§8.2#p12": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§8.2#p13": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§8.2#p19": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§8.2#p20": "PRD §8.2: baris judul kolom atau pemisah tabel, bukan perilaku; isi barisnya dimiliki unit baris tabel itu",
+  "§12#r3": "open item dokumen"
  },
  "ditahan": {
   "EB-FLT-7": 3
@@ -2951,14 +3207,17 @@
    "jenis": "beda-kontrak",
    "units": [
     "EB-FB-4",
-    "§7.3#r5"
+    "§7.3#r5",
+    "§7.3#r14",
+    "§7.3#r15"
    ],
    "kutipan": [
     "toast-copy.md Aturan Terkunci #12: «Auto-dismiss: Success 4 detik; Error persists sampai di-dismiss manual.»",
     "`Toast#1`: «disappears by itself after 4000 ms»",
-    "`Toast#2`: «Every severity ... auto-dismisses the same way; no severity persists on its own.»"
+    "`Toast#2`: «Every severity ... auto-dismisses the same way; no severity persists on its own.»",
+    "§7.3 `TS-MIS-10` / `TS-MIS-11`: «toast Error persisten»"
    ],
-   "dampak": "Kontrak komponen diasersi (SB-7): toast error ikut hilang sendiri sesudah 4000 ms kecuali kursor di atasnya (`Toast#3`). Langkah EB-FB-4 memakai footnote drift yang menyebut `Toast#2`; foundation toast-copy #12 perlu disamakan dengan komponen."
+   "dampak": "Kontrak komponen diasersi (SB-7): toast error ikut hilang sendiri sesudah 4000 ms kecuali kursor di atasnya (`Toast#3`). Langkah EB-FB-4 memakai footnote drift yang menyebut `Toast#2`; foundation toast-copy #12 perlu disamakan dengan komponen. PRD Missing juga menyatakan toast Error Storage penuh `TS-MIS-10` dan `TS-MIS-11` persisten; spec mengasersi kontrak (toast ikut hilang sendiri, `Toast#1`) dengan footnote drift, dan kalimat `persisten` di PRD perlu disamakan dengan komponen."
   },
   {
    "no": 7,
@@ -2994,25 +3253,37 @@
     "§4.2.3#b5"
    ],
    "kutipan": [
-    "§4.2.3 wireframe: «\"[Asset Name] in BRW-2026-0141 will be closed as missing.\"     (satu baris per aset yang barisnya ditutup; Pelapor admin)»",
-    "§4.2.3: «Kotak dampak `D-MIS-01` hanya memuat baris Borrow, permintaan menunggu, dan penerima notifikasi»"
+    "§4.2.3 wireframe: «\"[Asset Name] in [Transaction ID] will be closed as missing.\"     (mis. BRW-2026-0141 atau ASG-2026-0071; satu baris per aset yang baris Borrow / Assignment-nya ditutup; Pelapor admin)»",
+    "§4.2.3: «Kotak dampak `D-MIS-01` hanya memuat baris Borrow dan Assignment yang ditutup, permintaan menunggu, dan penerima notifikasi»"
    ],
-   "dampak": "Wireframe kotak dampak hanya memuat baris penutupan Borrow, sedangkan butir di bawahnya masih menyebut baris permintaan menunggu dan penerima notifikasi. Baris penutupan Borrow diasersi dengan copy wireframe. Baris penerima notifikasi tetap diasersi karena copy-nya ada di butir yang sama, FI-15, dan FI-16. Baris permintaan menunggu tidak punya copy di PRD, jadi ada-tidaknya tidak diasersi. Pemilik PRD perlu menyamakan wireframe dengan butir itu."
+   "dampak": "Wireframe kotak dampak hanya memuat baris penutupan Borrow dan Assignment, sedangkan butir di bawahnya masih menyebut baris permintaan menunggu dan penerima notifikasi. Baris penutupan Borrow dan Assignment diasersi dengan copy wireframe. Baris penerima notifikasi tetap diasersi karena copy-nya ada di butir yang sama, FI-15, dan FI-16. Baris permintaan menunggu tidak punya copy di PRD, jadi ada-tidaknya tidak diasersi. Pemilik PRD perlu menyamakan wireframe dengan butir itu."
   },
   {
    "no": 10,
    "jenis": "ambigu",
    "units": [
     "§9.7#r8",
-    "§1.2#r55",
+    "§1.2#r56",
     "§9.2#b11"
    ],
    "kutipan": [
-    "§9.7: «Cancel Report (pelapor) | Status global aset dikembalikan (`asset-detail/`); pengingat baris berjalan lagi (`borrow/`, `assignment/`)»",
+    "§9.7: «Cancel Report (pelapor) | Status global aset dihitung ulang (`MISS-LOGIC-05f`, `asset-detail/`); pengingat baris berjalan lagi (`borrow/`, `assignment/`)»",
     "§9.2 F-MISS-01.k2c: «pengingat baris transaksi tidak dijeda»",
-    "§9.7: «Reject | status global aset dikembalikan (`asset-detail/`); badge `Reported Missing` di baris transaksi hilang»"
+    "§9.7: «Reject | status global aset dihitung ulang (`MISS-LOGIC-05i`, `asset-detail/`); badge `Reported Missing` di baris transaksi hilang»"
    ],
-   "dampak": "Pengingat tidak pernah dijeda, tetapi baris Cancel Report masih berbunyi «berjalan lagi» dan tidak menyebut badge `Reported Missing`, sedangkan baris Reject dan Mark as Found menyatakan badge hilang. Spec mengasersi pengingat baris berjalan sesudah Cancel Report; hilangnya badge sesudah Cancel Report tidak diasersi sampai PRD menyatakannya."
+   "dampak": "Pengingat tidak pernah dijeda, tetapi baris Cancel Report masih berbunyi «berjalan lagi» dan tidak menyebut badge `Reported Missing`, sedangkan baris Reject dan Mark as Found menyatakan badge hilang. Status global aset sesudah Cancel Report dan Reject dihitung ulang dari state aset terkini (`MISS-LOGIC-05f`, `MISS-LOGIC-05i`) dan itu diasersi. Spec mengasersi pengingat baris berjalan sesudah Cancel Report; hilangnya badge sesudah Cancel Report tidak diasersi sampai PRD menyatakannya."
+  },
+  {
+   "no": 11,
+   "jenis": "beda-foundation",
+   "units": [
+    "§9.10#p1"
+   ],
+   "kutipan": [
+    "PRD §9.10: «pada level None (Starter) aksinya tampil terkunci ... sedangkan Basic dan Full tersedia»",
+    "foundation/product/licensing/plans.md §3.4a: Feature Suite Disposal hanya None dan Full"
+   ],
+   "dampak": "Level Disposal Basic tidak ada di foundation, jadi tidak ada keadaan nyata untuknya. Yang diasersi sisi foundation (pola licensing bersama): level None terkunci dan level Full tersedia; target varian level Basic tidakBerlaku."
   }
  ],
  "ekspektasiBaku": {
@@ -3610,7 +3881,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r112": {
+  "§1.2#r116": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -3871,11 +4142,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§1.2#r104": {
+  "§1.2#r107": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r105": {
+  "§1.2#r108": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -3945,7 +4216,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r58": {
+  "§1.2#r59": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -3953,7 +4224,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b33": {
+  "§9.2#b35": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -3965,7 +4236,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r19": {
+  "§9.4.4#r21": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -3989,7 +4260,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§4.2.4#p11": {
+  "§4.2.4#p12": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
@@ -4002,7 +4273,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r18": {
+  "§1.2#r19": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4037,23 +4308,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r36": {
+  "§1.2#r37": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r81": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r89": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r90": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r91": {
+  "§1.2#r84": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4061,19 +4320,27 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r101": {
+  "§1.2#r93": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r102": {
+  "§1.2#r94": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r30": {
+  "§1.2#r95": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b24": {
+  "§1.2#r104": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r105": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r31": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4082,6 +4349,10 @@
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
   "§9.2#b26": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.2#b27": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4121,11 +4392,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r11": {
+  "§9.4.4#r12": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r12": {
+  "§9.4.4#r13": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4141,7 +4412,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r103": {
+  "§1.2#r106": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4149,23 +4420,23 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§1.2#r114": {
+  "§1.2#r118": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r115": {
+  "§1.2#r119": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r116": {
+  "§1.2#r120": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r117": {
+  "§1.2#r121": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r71": {
+  "§1.2#r74": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4182,7 +4453,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b27": {
+  "§9.2#b28": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4194,7 +4465,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r13": {
+  "§9.4.4#r14": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4215,7 +4486,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§4.2.4#p13": {
+  "§4.2.4#p14": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
@@ -4272,7 +4543,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§4.8#r8": {
+  "§4.8#r9": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4288,7 +4559,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§2.1#b9": {
+  "§2.1#b10": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4352,7 +4623,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§4.2.4#p10": {
+  "§4.2.4#p11": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
@@ -4360,15 +4631,15 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b37": {
+  "§9.2#b41": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b38": {
+  "§9.2#b42": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b40": {
+  "§9.2#b44": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4492,10 +4763,6 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r11": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
   "§1.2#r12": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
@@ -4504,23 +4771,27 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r25": {
+  "§1.2#r14": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r32": {
+  "§1.2#r26": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r39": {
+  "§1.2#r33": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r47": {
+  "§1.2#r40": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r53": {
+  "§1.2#r48": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r54": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4569,13 +4840,14 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§4.2.4#p7": {
+  "§4.2.4#p8": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
   "§9.6#r7": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
   "§9.7#r2": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
@@ -4589,23 +4861,19 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r17": {
+  "§1.2#r18": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r19": {
+  "§1.2#r20": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r52": {
+  "§1.2#r53": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r54": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r56": {
+  "§1.2#r55": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4613,7 +4881,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r69": {
+  "§1.2#r58": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4621,11 +4889,15 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r118": {
+  "§1.2#r73": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r119": {
+  "§1.2#r122": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r123": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4649,11 +4921,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b34": {
+  "§9.2#b36": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r20": {
+  "§9.4.4#r22": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4677,15 +4949,15 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§1.2#r45": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
   "§1.2#r46": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r68": {
+  "§1.2#r47": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r69": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4729,11 +5001,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b28": {
+  "§9.2#b30": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b29": {
+  "§9.2#b31": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4741,11 +5013,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r14": {
+  "§9.4.4#r16": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r15": {
+  "§9.4.4#r17": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4765,19 +5037,19 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r20": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
   "§1.2#r21": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r99": {
+  "§1.2#r22": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r100": {
+  "§1.2#r102": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r103": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4828,7 +5100,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
-  "§4.2.4#p9": {
+  "§4.2.4#p10": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan"
   },
@@ -4860,15 +5132,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r27": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
   "§1.2#r28": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r49": {
+  "§1.2#r29": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4876,7 +5144,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r63": {
+  "§1.2#r51": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4884,19 +5152,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r80": {
+  "§1.2#r65": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r84": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r85": {
-   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
-   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
-  },
-  "§1.2#r86": {
+  "§1.2#r83": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4905,6 +5165,18 @@
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
   "§1.2#r88": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r89": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r90": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r91": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4939,27 +5211,27 @@
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r76": {
+  "§1.2#r79": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r78": {
+  "§1.2#r81": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r82": {
+  "§1.2#r85": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r83": {
+  "§1.2#r86": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r29": {
+  "§1.2#r30": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r65": {
+  "§1.2#r66": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4971,7 +5243,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r10": {
+  "§9.4.4#r11": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -4995,15 +5267,15 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r62": {
+  "§1.2#r63": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r106": {
+  "§1.2#r109": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r111": {
+  "§1.2#r115": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5023,7 +5295,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b47": {
+  "§9.2#b51": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5035,11 +5307,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r110": {
+  "§1.2#r114": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r113": {
+  "§1.2#r117": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5051,11 +5323,11 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b50": {
+  "§9.2#b55": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b55": {
+  "§9.2#b60": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5075,7 +5347,7 @@
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b41": {
+  "§9.2#b45": {
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5108,7 +5380,7 @@
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§1.2#r15": {
+  "§1.2#r16": {
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5116,7 +5388,7 @@
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§4.2.4#p6": {
+  "§4.2.4#p7": {
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5132,7 +5404,7 @@
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.2#b60": {
+  "§9.2#b65": {
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
@@ -5140,13 +5412,190 @@
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
-  "§9.4.4#r24": {
+  "§9.4.4#r29": {
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
   },
   "EB-FRM-4@add-update": {
    "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p6": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p7": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p8": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p4": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p5": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p10": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p27": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r72": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.2#b38": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.4.2#r39": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.4.4#r24": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§1.2#r71": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.4.2#r37": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p14": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p15": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p16": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p17": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p18": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p21": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p22": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p23": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p24": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p25": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.2#p26": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.2#b37": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.4.2#r38": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§2.1#b5": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§9.4.4#r23": {
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak",
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event"
+  },
+  "§8.1#r12": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§3#p4": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§1.2#r61": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§3#p8": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§4.8#r12": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§2.1#b6": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§9.4.2#r11": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§1.2#r126": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§9.4.2#r34": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§9.4.4#r27": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§1.2#r113": {
+   "ui-client": "klausa klien: label, copy, placeholder, format tampilan, nilai kosong, validasi sebelum submit, reaksi atas respons tiruan",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§1.2#r128": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§4.6#b2": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§6#r16": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§9.2#b52": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§9.4.2#r35": {
+   "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
+   "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
   }
  },
  "dataUnits": [
@@ -5178,11 +5627,11 @@
   "§4.3#r3": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§4.3#r6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§4.1a#r34": "per fitur tabel: tampilan di spec tampilan, Search/sort/filter/download di spec fiturnya; klausa aksi per status di spec aksinya",
-  "§1.2#r112": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r116": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "EB-AKS-4": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§9.11#r2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§9.11#b1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§9.10#p1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§9.10#p1": "per surface: gating Starter (Report Disposal, Bulk Report Disposal, Cancel Disposal Report terkunci Upgrade to unlock) di 029 dan BE-080; kolom TAG hanya tipe terbuka di tabel (001), filter (BE-078), dan berkas Download (BE-079); level Disposal None dan Full di BE-080",
   "§4.1#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§5#r3": "per tab: Active vs History",
   "§4.1#p5": "per fitur tabel: Search di spec search, opsi filter di spec filter",
@@ -5198,14 +5647,14 @@
   "§4.1b#r16": "per fitur tabel: tampilan di spec tampilan, Search/sort/filter/download di spec fiturnya; klausa aksi per status di spec aksinya",
   "§4.1b#p1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.5#r3": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§1.2#r16": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§8.1#r3": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r6": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r7": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r8": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r9": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r10": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
-  "§8.1#r12": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
+  "§8.1#r12": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-; foto tidak tampil bila file dihapus dari File Manager di 048 (-dep-file-manager); Location koordinat dan Location tanpa izin di BE-077",
   "§8.1#r14": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r15": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r16": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
@@ -5228,27 +5677,27 @@
   "§9.2#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§2.1#r6": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r6": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§9.2#b33": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.2#b35": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.1#r6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§3#p4": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§3#p4": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); cabang Review -> Reject di 015, Mark as Found dari Waiting for Confirmation di 016; status record dan status global sesudah cabang di BE-071 dan BE-077",
   "§9.8#r3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.8#p3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§9.4.4#r19": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.4#r21": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.6#r3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#r7": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.4.2#r7": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§7.3#r8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r4": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#r5": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§9.2#b24": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.2#b26": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.2#b25": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.2#b27": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.4.2#r5": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.9#r3": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.9#r5": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§2.1#r7": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§3#p8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§9.4.4#r11": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§3#p8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); cabang Damaged -> Damage Report di 038 (dan BE-076); Disposal Rejected/Removed/timeout -> Missing di BE-077",
   "§9.4.4#r12": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.4#r13": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.7#r4": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.8#r7": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "EB-EDG-2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
@@ -5261,19 +5710,19 @@
   "§2.1#r11": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§2.1#r12": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§4.8#r2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§4.8#r8": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
+  "§4.8#r2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri; aktor tanpa hak aksi transaksi pada halaman Borrow (Report Missing Hidden) di 033",
   "§4.8#r9": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r10": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r11": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
+  "§4.8#r12": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§9.11#r1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§2.1#b7": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
+  "§2.1#b8": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#b2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§2#b1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§2.1#b4": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.3#b1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§2.1#b9": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§2.1#b5": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§2.1#b10": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
+  "§2.1#b6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.2#b21": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.4.1#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.9#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
@@ -5289,17 +5738,17 @@
   "§9.9#r1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§2#b2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.4.4#r2": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§1.2#r39": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r40": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§10#r6": "per modul: Delete Asset Data di -dep-asset, hapus Group di -dep-settings-groups",
   "§9.8#r1": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#b15": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.2#b32": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.2#b34": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.6#r7": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.7#r2": "per surface: status global aset dan baris My Asset di -dep-my-asset; badge `Reported Missing` pada baris Borrow di -dep-borrow; event notifikasi di -dep-notification",
   "§9.7#r8": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#r8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§1.2#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.4.4#r18": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r18": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.4#r20": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§4.2.3#p2": "per surface: dialog yang dibuka dari My Asset di -dep-my-asset; baris kotak dampak penutupan Borrow di -dep-borrow",
   "§9.8#r2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.7#r3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
@@ -5308,27 +5757,55 @@
   "§9.8#p2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§8.2#b2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r10": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§1.2#r65": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r66": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§4.2.4#p2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.8#r4": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.8#r5": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.8#r6": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§1.2#r111": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r115": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.7#r7": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.7#r10": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§4.2.3#b4": "per titik masuk: Stock Opname di -dep-audit, Reconciliation di -dep-wizard-reconciliation",
-  "§9.2#b47": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§4.2.3#b4": "per titik masuk: Audit di -dep-audit, Reconciliation di -dep-wizard-reconciliation",
+  "§9.2#b51": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§4.3#r7": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§5#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.5#r4": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§4.1#r6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "EB-EDG-1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§1.2#r66": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§1.2#r67": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§3#p6": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r11": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§9.4.4#r16": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.4.4#r17": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
-  "§9.4.2#r6": "per modul: baris Borrow (pengingat Overdue berjalan selama Waiting for Confirmation, Confirm menutup baris menjadi `Returned` bermarker `Missing`, keterlambatan tetap tercatat) di -dep-borrow; baris Assignment (`Unassigned` bermarker `Missing`) di -dep-transactions-assignment"
+  "§9.4.4#r18": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.4#r19": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
+  "§9.4.2#r6": "per modul: baris Borrow (pengingat Overdue berjalan selama Waiting for Confirmation, Confirm menutup baris menjadi `Returned` bermarker `Missing`, keterlambatan tetap tercatat) di -dep-borrow; baris Assignment (`Unassigned` bermarker `Missing`) di -dep-transactions-assignment",
+  "§1.2#r71": "per jenis pelapor: Total Control dan Group Manager (hak Aktor Missing) langsung Missing di 042 (-dep-audit); Asset Admin sub-tab Audit dan Staff Auditor tanpa hak itu Waiting for Confirmation di 049 (-dep-audit)",
+  "§9.4.2#r37": "per jenis pelapor: Total Control dan Group Manager (hak Aktor Missing) langsung Missing di 042 (-dep-audit); Asset Admin sub-tab Audit dan Staff Auditor tanpa hak itu Waiting for Confirmation di 049 (-dep-audit)",
+  "§11#r9": "per jenis pelapor: Total Control dan Group Manager (hak Aktor Missing) langsung Missing di 042 (-dep-audit); Asset Admin sub-tab Audit dan Staff Auditor tanpa hak itu Waiting for Confirmation di 049 (-dep-audit)",
+  "§4.8#r8": "per jenis pelapor: Cancel my report Hidden bagi pelapor yang langsung Missing di 042; Show bagi pelapor Audit tanpa hak Aktor Missing selama Waiting for Confirmation di 049",
+  "§1.2#r57": "per sumber laporan: pemegang dari My Asset di 032 (-dep-my-asset); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§4.2.4#p8": "per sumber laporan: pemegang dari My Asset di 032 (-dep-my-asset); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§7.2#r18": "per sumber laporan: pemegang dari My Asset di 032 (-dep-my-asset); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§2.1#r8": "per sumber laporan: pemegang dari My Asset di 032 (-dep-my-asset); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§8.2#p5": "per sumber laporan: pemegang dari My Asset di 032 (-dep-my-asset); pelapor dari Task Detail Audit di 049 (-dep-audit); isi baris di Transaction log aset",
+  "§2.1#b2": "per aktor: Aktor transaksi (Borrow, Assignment, Transfer) di 033 (-dep-borrow); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§4.8#b1": "per aktor: Aktor transaksi (Borrow, Assignment, Transfer) di 033 (-dep-borrow); pelapor dari Task Detail Audit di 049 (-dep-audit)",
+  "§1.2#r126": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046; client tanpa baris ledger Storage berkuota 0 dan aturan hanya bila ada file baru di BE-080 (server)",
+  "§1.2#r127": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046",
+  "§1.2#r128": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046; penolakan I found it saat Storage penuh tanpa node `Reported found by` dan tanpa notifikasi `missing_found_reported`, dan urutan evaluasi (format ditolak didahulukan atas Storage penuh) di BE-080 (server, entitas status-entitas)",
+  "§6#r16": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046; penolakan I found it saat Storage penuh tanpa node `Reported found by` dan tanpa notifikasi `missing_found_reported`, dan urutan evaluasi (format ditolak didahulukan atas Storage penuh) di BE-080 (server, entitas status-entitas)",
+  "§7.3#p1": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046",
+  "§9.9#p4": "per surface: Mark as Found (dialog D-MIS-02) di 047 (-dep-file-manager); `I found it` (mobile) di 046; penolakan I found it saat Storage penuh tanpa node `Reported found by` dan tanpa notifikasi `missing_found_reported`, dan urutan evaluasi (format ditolak didahulukan atas Storage penuh) di BE-080 (server, entitas status-entitas)",
+  "§1.2#r124": "per jalur: Source Found Photo dan Damaged Photo yang ditulis Mark as Found (termasuk saat ditolak Storage penuh) di 047; Source terbaca di File Manager sesudah Delete di 048",
+  "§10#r8": "per klausa: upload baru ditolak saat Storage penuh di 047; foto bukti sekali kirim dan Delete File Manager tidak mengubah hasil record di 048",
+  "§11#r14": "per arah: cek Storage penuh di 047; Source Found Photo dan Damaged Photo serta Delete File Manager di 048",
+  "§9.4.1#r14": "per kejadian: Group dihapus di 040 (-dep-settings-groups); Photo / Damaged Photo dihapus lewat File Manager di 048 (-dep-file-manager)",
+  "§8.2#p27": "per surface: Report Missing dan Cancel Report dari My Asset di 032 (-dep-my-asset); isi Transaction admin log di 044 (-dep-settings-user)",
+  "§8.1#p1": "per surface: tab Active di 001; pintu masuk banner Asset Detail [View] membuka dialog Missing Log di 031 (-dep-asset)",
+  "§4.2.4#p14": "per layer dan aksi: dialog Already Changed untuk aksi satuan di E2E-018, UI-059, BE-071; aksi bulk tidak memakai dialog itu (konflik ditangani per item) di UI-052",
+  "§1.2#r58": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§9.4.2#r11": "per cabang: baris Disposal Write-off ditolak approver kembali Missing diasersi record dan status di BE-071, node/event di BE-077; cabang Decline Report di E2E-036",
+  "§9.2#b33": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§9.6#r8": "per kolom: Submit sukses, idempotensi (tiap Submit = node baru, notifikasi sekali per jam), dan toast gagal di BE-077 (server) dan E2E-046 (sheet dan toast); Storage penuh menolak Submit sebelum transaksi, tanpa node dan tanpa notifikasi, di BE-080 (server, entitas status-entitas); toast persisten dan sheet tetap di E2E-046"
  },
  "kontrak": {
   "DataTable": [
@@ -5388,17 +5865,17 @@
   ],
   "Dialog": [
    "§7.2#p1",
-   "§4.2.4#p13",
+   "§4.2.4#p14",
+   "§4.2.4#p11",
    "§4.2.4#p10",
-   "§4.2.4#p9",
-   "§4.2.4#p7",
+   "§4.2.4#p8",
    "§8.1#p1"
   ],
   "DialogForm": [
    "§4.2.3#p2",
    "§4.2.4#p2",
-   "§4.2.4#p11",
-   "§4.2.4#p12"
+   "§4.2.4#p12",
+   "§4.2.4#p13"
   ],
   "Textarea": [
    "§9.9#r1",
@@ -5413,7 +5890,7 @@
   ],
   "TreeSelect": [
    "§9.9#r3",
-   "§4.2.4#p6",
+   "§4.2.4#p7",
    "§4.2.4#r10"
   ],
   "ImagePicker": [
@@ -5442,7 +5919,9 @@
   ],
   "Toast": [
    "§7.3#r5",
-   "§9.6#r1"
+   "§9.6#r1",
+   "§7.3#r14",
+   "§7.3#r15"
   ],
   "EmptyState": [
    "§7.1#r1",
@@ -5566,7 +6045,7 @@
    "kode": "VD-F1",
    "units": [
     "§9.9#r8",
-    "§9.2#b60",
+    "§9.2#b65",
     "EB-FRM-7@add-update"
    ],
    "spec": [
@@ -5585,9 +6064,9 @@
    "kode": "VD-F2",
    "units": [
     "§9.9#r8",
-    "§9.2#b60",
+    "§9.2#b65",
     "EB-FRM-4@add-update",
-    "§4.2.4#p12"
+    "§4.2.4#p13"
    ],
    "spec": [
     "TC-FA-MISS-UI-057-dialog-add-update",
@@ -5698,7 +6177,7 @@
    "units": [
     "§9.9#r3",
     "§4.2.4#r10",
-    "§4.2.4#p6"
+    "§4.2.4#p7"
    ],
    "spec": [
     "TC-FA-MISS-UI-055-dialog-mark-as-found",
@@ -5710,7 +6189,7 @@
    "tidakBerlaku": {
     "opsi-belum-dipakai": "§9.9 FLD-03: Found at hanya data, bukan relasi pemakaian",
     "opsi-banyak": "§9.9 FLD-03: tree, bukan daftar datar; cakupan diuji lewat dalam-scope/luar-scope",
-    "pilih-banyak": "§4.2.4#p6: single-select",
+    "pilih-banyak": "§4.2.4#p7: single-select",
     "sumber-kosong": "§9.9 FLD-03: Group aset itu sendiri selalu tampil",
     "opsi-nonaktif": "§9.9 FLD-03: PRD tidak menyebut Group nonaktif",
     "opsi-tidak-boleh-ada": "§9.9 FLD-03: node induk tampil tetapi tidak dapat dipilih (dicakup pilih-satu pada node induk)",
@@ -5775,9 +6254,9 @@
     "§9.9#r2",
     "§6#r4",
     "§9.9#p3",
-    "§9.2#b37",
     "§9.2#b41",
-    "§9.2#b47",
+    "§9.2#b45",
+    "§9.2#b51",
     "§4.6#b1",
     "§4.6#b4",
     "§4.6#p1",
@@ -6415,7 +6894,7 @@
     "§9.4.2#r21",
     "§9.4.4#r4",
     "§9.6#r10",
-    "§4.2.4#p13"
+    "§4.2.4#p14"
    ],
    "spec": [
     "TC-FA-MISS-E2E-037-bulk-report-disposal-dep-transactions-disposal",
@@ -6426,11 +6905,11 @@
    "param": {},
    "tidakBerlaku": {
     "gagal-banyak": "§6 V-12: record dilewati memakai satu toast skipped, tanpa penggabungan per item",
-    "daftar-melebihi-tampil": "§4.2.4#p14: D-DISP-13 milik modul Disposal",
+    "daftar-melebihi-tampil": "§4.2.4#p15: D-DISP-13 milik modul Disposal",
     "item-beranotasi": "§4.1a#p9: record dilewati tanpa anotasi di dialog",
     "sisa-satu-relevan": "§4.1a#p8: satu Reason untuk semua; bentuk dialog milik Disposal",
     "termasuk-baris-terlindungi": "§4.1a: tidak ada baris Default/Self",
-    "jadi-tidak-eligible-saat-submit": "§4.2.4#p13: aksi bulk tidak memakai D-MIS-06 dan PRD tidak menyatakan hasilnya",
+    "jadi-tidak-eligible-saat-submit": "§4.2.4#p14: aksi bulk tidak memakai D-MIS-06 dan PRD tidak menyatakan hasilnya",
     "nol-item": "§4.1a#p9: tombol aktif selama ada seleksi; nol seleksi tidak punya aksi"
    }
   },
@@ -6510,13 +6989,13 @@
    "target": "status-record@server",
    "kode": "VD-A5",
    "units": [
-    "§1.2#r17",
     "§1.2#r18",
     "§1.2#r19",
     "§1.2#r20",
     "§1.2#r21",
-    "§1.2#r101",
-    "§1.2#r102",
+    "§1.2#r22",
+    "§1.2#r104",
+    "§1.2#r105",
     "§6#r10",
     "§9.4.2#r28"
    ],
@@ -6566,10 +7045,10 @@
     "§4.8#r5",
     "§4.8#r6",
     "§4.8#r7",
-    "§4.8#r8",
     "§4.8#r9",
     "§4.8#r10",
-    "§4.8#r11"
+    "§4.8#r11",
+    "§4.8#r12"
    ],
    "spec": [
     "TC-FA-MISS-E2E-020-gating-total-control",
@@ -6620,7 +7099,7 @@
    "kode": "VD-P2",
    "units": [
     "§2.1#r12",
-    "§2.1#b9",
+    "§2.1#b10",
     "§9.3#b2",
     "§9.2#b23"
    ],
@@ -6695,7 +7174,6 @@
     ],
     "per-level": [
      "None",
-     "Basic",
      "Full"
     ]
    },
@@ -6704,7 +7182,8 @@
     "basic-luar-scope": "§9.10: tidak dinyatakan",
     "addon-dibeli": "§1#b1: fitur inti tanpa add-on",
     "addon-tidak-dibeli": "§1#b1: tanpa add-on",
-    "cap-plan-lama-beda-baru": "§9.10: tidak ada cap"
+    "cap-plan-lama-beda-baru": "§9.10: tidak ada cap",
+    "per-level": "plans.md §3.4a: Feature Suite Disposal hanya punya level None dan Full; level Basic tidak ada (PRD §9.10 menyebutnya, temuan 11)"
    }
   },
   {
@@ -6742,7 +7221,7 @@
    "units": [
     "§9.2#b15",
     "§9.4.2#r2",
-    "§1.2#r15"
+    "§1.2#r16"
    ],
    "spec": [
     "TC-FA-MISS-BE-070-kelayakan-report-missing"
@@ -6946,10 +7425,10 @@
    "kode": "VD-S1",
    "units": [
     "§9.5#r6",
-    "§9.2#b42",
-    "§9.2#b43",
-    "§9.2#b44",
-    "§9.2#b45"
+    "§9.2#b46",
+    "§9.2#b47",
+    "§9.2#b48",
+    "§9.2#b49"
    ],
    "spec": [
     "TC-FA-MISS-BE-074-deteksi-scan"
@@ -6974,11 +7453,11 @@
    "kode": "VD-S1",
    "units": [
     "§9.5#r5",
-    "§9.2#b49",
-    "§9.2#b50",
-    "§9.2#b53",
+    "§9.2#b54",
     "§9.2#b55",
-    "§9.2#b56"
+    "§9.2#b58",
+    "§9.2#b60",
+    "§9.2#b61"
    ],
    "spec": [
     "TC-FA-MISS-BE-075-long-missing-job",
@@ -7086,5 +7565,34 @@
    "sumber": "foundation prd-conventions §32: tanggal dan jam yang tampil mengikuti General Settings, Time Zone = GSET-02 (general-settings.md §4.3a); PRD §4.1a kolom tanggal «General Settings, prd-conventions §32» dan §9.2 F-MISS-08.k1d «zona waktu Company». Satu nilai untuk entitas suite (IN-2)."
   }
  },
- "tinjauan": []
+ "tinjauan": [
+  {
+   "review": "[R-11] unit `§1.2#r126` memuat aturan data («kuota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  },
+  {
+   "review": "[R-11] unit `§1.2#r127` memuat aturan data («kuota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  },
+  {
+   "review": "[R-11] unit `§1.2#r71` memuat aturan data («Bulk») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«Bulk» pada unit ini adalah nama aksi titik masuk (`Bulk Report Missing` di Task Detail Audit), bukan aturan data yang butuh variasi nilai; penentuan status laporan menurut hak pelapor diasersi di spec 042, 049, dan be-e2e tanpa varian data."
+  },
+  {
+   "review": "[R-11] unit `§7.3#p1` memuat aturan data («Quota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  },
+  {
+   "review": "[R-11] unit `§7.3#r14` memuat aturan data («Quota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  },
+  {
+   "review": "[R-11] unit `§7.3#r15` memuat aturan data («Quota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  },
+  {
+   "review": "[R-11] unit `§9.4.2#r34` memuat aturan data («kuota») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "alasan": "«kuota» atau «Quota» pada unit ini adalah keadaan usage ledger Storage client melawan kuota (keadaan seluruh entitas, entitas khusus spec 047), bukan nilai field, kolom, atau batas data yang divariasikan; format nilai pada toast mengikuti Size T-FAFM-01 dan tidak membentuk target varian."
+  }
+ ]
 }

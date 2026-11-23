@@ -5,11 +5,11 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.2.4#p11, §7.2#r7, §9.9#r7, §7.3#r7, §9.6#r3, §4.1#r6, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-4@reject-report, EB-FRM-7@reject-report, EB-FB-1@reject, EB-ERR-1@reject]
+sourceRules: [§4.2.4#p12, §7.2#r7, §9.9#r7, §7.3#r7, §9.6#r3, §4.1#r6, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-4@reject-report, EB-FRM-7@reject-report, EB-FB-1@reject, EB-ERR-1@reject, §1.2#r61]
 smoke: []
 dependsOn: []
 trace:
-  §4.2.4#p11: [3, 4, 5, 6, 11, 19]
+  §4.2.4#p12: [3, 4, 5, 6, 11, 19]
   §7.2#r7: [2, 3, 4]
   §9.9#r7: [5, 7, 11, 16, 19, 21, 23, 25, 27, 29]
   §7.3#r7: [37, 41, 72]
@@ -21,6 +21,7 @@ trace:
   EB-FRM-7@reject-report: [12, 62, 63, 64, 66, 68]
   EB-FB-1@reject: [41, 42, 72]
   EB-ERR-1@reject: [72, 73, 74, 75, 77, 78, 82, 83, 84, 85]
+  §1.2#r61: [11, 41]
 anchor: []
 coverage:
   web: automated

@@ -5,16 +5,16 @@ layer: ui-client
 priority: High
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.2.4#p12, §7.2#r8, §9.9#r8, §9.2#b60, §9.4.2#r32, §9.4.4#r24, §7.3#r9, §9.6#r5, §4.1#r6, EB-FRM-1@add-update, EB-FRM-2@add-update, EB-FRM-4@add-update, EB-FRM-7@add-update, EB-FB-1@add-update, EB-ERR-1@add-update]
+sourceRules: [§4.2.4#p13, §7.2#r8, §9.9#r8, §9.2#b65, §9.4.2#r32, §9.4.4#r29, §7.3#r9, §9.6#r5, §4.1#r6, EB-FRM-1@add-update, EB-FRM-2@add-update, EB-FRM-4@add-update, EB-FRM-7@add-update, EB-FB-1@add-update, EB-ERR-1@add-update]
 smoke: []
 dependsOn: []
 trace:
-  §4.2.4#p12: [3, 4, 5, 6, 7, 8, 9, 12, 13, 17]
+  §4.2.4#p13: [3, 4, 5, 6, 7, 8, 9, 12, 13, 17]
   §7.2#r8: [2, 7]
   §9.9#r8: [8, 10, 17, 24, 27, 29, 31, 33, 35, 37]
-  §9.2#b60: [17, 19, 20, 24, 27]
+  §9.2#b65: [17, 19, 20, 24, 27]
   §9.4.2#r32: [17, 19, 20, 27]
-  §9.4.4#r24: [17, 19, 20, 27]
+  §9.4.4#r29: [17, 19, 20, 27]
   §7.3#r9: [45, 49, 80]
   §9.6#r5: [41, 45, 49, 80]
   §4.1#r6: [4, 7]

@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§8.1#p1, §8.1#r1, §8.1#r2, §8.1#r3, §8.1#r4, §8.1#r5, §8.1#r6, §4.2.4#r19, §4.2.4#r20, §4.4#r4, §4.4#r5, §4.4#r6, §4.1#r4, §4.1a#r31, §7.2#r15, §7.3#r7, §9.6#r2, §4.3#r4, §6#r1, §4.5#p1, EB-TBL-5@aksi-last-holder, EB-FB-1@confirm, EB-ERR-1@confirm, EB-FB-2@tutup-missing-log]
+sourceRules: [§8.1#p1, §8.1#r1, §8.1#r2, §8.1#r3, §8.1#r4, §8.1#r5, §8.1#r6, §4.2.4#r19, §4.2.4#r20, §4.4#r4, §4.4#r5, §4.4#r6, §4.1#r4, §4.1a#r31, §7.2#r15, §7.3#r7, §9.6#r2, §4.3#r4, §6#r1, §4.5#p1, EB-TBL-5@aksi-last-holder, EB-FB-1@confirm, EB-ERR-1@confirm, EB-FB-2@tutup-missing-log, §1.2#r113]
 smoke: []
 dependsOn: []
 trace:
@@ -33,6 +33,7 @@ trace:
   EB-FB-1@confirm: [26, 41]
   EB-ERR-1@confirm: [41, 42, 44, 46, 49, 50, 51]
   EB-FB-2@tutup-missing-log: [53, 55, 56]
+  §1.2#r113: [66, 68, 69]
 anchor: []
 coverage:
   web: automated
@@ -47,6 +48,7 @@ coverage:
   - DU-058-1: Record `Monitor LG 27UL500 - 11`, Asset ID `MON-2026-0011`, Group `Head Office`, status record `Waiting for Confirmation`, Last Holder `Sari D`, Reported By `Sari D`.
   - DU-058-2: Record `Laptop Dell Latitude 5420 - 22`, Asset ID `LPT-2026-0022`, Group `Finance Room`, status record `Missing`, Last Holder `Andi P`, Reported By `Andi P`.
   - DU-058-3: Record `Laptop Lenovo ThinkPad T14 - 4`, Asset ID `LPT-2026-0004`, Group `Head Office`, status record `Missing`, penanda `Long missing`, Last Holder `Dewi A`, Reported By `Rina W`.
+  - DU-058-5: Record `Printer HP LaserJet M404 - 5`, Asset ID `PRN-2026-0005`, Group `Head Office`, status record `Waiting for Confirmation`, Last Holder `Andi P`, Reported By `Andi P`, sudah punya node `Detected by scan` pada tanggal `08/11/26`.
 - Kondisi:
   - K1: dialog dibuka untuk record DU-058-1 oleh Aktor Missing yang bukan Last holder; Confirm dan Reject berhasil.
   - K2: dialog dibuka untuk record DU-058-1 oleh Sari D sebagai Last holder.
@@ -54,7 +56,7 @@ coverage:
   - K4: dialog dibuka untuk record DU-058-3.
   - K5: dialog dibuka untuk record DU-058-1 oleh Aktor Missing yang bukan Last holder; Confirm pertama gagal karena error server, Confirm berikutnya berhasil.
   - K6: dialog dibuka untuk record DU-058-1 oleh Aktor Missing yang bukan Last holder; Confirm gagal karena timeout.
-
+  - K7: dialog dibuka untuk record DU-058-5 oleh Aktor Missing yang bukan Last holder; Date Format bernilai `DD/MM/YY`.
 
 ## Test Steps
 
@@ -141,5 +143,12 @@ coverage:
 62. Tekan Esc
 63. Verifikasi dialog Missing Log tertutup
 64. Verifikasi fokus kembali ke elemen pemicu dialog Missing Log
+
+### Confirm Disabled pada record yang sudah dideteksi scan
+65. Tampilkan Dialog Missing Log dengan kondisi K7
+66. Verifikasi tombol `[Confirm]` disabled
+67. Arahkan kursor ke tombol `[Confirm]`
+68. Verifikasi alasan `This asset was scanned on 08/11/26. Reject the report or mark it as found.` tersampaikan pada tombol `[Confirm]` yang disabled
+69. Verifikasi tombol `[Reject]` aktif
 
 [^drift-1]: Drift PRD vs kontrak komponen. PRD §4.5: «Tooltip Disabled 🔖 dapat diakses lewat fokus.»; kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.» (juga `Button#2`: tombol disabled tidak bisa menerima fokus). Diasersi: kontrak, sehingga alasan pada tombol disabled dibuka lewat hover dan tombol disabled tidak menerima fokus keyboard (SB-7).

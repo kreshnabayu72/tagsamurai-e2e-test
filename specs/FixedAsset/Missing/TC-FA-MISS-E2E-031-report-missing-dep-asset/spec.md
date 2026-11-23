@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.1#r1", "§9.2#b1", "§9.2#b2", "§9.2#b4", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.2#b9", "§9.2#b14", "§3#p2", "§4.4#r3", "§7.2#r1", "§7.3#r5", "§9.6#r1", "§9.7#r1", "§9.7#p1", "§8.1#r7", "§8#r6", "§8.2#b1", "§7.1#p3", "§4.3#r1", "§4.2.3#p1", "§4.2.3#b2", "§4.2.3#b3", "§4.2.3#b5", "§4.2.4#r13", "§4.2.4#r15", "§4.2.4#r16", "§9.9#r1", "§2#b2", "§2.1#r2", "§4.8#r2", "§9.4.2#r1", "§9.4.2#r16", "§9.4.4#r1", "§9.4.4#r2", "§1.2#r11", "§1.2#r12", "§1.2#r13", "§1.2#r14", "§1.2#r16", "§1.2#r23", "§1.2#r24", "§1.2#r25", "§1.2#r26", "§1.2#r31", "§1.2#r32", "§1.2#r39", "§1.2#r47", "§1.2#r53", "§9.2#r2", "§10#r1", "§10#r2", "§10#r6", "§11#r2", "EB-FB-1@report-missing", "EB-FRM-1@report-missing", "§9.8#r1", "§9.2#b12", "§9.2#b15", "§11#r1"]
+sourceRules: ["§9.1#r1", "§9.2#b1", "§9.2#b2", "§9.2#b4", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.2#b9", "§9.2#b14", "§3#p2", "§4.4#r3", "§7.2#r1", "§7.3#r5", "§9.6#r1", "§9.7#r1", "§9.7#p1", "§8.1#r7", "§8#r6", "§8.2#b1", "§7.1#p3", "§4.3#r1", "§4.2.3#p1", "§4.2.3#b2", "§4.2.3#b3", "§4.2.3#b5", "§4.2.4#r13", "§4.2.4#r15", "§4.2.4#r16", "§9.9#r1", "§2#b2", "§2.1#r2", "§4.8#r2", "§9.4.2#r1", "§9.4.2#r16", "§9.4.4#r1", "§9.4.4#r2", "§1.2#r12", "§1.2#r13", "§1.2#r14", "§1.2#r15", "§1.2#r17", "§1.2#r24", "§1.2#r25", "§1.2#r26", "§1.2#r27", "§1.2#r32", "§1.2#r33", "§1.2#r40", "§1.2#r48", "§1.2#r54", "§9.2#r2", "§10#r1", "§10#r2", "§10#r6", "§11#r2", "EB-FB-1@report-missing", "EB-FRM-1@report-missing", "§9.8#r1", "§9.2#b12", "§9.2#b15", "§11#r1", "§8.2#p4", "§8.1#p1"]
 smoke: []
 dependsOn: ["Asset: Asset List > aksi baris Report Missing", "Asset: Asset Detail"]
 trace:
@@ -27,7 +27,7 @@ trace:
   "§9.7#p1": [39]
   "§8.1#r7": [32, 77, 83]
   "§8#r6": [77, 83]
-  "§8.2#b1": [45]
+  "§8.2#b1": [45, 147, 148, 150]
   "§7.1#p3": [39, 40, 42]
   "§4.3#r1": [13]
   "§4.2.3#p1": [6]
@@ -45,20 +45,20 @@ trace:
   "§9.4.2#r16": [113]
   "§9.4.4#r1": [68, 95]
   "§9.4.4#r2": [32, 45]
-  "§1.2#r11": [26, 27]
-  "§1.2#r12": [75, 80]
-  "§1.2#r13": [86, 109]
-  "§1.2#r14": [20, 144]
-  "§1.2#r16": [116, 121]
-  "§1.2#r23": [24, 37]
-  "§1.2#r24": [37]
-  "§1.2#r25": [37, 54]
-  "§1.2#r26": [37]
-  "§1.2#r31": [37]
-  "§1.2#r32": [40]
-  "§1.2#r39": [59, 81]
-  "§1.2#r47": [38]
-  "§1.2#r53": [58, 59]
+  "§1.2#r12": [26, 27]
+  "§1.2#r13": [75, 80]
+  "§1.2#r14": [86, 109]
+  "§1.2#r15": [20, 144]
+  "§1.2#r17": [116, 121]
+  "§1.2#r24": [24, 37]
+  "§1.2#r25": [37]
+  "§1.2#r26": [37, 54]
+  "§1.2#r27": [37]
+  "§1.2#r32": [37]
+  "§1.2#r33": [40]
+  "§1.2#r40": [59, 81]
+  "§1.2#r48": [38]
+  "§1.2#r54": [58, 59]
   "§9.2#r2": [24]
   "§10#r1": [75, 80]
   "§10#r2": [86, 95, 104]
@@ -70,6 +70,8 @@ trace:
   "§9.2#b12": [112, 113]
   "§9.2#b15": [104, 105, 110]
   "§11#r1": [37]
+  "§8.2#p4": 146
+  "§8.1#p1": [42]
 anchor: [2, 16, 137, 143]
 coverage:
   web: automated
@@ -275,3 +277,13 @@ coverage:
 142. Klik `Laptop Dell Latitude 5420 {runId}` pada kolom Name
 143. Verifikasi banner `Reported missing on` tampil pada Asset Detail
 144. Verifikasi tombol `[Report Missing]` tidak tampil pada Asset Detail
+
+### Status entri Reported missing di Transaction log
+145. Buka sub-tab `Missing` pada Transaction log di Asset Detail
+146. Verifikasi entri `Reported missing` pada Transaction log berstatus `Missing`
+
+### Kolom Date dan User pada Transaction log Missing
+147. Verifikasi kolom Date pada entri `Reported missing` memuat tanggal dan jam peristiwa menurut Date Format dan Time Format di Kondisi
+148. Verifikasi kolom User pada entri `Reported missing` `Rina W`
+149. Arahkan kursor ke nilai User `Rina W` pada entri `Reported missing`
+150. Verifikasi hover pada kolom User menampilkan nama lengkap `Rina W`

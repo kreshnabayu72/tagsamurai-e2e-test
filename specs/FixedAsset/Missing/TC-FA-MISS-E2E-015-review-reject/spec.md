@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.4#r6", "§4.2.4#r20", "§7.2#r15", "§7.2#r7", "§4.2.4#p11", "§8.1#r9", "§9.6#r3", "§9.2#r7", "§1.2#r18", "§1.2#r60", "§9.4.2#r7", "§9.9#r7", "EB-FB-1@reject", "§8.1#r3", "EB-FRM-4@reject-report"]
+sourceRules: ["§4.4#r6", "§4.2.4#r20", "§7.2#r15", "§7.2#r7", "§4.2.4#p12", "§8.1#r9", "§9.6#r3", "§9.2#r7", "§1.2#r19", "§1.2#r61", "§9.4.2#r7", "§9.9#r7", "EB-FB-1@reject", "§8.1#r3", "§8.2#p7", "EB-FRM-4@reject-report", "§3#p4"]
 smoke: ["EB-FRM-4@reject-report"]
 dependsOn: []
 trace:
@@ -13,17 +13,19 @@ trace:
   "§4.2.4#r20": [4, 7, 12, 14, 17]
   "§7.2#r15": [7, 11]
   "§7.2#r7": [7, 8]
-  "§4.2.4#p11": 8
+  "§4.2.4#p12": 8
   "§8.1#r9": 19
   "§9.6#r3": 11
   "§9.2#r7": 17
-  "§1.2#r18": 17
-  "§1.2#r60": [17, 19]
+  "§1.2#r19": 17
+  "§1.2#r61": [11, 17, 19]
   "§9.4.2#r7": 17
   "§9.9#r7": 19
   "EB-FB-1@reject": 11
   "§8.1#r3": [5, 24, 25]
+  "§8.2#p7": [17, 19]
   "EB-FRM-4@reject-report": 19
+  "§3#p4": [11, 17]
 anchor: [13]
 coverage:
   web: automated

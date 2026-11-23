@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [EB-BLK-1@tabel-active, EB-BLK-4, §4.1a#p8, §4.1a#p9, §4.2.4#p9, §7.2#r5, §7.3#r13, §6#r11, §6#r13, §4.4#r12, §4.1#r9, §5#r5]
+sourceRules: [EB-BLK-1@tabel-active, EB-BLK-4, §4.1a#p8, §4.1a#p9, §4.2.4#p10, §7.2#r5, §7.3#r13, §6#r11, §6#r13, §4.4#r12, §4.1#r9, §5#r5, §4.2.4#p14]
 smoke: []
 dependsOn: []
 trace:
@@ -13,7 +13,7 @@ trace:
   EB-BLK-4: [88, 89, 90, 91, 92, 100, 101, 102, 103, 104]
   §4.1a#p8: [35, 36, 75]
   §4.1a#p9: [35, 40, 65, 66, 78]
-  §4.2.4#p9: [54, 55, 65]
+  §4.2.4#p10: [54, 55, 65]
   §7.2#r5: [53, 54, 55, 64]
   §7.3#r13: 78
   §6#r11: [53, 54]
@@ -21,6 +21,7 @@ trace:
   §4.4#r12: [53, 54, 64, 65]
   §4.1#r9: [53, 55, 57, 64]
   §5#r5: 35
+  §4.2.4#p14: [113, 114]
 anchor: []
 coverage:
   web: automated
@@ -50,6 +51,7 @@ coverage:
   - K6: daftar Active berisi DU-052-6 (2 record); Report Disposal atas seleksi membuka dialog Report Disposal; Submit dialog itu dijawab error server; pembacaan ulang daftar Active sesudah kegagalan dijawab daftar yang memuat DU-052-9
   - K7: daftar Active berisi DU-052-6 (2 record); Report Disposal atas seleksi membuka dialog Report Disposal; Submit dialog itu tidak dijawab sampai melewati batas waktu; pembacaan ulang daftar Active sesudahnya dijawab daftar yang memuat DU-052-9
   - K8: daftar Active berisi DU-052-3 dan DU-052-7
+  - K9: daftar Active berisi DU-052-5 (3 record); Report Disposal atas seleksi membuka dialog Report Disposal; Submit dialog itu dijawab bahwa salah satu record sudah diubah statusnya oleh pengguna lain sehingga dilewati, tanpa respons konflik status untuk seluruh aksi
 
 ## Test Steps
 
@@ -176,3 +178,15 @@ coverage:
 102. Verifikasi counter seleksi tetap menampilkan jumlah `2`
 103. Verifikasi dialog Report Disposal tetap terbuka dengan Reason `Aset tidak ditemukan setelah inventarisasi gudang` masih terisi
 104. Verifikasi daftar Active dimuat ulang dan baris `Aset Muncul Sesudah Gagal - 1` tampil
+
+### Konflik status pada aksi bulk ditangani per item tanpa dialog Already Changed
+105. Tampilkan Halaman Missing sub-tab Active (tabel T-MIS-01) dengan kondisi K9
+106. Centang baris `Aset Sebagian Dilewati 1`
+107. Centang baris `Aset Sebagian Dilewati 2`
+108. Centang baris `Aset Sebagian Dilewati 3`
+109. Klik `Bulk Action`
+110. Klik `Report Disposal`
+111. Isi Reason `Aset tidak ditemukan setelah inventarisasi gudang`
+112. Kirim dialog Report Disposal
+113. Verifikasi toast `Success, disposal report has been created. Some items were skipped.` tampil
+114. Verifikasi dialog `Already Changed` tidak tampil dan tidak ada tombol `[Reload]`

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b7", "§4.8#b2", "§2.1#b6"]
+sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b8", "§4.8#b2", "§2.1#b7"]
 smoke: []
 dependsOn: []
 trace:
@@ -22,16 +22,16 @@ trace:
   "§4.8#r2": 49
   "§4.8#r5": 17
   "§4.8#r6": [18, 23, 55]
-  "§4.8#r8": [19, 27]
-  "§4.8#r9": [38, 39, 40]
-  "§4.8#r10": 33
-  "§4.8#r11": 31
+  "§4.8#r9": [19, 27]
+  "§4.8#r10": [38, 39, 40]
+  "§4.8#r11": 33
+  "§4.8#r12": 31
   "§9.11#r1": [7, 9]
   "§9.11#r2": [39, 62, 63, 64]
   "§9.11#b1": 43
-  "§2.1#b7": [38, 39, 40]
+  "§2.1#b8": [38, 39, 40]
   "§4.8#b2": [3, 9, 31]
-  "§2.1#b6": [3, 9, 17, 19, 38, 39, 40]
+  "§2.1#b7": [3, 9, 17, 19, 38, 39, 40]
 anchor: [16, 22, 26, 29, 47, 54]
 coverage:
   web: automated
@@ -46,7 +46,7 @@ coverage:
   - DU-025-1: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22`, Asset ID `LPT-0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`.
   - DU-025-2: Missing record, Name `Hand Pallet Truck {runId} - 3`, Asset ID `HPT-0003 {runId}`, Group `Warehouse {runId}` (di luar Group di-assign), Status `Missing`, Source `Manual`, Last Holder `—`.
   - DU-025-3: Missing record, Name `Monitor LG 27UL500 {runId} - 11`, Asset ID `MON-0011 {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing).
-  - DU-025-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`.
+  - DU-025-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`.
   - DU-025-5: Missing record, Name `Camera Canon EOS {runId} - 1`, Asset ID `CAM-0001 {runId}`, Group `Finance Room {runId}`, Status `Found`, Source `Borrow`, Last Holder `—`.
   - DU-025-6: Asset, Name `Scanner Zebra DS2208 {runId} - 2`, Asset ID `SCN-0002 {runId}`, Group `Finance Room {runId}`, Status `Available`, tanpa record Missing berjalan.
 

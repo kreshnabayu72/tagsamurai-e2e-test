@@ -5,31 +5,31 @@ layer: ui-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§1.2#r114", "§1.2#r115", "§1.2#r116", "§1.2#r117", "§1.2#r71", "§6#r1", "§4.3#r4", "§9.4.2#r17", "§9.2#b27", "§2.1#b8", "§2.1#p12", "§2.1#p17", "§2.1#p18", "§2.1#p19", "§2.1#p20", "§9.4.3#b6", "§9.4.4#r13", "§8.1#r6", "§4.8#r6", "EB-TBL-5@aksi-last-holder", "§4.5#p1"]
+sourceRules: ["§1.2#r118", "§1.2#r119", "§1.2#r120", "§1.2#r121", "§1.2#r74", "§6#r1", "§4.3#r4", "§9.4.2#r17", "§9.2#b28", "§2.1#b9", "§2.1#p12", "§2.1#p17", "§2.1#p18", "§2.1#p19", "§2.1#p20", "§9.4.3#b6", "§9.4.4#r14", "§8.1#r6", "§4.8#r6", "EB-TBL-5@aksi-last-holder", "§4.5#p1"]
 smoke: []
 dependsOn: []
 trace:
-  "§1.2#r114": [2, 8, 11, 39, 54]
-  "§1.2#r115": [3, 8]
-  "§1.2#r116": [14, 18, 37]
-  "§1.2#r117": [15, 21, 37]
-  "§1.2#r71": [15, 18, 36]
-  "§6#r1": [9, 12, 19, 22, 27]
-  "§4.3#r4": [8, 9, 11, 18, 25]
+  "§1.2#r118": [2, 8, 11, 42, 57]
+  "§1.2#r119": [3, 8]
+  "§1.2#r120": [14, 18, 40]
+  "§1.2#r121": [15, 21, 24, 25, 40]
+  "§1.2#r74": [15, 18, 24, 39]
+  "§6#r1": [9, 12, 19, 22, 24, 25, 30]
+  "§4.3#r4": [8, 9, 11, 18, 24, 28]
   "§9.4.2#r17": [8, 9]
-  "§9.2#b27": [8, 11, 18, 25]
-  "§2.1#b8": [8, 32]
-  "§2.1#p12": 2
+  "§9.2#b28": [8, 11, 18, 24, 28]
+  "§2.1#b9": [8, 35]
+  "§2.1#p12": [2]
   "§2.1#p17": [2, 4]
   "§2.1#p18": [6, 9, 12]
-  "§2.1#p19": [32, 33]
+  "§2.1#p19": [35, 36]
   "§2.1#p20": [3, 8]
-  "§9.4.3#b6": [8, 11, 18, 21]
-  "§9.4.4#r13": [8, 9]
-  "§8.1#r6": [25, 27]
-  "§4.8#r6": [8, 18, 21, 25, 32, 36, 42, 45, 49, 57, 61]
-  "EB-TBL-5@aksi-last-holder": [9, 12, 19, 43, 46, 58]
-  "§4.5#p1": [9, 19, 27]
+  "§9.4.3#b6": [8, 11, 18, 21, 24]
+  "§9.4.4#r14": [8, 9]
+  "§8.1#r6": [28, 30]
+  "§4.8#r6": [8, 18, 21, 24, 28, 35, 39, 45, 48, 52, 60, 64]
+  "EB-TBL-5@aksi-last-holder": [9, 12, 19, 24, 25, 46, 49, 61]
+  "§4.5#p1": [9, 19, 25, 30]
 anchor: []
 coverage:
   web: automated
@@ -77,48 +77,51 @@ coverage:
 20. Arahkan kursor ke `Mark as Found` pada menu baris
 21. Verifikasi `Mark as Found` Disabled bagi PIC yang tercatat
 22. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Mark as Found` yang Disabled bagi PIC[^drift-1]
-23. Tekan Esc untuk menutup menu baris
-24. Klik nama `Pallet Stacker Electric {runId}` pada kolom Name
-25. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled
-26. Arahkan kursor ke `[Confirm]` pada footer dialog Missing Log
-27. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada footer `[Confirm]` yang Disabled[^drift-1]
-28. Klik `✕` pada dialog Missing Log
+23. Arahkan kursor ke `Report Disposal` pada menu baris
+24. Verifikasi `Report Disposal` Disabled bagi PIC yang tercatat
+25. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Report Disposal` yang Disabled bagi PIC[^drift-1]
+26. Tekan Esc untuk menutup menu baris
+27. Klik nama `Pallet Stacker Electric {runId}` pada kolom Name
+28. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled
+29. Arahkan kursor ke `[Confirm]` pada footer dialog Missing Log
+30. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada footer `[Confirm]` yang Disabled[^drift-1]
+31. Klik `✕` pada dialog Missing Log
 ### Admin lain yang bukan Last Holder tidak terhalang
-29. Masuk sebagai Rina W
-30. Ketik Search `{runId}`, tekan Enter
-31. Klik `⋯` pada baris `Laptop Dell Latitude 7440 {runId}`
-32. Verifikasi `Mark as Found` aktif
-33. Verifikasi `Report Disposal` aktif
-34. Tekan Esc untuk menutup menu baris
-35. Klik `⋯` pada baris `Pallet Stacker Electric {runId}`
-36. Verifikasi `Review` aktif
-37. Verifikasi `Mark as Found` aktif pada baris ini
+32. Masuk sebagai Rina W
+33. Ketik Search `{runId}`, tekan Enter
+34. Klik `⋯` pada baris `Laptop Dell Latitude 7440 {runId}`
+35. Verifikasi `Mark as Found` aktif
+36. Verifikasi `Report Disposal` aktif
+37. Tekan Esc untuk menutup menu baris
+38. Klik `⋯` pada baris `Pallet Stacker Electric {runId}`
+39. Verifikasi `Review` aktif
+40. Verifikasi `Mark as Found` aktif pada baris ini
 ### Total Control yang menjadi Last Holder tidak dapat Review dan Mark as Found
-38. Ketik Search `{runId}`, tekan Enter
-39. Verifikasi Last Holder baris `Mesin Label Printer {runId}` menampilkan `Rina W`
-40. Klik `⋯` pada baris `Mesin Label Printer {runId}`
-41. Arahkan kursor ke `Review` pada menu baris
-42. Verifikasi `Review` Disabled bagi Total Control yang menjadi Last Holder
-43. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Review` yang Disabled bagi Total Control[^drift-1]
-44. Arahkan kursor ke `Mark as Found` pada menu baris
-45. Verifikasi `Mark as Found` Disabled bagi Total Control yang menjadi Last Holder
-46. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Mark as Found` yang Disabled bagi Total Control[^drift-1]
-47. Tekan Esc untuk menutup menu baris
-48. Klik nama `Mesin Label Printer {runId}` pada kolom Name
-49. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled bagi Total Control yang menjadi Last Holder
-50. Klik `✕` pada dialog Missing Log
+41. Ketik Search `{runId}`, tekan Enter
+42. Verifikasi Last Holder baris `Mesin Label Printer {runId}` menampilkan `Rina W`
+43. Klik `⋯` pada baris `Mesin Label Printer {runId}`
+44. Arahkan kursor ke `Review` pada menu baris
+45. Verifikasi `Review` Disabled bagi Total Control yang menjadi Last Holder
+46. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Review` yang Disabled bagi Total Control[^drift-1]
+47. Arahkan kursor ke `Mark as Found` pada menu baris
+48. Verifikasi `Mark as Found` Disabled bagi Total Control yang menjadi Last Holder
+49. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Mark as Found` yang Disabled bagi Total Control[^drift-1]
+50. Tekan Esc untuk menutup menu baris
+51. Klik nama `Mesin Label Printer {runId}` pada kolom Name
+52. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled bagi Total Control yang menjadi Last Holder
+53. Klik `✕` pada dialog Missing Log
 ### Manage asset & TAG (Update) yang menjadi Last Holder tidak dapat Review dan Confirm
-51. Keluar dari akun
-52. Masuk sebagai `Bimo Tirta {runId}`
-53. Ketik Search `{runId}`, tekan Enter
-54. Verifikasi Last Holder baris `Scanner Barcode Zebra {runId}` menampilkan `Bimo T`
-55. Klik `⋯` pada baris `Scanner Barcode Zebra {runId}`
-56. Arahkan kursor ke `Review` pada menu baris
-57. Verifikasi `Review` Disabled bagi Manage asset & TAG (Update) yang menjadi Last Holder
-58. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Review` yang Disabled bagi Manage asset & TAG (Update)[^drift-1]
-59. Tekan Esc untuk menutup menu baris
-60. Klik nama `Scanner Barcode Zebra {runId}` pada kolom Name
-61. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled bagi Manage asset & TAG (Update) yang menjadi Last Holder
-62. Klik `✕` pada dialog Missing Log
+54. Keluar dari akun
+55. Masuk sebagai `Bimo Tirta {runId}`
+56. Ketik Search `{runId}`, tekan Enter
+57. Verifikasi Last Holder baris `Scanner Barcode Zebra {runId}` menampilkan `Bimo T`
+58. Klik `⋯` pada baris `Scanner Barcode Zebra {runId}`
+59. Arahkan kursor ke `Review` pada menu baris
+60. Verifikasi `Review` Disabled bagi Manage asset & TAG (Update) yang menjadi Last Holder
+61. Verifikasi alasan `You were holding this asset. Ask another admin.` tersampaikan pada `Review` yang Disabled bagi Manage asset & TAG (Update)[^drift-1]
+62. Tekan Esc untuk menutup menu baris
+63. Klik nama `Scanner Barcode Zebra {runId}` pada kolom Name
+64. Verifikasi footer `[Reject]` dan `[Confirm]` tampil dan Disabled bagi Manage asset & TAG (Update) yang menjadi Last Holder
+65. Klik `✕` pada dialog Missing Log
 
 [^drift-1]: Drift PRD vs kontrak komponen. PRD §4.5: «Tooltip Disabled 🔖 dapat diakses lewat fokus.»; kontrak `Tooltip#38`: «A disabled control cannot be focused, so its tooltip opens on hover only.», `Button#2`: «A disabled button (`disabled`) is a native disabled button with `aria-disabled="true"`: it cannot take focus» dan `Menu#6`: item menu yang disabled dilewati Tab dan tombol panah. Diasersi: kontrak, sehingga alasan pada item menu dan tombol yang Disabled dibuka lewat hover, bukan fokus keyboard (SB-7).

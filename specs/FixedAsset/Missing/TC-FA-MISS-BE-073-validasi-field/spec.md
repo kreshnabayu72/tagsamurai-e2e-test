@@ -6,7 +6,7 @@ priority: High
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [§9.9#r1, §9.9#r2, §9.9#r3, §9.9#r4, §9.9#r5, §9.9#r6, §9.9#r7, §9.9#r8, §9.9#p3, §9.9#p4, §9.2#b60, §9.4.2#r32, §9.4.4#r24, §6#r4, §6#p1, §1.2#r86, EB-FRM-4@report-missing, EB-FRM-4@reject-report, EB-FRM-4@add-update, EB-FRM-4@mark-as-found, EB-FRM-10@found-at]
+sourceRules: [§9.9#r1, §9.9#r2, §9.9#r3, §9.9#r4, §9.9#r5, §9.9#r6, §9.9#r7, §9.9#r8, §9.9#p3, §9.9#p4, §9.2#b65, §9.4.2#r32, §9.4.4#r29, §6#r4, §6#p1, §1.2#r89, EB-FRM-4@report-missing, EB-FRM-4@reject-report, EB-FRM-4@add-update, EB-FRM-4@mark-as-found, EB-FRM-10@found-at]
 smoke: []
 dependsOn: []
 trace:
@@ -20,12 +20,12 @@ trace:
   §9.9#r8: [18, 20, 22, 24]
   §9.9#p3: [26, 34, 36, 38]
   §9.9#p4: 59
-  §9.2#b60: [18, 20, 22]
+  §9.2#b65: [18, 20, 22]
   §9.4.2#r32: [18, 22]
-  §9.4.4#r24: [18, 22]
+  §9.4.4#r29: [18, 22]
   §6#r4: [28, 30, 32]
   §6#p1: 28
-  §1.2#r86: 63
+  §1.2#r89: 63
   EB-FRM-4@report-missing: [2, 6, 8]
   EB-FRM-4@reject-report: [10, 14, 16]
   EB-FRM-4@add-update: [22, 24]

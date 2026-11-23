@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1#r3", "§4.2.1#b2", "§4.4#r2", "§4.2.4#r18", "§9.2#b18", "§6#r5", "§6#r6", "§6#r7", "§6#r8", "§6#p2", "§6#p3", "§7.2#r6", "§7.2#r12", "§4.2.4#p10", "§9.4.2#r24", "§9.4.2#r25", "§9.4.2#r26", "§9.4.4#r5", "§2.1#r12", "§9.2#b37", "§9.2#b38", "§9.2#b40", "§4.8#r10", "§9.9#r2", "§6#r4", "§4.3#r8", "§9.9#p3"]
+sourceRules: ["§4.1#r3", "§4.2.1#b2", "§4.4#r2", "§4.2.4#r18", "§9.2#b18", "§6#r5", "§6#r6", "§6#r7", "§6#r8", "§6#p2", "§6#p3", "§7.2#r6", "§7.2#r12", "§4.2.4#p11", "§9.4.2#r24", "§9.4.2#r25", "§9.4.2#r26", "§9.4.4#r5", "§2.1#r12", "§9.2#b41", "§9.2#b42", "§9.2#b44", "§4.8#r11", "§9.9#r2", "§6#r4", "§4.3#r8", "§9.9#p3", "§1.2#r113"]
 smoke: []
 dependsOn: []
 trace:
@@ -22,20 +22,21 @@ trace:
   "§6#p3": [13, 31, 35]
   "§7.2#r6": [8, 31, 35]
   "§7.2#r12": [8, 13, 17, 24, 31, 35]
-  "§4.2.4#p10": [8, 13, 17, 24, 31, 35]
+  "§4.2.4#p11": [8, 13, 17, 24, 31, 35]
   "§9.4.2#r24": 13
   "§9.4.2#r25": [8, 9]
   "§9.4.2#r26": [17, 88, 89]
   "§9.4.4#r5": [8, 9, 13, 17]
   "§2.1#r12": [5, 8]
-  "§9.2#b37": 56
-  "§9.2#b38": [20, 27]
-  "§9.2#b40": [8, 9]
-  "§4.8#r10": 3
+  "§9.2#b41": 56
+  "§9.2#b42": [20, 27]
+  "§9.2#b44": [8, 9]
+  "§4.8#r11": 3
   "§9.9#r2": [41, 44]
   "§6#r4": 44
   "§4.3#r8": 48
   "§9.9#p3": 41
+  "§1.2#r113": [113, 114, 115, 116]
 anchor: [4, 64]
 coverage:
   web: manual
@@ -50,11 +51,11 @@ coverage:
   - DU-030-1: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22`, Asset Name `Laptop Dell Latitude 5420 {runId}`, Asset ID `LPT-0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, TAG `QR`.
   - DU-030-2: Missing record, Name `Hand Pallet Truck {runId} - 3`, Asset ID `HPT-0003 {runId}`, Group `Warehouse {runId}` (di luar Group binaan), Status `Missing`, Source `Manual`, Last Holder `—`, TAG `QR`.
   - DU-030-3: Asset, Name `Scanner Zebra DS2208 {runId} - 2`, Asset Name `Scanner Zebra DS2208 {runId}`, Asset ID `SCN-0002 {runId}`, Group `Finance Room {runId}`, Status `Available`, TAG `QR`, tanpa record Missing berjalan.
-  - DU-030-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, TAG `QR`.
+  - DU-030-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, TAG `QR`.
   - DU-030-5: Missing record, Name `Monitor LG 27UL500 {runId} - 11`, Asset ID `MON-0011 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Borrow`, Last Holder `aktor spec ini`, TAG `QR`.
   - DU-030-6: Missing record, Name `Printer HP LaserJet M404 {runId} - 5`, Asset Name `Printer HP LaserJet M404 {runId}`, Asset ID `PRN-0005 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, TAG `QR`.
   - DU-030-7: Missing record, Asset Name `Tablet Samsung Galaxy Tab {runId}`, Group `Finance Room {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing), TAG `QR`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
-  - DU-030-8: Missing record, Asset Name `Genset Honda EU22 {runId}`, Group `Warehouse {runId}` (di luar Group binaan), Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, TAG `QR`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
+  - DU-030-8: Missing record, Asset Name `Genset Honda EU22 {runId}`, Group `Warehouse {runId}` (di luar Group binaan), Status `Reported Disposal`, Source `Audit`, Last Holder `—`, TAG `QR`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-030-9: Missing record, Asset Name `Compressor Atlas Copco {runId}`, Group `Finance Room {runId}`, Status `Reported Disposal`, Source `Borrow`, Last Holder `aktor spec ini`, TAG `QR`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-030-10: Missing record, Asset Name `Printer Brother HL-L2350 {runId}`, Group `Head Office {runId}`, Status `In Disposal Process`, Source `Manual`, Last Holder `—`, TAG `QR`. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
   - DU-030-11: Asset, Asset Name `Camera Canon EOS {runId}`, Group `Finance Room {runId}`, Status `Available`, TAG `QR`, dengan record sebelumnya berstatus `Found` dan tanpa record Missing berjalan. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
@@ -209,3 +210,11 @@ coverage:
 109. Verifikasi dialog `Cannot Mark as Found` tampil dengan pesan `You don't have access to this asset.`
 110. Verifikasi pesan dialog `Cannot Mark as Found` tidak memuat nama aset `Welding Machine Lincoln {runId}`
 111. Klik `[OK]`
+
+### Confirm Disabled pada record Waiting for Confirmation yang sudah terdeteksi scan
+112. Klik nama `Tablet Samsung Galaxy Tab {runId}` pada kolom Name
+113. Verifikasi node `Detected by scan` tampil di dialog Missing Log
+114. Verifikasi `[Confirm]` Disabled pada footer dialog Missing Log dengan alasan `This asset was scanned on [date]. Reject the report or mark it as found.`
+115. Verifikasi `[Reject]` tersedia pada footer dialog Missing Log
+116. Verifikasi aksi `Mark as Found` tersedia untuk record `Tablet Samsung Galaxy Tab {runId}`
+117. Klik `✕` pada dialog Missing Log

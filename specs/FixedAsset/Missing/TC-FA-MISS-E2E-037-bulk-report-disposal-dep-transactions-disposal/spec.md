@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.1a#p8", "§4.1a#p9", "§4.1a#p2", "§4.4#r12", "§6#r11", "§6#r12", "§6#r13", "§7.2#r5", "§7.2#r10", "§7.2#r11", "§7.3#r4", "§7.3#r13", "§4.2.4#p9", "§9.2#b17", "§9.4.2#r21", "§9.4.4#r4", "§9.6#r10", "§8#r6", "§4.1#r9", "§9.4.1#r9", "§5#r5", "§2.1#r12", "EB-BLK-2@tabel-active", "EB-BLK-3", "EB-FB-1@bulk-report-disposal", "EB-EDG-2"]
+sourceRules: ["§4.1a#p8", "§4.1a#p9", "§4.1a#p2", "§4.4#r12", "§6#r11", "§6#r12", "§6#r13", "§7.2#r5", "§7.2#r10", "§7.2#r11", "§7.3#r4", "§7.3#r13", "§4.2.4#p10", "§9.2#b17", "§9.4.2#r21", "§9.4.4#r4", "§9.6#r10", "§8#r6", "§4.1#r9", "§9.4.1#r9", "§5#r5", "§2.1#r12", "EB-BLK-2@tabel-active", "EB-BLK-3", "EB-FB-1@bulk-report-disposal", "EB-EDG-2"]
 smoke: []
 dependsOn: ["Transactions Disposal: dialog Report Disposal D-DISP-13", "Transactions Disposal: tab Reported"]
 trace:
@@ -21,7 +21,7 @@ trace:
   "§7.2#r11": [56]
   "§7.3#r4": [56, 69]
   "§7.3#r13": [13, 44]
-  "§4.2.4#p9": [56, 69]
+  "§4.2.4#p10": [56, 69]
   "§9.2#b17": [8, 69]
   "§9.4.2#r21": [69, 116]
   "§9.4.4#r4": [69]

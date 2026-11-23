@@ -6,26 +6,26 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [§1.2#r11, §1.2#r12, §1.2#r13, §1.2#r15, §1.2#r39, §1.2#r45, §1.2#r46, §1.2#r47, §1.2#r48, §1.2#r53, §1.2#r54, §1.2#r63, §1.2#r25, §1.2#r27, §9.2#b1, §9.2#b2, §9.2#b3, §9.2#b5, §9.2#b8, §9.2#b9, §9.2#b10, §9.2#b11, §9.2#b12, §9.2#b14, §9.2#b15, §9.4.2#r2, §9.4.2#r16, §9.4.3#b3, §9.4.1#r6, §9.4.1#r3, §9.6#r1, §6#r14, §4.2.3#b1, §10#r2, §10#r6, §9.4.4#r1, §9.4.4#r2, §9.4.4#r3, EB-CON-3, EB-EDG-1, EB-EDG-3, EB-ERR-4]
+sourceRules: [§1.2#r12, §1.2#r13, §1.2#r14, §1.2#r16, §1.2#r40, §1.2#r46, §1.2#r47, §1.2#r48, §1.2#r49, §1.2#r54, §1.2#r55, §1.2#r64, §1.2#r26, §1.2#r28, §9.2#b1, §9.2#b2, §9.2#b3, §9.2#b5, §9.2#b8, §9.2#b9, §9.2#b10, §9.2#b11, §9.2#b12, §9.2#b14, §9.2#b15, §9.4.2#r2, §9.4.2#r16, §9.4.3#b3, §9.4.1#r6, §9.4.1#r3, §9.6#r1, §6#r14, §4.2.3#b1, §10#r2, §10#r6, §9.4.4#r1, §9.4.4#r2, §9.4.4#r3, EB-CON-3, EB-EDG-1, EB-EDG-3, EB-ERR-4, §1.2#r71, §9.4.2#r37, §9.2#b33]
 smoke: []
 dependsOn: []
 trace:
-  §1.2#r11: 3
-  §1.2#r12: 2
-  §1.2#r13: [19, 20, 33, 35, 36, 37]
-  §1.2#r15: [48, 49]
-  §1.2#r39: [6, 17]
-  §1.2#r45: 17
-  §1.2#r46: 32
-  §1.2#r47: 14
-  §1.2#r48: [15, 16]
-  §1.2#r53: [22, 23, 24]
-  §1.2#r54: [26, 27]
-  §1.2#r63: [10, 11]
-  §1.2#r25: 5
-  §1.2#r27: 10
+  §1.2#r12: 3
+  §1.2#r13: 2
+  §1.2#r14: [19, 20, 33, 35, 36, 37]
+  §1.2#r16: [48, 49]
+  §1.2#r40: [6, 17]
+  §1.2#r46: 17
+  §1.2#r47: 32
+  §1.2#r48: 14
+  §1.2#r49: [15, 16, 93, 95, 97]
+  §1.2#r54: [22, 23, 24]
+  §1.2#r55: [26, 27]
+  §1.2#r64: [10, 11]
+  §1.2#r26: 5
+  §1.2#r28: 10
   §9.2#b1: [17, 39]
-  §9.2#b2: [19, 32, 41, 44]
+  §9.2#b2: [19, 32, 41, 44, 84, 87]
   §9.2#b3: [33, 38, 39, 41, 44]
   §9.2#b5: 32
   §9.2#b8: 17
@@ -52,15 +52,18 @@ trace:
   EB-EDG-1: 38
   EB-EDG-3: [57, 69, 71, 74, 75, 79, 81, 82]
   EB-ERR-4: [20, 34, 38, 42, 45]
+  §1.2#r71: [84, 85, 89, 91]
+  §9.4.2#r37: [84, 85]
+  §9.2#b33: [36, 37, 99, 101]
 ---
 
 # Server: kelayakan Report Missing per aset, satu record berjalan, atomik per aset, dan race dua laporan
 
 ## Prerequisites
-- Aktor: Rina W, Total Control dengan cakupan seluruh client; Andi P, Group Manager Head Office dengan Group binaan Head Office beserta sub-group `Finance Room` dan `Server Room`, sedangkan Group `Warehouse` bukan Group binaannya; `Joko Susilo {runId}`, pemegang tanpa hak Aktor Missing (DU-070-17); `Sari Dewi {runId}`, pemegang tanpa hak Aktor Missing (DU-070-18).
+- Aktor: Rina W, Total Control dengan cakupan seluruh client; Andi P, Group Manager Head Office dengan Group binaan Head Office beserta sub-group `Finance Room` dan `Server Room`, sedangkan Group `Warehouse` bukan Group binaannya; `Joko Susilo {runId}`, pemegang tanpa hak Aktor Missing (DU-070-17); `Sari Dewi {runId}`, pemegang tanpa hak Aktor Missing (DU-070-18); `Hendra Kusuma {runId}`, Staff Auditor tanpa hak Aktor Missing (DU-070-30).
 - Data:
   - DU-070-1: Asset Name `Laptop Dell Latitude 5420 {runId}`, Asset ID `FA070-001`, Group `Finance Room`, Condition `Normal`, Pemegang `Joko Susilo {runId}`, Scan terakhir `Lobby reader pada T0 − 2 hari, pukul 09:00`.
-  - DU-070-2: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA070-002`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, Scan terakhir `belum pernah terpindai`, Transaksi lain berjalan `Work Order berjalan, jadwal maintenance, dan item sesi Stock Opname berjalan`, Activity Lock `In Audit`.
+  - DU-070-2: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA070-002`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, Scan terakhir `belum pernah terpindai`, Transaksi lain berjalan `Work Order berjalan, jadwal maintenance, dan item sesi pemeriksaan aset berjalan`, Activity Lock `In Audit`.
   - DU-070-3: Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `FA070-003`, Group `Server Room`, Condition `Damaged`, Pemegang `tidak ada`.
   - DU-070-4: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA070-004`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, Activity Lock `Under Maintenance`.
   - DU-070-5: Asset Name `Laptop Lenovo ThinkPad T14 {runId}`, Asset ID `FA070-005`, Group `Finance Room`, Condition `Normal`, Pemegang `Andi P`.
@@ -86,6 +89,14 @@ trace:
   - DU-070-27: Asset Name `Lemari Arsip Baja {runId}`, Asset ID `FA070-027`, Group `Finance Room`, Category `Perabot Arsip {runId}`, Condition `Normal`, Record berjalan `Missing`.
   - DU-070-28: Category Name `Peralatan Gudang {runId}`.
   - DU-070-29: Asset Name `Rak Besi Gudang {runId}`, Asset ID `FA070-029`, Group `Finance Room`, Category `Perabot Arsip {runId}`, Condition `Normal`, Record History `Found, Category Peralatan Gudang {runId}` yang tersimpan saat record selesai.
+  - DU-070-31: Sesi Audit `Audit Ruang Server {runId}` dengan pemilik `Hendra Kusuma {runId}`, memuat aset DU-070-32, DU-070-33, dan DU-070-34.
+  - DU-070-32: Asset Name `Rak Server Dell {runId}`, Asset ID `FA070-032`, Group `Server Room`, Condition `Normal`, Pemegang `tidak ada`, termasuk dalam sesi Audit `Audit Ruang Server {runId}`.
+  - DU-070-33: Asset Name `Switch Cisco Catalyst {runId}`, Asset ID `FA070-033`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, termasuk dalam sesi Audit `Audit Ruang Server {runId}`.
+  - DU-070-34: Asset Name `UPS APC Smart {runId}`, Asset ID `FA070-034`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, termasuk dalam sesi Audit `Audit Ruang Server {runId}`.
+  - DU-070-35: Asset Name `Proyektor BenQ MW550 {runId}`, Asset ID `FA070-035`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, tidak termasuk dalam sesi Audit `Audit Ruang Server {runId}`.
+  - DU-070-37: Asset Name `Generator Perkins 20kVA {runId}`, Asset ID `FA070-037`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, Baris Disposal `Waiting for Approval` berjenis `Sell`, tanpa record Missing.
+  - DU-070-38: Asset Name `Kompresor Udara Swan {runId}`, Asset ID `FA070-038`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, tercantum dalam Draft Disposal berjenis `Scrap`, tanpa record Missing.
+  - DU-070-36: Asset Name `Kabinet Besi Arsip {runId}`, Asset ID `FA070-036`, Group `Finance Room`, Condition `Normal`, Pemegang `tidak ada`, Record berjalan `Missing`, Activity Lock `In Audit`, Baris sesi pemeriksaan aset `sudah final`.
 
 ## Test Steps
 ### Satu laporan banyak aset menghasilkan satu record per aset
@@ -102,7 +113,7 @@ trace:
 11. Verifikasi record `Laptop Dell Latitude 5420 {runId}` menyimpan Condition sebelum laporan `Normal`
 12. Verifikasi setiap record memuat node `Reported missing by` atas nama Rina W dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
 13. Verifikasi setiap record menyimpan Source sesuai titik masuk laporan Pelapor admin, tanpa nomor transaksi
-14. Verifikasi Work Order berjalan, jadwal maintenance, dan item sesi Stock Opname milik `Hand Pallet Truck {runId}` tidak berubah, tidak ditutup, dan tidak dijeda
+14. Verifikasi Work Order berjalan, jadwal maintenance, dan item sesi pemeriksaan aset milik `Hand Pallet Truck {runId}` tidak berubah, tidak ditutup, dan tidak dijeda
 15. Verifikasi Activity Lock `In Audit` milik `Hand Pallet Truck {runId}` tetap ada di atas Condition Missing
 16. Verifikasi Activity Lock `Under Maintenance` milik `Monitor LG 27UL500 {runId}` tetap ada di atas Condition Missing
 17. Verifikasi untuk setiap aset dalam laporan itu, status global Missing hanya ada bersama tepat satu record berjalan dan sebaliknya, sehingga tidak ada record tanpa efek dan tidak ada efek tanpa record
@@ -193,3 +204,28 @@ trace:
 80. Rina W menghapus Category `Peralatan Gudang {runId}`
 81. Verifikasi Category `Peralatan Gudang {runId}` terhapus karena hanya dirujuk record History `Rak Besi Gudang {runId}`
 82. Verifikasi record History `Rak Besi Gudang {runId}` tetap memuat Category `Peralatan Gudang {runId}` yang tersimpan saat record selesai
+
+### Pelapor dari Task Detail Audit
+83. `Hendra Kusuma {runId}` mengirim Report Missing atas `Rak Server Dell {runId}` dari Task Detail Audit sesi `Audit Ruang Server {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+84. Verifikasi record `Rak Server Dell {runId}` berstatus `Waiting for Confirmation` dengan Source `Audit`
+85. Verifikasi status global aset `Rak Server Dell {runId}` langsung menjadi Missing sebelum Aktor Missing memutuskan
+86. `Hendra Kusuma {runId}` mengirim Report Missing atas `Proyektor BenQ MW550 {runId}` yang berada di luar cakupan sesi `Audit Ruang Server {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+87. Verifikasi aset `Proyektor BenQ MW550 {runId}` ditolak dan tidak mendapat record
+88. Rina W mengirim Report Missing atas `Switch Cisco Catalyst {runId}` dari Task Detail Audit sesi `Audit Ruang Server {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+89. Verifikasi record `Switch Cisco Catalyst {runId}` langsung berstatus `Missing` dengan Source `Audit`
+90. Andi P mengirim Report Missing atas `UPS APC Smart {runId}` dari Task Detail Audit sesi `Audit Ruang Server {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+91. Verifikasi record `UPS APC Smart {runId}` langsung berstatus `Missing` dengan Source `Audit`
+
+### Mark as Found tidak dibatasi Activity Lock dan tidak mengubah baris pemeriksaan aset yang sudah final
+92. Rina W mengirim Mark as Found atas record `Hand Pallet Truck {runId}` dengan Found at default Group aset dan Asset Status `Normal`
+93. Verifikasi Mark as Found atas `Hand Pallet Truck {runId}` tidak ditolak oleh Activity Lock `In Audit` miliknya dan record berubah menjadi `Found`
+94. Rina W mengirim Mark as Found atas record `Monitor LG 27UL500 {runId}` dengan Found at default Group aset dan Asset Status `Normal`
+95. Verifikasi Mark as Found atas `Monitor LG 27UL500 {runId}` tidak ditolak oleh Activity Lock `Under Maintenance` miliknya dan record berubah menjadi `Found`
+96. Rina W mengirim Mark as Found atas record `Kabinet Besi Arsip {runId}` dengan Found at default Group aset dan Asset Status `Normal`
+97. Verifikasi Mark as Found atas `Kabinet Besi Arsip {runId}` diterima dan baris sesi pemeriksaan aset miliknya yang sudah final tidak berubah
+
+### Report Missing atas aset dengan baris Disposal berjalan
+98. Rina W mengirim Report Missing atas `Generator Perkins 20kVA {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+99. Verifikasi baris Disposal berjenis `Sell` atas `Generator Perkins 20kVA {runId}` berstatus `Canceled` oleh `System` dengan alasan `Asset reported missing`
+100. Rina W mengirim Report Missing atas `Kompresor Udara Swan {runId}` dengan What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
+101. Verifikasi Draft Disposal yang memuat `Kompresor Udara Swan {runId}` tidak berubah dan aset `Kompresor Udara Swan {runId}` ditandai ⚠

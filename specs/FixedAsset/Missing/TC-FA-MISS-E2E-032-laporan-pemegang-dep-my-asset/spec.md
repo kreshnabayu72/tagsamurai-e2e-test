@@ -5,35 +5,35 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.1#r6", "§9.2#b32", "§3#p4", "§7.3#r6", "§7.3#r11", "§7.2#r3", "§7.2#r18", "§4.2.4#p7", "§9.6#r7", "§9.7#r2", "§9.7#r8", "§9.2#r1", "§9.2#r8", "§8.1#r7", "§8.1#r8", "§1.2#r17", "§1.2#r19", "§1.2#r52", "§1.2#r54", "§1.2#r56", "§1.2#r57", "§1.2#r69", "§1.2#r70", "§1.2#r118", "§1.2#r119", "§2#b3", "§2.1#r3", "§2.1#r8", "§2.1#b4", "§4.8#r3", "§4.8#r7", "§9.11#r3", "§9.4.2#r27", "§9.4.2#r22", "§9.2#b34", "§9.4.4#r18", "§9.4.4#r20", "§9.4.3#b5", "§11#r4", "§4.2.3#p2", "§4.2.4#r15", "§9.9#r1", "§9.8#r2", "§9.6#r1", "EB-FB-1@report-missing-pemegang", "EB-FB-1@cancel-report", "EB-FB-2@go-back-cancel-report", "§9.3#b1", "§4.6#b3", "§4.6#b6"]
+sourceRules: ["§9.1#r6", "§9.2#b34", "§3#p4", "§7.3#r6", "§7.3#r11", "§7.2#r3", "§7.2#r18", "§4.2.4#p8", "§9.6#r7", "§9.7#r2", "§9.7#r8", "§9.2#r1", "§9.2#r8", "§8.1#r7", "§8.1#r8", "§1.2#r18", "§1.2#r20", "§1.2#r53", "§1.2#r55", "§1.2#r57", "§1.2#r58", "§1.2#r70", "§1.2#r73", "§1.2#r122", "§1.2#r123", "§2#b3", "§2.1#r3", "§2.1#r8", "§2.1#b4", "§4.8#r3", "§4.8#r7", "§9.11#r3", "§9.4.2#r27", "§9.4.2#r22", "§9.2#b36", "§9.4.4#r20", "§9.4.4#r22", "§9.4.3#b5", "§11#r4", "§4.2.3#p2", "§4.2.4#r15", "§9.9#r1", "§9.8#r2", "§9.6#r1", "EB-FB-1@report-missing-pemegang", "EB-FB-1@cancel-report", "EB-FB-2@go-back-cancel-report", "§9.3#b1", "§4.6#b3", "§4.6#b6", "§8.2#p5", "§8.2#p10", "§8.2#p27", "§2.1#r2", "§4.8#r12"]
 smoke: []
 dependsOn: ["My Asset: tab Borrowed", "My Asset: tab Assigned", "My Asset: aksi Cancel Report"]
 trace:
   "§9.1#r6": [9, 27]
-  "§9.2#b32": [27, 39, 40, 65]
+  "§9.2#b34": [27, 39, 40, 65]
   "§3#p4": [9, 19]
   "§7.3#r6": [8, 38]
   "§7.3#r11": [18, 72]
   "§7.2#r3": [13]
   "§7.2#r18": [31]
-  "§4.2.4#p7": [13]
+  "§4.2.4#p8": [13]
   "§9.6#r7": [18, 31]
   "§9.7#r2": [10, 93, 94]
   "§9.7#r8": [20, 106, 107]
   "§9.2#r1": [9, 55]
-  "§9.2#r8": [19, 72]
-  "§8.1#r7": [46]
+  "§9.2#r8": [19, 72, 114, 117]
+  "§8.1#r7": [46, 135]
   "§8.1#r8": [51]
-  "§1.2#r17": [9]
-  "§1.2#r19": [19]
-  "§1.2#r52": [1]
-  "§1.2#r54": [9, 10]
-  "§1.2#r56": [11]
-  "§1.2#r57": [19, 20]
-  "§1.2#r69": [56]
-  "§1.2#r70": [69, 72]
-  "§1.2#r118": [40]
-  "§1.2#r119": [69]
+  "§1.2#r18": [9]
+  "§1.2#r20": [19]
+  "§1.2#r53": [1]
+  "§1.2#r55": [9, 10]
+  "§1.2#r57": [11]
+  "§1.2#r58": [19, 20, 114, 117]
+  "§1.2#r70": [56]
+  "§1.2#r73": [69, 72]
+  "§1.2#r122": [40]
+  "§1.2#r123": [69]
   "§2#b3": [65]
   "§2.1#r3": [1, 8]
   "§2.1#r8": [11]
@@ -43,9 +43,9 @@ trace:
   "§9.11#r3": [21, 22]
   "§9.4.2#r27": [61, 65, 67]
   "§9.4.2#r22": [55]
-  "§9.2#b34": [55]
-  "§9.4.4#r18": [39, 40, 96, 101]
-  "§9.4.4#r20": [55]
+  "§9.2#b36": [55]
+  "§9.4.4#r20": [39, 40, 96, 101]
+  "§9.4.4#r22": [55]
   "§9.4.3#b5": [55]
   "§11#r4": [1]
   "§4.2.3#p2": [3]
@@ -57,9 +57,14 @@ trace:
   "EB-FB-1@cancel-report": [18]
   "EB-FB-2@go-back-cancel-report": [15, 79, 80]
   "§9.3#b1": [11]
+  "§8.2#p5": [123]
+  "§8.2#p10": [129]
+  "§8.2#p27": [46, 51]
   "§4.6#b3": [3]
   "§4.6#b6": [21, 22]
-anchor: [73, 77, 82, 84, 87, 105, 110]
+  "§2.1#r2": [142]
+  "§4.8#r12": [111]
+anchor: [73, 77, 82, 84, 87, 105, 110, 128, 141]
 coverage:
   web: automated
   android: automated
@@ -230,3 +235,42 @@ coverage:
 109. Buka halaman `Assets`
 110. Verifikasi tab `Assets` tampil pada halaman Assets
 111. Verifikasi tab `Missing` tidak tampil pada halaman Assets
+
+### Status global aset dihitung ulang dari state aset terkini sesudah Cancel Report
+112. Buka halaman `My Asset`
+113. Klik tab `Assigned`
+114. Verifikasi Asset Status pada baris `Scanner Zebra DS2208 {runId}` `Assigned`
+115. Masuk sebagai `Wulan Sari {runId}`
+116. Buka halaman `My Asset`
+117. Verifikasi Asset Status pada baris `Monitor LG 27UL500 {runId}` `Assigned`
+
+### Transaction log aset memuat laporan pemegang berstatus Waiting for Confirmation dan Cancel Report tidak membentuk baris
+118. Masuk sebagai `Rina W`
+119. Buka halaman `Assets`
+120. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
+121. Klik `Projector Epson EB-X06 {runId}` pada kolom Name
+122. Buka Transaction log pada Asset Detail
+123. Verifikasi entri `Reported missing` pada Transaction log berstatus `Waiting for Confirmation`
+124. Buka halaman `Assets`
+125. Ketik Search `Scanner Zebra DS2208 {runId}`, tekan Enter
+126. Klik `Scanner Zebra DS2208 {runId}` pada kolom Name
+127. Buka Transaction log pada Asset Detail
+128. Verifikasi entri `Reported missing` tampil di Transaction log
+129. Verifikasi entri `Report canceled` tidak tampil di Transaction log
+
+### Node Reported missing by atas laporan pemegang yang melapor dengan akunnya sendiri
+130. Buka halaman `Assets`
+131. Klik tab `Missing`
+132. Klik sub-tab `History`
+133. Ketik Search `Scanner Zebra DS2208 {runId}`, tekan Enter
+134. Klik `Scanner Zebra DS2208 {runId}` pada kolom Name
+135. Verifikasi dialog Missing Log memuat node `Reported missing by` oleh `Joko Santoso {runId}` dengan What happened `Scanner tidak ada di loker setelah shift malam`
+136. Tutup dialog Missing Log dengan `✕`
+
+### Pemegang tanpa hak Aktor Missing tidak mendapat Report Missing sebagai Pelapor admin di Asset Detail
+137. Masuk sebagai `Joko Santoso {runId}`
+138. Buka halaman `Assets`
+139. Ketik Search `Scanner Zebra DS2208 {runId}`, tekan Enter
+140. Klik `Scanner Zebra DS2208 {runId}` pada kolom Name
+141. Verifikasi Asset Status pada Asset Detail `Assigned`
+142. Verifikasi tombol `[Report Missing]` tidak tampil pada Asset Detail

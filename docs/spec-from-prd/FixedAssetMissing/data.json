@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-16",
- "sha": "9e687dc4579f624b",
+ "disetujui": "otomatis, 2026-11-23",
+ "sha": "e27e3e782b16dacd",
  "entri": [
   {
    "id": "DU-001-1",
@@ -202,7 +202,7 @@
     "Group": "Branch Surabaya {runId}",
     "TAG": "QR",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "Last Seen": "T0 − 45 hari, pukul 14:05",
     "Pemindai": "Agus Prasetyo {runId}",
@@ -3725,7 +3725,9 @@
     "Reported Date": "T0 − 1 hari, pukul 07:15",
     "Days Missing": "1 day",
     "Node laporan": "Reported missing by Rudi H on behalf of Joko S",
-    "What happened": "Hand pallet truck tidak kembali dari area bongkar muat"
+    "What happened": "Hand pallet truck tidak kembali dari area bongkar muat",
+    "Status global aset": "Missing",
+    "Transaction log": "entri Reported missing berstatus Waiting for Confirmation"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -3910,6 +3912,50 @@
    "sumber": "matriks role PRD",
    "maks": {
     "Name": 120
+   }
+  },
+  {
+   "id": "DU-012-9",
+   "spec": [
+    "TC-FA-MISS-E2E-012-dialog-missing-log"
+   ],
+   "jenis": "Notification",
+   "data": "Notifikasi in-app bagi Rina W atas record DU-012-2, belum dibaca",
+   "asal": "awal",
+   "nilai": {
+    "Event": "missing_holder_reported",
+    "Penerima": "Rina W",
+    "Record": "Hand Pallet Truck {runId}",
+    "Status baca": "belum dibaca"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.8; notification.md §5.1d",
+   "maks": {
+    "Record": null
+   }
+  },
+  {
+   "id": "DU-012-10",
+   "spec": [
+    "TC-FA-MISS-E2E-012-dialog-missing-log"
+   ],
+   "jenis": "Notification",
+   "data": "Notifikasi in-app bagi Rina W atas record DU-012-7, belum dibaca",
+   "asal": "awal",
+   "nilai": {
+    "Event": "missing_resolved",
+    "Penerima": "Rina W",
+    "Record": "Laptop Dell Latitude 5420 {runId}",
+    "Status baca": "belum dibaca"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §9.8; notification.md §5.1d",
+   "maks": {
+    "Record": null
    }
   },
   {
@@ -4636,7 +4682,8 @@
     "TC-FA-MISS-E2E-019-guided-tooltip"
    ],
    "varian": [
-    "guided-tooltip@missing:flag-belum"
+    "guided-tooltip@missing:flag-belum",
+    "guided-tooltip@missing:aktor-lain"
    ],
    "sumber": "foundation guided-tooltip.md §16.4",
    "maks": {
@@ -4792,7 +4839,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Branch Surabaya {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -4968,7 +5015,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Head Office {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -5206,7 +5253,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Head Office {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -5423,7 +5470,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Branch Surabaya {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -5597,7 +5644,7 @@
     "Name": "Projector Epson EB-X06 {runId}",
     "Group": "Branch Surabaya {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -5678,6 +5725,28 @@
     "Name": 60,
     "Group": 40,
     "Last Holder": 40
+   }
+  },
+  {
+   "id": "DU-024-8",
+   "spec": [
+    "TC-FA-MISS-E2E-024-gating-read-only"
+   ],
+   "jenis": "Asset",
+   "data": "aset tersedia di Group Read tanpa record Missing berjalan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Pallet Jack Crown PE {runId}",
+    "Group": "Warehouse {runId}",
+    "Status": "Available"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": 60,
+    "Group": 40
    }
   },
   {
@@ -5772,7 +5841,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Head Office {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—"
    },
    "jumlah": 1,
@@ -6076,7 +6145,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Branch Surabaya {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "TAG": "RFID"
    },
@@ -6208,7 +6277,7 @@
     "Asset ID": "PRJ-0007 {runId}",
     "Group": "Head Office {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "TAG": "QR"
    },
@@ -6317,7 +6386,7 @@
     "Asset Name": "Genset Honda EU22 {runId}",
     "Group": "Warehouse {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "TAG": "QR"
    },
@@ -9471,16 +9540,100 @@
    "maks": {}
   },
   {
+   "id": "DU-041-28",
+   "spec": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "jenis": "Audit",
+   "data": "Task Audit dengan item Not found yang dilaporkan pelapor Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang Utama {runId}",
+    "Item": "Rak Server APC {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Item": null
+   }
+  },
+  {
+   "id": "DU-041-29",
+   "spec": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Not found yang dilaporkan pelapor Audit tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rak Server APC {runId}",
+    "Group": "Warehouse",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-041-30",
+   "spec": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Asset Admin sub-tab Audit tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lia Kartika {runId}",
+    "Role": "Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group Warehouse",
+    "Cakupan": "aset dalam cakupan Task Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-041-31",
+   "spec": [
+    "TC-FA-MISS-E2E-041-notifikasi-dep-notification"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened laporan pelapor Audit",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Rak server tidak ada di ruang server saat penghitungan fisik"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
    "id": "DU-042-1",
    "spec": [
     "TC-FA-MISS-E2E-042-stock-opname-dep-audit"
    ],
-   "jenis": "StockOpname",
-   "data": "Sesi Stock Opname dengan tiga item Not found untuk Report Missing",
+   "jenis": "Audit",
+   "data": "Task Audit dengan tiga item Not found untuk Report Missing",
    "asal": "awal",
    "nilai": {
-    "Name": "SO Gudang Utama {runId}",
-    "Pemilik": "Maya Putri {runId}"
+    "Name": "Audit Gudang Utama {runId}",
+    "Item": "Laptop Dell Latitude 5420 {runId}; Printer HP LaserJet M404 {runId}; Projector Epson EB-X06 {runId}"
    },
    "jumlah": 1,
    "mutasi": [
@@ -9490,7 +9643,7 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name": null,
-    "Pemilik": null
+    "Item": null
    }
   },
   {
@@ -9565,12 +9718,11 @@
    "spec": [
     "TC-FA-MISS-E2E-042-stock-opname-dep-audit"
    ],
-   "jenis": "StockOpname",
-   "data": "Sesi Stock Opname dengan item Audited berbadge Reported Missing",
+   "jenis": "Audit",
+   "data": "Sesi Audit dengan item Audited berbadge Reported Missing",
    "asal": "awal",
    "nilai": {
-    "Name": "SO Gudang Cabang {runId}",
-    "Pemilik": "Maya Putri {runId}",
+    "Name": "Audit Gudang Cabang {runId}",
     "Item": "Toyota Innova {runId}",
     "Badge": "Reported Missing"
    },
@@ -9580,7 +9732,6 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name": null,
-    "Pemilik": null,
     "Item": null
    }
   },
@@ -9590,7 +9741,7 @@
     "TC-FA-MISS-E2E-042-stock-opname-dep-audit"
    ],
    "jenis": "Asset",
-   "data": "Aset dengan record Missing yang terbaca di sesi Stock Opname",
+   "data": "Aset dengan record Missing yang terbaca di sesi Audit",
    "asal": "awal",
    "nilai": {
     "Name": "Toyota Innova {runId}",
@@ -9611,12 +9762,12 @@
     "TC-FA-MISS-E2E-042-stock-opname-dep-audit"
    ],
    "jenis": "User",
-   "data": "Pengguna pemilik sesi Stock Opname tanpa Manage asset & TAG (Update)",
+   "data": "Pengguna Group Manager pemegang hak Aktor Missing",
    "asal": "awal",
    "nilai": {
-    "Name": "Maya Putri {runId}",
-    "Role": "pemilik sesi Stock Opname tanpa Manage asset & TAG (Update)",
-    "Cakupan": "aset dalam cakupan sesinya"
+    "Name": "Dewi Lestari {runId}",
+    "Role": "Group Manager",
+    "Cakupan": "Group Warehouse"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -9684,12 +9835,11 @@
    "spec": [
     "TC-FA-MISS-E2E-042-stock-opname-dep-audit"
    ],
-   "jenis": "StockOpname",
-   "data": "Sesi Stock Opname dengan satu item dalam cakupan dan satu item di luar cakupan pelapor",
+   "jenis": "Audit",
+   "data": "Sesi Audit dengan satu item dalam cakupan dan satu item di luar cakupan pelapor",
    "asal": "awal",
    "nilai": {
-    "Name": "SO Gudang Pusat {runId}",
-    "Pemilik": "Maya Putri {runId}",
+    "Name": "Audit Gudang Pusat {runId}",
     "Item": "Kursi Rapat Lipat {runId}; Lemari Arsip Besi {runId}"
    },
    "jumlah": 1,
@@ -9700,7 +9850,6 @@
    "sumber": "turunan penulis",
    "maks": {
     "Name": null,
-    "Pemilik": null,
     "Item": null
    }
   },
@@ -9778,7 +9927,7 @@
    "nilai": {
     "Name": "Rekonsiliasi Gudang {runId}",
     "Pemilik": "Maya Putri {runId}",
-    "Aset tidak ditemukan": "Hand Pallet Truck {runId}"
+    "Aset tidak ditemukan": "Hand Pallet Truck {runId}; Forklift Mini {runId}"
    },
    "jumlah": 1,
    "mutasi": [
@@ -9873,6 +10022,46 @@
    "maks": {}
   },
   {
+   "id": "DU-043-6",
+   "spec": [
+    "TC-FA-MISS-E2E-043-reconciliation-dep-wizard-reconciliation"
+   ],
+   "jenis": "Asset",
+   "data": "Aset tidak ditemukan kedua yang belum punya record Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Forklift Mini {runId}",
+    "Group": "Warehouse",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-043-reconciliation-dep-wizard-reconciliation"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-043-7",
+   "spec": [
+    "TC-FA-MISS-E2E-043-reconciliation-dep-wizard-reconciliation"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened laporan kedua dari rekonsiliasi",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Forklift mini tidak ditemukan saat rekonsiliasi gudang"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
    "id": "DU-044-1",
    "spec": [
     "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
@@ -9925,14 +10114,16 @@
    "nilai": {
     "Name": "Laptop Dell Latitude 5420 {runId}",
     "Group": "Finance Room",
-    "Log": "Report Missing"
+    "Log": "Report Missing",
+    "Name di log": "Laptop Dell Latitude 5420 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -9946,14 +10137,16 @@
    "nilai": {
     "Name": "Scanner Zebra DS2208 {runId}",
     "Group": "Warehouse",
-    "Log": "Confirm"
+    "Log": "Confirm",
+    "Name di log": "Scanner Zebra DS2208 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1b Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -9967,14 +10160,16 @@
    "nilai": {
     "Name": "Camera Canon EOS {runId}",
     "Group": "Head Office",
-    "Log": "Reject"
+    "Log": "Reject",
+    "Name di log": "Camera Canon EOS {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1b Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -9988,14 +10183,16 @@
    "nilai": {
     "Name": "Projector Epson EB-X06 {runId}",
     "Group": "Head Office",
-    "Log": "Mark as Found"
+    "Log": "Mark as Found",
+    "Name di log": "Projector Epson EB-X06 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -10009,14 +10206,16 @@
    "nilai": {
     "Name": "Printer HP LaserJet M404 {runId}",
     "Group": "Head Office",
-    "Log": "Report Missing satu entri"
+    "Log": "Report Missing satu entri",
+    "Name di log": "Printer HP LaserJet M404 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -10030,14 +10229,16 @@
    "nilai": {
     "Name": "Monitor LG 27UL500 {runId}",
     "Group": "Head Office",
-    "Log": "Report Missing satu entri"
+    "Log": "Report Missing satu entri",
+    "Name di log": "Monitor LG 27UL500 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -10095,7 +10296,8 @@
     "Name": "Hand Pallet Truck {runId}",
     "Group": "Warehouse",
     "Record": "Missing",
-    "Log": "Add Update satu entri"
+    "Log": "Add Update satu entri",
+    "Name di log": "Hand Pallet Truck {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [
@@ -10104,7 +10306,8 @@
    "varian": [],
    "sumber": "PRD §4.1a Example Data",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -10219,14 +10422,16 @@
     "Name": "Proyektor BenQ MW535 {runId}",
     "Group": "Head Office",
     "Log": "Report Missing",
-    "Titik masuk": "halaman transaksi Borrow"
+    "Titik masuk": "halaman transaksi Borrow",
+    "Name di log": "Proyektor BenQ MW535 {runId} - 1"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "§8.2#b2",
    "maks": {
-    "Name": null
+    "Name": null,
+    "Name di log": null
    }
   },
   {
@@ -10235,12 +10440,12 @@
     "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
    ],
    "jenis": "User",
-   "data": "Pengguna pemilik sesi Stock Opname tanpa Manage asset & TAG (Update) sebagai Pelapor admin",
+   "data": "Pengguna Group Manager pemegang hak Aktor Missing yang melapor dari Task Detail Audit",
    "asal": "awal",
    "nilai": {
     "Name": "Sari Wulandari {runId}",
-    "Role": "pemilik sesi Stock Opname tanpa Manage asset & TAG (Update)",
-    "Cakupan": "aset dalam sesi Stock Opname miliknya"
+    "Role": "Group Manager atas Group Warehouse, pemegang hak Aktor Missing",
+    "Cakupan": "aset Group Warehouse"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -10256,13 +10461,102 @@
     "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
    ],
    "jenis": "Asset",
-   "data": "Aset dengan entri Report Missing dari sesi Stock Opname di Transaction admin log",
+   "data": "Aset dengan entri Report Missing dari Task Detail Audit di Transaction admin log",
    "asal": "awal",
    "nilai": {
     "Name": "Barcode Scanner Honeywell 1900 {runId}",
     "Group": "Warehouse",
     "Log": "Report Missing",
-    "Titik masuk": "sesi Stock Opname"
+    "Titik masuk": "Task Detail Audit",
+    "Name di log": "Barcode Scanner Honeywell 1900 {runId} - 1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null,
+    "Name di log": null
+   }
+  },
+  {
+   "id": "DU-044-20",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Asset Admin sub-tab Audit tanpa hak Aktor Missing sebagai pelapor umum dari Task Detail Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lia Kartika {runId}",
+    "Role": "Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group Warehouse",
+    "Cakupan": "aset dalam cakupan Task Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-044-21",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dengan record Missing Source Audit yang dibatalkan pelapor dari Task Detail Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rak Server APC {runId}",
+    "Group": "Warehouse",
+    "Record": "Canceled",
+    "Source": "Audit",
+    "Name di log": "Rak Server APC {runId} - 1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null,
+    "Name di log": null
+   }
+  },
+  {
+   "id": "DU-044-22",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "User",
+   "data": "Pengguna pemegang aset dengan hak Aktor Missing yang melapor dari My Asset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Hadi Pratama {runId}",
+    "Role": "pemegang aset dengan hak Aktor Missing (Pelapor admin)",
+    "Cakupan": "aset yang ia pegang"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§8.2#b2",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-044-23",
+   "spec": [
+    "TC-FA-MISS-E2E-044-log-admin-dep-settings-user"
+   ],
+   "jenis": "Asset",
+   "data": "Aset yang dipegang dengan record Missing dari laporan lewat My Asset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kamera Nikon D850 {runId}",
+    "Group": "Head Office",
+    "Record": "Missing dari laporan pemegang"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -10336,6 +10630,480 @@
    "maks": {}
   },
   {
+   "id": "DU-049-1",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Audit",
+   "data": "Task Audit dengan dua item Not found yang dilaporkan pelapor Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang Barat {runId}",
+    "Item": "Rak Server APC {runId}; Meja Kerja Lipat {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Item": null
+   }
+  },
+  {
+   "id": "DU-049-2",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Not found yang dilaporkan Asset Admin lalu dibatalkan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rak Server APC {runId}",
+    "Group": "Warehouse",
+    "Asset Status": "Normal",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-3",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Not found yang dilaporkan Staff Auditor",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Kerja Lipat {runId}",
+    "Group": "Warehouse",
+    "Asset Status": "Normal",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-4",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Asset Admin sub-tab Audit tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lia Kartika {runId}",
+    "Role": "Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group Warehouse",
+    "Cakupan": "aset dalam cakupan Task Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-5",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Staff Auditor tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bayu Saputra {runId}",
+    "Role": "Staff Auditor tanpa hak Aktor Missing pada Group Warehouse",
+    "Cakupan": "aset dalam cakupan Task Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-6",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Total Control",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina W",
+    "Role": "Total Control",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {}
+  },
+  {
+   "id": "DU-049-7",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened laporan Asset Admin",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Rak server tidak ada di ruang server saat penghitungan fisik"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-049-8",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened laporan Staff Auditor",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Meja kerja lipat tidak ada di area gudang barat saat penghitungan fisik"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-049-9",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Audit",
+   "data": "Task Audit dengan dua item Not found yang dilaporkan Staff Auditor lewat Bulk Report Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang Timur {runId}",
+    "Item": "Kabinet Arsip Besi {runId}; Lemari Display Kaca {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Item": null
+   }
+  },
+  {
+   "id": "DU-049-10",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Not found bertagging Tag Reported yang laporannya dibatalkan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kabinet Arsip Besi {runId}",
+    "Group": "Warehouse",
+    "Asset Status": "Normal",
+    "Tagging": "Tag Reported",
+    "Pemegang": "tidak dipegang siapa pun",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-11",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Not found yang dilaporkan Staff Auditor lewat Bulk Report Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lemari Display Kaca {runId}",
+    "Group": "Warehouse",
+    "Asset Status": "Normal",
+    "Pemegang": "tidak dipegang siapa pun",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-049-12",
+   "spec": [
+    "TC-FA-MISS-E2E-049-pelapor-task-detail-audit-dep-audit"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened Bulk Report Missing Staff Auditor",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Kabinet dan lemari display tidak ada di area gudang timur saat penghitungan fisik"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-060-1",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Maintenance",
+   "data": "Task Maintenance atas aset yang belum dimulai",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Servis Printer {runId}",
+    "Asset": "Printer HP LaserJet M404 {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Asset": null
+   }
+  },
+  {
+   "id": "DU-060-2",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dengan task Maintenance yang dilaporkan Missing lalu ditemukan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer HP LaserJet M404 {runId}",
+    "Group": "Warehouse",
+    "Asset Status": "Normal",
+    "TAG": "tanpa TAG",
+    "Record": "tanpa record Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "varian": [],
+   "sumber": "PRD §4.1a Example Data",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-060-3",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Pengguna Total Control",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina W",
+    "Role": "Total Control",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {}
+  },
+  {
+   "id": "DU-060-4",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Missing",
+   "data": "Isian What happened laporan aset ber-task Maintenance",
+   "asal": "dibuat",
+   "nilai": {
+    "What happened": "Printer tidak ada di ruang cetak saat pengecekan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-060-5",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Maintenance",
+   "data": "Task Maintenance atas aset pemegang yang belum dimulai, laporan pemegang ditolak",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Servis Scanner {runId}",
+    "Asset": "Scanner Zebra DS2208 {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Asset": null
+   }
+  },
+  {
+   "id": "DU-060-6",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Asset",
+   "data": "Aset ditugaskan ke pemegang dengan record Waiting for Confirmation dari laporan pemegang, laporannya ditolak",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Scanner Zebra DS2208 {runId}",
+    "Group": "Warehouse",
+    "Pemegang": "Joko Santoso {runId}",
+    "Record": "Waiting for Confirmation, dilaporkan Joko Santoso {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Pemegang": null,
+    "Record": null
+   }
+  },
+  {
+   "id": "DU-060-7",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Pemegang tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Joko Santoso {runId}",
+    "Role": "pemegang tanpa hak Aktor Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-060-8",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Missing",
+   "data": "Reason Reject laporan pemegang",
+   "asal": "dibuat",
+   "nilai": {
+    "Reason": "Aset terlihat kembali di gudang"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-060-9",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Maintenance",
+   "data": "Task Maintenance atas aset pemegang yang belum dimulai, laporan pemegang dibatalkan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Servis Proyektor {runId}",
+    "Asset": "Proyektor Epson EB-X06 {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Asset": null
+   }
+  },
+  {
+   "id": "DU-060-10",
+   "spec": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "jenis": "Asset",
+   "data": "Aset ditugaskan ke pemegang dengan record Waiting for Confirmation dari laporan pemegang, laporannya dibatalkan pemegang",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Proyektor Epson EB-X06 {runId}",
+    "Group": "Warehouse",
+    "Pemegang": "Joko Santoso {runId}",
+    "Record": "Waiting for Confirmation, dilaporkan Joko Santoso {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-060-penanda-asset-missing-dep-maintenance-routine"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Pemegang": null,
+    "Record": null
+   }
+  },
+  {
    "id": "DU-046-1",
    "spec": [
     "TC-FA-MISS-E2E-046-i-found-it-android"
@@ -10380,7 +11148,7 @@
     "Asset ID": "PRJ 0007 {runId}",
     "Group": "Finance Room {runId}",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "TAG": "TAG QR 0007 {runId}"
    },
@@ -10593,7 +11361,7 @@
     "Asset ID": "PRN 0012 {runId}",
     "Group": "Finance Room {runId}",
     "Status": "In Disposal Process",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "—",
     "TAG": "TAG QR 0012 {runId}"
    },
@@ -10608,6 +11376,471 @@
     "Group": 40,
     "Last Holder": 40,
     "TAG": 30
+   }
+  },
+  {
+   "id": "DU-046-12",
+   "spec": [
+    "TC-FA-MISS-E2E-046-i-found-it-android"
+   ],
+   "jenis": "Client",
+   "data": "entitas khusus dengan Storage yang menjadi penuh (usage ledger melebihi kuota) pada langkah 123",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Klien I Found It {runId}",
+    "Kuota Storage": "50.0 GB",
+    "Usage ledger Storage awal": "10.0 GB",
+    "Usage ledger Storage sesudah langkah 123": "51.2 GB"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r126",
+   "maks": {
+    "Name": 60
+   }
+  },
+  {
+   "id": "DU-047-1",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Client",
+   "data": "entitas khusus dengan Storage penuh (usage ledger melebihi kuota)",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Klien Storage Penuh {runId}",
+    "Kuota Storage": "50.0 GB",
+    "Usage ledger Storage": "51.2 GB"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r126",
+   "maks": {
+    "Name": 60
+   }
+  },
+  {
+   "id": "DU-047-2",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Missing aset tanpa TAG, Condition Normal, dipakai untuk Photo baru dan tanpa Photo",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Camera DSLR Canon R6 {runId}",
+    "Group": "Finance Room {runId}",
+    "Status": "Missing",
+    "Source": "Manual",
+    "Last Holder": "—",
+    "Condition": "Normal",
+    "Node": "Reported missing by Rina Wulandari {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r34",
+   "maks": {
+    "Name": 60,
+    "Group": 40,
+    "Node": 120
+   }
+  },
+  {
+   "id": "DU-047-3",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Missing aset tanpa TAG untuk Mark as Found Damaged yang ditolak",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 {runId}",
+    "Group": "Finance Room {runId}",
+    "Status": "Missing",
+    "Source": "Borrow",
+    "Last Holder": "Dian Kusuma {runId}",
+    "Condition": "Normal",
+    "Baris transaksi": "satu baris transaksi Borrow, tertutup"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r127",
+   "maks": {
+    "Name": 60,
+    "Group": 40,
+    "Last Holder": 40
+   }
+  },
+  {
+   "id": "DU-047-4",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Missing asal Damaged + Missing dengan Damage record yang ditahan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer HP LaserJet M404 {runId}",
+    "Group": "Finance Room {runId}",
+    "Status": "Missing",
+    "Source": "Manual",
+    "Last Holder": "—",
+    "Condition sebelum laporan": "Damaged",
+    "Damage record": "satu, ditahan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r128",
+   "maks": {
+    "Name": 60,
+    "Group": 40
+   }
+  },
+  {
+   "id": "DU-047-5",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Photo",
+   "data": "foto penemuan PNG di bawah 1 MB yang ditolak karena Storage penuh",
+   "asal": "dicoba",
+   "nilai": {
+    "File": "foto-ditemukan {runId}.png",
+    "Format": "PNG",
+    "Ukuran": "di bawah 1 MB"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#p4",
+   "maks": {
+    "File": 120
+   }
+  },
+  {
+   "id": "DU-047-6",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Damaged Photo",
+   "data": "Damaged Photo dan Note untuk laptop yang ditolak karena Storage penuh",
+   "asal": "dicoba",
+   "nilai": {
+    "File": "foto-kerusakan-laptop {runId}.png",
+    "Note": "Layar retak dan engsel patah saat ditemukan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r127",
+   "maks": {
+    "File": 120
+   }
+  },
+  {
+   "id": "DU-047-7",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "Damaged Photo",
+   "data": "Damaged Photo dan Note untuk printer asal Damaged + Missing yang ditolak karena Storage penuh",
+   "asal": "dicoba",
+   "nilai": {
+    "File": "foto-kerusakan-printer {runId}.png",
+    "Note": "Rumah printer retak sejak sebelum hilang"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r128",
+   "maks": {
+    "File": 120
+   }
+  },
+  {
+   "id": "DU-047-8",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "User",
+   "data": "pengguna Total Control pada entitas khusus",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina Wulandari {runId}",
+    "Role": "Total Control",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-047-9",
+   "spec": [
+    "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager"
+   ],
+   "jenis": "User",
+   "data": "pemegang terakhir aset laptop, tanpa Group Role",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dian Kusuma {runId}",
+    "Role": "tanpa Group Role (pemegang)"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-048-1",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Found aset tanpa TAG dengan node Reported found by dan Marked as found by yang memuat Photo",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Camera DSLR Canon R6 {runId}",
+    "Group": "Finance Room",
+    "Source": "Manual",
+    "Status": "Found",
+    "Node 1": "Reported found by Sari Dewanti {runId}",
+    "Node 1 Photo": "foto-laporan-ditemukan {runId}.png",
+    "Node 2": "Marked as found by Rina W",
+    "Node 2 Found at": "Finance Room",
+    "Node 2 Asset Status": "Normal",
+    "Node 2 Note": "Ditemukan di rak server lantai 2",
+    "Node 2 Photo": "foto-ditemukan {runId}.png"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r129",
+   "maks": {
+    "Name": 60,
+    "Node 1": 120,
+    "Node 1 Photo": 120,
+    "Node 2 Photo": 120
+   }
+  },
+  {
+   "id": "DU-048-2",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Found aset Damaged dengan Damaged Photo dan satu Damage Report Source Missing Asset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Dell Latitude 5420 {runId}",
+    "Group": "Finance Room",
+    "Source": "Manual",
+    "Status": "Found",
+    "Node": "Marked as found by Rina W",
+    "Node Asset Status": "Damaged",
+    "Node Note": "Layar retak dan engsel patah saat ditemukan",
+    "Node Damaged Photo": "foto-kerusakan-laptop {runId}.png",
+    "Damage Report": "satu, Source Missing Asset"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r36",
+   "maks": {
+    "Name": 60,
+    "Node Damaged Photo": 120
+   }
+  },
+  {
+   "id": "DU-048-3",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "User",
+   "data": "pengguna Total Control pelaku Mark as Found dan Delete File Manager",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rina W",
+    "Role": "Total Control",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {}
+  },
+  {
+   "id": "DU-048-4",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "User",
+   "data": "pengguna Read Only pengirim I found it",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sari Dewanti {runId}",
+    "Role": "Read Only",
+    "Cakupan": "seluruh client"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-048-5",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Berkas File Manager",
+   "data": "berkas Found Photo yang dihapus lewat Delete File Manager",
+   "asal": "awal",
+   "nilai": {
+    "File": "foto-ditemukan {runId}.png",
+    "Source": "Found Photo",
+    "Asset": "Camera DSLR Canon R6 {runId}",
+    "Toast hapus": "Success, foto-ditemukan {runId}.png has been deleted."
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r129",
+   "maks": {
+    "File": 120,
+    "Asset": 60,
+    "Toast hapus": 200
+   }
+  },
+  {
+   "id": "DU-048-6",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Berkas File Manager",
+   "data": "berkas Found Photo yang dihapus lewat Delete File Manager",
+   "asal": "awal",
+   "nilai": {
+    "File": "foto-laporan-ditemukan {runId}.png",
+    "Source": "Found Photo",
+    "Asset": "Camera DSLR Canon R6 {runId}",
+    "Toast hapus": "Success, foto-laporan-ditemukan {runId}.png has been deleted."
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r129",
+   "maks": {
+    "File": 120,
+    "Asset": 60,
+    "Toast hapus": 200
+   }
+  },
+  {
+   "id": "DU-048-7",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Berkas File Manager",
+   "data": "berkas Damaged Photo yang dihapus lewat Delete File Manager",
+   "asal": "awal",
+   "nilai": {
+    "File": "foto-kerusakan-laptop {runId}.png",
+    "Source": "Damaged Photo",
+    "Asset": "Laptop Dell Latitude 5420 {runId}",
+    "Toast hapus": "Success, foto-kerusakan-laptop {runId}.png has been deleted."
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r129",
+   "maks": {
+    "File": 120,
+    "Asset": 60,
+    "Toast hapus": 200
+   }
+  },
+  {
+   "id": "DU-048-8",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Missing record",
+   "data": "record Found aset asal Damaged + Missing dengan Damaged Photo pada node Marked as found by",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer HP LaserJet M404 {runId}",
+    "Group": "Finance Room",
+    "Source": "Manual",
+    "Status": "Found",
+    "Node": "Marked as found by Rina W",
+    "Node Asset Status": "Damaged",
+    "Node Note": "Rumah printer retak sejak sebelum hilang",
+    "Node Damaged Photo": "foto-kerusakan-printer {runId}.png",
+    "Asal": "Damaged + Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r124",
+   "maks": {
+    "Name": 60,
+    "Node Damaged Photo": 120
+   }
+  },
+  {
+   "id": "DU-048-9",
+   "spec": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "jenis": "Berkas File Manager",
+   "data": "berkas Damaged Photo asal Damaged + Missing yang dihapus lewat Delete File Manager",
+   "asal": "awal",
+   "nilai": {
+    "File": "foto-kerusakan-printer {runId}.png",
+    "Source": "Damaged Photo",
+    "Asset": "Printer HP LaserJet M404 {runId}",
+    "Toast hapus": "Success, foto-kerusakan-printer {runId}.png has been deleted."
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-E2E-048-hapus-foto-file-manager-dep-file-manager"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r124",
+   "maks": {
+    "File": 120,
+    "Asset": 60,
+    "Toast hapus": 200
    }
   },
   {
@@ -10709,7 +11942,7 @@
     "Group": "Branch Surabaya",
     "Hierarki Group": "Branch Surabaya",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "null",
     "Last Holder tampil": "—",
     "Last Seen waktu": "2026-09-15T14:05:00Z",
@@ -11719,7 +12952,7 @@
    "data": "Opsi filter Source: nilai DISTINCT dari baris DU-051-6 sampai DU-051-8 dan DU-051-12 sampai DU-051-15",
    "asal": "awal",
    "nilai": {
-    "Source": "Borrow, Reported by holder, Stock opname, Transfer, Manual, Work order, Reconciliation"
+    "Source": "Borrow, Reported by holder, Audit, Transfer, Manual, Work order, Reconciliation"
    },
    "varian": [],
    "sumber": "turunan penulis",
@@ -11752,14 +12985,14 @@
   {
    "id": "DU-051-12",
    "jenis": "Missing Record",
-   "data": "Record Reported Disposal dengan Source Stock opname",
+   "data": "Record Reported Disposal dengan Source Audit",
    "asal": "awal",
    "nilai": {
     "Name": "Projector Epson EB-X06 - 7",
     "Asset ID": "PRJ-2026-0007",
     "Group": "Branch Surabaya",
     "Status": "Reported Disposal",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Last Holder": "null",
     "Last Seen": "2026-09-15T14:05:00Z · Agus P",
     "Reported By": "Agus Prasetyo",
@@ -12927,6 +14160,23 @@
    "maks": {}
   },
   {
+   "id": "DU-054-24",
+   "spec": [
+    "TC-FA-MISS-UI-054-dialog-report-missing"
+   ],
+   "jenis": "Kotak Dampak",
+   "data": "Kotak dampak satu transaksi Assignment pada satu aset",
+   "asal": "awal",
+   "nilai": {
+    "Assignment": "ASG-2026-0071"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.2.3#p2",
+   "maks": {}
+  },
+  {
    "id": "DU-055-1",
    "spec": [
     "TC-FA-MISS-UI-055-dialog-mark-as-found"
@@ -13942,6 +15192,30 @@
    "maks": {}
   },
   {
+   "id": "DU-058-5",
+   "spec": [
+    "TC-FA-MISS-UI-058-dialog-missing-log-klien"
+   ],
+   "jenis": "Missing Record",
+   "data": "Record Waiting for Confirmation yang sudah punya node Detected by scan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer HP LaserJet M404",
+    "Increment": "5",
+    "Asset ID": "PRN-2026-0005",
+    "Group": "Head Office",
+    "Status record": "Waiting for Confirmation",
+    "Last Holder": "Andi P",
+    "Reported By": "Andi P",
+    "Detected by scan": "08/11/26"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r113",
+   "maks": {}
+  },
+  {
    "id": "DU-059-1",
    "spec": [
     "TC-FA-MISS-UI-059-dialog-kecil"
@@ -14059,7 +15333,7 @@
     "TC-FA-MISS-BE-070-kelayakan-report-missing"
    ],
    "jenis": "Asset",
-   "data": "Aset layak lapor, tanpa pemegang, belum pernah terpindai, punya Work Order, jadwal maintenance, dan item sesi Stock Opname berjalan",
+   "data": "Aset layak lapor, tanpa pemegang, belum pernah terpindai, punya Work Order, jadwal maintenance, dan item sesi pemeriksaan aset berjalan",
    "asal": "awal",
    "nilai": {
     "Name": "Hand Pallet Truck {runId}",
@@ -14068,7 +15342,7 @@
     "Condition": "Normal",
     "Pemegang": "tidak ada",
     "Scan terakhir": "belum pernah terpindai",
-    "Transaksi lain berjalan": "Work Order berjalan, jadwal maintenance, dan item sesi Stock Opname berjalan",
+    "Transaksi lain berjalan": "Work Order berjalan, jadwal maintenance, dan item sesi pemeriksaan aset berjalan",
     "Activity Lock": "In Audit"
    },
    "jumlah": 1,
@@ -14750,6 +16024,237 @@
     "Name": 120,
     "Record History": 120,
     "Category": null
+   }
+  },
+  {
+   "id": "DU-070-30",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "User",
+   "data": "Staff Auditor tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Hendra Kusuma {runId}",
+    "Peran": "Staff Auditor tanpa hak Aktor Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-070-31",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Sesi Audit",
+   "data": "Sesi Audit milik Hendra yang memuat tiga aset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Ruang Server {runId}",
+    "Pemilik": "Hendra Kusuma {runId}",
+    "Aset": "Rak Server Dell {runId}, Switch Cisco Catalyst {runId}, UPS APC Smart {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r71",
+   "maks": {
+    "Name": 120,
+    "Pemilik": 120,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-070-32",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit, dilapor Staff Auditor",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rak Server Dell {runId}",
+    "Asset ID": "FA070-032",
+    "Group": "Server Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Sesi Audit": "Audit Ruang Server {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r71",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-070-33",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit, dilapor Total Control",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Switch Cisco Catalyst {runId}",
+    "Asset ID": "FA070-033",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Sesi Audit": "Audit Ruang Server {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r71",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-070-34",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit, dilapor Group Manager",
+   "asal": "awal",
+   "nilai": {
+    "Name": "UPS APC Smart {runId}",
+    "Asset ID": "FA070-034",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Sesi Audit": "Audit Ruang Server {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r71",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-070-35",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset di luar cakupan sesi Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Proyektor BenQ MW550 {runId}",
+    "Asset ID": "FA070-035",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Sesi Audit": "tidak termasuk dalam sesi Audit Audit Ruang Server {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r71",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-070-36",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dengan record Missing berjalan, Activity Lock In Audit, dan baris sesi pemeriksaan aset yang sudah final",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kabinet Besi Arsip {runId}",
+    "Asset ID": "FA070-036",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Record berjalan": "Missing",
+    "Activity Lock": "In Audit",
+    "Baris sesi pemeriksaan aset": "sudah final"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "PRD §1.2 MISS-LOGIC-04j",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-070-37",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset tanpa record Missing berjalan dengan baris Disposal Waiting for Approval berjenis Sell",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Generator Perkins 20kVA {runId}",
+    "Asset ID": "FA070-037",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Baris Disposal": "Waiting for Approval, jenis Sell"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-MISS-05.k4",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-070-38",
+   "spec": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "jenis": "Asset",
+   "data": "Aset tanpa record Missing berjalan yang tercantum dalam Draft Disposal berjenis Scrap",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kompresor Udara Swan {runId}",
+    "Asset ID": "FA070-038",
+    "Group": "Finance Room",
+    "Condition": "Normal",
+    "Pemegang": "tidak ada",
+    "Draft Disposal": "Scrap"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-070-kelayakan-report-missing"
+   ],
+   "varian": [],
+   "sumber": "PRD §9.2 F-MISS-05.k4",
+   "maks": {
+    "Name": 120
    }
   },
   {
@@ -15536,6 +17041,163 @@
    }
   },
   {
+   "id": "DU-071-31",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "User",
+   "data": "Staff Auditor tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sabrina Putri {runId}",
+    "Peran": "Staff Auditor tanpa hak Aktor Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-071-32",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "Asset",
+   "data": "Aset laporan Source Audit yang dibatalkan pelapor",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kabinet Server {runId}",
+    "Asset ID": "FA071-024",
+    "Condition": "Normal",
+    "TAG": "tanpa TAG",
+    "Record berjalan": "Waiting for Confirmation",
+    "Source": "Audit",
+    "Pelapor": "Sabrina Putri {runId}",
+    "Baris sesi Audit": "Pending"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Name": 120,
+    "Pelapor": 120,
+    "Baris sesi Audit": null
+   }
+  },
+  {
+   "id": "DU-071-33",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "Asset",
+   "data": "Aset laporan Source Audit yang lebih dulu dikonfirmasi Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Resepsionis {runId}",
+    "Asset ID": "FA071-025",
+    "Condition": "Normal",
+    "TAG": "tanpa TAG",
+    "Record berjalan": "Waiting for Confirmation",
+    "Source": "Audit",
+    "Pelapor": "Sabrina Putri {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Name": 120,
+    "Pelapor": 120
+   }
+  },
+  {
+   "id": "DU-071-34",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "Asset",
+   "data": "Aset yang dilaporkan langsung Missing oleh Total Control dari Task Detail Audit",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lemari Berkas Jati {runId}",
+    "Asset ID": "FA071-026",
+    "Condition": "Normal",
+    "TAG": "tanpa TAG",
+    "Record berjalan": "Missing",
+    "Source": "Audit"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-071-35",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "Sesi Audit",
+   "data": "Sesi Audit milik Sabrina yang memuat aset laporan",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang {runId}",
+    "Pemilik": "Sabrina Putri {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Name": 120,
+    "Pemilik": 120
+   }
+  },
+  {
+   "id": "DU-071-36",
+   "spec": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "jenis": "Asset",
+   "data": "Aset laporan Source Audit yang dipegang dengan baris Borrow terbuka, untuk Confirm yang menutup baris",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Server Rack Gudang {runId}",
+    "Asset ID": "FA071-027",
+    "Condition": "Normal",
+    "TAG": "tanpa TAG",
+    "Pemegang": "Joko Susilo {runId}",
+    "Baris transaksi": "berjalan berstatus Borrowed untuk Joko Susilo {runId}",
+    "Record berjalan": "Waiting for Confirmation",
+    "Source": "Audit",
+    "Pelapor": "Sabrina Putri {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-071-transisi-status-dan-konflik"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Name": 120,
+    "Pemegang": 120,
+    "Baris transaksi": null,
+    "Pelapor": 120
+   }
+  },
+  {
    "id": "DU-072-1",
    "spec": [
     "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
@@ -15820,11 +17482,11 @@
     "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
    ],
    "jenis": "User",
-   "data": "Pengguna pemilik sesi Stock Opname tanpa Manage asset & TAG dengan Update",
+   "data": "Pengguna Staff Auditor pemilik sesi Audit tanpa Manage asset & TAG dengan Update",
    "asal": "awal",
    "nilai": {
     "Name": "Yoga Pratama {runId}",
-    "Peran": "pemilik sesi Stock Opname tanpa Manage asset & TAG dengan Update",
+    "Peran": "Staff Auditor pemilik sesi Audit tanpa Manage asset & TAG dengan Update",
     "Cakupan": "aset dalam sesinya sendiri"
    },
    "jumlah": 1,
@@ -16301,14 +17963,14 @@
     "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
    ],
    "jenis": "Asset",
-   "data": "Aset dalam sesi Stock Opname milik Yoga Pratama",
+   "data": "Aset dalam sesi Audit milik Yoga Pratama",
    "asal": "awal",
    "nilai": {
     "Name": "Scanner Zebra DS2208 {runId}",
     "Asset ID": "FA072-013",
     "Group aset": "Finance Room",
     "Record berjalan": "tidak ada",
-    "Sesi Stock Opname": "milik Yoga Pratama {runId}"
+    "Sesi Audit": "milik Yoga Pratama {runId}"
    },
    "jumlah": 1,
    "mutasi": [
@@ -16318,7 +17980,7 @@
    "sumber": "PRD §4.1a Example Data",
    "maks": {
     "Name": 120,
-    "Sesi Stock Opname": 120
+    "Sesi Audit": 120
    }
   },
   {
@@ -16689,6 +18351,61 @@
    "sumber": "matriks role PRD",
    "maks": {
     "Name": 120
+   }
+  },
+  {
+   "id": "DU-072-50",
+   "spec": [
+    "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit milik Yoga, dilapor Total Control",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Rapat Kayu {runId}",
+    "Asset ID": "FA072-022",
+    "Group aset": "Finance Room",
+    "Record berjalan": "tidak ada",
+    "Sesi Audit": "milik Yoga Pratama {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
+   ],
+   "varian": [],
+   "sumber": "§2#b2",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-072-51",
+   "spec": [
+    "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
+   ],
+   "jenis": "Asset",
+   "data": "Aset pemegang tanpa akun dengan laporan menunggu konfirmasi yang dilaporkan PIC",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Vacuum Cleaner Industri {runId}",
+    "Asset ID": "FA072-023",
+    "Group aset": "Finance Room",
+    "Record berjalan": "Waiting for Confirmation, dilaporkan Sinta Maharani {runId} atas nama Budi Santoso {runId}",
+    "Pemegang": "Budi Santoso {runId}",
+    "PIC": "Sinta Maharani {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r121",
+   "maks": {
+    "Name": 120,
+    "Record berjalan": null,
+    "Pemegang": 120,
+    "PIC": 120
    }
   },
   {
@@ -17462,7 +19179,7 @@
    "asal": "awal",
    "nilai": {
     "Name": "Agus Pratama {runId}",
-    "Peran": "pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Stock Opname",
+    "Peran": "pengguna terautentikasi tanpa hak Aktor Missing dengan akses ke layar pemindai Handover, Return, Send Transfer, Receive Transfer, Disposal, Damage, Work Order, Report TAG, dan Audit",
     "Cakupan": "tanpa cakupan Group Missing"
    },
    "jumlah": 1,
@@ -17689,7 +19406,7 @@
     "TC-FA-MISS-BE-074-deteksi-scan"
    ],
    "jenis": "Asset",
-   "data": "Aset Missing yang tidak ditemukan di Stock Opname sebelumnya",
+   "data": "Aset Missing yang tidak ditemukan di Audit sebelumnya",
    "asal": "awal",
    "nilai": {
     "Name": "Monitor LG 27UL500 {runId}",
@@ -17842,8 +19559,8 @@
    "spec": [
     "TC-FA-MISS-BE-074-deteksi-scan"
    ],
-   "jenis": "Sesi Stock Opname",
-   "data": "Sesi Stock Opname berikutnya setelah aset ditandai Not found pada sesi sebelumnya",
+   "jenis": "Sesi Audit",
+   "data": "Sesi Audit berikutnya setelah aset ditandai Not found pada sesi sebelumnya",
    "asal": "awal",
    "nilai": {
     "Sesi sebelumnya": "Monitor LG 27UL500 {runId} berstatus Not found",
@@ -18500,6 +20217,7 @@
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Joko Susilo {runId}",
     "Pemegang": "Joko Susilo {runId}",
+    "Transaksi pemegang": "Borrow",
     "Baris transaksi": "terbuka dengan badge `Reported Missing`",
     "Condition sebelum laporan": "Damaged",
     "Damage record": "berjalan dan ditahan",
@@ -18532,6 +20250,7 @@
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Joko Susilo {runId}",
     "Pemegang": "Joko Susilo {runId}",
+    "Transaksi pemegang": "Borrow",
     "Condition sebelum laporan": "Damaged",
     "Damage record": "berjalan dan ditahan"
    },
@@ -18909,7 +20628,8 @@
     "Asset ID": "FA077-006",
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Joko Susilo {runId}",
-    "Pemegang": "Joko Susilo {runId}"
+    "Pemegang": "Joko Susilo {runId}",
+    "Transaksi pemegang": "Borrow"
    },
    "jumlah": 1,
    "mutasi": [
@@ -18938,7 +20658,8 @@
     "Asset ID": "FA077-007",
     "Group aset": "Finance Room",
     "Record berjalan": "Waiting for Confirmation, dilaporkan Joko Susilo {runId}",
-    "Pemegang": "Joko Susilo {runId}"
+    "Pemegang": "Joko Susilo {runId}",
+    "Transaksi pemegang": "Borrow"
    },
    "jumlah": 1,
    "mutasi": [
@@ -19457,16 +21178,112 @@
     "TC-FA-MISS-BE-077-log-dan-notifikasi"
    ],
    "jenis": "Laporan Disposal",
-   "data": "Jenis disposal Lost",
+   "data": "Jenis disposal Write-off",
    "asal": "dibuat",
    "nilai": {
-    "Jenis": "Lost"
+    "Jenis": "Write-off"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {}
+  },
+  {
+   "id": "DU-077-36",
+   "spec": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "jenis": "User",
+   "data": "Staff Auditor tanpa hak Aktor Missing",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sabrina Putri {runId}",
+    "Peran": "Staff Auditor tanpa hak Aktor Missing",
+    "Cakupan": "aset dalam sesinya sendiri"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-077-37",
+   "spec": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "jenis": "Sesi Audit",
+   "data": "Sesi Audit milik Sabrina",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Audit Gudang {runId}",
+    "Pemilik": "Sabrina Putri {runId}",
+    "Aset": "Kabinet Server {runId}, Meja Resepsionis {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r72",
+   "maks": {
+    "Name": 120,
+    "Pemilik": 120,
+    "Aset": null
+   }
+  },
+  {
+   "id": "DU-077-38",
+   "spec": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit, dilapor lalu dibatalkan Staff Auditor",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kabinet Server {runId}",
+    "Asset ID": "FA077-023",
+    "Group aset": "Finance Room",
+    "Record berjalan": "tidak ada",
+    "Sesi Audit": "Audit Gudang {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r72",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
+  },
+  {
+   "id": "DU-077-39",
+   "spec": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "jenis": "Asset",
+   "data": "Aset dalam sesi Audit, dilapor Total Control",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Resepsionis {runId}",
+    "Asset ID": "FA077-024",
+    "Group aset": "Finance Room",
+    "Record berjalan": "tidak ada",
+    "Sesi Audit": "Audit Gudang {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-077-log-dan-notifikasi"
+   ],
+   "varian": [],
+   "sumber": "§8.2#p21",
+   "maks": {
+    "Name": 120,
+    "Sesi Audit": 120
+   }
   },
   {
    "id": "DU-078-1",
@@ -19802,7 +21619,7 @@
     "Name tampil": "Monitor LG 27UL500 {runId} - 1",
     "Asset ID": "FA078-007",
     "Status": "Missing",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "TAG": "GPS",
     "Last Holder": "tidak ada",
     "Reported By": "Agus Pratama {runId}",
@@ -20563,8 +22380,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "state-entitas@missing:active",
-    "plan@missing:per-level:Full"
+    "state-entitas@missing:active"
    ],
    "sumber": "PRD §9.10",
    "maks": {
@@ -20634,8 +22450,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "plan@missing:per-tier:Starter",
-    "plan@missing:per-level:None"
+    "plan@missing:per-tier:Starter"
    ],
    "sumber": "PRD §9.10",
    "maks": {
@@ -20648,7 +22463,7 @@
     "TC-FA-MISS-BE-080-state-tenant-dan-plan"
    ],
    "jenis": "Client",
-   "data": "Client aktif pada plan Growth dengan level Disposal Basic",
+   "data": "Client aktif pada plan Growth dengan level Disposal Full",
    "asal": "awal",
    "nilai": {
     "Name": "Klien Growth Uji {runId}",
@@ -20657,9 +22472,7 @@
    },
    "jumlah": 1,
    "mutasi": [],
-   "varian": [
-    "plan@missing:per-level:Basic"
-   ],
+   "varian": [],
    "sumber": "PRD §9.10",
    "maks": {
     "Name": 120
@@ -21700,6 +23513,225 @@
    "mutasi": [],
    "varian": [],
    "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-49",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Client",
+   "data": "Client dengan Storage penuh (tanpa baris ledger Storage, berkuota 0)",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Klien Storage Penuh Uji {runId}",
+    "Plan": "Professional",
+    "Status": "Active",
+    "Storage": "client tanpa baris ledger Storage, dianggap berkuota 0"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r126",
+   "maks": {
+    "Name": 120
+   }
+  },
+  {
+   "id": "DU-080-50",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "User",
+   "data": "Total Control di client Storage penuh",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Dian Pratiwi {runId}",
+    "Peran": "Total Control",
+    "Client": "Klien Storage Penuh Uji {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": 120,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-51",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Missing, Mark as Found Normal dengan Photo baru",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Meja Arsip Jati {runId}",
+    "Asset ID": "FA080-601",
+    "Client": "Klien Storage Penuh Uji {runId}",
+    "Record berjalan": "Missing, dilaporkan admin client",
+    "Condition": "Normal",
+    "TAG terpasang": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": 120,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-52",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Missing, Mark as Found Normal tanpa Photo",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lemari Besi Arsip {runId}",
+    "Asset ID": "FA080-602",
+    "Client": "Klien Storage Penuh Uji {runId}",
+    "Record berjalan": "Missing, dilaporkan admin client",
+    "Condition": "Normal",
+    "TAG terpasang": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": 120,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-53",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Missing, Mark as Found Damaged dengan Damaged Photo baru",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rak Buku Jati {runId}",
+    "Asset ID": "FA080-603",
+    "Client": "Klien Storage Penuh Uji {runId}",
+    "Record berjalan": "Missing, dilaporkan admin client",
+    "Condition": "Normal",
+    "TAG terpasang": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "varian": [],
+   "sumber": "§9.10#p1",
+   "maks": {
+    "Name": 120,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-54",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Berkas",
+   "data": "Foto penemuan baru yang diunggah",
+   "asal": "dibuat",
+   "nilai": {
+    "Berkas": "foto-penemuan-080.jpg",
+    "Format": "JPG",
+    "Ukuran": "600 KB"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-080-55",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Asset",
+   "data": "Aset Missing di client Storage penuh untuk I found it dengan Photo baru",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Kursi Tamu Jati {runId}",
+    "Asset ID": "FA080-604",
+    "Client": "Klien Storage Penuh Uji {runId}",
+    "Record berjalan": "Missing, dilaporkan admin client",
+    "Condition": "Normal",
+    "TAG": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "varian": [],
+   "sumber": "§9.4.4#r27",
+   "maks": {
+    "Name": 120,
+    "Record berjalan": null,
+    "Client": 120
+   }
+  },
+  {
+   "id": "DU-080-56",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Berkas",
+   "data": "Berkas berformat tidak diterima untuk Photo / Damaged Photo",
+   "asal": "dibuat",
+   "nilai": {
+    "Berkas": "dokumen-080.pdf",
+    "Format": "PDF (tidak diterima)",
+    "Ukuran": "200 KB"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.4.2#r34",
+   "maks": {}
+  },
+  {
+   "id": "DU-080-57",
+   "spec": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "jenis": "Asset",
+   "data": "Aset asal Damaged + Missing di client Storage penuh",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Panel Surya Mini {runId}",
+    "Asset ID": "FA080-605",
+    "Client": "Klien Storage Penuh Uji {runId}",
+    "Record berjalan": "Missing, dilaporkan admin client",
+    "Condition sebelum laporan": "Damaged",
+    "Damage record": "berjalan dan ditahan",
+    "TAG terpasang": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MISS-BE-080-state-tenant-dan-plan"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r34",
    "maks": {
     "Name": 120,
     "Client": 120

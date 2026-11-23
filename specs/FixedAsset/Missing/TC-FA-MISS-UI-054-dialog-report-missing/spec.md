@@ -5,16 +5,16 @@ layer: ui-client
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.2.3#p1, §4.2.3#p2, §4.2.3#b1, §4.2.3#b2, §4.2.3#b4, §4.2.3#b5, §4.2.4#r12, §4.2.4#r13, §4.2.4#r14, §4.2.4#r15, §4.2.4#r16, §9.9#r1, §6#r14, §7.2#r1, §7.2#r14, §7.2#p1, §7.3#r5, §7.3#r6, §9.2#b4, §9.2#b6, §9.2#b7, §9.2#b15, §9.4.2#r1, §9.4.2#r2, §9.4.4#r3, §9.6#r1, §4.1#r5, §4.1#p1, §1.2#r15, §4.3#r1, EB-FRM-1@report-missing, EB-FRM-2@report-missing, EB-FRM-4@report-missing, EB-FRM-7@report-missing, EB-FB-1@report-missing, EB-FB-1@report-missing-pemegang, EB-FB-4, EB-ERR-1@report-missing, EB-FB-2@cancel-report-missing]
+sourceRules: [§4.2.3#p1, §4.2.3#p2, §4.2.3#b1, §4.2.3#b2, §4.2.3#b4, §4.2.3#b5, §4.2.4#r12, §4.2.4#r13, §4.2.4#r14, §4.2.4#r15, §4.2.4#r16, §9.9#r1, §6#r14, §7.2#r1, §7.2#r14, §7.2#p1, §7.3#r5, §7.3#r6, §9.2#b4, §9.2#b6, §9.2#b7, §9.2#b15, §9.4.2#r1, §9.4.2#r2, §9.4.4#r3, §9.6#r1, §4.1#r5, §4.1#p1, §1.2#r16, §4.3#r1, EB-FRM-1@report-missing, EB-FRM-2@report-missing, EB-FRM-4@report-missing, EB-FRM-7@report-missing, EB-FB-1@report-missing, EB-FB-1@report-missing-pemegang, EB-FB-4, EB-ERR-1@report-missing, EB-FB-2@cancel-report-missing]
 smoke: []
 dependsOn: []
 trace:
   §4.2.3#p1: 3
-  §4.2.3#p2: [2, 5, 6, 7, 8, 9, 12, 13, 14, 15, 18, 19, 20, 21, 24, 28, 188, 189, 191, 193, 195, 197, 214]
+  §4.2.3#p2: [2, 5, 6, 7, 8, 9, 12, 13, 14, 15, 18, 19, 20, 21, 24, 28, 188, 189, 191, 193, 195, 197, 214, 216]
   §4.2.3#b1: [34, 37, 39, 128, 131, 132, 133, 134, 135, 136, 137, 138, 142, 143, 144, 145, 195, 196, 197, 198]
   §4.2.3#b2: [132, 133]
   §4.2.3#b4: [30, 32]
-  §4.2.3#b5: [15, 16, 24, 25]
+  §4.2.3#b5: [15, 16, 24, 25, 216, 217]
   §4.2.4#r12: [30, 32]
   §4.2.4#r13: [18, 195, 197, 198]
   §4.2.4#r14: [34, 37, 40]
@@ -37,7 +37,7 @@ trace:
   §9.6#r1: [161, 162, 200, 203, 204, 205, 206]
   §4.1#r5: 4
   §4.1#p1: 3
-  §1.2#r15: [149, 150]
+  §1.2#r16: [149, 150]
   §4.3#r1: [183, 184, 186]
   EB-FRM-1@report-missing: [103, 104, 107]
   EB-FRM-2@report-missing: [62, 65, 69, 71, 72, 74, 77, 81, 83, 86]
@@ -72,6 +72,7 @@ coverage:
   - DU-054-11: Jumlah record Waiting for Confirmation dan Missing `0`.
   - DU-054-12: Jumlah record Waiting for Confirmation dan Missing `2`.
   - DU-054-23: Aset DU-054-2 dengan Borrow `BRW-2026-0150`; aset DU-054-6 dengan Borrow `BRW-2026-0155`. Baris yang diharapkan `Camera Canon EOS in BRW-2026-0155 will be closed as missing.`, dari Asset Name `Camera Canon EOS` dan Borrow `BRW-2026-0155`. Baris Borrow yang tidak boleh tampil adalah `Laptop Dell Latitude 5420 in BRW-2026-0150 will be closed as missing.`, dari Asset Name `Laptop Dell Latitude 5420` dan Borrow `BRW-2026-0150`.
+  - DU-054-24: Kotak dampak dengan Assignment `ASG-2026-0071` pada aset DU-054-2; baris yang diharapkan `Laptop Dell Latitude 5420 in ASG-2026-0071 will be closed as missing.`, dari Asset Name `Laptop Dell Latitude 5420` dan Assignment `ASG-2026-0071`.
   - Joko S adalah pemegang aset tanpa hak Aktor Missing; Andi P dan Sari D adalah pemegang aset; Rina W adalah Aktor Missing pada Group aset yang melapor lebih dulu.
 - Kondisi:
   - K1: dialog dibuka oleh Pelapor admin untuk aset DU-054-1 dengan kotak dampak DU-054-8; simpan berhasil.
@@ -94,6 +95,7 @@ coverage:
   - K18: halaman Assets menerima jumlah record Waiting for Confirmation dan Missing dari DU-054-12.
   - K19: dialog dibuka oleh Pelapor admin untuk aset DU-054-6 dan DU-054-2; DU-054-2 sudah punya record berjalan dengan Borrow dari DU-054-23, sedangkan DU-054-6 layak dengan Borrow dari DU-054-23.
   - K20: halaman Assets menampilkan aset DU-054-1 terpilih; dialog dibuka oleh Pelapor admin untuk aset itu; simpan gagal karena error server.
+  - K21: dialog dibuka oleh Pelapor admin untuk aset DU-054-2 dengan kotak dampak DU-054-24.
 
 ## Test Steps
 
@@ -380,5 +382,10 @@ coverage:
 ### Kotak dampak memuat satu baris per aset yang barisnya ditutup
 213. Tampilkan Dialog Report Missing dengan kondisi K2
 214. Verifikasi kotak dampak memuat baris `Monitor LG 27UL500 in BRW-2026-0153 will be closed as missing.`
+
+### Kotak dampak memuat baris penutupan Assignment
+215. Tampilkan Dialog Report Missing dengan kondisi K21
+216. Verifikasi kotak dampak memuat baris `Laptop Dell Latitude 5420 in ASG-2026-0071 will be closed as missing.`
+217. Verifikasi kotak dampak memuat baris `Andi P and the asset admins will be notified.`
 
 [^drift-1]: Drift foundation vs kontrak komponen. PRD tidak menyatakan durasi toast; ekspektasi baku EB-FB-4: «Toast error bertahan sampai ditutup». foundation `toast-copy.md` Aturan Terkunci #12: «Auto-dismiss: Success 4 detik; Error persists sampai di-dismiss manual.»; kontrak `Toast#2`: «Every severity (`info`, `success`, `warning`, `danger`) auto-dismisses the same way; no severity persists on its own.» Diasersi: kontrak, sehingga toast error ikut hilang sendiri sesudah 4000 ms dan hilang dari halaman sesudah animasi keluar 200 ms (`Toast#10`) (SB-7).

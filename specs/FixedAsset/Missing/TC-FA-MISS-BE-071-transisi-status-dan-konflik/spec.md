@@ -6,24 +6,24 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [§1.2#r17, §1.2#r18, §1.2#r19, §1.2#r20, §1.2#r21, §1.2#r22, §1.2#r101, §1.2#r102, §1.2#r61, §1.2#r62, §1.2#r99, §1.2#r100, §1.2#r66, §1.2#r58, §9.2#r1, §9.2#r2, §9.2#r3, §9.2#r4, §9.2#r5, §9.2#r6, §9.2#r7, §9.2#r8, §9.2#p2, §6#r2, §6#r3, §6#r10, §9.2#b20, §9.4.2#r28, §9.4.2#r22, §9.4.2#r12, §9.4.3#b4, §9.4.3#b5, §9.6#r2, §9.6#r3, §9.6#r4, §9.6#r5, §9.6#r7, §9.6#p2, §9.4.4#r7, §9.4.4#r15, §9.4.4#r20, §9.4.1#r7, §9.2#b34, §10#r4, §10#r5, EB-CON-3, EB-EDG-1, §4.2.4#p13, §9.2#b28, §9.2#b29]
+sourceRules: [§1.2#r18, §1.2#r19, §1.2#r20, §1.2#r21, §1.2#r22, §1.2#r23, §1.2#r104, §1.2#r105, §1.2#r62, §1.2#r63, §1.2#r102, §1.2#r103, §1.2#r67, §1.2#r59, §9.2#r1, §9.2#r2, §9.2#r3, §9.2#r4, §9.2#r5, §9.2#r6, §9.2#r7, §9.2#r8, §9.2#p2, §6#r2, §6#r3, §6#r10, §9.2#b20, §9.4.2#r28, §9.4.2#r22, §9.4.2#r12, §9.4.3#b4, §9.4.3#b5, §9.6#r2, §9.6#r3, §9.6#r4, §9.6#r5, §9.6#r7, §9.6#p2, §9.4.4#r7, §9.4.4#r17, §9.4.4#r22, §9.4.1#r7, §9.2#b36, §10#r4, §10#r5, EB-CON-3, EB-EDG-1, §4.2.4#p14, §9.2#b30, §9.2#b31, §9.4.2#r38, §9.2#b37, §1.2#r71, §3#p4, §9.4.2#r11, §9.4.2#r37]
 smoke: []
 dependsOn: []
 trace:
-  §1.2#r17: [2, 11, 19, 47, 53]
-  §1.2#r18: 25
-  §1.2#r19: 29
-  §1.2#r20: [15, 65]
-  §1.2#r21: [57, 59, 61, 63]
-  §1.2#r22: 2
-  §1.2#r101: [67, 69, 71]
-  §1.2#r102: 23
-  §1.2#r61: 75
-  §1.2#r62: 76
-  §1.2#r99: [15, 49]
-  §1.2#r100: 47
-  §1.2#r66: [81, 83]
-  §1.2#r58: [4, 44]
+  §1.2#r18: [2, 11, 19, 47, 53]
+  §1.2#r19: 25
+  §1.2#r20: 29
+  §1.2#r21: [15, 65]
+  §1.2#r22: [57, 59, 61, 63]
+  §1.2#r23: 2
+  §1.2#r104: [67, 69, 71]
+  §1.2#r105: 23
+  §1.2#r62: 75
+  §1.2#r63: 76
+  §1.2#r102: [15, 49]
+  §1.2#r103: 47
+  §1.2#r67: [81, 83]
+  §1.2#r59: [4, 44]
   §9.2#r1: [2, 33]
   §9.2#r2: [2, 57, 65]
   §9.2#r3: 11
@@ -49,23 +49,29 @@ trace:
   §9.6#r7: [29, 31, 44]
   §9.6#p2: [35, 38]
   §9.4.4#r7: [35, 41]
-  §9.4.4#r15: [16, 17]
-  §9.4.4#r20: 76
+  §9.4.4#r17: [16, 17]
+  §9.4.4#r22: 76
   §9.4.1#r7: 33
-  §9.2#b34: 75
+  §9.2#b36: 75
   §10#r4: [53, 77]
   §10#r5: [85, 86]
   EB-CON-3: [35, 38, 41, 44, 49]
   EB-EDG-1: [67, 69, 71, 73, 88, 90, 92, 94]
-  §4.2.4#p13: [35, 55]
-  §9.2#b28: [11, 15, 57, 65]
-  §9.2#b29: [15, 49, 79]
+  §4.2.4#p14: [35, 55, 103]
+  §9.2#b30: [11, 15, 57, 65]
+  §9.2#b31: [15, 49, 79]
+  §9.4.2#r38: [98, 99, 100, 103, 105]
+  §9.2#b37: [98, 99, 105]
+  §1.2#r71: [107, 108, 109]
+  §9.4.2#r37: [107, 108, 109]
+  §3#p4: [25, 29, 33, 107]
+  §9.4.2#r11: [57, 59, 65, 110]
 ---
 
 # Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, dan record selesai tidak dibuka ulang
 
 ## Prerequisites
-- Aktor: Rina W, Total Control dengan cakupan seluruh client dan Aktor Disposal; `Bambang Wijaya {runId}` (DU-071-1), Total Control dengan cakupan seluruh client dan Aktor Disposal; `Joko Susilo {runId}` (DU-071-2), pemegang tanpa hak Aktor Missing; approver Disposal dan job sistem hanya sebagai pemicu keadaan.
+- Aktor: Rina W, Total Control dengan cakupan seluruh client dan Aktor Disposal; `Bambang Wijaya {runId}` (DU-071-1), Total Control dengan cakupan seluruh client dan Aktor Disposal; `Joko Susilo {runId}` (DU-071-2), pemegang tanpa hak Aktor Missing; `Sabrina Putri {runId}` (DU-071-31), Staff Auditor tanpa hak Aktor Missing; approver Disposal dan job sistem hanya sebagai pemicu keadaan.
 - Data:
   - DU-071-1: User Name `Bambang Wijaya {runId}`, Peran `Total Control`.
   - DU-071-2: User Name `Joko Susilo {runId}`, Peran `pemegang tanpa hak Aktor Missing`.
@@ -92,6 +98,12 @@ trace:
   - DU-071-23: Asset Name `Lemari Arsip Besi {runId}`, Asset ID `FA071-021`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Rejected`.
   - DU-071-24: Asset Name `Kipas Angin Standing {runId}`, Asset ID `FA071-022`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Canceled`.
   - DU-071-30: Asset Name `Kulkas Pendingin {runId}`, Asset ID `FA071-023`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
+  - DU-071-31: User Name `Sabrina Putri {runId}`, Peran `Staff Auditor tanpa hak Aktor Missing`.
+  - DU-071-32: Asset Name `Kabinet Server {runId}`, Asset ID `FA071-024`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`, baris pada sesi `Audit Gudang {runId}` semula `Pending`.
+  - DU-071-33: Asset Name `Meja Resepsionis {runId}`, Asset ID `FA071-025`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`.
+  - DU-071-34: Asset Name `Lemari Berkas Jati {runId}`, Asset ID `FA071-026`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Missing`, Source `Audit`, dilaporkan langsung `Missing` oleh Rina W.
+  - DU-071-36: Asset Name `Server Rack Gudang {runId}`, Asset ID `FA071-027`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}` dengan baris transaksi berjalan berstatus `Borrowed`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`.
+  - DU-071-35: Sesi Audit `Audit Gudang {runId}` milik `Sabrina Putri {runId}`, memuat aset DU-071-32, DU-071-33, dan DU-071-34.
 - Kondisi:
   - Long missing after bernilai `30`
 
@@ -123,13 +135,13 @@ trace:
 
 ### Laporan pemegang yang ditolak selesai sebagai Rejected
 24. Rina W menjalankan Reject atas record `Laptop Dell Latitude 5420 {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
-25. Verifikasi record `Laptop Dell Latitude 5420 {runId}` berstatus `Rejected` dan status global aset kembali seperti sebelum laporan, tidak lagi Missing
+25. Verifikasi record `Laptop Dell Latitude 5420 {runId}` berstatus `Rejected` dan status global aset dihitung ulang dari state aset terkini, tidak lagi Missing
 26. Rina W mengirim ulang Reject atas record `Laptop Dell Latitude 5420 {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
 27. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06` dan record `Laptop Dell Latitude 5420 {runId}` tetap `Rejected`
 
 ### Laporan pemegang yang dibatalkan pelapornya selesai sebagai Canceled
 28. `Joko Susilo {runId}` menjalankan Cancel Report atas record `Scanner Zebra DS2208 {runId}`
-29. Verifikasi record `Scanner Zebra DS2208 {runId}` berstatus `Canceled` dan status global aset kembali seperti sebelum laporan, tidak lagi Missing
+29. Verifikasi record `Scanner Zebra DS2208 {runId}` berstatus `Canceled` dan status global aset dihitung ulang dari state aset terkini, tidak lagi Missing
 30. `Joko Susilo {runId}` mengirim ulang Cancel Report atas record `Scanner Zebra DS2208 {runId}`
 31. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06` dan record `Scanner Zebra DS2208 {runId}` tetap `Canceled`
 
@@ -155,7 +167,7 @@ trace:
 44. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut Rina W sebagai pengubah, record `Projector Epson EB-X06 {runId}` tetap `Missing`, dan status global aset tetap Missing
 
 ### Dispose mendahului Cancel Disposal Report
-45. `Bambang Wijaya {runId}` menjalankan Dispose atas laporan disposal `Toyota Innova {runId}` dengan jenis `Lost`
+45. `Bambang Wijaya {runId}` menjalankan Dispose atas laporan disposal `Toyota Innova {runId}` dengan jenis `Write-off`
 46. `Bambang Wijaya {runId}` menjalankan Submit Request atas laporan disposal `Toyota Innova {runId}`
 47. Verifikasi record `Toyota Innova {runId}` berstatus `In Disposal Process` dengan Condition aset `In Disposal Process` dan Custody `Available`
 48. Rina W menjalankan Cancel Disposal Report atas record `Toyota Innova {runId}` dari tampilan yang masih memuat status lama
@@ -225,3 +237,23 @@ trace:
 ### Confirm mencatat status record dan status global aset bersama
 95. Rina W menjalankan Confirm atas record `Kulkas Pendingin {runId}`
 96. Verifikasi aksi itu atomik: record `Missing` dan status global aset Missing tercatat bersama, tanpa salah satunya saja
+
+### Pelapor sesi pemeriksaan membatalkan laporannya sebelum dikonfirmasi
+97. `Sabrina Putri {runId}` menjalankan Cancel Report atas record `Kabinet Server {runId}` dari Task Detail sesi `Audit Gudang {runId}`
+98. Verifikasi record `Kabinet Server {runId}` berstatus `Canceled`
+99. Verifikasi status global aset `Kabinet Server {runId}` dihitung ulang dari state aset terkini, tidak lagi Missing
+100. Verifikasi baris aset `Kabinet Server {runId}` pada sesi `Audit Gudang {runId}` kembali `Pending`
+101. Rina W menjalankan Confirm atas record `Meja Resepsionis {runId}`
+102. `Sabrina Putri {runId}` menjalankan Cancel Report atas record `Meja Resepsionis {runId}` dari tampilan yang masih memuat status lama
+103. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut Rina W sebagai pengubah, record `Meja Resepsionis {runId}` tetap `Missing`, dan tidak berubah menjadi `Canceled`
+104. Rina W menjalankan Cancel Report atas record `Lemari Berkas Jati {runId}` yang ia laporkan langsung `Missing`
+105. Verifikasi aksi itu ditolak dan record `Lemari Berkas Jati {runId}` tetap `Missing`
+
+### Confirm atas laporan Source Audit dari aset yang dipegang menjalankan penutupan baris transaksi
+106. Rina W menjalankan Confirm atas record `Server Rack Gudang {runId}`
+107. Verifikasi record `Server Rack Gudang {runId}` berstatus `Missing` dan status global aset Missing
+108. Verifikasi baris transaksi berjalan atas aset `Server Rack Gudang {runId}` ditutup sebagai `Returned` dengan marker `Missing`
+109. Verifikasi record `Server Rack Gudang {runId}` mencatat `Joko Susilo {runId}` sebagai Last holder
+
+### Decline Report mencatat node penolakan
+110. Verifikasi record `Laptop Lenovo ThinkPad T14 {runId}` memuat node `Disposal report declined by` oleh Aktor Disposal

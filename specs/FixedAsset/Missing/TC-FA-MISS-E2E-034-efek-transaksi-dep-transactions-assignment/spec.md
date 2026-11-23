@@ -5,17 +5,21 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r42", "§9.4.2#r4", "§11#r5", "§9.7#r1", "§9.2#b32", "§4.2.3#b5", "§9.4.2#r6"]
+sourceRules: ["§1.2#r43", "§9.4.2#r4", "§11#r5", "§9.7#r1", "§9.2#b34", "§4.2.3#b5", "§9.4.2#r6", "§2#b2", "§2.1#b2", "§4.8#b1", "§4.8#r2"]
 smoke: []
 dependsOn: ["Assignment: halaman Assignment > aksi Report Missing", "Assignment: Draft"]
 trace:
-  "§1.2#r42": [8]
+  "§1.2#r43": [8]
   "§9.4.2#r4": [18, 19, 21, 48, 50]
   "§11#r5": [3, 8, 15, 36]
   "§9.7#r1": [8, 15, 36, 57, 60]
-  "§9.2#b32": [24]
+  "§9.2#b34": [24]
   "§4.2.3#b5": [5, 12, 29, 43]
   "§9.4.2#r6": [60]
+  "§2#b2": [3, 8]
+  "§2.1#b2": 3
+  "§4.8#b1": 3
+  "§4.8#r2": 3
 anchor: [28, 42, 47]
 coverage:
   web: automated

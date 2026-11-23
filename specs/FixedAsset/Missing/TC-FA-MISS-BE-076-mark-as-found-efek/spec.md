@@ -6,51 +6,51 @@ priority: Critical
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: [§1.2#r36, §1.2#r37, §1.2#r38, §1.2#r28, §1.2#r29, §1.2#r30, §1.2#r32, §1.2#r33, §1.2#r49, §1.2#r50, §1.2#r57, §1.2#r64, §1.2#r65, §1.2#r66, §1.2#r68, §1.2#r76, §1.2#r78, §1.2#r80, §1.2#r81, §1.2#r82, §1.2#r83, §1.2#r84, §1.2#r85, §1.2#r87, §1.2#r88, §1.2#r89, §1.2#r90, §1.2#r91, §1.2#r92, §9.2#b24, §9.2#b25, §9.2#b26, §9.4.2#r5, §9.4.2#r8, §9.4.2#r10, §9.4.2#r23, §9.4.2#r33, §9.4.2#r7, §9.4.4#r10, §9.4.4#r11, §9.4.4#r12, §9.6#r4, §9.7#r3, §9.7#r4, §9.7#r8, §9.2#r5, §9.2#r7, §9.2#r8, §7.3#r8, §9.4.3#b2, §9.2#b33, §9.4.4#r19, §9.5#r8, §9.9#r3, §4.2.4#p6]
+sourceRules: [§1.2#r37, §1.2#r38, §1.2#r39, §1.2#r29, §1.2#r30, §1.2#r31, §1.2#r33, §1.2#r34, §1.2#r50, §1.2#r51, §1.2#r58, §1.2#r65, §1.2#r66, §1.2#r67, §1.2#r69, §1.2#r79, §1.2#r81, §1.2#r83, §1.2#r84, §1.2#r85, §1.2#r86, §1.2#r87, §1.2#r88, §1.2#r90, §1.2#r91, §1.2#r92, §1.2#r93, §1.2#r94, §1.2#r95, §9.2#b25, §9.2#b26, §9.2#b27, §9.4.2#r5, §9.4.2#r8, §9.4.2#r10, §9.4.2#r23, §9.4.2#r33, §9.4.2#r7, §9.4.4#r11, §9.4.4#r12, §9.4.4#r13, §9.6#r4, §9.7#r3, §9.7#r4, §9.7#r8, §9.2#r5, §9.2#r7, §9.2#r8, §7.3#r8, §9.4.3#b2, §9.2#b35, §9.4.4#r21, §9.5#r8, §9.9#r3, §4.2.4#p7, §3#p8]
 smoke: []
 dependsOn: []
 trace:
-  §1.2#r36: [5, 32]
-  §1.2#r37: [6, 17, 22]
-  §1.2#r38: 6
-  §1.2#r28: 36
-  §1.2#r29: 21
-  §1.2#r30: 3
-  §1.2#r32: 2
+  §1.2#r37: [5, 32]
+  §1.2#r38: [6, 17, 22]
+  §1.2#r39: 6
+  §1.2#r29: 36
+  §1.2#r30: 21
+  §1.2#r31: 3
   §1.2#r33: 2
-  §1.2#r49: [10, 44]
+  §1.2#r34: 2
   §1.2#r50: [10, 44]
-  §1.2#r57: 51
-  §1.2#r64: [47, 52]
-  §1.2#r65: 48
-  §1.2#r66: 54
-  §1.2#r68: [13, 16]
-  §1.2#r76: 21
-  §1.2#r78: 30
-  §1.2#r80: 38
-  §1.2#r81: 5
-  §1.2#r82: [21, 26]
-  §1.2#r83: [22, 26]
-  §1.2#r84: [33, 34, 40]
-  §1.2#r85: 33
-  §1.2#r87: 41
-  §1.2#r88: 42
-  §1.2#r89: 8
-  §1.2#r90: 7
-  §1.2#r91: 7
-  §1.2#r92: 7
-  §9.2#b24: [9, 23]
-  §9.2#b25: [5, 35, 40]
-  §9.2#b26: [15, 16]
+  §1.2#r51: [10, 44]
+  §1.2#r58: 51
+  §1.2#r65: [47, 52]
+  §1.2#r66: 48
+  §1.2#r67: 54
+  §1.2#r69: [13, 16]
+  §1.2#r79: 21
+  §1.2#r81: 30
+  §1.2#r83: 38
+  §1.2#r84: 5
+  §1.2#r85: [21, 26]
+  §1.2#r86: [22, 26]
+  §1.2#r87: [33, 34, 40]
+  §1.2#r88: 33
+  §1.2#r90: 41
+  §1.2#r91: 42
+  §1.2#r92: 8
+  §1.2#r93: 7
+  §1.2#r94: 7
+  §1.2#r95: 7
+  §9.2#b25: [9, 23]
+  §9.2#b26: [5, 35, 40]
+  §9.2#b27: [15, 16]
   §9.4.2#r5: [15, 16]
   §9.4.2#r8: [7, 8]
   §9.4.2#r10: [32, 33]
   §9.4.2#r23: 21
   §9.4.2#r33: [38, 40, 43]
   §9.4.2#r7: [46, 49]
-  §9.4.4#r10: [23, 26]
-  §9.4.4#r11: [8, 12, 32]
-  §9.4.4#r12: 16
+  §9.4.4#r11: [23, 26]
+  §9.4.4#r12: [8, 12, 32]
+  §9.4.4#r13: 16
   §9.6#r4: [11, 35]
   §9.7#r3: [46, 49]
   §9.7#r4: [12, 16]
@@ -60,11 +60,12 @@ trace:
   §9.2#r8: 51
   §7.3#r8: [6, 17, 22, 34, 43]
   §9.4.3#b2: 13
-  §9.2#b33: [49, 56]
-  §9.4.4#r19: [49, 56]
+  §9.2#b35: [49, 56, 46]
+  §9.4.4#r21: [49, 56]
   §9.5#r8: 18
   §9.9#r3: [7, 58]
-  §4.2.4#p6: [58, 60]
+  §4.2.4#p7: [58, 60]
+  §3#p8: [33, 40]
 ---
 
 # Server: hasil Mark as Found per Asset Status, asal Damaged + Missing, TAG Reported, Found at hanya data, pemulihan Condition pada Reject dan Cancel
@@ -82,8 +83,8 @@ trace:
   - DU-076-8: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA076-005`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `QR-076-0004`.
   - DU-076-9: Asset Name `Toyota Innova {runId}`, Asset ID `FA076-006`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `tidak ada`.
   - DU-076-10: Asset Name `Genset Honda EU22 {runId}`, Asset ID `FA076-007`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Damaged`, TAG terpasang `tidak ada`, Damage record `berjalan dan ditahan`, Work Order `berjalan`.
-  - DU-076-11: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA076-008`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Baris transaksi `terbuka` dengan badge `Reported Missing`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`, Tagging `Tag Reported`, Activity Lock `In Audit`.
-  - DU-076-12: Asset Name `Kamera Sony A7 {runId}`, Asset ID `FA076-009`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`.
+  - DU-076-11: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA076-008`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Transaksi pemegang `Borrow`, Baris transaksi `terbuka` dengan badge `Reported Missing`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`, Tagging `Tag Reported`, Activity Lock `In Audit`.
+  - DU-076-12: Asset Name `Kamera Sony A7 {runId}`, Asset ID `FA076-009`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Transaksi pemegang `Borrow`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`.
   - DU-076-13: Asset Name `Brankas Besi {runId}`, Asset ID `FA076-010`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Damaged, tidak lagi dapat dipulihkan`.
   - DU-076-14: Asset Name `Scanner Zebra DS2208 {runId}`, Asset ID `FA076-011`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Joko Susilo {runId}`, Pemegang `Joko Susilo {runId}`, Condition sebelum laporan `Normal`.
   - DU-076-15: Asset Name `Kursi Ergonomis {runId}`, Asset ID `FA076-012`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Rina W`, Condition sebelum laporan `Normal`, TAG terpasang `tidak ada`.
@@ -150,12 +151,12 @@ trace:
 
 ### Reject dan Cancel Report memulihkan Condition dan status global aset
 45. Rina W mengirim Reject atas record `Tablet Samsung Tab A8 {runId}` dengan Reason `Aset terlihat di ruang kerja pemegang`
-46. Verifikasi record `Tablet Samsung Tab A8 {runId}` berstatus `Rejected` dan status global aset kembali seperti sebelum laporan, dan badge `Reported Missing` pada baris transaksi aset hilang
+46. Verifikasi record `Tablet Samsung Tab A8 {runId}` berstatus `Rejected` dan status global aset dihitung ulang dari state aset terkini menjadi `Borrowed` karena aset masih dipegang `Joko Susilo {runId}`, dan badge `Reported Missing` pada baris transaksi aset hilang
 47. Verifikasi Condition aset `Tablet Samsung Tab A8 {runId}` dipulihkan menjadi `Damaged` dan Damage record aktif kembali
 48. Verifikasi Tagging `Tag Reported`, Activity Lock `In Audit`, dan Custody aset `Tablet Samsung Tab A8 {runId}` tidak berubah oleh Reject
 49. Verifikasi `Joko Susilo {runId}` menerima notifikasi `missing_holder_resolved` berisi Reason itu, dan node `Report rejected by` memuat Reason yang sama
 50. `Joko Susilo {runId}` mengirim Cancel Report atas record `Kamera Sony A7 {runId}`
-51. Verifikasi record `Kamera Sony A7 {runId}` berstatus `Canceled` dan status global aset kembali seperti sebelum laporan
+51. Verifikasi record `Kamera Sony A7 {runId}` berstatus `Canceled` dan status global aset dihitung ulang dari state aset terkini menjadi `Borrowed` karena aset masih dipegang `Joko Susilo {runId}`
 52. Verifikasi Condition aset `Kamera Sony A7 {runId}` dipulihkan menjadi `Damaged` dan Damage record aktif kembali
 
 ### Condition tersimpan yang tidak dapat dipulihkan menolak Reject

@@ -5,14 +5,18 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r43", "§11#r6", "§9.7#r1", "§4.2.3#b5"]
+sourceRules: ["§1.2#r44", "§11#r6", "§9.7#r1", "§4.2.3#b5", "§2#b2", "§2.1#b2", "§4.8#b1", "§4.8#r2"]
 smoke: []
 dependsOn: ["Transfer: halaman Transfer > aksi Report Missing"]
 trace:
-  "§1.2#r43": [10]
+  "§1.2#r44": [10]
   "§11#r6": [3, 10]
   "§9.7#r1": [9, 10]
   "§4.2.3#b5": [5, 6]
+  "§2#b2": [3, 10]
+  "§2.1#b2": 3
+  "§4.8#b1": 3
+  "§4.8#r2": 3
 anchor: []
 coverage:
   web: automated

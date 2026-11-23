@@ -5,17 +5,17 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.2.4#p7, §4.2.4#p10, §4.2.4#p13, §7.2#r3, §7.2#r6, §7.2#r9, §7.2#r18, §7.3#r11, §6#r10, §4.2.4#r23, §4.1#r7, §4.1#r10, §7.3#r2, §7.3#r3, EB-FB-1@cancel-report, EB-ERR-1@cancel-report]
+sourceRules: [§4.2.4#p8, §4.2.4#p11, §4.2.4#p14, §7.2#r3, §7.2#r6, §7.2#r9, §7.2#r18, §7.3#r11, §6#r10, §4.2.4#r23, §4.1#r7, §4.1#r10, §7.3#r2, §7.3#r3, EB-FB-1@cancel-report, EB-ERR-1@cancel-report, §9.6#r7]
 smoke: []
 dependsOn: []
 trace:
-  §4.2.4#p7: [2, 3, 4, 5, 12]
-  §4.2.4#p10: [40, 41, 42, 44, 47, 50, 53, 56, 59]
-  §4.2.4#p13: [29, 30, 33, 35, 37, 38, 62, 64, 65]
+  §4.2.4#p8: [2, 3, 4, 5, 12, 67]
+  §4.2.4#p11: [40, 41, 42, 44, 47, 50, 53, 56, 59]
+  §4.2.4#p14: [29, 30, 33, 35, 37, 38, 62, 64, 65, 69, 70]
   §7.2#r3: [2, 3, 4, 5]
   §7.2#r6: [40, 41, 42, 46, 47, 49, 50, 52, 53, 55, 56, 58, 59]
   §7.2#r9: [28, 29, 30, 32, 33, 35]
-  §7.2#r18: [8, 28, 29]
+  §7.2#r18: [8, 28, 29, 69]
   §7.3#r11: [8, 15]
   §6#r10: [28, 29]
   §4.2.4#r23: [37, 38, 64, 65]
@@ -25,6 +25,7 @@ trace:
   §7.3#r3: 2
   EB-FB-1@cancel-report: [8, 9, 15]
   EB-ERR-1@cancel-report: [15, 16, 17, 19, 20, 23, 24, 25]
+  §9.6#r7: [8, 15, 28]
 anchor: []
 coverage:
   web: automated
@@ -32,8 +33,8 @@ coverage:
 # Dialog Cancel Report, Cannot Mark as Found, dan Already Changed: judul, body, tombol, dan Reload
 
 ## Prerequisites
-- Aktor: pelapor dari pemegang aset untuk K1 sampai K4 dan K13; Aktor Missing pada Group aset untuk K5 sampai K12.
-- Layar awal: halaman Missing, tab Active; daftar My Asset untuk K13.
+- Aktor: pelapor dari pemegang aset untuk K1 sampai K4 dan K13; Aktor Missing pada Group aset untuk K5 sampai K12; pelapor Audit (Asset Admin sub-tab Audit atau Staff Auditor) untuk K14.
+- Layar awal: halaman Missing, tab Active; daftar My Asset untuk K13; Task Detail Audit untuk K14.
 - Komponen: Dialog konfirmasi dan blok Missing (D-MIS-06, D-MIS-07, D-MIS-10)
 - Data:
   - DU-059-1: Record `Scanner Zebra DS2208 - 2`, Asset ID `SCN-2026-0002`, Group `Warehouse`, status record `Waiting for Confirmation`.
@@ -54,7 +55,7 @@ coverage:
   - K11: dialog Cannot Mark as Found dibuka untuk TAG yang tidak terdaftar pada aset mana pun.
   - K12: dialog Cannot Mark as Found dibuka untuk TAG yang tidak terbaca.
   - K13: dialog Cancel Report dibuka dari daftar My Asset untuk record DU-059-1; saat Submit record sudah bukan Waiting for Confirmation karena diubah oleh Rina W; `[Reload]` memuat ulang daftar My Asset tempat dialog dibuka.
-
+  - K14: dialog Cancel Report dibuka dari Task Detail Audit untuk record DU-059-1; saat Submit record sudah bukan Waiting for Confirmation karena diubah oleh Rina W.
 
 ## Test Steps
 
@@ -152,3 +153,10 @@ coverage:
 63. Klik `[Reload]`
 64. Verifikasi dialog Already Changed tertutup
 65. Verifikasi daftar tempat dialog Cancel Report dibuka dimuat ulang
+
+### Cancel Report dari Task Detail Audit atas record yang sudah berubah menampilkan Already Changed
+66. Tampilkan Dialog konfirmasi dan blok Missing dengan kondisi K14
+67. Verifikasi judul dialog `Cancel Report`
+68. Klik `[Cancel Report]`
+69. Verifikasi dialog `Already Changed` tampil
+70. Verifikasi dialog Already Changed memuat teks `This record was changed by Rina W. Reload to see the latest status.`

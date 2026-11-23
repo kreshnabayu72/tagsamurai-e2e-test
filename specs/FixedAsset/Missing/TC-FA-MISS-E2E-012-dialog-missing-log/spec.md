@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.2.2#p1", "§8.1#p1", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16", "§8.1#r17", "§8.1#r18", "§8.1#p2", "§8#r1", "§8#r2", "§8#r3", "§8#r5", "§8#r7", "§8#r8", "§8#r9", "§8#r10", "§8#r11", "§8#p2", "§8.2#b3", "§5#r7", "§4.1#r4", "§4.1a#r29", "§4.4#r10", "§1.2#r10", "§1.2#r104", "§1.2#r105", "§7.1#r3", "§9.6#r6", "§9.7#r6", "§9.7#r9", "§9.2#b22", "§4.6#b5", "§9.1#r3"]
+sourceRules: ["§4.2.2#p1", "§8.1#p1", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16", "§8.1#r17", "§8.1#r18", "§8.1#p2", "§8#r1", "§8#r2", "§8#r3", "§8#r5", "§8#r7", "§8#r8", "§8#r9", "§8#r10", "§8#r11", "§8#p2", "§8.2#b3", "§5#r7", "§4.1#r4", "§4.1a#r29", "§4.4#r10", "§1.2#r11", "§1.2#r107", "§1.2#r108", "§7.1#r3", "§9.6#r6", "§9.7#r6", "§9.7#r9", "§9.2#b22", "§4.6#b5", "§9.1#r3"]
 smoke: []
 dependsOn: []
 trace:
-  "§4.2.2#p1": [24, 25, 26, 30, 33, 36]
-  "§8.1#p1": [29, 35, 36, 42, 64]
+  "§4.2.2#p1": [24, 25, 26, 30, 33, 36, 112, 119, 121, 126, 129, 134, 135, 140, 141]
+  "§8.1#p1": [29, 35, 36, 42, 64, 112, 113, 121, 122, 129, 130, 135, 136, 141, 142]
   "§8.1#r1": 4
   "§8.1#r2": 6
   "§8.1#r3": [43, 45, 47, 48, 82, 84, 86, 88, 89, 93, 95, 99]
   "§8.1#r4": [7, 8, 37, 38]
   "§8.1#r5": [9, 10, 35, 49, 50]
-  "§8.1#r6": [11, 36, 42]
+  "§8.1#r6": [11, 36, 42, 113, 122, 130, 136, 142]
   "§8.1#r7": [12, 39]
   "§8.1#r8": 72
   "§8.1#r9": [69, 75, 104]
@@ -45,9 +45,9 @@ trace:
   "§4.1#r4": 5
   "§4.1a#r29": [23, 29]
   "§4.4#r10": 4
-  "§1.2#r10": 6
-  "§1.2#r104": [14, 16]
-  "§1.2#r105": 21
+  "§1.2#r11": 6
+  "§1.2#r107": [14, 16]
+  "§1.2#r108": 21
   "§7.1#r3": [12, 39]
   "§9.6#r6": [14, 15]
   "§9.7#r6": [14, 21]
@@ -75,6 +75,9 @@ coverage:
   - DU-012-7: Record Found `Laptop Dell Latitude 5420 {runId}`, Asset ID `LPT-012-0007`, Group `Finance Room`, Status `Found`, Source `Reported by holder`, Last Holder `Sari D`, Reported By `Sari D`, Resolved Date `T0 − 1 hari, pukul 10:00`. Node: `Report confirmed by Rina W` dengan Closed lines berisi nomor transaksi dan jenis transaksi milik satu baris transaksi berjalan atas `Sari D` yang ditutup saat Confirm (nomor transaksi dibentuk server dan menjadi milik entri ini); `Marked as found by Rina W` dengan Found at `Server Room`, Asset Status `Normal`, Manual identification `Yes` (TAG tidak dipindai, jalur `I Can't Scan the TAG`), Note `Ditemukan di laci ruang rapat lantai 2`, dan satu Photo terlampir.
   - DU-012-8: Pengguna `Agus Prasetyo {runId}`, role Total Control, seluruh client, sehingga berhak Report Missing, Report Disposal, dan membatalkan laporan Disposal-nya sendiri; tampil sebagai `Agus P`, dari `Agus Prasetyo {runId}`.
   - Pengguna pada data: Rina W, Total Control, seluruh client; Dewi A, Manage asset & TAG dengan Update pada Group Head Office; Agus P, pengguna DU-012-8; Rudi H, PIC yang tercatat bagi Joko S; Joko S, karyawan pemegang tanpa akun; Budi S dan Sari D, pemegang yang memakai akun sendiri.
+  - DU-012-9: Notifikasi in-app bagi Rina W atas record DU-012-2, event `missing_holder_reported`, belum dibaca.
+  - DU-012-10: Notifikasi in-app bagi Rina W atas record DU-012-7, event `missing_resolved`, belum dibaca.
+  - Status global aset DU-012-2 `Missing` dan Transaction log aset itu memuat entri `Reported missing` berstatus `Waiting for Confirmation`.
   - Waktu pada data ditulis relatif terhadap waktu run `T0`, dan ditampilkan menurut Date Format dan Time Format di bawah.
 - Kondisi:
   - Date Format bernilai `DD/MM/YY`
@@ -209,3 +212,43 @@ coverage:
 105. Verifikasi node `Marked as found by Rina W` memuat Manual identification `Yes`
 106. Klik `✕` pada dialog Missing Log
 107. Klik `(←)` pada kotak Search
+### Footer Reject dan Confirm dari aksi baris Missing Log pada record Waiting for Confirmation
+108. Klik sub-tab `Active`
+109. Ketik Search `{runId}`, tekan Enter
+110. Klik `⋯` pada baris `Hand Pallet Truck {runId}`
+111. Klik `Missing Log`
+112. Verifikasi dialog `Missing Log` terbuka untuk record `Hand Pallet Truck {runId}` dengan badge status record `Waiting for Confirmation`
+113. Verifikasi footer `[Reject]` dan `[Confirm]` tampil pada dialog yang dibuka lewat aksi baris `Missing Log`
+114. Klik `✕` pada dialog Missing Log
+115. Klik `(←)` pada kotak Search
+### Pintu masuk banner Asset Detail
+116. Buka halaman `Assets`
+117. Ketik Search `Hand Pallet Truck {runId}`, tekan Enter
+118. Klik nama `Hand Pallet Truck {runId}` pada kolom Name
+119. Verifikasi banner `Reported missing on` tampil pada Asset Detail
+120. Klik `[View]` pada banner
+121. Verifikasi dialog `Missing Log` terbuka untuk record `Hand Pallet Truck {runId}` dengan badge status record `Waiting for Confirmation`
+122. Verifikasi footer `[Reject]` dan `[Confirm]` tampil pada dialog yang dibuka lewat banner
+123. Klik `✕` pada dialog Missing Log
+### Pintu masuk aksi baris Transaction log Asset Detail
+124. Buka Transaction log pada Asset Detail
+125. Buka sub-tab `Missing` pada Transaction log
+126. Verifikasi entri `Reported missing` berstatus `Waiting for Confirmation` tampil
+127. Klik `⋯` pada entri `Reported missing`
+128. Klik `Missing Log`
+129. Verifikasi dialog `Missing Log` terbuka untuk record `Hand Pallet Truck {runId}` dengan badge status record `Waiting for Confirmation`
+130. Verifikasi footer `[Reject]` dan `[Confirm]` tampil pada dialog yang dibuka lewat aksi baris Transaction log
+131. Klik `✕` pada dialog Missing Log
+### Pintu masuk tautan notifikasi
+132. Buka daftar notifikasi
+133. Klik notifikasi event `missing_holder_reported` untuk `Hand Pallet Truck {runId}`
+134. Verifikasi halaman Missing terbuka pada sub-tab `Active`
+135. Verifikasi dialog `Missing Log` terbuka untuk record `Hand Pallet Truck {runId}` dengan badge status record `Waiting for Confirmation`
+136. Verifikasi footer `[Reject]` dan `[Confirm]` tampil pada dialog yang dibuka lewat tautan notifikasi
+137. Klik `✕` pada dialog Missing Log
+138. Buka daftar notifikasi
+139. Klik notifikasi event `missing_resolved` untuk `Laptop Dell Latitude 5420 {runId}`
+140. Verifikasi halaman Missing terbuka pada sub-tab `History`
+141. Verifikasi dialog `Missing Log` terbuka untuk record `Laptop Dell Latitude 5420 {runId}` dengan badge status record `Found`
+142. Verifikasi footer `[Reject]` dan `[Confirm]` tidak tampil pada record berstatus `Found`
+143. Klik `✕` pada dialog Missing Log

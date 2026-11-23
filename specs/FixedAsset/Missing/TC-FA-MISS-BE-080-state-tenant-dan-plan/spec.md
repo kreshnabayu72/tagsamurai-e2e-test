@@ -6,7 +6,7 @@ priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [EB-AKS-7, EB-AKS-8, §9.2#b21, §9.4.1#r1, §9.4.1#r2, §9.4.2#r30, §9.4.2#r31, §9.4.4#r8, §9.10#p1, §8#r8, §8#r9]
+sourceRules: [EB-AKS-7, EB-AKS-8, §9.2#b21, §9.4.1#r1, §9.4.1#r2, §9.4.2#r30, §9.4.2#r31, §9.4.4#r8, §9.10#p1, §8#r8, §8#r9, §1.2#r126, §9.4.2#r34, §9.4.4#r27, §1.2#r128, §4.6#b2, §6#r16, §9.2#b52, §9.4.2#r35, §9.6#r8, §9.9#p4]
 smoke: []
 dependsOn: []
 trace:
@@ -14,19 +14,29 @@ trace:
   EB-AKS-8: [39, 43, 53, 55]
   §9.2#b21: [14, 15, 16, 30, 31, 32]
   §9.4.1#r1: [10, 12, 26, 28]
-  §9.4.1#r2: 39
+  §9.4.1#r2: [39, 60, 64]
   §9.4.2#r30: [10, 12, 26, 28, 34]
   §9.4.2#r31: [39, 43, 58]
   §9.4.4#r8: [10, 12, 26, 28]
-  §9.10#p1: [39, 43, 45, 47, 49, 53, 55]
+  §9.10#p1: [39, 43, 45, 47, 49, 53, 55, 60, 62, 64]
   §8#r8: [15, 16, 31, 32]
   §8#r9: [14, 16, 30, 32]
+  §1.2#r126: [60, 62, 64, 66, 69, 71, 73]
+  §9.4.2#r34: [60, 62, 64, 69, 71, 75]
+  §9.4.4#r27: [66, 67]
+  §1.2#r128: [66, 67]
+  §4.6#b2: [66, 67]
+  §6#r16: [60, 62, 66, 69, 71, 73]
+  §9.2#b52: [66, 67]
+  §9.4.2#r35: [66, 67]
+  §9.6#r8: [66, 67]
+  §9.9#p4: [69, 71, 73]
 ---
 
 # Server: client Suspended dan Expired menolak aksi tulis aktor, aksi System tetap menulis, Missing tersedia di semua plan dengan Report Disposal mengikuti level Disposal
 
 ## Prerequisites
-- Aktor: Setiap pengguna pada entri data DU-080-6 sampai DU-080-12 dan DU-080-48 sebagai Total Control atau pemegang di client masing-masing, dengan peran dan client seperti tercatat di entri; job sistem hanya sebagai pemicu keadaan.
+- Aktor: Setiap pengguna pada entri data DU-080-6 sampai DU-080-12, DU-080-48, dan DU-080-50 sebagai Total Control atau pemegang di client masing-masing, dengan peran dan client seperti tercatat di entri; job sistem hanya sebagai pemicu keadaan.
 - Data:
   - DU-080-1: Client Name `Klien Aktif Uji {runId}`, Plan `Professional`, Status `Active`; entitas khusus yang tidak dipakai spec lain.
   - DU-080-2: Client Name `Klien Suspended Uji {runId}`, Plan `Professional`, Status `Suspended`; entitas khusus yang tidak dipakai spec lain.
@@ -72,6 +82,15 @@ trace:
   - DU-080-47: Asset Name `Kursi Lipat Besi {runId}`, Asset ID `FA080-411`, Client `Klien Starter Uji {runId}`, Record berjalan `Waiting for Confirmation, dilaporkan Wawan Setiawan {runId}`, Pemegang `Wawan Setiawan {runId}`.
   - DU-080-48: User Name `Wawan Setiawan {runId}`, Peran `pemegang tanpa hak Aktor Missing`, Client `Klien Starter Uji {runId}`.
   - DU-080-41: Asset Name `Mixer Audio Behringer {runId}`, Asset ID `FA080-504`, Client `Klien Growth Uji {runId}`, Record berjalan `Reported Disposal, dilaporkan admin client`.
+  - DU-080-49: Client Name `Klien Storage Penuh Uji {runId}`, Plan `Professional`, Status `Active`, Storage `client tanpa baris ledger Storage, dianggap berkuota 0`; entitas khusus yang tidak dipakai spec lain.
+  - DU-080-50: User Name `Dian Pratiwi {runId}`, Peran `Total Control`, Client `Klien Storage Penuh Uji {runId}`.
+  - DU-080-51: Asset Name `Meja Arsip Jati {runId}`, Asset ID `FA080-601`, Client `Klien Storage Penuh Uji {runId}`, Record berjalan `Missing, dilaporkan admin client`, Condition `Normal`, TAG terpasang `tidak ada`.
+  - DU-080-52: Asset Name `Lemari Besi Arsip {runId}`, Asset ID `FA080-602`, Client `Klien Storage Penuh Uji {runId}`, Record berjalan `Missing, dilaporkan admin client`, Condition `Normal`, TAG terpasang `tidak ada`.
+  - DU-080-53: Asset Name `Rak Buku Jati {runId}`, Asset ID `FA080-603`, Client `Klien Storage Penuh Uji {runId}`, Record berjalan `Missing, dilaporkan admin client`, Condition `Normal`, TAG terpasang `tidak ada`.
+  - DU-080-55: Asset Name `Kursi Tamu Jati {runId}`, Asset ID `FA080-604`, Client `Klien Storage Penuh Uji {runId}`, Record berjalan `Missing, dilaporkan admin client`, Condition `Normal`, TAG terpasang `tidak ada`.
+  - DU-080-54: Berkas `foto-penemuan-080.jpg`, Format `JPG`, Ukuran `600 KB`.
+  - DU-080-56: Berkas `dokumen-080.pdf`, Format `PDF` (tidak diterima), Ukuran `200 KB`.
+  - DU-080-57: Asset Name `Panel Surya Mini {runId}`, Asset ID `FA080-605`, Client `Klien Storage Penuh Uji {runId}`, Record berjalan `Missing, dilaporkan admin client`, Condition sebelum laporan `Damaged`, Damage record `berjalan dan ditahan`, TAG terpasang `tidak ada`.
 - Kondisi:
   - Long missing after bernilai `30`
 
@@ -151,3 +170,28 @@ trace:
 56. `Putri Handayani {runId}` menjalankan Reject atas record `Meja Lipat Aluminium {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
 57. `Wawan Setiawan {runId}` menjalankan Cancel Report atas record `Kursi Lipat Besi {runId}`
 58. Verifikasi kedua aksi itu diterima di plan Starter: `Meja Lipat Aluminium {runId}` berstatus `Rejected` dan `Kursi Lipat Besi {runId}` berstatus `Canceled`
+
+### Storage client penuh menolak upload Photo atau Damaged Photo baru
+59. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Meja Arsip Jati {runId}` dengan Found at default Group aset, Asset Status `Normal`, dan Photo baru `foto-penemuan-080.jpg` (JPG, 600 KB)
+60. Verifikasi permintaan itu ditolak karena Storage client penuh, record `Meja Arsip Jati {runId}` tetap `Missing`, dan status global aset tidak berubah
+61. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Rak Buku Jati {runId}` dengan Found at default Group aset, Asset Status `Damaged`, Damaged Photo baru `foto-penemuan-080.jpg` (JPG, 600 KB), dan Note `Layar retak dan bodi penyok pada sisi kiri`
+62. Verifikasi permintaan itu ditolak karena Storage client penuh walau Damaged Photo wajib, dan record `Rak Buku Jati {runId}` tetap `Missing` tanpa Damage Report baru
+63. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Lemari Besi Arsip {runId}` dengan Found at default Group aset dan Asset Status `Normal` tanpa Photo
+64. Verifikasi permintaan itu diterima dan record `Lemari Besi Arsip {runId}` berstatus `Found`, karena tanpa file baru tidak ada pengecekan Storage
+
+### I found it dengan Photo baru ditolak saat Storage client penuh tanpa node dan tanpa notifikasi
+65. `Dian Pratiwi {runId}` mengirim I found it atas record `Kursi Tamu Jati {runId}` dengan Photo baru `foto-penemuan-080.jpg` (JPG, 600 KB)
+66. Verifikasi permintaan itu ditolak karena Storage client penuh sebelum transaksi, dan record `Kursi Tamu Jati {runId}` tidak memuat node `Reported found by`
+67. Verifikasi Aktor Missing client itu tidak menerima event `missing_found_reported`, record `Kursi Tamu Jati {runId}` tetap `Missing`, dan status global aset tidak berubah
+
+### Berkas berformat tidak diterima ditolak karena format, didahulukan atas penolakan Storage penuh
+68. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Meja Arsip Jati {runId}` dengan Found at default Group aset, Asset Status `Normal`, dan Photo `dokumen-080.pdf` (PDF, 200 KB)
+69. Verifikasi permintaan itu ditolak karena format berkas tidak diterima, bukan karena Storage penuh: tidak ada pesan `Storage is full`, record `Meja Arsip Jati {runId}` tetap `Missing`, dan status global aset tidak berubah
+70. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Rak Buku Jati {runId}` dengan Found at default Group aset, Asset Status `Damaged`, Damaged Photo `dokumen-080.pdf` (PDF, 200 KB), dan Note `Layar retak dan bodi penyok pada sisi kiri`
+71. Verifikasi permintaan itu ditolak karena format berkas tidak diterima, bukan karena Storage penuh: tidak ada pesan `Storage is full`, record `Rak Buku Jati {runId}` tetap `Missing`, dan tidak ada Damage Report baru
+72. `Dian Pratiwi {runId}` mengirim I found it atas record `Kursi Tamu Jati {runId}` dengan Photo `dokumen-080.pdf` (PDF, 200 KB)
+73. Verifikasi permintaan itu ditolak karena format berkas tidak diterima, bukan karena Storage penuh: tidak ada pesan `Storage is full`, record `Kursi Tamu Jati {runId}` tidak memuat node `Reported found by` dan tetap `Missing`
+
+### Asal Damaged + Missing saat Storage penuh tidak menambah node pada Damage record yang ditahan
+74. `Dian Pratiwi {runId}` mengirim Mark as Found atas record `Panel Surya Mini {runId}` dengan Found at default Group aset, Asset Status `Damaged`, Damaged Photo baru `foto-penemuan-080.jpg` (JPG, 600 KB), dan Note `Layar retak dan bodi penyok pada sisi kiri`
+75. Verifikasi permintaan itu ditolak karena Storage client penuh, record `Panel Surya Mini {runId}` tetap `Missing`, tidak ada Damage Report baru, dan Damage record yang ditahan tidak mendapat node baru

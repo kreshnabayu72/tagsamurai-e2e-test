@@ -27,7 +27,7 @@ coverage:
   - DU-029-1: Client, Name `Klien Starter {runId}`, Plan `Starter`; entitas khusus yang tidak dipakai spec lain.
   - DU-029-2: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22`, Asset ID `LPT-0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, TAG `QR`.
   - DU-029-3: Missing record, Name `Hand Pallet Truck {runId} - 3`, Asset ID `HPT-0003 {runId}`, Group `Warehouse {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, TAG `RFID, NFC, BLE, GPS, QR` (pairing lama dari plan sebelumnya).
-  - DU-029-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, TAG `RFID`.
+  - DU-029-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, TAG `RFID`.
 
 ## Test Steps
 

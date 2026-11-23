@@ -47,7 +47,7 @@ trace:
   - DU-078-10: Asset Name `Hand Pallet Truck {runId}`, Increment `2`, Name tampil `Hand Pallet Truck {runId} - 2`, Asset ID `FA078-004`, Status `In Disposal Process`, Source `Manual`, TAG `tidak ada`, Last Holder `tidak ada`, Reported By `Rina W`, Reported Date `T0 − 20 hari, pukul 09:00`.
   - DU-078-11: Asset Name `Hand Pallet Truck {runId}`, Increment `10`, Name tampil `Hand Pallet Truck {runId} - 10`, Asset ID `FA078-005`, Status `Missing`, Source `Borrow`, TAG `RFID`, Last Holder `Joko Susilo {runId}`, Reported By `Rudi Hartono {runId} (on behalf of Joko Susilo {runId})`, Reported Date `T0 − 45 hari, pukul 09:00`, Penanda `Long missing`.
   - DU-078-12: Asset Name `Laptop Dell Latitude 5420 {runId}`, Increment `1`, Name tampil `Laptop Dell Latitude 5420 {runId} - 1`, Asset ID `FA078-006`, Status `Waiting for Confirmation`, Source `Reported by holder`, TAG `BLE`, Last Holder `Sari Dewi {runId}`, Reported By `Sari Dewi {runId}`, Reported Date `T0 − 2 hari, pukul 09:00`.
-  - DU-078-13: Asset Name `Monitor LG 27UL500 {runId}`, Increment `1`, Name tampil `Monitor LG 27UL500 {runId} - 1`, Asset ID `FA078-007`, Status `Missing`, Source `Stock opname`, TAG `GPS`, Last Holder `tidak ada`, Reported By `Agus Pratama {runId}`, Reported Date `T0 − 8 hari, pukul 09:00`.
+  - DU-078-13: Asset Name `Monitor LG 27UL500 {runId}`, Increment `1`, Name tampil `Monitor LG 27UL500 {runId} - 1`, Asset ID `FA078-007`, Status `Missing`, Source `Audit`, TAG `GPS`, Last Holder `tidak ada`, Reported By `Agus Pratama {runId}`, Reported Date `T0 − 8 hari, pukul 09:00`.
   - DU-078-14: Asset Name `Rak Gudang Timur 50% {runId}`, Increment `1`, Name tampil `Rak Gudang Timur 50% {runId} - 1`, Asset ID `FA078-008`, Status `Missing`, Source `Manual`, TAG `tidak ada`, Last Holder `tidak ada`, Reported By `Rina W`, Reported Date `T0 − 6 hari, pukul 09:00`.
   - DU-078-15: Asset Name `Rak Gudang Timur 5001 {runId}`, Increment `1`, Name tampil `Rak Gudang Timur 5001 {runId} - 1`, Asset ID `FA078-009`, Status `Missing`, Source `Manual`, TAG `tidak ada`, Last Holder `tidak ada`, Reported By `Rina W`, Reported Date `T0 − 7 hari, pukul 09:00`.
   - DU-078-16: Asset Name `Projector Epson EB-X06 {runId}`, Increment `1`, Name tampil `Projector Epson EB-X06 {runId} - 1`, Asset ID `FA078-011`, Status `Found`, Source `Borrow`, TAG `NFC`, Reported By `Rina W`, Reported Date `T0 − 30 hari, pukul 09:00`, Resolved By `Rina W`, Resolved Date `T0 − 20 hari, pukul 09:00`, Duration `10 days`.
@@ -127,7 +127,7 @@ trace:
 55. Rina W mengambil daftar sub-tab Active dengan Search `{runId}` dan filter Status `Missing` serta `Reported Disposal`
 56. Verifikasi hasil memuat baris `Camera Canon EOS {runId} - 1`, `Drill Bosch GSB {runId} - 1`, `Hand Pallet Truck {runId} - 10`, `Monitor LG 27UL500 {runId} - 1`, dan `Hand Pallet Truck {runId} - 1`, serta tidak memuat baris `Hand Pallet Truck {runId} - 2` dan `Laptop Dell Latitude 5420 {runId} - 1`, karena dalam satu field berlaku OR
 57. Rina W mengambil daftar sub-tab Active dengan Search `{runId}` dan filter Status `Missing` serta Source `Borrow`
-58. Verifikasi hasil memuat baris `Camera Canon EOS {runId} - 1` dan `Hand Pallet Truck {runId} - 10`, serta tidak memuat baris `Drill Bosch GSB {runId} - 1` (Source `Manual`) dan `Monitor LG 27UL500 {runId} - 1` (Source `Stock opname`), karena antar field berlaku AND
+58. Verifikasi hasil memuat baris `Camera Canon EOS {runId} - 1` dan `Hand Pallet Truck {runId} - 10`, serta tidak memuat baris `Drill Bosch GSB {runId} - 1` (Source `Manual`) dan `Monitor LG 27UL500 {runId} - 1` (Source `Audit`), karena antar field berlaku AND
 59. Rina W mengambil daftar sub-tab Active dengan Search `Hand Pallet` dan filter Status `Missing`
 60. Verifikasi hasil memuat baris `Hand Pallet Truck {runId} - 10` dan tidak memuat baris `Hand Pallet Truck {runId} - 1` dan `Hand Pallet Truck {runId} - 2`, karena Search dan filter beroperasi sebagai irisan
 61. Rina W mengambil daftar sub-tab Active dengan Search `{runId}` dan filter checkbox `Long missing` pada Days Missing
@@ -137,7 +137,7 @@ trace:
 65. Rina W mengambil daftar sub-tab Active dengan Search `{runId}` dan filter Last Holder `Joko Susilo {runId}`
 66. Verifikasi hasil memuat baris `Hand Pallet Truck {runId} - 10` karena filter Last Holder memakai nama karyawan
 67. Rina W meminta opsi filter Source dan Last Holder pada sub-tab Active
-68. Verifikasi opsi Source memuat nilai DISTINCT dari baris sub-tab Active, yaitu `Borrow`, `Manual`, `Transfer`, `Reported by holder`, dan `Stock opname`, tanpa `Reconciliation` yang hanya ada di History
+68. Verifikasi opsi Source memuat nilai DISTINCT dari baris sub-tab Active, yaitu `Borrow`, `Manual`, `Transfer`, `Reported by holder`, dan `Audit`, tanpa `Reconciliation` yang hanya ada di History
 69. Verifikasi opsi Last Holder dan Reported By memuat `Joko Susilo {runId}` sebagai karyawan tanpa akun dan `Rudi Hartono {runId}` sebagai PIC
 
 ### Filter Duration History inklusif di kedua ujung

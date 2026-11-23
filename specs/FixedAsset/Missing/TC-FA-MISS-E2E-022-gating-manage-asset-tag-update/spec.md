@@ -1,11 +1,11 @@
 ---
 id: TC-FA-MISS-E2E-022-gating-manage-asset-tag-update
-title: "Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tidak tersedia"
+title: "Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tersedia pada Group Update"
 layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b7", "§4.8#b2", "§2#b1", "§2.1#b9", "§2.1#p2", "§2.1#p7", "§2.1#p8", "§2.1#p9", "§2.1#p10", "EB-AKS-5@add-update", "EB-AKS-5@mark-as-found", "EB-AKS-5@confirm", "EB-AKS-5@reject", "§9.3#b1"]
+sourceRules: ["§2.1#r1", "§2.1#r2", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r9", "§2.1#r10", "§2.1#r11", "§2.1#r12", "§4.8#r1", "§4.8#r2", "§4.8#r5", "§4.8#r6", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§9.11#r1", "§9.11#r2", "§9.11#b1", "§2.1#b8", "§4.8#b2", "§2#b1", "§2.1#b10", "§2.1#p2", "§2.1#p7", "§2.1#p8", "§2.1#p9", "§2.1#p10", "EB-AKS-5@add-update", "EB-AKS-5@mark-as-found", "EB-AKS-5@confirm", "EB-AKS-5@reject", "§9.3#b1"]
 smoke: []
 dependsOn: []
 trace:
@@ -22,22 +22,22 @@ trace:
   "§4.8#r2": 47
   "§4.8#r5": [16, 21]
   "§4.8#r6": [17, 30]
-  "§4.8#r8": [23, 27]
-  "§4.8#r9": [38, 42, 95, 96, 97, 100]
-  "§4.8#r10": 32
-  "§4.8#r11": 34
+  "§4.8#r9": [23, 27]
+  "§4.8#r10": [38, 42, 95, 96, 97, 100]
+  "§4.8#r11": 32
+  "§4.8#r12": 34
   "§9.11#r1": [7, 9, 12]
   "§9.11#r2": [38, 87]
   "§9.11#b1": [38, 42]
-  "§2.1#b7": [38, 42, 95, 96, 97, 100]
+  "§2.1#b8": [38, 42, 95, 96, 97, 100]
   "§4.8#b2": 34
   "§2#b1": 22
-  "§2.1#b9": [16, 17, 18, 21]
+  "§2.1#b10": [16, 17, 18, 21]
   "§2.1#p2": [5, 6, 22]
   "§2.1#p7": [9, 12]
-  "§2.1#p8": [21, 22]
+  "§2.1#p8": [21, 22, 23]
   "§2.1#p9": [16, 17, 18]
-  "§2.1#p10": [7, 18, 23]
+  "§2.1#p10": [7, 18]
   "EB-AKS-5@add-update": 55
   "EB-AKS-5@mark-as-found": [59, 62]
   "EB-AKS-5@confirm": [67, 68]
@@ -48,7 +48,7 @@ coverage:
   web: automated
 ---
 
-# Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tidak tersedia
+# Gating Manage asset & TAG (Update): hak per Group, record di luar Group hanya Read, Report Disposal tersedia pada Group Update
 
 ## Prerequisites
 - Aktor: pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` (descendant `Finance Room {runId}` dan `Server Room {runId}`) dan Read pada Group `Warehouse {runId}`; capability itu saja (tanpa Create dan Delete, tanpa `View asset value`), bukan Last holder record mana pun, tanpa hak apa pun pada Group `Branch Surabaya {runId}`; lalu pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` yang juga memegang `View asset value` pada Group `Head Office {runId}` beserta descendant.
@@ -59,7 +59,7 @@ coverage:
   - DU-022-3: Missing record, Name `Laptop Lenovo ThinkPad T14 {runId} - 4`, Asset Name `Laptop Lenovo ThinkPad T14 {runId}`, Asset ID `LPT-0004 {runId}`, Group `Server Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, TAG `—` (aset tanpa TAG).
   - DU-022-4: Missing record, Name `Monitor LG 27UL500 {runId} - 11`, Asset ID `MON-0011 {runId}`, Group `Server Room {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing).
   - DU-022-5: Missing record, Name `Camera Canon EOS {runId} - 1`, Asset ID `CAM-0001 {runId}`, Group `Finance Room {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Budi Santoso {runId}` (pemegang aset tanpa hak Aktor Missing).
-  - DU-022-6: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, dilaporkan oleh pengguna lain.
+  - DU-022-6: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, dilaporkan oleh pengguna lain.
   - DU-022-7: Missing record, Name `Printer HP LaserJet M404 {runId} - 5`, Asset ID `PRN-0005 {runId}`, Group `Branch Surabaya {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`.
   - DU-022-8: Asset, Name `Scanner Zebra DS2208 {runId} - 2`, Asset ID `SCN-0002 {runId}`, Group `Finance Room {runId}`, Status `Available`, tanpa record Missing berjalan.
   - DU-022-11: Missing record, Name `Printer Canon imageCLASS {runId}`, Group `Finance Room {runId}`, Status `Reported Disposal`, Source `Manual`, Last Holder `—`, dilaporkan oleh aktor ini. Asset ID dan Increment aset dibentuk server dan menjadi milik entri ini.
@@ -91,11 +91,11 @@ coverage:
 18. Verifikasi aksi `Report Disposal` tidak tampil
 19. Tekan `Esc`
 
-### Aksi record Group Update tampil dan Report Disposal tidak tersedia
+### Aksi record Group Update tampil termasuk Report Disposal
 20. Klik menu ⋯ pada baris `Laptop Dell Latitude 5420 {runId} - 22`
 21. Verifikasi aksi `Add Update` tampil
 22. Verifikasi aksi `Mark as Found` tampil
-23. Verifikasi aksi `Report Disposal` tidak tersedia
+23. Verifikasi aksi `Report Disposal` tampil
 24. Tekan `Esc`
 25. Klik menu ⋯ pada baris `Projector Epson EB-X06 {runId} - 7`
 26. Verifikasi aksi `Missing Log` tampil

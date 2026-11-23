@@ -5,33 +5,43 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.6#p1", "§4.6#b1", "§4.6#b2", "§4.6#b4", "§4.6#b5", "§2.1#r4", "§2.1#b3", "§4.8#r4", "§7.3#r12", "§9.6#r8", "§9.7#r10", "§9.8#r5", "§9.5#r7", "§8#r10", "§8.1#r12", "§9.2#b41", "§9.2#b47", "§10#r7", "§9.3#b1", "§4.2.4#p2", "§9.9#p4", "EB-FB-1@i-found-it", "EB-ERR-1@i-found-it"]
+sourceRules: ["§4.6#p1", "§4.6#b1", "§4.6#b2", "§4.6#b4", "§4.6#b5", "§2.1#r4", "§2.1#b3", "§4.8#r4", "§7.3#r12", "§9.6#r8", "§9.7#r10", "§9.8#r5", "§9.5#r7", "§8#r10", "§8.1#r12", "§9.2#b45", "§9.2#b51", "§10#r7", "§9.3#b1", "§4.2.4#p2", "§9.9#p4", "EB-FB-1@i-found-it", "EB-ERR-1@i-found-it", "§1.2#r126", "§1.2#r127", "§1.2#r128", "§6#r16", "§7.3#r15", "§7.3#p1", "§9.2#b52", "§9.4.2#r35", "§9.4.4#r27", "§9.4.1#r2"]
 smoke: []
 dependsOn: []
 trace:
   "§4.6#p1": [3, 5, 21, 41]
   "§4.6#b1": [5, 9, 64, 85, 90, 95, 100]
-  "§4.6#b2": [6, 7, 8, 10, 12, 13, 81]
+  "§4.6#b2": [6, 7, 8, 10, 12, 13, 81, 127, 129, 131, 135, 139]
   "§4.6#b4": [44, 45, 46, 59, 60, 61, 67, 72, 73, 74, 76, 77, 113, 114, 115, 119]
   "§4.6#b5": [21, 22, 119]
   "§2.1#r4": [9, 29, 33, 37, 46, 65, 77]
   "§2.1#b3": [6, 7, 8, 10, 12, 13, 81]
   "§4.8#r4": [9, 29, 33, 37, 46, 65, 77]
   "§7.3#r12": [16, 51]
-  "§9.6#r8": [15, 16, 52, 53]
+  "§9.6#r8": [15, 16, 52, 53, 127, 131]
   "§9.7#r10": [21, 24, 25]
   "§9.8#r5": [16, 19]
   "§9.5#r7": 19
   "§8#r10": [16, 121]
   "§8.1#r12": [12, 16, 81]
-  "§9.2#b41": [76, 77]
-  "§9.2#b47": 64
+  "§9.2#b45": [76, 77]
+  "§9.2#b51": 64
   "§10#r7": 2
   "§9.3#b1": [72, 73, 74, 75]
   "§4.2.4#p2": [67, 68]
-  "§9.9#p4": [12, 13]
+  "§9.9#p4": [12, 13, 127, 130, 132]
   "EB-FB-1@i-found-it": [16, 51, 56]
   "EB-ERR-1@i-found-it": [51, 52, 53, 54, 56, 105, 106, 107, 108, 110]
+  "§1.2#r126": [127]
+  "§1.2#r127": [139]
+  "§1.2#r128": [131, 132, 133]
+  "§6#r16": [127, 129, 130, 131, 135]
+  "§7.3#r15": [127, 129, 135]
+  "§7.3#p1": [127]
+  "§9.2#b52": [127, 131]
+  "§9.4.2#r35": [127, 129, 131, 139]
+  "§9.4.4#r27": [127]
+  "§9.4.1#r2": [127, 139]
 anchor: [2, 84, 89, 94, 99, 118]
 coverage:
   android: manual
@@ -40,11 +50,11 @@ coverage:
 # Search by Scan di mobile: sheet reported missing, I found it mengirim deteksi, foto, dan lokasi tanpa mengubah status; Mark as Found bagi yang berhak
 
 ## Prerequisites
-- Aktor: Total Control `Rina Wulandari {runId}`, Group Manager `Andi Pratama {runId}`, Manage asset & TAG (Update) `Dewi Anggraini {runId}`, Accounting `Maya Rahmawati {runId}`, Read Only `Sari Dewanti {runId}`, View asset value `Bima Santoso {runId}`, dan pemegang `Joko Susilo {runId}`.
+- Aktor: Total Control `Rina Wulandari {runId}`, Group Manager `Andi Pratama {runId}`, Manage asset & TAG (Update) `Dewi Anggraini {runId}`, Accounting `Maya Rahmawati {runId}`, Read Only `Sari Dewanti {runId}`, View asset value `Bima Santoso {runId}`, dan pemegang `Joko Susilo {runId}`; operator platform hanya memicu keadaan Storage pada langkah 123.
 - Layar awal: layar mana pun yang menampilkan navbar dengan `Search by Scan`.
 - Data:
   - DU-046-1: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22` (Asset Name `Laptop Dell Latitude 5420 {runId}`), Asset ID `LPT 0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Borrow`, Last Holder `Andi Pratama {runId}`, TAG `TAG QR 0022 {runId}`.
-  - DU-046-2: Missing record, Name `Projector Epson EB-X06 {runId} - 7` (Asset Name `Projector Epson EB-X06 {runId}`), Asset ID `PRJ 0007 {runId}`, Group `Finance Room {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, TAG `TAG QR 0007 {runId}`.
+  - DU-046-2: Missing record, Name `Projector Epson EB-X06 {runId} - 7` (Asset Name `Projector Epson EB-X06 {runId}`), Asset ID `PRJ 0007 {runId}`, Group `Finance Room {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, TAG `TAG QR 0007 {runId}`.
   - DU-046-3: pengguna `Rina Wulandari {runId}`, Role Total Control, cakupan seluruh client.
   - DU-046-4: pengguna `Andi Pratama {runId}`, Role Group Manager, cakupan Group `Finance Room {runId}`; pemegang aset `Laptop Dell Latitude 5420 {runId} - 22` saat dilaporkan hilang (Last holder).
   - DU-046-5: pengguna `Dewi Anggraini {runId}`, Role Manage asset & TAG (Update), cakupan Group `Warehouse {runId}`, tanpa akses ke Group `Finance Room {runId}`.
@@ -53,13 +63,15 @@ coverage:
   - DU-046-8: pengguna `Bima Santoso {runId}`, Role View asset value, cakupan Group `Finance Room {runId}`.
   - DU-046-9: pengguna `Joko Susilo {runId}`, tanpa Group Role, pemegang aset `Hand Pallet Truck {runId} - 3`.
   - DU-046-10: berkas Photo `foto-laptop-ditemukan {runId}.jpg`, format JPG, ukuran 2 MB.
-  - DU-046-11: Missing record, Name `Printer HP LaserJet Pro {runId} - 12` (Asset Name `Printer HP LaserJet Pro {runId}`), Asset ID `PRN 0012 {runId}`, Group `Finance Room {runId}`, Status `In Disposal Process`, Source `Stock opname`, Last Holder `—`, TAG `TAG QR 0012 {runId}`.
+  - DU-046-12: Client, Name `Klien I Found It {runId}`, kuota Storage `50.0 GB`, usage ledger Storage awal `10.0 GB`; entitas khusus yang tidak dipakai spec lain.
+  - DU-046-11: Missing record, Name `Printer HP LaserJet Pro {runId} - 12` (Asset Name `Printer HP LaserJet Pro {runId}`), Asset ID `PRN 0012 {runId}`, Group `Finance Room {runId}`, Status `In Disposal Process`, Source `Audit`, Last Holder `—`, TAG `TAG QR 0012 {runId}`.
 - Kondisi:
   - Semua aktor berada di client yang sama dengan DU-046-1, DU-046-2, dan DU-046-11, dan TAG `TAG QR 0022 {runId}` `TAG QR 0007 {runId}`, serta `TAG QR 0012 {runId}` terbaca saat dipindai.
   - Izin lokasi perangkat diberikan saat `Sari Dewanti {runId}` mengirim `[I found it]` dan ditolak saat `Dewi Anggraini {runId}` mengirimnya.
   - Submit kedua `Sari Dewanti {runId}` terjadi kurang dari 1 jam sesudah Submit pertamanya.
   - Pengiriman `[I found it]` pertama oleh `Sari Dewanti {runId}` dijawab lambat sehingga keadaan sedang mengirim teramati.
   - Pengiriman `[I found it]` pertama oleh `Andi Pratama {runId}` gagal karena error server; pengiriman berikutnya berhasil.
+  - Usage ledger Storage `Klien I Found It {runId}` bernilai `10.0 GB` dengan kuota Storage `50.0 GB` sampai langkah 123, sehingga Photo baru pada langkah sebelumnya diterima.
   - Pengiriman `[I found it]` pertama oleh `Joko Susilo {runId}` tidak dijawab sampai melewati batas waktu; pengiriman berikutnya berhasil.
 
 ## Test Steps
@@ -217,5 +229,24 @@ coverage:
 120. Klik `[I found it]`
 121. Verifikasi toast `Success, asset has been reported found.` tampil
 
-## Notes
-- Storage penuh pada `[I found it]` (`MISS-LOGIC-10c`, `MISS-LOGIC-10e`, `V-16`, `TS-MIS-11`, `EC-MIS-37`, `F-MISS-07.k3`) tidak diotomasi: spec ini berjalan manual di aplikasi native (`coverage.android: manual`) dan tidak ada TestCase sumber. Hasil yang diharapkan menurut PRD: toast Error persisten `Error, failed to report asset as found. Storage is full ([Used Storage] of [Storage Quota] used).`, sheet tetap terbuka dengan Photo tidak direset, tanpa node `Reported found by [User Name]` dan tanpa notifikasi `missing_found_reported`; tanpa Photo tidak dicek.
+### Storage penuh menolak I found it dengan Photo baru
+122. Masuk sebagai `Maya Rahmawati {runId}`
+123. Usage ledger Storage `Klien I Found It {runId}` naik menjadi `51.2 GB` dengan kuota Storage tetap `50.0 GB`
+124. Pindai TAG `TAG QR 0022 {runId}` lewat `Search by Scan` pada navbar
+125. Pilih Photo `foto-laptop-ditemukan {runId}.jpg` (ukuran 2 MB)
+126. Klik `[I found it]`
+127. Verifikasi toast Error `Error, failed to report asset as found. Storage is full (51.2 GB of 50.0 GB used).` tampil
+128. Waktu berlalu sampai 5 detik sejak toast tampil tanpa menutup toast
+129. Verifikasi toast Error `Error, failed to report asset as found. Storage is full (51.2 GB of 50.0 GB used).` masih tampil
+130. Verifikasi field Photo tidak menampilkan pesan error inline
+131. Verifikasi sheet hasil scan tetap terbuka
+132. Verifikasi Photo `foto-laptop-ditemukan {runId}.jpg` masih terpilih pada sheet
+133. Verifikasi `[I found it]` aktif kembali
+134. Klik `Close Button` pada toast Error
+135. Verifikasi toast Error `Error, failed to report asset as found. Storage is full (51.2 GB of 50.0 GB used).` tidak tampil lagi
+
+### I found it tanpa Photo tidak dicek saat Storage penuh
+136. Tutup sheet hasil scan
+137. Pindai TAG `TAG QR 0022 {runId}` lewat `Search by Scan` pada navbar
+138. Klik `[I found it]` tanpa memilih Photo
+139. Verifikasi toast `Success, asset has been reported found.` tampil

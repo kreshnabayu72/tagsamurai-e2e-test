@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [§4.2.4#p2, §4.2.4#p3, §4.2.4#r4, §4.2.4#r5, §4.2.4#r6, §4.2.4#r7, §4.2.4#r8, §4.2.4#r9, §4.2.4#r10, §4.2.4#r11, §9.9#r2, §9.9#r3, §9.9#r4, §9.9#r5, §9.9#r6, §9.9#p3, §9.9#p4, §9.5#r8, §7.2#r2, §7.3#r8, §9.6#r4, §4.1#r6, §4.2.4#p6, §9.4.2#r33, §9.4.2#r8, EB-FRM-1@mark-as-found, EB-FRM-2@mark-as-found, EB-FRM-4@mark-as-found, EB-FRM-7@mark-as-found, EB-FB-1@mark-as-found, EB-ERR-1@mark-as-found, EB-SRC-6@found-at]
+sourceRules: [§4.2.4#p2, §4.2.4#p3, §4.2.4#r4, §4.2.4#r5, §4.2.4#r6, §4.2.4#r7, §4.2.4#r8, §4.2.4#r9, §4.2.4#r10, §4.2.4#r11, §9.9#r2, §9.9#r3, §9.9#r4, §9.9#r5, §9.9#r6, §9.9#p3, §9.9#p4, §9.5#r8, §7.2#r2, §7.3#r8, §9.6#r4, §4.1#r6, §4.2.4#p7, §9.4.2#r33, §9.4.2#r8, EB-FRM-1@mark-as-found, EB-FRM-2@mark-as-found, EB-FRM-4@mark-as-found, EB-FRM-7@mark-as-found, EB-FB-1@mark-as-found, EB-ERR-1@mark-as-found, EB-SRC-6@found-at]
 smoke: []
 dependsOn: []
 trace:
@@ -31,7 +31,7 @@ trace:
   §7.3#r8: [148, 157, 163, 166, 170, 177, 211]
   §9.6#r4: [211, 212]
   §4.1#r6: 3
-  §4.2.4#p6: [28, 29, 30, 31, 34, 43]
+  §4.2.4#p7: [28, 29, 30, 31, 34, 43]
   §9.4.2#r33: [141, 142, 143, 144, 163]
   §9.4.2#r8: [35, 40]
   EB-FRM-1@mark-as-found: [173, 174, 177]

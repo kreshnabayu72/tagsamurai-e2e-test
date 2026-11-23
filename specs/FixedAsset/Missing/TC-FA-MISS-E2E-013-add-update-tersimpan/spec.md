@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.1#r9", "§9.2#b59", "§4.1a#r30", "§4.4#r8", "§7.3#r9", "§8.1#r10", "§9.6#r5", "§9.7#r9", "§2.1#r5", "§4.8#r5", "§4.1a#r28", "§4.1a#r27", "EB-FRM-1@add-update", "EB-FB-1@add-update"]
+sourceRules: ["§9.1#r9", "§9.2#b64", "§4.1a#r30", "§4.4#r8", "§7.3#r9", "§8.1#r10", "§9.6#r5", "§9.7#r9", "§2.1#r5", "§4.8#r5", "§4.1a#r28", "§4.1a#r27", "EB-FRM-1@add-update", "EB-FB-1@add-update"]
 smoke: []
 dependsOn: []
 trace:
   "§9.1#r9": 17
-  "§9.2#b59": [7, 17]
+  "§9.2#b64": [7, 17]
   "§4.1a#r30": [10, 12, 15, 38, 43, 46, 49, 55, 59, 63]
   "§4.4#r8": [12, 15, 17]
   "§7.3#r9": 15

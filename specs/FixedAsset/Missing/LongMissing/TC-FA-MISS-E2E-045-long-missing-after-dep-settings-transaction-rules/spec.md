@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.5#r5", "§11#r8", "§1.2#r110", "§1.2#r113", "§9.4.2#r19", "§9.4.1#r11", "§9.2#b50", "§9.2#b55"]
+sourceRules: ["§9.5#r5", "§11#r8", "§1.2#r114", "§1.2#r117", "§9.4.2#r19", "§9.4.1#r11", "§9.2#b55", "§9.2#b60"]
 smoke: []
 dependsOn: ["Settings Transaction Rules: Long missing after"]
 trace:
   "§9.5#r5": [1]
   "§11#r8": [1, 39]
-  "§1.2#r110": [5, 39]
-  "§1.2#r113": [40]
+  "§1.2#r114": [5, 39]
+  "§1.2#r117": [40]
   "§9.4.2#r19": [15]
   "§9.4.1#r11": [7, 15]
-  "§9.2#b50": [15]
-  "§9.2#b55": [23, 39]
+  "§9.2#b55": [15]
+  "§9.2#b60": [23, 39]
 anchor: [31]
 coverage:
   web: automated
