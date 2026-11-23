@@ -2866,3 +2866,83 @@ Aturan:
   - Script 048 langkah 12: memilih `Extend period` lalu menegaskan date picker tampil, setelah langkah 15 (Reactivate disabled) diperiksa pada keadaan awal.
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, gap-claims/gs-rerun2-20261120.md).
 - **Status:** berlaku; script 048 (gs) merujuk D-276.
+
+## D-277 Aturan umum: entitas tanpa produk diarahkan ke /portal, bukan halaman no-access (2026-11-20)
+
+- **Spec / langkah:** AdminConsole/DeviceAllocation `TC-AC-ACHA-E2E-009` TC-AC-ACHA-48 dan TC-AC-ACHA-49 (akun Pre-setup #39 dan #40, entitas Client PT Sejahtera Logistik).
+- **Spec meminta:** akun Client mendarat di Dashboard Admin Console; menu Allocation tidak tampil; URL langsung Device Allocation memunculkan halaman no-access. Spec sendiri menandai Dashboard sebagai asumsi (catatan "Layar awal … tidak dinyatakan TC").
+- **App:** entitas Client tidak punya produk Admin Console. Setelah login, aplikasi berhenti di /portal dan Admin Console tidak ditawarkan. URL langsung ke /admin-console/* diarahkan ke /portal (`apps/web/src/shell/guards/ProductAccessGuard.tsx:9-21`). Backend juga tidak bisa memberi role Admin Console kepada user Client (`POST /v2/iam/products/admin_console/roles/capabilities/users` 422 `stale`).
+- **Dasar keputusan:** gerbang entitas yang diuji spec ("Entity Gate menang atas role") tetap terpenuhi, bahkan lebih awal, di tingkat produk. D-015 (halaman no-access) berlaku untuk user yang punya produk tetapi tidak punya capability, bukan untuk entitas yang tidak punya produk sama sekali. Sejalan dengan D-entry Expired: entitas tanpa sesi produk berhenti di /portal.
+- **Keputusan:**
+  - Untuk spec: user dari entitas yang tidak memiliki produk tidak pernah masuk ke produk itu. Spec memverifikasi bahwa produk tidak ditawarkan di /portal dan URL langsung kembali ke /portal tanpa data modul termuat. Jangan tulis Dashboard produk atau halaman no-access untuk aktor seperti ini, dan jangan tulis pemberian role produk kepada user entitas yang tidak memiliki produk itu.
+  - Script 009: TC-48 dan TC-49 memverifikasi /portal tanpa Admin Console, dan URL langsung kembali ke /portal tanpa baris Device Allocation. #40 dipakai tanpa grant Manage allocation; tidak ada `helper-gap:be` atau draf BE untuk grant itu.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi ac).
+- **Status:** berlaku; script 009 (ac) merujuk D-277.
+
+## D-278 My Profile: Email di Section Identity = email login persona run, bukan literal spec (2026-11-20)
+
+- **Spec / langkah:** GlobalSettings/MyProfile `TC-GS-PROFILE-E2E-002` langkah 3.
+- **Spec meminta:** Email = `andipratama@qwertysystem.net`, padahal akun Pre-setup-nya ditulis `totalControlProfile_automated_{namaCompany}@qwertysystem.net`.
+- **App:** Email read-only menampilkan alamat login akun yang sedang masuk (PRD My Profile `PROFILE-LOGIC-04`, L87). Persona e2e dibuat per run dengan email unik, karena email dipakai bersama satu pool (lihat entri Non-Login User, 409 `Email already exists`).
+- **Keputusan:**
+  - Untuk spec: nilai Email yang diharapkan = email login akun aktor; jangan tulis alamat literal yang berbeda dari akun Pre-setup.
+  - Script 002: assert Email = email persona run.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs, gap-claims/gs-myprofile-20261120.md).
+- **Status:** berlaku.
+
+## D-279 My Profile: file foto non-PNG/JPEG ditolak di picker dengan toast T-06; 422 hanya untuk isi palsu (2026-11-20)
+
+- **Spec / langkah:** `TC-GS-PROFILE-E2E-059` langkah 13–14; `TC-GS-PROFILE-E2E-067` TC-277, TC-278, TC-279.
+- **Spec meminta:** `document.pdf`, `.gif`, dan teks berekstensi `.png` menghasilkan respons 422 `Unsupported file format` dan toast `Error, failed to update photo.` (T-06).
+- **PRD:** V-08 (L363): picker difilter PNG/JPG/JPEG; server menolak 422 file yang isinya bukan PNG/JPEG valid; foto tidak berubah dan UI menampilkan toast gagal Edit Photo (T-06). L512: penolakan format didahulukan atas Storage penuh.
+- **App:** ImagePicker menolak lewat `accept` + `onReject` sebelum request (`useMyProfileViewModel.ts:156-157`), tanpa pesan. Ini cacat app: PRD meminta T-06 untuk setiap penolakan format.
+- **Keputusan:**
+  - App: `onReject` karena tipe file menampilkan toast T-06, foto tidak berubah, tanpa request (pemilik: gs). Penolakan karena ukuran tetap mengikuti baris ukuran V-08.
+  - File berekstensi di luar allowlist (pdf, gif): spec memverifikasi toast T-06, foto tidak berubah, dan tidak ada request upload. Asersi 422 untuk file ini tidak berlaku, karena picker menolaknya lebih dulu.
+  - File berekstensi `.png` dengan isi bukan gambar (TC-279): lolos filter picker, server menolak 422, toast T-06. Asersi 422 tetap berlaku.
+  - Fixture `document.pdf`, `animated.gif`, `not-an-image.png` ditambahkan di apps/e2e/fixtures (gs).
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
+- **Status:** berlaku.
+
+## D-280 My Profile: uji IDOR dengan menulis ulang id user tidak berlaku untuk rute own-profile (2026-11-20)
+
+- **Spec / langkah:** `TC-GS-PROFILE-E2E-066` langkah 2–8 (intercept, tulis ulang parameter user ke #10, harap 403) dan 22–24 (Access & Status Admin Console sebagai #4).
+- **App/kontrak:** `/v2/iam/my-profile`, `/change-password`, `/profile-picture` tidak membawa id user; identitas diambil dari sesi (PRD `PROFILE-LOGIC-01`). Tidak ada parameter yang bisa ditulis ulang, jadi state yang diminta mustahil dibangun.
+- **Keputusan:**
+  - Untuk spec: My Profile hanya bekerja pada akun sesi; jangan tulis langkah yang menulis ulang id user pada rute My Profile. Bila ingin menguji isolasi, uji bahwa request tanpa sesi atau dengan sesi user lain hanya mengubah akun sesi itu.
+  - Script 066: langkah 2–8 ditandai `spec-decision D-280`. Langkah 22–24: rute Access & Status belum ada di kontrak → tag `feature-gap:be` dengan BT milik gs, dan issue untuk pemilik LLD.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
+- **Status:** berlaku.
+
+## D-281 My Profile: sesi kedua aktor = sesi mobile, bukan web kedua (2026-11-20)
+
+- **Spec / langkah:** `TC-GS-PROFILE-E2E-061` (Prerequisites L24, langkah 2/12/16–17/25) dan `TC-GS-PROFILE-E2E-062`.
+- **Spec meminta:** dua sesi web bersamaan untuk akun #7; setelah ganti password di sesi A, sesi B (web) menampilkan dialog `Password Changed`.
+- **PRD:** Auth Session Management `AUTHSES-LOGIC-01` (L116), F-AUTHSES-02 (L1017), L1454: maksimal 1 web + 1 mobile aktif per akun; login web kedua memicu Duplicate Login. My Profile `PROFILE-LOGIC-03` (L86): ganti password me-revoke sesi lain, sesi ini tetap.
+- **Keputusan:**
+  - Untuk spec: sesi lain dari akun yang sama adalah sesi platform lain (mobile). Dua sesi web bersamaan tidak pernah menjadi Prerequisites.
+  - Script 061/062: sesi B dibuat sebagai sesi mobile lewat API. Setelah ganti password, sesi B diverifikasi ter-revoke lewat API (401), bukan lewat dialog web. Langkah dialog `Password Changed` di sesi B ditandai `spec-decision D-281`. Akun #7 menyetujui agreement lewat API di hook sebelum sesi mobile dibuat (respons sekarang `agreement_required`).
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
+- **Status:** berlaku.
+
+## D-282 My Profile: banner Pending Email Change realtime menunggu event backend (2026-11-20)
+
+- **Spec / langkah:** `TC-GS-PROFILE-E2E-064` TC-209 langkah 3–7 dan TC-210 langkah 11–14.
+- **PRD:** S-06 (L270) dan baris D7 (L520): banner hilang otomatis dan Email ikut berubah tanpa refresh; L622 Sync + Realtime. Jelas diminta.
+- **App:** banner dibaca sekali dari `GET /v2/iam/my-profile/pending-email-change`. Stream `notifications/sse/events?product=global_settings` terbuka tetapi tidak membawa event untuk record ini.
+- **Keputusan:**
+  - Ini contract drift (PRD jelas, backend tidak mengirim event): langkah tanpa refresh di-tag `feature-gap:be` dengan BT milik gs, dan issue untuk tim BE (event perubahan pending email change di stream SSE). Langkah dengan refresh eksplisit tetap dijalankan sebagai asersi.
+  - Setelah event ada: app berlangganan dan me-refetch banner serta Email (pemilik: gs), lalu tag dicabut.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi gs).
+- **Status:** berlaku.
+
+## D-283 Client: Delete atas Client yang sudah dihapus sesi lain ditolak 404, bukan sukses (2026-11-20)
+
+- **Spec / langkah:** `TC-AC-ACC-E2E-146` blok TC-AC-ACC-961 langkah 26–27.
+- **Spec meminta:** Sesi A menampilkan toast sukses "Success, client has been deleted." tanpa toast error setelah Sesi B menghapus Client lebih dulu.
+- **Kenyataannya:** `DELETE /clients/{id}` membalas 404 `Client not found`. App menampilkan toast danger "Client not found", menutup dialog, me-refresh List, dan tidak menulis baris log.
+- **Karena:** PRD Client L2542 EC-87: "Ditolak 404 "Client not found" tanpa baris log baru"; L2406 butir 2 dan L2690 (Delete tidak idempoten). TC-961 sendiri mengutip EC-87, jadi Expected b bertentangan dengan sumbernya.
+- **Keputusan:** langkah 26–27 memverifikasi toast "Client not found" (bukan toast sukses) dan tidak ada baris log baru. Langkah 28–33 tetap.
+- **Untuk spec:** TC-961 Expected b mengikuti EC-87.
+- **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi client).
+- **Status:** berlaku.
