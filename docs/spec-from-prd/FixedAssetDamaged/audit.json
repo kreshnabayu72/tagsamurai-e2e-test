@@ -1,14 +1,14 @@
 {
  "schema": "spec-from-prd-audit/v1",
- "putaran": 2,
- "suite": "e94d4bf54e8b3f18",
+ "putaran": 3,
+ "suite": "54bf19b7efb3fb00",
  "hitung": {
-  "ok": 606,
-  "parsial": 21,
+  "ok": 605,
+  "parsial": 22,
   "hilang": 0,
   "salah": 0,
   "na": 146,
-  "skor": 98.3
+  "skor": 98.2
  },
  "siap": [
   "TC-FA-DAMAGED-E2E-001-tabel-active-tampilan",
@@ -159,6 +159,21 @@
     11
    ],
    "catatan": "Badge status selesai diasersi di UI-106 (langkah 8-11) tetapi UI-106 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
+   "unit": "§9.2#b4",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
+   "langkah": [
+    48,
+    56,
+    59,
+    67,
+    69,
+    77
+   ],
+   "catatan": "Nilai domain Source (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) disimpan apa adanya dan diasersi di BE-208, tetapi spec ini tidak tercatat sebagai penanggung unit; juga TC-FA-DAMAGED-E2E-001 langkah 30-37 (Source per baris di tabel Active, 8 nilai). Opsi Filter Source dari data dan cakupan Group sudah diasersi di E2E-004 (9, 118) dan BE-209 (50, 52). Tambahkan ke daftar penanggung."
   },
   {
    "unit": "EB-FLT-1@tabel-active",
@@ -944,41 +959,16 @@
    "unit": "§Aturan Logika Modul#r52",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow",
+   "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
    "langkah": [
-    14
+    48,
+    56,
+    59,
+    67,
+    69,
+    77
    ],
-   "catatan": "Source `Borrow return` diasersi benar di 049 (juga BE-208 57), tetapi 049 tidak tercatat sebagai penanggung unit; unit hanya mencatat 030 (Manual) dan BE-201 (Manual, Reported by holder, Borrowed asset, Assigned asset, Reported by scan, Audit, Maintenance, Registration)."
-  },
-  {
-   "unit": "§Aturan Logika Modul#r52",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment",
-   "langkah": [
-    15
-   ],
-   "catatan": "Source `Assign return` diasersi benar di 052 (juga BE-208 60), tetapi 052 tidak tercatat sebagai penanggung unit."
-  },
-  {
-   "unit": "§Aturan Logika Modul#r52",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer",
-   "langkah": [
-    27
-   ],
-   "catatan": "Source `Transfer receive` diasersi benar di 053 (juga BE-208 70), tetapi 053 tidak tercatat sebagai penanggung unit."
-  },
-  {
-   "unit": "§Aturan Logika Modul#r52",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-038-aset-ditemukan-damaged-dep-missing",
-   "langkah": [
-    37
-   ],
-   "catatan": "Source `Missing asset` diasersi benar di 038 (juga BE-208 78), tetapi 038 tidak tercatat sebagai penanggung unit."
+   "catatan": "BE-208 mengasersi Source per titik masuk (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) dengan benar tetapi tidak tercatat sebagai penanggung unit DAMAGED-LOGIC-05h; tambahkan ke daftar spec be-e2e unit ini. Cakupan 12 nilai Source (Manual, Reported by scan, Reported by holder, Borrowed asset, Borrow return, Assigned asset, Assign return, Audit, Maintenance, Transfer receive, Missing asset, Registration) lengkap lewat BE-201 + BE-208; sisi ui-e2e lewat 030 (Manual), 038 (Missing asset), 049 (Borrow return), 052 (Assign return), 053 (Manual tetap, Transfer receive)."
   },
   {
    "unit": "§Aturan Logika Modul#r61",
@@ -1733,19 +1723,23 @@
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
+   "verdict": "parsial",
+   "jenis": "drift",
+   "spec": "TC-FA-DAMAGED-UI-102-tabel-active-mekanik-toolbar",
    "langkah": [],
-   "catatan": "Tooltip Disabled Report Disposal (asset-list.md S-35) dan Report Missing saat Transfer In Transit (asset-list.md S-27) didefinisikan di dokumen luar kit; suite hanya menegaskan keadaan Disabled, teks tooltip tidak dapat dinilai."
+   "catatan": "Footnote [^drift-1] pada UI-102 untuk pola paginasi keliru. Isinya tidak sesuai selisih PRD vs foundation untuk paginasi (§9.11/§9.18: nomor halaman melebihi terakhir menuju halaman terakhir, kurang dari 1 menuju halaman 1, non-angka diabaikan). Footnote perlu diperbaiki agar mengasersi versi foundation dengan rujukan drift yang benar."
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "ok",
+   "verdict": "parsial",
    "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Example Data baris 2 (Review Disabled bila pelapor kemudian punya hak Aktor Damaged) bertentangan dengan Matriks Aksi (Review 'termasuk pelapor', DAMAGED-LOGIC-09a); suite mengikuti Matriks Aksi."
+   "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
+   "langkah": [
+    80,
+    83,
+    86
+   ],
+   "catatan": "Teks tooltip untuk Report Disposal Disabled (S-DMG-35) dan Report Missing Disabled (S-DMG-27) ditetapkan di luar kit. Spec hanya menyatakan Disabled tanpa literal tooltip. Tidak mengubah verdict. Perlu penetapan di PRD."
   },
   {
    "unit": "§4.2.2#p1",
@@ -2206,19 +2200,54 @@
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "ok",
+   "verdict": "parsial",
    "temuan": [
     {
-     "jenis": "prd",
-     "spec": null,
+     "jenis": "kurang",
+     "spec": "TC-FA-DAMAGED-E2E-004-tabel-active-filter",
+     "langkah": [
+      73,
+      76,
+      80,
+      82,
+      84,
+      135,
+      138,
+      139,
+      142,
+      145,
+      146,
+      151,
+      153,
+      154
+     ],
+     "catatan": "Temuan putaran 1 no. 4 masih sebagian. Hasil filter (baris yang lolos dan yang tersaring) hanya dijalankan untuk sebagian kolom. Placeholder semua field sudah diverifikasi di UI-102 langkah 98-225, tetapi hasil penyaringan untuk Asset Name, Last Updated, Brand, Model/Type, TAG, Category, Label, Measurement, Division, Asset Class, Modified By, rentang tanggal, dan rentang angka (Purchase Cost, Asset Value) tidak diuji pada suite mana pun. Foundation §9.8/§9.20 menetapkan AND antar field, OR dalam field, dan opsi DISTINCT, sehingga hasil per field adalah perilaku yang harus diasersi.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-DAMAGED-UI-101-tabel-active-tampilan-dan-state",
+     "langkah": [
+      2
+     ],
+     "catatan": "Urutan kolom default pada Setup Column 28 kolom (T-DMG-01) tidak diasersi sebagai urutan penuh dari kiri ke kanan. Hanya urutan relatif tertentu (Source sebelum Status, UI-102 langkah 44/230-232) yang diverifikasi. Menyimpang dari tabel Setup Column di PRD.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "drift",
+     "spec": "TC-FA-DAMAGED-UI-102-tabel-active-mekanik-toolbar",
      "langkah": [],
-     "catatan": "Tooltip Disabled Report Disposal (asset-list.md S-35) dan Report Missing saat Transfer In Transit (asset-list.md S-27) didefinisikan di dokumen luar kit; suite hanya menegaskan keadaan Disabled, teks tooltip tidak dapat dinilai."
+     "catatan": "Footnote [^drift-1] pada UI-102 untuk pola paginasi keliru. Isinya tidak sesuai selisih PRD vs foundation untuk paginasi (§9.11/§9.18: nomor halaman melebihi terakhir menuju halaman terakhir, kurang dari 1 menuju halaman 1, non-angka diabaikan). Footnote perlu diperbaiki agar mengasersi versi foundation dengan rujukan drift yang benar."
     },
     {
      "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Example Data baris 2 (Review Disabled bila pelapor kemudian punya hak Aktor Damaged) bertentangan dengan Matriks Aksi (Review 'termasuk pelapor', DAMAGED-LOGIC-09a); suite mengikuti Matriks Aksi."
+     "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
+     "langkah": [
+      80,
+      83,
+      86
+     ],
+     "catatan": "Teks tooltip untuk Report Disposal Disabled (S-DMG-35) dan Report Missing Disabled (S-DMG-27) ditetapkan di luar kit. Spec hanya menyatakan Disabled tanpa literal tooltip. Tidak mengubah verdict. Perlu penetapan di PRD."
     }
    ],
    "juri": "j1"
@@ -2316,6 +2345,26 @@
    "unit": "§9.2#b12",
    "verdict": "ok",
    "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.2#b4",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
+     "langkah": [
+      48,
+      56,
+      59,
+      67,
+      69,
+      77
+     ],
+     "catatan": "Nilai domain Source (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) disimpan apa adanya dan diasersi di BE-208, tetapi spec ini tidak tercatat sebagai penanggung unit; juga TC-FA-DAMAGED-E2E-001 langkah 30-37 (Source per baris di tabel Active, 8 nilai). Opsi Filter Source dari data dan cakupan Group sudah diasersi di E2E-004 (9, 118) dan BE-209 (50, 52). Tambahkan ke daftar penanggung."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2447,12 +2496,6 @@
   },
   {
    "unit": "EB-FLT-5@tabel-active",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.2#b4",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -4561,38 +4604,19 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-049-return-accept-with-damage-dep-borrow",
+     "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
      "langkah": [
-      14
+      48,
+      56,
+      59,
+      67,
+      69,
+      77
      ],
-     "catatan": "Source `Borrow return` diasersi benar di 049 (juga BE-208 57), tetapi 049 tidak tercatat sebagai penanggung unit; unit hanya mencatat 030 (Manual) dan BE-201 (Manual, Reported by holder, Borrowed asset, Assigned asset, Reported by scan, Audit, Maintenance, Registration)."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-052-unassign-accept-with-damage-dep-assignment",
-     "langkah": [
-      15
-     ],
-     "catatan": "Source `Assign return` diasersi benar di 052 (juga BE-208 60), tetapi 052 tidak tercatat sebagai penanggung unit."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-053-transfer-dep-transfer",
-     "langkah": [
-      27
-     ],
-     "catatan": "Source `Transfer receive` diasersi benar di 053 (juga BE-208 70), tetapi 053 tidak tercatat sebagai penanggung unit."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-038-aset-ditemukan-damaged-dep-missing",
-     "langkah": [
-      37
-     ],
-     "catatan": "Source `Missing asset` diasersi benar di 038 (juga BE-208 78), tetapi 038 tidak tercatat sebagai penanggung unit."
+     "catatan": "BE-208 mengasersi Source per titik masuk (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) dengan benar tetapi tidak tercatat sebagai penanggung unit DAMAGED-LOGIC-05h; tambahkan ke daftar spec be-e2e unit ini. Cakupan 12 nilai Source (Manual, Reported by scan, Reported by holder, Borrowed asset, Borrow return, Assigned asset, Assign return, Audit, Maintenance, Transfer receive, Missing asset, Registration) lengkap lewat BE-201 + BE-208; sisi ui-e2e lewat 030 (Manual), 038 (Missing asset), 049 (Borrow return), 052 (Assign return), 053 (Manual tetap, Transfer receive)."
     }
    ],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "D-DMG-12",
@@ -7655,7 +7679,7 @@
    "unit": "§8.2#p17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
    "unit": "§8.2#p18",

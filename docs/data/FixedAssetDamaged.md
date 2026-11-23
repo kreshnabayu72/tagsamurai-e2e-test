@@ -1,10 +1,10 @@
 <!-- Ditulis stage spec-from-prd saat close. Jangan diubah tangan: run berikutnya menimpanya. -->
 
-Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f79946a09f41c96`), foundation@6011f14-dirty, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@963b2f8`, ditutup 2026-11-23T07:13:28Z.
+Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f79946a09f41c96`), foundation@6011f14-dirty, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@963b2f8`, ditutup 2026-11-23T08:14:41Z.
 
-# Matriks data Damaged (09f256bbac88aaa1)
+# Matriks data Damaged (464bd81082e68612)
 
-- Entri: 1238 (awal 1010, dibuat 166, dicoba 62)
+- Entri: 1240 (awal 1012, dibuat 166, dicoba 62)
 - Checker: ERROR 0, REVIEW 72
 
 ## Target × varian
@@ -312,7 +312,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 
 | Varian | Entri |
 |---|---|
-| `cocok` | ✓ DU-004-1 |
+| `cocok` | ✓ DU-004-1, DU-004-3 |
 | `tidak-cocok` | ✓ DU-004-3 |
 | `and-a-saja` | ✓ DU-004-2 |
 | `and-b-saja` | ✓ DU-004-5 |
@@ -430,7 +430,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 | `nol-numerik` | ✓ DU-101-13 |
 | `tanggal-null` | ✓ DU-101-11 |
 | `kosong-tidak-pernah-diisi` | ✓ DU-101-11 |
-| `teks-panjang` | ✓ DU-101-12 |
+| `teks-panjang` | ✓ DU-101-12, DU-101-22 |
 | `per-nilai-badge:Waiting for Confirmation` | ✓ DU-101-2 |
 | `per-nilai-badge:Damaged` | ✓ DU-101-1 |
 | `per-nilai-badge:Reported Disposal` | ✓ DU-101-4 |
@@ -458,7 +458,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 | `asal-jalur:Reported by scan` | ✓ DU-001-7 |
 | `asal-jalur:Reported by holder` | ✓ DU-001-1 |
 | `asal-jalur:Borrow return` | ✓ DU-001-6 |
-| `asal-jalur:Stock opname` | ✓ DU-001-3 |
+| `asal-jalur:Audit` | ✓ DU-001-3 |
 | `asal-jalur:Missing asset` | ✓ DU-001-8 |
 | `asal-jalur:Registration` | ✓ DU-001-9 |
 | `asal-jalur:Transfer receive` | ✓ DU-001-10 |
@@ -1245,7 +1245,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 - **DU-003-13** Search query (dicoba), Kata kunci Search 'Zulu {runId}' untuk menyempitkan ke dua record Last Updated sama dengan Reported Date: Search `Zulu {runId}` (12 kar) · sumber turunan penulis
 - **DU-004-1** Damage record (awal), Record berjalan Damaged, Source Manual: Name `Filter Aset {runId} - 1` (23 kar), Asset ID `FLT-0001-{runId}` (16 kar), Group `Head Office {runId}` (19 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Last Holder `Sari D` (6 kar), Reported By `Agus P` (6 kar), Reported Date `T0 − 3 hari, pukul 11:00` (24 kar), Days Damaged `3 days` (6 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-004-2** Damage record (awal), Record berjalan Damaged, Source Reported by scan: Name `Filter Aset {runId} - 2` (23 kar), Asset ID `FLT-0002-{runId}` (16 kar), Group `Branch Surabaya {runId}` (23 kar), Status `Damaged` (7 kar), Source `Reported by scan` (16 kar), Last Holder `—` (1 kar), Reported By `Dedi K` (6 kar), Reported Date `T0 − 6 hari, pukul 11:00` (24 kar), Days Damaged `6 days` (6 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-004-3** Damage record (awal), Record berjalan Waiting for Confirmation, Source Reported by holder: Name `Filter Aset {runId} - 3` (23 kar), Asset ID `FLT-0003-{runId}` (16 kar), Group `Head Office {runId}` (19 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Last Holder `—` (1 kar), Reported By `Budi S` (6 kar), Reported Date `T0 − 10 hari, pukul 11:00` (25 kar), Days Damaged `10 days` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-004-3** Damage record (awal), Record berjalan Waiting for Confirmation, Source Reported by holder: Name `Filter Aset {runId} - 3` (23 kar), Asset ID `FLT-0003-{runId}` (16 kar), Group `Head Office {runId}` (19 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Last Holder `—` (1 kar), Reported By `Budi S` (6 kar), Reported Date `T0 − 10 hari, pukul 11:00` (25 kar), Days Damaged `10 days` (7 kar), Modified By `Budi S` (6 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-004-4** Damage record (awal), Record berjalan Reported Disposal, Source Audit: Name `Filter Aset {runId} - 4` (23 kar), Asset ID `FLT-0004-{runId}` (16 kar), Group `Branch Surabaya {runId}` (23 kar), Status `Reported Disposal` (17 kar), Source `Audit` (5 kar), Last Holder `—` (1 kar), Reported By `Agus P` (6 kar), Reported Date `T0 − 14 hari, pukul 11:00` (25 kar), Days Damaged `14 days` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-004-5** Damage record (awal), Record berjalan In Disposal Process, Source Manual: Name `Filter Aset {runId} - 5` (23 kar), Asset ID `FLT-0005-{runId}` (16 kar), Group `Head Office {runId}` (19 kar), Status `In Disposal Process` (19 kar), Source `Manual` (6 kar), Last Holder `—` (1 kar), Reported By `Rina W` (6 kar), Reported Date `T0 − 20 hari, pukul 11:00` (25 kar), Days Damaged `20 days` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-004-6** Damage record (awal), Record berjalan Damaged berpenanda Reported Missing, Source Manual: Name `Filter Aset {runId} - 6` (23 kar), Asset ID `FLT-0006-{runId}` (16 kar), Group `Warehouse {runId}` (17 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Last Holder `—` (1 kar), Reported By `Agus P` (6 kar), Reported Date `T0 − 5 hari, pukul 11:00` (24 kar), Days Damaged `5 days` (6 kar), Penanda `Reported Missing` (16 kar) · sumber PRD §4.1a T-DMG-01 Example Data
@@ -1655,10 +1655,12 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 - **DU-101-14** Damage record (awal), Record Damaged dengan nama aset berisi markup: Name `<b>Meeting</b> Table - 2` (24 kar), Asset ID `TBL-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Rina Wijaya` (11 kar) · sumber turunan penulis
 - **DU-101-15** Damage record (awal), Daftar record berjalan kosong untuk entitas yang belum pernah menerima laporan: Jumlah record `0` (1 kar) · sumber turunan penulis
 - **DU-101-16** Damage record (awal), Record berjalan di luar cakupan Group aktor: Name `Toyota Avanza - 2` (17 kar), Asset ID `VEH-2026-0002` (13 kar), Group `Branch Surabaya` (15 kar), Status `Damaged` (7 kar), Cakupan Group aktor `Head Office` (11 kar) · sumber turunan penulis
-- **DU-101-18** Damage record (awal), Record Waiting for Confirmation dilaporkan PIC atas nama pemegang tanpa akun: Name `Handheld Scanner Zebra TC21 - 2` (31 kar), Asset ID `HSC-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Last Holder `Tono Rahmat` (11 kar), Last Holder Division `Finance` (7 kar), Last Holder PIC `Sinta Maharani` (14 kar), Last Holder Hover PIC `PIC: Sinta Maharani` (19 kar), Last Holder Employee ID `EMP-0217` (8 kar), Reported By `Sinta M on behalf of Tono R` (27 kar) · sumber PRD §4.1a Example Data
+- **DU-101-18** Damage record (awal), Record Waiting for Confirmation dilaporkan PIC atas nama pemegang tanpa akun: Name `Handheld Scanner Zebra TC21 - 2` (31 kar), Asset ID `HSC-2026-0002` (13 kar), Group `Head Office` (11 kar), Status `Waiting for Confirmation` (24 kar), Source `Reported by holder` (18 kar), Last Holder `Tono Rahmat` (11 kar), Last Holder Division `Finance` (7 kar), Last Holder PIC `Sinta Maharani` (14 kar), Last Holder Hover PIC `PIC: Sinta Maharani` (19 kar), Last Holder Employee ID `EMP-0217` (8 kar), Reported By `Sinta M on behalf of Tono R` (27 kar), Reported By Hover `['Sinta Maharani', 'Tono Rahmat']` (33 kar) · sumber PRD §4.1a Example Data
 - **DU-101-17** Damage record (dicoba), Kata kunci Search yang tidak cocok dengan record mana pun: Search `Printer Hilang` (14 kar) · sumber turunan penulis
 - **DU-101-19** Damage record (awal), Record Damaged yang Damaged Photo-nya dihapus lewat File Manager, aset punya foto aset: Name `Welding Machine Lincoln - 2` (27 kar), Asset ID `WLD-2026-0002` (13 kar), Group `Warehouse` (9 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Rina Wijaya` (11 kar), Asset Photo `welding-machine-lincoln-2.jpg` (29 kar), Damaged Photo `None` (4 kar) · sumber §Aturan Logika Modul#r96
 - **DU-101-20** Damage record (awal), Record Damaged yang Damaged Photo-nya dihapus lewat File Manager, aset belum punya foto aset: Name `Pressure Washer Karcher - 5` (27 kar), Asset ID `PWR-2026-0005` (13 kar), Group `Warehouse` (9 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Rina Wijaya` (11 kar), Asset Photo `None` (4 kar), Damaged Photo `None` (4 kar) · sumber §Aturan Logika Modul#r96
+- **DU-101-21** Damage record (awal), Record Damaged dengan dua garansi aset: Name `Air Conditioner Daikin FTV - 5` (30 kar), Asset ID `ACN-2026-0005` (13 kar), Group `Head Office` (11 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Rina Wijaya` (11 kar), Warranty Expiry `2027-03-15` (10 kar), Warranty List `['Manufacturer Warranty — 2027-03-15', 'Extended Warranty — 2028-01-10']` (72 kar), Warranty Expiry Tampil `15/03/27` (8 kar), Warranty Hover `['Manufacturer Warranty — 15/03/27', 'Extended Warranty — 10/01/28']` (68 kar), Warranty Name 1 `Manufacturer Warranty` (21 kar), Warranty Name 2 `Extended Warranty` (17 kar) · sumber PRD §4.1a T-DMG-01 Setup Column (Warranty Expiry: garansi terdekat; hover daftar seluruh garansi)
+- **DU-101-22** Damage record (awal), Record Damaged dengan Model/Type lebih dari 25 karakter: Name `Rugged Laptop Dell - 7` (22 kar), Asset ID `RLP-2026-0007` (13 kar), Group `Head Office` (11 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Model/Type `Latitude Rugged Extreme Series 14` (33 kar), Reported By `Rina Wijaya` (11 kar) · sumber foundation prd-conventions.md §9.14
 - **DU-102-1** Damage record (awal), Record Reported Disposal untuk baris pertama tabel: Name `Printer HP LaserJet M404 - 8` (28 kar), Asset ID `PRN-2026-0008` (13 kar), Group `Head Office` (11 kar), Status `Reported Disposal` (17 kar), Source `Audit` (5 kar), Reported By `Agus Prasetyo` (13 kar) · sumber PRD §4.1a Example Data
 - **DU-102-2** Damage record (awal), Record In Disposal Process untuk baris kedua tabel: Name `Monitor Dell P2422H - 6` (23 kar), Asset ID `MON-2026-0006` (13 kar), Group `Warehouse` (9 kar), Status `In Disposal Process` (19 kar), Source `Manual` (6 kar), Reported By `Rina Wijaya` (11 kar) · sumber PRD §4.1a Example Data
 - **DU-102-3** Damage record (awal), Record Damaged untuk baris ketiga tabel: Name `Camera Canon EOS - 3` (20 kar), Asset ID `CAM-2026-0003` (13 kar), Group `Branch Surabaya` (15 kar), Status `Damaged` (7 kar), Source `Manual` (6 kar), Reported By `Agus Prasetyo` (13 kar) · sumber PRD §4.1a Example Data
@@ -2305,7 +2307,7 @@ Suite: `specs/FixedAsset/Damaged`. Sumber: PRD `fixed-asset@f688ea9` (sha `6f799
 - **DU-211-7** Group (awal), Group dengan leaf sama dan parent beda: Name `Bandung Office {runId} > Floor 2 {runId}` (40 kar) · sumber foundation prd-conventions.md §9.9
 - **DU-211-8** Damage record (awal), Record uji: Name `Laptop Lenovo ThinkPad - 301 {runId}` (36 kar), Asset ID `LPT-0301-{runId}` (16 kar), Status `Damaged` (7 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `RFID, NFC` (9 kar), Tab `Active` (6 kar), Brand `Lenovo {runId}` (14 kar), Model/Type `ThinkPad X1 {runId}` (19 kar), Category `Elektronik {runId} > Laptop {runId}` (35 kar), Source `Manual` (6 kar), Last Holder `—` (1 kar), Reported By `Agus P` (6 kar), Modified By `Siti Nur Rahmawati {runId}` (26 kar), Labels `Prioritas {runId}, Aset Kantor {runId}, Aset Lantai Dua {runId}` (63 kar), Purchase Cost `12500000` (8 kar), Asset Value (Commercial) `10000000` (8 kar), Days Damaged `7` (1 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-211-9** Damage record (awal), Record uji: Name `Laptop Lenovo ThinkPad - 302 {runId}` (36 kar), Asset ID `LPT-0302-{runId}` (16 kar), Status `Waiting for Confirmation` (24 kar), Group `Bandung Office {runId} > Floor 2 {runId}` (40 kar), TAG `QR` (2 kar), Tab `Active` (6 kar), Brand `Lenovo {runId}` (14 kar), Source `Reported by holder` (18 kar), Purchase Cost `4500000` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
-- **DU-211-10** Damage record (awal), Record uji: Name `Printer Canon Pixma - 303 {runId}` (33 kar), Asset ID `PRN-0303-{runId}` (16 kar), Status `Reported Disposal` (17 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `RFID` (4 kar), Tab `Active` (6 kar), Brand `Canon {runId}` (13 kar), Source `Stock opname` (12 kar), Purchase Cost `2100000` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
+- **DU-211-10** Damage record (awal), Record uji: Name `Printer Canon Pixma - 303 {runId}` (33 kar), Asset ID `PRN-0303-{runId}` (16 kar), Status `Reported Disposal` (17 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `RFID` (4 kar), Tab `Active` (6 kar), Brand `Canon {runId}` (13 kar), Source `Audit` (5 kar), Purchase Cost `2100000` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-211-11** Damage record (awal), Record uji: Name `Printer Canon Pixma - 304 {runId}` (33 kar), Asset ID `PRN-0304-{runId}` (16 kar), Status `In Disposal Process` (19 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `RFID` (4 kar), Tab `Active` (6 kar), Brand `Canon {runId}` (13 kar), Source `Manual` (6 kar), Purchase Cost `3300000` (7 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-211-12** Damage record (awal), Record uji: Name `Monitor, Curved Dell - 305 {runId}` (34 kar), Asset ID `MON-0305-{runId}` (16 kar), Status `Damaged` (7 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `QR` (2 kar), Tab `Active` (6 kar), Brand `Dell {runId}` (12 kar), Source `Manual` (6 kar) · sumber PRD §4.1a T-DMG-01 Example Data
 - **DU-211-13** Damage record (awal), Record uji: Name `Monitor "Curved" 27 inci - 306 {runId}` (38 kar), Asset ID `MON-0306-{runId}` (16 kar), Status `Damaged` (7 kar), Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}` (59 kar), TAG `QR` (2 kar), Tab `Active` (6 kar), Brand `Dell {runId}` (12 kar), Source `Manual` (6 kar) · sumber PRD §4.1a T-DMG-01 Example Data

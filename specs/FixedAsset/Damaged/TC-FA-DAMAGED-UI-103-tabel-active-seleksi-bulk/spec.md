@@ -98,13 +98,13 @@ coverage:
 ### Bulk Action Bar, Select All, dan checkbox header
 13. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
 14. Centang baris `Projector Epson EB-X06 - 2`
-15. Verifikasi tombol `Bulk Action` tampil
+15. Verifikasi tombol `Bulk Action` tampil[^drift-2]
 16. Verifikasi jumlah terpilih `1` tampil pada bar
 17. Verifikasi checkbox header berstatus indeterminate
 18. Verifikasi tombol `Select All (3 records)` tampil dengan jumlah tidak menghitung baris yang checkbox-nya Disabled
 19. Klik `Select All (3 records)`
 20. Verifikasi jumlah terpilih `3` tampil pada bar
-21. Verifikasi tombol `Unselect All (3 records)` tampil
+21. Verifikasi tombol `Unselect All (3 records)` tampil[^drift-1]
 22. Verifikasi checkbox header tercentang
 23. Verifikasi checkbox baris `Laptop Dell Latitude 5420 - 4` tidak tercentang
 24. Hapus centang baris `Tablet Samsung Tab A8 - 3`
@@ -122,7 +122,7 @@ coverage:
 32. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
 33. Centang baris `Projector Epson EB-X06 - 2`
 34. Centang baris `Tablet Samsung Tab A8 - 3`
-35. Klik `Bulk Action`
+35. Klik `Bulk Action`[^drift-2]
 36. Verifikasi item `Report Disposal` tampil dan aktif
 37. Klik `Report Disposal`
 38. Verifikasi dialog `D-DISP-13` terbuka dengan satu isian `Reason` untuk seluruh aset terpilih
@@ -135,7 +135,7 @@ coverage:
 43. Centang baris `Projector Epson EB-X06 - 2`
 44. Centang baris `Tablet Samsung Tab A8 - 3`
 45. Centang baris `Toyota Avanza - 2`
-46. Klik `Bulk Action`
+46. Klik `Bulk Action`[^drift-2]
 47. Verifikasi item `Report Disposal` tampil dan aktif walau seleksi lintas Group
 48. Klik `Report Disposal`
 49. Verifikasi dialog `Cannot Report Disposal` terbuka
@@ -151,7 +151,7 @@ coverage:
 57. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K11
 58. Centang baris `Projector Epson EB-X06 - 2`
 59. Centang baris `Tablet Samsung Tab A8 - 3`
-60. Klik `Bulk Action`
+60. Klik `Bulk Action`[^drift-2]
 61. Klik `Report Disposal`
 62. Kirim dialog `D-DISP-13` dengan Reason `Kerusakan tidak dapat diperbaiki`
 63. Verifikasi dialog `Cannot Report Disposal` terbuka
@@ -165,7 +165,7 @@ coverage:
 ### Seleksi bersih sesudah aksi diterima server
 70. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K8
 71. Centang baris `Projector Epson EB-X06 - 2`
-72. Klik `Bulk Action`
+72. Klik `Bulk Action`[^drift-2]
 73. Klik `Report Disposal`
 74. Kirim dialog `D-DISP-13` dengan Reason `Kerusakan tidak dapat diperbaiki`
 75. Verifikasi bar aksi massal tidak tampil
@@ -174,7 +174,7 @@ coverage:
 ### Bulk gagal karena timeout mempertahankan bar dan seleksi
 77. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K10
 78. Centang baris `Projector Epson EB-X06 - 2`
-79. Klik `Bulk Action`
+79. Klik `Bulk Action`[^drift-2]
 80. Klik `Report Disposal`
 81. Kirim dialog `D-DISP-13` dengan Reason `Kerusakan tidak dapat diperbaiki`
 82. Verifikasi toast `Connection problem. Please try again.` tampil
@@ -183,7 +183,7 @@ coverage:
 ### Bulk gagal karena error server mempertahankan bar dan seleksi
 84. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K9
 85. Centang baris `Projector Epson EB-X06 - 2`
-86. Klik `Bulk Action`
+86. Klik `Bulk Action`[^drift-2]
 87. Klik `Report Disposal`
 88. Kirim dialog `D-DISP-13` dengan Reason `Kerusakan tidak dapat diperbaiki`
 89. Verifikasi toast error tampil
@@ -194,7 +194,7 @@ coverage:
 92. Centang baris `Pallet Jack Manual - 1`
 93. Klik `Select All (999 records)`
 94. Verifikasi jumlah terpilih `999` tampil pada bar
-95. Verifikasi tombol `Unselect All (999 records)` tampil
+95. Verifikasi tombol `Unselect All (999 records)` tampil[^drift-1]
 96. Verifikasi tidak ada toast batas yang tampil
 
 ### Select All tepat di Selection Limit
@@ -249,7 +249,7 @@ coverage:
 135. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K13
 136. Centang baris `Toyota Avanza - 2`
 137. Klik `Select All (13 records)`
-138. Klik `Bulk Action`
+138. Klik `Bulk Action`[^drift-2]
 139. Klik `Report Disposal`
 140. Verifikasi dialog `Cannot Report Disposal` terbuka
 141. Verifikasi seluruh 13 aset terpilih `Pallet Jack Manual - 1`, `Pallet Jack Manual - 2`, `Pallet Jack Manual - 3`, `Pallet Jack Manual - 4`, `Pallet Jack Manual - 5`, `Pallet Jack Manual - 6`, `Pallet Jack Manual - 7`, `Pallet Jack Manual - 8`, `Pallet Jack Manual - 9`, `Pallet Jack Manual - 10`, `Pallet Jack Manual - 11`, `Pallet Jack Manual - 12`, dan `Toyota Avanza - 2` tampil sebagai bullet pada dialog `Cannot Report Disposal`
@@ -261,7 +261,7 @@ coverage:
 145. Centang baris `Projector Epson EB-X06 - 2`
 146. Centang baris `Tablet Samsung Tab A8 - 3`
 147. Centang baris `Toyota Avanza - 2`
-148. Klik `Bulk Action`
+148. Klik `Bulk Action`[^drift-2]
 149. Klik `Report Disposal`
 150. Verifikasi dialog `Cannot Report Disposal` memiliki peran dialog modal yang berlabel judul `Cannot Report Disposal` untuk teknologi bantu
 151. Verifikasi fokus berada pada elemen di dalam dialog `Cannot Report Disposal`
@@ -276,7 +276,7 @@ coverage:
 158. Centang baris `Projector Epson EB-X06 - 2`
 159. Centang baris `Tablet Samsung Tab A8 - 3`
 160. Centang baris `Toyota Avanza - 2`
-161. Klik `Bulk Action`
+161. Klik `Bulk Action`[^drift-2]
 162. Klik `Report Disposal`
 163. Tekan `Esc`
 164. Verifikasi dialog `Cannot Report Disposal` tertutup
@@ -289,7 +289,7 @@ coverage:
 169. Centang baris `Projector Epson EB-X06 - 2`
 170. Centang baris `Tablet Samsung Tab A8 - 3`
 171. Centang baris `Toyota Avanza - 2`
-172. Klik `Bulk Action`
+172. Klik `Bulk Action`[^drift-2]
 173. Klik `Report Disposal`
 174. Klik latar gelap di luar dialog `Cannot Report Disposal`
 175. Verifikasi dialog `Cannot Report Disposal` tertutup
@@ -302,7 +302,7 @@ coverage:
 180. Centang baris `Projector Epson EB-X06 - 2`
 181. Centang baris `Tablet Samsung Tab A8 - 3`
 182. Centang baris `Toyota Avanza - 2`
-183. Klik `Bulk Action`
+183. Klik `Bulk Action`[^drift-2]
 184. Klik `Report Disposal`
 185. Klik tombol tutup `Close dialog` pada dialog `Cannot Report Disposal`
 186. Verifikasi dialog `Cannot Report Disposal` tertutup
@@ -314,7 +314,7 @@ coverage:
 190. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K14
 191. Centang baris `Projector Epson EB-X06 - 2`
 192. Centang baris `Tablet Samsung Tab A8 - 3`
-193. Klik `Bulk Action`
+193. Klik `Bulk Action`[^drift-2]
 194. Klik `Report Disposal`
 195. Verifikasi dialog `D-DISP-13` terbuka dengan `Projector Epson EB-X06 - 2` sebagai record yang akan dilaporkan
 196. Verifikasi `Tablet Samsung Tab A8 - 3` tidak termasuk dalam dialog `D-DISP-13`
@@ -325,7 +325,7 @@ coverage:
 199. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K15
 200. Centang baris `Projector Epson EB-X06 - 2`
 201. Centang baris `Tablet Samsung Tab A8 - 3`
-202. Klik `Bulk Action`
+202. Klik `Bulk Action`[^drift-2]
 203. Klik `Report Disposal`
 204. Verifikasi dialog `Cannot Report Disposal` terbuka
 205. Verifikasi pesan `None of the selected records can be reported for disposal.` tampil
@@ -333,3 +333,7 @@ coverage:
 207. Verifikasi dialog `D-DISP-13` tidak terbuka
 208. Klik `[OK]`
 209. Verifikasi tidak ada toast yang tampil
+
+[^drift-1]: Drift foundation vs kontrak komponen. PRD §4.1a menyerahkan seleksi bulk pada `prd-conventions.md` §8. Foundation `prd-conventions.md` §8: «button berubah (toggle) menjadi "Unselect All"». Kontrak `BulkActionButton#41`: `Unselect All (N records)`. Diasersi: kontrak, karena label tombol dirender komponen BulkActionButton (SB-7).
+
+[^drift-2]: Drift PRD vs foundation. PRD §4.1a Bulk Action Bar: «| Report Disposal | Disposal | dark |» (aksi tampil sebagai item tabel Bulk Action Bar). Foundation `prd-conventions.md` §8: «Button "Bulk Action" (dropdown trigger) — klik membuka overlay berisi daftar aksi». Diasersi: foundation, karena bulk bar adalah pola bersama (SB-4).

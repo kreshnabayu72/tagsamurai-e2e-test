@@ -9,7 +9,7 @@ sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p6", "§4.4#r10", S-DMG-04, S-DMG-05,
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [3, 8, 9, 10, 13, 17, 76, 83, 86]
+  T-DMG-01: [3, 8, 9, 10, 13, 14, 17, 18, 76, 83, 86, 89, 92]
   D-DMG-06: [52, 53, 54, 62]
   "§4.2.4#p6": [53, 56, 57, 63, 69, 70]
   "§4.4#r10": [52]
@@ -77,13 +77,13 @@ coverage:
 11. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
 12. Klik `⋯` pada baris `Printer HP LaserJet M404 - 8`
 13. Verifikasi menu memuat `Damage Log` lalu `Cancel Disposal Report`
-14. Verifikasi aksi `Mark as Repaired` tidak dirender
+14. Verifikasi aksi `Mark as Repaired`, `Report Disposal`, dan `Report Missing` tidak dirender
 
 ### Menu aksi record In Disposal Process
 15. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
 16. Klik `⋯` pada baris `Monitor Dell P2422H - 6`
 17. Verifikasi menu memuat `Damage Log`
-18. Verifikasi aksi `Mark as Repaired` tidak dirender
+18. Verifikasi aksi `Mark as Repaired`, `Report Disposal`, dan `Report Missing` tidak dirender
 19. Verifikasi aksi `Cancel Disposal Report` tidak dirender
 
 ### Record berpenanda Missing hanya menyisakan Damage Log
@@ -170,3 +170,11 @@ coverage:
 84. Tekan `Esc`
 85. Klik `⋯` pada baris `Handheld Zebra TC21 - 9`
 86. Verifikasi aksi `Report Disposal` tampil Disabled
+
+### Report Missing aktif pada aset Borrowed dan Assigned
+87. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K7
+88. Klik `⋯` pada baris `Laptop Lenovo ThinkPad E14 - 7`
+89. Verifikasi aksi `Report Missing` aktif
+90. Tekan `Esc`
+91. Klik `⋯` pada baris `Handheld Zebra TC21 - 9`
+92. Verifikasi aksi `Report Missing` aktif

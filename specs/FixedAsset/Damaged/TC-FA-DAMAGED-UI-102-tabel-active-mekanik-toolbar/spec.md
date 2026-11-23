@@ -4,7 +4,7 @@ title: "Mekanik toolbar sub-tab Active: siklus kotak Search, indikator sort, Set
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: draft
+status: ready-for-automation
 sourceRules: [T-DMG-01, "§5#r8", "§9.5#r4", EB-SRC-4@tabel-active, EB-SRC-6@filter-group, EB-SRC-6@filter-category, EB-SRT-3@tabel-active, EB-KOL-1@tabel-active, EB-FLT-2@tabel-active, EB-FLT-6@tabel-active, EB-TBL-7@tabel-active, EB-DL-2@tabel-active, EB-DL-5]
 smoke: []
 dependsOn: []

@@ -30,7 +30,8 @@
     "F-DMG-02",
     "§Aturan Logika Modul#r11",
     "§Aturan Logika Modul#r13",
-    "§8.1#r2"
+    "§8.1#r2",
+    "§9.2#b4"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2878,7 +2879,9 @@
     "§8.2#p26",
     "§2.1#r5",
     "§3#p2",
-    "§2#b6"
+    "§2#b6",
+    "§9.2#b4",
+    "§Aturan Logika Modul#r52"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -5478,7 +5481,7 @@
   "F-DMG-02": "per fitur: tabel di 001, bulk di 013, Search by Scan di 026",
   "§8.1#r2": "per spec, klausa masing-masing: 001, 008",
   "§9.5#r7": "per sub-tab: Active di 004, History di 007",
-  "§9.2#b4": "per spec, klausa masing-masing: 201, 209",
+  "§9.2#b4": "per spec, klausa masing-masing: nilai domain Source per baris tabel Active di 001, opsi Filter Source dari data di 004, cakupan Group di 209, status dan Source menurut jenis pelapor di 201, nilai Source dari jalur non-form (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) disimpan apa adanya di 208",
   "§5#r8": "per spec, klausa masing-masing: 005, 014, 017",
   "T-DMG-02": "per fitur: konfigurasi dan tampilan di 007, Download di 006, Damage Log dari History di 008, baris hasil penyelesaian di spec mutasi yang memindahkan record ke History (011, 035, 045, 046); 209, 210, 211 (revisi PRD)",
   "§5#r5": "per sub-tab: Active (Report Disposal) di 013, History (tidak ada) di 007",
@@ -5629,7 +5632,7 @@
   "§9.10#p1": "be-e2e per klausa: hak dan isolasi di 205; upload Damaged Photo / After photo baru ditolak saat Storage penuh (DAMAGED-LOGIC-10c, EC-DMG-38 dan EC-DMG-39) hanya di 214 (status-entitas, PB-7); ui-e2e 025 tidak mengasersi klausa Storage penuh",
   "§9.4.1#r2": "be-e2e per klausa: hak dan isolasi di 205; upload Damaged Photo / After photo baru ditolak saat Storage penuh (DAMAGED-LOGIC-10c, EC-DMG-38 dan EC-DMG-39) hanya di 214 (status-entitas, PB-7); ui-e2e 025 tidak mengasersi klausa Storage penuh",
   "§9.6#r1": "be-e2e per klausa: status dan Source menurut jenis pelapor di 201; Storage penuh menolak seluruh Submit (semua aset dalam laporan, tanpa laporan sebagian) sebelum transaksi (TS-DMG-11, V-DMG-20, DAMAGED-LOGIC-10e) hanya di 214 (status-entitas, PB-7); ui-e2e 030 tidak mengasersi klausa Storage penuh; ui-client: UI-112",
-  "§Aturan Logika Modul#r52": "ui-e2e per Source: Manual di 030, Borrow return di 049, Assign return di 052, Transfer receive di 053, Missing asset di 038; be-e2e: 201",
+  "§Aturan Logika Modul#r52": "ui-e2e per Source: Manual di 030, Borrow return di 049, Assign return di 052, Transfer receive di 053, Missing asset di 038; be-e2e: nilai Source menurut jenis pelapor di 201, Source per titik masuk non-form (Registration, Borrow return, Assign return, Audit, Transfer receive, Missing asset) di 208",
   "§Aturan Logika Modul#r49": "ui-e2e per jalur: Return Borrow di 049 (Description Return menjadi What happened, foto Return menjadi Damaged Photo), Unassign di 052 (Description Unassign menjadi What happened, foto Unassign menjadi Damaged Photo); be-e2e: 208",
   "§9.4.4#r36": "be-e2e per klausa: guard dan transisi di 206, event damaged_resolved saat Missing → Disposed di 212",
   "§9.4.4#r30": "be-e2e per klausa: transisi Disposal Executed di 207, event damaged_resolved di 212",
@@ -6621,7 +6624,7 @@
      "Reported by scan",
      "Reported by holder",
      "Borrow return",
-     "Stock opname",
+     "Audit",
      "Missing asset",
      "Registration",
      "Transfer receive"

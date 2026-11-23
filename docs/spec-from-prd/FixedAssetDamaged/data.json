@@ -2,7 +2,7 @@
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
  "disetujui": "otomatis, 2026-11-23",
- "sha": "09f256bbac88aaa1",
+ "sha": "464bd81082e68612",
  "entri": [
   {
    "id": "DU-001-1",
@@ -95,7 +95,7 @@
    "mutasi": [],
    "varian": [
     "status-record@tabel-active:per-status:Reported Disposal",
-    "data-baris@tabel-active:asal-jalur:Stock opname"
+    "data-baris@tabel-active:asal-jalur:Audit"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
@@ -1485,7 +1485,8 @@
     "Last Holder": "—",
     "Reported By": "Budi S",
     "Reported Date": "T0 − 10 hari, pukul 11:00",
-    "Days Damaged": "10 days"
+    "Days Damaged": "10 days",
+    "Modified By": "Budi S"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -1493,7 +1494,8 @@
     "filter@tabel-active:tidak-cocok",
     "filter@tabel-active:and-tidak-keduanya",
     "filter-opsi@tabel-active:per-anggota-enum:Waiting for Confirmation",
-    "filter@tabel-active:range-hanya-min"
+    "filter@tabel-active:range-hanya-min",
+    "filter@tabel-active:cocok"
    ],
    "sumber": "PRD §4.1a T-DMG-01 Example Data",
    "maks": {
@@ -11178,7 +11180,11 @@
     "Last Holder PIC": "Sinta Maharani",
     "Last Holder Hover PIC": "PIC: Sinta Maharani",
     "Last Holder Employee ID": "EMP-0217",
-    "Reported By": "Sinta M on behalf of Tono R"
+    "Reported By": "Sinta M on behalf of Tono R",
+    "Reported By Hover": [
+     "Sinta Maharani",
+     "Tono Rahmat"
+    ]
    },
    "jumlah": 1,
    "mutasi": [],
@@ -11249,6 +11255,65 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§Aturan Logika Modul#r96",
+   "maks": {}
+  },
+  {
+   "id": "DU-101-21",
+   "spec": [
+    "TC-FA-DAMAGED-UI-101-tabel-active-tampilan-dan-state"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged dengan dua garansi aset",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Air Conditioner Daikin FTV - 5",
+    "Asset ID": "ACN-2026-0005",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Source": "Manual",
+    "Reported By": "Rina Wijaya",
+    "Warranty Expiry": "2027-03-15",
+    "Warranty List": [
+     "Manufacturer Warranty — 2027-03-15",
+     "Extended Warranty — 2028-01-10"
+    ],
+    "Warranty Expiry Tampil": "15/03/27",
+    "Warranty Hover": [
+     "Manufacturer Warranty — 15/03/27",
+     "Extended Warranty — 10/01/28"
+    ],
+    "Warranty Name 1": "Manufacturer Warranty",
+    "Warranty Name 2": "Extended Warranty"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "PRD §4.1a T-DMG-01 Setup Column (Warranty Expiry: garansi terdekat; hover daftar seluruh garansi)",
+   "maks": {}
+  },
+  {
+   "id": "DU-101-22",
+   "spec": [
+    "TC-FA-DAMAGED-UI-101-tabel-active-tampilan-dan-state"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Damaged dengan Model/Type lebih dari 25 karakter",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rugged Laptop Dell - 7",
+    "Asset ID": "RLP-2026-0007",
+    "Group": "Head Office",
+    "Status": "Damaged",
+    "Source": "Manual",
+    "Model/Type": "Latitude Rugged Extreme Series 14",
+    "Reported By": "Rina Wijaya"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "tampilan-sel@tabel-active:teks-panjang"
+   ],
+   "sumber": "foundation prd-conventions.md §9.14",
    "maks": {}
   },
   {
@@ -25890,7 +25955,7 @@
     "TAG": "RFID",
     "Tab": "Active",
     "Brand": "Canon {runId}",
-    "Source": "Stock opname",
+    "Source": "Audit",
     "Purchase Cost": "2100000"
    },
    "jumlah": 1,

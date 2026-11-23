@@ -9,7 +9,7 @@ sourceRules: [T-DMG-01, "§9.5#r7", "§9.2#b4", EB-FLT-1@tabel-active, EB-FLT-4@
 smoke: [EB-FLT-3]
 dependsOn: []
 trace:
-  T-DMG-01: [3, 12, 13, 16, 20, 21, 24, 25, 38, 43, 44, 47, 50, 55, 59, 63, 67, 115, 122, 125]
+  T-DMG-01: [3, 12, 13, 16, 20, 21, 24, 25, 38, 43, 44, 47, 50, 55, 59, 63, 67, 115, 122, 125, 160, 161]
   "§9.5#r7": [6, 7, 29, 33]
   "§9.2#b4": [9]
   EB-FLT-1@tabel-active: [6, 7, 9, 89, 91, 93, 95, 97, 118, 127]
@@ -29,7 +29,7 @@ coverage:
 - Data:
   - DU-004-1: Name `Filter Aset {runId} - 1`, Asset ID `FLT-0001-{runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `Sari D`, Reported By `Agus P`, Reported Date `T0 − 3 hari, pukul 11:00`, Days Damaged `3 days`.
   - DU-004-2: Name `Filter Aset {runId} - 2`, Asset ID `FLT-0002-{runId}`, Group `Branch Surabaya {runId}`, Status `Damaged`, Source `Reported by scan`, Last Holder `—`, Reported By `Dedi K`, Reported Date `T0 − 6 hari, pukul 11:00`, Days Damaged `6 days`.
-  - DU-004-3: Name `Filter Aset {runId} - 3`, Asset ID `FLT-0003-{runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `—`, Reported By `Budi S`, Reported Date `T0 − 10 hari, pukul 11:00`, Days Damaged `10 days`.
+  - DU-004-3: Name `Filter Aset {runId} - 3`, Asset ID `FLT-0003-{runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `—`, Reported By `Budi S`, Modified By `Budi S`, Reported Date `T0 − 10 hari, pukul 11:00`, Days Damaged `10 days`.
   - DU-004-4: Name `Filter Aset {runId} - 4`, Asset ID `FLT-0004-{runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 14 hari, pukul 11:00`, Days Damaged `14 days`.
   - DU-004-5: Name `Filter Aset {runId} - 5`, Asset ID `FLT-0005-{runId}`, Group `Head Office {runId}`, Status `In Disposal Process`, Source `Manual`, Last Holder `—`, Reported By `Rina W`, Reported Date `T0 − 20 hari, pukul 11:00`, Days Damaged `20 days`.
   - DU-004-6: Name `Filter Aset {runId} - 6`, Asset ID `FLT-0006-{runId}`, Group `Warehouse {runId}`, Status `Damaged` berpenanda `Reported Missing`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 5 hari, pukul 11:00`, Days Damaged `5 days`.
@@ -223,3 +223,12 @@ coverage:
 154. Verifikasi baris `Filter Aset {runId} - 1` tidak tampil karena Group `Warehouse {runId}` tetap berlaku
 155. Klik `[Clear Field]`
 156. Klik `[Apply]`
+
+### Filter Modified By menyaring menurut pelaku node Damage Log terbaru
+157. Ketik Search `{runId}`, tekan Enter
+158. Pilih opsi `Budi S` pada field `Modified By`
+159. Klik `[Apply]`
+160. Verifikasi baris `Filter Aset {runId} - 3` tampil karena node Damage Log terbarunya dibuat `Budi S`
+161. Verifikasi baris `Filter Aset {runId} - 1` dan `Filter Aset {runId} - 2` dan `Filter Aset {runId} - 5` dan `Filter Aset {runId} - 6` dan `Filter Aset {runId} - 7` tidak tampil
+162. Klik `[Clear Field]`
+163. Klik `[Apply]`
