@@ -27,10 +27,10 @@ coverage:
 - Browser License (login di hook `before`): Admin License `manageGlobalLicenseFixedAsset_automated_{namaCompany}@qwertysystem.net` (Tabel Data Uji Pre-setup #2, Global Role Manage Global License), kredensial `Spectra.env.FA_MGL_PASSWORD`, membuka `PLATFORM SETTINGS > License > Concurrent User` (Fixed Asset) pada TC-AUTH-SES-344.
 - Suite berjalan serial (`parallel: false`); state global yang diubah: jam server uji dan jam browser/perangkat (dimajukan bersama di tiap TC dan dipulihkan ke waktu nyata di akhir tiap TC), perangkat Android uji A yang dipakai bersama, pemantauan proxy jaringan.
 - Hook `after`: pulihkan jam server dan jam browser/perangkat ke waktu nyata; hentikan pemantauan proxy; hapus data aplikasi pada perangkat Android uji A; akhiri semua sesi seed dan sesi-produk; tutup Browser License; hapus ketiga user. Pembersihan tetap jalan walau spec gagal di tengah dan tidak berasumsi seeding berhasil penuh.
-- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile; Admin License pada Browser License; akun aktor Total Control hanya di hook dan untuk pembacaan status sesi dari backend.
+- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile; Admin License pada Browser License; akun aktor Total Control hanya di hook.
 - Environment variable: `GS_TC_PASSWORD`, `FA_MGL_PASSWORD`, `SES_PASSWORD`. Password tidak ditulis di spec atau fixture.
 - Menunggu waktu nyata tidak dipakai; jeda dipenuhi dengan menggeser jam server dan jam browser/perangkat bersama.
-- Kemampuan teknis: driver otomasi Android (aplikasi native; kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps, membiarkan app di foreground tanpa sentuhan); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat Android uji A, koneksi SSE (buka dan tutup), serta respons cek sesi; jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); pembacaan waktu kedaluwarsa sesi yang disimpan app (TC-AUTH-SES-348) dan status sesi dari backend, disediakan tim FE/BE; reCAPTCHA mode uji di environment (login ulang Browser License pada TC-AUTH-SES-344).
+- Kemampuan teknis: driver otomasi Android (aplikasi native; kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps, membiarkan app di foreground tanpa sentuhan); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat Android uji A, koneksi SSE (buka dan tutup), serta respons cek sesi; jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); pembacaan read-only tabel `sessions` per `user_id` (kolom `status`, `expires_at`; karena expire bersifat lazy, sesi dibaca Expired bila `status = 'expired'` atau `status = 'active'` dengan `expires_at` ≤ waktu server; Tabel Data Uji Pre-setup #18); reCAPTCHA mode uji di environment (login ulang Browser License pada TC-AUTH-SES-344).
 
 ## Test Steps
 
@@ -45,8 +45,8 @@ coverage:
 7. Verifikasi Dialog "Session Expired" tampil
 8. Verifikasi Body Dialog "Session Expired": "Your session has expired due to inactivity."
 9. Verifikasi Dialog "Session Expired" hanya memiliki satu tombol [OK]
-10. Verifikasi Sesi mobile `Zahra Fitriani` berstatus Expired
-11. Segera di Browser License login ulang sebagai `manageGlobalLicenseFixedAsset_automated_{namaCompany}@qwertysystem.net` dengan `Spectra.env.FA_MGL_PASSWORD` (sesi sebelumnya melewati batas idle akibat jam dimajukan), lalu buka `PLATFORM SETTINGS > License > Concurrent User` (Fixed Asset)
+10. Verifikasi Sesi mobile `Zahra Fitriani` berstatus Expired (dibaca dari tabel `sessions`, Tabel Data Uji Pre-setup #18)
+11. Segera di Browser License login ulang sebagai `manageGlobalLicenseFixedAsset_automated_{namaCompany}@qwertysystem.net` dengan `Spectra.env.FA_MGL_PASSWORD` bila sesinya ikut berakhir karena jam dimajukan, lalu buka `PLATFORM SETTINGS > License > Concurrent User` (Fixed Asset)
 12. Verifikasi `Zahra Fitriani` sudah tidak tercantum di daftar Concurrent User (seat dilepas tanpa menunggu sweep)
 13. Pulihkan jam server uji dan jam browser/perangkat ke waktu nyata
 
@@ -57,7 +57,7 @@ coverage:
 16. Dengan app di foreground amati koneksi SSE
 17. Verifikasi Saat foreground ada satu koneksi SSE terbuka
 18. Kirim app ke background (tidak dihapus dari recent apps)
-19. Majukan jam server uji dan jam browser/perangkat bersama 2 menit lalu amati koneksi SSE pada proxy jaringan selama rentang itu
+19. Majukan jam server uji dan jam browser/perangkat bersama 2 menit (jeda pengamatan 2 menit, seperti TC-AUTH-SES-64) lalu amati koneksi SSE pada proxy jaringan selama rentang itu
 20. Verifikasi Setelah app masuk background koneksi SSE ditutup
 21. Verifikasi Koneksi SSE tidak dibuka lagi selama app di background
 22. Buka kembali app dari recent apps dan amati koneksi SSE
@@ -67,21 +67,23 @@ coverage:
 ### TC-AUTH-SES-348: Kembali ke foreground dengan sesi masih valid mengecek server satu kali dan memperbarui waktu kedaluwarsa
 
 25. Bersihkan state app mobile di perangkat Android uji A (hapus data aplikasi, tutup dialog yang masih tampil), lalu buka aplikasi mobile di perangkat Android uji A, login sebagai `erwinsusanto+{runId}-083@qwertysystem.net` dengan password `Spectra.env.SES_PASSWORD`, ketuk [Not now] bila Prompt Enable Biometric muncul, dan masuk Portal — Product Hub → halaman Portal — Product Hub tampil
-26. Catat titik awal pemantauan request perangkat Android uji A di proxy jaringan dan waktu kedaluwarsa sesi yang disimpan app
+26. Catat titik awal pemantauan request perangkat Android uji A di proxy jaringan
 27. Kirim app ke background (tidak dihapus dari recent apps)
 28. Majukan jam server uji dan jam browser/perangkat bersama 5 menit
 29. Buka kembali app dari recent apps dan amati request di proxy serta layar app
 30. Verifikasi App mengirim tepat satu request cek sesi ke server sebelum konten terlindungi tampil
-31. Verifikasi Halaman terakhir (Portal — Product Hub) tampil
+31. Verifikasi Sesi valid: halaman terakhir sebelum background (Portal — Product Hub) tampil
 32. Verifikasi Tidak ada dialog yang tampil
-33. Verifikasi Waktu kedaluwarsa di app diperbarui dari respons server (berbeda dari catatan langkah 26 dan sama dengan nilai pada respons cek sesi langkah 29)
-34. Pulihkan jam server uji dan jam browser/perangkat ke waktu nyata
+33. Verifikasi Respons cek sesi pada langkah 29 memuat waktu kedaluwarsa baru (15 menit sejak langkah 29)
+34. Tanpa menyentuh layar, majukan jam server uji dan jam browser/perangkat bersama 12 menit sejak langkah 29, lalu amati request di proxy dan layar app
+35. Verifikasi Setelah langkah 34 tidak ada request cek sesi, karena hitungan mundur lokal memakai waktu kedaluwarsa dari respons server, bukan sisa hitungan sebelum background (yang habis 10 menit setelah langkah 29)
+36. Verifikasi Setelah langkah 34 tidak ada Dialog "Session Expired"
+37. Pulihkan jam server uji dan jam browser/perangkat ke waktu nyata
 
 ## Notes
 
 - Sumber: `auth/session-management/TestCases/tc-session-management.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
-- Pengelompokan: tiga TC perilaku cek sesi mobile terhadap siklus foreground dan background dengan harness yang sama (perangkat Android uji A, proxy pengamat, jam dimajukan bersama). Pergeseran jam hanya menghabiskan jeda (hitungan mundur 15 menit, 2 menit, 5 menit) dan bukan batas TTL yang diuji, sehingga spec ini bukan kelas d (P-2). Proxy dan Browser License hanya pengamat (P-6). Idle dan lifecycle mobile lain (TC-AUTH-SES-63 sampai 66) ada di spec `TC-AUTH-SES-E2E-021-idle-dan-lifecycle-sesi-mobile`.
+- Pengelompokan: tiga TC perilaku cek sesi mobile terhadap siklus foreground dan background dengan harness yang sama (perangkat Android uji A, proxy pengamat, jam dimajukan bersama). Pergeseran jam hanya menghabiskan jeda (hitungan mundur 15 menit, 2 menit, 5 menit, lalu 12 menit sesudah kembali ke foreground) dan bukan batas TTL yang diuji, sehingga spec ini bukan kelas d (P-2). Proxy dan Browser License hanya pengamat (P-6). Idle dan lifecycle mobile lain (TC-AUTH-SES-63 sampai 66) ada di spec `TC-AUTH-SES-E2E-021-idle-dan-lifecycle-sesi-mobile`.
 - Urutan mengikuti TC sumber (344, 347, 348); tidak ada penyimpangan (S-10). Tiap TC memakai user sendiri dan memulihkan jam di akhir bagiannya.
-- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login mobile di awal tiap TC (Pre-setup #28); membuka card Fixed Asset (langkah 2) untuk membentuk seat yang dilepas; memulai atau mencatat titik awal pemantauan proxy dan waktu kedaluwarsa (langkah 26, pembanding S-14); mengamati proxy dan layar; memajukan dan memulihkan jam; login ulang Browser License (langkah 11).
+- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login mobile di awal tiap TC (Pre-setup #28); membuka card Fixed Asset (langkah 2) untuk membentuk seat yang dilepas; memulai atau mencatat titik awal pemantauan proxy (langkah 3, 15, 26); mengamati proxy dan layar; memajukan dan memulihkan jam; login ulang Browser License (langkah 11).
 - Pencatatan log tidak diasersikan di spec ini (S-05).
-- Temuan untuk QA: (1) TC-AUTH-SES-344 langkah 1 "biarkan app di foreground sampai hitungan mundur lokal 15 menit habis" dipenuhi dengan memajukan jam server dan jam perangkat bersama 15 menit; Browser License ikut melewati batas idle sehingga harus login ulang sebelum langkah 3 TC ("segera"). TC tidak menyebut hal ini. (2) TC-AUTH-SES-344 Expected c "sesi mobile berstatus Expired" tidak menyebut cara membaca; spec memakai pembacaan dari backend yang disediakan tim FE/BE (S-13). (3) TC-AUTH-SES-348 Expected c "waktu kedaluwarsa di app diperbarui dari respons server" tidak menyebut cara membaca nilai yang disimpan app; spec membutuhkan pembacaan nilai itu (disediakan tim FE) dan membandingkannya dengan respons cek sesi di proxy. (4) TC-AUTH-SES-348 Expected b "halaman terakhir" tidak menyebut halaman; spec memakai Portal — Product Hub (halaman sesudah login). (5) TC-AUTH-SES-347 langkah 2 "amati koneksi selama 2 menit" dipenuhi dengan memajukan jam bersama 2 menit, seperti TC-AUTH-SES-64 di spec 021.

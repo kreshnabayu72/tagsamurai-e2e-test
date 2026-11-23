@@ -48,7 +48,7 @@ coverage:
   - TC-AUTH-SES-335: `Joni Prasetyo` (`joniprasetyo+{runId}-070@qwertysystem.net`)
   - TC-AUTH-SES-336: `Melinda Putri` (`melindaputri+{runId}-070@qwertysystem.net`)
 - Kondisi di-seed BE (disediakan tim BE, tanpa endpoint karangan): (a) kredensial biometric Active milik `Citra Lestari` dan `Yoga Pratama` pada ID device perangkat Android uji B, dengan `refreshToken` plaintext diserahkan ke alat uji; (b) pencabutan (revoke) kredensial biometric `Dimas Maulana` pada langkah TC-AUTH-SES-160; (c) kondisi profil BIOPOL untuk `Eko Setiawan` dan `Bayu Kusuma`, diterapkan sesudah enroll; (d) versi Privacy Policy aktif tidak ter-resolve atau belum ada versi terpublikasi (fixture BE) pada langkah TC-AUTH-SES-325.
-- Kondisi awal tiap TC yang memakai perangkat Android uji B ("sudah enroll biometric di perangkat Android uji B; tidak ada sesi platform aktif") dibuat di dalam TC mengikuti cara Tabel Data Uji Pre-setup #29: menyalin langkah enroll TC-AUTH-SES-145 (hapus data aplikasi, login, [Enable], lulus sidik jari, hapus app dari recent apps), lalu mengakhiri sesi platform hasil login enroll lewat API yang disediakan tim BE tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI. Token biometric lokal dan status "sudah ditawari" disimpan di perangkat dan hanya dapat dibuat oleh aplikasi. Pada TC-AUTH-SES-177 dan TC-AUTH-SES-212 tidak ada langkah "hapus app dari recent apps" dan akhiri sesi karena TC mensyaratkan sesi mobile aktif. Pada TC-AUTH-SES-328 sesi mobile aktif di perangkat Android uji A dibuat sesudah enroll di perangkat B (login nyata di perangkat A dengan [Not now], Tabel Data Uji Pre-setup #28).
+- Kondisi awal tiap TC yang memakai perangkat Android uji B ("sudah enroll biometric di perangkat Android uji B; tidak ada sesi platform aktif") dibuat di dalam TC mengikuti cara Tabel Data Uji Pre-setup #29: menyalin langkah enroll TC-AUTH-SES-145 (hapus data aplikasi, login, [Enable], lulus sidik jari), lalu mengakhiri sesi platform hasil login enroll lewat Manual Logout di aplikasi (menu Profile → Log Out; logout mobile tidak menghapus token biometric lokal dan tidak mencabut kredensial di server) dan menghapus app dari recent apps. Manual Logout menulis entri `Logged out`; jendela absence tiap TC dimulai sesudah langkah Log Out dan penghapusan app dari recent apps, sehingga entri `Logged out` itu jatuh sebelum jendela dan tidak termasuk asersi "tidak ada entri baru" (S-12). Token biometric lokal dan status "sudah ditawari" disimpan di perangkat dan hanya dapat dibuat oleh aplikasi. Pada TC-AUTH-SES-177 dan TC-AUTH-SES-212 tidak ada langkah Log Out dan "hapus app dari recent apps" karena TC mensyaratkan sesi mobile aktif. Pada TC-AUTH-SES-328 sesi mobile aktif di perangkat Android uji A dibuat sesudah enroll di perangkat B (login nyata di perangkat A dengan [Not now], Tabel Data Uji Pre-setup #28).
 - Konteks dan akun (dibuka di hook `before`, login pertama tiap konteks ada di hook):
   - Browser Admin: akun aktor Total Control (Global Settings) di atas, dipakai membaca `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` (semua TC) serta mematikan Toggle Active `Irfan Rahayu` di `Global Settings > User` (TC-AUTH-SES-176).
   - Perangkat Android uji B (semua TC kecuali 257 dan 258) dan perangkat Android uji A (TC-AUTH-SES-328: login `Nadia Pratama` di perangkat A tanpa mengaktifkan biometric, sehingga sesi mobile aktif di A).
@@ -56,7 +56,7 @@ coverage:
 - Hook `before`: reset counter IP rate limit relogin biometric ke nol.
 - Hook `after`: pulihkan state global di atas (termasuk reset counter IP rate limit ke nol dan menonaktifkan aturan proxy jaringan), hapus data aplikasi pada perangkat Android uji A dan B, cabut kredensial biometric seed, akhiri semua sesi seed, tutup Browser Admin, lalu hapus kelima belas user. Pembersihan tetap jalan walau spec gagal di tengah dan tidak berasumsi seeding berhasil penuh.
 - Environment variable: `GS_TC_PASSWORD`, `SES_PASSWORD`. Password tidak ditulis di spec atau fixture.
-- Kemampuan teknis (kelas harness g, dengan pemicu kelas d: hardware biometrik dan time-travel; kelas a dan b: request langsung dan rate limit): driver otomasi Android (aplikasi native) untuk dua perangkat; simulasi sensor sidik jari pada OS biometric prompt (sidik jari terdaftar lulus, sidik jari tidak terdaftar gagal); menghapus data aplikasi dan menghapus app dari recent apps lalu membukanya kembali; API untuk mengakhiri sesi platform hasil login enroll tanpa menghapus token biometric lokal (disediakan tim BE); reset counter IP rate limit ke nol (disediakan tim FE/BE); REST client alat uji yang dapat mengirim request langsung ke `POST /v2/iam/auth/biometric/relogin` (body `deviceId` dan `refreshToken`; sumber: `auth/session-management/API/openapi.yaml`); alat uji dan perangkat Android uji B keluar dari IP yang sama sehingga memakai kunci IP rate limit yang sama (Tabel Data Uji Pre-setup #18: threshold IP rate limit lingkungan uji diketahui); pengatur waktu server uji (Tabel Data Uji Pre-setup #18) yang dapat dimajukan 91 hari dan dikembalikan; fixture BE untuk versi Privacy Policy aktif tidak ter-resolve dan untuk kondisi profil BIOPOL; proxy jaringan (Tabel Data Uji Pre-setup #18) yang dapat mengosongkan field `integrityToken` atau mengganti nilainya dengan string acak pada body request biometric re-login (TC-AUTH-SES-335 dan 336); pembacaan jumlah entri dan stempel waktu entri log untuk membedakan entri baru dari entri seeding (termasuk entri bersetempel jam server yang dimajukan pada TC-AUTH-SES-173, dibandingkan sebagai selisih jumlah terhadap baseline); reCAPTCHA mode uji di environment untuk login web (halaman Login with Password).
+- Kemampuan teknis (kelas harness g, dengan pemicu kelas d: hardware biometrik dan time-travel; kelas a dan b: request langsung dan rate limit): driver otomasi Android (aplikasi native) untuk dua perangkat; simulasi sensor sidik jari pada OS biometric prompt (sidik jari terdaftar lulus, sidik jari tidak terdaftar gagal); menghapus data aplikasi dan menghapus app dari recent apps lalu membukanya kembali; reset counter IP rate limit ke nol (disediakan tim FE/BE); REST client alat uji yang dapat mengirim request langsung ke `POST /v2/iam/auth/biometric/relogin` (body `deviceId` dan `refreshToken`; sumber: `auth/session-management/API/openapi.yaml`); alat uji dan perangkat Android uji B keluar dari IP yang sama sehingga memakai kunci IP rate limit yang sama (Tabel Data Uji Pre-setup #18: threshold IP rate limit lingkungan uji diketahui); pengatur waktu server uji (Tabel Data Uji Pre-setup #18) yang dapat dimajukan 91 hari dan dikembalikan; fixture BE untuk versi Privacy Policy aktif tidak ter-resolve dan untuk kondisi profil BIOPOL; proxy jaringan (Tabel Data Uji Pre-setup #18) yang dapat mengosongkan field `integrityToken` atau mengganti nilainya dengan string acak pada body request biometric re-login (TC-AUTH-SES-335 dan 336); pembacaan jumlah entri dan stempel waktu entri log untuk membedakan entri baru dari entri seeding (termasuk entri bersetempel jam server yang dimajukan pada TC-AUTH-SES-173, dibandingkan sebagai selisih jumlah terhadap baseline); reCAPTCHA mode uji di environment untuk login web (halaman Login with Password).
 - Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile atau request langsung; akun aktor Total Control hanya di Browser Admin.
 
 ## Test Steps
@@ -85,8 +85,8 @@ coverage:
 14. Klik [Login] → Prompt Enable Biometric muncul
 15. Ketuk [Enable] → OS biometric prompt muncul
 16. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-17. Hapus app dari recent apps
-18. Akhiri sesi platform `Agus Firmansyah` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+17. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Agus Firmansyah` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+18. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 19. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 20. Tempelkan sidik jari yang tidak terdaftar pada OS biometric prompt → tombol [Try Again] tampil
 21. Pindah ke Browser Admin, buka `Global Settings > Activity Log > Session`, dan cari entri untuk `Agus Firmansyah` yang dibuat sesudah langkah 19 dimulai
@@ -102,8 +102,8 @@ coverage:
 28. Klik [Login] → Prompt Enable Biometric muncul
 29. Ketuk [Enable] → OS biometric prompt muncul
 30. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-31. Hapus app dari recent apps
-32. Akhiri sesi platform `Dimas Maulana` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+31. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Dimas Maulana` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+32. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 33. Cabut (revoke) kredensial biometric `Dimas Maulana` di server (kondisi di-seed BE)
 34. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 35. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → server menolak (401 token tidak valid), token lokal dihapus, dan halaman Login penuh tampil
@@ -120,8 +120,8 @@ coverage:
 43. Klik [Login] → Prompt Enable Biometric muncul
 44. Ketuk [Enable] → OS biometric prompt muncul
 45. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-46. Hapus app dari recent apps
-47. Akhiri sesi platform `Eko Setiawan` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+46. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Eko Setiawan` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+47. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 48. Terapkan kondisi profil BIOPOL untuk `Eko Setiawan` (versi Privacy Policy aktif lebih baru dari yang terakhir disetujui; di-seed BE)
 49. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 50. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → Screen Confirm to Continue tampil
@@ -139,8 +139,8 @@ coverage:
 59. Klik [Login] → Prompt Enable Biometric muncul
 60. Ketuk [Enable] → OS biometric prompt muncul
 61. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-62. Hapus app dari recent apps
-63. Akhiri sesi platform `Taufik Hidayat` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+62. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Taufik Hidayat` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+63. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 64. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 65. Tempelkan sidik jari yang tidak terdaftar pada OS biometric prompt (kegagalan biometric ke-1)
 66. Ketuk [Try Again]
@@ -172,8 +172,8 @@ coverage:
 89. Klik [Login] → Prompt Enable Biometric muncul
 90. Ketuk [Enable] → OS biometric prompt muncul
 91. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-92. Hapus app dari recent apps
-93. Akhiri sesi platform `Irfan Rahayu` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+92. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Irfan Rahayu` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+93. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 94. Pindah ke Browser Admin (akun aktor Total Control sudah login di hook)
 95. Matikan Toggle Active `Irfan Rahayu` di `Global Settings > User`
 96. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
@@ -206,8 +206,8 @@ coverage:
 117. Klik [Login] → Prompt Enable Biometric muncul
 118. Ketuk [Enable] → OS biometric prompt muncul
 119. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-120. Hapus app dari recent apps
-121. Akhiri sesi platform `Nadia Pratama` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+120. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Nadia Pratama` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+121. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 122. Di perangkat Android uji A login dengan `nadiapratama+{runId}-070@qwertysystem.net` dan password `Spectra.env.SES_PASSWORD`, ketuk [Not now] pada Prompt Enable Biometric → app masuk Portal — Product Hub (sesi mobile aktif di perangkat A)
 123. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 124. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → Dialog Duplicate Login Attempt muncul
@@ -227,8 +227,8 @@ coverage:
 135. Klik [Login] → Prompt Enable Biometric muncul
 136. Ketuk [Enable] → OS biometric prompt muncul
 137. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-138. Hapus app dari recent apps
-139. Akhiri sesi platform `Bayu Kusuma` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+138. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Bayu Kusuma` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+139. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 140. Terapkan kondisi profil BIOPOL untuk `Bayu Kusuma` (versi Privacy Policy aktif lebih baru dari yang terakhir disetujui; di-seed BE)
 141. Atur versi Privacy Policy aktif menjadi tidak ter-resolve atau belum ada versi terpublikasi (fixture BE)
 142. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
@@ -247,8 +247,8 @@ coverage:
 152. Klik [Login] → Prompt Enable Biometric muncul
 153. Ketuk [Enable] → OS biometric prompt muncul
 154. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-155. Hapus app dari recent apps
-156. Akhiri sesi platform `Sari Saputra` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+155. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Sari Saputra` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+156. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 157. Di Browser Admin buka `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` milik `Sari Saputra`, lalu catat baseline: jumlah entri `Sari Saputra` (dicari lewat Note dan email `sarisaputra+{runId}-070@qwertysystem.net`) dan stempel waktu entri terbaru di kedua surface
 158. Majukan jam server dan jam browser/perangkat bersama 91 hari
 159. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
@@ -268,8 +268,8 @@ coverage:
 170. Klik [Login] → Prompt Enable Biometric muncul
 171. Ketuk [Enable] → OS biometric prompt muncul
 172. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-173. Hapus app dari recent apps
-174. Akhiri sesi platform `Nadia Damayanti` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+173. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Nadia Damayanti` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+174. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 175. Kirim request relogin biometric (`POST /v2/iam/auth/biometric/relogin`) dengan `refreshToken` acak yang tidak pernah diterbitkan dan `deviceId` perangkat Android uji B, berulang dari IP yang sama sampai batas IP rate limit terlampaui
 176. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 177. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → toast error tampil (satu request relogin lagi dari IP yang sama)
@@ -300,8 +300,8 @@ coverage:
 196. Klik [Login] → Prompt Enable Biometric muncul
 197. Ketuk [Enable] → OS biometric prompt muncul
 198. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-199. Hapus app dari recent apps
-200. Akhiri sesi platform `Joni Prasetyo` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+199. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Joni Prasetyo` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+200. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 201. Aktifkan aturan proxy yang mengosongkan field `integrityToken` pada request biometric re-login
 202. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 203. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → request biometric re-login ditolak dan Screen biometric sign-in tetap tampil
@@ -323,8 +323,8 @@ coverage:
 216. Klik [Login] → Prompt Enable Biometric muncul
 217. Ketuk [Enable] → OS biometric prompt muncul
 218. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt
-219. Hapus app dari recent apps
-220. Akhiri sesi platform `Melinda Putri` hasil login enroll lewat API yang disediakan tim BE (tanpa menghapus token biometric lokal dan tanpa Log Out lewat UI; Tabel Data Uji Pre-setup #29) → perangkat Android uji B tanpa sesi platform aktif
+219. Buka menu Profile lalu pilih Log Out → form Login tampil (Manual Logout mengakhiri sesi platform `Melinda Putri` hasil login enroll tanpa menghapus token biometric lokal dan tanpa mencabut kredensial biometric; Tabel Data Uji Pre-setup #29)
+220. Hapus app dari recent apps → perangkat Android uji B tanpa sesi platform aktif
 221. Aktifkan aturan proxy yang mengganti nilai `integrityToken` dengan string acak pada request biometric re-login
 222. Buka aplikasi mobile di perangkat Android uji B → Screen biometric sign-in tampil dan OS biometric prompt muncul otomatis
 223. Lulus verifikasi sidik jari yang terdaftar pada OS biometric prompt → request biometric re-login ditolak dan Screen biometric sign-in tetap tampil
@@ -341,7 +341,7 @@ coverage:
 ## Notes
 
 - Sumber: `auth/session-management/TestCases/tc-session-management.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah. Spec ini memuat klausa absence (kelas g, "tidak ada entri log / tidak dicatat") dari TC biometric; asersi fungsional (dialog, toast, status sesi, token lokal dihapus, Screen yang tampil) tidak diulang dan tetap di spec asal. TC-AUTH-SES-212 seluruhnya asersi absence dan tidak punya spec asal lain; Expected butir c TC-AUTH-SES-145 (spec asal `TC-AUTH-SES-E2E-044`) dipenuhi lewat TC-AUTH-SES-212 di spec ini; asersi pencatatan presence biometric (TC-AUTH-SES-209, 210, 267) ada di spec `TC-AUTH-SES-E2E-059-pencatatan-biometric`.
-- Spec ini memuat 232 langkah karena lima belas TC absence biometric masing-masing membutuhkan blok enroll sendiri (hapus data aplikasi, login, [Enable], sidik jari, akhiri sesi enroll) dan pembacaan dua surface log; blok enroll dan pembacaan log tidak dihitung terhadap batas sekitar 35 langkah. Tiap TC memakai user dan baseline sendiri sehingga bagian sesudahnya tetap bermakna walau TC sebelumnya gagal.
+- Spec ini memuat 232 langkah karena lima belas TC absence biometric masing-masing membutuhkan blok enroll sendiri (hapus data aplikasi, login, [Enable], sidik jari, Log Out sesi enroll) dan pembacaan dua surface log; blok enroll dan pembacaan log tidak dihitung terhadap batas sekitar 35 langkah. Tiap TC memakai user dan baseline sendiri sehingga bagian sesudahnya tetap bermakna walau TC sebelumnya gagal.
 - Pembagian TC lintas spec (prinsip 10): tiap TC selain TC-AUTH-SES-212 punya spec asal yang memegang asersi fungsional dan merujuk spec ini di Expected butir absence-nya (S-05).
 - TC-AUTH-SES-212: langkah 182–188 disalin dari TC-AUTH-SES-145 (login, [Enable], lulus sidik jari; langkah 4 tidak disalin karena memicu Re-login biometric yang menulis entri `Login with biometric` dan mengotori asersi absence) dan TC-AUTH-SES-177 (matikan toggle). Baseline entri (S-12): hanya entri yang dibuat sesudah langkah 185 dihitung, dibedakan dari entri seeding lewat stempel waktu; satu-satunya entri baru yang diharapkan adalah login dengan password (Success, Note `Login with password`).
 - TC-AUTH-SES-173 (langkah 157 sampai 166): jam server digeser 91 hari sehingga entri yang dibuat selama pergeseran bisa bercap waktu di masa depan dan jatuh di bawah penanda waktu biasa. Baseline jumlah entri `Sari Saputra` dan stempel entri terbaru di kedua surface dicatat sebelum jam digeser (langkah 157); sesudah jam dipulihkan dan akun aktor login ulang, absence diasersi sebagai jumlah entri yang tidak berubah terhadap baseline, dengan entri dicari lewat Note dan email, bukan posisi teratas (S-12).
@@ -349,6 +349,6 @@ coverage:
 - Temuan untuk QA (TC-AUTH-SES-257 dan 258): TC-257 Data Uji menyebut `refreshToken` plaintext diserahkan ke alat uji oleh seed BE saat enroll lewat API (plaintext hanya dikembalikan sekali saat enroll, sehingga tidak dapat dibaca dari perangkat); TC-258 tidak menyebut cara menyiapkan enroll dan memakai token acak. Spec memakai seed BE yang disediakan tim BE untuk `Citra Lestari` dan `Yoga Pratama` (Prerequisites).
 - Temuan untuk QA (TC-AUTH-SES-162 dan 325): kondisi profil BIOPOL diterapkan BE sesudah enroll (langkah "Terapkan kondisi") supaya login password saat enroll tidak memicu Agreement; TC hanya menyebut profil BIOPOL tanpa urutan terhadap enroll.
 - Temuan untuk QA (TC-AUTH-SES-175): TC menyebut "Threshold: belum ditetapkan" dan tidak menyebut mekanisme reset counter IP rate limit maupun nilai awalnya; spec mengandalkan kemampuan reset counter ke nol di hook `before` dan `after` (disediakan tim FE/BE) dan mengasumsikan nilai awal nol.
-- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login user uji dan enroll biometric di perangkat Android uji B (hapus data aplikasi, ketik email dan password, [Login], [Enable], lulus verifikasi sidik jari); menghapus app dari recent apps lalu membukanya kembali; mengakhiri sesi platform hasil login enroll lewat API BE (langkah 18, 32, 47, 63, 93, 121, 139, 156, 174, 200, dan 220); mengaktifkan dan menonaktifkan aturan proxy `integrityToken` (langkah 201, 204, 221, dan 224); mencabut kredensial biometric `Dimas Maulana` (langkah 33); menerapkan kondisi profil BIOPOL (langkah 48 dan 140); mengatur versi Privacy Policy aktif tidak ter-resolve (langkah 141) dan memulihkannya (langkah 148); mencentang checkbox Privacy Policy (langkah 51); memajukan dan memulihkan jam server dan jam browser/perangkat (langkah 158 dan 161); login ulang akun aktor di Browser Admin (langkah 162); berpindah ke Browser Admin dan mencari entri di `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` (termasuk pencatatan baseline pada langkah 157); mematikan Toggle Active `Irfan Rahayu` (langkah 94 dan 95).
+- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login user uji dan enroll biometric di perangkat Android uji B (hapus data aplikasi, ketik email dan password, [Login], [Enable], lulus verifikasi sidik jari); menghapus app dari recent apps lalu membukanya kembali; mengakhiri sesi platform hasil login enroll lewat Manual Logout (menu Profile → Log Out; langkah 17, 31, 46, 62, 92, 120, 138, 155, 173, 199, dan 219) lalu menghapus app dari recent apps (langkah sesudahnya); mengaktifkan dan menonaktifkan aturan proxy `integrityToken` (langkah 201, 204, 221, dan 224); mencabut kredensial biometric `Dimas Maulana` (langkah 33); menerapkan kondisi profil BIOPOL (langkah 48 dan 140); mengatur versi Privacy Policy aktif tidak ter-resolve (langkah 141) dan memulihkannya (langkah 148); mencentang checkbox Privacy Policy (langkah 51); memajukan dan memulihkan jam server dan jam browser/perangkat (langkah 158 dan 161); login ulang akun aktor di Browser Admin (langkah 162); berpindah ke Browser Admin dan mencari entri di `Global Settings > Activity Log > Session` dan `Global Settings > User > Detail > User Log` (termasuk pencatatan baseline pada langkah 157); mematikan Toggle Active `Irfan Rahayu` (langkah 94 dan 95).
 - TC-AUTH-SES-335 dan 336 (langkah 193 sampai 232): spec asal `TC-AUTH-SES-E2E-080-keamanan-token-biometric-revoke-dan-integrity-token` memegang Expected a sampai c; spec ini memegang Expected d. Percobaan yang ditolak (aturan proxy aktif) dan re-login yang berhasil (aturan proxy nonaktif) dijalankan lebih dulu, lalu log dibaca sekali seperti urutan TC (langkah 4 TC). Baseline (S-12): entri dihitung sejak percobaan ditolak dimulai (langkah 202 dan 222); entri `Login with biometric` dari re-login yang berhasil menjadi jangkar positif, dan jendela absence dibatasi sampai app dibuka kembali (langkah 205 dan 225).
 - Pengecualian `P-5` (a): pemicu biometrik (perangkat Android, pergeseran jam, penolakan server) hanya membentuk kondisi yang diasersi tidak tercatat dan bukan objek uji; tiap TC memakai user dan baseline sendiri.

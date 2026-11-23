@@ -28,10 +28,10 @@ coverage:
 - Password: password lama user uji `Spectra.env.SES_PASSWORD`; password baru hasil Change Password `Spectra.env.SES_PASSWORD_NEW` (TC-AUTH-SES-343). Nilai password lama dan baru yang ditulis TC-AUTH-SES-343 diisikan lewat kedua environment variable itu, tidak ditulis literal di spec.
 - Suite berjalan serial (`parallel: false`); state global yang diubah: jam server uji dan jam browser/perangkat (dimajukan bersama pada TC-AUTH-SES-341), perangkat Android uji A dan E yang dipakai bersama, pemantauan proxy jaringan. Jam dipulihkan ke waktu nyata lewat langkah eksplisit dan di hook `after`.
 - Hook `after`: pulihkan jam server dan jam browser/perangkat ke waktu nyata; hentikan pemantauan proxy; hapus data aplikasi pada perangkat Android uji A dan E; akhiri semua sesi seed dan sesi-produk; tutup Browser A dan Browser License; hapus ketiga user. Pembersihan tetap jalan walau spec gagal di tengah dan tidak berasumsi seeding berhasil penuh.
-- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile dan Browser A; Admin License pada Browser License; akun aktor Total Control hanya di hook dan untuk pembacaan status sesi dari backend.
+- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile dan Browser A; Admin License pada Browser License; akun aktor Total Control hanya di hook.
 - Environment variable: `GS_TC_PASSWORD`, `FA_MGL_PASSWORD`, `SES_PASSWORD`, `SES_PASSWORD_NEW`. Password tidak ditulis di spec atau fixture.
 - Menunggu waktu nyata tidak dipakai; jeda dipenuhi dengan menggeser jam server dan jam browser/perangkat bersama.
-- Kemampuan teknis (kelas harness c: multi-perangkat; sesi perangkat Android uji E diasersi pada TC-AUTH-SES-342): driver otomasi Android (aplikasi native) pada perangkat A dan E (kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps, membaca area notifikasi); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat Android uji A untuk menghitung request cek sesi sebelum konten terlindungi tampil; jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); konteks browser bersamaan (Browser A, Browser License); pembacaan status sesi user dari backend, disediakan tim FE/BE.
+- Kemampuan teknis (kelas harness c: multi-perangkat; sesi perangkat Android uji E diasersi pada TC-AUTH-SES-342): driver otomasi Android (aplikasi native) pada perangkat A dan E (kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps, membaca area notifikasi); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat Android uji A untuk menghitung request cek sesi sebelum konten terlindungi tampil; jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); konteks browser bersamaan (Browser A, Browser License); pembacaan read-only tabel `sessions` per `user_id` (kolom `status`, `platform`, `device_id`) dan pembacaan area notifikasi Android lewat driver otomasi (Tabel Data Uji Pre-setup #18).
 
 ## Test Steps
 
@@ -43,9 +43,9 @@ coverage:
 4. Kirim app ke background (tidak dihapus dari recent apps)
 5. Di Browser License buka `PLATFORM SETTINGS > License > Concurrent User` (Fixed Asset), pilih `Vina Anggraeni`, lalu klik [Force Logout] → dialog konfirmasi "Force Logout User" muncul
 6. Klik [Confirm Logout]
-7. Majukan jam server uji dan jam browser/perangkat bersama 1 menit dengan app tetap di background, lalu amati layar dan area notifikasi perangkat Android uji A
+7. Majukan jam server uji dan jam browser/perangkat bersama 1 menit dengan app tetap di background sebagai jeda pengamatan bahwa tidak ada notifikasi push (push dikirim seketika saat event), lalu amati layar dan area notifikasi perangkat Android uji A
 8. Verifikasi Selama app di background tidak ada dialog tentang force-logout
-9. Verifikasi Selama app di background tidak ada notifikasi push tentang force-logout
+9. Verifikasi Selama app di background tidak ada notifikasi push tentang force-logout di area notifikasi perangkat
 10. Buka kembali app dari recent apps
 11. Verifikasi Saat kembali ke foreground app mengecek sesi ke server satu kali sebelum konten terlindungi tampil (proxy mencatat tepat satu request cek sesi sebelum konten terlindungi dimuat)
 12. Verifikasi Dialog "Log Out" tampil
@@ -64,17 +64,17 @@ coverage:
 22. Ketik `wahyunugraha+{runId}-082@qwertysystem.net` pada field Email
 23. Ketik `Spectra.env.SES_PASSWORD` pada field Password
 24. Klik [Login] → Dialog Duplicate Login Attempt muncul
-25. Ketuk [Confirm] pada Dialog Duplicate Login Attempt, lalu ketuk [Not now] bila Prompt Enable Biometric muncul
+25. Ketuk [Confirm] pada Dialog Duplicate Login Attempt, lalu ketuk [Not now] bila Prompt "Enable biometric sign-in?" tampil
 26. Amati layar dan area notifikasi perangkat Android uji A dengan app tetap di background
 27. Verifikasi Selama app di background tidak ada dialog tentang sesi
-28. Verifikasi Selama app di background tidak ada notifikasi push tentang sesi
+28. Verifikasi Selama app di background tidak ada notifikasi push tentang sesi di area notifikasi perangkat
 29. Di perangkat Android uji A buka kembali app dari recent apps
 30. Verifikasi Saat kembali ke foreground app mengecek sesi ke server satu kali sebelum konten terlindungi tampil (proxy mencatat tepat satu request cek sesi sebelum konten terlindungi dimuat)
 31. Verifikasi Dialog "Logged Out" tampil
 32. Verifikasi Body Dialog "Logged Out": "You have been logged out because another session was started on a different device."
 33. Ketuk [OK]
 34. Verifikasi Setelah [OK] form Login tampil di perangkat Android uji A
-35. Verifikasi Sesi `Wahyu Nugraha` di perangkat Android uji E tetap Active
+35. Verifikasi Sesi `Wahyu Nugraha` di perangkat Android uji E tetap Active (dibaca dari tabel `sessions`, Tabel Data Uji Pre-setup #18)
 
 ### TC-AUTH-SES-343: Password diganti selama app di background menampilkan Dialog Password Changed saat app kembali ke foreground
 
@@ -97,9 +97,8 @@ coverage:
 
 - Sumber: `auth/session-management/TestCases/tc-session-management.md`. Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Pengelompokan: tiga TC "sesi diakhiri server selama app di background, lalu app kembali ke foreground" dengan harness yang sama (perangkat Android uji A dengan proxy pengamat dan konteks pemicu lain). Kelas harness c karena TC-AUTH-SES-342 mengasersi sesi di perangkat Android uji E; pada TC-AUTH-SES-341 dan 343 Browser License dan Browser A hanya pemicu (P-2).
-- Pemantauan proxy bersifat pengamat (P-6) untuk menghitung request cek sesi; pergeseran jam 1 menit pada TC-AUTH-SES-341 hanya jeda pengamatan, bukan objek uji (P-2).
+- Pemantauan proxy bersifat pengamat (P-6) untuk menghitung request cek sesi; pergeseran jam 1 menit pada TC-AUTH-SES-341 hanya jeda pengamatan bahwa tidak ada notifikasi push, bukan objek uji (P-2); TC sumber mengizinkan jeda itu diisi dengan memajukan jam server dan perangkat bersama karena push dikirim seketika saat event.
 - Urutan mengikuti TC sumber (341, 342, 343); tidak ada penyimpangan (S-10). Tiap TC memakai user sendiri.
 - Langkah penghubung tanpa awalan `Verifikasi` (S-03): login mobile di awal tiap TC (Pre-setup #28); membuka card Fixed Asset (langkah 2) untuk membentuk sesi-produk yang dapat di-force-logout; memulai atau mencatat titik awal pemantauan proxy; menghapus data aplikasi perangkat E (langkah 18); aksi pemicu di Browser License, perangkat E, dan Browser A; mengamati layar dan area notifikasi; memajukan dan memulihkan jam.
 - Pencatatan log tidak diasersikan di spec ini; pencatatan force-logout, Duplicate Login, dan password changed diuji di spec pencatatan modul ini (S-05).
 - Jumlah langkah (49) melewati batas sekitar 35 langkah karena tiga TC masing-masing menyalin prefix login mobile sendiri (langkah 1, 17, 36) dan TC-AUTH-SES-342 serta 343 menyalin langkah pemicu di perangkat atau browser kedua (login perangkat E, form Change Password); tiap TC berdiri sendiri.
-- Temuan untuk QA: (1) TC-AUTH-SES-341 langkah 3 "Tunggu 1 menit" tidak menyebut tujuannya (jeda pengamatan push atau batas waktu tertentu); spec memenuhinya dengan memajukan jam server dan jam perangkat bersama 1 menit sebagai jeda pengamatan. (2) TC-AUTH-SES-341 dan 342 Expected a "tidak ada notifikasi push" tidak menyebut permukaan amatan; spec membaca area notifikasi perangkat. (3) TC-AUTH-SES-342 tidak menyebut perlakuan Prompt Enable Biometric sesudah [Confirm] di perangkat E (perangkat E ber-hardware biometric); spec mengetuk [Not now] bila prompt muncul. (4) TC-AUTH-SES-342 Expected d "sesi di perangkat E tetap Active" dan status sesi tidak menyebut cara membaca; spec memakai pembacaan dari backend yang disediakan tim FE/BE (S-13).

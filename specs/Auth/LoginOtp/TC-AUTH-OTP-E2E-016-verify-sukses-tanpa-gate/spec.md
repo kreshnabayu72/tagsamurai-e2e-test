@@ -25,7 +25,7 @@ coverage:
   - TC-AUTH-OTP-48: `Sinta Pratama` (`sintapratama+{runId}-016@qwertysystem.net`)
   - TC-AUTH-OTP-100: `Agus Nugroho` (`agusnugroho+{runId}-016@qwertysystem.net`)
   - TC-AUTH-OTP-197: `Andi Purnama` (`andipurnama+{runId}-016@qwertysystem.net`)
-- Kemampuan teknis: mail-catcher lingkungan uji untuk membaca kode OTP 6 digit; reCAPTCHA mode uji di environment (centang tanpa tantangan); pengamatan permintaan jaringan browser (TC-AUTH-OTP-100: tidak ada permintaan konfirmasi Agreement; TC-AUTH-OTP-197: isi payload request Verify OTP).
+- Kemampuan teknis: mail-catcher lingkungan uji untuk membaca kode OTP 6 digit; reCAPTCHA mode uji di environment (centang tanpa tantangan); pengamatan request jaringan browser lewat devtools atau proxy uji (Tabel Data Uji Pre-setup #19; TC-AUTH-OTP-100: tidak ada permintaan konfirmasi Agreement; TC-AUTH-OTP-197: isi payload request Verify OTP).
 - State yang berubah: keempat TC diakhiri dengan login sukses; langkah logout dari Portal — Product Hub ada di antara TC dan hook `after` menutup sesi yang tersisa.
 
 ## Test Steps
@@ -70,7 +70,7 @@ coverage:
 27. Ketik `andipurnama+{runId}-016@qwertysystem.net` pada field Email, centang widget reCAPTCHA "I'm not a robot", lalu klik button [Request OTP]
 28. Verifikasi halaman Verify OTP tidak menampilkan widget reCAPTCHA
 29. Ketik 6 digit kode OTP dari email (mail-catcher `andipurnama+{runId}-016@qwertysystem.net`) pada kotak digit
-30. Verifikasi payload request Verify OTP tidak memuat `recaptchaToken` maupun `integrityToken`
+30. Verifikasi payload request Verify OTP (dibaca lewat pengamatan request jaringan browser) tidak memuat `recaptchaToken` maupun `integrityToken`
 31. Verifikasi Verify diterima tanpa meminta centang reCAPTCHA: browser dialihkan ke Portal — Product Hub
 32. Verifikasi sesi aktif untuk `Andi Purnama`
 
@@ -80,4 +80,4 @@ coverage:
 - Subjudul `###` memetakan langkah ke id TC granular untuk report per langkah.
 - Langkah 11, 19, dan 26 adalah langkah penghubung antar-TC (S-03, S-09): logout dari sesi hasil TC sebelumnya lalu buka ulang halaman Request OTP agar konteks bersih. Langkah 12, 20, dan 27 menggabungkan ketik email, centang reCAPTCHA, dan klik [Request OTP] menjadi satu baris karena persis sama dengan prasyarat TC.
 - TC-AUTH-OTP-48 dan TC-AUTH-OTP-100 hampir identik (login BASE sampai Product Hub); keduanya dipertahankan karena Expected-nya berbeda (verifikasi otomatis tanpa klik dan tidak ada MFA pada TC-AUTH-OTP-48, tidak ada permintaan konfirmasi Agreement pada TC-AUTH-OTP-100).
-- Temuan untuk QA: (1) TC-AUTH-OTP-10 menyebut "role di Global Settings: Read Only" tetapi tidak menyebut cara menyiapkan role itu pada user seeding; spec memakai seeding API dengan role Read Only. (2) TC-AUTH-OTP-100 butir a "tidak ada permintaan konfirmasi Agreement yang dikirim" memerlukan pengamatan permintaan jaringan yang tidak disebut di TC. (3) Post Condition TC-AUTH-OTP-48 b (kode berstatus terpakai) dan c (entri Success `Login with OTP` di Activity Log Session dan User Log) tidak punya langkah observasi di TC, sehingga tidak diasersi di spec ini; kode terpakai diuji di spec defense-in-depth (TC-AUTH-OTP-155) dan pencatatan Success di spec pencatatan Success (TC-AUTH-OTP-127). (4) TC-AUTH-OTP-197 langkah 7 memeriksa payload request Verify lewat developer tools (`Manual Only` di TC sumber); spec memakai pengamatan permintaan jaringan browser (Prerequisites) agar dapat diotomasi.
+- Temuan untuk QA: (1) TC-AUTH-OTP-10 menyebut "role di Global Settings: Read Only" tetapi tidak menyebut cara menyiapkan role itu pada user seeding; spec memakai seeding API dengan role Read Only. (2) Post Condition TC-AUTH-OTP-48 b (kode berstatus terpakai) dan c (entri Success `Login with OTP` di Activity Log Session dan User Log) tidak punya langkah observasi di TC, sehingga tidak diasersi di spec ini; kode terpakai diuji di spec defense-in-depth (TC-AUTH-OTP-155) dan pencatatan Success di spec pencatatan Success (TC-AUTH-OTP-127).

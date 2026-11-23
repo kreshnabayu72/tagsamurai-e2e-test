@@ -25,10 +25,10 @@ coverage:
 - Sesi mobile TC-AUTH-SES-345 dibuat lewat login nyata di perangkat Android uji A dan ketuk [Not now] bila Prompt Enable Biometric muncul (Tabel Data Uji Pre-setup #28), sebagai langkah di awal bagian TC. Kondisi "sudah enroll biometric di perangkat Android uji B dengan sesi mobile Active" pada TC-AUTH-SES-346 dibuat sebagai langkah dengan alur Prompt Enable Biometric (login, [Enable], lulus verifikasi sidik jari; TC-AUTH-SES-14 dan 15; Tabel Data Uji Pre-setup #29) dengan data aplikasi yang bersih; sesi hasil login enroll dibiarkan Active.
 - Suite berjalan serial (`parallel: false`); state global yang diubah: jam server uji dan jam browser/perangkat (dimajukan bersama pada TC-AUTH-SES-345 dan 346 dan dipulihkan ke waktu nyata di akhir bagiannya), proses app di perangkat Android uji A dan B, data aplikasi dan token biometric lokal di perangkat Android uji B, pemantauan proxy jaringan.
 - Hook `after`: pulihkan jam server dan jam browser/perangkat ke waktu nyata; hentikan pemantauan proxy; hapus data aplikasi pada perangkat Android uji A dan B; akhiri semua sesi seed; hapus ketiga user. Pembersihan tetap jalan walau spec gagal di tengah dan tidak berasumsi seeding berhasil penuh.
-- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile; akun aktor Total Control hanya di hook dan untuk pembacaan status sesi dari backend.
+- Akun yang dipakai: user uji masing-masing TC pada aplikasi mobile; akun aktor Total Control hanya di hook.
 - Environment variable: `GS_TC_PASSWORD`, `SES_PASSWORD`. Password tidak ditulis di spec atau fixture; nilai password yang ditulis TC-AUTH-SES-349 diisikan lewat `SES_PASSWORD`.
 - Menunggu waktu nyata tidak dipakai; jeda dipenuhi dengan menggeser jam server dan jam browser/perangkat bersama.
-- Kemampuan teknis (kelas harness d: hardware biometrik pada TC-AUTH-SES-346): driver otomasi Android (aplikasi native) pada perangkat A dan B (kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps); ADB terhubung ke perangkat Android uji A dan B (Tabel Data Uji Pre-setup #18) untuk menjalankan `adb shell am kill <package app>`; simulasi sensor sidik jari pada OS biometric prompt Android (verifikasi lulus); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat dan membaca token sesi pada respons login serta header request terautentikasi (termasuk header `Cookie`); jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); pembacaan status sesi user dari backend oleh akun aktor, disediakan tim FE/BE.
+- Kemampuan teknis (kelas harness d: hardware biometrik pada TC-AUTH-SES-346): driver otomasi Android (aplikasi native) pada perangkat A dan B (kirim app ke background tanpa menghapusnya dari recent apps, buka kembali dari recent apps); ADB terhubung ke perangkat Android uji A dan B (Tabel Data Uji Pre-setup #18) untuk menjalankan `adb shell am kill <package app>`; simulasi sensor sidik jari pada OS biometric prompt Android (verifikasi lulus); proxy jaringan (Tabel Data Uji Pre-setup #18) yang mencatat request perangkat dan membaca token sesi pada respons login serta header request terautentikasi (termasuk header `Cookie`); jam server uji dan jam browser/perangkat yang dimajukan bersama dan dipulihkan ke waktu nyata (Tabel Data Uji Pre-setup #18); pembacaan read-only tabel `sessions` per `user_id` (kolom `status`, `expires_at`; karena expire bersifat lazy, sesi dibaca Expired bila `status = 'expired'` atau `status = 'active'` dengan `expires_at` ≤ waktu server; Tabel Data Uji Pre-setup #18).
 
 ## Test Steps
 
@@ -42,8 +42,8 @@ coverage:
 6. Verifikasi Setelah app dibuka kembali form Login tampil
 7. Verifikasi Halaman terakhir (Portal — Product Hub) tidak tampil
 8. Verifikasi Sesudah app dibuka kembali tidak ada request yang membawa token sesi yang dicatat pada langkah 2
-9. Majukan jam server uji dan jam browser/perangkat bersama 15 menit (melewati batas idle)
-10. Verifikasi Sesi lama `Agus Setiadi` berstatus Expired
+9. Majukan jam server uji dan jam browser/perangkat bersama 15 menit (idle timeout terlampaui), lalu baca status sesi lama `Agus Setiadi` di tabel `sessions` (Tabel Data Uji Pre-setup #18)
+10. Verifikasi Setelah langkah 9 sesi lama `Agus Setiadi` berstatus Expired (expire lazy lewat idle timeout; jalur "request berikutnya dari sesi itu" tidak diuji di TC ini)
 11. Pulihkan jam server uji dan jam browser/perangkat ke waktu nyata
 
 ### TC-AUTH-SES-346: OS kill saat app di background tanpa tindakan user diperlakukan sebagai app-kill dan membuka Screen biometric sign-in
@@ -62,8 +62,8 @@ coverage:
 23. Verifikasi OS biometric prompt muncul otomatis
 24. Verifikasi Halaman terakhir (Portal — Product Hub) tidak tampil
 25. Verifikasi Sesudah app dibuka kembali tidak ada request yang membawa token sesi yang dicatat pada langkah 18
-26. Majukan jam server uji dan jam browser/perangkat bersama 15 menit (melewati batas idle) tanpa melewati OS biometric prompt
-27. Verifikasi Sesi lama `Bella Novita` berstatus Expired
+26. Majukan jam server uji dan jam browser/perangkat bersama 15 menit (idle timeout terlampaui) tanpa melewati OS biometric prompt, lalu baca status sesi lama `Bella Novita` di tabel `sessions` (Tabel Data Uji Pre-setup #18)
+27. Verifikasi Setelah langkah 26 sesi lama `Bella Novita` berstatus Expired (expire lazy lewat idle timeout; jalur "request berikutnya dari sesi itu" tidak diuji di TC ini)
 28. Pulihkan jam server uji dan jam browser/perangkat ke waktu nyata
 
 ### TC-AUTH-SES-349: Sesi mobile tidak memakai cookie sehingga app yang dibunuh tidak membawa sesi lama
@@ -72,8 +72,8 @@ coverage:
 30. Mulai pemantauan request perangkat Android uji A di proxy jaringan
 31. Ketik `feriirawan+{runId}-084@qwertysystem.net` pada field Email
 32. Ketik `Spectra.env.SES_PASSWORD` pada field Password
-33. Klik [Login], lalu ketuk [Not now] bila Prompt Enable Biometric muncul → halaman Portal — Product Hub tampil
-34. Buka Settings > Security lalu amati header request terautentikasi di proxy
+33. Klik [Login], lalu ketuk [Not now] bila Prompt "Enable biometric sign-in?" tampil → halaman Portal — Product Hub tampil
+34. Buka `Settings > Security` dari Portal — Product Hub dan amati header request terautentikasi di proxy
 35. Verifikasi Request terautentikasi membawa token sesi dari respons login
 36. Verifikasi Request terautentikasi tidak membawa header `Cookie` berisi sesi
 37. Kirim app ke background (tidak dihapus dari recent apps)
@@ -89,6 +89,5 @@ coverage:
 - Pemantauan proxy hanya pengamat (P-6). Pergeseran jam 15 menit pada TC-AUTH-SES-345 dan 346 hanya menghabiskan batas idle agar status lazy expire dapat dibaca; batas idle bukan objek uji, sehingga tidak memecah spec ke kelas d TTL (P-2).
 - Urutan mengikuti TC sumber (345, 346, 349); tidak ada penyimpangan (S-10). Tiap TC memakai user sendiri.
 - Dependensi (S-04): TC-AUTH-SES-346 bergantung pada TC-AUTH-SES-15 (enroll biometric); langkah 12–17 menyalin blok enroll. Prefix login (langkah 1, 29–33) dan blok enroll tidak dihitung ke batas sekitar 35 langkah.
-- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login mobile dan blok enroll; mencatat token sesi dan titik awal pemantauan proxy (langkah 2 dan 18, pembanding S-14); memulai pemantauan proxy (langkah 30); kirim app ke background, `adb shell am kill`, dan membuka kembali app; membuka Settings > Security (langkah 34); memajukan dan memulihkan jam.
+- Langkah penghubung tanpa awalan `Verifikasi` (S-03): login mobile dan blok enroll; mencatat token sesi dan titik awal pemantauan proxy (langkah 2 dan 18, pembanding S-14); memulai pemantauan proxy (langkah 30); kirim app ke background, `adb shell am kill`, dan membuka kembali app; membuka `Settings > Security` (langkah 34); memajukan dan memulihkan jam.
 - Pencatatan log tidak diasersikan di spec ini (S-05).
-- Temuan untuk QA: (1) Expected b TC-AUTH-SES-345 dan 346 "sesi lama di-expire server secara lazy saat request berikutnya dari sesi itu atau saat idle timeout terlampaui" tidak menyebut pemicu yang dipakai untuk mengamati status Expired; spec memilih jalur idle timeout (jam dimajukan 15 menit) dan membaca status dari backend yang disediakan tim FE/BE (S-13), karena jalur "request berikutnya dari sesi itu" butuh pengiriman token lama lewat alat uji (kelas a). (2) TC-AUTH-SES-349 langkah 2 "buka satu halaman di Portal" tidak menyebut halaman; spec memakai Settings > Security. (3) TC-AUTH-SES-349 tidak menyebut perlakuan Prompt Enable Biometric sesudah login di perangkat Android uji A; spec mengetuk [Not now] bila prompt muncul.
