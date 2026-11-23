@@ -27,12 +27,13 @@ coverage:
   - DU-057-2: Karyawan `Hendra Kusuma {runId}`, Status `Active`, Activation Status `Activated`, ber-akun login, anggota Division `Finance {runId}`.
   - DU-057-3: Division `Finance {runId}` dengan PIC `Hendra Kusuma {runId}`.
   - DU-057-4: Division `Operations {runId}`, Division aset `Laptop Acer Aspire 5 {runId}` sebelum ditugaskan.
-  - DU-057-5: Aset `Laptop Acer Aspire 5 {runId}`, Group `Head Office`, dengan riwayat satu ASG Assignee Division `Finance {runId}` dan PIC `Hendra Kusuma {runId}`: sudah `Handed over by` `Dewi Lestari {runId}` sehingga Division aset menjadi `Finance {runId}`, lalu `Unassigned by` `Dewi Lestari {runId}` sehingga Division aset kembali `Operations {runId}`. Transaction ID ASG itu milik DU-057-5.
+  - DU-057-5: Aset `Laptop Acer Aspire 5 {runId}`, Group `Head Office`, dengan riwayat satu ASG Assignee Division `Finance {runId}`, PIC `Hendra Kusuma {runId}`, dan Requested By `Bima Pratama {runId}` (DU-057-11): sudah `Handed over by` `Dewi Lestari {runId}` sehingga Division aset menjadi `Finance {runId}`, lalu `Unassigned by` `Dewi Lestari {runId}` sehingga Division aset kembali `Operations {runId}`. Transaction ID ASG itu milik DU-057-5.
   - DU-057-6: Aset `Monitor LG UltraWide {runId}`, Group `Head Office`, Custody `Available` dengan satu ASG `Waiting for Handover` untuk Assignee `Budi Santoso {runId}`.
   - DU-057-7: Karyawan `Budi Santoso {runId}`, Status `Active`, Activation Status `Activated`, ber-akun login.
   - DU-057-8: Aset `Tablet Lenovo Tab M10 {runId}`, Group `Head Office`, dengan riwayat satu ASG Assignee Division `Finance {runId}` dan PIC `Hendra Kusuma {runId}`: sudah `Handed over by` `Dewi Lestari {runId}` sehingga Division aset menjadi `Finance {runId}`, lalu baris ditutup lewat Report Missing oleh `Dewi Lestari {runId}` sehingga Division aset kembali `Operations {runId}`.
   - DU-057-9: Aset `Printer Epson L3250 {runId}`, Group `Head Office`, Custody `Available`, dengan riwayat satu ASG Assignee `Budi Santoso {runId}` yang sudah `Assigned` lalu `Unassigned`, dan ada di satu Draft untuk Assignee `Maya Putri {runId}`.
   - DU-057-10: Karyawan `Maya Putri {runId}`, Status `Active`, Activation Status `Activated`, ber-akun login.
+  - DU-057-11: Karyawan `Bima Pratama {runId}`, Status `Active`, Activation Status `Activated`, ber-akun login; pemohon (Requested By) ASG milik DU-057-5.
 
 ## Test Steps
 
@@ -40,9 +41,9 @@ coverage:
 1. Ketik Search `Laptop Acer Aspire 5 {runId}`, tekan Enter
 2. Buka halaman detail aset `Laptop Acer Aspire 5 {runId}`
 3. Buka tab `Transaction log`
-4. Verifikasi kolom Assignment `Date`, `Transaction ID`, `Status`, `Reader name`, `Group`, `PIC`, dan `Assignee` tampil
-5. Verifikasi baris berstatus `Assigned` tampil dengan Group `Head Office`, PIC `Hendra Kusuma {runId}`, dan Assignee `Finance {runId}`
-6. Verifikasi baris berstatus `Unassigned` tampil dengan Group `Head Office`, PIC `Hendra Kusuma {runId}`, dan Assignee `Finance {runId}`
+4. Verifikasi kolom Assignment `Date`, `Transaction ID`, `Status`, `Reader name`, `Group`, `Requested by`, dan `Assignee` tampil
+5. Verifikasi baris berstatus `Assigned` tampil dengan Group `Head Office`, Requested by `Bima Pratama {runId}`, dan Assignee `Finance {runId}`, dengan hover Assignee `PIC: Hendra Kusuma {runId}`
+6. Verifikasi baris berstatus `Unassigned` tampil dengan Group `Head Office`, Requested by `Bima Pratama {runId}`, dan Assignee `Finance {runId}`, dengan hover Assignee `PIC: Hendra Kusuma {runId}`
 7. Klik Transaction ID pada baris berstatus `Assigned`
 8. Verifikasi Assignment Detail terbuka untuk Transaction ID milik DU-057-5
 
@@ -62,7 +63,7 @@ coverage:
 17. Ketik Search `Monitor LG UltraWide {runId}`, tekan Enter
 18. Buka halaman detail aset `Monitor LG UltraWide {runId}`
 19. Buka tab `Transaction log`
-20. Verifikasi baris berstatus `Waiting for Handover` tampil dengan Assignee `Budi Santoso {runId}`
+20. Verifikasi baris berstatus `Waiting for Handover` tampil dengan Assignee `Budi S {runId}`, dengan hover Assignee `Budi Santoso {runId}`
 21. Buka halaman Transactions > Assignment
 22. Ketik Search `Budi Santoso {runId}`, tekan Enter
 23. Klik `⋯` pada baris ASG milik Assignee `Budi Santoso {runId}`
@@ -70,7 +71,7 @@ coverage:
 25. Klik `[Cancel Assignment]` pada dialog `Cancel Assignment`
 26. Buka halaman detail aset `Monitor LG UltraWide {runId}`
 27. Buka tab `Transaction log`
-28. Verifikasi baris berstatus `Canceled` tampil dengan Assignee `Budi Santoso {runId}` sebagai baris baru
+28. Verifikasi baris berstatus `Canceled` tampil dengan Assignee `Budi S {runId}` sebagai baris baru
 
 ### Changelog Asset mencatat penutupan baris lewat Report Missing
 29. Kembali ke daftar aset
@@ -84,5 +85,5 @@ coverage:
 35. Ketik Search `Printer Epson L3250 {runId}`, tekan Enter
 36. Buka halaman detail aset `Printer Epson L3250 {runId}`
 37. Buka tab `Transaction log`
-38. Verifikasi baris berstatus `Unassigned` tampil dengan Assignee `Budi Santoso {runId}`
-39. Verifikasi tidak ada baris dengan Assignee `Maya Putri {runId}`
+38. Verifikasi baris berstatus `Unassigned` tampil dengan Assignee `Budi S {runId}`
+39. Verifikasi tidak ada baris dengan Assignee `Maya P {runId}`

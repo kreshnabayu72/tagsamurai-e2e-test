@@ -39,8 +39,8 @@ coverage:
 1. Downgrade plan entitas ke level `None` berjalan di T-0
 2. Buka Asset Detail aset `Kamera Canon EOS R6 {runId}`
 3. Buka tab `Transaction log`
-4. Verifikasi kolom Assignment `Date`, `Transaction ID`, `Status`, `Reader name`, `Group`, `PIC`, dan `Assignee` tampil pada Transaction log
-5. Verifikasi baris berstatus `Assigned` tampil dengan Group `Head Office {runId}` dan Assignee `Doni Saputra {runId}`
+4. Verifikasi kolom Assignment `Date`, `Transaction ID`, `Status`, `Reader name`, `Group`, `Requested by`, dan `Assignee` tampil pada Transaction log
+5. Verifikasi baris berstatus `Assigned` tampil dengan Group `Head Office {runId}`, Requested by `Bima Pratama {runId}`, dan Assignee `Doni S {runId}` dengan hover nama lengkap `Doni Saputra {runId}`
 6. Verifikasi tombol `Mark as Unassigned` tampil dan aktif di header Asset Detail aset yang Assigned
 
 ### Aset yang menunggu kembali Available dan header tanpa Mark as Unassigned
@@ -50,7 +50,7 @@ coverage:
 
 ### Transaction log dan Assignment Log mencatat penutupan oleh System
 10. Buka tab `Transaction log`
-11. Verifikasi baris berstatus `Canceled` tampil dengan Assignee `Doni Saputra {runId}`
+11. Verifikasi baris berstatus `Canceled` tampil dengan Requested by `Bima Pratama {runId}` dan Assignee `Doni S {runId}`
 12. Klik Transaction ID pada baris berstatus `Canceled`
 13. Klik aksi `Assignment Log` pada baris aset `Printer Brother HL-L5100 {runId}`
 14. Verifikasi node `Canceled by System` tampil pada dialog `Assignment Log`

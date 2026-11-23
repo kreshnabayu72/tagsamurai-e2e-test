@@ -1,0 +1,5104 @@
+{
+ "module": "File Manager",
+ "status": "disetujui",
+ "disetujui": "otomatis, 2026-11-22",
+ "prd": "fixed-asset@1836c1a",
+ "prdSha": "7a66273b026439ed",
+ "foundation": "foundation@a25f734-dirty",
+ "specs": [
+  {
+   "id": "TC-FA-FAFM-E2E-001-tab-files-tampilan",
+   "title": "Halaman File Manager: tab Kategori dan isi baris tab Files",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-01a",
+    "F-FAFM-01c",
+    "F-FAFM-01d",
+    "FAFM-LOGIC-01a",
+    "FAFM-LOGIC-01b",
+    "FAFM-LOGIC-01f",
+    "FAFM-LOGIC-05e",
+    "FAFM-LOGIC-08g",
+    "INV-01b",
+    "INV-01c",
+    "INV-01d",
+    "INV-01e",
+    "INV-01f",
+    "INV-01g",
+    "INV-01h",
+    "INV-11e",
+    "INV-11f",
+    "KAT-01",
+    "KAT-02",
+    "KAT-03",
+    "KAT-04",
+    "KAT-05",
+    "KAT-06",
+    "KAT-07",
+    "KAT-08",
+    "KAT-09",
+    "T-FAFM-01",
+    "TBL-01a",
+    "TBL-01b",
+    "TBL-01d",
+    "§4.1#p6",
+    "§4.1a#p13",
+    "§4.2d#p3",
+    "§4.4#b5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu pembukaan halaman dengan aktor dan data yang sama tanpa perubahan data: tab Kategori, kolom, aksi baris, dan daftar file diamati bersama (RC-2). Search, sort, filter, paginasi, dan Download dipisah ke spec sendiri (RC-2 butir 8)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-002-tab-files-search",
+   "title": "Search tab Files: hasil pencarian dari data nyata",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-01",
+    "TBL-03c",
+    "EB-SRC-1",
+    "EB-SRC-2@tabel-files",
+    "EB-SRC-3@tabel-files",
+    "EB-SRC-5@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-003-tab-files-sort",
+   "title": "Sort tab Files: urutan default dan urutan per kolom",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-01",
+    "TBL-04a",
+    "TBL-04e",
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "EB-SRT-3@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-004-tab-files-filter",
+   "title": "Filter tab Files: opsi dan hasil saringan",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-01",
+    "TBL-03a",
+    "TBL-08a",
+    "TBL-08b",
+    "§4.4#b6",
+    "EB-FLT-1@tabel-files",
+    "EB-FLT-3",
+    "EB-FLT-4@tabel-files",
+    "EB-FLT-7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "EB-FLT-7: file pembawa nilai opsi terakhir dihapus aktor lain sebagai langkah pemicu (LK-8) pada baris milik spec sendiri, di akhir spec sesudah pengamatan lain; hasil tabel mengikuti prd-conventions §9.8 Stale Reference Guard (§4.1 TBL-03d mendelegasikan Filter Panel ke §9.8)"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-005-tab-files-paginasi-select-all",
+   "title": "Paginasi dan Select All tab Files atas seluruh daftar",
+   "layer": "ui-e2e",
+   "units": [
+    "TBL-02a",
+    "TBL-02b",
+    "EB-TBL-7@tabel-files",
+    "EB-BLK-2@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Jumlah baris, halaman terakhir, dan N pada Select All dihitung atas seluruh daftar tab Files entitas, sehingga spec memakai entitas khusus (IN-2). Satu-satunya mutasi adalah Delete baris terakhir di halaman terakhir (EB-TBL-7).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-006-tab-files-download",
+   "title": "Download CSV dan XLSX dari tab Files",
+   "layer": "ui-e2e",
+   "units": [
+    "INV-10d",
+    "TBL-06b",
+    "TBL-06c",
+    "TBL-06e",
+    "TBL-06d",
+    "EB-DL-1@tabel-files",
+    "EB-DL-2@tabel-files",
+    "EB-DL-3@tabel-files",
+    "EB-DL-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Berkas Download tanpa Search dan Filter memuat seluruh baris tab Kategori aktif, jadi isinya bergantung pada seluruh daftar entitas (IN-2 seluruh-daftar).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-007-download-asset-data-recycle-bin-changelog",
+   "title": "Download dari tab Asset Data, Recycle Bin, dan Changelog",
+   "layer": "ui-e2e",
+   "units": [
+    "TBL-06d",
+    "TBL-07b"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Berkas Download tanpa Search dan Filter memuat seluruh baris tabel itu (IN-2 seluruh-daftar). Tiga tabel dalam satu spec karena hanya membaca dan konfigurasi Download-nya sama (LR-2).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-008-download-file-dan-zip",
+   "title": "Download satu file dan Download (ZIP) beberapa file",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-01a",
+    "ACT-01b",
+    "ACT-01c",
+    "ACT-03d",
+    "ACT-03e",
+    "ARS-06a",
+    "ARS-06b",
+    "ARS-06d",
+    "EC-01",
+    "F-FAFM-02c",
+    "S-18",
+    "TBL-05a",
+    "V-01",
+    "§4.4#b3",
+    "§9.4.3#b1",
+    "EB-FB-2@download-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Buka aksi baris <file>",
+     "web": "klik ikon aksi baris",
+     "android": "ketuk [⋯] pada kartu file"
+    },
+    {
+     "langkah": "Pilih <file> untuk aksi bulk",
+     "web": "centang kotak baris",
+     "android": "tekan lama kartu file untuk masuk mode seleksi"
+    }
+   ],
+   "alasan": "Download tunggal dan ZIP dibaca tanpa mengubah data; keduanya memakai tab Files yang sama dan keadaan awal yang sama."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-009-preview-file-web",
+   "title": "File Preview web: tab baru, format, dan file tidak tersedia",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-02a",
+    "INV-03a",
+    "INV-03c",
+    "INV-03d",
+    "PRV-01",
+    "PRV-02",
+    "PRV-03",
+    "PRV-04",
+    "PRV-05",
+    "PRV-06",
+    "PRV-07",
+    "S-12",
+    "§4.4#b1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-010-tab-asset-data",
+   "title": "Tab Disposed & Unmanaged Assets: isi, konfigurasi, dan read-only",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-07a",
+    "F-FAFM-07b",
+    "F-FAFM-07d",
+    "FAFM-LOGIC-05i",
+    "FAFM-LOGIC-08a",
+    "FAFM-LOGIC-08b",
+    "FAFM-LOGIC-08d",
+    "FAFM-LOGIC-08f",
+    "INV-11f",
+    "T-FAFM-02",
+    "TBL-01f",
+    "TBL-03a",
+    "TBL-04b",
+    "TBL-05b",
+    "§4.1#p11",
+    "§9.2#p20",
+    "EB-SRC-5@tabel-asset-data",
+    "EB-FLT-5@tabel-asset-data"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Tabel kedua hanya mengasersi konfigurasi dan hasil dari data nyata dalam satu pembukaan; mekanik Search, Filter, dan sort sudah diuji di tab Files (LY-11, LR-2). Varian data lahir dari kolom tabel ini sendiri."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-011-recycle-bin-dialog",
+   "title": "Recycle Bin: isi, konfigurasi tabel, dan tanpa Recover atau Empty All",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-03a",
+    "F-FAFM-03b",
+    "F-FAFM-03c",
+    "FAFM-LOGIC-03b",
+    "FAFM-LOGIC-03c",
+    "INV-05b",
+    "INV-05d",
+    "INV-05e",
+    "INV-05f",
+    "INV-11f",
+    "T-FAFM-03",
+    "TBL-03a",
+    "TBL-04c",
+    "TBL-05c",
+    "§4.1#p15",
+    "§4.1a#p8",
+    "§9.4.3#b6",
+    "EB-SRC-5@tabel-recycle-bin"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu pembukaan dialog tanpa mengubah data; Search, Filter, sort dan Download mengasersi konfigurasi saja (LR-2). Permanently Delete dimiliki spec mutasinya."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-012-changelog-modal",
+   "title": "Modal Changelog: entri Delete dan Permanently Delete terbaca",
+   "layer": "ui-e2e",
+   "units": [
+    "INV-09b",
+    "INV-09d",
+    "INV-09e",
+    "INV-09f",
+    "INV-09g",
+    "INV-11f",
+    "T-FAFM-04",
+    "TBL-03a",
+    "TBL-04d",
+    "TBL-05d",
+    "TBL-07a",
+    "§4.1#p19",
+    "§8.1#r1",
+    "§8.1#r4",
+    "EB-SRC-5@tabel-changelog",
+    "EB-LOG-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Satu pembukaan modal tanpa mengubah data; entri adalah hasil Delete dan Permanently Delete yang sudah terjadi sebagai data awal."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-013-state-tabel-bertahan",
+   "title": "State tab dan tabel bertahan setelah muat ulang dan pindah tab",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.4#b7",
+    "EB-TBL-6@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-014-setup-column-tersimpan",
+   "title": "Konfigurasi Setup Column tersimpan per user dan per tabel",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.4#b15",
+    "EB-KOL-2@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-015-guided-tooltip-flag",
+   "title": "Guided Tooltip muncul di kunjungan pertama dan flag bertahan antar sesi",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.7#r1",
+    "EB-TBL-10"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-016-entitas-tanpa-file",
+   "title": "Entitas tanpa file: kartu 0.0 KB dan empty state setiap tabel",
+   "layer": "ui-e2e",
+   "units": [
+    "ARS-07b",
+    "EC-17",
+    "F-FAFM-06.k1",
+    "F-FAFM-06f",
+    "F-FAFM-06g",
+    "INV-02f",
+    "SUC-06d"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b1",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Mengasersi keadaan entitas yang belum memiliki file maupun entri Changelog. PRD tidak menetapkan record bawaan pada entitas, jadi daftar kosong membutuhkan entitas khusus (IN-2 daftar-kosong).",
+   "entitasKhusus": "daftar-kosong"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-017-kartu-storage-usage-nilai",
+   "title": "Kartu Storage Usage: angka sesuai data dan label tab",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-16",
+    "F-FAFM-06a",
+    "F-FAFM-06d",
+    "FAFM-LOGIC-06a",
+    "INV-02b",
+    "INV-02c",
+    "SUC-06a",
+    "§4.2c#p1",
+    "§4.4#b11",
+    "EB-TBL-13@kartu-storage-usage"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Angka kartu dan label tab adalah agregat seluruh entitas, sehingga spec memakai entitas khusus (IN-2 seluruh-daftar).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-018-kartu-setelah-delete",
+   "title": "Kartu Storage Usage dan label tab sesudah Delete file",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-21",
+    "F-FAFM-06.k2",
+    "SYN-01i"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Angka agregat berubah oleh satu Delete; dipisah dari Permanently Delete karena satu mutasi per spec (RC-2).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-019-kartu-setelah-permanently-delete",
+   "title": "Kartu Storage Usage dan tab Asset Data sesudah Permanently Delete",
+   "layer": "ui-e2e",
+   "units": [
+    "SYN-02a",
+    "SYN-02b",
+    "SYN-02c",
+    "SYN-02d",
+    "SYN-02f",
+    "SYN-02h",
+    "SYN-02i"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Angka agregat berubah oleh satu Permanently Delete; dipisah dari Delete karena satu mutasi per spec (RC-2).",
+   "entitasKhusus": "seluruh-daftar"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-020-delete-file-single",
+   "title": "Delete satu file ke Recycle Bin",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ACT-02f",
+    "ARS-01b",
+    "ARS-01c",
+    "ARS-01d",
+    "D-01",
+    "DIM-14a",
+    "DIM-14b",
+    "F-FAFM-02i",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "S-20",
+    "SYN-01a",
+    "SYN-01c",
+    "SYN-01d",
+    "SYN-01f",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "T-01",
+    "§4.4#b9"
+   ],
+   "smoke": [
+    "EB-FB-1@delete-file"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Buka aksi baris <file>",
+     "web": "klik ikon aksi baris",
+     "android": "ketuk [⋯] pada kartu file"
+    },
+    {
+     "langkah": "Tutup dialog konfirmasi dengan Cancel",
+     "web": "klik Cancel",
+     "android": "ketuk Cancel pada bottom sheet"
+    }
+   ],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-021-delete-file-bulk",
+   "title": "Bulk Delete beberapa file dari tab Files",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-04c",
+    "ACT-04d",
+    "D-02",
+    "EC-03",
+    "S-20",
+    "T-02",
+    "TBL-05a",
+    "§4.1a#p5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Pilih <file> untuk aksi bulk",
+     "web": "centang kotak baris",
+     "android": "tekan lama kartu file untuk masuk mode seleksi"
+    },
+    {
+     "langkah": "Tutup dialog konfirmasi dengan Cancel",
+     "web": "klik Cancel",
+     "android": "ketuk Cancel pada bottom sheet"
+    }
+   ],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-022-delete-file-bulk-satu-item",
+   "title": "Bulk Delete dengan satu file terpilih memakai bentuk tunggal",
+   "layer": "ui-e2e",
+   "units": [
+    "§7#p3",
+    "EB-EDG-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Pilih <file> untuk aksi bulk",
+     "web": "centang kotak baris",
+     "android": "tekan lama kartu file untuk masuk mode seleksi"
+    }
+   ],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-023-delete-file-sudah-tidak-tersedia",
+   "title": "Delete atas file yang sudah dihapus permanen oleh aktor lain",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-04e",
+    "EC-15",
+    "S-20",
+    "T-03",
+    "T-13",
+    "§4.4#b13",
+    "EB-ERR-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Aktor kedua menghapus permanen file yang sama sebelum konfirmasi aktor pertama, dan layar aktor pertama diasersi (RC-4 multi-konteks)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-024-delete-file-dirujuk-record",
+   "title": "Delete file yang dirujuk record sumber tidak diblokir",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02c",
+    "EC-02",
+    "FAFM-LOGIC-02a",
+    "FAFM-LOGIC-02b",
+    "§9.4.3#b7",
+    "EB-EDG-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-025-permanently-delete-single",
+   "title": "Permanently Delete satu file dari Recycle Bin",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-05d",
+    "ACT-05e",
+    "D-03",
+    "F-FAFM-03d",
+    "INV-05g",
+    "INV-06c",
+    "S-22",
+    "T-06",
+    "§4.4#b10"
+   ],
+   "smoke": [
+    "EB-FB-1@permanently-delete-file"
+   ],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Buka Recycle Bin",
+     "web": "klik tombol Recycle Bin di header kartu Storage Usage (dialog)",
+     "android": "ketuk ikon Recycle Bin di header kartu (bottom sheet)"
+    },
+    {
+     "langkah": "Buka aksi baris <file>",
+     "web": "klik ikon aksi baris",
+     "android": "ketuk [⋯] pada kartu file"
+    },
+    {
+     "langkah": "Tutup dialog konfirmasi dengan Cancel",
+     "web": "klik Cancel",
+     "android": "ketuk Cancel pada bottom sheet"
+    }
+   ],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-026-permanently-delete-bulk",
+   "title": "Bulk Permanently Delete beberapa file dari Recycle Bin",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-06c",
+    "ACT-06d",
+    "D-04",
+    "F-FAFM-03d",
+    "S-22",
+    "T-07"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated",
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [
+    {
+     "langkah": "Buka Recycle Bin",
+     "web": "klik tombol Recycle Bin di header kartu Storage Usage (dialog)",
+     "android": "ketuk ikon Recycle Bin di header kartu (bottom sheet)"
+    },
+    {
+     "langkah": "Pilih <file> untuk aksi bulk",
+     "web": "centang kotak baris",
+     "android": "tekan lama kartu file untuk masuk mode seleksi"
+    },
+    {
+     "langkah": "Tutup dialog konfirmasi dengan Cancel",
+     "web": "klik Cancel",
+     "android": "ketuk Cancel pada bottom sheet"
+    }
+   ],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-027-permanently-delete-sudah-tidak-tersedia",
+   "title": "Permanently Delete atas file yang sudah dihapus permanen oleh aktor lain",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-06e",
+    "EC-05",
+    "EC-06",
+    "EC-15",
+    "F-FAFM-03g",
+    "S-22",
+    "T-08",
+    "T-13",
+    "V-13"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Aktor kedua menghapus permanen file yang sama lebih dulu dan layar aktor pertama diasersi (RC-4 multi-konteks)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-028-aksi-tulis-entitas-suspended-expired",
+   "title": "Entitas Suspended, Expired, atau Grace: halaman terbaca dan aksi tulis ditolak",
+   "layer": "ui-e2e",
+   "units": [
+    "EC-09",
+    "V-08",
+    "§9.4.1#r1",
+    "EB-AKS-7",
+    "EB-ERR-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b2",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "alasan": null,
+   "entitasKhusus": "status-entitas"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-029-capability-dicabut-halaman-terbuka",
+   "title": "Capability Delete dicabut saat halaman terbuka",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-AKS-6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Pencabutan capability dilakukan aktor lain saat halaman aktor pertama terbuka, dan layar aktor pertama diasersi (RC-4 multi-konteks, EB-AKS-6)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-030-gating-tanpa-akses",
+   "title": "Aktor tanpa akses File Manager: menu tidak tampil dan URL langsung ditolak",
+   "layer": "ui-e2e",
+   "units": [
+    "§2#r9",
+    "§9.11#r5",
+    "EB-AKS-1",
+    "EB-AKS-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-031-gating-total-control",
+   "title": "Gating Total Control: seluruh elemen tampil dan Delete tersimpan",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02a",
+    "ACT-02b",
+    "ACT-03c",
+    "ACT-04a",
+    "ACT-05a",
+    "ACT-05b",
+    "ACT-06a",
+    "FAFM-LOGIC-05a",
+    "§2#r5",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#r4",
+    "§9.11#r1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-032-gating-read-only",
+   "title": "Gating Read Only: baca, Preview, dan Download tanpa kontrol tulis",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02a",
+    "ACT-02b",
+    "ACT-03c",
+    "ACT-04a",
+    "ACT-05a",
+    "ACT-05b",
+    "ACT-06a",
+    "FAFM-LOGIC-05c",
+    "S-15",
+    "§2#r6",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#r4",
+    "§9.11#r2",
+    "EB-AKS-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-033-gating-group-manager",
+   "title": "Gating Group Manager: akses penuh pada group yang dikelola dan descendant",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02a",
+    "ACT-02b",
+    "ACT-03c",
+    "ACT-04a",
+    "ACT-05a",
+    "ACT-05b",
+    "ACT-06a",
+    "FAFM-LOGIC-05b",
+    "§2#r7",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#r4",
+    "§9.11#r3",
+    "§9.11#r6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-034-gating-manage-files-read",
+   "title": "Gating Manage files Read: baca dan Download pada group yang di-assign",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02a",
+    "ACT-02b",
+    "ACT-03c",
+    "ACT-04a",
+    "ACT-05a",
+    "ACT-05b",
+    "ACT-06a",
+    "FAFM-LOGIC-05d",
+    "S-15",
+    "§2#r2",
+    "§2#r8",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#r4",
+    "§9.11#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-035-gating-manage-files-delete",
+   "title": "Gating Manage files Delete: Delete pada group yang di-assign dan seleksi campuran",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02a",
+    "ACT-02b",
+    "ACT-03c",
+    "ACT-04a",
+    "ACT-05a",
+    "ACT-05b",
+    "ACT-06a",
+    "FAFM-LOGIC-05d",
+    "FAFM-LOGIC-05h",
+    "§2#r2",
+    "§2#r8",
+    "§4.8#r1",
+    "§4.8#r2",
+    "§4.8#r3",
+    "§4.8#r4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r7",
+    "§4.8#r8",
+    "§4.8#r9",
+    "§4.8#r10",
+    "§4.8#p1",
+    "§4.8#p2",
+    "§9.3#r1",
+    "§9.3#r2",
+    "§9.3#r3",
+    "§9.3#r4",
+    "§9.11#r4",
+    "§9.11#r7",
+    "EB-AKS-5@delete-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-036-gating-manage-files-delete-permanently",
+   "title": "Manage files Delete: Permanently Delete pada group yang di-assign",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-AKS-5@permanently-delete-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Gating Permanently Delete dipisah dari gating Delete karena satu mutasi utama per spec (RC-2); capability tunggal harus menjalankan setiap aksi sampai sukses (EB-AKS-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-037-visibilitas-attachment-purchase",
+   "title": "File Attachment kelompok Purchase hanya terlihat oleh role yang berhak",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-01f",
+    "FAFM-LOGIC-09a",
+    "FAFM-LOGIC-09b",
+    "FAFM-LOGIC-09c",
+    "§9.11#r8"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b3",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "multi-konteks",
+   "varianPlatform": [],
+   "alasan": "Dua aktor dengan hak berbeda, dan layar aktor kedua diasersi (RC-4 multi-konteks)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-038-android-card-list-dan-toolbar",
+   "title": "Mobile: kartu Storage Usage, Card List file dan aset, serta toolbar",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-01",
+    "T-FAFM-02",
+    "§4.6#p1",
+    "§4.6#p2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "PRD §4.6 menyatakan hasil berbeda di mobile (Card List, kolom terbatas, toolbar dengan bottom sheet), jadi dipisah dari spec web (PF-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-039-android-selection-mode-bulk-download",
+   "title": "Mobile: selection mode dan Bulk Download ZIP",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.6#p3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Selection mode dan penghitung seleksi hanya ada di mobile (PRD §4.6), dipisah dari spec web (PF-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-040-android-recycle-bin-bottom-sheet",
+   "title": "Mobile: Recycle Bin sebagai bottom sheet",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-03"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Bentuk Recycle Bin di mobile berbeda (bottom sheet, kartu memuat File Name, Source, Asset, Size, Auto-Purge In) menurut PRD §4.6 (PF-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-041-android-changelog-bottom-sheet",
+   "title": "Mobile: Changelog sebagai bottom sheet",
+   "layer": "ui-e2e",
+   "units": [
+    "T-FAFM-04",
+    "§4.6#p4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Changelog di mobile berupa bottom sheet berisi Card List (PRD §4.6), berbeda dari modal web (PF-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-042-android-file-preview-bottom-sheet",
+   "title": "Mobile: File Preview sebagai bottom sheet",
+   "layer": "ui-e2e",
+   "units": [
+    "F-FAFM-02b",
+    "INV-03b",
+    "INV-03e",
+    "PRV-08",
+    "PRV-09",
+    "S-11",
+    "S-12",
+    "V-01",
+    "§4.4#b2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b4",
+   "priority": "Medium",
+   "coverage": {
+    "android": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Preview di mobile berupa bottom sheet dengan Dimensions (PRV-08, PRV-09), berbeda dari tab browser baru di web (PF-5)."
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-043-delete-asset-data-dep-asset-list",
+   "title": "Delete Asset Data dari menu Asset menghapus file aset dan memperbarui tab Asset Data",
+   "layer": "ui-e2e",
+   "units": [
+    "ARS-04f",
+    "F-FAFM-05a",
+    "F-FAFM-07.k2",
+    "F-FAFM-07e",
+    "F-FAFM-07f",
+    "F-FAFM-07g",
+    "F-FAFM-07h",
+    "FAFM-LOGIC-04a",
+    "FAFM-LOGIC-04c",
+    "FAFM-LOGIC-05j",
+    "FAFM-LOGIC-08e",
+    "SYN-05a",
+    "SYN-05b",
+    "SYN-05d",
+    "SYN-05e",
+    "SYN-05f",
+    "SYN-05g",
+    "§8.1#b2",
+    "§9.2#p19",
+    "§9.4.3#b9"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset List: Delete Asset Data"
+   ],
+   "batch": "b5",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-044-draft-asset-dep-asset-registration",
+   "title": "Aset Draft: foto registrasi dan penghapusan aset Draft",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "F-FAFM-01g",
+    "F-FAFM-01i",
+    "F-FAFM-05a",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "FAFM-LOGIC-04e",
+    "SRC-01",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "SYN-06b",
+    "SYN-06c"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Registration: foto registrasi dan penghapusan aset Draft"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-045-change-photo-attachment-dep-asset-detail",
+   "title": "Asset Detail: Change photo, Attachment, dan tab Documents",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "F-FAFM-04b",
+    "FAFM-LOGIC-01c",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "FAFM-LOGIC-07a",
+    "FAFM-LOGIC-07b",
+    "FAFM-LOGIC-07d",
+    "FAFM-LOGIC-07e",
+    "FAFM-LOGIC-07c",
+    "SRC-01",
+    "SRC-03",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "§9.2#p12",
+    "§9.2#p13",
+    "§9.4.3#b4",
+    "§11#r4"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Asset Detail: Change photo, tab Documents, dan Attachment"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-046-custom-field-document-dep-custom-fields",
+   "title": "Custom Field Document pada aset dan definisi field",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "FAFM-LOGIC-07h",
+    "SRC-04",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Custom Fields: field Custom Field Document pada aset"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-047-damaged-photo-dep-damaged",
+   "title": "Damaged Photo dan Repair Photo pada record Damaged",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "EC-02",
+    "FAFM-LOGIC-01e",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-05",
+    "SRC-06",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "§9.2#p25",
+    "§9.2#p27",
+    "§9.4.3#b8"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Damaged: Report Damaged dan Mark as Repaired"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-048-found-photo-dep-missing",
+   "title": "Found Photo pada record Missing",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-07",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Missing: Mark as Found"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-049-maintenance-photo-dep-maintenance-routine",
+   "title": "Maintenance Before Photo dan After Photo pada task",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-08",
+    "SRC-09",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Maintenance Routine: foto Before dan After pada task"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-050-disposal-document-dep-disposal",
+   "title": "Disposal Document dan aset Disposed",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "DIM-14d",
+    "DIM-14e",
+    "DIM-14f",
+    "F-FAFM-07c",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-10",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Disposal: halaman Execute dan dokumen Disposal"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-051-borrow-photo-dep-borrow",
+   "title": "Handover Photo dan Return Photo pada transaksi Borrow",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "DIM-14d",
+    "DIM-14e",
+    "DIM-14f",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-11",
+    "SRC-12",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Borrow: foto awal dan akhir transaksi"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-052-assignment-photo-dep-assignment",
+   "title": "Handover Photo dan Return Photo pada transaksi Assignment",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-11",
+    "SRC-12",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Assignment: foto awal dan akhir transaksi"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-053-transfer-photo-dep-transfer",
+   "title": "Send Photo, Receive Photo, dan perpindahan group aset pada Transfer",
+   "layer": "ui-e2e",
+   "units": [
+    "ACT-02e",
+    "ARS-01c",
+    "DIM-14a",
+    "DIM-14b",
+    "EC-14",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "SRC-13",
+    "SRC-14",
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "SYN-07a",
+    "SYN-07b",
+    "SYN-07c",
+    "SYN-07d",
+    "§9.4.1#r13"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Transfer: foto Send dan Receive serta perpindahan group aset"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-054-status-unmanaged-dep-license",
+   "title": "Aset Unmanaged karena lisensi masuk dan keluar tab Asset Data",
+   "layer": "ui-e2e",
+   "units": [
+    "DIM-02c",
+    "EC-18",
+    "F-FAFM-07.k1",
+    "F-FAFM-07.k3",
+    "F-FAFM-07c",
+    "F-FAFM-07i",
+    "SYN-08a",
+    "SYN-08b",
+    "SYN-08c"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "License: status Unmanaged aset"
+   ],
+   "batch": "b5",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-055-retensi-recycle-bin-dep-lifecycle-settings",
+   "title": "Durasi retensi Lifecycle Settings tercermin di Recycle Bin",
+   "layer": "ui-e2e",
+   "units": [
+    "SYN-11a",
+    "SYN-11b",
+    "SYN-11c",
+    "SYN-11e",
+    "SYN-11g"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Plans & Licensing: Lifecycle Settings"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Spec mengubah durasi retensi di Lifecycle Settings, yaitu setting tingkat platform yang dibaca spec lain (IN-3).",
+   "subSuite": "RetensiRecycleBin"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-056-kuota-dan-laporan-dep-global-settings",
+   "title": "Kuota dan pemakaian Global Settings File Manager tercermin di kartu Storage Usage",
+   "layer": "ui-e2e",
+   "units": [
+    "ARS-08c",
+    "DIM-02b",
+    "F-FAFM-06c",
+    "F-FAFM-06i",
+    "FAFM-LOGIC-06d",
+    "FAFM-LOGIC-06g",
+    "SUC-03a",
+    "SUC-04a",
+    "SUC-06e",
+    "SYN-02e",
+    "SYN-03e",
+    "SYN-09d",
+    "SYN-10a",
+    "SYN-10b",
+    "SYN-10c",
+    "SYN-10d",
+    "SYN-10e"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Global Settings: File Manager"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Angka kuota dan Total Used adalah setting dan agregat per entitas, sehingga spec memakai entitas khusus (IN-2 setting-entitas).",
+   "entitasKhusus": "setting-entitas"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-057-format-tanggal-dep-general-settings",
+   "title": "Format tanggal dan waktu General Settings tercermin di kolom tanggal",
+   "layer": "ui-e2e",
+   "units": [
+    "EB-XM-1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "General Settings: Date Format dan Time Format"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Spec mengubah Date Format dan Time Format General Settings yang dibaca spec lain (IN-3).",
+   "subSuite": "FormatTanggal"
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-058-log-modul-sumber-dep-activity-log",
+   "title": "Entri Activity Log modul sumber dan aktor System",
+   "layer": "ui-e2e",
+   "units": [
+    "ARS-01m",
+    "SYN-03i",
+    "§8.1#b1",
+    "§8.3#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Activity Log: log aset dan log modul sumber"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-059-lampiran-servis-dep-service-center",
+   "title": "Lampiran Service Center tidak tampil di File Manager",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.2d#p6",
+    "§11#r8"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Service Center: lampiran servis"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-060-authz-per-role-sisi-server",
+   "title": "Server menegakkan permission Delete dan Permanently Delete per role",
+   "layer": "be-e2e",
+   "units": [
+    "ACT-03b",
+    "DIM-04a",
+    "EC-08",
+    "F-FAFM-02.k1",
+    "F-FAFM-02f",
+    "FAFM-LOGIC-05f",
+    "FAFM-LOGIC-05g",
+    "FAFM-LOGIC-05k",
+    "FAFM-LOGIC-05l",
+    "V-09",
+    "§9.3#p1",
+    "EB-ERR-4"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-061-scope-client-group-dan-purchase",
+   "title": "Server menegakkan scope client, scope group, dan visibilitas kelompok Purchase",
+   "layer": "be-e2e",
+   "units": [
+    "DIM-04b",
+    "DIM-04c",
+    "DIM-04d",
+    "EC-13",
+    "F-FAFM-01.k1",
+    "F-FAFM-01b",
+    "FAFM-LOGIC-09b",
+    "SYN-07f",
+    "V-11",
+    "§6#p3",
+    "§9.4.3#b2",
+    "§9.11#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-062-state-entitas-dan-plan",
+   "title": "Entitas Suspended, Expired, Grace menolak aksi tulis, job tetap berjalan, tanpa gating plan",
+   "layer": "be-e2e",
+   "units": [
+    "DIM-02a",
+    "EC-09",
+    "EC-12",
+    "V-08",
+    "§9.4.1#r1",
+    "§9.10#p1",
+    "EB-AKS-7"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "state-tenant",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-063-soft-delete-atomik",
+   "title": "Soft-delete atomik: Recycle Bin, pengosongan rujukan, dan guard klik ganda",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-01a",
+    "ARS-01i",
+    "ARS-01k",
+    "EC-10",
+    "F-FAFM-02.k2",
+    "F-FAFM-02.k4",
+    "F-FAFM-02g",
+    "F-FAFM-02j",
+    "FAFM-LOGIC-01d",
+    "FAFM-LOGIC-02d",
+    "EB-EDG-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-064-bulk-delete-hasil-per-item",
+   "title": "Bulk Delete: hasil per item dan commit per item",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-01g",
+    "ARS-01h",
+    "§7#p2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-065-permanently-delete-sisi-server",
+   "title": "Permanently Delete: hard-delete record dan file fisik, race, dan fail-closed",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-02a",
+    "ARS-02b",
+    "ARS-02e",
+    "ARS-02f",
+    "ARS-02g",
+    "ARS-02h",
+    "ARS-02i",
+    "F-FAFM-03.k1",
+    "FAFM-LOGIC-03a",
+    "§9.4.1#r12"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "High",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-066-auto-purge-harian",
+   "title": "Auto-purge harian atas file Recycle Bin yang melewati batas purge",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-05a",
+    "ARS-05b",
+    "ARS-05c",
+    "ARS-05d",
+    "EC-11",
+    "F-FAFM-03.k2",
+    "F-FAFM-03e",
+    "F-FAFM-03f",
+    "F-FAFM-03i",
+    "S-24",
+    "SYN-03a",
+    "SYN-03b",
+    "SYN-03c",
+    "SYN-03d",
+    "SYN-03f",
+    "SYN-03g",
+    "SYN-11d",
+    "SYN-11f",
+    "§9.4.1#r7",
+    "§9.4.1#r11"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "High",
+   "harness": "eksternal",
+   "varianPlatform": [],
+   "alasan": "Batas purge adalah TTL yang diuji dan dijalankan job harian (RC-4 eksternal)."
+  },
+  {
+   "id": "TC-FA-FAFM-BE-067-auto-transition-modul-sumber",
+   "title": "Auto-transition: file lama di-soft-delete saat modul sumber mengganti atau mengosongkan file",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-03a",
+    "ARS-03b",
+    "ARS-03c",
+    "ARS-03d",
+    "ARS-03e",
+    "ARS-03f",
+    "ARS-03g",
+    "ARS-03h",
+    "ARS-03i",
+    "ARS-03j",
+    "ARS-03k",
+    "F-FAFM-04.k1",
+    "F-FAFM-04.k2",
+    "F-FAFM-04a",
+    "F-FAFM-04c",
+    "F-FAFM-04d",
+    "F-FAFM-04e",
+    "F-FAFM-04g",
+    "F-FAFM-04b",
+    "FAFM-LOGIC-07a",
+    "FAFM-LOGIC-07b",
+    "FAFM-LOGIC-07d",
+    "FAFM-LOGIC-07e",
+    "SYN-04a",
+    "SYN-04b",
+    "SYN-04c",
+    "SYN-04d",
+    "SYN-04e",
+    "§9.4.3#b3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-068-cascade-purge-aset",
+   "title": "Cascade purge atas seluruh file aset yang dihapus",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-04a",
+    "ARS-04b",
+    "ARS-04c",
+    "ARS-04d",
+    "ARS-04e",
+    "DIM-09b",
+    "DIM-14c",
+    "EC-07",
+    "F-FAFM-05.k1",
+    "F-FAFM-05.k2",
+    "F-FAFM-05b",
+    "F-FAFM-05c",
+    "F-FAFM-05d",
+    "F-FAFM-05e",
+    "FAFM-LOGIC-04a",
+    "FAFM-LOGIC-04b",
+    "FAFM-LOGIC-04e",
+    "SYN-05c",
+    "SYN-05h",
+    "SYN-05i",
+    "SYN-06a",
+    "SYN-06d",
+    "SYN-06e",
+    "§9.4.3#b5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Critical",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-069-perhitungan-storage-fams",
+   "title": "Perhitungan Storage FAMS per komponen, realtime, dan tidak memblokir aksi",
+   "layer": "be-e2e",
+   "units": [
+    "ARS-07a",
+    "ARS-07d",
+    "ARS-08a",
+    "ARS-08b",
+    "ARS-08f",
+    "EC-23",
+    "EC-24",
+    "F-FAFM-01h",
+    "F-FAFM-06b",
+    "F-FAFM-06h",
+    "FAFM-LOGIC-03d",
+    "FAFM-LOGIC-06b",
+    "FAFM-LOGIC-06c",
+    "FAFM-LOGIC-06e",
+    "FAFM-LOGIC-06f",
+    "FAFM-LOGIC-06h",
+    "FAFM-LOGIC-06i",
+    "FAFM-LOGIC-06j",
+    "FAFM-LOGIC-06k",
+    "FAFM-LOGIC-06l",
+    "FAFM-LOGIC-07f",
+    "FAFM-LOGIC-07g",
+    "FAFM-LOGIC-08c",
+    "S-25",
+    "SUC-02f",
+    "SUC-03d",
+    "SYN-03j",
+    "SYN-03k",
+    "SYN-04g",
+    "SYN-05j",
+    "SYN-06f",
+    "SYN-08e",
+    "SYN-09a",
+    "SYN-09b",
+    "SYN-09c",
+    "SYN-09e",
+    "§4.2d#p5",
+    "§9.2#p26",
+    "§9.4.3#b10",
+    "§9.4.3#b11"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip",
+   "title": "Isi berkas Download tabel dan ZIP",
+   "layer": "be-e2e",
+   "units": [
+    "ACT-03j",
+    "ACT-03k",
+    "EB-DL-4",
+    "EB-DL-5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "isi-berkas",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-071-search-sort-filter-sisi-server",
+   "title": "Search, sort, dan filter sisi server per kelas kolom",
+   "layer": "be-e2e",
+   "units": [
+    "EB-SRC-1",
+    "EB-FLT-3",
+    "EB-SRT-1",
+    "EB-SRT-2"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-072-konkurensi-aksi-tulis-file",
+   "title": "Konkurensi aksi tulis atas file yang sama dan aksi atas file yang sudah selesai",
+   "layer": "be-e2e",
+   "units": [
+    "EC-04",
+    "F-FAFM-02h",
+    "§9.4.1#r6",
+    "EB-ERR-3",
+    "EB-CON-3",
+    "EB-EDG-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+   "title": "Pencatatan Changelog File Manager dan hal yang tidak boleh tercatat",
+   "layer": "be-e2e",
+   "units": [
+    "ACT-02g",
+    "ACT-03i",
+    "ACT-04f",
+    "ACT-05f",
+    "ACT-06f",
+    "ARS-01l",
+    "ARS-02j",
+    "ARS-05e",
+    "ARS-06e",
+    "ARS-07f",
+    "ARS-08g",
+    "F-FAFM-06m",
+    "FAFM-LOGIC-04d",
+    "SYN-01g",
+    "SYN-02g",
+    "SYN-03h",
+    "SYN-04f",
+    "SYN-07e",
+    "SYN-08d",
+    "SYN-09f",
+    "SYN-10f",
+    "SYN-11h",
+    "§8.1#r2",
+    "§8.1#r3",
+    "§8.1#r5",
+    "§8.1#r6",
+    "§8.1#b3",
+    "§9.4.1#r15"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-BE-074-request-langsung-tanpa-capability",
+   "title": "Request langsung aksi tulis tanpa capability ditolak server",
+   "layer": "be-e2e",
+   "units": [
+    "EB-AKS-3@delete-file",
+    "EB-AKS-3@permanently-delete-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b6",
+   "priority": "Medium",
+   "harness": "pertahanan",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-075-halaman-file-manager",
+   "title": "Halaman File Manager: Breadcrumb, struktur, dan aksesibilitas dasar",
+   "layer": "ui-client",
+   "komponen": "Halaman File Manager",
+   "units": [
+    "INV-01a",
+    "§4.2#p3",
+    "§4.2#p4",
+    "§4.5#b2",
+    "§4.5#b4",
+    "EB-TBL-11"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-076-kartu-storage-usage-tampilan",
+   "title": "Kartu Storage Usage: tampilan, format angka, ProgressBar, dan Alert",
+   "layer": "ui-client",
+   "komponen": "Kartu Storage Usage",
+   "units": [
+    "EC-19",
+    "EC-20",
+    "F-FAFM-06.k3",
+    "F-FAFM-06j",
+    "F-FAFM-06k",
+    "INV-02a",
+    "INV-02d",
+    "INV-02h",
+    "INV-02i",
+    "S-10",
+    "SUC-01a",
+    "SUC-01b",
+    "SUC-01c",
+    "SUC-02a",
+    "SUC-02b",
+    "SUC-02c",
+    "SUC-02d",
+    "SUC-02e",
+    "SUC-03b",
+    "SUC-03c",
+    "SUC-04b",
+    "SUC-04c",
+    "SUC-04d",
+    "SUC-04e",
+    "SUC-04f",
+    "SUC-05a",
+    "SUC-05b",
+    "SUC-05c",
+    "SUC-05d",
+    "SUC-05e",
+    "SUC-05f",
+    "SUC-06b",
+    "SUC-06c",
+    "TBL-01c",
+    "TBL-01e",
+    "TBL-09a",
+    "TBL-09b",
+    "TBL-09c",
+    "§4.2c#p3",
+    "§4.2c#r37",
+    "§4.2c#r38",
+    "§4.2c#r39",
+    "§9.2#p18",
+    "EB-TBL-13@kartu-storage-usage"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Tampilan awal dan state data kartu (kuota kosong, melewati kuota) digabung karena unitnya sedikit dan komponennya sama (RC-3)."
+  },
+  {
+   "id": "TC-FA-FAFM-UI-077-kartu-storage-usage-memuat-dan-gagal",
+   "title": "Kartu Storage Usage: memuat, gagal memuat, dan Try Again",
+   "layer": "ui-client",
+   "komponen": "Kartu Storage Usage",
+   "units": [
+    "ARS-07c",
+    "ARS-07e",
+    "ARS-08d",
+    "ARS-08e",
+    "F-FAFM-06.k4",
+    "F-FAFM-06l",
+    "INV-02e",
+    "INV-02g",
+    "S-08",
+    "S-09",
+    "V-12",
+    "§4.4#b12"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format",
+   "title": "Tabel Files: format sel, nilai kosong, dan teks sel",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "S-14",
+    "T-FAFM-01",
+    "EB-TBL-2@tabel-files",
+    "EB-TBL-4@tabel-files",
+    "EB-TBL-8@tabel-files",
+    "EB-XM-1"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-079-tabel-files-state-data",
+   "title": "Tabel Files: loading, kosong, kosong tersaring, dan gagal muat",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "S-01",
+    "S-02",
+    "S-06",
+    "S-07",
+    "S-17",
+    "S-26a",
+    "S-26b",
+    "§7.1#p1",
+    "EB-TBL-1@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-080-tabel-files-siklus-search",
+   "title": "Tabel Files: siklus kotak Search",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "TBL-03b",
+    "§4.4#b6",
+    "EB-SRC-4@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-081-tabel-files-filter-panel",
+   "title": "Tabel Files: mekanik Filter Panel",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "TBL-03d",
+    "EB-SRC-6@filter-group-tabel-files",
+    "EB-FLT-2@tabel-files",
+    "EB-FLT-6@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-082-tabel-files-siklus-sort",
+   "title": "Tabel Files: siklus sort tiga klik",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "EB-SRT-3@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-083-tabel-files-setup-column",
+   "title": "Tabel Files: Column Visibility dan Setup Column",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "INV-07a",
+    "INV-07b",
+    "INV-07c",
+    "INV-07d",
+    "INV-08a",
+    "INV-08b",
+    "INV-08c",
+    "EB-KOL-1@tabel-files",
+    "EB-KOL-3"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-084-tabel-files-paginasi",
+   "title": "Tabel Files: paginasi dan ukuran halaman",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "TBL-02a",
+    "TBL-02b",
+    "EB-TBL-7@tabel-files"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-085-tabel-files-seleksi-bulk",
+   "title": "Tabel Files: seleksi baris, Bulk Action Bar, dan Selection Limit",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Files",
+   "units": [
+    "ACT-03a",
+    "ACT-03g",
+    "ACT-03h",
+    "DIM-09a",
+    "S-13",
+    "TBL-05e",
+    "§4.1a#p11",
+    "§4.4#b8",
+    "EB-BLK-1@tabel-files",
+    "EB-BLK-4",
+    "EB-BLK-6"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-086-tabel-asset-data-tampilan-dan-state",
+   "title": "Tabel Asset Data: format sel, nilai kosong, dan state data",
+   "layer": "ui-client",
+   "komponen": "Tabel File Manager tab Disposed & Unmanaged Assets",
+   "units": [
+    "S-03",
+    "S-27a",
+    "S-27b",
+    "T-FAFM-02",
+    "EB-TBL-1@tabel-asset-data",
+    "EB-TBL-2@tabel-asset-data",
+    "EB-SRC-6@filter-group-tabel-asset-data",
+    "EB-FLT-6@tabel-asset-data"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Tampilan sel dan state data digabung karena tabel kedua hanya mengasersi konfigurasi dan unitnya sedikit (RC-3, LR-2)."
+  },
+  {
+   "id": "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state",
+   "title": "Dialog Recycle Bin: info retensi, format sel, nilai kosong, dan state data",
+   "layer": "ui-client",
+   "komponen": "Dialog Recycle Bin",
+   "units": [
+    "INV-05a",
+    "S-04",
+    "S-28a",
+    "S-28b",
+    "T-FAFM-03",
+    "§4.2#p6",
+    "§4.8#p1",
+    "§4.8#p2",
+    "EB-TBL-1@tabel-recycle-bin",
+    "EB-TBL-2@tabel-recycle-bin",
+    "EB-TBL-4@tabel-recycle-bin",
+    "EB-TBL-5@checkbox-tabel-recycle-bin",
+    "EB-SRC-6@filter-group-tabel-recycle-bin",
+    "EB-FLT-6@tabel-recycle-bin"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Tampilan awal, format sel, dan state data digabung karena komponen sama dan unitnya sedikit (RC-3, LR-2)."
+  },
+  {
+   "id": "TC-FA-FAFM-UI-088-modal-changelog-tampilan-dan-state",
+   "title": "Modal Changelog: format sel, nilai kosong, dan state data",
+   "layer": "ui-client",
+   "komponen": "Modal Changelog",
+   "units": [
+    "INV-09a",
+    "S-05",
+    "S-29a",
+    "S-29b",
+    "T-FAFM-04",
+    "EB-TBL-1@tabel-changelog",
+    "EB-TBL-2@tabel-changelog",
+    "EB-TBL-4@tabel-changelog",
+    "EB-FLT-6@tabel-changelog"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Tampilan sel dan state data digabung karena komponen sama dan unitnya sedikit (RC-3, LR-2)."
+  },
+  {
+   "id": "TC-FA-FAFM-UI-089-dialog-konfirmasi-delete",
+   "title": "Dialog konfirmasi Delete single dan bulk: isi, tutup, Saving, dan reaksi gagal",
+   "layer": "ui-client",
+   "komponen": "Dialog konfirmasi Delete File",
+   "units": [
+    "ACT-02d",
+    "ACT-04b",
+    "ARS-01e",
+    "ARS-01f",
+    "ARS-01j",
+    "D-01",
+    "D-02",
+    "EC-10",
+    "F-FAFM-02e",
+    "INV-04a",
+    "INV-04b",
+    "S-16",
+    "S-21",
+    "T-04",
+    "T-05",
+    "V-04",
+    "V-06",
+    "§4.4#b4",
+    "§4.4#b14",
+    "§4.5#b3",
+    "§6#p5",
+    "EB-FB-1@delete-file",
+    "EB-FB-2@delete-file",
+    "EB-FB-4",
+    "EB-ERR-1@delete-file",
+    "EB-ERR-2@delete-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-090-dialog-konfirmasi-permanently-delete",
+   "title": "Dialog konfirmasi Permanently Delete single dan bulk: isi, tutup, Saving, dan reaksi gagal",
+   "layer": "ui-client",
+   "komponen": "Dialog konfirmasi Permanently Delete File",
+   "units": [
+    "ACT-05c",
+    "ACT-06b",
+    "ARS-02c",
+    "ARS-02d",
+    "D-03",
+    "D-04",
+    "INV-06a",
+    "INV-06b",
+    "S-23",
+    "T-09",
+    "T-10",
+    "V-05",
+    "V-07",
+    "§4.4#b4",
+    "§4.4#b14",
+    "EB-FB-1@permanently-delete-file",
+    "EB-FB-2@permanently-delete-file",
+    "EB-ERR-1@permanently-delete-file"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-091-popover-download-dan-reaksi-gagal",
+   "title": "Popover Download: pilihan format, loading, dan reaksi Download gagal",
+   "layer": "ui-client",
+   "komponen": "Popover Download tabel",
+   "units": [
+    "ACT-01d",
+    "ACT-03f",
+    "ARS-06c",
+    "DIM-09c",
+    "F-FAFM-02.k3",
+    "F-FAFM-02d",
+    "INV-10a",
+    "INV-10b",
+    "INV-10c",
+    "S-19",
+    "T-11",
+    "T-12",
+    "T-14",
+    "TBL-06a",
+    "V-02",
+    "V-03",
+    "V-10",
+    "EB-DL-2@tabel-files",
+    "EB-DL-5"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "High",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-UI-092-guided-tooltip-empat-langkah",
+   "title": "Guided Tooltip: empat langkah, navigasi, dan replay",
+   "layer": "ui-client",
+   "komponen": "Guided Tooltip File Manager",
+   "units": [
+    "§4.7#r2",
+    "§4.7#r3",
+    "§4.7#r4",
+    "§4.7#r5",
+    "§4.7#r6",
+    "EB-TBL-10"
+   ],
+   "smoke": [],
+   "dependsOn": [],
+   "batch": "b8",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  },
+  {
+   "id": "TC-FA-FAFM-E2E-093-system-log-aktor-dep-user",
+   "title": "System Log di Detail User aktor memuat entri Delete dan Permanently Delete",
+   "layer": "ui-e2e",
+   "units": [
+    "§8.2#p1"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "User: Detail User > Tab System Log"
+   ],
+   "batch": "b5",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": null
+  }
+ ],
+ "na": {
+  "DIM-08a": "penunjuk: §9.7 dan §4.2d (kepemilikan rujukan file, Delete Asset Data, dan kuota dinyatakan di Sync Matrix dan registri Source; perilakunya dimiliki unit SYN, SRC, dan FAFM-LOGIC-05j)",
+  "DIM-08b": "penunjuk: §9.7 dan §4.2d (kepemilikan rujukan file, Delete Asset Data, dan kuota dinyatakan di Sync Matrix dan registri Source; perilakunya dimiliki unit SYN, SRC, dan FAFM-LOGIC-05j)",
+  "DIM-08c": "penunjuk: §9.7 dan §4.2d (kepemilikan rujukan file, Delete Asset Data, dan kuota dinyatakan di Sync Matrix dan registri Source; perilakunya dimiliki unit SYN, SRC, dan FAFM-LOGIC-05j)",
+  "F-FAFM-01e": "penunjuk: §5 (aturan Search, Filter, dan Sort tabel dimiliki unit TBL dan T-FAFM)",
+  "F-FAFM-03h": "penunjuk: FAFM-LOGIC-03a (jalur keluar Recycle Bin dimiliki unit FAFM-LOGIC-03a sampai FAFM-LOGIC-03c)",
+  "F-FAFM-04f": "penunjuk: FAFM-LOGIC-07c (pertanyaan tambahan ke pengguna dimiliki unit itu)",
+  "F-FAFM-06e": "penunjuk: FAFM-LOGIC-06a (aturan logika Storage dimiliki unit FAFM-LOGIC-06a sampai FAFM-LOGIC-06l)",
+  "FAFM-LOGIC-01g": "§Ringkasan Cepat: «Di luar scope» File Manager; Import tidak menyimpan source file atau error report di File Manager, sehingga tidak ada perilaku File Manager yang diuji",
+  "INV-04c": "penunjuk: FAFM-LOGIC-02c (soft-delete dan pengosongan rujukan dimiliki unit FAFM-LOGIC-02c)",
+  "INV-05c": "penunjuk: T-FAFM-03 (tabel Recycle Bin dimiliki unit T-FAFM-03)",
+  "INV-09c": "penunjuk: T-FAFM-04 (tabel Changelog dimiliki unit T-FAFM-04)",
+  "INV-11a": "penunjuk: §4.1 (kolom, sumber data, Setup Column, dan Example Data dimiliki unit T-FAFM-01 sampai T-FAFM-04)",
+  "INV-11b": "penunjuk: §4.1 (format Setup Column dimiliki blok tabel di §4.1, unit T-FAFM-01 sampai T-FAFM-04)",
+  "INV-11c": "penunjuk: §4.1 (Filter Panel tiap tabel ada di Setup Column unit T-FAFM-01 sampai T-FAFM-04)",
+  "INV-11d": "§4.1 INV-11d: nilai tanggal dan jam pada Example Data adalah contoh, bukan format tetap",
+  "§Ringkasan Cepat#b1": "penunjuk: §4 dan §9.2 (ringkasan modul; perilaku dimiliki unit FAFM-LOGIC, ACT, dan F-FAFM)",
+  "§Ringkasan Cepat#b2": "penunjuk: §4 dan §9.2 (ringkasan modul; perilaku dimiliki unit FAFM-LOGIC, ACT, dan F-FAFM)",
+  "§Ringkasan Cepat#b3": "penunjuk: §4 dan §9.2 (ringkasan modul; perilaku dimiliki unit FAFM-LOGIC, ACT, dan F-FAFM)",
+  "§Ringkasan Cepat#b4": "penunjuk: §4 dan §9.2 (ringkasan modul; perilaku dimiliki unit FAFM-LOGIC, ACT, dan F-FAFM)",
+  "§Dependencies#b1": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b2": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b3": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b4": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b5": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b6": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b7": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b8": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b9": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b10": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b11": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b12": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Dependencies#b13": "penunjuk: §11 (daftar modul dependensi; perilaku lintas modul dimiliki unit §11, SYN, dan SRC)",
+  "§Aturan Logika Modul#p1": "penunjuk: FAFM-LOGIC-01a sampai FAFM-LOGIC-09 (pengantar seksi aturan logika; perilaku dimiliki unit FAFM-LOGIC)",
+  "§Aturan Logika Modul#p2": "penunjuk: FAFM-LOGIC-01a sampai FAFM-LOGIC-09 (pengantar seksi aturan logika; perilaku dimiliki unit FAFM-LOGIC)",
+  "§Aturan Logika Modul#p3": "penunjuk: FAFM-LOGIC-01a sampai FAFM-LOGIC-09 (pengantar seksi aturan logika; perilaku dimiliki unit FAFM-LOGIC)",
+  "§Aturan Logika Modul#p4": "penunjuk: FAFM-LOGIC-01a sampai FAFM-LOGIC-09 (pengantar seksi aturan logika; perilaku dimiliki unit FAFM-LOGIC)",
+  "§2#r1": "§2: global_role[] bernilai «tidak ada», tidak ada perilaku yang diuji",
+  "§2#r3": "penunjuk: §4.8 (uraian CRUD per elemen dimiliki unit §4.8)",
+  "§2#r4": "penunjuk: §2#r5 sampai §2#r8 (tabel special_access di bawahnya)",
+  "§2#p1": "penunjuk: §4.8 (akses modul mengikuti FAFM-LOGIC-05a sampai FAFM-LOGIC-05l, visibilitas elemen di §4.8, dan enforcement server di §9.3)",
+  "§2#p2": "§2: definisi istilah «Admin» dan «admin override» sebagai aktor yang berwenang Delete atas group file; tidak ada perilaku yang diuji",
+  "§3#p1": "penunjuk: §4 (diagram struktur menu dan halaman; perilaku dimiliki unit INV, TBL, dan T-FAFM)",
+  "§4#p2": "penunjuk: §7 dan §7.1 (copy UI dimiliki unit T, S, D, dan V)",
+  "§4.1#p2": "penunjuk: INV-01a sampai INV-11 (pengantar tabel sub-rule atomik)",
+  "§4.1#p4": "penunjuk: INV-01a sampai INV-11 (pengantar tabel sub-rule atomik)",
+  "§4.1a#p1": "penunjuk: FAFM-LOGIC-05a dan FAFM-LOGIC-02a (prasyarat umum aksi; gate dan status dirujuk dimiliki unit itu)",
+  "§4.1a#p3": "penunjuk: ACT-01a sampai ACT-06 (pengantar tabel sub-rule atomik aksi)",
+  "§4.1a#p6": "penunjuk: ACT-01a sampai ACT-06 (pengantar tabel sub-rule atomik aksi)",
+  "§4.1a#p9": "penunjuk: ACT-01a sampai ACT-06 (pengantar tabel sub-rule atomik aksi)",
+  "§4.1a#p12": "penunjuk: ACT-01a sampai ACT-06 (pengantar tabel sub-rule atomik aksi)",
+  "§4.2#p1": "penunjuk: §4.1 (layout merender surface dan inventaris kanonik di §4.1)",
+  "§4.2#p7": "penunjuk: §6 (title, body, dan tombol dialog dimiliki unit D-01 sampai D-04)",
+  "§4.2#p9": "penunjuk: INV-01a sampai INV-10 (pengantar tabel sub-rule atomik)",
+  "§4.2c#p2": "penunjuk: SUC-01a sampai SUC-06 (pengantar tabel sub-rule atomik)",
+  "§4.2d#p1": "penunjuk: SRC-01 sampai SRC-14 (registri Source dimiliki unit SRC)",
+  "§4.2d#p4": "§4.2d: aturan penulisan PRD (Source baru wajib dipetakan ke satu Kategori), bukan perilaku produk yang diuji",
+  "§4.5#b1": "§4.5: desktop merender layout tabel penuh, hanya pernyataan tata letak (LR-5)",
+  "§5#p1": "penunjuk: TBL-01a sampai TBL-09 (pengantar tabel sub-rule atomik)",
+  "§6#p1": "penunjuk: §7 (kolom pesan error hanya menyitir; copy dimiliki unit T dan D)",
+  "§6#p2": "§6: File Manager tidak punya form yang dapat diedit, sehingga tidak ada validasi field form",
+  "§7#r1": "penunjuk: T-01 sampai T-14 dan D-01 sampai D-04 (metadata toast dimiliki unit itu)",
+  "§7#r2": "penunjuk: T-01 sampai T-14 dan D-01 sampai D-04 (metadata toast dimiliki unit itu)",
+  "§7#r3": "penunjuk: T-01 sampai T-14 dan D-01 sampai D-04 (metadata toast dimiliki unit itu)",
+  "§7.1#p2": "penunjuk: S-26a sampai S-29b (pengantar tabel sub-rule atomik)",
+  "§9#p2": "penunjuk: §9.2 sampai §9.7 (daftar rujukan konvensi; perilaku dimiliki unit seksi itu)",
+  "§9.2#p9": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.2#p11": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.2#p15": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.2#p17": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.2#p22": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.2#p24": "§9.2: kalimat pembuka skenario contoh; perilakunya dimiliki unit FAFM-LOGIC-07, FAFM-LOGIC-06, dan FAFM-LOGIC-02",
+  "§9.4.1#r2": "penunjuk: DIM-02a sampai DIM-02c (rincian dimensi D2)",
+  "§9.4.1#r3": "§9.4.1 D3: daftar keadaan record (file aktif, soft-deleted, permanently deleted; aset Active, Disposed, Unmanaged, Draft), perilakunya dimiliki unit FAFM-LOGIC-03, FAFM-LOGIC-08, dan F-FAFM-01",
+  "§9.4.1#r4": "penunjuk: DIM-04a sampai DIM-04d (rincian dimensi D4)",
+  "§9.4.1#r5": "§9.4.1 D5: «N/A, tidak ada input form»",
+  "§9.4.1#r8": "penunjuk: DIM-08a sampai DIM-08c (rincian dimensi D8)",
+  "§9.4.1#r9": "penunjuk: DIM-09a sampai DIM-09c (rincian dimensi D9)",
+  "§9.4.1#r10": "penunjuk: §6 dan §9.6 (kegagalan dipetakan ke V-01 sampai V-13 dan baris ARS)",
+  "§9.4.1#r14": "penunjuk: DIM-14a sampai DIM-14f (rincian dimensi D14)",
+  "§9.4.1#p1": "penunjuk: DIM-02a sampai DIM-14f (pengantar tabel sub-rule atomik)",
+  "§9.4.4#p1": "penunjuk: §9.2 (tabel turunan peta cakupan; arah perubahan §9.2 ke peta)",
+  "§9.5#p1": "§9.5: «Tampilan turunan, bukan sumber kebenaran», tiap baris menyitir pemiliknya",
+  "§9.6#p1": "penunjuk: ARS-01a sampai ARS-08 (pengantar tabel sub-rule atomik)",
+  "§9.7#p1": "penunjuk: SYN-01a sampai SYN-11 dan DIM-08 (pemilik sumber kebenaran tiap data)",
+  "§9.7#p2": "penunjuk: SYN-01a sampai SYN-11 (pengantar tabel sub-rule atomik)",
+  "§9.9#p1": "§9.9: «Tidak relevan, File Manager tidak memiliki form yang dapat diedit (§6)»",
+  "§11#r1": "penunjuk: §4.2d dan FAFM-LOGIC-01 (modul sumber dan perannya dimiliki registri Source dan FAFM-LOGIC-01)",
+  "§11#r2": "penunjuk: FAFM-LOGIC-04e (penghapusan aset Draft memicu cascade purge)",
+  "§11#r3": "penunjuk: FAFM-LOGIC-05j dan FAFM-LOGIC-08e (Delete Asset Data milik asset-list)",
+  "§11#r5": "penunjuk: FAFM-LOGIC-05d dan §9.11 (capability Manage files, Group Manager, dan Total Control)",
+  "§11#r6": "penunjuk: §9.11 (cakupan group file mengikuti group aset)",
+  "§11#r7": "penunjuk: FAFM-LOGIC-08a (status Unmanaged aset)",
+  "§11#r9": "penunjuk: SYN-11a (durasi retensi dari Lifecycle Settings)",
+  "§11#r10": "penunjuk: §9.7 dan DIM-08c (kuota dibaca tidak langsung lewat Global Settings File Manager)",
+  "§11#r11": "penunjuk: FAFM-LOGIC-06d (laporan pemakaian Storage FAMS ke global-settings/file-manager)",
+  "§11#r12": "penunjuk: §8 dan INV-11d (entri log dan format tanggal)",
+  "§11#r13": "penunjuk: FAFM-LOGIC-06b (byte file fisik dihitung per komponen Storage)",
+  "§11#r14": "penunjuk: FAFM-LOGIC-07a (penggantian atau pengosongan file di modul sumber)",
+  "§11#r15": "penunjuk: FAFM-LOGIC-02e (modul sumber menampilkan field yang dikosongkan)",
+  "§11#r16": "penunjuk: FAFM-LOGIC-06l (cek Storage penuh di titik upload modul sumber)",
+  "§11#r17": "penunjuk: FAFM-LOGIC-04a (Delete Asset Data menghapus file aset lewat cascade purge)",
+  "§11#r18": "penunjuk: FAFM-LOGIC-04e (penghapusan aset Draft menghapus file aset lewat cascade purge)",
+  "§12#p1": "§12: «Tidak ada Open Item yang masih terbuka»",
+  "§Resolved#r1": "penunjuk: §8.1#r5 (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r2": "penunjuk: SRC-03 (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r3": "penunjuk: FAFM-LOGIC-09a (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r4": "penunjuk: FAFM-LOGIC-02a (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r5": "penunjuk: FAFM-LOGIC-06l (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r6": "penunjuk: FAFM-LOGIC-04e (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r7": "penunjuk: INV-11a (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Resolved#r8": "penunjuk: §9.11#r6 (catatan keputusan OI yang sudah diselesaikan; perilakunya dimiliki unit itu)",
+  "§Changelog#p1": "§Changelog: tautan ke berkas riwayat perubahan, metadata dokumen"
+ },
+ "ditahan": {},
+ "temuan": [
+  {
+   "no": 1,
+   "jenis": "kurang",
+   "units": [],
+   "kutipan": [
+    "§4.4: «Opsi filter diisi dari nilai yang ada di tabel dalam scope tanpa daftar statis.»",
+    "TBL-03d: «Filter Panel `prd-conventions.md` §9.8.»",
+    "prd-conventions §9.8 Stale Reference Guard: «nilai stale dibersihkan dari kriteria saat filter di-reapply dan hasil tabel mengikuti kriteria yang tersisa (tanpa pesan error)»"
+   ],
+   "dampak": "Teratasi oleh foundation, bukan celah PRD: TBL-03d mendelegasikan Filter Panel ke prd-conventions §9.8, dan Stale Reference Guard menetapkan hasilnya (nilai stale dibersihkan dari kriteria saat [Apply], tabel mengikuti kriteria yang tersisa, tanpa pesan error). Unit EB-FLT-7 tidak ditahan dan dimiliki spec E2E-004"
+  },
+  {
+   "no": 2,
+   "jenis": "beda-foundation",
+   "units": [
+    "§4.4#b15",
+    "EB-KOL-2@tabel-files"
+   ],
+   "kutipan": [
+    "§4.4: «Perubahan Setup Column tersimpan per tabel di browser»",
+    "prd-conventions §9.3: «Settingan tersimpan per user di akun, key unik per tabel»"
+   ],
+   "dampak": "Setup Column adalah pola bersama, jadi spec mengasersi hasil foundation: konfigurasi tersimpan di akun user dan sinkron antar browser (SB-4)",
+   "literal": {
+    "elemen": "penyimpanan konfigurasi Setup Column",
+    "diasersi": "Settingan tersimpan per user di akun",
+    "ditolak": [
+     "tersimpan per tabel di browser"
+    ]
+   }
+  }
+ ],
+ "ekspektasiBaku": {
+  "EB-AKS-1": {
+   "status": "berlaku"
+  },
+  "EB-AKS-2": {
+   "status": "berlaku"
+  },
+  "EB-AKS-3": {
+   "status": "berlaku",
+   "surface": [
+    "delete-file",
+    "permanently-delete-file"
+   ],
+   "alasan": "Surface aksi tulis File Manager hanya Delete dan Permanently Delete (single dan bulk); tidak ada Create atau Edit (FAFM-LOGIC-05e)"
+  },
+  "EB-AKS-4": {
+   "status": "berlaku"
+  },
+  "EB-AKS-5": {
+   "status": "berlaku",
+   "surface": [
+    "delete-file",
+    "permanently-delete-file"
+   ],
+   "alasan": "Capability tunggal: pemegang Manage files Delete menjalankan Delete dan Permanently Delete sampai sukses; tidak ada aksi Create atau Edit (FAFM-LOGIC-05e)"
+  },
+  "EB-AKS-6": {
+   "status": "berlaku"
+  },
+  "EB-AKS-7": {
+   "status": "berlaku"
+  },
+  "EB-AKS-8": {
+   "status": "tidak berlaku",
+   "alasan": "§9.10: File Manager tersedia di semua plan dan tidak punya gating plan atau limit Storage sendiri"
+  },
+  "EB-FB-1": {
+   "status": "berlaku",
+   "surface": [
+    "delete-file",
+    "permanently-delete-file"
+   ],
+   "alasan": "Copy toast sukses dan gagal ditulis PRD (T-01 sampai T-10); aksi Download tidak punya toast sukses (S-18). Surface Delete mencakup single dan bulk, Permanently Delete mencakup single dan bulk"
+  },
+  "EB-FB-2": {
+   "status": "berlaku",
+   "surface": [
+    "download-file",
+    "delete-file",
+    "permanently-delete-file"
+   ],
+   "alasan": "Download sukses tanpa toast (S-18); Cancel dan Close pada dialog Delete dan Permanently Delete tanpa mutasi dan tanpa toast (§4.4)"
+  },
+  "EB-FB-3": {
+   "status": "tidak berlaku",
+   "alasan": "§6 dan FAFM-LOGIC-05e: File Manager tidak punya Edit atau form yang dapat diedit, sehingga tidak ada Submit Edit tanpa perubahan"
+  },
+  "EB-FB-4": {
+   "status": "berlaku"
+  },
+  "EB-FRM-8": {
+   "status": "tidak berlaku",
+   "alasan": "§6 dan FAFM-LOGIC-05e: File Manager tidak punya form Create maupun Edit, sehingga tidak ada kasus validasi untuk disimetriskan"
+  },
+  "EB-FRM-9": {
+   "status": "tidak berlaku",
+   "alasan": "§6 dan FAFM-LOGIC-05e: File Manager tidak punya form Edit, jadi tidak ada efek simpan Edit"
+  },
+  "EB-CON-1": {
+   "status": "tidak berlaku",
+   "alasan": "§9.3 dan FAFM-LOGIC-05e: File Manager tidak punya Edit, jadi tidak ada dua aktor yang mengedit record yang sama"
+  },
+  "EB-TBL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files",
+    "tabel-asset-data",
+    "tabel-recycle-bin",
+    "tabel-changelog"
+   ],
+   "alasan": "Empty state tiap tabel dimiliki unit S-26a sampai S-29b; kosong tersaring diasersi di ui-e2e lewat EB-SRC-1"
+  },
+  "EB-TBL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files",
+    "tabel-asset-data",
+    "tabel-recycle-bin",
+    "tabel-changelog"
+   ]
+  },
+  "EB-TBL-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files",
+    "tabel-recycle-bin",
+    "tabel-changelog"
+   ],
+   "alasan": "Kolom nama user hanya Uploaded By (Files), Deleted By (Recycle Bin), dan Modified By (Changelog); tab Asset Data tidak punya kolom nama user"
+  },
+  "EB-TBL-5": {
+   "status": "berlaku",
+   "surface": [
+    "checkbox-tabel-recycle-bin"
+   ],
+   "alasan": "Surface: checkbox baris Recycle Bin di luar group Delete aktor Disabled dengan tooltip baku (§4.8). Tidak ada tombol aksi yang disabled di tabel lain"
+  },
+  "EB-TBL-6": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ],
+   "alasan": "Tidak ada Detail page (§4.1a): yang berlaku hanya refresh di tab yang sama dan pindah tab (§4.4); modal Recycle Bin dan Changelog kembali ke default setiap dibuka"
+  },
+  "EB-TBL-7": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ],
+   "alasan": "Klausa hapus baris terakhir di halaman terakhir diasersi lewat Delete file di spec ui-e2e"
+  },
+  "EB-TBL-8": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ],
+   "alasan": "Kolom teks yang berasal dari data pengguna: File Name, Asset, Reference"
+  },
+  "EB-TBL-10": {
+   "status": "berlaku"
+  },
+  "EB-TBL-11": {
+   "status": "berlaku"
+  },
+  "EB-TBL-13": {
+   "status": "berlaku",
+   "surface": [
+    "kartu-storage-usage"
+   ]
+  },
+  "EB-BLK-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ],
+   "alasan": "Mekanik seleksi diuji di tab Files; Recycle Bin memakai konfigurasi yang sama"
+  },
+  "EB-BLK-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-BLK-3": {
+   "status": "tidak berlaku",
+   "alasan": "FAFM-LOGIC-02b dan §4.1a: tidak ada kondisi Disabled-by-target maupun dialog blok pada Delete; item yang tidak tersedia dilewati dan dilaporkan lewat T-03 dan T-08 (§7)"
+  },
+  "EB-BLK-4": {
+   "status": "berlaku"
+  },
+  "EB-BLK-6": {
+   "status": "berlaku",
+   "alasan": "Selection Limit pada tab Files dan Recycle Bin (ACT-03g, DIM-09a)"
+  },
+  "EB-SRC-1": {
+   "status": "berlaku"
+  },
+  "EB-SRC-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-SRC-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-SRC-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-SRC-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files",
+    "tabel-asset-data",
+    "tabel-recycle-bin",
+    "tabel-changelog"
+   ]
+  },
+  "EB-SRC-6": {
+   "status": "berlaku",
+   "surface": [
+    "filter-group-tabel-files",
+    "filter-group-tabel-asset-data",
+    "filter-group-tabel-recycle-bin"
+   ],
+   "alasan": "Surface: filter Group bertipe Tree picker multi-select (§4.1). Klausa pencarian tree hanya bila tree picker memiliki kotak pencarian menurut foundation §31.3"
+  },
+  "EB-FLT-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-FLT-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-FLT-3": {
+   "status": "berlaku"
+  },
+  "EB-FLT-4": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-FLT-5": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-asset-data"
+   ],
+   "alasan": "Tab Asset Data adalah tabel pertama dengan kolom filterable yang bisa kosong (Alias Name, Brand, Model / Type, Division, Last Scanned); kolom tab Files semua «Tidak pernah kosong»"
+  },
+  "EB-FLT-6": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files",
+    "tabel-asset-data",
+    "tabel-recycle-bin",
+    "tabel-changelog"
+   ]
+  },
+  "EB-FLT-7": {
+   "status": "berlaku",
+   "alasan": "Opsi filter diturunkan dari nilai yang ada di tabel (§4.4), jadi opsi dapat hilang saat file dihapus aktor lain; hasilnya ditetapkan prd-conventions §9.8 Stale Reference Guard yang didelegasikan TBL-03d"
+  },
+  "EB-SRT-1": {
+   "status": "berlaku"
+  },
+  "EB-SRT-2": {
+   "status": "berlaku"
+  },
+  "EB-SRT-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-KOL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-KOL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ],
+   "alasan": "Satu konfigurasi per tabel T-FAFM-01 berlaku bersama untuk semua tab Kategori (§4.1); tabel di dialog Recycle Bin dan Changelog tidak menyimpan konfigurasi kolom (EB-KOL-2)"
+  },
+  "EB-KOL-3": {
+   "status": "berlaku"
+  },
+  "EB-DL-1": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-DL-2": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-DL-3": {
+   "status": "berlaku",
+   "surface": [
+    "tabel-files"
+   ]
+  },
+  "EB-DL-4": {
+   "status": "berlaku"
+  },
+  "EB-DL-5": {
+   "status": "berlaku"
+  },
+  "EB-LOG-1": {
+   "status": "berlaku",
+   "alasan": "Changelog hanya mencatat Delete dan Permanently Delete atas Field File Name (§8.1); tidak ada Edit multi-field"
+  },
+  "EB-LOG-2": {
+   "status": "tidak berlaku",
+   "alasan": "§8.1: File Manager tidak punya Edit atau rename file, Changelog hanya mencatat Delete dan Permanently Delete"
+  },
+  "EB-ERR-1": {
+   "status": "berlaku",
+   "surface": [
+    "delete-file",
+    "permanently-delete-file"
+   ],
+   "alasan": "Surface Delete mencakup dialog D-01 dan D-02, Permanently Delete mencakup D-03 dan D-04"
+  },
+  "EB-ERR-2": {
+   "status": "berlaku",
+   "surface": [
+    "delete-file"
+   ]
+  },
+  "EB-ERR-3": {
+   "status": "berlaku",
+   "alasan": "Tidak ada guard in-use (FAFM-LOGIC-02b); yang dicek ulang adalah file yang sudah dihapus permanen atau di luar scope: T-13 (V-13, V-11)"
+  },
+  "EB-ERR-4": {
+   "status": "berlaku"
+  },
+  "EB-CON-3": {
+   "status": "berlaku",
+   "alasan": "Pasangan aksi yang dinyatakan PRD: Delete dan auto-transition (EC-04), Delete dan Delete serta Permanently Delete dan Permanently Delete (EC-05, EC-15), Delete dan auto-purge"
+  },
+  "EB-EDG-1": {
+   "status": "berlaku"
+  },
+  "EB-EDG-2": {
+   "status": "berlaku",
+   "alasan": "Klausa «hapus record terakhir menampilkan empty state» dimiliki spec daftar kosong; di sini bulk dengan satu item memakai bentuk tunggal (§7#p3)"
+  },
+  "EB-EDG-3": {
+   "status": "berlaku"
+  },
+  "EB-XM-1": {
+   "status": "berlaku"
+  },
+  "EB-XM-2": {
+   "status": "tidak berlaku",
+   "alasan": "FAFM-LOGIC-01a dan §4.1: File Manager tidak membuat atau mengedit data dan tidak menyediakan opsi dropdown bagi modul lain; efek Delete ke modul sumber (rujukan dikosongkan) dimiliki unit FAFM-LOGIC-02e dan SYN-01 pada spec -dep tiap modul sumber"
+  },
+  "EB-XM-3": {
+   "status": "tidak berlaku",
+   "alasan": "FAFM-LOGIC-01g dan §4.1: Import tidak menyimpan source file atau error report di File Manager, dan File Manager tidak punya Edit atau Create sehingga tidak ada record hasil Import"
+  }
+ },
+ "bagian": {
+  "D-01": {
+   "ui-client": "judul, body, tombol, kontainer scrollable, dan bullet dari daftar yang diberikan",
+   "ui-e2e": "nama file dan anotasi Source, Asset pada bullet dari data nyata"
+  },
+  "D-02": {
+   "ui-client": "judul, body, tombol, kontainer scrollable, dan bullet dari daftar yang diberikan",
+   "ui-e2e": "nama file dan anotasi pada bullet dari data nyata"
+  },
+  "D-03": {
+   "ui-client": "judul, body, tombol, dan kontainer scrollable",
+   "ui-e2e": "nama file pada bullet dari data nyata"
+  },
+  "D-04": {
+   "ui-client": "judul, body, tombol, dan kontainer scrollable",
+   "ui-e2e": "nama file terpilih pada bullet dari data nyata"
+  },
+  "EC-09": {
+   "ui-e2e": "toast baku dan UI tidak berubah di layar aktor",
+   "be-e2e": "penolakan 403 dan data tidak berubah"
+  },
+  "EC-10": {
+   "ui-client": "guard klik ganda pada tombol konfirmasi",
+   "be-e2e": "konfirmasi ganda tidak diproses dua kali"
+  },
+  "F-FAFM-04b": {
+   "be-e2e": "file lama di-soft-delete dalam transaksi yang sama dengan aktor System",
+   "ui-e2e": "file lama tampil di Recycle Bin dengan Deleted By System dan file baru tampil di tab Files"
+  },
+  "FAFM-LOGIC-04a": {
+   "be-e2e": "seluruh file aset, aktif dan di Recycle Bin, terhapus",
+   "ui-e2e": "file aset tidak lagi tampil di tab Files dan Recycle Bin"
+  },
+  "FAFM-LOGIC-04e": {
+   "be-e2e": "cascade purge atas seluruh file aset Draft yang dihapus",
+   "ui-e2e": "file aset Draft yang dihapus tidak tampil di Recycle Bin"
+  },
+  "FAFM-LOGIC-07a": {
+   "be-e2e": "file lama di-soft-delete dengan aktor yang benar dalam transaksi yang sama",
+   "ui-e2e": "file lama tampil di Recycle Bin dengan Deleted By yang benar sesudah Change photo atau Remove photo"
+  },
+  "FAFM-LOGIC-07b": {
+   "be-e2e": "file lama di-soft-delete dengan aktor yang benar dalam transaksi yang sama",
+   "ui-e2e": "file lama tampil di Recycle Bin dengan Deleted By yang benar sesudah Change photo atau Remove photo"
+  },
+  "FAFM-LOGIC-07d": {
+   "be-e2e": "file lama di-soft-delete dengan aktor yang benar dalam transaksi yang sama",
+   "ui-e2e": "file lama tampil di Recycle Bin dengan Deleted By yang benar sesudah Change photo atau Remove photo"
+  },
+  "FAFM-LOGIC-07e": {
+   "be-e2e": "file lama di-soft-delete dengan aktor yang benar dalam transaksi yang sama",
+   "ui-e2e": "file lama tampil di Recycle Bin dengan Deleted By yang benar sesudah Change photo atau Remove photo"
+  },
+  "FAFM-LOGIC-09b": {
+   "ui-e2e": "baris tidak tampil di tab Files, Recycle Bin, Changelog, dan opsi filter bagi role tanpa akses",
+   "be-e2e": "baris tidak ikut di export dan operasi server bagi role tanpa akses"
+  },
+  "T-FAFM-01": {
+   "ui-client": "format sel, nilai kosong, dan tautan File Name",
+   "ui-e2e": "isi dari data nyata serta hasil search, sort, dan filter"
+  },
+  "T-FAFM-02": {
+   "ui-client": "format sel, nilai kosong, dan badge Status",
+   "ui-e2e": "isi dari data nyata, sort default, search, dan filter"
+  },
+  "T-FAFM-03": {
+   "ui-client": "format sel, nilai kosong, dan format Auto-Purge In",
+   "ui-e2e": "isi dari data nyata, sort default, search, dan filter"
+  },
+  "T-FAFM-04": {
+   "ui-client": "format sel dan nilai kosong",
+   "ui-e2e": "isi dari data nyata, sort default, search, dan filter"
+  },
+  "TBL-02a": {
+   "ui-client": "opsi ukuran halaman dan perilaku ganti ukuran",
+   "ui-e2e": "default 10 baris dari data nyata"
+  },
+  "TBL-02b": {
+   "ui-client": "opsi ukuran halaman dan perilaku ganti ukuran",
+   "ui-e2e": "default 10 baris dari data nyata"
+  },
+  "V-08": {
+   "ui-e2e": "toast baku entitas Suspended, Expired, atau Grace saat konfirmasi",
+   "be-e2e": "aksi mutasi ditolak server"
+  },
+  "§4.4#b6": {
+   "ui-client": "placeholder Search tiap tabel dan pencarian berjalan setelah Enter",
+   "ui-e2e": "opsi filter diisi dari nilai di tabel dalam scope tanpa daftar statis"
+  },
+  "§4.8#p1": {
+   "ui-e2e": "checkbox Disabled hanya pada baris di luar group Delete aktor, Select All dan Bulk Delete pada seleksi campuran",
+   "ui-client": "tooltip baku pada checkbox Recycle Bin yang Disabled"
+  },
+  "§4.8#p2": {
+   "ui-e2e": "checkbox Disabled hanya pada baris di luar group Delete aktor, Select All dan Bulk Delete pada seleksi campuran",
+   "ui-client": "tooltip baku pada checkbox Recycle Bin yang Disabled"
+  },
+  "§9.4.1#r1": {
+   "ui-e2e": "toast baku dan UI tidak berubah",
+   "be-e2e": "403 pada aksi tulis user dan job tanpa pemicu user tetap berjalan"
+  },
+  "EB-AKS-7": {
+   "ui-e2e": "halaman tetap terbuka dan terbaca, aksi tulis ditolak dengan copy baku, tanpa redirect",
+   "be-e2e": "aksi tulis user ditolak server dan data tidak berubah"
+  },
+  "EB-TBL-7@tabel-files": {
+   "ui-client": "ganti ukuran halaman kembali ke halaman 1, ganti sort tetap di halaman, nomor halaman tidak valid diabaikan",
+   "ui-e2e": "hapus baris terakhir di halaman terakhir pindah ke halaman terakhir yang masih ada"
+  },
+  "EB-TBL-10": {
+   "ui-client": "konten step, navigasi, replay, dan keluar tanpa selesai",
+   "ui-e2e": "flag bertahan antar sesi dan tidak muncul lagi"
+  },
+  "EB-TBL-13@kartu-storage-usage": {
+   "ui-client": "label dan format angka kartu",
+   "ui-e2e": "angka sesuai data dan berubah sesudah mutasi"
+  },
+  "EB-SRC-1": {
+   "be-e2e": "substring dan huruf besar kecil per kelas kolom searchable tiap tabel",
+   "ui-e2e": "kata kunci tanpa kecocokan menampilkan No results found"
+  },
+  "EB-FLT-3": {
+   "be-e2e": "AND antar-field dan OR dalam satu field per tabel",
+   "ui-e2e": "satu representatif AND dan OR pada tab Files"
+  },
+  "EB-SRT-1": {
+   "be-e2e": "urutan per tipe kolom tiap tabel",
+   "ui-e2e": "satu representatif urutan per tipe data pada tab Files"
+  },
+  "EB-SRT-2": {
+   "be-e2e": "nilai kosong dan urutan nilai sama pada kolom yang bisa kosong",
+   "ui-e2e": "satu representatif nilai kosong pada tab Files"
+  },
+  "EB-SRT-3@tabel-files": {
+   "ui-client": "indikator siklus tiga klik",
+   "ui-e2e": "klik ketiga kembali ke urutan default"
+  },
+  "EB-DL-2@tabel-files": {
+   "ui-e2e": "berhasil tanpa toast sukses",
+   "ui-client": "gagal memunculkan toast Error, failed to download"
+  },
+  "EB-DL-4": {
+   "be-e2e": "isi berkas per tipe kolom, BOM, dan sheet",
+   "ui-e2e": "nama berkas, header, dan jumlah baris"
+  },
+  "EB-DL-5": {
+   "ui-client": "loading screen saat jumlah baris di atas ambang",
+   "be-e2e": "berkas lengkap tanpa job background"
+  },
+  "EB-ERR-3": {
+   "be-e2e": "server memperlakukan file yang sudah dihapus permanen atau di luar scope sebagai tidak ditemukan tanpa mutasi",
+   "ui-e2e": "toast Info netral T-13 dan refresh di layar aktor pertama"
+  },
+  "EB-ERR-4": {
+   "be-e2e": "penolakan server meninggalkan data tanpa perubahan",
+   "ui-e2e": "UI tetap menampilkan nilai lama sesudah penolakan"
+  },
+  "EB-EDG-3": {
+   "be-e2e": "rujukan record sumber dikosongkan atomik dan status record tetap",
+   "ui-e2e": "Delete file yang dirujuk tidak diblokir dan masuk Recycle Bin"
+  },
+  "EB-XM-1": {
+   "ui-client": "format tanggal menurut setting di Kondisi",
+   "ui-e2e": "perubahan Date Format dan Time Format sampai ke kolom tanggal"
+  }
+ },
+ "dataUnits": [],
+ "shared": {
+  "ACT-02a": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-02b": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-02e": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "ACT-03c": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-04a": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-05a": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-05b": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ACT-06a": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "ARS-01c": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "DIM-14a": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "DIM-14b": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "DIM-14d": "per contoh modul: Disposal sebelum Execute di spec -dep-disposal, Borrow sebelum Return di spec -dep-borrow",
+  "DIM-14e": "per contoh modul: Disposal sebelum Execute di spec -dep-disposal, Borrow sebelum Return di spec -dep-borrow",
+  "DIM-14f": "per contoh modul: Disposal sebelum Execute di spec -dep-disposal, Borrow sebelum Return di spec -dep-borrow",
+  "EC-02": "per surface: Recycle Bin di spec inti, field Damaged Photo di spec -dep-damaged",
+  "EC-15": "per aksi: Delete bulk di spec del-race, Permanently Delete bulk di spec pd-race",
+  "F-FAFM-03d": "per cabang: single di spec pd-single, bulk di spec pd-bulk",
+  "F-FAFM-05a": "per pemicu: Delete Asset Data di spec -dep-asset-list, penghapusan aset Draft di spec -dep-asset-registration",
+  "F-FAFM-07c": "per jalur: aset Unmanaged di spec -dep-license, aset Disposed di spec -dep-disposal",
+  "FAFM-LOGIC-02c": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "FAFM-LOGIC-02e": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "FAFM-LOGIC-02f": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "FAFM-LOGIC-05d": "per capability: Read di spec g-mfr, Delete di spec g-mfd",
+  "INV-11f": "per tabel: checkbox ada di tab Files dan Recycle Bin, tidak ada di tab Asset Data dan Changelog",
+  "S-12": "per platform: web di spec preview-web, mobile di spec an-preview",
+  "S-15": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "S-20": "per jenis hasil: single, bulk, dan bulk dengan item dilewati di spec masing-masing",
+  "S-22": "per jenis hasil: single, bulk, dan bulk dengan item dilewati di spec masing-masing",
+  "SRC-01": "per modul sumber: registrasi aset dan Change photo di Asset Detail",
+  "SRC-11": "per modul sumber: Borrow dan Assignment memakai Source yang sama",
+  "SRC-12": "per modul sumber: Borrow dan Assignment memakai Source yang sama",
+  "SYN-01b": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "SYN-01e": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "SYN-01h": "per surface: sisi File Manager (Recycle Bin, tab, kartu) di spec inti, rujukan record sumber di spec -dep per modul sumber",
+  "T-13": "per aksi: Delete di spec del-race, Permanently Delete di spec pd-race",
+  "T-FAFM-01": "per fitur tabel dan platform: tampilan dan kolom di tf-tampilan, search di tf-search, sort di tf-sort, filter di tf-filter, Card List mobile di an-kartu",
+  "T-FAFM-02": "per platform: kolom tabel di ad-tampilan, Card List mobile di an-kartu",
+  "T-FAFM-03": "per platform: kolom tabel di rb-tampilan, kartu bottom sheet di an-rb",
+  "T-FAFM-04": "per platform: kolom tabel di cl-tampilan, kartu bottom sheet di an-cl",
+  "TBL-03a": "per tabel: field Filter Panel tiap tabel",
+  "TBL-05a": "per aksi bulk: Download (ZIP) di spec dl-file, Delete di spec del-bulk",
+  "TBL-06d": "per tab: nama berkas tab Files di tf-download, Asset Data dan Recycle Bin di download-lain",
+  "V-01": "per platform: web di spec dl-file, mobile di spec an-preview",
+  "§2#r2": "per capability: Read di spec g-mfr, Delete di spec g-mfd",
+  "§2#r8": "per capability: Read di spec g-mfr, Delete di spec g-mfd",
+  "§4.4#b4": "per dialog: Delete di spec uc-dialog-delete, Permanently Delete di spec uc-dialog-pd",
+  "§4.4#b14": "per dialog: Delete di spec uc-dialog-delete, Permanently Delete di spec uc-dialog-pd",
+  "§4.8#r1": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r2": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r3": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r4": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r5": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r6": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r7": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r8": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r9": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§4.8#r10": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§9.3#r1": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§9.3#r2": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§9.3#r3": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§9.3#r4": "per jenis aktor: setiap spec gating mengasersi selnya sendiri pada kolom aktornya",
+  "§9.11#r4": "per capability: Read di spec g-mfr, Delete di spec g-mfd"
+ },
+ "kontrak": {
+  "Alert": [
+   "EC-19",
+   "EC-20",
+   "F-FAFM-06j",
+   "F-FAFM-06k",
+   "SUC-02b",
+   "SUC-04f",
+   "S-10",
+   "§4.2c#r38"
+  ],
+  "ProgressBar": [
+   "SUC-04f",
+   "§4.2c#r38",
+   "§4.2c#r39",
+   "SYN-10c",
+   "EC-19",
+   "EC-20"
+  ],
+  "Tabs": [
+   "§4.2d#p3",
+   "§4.4#b15",
+   "§4.8#r3",
+   "F-FAFM-07d",
+   "SYN-05d"
+  ],
+  "Tooltip": [
+   "TBL-01c",
+   "§4.5#b4",
+   "§4.8#p1",
+   "§4.8#p2"
+  ],
+  "Breadcrumb": [
+   "§4.2#p4"
+  ],
+  "Dialog": [
+   "ACT-04b",
+   "ACT-06b",
+   "ACT-05c",
+   "ACT-02d",
+   "ACT-03e",
+   "S-12"
+  ],
+  "Badge": [
+   "T-FAFM-01",
+   "T-FAFM-02"
+  ],
+  "Checkbox": [
+   "ACT-03c",
+   "§4.8#r5",
+   "§4.8#r7",
+   "§4.8#p1"
+  ],
+  "BulkActionButton": [
+   "ACT-03h",
+   "§4.1a#p11",
+   "INV-04b",
+   "INV-06b",
+   "§4.6#p3"
+  ],
+  "CustomColumn": [
+   "INV-07d",
+   "INV-08b",
+   "§4.4#b15"
+  ],
+  "Paginator": [
+   "§4.4#b7"
+  ],
+  "DataTable": [
+   "T-FAFM-01",
+   "T-FAFM-02",
+   "T-FAFM-03",
+   "T-FAFM-04",
+   "TBL-04a"
+  ],
+  "Shimmer": [
+   "ARS-08d",
+   "S-01",
+   "S-08"
+  ],
+  "GuidedTour": [
+   "§4.7#r1"
+  ],
+  "Toast": [
+   "S-18",
+   "S-19",
+   "S-21",
+   "S-23",
+   "S-24",
+   "S-25"
+  ],
+  "ExportButton": [
+   "TBL-06b",
+   "TBL-06c"
+  ],
+  "EmptyState": [
+   "S-02",
+   "S-03",
+   "S-26a",
+   "S-27a"
+  ],
+  "SearchButton": [
+   "TBL-03b",
+   "TBL-01a"
+  ],
+  "FilterContainer": [
+   "TBL-03a",
+   "TBL-03d"
+  ]
+ },
+ "targetVarian": [
+  {
+   "target": "kolom-searchable@tabel-files",
+   "kode": "VD-T1",
+   "units": [
+    "TBL-03c",
+    "EB-SRC-1",
+    "EB-SRC-2@tabel-files",
+    "EB-SRC-3@tabel-files",
+    "EB-SRC-4@tabel-files",
+    "EB-SRC-5@tabel-files",
+    "EB-SRC-5@tabel-asset-data",
+    "EB-SRC-5@tabel-changelog",
+    "EB-SRC-5@tabel-recycle-bin",
+    "EB-TBL-6@tabel-files",
+    "INV-02h",
+    "INV-05d",
+    "INV-09e",
+    "TBL-01a",
+    "TBL-01f",
+    "TBL-09b",
+    "§4.2#p6",
+    "§4.4#b6",
+    "§4.4#b7",
+    "§4.6#p2",
+    "§4.8#r4"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-002-tab-files-search",
+    "TC-FA-FAFM-BE-071-search-sort-filter-sisi-server",
+    "TC-FA-FAFM-UI-080-tabel-files-siklus-search"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-002-tab-files-search",
+   "param": {
+    "per-kelas-kolom": [
+     "teks",
+     "badge",
+     "numerik"
+    ]
+   },
+   "tidakBerlaku": {
+    "kolom-icon-label": "§4.1 T-FAFM-01: tidak ada kolom ber-ikon pada tab Files",
+    "kolom-homogen": "§4.1 T-FAFM-01: PRD tidak menyatakan kolom yang bernilai seragam di semua baris",
+    "record-tab-non-default": "§4.4: Search dan state dipertahankan per tab; tidak ada Search Global lintas tab",
+    "cocok-di-anak-saja": "§4.1 T-FAFM-01: tabel datar, tidak ada node anak"
+   }
+  },
+  {
+   "target": "kolom-sortable@tabel-files",
+   "kode": "VD-T2",
+   "units": [
+    "TBL-04a",
+    "TBL-04e",
+    "EB-SRT-1",
+    "EB-SRT-2",
+    "EB-SRT-3@tabel-files"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-003-tab-files-sort",
+    "TC-FA-FAFM-BE-071-search-sort-filter-sisi-server",
+    "TC-FA-FAFM-UI-082-tabel-files-siklus-sort"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-003-tab-files-sort",
+   "param": {
+    "per-tipe-kolom": [
+     "tanggal",
+     "badge"
+    ]
+   },
+   "tidakBerlaku": {
+    "kosong": "§4.1 T-FAFM-01 kolom Nilai Kosong: setiap kolom bersort «Tidak pernah kosong»; Reference «Tampil —» hanya untuk Source Asset Photo (§4.2d SRC-01) yang tabnya tidak menampilkan kolom Reference, sehingga tidak ada nilai null di kolom sortable mana pun",
+    "jumlah-chip-sama": "§4.1 T-FAFM-01: tidak ada kolom multi-badge atau ikon aktif pada tab Files",
+    "jumlah-aktif-sama": "§4.1 T-FAFM-01: tidak ada kolom multi-badge atau ikon aktif pada tab Files",
+    "campuran-tipe": "§4.1 T-FAFM-01: tidak ada kolom bertipe data campuran pada tab Files",
+    "urutan-custom": "§4.1 T-FAFM-01: kolom Group diurutkan Alphabetical (A-Z), PRD tidak menetapkan urutan custom per nilai",
+    "urutan-beda-antar-kolom": "§4.1 T-FAFM-01: tiap kolom memakai urutan Alphabetical, Numeric, atau tanggal standar tanpa urutan khusus"
+   }
+  },
+  {
+   "target": "field-filter@tabel-files",
+   "kode": "VD-T3",
+   "units": [
+    "TBL-03a",
+    "TBL-08a",
+    "TBL-08b",
+    "EB-SRC-6@filter-group-tabel-files",
+    "EB-FLT-1@tabel-files",
+    "EB-FLT-3",
+    "EB-FLT-4@tabel-files",
+    "EB-FLT-6@tabel-asset-data",
+    "EB-FLT-6@tabel-changelog",
+    "EB-FLT-6@tabel-files",
+    "EB-FLT-6@tabel-recycle-bin",
+    "INV-05e",
+    "INV-09d",
+    "TBL-03d",
+    "§4.8#p2"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-004-tab-files-filter",
+    "TC-FA-FAFM-BE-071-search-sort-filter-sisi-server",
+    "TC-FA-FAFM-UI-081-tabel-files-filter-panel"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-004-tab-files-filter",
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Tree picker multi-select",
+     "Range Min–Max",
+     "Date range picker"
+    ]
+   },
+   "tidakBerlaku": {
+    "filter-only": "§4.1 T-FAFM-01: setiap field Filter Panel tab Files memiliki kolom tabel",
+    "boolean-kedua-nilai": "§4.1 T-FAFM-01: tidak ada field filter boolean atau switch pada tab Files",
+    "custom-field-per-tipe": "§4.1 T-FAFM-01: tab Files tidak memiliki field filter custom field",
+    "mutasi-keluar-saringan": "§4.1 T-FAFM-01: File Manager tidak punya Edit; nilai kolom filter berubah hanya lewat Transfer aset (EC-14) yang dimiliki spec -dep-transfer",
+    "mutasi-masuk-saringan": "§4.1 T-FAFM-01: File Manager tidak punya Edit; nilai kolom filter berubah hanya lewat Transfer aset (EC-14) yang dimiliki spec -dep-transfer",
+    "create-tidak-cocok": "L112 FAFM-LOGIC-01a: File Manager tidak membuat file, jadi tidak ada Create dari modul ini",
+    "status-dikecualikan": "§4.1 T-FAFM-01: tab Files tidak memiliki status internal yang dikecualikan dari filter",
+    "default-filter-lolos": "§4.1 T-FAFM-01: tidak ada filter pre-applied pada tab Files",
+    "default-filter-tersaring": "§4.1 T-FAFM-01: tidak ada filter pre-applied pada tab Files"
+   }
+  },
+  {
+   "target": "opsi-filter@tabel-files",
+   "kode": "VD-T4",
+   "units": [
+    "TBL-08a",
+    "TBL-08b",
+    "EB-FLT-1@tabel-files",
+    "EB-FLT-2@tabel-files",
+    "EB-FLT-7"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-004-tab-files-filter"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-004-tab-files-filter",
+   "tidakBerlaku": {
+    "kosong": "§4.1 T-FAFM-01: kolom filterable tab Files «Tidak pernah kosong»",
+    "enum-sebagian-terisi": "§4.4: opsi filter diisi dari nilai di tabel tanpa daftar statis, jadi bukan enum tetap",
+    "per-anggota-enum": "§4.4: opsi filter diisi dari nilai di tabel tanpa daftar statis, jadi bukan enum tetap",
+    "nilai-kondisional": "§4.1 T-FAFM-01: opsi filter tab Files tidak bersyarat pada keadaan lain",
+    "opsi-tetap-worm": "§4.1 T-FAFM-01: tab Files bukan log WORM",
+    "entitas-terhapus-berhistori": "§4.4: opsi diturunkan dari nilai yang ada di tabel; file yang terhapus tidak meninggalkan opsi",
+    "sumber-kosong": "§7.1 S-26a: tab Files kosong menampilkan empty state; PRD tidak menetapkan isi Filter Panel tanpa data",
+    "satu-nilai-distinct": "§4.1 T-FAFM-01: PRD tidak menetapkan perilaku field filter yang hanya punya satu nilai",
+    "dua-nilai-distinct": "§4.1 T-FAFM-01: PRD tidak menetapkan perilaku field filter yang hanya punya dua nilai"
+   }
+  },
+  {
+   "target": "paginasi@tabel-files",
+   "kode": "VD-T5",
+   "units": [
+    "TBL-02a",
+    "TBL-02b",
+    "EB-TBL-7@tabel-files"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-084-tabel-files-paginasi",
+    "TC-FA-FAFM-E2E-005-tab-files-paginasi-select-all"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-084-tabel-files-paginasi",
+   "param": {
+    "lebih-ukuran-terpilih": [
+     "25"
+    ]
+   }
+  },
+  {
+   "target": "empty-state@tabel-files",
+   "kode": "VD-T6",
+   "units": [
+    "S-02",
+    "S-26a",
+    "S-26b",
+    "S-06",
+    "EB-TBL-1@tabel-files"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-079-tabel-files-state-data",
+    "TC-FA-FAFM-E2E-016-entitas-tanpa-file"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-079-tabel-files-state-data",
+   "tidakBerlaku": {
+    "log-kosong": "§7.1 S-26a: tab Files bukan log",
+    "relasi-kosong": "§4.1 T-FAFM-01: tab Files tidak menampilkan relasi induk-anggota",
+    "node-tanpa-anak": "§4.1 T-FAFM-01: tab Files bukan tree"
+   }
+  },
+  {
+   "target": "empty-state@tabel-asset-data",
+   "kode": "VD-T6",
+   "units": [
+    "S-03",
+    "S-27a",
+    "S-27b",
+    "EB-TBL-1@tabel-asset-data"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-086-tabel-asset-data-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-086-tabel-asset-data-tampilan-dan-state",
+   "tidakBerlaku": {
+    "log-kosong": "§7.1 S-27a: tab Asset Data bukan log",
+    "relasi-kosong": "§4.1 T-FAFM-02: tidak ada relasi induk-anggota",
+    "node-tanpa-anak": "§4.1 T-FAFM-02: tab Asset Data bukan tree",
+    "jadi-kosong-setelah-hapus": "L169 FAFM-LOGIC-08d: tab Asset Data read-only tanpa aksi hapus; aset keluar dari tab lewat Delete Asset Data di menu Asset atau kembali Active"
+   }
+  },
+  {
+   "target": "empty-state@tabel-recycle-bin",
+   "kode": "VD-T6",
+   "units": [
+    "S-04",
+    "S-28a",
+    "S-28b",
+    "EB-TBL-1@tabel-recycle-bin"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state",
+   "tidakBerlaku": {
+    "log-kosong": "§7.1 S-28a: Recycle Bin bukan log",
+    "relasi-kosong": "§4.1 T-FAFM-03: tidak ada relasi induk-anggota",
+    "node-tanpa-anak": "§4.1 T-FAFM-03: Recycle Bin bukan tree"
+   }
+  },
+  {
+   "target": "empty-state@tabel-changelog",
+   "kode": "VD-T6",
+   "units": [
+    "S-05",
+    "S-29a",
+    "S-29b",
+    "EB-TBL-1@tabel-changelog"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-088-modal-changelog-tampilan-dan-state",
+    "TC-FA-FAFM-E2E-016-entitas-tanpa-file"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-088-modal-changelog-tampilan-dan-state",
+   "tidakBerlaku": {
+    "relasi-kosong": "§4.1 T-FAFM-04: tidak ada relasi induk-anggota",
+    "node-tanpa-anak": "§4.1 T-FAFM-04: Changelog bukan tree",
+    "jadi-kosong-setelah-hapus": "§8.1: Changelog hanya bertambah oleh Delete dan Permanently Delete; entri tidak dihapus"
+   }
+  },
+  {
+   "target": "sel@tabel-files",
+   "kode": "VD-T7",
+   "units": [
+    "T-FAFM-01",
+    "EB-TBL-2@tabel-files",
+    "EB-TBL-8@tabel-files",
+    "S-14"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format",
+    "TC-FA-FAFM-E2E-001-tab-files-tampilan"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format",
+   "tidakBerlaku": {
+    "array-kosong": "§4.1 T-FAFM-01: tab Files tidak punya kolom bertipe array, boolean, atau foto",
+    "nol-numerik": "§4.1 T-FAFM-01: Size «Tidak pernah kosong», PRD tidak menetapkan tampilan file berukuran nol",
+    "boolean-null": "§4.1 T-FAFM-01: tab Files tidak punya kolom bertipe array, boolean, atau foto",
+    "tanggal-null": "§4.1 T-FAFM-01: Upload Date «Tidak pernah kosong»",
+    "kosong-tidak-pernah-diisi": "§4.1 T-FAFM-01: Reference kosong tampil «—» dan sudah dicakup varian null",
+    "kosong-setelah-dihapus": "L121 FAFM-LOGIC-02c: rujukan yang dikosongkan memindahkan file ke Recycle Bin, bukan menampilkan baris kosong di tab Files",
+    "teks-panjang-multibaris": "§4.1 T-FAFM-01: tidak ada kolom teks multibaris",
+    "per-nilai-badge": "§4.1 T-FAFM-01: kolom Group adalah satu jenis badge severity primary tanpa varian per nilai",
+    "tanpa-foto": "§4.1 T-FAFM-01: tab Files tidak punya kolom bertipe array, boolean, atau foto",
+    "asal-jalur": "L118 FAFM-LOGIC-01g: File Manager tidak menerima file dari Import atau seed lewat jalur lain",
+    "referensi-diarsipkan": "§4.1 T-FAFM-01: PRD tidak mengenal rujukan berstatus arsip"
+   }
+  },
+  {
+   "target": "kolom-nama-user@tabel-files",
+   "kode": "VD-T10",
+   "units": [
+    "EB-TBL-4@tabel-files",
+    "T-FAFM-01"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format"
+  },
+  {
+   "target": "kolom-nama-user@tabel-recycle-bin",
+   "kode": "VD-T10",
+   "units": [
+    "EB-TBL-4@tabel-recycle-bin",
+    "T-FAFM-03"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state"
+  },
+  {
+   "target": "kolom-nama-user@tabel-changelog",
+   "kode": "VD-T10",
+   "units": [
+    "EB-TBL-4@tabel-changelog",
+    "T-FAFM-04"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-088-modal-changelog-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-088-modal-changelog-tampilan-dan-state"
+  },
+  {
+   "target": "kolom-group@tabel-files",
+   "kode": "VD-T9",
+   "units": [
+    "T-FAFM-01"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format",
+   "tidakBerlaku": {
+    "tepat-10-mobile": "§4.6: kartu file mobile hanya memuat File Name, Source, Asset, dan Size; kolom Group tidak tampil di mobile",
+    "lebih-10-mobile": "§4.6: kartu file mobile hanya memuat File Name, Source, Asset, dan Size; kolom Group tidak tampil di mobile",
+    "per-tipe-label": "§4.1 T-FAFM-01: kolom Group adalah satu jenis badge"
+   }
+  },
+  {
+   "target": "seleksi-baris@tabel-files",
+   "kode": "VD-T14",
+   "units": [
+    "EB-BLK-1@tabel-files",
+    "EB-BLK-2@tabel-files",
+    "S-13",
+    "TBL-05e",
+    "ACT-03a",
+    "§4.4#b8"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-085-tabel-files-seleksi-bulk",
+    "TC-FA-FAFM-E2E-005-tab-files-paginasi-select-all"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-085-tabel-files-seleksi-bulk",
+   "tidakBerlaku": {
+    "checkbox-disabled": "§4.8: checkbox tab Files Show untuk semua aktor yang bisa membaca; Disabled hanya pada Recycle Bin",
+    "homogen": "§4.1a#p5: semua file terpilih diproses seragam, tidak ada seleksi per state",
+    "campuran-state": "§4.1a#p5: semua file terpilih diproses seragam, tidak ada kondisi skip karena state",
+    "single-select-ganti": "§4.1a: tab Files memakai multi-select, tidak ada single-select"
+   }
+  },
+  {
+   "target": "bulk-delete-biasa@tabel-files",
+   "kode": "VD-A1",
+   "units": [
+    "D-02",
+    "ACT-04c",
+    "ACT-04d",
+    "EC-03",
+    "EB-EDG-2",
+    "ACT-03k",
+    "ARS-01g",
+    "ARS-02e",
+    "EB-BLK-4",
+    "F-FAFM-03d",
+    "FAFM-LOGIC-02a",
+    "FAFM-LOGIC-03a",
+    "FAFM-LOGIC-08d",
+    "INV-01g",
+    "INV-04b",
+    "INV-06b",
+    "INV-11f",
+    "S-19",
+    "S-20",
+    "S-22",
+    "T-02",
+    "T-05",
+    "T-07",
+    "T-10",
+    "T-14",
+    "V-06",
+    "V-07",
+    "V-10",
+    "§4.6#p3",
+    "§4.6#p4",
+    "§4.8#r5",
+    "§4.8#r6",
+    "§4.8#r10",
+    "§6#p5"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-021-delete-file-bulk",
+    "TC-FA-FAFM-UI-089-dialog-konfirmasi-delete"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-021-delete-file-bulk",
+   "tidakBerlaku": {
+    "n-1": "§7#p2: item dilewati atau gagal ditangani target bulk-delete-dilewati@tabel-files dan bulk-delete-satu@tabel-files",
+    "campuran": "§7#p2: item dilewati atau gagal ditangani target bulk-delete-dilewati@tabel-files dan bulk-delete-satu@tabel-files",
+    "semua-ditolak": "§7#p2: item dilewati atau gagal ditangani target bulk-delete-dilewati@tabel-files dan bulk-delete-satu@tabel-files",
+    "semua-ditolak-alasan-single": "L120 FAFM-LOGIC-02b: tidak ada kondisi Disabled-by-target maupun dialog blok pada Delete",
+    "nol-item": "§4.1a#p3 ACT-04a: Bulk Delete tampil hanya bila ≥1 baris terpilih",
+    "jadi-tidak-eligible-saat-submit": "§7#p2: item dilewati atau gagal ditangani target bulk-delete-dilewati@tabel-files dan bulk-delete-satu@tabel-files",
+    "gagal-banyak": "§7#p2: bulk yang seluruh itemnya gagal memakai satu toast T-05, tanpa penggabungan per item",
+    "sisa-satu-relevan": "§7#p2: item dilewati atau gagal ditangani target bulk-delete-dilewati@tabel-files dan bulk-delete-satu@tabel-files",
+    "termasuk-baris-terlindungi": "§4.1a: tidak ada POV Aktor×Target; semua file setara dan tidak ada baris terlindungi"
+   }
+  },
+  {
+   "target": "bulk-delete-satu@tabel-files",
+   "kode": "VD-A1",
+   "units": [
+    "§7#p3",
+    "EB-EDG-2",
+    "D-01"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-022-delete-file-bulk-satu-item"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-022-delete-file-bulk-satu-item",
+   "tidakBerlaku": {
+    "n-banyak": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "campuran": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "semua-ditolak": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "semua-ditolak-alasan-single": "L120 FAFM-LOGIC-02b: tidak ada dialog blok pada Delete; tidak ada kondisi Disabled-by-target",
+    "nol-item": "§4.1a ACT-04a: Bulk Delete tampil hanya bila ≥1 baris terpilih",
+    "jadi-tidak-eligible-saat-submit": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "gagal-banyak": "§7#p3: satu file terpilih memakai toast single T-04",
+    "daftar-melebihi-tampil": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "item-beranotasi": "§7#p3: hanya bulk dengan satu file terpilih yang memakai bentuk tunggal; varian lain dimiliki target bulk-delete-biasa@tabel-files dan bulk-delete-dilewati@tabel-files",
+    "termasuk-baris-terlindungi": "L120 FAFM-LOGIC-02b: tidak ada dialog blok pada Delete; tidak ada kondisi Disabled-by-target"
+   }
+  },
+  {
+   "target": "bulk-delete-dilewati@tabel-files",
+   "kode": "VD-A1",
+   "units": [
+    "T-03",
+    "T-13",
+    "EC-15",
+    "§7#p2",
+    "ACT-04e",
+    "EB-ERR-3"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-023-delete-file-sudah-tidak-tersedia",
+    "TC-FA-FAFM-BE-064-bulk-delete-hasil-per-item"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-023-delete-file-sudah-tidak-tersedia",
+   "tidakBerlaku": {
+    "n-1": "§7#p2: varian ini dimiliki target bulk-delete-biasa@tabel-files atau bulk-delete-satu@tabel-files",
+    "n-banyak": "§7#p2: varian ini dimiliki target bulk-delete-biasa@tabel-files atau bulk-delete-satu@tabel-files",
+    "semua-ditolak-alasan-single": "L120 FAFM-LOGIC-02b: tidak ada dialog blok pada Delete; item yang tidak tersedia dilewati lewat T-03 atau T-13",
+    "nol-item": "§4.1a ACT-04a: Bulk Delete tampil hanya bila ≥1 baris terpilih",
+    "gagal-banyak": "§7#p2: hanya hasil dihapus, dilewati, dan gagal per item; tidak ada penggabungan toast untuk banyak item gagal",
+    "daftar-melebihi-tampil": "§7#p2: varian ini dimiliki target bulk-delete-biasa@tabel-files atau bulk-delete-satu@tabel-files",
+    "item-beranotasi": "§7#p2: varian ini dimiliki target bulk-delete-biasa@tabel-files atau bulk-delete-satu@tabel-files",
+    "sisa-satu-relevan": "§7#p2: varian ini dimiliki target bulk-delete-biasa@tabel-files atau bulk-delete-satu@tabel-files",
+    "termasuk-baris-terlindungi": "§4.1a: tidak ada baris terlindungi pada File Manager"
+   }
+  },
+  {
+   "target": "bulk-permanently-delete@tabel-recycle-bin",
+   "kode": "VD-A1",
+   "units": [
+    "D-04",
+    "ACT-06c",
+    "ACT-06d",
+    "ACT-06e",
+    "EC-06",
+    "T-08",
+    "EB-BLK-6"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-026-permanently-delete-bulk",
+    "TC-FA-FAFM-E2E-027-permanently-delete-sudah-tidak-tersedia",
+    "TC-FA-FAFM-UI-090-dialog-konfirmasi-permanently-delete"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-026-permanently-delete-bulk",
+   "tidakBerlaku": {
+    "semua-ditolak-alasan-single": "L140 FAFM-LOGIC-05g: Permanently Delete tidak punya dialog blok; item yang tidak tersedia dilewati lewat T-08",
+    "nol-item": "§4.1a ACT-06a: Bulk Permanently Delete tampil hanya bila ≥1 baris terpilih",
+    "gagal-banyak": "§7#p2: bulk yang seluruh itemnya gagal memakai satu toast T-10",
+    "item-beranotasi": "L1428 D-04: dialog bulk Permanently Delete memuat nama file tanpa anotasi",
+    "termasuk-baris-terlindungi": "§4.1a: tidak ada baris terlindungi; checkbox Disabled hanya pada baris di luar group Delete aktor (§4.8)"
+   }
+  },
+  {
+   "target": "download@tabel-files",
+   "kode": "VD-D1",
+   "units": [
+    "TBL-06b",
+    "TBL-06c",
+    "TBL-06e",
+    "EB-DL-1@tabel-files",
+    "EB-DL-3@tabel-files",
+    "INV-10d"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-006-tab-files-download"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-006-tab-files-download",
+   "tidakBerlaku": {
+    "nol-baris": "§7.1 S-26a: tab Files tanpa baris menampilkan empty state; PRD tidak menetapkan berkas Download untuk nol baris"
+   }
+  },
+  {
+   "target": "berkas-isi@tabel-files",
+   "kode": "VD-D2",
+   "units": [
+    "EB-DL-4",
+    "TBL-06e"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip",
+    "TC-FA-FAFM-E2E-006-tab-files-download"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip",
+   "tidakBerlaku": {
+    "kolom-foto": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "kolom-ikon": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "switch-kedua-nilai": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "per-nilai-badge": "§4.1 T-FAFM-01: kolom Group adalah satu jenis badge tanpa nilai enum per varian",
+    "multi-badge": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "lebih-dua-badge": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "item-flat": "§4.1 T-FAFM-01: tab Files tidak punya kolom Brand atau Model yang ditulis tanpa hierarki",
+    "boolean-kedua-nilai": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "mata-uang": "§4.1 T-FAFM-01: tab Files tidak punya kolom foto, ikon, switch, boolean, multi-badge, atau mata uang",
+    "nilai-kosong": "§4.1 T-FAFM-01: satu-satunya kolom Files bernilai kosong `—` adalah Reference, dan Reference tidak ditampilkan pada Kategori Asset Photo (§4.2d SRC-01 Reference `—`); kolom lain Tidak pernah kosong. Kolom yang tidak ada pada Kategori aktif tidak ikut ekspor (§5 TBL-06e), jadi nilai kosong tidak pernah sampai ke berkas Download tab Files; Recycle Bin dan Asset Data butuh record modul lain"
+   }
+  },
+  {
+   "target": "berkas-csv@tabel-files",
+   "kode": "VD-D3",
+   "units": [
+    "EB-DL-4"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip",
+   "tidakBerlaku": {
+    "nilai-baris-baru": "§4.1 T-FAFM-01: kolom Files bertipe Text, Badge, Number, atau Date satu baris, tanpa kolom teks multibaris, dan §4.2d memetakan Reference ke ID, section, atau nama field satu baris; PRD tidak menetapkan nilai berisi baris baru pada tab Files"
+   }
+  },
+  {
+   "target": "volume-download@tabel-files",
+   "kode": "VD-A13",
+   "units": [
+    "EB-DL-5",
+    "DIM-09c"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-091-popover-download-dan-reaksi-gagal",
+    "TC-FA-FAFM-BE-070-isi-berkas-download-dan-zip"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-091-popover-download-dan-reaksi-gagal"
+  },
+  {
+   "target": "kolom-total-size@tabel-asset-data",
+   "kode": "VD-T2",
+   "units": [
+    "T-FAFM-02",
+    "TBL-04b",
+    "F-FAFM-07b"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-010-tab-asset-data"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-010-tab-asset-data",
+   "param": {
+    "per-tipe-kolom": [
+     "badge"
+    ]
+   },
+   "tidakBerlaku": {
+    "kosong": "§4.1 T-FAFM-02: kolom Data & Log Size dan Files Size tampil «0.0 KB» dan Total Size «Tidak pernah kosong»",
+    "beda-kapital": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "aksen": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "diawali-angka-simbol": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "sisip-beda-default": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "sama-melintasi-halaman": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "sama-di-kolom-dan-default": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "jumlah-chip-sama": "§4.1 T-FAFM-02: tab Asset Data tidak punya kolom multi-badge atau ikon aktif yang diurutkan menurut jumlah",
+    "jumlah-aktif-sama": "§4.1 T-FAFM-02: tab Asset Data tidak punya kolom multi-badge atau ikon aktif yang diurutkan menurut jumlah",
+    "campuran-tipe": "§4.1 T-FAFM-02: tidak ada kolom bertipe data campuran",
+    "nama-tampil-beda-nama-penuh": "TBL-04e: mekanik sort (kapital, aksen, awalan simbol, tiebreak dan pembagian halaman) seragam dengan §9.7 dan diuji pada tab Files",
+    "urutan-custom": "§4.1 T-FAFM-02: kolom Status diurutkan Alphabetical tanpa urutan lifecycle custom",
+    "urutan-beda-antar-kolom": "§4.1 T-FAFM-02: tiap kolom memakai urutan standar"
+   }
+  },
+  {
+   "target": "kolom-filter@tabel-asset-data",
+   "kode": "VD-T3",
+   "units": [
+    "TBL-03a",
+    "T-FAFM-02",
+    "EB-FLT-5@tabel-asset-data"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-010-tab-asset-data"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-010-tab-asset-data",
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Tree picker multi-select",
+     "Range Min–Max",
+     "Date range picker"
+    ]
+   },
+   "tidakBerlaku": {
+    "and-a-saja": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-b-saja": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-keduanya": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-tidak-keduanya": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "or-dalam-field": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-saja": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-saja": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-dan-filter": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "irisan-kosong": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "kolom-tersembunyi": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-only": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "boolean-kedua-nilai": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "rentang-tepat-awal": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-tepat-akhir": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-sehari": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-tepat-min": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-tepat-max": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-min-lebih-max": "§4.4 dan TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "custom-field-per-tipe": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "mutasi-keluar-saringan": "L169 FAFM-LOGIC-08d: tab Asset Data read-only; baris berubah hanya lewat Delete Asset Data atau perubahan status lisensi yang dimiliki spec -dep",
+    "mutasi-masuk-saringan": "L169 FAFM-LOGIC-08d: tab Asset Data read-only; baris berubah hanya lewat Delete Asset Data atau perubahan status lisensi yang dimiliki spec -dep",
+    "create-tidak-cocok": "L169 FAFM-LOGIC-08d: tab Asset Data read-only; baris berubah hanya lewat Delete Asset Data atau perubahan status lisensi yang dimiliki spec -dep",
+    "status-dikecualikan": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-lolos": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-tersaring": "§4.1 T-FAFM-02: tab Asset Data tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied"
+   }
+  },
+  {
+   "target": "kolom-status@tabel-asset-data",
+   "kode": "VD-T7",
+   "units": [
+    "T-FAFM-02",
+    "EB-TBL-2@tabel-asset-data"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-086-tabel-asset-data-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-086-tabel-asset-data-tampilan-dan-state",
+   "param": {
+    "per-nilai-badge": [
+     "Disposed",
+     "Unmanaged"
+    ]
+   },
+   "tidakBerlaku": {
+    "string-kosong": "§4.1 T-FAFM-02: Name, Asset ID, Group, Status, dan Total Size «Tidak pernah kosong»",
+    "array-kosong": "§4.1 T-FAFM-02: kolom lain pada tab Asset Data tidak bertipe array, boolean, atau memuat aktor System",
+    "boolean-null": "§4.1 T-FAFM-02: kolom lain pada tab Asset Data tidak bertipe array, boolean, atau memuat aktor System",
+    "tanggal-null": "§4.1 T-FAFM-02: Name, Asset ID, Group, Status, dan Total Size «Tidak pernah kosong»",
+    "kosong-tidak-pernah-diisi": "§4.1 T-FAFM-02: Name, Asset ID, Group, Status, dan Total Size «Tidak pernah kosong»",
+    "kosong-setelah-dihapus": "L169 FAFM-LOGIC-08d: tab Asset Data read-only; aset keluar dari tab bukan menampilkan nilai kosong",
+    "teks-panjang-multibaris": "§4.1 T-FAFM-02: tidak ada kolom teks multibaris",
+    "nilai-beda-antar-kolom": "§4.1 T-FAFM-02: PRD tidak menetapkan kolom yang rawan tertukar",
+    "aktor-system": "§4.1 T-FAFM-02: kolom lain pada tab Asset Data tidak bertipe array, boolean, atau memuat aktor System",
+    "asal-jalur": "L166 FAFM-LOGIC-08a: baris tab Asset Data diturunkan dari status aset, bukan dari jalur Import",
+    "referensi-terhapus": "L166 FAFM-LOGIC-08a: aset yang dihapus lewat Delete Asset Data keluar dari tab",
+    "referensi-diarsipkan": "§4.1 T-FAFM-02: PRD tidak mengenal rujukan berstatus arsip"
+   }
+  },
+  {
+   "target": "kolom-auto-purge-in@tabel-recycle-bin",
+   "kode": "VD-T2",
+   "units": [
+    "T-FAFM-03",
+    "TBL-04c",
+    "F-FAFM-03c"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-011-recycle-bin-dialog"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-011-recycle-bin-dialog",
+   "param": {
+    "per-tipe-kolom": [
+     "tanggal"
+    ]
+   },
+   "tidakBerlaku": {
+    "kosong": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "beda-kapital": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "aksen": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "diawali-angka-simbol": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "sisip-beda-default": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "sama-melintasi-halaman": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "sama-di-kolom-dan-default": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "jumlah-chip-sama": "§4.1 T-FAFM-03: Recycle Bin tidak punya kolom multi-badge atau ikon aktif",
+    "jumlah-aktif-sama": "§4.1 T-FAFM-03: Recycle Bin tidak punya kolom multi-badge atau ikon aktif",
+    "campuran-tipe": "§4.1 T-FAFM-03: tidak ada kolom bertipe data campuran",
+    "format-komposit": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "nama-tampil-beda-nama-penuh": "TBL-04e: mekanik sort seragam §9.7 dan diuji pada tab Files",
+    "urutan-custom": "§4.1 T-FAFM-03: tidak ada urutan custom per nilai",
+    "urutan-beda-antar-kolom": "§4.1 T-FAFM-03: tiap kolom memakai urutan standar",
+    "default-beda": "§4.1 T-FAFM-03 Auto-Purge In: Deleted Date + durasi retensi Lifecycle Settings (satu nilai untuk seluruh item; pengaturan retensi di luar scope, Ringkasan Cepat), sehingga default Deleted Date menurun (§5 TBL-04c, §9.5) selalu sama dengan Auto-Purge In menurun; batas purge per item hanya ditulis ulang job Lifecycle Settings (§9.7), bukan aksi File Manager"
+   }
+  },
+  {
+   "target": "auto-purge-in@tabel-recycle-bin",
+   "kode": "VD-A9",
+   "units": [
+    "F-FAFM-03a",
+    "F-FAFM-03b",
+    "F-FAFM-03c",
+    "T-FAFM-03",
+    "FAFM-LOGIC-03b",
+    "FAFM-LOGIC-03c"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-011-recycle-bin-dialog",
+    "TC-FA-FAFM-UI-087-dialog-recycle-bin-tampilan-dan-state"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-011-recycle-bin-dialog",
+   "tidakBerlaku": {
+    "bin-kosong": "S-04 / §7.1: copy Recycle Bin genuinely kosong dimiliki target empty-state@tabel-recycle-bin:entitas-kosong di UI-087; Recycle Bin dipakai bersama seluruh spec suite dan E2E-011 tidak punya entitas khusus (IN-2), sehingga bin kosong tidak dibentuk di spec ui-e2e",
+    "recover-per-state-asal": "L126 FAFM-LOGIC-03b: tidak ada Recover atau Restore pada File Manager",
+    "recover-dengan-relasi": "L126 FAFM-LOGIC-03b: tidak ada Recover atau Restore pada File Manager",
+    "bin-sampai-10": "L127 FAFM-LOGIC-03c: tidak ada Empty All, sehingga tidak ada body konfirmasi berdasarkan jumlah item",
+    "bin-lebih-10": "L127 FAFM-LOGIC-03c: tidak ada Empty All, sehingga tidak ada body konfirmasi berdasarkan jumlah item"
+   }
+  },
+  {
+   "target": "kolom-filter@tabel-recycle-bin",
+   "kode": "VD-T3",
+   "units": [
+    "TBL-03a",
+    "T-FAFM-03"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-011-recycle-bin-dialog"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-011-recycle-bin-dialog",
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Tree picker multi-select",
+     "Range Min–Max",
+     "Date range picker"
+    ]
+   },
+   "tidakBerlaku": {
+    "and-a-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-b-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-keduanya": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-tidak-keduanya": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "or-dalam-field": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-dan-filter": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "irisan-kosong": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "kolom-tersembunyi": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-only": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "boolean-kedua-nilai": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "rentang-tepat-awal": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-tepat-akhir": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-sehari": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-tepat-min": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-tepat-max": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-min-lebih-max": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "custom-field-per-tipe": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "mutasi-keluar-saringan": "L125 FAFM-LOGIC-03a: baris Recycle Bin berubah hanya lewat Delete, Permanently Delete, auto-purge, atau cascade purge",
+    "mutasi-masuk-saringan": "L125 FAFM-LOGIC-03a: baris Recycle Bin berubah hanya lewat Delete, Permanently Delete, auto-purge, atau cascade purge",
+    "create-tidak-cocok": "L125 FAFM-LOGIC-03a: baris Recycle Bin berubah hanya lewat Delete, Permanently Delete, auto-purge, atau cascade purge",
+    "status-dikecualikan": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-lolos": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-tersaring": "§4.1 T-FAFM-03: Recycle Bin tidak punya field filter boolean, custom field, filter-only, atau filter pre-applied"
+   }
+  },
+  {
+   "target": "kolom-filter@tabel-changelog",
+   "kode": "VD-T3",
+   "units": [
+    "TBL-03a",
+    "T-FAFM-04"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-012-changelog-modal"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-012-changelog-modal",
+   "param": {
+    "per-kelas-kontrol": [
+     "Multi-select searchable",
+     "Date range picker"
+    ]
+   },
+   "tidakBerlaku": {
+    "and-a-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-b-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-keduanya": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "and-tidak-keduanya": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "or-dalam-field": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-saja": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "search-dan-filter": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "irisan-kosong": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "kolom-tersembunyi": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "filter-only": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "boolean-kedua-nilai": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "rentang-tepat-awal": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-tepat-akhir": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "rentang-sehari": "TBL-03d: mekanik Filter Panel, gabungan Search dan Filter, serta AND dan OR seragam §9.8 dan diuji pada tab Files",
+    "range-tepat-min": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "range-tepat-max": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "range-hanya-min": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "range-hanya-max": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "range-min-lebih-max": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "custom-field-per-tipe": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "mutasi-keluar-saringan": "§8.1: Changelog append-only; entri tidak diubah atau dibuat lewat jalur lain",
+    "mutasi-masuk-saringan": "§8.1: Changelog append-only; entri tidak diubah atau dibuat lewat jalur lain",
+    "create-tidak-cocok": "§8.1: Changelog append-only; entri tidak diubah atau dibuat lewat jalur lain",
+    "status-dikecualikan": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-lolos": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied",
+    "default-filter-tersaring": "§4.1 T-FAFM-04: Changelog tidak punya filter numerik Min-Max, boolean, custom field, filter-only, atau filter pre-applied"
+   }
+  },
+  {
+   "target": "aksi@tabel-changelog",
+   "kode": "VD-L1",
+   "units": [
+    "§8.1#r1",
+    "§8.1#r4",
+    "EB-LOG-1",
+    "ACT-02g",
+    "ACT-05f"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-012-changelog-modal",
+    "TC-FA-FAFM-BE-073-pencatatan-log-file-manager"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-012-changelog-modal",
+   "param": {
+    "per-baris-pencatatan": [
+     "Delete",
+     "Permanently Delete"
+    ]
+   },
+   "tidakBerlaku": {
+    "create": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "edit-per-field": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "bulk": "§8.1#r6: bulk menulis satu entri per file yang diproses; dicakup varian delete pada pemilik be-log",
+    "per-aksi-non-crud": "§8.1: aksi yang dicatat hanya Delete dan Permanently Delete",
+    "per-varian-jalur": "§8.1#r5: jalur non-form dicakup target jalur@tabel-changelog",
+    "per-sub-konteks": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "field-sub-item": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "field-permission": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "field-badge-enum": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "field-tanpa-teks": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "nilai-awal": "§8.1: File Manager tidak punya aksi approval, event sesi, atau log per-record dengan katalog event",
+    "assign": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "remove": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "update-setelah-assign": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "approve-dari-approvals": "§8.1: File Manager tidak punya aksi approval, event sesi, atau log per-record dengan katalog event",
+    "reject-dari-approvals": "§8.1: File Manager tidak punya aksi approval, event sesi, atau log per-record dengan katalog event",
+    "settings-tanpa-nama": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "reset-ke-default": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "reset-sudah-default": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name",
+    "per-event": "§8.1: File Manager tidak punya aksi approval, event sesi, atau log per-record dengan katalog event",
+    "event-sesi": "§8.1: File Manager tidak punya aksi approval, event sesi, atau log per-record dengan katalog event",
+    "edit-multi-field": "§8.1: Changelog File Manager hanya mencatat Delete dan Permanently Delete atas Field File Name"
+   }
+  },
+  {
+   "target": "jalur@tabel-changelog",
+   "kode": "VD-A8",
+   "units": [
+    "§8.1#r5",
+    "FAFM-LOGIC-07d",
+    "FAFM-LOGIC-07e",
+    "ARS-03k",
+    "SYN-03i",
+    "F-FAFM-03e"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+    "TC-FA-FAFM-BE-067-auto-transition-modul-sumber",
+    "TC-FA-FAFM-BE-066-auto-purge-harian"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+   "param": {
+    "per-jalur": [
+     "auto-transition",
+     "auto-purge",
+     "cascade purge",
+     "Delete manual"
+    ]
+   },
+   "tidakBerlaku": {
+    "butuh-normalisasi": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada",
+    "pasangan-manual-setara": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada",
+    "duplikat-dalam-batch": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada",
+    "duplikat-dengan-data-ada": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada",
+    "import-semua-valid": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada",
+    "import-sebagian-error": "L118 FAFM-LOGIC-01g: File Manager tidak punya Create atau Edit dan tidak menerima Import, sehingga varian jalur form dan Import tidak ada"
+   }
+  },
+  {
+   "target": "tanpa-log@tabel-changelog",
+   "kode": "VD-L2",
+   "units": [
+    "ACT-03i",
+    "ARS-06e",
+    "SYN-07e",
+    "SYN-08d",
+    "SYN-10f",
+    "§8.1#r6"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-073-pencatatan-log-file-manager"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+   "tidakBerlaku": {
+    "tanpa-perubahan": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit, jadi tidak ada Save tanpa perubahan",
+    "entri-entitas-lain": "§9.11#p1: baris Changelog dibatasi scope client aktor; isolasi tenant dicakup target scope@tabel-files"
+   }
+  },
+  {
+   "target": "snapshot@tabel-changelog",
+   "kode": "VD-L3",
+   "units": [
+    "§8.1#b3",
+    "§9.4.1#r13",
+    "T-FAFM-04"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+    "TC-FA-FAFM-E2E-012-changelog-modal"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-073-pencatatan-log-file-manager",
+   "tidakBerlaku": {
+    "edit-beruntun": "§8.1: File Manager tidak punya Edit atau rename file, jadi tidak ada edit beruntun",
+    "edit-nama-sendiri": "§8.1: File Manager tidak punya Edit atau rename file, jadi tidak ada edit beruntun",
+    "edit-beruntun-dua-aktor": "§8.1: File Manager tidak punya Edit atau rename file, jadi tidak ada edit beruntun"
+   }
+  },
+  {
+   "target": "aktor@tabel-changelog",
+   "kode": "VD-L4",
+   "units": [
+    "§8.1#r5",
+    "FAFM-LOGIC-07d",
+    "F-FAFM-03e",
+    "SYN-03i",
+    "§8.2#p1",
+    "§8.3#p1",
+    "§8.1#b1"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-012-changelog-modal",
+    "TC-FA-FAFM-E2E-058-log-modul-sumber-dep-activity-log",
+    "TC-FA-FAFM-E2E-093-system-log-aktor-dep-user"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-012-changelog-modal",
+   "tidakBerlaku": {
+    "log-entitas-terkait": "§8.1#b2: entri Delete Asset Data dimiliki log asset-list, bukan Changelog File Manager"
+   }
+  },
+  {
+   "target": "matriks-role@tabel-files",
+   "kode": "VD-P1",
+   "units": [
+    "§4.8#r1",
+    "§9.3#r1",
+    "§9.3#r3",
+    "§9.3#r4",
+    "ACT-02a",
+    "ACT-04a",
+    "EB-AKS-1",
+    "EB-AKS-4",
+    "EB-AKS-5@delete-file",
+    "EB-AKS-5@permanently-delete-file",
+    "§9.3#p1"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-031-gating-total-control",
+    "TC-FA-FAFM-E2E-032-gating-read-only",
+    "TC-FA-FAFM-E2E-033-gating-group-manager",
+    "TC-FA-FAFM-E2E-034-gating-manage-files-read",
+    "TC-FA-FAFM-E2E-035-gating-manage-files-delete",
+    "TC-FA-FAFM-E2E-036-gating-manage-files-delete-permanently",
+    "TC-FA-FAFM-E2E-030-gating-tanpa-akses",
+    "TC-FA-FAFM-BE-060-authz-per-role-sisi-server"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-032-gating-read-only",
+   "param": {
+    "per-baris-matriks": [
+     "Total Control",
+     "Read Only",
+     "Group Manager",
+     "Manage files: Read",
+     "Manage files: Delete"
+    ],
+    "capability-tunggal": [
+     "Delete"
+    ],
+    "tanpa-capability-aksi": [
+     "Delete"
+    ]
+   },
+   "tidakBerlaku": {
+    "kombinasi-permission": "§9.3: File Manager hanya memiliki capability Read dan Delete; tidak ada Create atau Update",
+    "per-kombinasi-crud": "§9.3: File Manager hanya memiliki capability Read dan Delete; tidak ada Create atau Update",
+    "tanpa-single-action": "§4.8: aksi baris Delete dan Permanently Delete mengikuti capability Delete yang sama dengan bulk",
+    "tanpa-sesi": "§9.3#p1: penegakan server dimiliki target request langsung pada spec be-pertahanan",
+    "access-level-null-plus-individual": "§2: File Manager tidak memakai access level dan hanya memakai role Total Control, Read Only, Group Manager, dan Manage files",
+    "zero-assignment": "§2#r2: Manage files diberikan per group yang di-assign; PRD tidak menetapkan role tanpa assignment group",
+    "can-read-false": "§9.3: PRD tidak menetapkan assignment dengan can_read bernilai false",
+    "assignment-retained": "§2: File Manager tidak memakai switch role dengan assignment tersimpan",
+    "entitas-diblok-punya-role": "§9.4.1#r1: aktor dari client Suspended, Expired, atau Grace tetap dapat membaca; aksi tulis dimiliki target state-entitas@tabel-files",
+    "per-jenis-entitas": "§9.11: File Manager hanya melayani aktor Client; tidak ada varian Principal, Distributor, atau Partner",
+    "per-peran-alur": "§4.1a: tidak ada alur requester atau approver pada File Manager"
+   }
+  },
+  {
+   "target": "scope@tabel-files",
+   "kode": "VD-P2",
+   "units": [
+    "§9.11#r6",
+    "§9.11#r7",
+    "§9.11#p1",
+    "FAFM-LOGIC-05b",
+    "FAFM-LOGIC-05d",
+    "EC-13",
+    "F-FAFM-01b",
+    "V-11",
+    "DIM-04b",
+    "DIM-04c"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-033-gating-group-manager",
+    "TC-FA-FAFM-E2E-035-gating-manage-files-delete",
+    "TC-FA-FAFM-BE-061-scope-client-group-dan-purchase"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-033-gating-group-manager",
+   "tidakBerlaku": {
+    "client-multi-partner": "§9.11: File Manager hanya melayani aktor Client; tidak ada Client yang dipegang dua Partner",
+    "client-transitif": "§9.11: File Manager hanya melayani aktor Client; tidak ada jaringan Distributor atau Partner",
+    "target-write-transitif": "§9.11: tidak ada target write lewat jaringan Distributor atau Partner",
+    "target-write-langsung": "§9.11: tidak ada target write lewat bind langsung antar entitas",
+    "field-termask": "§9.11#r1: kolom «Semua field», tidak ada field yang di-mask",
+    "field-terbatas-per-role": "§9.11: kolom «Semua field» untuk seluruh role",
+    "scope-exact-match": "L137 FAFM-LOGIC-05d: Manage files berlaku pada group yang di-assign beserta descendant, bukan exact match"
+   }
+  },
+  {
+   "target": "state-entitas@tabel-files",
+   "kode": "VD-A4",
+   "units": [
+    "V-08",
+    "EC-09",
+    "EC-12",
+    "EB-AKS-7",
+    "§9.4.1#r1",
+    "EB-ERR-4"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-028-aksi-tulis-entitas-suspended-expired",
+    "TC-FA-FAFM-BE-062-state-entitas-dan-plan"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-028-aksi-tulis-entitas-suspended-expired",
+   "param": {
+    "per-interval": [
+     "Grace"
+    ]
+   },
+   "tidakBerlaku": {
+    "deleted": "§9.4.1#r1: PRD hanya menyatakan Suspended, Expired, dan Grace; entitas terhapus tidak disebut",
+    "per-jenis-entitas-pemilik": "§9.11: File Manager hanya melayani aktor Client",
+    "per-peran-entitas": "§9.11: tidak ada peran penerima atau pengalokasi pada File Manager",
+    "aksi-reaktivasi": "§9.4.1#r1: File Manager tidak memiliki aksi reaktivasi"
+   }
+  },
+  {
+   "target": "akses-url@modul-file-manager",
+   "kode": "VD-P4",
+   "units": [
+    "EB-AKS-2",
+    "F-FAFM-02.k1"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-030-gating-tanpa-akses",
+    "TC-FA-FAFM-BE-061-scope-client-group-dan-purchase",
+    "TC-FA-FAFM-BE-074-request-langsung-tanpa-capability"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-030-gating-tanpa-akses",
+   "tidakBerlaku": {
+    "id-tidak-ada": "§4.1a#p13: File Manager tidak punya Detail page berbasis ID di URL; ID file hanya dipakai aksi"
+   }
+  },
+  {
+   "target": "capability-dicabut@modul-file-manager",
+   "kode": "VD-P7",
+   "units": [
+    "EB-AKS-6"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-029-capability-dicabut-halaman-terbuka"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-029-capability-dicabut-halaman-terbuka",
+   "tidakBerlaku": {
+    "email-diganti-token-lama": "§2: File Manager tidak menangani email atau token",
+    "password-diganti-sesi-aktif": "§2: File Manager tidak menangani kredensial",
+    "role-dicabut-sesi-aktif": "§9.3: pencabutan diasersi sebagai pencabutan capability Delete pada halaman terbuka"
+   }
+  },
+  {
+   "target": "scope-purchase@tabel-files",
+   "kode": "VD-P2",
+   "units": [
+    "FAFM-LOGIC-09a",
+    "FAFM-LOGIC-09b",
+    "FAFM-LOGIC-09c",
+    "§9.11#r8",
+    "F-FAFM-01f"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-037-visibilitas-attachment-purchase",
+    "TC-FA-FAFM-BE-061-scope-client-group-dan-purchase"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-037-visibilitas-attachment-purchase",
+   "tidakBerlaku": {
+    "luar-entitas": "§9.11: File Manager hanya melayani aktor Client",
+    "multi-group": "§9.11#r8: visibilitas Purchase bergantung pada akses Attachments kelompok Purchase, bukan pada kombinasi group",
+    "client-multi-partner": "§9.11: File Manager hanya melayani aktor Client",
+    "client-transitif": "§9.11: File Manager hanya melayani aktor Client",
+    "target-write-transitif": "§9.11: File Manager hanya melayani aktor Client",
+    "target-write-langsung": "§9.11: File Manager hanya melayani aktor Client",
+    "field-termask": "§9.11#r8: baris Attachment kelompok Purchase tidak ada, bukan di-mask",
+    "scope-sub-tree": "§9.11#r8: visibilitas Purchase tidak bergantung pada tree group",
+    "scope-exact-match": "§9.11#r8: visibilitas Purchase tidak bergantung pada scope group",
+    "assignment-node-descendant": "§9.11#r8: visibilitas Purchase tidak bergantung pada assignment node"
+   }
+  },
+  {
+   "target": "aksi-tulis@file",
+   "kode": "VD-A7",
+   "units": [
+    "EC-04",
+    "EC-05",
+    "EC-06",
+    "EC-15",
+    "EB-CON-3",
+    "EB-EDG-1",
+    "F-FAFM-02h",
+    "F-FAFM-04e",
+    "§9.4.1#r6",
+    "F-FAFM-02.k4"
+   ],
+   "spec": [
+    "TC-FA-FAFM-BE-072-konkurensi-aksi-tulis-file",
+    "TC-FA-FAFM-BE-063-soft-delete-atomik"
+   ],
+   "pemilik": "TC-FA-FAFM-BE-072-konkurensi-aksi-tulis-file",
+   "param": {
+    "per-pasangan-aksi": [
+     "Delete-Delete",
+     "Delete-auto-transition",
+     "Permanently Delete-Permanently Delete",
+     "Permanently Delete-auto-purge"
+    ]
+   },
+   "tidakBerlaku": {
+    "diubah-pihak-lain": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "target-sama-nilai-beda": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "target-beda": "§9.4.1#r6: PRD hanya menyatakan balapan atas file yang sama",
+    "create-nilai-sama-serentak": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "create-bersamaan": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "status-diubah-pihak-lain": "L124 FAFM-LOGIC-02f: status record sumber tidak mengubah aksi File Manager",
+    "jadi-dipakai-saat-confirm": "L120 FAFM-LOGIC-02b: File Manager tidak punya guard in-use, jadi tidak ada keadaan «jadi dipakai saat confirm»",
+    "bulk-semua-jadi-dipakai": "L120 FAFM-LOGIC-02b: File Manager tidak punya guard in-use, jadi tidak ada keadaan «jadi dipakai saat confirm»",
+    "bulk-sebagian-jadi-dipakai": "L120 FAFM-LOGIC-02b: File Manager tidak punya guard in-use, jadi tidak ada keadaan «jadi dipakai saat confirm»",
+    "nilai-guard-berubah": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "dibuat-pihak-lain": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor",
+    "pihak-lain-cocok-saringan": "§4.4: tidak ada live update antar-aktor yang dinyatakan PRD; Delete memperbarui tab Files dan Recycle Bin hanya lewat refresh",
+    "pihak-lain-tidak-cocok-saringan": "§4.4: tidak ada live update antar-aktor yang dinyatakan PRD; Delete memperbarui tab Files dan Recycle Bin hanya lewat refresh",
+    "pihak-lain-halaman-lain": "§4.4: tidak ada live update antar-aktor yang dinyatakan PRD; Delete memperbarui tab Files dan Recycle Bin hanya lewat refresh",
+    "pihak-lain-ubah-baris-terseleksi": "§4.4: tidak ada live update antar-aktor yang dinyatakan PRD; Delete memperbarui tab Files dan Recycle Bin hanya lewat refresh",
+    "permintaan-basi": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit atau Create, jadi tidak ada konflik nilai antar-aktor"
+   }
+  },
+  {
+   "target": "rujukan-file@modul-sumber",
+   "kode": "VD-A11",
+   "units": [
+    "DIM-14a",
+    "DIM-14b",
+    "DIM-14d",
+    "DIM-14e",
+    "DIM-14f",
+    "ACT-02e",
+    "FAFM-LOGIC-02c",
+    "FAFM-LOGIC-02e",
+    "FAFM-LOGIC-02f",
+    "EB-EDG-3",
+    "EC-02"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-024-delete-file-dirujuk-record",
+    "TC-FA-FAFM-BE-063-soft-delete-atomik",
+    "TC-FA-FAFM-E2E-047-damaged-photo-dep-damaged",
+    "TC-FA-FAFM-E2E-050-disposal-document-dep-disposal",
+    "TC-FA-FAFM-E2E-051-borrow-photo-dep-borrow"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-024-delete-file-dirujuk-record",
+   "tidakBerlaku": {
+    "punya-anak": "§4.1a#p13: File Manager tidak punya relasi induk-anak antar file",
+    "tanpa-anak": "§4.1a#p13: File Manager tidak punya relasi induk-anak antar file",
+    "log-menunjuk": "§8.1#b1: entri log modul sumber dicakup spec dep-activity-log",
+    "assignment-luar-constraint": "§9.4.1#r14: PRD tidak menyatakan assignment yang dicabut otomatis oleh Delete file"
+   }
+  },
+  {
+   "target": "selection-limit@tabel-files",
+   "kode": "VD-A6",
+   "units": [
+    "ACT-03g",
+    "ACT-03h",
+    "DIM-09a",
+    "EB-BLK-6",
+    "§4.1a#p11",
+    "§9.10#p1"
+   ],
+   "spec": [
+    "TC-FA-FAFM-UI-085-tabel-files-seleksi-bulk"
+   ],
+   "pemilik": "TC-FA-FAFM-UI-085-tabel-files-seleksi-bulk",
+   "param": {
+    "per-jenis-limit": [
+     "Selection Limit"
+    ]
+   },
+   "tidakBerlaku": {
+    "sisa-satu": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "over-cap-downgrade": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "tersimpan-melebihi-batas-baru": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "berurutan-stay-on-form": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "saldo-cukup": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "saldo-kurang": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "kuota-status-akun": "§9.10: File Manager tidak punya limit Master Data atau limit Storage sendiri",
+    "limit-diturunkan": "§4.1a#p11: Selection Limit dikelola `plans-licensing-lifecycle-settings` §9.9 dan tidak disalin di PRD ini; §9.10#p1 File Manager tidak punya limit sendiri. Suite memakai satu nilai lingkungan 1000 dan tidak mengubahnya (IN-2, RC-17), sehingga limit yang lebih kecil bukan keadaan yang dibentuk spec",
+    "tanpa-cap-mobile": "§4.6#p3: Select All mobile ada di selection mode kartu Android (spec E2E-039), bukan di tabel web spec ini (PF-7); tanpa cap hanya teramati pada lebih dari 1000 kartu termuat, volume yang tidak dibentuk di ui-e2e (RC-4)"
+   }
+  },
+  {
+   "target": "konsumen@modul-sumber",
+   "kode": "VD-X1",
+   "units": [
+    "SYN-01b",
+    "SYN-01e",
+    "SYN-01h",
+    "SYN-04a",
+    "SYN-07c",
+    "F-FAFM-05a"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-045-change-photo-attachment-dep-asset-detail",
+    "TC-FA-FAFM-E2E-047-damaged-photo-dep-damaged",
+    "TC-FA-FAFM-E2E-050-disposal-document-dep-disposal",
+    "TC-FA-FAFM-E2E-053-transfer-photo-dep-transfer",
+    "TC-FA-FAFM-E2E-043-delete-asset-data-dep-asset-list"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-047-damaged-photo-dep-damaged",
+   "tidakBerlaku": {
+    "konsumen-snapshot": "§8.1#b3: Changelog menyimpan snapshot kelompok file dan dicakup target aksi@tabel-changelog",
+    "fk-create": "L112 FAFM-LOGIC-01a: File Manager tidak membuat record yang dikonsumsi modul lain",
+    "fk-edit": "L138 FAFM-LOGIC-05e: File Manager tidak punya Edit",
+    "fk-delete": "L121 FAFM-LOGIC-02c: yang dihapus adalah file, bukan record yang dirujuk modul sumber sebagai opsi dropdown",
+    "per-konsekuensi-lifecycle": "§9.7: konsekuensi lifecycle yang dinyatakan PRD hanya Delete file",
+    "arah-a-ke-b": "L1989 SYN-01e: arah efek hanya dari File Manager ke modul sumber",
+    "state-reflected": "L2060 SYN-11a: state reflected hanya durasi retensi, dimiliki target setting@recycle-bin",
+    "per-konsumen": "§11#r1: PRD mencantumkan modul sumber sebagai satu baris konsumen; efeknya diasersi per modul pada spec -dep masing-masing",
+    "state-dari-modul-trigger": "§9.7#p2: PRD tidak menyatakan state yang dikirim modul pemicu selain rujukan file",
+    "turunan": "L1993 SYN-01i: label tab hanya dihitung ulang server pada pembacaan berikutnya"
+   }
+  },
+  {
+   "target": "setting@recycle-bin",
+   "kode": "VD-S1",
+   "units": [
+    "SYN-11a",
+    "SYN-11b",
+    "SYN-11c",
+    "SYN-11e",
+    "SYN-11g",
+    "F-FAFM-03c"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-055-retensi-recycle-bin-dep-lifecycle-settings"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-055-retensi-recycle-bin-dep-lifecycle-settings",
+   "tidakBerlaku": {
+    "per-nilai-setting": "L2065 SYN-11f: durasi retensi dipakai sebagai satu angka; varian per nilai dicakup nilai-default dan nilai-diubah",
+    "per-opsi-format-tanggal": "§4.1: bukan setting format tanggal",
+    "zona-waktu-non-default": "§4.1: bukan setting zona waktu",
+    "format-regional-beda-entitas": "L2060 SYN-11a: durasi retensi berlaku platform-wide"
+   }
+  },
+  {
+   "target": "format-tanggal@modul",
+   "kode": "VD-S1",
+   "units": [
+    "EB-XM-1",
+    "INV-11d",
+    "T-FAFM-01",
+    "T-FAFM-03",
+    "T-FAFM-04"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-057-format-tanggal-dep-general-settings",
+    "TC-FA-FAFM-UI-078-tabel-files-sel-dan-format"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-057-format-tanggal-dep-general-settings",
+   "param": {
+    "per-opsi-format-tanggal": [
+     "dd/MM/yy",
+     "M/d/yy",
+     "dd MMM yy",
+     "DDD, MMM dd, yy",
+     "DDD, MMM dd, yyyy"
+    ]
+   },
+   "tidakBerlaku": {
+    "per-nilai-setting": "§4.1: setting yang dibaca hanya Date Format dan Time Format",
+    "record-sebelum-perubahan": "L337 INV-11d: kolom tanggal memakai format setting saat dibaca, tanpa snapshot format saat record dibuat",
+    "record-sesudah-perubahan": "L337 INV-11d: kolom tanggal memakai format setting saat dibaca",
+    "zona-waktu-non-default": "§4.1 T-FAFM-01: PRD tidak menetapkan perilaku khusus zona waktu selain format General Settings",
+    "format-regional-beda-entitas": "§4.1: PRD tidak menetapkan perilaku dua entitas dengan format berbeda dalam satu spec"
+   }
+  },
+  {
+   "target": "flag@guided-tooltip",
+   "kode": "VD-S3",
+   "units": [
+    "§4.7#r1",
+    "EB-TBL-10"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-015-guided-tooltip-flag",
+    "TC-FA-FAFM-UI-092-guided-tooltip-empat-langkah"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-015-guided-tooltip-flag"
+  },
+  {
+   "target": "preferensi@setup-column",
+   "kode": "VD-S3",
+   "units": [
+    "EB-KOL-2@tabel-files",
+    "§4.4#b15"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-014-setup-column-tersimpan"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-014-setup-column-tersimpan"
+  },
+  {
+   "target": "status-aset@tab-asset-data",
+   "kode": "VD-A5",
+   "units": [
+    "FAFM-LOGIC-08a",
+    "FAFM-LOGIC-08f",
+    "F-FAFM-07c",
+    "F-FAFM-07i",
+    "T-FAFM-02"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-010-tab-asset-data",
+    "TC-FA-FAFM-E2E-054-status-unmanaged-dep-license",
+    "TC-FA-FAFM-E2E-050-disposal-document-dep-disposal"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-010-tab-asset-data",
+   "param": {
+    "per-status": [
+     "Active",
+     "Disposed",
+     "Unmanaged",
+     "Draft"
+    ]
+   },
+   "tidakBerlaku": {
+    "transisi-valid": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "transisi-mundur": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "transisi-ilegal": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "state-final": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "sudah-di-state-tujuan": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "state-transien": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "flag-terkunci": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "per-kondisi-disabled": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "koheren-rantai-gate": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain"
+   }
+  },
+  {
+   "target": "draft-asset@tab-files",
+   "kode": "VD-A5",
+   "units": [
+    "F-FAFM-01g",
+    "F-FAFM-01h",
+    "F-FAFM-01i",
+    "FAFM-LOGIC-04e",
+    "SYN-06b"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-044-draft-asset-dep-asset-registration"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-044-draft-asset-dep-asset-registration",
+   "param": {
+    "per-status": [
+     "Draft"
+    ]
+   },
+   "tidakBerlaku": {
+    "transisi-valid": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "transisi-mundur": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "transisi-ilegal": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "state-final": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "sudah-di-state-tujuan": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "state-transien": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "flag-terkunci": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "per-kondisi-disabled": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain",
+    "koheren-rantai-gate": "§9.4.1#r3: File Manager tidak memiliki transisi status record sendiri; status aset dimiliki modul lain"
+   }
+  },
+  {
+   "target": "search@tabel-files",
+   "kode": "VD-F17",
+   "units": [
+    "EB-SRC-3@tabel-files",
+    "TBL-03b",
+    "TBL-03c",
+    "§4.4#b5"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-002-tab-files-search"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-002-tab-files-search"
+  },
+  {
+   "target": "kartu-storage-usage@kartu",
+   "kode": "VD-T11",
+   "units": [
+    "SUC-02a",
+    "SUC-02b",
+    "SUC-02c",
+    "SUC-02d",
+    "SUC-04a",
+    "SUC-04c",
+    "SUC-04f",
+    "SUC-05a",
+    "SUC-05d",
+    "SUC-05e",
+    "EB-TBL-13@kartu-storage-usage",
+    "SYN-10a",
+    "SYN-10b",
+    "F-FAFM-06c",
+    "F-FAFM-06j",
+    "F-FAFM-06k",
+    "FAFM-LOGIC-06a",
+    "FAFM-LOGIC-06f",
+    "§4.2#p3",
+    "§4.2c#r37",
+    "§4.2c#r39",
+    "§4.2d#p5",
+    "§4.7#r3",
+    "§9.2#p20",
+    "§9.4.3#b10",
+    "S-10",
+    "EC-18",
+    "EC-19",
+    "EC-20",
+    "EC-24"
+   ],
+   "spec": [
+    "TC-FA-FAFM-E2E-017-kartu-storage-usage-nilai",
+    "TC-FA-FAFM-E2E-018-kartu-setelah-delete",
+    "TC-FA-FAFM-E2E-019-kartu-setelah-permanently-delete",
+    "TC-FA-FAFM-UI-076-kartu-storage-usage-tampilan",
+    "TC-FA-FAFM-UI-077-kartu-storage-usage-memuat-dan-gagal"
+   ],
+   "pemilik": "TC-FA-FAFM-E2E-017-kartu-storage-usage-nilai",
+   "tidakBerlaku": {
+    "detail-lintas-halaman": "§4.2c: kartu Storage Usage tidak punya aksi ke daftar rinci",
+    "detail-dikecualikan": "§4.2c: kartu Storage Usage tidak punya aksi ke daftar rinci"
+   }
+  }
+ ],
+ "tinjauan": [
+  {
+   "review": "[R-7] unit `EB-TBL-6@tabel-files` milik ui-e2e memuat klausa klien («breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Breadcrumb di unit ini adalah bagian baris Breadcrumb statis yang diasersi di e2e hanya sebagai teks header halaman; perilaku komponennya dimiliki spec ui-client uc-halaman"
+  },
+  {
+   "review": "[R-8] unit `FAFM-LOGIC-03a` menyebut cabang «single/bulk» tetapi dimiliki satu spec (TC-FA-FAFM-BE-065-permanently-delete-sisi-server); cabang lain butuh `shared` (AS-2)",
+   "alasan": "unit menyebut jalur keluar Recycle Bin; cabang single dan bulk dimiliki spec lain lewat unit ACT-06 dan EC pada spec pd-single dan pd-bulk; spec be-perm-delete hanya mengasersi jalur server"
+  },
+  {
+   "review": "[R-7] unit `§4.6#p2` milik ui-e2e memuat klausa klien («Breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "alasan": "Breadcrumb di unit ini adalah header statis tampilan mobile; yang diasersi di e2e hanya teksnya, perilaku komponennya dimiliki spec ui-client uc-halaman"
+  }
+ ],
+ "lingkungan": {
+  "Selection Limit": {
+   "nilai": "1000",
+   "sumber": "foundation prd-conventions §8: default System Limits (Lifecycle Settings > System Limits)"
+  },
+  "Retensi Recycle Bin": {
+   "nilai": "30 hari",
+   "sumber": "foundation recycle-bin pattern: permanently_delete_days default 30 hari (ACRB-05)"
+  },
+  "Date Format": {
+   "nilai": "dd/MM/yy",
+   "sumber": "PRD INV-11d dan foundation prd-conventions §32: default General Settings"
+  },
+  "Time Format": {
+   "nilai": "HH:mm",
+   "sumber": "PRD §4.1 INV-11d: default General Settings dd/MM/yy HH:mm"
+  }
+ }
+}

@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > User
 
-Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1128 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
+Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1187 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
 Suite: `specs/FixedAsset/SettingsUser/`.
 Prefix Modul: `FA` + `SU` (`TC-FA-SU-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (429 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (460 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -264,19 +264,17 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-251-tab-system-log-download | Tab System Log: Download | FE+BE. | 25 | TC-FA-SU-760 |
 | TC-FA-SU-E2E-252-modal-combined-changelog-user-setup-column-pin-dan-unpin | Modal Combined Changelog: User: Setup Column Pin dan Unpin | FE+BE. | 13 | TC-FA-SU-726 |
 | TC-FA-SU-E2E-253-tab-system-log-setup-column-pin-dan-unpin | Tab System Log: Setup Column Pin dan Unpin | FE+BE. | 14 | TC-FA-SU-756 |
-| TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | Tab Transaction Admin Log: Screening dan Search | FE+BE. | 38 | TC-FA-SU-765, TC-FA-SU-766, TC-FA-SU-767, TC-FA-SU-768 |
-| TC-FA-SU-E2E-255-tab-transaction-admin-log-search | Tab Transaction Admin Log: Search | FE+BE. | 45 | TC-FA-SU-769, TC-FA-SU-770, TC-FA-SU-771 |
-| TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | Tab Transaction Admin Log: Sort dan Filter dan Kontrol Filter | FE+BE. | 42 | TC-FA-SU-772, TC-FA-SU-773, TC-FA-SU-774, TC-FA-SU-775 |
-| TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | Tab Transaction Admin Log: Filter dan Kontrol Filter (Bagian 1) | FE+BE. | 38 | TC-FA-SU-776, TC-FA-SU-777, TC-FA-SU-778 |
-| TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | Tab Transaction Admin Log: Filter dan Kontrol Filter (Bagian 2) | FE+BE. | 62 | TC-FA-SU-779, TC-FA-SU-780, TC-FA-SU-781 |
-| TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | Tab Transaction Admin Log: Filter dan Kontrol Filter dan Setup Column | FE+BE. | 50 | TC-FA-SU-782, TC-FA-SU-783, TC-FA-SU-784, TC-FA-SU-785 |
-| TC-FA-SU-E2E-260-tab-transaction-admin-log-setup-column | Tab Transaction Admin Log: Setup Column (Drag Reorder dan Reset to Default) | FE+BE. | 26 | TC-FA-SU-786, TC-FA-SU-788 |
-| TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-tooltip-icon-dan-state-per-sub-tab | Tab Transaction Admin Log: Pagination, Tooltip Icon, dan State per Sub-tab | FE+BE. | 51 | TC-FA-SU-789, TC-FA-SU-794, TC-FA-SU-796 |
-| TC-FA-SU-E2E-262-tab-transaction-admin-log-download-dan-struktur-sub-tab | Tab Transaction Admin Log: Download dan Struktur Sub-tab | FE+BE. | 59 | TC-FA-SU-790, TC-FA-SU-791, TC-FA-SU-797 |
-| TC-FA-SU-E2E-263-tab-transaction-admin-log-struktur-sub-tab-bagian-1 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 1) | FE+BE. | 48 | TC-FA-SU-798, TC-FA-SU-799 |
-| TC-FA-SU-E2E-264-tab-transaction-admin-log-struktur-sub-tab-bagian-2 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 2) | FE+BE. | 48 | TC-FA-SU-800, TC-FA-SU-801 |
-| TC-FA-SU-E2E-265-tab-transaction-admin-log-struktur-sub-tab-bagian-3 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 3) | FE+BE. | 48 | TC-FA-SU-802, TC-FA-SU-803 |
-| TC-FA-SU-E2E-266-tab-transaction-admin-log-struktur-sub-tab-bagian-4 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 4) | FE+BE. | 25 | TC-FA-SU-804 |
+| TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | Tab Transaction Admin Log: Screening dan Search | FE+BE | 47 | TC-FA-SU-765, TC-FA-SU-766, TC-FA-SU-767, TC-FA-SU-768 |
+| TC-FA-SU-E2E-255-tab-transaction-admin-log-search | Tab Transaction Admin Log: Search | FE+BE | 42 | TC-FA-SU-769, TC-FA-SU-770, TC-FA-SU-771 |
+| TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | Tab Transaction Admin Log: Sort dan Filter dan Kontrol Filter | FE+BE | 47 | TC-FA-SU-772, TC-FA-SU-773, TC-FA-SU-774, TC-FA-SU-775 |
+| TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | Tab Transaction Admin Log: Filter dan Kontrol Filter (Bagian 1) | FE+BE | 32 | TC-FA-SU-776, TC-FA-SU-777, TC-FA-SU-778 |
+| TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | Tab Transaction Admin Log: Filter dan Kontrol Filter (Bagian 2) | FE+BE | 39 | TC-FA-SU-779, TC-FA-SU-780 |
+| TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | Tab Transaction Admin Log: Filter dan Kontrol Filter dan Setup Column | FE+BE | 38 | TC-FA-SU-782, TC-FA-SU-783, TC-FA-SU-784 |
+| TC-FA-SU-E2E-260-tab-transaction-admin-log-setup-column | Tab Transaction Admin Log: Setup Column (Drag Reorder) | FE+BE | 12 | TC-FA-SU-786 |
+| TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-dan-tooltip-icon | Tab Transaction Admin Log: Pagination dan Tooltip Icon | FE+BE | 28 | TC-FA-SU-789, TC-FA-SU-794 |
+| TC-FA-SU-E2E-262-tab-transaction-admin-log-download | Tab Transaction Admin Log: Download Sub-tab Borrow | FE+BE | 42 | TC-FA-SU-790, TC-FA-SU-791 |
+| TC-FA-SU-E2E-263-tab-transaction-admin-log-struktur-sub-tab-bagian-1 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 1) | FE+BE | 29 | TC-FA-SU-798 |
+| TC-FA-SU-E2E-266-tab-transaction-admin-log-struktur-sub-tab-bagian-4 | Tab Transaction Admin Log: Struktur Sub-tab (Bagian 4) | FE+BE | 29 | TC-FA-SU-804 |
 | TC-FA-SU-E2E-267-tab-user-log-sub-tab-borrow-screening-dan-search | Tab User Log sub-tab Borrow: Screening dan Search | FE+BE. | 35 | TC-FA-SU-805, TC-FA-SU-806, TC-FA-SU-807, TC-FA-SU-808 |
 | TC-FA-SU-E2E-268-tab-user-log-sub-tab-borrow-search-dan-sort | Tab User Log sub-tab Borrow: Search dan Sort | FE+BE. | 51 | TC-FA-SU-809, TC-FA-SU-810, TC-FA-SU-811, TC-FA-SU-812 |
 | TC-FA-SU-E2E-269-tab-user-log-sub-tab-borrow-sort-dan-filter-dan-kontrol-filter | Tab User Log sub-tab Borrow: Sort dan Filter dan Kontrol Filter | FE+BE. | 38 | TC-FA-SU-813, TC-FA-SU-814, TC-FA-SU-815, TC-FA-SU-816, TC-FA-SU-817 |
@@ -285,7 +283,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-272-tab-user-log-sub-tab-borrow-setup-column | Tab User Log sub-tab Borrow: Setup Column (Ceklis dan Drag Reorder) | FE+BE. | 31 | TC-FA-SU-826, TC-FA-SU-827 |
 | TC-FA-SU-E2E-273-tab-user-log-sub-tab-borrow-setup-column-pagination-dan-tooltip-icon | Tab User Log sub-tab Borrow: Setup Column, Pagination, dan Tooltip Icon | FE+BE. | 45 | TC-FA-SU-829, TC-FA-SU-830, TC-FA-SU-835 |
 | TC-FA-SU-E2E-274-tab-user-log-sub-tab-borrow-state-per-sub-tab-dan-download | Tab User Log sub-tab Borrow: State per Sub-tab dan Download | FE+BE. | 55 | TC-FA-SU-831, TC-FA-SU-832, TC-FA-SU-837 |
-| TC-FA-SU-E2E-275-tab-transaction-admin-log-pin-dan-unpin-setup-column | Tab Transaction Admin Log: Pin dan Unpin Setup Column | FE+BE. | 42 | TC-FA-SU-787 |
+| TC-FA-SU-E2E-275-tab-transaction-admin-log-pin-dan-unpin-setup-column | Tab Transaction Admin Log: Pin dan Unpin Setup Column | FE+BE | 40 | TC-FA-SU-787 |
 | TC-FA-SU-E2E-276-tab-user-log-sub-tab-borrow-pin-dan-unpin-setup-column | Tab User Log sub-tab Borrow: Pin dan Unpin Setup Column | FE+BE. | 39 | TC-FA-SU-828 |
 | TC-FA-SU-E2E-277-tab-user-log-sub-tab-assignment-screening-dan-search | Tab User Log sub-tab Assignment: Screening dan Search | FE+BE. | 37 | TC-FA-SU-838, TC-FA-SU-839, TC-FA-SU-840, TC-FA-SU-841 |
 | TC-FA-SU-E2E-278-tab-user-log-sub-tab-assignment-search-dan-sort | Tab User Log sub-tab Assignment: Search dan Sort | FE+BE. | 47 | TC-FA-SU-842, TC-FA-SU-843, TC-FA-SU-844, TC-FA-SU-845 |
@@ -321,7 +319,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-308-custom-field-pengguna-accordion-rename-hapus-tipe-date-dan-phone-serta-filter-panel | Custom Field Pengguna: Accordion, Rename, Hapus, Tipe Date dan Phone, serta Filter Panel | FE+BE. | 48 | TC-FA-SU-949, TC-FA-SU-1036, TC-FA-SU-1037, TC-FA-SU-1038, TC-FA-SU-1039, TC-FA-SU-1040 |
 | TC-FA-SU-E2E-309-format-tanggal-general-settings-pohon-grup-settings-groups-dan-pembaruan-peran-dari-role-permission | Format Tanggal General Settings, Pohon Grup Settings Groups, dan Pembaruan Peran dari Role & Permission | FE+BE. | 44 | TC-FA-SU-951, TC-FA-SU-960, TC-FA-SU-961, TC-FA-SU-962 |
 | TC-FA-SU-E2E-310-fan-out-responsibilities-pending-approvals-pending-tasks-dan-non-login-user | Fan-out Responsibilities, Pending Approvals, Pending Tasks, dan Non-Login User | FE+BE. | 41 | TC-FA-SU-952, TC-FA-SU-953, TC-FA-SU-954 |
-| TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | Fan-out Transaction Admin Log dan Satu Transaksi Menghasilkan Dua Baris User Log | FE+BE. | 22 | TC-FA-SU-955, TC-FA-SU-956 |
+| TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | Fan-out Transaction Admin Log dan Satu Transaksi Menghasilkan Dua Baris User Log | FE+BE | 23 | TC-FA-SU-955, TC-FA-SU-956 |
 | TC-FA-SU-E2E-312-picker-peminjam-dan-penugasan-tetap-setelah-nonaktif | Picker PIC dan Peminjam serta Penugasan Tetap Setelah Nonaktif | FE+BE. | 35 | TC-FA-SU-957, TC-FA-SU-958 |
 | TC-FA-SU-E2E-313-log-disaring-scope-aktor-ber-scope-grup-pada-modal-combined-changelog | Log Disaring Scope Aktor Ber-scope Grup pada Modal Combined Changelog | FE+BE. | 25 | TC-FA-SU-940 |
 | TC-FA-SU-E2E-314-guard-state-basi-dan-direct-url-detail-di-luar-scope | Guard State Basi dan Direct URL Detail di Luar Scope | FE+BE. | 26 | TC-FA-SU-1005, TC-FA-SU-1006, TC-FA-SU-1007 |
@@ -361,7 +359,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-348-absence-log-request-ditolak-akun-sendiri-sebagai-target-transaction-role-dan-edit | Absence Log Request Ditolak: Akun Sendiri sebagai Target: Transaction Role dan Edit Home Group | FE+BE. | 8 | TC-FA-SU-991, TC-FA-SU-992 |
 | TC-FA-SU-E2E-349-absence-log-request-ditolak-default-user-sebagai-target-deactivate-global-role-dan | Absence Log Request Ditolak: Default User sebagai Target: Deactivate, Global Role, dan Group Role | FE+BE. | 16 | TC-FA-SU-993, TC-FA-SU-994, TC-FA-SU-995, TC-FA-SU-996 |
 | TC-FA-SU-E2E-350-absence-log-request-ditolak-default-user-sebagai-target-transaction-role-dan-edit | Absence Log Request Ditolak: Default User sebagai Target: Transaction Role dan Edit Home Group | FE+BE. | 8 | TC-FA-SU-997, TC-FA-SU-998 |
-| TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | State Tab dan Sub-tab Detail User serta Default dan Ordering | FE+BE. | 42 | TC-FA-SU-1025, TC-FA-SU-1026 |
+| TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | State Tab dan Sub-tab Detail User serta Default dan Ordering | FE+BE | 43 | TC-FA-SU-1025, TC-FA-SU-1026 |
 | TC-FA-SU-E2E-352-defense-in-depth-assign-transaction-role-target-total-control-dan-read-only | Defense-in-depth Transaction Role: Assign pada Target Total Control dan Read Only bagi Aktor Group dan Group Manager | FE+BE. | 23 | TC-FA-SU-1061 |
 | TC-FA-SU-E2E-353-lockdown-tenant-tooltip-prioritas-user-list-suspended-transaction-role-suspended-dan | Tenant Suspended: User List dan Detail Read-only, Unsuspend, dan Tanpa Entri Log Perubahan Status | FE+BE. | 47 | TC-FA-SU-77, TC-FA-SU-80, TC-FA-SU-959 |
 | TC-FA-SU-E2E-354-tenant-berubah-unsuspend-halaman-terbuka-saat-status-berubah-state-reflected-resend | Tenant Berubah: Halaman Terbuka Saat Status Client Berubah dan Prioritas Tooltip Disabled | FE+BE. | 45 | TC-FA-SU-81, TC-FA-SU-75 |
@@ -374,16 +372,16 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-361-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-2 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 2) | FE+BE. | 42 | TC-FA-SU-469, TC-FA-SU-500, TC-FA-SU-536 |
 | TC-FA-SU-E2E-362-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-3 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 3) | FE+BE. | 28 | TC-FA-SU-574, TC-FA-SU-606 |
 | TC-FA-SU-E2E-363-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-4 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 4) | FE+BE. | 34 | TC-FA-SU-670, TC-FA-SU-702 |
-| TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 5) | FE+BE. | 28 | TC-FA-SU-764, TC-FA-SU-795 |
+| TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 5) | FE+BE | 42 | TC-FA-SU-764, TC-FA-SU-795, TC-FA-SU-1172 |
 | TC-FA-SU-E2E-365-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-6 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 6) | FE+BE. | 28 | TC-FA-SU-869, TC-FA-SU-893 |
 | TC-FA-SU-E2E-366-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-1 | Resilience Download Gagal: Toast Error Tanpa Ekstensi per Surface Tabel (Bagian 1) | FE+BE. | 35 | TC-FA-SU-363, TC-FA-SU-438, TC-FA-SU-467, TC-FA-SU-498 |
 | TC-FA-SU-E2E-367-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-2 | Resilience Download Gagal: Toast Error Tanpa Ekstensi per Surface Tabel (Bagian 2) | FE+BE. | 38 | TC-FA-SU-572, TC-FA-SU-604, TC-FA-SU-668, TC-FA-SU-700 |
-| TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | Resilience Download Gagal: Toast Error Tanpa Ekstensi per Surface Tabel (Bagian 3) | FE+BE. | 37 | TC-FA-SU-732, TC-FA-SU-762, TC-FA-SU-793, TC-FA-SU-834 |
+| TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | Resilience Download Gagal: Toast Error Tanpa Ekstensi per Surface Tabel (Bagian 3) | FE+BE | 46 | TC-FA-SU-732, TC-FA-SU-762, TC-FA-SU-793, TC-FA-SU-834, TC-FA-SU-1170 |
 | TC-FA-SU-E2E-369-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-4 | Resilience Download Gagal: Toast Error Tanpa Ekstensi per Surface Tabel (Bagian 4) | FE+BE. | 37 | TC-FA-SU-534, TC-FA-SU-636, TC-FA-SU-867, TC-FA-SU-891 |
 | TC-FA-SU-E2E-370-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-1 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 1) | FE+BE. | 33 | TC-FA-SU-362, TC-FA-SU-437, TC-FA-SU-466 |
 | TC-FA-SU-E2E-371-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-2 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 2) | FE+BE. | 33 | TC-FA-SU-497, TC-FA-SU-533, TC-FA-SU-571 |
 | TC-FA-SU-E2E-372-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-3 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 3) | FE+BE. | 35 | TC-FA-SU-603, TC-FA-SU-635, TC-FA-SU-667, TC-FA-SU-699 |
-| TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 4) | FE+BE. | 32 | TC-FA-SU-731, TC-FA-SU-761, TC-FA-SU-792, TC-FA-SU-833 |
+| TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 4) | FE+BE | 39 | TC-FA-SU-731, TC-FA-SU-761, TC-FA-SU-792, TC-FA-SU-833, TC-FA-SU-1169 |
 | TC-FA-SU-E2E-374-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-5 | Isi Berkas Download: Transformasi Data per Tipe Kolom per Surface Tabel (Bagian 5) | FE+BE. | 15 | TC-FA-SU-866, TC-FA-SU-890 |
 | TC-FA-SU-E2E-375-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-7 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 7) | FE+BE. | 30 | TC-FA-SU-365, TC-FA-SU-734 |
 | TC-FA-SU-E2E-376-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-8 | Resilience Baca: Empty State, Loading, dan Error Load Surface Tabel (Bagian 8) | FE+BE. | 31 | TC-FA-SU-638, TC-FA-SU-836 |
@@ -392,7 +390,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-379-auto-revert-tier-dari-popup-assign-group-role-tambah-grup-yang-menyimpangkan-pola | Auto-Revert Tier dari Popup Assign Group Role: Tambah Grup yang Menyimpangkan Pola | FE+BE. | 39 | TC-FA-SU-1078 |
 | TC-FA-SU-E2E-380-auto-revert-tier-total-control-dari-modal-assign-transaction-role-cancel-remove-baris-pola-dan-turun-tangga | Auto-Revert Tier Total Control dari Modal Assign Transaction Role: Cancel Remove Baris Pola dan Turun Tangga | FE+BE. | 43 | TC-FA-SU-1073, TC-FA-SU-1070 |
 | TC-FA-SU-E2E-381-screening-banner-tier-dan-baris-pola-sub-tab-transaction-role-dan-group-role-total-control-dan-read-only | Screening Banner Tier dan Baris Pola Sub-tab Transaction Role dan Group Role: Total Control dan Read Only | FE+BE. | 33 | TC-FA-SU-1072, TC-FA-SU-1080 |
-| TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | Tab Transaction Admin Log User Total Control Tanpa Transaksi: Empty State | FE+BE. | 14 | TC-FA-SU-1075 |
+| TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | Tab Transaction Admin Log User Total Control Tanpa Transaksi: Empty State | FE+BE | 16 | TC-FA-SU-1075 |
 | TC-FA-SU-E2E-383-auto-revert-tier-read-only-dari-popup-assign-group-role-hapus-grup | Auto-Revert Tier Read Only dari Popup Assign Group Role: Hapus Grup | FE+BE. | 32 | TC-FA-SU-1077 |
 | TC-FA-SU-E2E-384-cancel-dialog-auto-revert-dari-popup-assign-group-role-popup-kembali-utuh | Cancel Dialog Auto-Revert dari Popup Assign Group Role: Popup Kembali dengan Isi Utuh | FE+BE. | 50 | TC-FA-SU-1079 |
 | TC-FA-SU-E2E-385-auto-revert-tier-read-only-dari-modal-assign-transaction-role-naik-tangga | Auto-Revert Tier Read Only dari Modal Assign Transaction Role: Naik Tangga | FE+BE. | 22 | TC-FA-SU-1071 |
@@ -440,6 +438,39 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-435-edit-home-group-mencabut-group-role-dan-role-transaksi-di-luar-constraint-silent | Edit Home Group Mencabut Group Role dan Role Transaksi di Luar Constraint (Silent) | FE+BE. | 12 | TC-FA-SU-1125 |
 | TC-FA-SU-E2E-436-edit-home-group-pengguna-hanya-role-transaksi-dialog-d-10-dan-constraint-node-turunan | Edit Home Group Pengguna dengan Hanya Role Transaksi: Dialog D-10, Pencabutan Approver, dan Constraint ke Node Turunan | FE+BE. | 30 | TC-FA-SU-1126, TC-FA-SU-1127 |
 | TC-FA-SU-E2E-437-bulk-edit-home-group-standard-dan-read-only-dialog-d-10-hanya-untuk-standard | Bulk Edit Home Group Pengguna Standard dan Read Only: Dialog D-10 Hanya untuk Standard dan Baris Pola Read Only Tetap | FE+BE. | 28 | TC-FA-SU-1128 |
+| TC-FA-SU-E2E-438-tab-transaction-admin-log-perilaku-filter-panel-sub-tab-borrow | Tab Transaction Admin Log: Perilaku Filter Panel Sub-tab Borrow | FE+BE | 35 | TC-FA-SU-781 |
+| TC-FA-SU-E2E-439-tab-transaction-admin-log-setup-column-ceklis-dan-unceklis | Tab Transaction Admin Log: Ceklis dan Unceklis Setup Column | FE+BE | 29 | TC-FA-SU-785 |
+| TC-FA-SU-E2E-440-tab-transaction-admin-log-state-per-sub-tab | Tab Transaction Admin Log: State per Sub-tab | FE+BE | 37 | TC-FA-SU-796 |
+| TC-FA-SU-E2E-441-tab-transaction-admin-log-struktur-sub-tab-transfer | Tab Transaction Admin Log: Struktur Sub-tab Transfer | FE+BE | 29 | TC-FA-SU-797 |
+| TC-FA-SU-E2E-442-tab-transaction-admin-log-struktur-sub-tab-audit | Tab Transaction Admin Log: Struktur Sub-tab Audit | FE+BE | 29 | TC-FA-SU-803 |
+| TC-FA-SU-E2E-443-tab-transaction-admin-log-sub-tab-borrow-dan-assignment-terpisah-dan-struktur-assignment | Tab Transaction Admin Log: Sub-tab Borrow dan Assignment Terpisah dan Struktur Sub-tab Assignment | FE+BE | 44 | TC-FA-SU-1133, TC-FA-SU-1132 |
+| TC-FA-SU-E2E-444-tab-transaction-admin-log-assignment-search-filter-dan-sort-assignee | Tab Transaction Admin Log Sub-tab Assignment: Search, Filter, dan Sort Assignee | FE+BE | 37 | TC-FA-SU-1140, TC-FA-SU-1141, TC-FA-SU-1142 |
+| TC-FA-SU-E2E-445-tab-transaction-admin-log-borrow-baris-per-aset-dan-aksi-draft | Tab Transaction Admin Log Sub-tab Borrow: Baris per Aset dan Aksi Draft | FE+BE | 28 | TC-FA-SU-1134, TC-FA-SU-1135, TC-FA-SU-1136 |
+| TC-FA-SU-E2E-446-tab-transaction-admin-log-borrow-self-processed-dan-filter-name-dan-borrower | Tab Transaction Admin Log Sub-tab Borrow: Self-processed, Filter Name, dan Filter Borrower | FE+BE | 39 | TC-FA-SU-1137, TC-FA-SU-1138, TC-FA-SU-1139 |
+| TC-FA-SU-E2E-447-tab-user-log-assignment-katalog-node-detail-handed-over-dan-assignee-division | Tab User Log Sub-tab Assignment: Katalog Node, Detail Handed over, dan Assignee Division | FE+BE | 45 | TC-FA-SU-1129, TC-FA-SU-1130, TC-FA-SU-1131 |
+| TC-FA-SU-E2E-448-tab-transaction-admin-log-reset-to-default-discard-dan-independensi-cache-setup-column | Tab Transaction Admin Log: Reset to Default, Discard, dan Independensi Cache Setup Column | FE+BE | 19 | TC-FA-SU-788 |
+| TC-FA-SU-E2E-449-tab-transaction-admin-log-assignment-filter-activity | Tab Transaction Admin Log Sub-tab Assignment: Filter Kolom Activity | FE+BE | 13 | TC-FA-SU-1154 |
+| TC-FA-SU-E2E-456-tab-transaction-admin-log-assignment-search-activity-group-dan-siklus-interaksi | Tab Transaction Admin Log Sub-tab Assignment: Search Activity, Group, dan Siklus Interaksi | FE+BE | 43 | TC-FA-SU-1143, TC-FA-SU-1144, TC-FA-SU-1145 |
+| TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | Tab Transaction Admin Log Sub-tab Assignment: Guard Search, Search Terikat Visibilitas Kolom, dan Sort | FE+BE | 46 | TC-FA-SU-1146, TC-FA-SU-1147, TC-FA-SU-1148, TC-FA-SU-1149, TC-FA-SU-1150 |
+| TC-FA-SU-E2E-458-tab-transaction-admin-log-assignment-screening-filter-panel-dan-filter-group-name | Tab Transaction Admin Log Sub-tab Assignment: Screening Filter Panel dan Filter Kolom Group dan Name | FE+BE | 41 | TC-FA-SU-1151, TC-FA-SU-1152, TC-FA-SU-1153 |
+| TC-FA-SU-E2E-459-tab-transaction-admin-log-assignment-filter-date-kombinasi-search-filter-dan-pelepasan-kontrol | Tab Transaction Admin Log Sub-tab Assignment: Filter Date, Kombinasi Search dan Filter, dan Pelepasan Kontrol | FE+BE | 45 | TC-FA-SU-1155, TC-FA-SU-1156, TC-FA-SU-1157 |
+| TC-FA-SU-E2E-460-tab-transaction-admin-log-assignment-perilaku-filter-panel-dan-chip-dropdown-filter | Tab Transaction Admin Log Sub-tab Assignment: Perilaku Filter Panel dan Chip Dropdown Filter | FE+BE | 44 | TC-FA-SU-1158, TC-FA-SU-1159 |
+| TC-FA-SU-E2E-461-tab-transaction-admin-log-assignment-screening-column-visibility-tooltip-setup-column-dan-ceklis-kolom | Tab Transaction Admin Log Sub-tab Assignment: Screening Column Visibility, Tooltip Icon, Setup Column, dan Ceklis Kolom | FE+BE | 38 | TC-FA-SU-1160, TC-FA-SU-1171, TC-FA-SU-1161, TC-FA-SU-1162 |
+| TC-FA-SU-E2E-462-tab-transaction-admin-log-assignment-setup-column-geser-kolom-reset-to-default-dan-discard | Tab Transaction Admin Log Sub-tab Assignment: Setup Column Geser Kolom, Reset to Default, dan Discard | FE+BE | 26 | TC-FA-SU-1163, TC-FA-SU-1165 |
+| TC-FA-SU-E2E-463-tab-transaction-admin-log-assignment-pin-dan-unpin-setup-column | Tab Transaction Admin Log Sub-tab Assignment: Pin dan Unpin Setup Column | FE+BE | 42 | TC-FA-SU-1164 |
+| TC-FA-SU-E2E-464-tab-transaction-admin-log-assignment-pagination-dan-state-per-sub-tab | Tab Transaction Admin Log Sub-tab Assignment: Pagination dan State per Sub-tab | FE+BE | 43 | TC-FA-SU-1166, TC-FA-SU-1173 |
+| TC-FA-SU-E2E-465-tab-transaction-admin-log-assignment-download-csv-xlsx-dan-cakupan-baris-kolom | Tab Transaction Admin Log Sub-tab Assignment: Download CSV dan XLSX dan Cakupan Baris dan Kolom | FE+BE | 35 | TC-FA-SU-1167, TC-FA-SU-1168 |
+| TC-FA-SU-E2E-468-tab-transaction-admin-log-struktur-sub-tab-damaged | Tab Transaction Admin Log: Struktur Sub-tab Damaged | FE+BE | 38 | TC-FA-SU-1174 |
+| TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Damaged: Search, Guard Kolom, dan Sort | FE+BE | 38 | TC-FA-SU-1175, TC-FA-SU-1176, TC-FA-SU-1177 |
+| TC-FA-SU-E2E-470-tab-transaction-admin-log-damaged-filter-dan-download | Tab Transaction Admin Log Sub-tab Damaged: Filter dan Download | FE+BE | 48 | TC-FA-SU-1178, TC-FA-SU-1179 |
+| TC-FA-SU-E2E-471-tab-transaction-admin-log-struktur-sub-tab-missing | Tab Transaction Admin Log: Struktur Sub-tab Missing | FE+BE | 38 | TC-FA-SU-1180 |
+| TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Missing: Search, Guard Kolom, dan Sort | FE+BE | 38 | TC-FA-SU-1181, TC-FA-SU-1182, TC-FA-SU-1183 |
+| TC-FA-SU-E2E-473-tab-transaction-admin-log-missing-filter-dan-download | Tab Transaction Admin Log Sub-tab Missing: Filter dan Download | FE+BE | 48 | TC-FA-SU-1184, TC-FA-SU-1185 |
+| TC-FA-SU-E2E-474-routing-tab-transaction-admin-log-damaged-missing-dan-disposal | Routing Tab Transaction Admin Log: Damaged, Missing, dan Disposal | FE+BE | 33 | TC-FA-SU-1186, TC-FA-SU-1187 |
+| TC-FA-SU-E2E-475-aksi-pemegang-tidak-masuk-sub-tab-damaged-dan-missing | Aksi Pemegang Tidak Masuk Tab Transaction Admin Log Sub-tab Damaged dan Missing | FE+BE | 14 | TC-FA-SU-1188 |
+| TC-FA-SU-E2E-476-tab-transaction-admin-log-assignment-format-assignee-dan-hover-pic-saat-tindakan | Tab Transaction Admin Log Sub-tab Assignment: Format Assignee dan Hover PIC Saat Tindakan | FE+BE | 10 | TC-FA-SU-1189 |
+| TC-FA-SU-E2E-477-tab-transaction-admin-log-audit-baris-tingkat-task-dan-activity-nama-node | Tab Transaction Admin Log Sub-tab Audit: Baris Tingkat Task dan Activity Nama Node | FE+BE | 11 | TC-FA-SU-1190 |
+| TC-FA-SU-E2E-478-tab-transaction-admin-log-maintenance-routine-peristiwa-system-tidak-tampil | Tab Transaction Admin Log Sub-tab Maintenance Routine: Peristiwa System Tidak Tampil | FE+BE | 11 | TC-FA-SU-1191 |
 
 ---
 
@@ -1198,8 +1229,8 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-728 | E2E | TC-FA-SU-E2E-240-modal-combined-changelog-user-pagination-tooltip-icon-dan-download | FE+BE. |
 | TC-FA-SU-729 | E2E | TC-FA-SU-E2E-240-modal-combined-changelog-user-pagination-tooltip-icon-dan-download | FE+BE. |
 | TC-FA-SU-730 | E2E | TC-FA-SU-E2E-241-modal-combined-changelog-user-download | FE+BE. |
-| TC-FA-SU-731 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE. |
-| TC-FA-SU-732 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE. |
+| TC-FA-SU-731 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE |
+| TC-FA-SU-732 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE |
 | TC-FA-SU-733 | E2E | TC-FA-SU-E2E-240-modal-combined-changelog-user-pagination-tooltip-icon-dan-download | FE+BE. |
 | TC-FA-SU-734 | E2E | TC-FA-SU-E2E-375-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-7 | FE+BE. |
 | TC-FA-SU-735 | E2E | TC-FA-SU-E2E-242-tab-system-log-screening-dan-search | FE+BE. |
@@ -1228,50 +1259,46 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-758 | E2E | TC-FA-SU-E2E-250-tab-system-log-pagination-tooltip-icon-dan-download | FE+BE. |
 | TC-FA-SU-759 | E2E | TC-FA-SU-E2E-250-tab-system-log-pagination-tooltip-icon-dan-download | FE+BE. |
 | TC-FA-SU-760 | E2E | TC-FA-SU-E2E-251-tab-system-log-download | FE+BE. |
-| TC-FA-SU-761 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE. |
-| TC-FA-SU-762 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE. |
+| TC-FA-SU-761 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE |
+| TC-FA-SU-762 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE |
 | TC-FA-SU-763 | E2E | TC-FA-SU-E2E-250-tab-system-log-pagination-tooltip-icon-dan-download | FE+BE. |
-| TC-FA-SU-764 | E2E | TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | FE+BE. |
-| TC-FA-SU-765 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE. |
-| TC-FA-SU-766 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE. |
-| TC-FA-SU-767 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE. |
-| TC-FA-SU-768 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE. |
-| TC-FA-SU-769 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE. |
-| TC-FA-SU-770 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE. |
-| TC-FA-SU-771 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE. |
-| TC-FA-SU-772 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE. |
-| TC-FA-SU-773 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE. |
-| TC-FA-SU-774 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE. |
-| TC-FA-SU-775 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE. |
-| TC-FA-SU-776 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE. |
-| TC-FA-SU-777 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE. |
-| TC-FA-SU-778 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE. |
-| TC-FA-SU-779 | E2E | TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | FE+BE. |
-| TC-FA-SU-780 | E2E | TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | FE+BE. |
-| TC-FA-SU-781 | E2E | TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | FE+BE. |
-| TC-FA-SU-782 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE. |
-| TC-FA-SU-783 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE. |
-| TC-FA-SU-784 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE. |
-| TC-FA-SU-785 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE. |
-| TC-FA-SU-786 | E2E | TC-FA-SU-E2E-260-tab-transaction-admin-log-setup-column | FE+BE. |
-| TC-FA-SU-787 | E2E | TC-FA-SU-E2E-275-tab-transaction-admin-log-pin-dan-unpin-setup-column | FE+BE. |
-| TC-FA-SU-788 | E2E | TC-FA-SU-E2E-260-tab-transaction-admin-log-setup-column | FE+BE. |
-| TC-FA-SU-789 | E2E | TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-tooltip-icon-dan-state-per-sub-tab | FE+BE. |
-| TC-FA-SU-790 | E2E | TC-FA-SU-E2E-262-tab-transaction-admin-log-download-dan-struktur-sub-tab | FE+BE. |
-| TC-FA-SU-791 | E2E | TC-FA-SU-E2E-262-tab-transaction-admin-log-download-dan-struktur-sub-tab | FE+BE. |
-| TC-FA-SU-792 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE. |
-| TC-FA-SU-793 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE. |
-| TC-FA-SU-794 | E2E | TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-tooltip-icon-dan-state-per-sub-tab | FE+BE. |
-| TC-FA-SU-795 | E2E | TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | FE+BE. |
-| TC-FA-SU-796 | E2E | TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-tooltip-icon-dan-state-per-sub-tab | FE+BE. |
-| TC-FA-SU-797 | E2E | TC-FA-SU-E2E-262-tab-transaction-admin-log-download-dan-struktur-sub-tab | FE+BE. |
-| TC-FA-SU-798 | E2E | TC-FA-SU-E2E-263-tab-transaction-admin-log-struktur-sub-tab-bagian-1 | FE+BE. |
-| TC-FA-SU-799 | E2E | TC-FA-SU-E2E-263-tab-transaction-admin-log-struktur-sub-tab-bagian-1 | FE+BE. |
-| TC-FA-SU-800 | E2E | TC-FA-SU-E2E-264-tab-transaction-admin-log-struktur-sub-tab-bagian-2 | FE+BE. |
-| TC-FA-SU-801 | E2E | TC-FA-SU-E2E-264-tab-transaction-admin-log-struktur-sub-tab-bagian-2 | FE+BE. |
-| TC-FA-SU-802 | E2E | TC-FA-SU-E2E-265-tab-transaction-admin-log-struktur-sub-tab-bagian-3 | FE+BE. |
-| TC-FA-SU-803 | E2E | TC-FA-SU-E2E-265-tab-transaction-admin-log-struktur-sub-tab-bagian-3 | FE+BE. |
-| TC-FA-SU-804 | E2E | TC-FA-SU-E2E-266-tab-transaction-admin-log-struktur-sub-tab-bagian-4 | FE+BE. |
+| TC-FA-SU-764 | E2E | TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | FE+BE |
+| TC-FA-SU-765 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE |
+| TC-FA-SU-766 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE |
+| TC-FA-SU-767 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE |
+| TC-FA-SU-768 | E2E | TC-FA-SU-E2E-254-tab-transaction-admin-log-screening-dan-search | FE+BE |
+| TC-FA-SU-769 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE |
+| TC-FA-SU-770 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE |
+| TC-FA-SU-771 | E2E | TC-FA-SU-E2E-255-tab-transaction-admin-log-search | FE+BE |
+| TC-FA-SU-772 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE |
+| TC-FA-SU-773 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE |
+| TC-FA-SU-774 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE |
+| TC-FA-SU-775 | E2E | TC-FA-SU-E2E-256-tab-transaction-admin-log-sort-dan-filter-dan-kontrol-filter | FE+BE |
+| TC-FA-SU-776 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE |
+| TC-FA-SU-777 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE |
+| TC-FA-SU-778 | E2E | TC-FA-SU-E2E-257-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-1 | FE+BE |
+| TC-FA-SU-779 | E2E | TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | FE+BE |
+| TC-FA-SU-780 | E2E | TC-FA-SU-E2E-258-tab-transaction-admin-log-filter-dan-kontrol-filter-bagian-2 | FE+BE |
+| TC-FA-SU-781 | E2E | TC-FA-SU-E2E-438-tab-transaction-admin-log-perilaku-filter-panel-sub-tab-borrow | FE+BE |
+| TC-FA-SU-782 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE |
+| TC-FA-SU-783 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE |
+| TC-FA-SU-784 | E2E | TC-FA-SU-E2E-259-tab-transaction-admin-log-filter-dan-kontrol-filter-dan-setup-column | FE+BE |
+| TC-FA-SU-785 | E2E | TC-FA-SU-E2E-439-tab-transaction-admin-log-setup-column-ceklis-dan-unceklis | FE+BE |
+| TC-FA-SU-786 | E2E | TC-FA-SU-E2E-260-tab-transaction-admin-log-setup-column | FE+BE |
+| TC-FA-SU-787 | E2E | TC-FA-SU-E2E-275-tab-transaction-admin-log-pin-dan-unpin-setup-column | FE+BE |
+| TC-FA-SU-788 | E2E | TC-FA-SU-E2E-448-tab-transaction-admin-log-reset-to-default-discard-dan-independensi-cache-setup-column | FE+BE |
+| TC-FA-SU-789 | E2E | TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-dan-tooltip-icon | FE+BE |
+| TC-FA-SU-790 | E2E | TC-FA-SU-E2E-262-tab-transaction-admin-log-download | FE+BE |
+| TC-FA-SU-791 | E2E | TC-FA-SU-E2E-262-tab-transaction-admin-log-download | FE+BE |
+| TC-FA-SU-792 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE |
+| TC-FA-SU-793 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE |
+| TC-FA-SU-794 | E2E | TC-FA-SU-E2E-261-tab-transaction-admin-log-pagination-dan-tooltip-icon | FE+BE |
+| TC-FA-SU-795 | E2E | TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | FE+BE |
+| TC-FA-SU-796 | E2E | TC-FA-SU-E2E-440-tab-transaction-admin-log-state-per-sub-tab | FE+BE |
+| TC-FA-SU-797 | E2E | TC-FA-SU-E2E-441-tab-transaction-admin-log-struktur-sub-tab-transfer | FE+BE |
+| TC-FA-SU-798 | E2E | TC-FA-SU-E2E-263-tab-transaction-admin-log-struktur-sub-tab-bagian-1 | FE+BE |
+| TC-FA-SU-803 | E2E | TC-FA-SU-E2E-442-tab-transaction-admin-log-struktur-sub-tab-audit | FE+BE |
+| TC-FA-SU-804 | E2E | TC-FA-SU-E2E-266-tab-transaction-admin-log-struktur-sub-tab-bagian-4 | FE+BE |
 | TC-FA-SU-805 | E2E | TC-FA-SU-E2E-267-tab-user-log-sub-tab-borrow-screening-dan-search | FE+BE. |
 | TC-FA-SU-806 | E2E | TC-FA-SU-E2E-267-tab-user-log-sub-tab-borrow-screening-dan-search | FE+BE. |
 | TC-FA-SU-807 | E2E | TC-FA-SU-E2E-267-tab-user-log-sub-tab-borrow-screening-dan-search | FE+BE. |
@@ -1300,8 +1327,8 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-830 | E2E | TC-FA-SU-E2E-273-tab-user-log-sub-tab-borrow-setup-column-pagination-dan-tooltip-icon | FE+BE. |
 | TC-FA-SU-831 | E2E | TC-FA-SU-E2E-274-tab-user-log-sub-tab-borrow-state-per-sub-tab-dan-download | FE+BE. |
 | TC-FA-SU-832 | E2E | TC-FA-SU-E2E-274-tab-user-log-sub-tab-borrow-state-per-sub-tab-dan-download | FE+BE. |
-| TC-FA-SU-833 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE. |
-| TC-FA-SU-834 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE. |
+| TC-FA-SU-833 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE |
+| TC-FA-SU-834 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE |
 | TC-FA-SU-835 | E2E | TC-FA-SU-E2E-273-tab-user-log-sub-tab-borrow-setup-column-pagination-dan-tooltip-icon | FE+BE. |
 | TC-FA-SU-836 | E2E | TC-FA-SU-E2E-376-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-8 | FE+BE. |
 | TC-FA-SU-837 | E2E | TC-FA-SU-E2E-274-tab-user-log-sub-tab-borrow-state-per-sub-tab-dan-download | FE+BE. |
@@ -1422,8 +1449,8 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-952 | E2E | TC-FA-SU-E2E-310-fan-out-responsibilities-pending-approvals-pending-tasks-dan-non-login-user | FE+BE. |
 | TC-FA-SU-953 | E2E | TC-FA-SU-E2E-310-fan-out-responsibilities-pending-approvals-pending-tasks-dan-non-login-user | FE+BE. |
 | TC-FA-SU-954 | E2E | TC-FA-SU-E2E-310-fan-out-responsibilities-pending-approvals-pending-tasks-dan-non-login-user | FE+BE. |
-| TC-FA-SU-955 | E2E | TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | FE+BE. |
-| TC-FA-SU-956 | E2E | TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | FE+BE. |
+| TC-FA-SU-955 | E2E | TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | FE+BE |
+| TC-FA-SU-956 | E2E | TC-FA-SU-E2E-311-fan-out-transaction-admin-log-dan-satu-transaksi-menghasilkan-dua-baris-user-log | FE+BE |
 | TC-FA-SU-957 | E2E | TC-FA-SU-E2E-312-picker-peminjam-dan-penugasan-tetap-setelah-nonaktif | FE+BE. |
 | TC-FA-SU-958 | E2E | TC-FA-SU-E2E-312-picker-peminjam-dan-penugasan-tetap-setelah-nonaktif | FE+BE. |
 | TC-FA-SU-959 | E2E | TC-FA-SU-E2E-353-lockdown-tenant-tooltip-prioritas-user-list-suspended-transaction-role-suspended-dan | FE+BE. |
@@ -1528,8 +1555,8 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1022 | E2E | TC-FA-SU-E2E-320-konkurensi-akses-dicabut-saat-popup-terbuka-item-bulk-berubah-dua-admin-dan-grup | FE+BE. |
 | TC-FA-SU-1023 | E2E | TC-FA-SU-E2E-320-konkurensi-akses-dicabut-saat-popup-terbuka-item-bulk-berubah-dua-admin-dan-grup | FE+BE. |
 | TC-FA-SU-1024 | E2E | TC-FA-SU-E2E-317-klik-ganda-sakelar-double-submit-klik-ganda-resend-dan-toast-tunggal | FE+BE. |
-| TC-FA-SU-1025 | E2E | TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | FE+BE. |
-| TC-FA-SU-1026 | E2E | TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | FE+BE. |
+| TC-FA-SU-1025 | E2E | TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | FE+BE |
+| TC-FA-SU-1026 | E2E | TC-FA-SU-E2E-351-state-tab-dan-sub-tab-detail-user-serta-default-dan-ordering | FE+BE |
 | TC-FA-SU-1027 | E2E | TC-FA-SU-E2E-319-must-not-bulk-tanpa-eligible-save-sebagian-edit-global-role-beruntun-dan-deaktivasi | FE+BE. |
 | TC-FA-SU-1028 | E2E | TC-FA-SU-E2E-319-must-not-bulk-tanpa-eligible-save-sebagian-edit-global-role-beruntun-dan-deaktivasi | FE+BE. |
 | TC-FA-SU-1029 | E2E | TC-FA-SU-E2E-319-must-not-bulk-tanpa-eligible-save-sebagian-edit-global-role-beruntun-dan-deaktivasi | FE+BE. |
@@ -1579,7 +1606,7 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1072 | E2E | TC-FA-SU-E2E-381-screening-banner-tier-dan-baris-pola-sub-tab-transaction-role-dan-group-role-total-control-dan-read-only | FE+BE. |
 | TC-FA-SU-1073 | E2E | TC-FA-SU-E2E-380-auto-revert-tier-total-control-dari-modal-assign-transaction-role-cancel-remove-baris-pola-dan-turun-tangga | FE+BE. |
 | TC-FA-SU-1074 | E2E | TC-FA-SU-E2E-386-banner-group-manager-per-sub-tab-role-tidak-tampil-di-transaction-role | FE+BE. |
-| TC-FA-SU-1075 | E2E | TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | FE+BE. |
+| TC-FA-SU-1075 | E2E | TC-FA-SU-E2E-382-tab-transaction-admin-log-user-total-control-tanpa-transaksi-empty-state | FE+BE |
 | TC-FA-SU-1076 | E2E | TC-FA-SU-E2E-378-auto-revert-tier-total-control-dari-popup-assign-group-role-edit-centang-crud | FE+BE. |
 | TC-FA-SU-1077 | E2E | TC-FA-SU-E2E-383-auto-revert-tier-read-only-dari-popup-assign-group-role-hapus-grup | FE+BE. |
 | TC-FA-SU-1078 | E2E | TC-FA-SU-E2E-379-auto-revert-tier-dari-popup-assign-group-role-tambah-grup-yang-menyimpangkan-pola | FE+BE. |
@@ -1639,12 +1666,75 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1126 | E2E | TC-FA-SU-E2E-436-edit-home-group-pengguna-hanya-role-transaksi-dialog-d-10-dan-constraint-node-turunan | FE+BE. |
 | TC-FA-SU-1127 | E2E | TC-FA-SU-E2E-436-edit-home-group-pengguna-hanya-role-transaksi-dialog-d-10-dan-constraint-node-turunan | FE+BE. |
 | TC-FA-SU-1128 | E2E | TC-FA-SU-E2E-437-bulk-edit-home-group-standard-dan-read-only-dialog-d-10-hanya-untuk-standard | FE+BE. |
+| TC-FA-SU-1129 | E2E | TC-FA-SU-E2E-447-tab-user-log-assignment-katalog-node-detail-handed-over-dan-assignee-division | FE+BE |
+| TC-FA-SU-1130 | E2E | TC-FA-SU-E2E-447-tab-user-log-assignment-katalog-node-detail-handed-over-dan-assignee-division | FE+BE |
+| TC-FA-SU-1131 | E2E | TC-FA-SU-E2E-447-tab-user-log-assignment-katalog-node-detail-handed-over-dan-assignee-division | FE+BE |
+| TC-FA-SU-1132 | E2E | TC-FA-SU-E2E-443-tab-transaction-admin-log-sub-tab-borrow-dan-assignment-terpisah-dan-struktur-assignment | FE+BE |
+| TC-FA-SU-1133 | E2E | TC-FA-SU-E2E-443-tab-transaction-admin-log-sub-tab-borrow-dan-assignment-terpisah-dan-struktur-assignment | FE+BE |
+| TC-FA-SU-1134 | E2E | TC-FA-SU-E2E-445-tab-transaction-admin-log-borrow-baris-per-aset-dan-aksi-draft | FE+BE |
+| TC-FA-SU-1135 | E2E | TC-FA-SU-E2E-445-tab-transaction-admin-log-borrow-baris-per-aset-dan-aksi-draft | FE+BE |
+| TC-FA-SU-1136 | E2E | TC-FA-SU-E2E-445-tab-transaction-admin-log-borrow-baris-per-aset-dan-aksi-draft | FE+BE |
+| TC-FA-SU-1137 | E2E | TC-FA-SU-E2E-446-tab-transaction-admin-log-borrow-self-processed-dan-filter-name-dan-borrower | FE+BE |
+| TC-FA-SU-1138 | E2E | TC-FA-SU-E2E-446-tab-transaction-admin-log-borrow-self-processed-dan-filter-name-dan-borrower | FE+BE |
+| TC-FA-SU-1139 | E2E | TC-FA-SU-E2E-446-tab-transaction-admin-log-borrow-self-processed-dan-filter-name-dan-borrower | FE+BE |
+| TC-FA-SU-1140 | E2E | TC-FA-SU-E2E-444-tab-transaction-admin-log-assignment-search-filter-dan-sort-assignee | FE+BE |
+| TC-FA-SU-1141 | E2E | TC-FA-SU-E2E-444-tab-transaction-admin-log-assignment-search-filter-dan-sort-assignee | FE+BE |
+| TC-FA-SU-1142 | E2E | TC-FA-SU-E2E-444-tab-transaction-admin-log-assignment-search-filter-dan-sort-assignee | FE+BE |
+| TC-FA-SU-1143 | E2E | TC-FA-SU-E2E-456-tab-transaction-admin-log-assignment-search-activity-group-dan-siklus-interaksi | FE+BE |
+| TC-FA-SU-1144 | E2E | TC-FA-SU-E2E-456-tab-transaction-admin-log-assignment-search-activity-group-dan-siklus-interaksi | FE+BE |
+| TC-FA-SU-1145 | E2E | TC-FA-SU-E2E-456-tab-transaction-admin-log-assignment-search-activity-group-dan-siklus-interaksi | FE+BE |
+| TC-FA-SU-1146 | E2E | TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | FE+BE |
+| TC-FA-SU-1147 | E2E | TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | FE+BE |
+| TC-FA-SU-1148 | E2E | TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | FE+BE |
+| TC-FA-SU-1149 | E2E | TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | FE+BE |
+| TC-FA-SU-1150 | E2E | TC-FA-SU-E2E-457-tab-transaction-admin-log-assignment-guard-search-dan-sort | FE+BE |
+| TC-FA-SU-1151 | E2E | TC-FA-SU-E2E-458-tab-transaction-admin-log-assignment-screening-filter-panel-dan-filter-group-name | FE+BE |
+| TC-FA-SU-1152 | E2E | TC-FA-SU-E2E-458-tab-transaction-admin-log-assignment-screening-filter-panel-dan-filter-group-name | FE+BE |
+| TC-FA-SU-1153 | E2E | TC-FA-SU-E2E-458-tab-transaction-admin-log-assignment-screening-filter-panel-dan-filter-group-name | FE+BE |
+| TC-FA-SU-1154 | E2E | TC-FA-SU-E2E-449-tab-transaction-admin-log-assignment-filter-activity | FE+BE |
+| TC-FA-SU-1155 | E2E | TC-FA-SU-E2E-459-tab-transaction-admin-log-assignment-filter-date-kombinasi-search-filter-dan-pelepasan-kontrol | FE+BE |
+| TC-FA-SU-1156 | E2E | TC-FA-SU-E2E-459-tab-transaction-admin-log-assignment-filter-date-kombinasi-search-filter-dan-pelepasan-kontrol | FE+BE |
+| TC-FA-SU-1157 | E2E | TC-FA-SU-E2E-459-tab-transaction-admin-log-assignment-filter-date-kombinasi-search-filter-dan-pelepasan-kontrol | FE+BE |
+| TC-FA-SU-1158 | E2E | TC-FA-SU-E2E-460-tab-transaction-admin-log-assignment-perilaku-filter-panel-dan-chip-dropdown-filter | FE+BE |
+| TC-FA-SU-1159 | E2E | TC-FA-SU-E2E-460-tab-transaction-admin-log-assignment-perilaku-filter-panel-dan-chip-dropdown-filter | FE+BE |
+| TC-FA-SU-1160 | E2E | TC-FA-SU-E2E-461-tab-transaction-admin-log-assignment-screening-column-visibility-tooltip-setup-column-dan-ceklis-kolom | FE+BE |
+| TC-FA-SU-1161 | E2E | TC-FA-SU-E2E-461-tab-transaction-admin-log-assignment-screening-column-visibility-tooltip-setup-column-dan-ceklis-kolom | FE+BE |
+| TC-FA-SU-1162 | E2E | TC-FA-SU-E2E-461-tab-transaction-admin-log-assignment-screening-column-visibility-tooltip-setup-column-dan-ceklis-kolom | FE+BE |
+| TC-FA-SU-1163 | E2E | TC-FA-SU-E2E-462-tab-transaction-admin-log-assignment-setup-column-geser-kolom-reset-to-default-dan-discard | FE+BE |
+| TC-FA-SU-1164 | E2E | TC-FA-SU-E2E-463-tab-transaction-admin-log-assignment-pin-dan-unpin-setup-column | FE+BE |
+| TC-FA-SU-1165 | E2E | TC-FA-SU-E2E-462-tab-transaction-admin-log-assignment-setup-column-geser-kolom-reset-to-default-dan-discard | FE+BE |
+| TC-FA-SU-1166 | E2E | TC-FA-SU-E2E-464-tab-transaction-admin-log-assignment-pagination-dan-state-per-sub-tab | FE+BE |
+| TC-FA-SU-1167 | E2E | TC-FA-SU-E2E-465-tab-transaction-admin-log-assignment-download-csv-xlsx-dan-cakupan-baris-kolom | FE+BE |
+| TC-FA-SU-1168 | E2E | TC-FA-SU-E2E-465-tab-transaction-admin-log-assignment-download-csv-xlsx-dan-cakupan-baris-kolom | FE+BE |
+| TC-FA-SU-1169 | E2E | TC-FA-SU-E2E-373-isi-berkas-download-transformasi-data-per-tipe-kolom-per-surface-tabel-bagian-4 | FE+BE |
+| TC-FA-SU-1170 | E2E | TC-FA-SU-E2E-368-resilience-download-gagal-toast-error-tanpa-ekstensi-per-surface-tabel-bagian-3 | FE+BE |
+| TC-FA-SU-1171 | E2E | TC-FA-SU-E2E-461-tab-transaction-admin-log-assignment-screening-column-visibility-tooltip-setup-column-dan-ceklis-kolom | FE+BE |
+| TC-FA-SU-1172 | E2E | TC-FA-SU-E2E-364-resilience-baca-empty-state-loading-dan-error-load-surface-tabel-bagian-5 | FE+BE |
+| TC-FA-SU-1173 | E2E | TC-FA-SU-E2E-464-tab-transaction-admin-log-assignment-pagination-dan-state-per-sub-tab | FE+BE |
+| TC-FA-SU-1174 | E2E | TC-FA-SU-E2E-468-tab-transaction-admin-log-struktur-sub-tab-damaged | FE+BE |
+| TC-FA-SU-1175 | E2E | TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1176 | E2E | TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1177 | E2E | TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1178 | E2E | TC-FA-SU-E2E-470-tab-transaction-admin-log-damaged-filter-dan-download | FE+BE |
+| TC-FA-SU-1179 | E2E | TC-FA-SU-E2E-470-tab-transaction-admin-log-damaged-filter-dan-download | FE+BE |
+| TC-FA-SU-1180 | E2E | TC-FA-SU-E2E-471-tab-transaction-admin-log-struktur-sub-tab-missing | FE+BE |
+| TC-FA-SU-1181 | E2E | TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1182 | E2E | TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1183 | E2E | TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | FE+BE |
+| TC-FA-SU-1184 | E2E | TC-FA-SU-E2E-473-tab-transaction-admin-log-missing-filter-dan-download | FE+BE |
+| TC-FA-SU-1185 | E2E | TC-FA-SU-E2E-473-tab-transaction-admin-log-missing-filter-dan-download | FE+BE |
+| TC-FA-SU-1186 | E2E | TC-FA-SU-E2E-474-routing-tab-transaction-admin-log-damaged-missing-dan-disposal | FE+BE |
+| TC-FA-SU-1187 | E2E | TC-FA-SU-E2E-474-routing-tab-transaction-admin-log-damaged-missing-dan-disposal | FE+BE |
+| TC-FA-SU-1188 | E2E | TC-FA-SU-E2E-475-aksi-pemegang-tidak-masuk-sub-tab-damaged-dan-missing | FE+BE |
+| TC-FA-SU-1189 | E2E | TC-FA-SU-E2E-476-tab-transaction-admin-log-assignment-format-assignee-dan-hover-pic-saat-tindakan | FE+BE |
+| TC-FA-SU-1190 | E2E | TC-FA-SU-E2E-477-tab-transaction-admin-log-audit-baris-tingkat-task-dan-activity-nama-node | FE+BE |
+| TC-FA-SU-1191 | E2E | TC-FA-SU-E2E-478-tab-transaction-admin-log-maintenance-routine-peristiwa-system-tidak-tampil | FE+BE |
 
 ---
 
 ## 4. Catatan Penulisan
 
-- Nomor TC yang tidak ada di file TC: tidak ada.
+- Nomor TC yang tidak ada di file TC: dua nomor pada rentang 1 sampai 1191 tidak dipakai, sehingga total 1189 TC aktif. Nomor spec E2E-466 dan E2E-467 tidak dipakai (tidak ada spec bernomor itu).
 - Nomor cadangan dipakai oleh banyak slice untuk memecah spec yang melewati sekitar 35 langkah; pemetaan TC ke spec di bagian 1 dan 3 mengikuti hasil akhir (sourceTc di frontmatter), bukan tabel rencana awal. Slug beberapa spec (mis. 004, 005, 043, 353-356) tidak lagi persis sama dengan isinya karena TC dipindah ke nomor cadangan.
 - TC yang sengaja ada di dua spec (spec asal dan spec absence kelas g, S-05): 125, 126, 127, 128, 129, 130, 146, 148, 171, 183, 222, 223, 272, 304, 305, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 997, 998, 1004, 1067, 1089 (dibagi per aktor Sinta dan Qori: 389 dan 401), 1099 (399 fungsional dan 400 absence). `check-suite.py` menandai ini sebagai C2; itu disengaja.
 - Banyak spec melewati 35 langkah dan memuat alasan di Notes (C6); penyebab utama: satu `Verifikasi` per klausa Expected (S-01) dan ekspansi blok berulang per kolom.

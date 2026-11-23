@@ -7,6 +7,7 @@ status: draft
 sourceTc:
   - TC-FA-SU-764
   - TC-FA-SU-795
+  - TC-FA-SU-1172
 coverage:
   web: automated
 ---
@@ -41,22 +42,39 @@ coverage:
 13. Klik `[Try Again]`
 14. Verifikasi `[Try Again]` memuat ulang data: pesan `Unable to load this data.` tidak lagi tampil
 
-### TC-FA-SU-795: Empty state, hasil pencarian kosong, loading, dan error load Tab Transaction Admin Log sub-tab Borrowing & Assignment
+### TC-FA-SU-795: Empty state, hasil pencarian kosong, loading, dan error load Tab Transaction Admin Log sub-tab Borrow
 
-15. Buka Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrowing & Assignment
+15. Buka Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrow
 16. Verifikasi data kosong sungguhan menampilkan ilustrasi 100x100 dengan Title `No transaction log yet` dan Description `Transactions this user has processed as PIC will appear here.`
 17. Ketik Search `zzzz`, tekan Enter
 18. Verifikasi Search tanpa hasil menampilkan Title `No results found` dan Description `Try adjusting your search or filter.`
-19. Atur intercept respons data Tab Transaction Admin Log sub-tab Borrowing & Assignment menjadi lambat (ditahan)
-20. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrowing & Assignment
+19. Atur intercept respons data Tab Transaction Admin Log sub-tab Borrow menjadi lambat (ditahan)
+20. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrow
 21. Verifikasi saat memuat, skeleton 5 baris sesuai kolom aktual tampil
-22. Ganti intercept respons data Tab Transaction Admin Log sub-tab Borrowing & Assignment menjadi 500
-23. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrowing & Assignment
+22. Ganti intercept respons data Tab Transaction Admin Log sub-tab Borrow menjadi 500
+23. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Borrow
 24. Verifikasi fetch gagal menampilkan `Unable to load this data.` dengan tombol `[Try Again]`
 25. Verifikasi tampilan fetch gagal bukan empty state
-26. Lepas intercept respons data Tab Transaction Admin Log sub-tab Borrowing & Assignment
+26. Lepas intercept respons data Tab Transaction Admin Log sub-tab Borrow
 27. Klik `[Try Again]`
 28. Verifikasi `[Try Again]` memuat ulang data: pesan `Unable to load this data.` tidak lagi tampil
+
+### TC-FA-SU-1172: Empty state, hasil pencarian kosong, loading, dan error load Tab Transaction Admin Log sub-tab Assignment
+
+29. Buka Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Assignment
+30. Verifikasi data kosong sungguhan menampilkan ilustrasi 100x100 dengan Title `No transaction log yet` dan Description `Transactions this user has processed as PIC will appear here.`
+31. Ketik Search `zzzz`, tekan Enter
+32. Verifikasi Search tanpa hasil menampilkan Title `No results found` dan Description `Try adjusting your search or filter.`
+33. Atur intercept respons data Tab Transaction Admin Log sub-tab Assignment menjadi lambat (ditahan)
+34. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Assignment
+35. Verifikasi saat memuat, skeleton 5 baris sesuai kolom aktual tampil
+36. Ganti intercept respons data Tab Transaction Admin Log sub-tab Assignment menjadi 500
+37. Buka ulang Detail Hana Kusuma > Tab Transaction Admin Log > Sub-tab Assignment
+38. Verifikasi fetch gagal menampilkan `Unable to load this data.` dengan tombol `[Try Again]`
+39. Verifikasi tampilan fetch gagal bukan empty state
+40. Lepas intercept respons data Tab Transaction Admin Log sub-tab Assignment
+41. Klik `[Try Again]`
+42. Verifikasi `[Try Again]` memuat ulang data: pesan `Unable to load this data.` tidak lagi tampil
 
 ## Notes
 
@@ -67,6 +85,7 @@ coverage:
 - Pembagian TC lintas spec:
   - TC-FA-SU-764: format dan nama berkas TC-FA-SU-759 di spec 250, transformasi data TC-FA-SU-761 di spec 373, Download gagal TC-FA-SU-762 di spec 368.
   - TC-FA-SU-795: format dan nama berkas TC-FA-SU-790 di spec 262, transformasi data TC-FA-SU-792 di spec 373, Download gagal TC-FA-SU-793 di spec 368.
+  - TC-FA-SU-1172: format, nama berkas, kolom, dan jumlah baris Download TC-FA-SU-1167 dan 1168 di spec 465, transformasi data TC-FA-SU-1169 di spec 373, Download gagal TC-FA-SU-1170 di spec 368.
 - Pemetaan butir Expected: butir a, b, c, dan d TC masing-masing menjadi satu `Verifikasi` (butir d dipecah per klausa: tampilan fetch gagal beserta `[Try Again]`, bukan empty state, dan `[Try Again]` memuat ulang data).
 - Temuan untuk QA (S-15):
   - TC-FA-SU-764: precondition b menyebut halaman target Budi Santoso, sedangkan Langkah Uji 1 membuka pengguna tanpa data (Hana Kusuma); spec mengikuti Langkah Uji 1.
@@ -75,3 +94,7 @@ coverage:
   - TC-FA-SU-795: Pre-setup #29 hanya mencantumkan Transaction Admin Log Budi Santoso; Hana Kusuma kosong hanya tersirat.
   - Keyword Search tanpa hasil, cara melambatkan respons, dan jeda tahan tidak diberi nilai oleh TC; spec memakai `zzzz` dan intercept ditahan sampai kondisi `Verifikasi` selesai. Butir b menyebut "Search atau Filter" tanpa hasil, sedangkan Langkah Uji hanya memakai keyword (Search); Filter tanpa hasil tidak dijalankan.
   - Hasil akhir `[Try Again]` (butir d, "memuat ulang data") tidak dinyatakan TC; spec mengasersi pesan `Unable to load this data.` tidak lagi tampil setelah intercept dilepas. Langkah Uji "Ulangi" ditafsirkan sebagai membuka ulang surface (Search tidak terbawa) karena TC tidak menyatakan apakah keyword Search bertahan setelah muat ulang.
+  - Kolom ACC TC sumber menyebut `#20`, yaitu Client `FaUserMain`, bukan akun; aktor diambil dari hook suite (Lina Marlina, #1).
+  - TC-FA-SU-795 dan TC-FA-SU-1172 memakai Hana Kusuma (Pending Activation) sebagai pengguna tanpa transaksi; Pre-setup tidak menyatakan Transaction Admin Log Hana Kusuma kosong.
+  - TC-FA-SU-1172: precondition b menyebut halaman target Budi Santoso, sedangkan Langkah Uji 1 membuka pengguna tanpa data (Hana Kusuma); spec mengikuti Langkah Uji 1. Butir b menyebut "Search atau Filter" tanpa hasil, sedangkan Langkah Uji hanya memakai keyword (Search); Filter tanpa hasil tidak dijalankan.
+- Spec ini berjumlah 42 langkah dan di atas sekitar 35 langkah. Alasan: ketiga TC satu kelas harness (b, fault injection pada pembacaan data) dengan pola yang sama, tiap TC memakai surface-nya sendiri dan berdiri sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; ukuran berasal dari satu `Verifikasi` per klausa Expected (S-01), bukan dari langkah tambahan.
