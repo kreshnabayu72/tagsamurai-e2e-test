@@ -2973,3 +2973,16 @@ Aturan:
 - **Diterapkan di:** spec SES 045 (Notes "Ditahan"), tabel `## Ditahan` di `docs/coverage/AuthSessionManagement.md`, dan entri 045 di `docs/mobile-specs-review.md` (dipindah ke kelompok Murni mobile).
 - **Diputuskan oleh:** pemilik spec 2026-11-23 (sinkronisasi jawaban tim mobile).
 - **Status:** berlaku.
+
+## D-285 Aturan umum: batas pilihan pada filter multi-select dan tree (Category/Group) (2026-11-23)
+
+- **Spec / langkah:** semua spec yang memilih nilai di filter multi-select atau filter tree Category/Group (Filter Panel tabel live, §19.1–19.2 `prd-conventions.md`).
+- **Spec meminta:** belum ada aturan batas pilihan untuk filter; SYS-LIMIT-02 (`admin-console/_foundation/core-rules/system-limits.md` L20–25) hanya menulis seleksi baris tabel.
+- **Keputusan:**
+  - Filter multi-select dan filter tree dibatasi Selection Limit (`selection_limit`, SYS-LIMIT-01), sama seperti seleksi tabel. Filter tidak punya Select All.
+  - Hitungan = node/opsi yang bisa dipilih dan tercentang. Di tree, parent ikut dihitung (centang "Finance" dengan 3 sub-group = 4). Ancestor konteks (abu-abu, tidak dalam cakupan) tidak dihitung dan ID-nya tidak dikirim.
+  - Checkbox yang bila dicentang membuat total lewat batas tampil disabled dengan tooltip. Di tree ini berlaku juga untuk parent: parent disabled bila semua sub-nya tidak muat, sub-nya tetap bisa dicentang satu per satu sampai batas. Uncheck selalu bisa.
+  - Tooltip mengikuti nama field: `"You've reached the maximum selection of {limit} categories."` / `"... {limit} groups."` (bentuk jamak nama field, huruf kecil).
+- **Untuk spec:** filter multi-select/tree tidak bisa melewati Selection Limit; checkbox yang akan melewatinya disabled dengan tooltip `"You've reached the maximum selection of {limit} <nama field jamak>."`; ancestor abu-abu tidak dihitung.
+- **Diputuskan oleh:** owner 2026-11-23 (jawaban product owner, lewat Coordinator).
+- **Status:** berlaku.
