@@ -2985,4 +2985,20 @@ Aturan:
   - Tooltip mengikuti nama field: `"You've reached the maximum selection of {limit} categories."` / `"... {limit} groups."` (bentuk jamak nama field, huruf kecil).
 - **Untuk spec:** filter multi-select/tree tidak bisa melewati Selection Limit; checkbox yang akan melewatinya disabled dengan tooltip `"You've reached the maximum selection of {limit} <nama field jamak>."`; ancestor abu-abu tidak dihitung.
 - **Diputuskan oleh:** owner 2026-11-23 (jawaban product owner, lewat Coordinator).
+- **Status:** perilaku tree dan header tabel diubah oleh D-286 (2026-11-23); hitungan, tooltip dan tanpa Select All tetap.
+
+## D-286 Aturan umum: batas pilihan di tree dan header tabel, parent tidak disabled sebelum batas tercapai (2026-11-23)
+
+- **Spec / langkah:** semua spec yang memilih node di filter tree Category/Group atau mencentang checkbox header tabel yang punya Selection Limit. Mengubah D-285 "Aturan umum: batas pilihan pada filter multi-select dan tree" (catatan: nomor D-285 juga dipakai entri Session Management; rujukan batas pilihan selanjutnya memakai D-286).
+- **Spec meminta:** D-285 menetapkan parent tree disabled dengan tooltip bila semua sub-nya tidak muat.
+- **Kenyataannya:** di komponen, parent sudah disabled dan tooltip "You've reached…" tampil sebelum ada pilihan apa pun, padahal batas belum tercapai.
+- **Keputusan:**
+  - Tree: parent, termasuk ancestor konteks (abu-abu), selalu bisa diklik. Klik parent mencentang sub-nya berurutan sampai batas; bila tidak semua muat, parent tampil indeterminate.
+  - Node baru disabled dengan tooltip `"You've reached the maximum selection of {limit} <nama field jamak>."` hanya saat batas benar-benar tercapai.
+  - Parent indeterminate saat tidak ada sisa ruang: klik = uncheck seluruh subtree-nya. Uncheck selalu bisa.
+  - Hitungan tetap seperti D-285: node `selectable` yang tercentang, parent ikut dihitung, ancestor abu-abu tidak dihitung dan ID-nya tidak dikirim.
+  - Tabel: saat jumlah terpilih = Selection Limit, checkbox header tampil checked (bukan indeterminate); klik = unselect all.
+  - Filter multi-select: tetap D-285 (tanpa Select All, opsi disabled dengan tooltip saat batas tercapai).
+- **Untuk spec:** di filter tree, parent tidak pernah disabled sebelum batas tercapai; klik parent mencentang sub sampai batas (parent indeterminate bila terpotong); disabled + tooltip hanya saat batas tercapai. Di tabel, header checkbox checked saat terpilih = batas, klik header = unselect all.
+- **Diputuskan oleh:** owner 2026-11-23 (setelah melihat perilaku di Storybook; lewat workflow owner dan Coordinator). Komponen: wangs-ui rc.358.
 - **Status:** berlaku.
