@@ -2947,3 +2947,14 @@ Aturan:
 - **Untuk spec:** TC-961 Expected b mengikuti EC-87.
 - **Diputuskan oleh:** Coordinator 2026-11-20 (dari sesi client).
 - **Status:** berlaku.
+
+## D-284 Confirm to Continue: "Read the full Privacy Policy" membuka dialog, bukan tab baru (2026-11-23)
+
+- **Spec / langkah:** `TC-AUTH-LP-E2E-020` TC-AUTH-LP-91 langkah 31–35; langkah setara di `TC-AUTH-SES-E2E-006` (biometric, mobile).
+- **Spec meminta:** dokumen Privacy Policy versi aktif terbuka di tab baru, layar Confirm to Continue tetap di tab semula, lalu tab dokumen ditutup.
+- **Kenyataannya:** tautan membuka dialog berisi Privacy Policy versi aktif yang dibaca dari API Privacy Policy (`GET /privacy-policy/current`). Layar Confirm to Continue tetap di belakang dialog, checkbox tidak berubah.
+- **Karena:** PRD login-password §4.2b hanya menyebut tautan "membuka dokumen Privacy Policy versi aktif" tanpa menetapkan target (NC-09 di tc-login-password.md). Dialog berjalan sama di web dan mobile (Biometric Re-login tidak punya tab), dan pengguna tidak meninggalkan alur login.
+- **Keputusan:** langkah 32 memverifikasi dialog Privacy Policy tampil dengan isi versi aktif; langkah 33–34 tetap (layar dan checkbox di belakang dialog); langkah 35 menutup dialog.
+- **Untuk spec:** "Read the full Privacy Policy" membuka dialog berisi Privacy Policy versi aktif, bukan tab baru.
+- **Diputuskan oleh:** owner 2026-11-23 (lewat Coordinator).
+- **Status:** berlaku.
