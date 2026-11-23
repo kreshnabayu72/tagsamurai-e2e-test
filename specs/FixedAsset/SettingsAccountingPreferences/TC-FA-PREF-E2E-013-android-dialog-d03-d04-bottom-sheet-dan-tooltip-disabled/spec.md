@@ -36,7 +36,7 @@ coverage:
   | TC-FA-PREF-72 | Read Only | PA-4 | `readOnlyFixedAsset_automated_{namaCompany}@qwertysystem.net` | `Spectra.env.FA_RO_PASSWORD` |
 - Login akun aktor pertama (Total Control, company `PT Contoh Konstruksi`) di aplikasi Android di hook `before` spec ini. Pengecualian atas `suite.md`: hook `beforeEach` web suite tidak membuka layar untuk spec ini; langkah membuka Tab Preferences ditulis di langkah. Ganti akun ke Read Only memakai langkah logout dan login eksplisit; hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Env var `FA_TC_PASSWORD` dan `FA_RO_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data awal (seed di hook `before`): Preferences company dalam nilai awal (PC-1, setara PA-2): Fiscal Year Start January, In-service Date Source Activation date; tidak terkunci; belum ada posting penyusutan; semua periode Open; Asset Class IT Equipment tersedia.
+- Data awal (seed di hook `before`): Preferences company dalam nilai awal (PC-1, setara PA-2): Fiscal Year Start January, In-service Date Source Activation date; tidak terkunci; belum ada posting penyusutan; Asset Class IT Equipment tersedia.
 - Pemicu TC-FA-PREF-606: posting penyusutan pertama pada Asset Class IT Equipment dibuat lewat sesi API aktor (butir "Sesi API aktor" di `suite.md`) setelah dialog Save Changes terbuka. Pemulihan: seed ulang PC-1 (tanpa posting penyusutan) lewat API pada langkah penghubung dan di hook `after`. Kemampuan penandaan posting penyusutan pertama disediakan tim FE/BE.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk setiap akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
 - Seed dan pemulihan lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
@@ -52,7 +52,7 @@ coverage:
 4. Lewat sesi API aktor, tandai posting penyusutan pertama pada Asset Class IT Equipment hingga tersimpan
 5. Ketuk `[Save]` pada dialog Save Changes
 6. Verifikasi dialog "Cannot Save Preferences" tampil sebagai bottom sheet (bukan dialog tengah layar)
-7. Verifikasi body dialog: "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted or a period has been closed. The page has been reloaded with the latest lock status."
+7. Verifikasi body dialog: "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted. The page has been reloaded with the latest lock status."
 8. Verifikasi dialog hanya memuat tombol `[OK]`
 9. Ketuk `[OK]`
 10. Seed ulang Preferences company ke PC-1 (tanpa posting penyusutan) lewat API lalu buka ulang Tab Preferences pada aplikasi Android

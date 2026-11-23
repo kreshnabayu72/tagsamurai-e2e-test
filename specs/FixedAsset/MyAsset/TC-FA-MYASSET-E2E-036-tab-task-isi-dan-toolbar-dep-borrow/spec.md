@@ -5,13 +5,13 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["T-MYA-01", "§1.2#r10", "§1.2#r20", "§5#r4", "§5#r6", "§9.2#b1", "§9.4.2#r1", "§10#r3", "EB-SRC-5@tabel-task"]
+sourceRules: ["T-MYA-01", "§1.2#r11", "§1.2#r21", "§5#r4", "§5#r6", "§9.2#b1", "§9.4.2#r1", "§10#r3", "EB-SRC-5@tabel-task"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
   "T-MYA-01": [9, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 24, 26, 28, 30]
-  "§1.2#r10": 8
-  "§1.2#r20": 7
+  "§1.2#r11": 8
+  "§1.2#r21": 7
   "§5#r4": 9
   "§5#r6": 46
   "§9.2#b1": [8, 13]

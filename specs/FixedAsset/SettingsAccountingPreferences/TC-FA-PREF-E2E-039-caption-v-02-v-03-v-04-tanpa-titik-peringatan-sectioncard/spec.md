@@ -37,8 +37,8 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` pada company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data: seri PC (TC-FA-PREF-362-621), company `PT Contoh Konstruksi` plan Growth (PC-1): Preferences nilai awal (Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, akun default kosong), periode Mar 2026 sampai Dec 2026 Open, belum ada posting penyusutan.
-- Data: akun Chart of Accounts PC-5 (`1-1001 – Kas Utama`, Active, function Asset Cost). Untuk TC-FA-PREF-619 seed memuat versi kedua Tax Depreciation Class ber-Effective From (PC-3) dan transaksi bertanggal paling awal 15 Mei 2026 (PC-4); Fiscal Year Start dan First Accounting Period tidak terkunci.
+- Data: seri PC (TC-FA-PREF-362-621), company `PT Contoh Konstruksi` plan Growth (PC-1): Preferences nilai awal (Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, akun default kosong), belum ada posting penyusutan.
+- Data: akun Chart of Accounts PC-5 (`1-1001 – Kas Utama`, Active, function Asset Cost). Untuk TC-FA-PREF-619 seed memuat versi kedua Tax Depreciation Class ber-Effective From (PC-3) dan baris Disposal Executed terawal ber-Execution date 15 Mei 2026 (PC-4); Fiscal Year Start dan First Accounting Period tidak terkunci.
 - Kemampuan teknis: sesi API Total Control (butir "Sesi API aktor" di `suite.md`): pelaku kedua yang hanya memicu perubahan state; token tidak dihitung sebagai sesi web. Dipakai untuk mengubah status akun `1-1001 – Kas Utama` menjadi Inactive pada TC-FA-PREF-617.
 - Seed dan pemulihan lewat API (Preferences ke nilai awal, plan, penguncian, versi Tax Depreciation Class, transaksi bertanggal, akun Chart of Accounts) disediakan tim FE/BE: butir "Seed dan pemulihan lewat API" di `suite.md`. Hook `after` spec ini memulihkan state server yang diubah spec ke nilai awal.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -73,7 +73,7 @@ coverage:
 
 ### TC-FA-PREF-619: Save yang ditolak V-09 dan V-10 tidak menampilkan titik peringatan pada judul SectionCard General
 
-16. Pulihkan akun `1-1001 – Kas Utama` ke Active dan siapkan seed PC-3 dan PC-4 (versi kedua Tax Depreciation Class ber-Effective From; transaksi bertanggal paling awal 15 Mei 2026) lewat seed API hingga tersimpan
+16. Pulihkan akun `1-1001 – Kas Utama` ke Active dan siapkan seed PC-3 dan PC-4 (versi kedua Tax Depreciation Class ber-Effective From; baris Disposal Executed terawal ber-Execution date 15 Mei 2026) lewat seed API hingga tersimpan
 17. Buka ulang Fixed Asset > Settings > Accounting > Preferences
 18. Ubah Select Fiscal Year Start dari "January" menjadi "April"
 19. Ubah Select bulan First Accounting Period dari "March" menjadi "June"
@@ -82,7 +82,7 @@ coverage:
 22. Verifikasi dialog D-01 ditutup
 23. Verifikasi form tetap memuat seluruh perubahan yang belum disimpan
 24. Verifikasi caption "Fiscal year start cannot be changed because tax depreciation class versions already exist." tampil pada Select Fiscal Year Start
-25. Verifikasi caption "First accounting period cannot be later than existing dated transactions." tampil pada First Accounting Period
+25. Verifikasi caption "First accounting period cannot be later than May 2026, the earliest disposal or value change." tampil pada First Accounting Period
 26. Verifikasi judul SectionCard General tidak menampilkan titik peringatan (Badge Standalone Dot) karena tidak ada setting wajib di section itu yang kosong
 27. Verifikasi tidak ada toast dan tidak ada dialog D-03
 28. Klik `[Cancel]`
@@ -96,4 +96,4 @@ coverage:
 - Temuan untuk QA:
   - TC-FA-PREF-617 tidak menyatakan apakah form kembali pristine setelah Select Found Asset Credit Account dikosongkan otomatis; spec tidak menambah `[Cancel]` setelahnya dan memulihkan akun lewat seed pembuka blok TC-FA-PREF-619.
   - TC-FA-PREF-619 Precondition d menyatakan PC-3 dan PC-4 ada pada seed yang sama, sedangkan Data Pre-setup mendefinisikannya sebagai varian company terpisah; spec memakai satu seed gabungan.
-  - Post Condition TC yang tidak punya langkah observasi di TC (nilai tersimpan, periode dibangun ulang, entri log) tidak diasersi; Post Condition "tidak ada entri log baru" dicatat sebagai rujukan ke spec absence (S-05) dan tidak diklaim teruji di spec ini.
+  - Post Condition TC yang tidak punya langkah observasi di TC (nilai tersimpan, kalender periode mengikuti nilai baru, entri log) tidak diasersi; Post Condition "tidak ada entri log baru" dicatat sebagai rujukan ke spec absence (S-05) dan tidak diklaim teruji di spec ini.

@@ -5,29 +5,31 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-08, §4.2.4#p7, §4.2.4#r12, TS-DMG-07, §Aturan Logika Modul#r53, §Aturan Logika Modul#r23, §Aturan Logika Modul#r32, §Aturan Logika Modul#r35, §8.1#r9, §9.7#r7, §4.8#r7, §2.1#r5, §4.2.4#p5, EC-DMG-07, §9.4.4#r16, §9.6#r4, F-DMG-04, T-DMG-02, EB-FB-1@cancel-report]
+sourceRules: [D-DMG-08, §4.2.4#p8, §4.2.4#r13, TS-DMG-07, §Aturan Logika Modul#r55, §Aturan Logika Modul#r24, §Aturan Logika Modul#r34, §Aturan Logika Modul#r37, §8.1#r9, §9.7#r7, §4.8#r7, §2.1#r5, §4.2.4#p6, EC-DMG-07, §9.4.4#r18, §9.6#r4, F-DMG-04, T-DMG-02, §3#p4, §4.2.4#r17, EB-FB-1@cancel-report]
 smoke: [EB-FB-1@cancel-report]
 dependsOn:
   - "My Asset: status laporan dan Cancel Report"
 trace:
   D-DMG-08: [3, 5]
-  §4.2.4#p7: [3, 4, 5]
-  §4.2.4#r12: [3, 7]
+  §4.2.4#p8: [3, 4, 5]
+  §4.2.4#r13: [3, 7]
   TS-DMG-07: 7
-  §Aturan Logika Modul#r53: [1, 8]
-  §Aturan Logika Modul#r23: [8, 23]
-  §Aturan Logika Modul#r32: 19
-  §Aturan Logika Modul#r35: [1, 37]
+  §Aturan Logika Modul#r55: [1, 8]
+  §Aturan Logika Modul#r24: [8, 23]
+  §Aturan Logika Modul#r34: 19
+  §Aturan Logika Modul#r37: [1, 37]
   §8.1#r9: 25
   §9.7#r7: [19, 23]
   §4.8#r7: [1, 30, 32, 34, 36]
   §2.1#r5: 1
-  §4.2.4#p5: [12, 13, 15]
+  §4.2.4#p6: [12, 13, 15]
   EC-DMG-07: [12, 15]
-  §9.4.4#r16: 12
+  §9.4.4#r18: 12
   §9.6#r4: 7
   F-DMG-04: [7, 8]
   T-DMG-02: 23
+  §3#p4: [8, 23]
+  §4.2.4#r17: [12, 13]
   EB-FB-1@cancel-report: 7
 anchor: [29, 31, 33, 35]
 coverage:

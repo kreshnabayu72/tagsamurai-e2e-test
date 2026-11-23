@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.7#p1", "§9.7#b1", "§9.7#b2", "§9.7#b3", "§9.7#r17", "V-DMG-11", "EC-DMG-19", "EC-DMG-20", "EC-DMG-29", "§9.4.4#r13", "§9.4.4#r18", "§9.4.1#r13", "§9.4.1#r14", "§9.4.1#r10", "T-DMG-01", "T-DMG-02"]
+sourceRules: ["§9.7#p1", "§9.7#b1", "§9.7#b2", "§9.7#b3", "§9.7#r17", V-DMG-11, EC-DMG-19, EC-DMG-20, EC-DMG-29, "§9.4.4#r14", "§9.4.4#r20", "§9.4.1#r13", "§9.4.1#r14", "§9.4.1#r10", T-DMG-01, T-DMG-02, "§9.7#r18"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -14,18 +14,19 @@ trace:
   "§9.7#b1": [2, 3, 5, 9, 23, 38, 40]
   "§9.7#b2": [11, 12, 14, 24, 56]
   "§9.7#b3": [2, 7, 12, 15, 17, 19, 21, 43, 44]
-  "§9.7#r17": [23, 24]
+  "§9.7#r17": [23, 24, 66, 68, 69]
   V-DMG-11: [28, 30]
   EC-DMG-19: 26
   EC-DMG-20: [28, 30]
   EC-DMG-29: [23, 24]
-  "§9.4.4#r13": [28, 30]
-  "§9.4.4#r18": 26
+  "§9.4.4#r14": [28, 30]
+  "§9.4.4#r20": 26
   "§9.4.1#r13": 26
-  "§9.4.1#r14": [28, 30]
+  "§9.4.1#r14": [28, 30, 64]
   "§9.4.1#r10": 33
-  T-DMG-01: [2, 3, 5, 11, 17, 19]
-  T-DMG-02: [7, 14, 15, 21]
+  T-DMG-01: [2, 3, 5, 11, 17, 19, 60]
+  T-DMG-02: [7, 14, 15, 21, 61]
+  "§9.7#r18": [60, 61, 62, 63, 64, 65, 70, 71]
 ---
 
 # Field Reflected ikut berubah saat pemilik berubah, field Snapshot membeku mengikuti node, Days Damaged dan Duration dihitung per zona waktu company, Group record ikut Transfer, pelapor nonaktif tidak mengubah record, dan Group ber-record berjalan tidak dapat dihapus
@@ -49,7 +50,7 @@ trace:
   - DU-210-10: Group `Divisi Gudang {runId}`, tanpa sub-group, punya record berjalan.
   - DU-210-11: Group `Divisi Pusat {runId}`, punya sub-group `Sub Pusat {runId}` yang punya record berjalan.
   - DU-210-12: Aset `Laptop Lenovo ThinkPad - 201 {runId}`, Group `Head Office {runId}`, punya record `Damaged` Source `Manual` dilaporkan `Agus P`, Last Holder `Budi S`, Asset ID `LPT-0201-{runId}`, Brand `Lenovo {runId}`, Model/Type `ThinkPad X1 {runId}`, Division `Keuangan {runId}`, Purchase Cost `12500000`, Asset Value (Commercial) `10000000`.
-  - DU-210-13: Aset `Printer HP LaserJet M404 - 202 {runId}`, Group `Head Office {runId}`, punya record `Repaired` dengan Resolved Date `T0 − 2 hari, pukul 00:30`, Group saat selesai `Head Office {runId}`, Asset Value (Commercial) saat selesai `8000000`, Asset Value (Fiscal) saat selesai `6500000`, Category saat selesai `Elektronik {runId}`, Purchase Cost `3000000`, Alias Name `Printer Lobi {runId}`.
+  - DU-210-13: Aset `Printer HP LaserJet M404 - 202 {runId}`, Group `Head Office {runId}`, punya record `Repaired` dengan Resolved Date `T0 − 2 hari, pukul 00:30`, Group saat selesai `Head Office {runId}`, Asset Value (Commercial) saat selesai `8000000`, Asset Value (Fiscal) saat selesai `6500000`, Category saat selesai `Elektronik {runId}`, Purchase Cost `3000000`, Alias Name `Printer Lobi {runId}`, Damaged Photo pertama `printer-rusak.jpg`, After photo `sesudah-perbaikan.jpg`.
   - DU-210-14: Aset `Tablet Samsung Tab A8 - 203 {runId}`, Group `Head Office {runId}`, punya record `Damaged` dengan Reported Date `T0, pukul 01:00` zona waktu `Asia/Jakarta`.
   - DU-210-15: Aset `Camera Canon EOS - 204 {runId}`, Group `Head Office {runId}`, punya record `Waiting for Confirmation` dengan Reported Date `T0 − 2 hari, pukul 10:00`.
   - DU-210-16: Aset `Camera Canon EOS - 205 {runId}`, Group `Head Office {runId}`, punya record `Damaged` ditahan penanda `Missing` dengan Reported Date `T0 − 3 hari, pukul 10:00`.
@@ -66,7 +67,7 @@ trace:
   - DU-210-27: Konsumen `assignment/` dengan surface baris penugasan.
   - DU-210-28: Konsumen `missing/` dengan surface modul aset hilang.
   - DU-210-29: Konsumen `asset-registration/` dengan surface registrasi aset.
-  - DU-210-30: Konsumen `audit/` dengan surface sesi opname.
+  - DU-210-30: Konsumen `audit/` dengan surface sesi Audit.
   - DU-210-31: Konsumen `disposal/` dengan surface laporan pelepasan aset.
   - DU-210-32: Konsumen `transfer/` dengan surface pemindahan aset.
   - DU-210-33: Konsumen `settings-groups/` dengan surface pengelolaan Group.
@@ -85,7 +86,16 @@ trace:
   - DU-210-46: User `Wawan Setiadi {runId}`, Total Control, cakupan seluruh client, yang kemudian diganti namanya menjadi `Wawan Hidayat {runId}`.
   - DU-210-47: User `Dimas Prakoso {runId}`, pelapor umum, pemegang aset, cakupan aset yang ia pegang, yang kemudian diganti namanya menjadi `Dimas Kusuma {runId}`.
   - DU-210-49: Konsumen `asset-list/` dengan surface daftar aset.
+  - DU-210-50: Aset `Laptop Lenovo ThinkPad - 218 {runId}`, Group `Head Office {runId}`, dipegang `Budi Santoso {runId}`, punya record `Waiting for Confirmation` Source `Reported by holder` dari laporan `Budi Santoso {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`.
   - DU-210-48: Aset `Laptop Lenovo ThinkPad - 217 {runId}`, Group `Head Office {runId}`, punya record `Damaged` Source `Manual` dilaporkan `Wawan S`, Last Holder `Dimas P`.
+  - DU-210-51: User `Lina Marlina {runId}`, Manage asset & TAG (Update), Aktor Damaged, cakupan hanya Group `Cabang Asal {runId}`.
+  - DU-210-52: User `Bayu Santoso {runId}`, Manage asset & TAG (Update), Aktor Damaged, cakupan hanya Group `Cabang Tujuan {runId}`.
+  - DU-210-53: User `Wahyu Hidayat {runId}`, Aktor Transfer, cakupan Group `Cabang Asal {runId}` dan Group `Cabang Tujuan {runId}`.
+  - DU-210-54: Group `Cabang Asal {runId}`, tanpa sub-group, hanya berisi `Forklift Toyota 8FD - 219 {runId}` dan `Forklift Toyota 8FD - 220 {runId}`.
+  - DU-210-55: Group `Cabang Tujuan {runId}`, tanpa sub-group, hanya berisi `Forklift Toyota 8FD - 221 {runId}` sebelum pemindahan diterima.
+  - DU-210-56: Aset `Forklift Toyota 8FD - 219 {runId}`, Group `Cabang Asal {runId}`, punya record `Damaged` Source `Manual`, dalam pemindahan menuju `Cabang Tujuan {runId}`.
+  - DU-210-57: Aset `Forklift Toyota 8FD - 220 {runId}`, Group `Cabang Asal {runId}`, punya record `Damaged` Source `Manual`.
+  - DU-210-58: Aset `Forklift Toyota 8FD - 221 {runId}`, Group `Cabang Tujuan {runId}`, punya record `Damaged` Source `Manual`.
 - Kondisi:
   - Time Zone company bernilai `Asia/Jakarta`.
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
@@ -144,7 +154,7 @@ trace:
 35. Verifikasi status global aset `Office Chair Ergo - 211 {runId}` menjadi `Damaged` sebagai data tersimpan milik modul aset, dan jumlah pada badge tab Damaged bertambah satu sebagai tampilan turunan
 36. Konsumen modul lain membaca surface turunan dari record `Office Chair Ergo - 211 {runId}`
 37. Verifikasi halaman detail aset menampilkan banner `Damaged since [Date]` dengan tanggal Reported Date record
-38. Verifikasi modul aset hilang, registrasi aset, sesi opname, laporan pelepasan aset, pemindahan aset, dan pengelolaan Group membaca status atau Group record yang sama tanpa salinan sendiri
+38. Verifikasi modul aset hilang, registrasi aset, sesi `Audit`, laporan pelepasan aset, pemindahan aset, dan pengelolaan Group membaca status atau Group record yang sama tanpa salinan sendiri
 
 ### Field Reflected TAG, Labels, Asset Class, dan Category ikut berubah saat pemilik berubah
 39. Pemilik aset mengubah TAG `RFID-L214 {runId}` menjadi `QR-L214 {runId}`, Labels `Prioritas {runId}` menjadi `Garansi {runId}`, Asset Class `Laptop {runId}` menjadi `Perangkat Kerja {runId}`, dan Category `Elektronik {runId}` menjadi `Peralatan Kantor {runId}` pada `Laptop Lenovo ThinkPad - 214 {runId}`
@@ -175,3 +185,22 @@ trace:
 ### Konsumen daftar aset membaca status global yang sama dari record
 57. Konsumen `asset-list/` membaca daftar aset yang memuat `Office Chair Ergo - 211 {runId}`
 58. Verifikasi daftar aset itu menampilkan status `Damaged` untuk `Office Chair Ergo - 211 {runId}` dari record yang sama
+
+### Delete File Manager atas Damaged Photo dan After photo mengosongkan rujukan foto tanpa mengubah status
+59. Total Control `Agus Pratama {runId}` menghapus berkas Damaged Photo milik laporan `Laptop Lenovo ThinkPad - 218 {runId}` dan berkas After photo milik Mark as Repaired `Printer HP LaserJet M404 - 202 {runId}` dari `File Manager`
+60. Verifikasi rujukan Damaged Photo pada node `Reported damaged by` record Active `Laptop Lenovo ThinkPad - 218 {runId}` dikosongkan di respons server
+61. Verifikasi rujukan Damaged Photo pertama `printer-rusak.jpg` pada node `Reported damaged by` record History `Printer HP LaserJet M404 - 202 {runId}` tetap ada di respons server, karena yang dihapus hanya After photo
+62. Verifikasi respons Damage Log `Laptop Lenovo ThinkPad - 218 {runId}` tidak memuat rujukan Damaged Photo pada node `Reported damaged by`, sedangkan What happened `Layar retak setelah terjatuh dari meja {runId}` tetap ada
+63. Verifikasi respons Damage Log di `My Asset` pelapor `Budi Santoso {runId}` untuk `Laptop Lenovo ThinkPad - 218 {runId}` tidak memuat rujukan Damaged Photo
+64. Verifikasi penghapusan berkas itu tidak diblokir, status record `Laptop Lenovo ThinkPad - 218 {runId}` tetap `Waiting for Confirmation`, status record `Printer HP LaserJet M404 - 202 {runId}` tetap `Repaired`, dan status global serta penanda kedua aset tidak berubah
+65. Verifikasi respons Damage Log `Printer HP LaserJet M404 - 202 {runId}` tidak memuat rujukan After photo pada node `Marked as repaired by`
+
+### Transfer Completed menyinkronkan badge jumlah tab Damaged menurut cakupan Group pengguna
+66. Verifikasi badge jumlah tab Damaged yang dilihat `Lina Marlina {runId}` adalah `2` dan yang dilihat `Bayu Santoso {runId}` adalah `1`
+67. Aktor pemindahan aset `Wahyu Hidayat {runId}` menerima pemindahan `Forklift Toyota 8FD - 219 {runId}` ke Group `Cabang Tujuan {runId}`
+68. Verifikasi badge jumlah tab Damaged yang dilihat `Lina Marlina {runId}` menjadi `1` karena record `Forklift Toyota 8FD - 219 {runId}` keluar dari cakupan Group `Cabang Asal {runId}`
+69. Verifikasi badge jumlah tab Damaged yang dilihat `Bayu Santoso {runId}` menjadi `2` karena record `Forklift Toyota 8FD - 219 {runId}` sekarang berada di Group `Cabang Tujuan {runId}`
+
+### Kolom Photo hanya mengikuti Damaged Photo pertama, sedangkan After photo hanya memengaruhi node Marked as repaired by
+70. Verifikasi respons daftar record Active untuk `Laptop Lenovo ThinkPad - 218 {runId}` tidak lagi memuat Damaged Photo pada kolom Photo, karena Damaged Photo pertamanya sudah dihapus
+71. Verifikasi respons daftar record History untuk `Printer HP LaserJet M404 - 202 {runId}` tetap memuat Damaged Photo pertama `printer-rusak.jpg` pada kolom Photo, karena menghapus After photo tidak memengaruhi kolom Photo

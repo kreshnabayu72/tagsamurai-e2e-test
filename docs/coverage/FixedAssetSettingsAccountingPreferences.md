@@ -1,8 +1,8 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting Preferences
 
-Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (621 TC aktif `TC-FA-PREF-1`–`631`; TC 9–14, 326, 399, 400 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). Tidak ada `tc-settings-accounting-preferences-backend.md`.
+Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md` (619 TC aktif `TC-FA-PREF-1`–`643`; TC 9–14, 85, 239–242, 252, 253, 288, 326, 399, 400, 423, 559, 603, 604 dan 620 retired). Suite: `specs/FixedAsset/SettingsAccountingPreferences/`. Prefix: `FA` + `PREF` (`TC-FA-PREF-E2E-*`). Status semua spec: `draft`, belum ada script (`web.test.ts`). `tc-settings-accounting-preferences-backend.md` ada (TC-FA-PREF-BE-*) tetapi tidak diturunkan menjadi spec di suite ini.
 
-Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 621 TC aktif masuk 176 spec (154 nomor rencana, 17 nomor cadangan, dan 6 nomor tambahan 175-180), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
+Seleksi sesuai `docs/e2e-conventions.md` bagian 2: 619 TC aktif masuk 179 spec (152 nomor rencana, 17 nomor cadangan, 6 nomor tambahan 175-180, dan 5 nomor tambahan 181-185; spec 163 dan 164 dihapus karena seluruh TC sumbernya dihapus), tidak ada TC hanya-BE. Setiap TC yang masuk terpetakan ke tepat satu spec.
 
 ## TC hanya-BE (tidak masuk spec)
 
@@ -18,7 +18,7 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-005-opsi-select-dan-multiselect-fiscal-year-start-first-accounting-period-in-service-depreciation-month-journal-grouping | Opsi Select dan MultiSelect: Fiscal Year Start, First Accounting Period, In-service Date Source, Depreciation in Disposal Month, Journal Grouping | FE+BE | 33 | 23, 24, 25, 26, 164, 165, 596 |
 | TC-FA-PREF-E2E-006-tooltip-ikon-info-setting-set-01-sampai-set-07 | Tooltip Ikon Info ⓘ Setting SET-01 sampai SET-07 | FE+BE | 14 | 29, 30, 31, 32, 33, 34, 35 |
 | TC-FA-PREF-E2E-007-tooltip-set-08-set-09-set-11-set-12-format-opsi-dan-placeholder-select | Tooltip Ikon Info ⓘ SET-08, SET-09, SET-11, SET-12, Format Opsi Select Akun, dan Placeholder Select Saat Nilai Kosong | FE+BE | 23 | 36, 37, 38, 39, 46, 47, 48, 49, 50 |
-| TC-FA-PREF-E2E-008-helper-text-disposal-documents-per-jenis-dokumen | Helper Text Disposal Documents per Jenis Dokumen | FE+BE | 13 | 40, 41, 42, 43, 44, 45 |
+| TC-FA-PREF-E2E-008-helper-text-disposal-documents-per-jenis-dokumen | Helper Text Disposal Documents per Jenis Dokumen | FE+BE | 11 | 40, 41, 43, 44, 45 |
 | TC-FA-PREF-E2E-009-guided-tooltip-kunjungan-pertama-step-1-sampai-4 | Guided Tooltip Preferences: Kunjungan Pertama Menampilkan Step 1 sampai Step 4 | FE+BE | 26 | 52, 53, 54, 55 |
 | TC-FA-PREF-E2E-010-guided-tooltip-back-done-skip-dan-replay | Guided Tooltip Preferences: [Back], [Done], [Skip], dan Replay Lewat [?] | FE+BE | 32 | 56, 57, 58, 59 |
 | TC-FA-PREF-E2E-011-aksesibilitas-keyboard-fokus-trap-label-dan-tooltip | Aksesibilitas: navigasi keyboard, fokus ter-trap dialog D-01 dan modal Changelog, label titik peringatan, tooltip keyboard | FE+BE | 28 | 60, 61, 62, 63, 64, 65 |
@@ -27,7 +27,7 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-014-shimmer-form-preferences-dan-modal-changelog | Shimmer: form Preferences dan modal Changelog saat data dimuat | FE+BE | 15 | 73, 295 |
 | TC-FA-PREF-E2E-015-banner-setup-incomplete-dan-titik-peringatan-sectioncard | Banner Setup Incomplete dan titik peringatan SectionCard: isi, tidak dapat ditutup, tidak tampil bila lengkap | FE+BE | 15 | 76, 77, 78, 79, 81, 82 |
 | TC-FA-PREF-E2E-016-banner-setup-incomplete-hilang-setelah-setting-wajib-disimpan | Banner Setup Incomplete hilang setelah setting wajib terakhir disimpan dan memuat setting kosong menurut urutan SectionCard | FE+BE | 18 | 80, 397, 398 |
-| TC-FA-PREF-E2E-017-kunci-fiscal-year-start-dan-first-accounting-period-gembok-tooltip | Kunci Fiscal Year Start dan First Accounting Period: gembok, tooltip, field lain tetap Enabled | FE+BE | 24 | 83, 84, 85, 86, 87, 124 |
+| TC-FA-PREF-E2E-017-kunci-fiscal-year-start-dan-first-accounting-period-gembok-tooltip | Kunci Fiscal Year Start dan First Accounting Period: gembok, tooltip, field lain tetap Enabled | FE+BE | 17 | 83, 84, 86, 87, 124 |
 | TC-FA-PREF-E2E-018-helper-peringatan-akun-default-inactive | Helper peringatan akun default Inactive pada keempat Select akun | FE+BE | 11 | 91, 92, 93, 94, 95 |
 | TC-FA-PREF-E2E-019-spinner-saving-save-changes-tanpa-d01 | Spinner Saving pada [Save changes] saat Save tanpa dialog D-01 diproses | FE+BE | 20 | 89, 283 |
 | TC-FA-PREF-E2E-020-spinner-saving-save-pada-dialog-d01 | Spinner Saving pada [Save] di dialog Save Changes D-01 | FE+BE | 21 | 90, 284 |
@@ -55,11 +55,11 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-042-save-ditolak-akun-inactive-setelah-d-01-terbuka-dan-akun-tersimpan-inactive | Save ditolak akun Inactive setelah dialog D-01 terbuka; akun tersimpan Inactive tidak memblokir Save setting lain | FE+BE | 21 | 218, 556 |
 | TC-FA-PREF-E2E-043-validasi-v-09-fiscal-year-start-versi-tax-depreciation-class-alur-edit | Validasi V-09: perubahan Fiscal Year Start ditolak saat ada versi Tax Depreciation Class ber-Effective From (alur edit) | FE+BE | 33 | 152, 153, 154, 578 |
 | TC-FA-PREF-E2E-044-validasi-v-09-first-accounting-period-tidak-terpengaruh-versi-tdc | Validasi V-09: hanya First Accounting Period tidak terpengaruh; versi pertama tanpa Effective From tidak menghalangi Fiscal Year Start | FE+BE | 32 | 219, 220, 579, 580 |
-| TC-FA-PREF-E2E-045-validasi-v-10-first-accounting-period-transaksi-bertanggal-paling-awal | Validasi V-10: First Accounting Period terhadap transaksi bertanggal paling awal (satu bulan sebelum, sama, dan sesudah) | FE+BE | 23 | 155, 156, 157 |
-| TC-FA-PREF-E2E-046-first-accounting-period-batas-transaksi-bertanggal-paling-awal-seri-pb | Save First Accounting Period terhadap transaksi bertanggal paling awal: batas satu bulan sebelum, sama, dan sesudah (seri PB) | FE+BE | 35 | 222, 223, 224, 226 |
-| TC-FA-PREF-E2E-047-first-accounting-period-batas-transaksi-bertanggal-15-mei-2026-seri-pc | First Accounting Period terhadap transaksi bertanggal paling awal 15 Mei 2026: April, Mei, dan Juni (seri PC) | FE+BE | 23 | 585, 586, 587 |
-| TC-FA-PREF-E2E-048-versi-tdc-dan-transaksi-bertanggal-dibuat-setelah-dialog-save-terbuka | Versi Tax Depreciation Class dan transaksi bertanggal dibuat setelah dialog D-01 terbuka menolak Save | FE+BE | 19 | 221, 225 |
-| TC-FA-PREF-E2E-049-select-disposal-documents-sell-scrap-lost-hanya-required-dan-optional | Select Disposal Documents jenis Sell, Scrap, dan Lost hanya berisi Required dan Optional dan tidak dapat dikosongkan | FE+BE | 30 | 158, 159, 160 |
+| TC-FA-PREF-E2E-045-validasi-v-10-first-accounting-period-transaksi-bertanggal-paling-awal | Validasi V-10: First Accounting Period terhadap catatan berefek akuntansi terawal (satu bulan sebelum, sama, dan sesudah) | FE+BE | 23 | 155, 156, 157 |
+| TC-FA-PREF-E2E-046-first-accounting-period-batas-transaksi-bertanggal-paling-awal-seri-pb | Save First Accounting Period terhadap catatan berefek akuntansi terawal: batas satu bulan sebelum, sama, dan sesudah (seri PB) | FE+BE | 35 | 222, 223, 224, 226 |
+| TC-FA-PREF-E2E-047-first-accounting-period-batas-transaksi-bertanggal-15-mei-2026-seri-pc | First Accounting Period terhadap catatan berefek akuntansi terawal (Disposal Executed 15 Mei 2026): April, Mei, dan Juni (seri PC) | FE+BE | 23 | 585, 586, 587 |
+| TC-FA-PREF-E2E-048-versi-tdc-dan-transaksi-bertanggal-dibuat-setelah-dialog-save-terbuka | Versi Tax Depreciation Class dan baris Disposal Executed dibuat setelah dialog D-01 terbuka menolak Save | FE+BE | 19 | 221, 225 |
+| TC-FA-PREF-E2E-049-select-disposal-documents-sell-scrap-lost-hanya-required-dan-optional | Select Disposal Documents jenis Sell dan Scrap hanya berisi Required dan Optional dan tidak dapat dikosongkan | FE+BE | 20 | 158, 159 |
 | TC-FA-PREF-E2E-050-select-disposal-documents-donate-trade-in-write-off-hanya-required-dan-optional | Select Disposal Documents jenis Donate, Trade-in, dan Write-off hanya berisi Required dan Optional dan tidak dapat dikosongkan | FE+BE | 30 | 161, 162, 163 |
 | TC-FA-PREF-E2E-051-journal-grouping-dikosongkan-ketiga-dimensi-dan-cancel-mengembalikan-nilai-tersimpan | Journal Grouping dikosongkan, memilih ketiga dimensi, dan Cancel mengembalikan Select akun dan MultiSelect ke nilai tersimpan | FE+BE | 24 | 166, 167, 275 |
 | TC-FA-PREF-E2E-052-shortcut-create-account-gain-loss-dan-akun-sama-pada-gain-dan-loss | Select akun Default Gain dan Loss: akun sama dapat dipilih pada Gain dan Loss, serta shortcut + Create account membuat akun baru yang langsung terpilih | FE+BE | 30 | 168, 169, 175 |
@@ -72,14 +72,14 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-059-d01-pv02-akun-gain-dan-loss-default-pelepasan-belum-diposting | D-01 PV-02: Asset Class Akun Gain dan Loss Default, Pelepasan Belum Diposting | FE+BE | 32 | 187, 188, 189, 190 |
 | TC-FA-PREF-E2E-060-d01-pv02-bentuk-tunggal-nol-dan-asset-class-inactive | D-01 PV-02 Bentuk Tunggal dan Nol; Asset Class Inactive Tidak Dihitung | FE+BE | 29 | 611, 612, 621 |
 | TC-FA-PREF-E2E-061-d01-pv03-pelepasan-menunggu-posting | D-01 PV-03: Pelepasan Menunggu Posting (Jamak, Tunggal, Nol) | FE+BE | 24 | 191, 192, 193 |
-| TC-FA-PREF-E2E-062-d01-pv04-pv05-pembangunan-ulang-periode-dan-awal-tahun-fiskal | D-01 PV-04 dan PV-05: Pembangunan Ulang Periode dan Awal Tahun Fiskal | FE+BE | 32 | 194, 195, 196, 197 |
+| TC-FA-PREF-E2E-062-d01-pv04-pv05-pembangunan-ulang-periode-dan-awal-tahun-fiskal | D-01 PV-04 dan PV-05: Hitungan Kalender Periode dan Awal Tahun Fiskal | FE+BE | 32 | 194, 195, 196, 197 |
 | TC-FA-PREF-E2E-063-d01-baris-dampak-berurutan-save-dan-cancel | D-01 Baris Dampak Berurutan, Klik [Save] D-01 Menyimpan, [Cancel] D-01 | FE+BE | 29 | 198, 200, 201 |
 | TC-FA-PREF-E2E-064-d01-esc-klik-luar-dialog-dan-save-campuran | D-01 Esc, Klik Luar Dialog Tidak Menutup, Save Campuran Lewat D-01 | FE+BE | 26 | 199, 202, 203 |
-| TC-FA-PREF-E2E-065-save-lewat-d01-membangun-ulang-periode-dan-depreciation-in-disposal-month | Save Lewat D-01 Membangun Ulang Periode: Fiscal Year Start, First Accounting Period, Depreciation in Disposal Month | FE+BE | 34 | 207, 208, 209 |
+| TC-FA-PREF-E2E-065-save-lewat-d01-membangun-ulang-periode-dan-depreciation-in-disposal-month | Save Lewat D-01 Mengubah Kalender Periode: Fiscal Year Start, First Accounting Period, Depreciation in Disposal Month | FE+BE | 34 | 207, 208, 209 |
 | TC-FA-PREF-E2E-066-save-lewat-d01-default-gain-loss-dan-akun-ber-function-silang | Save Lewat D-01: Default Gain, Default Loss, Akun Ber-function Silang | FE+BE | 30 | 210, 211, 212 |
-| TC-FA-PREF-E2E-067-kunci-fiscal-year-start-dan-first-accounting-period-setelah-posting-atau-periode-ditutup | Kunci Fiscal Year Start dan First Accounting Period Setelah Posting Penyusutan atau Periode Soft Closed/Closed | FE+BE | 34 | 238, 239, 240 |
-| TC-FA-PREF-E2E-068-kunci-terbuka-kembali-save-fiscal-year-start-dan-kunci-aktif-setelah-muat-ulang | Kunci Terbuka Kembali Setelah Periode Dibuka Kembali; Save Fiscal Year Start Berhasil; Kunci Aktif Setelah Muat Ulang | FE+BE | 27 | 241, 242, 243, 248 |
-| TC-FA-PREF-E2E-069-d03-tampil-saat-kunci-terjadi-setelah-form-dibuka | D-03 Tampil Saat Kunci Terjadi Setelah Form Dibuka (Posting Pertama, Soft Closed, Closed) | FE+BE | 33 | 251, 252, 253 |
+| TC-FA-PREF-E2E-067-kunci-fiscal-year-start-dan-first-accounting-period-setelah-posting-atau-periode-ditutup | Kunci Fiscal Year Start dan First Accounting Period Setelah Posting Penyusutan | FE+BE | 12 | 238 |
+| TC-FA-PREF-E2E-068-kunci-terbuka-kembali-save-fiscal-year-start-dan-kunci-aktif-setelah-muat-ulang | Kunci Aktif Setelah Posting Penyusutan Pertama dan Muat Ulang; Save Field Lain Saat Terkunci | FE+BE | 13 | 243, 248 |
+| TC-FA-PREF-E2E-069-d03-tampil-saat-kunci-terjadi-setelah-form-dibuka | D-03 Tampil Saat Kunci Terjadi Setelah Form Dibuka (Posting Pertama) | FE+BE | 11 | 251 |
 | TC-FA-PREF-E2E-070-d03-klik-ok-klik-luar-dialog-dan-d03-menang-atas-v09-v10-v04 | D-03: Klik [OK] Memuat Ulang Form, Klik Luar Tidak Menutup, D-03 Menang atas V-09, V-10, V-04 | FE+BE | 34 | 254, 255, 256 |
 | TC-FA-PREF-E2E-071-v09-v10-v04-tampil-bersamaan-saat-tidak-terkunci | V-09, V-10, V-04 Tampil Bersamaan Saat Tidak Terkunci | FE+BE | 15 | 257 |
 | TC-FA-PREF-E2E-072-d03-posting-pertama-setelah-dialog-save-changes | D-03: Posting Penyusutan Pertama Setelah Dialog Save Changes Terbuka pada Fiscal Year Start dan First Accounting Period | FE+BE | 39 | 557, 558 |
@@ -90,7 +90,7 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-077-defense-in-depth-role-matrix-negatif-save-ditolak-read-only-read-read-create-create | Defense-in-Depth Role Matrix Negatif: Request Langsung Save Preferences Ditolak Server 403 untuk Read Only, Manage accounting - Read, Read + Create, dan Create | FE+BE | 35 | 230, 511, 512, 513, 514 |
 | TC-FA-PREF-E2E-078-defense-in-depth-role-matrix-negatif-save-ditolak-delete-update-group-manager-role-lain | Defense-in-Depth Role Matrix Negatif: Request Langsung Save Preferences Ditolak Server 403 untuk Delete saja, Update saja, Group Manager, dan Role Lain | FE+BE | 28 | 515, 516, 517, 518 |
 | TC-FA-PREF-E2E-079-defense-in-depth-request-langsung-mengubah-field-terkunci-ditolak | Defense-in-Depth: Request Langsung Mengubah Fiscal Year Start dan First Accounting Period yang Terkunci Ditolak Server | FE+BE | 35 | 249, 250, 519, 520, 521 |
-| TC-FA-PREF-E2E-080-defense-in-depth-first-accounting-period-di-luar-rentang-v-09-v-10-lewat-request-langsung | Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Transaksi Bertanggal Ditolak Lewat Request Langsung | FE+BE | 35 | 236, 237, 522, 523, 524, 525 |
+| TC-FA-PREF-E2E-080-defense-in-depth-first-accounting-period-di-luar-rentang-v-09-v-10-lewat-request-langsung | Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Catatan Berefek Akuntansi Terawal Ditolak Lewat Request Langsung | FE+BE | 34 | 236, 237, 522, 523, 524, 525 |
 | TC-FA-PREF-E2E-081-defense-in-depth-default-capitalization-threshold-negatif-17-digit-3-desimal-lewat-request-langsung | Defense-in-Depth: Default Capitalization Threshold Negatif, 17 Digit, dan 3 Desimal Ditolak Server Lewat Request Langsung | FE+BE | 32 | 233, 234, 235, 526, 527, 528 |
 | TC-FA-PREF-E2E-082-defense-in-depth-setting-wajib-kosong-ditolak-dan-found-asset-credit-account-tanpa-filter-function-diterima | Defense-in-Depth: Setting Wajib Kosong Ditolak Server Lewat Request Langsung dan Found Asset Credit Account Active Tanpa Filter Function Diterima | FE+BE | 30 | 531, 532, 533, 534, 535, 541 |
 | TC-FA-PREF-E2E-083-defense-in-depth-akun-default-tidak-ditemukan-inactive-function-salah-dan-disposal-documents-tidak-valid | Defense-in-Depth: Akun Default Tidak Ditemukan, Inactive, atau Function Salah dan Disposal Documents Tidak Valid Ditolak Server Lewat Request Langsung | FE+BE | 36 | 536, 537, 538, 539, 540, 542, 543 |
@@ -104,7 +104,7 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-091-state-tenant-suspended-dan-expired-baca-preferences-dan-changelog-tetap-tersedia-request-langsung-save-403 | State Tenant Suspended dan Expired: Baca Preferences dan Changelog Tetap Tersedia, Request Langsung Save Ditolak 403 | FE+BE | 33 | 564, 565, 567, 568 |
 | TC-FA-PREF-E2E-092-resilience-save-5xx-form-dan-dialog-tetap-terbuka-input-dipertahankan-toast-gagal-retry-berhasil | Resilience Save 5xx: Form dan Dialog D-01 Tetap Terbuka, Input Dipertahankan, Toast Gagal Tampil, Retry Berhasil | FE+BE | 34 | 278, 279, 282 |
 | TC-FA-PREF-E2E-093-resilience-save-timeout-input-dipertahankan-tombol-enabled-toast-connection-problem | Resilience Save Timeout: Input Dipertahankan, Tombol Enabled, Toast Connection Problem | FE+BE | 41 | 280, 281, 574 |
-| TC-FA-PREF-E2E-094-resilience-pembangunan-ulang-periode-gagal-penulisan-log-gagal-dan-save-d-01-5xx-membatalkan-save | Resilience: Pembangunan Ulang Periode Gagal, Penulisan Log Gagal, dan Save Dialog Save Changes 5xx Membatalkan Save | FE+BE | 41 | 288, 392, 573 |
+| TC-FA-PREF-E2E-094-resilience-pembangunan-ulang-periode-gagal-penulisan-log-gagal-dan-save-d-01-5xx-membatalkan-save | Resilience: Penulisan Log Gagal dan Save Dialog Save Changes 5xx Membatalkan Save | FE+BE | 28 | 392, 573 |
 | TC-FA-PREF-E2E-095-resilience-errorstate-pemuatan-form-dan-pratinjau-d-01-gagal-try-again-memuat-ulang | Resilience ErrorState: Pemuatan Form dan Pratinjau D-01 Gagal, Try Again Memuat Ulang | FE+BE | 30 | 74, 75, 205, 206 |
 | TC-FA-PREF-E2E-096-resilience-errorstate-modal-changelog-download-gagal-tombol-save-d-01-saat-hitungan-gagal-dan-konsumen-gagal-membaca-preferences | Resilience ErrorState: Modal Changelog Gagal, Download Gagal, Tombol Save D-01 saat Hitungan Gagal, dan Konsumen Gagal Membaca Preferences | FE+BE | 28 | 296, 361, 598, 508 |
 | TC-FA-PREF-E2E-097-modal-changelog-screening-isi-9-baris-contoh-dan-hover-modified-by | Modal Changelog: Screening, Isi 9 Baris Contoh, dan Hover Modified By | FE+BE | 32 | 289, 290, 291 |
@@ -141,13 +141,13 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-128-log-journal-grouping-kosong-dan-nominal-threshold-desimal | Log: Journal Grouping Dikosongkan atau Diisi dari Kosong dan Nominal Threshold Desimal | FE+BE | 48 | 389, 390, 391 |
 | TC-FA-PREF-E2E-129-log-request-api-langsung-oleh-pemanggil-terotorisasi-menulis-log-l-02-di-tiga-surface | Log: Request API Langsung oleh Pemanggil Terotorisasi Menulis Log L-02 di Tiga Surface | FE+BE | 17 | 549 |
 | TC-FA-PREF-E2E-130-sinkronisasi-asset-class-dan-tax-depreciation-class-threshold-dan-awal-tahun-pajak | Sinkronisasi ke Asset Class dan Tax Depreciation Class: Threshold dan Awal Tahun Pajak | FE+BE | 35 | 393, 396, 409 |
-| TC-FA-PREF-E2E-131-sinkronisasi-accounting-period-save-fiscal-year-start-dan-first-accounting-period-membangun-ulang-periode | Sinkronisasi ke Accounting Period: Save Fiscal Year Start dan First Accounting Period Membangun Ulang Periode | FE+BE | 21 | 394, 395 |
+| TC-FA-PREF-E2E-131-sinkronisasi-accounting-period-save-fiscal-year-start-dan-first-accounting-period-membangun-ulang-periode | Sinkronisasi Kalender Periode (Derived View): Save Fiscal Year Start dan First Accounting Period Mengubah Kalender Tanpa Log Terpisah | FE+BE | 23 | 394, 395 |
 | TC-FA-PREF-E2E-132-sinkronisasi-chart-of-accounts-nama-akun-inactive-dan-function-berubah | Sinkronisasi Chart of Accounts: Nama Akun, Akun Inactive, dan Function Akun Berubah pada Select Akun Preferences | FE+BE | 32 | 401, 402, 403, 405 |
 | TC-FA-PREF-E2E-133-sinkronisasi-akun-default-tidak-dapat-dihapus-riwayat-log-tidak-berubah-mata-uang-dan-format-tanggal-changelog | Sinkronisasi: Akun Default Tidak Dapat Dihapus, Riwayat Log Tidak Berubah, Mata Uang, dan Format Tanggal Changelog | FE+BE | 35 | 404, 406, 407, 408 |
-| TC-FA-PREF-E2E-134-deferred-aktivasi-pertama-modul-akuntansi-membuat-preferences-periode-awal-changelog-tanpa-offset | [DEFERRED] Aktivasi Pertama Modul Akuntansi Membuat Preferences, Periode Awal, dan Changelog tanpa Offset | FE+BE | 36 | 411, 412, 413, 414, 415 |
+| TC-FA-PREF-E2E-134-deferred-aktivasi-pertama-modul-akuntansi-membuat-preferences-periode-awal-changelog-tanpa-offset | [DEFERRED] Aktivasi Pertama Modul Akuntansi Membuat Preferences, Periode Awal, dan Changelog tanpa Offset | FE+BE | 35 | 411, 412, 413, 414, 415 |
 | TC-FA-PREF-E2E-135-deferred-upgrade-paket-aktivasi-ulang-dan-aktivasi-yang-gagal | [DEFERRED] Upgrade Paket, Aktivasi Ulang, dan Aktivasi yang Gagal | FE+BE | 28 | 416, 417, 418 |
 | TC-FA-PREF-E2E-136-deferred-aktivasi-dan-j-01-pada-entitas-suspended-dan-expired | [DEFERRED] Aktivasi dan Job J-01 pada Entitas Suspended dan Expired | FE+BE | 31 | 419, 420, 429, 430 |
-| TC-FA-PREF-E2E-137-deferred-rekonsiliasi-j-01-membuat-preferences-periode-paling-awal-dan-field-terkunci | [DEFERRED] Rekonsiliasi J-01: Membuat Preferences, Periode Paling Awal sebagai First Accounting Period, dan Field Terkunci | FE+BE | 35 | 421, 422, 423, 424 |
+| TC-FA-PREF-E2E-137-deferred-rekonsiliasi-j-01-membuat-preferences-periode-paling-awal-dan-field-terkunci | [DEFERRED] Rekonsiliasi J-01: Membuat Preferences dan Field Terkunci | FE+BE | 26 | 421, 422, 424 |
 | TC-FA-PREF-E2E-138-deferred-j-01-changelog-dan-activity-log-dengan-modified-by-system-dan-retry-putaran-berikutnya | [DEFERRED] J-01: Changelog dan Activity Log dengan Modified By System serta Retry pada Putaran Berikutnya | FE+BE | 26 | 425, 426, 428 |
 | TC-FA-PREF-E2E-139-deferred-in-service-date-source-activation-date-dan-manual-by-accounting | [DEFERRED] In-service Date Source: Activation Date dan Manual by Accounting | FE+BE | 31 | 431, 432, 433, 434, 440 |
 | TC-FA-PREF-E2E-140-deferred-in-service-date-source-aset-terdaftar-sebelum-tepat-dan-setelah-waktu-save | [DEFERRED] Perubahan In-service Date Source terhadap aset terdaftar sebelum, tepat, dan setelah waktu Save | FE+BE | 28 | 435, 436, 437 |
@@ -159,21 +159,19 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-146-deferred-disposal-documents-execute-saat-optional-tidak-memblokir-post-dan-pelepasan-sebelum-sesudah-save | [DEFERRED] Disposal Documents: Execute saat Optional, tidak memblokir Post, pelepasan sebelum dan sesudah Save | FE+BE | 32 | 466, 467, 468, 469, 470 |
 | TC-FA-PREF-E2E-147-deferred-default-capitalization-offset-prompt-kapitalisasi-pertama-pengisian-dan-log-l-03 | [DEFERRED] Default Capitalization Offset: prompt kapitalisasi pertama, pengisian, dan log L-03 | FE+BE | 37 | 471, 472, 473, 474, 475 |
 | TC-FA-PREF-E2E-148-deferred-default-capitalization-offset-kapitalisasi-berikutnya-akun-tidak-valid-dan-prompt-ditutup | [DEFERRED] Default Capitalization Offset: kapitalisasi berikutnya, akun tidak valid, dan prompt ditutup | FE+BE | 32 | 476, 477, 478, 479, 480 |
-| TC-FA-PREF-E2E-149-deferred-default-capitalization-offset-dikosongkan-perubahan-dipakai-gagal-dan-pembelian-di-bawah-threshold | [DEFERRED] Default Capitalization Offset: dikosongkan kembali, perubahan dipakai, kapitalisasi gagal, dan pembelian di bawah threshold | FE+BE | 36 | 481, 482, 483, 605 |
+| TC-FA-PREF-E2E-149-deferred-default-capitalization-offset-dikosongkan-perubahan-dipakai-gagal-dan-pembelian-di-bawah-threshold | [DEFERRED] Default Capitalization Offset: dikosongkan kembali, perubahan dipakai, kapitalisasi gagal, dan pembelian di bawah threshold | FE+BE | 39 | 481, 482, 483, 605 |
 | TC-FA-PREF-E2E-150-deferred-found-asset-credit-account-pada-jurnal-aset-temuan | [DEFERRED] Found Asset Credit Account pada jurnal aset temuan | FE+BE | 29 | 484, 485, 486, 487 |
 | TC-FA-PREF-E2E-151-deferred-export-journal-jumlah-baris-menurut-journal-grouping-dan-group-assignable | [DEFERRED] Export Journal: jumlah baris menurut Journal Grouping dan Group Assignable | FE+BE | 28 | 488, 489, 490, 491, 492 |
 | TC-FA-PREF-E2E-152-deferred-export-journal-isi-berkas-sheet-header-kolom-tipe-sel-dimensi-tanggal-dan-description | [DEFERRED] Export Journal isi berkas (1): sheet, header, kolom, tipe sel, dimensi, tanggal, dan Description | FE+BE | 14 | 493, 494, 495, 496, 497, 498 |
 | TC-FA-PREF-E2E-153-deferred-export-journal-isi-berkas-debit-credit-transaksi-transaction-number-account-code-dan-tanpa-dimensi | [DEFERRED] Export Journal isi berkas (2): Debit dan Credit, minimal 2 baris, Transaction Number, Account Code, dan tanpa dimensi | FE+BE | 14 | 499, 500, 501, 502, 503 |
-| TC-FA-PREF-E2E-154-deferred-konsumen-depreciation-run-dan-export-journal-setup-incomplete-pembacaan-preferences-dan-label-tahun-fiskal | [DEFERRED] Konsumen: Depreciation Run dan Export Journal terblokir saat Setup Incomplete, pembacaan Preferences, dan label tahun fiskal | FE+BE | 34 | 504, 505, 506, 507, 509, 510 |
+| TC-FA-PREF-E2E-154-deferred-konsumen-depreciation-run-dan-export-journal-setup-incomplete-pembacaan-preferences-dan-label-tahun-fiskal | [DEFERRED] Konsumen: Depreciation Run dan Export Journal terblokir saat Setup Incomplete, pembacaan Preferences, dan label tahun fiskal | FE+BE | 32 | 504, 505, 506, 507, 509, 510 |
 | TC-FA-PREF-E2E-155-status-tombol-save-changes-dan-cancel-pada-form-pristine-dan-berubah | Status Tombol [Save changes] dan [Cancel]: Disabled pada Form Pristine, Enabled saat Berubah, Kembali Disabled saat Dikembalikan | FE+BE | 19 | 18, 19, 20 |
 | TC-FA-PREF-E2E-157-shimmer-pratinjau-d01-save-tetap-enabled | Shimmer pratinjau dampak dialog D-01: tombol Save tetap Enabled saat hitungan dimuat | FE+BE | 19 | 204, 597 |
 | TC-FA-PREF-E2E-158-klik-ganda-cepat-save-changes-dan-save-d01 | Klik ganda cepat pada [Save changes] dan [Save] di D-01 hanya mengirim satu permintaan Save | FE+BE | 28 | 285, 286 |
 | TC-FA-PREF-E2E-159-gating-plan-growth-professional-enterprise-tab-preferences-tersedia | Gating Plan: Growth, Professional, dan Enterprise Memiliki Tab Preferences dengan Akses Penuh | FE+BE | 25 | 115, 116, 117 |
 | TC-FA-PREF-E2E-160-select-setting-wajib-tanpa-kontrol-pengosongan | Select Setting Wajib Tidak Menyediakan Kontrol atau Opsi Kosong untuk Mengosongkan Nilainya | FE+BE | 26 | 618 |
 | TC-FA-PREF-E2E-161-validasi-v-04-akun-default-berubah-sesi-lain-tanpa-dialog | Validasi V-04: function Default Capitalization Offset berubah dan Found Asset Credit Account menjadi Inactive oleh sesi lain sebelum Save (tanpa dialog) | FE+BE | 20 | 144, 145 |
-| TC-FA-PREF-E2E-162-select-offset-dan-found-asset-tanpa-shortcut-dan-save-akun-gabungan-gain-loss | Select Default Capitalization Offset dan Found Asset Credit Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog | FE+BE | 21 | 170, 592 |
-| TC-FA-PREF-E2E-163-periode-dibuka-kembali-kunci-terbuka-atau-tetap-terkunci | Periode yang Dibuka Kembali: Kunci Terbuka Tanpa Posting Penyusutan dan Tetap Terkunci Bila Posting Sudah Ada | FE+BE | 14 | 603, 604 |
-| TC-FA-PREF-E2E-164-save-fiscal-year-start-ditolak-d03-saat-soft-closed-muncul-di-d01 | Save Fiscal Year Start Ditolak D-03 Saat Periode Soft Closed Muncul Setelah D-01 Terbuka | FE+BE | 25 | 559 |
+| TC-FA-PREF-E2E-162-select-offset-dan-found-asset-tanpa-shortcut-dan-save-akun-gabungan-gain-loss | Select Default Capitalization Offset, Found Asset Credit Account, dan Default Disposal Proceeds Account tanpa shortcut Create account, dan akun gabungan Gain dan Loss disimpan lewat dialog | FE+BE | 21 | 170, 592 |
 | TC-FA-PREF-E2E-165-d04-tombol-esc-setara-cancel-dan-klik-di-luar-dialog-tidak-menutup | D-04: Tombol Esc Setara [Cancel] dan Klik Area di Luar Dialog Tidak Menutup Dialog | FE+BE | 12 | 264, 265 |
 | TC-FA-PREF-E2E-166-defense-in-depth-default-capitalization-threshold-teks-atau-script-lewat-request-langsung | Defense-in-Depth: Default Capitalization Threshold Berisi Teks atau Script Ditolak Server dan Tidak Tercatat di Changelog | FE+BE | 23 | 529, 530 |
 | TC-FA-PREF-E2E-167-defense-in-depth-company-tanpa-baris-preferences-ditolak-server-forbidden | Defense-in-depth: Company Tanpa Baris Preferences Ditolak Server dengan Forbidden pada Request Langsung dan Pembukaan Tab | FE+BE | 9 | 276, 562 |
@@ -188,10 +186,15 @@ Tidak ada. File backend TC tidak ada. TC defense-in-depth dengan Expected respon
 | TC-FA-PREF-E2E-178-save-default-disposal-proceeds-account-tanpa-dialog-dan-log-tiga-surface | Save Default Disposal Proceeds Account (SET-13): langsung tersimpan tanpa dialog dan tercatat di Changelog, System Log, dan Activity Log | FE+BE | 25 | 625, 626 |
 | TC-FA-PREF-E2E-179-defense-in-depth-default-disposal-proceeds-account-function-salah-dan-inactive-lewat-request-langsung | Defense-in-Depth: Default Disposal Proceeds Account dengan Akun Function di Luar Disposal Proceeds atau Inactive Ditolak Server Lewat Request Langsung | FE+BE | 12 | 627, 628 |
 | TC-FA-PREF-E2E-180-deferred-default-disposal-proceeds-account-kosong-menahan-jurnal-pelepasan-sell-dan-akun-pada-jurnal-diekspor | [DEFERRED] Default Disposal Proceeds Account kosong menahan jurnal pelepasan Sell, diekspor setelah diisi, dan jurnal yang sudah diekspor tidak berubah | FE+BE | 29 | 629, 630, 631 |
+| TC-FA-PREF-E2E-181-v-10-save-tidak-ditolak-in-service-date-opening-balance-transaksi-operasional-dan-depreciation-run-lebih-awal | V-10: Save First Accounting Period tidak ditolak oleh In-service date, Opening balance, transaksi operasional, dan Depreciation Run bertanggal lebih awal | FE+BE | 25 | 632, 633, 634 |
+| TC-FA-PREF-E2E-182-v-10-save-tidak-ditolak-disposal-non-executed-dan-new-value-change-dibatalkan | V-10: Save First Accounting Period tidak ditolak oleh baris Disposal Waiting for Execution, Waiting for Approval, Rejected, Canceled, dan New value change yang dibatalkan | FE+BE | 25 | 635, 636, 639 |
+| TC-FA-PREF-E2E-183-v-10-first-accounting-period-terhadap-effective-period-new-value-change | V-10: First Accounting Period terhadap Effective period New value change May 2026 (bulan setelah ditolak, bulan yang sama diterima) | FE+BE | 17 | 637, 638 |
+| TC-FA-PREF-E2E-184-v-10-ditolak-setelah-disposal-posted-dan-bulan-terawal-di-antara-disposal-executed-dan-new-value-change | V-10: First Accounting Period ditolak setelah Execution date Disposal Posted dan setelah bulan terawal di antara Disposal Executed dan New value change | FE+BE | 22 | 640, 641 |
+| TC-FA-PREF-E2E-185-deferred-default-capitalization-threshold-sama-dengan-threshold-capitalized-dan-perubahan-threshold-tidak-mengubah-aset-yang-ada | [DEFERRED] Default Capitalization Threshold: pembelian sama dengan threshold berstatus Capitalized dan perubahan threshold tidak mengubah status aset yang sudah ada | FE+BE | 19 | 642, 643 |
 
 ## Pembagian TC lintas spec
 
-Nomor cadangan terpakai (17): 155, 157-169, 171, 173, 174. Beberapa TC pindah dari spec rencana ke nomor cadangan supaya spec tidak melewati ~35 langkah: TC 115-117 ke 159, TC 618 ke 160, TC 170 dan 592 ke 162, TC 603-604 ke 163, TC 559 ke 164, TC 264-265 ke 165, TC 529-530 ke 166, TC 276 dan 562 ke 167, TC 560 ke 168, TC 337 ke 169, TC 410 ke 171, TC 438-439 ke 173, TC 456-457 ke 174, TC 216-217 ke 175, TC 581-582 ke 176. TC 622-624 ke 177, TC 625-626 ke 178, TC 627-628 ke 179, dan TC 629-631 ke 180 (nomor tambahan 177-180; seri Default Disposal Proceeds Account, SET-13). TC 541 pindah dari 083 ke 082. Tabel di atas dan "Lapisan per TC" mengikuti `sourceTc` spec.
+Nomor cadangan terpakai (17): 155, 157-169, 171, 173, 174. Beberapa TC pindah dari spec rencana ke nomor cadangan supaya spec tidak melewati ~35 langkah: TC 115-117 ke 159, TC 618 ke 160, TC 170 dan 592 ke 162, TC 603-604 ke 163, TC 559 ke 164, TC 264-265 ke 165, TC 529-530 ke 166, TC 276 dan 562 ke 167, TC 560 ke 168, TC 337 ke 169, TC 410 ke 171, TC 438-439 ke 173, TC 456-457 ke 174, TC 216-217 ke 175, TC 581-582 ke 176. TC 622-624 ke 177, TC 625-626 ke 178, TC 627-628 ke 179, dan TC 629-631 ke 180 (nomor tambahan 177-180; seri Default Disposal Proceeds Account, SET-13). TC 541 pindah dari 083 ke 082. TC 632-634 ke 181, TC 635, 636, dan 639 ke 182, TC 637-638 ke 183, TC 640-641 ke 184, dan TC 642-643 ke 185 (nomor tambahan 181-185; seri V-10 dan threshold, Changelog 2026-11-23). Tabel di atas dan "Lapisan per TC" mengikuti `sourceTc` spec.
 
 ## Kebutuhan lingkungan (tim FE)
 
@@ -240,7 +243,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-39 | TC-FA-PREF-E2E-007 | FE+BE |
 | TC-FA-PREF-40 | TC-FA-PREF-E2E-008 | FE+BE |
 | TC-FA-PREF-41 | TC-FA-PREF-E2E-008 | FE+BE |
-| TC-FA-PREF-42 | TC-FA-PREF-E2E-008 | FE+BE |
 | TC-FA-PREF-43 | TC-FA-PREF-E2E-008 | FE+BE |
 | TC-FA-PREF-44 | TC-FA-PREF-E2E-008 | FE+BE |
 | TC-FA-PREF-45 | TC-FA-PREF-E2E-008 | FE+BE |
@@ -283,7 +285,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-82 | TC-FA-PREF-E2E-015 | FE+BE |
 | TC-FA-PREF-83 | TC-FA-PREF-E2E-017 | FE+BE |
 | TC-FA-PREF-84 | TC-FA-PREF-E2E-017 | FE+BE |
-| TC-FA-PREF-85 | TC-FA-PREF-E2E-017 | FE+BE |
 | TC-FA-PREF-86 | TC-FA-PREF-E2E-017 | FE+BE |
 | TC-FA-PREF-87 | TC-FA-PREF-E2E-017 | FE+BE |
 | TC-FA-PREF-88 | TC-FA-PREF-E2E-028 | FE+BE |
@@ -358,7 +359,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-157 | TC-FA-PREF-E2E-045 | FE+BE |
 | TC-FA-PREF-158 | TC-FA-PREF-E2E-049 | FE+BE |
 | TC-FA-PREF-159 | TC-FA-PREF-E2E-049 | FE+BE |
-| TC-FA-PREF-160 | TC-FA-PREF-E2E-049 | FE+BE |
 | TC-FA-PREF-161 | TC-FA-PREF-E2E-050 | FE+BE |
 | TC-FA-PREF-162 | TC-FA-PREF-E2E-050 | FE+BE |
 | TC-FA-PREF-163 | TC-FA-PREF-E2E-050 | FE+BE |
@@ -437,10 +437,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-236 | TC-FA-PREF-E2E-080 | FE+BE |
 | TC-FA-PREF-237 | TC-FA-PREF-E2E-080 | FE+BE |
 | TC-FA-PREF-238 | TC-FA-PREF-E2E-067 | FE+BE |
-| TC-FA-PREF-239 | TC-FA-PREF-E2E-067 | FE+BE |
-| TC-FA-PREF-240 | TC-FA-PREF-E2E-067 | FE+BE |
-| TC-FA-PREF-241 | TC-FA-PREF-E2E-068 | FE+BE |
-| TC-FA-PREF-242 | TC-FA-PREF-E2E-068 | FE+BE |
 | TC-FA-PREF-243 | TC-FA-PREF-E2E-068 | FE+BE |
 | TC-FA-PREF-244 | TC-FA-PREF-E2E-087 | FE+BE |
 | TC-FA-PREF-245 | TC-FA-PREF-E2E-028 | FE+BE |
@@ -450,8 +446,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-249 | TC-FA-PREF-E2E-079 | FE+BE |
 | TC-FA-PREF-250 | TC-FA-PREF-E2E-079 | FE+BE |
 | TC-FA-PREF-251 | TC-FA-PREF-E2E-069 | FE+BE |
-| TC-FA-PREF-252 | TC-FA-PREF-E2E-069 | FE+BE |
-| TC-FA-PREF-253 | TC-FA-PREF-E2E-069 | FE+BE |
 | TC-FA-PREF-254 | TC-FA-PREF-E2E-070 | FE+BE |
 | TC-FA-PREF-255 | TC-FA-PREF-E2E-070 | FE+BE |
 | TC-FA-PREF-256 | TC-FA-PREF-E2E-070 | FE+BE |
@@ -486,7 +480,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-285 | TC-FA-PREF-E2E-158 | FE+BE |
 | TC-FA-PREF-286 | TC-FA-PREF-E2E-158 | FE+BE |
 | TC-FA-PREF-287 | TC-FA-PREF-E2E-086 | FE+BE |
-| TC-FA-PREF-288 | TC-FA-PREF-E2E-094 | FE+BE |
 | TC-FA-PREF-289 | TC-FA-PREF-E2E-097 | FE+BE |
 | TC-FA-PREF-290 | TC-FA-PREF-E2E-097 | FE+BE |
 | TC-FA-PREF-291 | TC-FA-PREF-E2E-097 | FE+BE |
@@ -618,7 +611,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-420 | TC-FA-PREF-E2E-136 | FE+BE |
 | TC-FA-PREF-421 | TC-FA-PREF-E2E-137 | FE+BE |
 | TC-FA-PREF-422 | TC-FA-PREF-E2E-137 | FE+BE |
-| TC-FA-PREF-423 | TC-FA-PREF-E2E-137 | FE+BE |
 | TC-FA-PREF-424 | TC-FA-PREF-E2E-137 | FE+BE |
 | TC-FA-PREF-425 | TC-FA-PREF-E2E-138 | FE+BE |
 | TC-FA-PREF-426 | TC-FA-PREF-E2E-138 | FE+BE |
@@ -754,7 +746,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-556 | TC-FA-PREF-E2E-042 | FE+BE |
 | TC-FA-PREF-557 | TC-FA-PREF-E2E-072 | FE+BE |
 | TC-FA-PREF-558 | TC-FA-PREF-E2E-072 | FE+BE |
-| TC-FA-PREF-559 | TC-FA-PREF-E2E-164 | FE+BE |
 | TC-FA-PREF-560 | TC-FA-PREF-E2E-168 | FE+BE |
 | TC-FA-PREF-561 | TC-FA-PREF-E2E-023 | FE+BE |
 | TC-FA-PREF-562 | TC-FA-PREF-E2E-167 | FE+BE |
@@ -798,8 +789,6 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-600 | TC-FA-PREF-E2E-035 | FE+BE |
 | TC-FA-PREF-601 | TC-FA-PREF-E2E-004 | FE+BE |
 | TC-FA-PREF-602 | TC-FA-PREF-E2E-087 | FE+BE |
-| TC-FA-PREF-603 | TC-FA-PREF-E2E-163 | FE+BE |
-| TC-FA-PREF-604 | TC-FA-PREF-E2E-163 | FE+BE |
 | TC-FA-PREF-605 | TC-FA-PREF-E2E-149 | FE+BE |
 | TC-FA-PREF-606 | TC-FA-PREF-E2E-013 | FE+BE |
 | TC-FA-PREF-607 | TC-FA-PREF-E2E-013 | FE+BE |
@@ -826,3 +815,15 @@ Temuan sumber TC per spec ada di bagian "Temuan untuk QA" pada `## Notes` tiap s
 | TC-FA-PREF-629 | TC-FA-PREF-E2E-180 | FE+BE |
 | TC-FA-PREF-630 | TC-FA-PREF-E2E-180 | FE+BE |
 | TC-FA-PREF-631 | TC-FA-PREF-E2E-180 | FE+BE |
+| TC-FA-PREF-632 | TC-FA-PREF-E2E-181 | FE+BE |
+| TC-FA-PREF-633 | TC-FA-PREF-E2E-181 | FE+BE |
+| TC-FA-PREF-634 | TC-FA-PREF-E2E-181 | FE+BE |
+| TC-FA-PREF-635 | TC-FA-PREF-E2E-182 | FE+BE |
+| TC-FA-PREF-636 | TC-FA-PREF-E2E-182 | FE+BE |
+| TC-FA-PREF-637 | TC-FA-PREF-E2E-183 | FE+BE |
+| TC-FA-PREF-638 | TC-FA-PREF-E2E-183 | FE+BE |
+| TC-FA-PREF-639 | TC-FA-PREF-E2E-182 | FE+BE |
+| TC-FA-PREF-640 | TC-FA-PREF-E2E-184 | FE+BE |
+| TC-FA-PREF-641 | TC-FA-PREF-E2E-184 | FE+BE |
+| TC-FA-PREF-642 | TC-FA-PREF-E2E-185 | FE+BE |
+| TC-FA-PREF-643 | TC-FA-PREF-E2E-185 | FE+BE |

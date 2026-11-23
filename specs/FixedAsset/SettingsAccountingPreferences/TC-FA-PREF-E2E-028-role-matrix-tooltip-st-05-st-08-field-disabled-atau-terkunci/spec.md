@@ -41,7 +41,7 @@ coverage:
 - Akun aktor pertama: Read Only. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Ganti akun ke Manage accounting - Read + Update memakai langkah eksplisit; hook `after` mengembalikan sesi ke akun default suite (Total Control).
 - Env var `FA_RO_PASSWORD` dan `FA_MARU_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti `<APP>_<ROLE>_PASSWORD` (perlu dikonfirmasi tim FE).
 - Data: company `PT Contoh Konstruksi` dengan Preferences nilai awal PA-2 dan PB-1 (setara: Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date, tidak terkunci, semua setting wajib terisi). Langkah 1 sampai 11 memakai state tanpa kunci.
-- Kunci aktif untuk langkah 13 sampai 26: posting penyusutan pertama sudah ada, Last Posted Period Asset Class IT Equipment = Mei 2026 (PA-9; PB-7a). Dibentuk lewat fixture BE pada langkah 12 (disediakan tim FE/BE, tanpa endpoint karangan). Kondisi PA-9 dan PB-7a setara untuk spec ini.
+- Kunci aktif untuk langkah 13 sampai 26: posting penyusutan pertama sudah ada, Depreciation Run periode Mei 2026 berstatus Posted (PA-9; PB-7a). Dibentuk lewat fixture BE pada langkah 12 (disediakan tim FE/BE, tanpa endpoint karangan). Kondisi PA-9 dan PB-7a setara untuk spec ini.
 - State yang diubah spec: kunci posting penyusutan pertama. Dipulihkan ke tanpa kunci (PA-2) di hook `after`. Spec tidak menyimpan perubahan Preferences.
 - Kemampuan teknis: fixture BE untuk kunci dan pemulihan lewat sesi API aktor (butir "Seed dan pemulihan lewat API" dan "Sesi API aktor" di `suite.md`); aksi keyboard Tab pada langkah 6 memakai aksi keyboard Spectra.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk setiap akun aktor yang dipakai dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -72,19 +72,19 @@ coverage:
 ### Kunci aktif (posting penyusutan pertama)
 
 11. Pindahkan kursor keluar dari field Preferences
-12. Bentuk kunci posting penyusutan pertama (Last Posted Period Asset Class IT Equipment = Mei 2026) lewat fixture BE hingga tersimpan, lalu muat ulang halaman Preferences
+12. Bentuk kunci posting penyusutan pertama (Depreciation Run periode Mei 2026 berstatus Posted) lewat fixture BE hingga tersimpan, lalu muat ulang halaman Preferences
 
 ### TC-FA-PREF-88: Read Only melihat tooltip ST-05 pada field terkunci dan ST-08 pada field Disabled lain
 
 13. Hover Select Fiscal Year Start yang terkunci
-14. Verifikasi tooltip "Fiscal year start is locked because depreciation has been posted or a period has been closed. It cannot be changed from this page." tampil pada Select Fiscal Year Start
+14. Verifikasi tooltip "Fiscal year start is locked because depreciation has been posted. It cannot be changed from this page." tampil pada Select Fiscal Year Start
 15. Hover CurrencyInput Default Capitalization Threshold yang Disabled
 16. Verifikasi tooltip "You don't have permission to edit." tampil pada CurrencyInput Default Capitalization Threshold
 
 ### TC-FA-PREF-245: Read Only melihat tooltip ST-05 pada field terkunci dan ST-08 pada field Disabled lain
 
 17. Arahkan kursor ke Select Fiscal Year Start
-18. Verifikasi tooltip "Fiscal year start is locked because depreciation has been posted or a period has been closed. It cannot be changed from this page." tampil pada Select Fiscal Year Start
+18. Verifikasi tooltip "Fiscal year start is locked because depreciation has been posted. It cannot be changed from this page." tampil pada Select Fiscal Year Start
 19. Arahkan kursor ke Select In-service Date Source
 20. Verifikasi tooltip "You don't have permission to edit." tampil pada Select In-service Date Source
 
@@ -94,7 +94,7 @@ coverage:
 22. Login sebagai Manage accounting - Read + Update (`manageAccountingReadUpdate_automated_{namaCompany}@qwertysystem.net`, `Spectra.env.FA_MARU_PASSWORD`)
 23. Buka Fixed Asset > Settings > Accounting > Preferences
 24. Arahkan kursor ke Select bulan First Accounting Period
-25. Verifikasi tooltip "First accounting period is locked because depreciation has been posted or a period has been closed. It cannot be changed from this page." tampil pada First Accounting Period
+25. Verifikasi tooltip "First accounting period is locked because depreciation has been posted. It cannot be changed from this page." tampil pada First Accounting Period
 26. Verifikasi Select In-service Date Source berstatus Enabled
 
 ## Notes

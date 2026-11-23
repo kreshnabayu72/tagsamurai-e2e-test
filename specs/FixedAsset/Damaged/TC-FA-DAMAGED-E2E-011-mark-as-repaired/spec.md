@@ -5,31 +5,33 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, T-DMG-02, D-DMG-02, §4.2.4#p2, §4.4#r7, TS-DMG-05, S-DMG-01, S-DMG-04, S-DMG-05, §8.1#r12, §Aturan Logika Modul#r56, §Aturan Logika Modul#r57, §Aturan Logika Modul#r87, §Aturan Logika Modul#r18, EC-DMG-31, §9.6#r5, §3#p6, F-DMG-05, FLD-DMG-04, FLD-DMG-05, §4.2.1#b2, EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
+sourceRules: [T-DMG-01, T-DMG-02, D-DMG-02, §4.2.4#p2, §4.4#r7, TS-DMG-05, S-DMG-01, S-DMG-04, S-DMG-05, §8.1#r12, §Aturan Logika Modul#r59, §Aturan Logika Modul#r60, §Aturan Logika Modul#r90, §Aturan Logika Modul#r19, EC-DMG-31, §9.6#r5, §3#p7, §4.2.4#p13, F-DMG-05, FLD-DMG-04, FLD-DMG-05, §4.2.1#b2, §9.7#r9, EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
 smoke: [EB-FB-1@mark-as-repaired, EB-FRM-1@mark-as-repaired]
 dependsOn: []
 trace:
-  T-DMG-01: [3, 5, 36, 42]
-  T-DMG-02: [19, 21]
-  D-DMG-02: [7, 14]
+  T-DMG-01: [3, 5, 36, 42, 48, 72]
+  T-DMG-02: [19, 21, 83]
+  D-DMG-02: [7, 14, 51, 66]
   §4.2.4#p2: [7, 8]
   §4.4#r7: [7, 13]
-  TS-DMG-05: 13
+  TS-DMG-05: [13, 77]
   S-DMG-01: 16
   S-DMG-04: [30, 32, 33]
   S-DMG-05: [38, 39, 44, 45]
   §8.1#r12: [24, 25, 26]
-  §Aturan Logika Modul#r56: 5
-  §Aturan Logika Modul#r57: [15, 19, 23]
-  §Aturan Logika Modul#r87: [19, 21]
-  §Aturan Logika Modul#r18: 19
+  §Aturan Logika Modul#r59: 5
+  §Aturan Logika Modul#r60: [15, 19, 23]
+  §Aturan Logika Modul#r90: [19, 21]
+  §Aturan Logika Modul#r19: 19
   EC-DMG-31: 9
   §9.6#r5: [13, 19]
-  §3#p6: 19
+  §3#p7: 19
+  §4.2.4#p13: [54, 56, 58, 60, 63, 67, 69, 79]
   F-DMG-05: [15, 23]
   FLD-DMG-04: 26
   FLD-DMG-05: 25
   §4.2.1#b2: 16
+  §9.7#r9: [15, 16, 19]
   EB-FB-1@mark-as-repaired: 13
   EB-FRM-1@mark-as-repaired: [20, 24]
 anchor: []
@@ -45,9 +47,10 @@ coverage:
 - Data:
   - DU-011-1: Damage record aset `Projector Epson EB-X06 {runId}` tanpa TAG di Group `Head Office`, status `Damaged`, Source `Manual`, dilaporkan DU-011-6 sebagai Pelapor admin dengan What happened `Lampu proyektor mati dan gambar tidak muncul`.
   - DU-011-3: Damage record aset `Camera Canon EOS {runId}` di Group `Head Office`, status `Damaged` dengan penanda `Missing`, Source `Manual`, dilaporkan DU-011-6.
-  - DU-011-4: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-011-6.
+  - DU-011-4: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-011-6.
   - DU-011-5: Damage record aset `Monitor Dell P2422H {runId}` di Group `Head Office`, status `In Disposal Process`, Source `Manual`, dilaporkan DU-011-6.
   - DU-011-6: User `Agus Pratama {runId}`, role Total Control; cakupan: seluruh client.
+  - DU-011-7: Damage record aset `Whiteboard Samsung Flip 2 {runId}` tanpa TAG di Group `Head Office`, status `Damaged`, Source `Manual`, dilaporkan DU-011-6 sebagai Pelapor admin.
 - Kondisi: After photo required bernilai `OFF`.
 
 ## Test Steps
@@ -104,3 +107,45 @@ coverage:
 43. Klik `⋯` pada baris `Monitor Dell P2422H {runId}`
 44. Verifikasi item `Damage Log` tampil pada menu baris
 45. Verifikasi item `Mark as Repaired` tidak tampil pada menu baris
+
+### Mark as Repaired yang kotor memunculkan konfirmasi bawaan browser saat muat ulang atau tutup tab
+46. Tekan Esc untuk menutup menu baris
+47. Ganti isi kotak search dengan `Whiteboard Samsung Flip 2 {runId}`, tekan Enter
+48. Verifikasi baris aset `Whiteboard Samsung Flip 2 {runId}` tampil dengan status `Damaged`
+49. Klik `⋯` pada baris `Whiteboard Samsung Flip 2 {runId}`
+50. Klik `Mark as Repaired`
+51. Verifikasi dialog `Mark as Repaired` terbuka untuk aset `Whiteboard Samsung Flip 2 {runId}`
+52. Isi Repair note `Panel layar diganti dan unit sudah diuji menyala normal`
+53. Muat ulang halaman (F5)
+54. Verifikasi konfirmasi bawaan browser muncul
+55. Batalkan konfirmasi bawaan browser agar tetap di halaman
+56. Verifikasi dialog `Mark as Repaired` tetap terbuka dengan isian Repair note `Panel layar diganti dan unit sudah diuji menyala normal`
+57. Tutup tab browser
+58. Verifikasi konfirmasi bawaan browser muncul
+59. Batalkan konfirmasi bawaan browser agar tab tidak tertutup
+60. Verifikasi dialog `Mark as Repaired` tetap terbuka dengan isian Repair note `Panel layar diganti dan unit sudah diuji menyala normal`
+61. Klik `✕` pada dialog `Mark as Repaired`
+62. Klik `[Leave]` pada dialog `Unsaved Changes`
+
+### Mark as Repaired yang bersih atau sudah tersimpan tidak memunculkan konfirmasi bawaan browser
+63. Verifikasi baris aset `Whiteboard Samsung Flip 2 {runId}` tampil dengan status `Damaged`
+64. Klik `⋯` pada baris `Whiteboard Samsung Flip 2 {runId}`
+65. Klik `Mark as Repaired`
+66. Verifikasi dialog `Mark as Repaired` terbuka untuk aset `Whiteboard Samsung Flip 2 {runId}`
+67. Verifikasi isian Repair note pada dialog `Mark as Repaired` belum diisi
+68. Muat ulang halaman (F5)
+69. Verifikasi muat ulang berjalan tanpa konfirmasi bawaan browser
+70. Buka halaman Assets, tab `Damaged`
+71. Ketik Search `Whiteboard Samsung Flip 2 {runId}`, tekan Enter
+72. Verifikasi baris aset `Whiteboard Samsung Flip 2 {runId}` tampil dengan status `Damaged`
+73. Klik `⋯` pada baris `Whiteboard Samsung Flip 2 {runId}`
+74. Klik `Mark as Repaired`
+75. Isi Repair note `Panel layar diganti dan unit sudah diuji menyala normal`
+76. Klik `[Mark as Repaired]` pada dialog `Mark as Repaired`
+77. Verifikasi toast `Success, [Asset Name] has been marked as repaired.` tampil dengan `[Asset Name]` berisi nama aset `Whiteboard Samsung Flip 2 {runId}`
+78. Muat ulang halaman (F5)
+79. Verifikasi muat ulang berjalan tanpa konfirmasi bawaan browser
+80. Buka halaman Assets, tab `Damaged`
+81. Klik sub-tab `History`
+82. Ketik Search `Whiteboard Samsung Flip 2 {runId}`, tekan Enter
+83. Verifikasi baris aset `Whiteboard Samsung Flip 2 {runId}` tampil di tabel History dengan status `Repaired`

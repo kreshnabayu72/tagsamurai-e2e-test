@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§8#p1", "§8#r1", "§8#r2", "§8#r3", "§8#r4", "§8#r5", "§8#r6", "§8#r7", "§8#r8", "§8#r9", "§8#r10", "§8#r11", "§8#p3"]
+sourceRules: ["§8#p1", "§8#r1", "§8#r2", "§8#r3", "§8#r4", "§8#r5", "§8#r6", "§8#r7", "§8#r8", "§8#r9", "§8#r10", "§8#r11", "§8#p3", "§9.7#r18"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 owner: BE
@@ -23,6 +23,7 @@ trace:
   "§8#r10": 23
   "§8#r11": [28, 29]
   "§8#p3": [32, 33, 34, 36, 38, 40, 42, 44, 47, 48, 49]
+  "§9.7#r18": 50
 ---
 
 # Aksi My Asset tercatat sebagai Activity di User Log Borrow dan Assignment
@@ -125,3 +126,6 @@ trace:
 47. Verifikasi sub-tab Assignment User Log Budi memuat entri Report Damaged atas `Printer Epson L3250 {runId}` dengan penanda `on behalf of Finance {runId}`
 48. Verifikasi jumlah entri sub-tab Assignment User Log milik `Fajar Nugroho {runId}` sama dengan jumlah yang dicatat
 49. Verifikasi sub-tab Assignment User Log Dewi tidak memuat entri atas penugasan `Printer Epson L3250 {runId}`
+
+### Borrow Now self-service menghasilkan baris Borrowed di tab Borrowed
+50. Verifikasi data My Asset tab Borrowed milik Dewi, setelah dipersempit ke aset `Tablet Samsung Galaxy Tab A9 {runId}` yang diperoleh lewat Borrow Now, memuat tepat satu baris berstatus `Borrowed`

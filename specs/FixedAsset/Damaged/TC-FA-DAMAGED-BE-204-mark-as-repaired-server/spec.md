@@ -5,17 +5,17 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§Aturan Logika Modul#r87", "§9.2#r5", "§9.2#b16", "§9.2#b17", "§9.6#r5", "FLD-DMG-03", "FLD-DMG-04", "FLD-DMG-05", "V-DMG-03", "V-DMG-04", "V-DMG-05", "FI-DMG-08", "FI-DMG-11", "FI-DMG-12", "S-DMG-07", "EC-DMG-16", "EC-DMG-31", "§9.4.4#r21", "§9.4.4#r23", "§9.4.4#r24", "§9.4.4#r9", "§9.4.1#r12", "EB-FRM-4@repair-note", "§3#p6", "F-DMG-05"]
+sourceRules: ["§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r90", "§9.2#r5", "§9.2#b17", "§9.2#b19", "§9.6#r5", FLD-DMG-03, FLD-DMG-04, FLD-DMG-05, V-DMG-03, V-DMG-04, V-DMG-05, FI-DMG-08, FI-DMG-11, FI-DMG-12, S-DMG-07, EC-DMG-16, EC-DMG-31, "§9.4.4#r23", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r9", "§9.4.1#r12", EB-FRM-4@repair-note, "§3#p7", F-DMG-05]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r56": [2, 19]
-  "§Aturan Logika Modul#r57": 2
-  "§Aturan Logika Modul#r87": 22
+  "§Aturan Logika Modul#r59": [2, 19]
+  "§Aturan Logika Modul#r60": 2
+  "§Aturan Logika Modul#r90": 22
   "§9.2#r5": 2
-  "§9.2#b16": 31
-  "§9.2#b17": [3, 24, 26]
+  "§9.2#b17": 31
+  "§9.2#b19": [3, 24, 26]
   "§9.6#r5": [3, 4, 5]
   FLD-DMG-03: [7, 9]
   FLD-DMG-04: 21
@@ -29,13 +29,13 @@ trace:
   S-DMG-07: 21
   EC-DMG-16: 31
   EC-DMG-31: [28, 29]
-  "§9.4.4#r21": [31, 32]
-  "§9.4.4#r23": [10, 11]
-  "§9.4.4#r24": [34, 37, 38]
+  "§9.4.4#r23": [31, 32]
+  "§9.4.4#r25": [10, 11]
+  "§9.4.4#r26": [34, 37, 38]
   "§9.4.4#r9": 29
   "§9.4.1#r12": 31
   EB-FRM-4@repair-note: [15, 17]
-  "§3#p6": 2
+  "§3#p7": 2
   F-DMG-05: 2
 ---
 
@@ -50,7 +50,7 @@ trace:
   - DU-204-2: User `Rina Wulandari {runId}`, Manage asset & TAG (Update), cakupan Group `Head Office {runId}` beserta descendant.
   - DU-204-3: User `Budi Santoso {runId}`, pelapor umum, pemegang aset, cakupan aset yang ia pegang.
   - DU-204-4: Group `Head Office {runId}`.
-  - DU-204-5: Aset `Laptop Dell Latitude 5420 - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-L21 {runId}`, punya record `Damaged`.
+  - DU-204-5: Aset `Laptop Dell Latitude 5420 - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-L21 {runId}`, tidak dipegang, punya record `Damaged`.
   - DU-204-6: Aset `Laptop Dell Latitude 5420 - 22 {runId}`, Group `Head Office {runId}`, TAG `RFID-L22 {runId}`, punya record `Damaged`.
   - DU-204-7: Aset `Monitor Dell P2422H - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-M21 {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, punya record `Damaged`.
   - DU-204-8: Aset `Monitor Dell P2422H - 22 {runId}`, Group `Head Office {runId}`, TAG `RFID-M22 {runId}`, `Assigned` kepada `Budi Santoso {runId}`, punya record `Damaged`.
@@ -75,7 +75,7 @@ trace:
 ### Mark as Repaired atas aset ber-TAG yang valid menyelesaikan record sebagai Repaired
 1. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Laptop Dell Latitude 5420 - 21 {runId}` dengan Scan TAG `RFID-L21 {runId}` milik aset, Repair note `Komponen rusak sudah diganti {runId}`, dan After photo `perbaikan-{runId}.jpg`
 2. Verifikasi record `Damaged` berubah menjadi `Repaired` oleh Aktor Damaged
-3. Verifikasi status record, status global aset `Normal`, dan penghapusan penanda terjadi bersamaan sebagai satu transaksi
+3. Verifikasi status record, status global aset dihitung ulang menjadi `Normal` karena aset tidak dipegang, dan penghapusan penanda terjadi bersamaan sebagai satu transaksi
 4. Verifikasi Damage Log memuat node `Marked as repaired by` dengan pelaku `Agus Pratama {runId}`, Repair note, dan After photo
 5. Verifikasi Transaction log aset dan Transaction admin log `Agus Pratama {runId}` memuat Mark as Repaired itu
 

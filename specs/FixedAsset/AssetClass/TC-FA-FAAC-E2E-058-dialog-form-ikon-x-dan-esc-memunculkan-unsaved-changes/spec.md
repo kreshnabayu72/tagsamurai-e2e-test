@@ -27,7 +27,7 @@ coverage:
 - Mode: FE+BE
 - Akun aktor: Total Control `totalControl_automated_{namaCompany}@qwertysystem.net` (password `Spectra.env.FA_TC_PASSWORD`). Login di hook `before` spec ini; halaman Fixed Asset > Settings > Accounting > tab Asset Class dibuka hook `beforeEach` suite.
 - Data Pre-setup (hanya dibaca, tidak ada yang disimpan): Asset Class Active `B-BKDROP` dipakai aset: 1 Asset Name dengan 5 aset aktif, Method Straight Line, Useful Life 60, belum pernah diposting, versi terakhir Effective From M-3; Asset Class Active `B-TRUNC` (Class Name `Truncation Fixture`) memiliki Asset Name `Climate Probe` (0 aset aktif); Asset Class Active `VEHICLES` tersedia sebagai tujuan Move. Seed disediakan fixture BE; tiap aksi spec dibuang sehingga Last Updated tidak berubah.
-- Bulan berjalan M mengikuti zona waktu General Settings client (NC-11); Accounting Period bulan M-1 tidak berstatus Closed atau belum ada (seed periode akuntansi disediakan fixture BE). Spec tidak mengubah jam server atau jam browser.
+- Bulan berjalan M mengikuti zona waktu General Settings client (NC-11) (seed disediakan fixture BE). Spec tidak mengubah jam server atau jam browser.
 - Nilai data mengacu ke `Fixture.fixedAssetAssetClass.<kunci>` (berkas `fixtures/fixed-asset-asset-class.json` belum ada; kunci ditetapkan dan disediakan tim FE).
 - Kemampuan teknis: menekan tombol Esc dan mengklik ikon `✕` pada header dialog.
 - Hook dan kemampuan suite (sesi API aktor, seed dan pemulihan lewat fixture BE, flag Guided Tooltip): dinyatakan sekali di suite.md.

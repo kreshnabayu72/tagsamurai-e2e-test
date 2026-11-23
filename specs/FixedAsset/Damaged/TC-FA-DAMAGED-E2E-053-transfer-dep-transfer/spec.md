@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["EC-DMG-29", "EC-DMG-18", "§9.4.4#r12", "§9.4.4#r8", "§9.7#r17", "§8.3#r6", "§8.3#r2", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r34", "T-DMG-01", "S-DMG-23", "§9.4.2#r33", "§Aturan Logika Modul#r43"]
+sourceRules: ["EC-DMG-29", "EC-DMG-18", "§9.4.4#r13", "§9.4.4#r8", "§9.7#r17", "§8.3#r6", "§8.3#r2", "§2.1#b2", "§2#b6", "§4.8#r3", "§Aturan Logika Modul#r36", "T-DMG-01", "S-DMG-23", "EC-DMG-37", "§Aturan Logika Modul#r45", "§2#b7", "§2.1#r2", "§Aturan Logika Modul#r52"]
 smoke: []
 dependsOn:
   - "Transfer: form Transfer dan Receive (Report Damaged saat Receive)"
 trace:
   "EC-DMG-29": [19, 20, 22]
   "EC-DMG-18": [3, 14]
-  "§9.4.4#r12": [19, 20, 22]
+  "§9.4.4#r13": [19, 20, 22]
   "§9.4.4#r8": [3]
   "§9.7#r17": [19, 25]
   "§8.3#r6": [22]
@@ -20,11 +20,14 @@ trace:
   "§2.1#b2": [26, 29]
   "§2#b6": [26, 29]
   "§4.8#r3": [26]
-  "§Aturan Logika Modul#r34": [15, 24]
+  "§Aturan Logika Modul#r36": [15, 24]
   "T-DMG-01": [18, 19, 20, 26, 27, 43, 44, 45, 53, 54, 55, 67]
   "S-DMG-23": [43]
-  "§9.4.2#r33": [41, 43, 51, 53]
-  "§Aturan Logika Modul#r43": [38, 41, 43, 44, 45, 48, 51, 53, 54, 55, 61, 64, 65, 67]
+  "EC-DMG-37": [41, 43, 51, 53]
+  "§Aturan Logika Modul#r45": [38, 41, 43, 44, 45, 48, 51, 53, 54, 55, 61, 64, 65, 67]
+  "§2#b7": [26]
+  "§2.1#r2": [26]
+  "§Aturan Logika Modul#r52": [27]
 anchor: []
 coverage:
   web: automated

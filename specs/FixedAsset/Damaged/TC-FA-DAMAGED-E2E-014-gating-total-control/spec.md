@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §2#b2, §2#b3, §2#b5, S-DMG-01, S-DMG-09, §9.11#r2, §5#r8, T-DMG-01, §9.3#b1]
+sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r10, §4.8#r11, §4.8#r12, §4.8#r13, §2#b2, §2#b3, §2#b5, S-DMG-01, S-DMG-09, §9.11#r2, §5#r8, T-DMG-01, §9.3#b1]
 smoke: []
 dependsOn: []
 trace:
@@ -27,12 +27,12 @@ trace:
   §4.8#r5: [9, 10]
   §4.8#r6: [17, 45]
   §4.8#r7: 18
-  §4.8#r8: 11
-  §4.8#r9: [14, 49, 51]
-  §4.8#r10: 27
-  §4.8#r11: [20, 21]
+  §4.8#r10: 11
+  §4.8#r11: [14, 49, 51]
+  §4.8#r12: 27
+  §4.8#r13: [20, 21]
   §2#b2: [5, 6]
-  §2#b3: 9
+  §2#b3: [9, 10, 17, 38, 45]
   §2#b5: [17, 45]
   S-DMG-01: 3
   S-DMG-09: 27
@@ -53,7 +53,7 @@ coverage:
 - Data:
   - DU-014-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}` (DU-014-7), status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-014-10.
   - DU-014-2: Damage record aset `Toyota Avanza {runId}` di Group `Branch Surabaya {runId}` (DU-014-8), status `Damaged`, Source `Manual`, dilaporkan DU-014-9.
-  - DU-014-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-014-9.
+  - DU-014-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-014-9.
   - DU-014-4: Damage record aset `Projector Epson EB-X06 {runId}` di Group `Head Office {runId}`, status `Damaged`, Source `Manual`, dilaporkan DU-014-9.
   - DU-014-5: Damage record aset `Drill Bosch GSB {runId}` di Group `Branch Surabaya {runId}`, status `Repaired`, Source `Manual`, dilaporkan DU-014-9.
   - DU-014-6: Aset `Tablet Samsung Tab A8 {runId}` di Group `Head Office {runId}`, tanpa record Damaged berjalan.

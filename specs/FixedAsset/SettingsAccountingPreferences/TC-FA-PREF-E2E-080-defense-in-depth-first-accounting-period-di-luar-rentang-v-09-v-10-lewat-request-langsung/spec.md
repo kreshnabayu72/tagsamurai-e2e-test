@@ -1,6 +1,6 @@
 ---
 id: TC-FA-PREF-E2E-080-defense-in-depth-first-accounting-period-di-luar-rentang-v-09-v-10-lewat-request-langsung
-title: "Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Transaksi Bertanggal Ditolak Lewat Request Langsung"
+title: "Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Catatan Berefek Akuntansi Terawal Ditolak Lewat Request Langsung"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
@@ -12,32 +12,31 @@ sourceTc:
   - TC-FA-PREF-523
   - TC-FA-PREF-524
   - TC-FA-PREF-525
-sourceRules: ["V-08", "E-FAPREF-27", "RG-02", "V-09", "E-FAPREF-38", "§Aturan Logika Modul#p37", "V-10", "E-FAPREF-42"]
+sourceRules: ["V-08", "E-FAPREF-27", "RG-02", "V-09", "E-FAPREF-38", "V-10", "E-FAPREF-42"]
 smoke: []
 dependsOn: []
 trace:
   "V-08": [3, 8, 14, 19]
   "E-FAPREF-27": [5, 10, 16, 21]
-  "RG-02": [6, 11, 17, 22, 28, 35]
+  "RG-02": [6, 11, 17, 22, 28, 34]
   "V-09": 25
   "E-FAPREF-38": 27
-  "§Aturan Logika Modul#p37": 29
-  "V-10": 32
-  "E-FAPREF-42": 34
+  "V-10": 31
+  "E-FAPREF-42": 33
 coverage:
   web: automated
 ---
 
-# Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Transaksi Bertanggal Ditolak Lewat Request Langsung
+# Defense-in-Depth: First Accounting Period di Luar Rentang, V-09 Versi Tax Depreciation Class, dan V-10 Catatan Berefek Akuntansi Terawal Ditolak Lewat Request Langsung
 
 ## Prerequisites
 
 - Mode: FE+BE.
 - Akun aktor UI dan sesi API: Total Control "Rina Anggraini" `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Request langsung dan pembacaan ulang memakai sesi API aktor yang sama (butir "Sesi API aktor" di `suite.md`).
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup: TC-236 dan 237 memakai PB-1 (First Accounting Period Mar 2026) dan PB-2; TC-524 dan 525 memakai PC-1 (First Accounting Period Mar 2026); TC-522 memakai PC-3 (Fiscal Year Start January, belum terkunci, Tax Depreciation Class memiliki versi kedua ber-Effective From); TC-523 memakai PC-4 (transaksi bertanggal paling awal 15 Mei 2026, First Accounting Period Mar 2026). PC-3 dan PC-4 dibentuk lewat seed BE, "disediakan tim FE" tanpa endpoint karangan (S-13).
+- Data Pre-setup: TC-236 dan 237 memakai PB-1 (First Accounting Period Mar 2026) dan PB-2; TC-524 dan 525 memakai PC-1 (First Accounting Period Mar 2026); TC-522 memakai PC-3 (Fiscal Year Start January, belum terkunci, Tax Depreciation Class memiliki versi kedua ber-Effective From); TC-523 memakai PC-4 (baris Disposal Executed terawal ber-Execution date 15 Mei 2026, First Accounting Period Mar 2026). PC-3 dan PC-4 dibentuk lewat seed BE, "disediakan tim FE" tanpa endpoint karangan (S-13).
 - Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
-- Kemampuan teknis: kirim request langsung ke endpoint Save Preferences dengan klien HTTP, baca jumlah baris Changelog, System Log, dan Activity Log FAMS (N dibaca sebelum aksi, bagian 8b butir 10), baca daftar periode Accounting Period. Disediakan tim FE/BE.
+- Kemampuan teknis: kirim request langsung ke endpoint Save Preferences dengan klien HTTP, baca jumlah baris Changelog, System Log, dan Activity Log FAMS (N dibaca sebelum aksi, bagian 8b butir 10). Disediakan tim FE/BE.
 - Seed dan pemulihan Preferences lewat API: lihat butir "Seed dan pemulihan lewat API" di `suite.md`. Spec ini tidak menyimpan perubahan; seed ulang hanya untuk berpindah seri fixture dan pemulihan akhir ke nilai awal di hook `after`.
 - Flag Guided Tooltip halaman Preferences: lihat butir "Flag Guided Tooltip" di `suite.md`.
 - Identitas data Pre-setup dibaca dari `fixtures/settings-accounting-preferences.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
@@ -85,28 +84,28 @@ coverage:
 
 24. Kirim request langsung Save Preferences menggunakan sesi Total Control Rina Anggraini, mengubah Fiscal Year Start menjadi April
 25. Verifikasi server menolak permintaan dengan pesan "Fiscal year start cannot be changed because tax depreciation class versions already exist."
-26. Baca ulang nilai Preferences tersimpan dan daftar periode di Accounting Period, lalu hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
+26. Baca ulang nilai Preferences tersimpan, lalu hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
 27. Verifikasi Fiscal Year Start tetap January
 28. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal
-29. Verifikasi periode akuntansi tidak dibangun ulang
-30. Seed ulang ke PC-4 lewat API (transaksi bertanggal paling awal 15 Mei 2026) dan catat jumlah baris Changelog, System Log, dan Activity Log FAMS
+29. Seed ulang ke PC-4 lewat API (baris Disposal Executed terawal ber-Execution date 15 Mei 2026) dan catat jumlah baris Changelog, System Log, dan Activity Log FAMS
 
-### TC-FA-PREF-523: Request langsung mengubah First Accounting Period ke bulan setelah transaksi bertanggal ditolak
+### TC-FA-PREF-523: Request langsung mengubah First Accounting Period ke bulan setelah bulan catatan berefek akuntansi terawal ditolak
 
-31. Kirim request langsung Save Preferences menggunakan sesi Total Control Rina Anggraini, mengubah First Accounting Period menjadi Jun 2026
-32. Verifikasi server menolak permintaan dengan pesan "First accounting period cannot be later than existing dated transactions."
-33. Baca ulang nilai Preferences tersimpan dan hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
-34. Verifikasi First Accounting Period tetap Mar 2026
-35. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal
+30. Kirim request langsung Save Preferences menggunakan sesi Total Control Rina Anggraini, mengubah First Accounting Period menjadi Jun 2026
+31. Verifikasi server menolak permintaan dengan pesan "First accounting period cannot be later than May 2026, the earliest disposal or value change."
+32. Baca ulang nilai Preferences tersimpan dan hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
+33. Verifikasi First Accounting Period tetap Mar 2026
+34. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal
 
 ## Notes
 
 - Sumber: `fixed-asset/settings-accounting-preferences/TestCases/tc-settings-accounting-preferences.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Pengecualian K-1: spec defense-in-depth (kelas a) dengan Expected respons API; kunci V-09 dan V-10 dibentuk lewat fixture BE (bagian 3 P-2). Request langsung tidak melewati browser; asersi penolakan ada pada langkah Verifikasi respons.
-- Baseline log (langkah 1, 12, 23, 30) dicatat setelah tiap seed ulang dan dipakai sebagai pembanding hitung ulang TC sesudahnya, karena penolakan tidak mengubah jumlah baris log (S-12).
-- Langkah penghubung (S-03): langkah 12, 23, 30 (seed ulang saat seri fixture berganti dari PB-1 ke PC-1, PC-3, PC-4).
+- Baseline log (langkah 1, 12, 23, 29) dicatat setelah tiap seed ulang dan dipakai sebagai pembanding hitung ulang TC sesudahnya, karena penolakan tidak mengubah jumlah baris log (S-12).
+- Langkah penghubung (S-03): langkah 12, 23, 29 (seed ulang saat seri fixture berganti dari PB-1 ke PC-1, PC-3, PC-4).
 - Post Condition semua TC ("tidak ada perubahan Preferences dan tidak ada entri log baru") dicakup Expected butir b dan diasersi pada langkah nilai tersimpan dan jumlah baris log. Frasa Expected butir b TC-524 dan 525 mengulang ketiga surface log; diasersi pada langkah jumlah baris.
 - Temuan untuk QA:
   - TC-FA-PREF-236 dan 237 membaca ulang lewat tab Preferences pada konteks "Baca ulang Preferences".
   - TC-FA-PREF-236, 237, 524, dan 525 menguji batas dan pesan yang sama pada seri PB dan PC; perbedaan hanya seri fixture.
+  - Kalender periode (Derived view dari Fiscal Year Start dan First Accounting Period) tidak punya layar pengamatan sendiri; TC-FA-PREF-522 hanya membaca ulang Preferences. Bahwa kalender tidak berubah adalah state yang diverifikasi tim FE/BE, tidak diasersi lewat UI.
   - TC-FA-PREF-522 dan 523 tidak menyebut kode respons HTTP; spec hanya mengasersi pesan penolakan.

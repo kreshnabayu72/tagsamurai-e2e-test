@@ -5,30 +5,30 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r61", "§Aturan Logika Modul#r62", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b12", "§9.2#b21", "§9.2#b22", "§9.2#b23", "§6#p2", "§8.1#p2", "V-DMG-06", "V-DMG-08", "V-DMG-09", "D-DMG-13", "TS-DMG-09", "TS-DISP-12", "TS-DISP-15", "§9.6#r8", "EC-DMG-17", "EC-DMG-21", "EC-DMG-35", "§9.4.4#r10", "§9.4.4#r11", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r27", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p6", "F-DMG-06"]
+sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r65", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b13", "§9.2#b24", "§9.2#b25", "§9.2#b26", "§6#p2", "§8.1#p2", V-DMG-06, V-DMG-08, V-DMG-09, D-DMG-13, TS-DMG-09, TS-DISP-12, TS-DISP-15, "§9.6#r8", EC-DMG-17, EC-DMG-21, EC-DMG-35, "§9.4.4#r11", "§9.4.4#r12", "§9.4.4#r28", "§9.4.4#r29", "§9.4.4#r30", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p7", F-DMG-06, "§9.2#b8", "§Aturan Logika Modul#r19", "§9.4.2#r32", "§4.2.4#r10", "§4.2.4#r11"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r19": [2, 26, 59]
-  "§Aturan Logika Modul#r20": [32, 34]
-  "§Aturan Logika Modul#r21": [36, 38, 40, 42]
-  "§Aturan Logika Modul#r60": 2
-  "§Aturan Logika Modul#r61": [2, 6]
-  "§Aturan Logika Modul#r62": [26, 32, 34]
+  "§Aturan Logika Modul#r20": [2, 26, 59]
+  "§Aturan Logika Modul#r21": [32, 34]
+  "§Aturan Logika Modul#r22": [36, 38, 40, 42]
+  "§Aturan Logika Modul#r63": 2
+  "§Aturan Logika Modul#r64": [2, 6]
+  "§Aturan Logika Modul#r65": [26, 32, 34]
   "§9.2#r3": [2, 3, 12]
   "§9.2#r4": [26, 36, 82]
   "§9.2#r6": [20, 29, 84]
-  "§9.2#b12": [51, 52]
-  "§9.2#b21": [2, 3, 14, 16, 18, 20, 68, 70, 72, 74, 76, 78, 80, 84]
-  "§9.2#b22": [44, 47]
-  "§9.2#b23": [8, 10, 12, 54]
-  "§6#p2": [22, 24, 59, 63]
+  "§9.2#b13": [51, 52]
+  "§9.2#b24": [2, 3, 14, 16, 18, 20, 68, 70, 72, 74, 76, 78, 80, 84]
+  "§9.2#b25": [44, 47]
+  "§9.2#b26": [8, 10, 12, 54]
+  "§6#p2": [22, 24, 59, 63, 88, 89, 91]
   "§8.1#p2": [4, 27, 32, 36, 38, 40, 42]
   V-DMG-06: [47, 49]
   V-DMG-08: 51
-  V-DMG-09: [59, 60]
-  D-DMG-13: [63, 64]
+  V-DMG-09: [59, 60, 89]
+  D-DMG-13: [63, 64, 91]
   TS-DMG-09: 60
   TS-DISP-12: [4, 6, 86]
   TS-DISP-15: [54, 55, 57, 63]
@@ -36,19 +36,24 @@ trace:
   EC-DMG-17: [32, 34, 36]
   EC-DMG-21: 51
   EC-DMG-35: [59, 61]
-  "§9.4.4#r10": 52
-  "§9.4.4#r11": [55, 61, 64]
-  "§9.4.4#r25": [32, 34, 36]
-  "§9.4.4#r26": [47, 49]
-  "§9.4.4#r27": [29, 30]
+  "§9.4.4#r11": 52
+  "§9.4.4#r12": [55, 61, 64, 88, 92]
+  "§9.4.4#r28": [32, 34, 36]
+  "§9.4.4#r29": [47, 49]
+  "§9.4.4#r30": [29, 30]
   "§9.7#r10": 2
   "§9.7#r11": [32, 34, 44]
   "§9.7#r12": 26
   "§9.7#r13": 29
   "§9.7#r14": [36, 38, 40, 42]
   "§9.4.1#r9": [51, 54, 59]
-  "§3#p6": 2
+  "§3#p7": 2
   F-DMG-06: 2
+  "§9.2#b8": 12
+  "§Aturan Logika Modul#r19": [12, 14, 20, 29]
+  "§9.4.2#r32": [88, 89, 91, 92]
+  "§4.2.4#r10": [51, 52]
+  "§4.2.4#r11": [63, 64, 91, 92]
 ---
 
 # Server mengikuti Disposal Report dan baris Disposal untuk status record, memproses Bulk Report Disposal per record dengan pengecekan ganda, memblok lintas Group, dan membatasi Cancel Disposal Report pada Reported Disposal
@@ -96,8 +101,13 @@ trace:
   - DU-207-36: Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`.
   - DU-207-37: Reason `Seluruh unit dihentikan penggunaannya {runId}`.
   - DU-207-38: Reason `Unit masih layak dipakai {runId}`.
+  - DU-207-39: Aset `Barcode Printer Zebra ZD421 - 110 {runId}`, Group `Head Office {runId}`, punya record `Damaged`.
+  - DU-207-40: Aset `Barcode Printer Zebra ZD421 - 111 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah `Repaired` sebelum bulk dipilih.
+  - DU-207-41: Aset `Barcode Printer Zebra ZD421 - 112 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah ditahan penanda `Missing` sebelum bulk dipilih.
+  - DU-207-42: Aset `Label Printer Brother QL-820 - 113 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah `Repaired` sebelum bulk dipilih.
+  - DU-207-43: Aset `Label Printer Brother QL-820 - 114 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah ditahan penanda `Missing` sebelum bulk dipilih.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 
@@ -213,3 +223,10 @@ trace:
 85. Total Control `Agus Pratama {runId}` membaca laporan pelepasan aset, status record, dan Condition aset `Monitor Dell P2422H - 108 {runId}` yang Report Disposal-nya sudah diproses
 86. Verifikasi laporan pelepasan aset, status record `Reported Disposal`, dan Condition aset `Reported Disposal` terbentuk bersamaan sebagai satu kesatuan, tanpa laporan yang tersisa tanpa perubahan Condition dan status record
 
+### Bulk Report Disposal atas seleksi yang sebagian tidak layak sejak sebelum Submit hanya memproses record yang layak
+87. Total Control `Agus Pratama {runId}` mengirim Bulk Report Disposal atas `Barcode Printer Zebra ZD421 - 110 {runId}`, `Barcode Printer Zebra ZD421 - 111 {runId}`, dan `Barcode Printer Zebra ZD421 - 112 {runId}` dengan satu Reason `Seluruh unit dihentikan penggunaannya {runId}`, setelah record `Barcode Printer Zebra ZD421 - 111 {runId}` sudah `Repaired` dan record `Barcode Printer Zebra ZD421 - 112 {runId}` sudah ditahan penanda `Missing`
+88. Verifikasi hanya `Barcode Printer Zebra ZD421 - 110 {runId}` yang menjadi `Reported Disposal` dengan Reason `Seluruh unit dihentikan penggunaannya {runId}`, sedangkan dua record lain tidak diproses dan tidak ada node baru di keduanya
+89. Verifikasi respons memuat pesan baku `Success, asset has been reported for disposal. Some items were skipped.`
+90. Total Control `Agus Pratama {runId}` mengirim Bulk Report Disposal atas `Label Printer Brother QL-820 - 113 {runId}` dan `Label Printer Brother QL-820 - 114 {runId}` dengan satu Reason `Seluruh unit dihentikan penggunaannya {runId}`, setelah record pertama sudah `Repaired` dan record kedua sudah ditahan penanda `Missing`
+91. Verifikasi tidak ada laporan pelepasan aset yang dibuat dan respons menyatakan `None of the selected records can be reported for disposal.` tanpa pesan sukses
+92. Verifikasi kedua record tidak berubah dan tidak ada node baru

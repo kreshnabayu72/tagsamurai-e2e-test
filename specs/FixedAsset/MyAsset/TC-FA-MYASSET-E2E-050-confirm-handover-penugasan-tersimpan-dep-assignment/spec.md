@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["T-MYA-01", "§1.2#r11", "§1.2#r68", "§1.2#r69", "§1.2#r70", "§1.2#r71", "§1.2#r72", "§2.1#r2", "§3#p7", "§4.2.2b#p1", "§4.2.5#p6", "§4.2.5#p7", "§4.4#r7", "§4.8#r4", "§7.3#r11", "§9.2#b4", "§9.2#r26", "§9.2#r27", "§9.6#r10", "§9.7#r6", "§9.7#r7", "§9.7#r9", "EB-FB-1@confirm-handover-assignment"]
+sourceRules: ["T-MYA-01", "§1.2#r12", "§1.2#r69", "§1.2#r70", "§1.2#r71", "§1.2#r72", "§1.2#r73", "§2.1#r2", "§3#p7", "§4.2.2b#p1", "§4.2.5#p6", "§4.2.5#p7", "§4.4#r7", "§4.8#r4", "§7.3#r11", "§9.2#b4", "§9.2#r26", "§9.2#r27", "§9.6#r10", "§9.7#r6", "§9.7#r7", "§9.7#r9", "EB-FB-1@confirm-handover-assignment"]
 smoke: ["EB-FB-1@confirm-handover-assignment"]
 dependsOn:
   - "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"
 trace:
   "T-MYA-01": [6, 8, 10]
-  "§1.2#r11": 6
-  "§1.2#r68": [4, 6]
-  "§1.2#r69": [10, 11, 12]
-  "§1.2#r70": 12
-  "§1.2#r71": [23, 26]
-  "§1.2#r72": 19
+  "§1.2#r12": 6
+  "§1.2#r69": [4, 6]
+  "§1.2#r70": [10, 11, 12]
+  "§1.2#r71": 12
+  "§1.2#r72": [23, 26]
+  "§1.2#r73": 19
   "§2.1#r2": [16, 21]
   "§3#p7": [6, 19, 21, 22, 23]
   "§4.2.2b#p1": [10, 17, 19]

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§2.1#b1", "§2.1#b2", "§4.8#r3", "§2.1#r2", "§Aturan Logika Modul#r38", "§Aturan Logika Modul#r26", "EC-DMG-03", "§9.4.4#r3", "§4.2.3#p1", "§4.2.3#p2", "EC-DMG-22", "§9.11#r1", "T-DMG-01", "§Aturan Logika Modul#r28", "§Aturan Logika Modul#r45", "§Aturan Logika Modul#r53", "§2#b7"]
+sourceRules: ["§2.1#b1", "§2.1#b2", "§4.8#r3", "§2.1#r2", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r27", "EC-DMG-03", "§9.4.4#r3", "§4.2.3#p1", "§4.2.3#p2", "EC-DMG-22", "§9.11#r1", "T-DMG-01", "§Aturan Logika Modul#r29", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r55", "§2#b7", "§4.2.4#p8"]
 smoke: []
 dependsOn:
   - "Borrow: Detail BRW (tombol Report Damaged, Cancel Report, penanda Damage reported)"
@@ -14,8 +14,8 @@ trace:
   "§2.1#b2": [10, 11, 13, 14, 20, 27, 28, 29]
   "§4.8#r3": [4]
   "§2.1#r2": [10, 20]
-  "§Aturan Logika Modul#r38": [16, 17]
-  "§Aturan Logika Modul#r26": [17, 22, 23]
+  "§Aturan Logika Modul#r40": [16, 17]
+  "§Aturan Logika Modul#r27": [17, 22, 23]
   "EC-DMG-03": [16, 17]
   "§9.4.4#r3": [14, 16, 17]
   "§4.2.3#p1": [4]
@@ -23,11 +23,12 @@ trace:
   "EC-DMG-22": [13, 14]
   "§9.11#r1": [13, 14]
   "T-DMG-01": [20, 21, 22, 24, 26, 27, 28, 29]
-  "§Aturan Logika Modul#r28": [32]
-  "§Aturan Logika Modul#r45": [20]
-  "§Aturan Logika Modul#r53": [36, 39, 43, 45]
+  "§Aturan Logika Modul#r29": [32]
+  "§Aturan Logika Modul#r47": [20]
+  "§Aturan Logika Modul#r55": [36, 42, 44, 48, 50]
   "§2#b7": [10, 20, 29]
-anchor: [38]
+  "§4.2.4#p8": [38, 39, 40]
+anchor: [43]
 coverage:
   web: automated
 ---
@@ -90,14 +91,19 @@ coverage:
 35. Buka Detail BRW aset `Projector Epson EB-X06 {runId}`
 36. Verifikasi aksi `Cancel Report` tampil pada Detail BRW
 37. Klik `Cancel Report` pada Detail BRW
-38. Verifikasi pemegang pada Detail BRW tetap `Sari Dewanti {runId}`
-39. Verifikasi penanda `Damage reported` tidak tampil lagi di Detail BRW
+38. Verifikasi dialog `Cancel Report` tampil dengan butir `Projector Epson EB-X06 {runId}`
+39. Verifikasi dialog memuat pertanyaan `Are you sure you want to cancel it?`
+40. Verifikasi dialog memuat tombol `[Go Back]` dan `[Cancel Report]`
+41. Klik `[Cancel Report]` pada dialog
+42. Verifikasi toast `Success, report has been canceled.` tampil
+43. Verifikasi pemegang pada Detail BRW tetap `Sari Dewanti {runId}`
+44. Verifikasi penanda `Damage reported` tidak tampil lagi di Detail BRW
 
 ### Record Canceled di sub-tab History dengan node pembatalan
-40. Buka halaman Assets, tab `Damaged`
-41. Klik sub-tab `History`
-42. Ketik Search `{runId}`, tekan Enter
-43. Verifikasi baris aset `Projector Epson EB-X06 {runId}` tampil di sub-tab `History` dengan Status `Canceled`
-44. Klik nama aset pada baris aset `Projector Epson EB-X06 {runId}`
-45. Verifikasi node `Report canceled by [Reporter Name]` tampil di dialog Damage Log
-46. Tutup dialog Damage Log
+45. Buka halaman Assets, tab `Damaged`
+46. Klik sub-tab `History`
+47. Ketik Search `{runId}`, tekan Enter
+48. Verifikasi baris aset `Projector Epson EB-X06 {runId}` tampil di sub-tab `History` dengan Status `Canceled`
+49. Klik nama aset pada baris aset `Projector Epson EB-X06 {runId}`
+50. Verifikasi node `Report canceled by [Reporter Name]` tampil di dialog Damage Log
+51. Tutup dialog Damage Log

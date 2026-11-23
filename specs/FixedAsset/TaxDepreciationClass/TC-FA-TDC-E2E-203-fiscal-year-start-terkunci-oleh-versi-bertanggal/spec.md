@@ -38,12 +38,12 @@ coverage:
 - Hook suite, seeding, dan flag Guided Tooltip mengikuti `suite.md`.
 - Jam sistem: tanggal sistem uji 15 Okt 2026 10:00 WIB (Time Zone entitas Asia/Jakarta) diperlukan TC-752 (pilihan Effective From `Jan 2027`); jam server dan jam browser diatur bersama lewat kendali jam (`suite.md`) di hook `before` dan dipulihkan di hook `after`.
 - Data Pre-setup (disediakan tim FE lewat seeding API, `Fixture.fixedAssetTaxDepreciationClass`, kunci `exampleData`, fixture belum ada): sembilan class Example Data PRD dengan tabel dalam satu halaman (9 baris, 10 baris per halaman) sehingga baris target tidak dicari lewat Search. Kondisi tiap blok, dibentuk lewat seeding di langkah penghubung (langkah 1, 15, 24):
-  - TC-750 dan TC-751: seluruh class hanya memiliki versi pertama tanpa Effective From (NB-2 Useful Life 8, Straight Line Rate 12.5%, Declining Balance Rate 25%); Fiscal Year Start `January`, semua periode akuntansi Open, belum ada penyusutan diposting.
-  - TC-749: NB-2 memiliki versi kedua dengan Effective From Jan 2027 (Scheduled); Fiscal Year Start `January`, semua periode akuntansi Open.
+  - TC-750 dan TC-751: seluruh class hanya memiliki versi pertama tanpa Effective From (NB-2 Useful Life 8, Straight Line Rate 12.5%, Declining Balance Rate 25%); Fiscal Year Start `January`, belum ada penyusutan diposting.
+  - TC-749: NB-2 memiliki versi kedua dengan Effective From Jan 2027 (Scheduled); Fiscal Year Start `January`, belum ada penyusutan diposting.
   - TC-752: NB-4 hanya memiliki versi pertama tanpa Effective From; tidak ada versi bertanggal di class lain; Fiscal Year Start `January`.
   - Class Code dibatasi 15 karakter sehingga kode memakai literal TC tanpa suffix `{runId}-<NNN>` (lihat Temuan untuk QA).
 - Data uji: TC-750 dan TC-751 mengubah Fiscal Year Start ke `July`; TC-749 dan TC-752 mencoba mengubahnya ke `April`; TC-752 mengubah Useful Life NB-4 menjadi 10 dengan Effective From `Jan 2027`.
-- Kemampuan teknis (disediakan tim FE/BE, lihat `suite.md`): seeding class, versi, periode akuntansi Open, dan Fiscal Year Start lewat API; pemulihan data lewat API.
+- Kemampuan teknis (disediakan tim FE/BE, lihat `suite.md`): seeding class, versi, dan Fiscal Year Start lewat API (tanpa Run Posted); pemulihan data lewat API.
 - State global yang diubah: Fiscal Year Start (July pada blok TC-750, dikembalikan ke January lewat seeding langkah 15 dan 24), versi NB-2 dan NB-4, serta jam server dan browser. Dipulihkan di hook `after` lewat seeding ulang Fiscal Year Start `January` dan class Example Data, serta pemulihan jam.
 
 ## Test Steps

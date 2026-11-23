@@ -5,49 +5,56 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r18", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r51", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r35", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r86", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.2#b14", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p5", "V-DMG-07", "D-DMG-06", "EC-DMG-07", "EC-DMG-08", "EC-DMG-23", "§9.4.4#r16", "§9.4.4#r17", "§9.4.1#r11", "FLD-DMG-06", "§2.1#b6", "§3#p4", "EB-FRM-4@reason", "EB-ERR-4", "EB-CON-3", "EB-EDG-1", "F-DMG-04"]
+sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r24", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r89", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p6", V-DMG-07, D-DMG-06, EC-DMG-07, EC-DMG-08, EC-DMG-23, "§9.4.4#r18", "§9.4.4#r19", "§9.4.1#r11", FLD-DMG-06, "§2.1#b8", "§3#p4", EB-FRM-4@reason, EB-ERR-4, EB-CON-3, EB-EDG-1, F-DMG-04, "§9.4.2#r40", "§9.4.2#r41", "§2.1#r5", "§4.2.4#r15", "§4.2.4#r16", "§4.2.4#r17", "§8.2#p22", "§4.2.4#r13"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r18": 2
-  "§Aturan Logika Modul#r22": 11
-  "§Aturan Logika Modul#r23": 15
-  "§Aturan Logika Modul#r51": 2
-  "§Aturan Logika Modul#r52": 11
-  "§Aturan Logika Modul#r53": [15, 22, 73, 75]
-  "§Aturan Logika Modul#r54": [67, 68, 69]
-  "§Aturan Logika Modul#r55": [31, 33]
-  "§Aturan Logika Modul#r35": 20
-  "§Aturan Logika Modul#r63": [61, 63]
-  "§Aturan Logika Modul#r64": [65, 77]
-  "§Aturan Logika Modul#r86": [24, 26]
+  "§Aturan Logika Modul#r19": 2
+  "§Aturan Logika Modul#r23": 11
+  "§Aturan Logika Modul#r24": 15
+  "§Aturan Logika Modul#r53": 2
+  "§Aturan Logika Modul#r54": 11
+  "§Aturan Logika Modul#r55": [15, 22, 73, 75, 79, 83, 87, 93, 95, 97, 104, 106, 108, 111]
+  "§Aturan Logika Modul#r56": [67, 68, 69]
+  "§Aturan Logika Modul#r57": [31, 33]
+  "§Aturan Logika Modul#r37": 20
+  "§Aturan Logika Modul#r66": [61, 63]
+  "§Aturan Logika Modul#r67": [65, 77]
+  "§Aturan Logika Modul#r89": [24, 26]
   "§9.2#r1": 2
   "§9.2#r7": 11
   "§9.2#r8": 15
-  "§9.2#b14": [2, 11, 15]
   "§9.4.3#b4": [61, 63]
   "§9.4.3#b5": [67, 71]
   "§9.6#r2": [3, 4, 5]
   "§9.6#r3": [12, 13]
-  "§9.6#r4": [16, 17]
-  "§4.2.4#p5": [40, 44, 55]
+  "§9.6#r4": [16, 17, 80, 81, 84, 85, 89, 90, 100, 101]
+  "§4.2.4#p6": [40, 44, 55]
   V-DMG-07: [36, 39, 43, 48, 51, 53, 55, 57]
   D-DMG-06: [40, 44, 55]
   EC-DMG-07: [35, 36, 39, 43]
   EC-DMG-08: [24, 26, 27]
   EC-DMG-23: [67, 68, 69]
-  "§9.4.4#r16": [35, 36, 39]
-  "§9.4.4#r17": 68
+  "§9.4.4#r18": [35, 36, 39]
+  "§9.4.4#r19": 68
   "§9.4.1#r11": 67
   FLD-DMG-06: [7, 9]
-  "§2.1#b6": [24, 26, 29]
-  "§3#p4": 15
+  "§2.1#b8": [24, 26, 29]
+  "§3#p4": [15, 87, 97, 108, 111]
   EB-FRM-4@reason: [9, 11]
   EB-ERR-4: [7, 43, 51]
   EB-CON-3: [35, 46, 48, 53, 57, 59]
   EB-EDG-1: [51, 55, 59, 61]
   F-DMG-04: 2
+  "§9.4.2#r40": [87, 88, 93, 95, 108, 109]
+  "§9.4.2#r41": [97, 98, 99, 104, 106, 111, 112]
+  "§2.1#r5": [15, 20, 73, 75, 87, 97, 108, 111]
+  "§4.2.4#r15": [97, 98, 104, 111]
+  "§4.2.4#r16": [7, 9, 11, 26]
+  "§4.2.4#r17": [36, 39, 43, 93, 104]
+  "§8.2#p22": [80, 84, 89, 100]
+  "§4.2.4#r13": [15, 20]
 ---
 
 # Server memproses Confirm, Reject, dan Cancel Report: Aktor Damaged memutuskan laporan mana pun termasuk laporannya sendiri, status akhir, record selesai tidak dibuka ulang, tanpa batas tunggu, dan konflik status
@@ -59,6 +66,8 @@ trace:
   - Aktor peminjaman `Yoga Tanuwijaya {runId}` dan Aktor penugasan `Dewi Anggraini {runId}`, tanpa hak Update Manage asset & TAG.
   - Aktor pelepasan aset `Maya Puspita {runId}`, Asset Admin sub-tab Disposal.
   - Pelapor umum `Budi Santoso {runId}`, `Dedi Kurniawan {runId}`, `Sari Dewanti {runId}`, dan `Hana Lestari {runId}`, tanpa role Damaged kecuali disebut lain.
+  - Staff Auditor `Lukman Hakim {runId}` dan Staff Executor Maintenance Routine `Wulan Anggraeni {runId}`, tanpa hak Aktor Damaged pada Group aset.
+  - Asset Admin sub-tab Audit `Ratna Dewi {runId}` dan Asset Admin Maintenance Routine `Hendro Prasetyo {runId}`, tanpa hak Aktor Damaged pada Group aset.
   - PIC `Sinta Maharani {runId}`, pelapor atas nama karyawan tanpa akun `Tono Rahmat {runId}`.
 - Data:
   - DU-203-1: User `Agus Pratama {runId}`, Total Control, cakupan seluruh client.
@@ -106,6 +115,20 @@ trace:
   - DU-203-47: Aset `Camera Canon EOS - 5 {runId}`, Group `Head Office {runId}`, punya record `Waiting for Confirmation` dari laporan `Sari Dewanti {runId}`.
   - DU-203-48: Aset `Tablet Samsung Tab A8 - 8 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Yoga Tanuwijaya {runId}` lewat halaman peminjaman.
   - DU-203-49: Aset `Camera Canon EOS - 6 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}` lewat halaman penugasan.
+  - DU-203-50: Aset `Tablet Samsung Tab A8 - 9 {runId}`, Group `Head Office {runId}`, `Borrowed` oleh `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Yoga Tanuwijaya {runId}` lewat halaman peminjaman.
+  - DU-203-51: Aset `Camera Canon EOS - 8 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, punya record `Waiting for Confirmation` dari laporan `Dewi Anggraini {runId}` lewat halaman penugasan.
+  - DU-203-52: User `Lukman Hakim {runId}`, Staff Auditor, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-203-53: User `Wulan Anggraeni {runId}`, Staff Executor Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-203-54: Aset `Laptop Dell Latitude 5420 - 17 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya record `Waiting for Confirmation` Source `Audit` dari laporan `Lukman Hakim {runId}` lewat Task Detail Audit.
+  - DU-203-55: Aset `Laptop Dell Latitude 5420 - 18 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya record `Waiting for Confirmation` Source `Audit` dari laporan `Lukman Hakim {runId}` lewat Task Detail Audit.
+  - DU-203-56: Aset `Rack Server Dell R740 - 7 {runId}`, Group `Head Office {runId}`, punya record `Damaged` Source `Audit` dari laporan `Agus Pratama {runId}` lewat Task Detail Audit.
+  - DU-203-57: Aset `Generator Honda EU22i - 7 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya Task Maintenance berjalan dan record `Waiting for Confirmation` Source `Maintenance` dari laporan `Wulan Anggraeni {runId}` lewat Task Maintenance.
+  - DU-203-58: Aset `Generator Honda EU22i - 8 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya Task Maintenance berjalan dan record `Waiting for Confirmation` Source `Maintenance` dari laporan `Wulan Anggraeni {runId}` lewat Task Maintenance.
+  - DU-203-59: Aset `Generator Honda EU22i - 9 {runId}`, Group `Head Office {runId}`, punya Task Maintenance berjalan dan record `Damaged` Source `Maintenance` dari laporan `Rina Wulandari {runId}` lewat Task Maintenance.
+  - DU-203-60: User `Ratna Dewi {runId}`, Asset Admin sub-tab Audit, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-203-61: User `Hendro Prasetyo {runId}`, Asset Admin Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-203-62: Aset `Rack Server Dell R740 - 8 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya record `Waiting for Confirmation` Source `Audit` dari laporan `Ratna Dewi {runId}` lewat Task Detail Audit.
+  - DU-203-63: Aset `Generator Honda EU22i - 10 {runId}`, Group `Head Office {runId}`, Condition `Normal`, punya Task Maintenance berjalan dan record `Waiting for Confirmation` Source `Maintenance` dari laporan `Hendro Prasetyo {runId}` lewat Task Maintenance.
 
 ## Test Steps
 
@@ -207,3 +230,46 @@ trace:
 ### Kerusakan baru atas aset ber-record Canceled mendapat record baru
 76. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Office Chair Ergo - 22 {runId}` yang record sebelumnya sudah `Canceled` dengan What happened `Casing retak setelah terbentur {runId}` dan Damaged Photo `casing-retak.jpg`
 77. Verifikasi server membuat record baru berstatus `Damaged` untuk aset itu, sedangkan record `Canceled` sebelumnya tidak berubah
+
+### Cancel Report dari halaman Borrow dan Assignment dicatat di Transaction admin log pelapor dan tidak di Transaction log aset
+78. Aktor peminjaman `Yoga Tanuwijaya {runId}` melakukan Cancel Report atas laporannya `Tablet Samsung Tab A8 - 9 {runId}` dari halaman peminjaman tempat ia melapor
+79. Verifikasi record `Tablet Samsung Tab A8 - 9 {runId}` berubah dari `Waiting for Confirmation` menjadi `Canceled`
+80. Verifikasi Transaction admin log `Yoga Tanuwijaya {runId}` memuat pembatalan atas `Tablet Samsung Tab A8 - 9 {runId}`
+81. Verifikasi Transaction log aset `Tablet Samsung Tab A8 - 9 {runId}` tidak memuat pembatalan itu
+82. Aktor penugasan `Dewi Anggraini {runId}` melakukan Cancel Report atas laporannya `Camera Canon EOS - 8 {runId}` dari halaman penugasan tempat ia melapor
+83. Verifikasi record `Camera Canon EOS - 8 {runId}` berubah dari `Waiting for Confirmation` menjadi `Canceled`
+84. Verifikasi Transaction admin log `Dewi Anggraini {runId}` memuat pembatalan atas `Camera Canon EOS - 8 {runId}`
+85. Verifikasi Transaction log aset `Camera Canon EOS - 8 {runId}` tidak memuat pembatalan itu
+
+### Pelapor Source Audit tanpa hak Aktor Damaged membatalkan laporannya lewat Cancel my report dari Task Detail Audit
+86. Staff Auditor `Lukman Hakim {runId}` melakukan `Cancel my report` di Task Detail Audit atas laporannya `Laptop Dell Latitude 5420 - 17 {runId}`
+87. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Lukman Hakim {runId}`
+88. Verifikasi penanda `Damage reported` pada aset itu dihapus dan status global aset tidak berubah
+89. Verifikasi Transaction admin log `Lukman Hakim {runId}` memuat pembatalan atas `Laptop Dell Latitude 5420 - 17 {runId}`
+90. Verifikasi Transaction log aset `Laptop Dell Latitude 5420 - 17 {runId}` tidak memuat pembatalan itu
+91. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Laptop Dell Latitude 5420 - 18 {runId}`
+92. Staff Auditor `Lukman Hakim {runId}` melakukan `Cancel my report` di Task Detail Audit atas `Laptop Dell Latitude 5420 - 18 {runId}` yang sudah diputuskan
+93. Verifikasi Cancel my report ditolak karena status record sudah berubah, record tetap `Damaged`, dan penolakan itu menyebut pelaku perubahan status terakhir `Agus Pratama {runId}`
+94. Total Control `Agus Pratama {runId}` melakukan `Cancel my report` di Task Detail Audit atas laporannya sendiri `Rack Server Dell R740 - 7 {runId}` yang langsung berstatus `Damaged`
+95. Verifikasi Cancel my report ditolak karena pelapor yang langsung `Damaged` tidak memiliki aksi itu dan record tetap `Damaged`
+
+### Pelapor Source Maintenance tanpa hak Aktor Damaged membatalkan laporannya lewat Cancel my report dari Task Maintenance
+96. Staff Executor `Wulan Anggraeni {runId}` melakukan `Cancel my report` di Task Maintenance atas laporannya `Generator Honda EU22i - 7 {runId}`
+97. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Wulan Anggraeni {runId}`
+98. Verifikasi penanda `Damage reported` pada task dan aset itu dihapus dan status global aset tidak berubah
+99. Verifikasi status dan hasil task Maintenance `Generator Honda EU22i - 7 {runId}` tidak berubah oleh pembatalan
+100. Verifikasi Transaction admin log `Wulan Anggraeni {runId}` memuat pembatalan atas `Generator Honda EU22i - 7 {runId}`
+101. Verifikasi Transaction log aset `Generator Honda EU22i - 7 {runId}` tidak memuat pembatalan itu
+102. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Generator Honda EU22i - 8 {runId}`
+103. Staff Executor `Wulan Anggraeni {runId}` melakukan `Cancel my report` di Task Maintenance atas `Generator Honda EU22i - 8 {runId}` yang sudah diputuskan
+104. Verifikasi Cancel my report ditolak karena status record sudah berubah, record tetap `Damaged`, dan penolakan itu menyebut pelaku perubahan status terakhir `Agus Pratama {runId}`
+105. Pemegang Update `Rina Wulandari {runId}` melakukan `Cancel my report` di Task Maintenance atas laporannya sendiri `Generator Honda EU22i - 9 {runId}` yang langsung berstatus `Damaged`
+106. Verifikasi Cancel my report ditolak karena pelapor yang langsung `Damaged` tidak memiliki aksi itu dan record tetap `Damaged`
+
+### Asset Admin sub-tab Audit dan Asset Admin Maintenance Routine tanpa hak Aktor Damaged membatalkan laporannya lewat Cancel my report
+107. Asset Admin `Ratna Dewi {runId}` melakukan `Cancel my report` di Task Detail Audit atas laporannya `Rack Server Dell R740 - 8 {runId}`
+108. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Ratna Dewi {runId}`
+109. Verifikasi penanda `Damage reported` pada aset itu dihapus dan status global aset tidak berubah
+110. Asset Admin `Hendro Prasetyo {runId}` melakukan `Cancel my report` di Task Maintenance atas laporannya `Generator Honda EU22i - 10 {runId}`
+111. Verifikasi record berubah dari `Waiting for Confirmation` menjadi `Canceled` dengan node `Report canceled by` atas nama `Hendro Prasetyo {runId}`
+112. Verifikasi penanda `Damage reported` pada task dan aset itu dihapus dan status global aset tidak berubah

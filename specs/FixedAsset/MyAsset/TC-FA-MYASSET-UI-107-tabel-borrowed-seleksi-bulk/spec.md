@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-13", "FI-14", "FI-20", "FI-21", "V-01", "§4.1b#p6", "§5#r5", "§9.4.2#r44", "EB-BLK-1@tabel-borrowed", "EB-BLK-6"]
+sourceRules: ["FI-13", "FI-14", "FI-20", "FI-21", "V-01", "§4.1b#p6", "§5#r5", "§9.4.2#r46", "EB-BLK-1@tabel-borrowed", "EB-BLK-6"]
 smoke: []
 dependsOn: []
 trace:
@@ -16,7 +16,7 @@ trace:
   "V-01": [4, 8, 17, 54]
   "§4.1b#p6": [2, 4, 8, 15, 17, 18, 39, 40, 41, 50, 109, 110, 111, 114, 119]
   "§5#r5": [24, 30, 35]
-  "§9.4.2#r44": [8, 10]
+  "§9.4.2#r46": [8, 10]
   "EB-BLK-1@tabel-borrowed": [13, 14, 18, 22, 28, 33, 39, 42, 44, 47, 51, 55, 58, 61, 62, 64, 66, 68, 69, 72, 77, 78]
   "EB-BLK-6": [81, 83, 84, 86, 88, 91, 93, 94, 98, 99, 103, 105, 106]
 anchor: [46, 57, 71, 76]

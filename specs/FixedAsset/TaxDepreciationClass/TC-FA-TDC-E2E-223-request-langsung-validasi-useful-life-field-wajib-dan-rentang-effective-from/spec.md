@@ -35,7 +35,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun: Total Control (company uji Fixed Asset); password lewat `Spectra.env.FA_TC_PASSWORD`. Akun dan email disediakan tim FE (email tidak tertulis di TC; lihat Temuan untuk QA). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Langkah spec tidak memakai UI.
-- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung dan request baca, seed dan pemulihan lewat API (periode Accounting Period dan versi class), dan kendali jam sistem (jam server dan jam browser diatur bersama). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13).
+- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung dan request baca, seed dan pemulihan lewat API (Exported through dan versi class), dan kendali jam sistem (jam server dan jam browser diatur bersama). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13).
 - Jam sistem uji: 15 Okt 2026 10:00 WIB (Time Zone entitas Asia/Jakarta, UTC+07:00); Fiscal Year Start Januari. Jam diatur di langkah 1 dan dipulihkan di langkah 31; hook `after` memulihkannya bila spec berhenti di tengah.
 - Data milik spec (seed idempotent di hook `before` lewat API, dipulihkan di hook `after`; kode memakai literal TC karena Class Code maksimal 15 karakter sehingga suffix `{runId}-<NNN>` tidak muat; nilai mengacu ke `Fixture.fixedAssetTaxDepreciationClass.<kunci>`, fixture disediakan tim FE):
 
@@ -43,10 +43,11 @@ coverage:
 |---|---|---|
 | `nb9` | `NB-9` | belum ada di daftar |
 | `nb4` | `NB-4` | hanya satu versi (versi pertama tanpa Effective From) |
-| `periode2025` | Accounting Period tahun pajak 2025 | tidak seluruh periode Closed; periode Des 2025 berstatus Open |
+| `exportedThrough` | Exported through | Nov 2025 (tahun pajak 2025 belum seluruh bulannya diekspor) |
 
 - Nilai request dasar Create (dari TC): Asset Type `Non-building`, Useful Life `10`, Allowed Methods `Straight Line`, Regulation Reference `UU HPP 7/2021` (`Fixture.fixedAssetTaxDepreciationClass.regulationReference`); Class Name `Kelompok 9 uji` untuk request yang tidak menguji Class Name.
 - State global yang diubah spec: jam server dan jam browser (langkah 1 dan 31) dan versi Scheduled `NB-4` yang terbentuk di TC-FA-TDC-926 (dipulihkan langkah 30). Master Data Count Limit belum tercapai.
+- Nilai awal Exported through (Nov 2025) perlu dikonfirmasi tim FE/BE: TC tidak menyebutnya, sehingga nilai ini hasil tebakan penulis spec.
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -110,7 +111,7 @@ coverage:
 - Temuan untuk QA:
   - TC-FA-TDC-856, 857, 858, 927, dan 928 menulis "Server menolak request" tanpa status HTTP; spec mengasersi penolakan tanpa kode status.
   - TC-FA-TDC-856 sampai 858 tidak menyebut Class Name pada request; spec memakai `Kelompok 9 uji` (nilai TC-815). TC-FA-TDC-858 tidak menyebut jumlah spasi.
-  - TC-FA-TDC-928 mensyaratkan periode Des 2025 berstatus Open sebagai data uji Accounting Period; mekanisme penyiapannya tidak disebut TC dan disediakan tim FE/BE.
+  - TC-FA-TDC-928 mensyaratkan Exported through Nov 2025 (tahun pajak 2025 belum seluruh bulannya diekspor) sebagai data uji Export Journal; mekanisme penyiapannya tidak disebut TC dan disediakan tim FE/BE.
   - TC-FA-TDC-926 tidak menyebut pemulihan versi Scheduled yang terbentuk; spec memulihkan `NB-4` lewat seeding API.
   - Email akun Total Control dan identitas company uji tidak tertulis di TC.
   - Class Code dibatasi 15 karakter (TC-136, 137), sehingga data milik spec memakai kode literal tanpa suffix `{runId}-<NNN>` (S-12); perlu konfirmasi QA.

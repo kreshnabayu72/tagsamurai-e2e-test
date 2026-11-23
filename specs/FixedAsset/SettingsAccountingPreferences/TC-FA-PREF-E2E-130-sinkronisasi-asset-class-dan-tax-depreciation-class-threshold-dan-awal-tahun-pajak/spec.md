@@ -34,9 +34,9 @@ coverage:
 - Akun aktor: Total Control (Rina Anggraini, tampil "Rina A"; PC-8) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Email Rina Anggraini tidak tertulis di Pre-setup TC (lihat Temuan untuk QA); kesamaannya dengan akun Total Control suite perlu dikonfirmasi tim FE.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti `<APP>_<ROLE>_PASSWORD` (perlu dikonfirmasi tim FE).
 - Data: company `PT Contoh Konstruksi` (plan Growth, entitas Active) seri PC (PC-1): modul akuntansi aktif; Preferences bernilai awal (Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date, Depreciation in Disposal Month Up to previous month, Default Gain/Loss on Disposal, Default Capitalization Offset, dan Found Asset Credit Account kosong, Disposal Documents Sell/Scrap/Lost/Donate/Trade-in/Write-off Optional, Journal Grouping Group); bulan berjalan Oktober 2026. Asset Class (PC-6): IT Equipment (threshold sendiri 2.000.000; akun Gain dan Loss kosong), Vehicles dan Furniture (tanpa threshold sendiri). Tax Depreciation Class hanya memiliki versi pertama tanpa Effective From; kelas NB-1 (Bukan bangunan – Kelompok 1) dengan Useful Life 4. Jumlah periode pada dialog (16) bergantung bulan berjalan Oktober 2026 (kendali jam di `suite.md`; jam dipulihkan di hook `after`).
-- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "16 accounting periods will be rebuilt."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
-- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): Seed dan pemulihan lewat API (Preferences ke nilai awal PC-1, Asset Class, akun Chart of Accounts, kunci periode) disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
-- State yang diubah spec: Preferences company (Default Capitalization Threshold, Fiscal Year Start dan periode hasil bangun ulang). Tidak ada perubahan Asset Class dan Tax Depreciation Class (form Edit NB-1 dibatalkan dan dikembalikan ke nilai tersimpan). Preferences dipulihkan ke nilai awal PC-1 lewat seed antar-TC dan di hook `after`.
+- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "The period calendar will have 16 accounting periods."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): Seed dan pemulihan lewat API (Preferences ke nilai awal PC-1, Asset Class, akun Chart of Accounts, penguncian) disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`).
+- State yang diubah spec: Preferences company (Default Capitalization Threshold, Fiscal Year Start). Tidak ada perubahan Asset Class dan Tax Depreciation Class (form Edit NB-1 dibatalkan dan dikembalikan ke nilai tersimpan). Preferences dipulihkan ke nilai awal PC-1 lewat seed antar-TC dan di hook `after`.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk setiap akun aktor yang dipakai dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
 - Identitas data Pre-setup dibaca dari `fixtures/settings-accounting-preferences.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE).
 - Suite berjalan serial (`parallel: false`).
@@ -74,7 +74,7 @@ coverage:
 
 22. Pilih "July" pada Select Fiscal Year Start
 23. Klik [Save changes]
-24. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "16 accounting periods will be rebuilt."; "Tax year start also follows Fiscal Year Start." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
+24. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "The period calendar will have 16 accounting periods."; "Tax year start also follows Fiscal Year Start." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
 25. Klik [Save] pada dialog Save Changes
 26. Tunggu aksi selesai
 27. Buka Settings > Accounting > Tax Depreciation Class
@@ -89,7 +89,7 @@ coverage:
 
 ## Notes
 
-- Kelas fungsional: Save atau perubahan state pelaku kedua, lalu pembacaan modul konsumen (Asset Class, Tax Depreciation Class, Accounting Period, Chart of Accounts, Changelog). Tidak ada asersi absence log (kelas g).
+- Kelas fungsional: Save atau perubahan state pelaku kedua, lalu pembacaan modul konsumen (Asset Class, Tax Depreciation Class, Chart of Accounts, Changelog). Tidak ada asersi absence log (kelas g).
 - Langkah penghubung tanpa `Verifikasi` (S-03): langkah 2, 7, 12, 14, 18, 21, 26, 28, 34, 35 (seed precondition TC, menunggu aksi selesai, Search untuk menemukan baris target (R-16, 8b butir 12), membersihkan Search, pemulihan state antar-TC).
 - Urutan TC: TC-FA-PREF-409 (baca saja, tanpa Save) di depan, lalu TC-FA-PREF-393 dan 396 yang menyimpan Preferences (S-10); nomor TC di judul langkah tidak mengikuti urutan angka karena alasan itu.
 - TC-FA-PREF-410 (Save Preferences tidak mengubah data Asset Class dan periode diposting) ada di spec 171 karena membutuhkan data posting penyusutan pertama (PC-2) yang berbeda dari data spec ini.

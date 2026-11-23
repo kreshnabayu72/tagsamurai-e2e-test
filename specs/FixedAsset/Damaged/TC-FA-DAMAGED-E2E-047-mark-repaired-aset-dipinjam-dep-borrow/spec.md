@@ -5,20 +5,21 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "§Aturan Logika Modul#r41", "EC-DMG-09", "EC-DMG-18", "§9.4.4#r19", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
+sourceRules: ["§Aturan Logika Modul#r41", "§Aturan Logika Modul#r42", "§Aturan Logika Modul#r43", "EC-DMG-09", "EC-DMG-18", "§9.4.4#r21", "§9.4.4#r8", "§9.2#b19", "T-DMG-01", "§9.7#r9"]
 smoke: []
 dependsOn:
   - "Borrow: baris Borrow, form Borrow"
 trace:
-  "§Aturan Logika Modul#r39": [15, 23]
-  "§Aturan Logika Modul#r40": [29, 30]
-  "§Aturan Logika Modul#r41": [31]
-  "EC-DMG-09": [23, 29, 30]
+  "§Aturan Logika Modul#r41": [15, 23]
+  "§Aturan Logika Modul#r42": [29, 30]
+  "§Aturan Logika Modul#r43": [31]
+  "EC-DMG-09": [23, 29, 30, 34]
   "EC-DMG-18": [3]
-  "§9.4.4#r19": [25]
+  "§9.4.4#r21": [25]
   "§9.4.4#r8": [3]
-  "§9.2#b17": [29, 30]
+  "§9.2#b19": [29, 30]
   "T-DMG-01": [13, 15, 20]
+  "§9.7#r9": [29, 31, 34]
 anchor: [8, 9, 10, 19]
 coverage:
   web: automated
@@ -30,7 +31,7 @@ coverage:
 - Aktor: Total Control.
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
-  - DU-047-1: aset Name `Tablet Samsung Tab A8 {runId}`, Group `Head Office`, tanpa TAG, sedang dipinjam `Dewi Anggraini {runId}` lewat baris Borrow berstatus `Borrowed`, dengan record `Damaged` Source `Manual` dan What happened `Layar tablet tidak merespons sentuhan di sisi kanan`.
+  - DU-047-1: aset Name `Tablet Samsung Tab A8 {runId}`, Group `Head Office`, tanpa TAG, sedang dipinjam `Dewi Anggraini {runId}` lewat baris Borrow berstatus `Borrowed`, status global `Borrowed`, dengan record `Damaged` Source `Manual` dan What happened `Layar tablet tidak merespons sentuhan di sisi kanan`.
   - DU-047-2: aset Name `Camera Canon EOS {runId}`, Group `Head Office`, tanpa TAG, tanpa pemegang, dengan record `Damaged` Source `Manual` dan What happened `Lensa tidak bisa fokus otomatis`.
 - Kondisi:
   - After photo required bernilai `OFF`.
@@ -75,3 +76,8 @@ coverage:
 29. Verifikasi baris Borrow aset `Tablet Samsung Tab A8 {runId}` tetap berstatus `Borrowed`
 30. Verifikasi pemegang pada baris itu tetap `Dewi Anggraini {runId}`
 31. Verifikasi baris itu tidak lagi memuat penanda `Damaged`
+
+### Status global aset tetap Borrowed sesudah Mark as Repaired
+32. Buka halaman Assets, tab `Assets`
+33. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
+34. Verifikasi status global aset `Borrowed` pada baris `Tablet Samsung Tab A8 {runId}`

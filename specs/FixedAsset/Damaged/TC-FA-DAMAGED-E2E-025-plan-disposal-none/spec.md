@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [EC-DMG-36, §9.4.4#r28, §9.10#p1, §9.4.1#r2, T-DMG-01]
+sourceRules: [EC-DMG-36, §9.4.4#r31, §9.10#p1, §9.4.1#r2, T-DMG-01]
 smoke: []
 dependsOn: []
 trace:
   EC-DMG-36: [6, 8, 10, 11, 12, 16, 18, 24, 26, 28]
-  §9.4.4#r28: [11, 12, 28]
+  §9.4.4#r31: [11, 12, 28]
   §9.10#p1: [6, 16, 24, 33, 37, 42, 46, 50, 51, 53]
   §9.4.1#r2: [6, 8, 18, 24, 26]
   T-DMG-01: [4, 16, 22, 33, 37, 42, 46]
@@ -22,19 +22,19 @@ coverage:
 # Pada level Feature Suite Disposal None, Report Disposal, Bulk Report Disposal, dan Cancel Disposal Report tampil Disabled dengan tooltip Upgrade to unlock
 
 ## Prerequisites
-- Aktor: Total Control pada entitas level None (DU-025-4), entitas level Full pada plan Growth (DU-025-5), entitas level Full pada plan Professional (DU-025-6), dan entitas plan Starter (DU-025-10); spec ini memakai entitas khusus yang tidak dipakai spec lain.
+- Aktor: Total Control pada entitas level None (DU-025-4), entitas level Basic (DU-025-5), entitas level Full (DU-025-6), dan entitas plan Free rank 0 (DU-025-10); spec ini memakai entitas khusus yang tidak dipakai spec lain.
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
   - DU-025-1: Entitas `Client None {runId}` dengan level Feature Suite Disposal `None`.
-  - DU-025-2: Entitas `Client Growth {runId}` dengan plan Growth dan level Feature Suite Disposal `Full`.
-  - DU-025-3: Entitas `Client Full {runId}` dengan plan Professional dan level Feature Suite Disposal `Full`.
+  - DU-025-2: Entitas `Client Basic {runId}` dengan level Feature Suite Disposal `Basic`.
+  - DU-025-3: Entitas `Client Full {runId}` dengan level Feature Suite Disposal `Full`.
   - DU-025-4: User `Rina Wijaya {runId}`, role Total Control pada entitas `Client None {runId}`; cakupan: seluruh entitas itu.
-  - DU-025-5: User `Agus Pratama {runId}`, role Total Control pada entitas `Client Growth {runId}`; cakupan: seluruh entitas itu.
+  - DU-025-5: User `Agus Pratama {runId}`, role Total Control pada entitas `Client Basic {runId}`; cakupan: seluruh entitas itu.
   - DU-025-6: User `Dewi Anggraeni {runId}`, role Total Control pada entitas `Client Full {runId}`; cakupan: seluruh entitas itu.
   - DU-025-7: Pada setiap entitas: Damage record aset `Projector Epson EB-X06 {runId}` di Group `Head Office {runId}`, status `Damaged`, Source `Manual`, dilaporkan aktor entitas itu.
-  - DU-025-8: Pada setiap entitas: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan aktor entitas itu.
-  - DU-025-9: Entitas `Client Starter {runId}` dengan plan Starter.
-  - DU-025-10: User `Budi Santoso {runId}`, role Total Control pada entitas `Client Starter {runId}`; cakupan: seluruh entitas itu.
+  - DU-025-8: Pada setiap entitas: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan aktor entitas itu.
+  - DU-025-9: Entitas `Client Free {runId}` dengan plan Free (rank 0).
+  - DU-025-10: User `Budi Santoso {runId}`, role Total Control pada entitas `Client Free {runId}`; cakupan: seluruh entitas itu.
 
 ## Test Steps
 
@@ -68,8 +68,8 @@ coverage:
 27. Klik item `Cancel Disposal Report` yang Disabled
 28. Verifikasi baris aset `Printer HP LaserJet M404 {runId}` tetap berstatus `Reported Disposal`
 
-### Level Full pada plan Growth membuka aksi Disposal
-29. Masuk sebagai Agus Pratama {runId} pada entitas `Client Growth {runId}`
+### Level Basic membuka aksi Disposal
+29. Masuk sebagai Agus Pratama {runId} pada entitas `Client Basic {runId}`
 30. Klik tab `Damaged`
 31. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
 32. Klik `⋯` pada baris `Projector Epson EB-X06 {runId}`
@@ -79,7 +79,7 @@ coverage:
 36. Klik `⋯` pada baris `Printer HP LaserJet M404 {runId}`
 37. Verifikasi item `Cancel Disposal Report` tampil dan aktif pada menu baris
 
-### Level Full pada plan Professional membuka aksi Disposal
+### Level Full membuka aksi Disposal
 38. Masuk sebagai Dewi Anggraeni {runId} pada entitas `Client Full {runId}`
 39. Klik tab `Damaged`
 40. Ketik Search `Projector Epson EB-X06 {runId}`, tekan Enter
@@ -90,8 +90,8 @@ coverage:
 45. Klik `⋯` pada baris `Printer HP LaserJet M404 {runId}`
 46. Verifikasi item `Cancel Disposal Report` tampil dan aktif pada menu baris
 
-### Plan Starter membuka tipe TAG QR dan mengunci tipe TAG RFID
-47. Masuk sebagai Budi Santoso {runId} pada entitas `Client Starter {runId}`
+### Plan Free (rank 0) membuka tipe TAG QR dan mengunci tipe TAG RFID
+47. Masuk sebagai Budi Santoso {runId} pada entitas `Client Free {runId}`
 48. Klik tab `Damaged`
 49. Klik `Search by Scan`
 50. Verifikasi pilihan `QR` tampil dan aktif pada overlay `Search by Scan`

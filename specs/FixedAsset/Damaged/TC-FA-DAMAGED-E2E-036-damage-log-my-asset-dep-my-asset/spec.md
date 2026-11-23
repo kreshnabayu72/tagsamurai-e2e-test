@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.2.2#p1, §4.2.2#p2, §4.2.2#p3, §9.11#r3, §Aturan Logika Modul#r17, EC-DMG-22, S-DMG-17]
+sourceRules: [§4.2.2#p1, §4.2.2#p2, §4.2.2#p3, §9.11#r3, §Aturan Logika Modul#r18, EC-DMG-22, S-DMG-17]
 smoke: []
 dependsOn:
   - "My Asset: status laporan dan tautan Damage Log"
@@ -14,7 +14,7 @@ trace:
   §4.2.2#p2: [8, 9, 10, 11, 12, 13, 16]
   §4.2.2#p3: [1, 2, 3, 4, 5, 6]
   §9.11#r3: [1, 2, 3, 4, 5, 6]
-  §Aturan Logika Modul#r17: [3, 4, 5, 6]
+  §Aturan Logika Modul#r18: [3, 4, 5, 6]
   EC-DMG-22: [1, 2, 3, 4, 5, 6, 8, 16]
   S-DMG-17: [8, 9, 10, 11, 12, 13, 16]
 coverage:
@@ -27,13 +27,13 @@ coverage:
 - Aktor: pelapor umum, yaitu pengguna tanpa role Damaged yang pernah melapor kerusakan aset.
 - Layar awal: halaman My Asset.
 - Data:
-  - DU-036-1: aset `Mesin Fotokopi {runId} Waiting`, Group `Head Office`, dipegang aktor, record Damage laporan aktor berstatus `Waiting for Confirmation`.
-  - DU-036-2: aset `Mesin Fotokopi {runId} Damaged`, Group `Head Office`, dipegang aktor, record Damage laporan aktor berstatus `Damaged`.
-  - DU-036-3: aset `Mesin Fotokopi {runId} Repaired`, Group `Head Office`, record Damage laporan aktor berstatus `Repaired`.
-  - DU-036-4: aset `Mesin Fotokopi {runId} Disposed`, Group `Head Office`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Disposed`.
-  - DU-036-5: aset `Mesin Fotokopi {runId} Rejected`, Group `Head Office`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Rejected`, Damaged Photo `fotokopi-rusak.jpg`, ditolak Admin B (Total Control) dengan Reason `Kerusakan akibat kelalaian pengguna`.
-  - DU-036-6: aset `Mesin Fotokopi {runId} Canceled`, Group `Head Office`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Canceled`.
-  - DU-036-7: aset `Mesin Fotokopi {runId} Milik Lain`, Group `Head Office`, record Damage berstatus `Damaged` yang dilaporkan pengguna lain.
+  - DU-036-1: aset `Mesin Fotokopi {runId} Waiting`, Group `Head Office {runId}`, dipegang aktor, record Damage laporan aktor berstatus `Waiting for Confirmation`.
+  - DU-036-2: aset `Mesin Fotokopi {runId} Damaged`, Group `Head Office {runId}`, dipegang aktor, record Damage laporan aktor berstatus `Damaged`.
+  - DU-036-3: aset `Mesin Fotokopi {runId} Repaired`, Group `Head Office {runId}`, record Damage laporan aktor berstatus `Repaired`.
+  - DU-036-4: aset `Mesin Fotokopi {runId} Disposed`, Group `Head Office {runId}`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Disposed`.
+  - DU-036-5: aset `Mesin Fotokopi {runId} Rejected`, Group `Head Office {runId}`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Rejected`, Damaged Photo `fotokopi-rusak.jpg`, ditolak Admin B (Total Control) dengan Reason `Kerusakan akibat kelalaian pengguna`.
+  - DU-036-6: aset `Mesin Fotokopi {runId} Canceled`, Group `Head Office {runId}`, tidak dipegang aktor (laporan lewat scan), record Damage laporan aktor berstatus `Canceled`.
+  - DU-036-7: aset `Mesin Fotokopi {runId} Milik Lain`, Group `Head Office {runId}`, record Damage berstatus `Damaged` yang dilaporkan pengguna lain.
 
 ## Test Steps
 

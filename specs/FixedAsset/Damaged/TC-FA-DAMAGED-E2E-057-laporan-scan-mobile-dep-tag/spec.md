@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.6#p1, §4.6#b1, §4.6#b2, F-DMG-08, §Aturan Logika Modul#r29, §Aturan Logika Modul#r14, §4.2.3#b1, EC-DMG-04, §4.8#r4, §2.1#r3, §2#b7, D-DMG-01, TS-DMG-02, §10#r5]
+sourceRules: [§4.6#p1, §4.6#b1, §4.6#b2, F-DMG-08, §Aturan Logika Modul#r30, §Aturan Logika Modul#r15, §4.2.3#b2, EC-DMG-04, §4.8#r4, §2.1#r3, §2#b7, D-DMG-01, TS-DMG-02, §10#r5, §4.2.3#p1]
 smoke: []
 dependsOn:
   - "Tag: hasil scan TAG di mobile"
@@ -14,9 +14,9 @@ trace:
   §4.6#b1: [10, 11]
   §4.6#b2: [13, 14, 16, 17]
   F-DMG-08: [2, 10, 13, 16]
-  §Aturan Logika Modul#r29: 9
-  §Aturan Logika Modul#r14: [10, 11]
-  §4.2.3#b1: [13, 14, 16, 17]
+  §Aturan Logika Modul#r30: 9
+  §Aturan Logika Modul#r15: [10, 11]
+  §4.2.3#b2: [13, 14, 16, 17]
   EC-DMG-04: [13, 14, 16, 17]
   §4.8#r4: 2
   §2.1#r3: 2
@@ -24,6 +24,7 @@ trace:
   D-DMG-01: [7, 10]
   TS-DMG-02: 7
   §10#r5: 19
+  §4.2.3#p1: 7
 anchor: [18]
 coverage:
   android: manual

@@ -5,12 +5,12 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r48", "§9.8#p1"]
+sourceRules: ["§1.2#r49", "§9.8#p1"]
 smoke: []
 dependsOn: ["Notification: notifikasi Borrow dan Assignment yang bertautan ke My Asset", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 owner: BE
 trace:
-  "§1.2#r48": 2
+  "§1.2#r49": 2
   "§9.8#p1": [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26]
 ---
 

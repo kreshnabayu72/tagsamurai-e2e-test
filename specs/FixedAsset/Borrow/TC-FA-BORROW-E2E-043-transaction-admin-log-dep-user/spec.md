@@ -190,7 +190,7 @@ coverage:
 93. Ketik Search `Printer HP LaserJet Pro {runId}`, tekan Enter
 94. Verifikasi tabel memuat baris Activity `Extension rejected` dengan Transaction ID BRW milik DU-043-12, Name `Printer HP LaserJet Pro {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
 
-### Hand Over, Return sebagai penerima, dan Report Missing oleh Aktor Borrow tercatat per aset
+### Hand Over dan Return sebagai penerima tercatat per aset; Report Missing oleh Aktor Borrow tercatat di sub-tab Missing
 95. Klik `Transactions` pada sidebar
 96. Klik `Borrow`
 97. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
@@ -217,9 +217,9 @@ coverage:
 118. Ketik Search `Handheld Zebra TC21 {runId}`, tekan Enter
 119. Verifikasi tabel memuat baris Activity `Returned` dengan Transaction ID BRW milik DU-043-23, Name `Handheld Zebra TC21 {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
 120. Ketik Search `Genset Honda EU22i {runId}`, tekan Enter
-121. Verifikasi tabel memuat baris Activity `Reported missing` dengan Transaction ID BRW milik DU-043-25, Name `Genset Honda EU22i {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
+121. Verifikasi tidak ada baris Activity `Reported missing` untuk aset `Genset Honda EU22i {runId}` di sub-tab `Borrow`; klik sub-tab `Missing`, ketik Search `Genset Honda EU22i {runId}`, tekan Enter, lalu verifikasi baris Activity `Reported missing` dengan Name `Genset Honda EU22i {runId} - 1`, Source `Borrow`, dan Group `Head Office` tampil
 
-### Report Damaged oleh Aktor Borrow tercatat di log admin
+### Report Damaged oleh Aktor Borrow dari halaman Borrow tercatat di sub-tab Damaged, tidak di sub-tab Borrow
 122. Klik `Transactions` pada sidebar
 123. Klik `Borrow`
 124. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
@@ -231,7 +231,7 @@ coverage:
 130. Kirim laporan pada dialog `Report Damaged`
 131. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
 132. Ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter
-133. Verifikasi tabel memuat baris Activity `Damage reported` dengan Transaction ID BRW milik DU-043-36, Name `Kamera Fujifilm X-T5 {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
+133. Verifikasi tidak ada baris untuk aset `Kamera Fujifilm X-T5 {runId}` di sub-tab `Borrow`; klik sub-tab `Damaged`, ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter, lalu verifikasi baris Activity `Reported damaged` dengan Name `Kamera Fujifilm X-T5 {runId} - 1`, Source `Borrowed asset`, dan Group `Head Office` tampil
 
 ### Return yang diproses sendiri oleh Aktor yang juga Borrower ditandai Self-processed
 134. Klik `Transactions` pada sidebar
@@ -320,7 +320,7 @@ coverage:
 207. Ketik Search `Kipas Angin Cosmos {runId}`, tekan Enter
 208. Verifikasi tabel memuat baris Activity `Extension rejected` dengan Transaction ID BRW milik DU-043-44, Name `Kipas Angin Cosmos {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
 
-### Cancel Damage Report atas laporannya sendiri tercatat di log admin
+### Cancel Damage Report atas laporannya sendiri dari halaman Borrow tercatat di sub-tab Damaged, tidak di sub-tab Borrow
 209. Klik `Transactions` pada sidebar
 210. Klik `Borrow`
 211. Ketik Search `Hendra Kusuma {runId}`, tekan Enter
@@ -330,7 +330,7 @@ coverage:
 215. Konfirmasi pembatalan laporan pada dialog yang tampil
 216. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
 217. Ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter
-218. Verifikasi tabel memuat baris Activity `Damage report canceled` dengan Transaction ID BRW milik DU-043-36, Name `Kamera Fujifilm X-T5 {runId} - 1`, Borrower `Hendra Kusuma {runId}`, dan Group `Head Office`
+218. Verifikasi tidak ada baris untuk aset `Kamera Fujifilm X-T5 {runId}` di sub-tab `Borrow`; klik sub-tab `Damaged`, ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter, lalu verifikasi baris Activity `Report canceled` dengan Name `Kamera Fujifilm X-T5 {runId} - 1`, Source `Borrowed asset`, dan Group `Head Office` tampil
 
 ### TAG reported dari Hand Over tercatat di log admin
 219. Klik `Transactions` pada sidebar
@@ -380,7 +380,7 @@ coverage:
 261. Ketik Search `Proyektor Mini Xiaomi {runId}`, tekan Enter
 262. Verifikasi tabel memuat baris Activity `Returned` dan penanda `Self-processed` karena Aktor menjadi PIC Borrower dengan Transaction ID BRW milik DU-043-49, Name `Proyektor Mini Xiaomi {runId} - 1`, Borrower `Joko Susilo {runId}`, dan Group `Head Office`
 
-### Report dari halaman pinjamannya oleh Aktor dalam peran Borrower tidak masuk log admin
+### Report dari My Asset oleh Aktor dalam peran Borrower tidak masuk log admin
 263. Masuk sebagai `Maya Pertiwi {runId}`
 264. Klik menu Profile pada navbar
 265. Klik `My Asset`
@@ -392,6 +392,6 @@ coverage:
 271. Kirim laporan pada dialog `Report Damaged`
 272. Buka User Detail `Maya Pertiwi {runId}` pada tab `Transaction admin log`
 273. Ketik Search `{runId}`, tekan Enter
-274. Verifikasi tabel memuat baris tindakan admin untuk aset `Kamera Fujifilm X-T5 {runId}` pada Transaction admin log `Maya Pertiwi {runId}`
+274. Klik sub-tab `Damaged`, ketik Search `Kamera Fujifilm X-T5 {runId}`, tekan Enter, lalu verifikasi tabel memuat baris tindakan admin untuk aset `Kamera Fujifilm X-T5 {runId}` pada Transaction admin log `Maya Pertiwi {runId}`
 275. Ketik Search `Gitar Yamaha F310 {runId}`, tekan Enter
-276. Verifikasi tidak ada baris untuk aset `Gitar Yamaha F310 {runId}` di Transaction admin log `Maya Pertiwi {runId}` karena laporan dari halaman pinjamannya oleh Aktor dalam peran Borrower hanya masuk User log
+276. Verifikasi tidak ada baris untuk aset `Gitar Yamaha F310 {runId}` di sub-tab `Damaged` Transaction admin log `Maya Pertiwi {runId}` karena laporan dari My Asset, juga oleh Aktor yang adalah Pelapor admin, hanya masuk User log

@@ -11,7 +11,7 @@ dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension
 owner: BE
 trace:
   "T-MYA-01": [154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182]
-  "T-MYA-04": [108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152]
+  "T-MYA-04": [108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 195, 197]
   "§4.1b#r2": [2, 20]
   "§4.1b#r4": [4, 22, 40]
   "§4.1b#r5": [6, 24]
@@ -41,7 +41,7 @@ trace:
 # Filter My Asset: opsi tiap field dan hasil saringan di keempat tabel
 
 ## Prerequisites
-- Aktor: Borrower dan Assignee, yaitu pengguna ber-akun login `Rina Wulandari {runId}` (DU-215-1) yang membuka My Asset dan tidak punya baris lain selain DU-215-2 sampai DU-215-21. Aktor Borrow dan Aktor Assignment menyerahkan aset ke Aktor, masing-masing dengan hak atas Group aset yang diserahkannya; Aktor Borrow `Budi Santoso {runId}`, Aktor Assignment `Agus Pratama {runId}` dan `Siti Rahmawati {runId}`. Borrower tanpa akun `Hendra Wijaya {runId}` dan Division `Divisi Keuangan {runId}` memakai Aktor sebagai PIC.
+- Aktor: Borrower dan Assignee, yaitu pengguna ber-akun login `Rina Wulandari {runId}` (DU-215-1) yang membuka My Asset dan tidak punya baris lain selain DU-215-2 sampai DU-215-22. Aktor Borrow dan Aktor Assignment menyerahkan aset ke Aktor, masing-masing dengan hak atas Group aset yang diserahkannya; Aktor Borrow `Budi Santoso {runId}`, Aktor Assignment `Agus Pratama {runId}` dan `Siti Rahmawati {runId}`. Borrower tanpa akun `Hendra Wijaya {runId}` dan Division `Divisi Keuangan {runId}` memakai Aktor sebagai PIC.
 - Data:
   - DU-215-1: Aktor pemegang semua baris di bawah, tanpa baris lain di My Asset: Name `Rina Wulandari {runId}`, Posisi `Borrower dan Assignee`.
   - DU-215-2: pinjaman Admin Borrowed, Brand dan Model yang dipakai dua baris: Name `Laptop Operasional {runId}`, Brand `Dell`, Model/Type `Latitude 5440`, Group `Ruang IT`, Status `Borrowed`, TAG `RFID`, Category `Komputer`, Borrower `Me`, Source `Admin`, Duration `3 days`, Due Date `T0 + 3 hari`, Handed Over At `T0`.
@@ -64,6 +64,7 @@ trace:
   - DU-215-19: Task Confirm Handover pinjaman dengan Total Asset di tengah rentang: Transaction ID `nomor BRW milik DU-215-19`, Task `Confirm Handover`, Group `Ruang Direksi`, Total Asset `5`, Handed Over By `Agus Pratama {runId}`, Expires At `T0 + 1 hari`.
   - DU-215-20: Task Confirm Handover pinjaman dengan Total Asset terbesar: Transaction ID `nomor BRW milik DU-215-20`, Task `Confirm Handover`, Group `Ruang IT`, Total Asset `9`, Handed Over By `Budi Santoso {runId}`, Expires At `T0 + 1 hari`.
   - DU-215-21: pinjaman Admin Borrowed dengan laporan Damaged dari Borrower yang menunggu konfirmasi, Brand, Model, Group, dan TAG sama dengan DU-215-2: Name `Laptop Cadangan {runId}`, Brand `Dell`, Model/Type `Latitude 5440`, Group `Ruang IT`, Status `Borrowed · Reported Damaged`, TAG `RFID`, Category `Komputer`, Borrower `Me`, Source `Admin`, Duration `10 days`, Due Date `T0 + 10 hari`, Handed Over At `T0`.
+  - DU-215-22: penugasan Assigned dengan marker Damaged dan laporan Missing menunggu konfirmasi, Brand, Model, Group, TAG, dan Category sama dengan DU-215-15: Name `Notebook Cadangan {runId}`, Brand `Lenovo`, Model/Type `T14`, Group `Ruang Staf`, Status `Assigned · Damaged · Reported Missing`, Assigned To `Me`, TAG `RFID`, Category `Laptop`, Assigned Date `T0`, Assigned By `Siti Rahmawati {runId}`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`
   - T0 adalah tanggal run dan seluruh pinjaman serta penugasan di atas diserahkan atau ditutup pada T0
@@ -295,3 +296,9 @@ trace:
 ### Filter Status memakai kombinasi badge yang sama persis di tab Borrowed
 192. Aktor meminta daftar tab Borrowed dengan filter `Status` bernilai `Borrowed · Reported Damaged`
 193. Verifikasi hasil memuat baris DU-215-21 dan tidak memuat baris DU-215-2, DU-215-5, DU-215-7
+
+### Opsi dan hasil filter Status tab Assigned memuat kombinasi multi-badge
+194. Aktor meminta opsi filter `Status` tab Assigned
+195. Verifikasi opsi `Status` memuat `Assigned`, `Assigned · Reported Damaged`, `Assigned · Damaged · Reported Missing`, dan `Waiting for Handover`, masing-masing satu kali, dengan `Assigned · Damaged · Reported Missing` sebagai opsi terpisah dari `Assigned` dan `Assigned · Reported Damaged`
+196. Aktor meminta daftar tab Assigned dengan filter `Status` bernilai `Assigned · Damaged · Reported Missing`
+197. Verifikasi hasil memuat baris DU-215-22 dan tidak memuat baris DU-215-15, DU-215-16, DU-215-17

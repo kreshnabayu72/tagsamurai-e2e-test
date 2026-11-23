@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§4.3#r7", "§9.10#p1", "§9.4.2#r92", "§9.4.2#r93", "§9.4.2#r94"]
+sourceRules: ["§4.3#r7", "§9.10#p1", "§9.4.2#r94", "§9.4.2#r95", "§9.4.2#r96"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
   "§4.3#r7": 16
   "§9.10#p1": [3, 5, 6, 37, 39, 44]
-  "§9.4.2#r92": [12, 16, 17, 21]
-  "§9.4.2#r93": [25, 30]
-  "§9.4.2#r94": 44
+  "§9.4.2#r94": [12, 16, 17, 21]
+  "§9.4.2#r95": [25, 30]
+  "§9.4.2#r96": 44
 anchor: [8, 9, 11, 15, 20, 24, 27, 29, 43]
 coverage:
   web: automated

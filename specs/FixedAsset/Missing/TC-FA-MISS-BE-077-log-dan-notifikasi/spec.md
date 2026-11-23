@@ -115,7 +115,7 @@ trace:
 4. Verifikasi Activity Log dan System Log Rina W masing-masing bertambah dua entri, satu per aset yang diproses, dan tidak ada entri untuk `Drill Bosch GSB {runId}` yang dilewati
 5. Verifikasi record `Camera Canon EOS {runId}` yang tidak terlibat tidak mendapat node atau entri log baru
 6. Verifikasi node `Reported missing by` pada `Laptop Dell Latitude 5420 {runId}` dan `Hand Pallet Truck {runId}` atas nama Rina W memuat What happened `Aset tidak ditemukan saat pengecekan rutin di ruang arsip`
-7. Verifikasi Transaction log aset memuat `Reported missing` untuk `Laptop Dell Latitude 5420 {runId}` dan `Hand Pallet Truck {runId}`, dan Transaction admin log Rina W memuat Report Missing oleh Pelapor admin
+7. Verifikasi Transaction log aset memuat `Reported missing` untuk `Laptop Dell Latitude 5420 {runId}` dan `Hand Pallet Truck {runId}`, dan Transaction admin log Rina W sub-tab Missing memuat Report Missing oleh Pelapor admin dengan Activity `Reported missing`, Name aset, Source yang sama dengan Source record itu, dan Group aset saat tindakan
 8. Verifikasi Aktor Missing Group aset menerima event `missing_reported` untuk setiap record yang dibuat
 9. Verifikasi laporan itu tidak ditolak karena plan, karena Report Missing tersedia di semua plan
 10. Verifikasi status record dan status global aset terbaca konsisten dari sumber masing-masing, sehingga tampilan turunan banner aset dan status laporan pemegang hanya menurunkan data itu
@@ -138,7 +138,7 @@ trace:
 ### Cancel Report oleh pemegang tidak masuk Transaction admin log
 22. `Joko Susilo {runId}` mengirim Cancel Report atas record `Monitor LG 27UL500 {runId}`
 23. Verifikasi record `Monitor LG 27UL500 {runId}` memuat node `Report canceled by` atas nama `Joko Susilo {runId}`
-24. Verifikasi Transaction admin log tidak memuat Cancel Report milik `Joko Susilo {runId}`, karena riwayatnya hanya di Missing Log dan User Log
+24. Verifikasi Transaction admin log tidak memuat Cancel Report milik `Joko Susilo {runId}` dari My Asset, karena riwayatnya hanya di Missing Log dan User Log
 25. Verifikasi status record dan status global aset `Monitor LG 27UL500 {runId}` berubah bersama dan tidak ada event `missing_*` yang dikirim
 
 ### Add Update menulis node dan Transaction admin log tanpa Transaction log aset

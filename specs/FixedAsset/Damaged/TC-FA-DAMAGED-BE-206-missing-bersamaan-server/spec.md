@@ -5,41 +5,44 @@ layer: be-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r65", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r76", "§Aturan Logika Modul#r78", "V-DMG-02", "§9.2#b25", "§9.2#b26", "§9.2#b27", "§9.6#r10", "EC-DMG-11", "EC-DMG-12", "EC-DMG-33", "EC-DMG-34", "§9.4.4#r30", "§9.4.4#r31", "§9.4.4#r32", "§9.4.4#r33", "§9.7#r4", "§9.7#r15", "§9.7#r16", "F-DMG-10"]
+sourceRules: ["§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r76", "§Aturan Logika Modul#r77", "§Aturan Logika Modul#r78", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r81", V-DMG-02, "§9.2#b28", "§9.2#b29", "§9.2#b30", "§9.6#r10", EC-DMG-11, EC-DMG-12, EC-DMG-33, EC-DMG-34, "§9.4.4#r33", "§9.4.4#r34", "§9.4.4#r35", "§9.4.4#r36", "§9.7#r4", "§9.7#r15", "§9.7#r16", F-DMG-10, "§2#b6", "§3#p2", "§3#p7"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r65": 3
-  "§Aturan Logika Modul#r66": [18, 20]
-  "§Aturan Logika Modul#r67": 4
-  "§Aturan Logika Modul#r68": 5
-  "§Aturan Logika Modul#r69": [29, 54]
-  "§Aturan Logika Modul#r70": [5, 56]
-  "§Aturan Logika Modul#r71": [31, 35]
-  "§Aturan Logika Modul#r72": [10, 12, 16]
-  "§Aturan Logika Modul#r73": [22, 25, 74, 76]
-  "§Aturan Logika Modul#r74": [37, 41]
-  "§Aturan Logika Modul#r75": [38, 39]
-  "§Aturan Logika Modul#r76": [45, 72]
-  "§Aturan Logika Modul#r78": [48, 50]
+  "§Aturan Logika Modul#r68": 3
+  "§Aturan Logika Modul#r69": [18, 20]
+  "§Aturan Logika Modul#r70": 4
+  "§Aturan Logika Modul#r71": 5
+  "§Aturan Logika Modul#r72": [29, 54]
+  "§Aturan Logika Modul#r73": [5, 56]
+  "§Aturan Logika Modul#r74": [31, 35]
+  "§Aturan Logika Modul#r75": [10, 12, 16]
+  "§Aturan Logika Modul#r76": [22, 25, 74, 76]
+  "§Aturan Logika Modul#r77": [37, 41]
+  "§Aturan Logika Modul#r78": [38, 39]
+  "§Aturan Logika Modul#r79": [45, 72]
+  "§Aturan Logika Modul#r81": [48, 50]
   V-DMG-02: [10, 12, 14, 58, 60]
-  "§9.2#b25": [3, 6, 38]
-  "§9.2#b26": [48, 50, 52]
-  "§9.2#b27": [22, 25, 27, 58, 60]
+  "§9.2#b28": [3, 6, 38]
+  "§9.2#b29": [48, 50, 52]
+  "§9.2#b30": [22, 25, 27, 58, 60]
   "§9.6#r10": [6, 8, 32, 46, 62, 64, 66, 68, 70, 72]
   EC-DMG-11: [3, 5, 29]
   EC-DMG-12: 38
   EC-DMG-33: [31, 32, 35]
   EC-DMG-34: [45, 72]
-  "§9.4.4#r30": [3, 6, 16]
-  "§9.4.4#r31": [37, 38, 41]
-  "§9.4.4#r32": [31, 32, 35]
-  "§9.4.4#r33": [45, 46]
+  "§9.4.4#r33": [3, 6, 16]
+  "§9.4.4#r34": [37, 38, 41]
+  "§9.4.4#r35": [31, 32, 35]
+  "§9.4.4#r36": [45, 46]
   "§9.7#r4": [37, 39, 43]
   "§9.7#r15": [5, 31]
   "§9.7#r16": 45
   F-DMG-10: 3
+  "§2#b6": [37, 43]
+  "§3#p2": [37, 43]
+  "§3#p7": [3, 4, 5, 18, 25, 48, 50]
 ---
 
 # Server menahan dan melepas Damage record saat aset dilaporkan Missing, ditemukan, laporan Missing ditutup, atau Missing → Disposed, menolak aksi pada record berpenanda Missing, dan menangani Report Missing atas record Disposal

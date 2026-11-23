@@ -31,7 +31,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor UI dan sesi API: Total Control "Rina Anggraini" `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Request langsung memakai sesi API aktor yang sama (butir "Sesi API aktor" di `suite.md`).
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup: TC-249 dan 250 memakai PB-1 (Fiscal Year Start January, First Accounting Period Mar 2026), PB-2 (akun Chart of Accounts tersedia), dan PB-7a (posting penyusutan pertama: Last Posted Period terisi pada Asset Class `IT Equipment`). TC-519 sampai 521 memakai PC-2 (posting penyusutan pertama ada; satu periode berstatus Soft Closed). Kunci dibentuk lewat seed BE; dipasang di hook `before` dan di langkah 15, "disediakan tim FE" tanpa endpoint karangan (S-13).
+- Data Pre-setup: TC-249 dan 250 memakai PB-1 (Fiscal Year Start January, First Accounting Period Mar 2026), PB-2 (akun Chart of Accounts tersedia), dan PB-7a (posting penyusutan pertama: Last Posted Period terisi pada Asset Class `IT Equipment`). TC-519 sampai 521 memakai PC-2 (posting penyusutan pertama ada: Depreciation Run berstatus Posted). Kunci dibentuk lewat seed BE; dipasang di hook `before` dan di langkah 15, "disediakan tim FE" tanpa endpoint karangan (S-13).
 - Kemampuan teknis: kirim request langsung ke endpoint Save Preferences dengan klien HTTP, baca jumlah baris Changelog, System Log, dan Activity Log FAMS (N dibaca sebelum aksi, bagian 8b butir 10), dan seed ulang penguncian. Disediakan tim FE/BE.
 - Seed dan pemulihan Preferences lewat API: lihat butir "Seed dan pemulihan lewat API" di `suite.md`. TC-521 menyimpan In-service Date Source "Manual by Accounting"; pemulihan ke nilai awal dilakukan di hook `after` spec ini.
 - Flag Guided Tooltip halaman Preferences: lihat butir "Flag Guided Tooltip" di `suite.md`.
@@ -59,7 +59,7 @@ coverage:
 12. Verifikasi First Accounting Period tetap "Mar 2026" pada tab Preferences
 13. Hitung ulang jumlah baris Changelog, System Log, dan Activity Log FAMS
 14. Verifikasi jumlah baris ketiga surface sama dengan jumlah awal (tidak ada entri log baru)
-15. Seed ulang penguncian ke PC-2 lewat API (Fiscal Year Start January, First Accounting Period Mar 2026, posting penyusutan pertama ada, satu periode Soft Closed)
+15. Seed ulang penguncian ke PC-2 lewat API (Fiscal Year Start January, First Accounting Period Mar 2026, posting penyusutan pertama ada, Depreciation Run berstatus Posted)
 
 ### TC-FA-PREF-519: Request langsung mengubah Fiscal Year Start yang terkunci ditolak server
 

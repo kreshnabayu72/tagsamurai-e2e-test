@@ -5,20 +5,24 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["damaged_reported", "damaged_review_requested", "damaged_review_resolved", "damaged_resolved", "§9.8#p4", "EC-DMG-19", "§9.4.4#r18", "§9.4.4#r3", "§9.4.4#r7"]
+sourceRules: [damaged_reported, damaged_review_requested, damaged_review_resolved, damaged_resolved, "§9.8#p4", EC-DMG-19, "§9.4.4#r20", "§9.4.4#r3", "§9.4.4#r7", "§3#p2", "§9.4.4#r18", "§9.4.4#r30", "§9.4.4#r36"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  damaged_reported: [3, 4, 6, 8, 26, 28, 30, 32, 34]
-  damaged_review_requested: [10, 12]
-  damaged_review_resolved: [14, 16, 18]
+  damaged_reported: [3, 4, 6, 8, 26, 28, 30, 32, 34, 66]
+  damaged_review_requested: [10, 12, 62, 64]
+  damaged_review_resolved: [14, 16, 18, 68]
   damaged_resolved: [18, 20, 22, 24, 36, 38, 40, 42, 44, 46, 48, 50, 52]
-  "§9.8#p4": [54, 55, 56]
+  "§9.8#p4": [54, 55, 56, 68, 70]
   EC-DMG-19: 60
-  "§9.4.4#r18": 60
+  "§9.4.4#r20": 60
   "§9.4.4#r3": [8, 10]
   "§9.4.4#r7": 6
+  "§3#p2": [3, 6, 8, 26, 28, 30, 32, 34, 66]
+  "§9.4.4#r18": [14, 16, 18]
+  "§9.4.4#r30": 22
+  "§9.4.4#r36": 24
 ---
 
 # Modul memicu event damaged_reported, damaged_review_requested, damaged_review_resolved, dan damaged_resolved hanya pada kejadian yang ditetapkan, tanpa event untuk jalur modul asal dan transisi Disposal, dan mengirim sinyal task selesai
@@ -29,6 +33,7 @@ trace:
   - Pemegang Manage asset & TAG (Update) `Rina Wulandari {runId}`, Aktor Damaged pada Group `Head Office {runId}`.
   - Aktor peminjaman `Yoga Tanuwijaya {runId}`, Aktor penugasan `Dewi Anggraini {runId}`, Aktor penemuan aset `Hendra Saputra {runId}`, dan Aktor pelepasan aset `Maya Puspita {runId}`.
   - Pelapor umum `Budi Santoso {runId}`, `Dedi Kurniawan {runId}`, dan `Hana Lestari {runId}`, tanpa role Damaged.
+  - Staff Auditor `Sinta Marlina {runId}` (pelapor dari Task Detail Audit) dan Staff Executor Maintenance Routine `Joko Prasetyo {runId}` (pelapor dari Task Maintenance), tanpa hak Aktor Damaged pada Group aset.
 - Data:
   - DU-212-1: User `Agus Pratama {runId}`, Total Control, cakupan seluruh client.
   - DU-212-2: User `Rina Wulandari {runId}`, Manage asset & TAG (Update), cakupan Group `Head Office {runId}` beserta descendant.
@@ -55,7 +60,7 @@ trace:
   - DU-212-23: Aset `Tablet Samsung Tab A8 - 332 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan.
   - DU-212-24: Aset `Tablet Samsung Tab A8 - 333 {runId}`, Group `Head Office {runId}`, `Missing` dengan record `Damaged` ditahan.
   - DU-212-25: Aset `Tablet Samsung Tab A8 - 334 {runId}`, Group `Head Office {runId}`, draf registrasi ber-Condition `Damaged`, belum Active.
-  - DU-212-26: Aset `Tablet Samsung Tab A8 - 335 {runId}`, Group `Head Office {runId}`, termasuk sesi opname milik `Agus Pratama {runId}`, tanpa record berjalan.
+  - DU-212-26: Aset `Tablet Samsung Tab A8 - 335 {runId}`, Group `Head Office {runId}`, item sesi Audit berjalan milik `Agus Pratama {runId}`, tanpa record berjalan.
   - DU-212-27: Aset `Forklift Toyota 8FD - 341 {runId}`, Group `Head Office {runId}`, punya record `Damaged`.
   - DU-212-28: Aset `Forklift Toyota 8FD - 342 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal`.
   - DU-212-29: Aset `Forklift Toyota 8FD - 344 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan kedaluwarsa.
@@ -72,6 +77,11 @@ trace:
   - DU-212-40: Aset `Forklift Toyota 8FD - 347 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan ditolak.
   - DU-212-41: Aset `Forklift Toyota 8FD - 348 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan dibatalkan.
   - DU-212-42: Aset `Forklift Toyota 8FD - 349 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris pelepasan aset yang akan dihapus.
+  - DU-212-43: User `Sinta Marlina {runId}`, Staff Auditor, pelapor dari Task Detail Audit, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-212-44: User `Joko Prasetyo {runId}`, Staff Executor Maintenance Routine, pelapor dari Task Maintenance, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-212-45: Aset `Tablet Samsung Tab A8 - 336 {runId}`, Group `Head Office {runId}`, item sesi Audit berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
+  - DU-212-46: Aset `Generator Honda EU22i - 337 {runId}`, Group `Head Office {runId}`, punya Task Maintenance berjalan yang dikerjakan `Joko Prasetyo {runId}`, tanpa record berjalan.
+  - DU-212-47: Aset `Generator Honda EU22i - 338 {runId}`, Group `Head Office {runId}`, punya Task Maintenance berjalan, tanpa record berjalan.
 
 ## Test Steps
 
@@ -116,8 +126,9 @@ trace:
 30. Verifikasi node ditambahkan tanpa event `damaged_*`, karena notifikasinya dimiliki modul asal
 31. Total Control `Agus Pratama {runId}` mengaktifkan registrasi `Tablet Samsung Tab A8 - 334 {runId}` yang ber-Condition `Damaged`
 32. Verifikasi record otomatis dibuat tanpa notifikasi dan tanpa event `damaged_*`
-33. Pemilik sesi opname `Agus Pratama {runId}` melaporkan kondisi rusak atas `Tablet Samsung Tab A8 - 335 {runId}` dari sesinya
-34. Verifikasi record `Damaged` dibuat tanpa event `damaged_*`
+### Report Damaged dari Task Detail Audit oleh Pelapor admin memicu damaged_reported
+33. Total Control `Agus Pratama {runId}` mengirim Report Damaged dari Task Detail Audit atas `Tablet Samsung Tab A8 - 335 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
+34. Verifikasi record `Damaged` dibuat dengan tepat satu event `damaged_reported`, karena Task Detail Audit memakai Report Damaged oleh Pelapor admin dan bukan form modul asal
 
 ### Transisi pelepasan aset tidak memicu event damaged
 35. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Forklift Toyota 8FD - 341 {runId}` dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
@@ -150,3 +161,17 @@ trace:
 58. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Drill Bosch GSB - 351 {runId}`
 59. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Drill Bosch GSB - 351 {runId}` dengan Scan TAG `RFID-H351 {runId}` milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
 60. Verifikasi record tetap diproses dan notifikasi penyelesaian tidak dikirim ke `Hana Lestari {runId}`
+
+### Laporan pelapor umum dari Task Detail Audit dan Task Maintenance memicu damaged_review_requested, sedangkan Pelapor admin dari Task Maintenance memicu damaged_reported
+61. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged dari Task Detail Audit atas `Tablet Samsung Tab A8 - 336 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
+62. Verifikasi record `Waiting for Confirmation` dibuat karena Staff Auditor tanpa hak Aktor Damaged adalah pelapor umum, dengan tepat satu event `damaged_review_requested` dan tanpa event `damaged_reported`
+63. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged dari Task Maintenance atas `Generator Honda EU22i - 337 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
+64. Verifikasi record `Waiting for Confirmation` dibuat karena Staff Executor tanpa hak Aktor Damaged adalah pelapor umum, dengan tepat satu event `damaged_review_requested` dan tanpa event `damaged_reported`
+65. Total Control `Agus Pratama {runId}` mengirim Report Damaged dari Task Maintenance atas `Generator Honda EU22i - 338 {runId}` dengan What happened `Layar retak setelah terjatuh dari meja {runId}` dan Damaged Photo `layar-retak.jpg`
+66. Verifikasi record `Damaged` dibuat langsung karena Total Control adalah Pelapor admin, dengan tepat satu event `damaged_reported` dan tanpa event `damaged_review_requested`
+
+### Confirm dan Cancel my report atas laporan Source Audit dan Maintenance memicu event dan sinyal task selesai
+67. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Tablet Samsung Tab A8 - 336 {runId}`
+68. Verifikasi tepat satu event `damaged_review_resolved` dipicu untuk pelapor `Sinta Marlina {runId}` dan sinyal task selesai terkirim untuk laporan itu
+69. Staff Executor `Joko Prasetyo {runId}` menjalankan `Cancel my report` di Task Maintenance atas laporannya sendiri `Generator Honda EU22i - 337 {runId}`
+70. Verifikasi sinyal task selesai terkirim saat laporan Source `Maintenance` itu dibatalkan, tanpa event `damaged_*`

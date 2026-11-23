@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r22", "§4.2.1#b4", "§4.4#r48", "§4.4#r49", "§9.2#b16"]
+sourceRules: ["§1.2#r23", "§4.2.1#b4", "§4.4#r48", "§4.4#r49", "§9.2#b16"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§1.2#r22": [3, 4, 11, 12, 14, 16, 17, 20, 35, 36]
-  "§4.2.1#b4": [6, 10, 11, 27, 29, 30]
+  "§1.2#r23": [3, 4, 10, 11, 14, 16, 17, 20, 35, 36]
+  "§4.2.1#b4": [6, 10, 12, 27, 28, 30]
   "§4.4#r48": [2, 19]
-  "§4.4#r49": [3, 12, 20]
+  "§4.4#r49": [3, 11, 20]
   "§9.2#b16": [2, 19]
 anchor: [8, 25, 33]
 coverage:
@@ -54,11 +54,11 @@ coverage:
 7. Ketik Search `Meja Lipat`, tekan Enter
 8. Verifikasi tabel hanya memuat 8 baris `Meja Lipat {n} {runId}`
 9. Buka tautan My Asset dengan parameter `tab` bernilai `borrowed` dan parameter `highlight` berisi Transaction ID milik DU-038-5 dan DU-038-7
-10. Verifikasi kotak Search kosong dan tabel tidak lagi tersaring oleh kata kunci `Meja Lipat`
-11. Verifikasi tabel menampilkan halaman kedua yang memuat baris `Laptop Dell Latitude 5420 {runId}`
-12. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tersorot
-13. Klik halaman `3` pada paginasi
-14. Verifikasi baris `Laptop Dell Latitude 5430 {runId}` di halaman ketiga tidak tersorot
+10. Verifikasi tabel menampilkan halaman kedua yang memuat baris `Laptop Dell Latitude 5420 {runId}`
+11. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tersorot segera setelah tautan dibuka, dalam jendela sorotan 3 detik
+12. Verifikasi kotak Search kosong dan tabel tidak lagi tersaring oleh kata kunci `Meja Lipat`, dalam jendela sorotan 3 detik yang sama
+13. Dalam jendela sorotan 3 detik yang sama, klik halaman `3` pada paginasi
+14. Verifikasi baris `Laptop Dell Latitude 5430 {runId}` di halaman ketiga tidak tersorot, dalam jendela sorotan 3 detik yang sama
 
 ### Highlight yang tidak dikenal tidak membuka data dan tidak menyorot baris
 15. Buka tautan My Asset dengan parameter `tab` bernilai `borrowed` dan parameter `highlight` berisi Transaction ID milik DU-038-9
@@ -77,10 +77,10 @@ coverage:
 24. Klik `[Apply]`
 25. Verifikasi Filter `Brand` bernilai `Informa` menyisakan 8 baris `Meja Lipat {n} {runId}` di tabel
 26. Buka tautan My Asset dengan parameter `tab` bernilai `borrowed` dan parameter `highlight` berisi Transaction ID milik DU-038-5 dan DU-038-7
-27. Verifikasi ikon `Filter` tidak menampilkan badge titik karena Filter `Brand` sudah di-reset
-28. Klik ikon `Filter` pada toolbar untuk membuka Filter Panel
-29. Verifikasi field Filter `Brand` kosong
-30. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tampil dan tersorot setelah Filter `Brand` di-reset
+27. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tampil dan tersorot setelah Filter `Brand` di-reset
+28. Verifikasi ikon `Filter` tidak menampilkan badge titik karena Filter `Brand` sudah di-reset
+29. Klik ikon `Filter` pada toolbar untuk membuka Filter Panel
+30. Verifikasi field Filter `Brand` kosong
 
 ### Tabel pindah ke halaman yang memuat baris pertama menurut Sort aktif
 31. Klik header kolom Duration

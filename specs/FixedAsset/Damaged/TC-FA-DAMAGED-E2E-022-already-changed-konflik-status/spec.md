@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-06, §4.2.4#p5, §4.2.4#r14, §4.4#r10, V-DMG-07, EC-DMG-07, §9.4.4#r16, §9.4.4#r24, V-DMG-05, EB-ERR-4]
+sourceRules: [D-DMG-06, §4.2.4#p6, §4.2.4#r17, §4.4#r10, V-DMG-07, EC-DMG-07, §9.4.4#r18, §9.4.4#r26, V-DMG-05, EB-ERR-4]
 smoke: [EB-ERR-4]
 dependsOn: []
 trace:
   D-DMG-06: [7, 8, 9, 32, 33, 46, 47]
-  §4.2.4#p5: [7, 8, 9, 11, 12, 49]
-  §4.2.4#r14: 7
+  §4.2.4#p6: [7, 8, 9, 11, 12, 49]
+  §4.2.4#r17: 7
   §4.4#r10: [2, 7]
   V-DMG-07: [7, 8, 46]
   EC-DMG-07: [7, 8, 14, 46, 47, 50, 53]
-  §9.4.4#r16: [7, 12, 14]
-  §9.4.4#r24: [7, 14, 32, 38]
+  §9.4.4#r18: [7, 12, 14]
+  §9.4.4#r26: [7, 14, 32, 38]
   V-DMG-05: [18, 19, 23, 24, 32, 35]
   EB-ERR-4: [7, 12, 14]
 anchor: [37, 41]
@@ -31,7 +31,7 @@ coverage:
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
   - DU-022-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-022-4; Damage Log hanya memuat node `Reported damaged by`.
-  - DU-022-2: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-022-5.
+  - DU-022-2: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-022-5.
   - DU-022-3: Damage record aset `Monitor Dell P2422H {runId}` di Group `Head Office {runId}`, status `In Disposal Process`, Source `Manual`, dilaporkan DU-022-5.
   - DU-022-4: User `Dewi Anggraeni {runId}`, pelapor umum tanpa hak Aktor Damaged; cakupan: aset yang ia pegang.
   - DU-022-5: User `Rina Wijaya {runId}`, role Total Control; cakupan: seluruh client.
@@ -42,7 +42,7 @@ coverage:
   - DU-022-10: Damage record aset `Scanner Fujitsu fi-7160 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-022-4.
 - Kondisi:
   - After photo required bernilai `OFF`.
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 

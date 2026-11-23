@@ -5,14 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r52", "§9.2#r23", "§9.4.2#r48", "§9.4.2#r49", "§9.7#r11"]
+sourceRules: ["§1.2#r53", "§9.2#r23", "§9.4.2#r50", "§9.4.2#r51", "§9.7#r11"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§1.2#r52": [11, 13, 17, 19, 21, 24]
+  "§1.2#r53": [11, 13, 17, 19, 21, 24]
   "§9.2#r23": [11, 17]
-  "§9.4.2#r48": 17
-  "§9.4.2#r49": [11, 13]
+  "§9.4.2#r50": 17
+  "§9.4.2#r51": [11, 13]
   "§9.7#r11": [11, 17]
 anchor: [4, 6, 10]
 coverage:

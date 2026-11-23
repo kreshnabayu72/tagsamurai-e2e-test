@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["T-DMG-01", "T-DMG-02", "§5#r3", "§9.5#r2", "§9.5#r3", "§9.5#r7", "§9.2#b4", "EB-SRC-1", "EB-SRT-1", "EB-SRT-2", "EB-FLT-3"]
+sourceRules: [T-DMG-01, T-DMG-02, "§5#r3", "§9.5#r2", "§9.5#r3", "§9.5#r7", "§9.2#b4", EB-SRC-1, EB-SRT-1, EB-SRT-2, EB-FLT-3]
 smoke: []
 dependsOn: []
 owner: BE
@@ -13,7 +13,7 @@ trace:
   T-DMG-01: [2, 4, 6, 8, 10, 12, 14, 16, 18, 22, 24, 26, 28, 30, 32, 42, 46, 48, 50, 52]
   T-DMG-02: [38, 40, 56, 59]
   "§5#r3": [2, 4, 6, 8, 10, 12, 14, 16, 18]
-  "§9.5#r2": 36
+  "§9.5#r2": [36, 67, 68]
   "§9.5#r3": 38
   "§9.5#r7": [46, 48, 54, 56]
   "§9.2#b4": [50, 52]
@@ -39,15 +39,19 @@ trace:
   - DU-209-7: Aset `Laptop Lenovo ThinkPad - 1 {runId}`, Asset ID `LPT-0001-{runId}`, Brand `Lenovo {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Budi S`, Reported By `—`, Reported Date `T0 − 9 hari, pukul 08:15`, Purchase Cost `12500000`, sub-tab Active.
   - DU-209-8: Aset `Laptop Lenovo ThinkPad - 2 {runId}`, Asset ID `LPT-0002-{runId}`, Brand `Lenovo {runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 7 hari, pukul 09:30`, Purchase Cost `4500000`, sub-tab Active.
   - DU-209-9: Aset `Laptop Lenovo ThinkPad - 10 {runId}`, Asset ID `LPT-0010-{runId}`, Brand `Lenovo {runId}`, Group `Head Office {runId}`, Status `Damaged` dengan penanda `Missing`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 5 hari, pukul 10:45`, Purchase Cost `7200000`, sub-tab Active.
-  - DU-209-10: Aset `Printer Canon Pixma - 1 {runId}`, Asset ID `PRN-0001-{runId}`, Brand `Canon {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 3 hari, pukul 11:00`, Purchase Cost `2100000`, sub-tab Active.
+  - DU-209-10: Aset `Printer Canon Pixma - 1 {runId}`, Asset ID `PRN-0001-{runId}`, Brand `Canon {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 3 hari, pukul 11:00`, Purchase Cost `2100000`, sub-tab Active.
   - DU-209-11: Aset `Printer Canon Pixma - 2 {runId}`, Asset ID `PRN-0002-{runId}`, Brand `Canon {runId}`, Group `Head Office {runId}`, Status `Damaged` dengan penanda `Reported Missing`, Source `Borrowed asset`, Last Holder `Sari D`, Reported By `Agus P`, Reported Date `T0 − 11 hari, pukul 14:20`, Purchase Cost `3300000`, sub-tab Active.
   - DU-209-12: Aset `Drill Bosch GSB - 1 {runId}`, Asset ID `DRL-0001-{runId}`, Brand `Bosch {runId}`, Group `Warehouse {runId}`, Status `Damaged`, Source `Transfer receive`, Last Holder `—`, Reported By `Rina W`, Reported Date `T0 − 6 hari, pukul 13:05`, Purchase Cost `1800000`, sub-tab Active.
   - DU-209-13: Aset `Laptop Lenovo ThinkPad - 3 {runId}`, Asset ID `LPT-0003-{runId}`, Group `Head Office {runId}`, Status `Repaired`, Source `Manual`, Resolved By `Agus P`, Resolved Date `T0 − 2 hari, pukul 15:00`, sub-tab History.
   - DU-209-14: Aset `Printer Canon Pixma - 3 {runId}`, Asset ID `PRN-0003-{runId}`, Group `Head Office {runId}`, Status `Rejected`, Source `Reported by scan`, Resolved By `Rina W`, Resolved Date `T0 − 4 hari, pukul 12:10`, sub-tab History.
-  - DU-209-15: Aset `Drill Bosch GSB - 2 {runId}`, Asset ID `DRL-0002-{runId}`, Group `Head Office {runId}`, Status `Disposed`, Source `Stock opname`, Resolved By `System`, Resolved Date `T0 − 1 hari, pukul 00:00`, sub-tab History.
+  - DU-209-15: Aset `Drill Bosch GSB - 2 {runId}`, Asset ID `DRL-0002-{runId}`, Group `Head Office {runId}`, Status `Disposed`, Source `Audit`, Resolved By `System`, Resolved Date `T0 − 1 hari, pukul 00:00`, sub-tab History.
   - DU-209-16: Aset `Printer Canon Pixma - 4 {runId}`, Asset ID `PRN-0004-{runId}`, Group `Gudang Lama {runId}`, Status `Canceled`, Source `Reported by holder`, Resolved By `Budi S`, Resolved Date `T0 − 6 hari, pukul 08:00`, sub-tab History.
   - DU-209-17: Aset `Scanner Zulu - 1 {runId}`, Asset ID `ZLU-0001-{runId}`, Brand `Zulu {runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 8 hari, pukul 09:30`, Purchase Cost `5000000`, sub-tab Active.
   - DU-209-18: Aset `Scanner Zulu - 2 {runId}`, Asset ID `ZLU-0002-{runId}`, Brand `Zulu {runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 8 hari, pukul 09:30`, Purchase Cost `5000000`, sub-tab Active.
+  - DU-209-19: Aset `Laptop Acer Aspire - 1 {runId}`, Asset ID `ACR-0001-{runId}`, Brand `Acer {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Budi S`, Reported By `—`, Reported Date `T0 − 6 hari, pukul 08:15`, Purchase Cost `3100000`, sub-tab Active.
+  - DU-209-20: Aset `Laptop Acer Aspire - 2 {runId}`, Asset ID `ACR-0002-{runId}`, Brand `Acer {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by scan`, Last Holder `Dedi K`, Reported By `—`, Reported Date `T0 − 2 hari, pukul 09:40`, Purchase Cost `2900000`, sub-tab Active.
+  - DU-209-21: Aset `Laptop Acer Aspire - 3 {runId}`, Asset ID `ACR-0003-{runId}`, Brand `Acer {runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 5 hari, pukul 10:20`, Purchase Cost `3300000`, sub-tab Active.
+  - DU-209-22: Aset `Laptop Acer Aspire - 4 {runId}`, Asset ID `ACR-0004-{runId}`, Brand `Acer {runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 1 hari, pukul 11:05`, Purchase Cost `3500000`, sub-tab Active.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
   - Kolom Brand dan Purchase Cost tampil di tabel `Agus Pratama {runId}` lewat Setup Column.
@@ -112,9 +116,9 @@ trace:
 
 ### Opsi filter DISTINCT dari data dalam cakupan Group
 49. Total Control `Agus Pratama {runId}` meminta opsi Filter Source sub-tab Active
-50. Verifikasi opsi memuat `Reported by holder`, `Manual`, `Stock opname`, `Borrowed asset`, dan `Transfer receive` yang ada pada data tabel seluruh client
+50. Verifikasi opsi memuat `Reported by holder`, `Manual`, `Audit`, `Borrowed asset`, dan `Transfer receive` yang ada pada data tabel seluruh client
 51. Group Manager `Gunawan Hartono {runId}` meminta opsi Filter Source sub-tab Active
-52. Verifikasi opsi memuat `Reported by holder`, `Manual`, `Stock opname`, dan `Borrowed asset` dari Group binaan tanpa `Transfer receive` yang hanya ada di Group `Warehouse {runId}`
+52. Verifikasi opsi memuat `Reported by holder`, `Manual`, `Audit`, dan `Borrowed asset` dari Group binaan tanpa `Transfer receive` yang hanya ada di Group `Warehouse {runId}`
 53. Total Control `Agus Pratama {runId}` meminta opsi Filter Status sub-tab Active
 54. Verifikasi opsi memuat `Waiting for Confirmation`, `Damaged`, `Reported Disposal`, `In Disposal Process`, serta penanda `Reported Missing` dan `Missing`, tanpa opsi nilai kosong
 55. Total Control `Agus Pratama {runId}` meminta opsi Filter Status sub-tab History
@@ -131,3 +135,7 @@ trace:
 64. Total Control `Agus Pratama {runId}` meminta daftar record Active dengan Search `Zulu {runId}` dan sort Source descending
 65. Verifikasi urutan `Scanner Zulu - 1 {runId}` dan `Scanner Zulu - 2 {runId}` kebalikan dari urutan pada sort Source ascending karena arah identifier mengikuti arah sort aktif
 
+### Urutan default menempatkan Waiting for Confirmation di atas, lalu Days Damaged terlama dulu di dalam tiap kelompok
+66. Total Control `Agus Pratama {runId}` meminta daftar record Active dengan Search `Acer {runId}` tanpa sort
+67. Verifikasi `Laptop Acer Aspire - 1 {runId}` mendahului `Laptop Acer Aspire - 2 {runId}`, keduanya `Waiting for Confirmation` dan di atas record berstatus lain, karena Days Damaged terlama dulu antar-record `Waiting for Confirmation`
+68. Verifikasi `Laptop Acer Aspire - 3 {runId}` mendahului `Laptop Acer Aspire - 4 {runId}`, keduanya `Damaged`, karena Days Damaged terlama dulu antar-record status lain

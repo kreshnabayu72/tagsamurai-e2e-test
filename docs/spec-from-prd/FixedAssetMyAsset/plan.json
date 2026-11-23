@@ -1,19 +1,19 @@
 {
  "module": "My Asset",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-18",
+ "disetujui": "otomatis, 2026-11-23",
  "prd": "fixed-asset@f688ea9",
- "prdSha": "ceb33a0072412746",
- "foundation": "foundation@7d6e074",
+ "prdSha": "9d4d5beaa26ba4d1",
+ "foundation": "foundation@6011f14-dirty",
  "specs": [
   {
    "id": "TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state",
    "title": "Titik masuk My Asset dari menu profil, tab awal Task, tab di URL, dan empty state tiap tab",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r20",
     "§1.2#r21",
     "§1.2#r22",
+    "§1.2#r23",
     "§3#p2",
     "§4.1#r1",
     "§4.3#r3",
@@ -83,9 +83,9 @@
    "units": [
     "FI-05",
     "T-MYA-01",
-    "§1.2#r10",
-    "§1.2#r12",
-    "§1.2#r61",
+    "§1.2#r11",
+    "§1.2#r13",
+    "§1.2#r62",
     "§2.1#r3",
     "§3#p5",
     "§4.2.5#p2",
@@ -97,8 +97,8 @@
     "§7.3#r1",
     "§9.2#b1",
     "§9.2#r1",
-    "§9.4.2#r66",
     "§9.4.2#r68",
+    "§9.4.2#r70",
     "§9.6#r1",
     "§9.7#r1",
     "§9.7#r2",
@@ -125,7 +125,7 @@
    "layer": "ui-e2e",
    "units": [
     "V-03",
-    "§1.2#r12",
+    "§1.2#r13",
     "§3#p5",
     "§4.2.5#p11",
     "§4.2.5#p12",
@@ -135,11 +135,11 @@
     "§9.2#b3",
     "§9.2#r2",
     "§9.2#r3",
-    "§9.4.2#r37",
-    "§9.4.2#r38",
     "§9.4.2#r39",
+    "§9.4.2#r40",
     "§9.4.2#r41",
-    "§9.4.2#r42"
+    "§9.4.2#r43",
+    "§9.4.2#r44"
    ],
    "smoke": [],
    "dependsOn": [
@@ -159,8 +159,8 @@
    "title": "Cancel Borrow pada baris Waiting for Approval: baris Canceled pindah ke tab History",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r31",
-    "§1.2#r33",
+    "§1.2#r32",
+    "§1.2#r34",
     "§2.1#r4",
     "§3#p13",
     "§4.1#p4",
@@ -176,9 +176,9 @@
     "§9.2#r5",
     "§9.2#r6",
     "§9.2#r8",
-    "§9.4.2#r69",
-    "§9.4.2#r70",
+    "§9.4.2#r71",
     "§9.4.2#r72",
+    "§9.4.2#r74",
     "§9.6#r2",
     "§9.7#r3"
    ],
@@ -204,7 +204,7 @@
    "units": [
     "FI-12",
     "V-02",
-    "§1.2#r34",
+    "§1.2#r35",
     "§3#p13",
     "§4.1b#r76",
     "§4.1b#r81",
@@ -216,13 +216,13 @@
     "§4.4#r43",
     "§4.4#r44",
     "§7.3#r14",
-    "§9.4.2#r73",
-    "§9.4.2#r74",
     "§9.4.2#r75",
+    "§9.4.2#r76",
     "§9.4.2#r77",
-    "§9.4.2#r78",
     "§9.4.2#r79",
-    "§9.4.2#r80"
+    "§9.4.2#r80",
+    "§9.4.2#r81",
+    "§9.4.2#r82"
    ],
    "smoke": [
     "EB-ERR-4"
@@ -244,12 +244,12 @@
    "title": "Request Extension dari tab Borrowed: pengajuan menunggu review dan baris berstatus Extension Request",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r58",
-    "§1.2#r63",
+    "§1.2#r59",
     "§1.2#r64",
     "§1.2#r65",
     "§1.2#r66",
     "§1.2#r67",
+    "§1.2#r68",
     "§2.1#r5",
     "§3#p11",
     "§4.1b#r35",
@@ -262,8 +262,8 @@
     "§4.8#r7",
     "§7.3#r5",
     "§9.2#b7",
-    "§9.4.2#r43",
     "§9.4.2#r45",
+    "§9.4.2#r47",
     "§9.6#r3",
     "§9.7#r4"
    ],
@@ -294,8 +294,8 @@
     "§4.4#r5",
     "§7.3#r3",
     "§9.2#b8",
-    "§9.4.2#r46",
-    "§9.4.2#r47",
+    "§9.4.2#r48",
+    "§9.4.2#r49",
     "§9.6#r4",
     "§9.7#r5"
    ],
@@ -354,7 +354,7 @@
     "§4.8#r11",
     "§7.3#r10",
     "§9.6#r6",
-    "§9.7#r14"
+    "§9.7#r15"
    ],
    "smoke": [],
    "dependsOn": [
@@ -532,7 +532,7 @@
    "title": "Keputusan Damage Report tercermin di tab Borrowed: badge Damaged dan aksi yang tersedia",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r35",
+    "§1.2#r36",
     "§4.1b#r50",
     "§4.1b#r67",
     "§9.7#r12"
@@ -579,16 +579,16 @@
    "title": "Tab Borrowed pada data nyata: satu baris per aset, nilai kolom, tooltip progres approval, dan aksi per status",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r13",
-    "§1.2#r28",
-    "§1.2#r30",
-    "§1.2#r38",
-    "§1.2#r60",
-    "§1.2#r86",
+    "§1.2#r14",
+    "§1.2#r29",
+    "§1.2#r31",
+    "§1.2#r39",
+    "§1.2#r61",
     "§1.2#r87",
     "§1.2#r88",
     "§1.2#r89",
     "§1.2#r90",
+    "§1.2#r91",
     "§2.1#r1",
     "§2.1#r12",
     "§2.1#b3",
@@ -618,7 +618,7 @@
     "§10#r3"
    ],
    "smoke": [
-    "§1.2#r23"
+    "§1.2#r24"
    ],
    "dependsOn": [
     "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"
@@ -758,8 +758,8 @@
    "layer": "ui-e2e",
    "units": [
     "T-MYA-01",
-    "§1.2#r10",
-    "§1.2#r20",
+    "§1.2#r11",
+    "§1.2#r21",
     "§5#r4",
     "§5#r6",
     "§9.2#b1",
@@ -785,8 +785,8 @@
    "title": "Tab History pada data nyata pinjaman: status akhir, Type Borrow, urutan default, dan toolbar",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r17",
-    "§1.2#r19",
+    "§1.2#r18",
+    "§1.2#r20",
     "§4.1c#r1",
     "§4.1c#r2",
     "§4.1c#r3",
@@ -805,8 +805,9 @@
     "§5#r6",
     "§9.2#r20",
     "§9.2#r21",
-    "§9.7#r15",
-    "EB-SRC-5@tabel-history"
+    "§9.7#r16",
+    "EB-SRC-5@tabel-history",
+    "§9.7#r15"
    ],
    "smoke": [],
    "dependsOn": [
@@ -826,7 +827,7 @@
    "title": "Tautan My Asset dengan parameter tab dan highlight: baris transaksi disorot dan tabel pindah halaman",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r22",
+    "§1.2#r23",
     "§4.2.1#b4",
     "§4.4#r48",
     "§4.4#r49",
@@ -852,12 +853,12 @@
    "units": [
     "FI-20",
     "FI-21",
-    "§1.2#r14",
-    "§1.2#r24",
-    "§1.2#r36",
+    "§1.2#r15",
+    "§1.2#r25",
     "§1.2#r37",
-    "§1.2#r41",
+    "§1.2#r38",
     "§1.2#r42",
+    "§1.2#r43",
     "§2.1#r1",
     "§2.1#r2",
     "§2.1#r3",
@@ -911,10 +912,10 @@
    "title": "PIC Borrower diganti: baris pindah ke My Asset PIC baru dan PIC lama tidak melihatnya",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r52",
+    "§1.2#r53",
     "§9.2#r23",
-    "§9.4.2#r48",
-    "§9.4.2#r49",
+    "§9.4.2#r50",
+    "§9.4.2#r51",
     "§9.7#r11"
    ],
    "smoke": [],
@@ -936,7 +937,7 @@
    "title": "Pengguna ber-role admin sebagai Borrower: hanya pinjamannya sendiri dan aksi mengikuti posisi",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r26",
+    "§1.2#r27",
     "§2.1#b4",
     "§4.8#r1",
     "§4.8#r2",
@@ -1043,8 +1044,8 @@
    "layer": "ui-e2e",
    "units": [
     "§9.4.1#r1",
-    "§9.4.2#r81",
-    "§9.4.2#r82",
+    "§9.4.2#r83",
+    "§9.4.2#r84",
     "EB-AKS-7"
    ],
    "smoke": [],
@@ -1067,12 +1068,12 @@
    "layer": "ui-e2e",
    "units": [
     "T-MYA-01",
-    "§1.2#r11",
-    "§1.2#r68",
+    "§1.2#r12",
     "§1.2#r69",
     "§1.2#r70",
     "§1.2#r71",
     "§1.2#r72",
+    "§1.2#r73",
     "§2.1#r2",
     "§3#p7",
     "§4.2.2b#p1",
@@ -1109,15 +1110,15 @@
    "title": "Confirm Handover penugasan ditolak: sesi dibatalkan Aktor dan transaksi tidak aktif lagi",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r72",
+    "§1.2#r73",
     "§3#p7",
     "§4.2.5#p11",
     "§4.2.5#r6",
-    "§9.4.2#r54",
-    "§9.4.2#r55",
     "§9.4.2#r56",
     "§9.4.2#r57",
     "§9.4.2#r58",
+    "§9.4.2#r59",
+    "§9.4.2#r60",
     "§9.7#r7"
    ],
    "smoke": [],
@@ -1139,14 +1140,14 @@
    "layer": "ui-e2e",
    "units": [
     "T-MYA-04",
-    "§1.2#r15",
-    "§1.2#r28",
-    "§1.2#r74",
-    "§1.2#r77",
+    "§1.2#r16",
+    "§1.2#r29",
+    "§1.2#r75",
     "§1.2#r78",
     "§1.2#r79",
-    "§1.2#r82",
+    "§1.2#r80",
     "§1.2#r83",
+    "§1.2#r84",
     "§2.1#r10",
     "§2.1#r13",
     "§3#p9",
@@ -1158,7 +1159,7 @@
     "§9.7#r10"
    ],
    "smoke": [
-    "§1.2#r23"
+    "§1.2#r24"
    ],
    "dependsOn": [
     "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"
@@ -1209,8 +1210,8 @@
     "§7.3#r12",
     "§9.2#r28",
     "§9.2#r29",
-    "§9.4.2#r61",
-    "§9.4.2#r62"
+    "§9.4.2#r63",
+    "§9.4.2#r64"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1236,7 +1237,7 @@
     "§3#p9",
     "§4.8#r9",
     "§9.2#r30",
-    "§9.4.2#r59"
+    "§9.4.2#r61"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1256,12 +1257,12 @@
    "title": "Tab History pada data nyata penugasan: Type Assignment, status akhir, dan aksi Assignment Log",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r18",
     "§1.2#r19",
-    "§1.2#r75",
+    "§1.2#r20",
     "§1.2#r76",
-    "§1.2#r80",
+    "§1.2#r77",
     "§1.2#r81",
+    "§1.2#r82",
     "§4.1c#r7",
     "§4.1c#r8",
     "§4.1c#r11",
@@ -1289,14 +1290,14 @@
    "layer": "ui-e2e",
    "units": [
     "T-MYA-04",
-    "§1.2#r16",
-    "§1.2#r25",
-    "§1.2#r44",
+    "§1.2#r17",
+    "§1.2#r26",
     "§1.2#r45",
     "§1.2#r46",
     "§1.2#r47",
-    "§1.2#r73",
-    "§1.2#r83",
+    "§1.2#r48",
+    "§1.2#r74",
+    "§1.2#r84",
     "§2.1#r1",
     "§2.1#r2",
     "§2.1#r3",
@@ -1324,7 +1325,8 @@
     "§4.8#r11",
     "§4.8#r12",
     "§4.8#r13",
-    "§4.8#r14"
+    "§4.8#r14",
+    "§1.2#r12"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1344,9 +1346,9 @@
    "title": "Change PIC Division: baris dan Task pindah ke PIC baru dan PIC lama tidak melihatnya",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r49",
-    "§9.4.2#r64",
-    "§9.4.2#r65",
+    "§1.2#r50",
+    "§9.4.2#r66",
+    "§9.4.2#r67",
     "§9.7#r11"
    ],
    "smoke": [],
@@ -1368,8 +1370,8 @@
    "layer": "ui-e2e",
    "units": [
     "§9.4.1#r1",
-    "§9.4.2#r81",
-    "§9.4.2#r82",
+    "§9.4.2#r83",
+    "§9.4.2#r84",
     "EB-AKS-7"
    ],
    "smoke": [],
@@ -1399,7 +1401,7 @@
     "§4.3#r2",
     "§4.4#r1",
     "§4.4#r47",
-    "§9.7#r16",
+    "§9.7#r17",
     "§9.10#p1",
     "EB-TBL-11",
     "EB-KOL-3"
@@ -1447,9 +1449,9 @@
    "units": [
     "FI-15",
     "T-MYA-01",
-    "§1.2#r39",
-    "§1.2#r46",
-    "§1.2#r70",
+    "§1.2#r40",
+    "§1.2#r47",
+    "§1.2#r71",
     "§4.1#p2",
     "§5#r1",
     "§5#r3",
@@ -1476,10 +1478,10 @@
    "komponen": "Tabel Borrowed (T-MYA-02)",
    "units": [
     "§1.2#r7",
-    "§1.2#r37",
     "§1.2#r38",
-    "§1.2#r86",
-    "§1.2#r90",
+    "§1.2#r39",
+    "§1.2#r87",
+    "§1.2#r91",
     "§4.1#p5",
     "§4.1b#r1",
     "§4.1b#r2",
@@ -1520,15 +1522,16 @@
    "layer": "ui-client",
    "komponen": "Tabel Borrowed (T-MYA-02)",
    "units": [
-    "§1.2#r55",
     "§1.2#r56",
-    "§1.2#r58",
-    "§1.2#r60",
-    "§1.2#r62",
+    "§1.2#r57",
+    "§1.2#r59",
+    "§1.2#r61",
+    "§1.2#r63",
     "§4.1b#r10",
     "§4.1b#r11",
-    "§9.4.2#r88",
-    "EB-XM-1"
+    "§9.4.2#r90",
+    "EB-XM-1",
+    "§9.7#r17"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -1547,11 +1550,11 @@
    "layer": "ui-client",
    "komponen": "Tabel Borrowed (T-MYA-02)",
    "units": [
-    "§1.2#r28",
-    "§1.2#r30",
+    "§1.2#r29",
     "§1.2#r31",
     "§1.2#r32",
-    "§1.2#r35",
+    "§1.2#r33",
+    "§1.2#r36",
     "§4.1b#p3",
     "§4.1b#r19",
     "§4.1b#r28",
@@ -1577,10 +1580,10 @@
     "§4.1b#p5",
     "§4.3#r7",
     "§4.4#r51",
-    "§9.4.2#r43",
     "§9.4.2#r45",
-    "§9.4.2#r53",
-    "§9.4.2#r89",
+    "§9.4.2#r47",
+    "§9.4.2#r55",
+    "§9.4.2#r91",
     "§9.4.3#b3",
     "§9.4.3#b4",
     "§9.4.3#b7"
@@ -1609,7 +1612,7 @@
     "V-01",
     "§4.1b#p6",
     "§5#r5",
-    "§9.4.2#r44",
+    "§9.4.2#r46",
     "EB-BLK-1@tabel-borrowed",
     "EB-BLK-6"
    ],
@@ -1808,10 +1811,10 @@
    "units": [
     "FI-15",
     "§1.2#r7",
-    "§1.2#r37",
     "§1.2#r38",
-    "§1.2#r45",
-    "§1.2#r81",
+    "§1.2#r39",
+    "§1.2#r46",
+    "§1.2#r82",
     "§4.1#p5",
     "§4.1c#r1",
     "§4.1c#r2",
@@ -1906,8 +1909,8 @@
     "FI-15",
     "T-MYA-04",
     "§1.2#r7",
-    "§1.2#r45",
-    "§1.2#r86",
+    "§1.2#r46",
+    "§1.2#r87",
     "§4.1#p2",
     "§4.4#r50",
     "§5#r1",
@@ -1915,7 +1918,7 @@
     "§5#r9",
     "§5#r10",
     "§7.1#r3",
-    "§9.4.2#r61",
+    "§9.4.2#r63",
     "EB-TBL-1@tabel-assigned",
     "EB-FLT-6@tabel-assigned"
    ],
@@ -1938,18 +1941,18 @@
    "units": [
     "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>",
     "T-MYA-04",
-    "§1.2#r28",
-    "§1.2#r77",
+    "§1.2#r29",
     "§1.2#r78",
     "§1.2#r79",
-    "§1.2#r82",
+    "§1.2#r80",
     "§1.2#r83",
+    "§1.2#r84",
     "§4.4#r51",
     "§7.3#r12",
     "§7.3#r15",
-    "§9.4.2#r62",
+    "§9.4.2#r64",
     "§9.4.3#b10",
-    "§1.2#r85",
+    "§1.2#r86",
     "§4.3#r9"
    ],
    "smoke": [],
@@ -2005,7 +2008,7 @@
     "FI-06",
     "FLD-03",
     "FLD-04",
-    "§1.2#r42",
+    "§1.2#r43",
     "§4.2.5#p4"
    ],
    "smoke": [],
@@ -2032,7 +2035,7 @@
     "FLD-03",
     "FLD-04",
     "V-04",
-    "§1.2#r69",
+    "§1.2#r70",
     "§4.2.2b#p1",
     "§4.2.5#p6",
     "§4.2.5#p7",
@@ -2057,7 +2060,7 @@
    "komponen": "Dialog Confirm Handover (D-MYA-01)",
    "units": [
     "V-03",
-    "§1.2#r53",
+    "§1.2#r54",
     "§4.2.1#b5",
     "§4.2.5#p10",
     "§4.2.5#p11",
@@ -2071,12 +2074,12 @@
     "§7.3#r11",
     "§7.3#r15",
     "§9.2#r3",
-    "§9.4.2#r38",
-    "§9.4.2#r39",
-    "§9.4.2#r42",
-    "§9.4.2#r54",
-    "§9.4.2#r58",
-    "§9.4.2#r91",
+    "§9.4.2#r40",
+    "§9.4.2#r41",
+    "§9.4.2#r44",
+    "§9.4.2#r56",
+    "§9.4.2#r60",
+    "§9.4.2#r93",
     "§9.6#r1",
     "§9.6#r10",
     "§9.6#p1",
@@ -2106,7 +2109,7 @@
    "units": [
     "FI-12",
     "V-02",
-    "§1.2#r34",
+    "§1.2#r35",
     "§4.1b#r77",
     "§4.1b#r80",
     "§4.1b#r81",
@@ -2122,8 +2125,8 @@
     "§7.3#r2",
     "§7.3#r14",
     "§7.3#r15",
-    "§9.4.2#r74",
-    "§9.4.2#r77",
+    "§9.4.2#r76",
+    "§9.4.2#r79",
     "§9.4.3#b5",
     "§9.6#r2",
     "§9.6#p1",
@@ -2177,11 +2180,12 @@
    "layer": "ui-client",
    "komponen": "Dialog Borrow Log (T-BRW-23)",
    "units": [
-    "§1.2#r90",
+    "§1.2#r91",
     "§2.2#r4",
     "§Dialog aksi baris (tab Borrowed dan Assigned)#r5",
     "§Dialog aksi baris (tab Borrowed dan Assigned)#r7",
-    "§9.4.3#b2"
+    "§9.4.3#b2",
+    "T-MYA-04"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2199,11 +2203,11 @@
    "title": "Data My Asset hanya memuat baris milik pengguna atau yang PIC-nya pengguna",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r23",
     "§1.2#r24",
     "§1.2#r25",
     "§1.2#r26",
-    "§1.2#r45",
+    "§1.2#r27",
+    "§1.2#r46",
     "§2.2#r1",
     "§2.2#r2",
     "§2.2#r3",
@@ -2229,8 +2233,8 @@
    "title": "Server menolak akses dan aksi atas baris milik orang lain",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r22",
-    "§1.2#r27",
+    "§1.2#r23",
+    "§1.2#r28",
     "§9.3#b1",
     "§9.3#b2",
     "§9.4.2#r19",
@@ -2267,13 +2271,14 @@
     "§9.2#b3",
     "§9.2#r2",
     "§9.2#r3",
-    "§9.4.2#r37",
-    "§9.4.2#r40",
+    "§9.4.2#r39",
     "§9.4.2#r42",
-    "§9.4.2#r91",
+    "§9.4.2#r44",
+    "§9.4.2#r93",
     "§9.6#r1",
     "EB-CON-3",
-    "EB-EDG-1"
+    "EB-EDG-1",
+    "§9.4.2#r43"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2293,10 +2298,10 @@
     "FI-05",
     "T-MYA-01",
     "V-04",
-    "§1.2#r68",
-    "§1.2#r71",
+    "§1.2#r69",
+    "§1.2#r72",
     "§9.2#r27",
-    "§9.4.2#r56",
+    "§9.4.2#r58",
     "§9.4.3#b9",
     "§9.6#r10"
    ],
@@ -2316,19 +2321,19 @@
    "layer": "be-e2e",
    "units": [
     "V-02",
-    "§1.2#r31",
     "§1.2#r32",
     "§1.2#r33",
+    "§1.2#r34",
     "§4.1b#r76",
     "§4.1b#r79",
     "§9.2#r4",
     "§9.2#r7",
-    "§9.4.2#r70",
-    "§9.4.2#r71",
+    "§9.4.2#r72",
     "§9.4.2#r73",
-    "§9.4.2#r76",
-    "§9.4.2#r77",
+    "§9.4.2#r75",
     "§9.4.2#r78",
+    "§9.4.2#r79",
+    "§9.4.2#r80",
     "§9.6#r2",
     "EB-ERR-4",
     "EB-CON-3",
@@ -2349,18 +2354,18 @@
    "title": "Aturan server pengajuan Extend dari My Asset dan penarikannya",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r64",
-    "§1.2#r66",
+    "§1.2#r65",
     "§1.2#r67",
+    "§1.2#r68",
     "§4.1b#r17",
     "§4.1b#r48",
     "§4.1b#r54",
     "§9.2#b8",
     "§9.4.2#r7",
-    "§9.4.2#r46",
+    "§9.4.2#r48",
     "§9.6#r3",
     "§9.6#r4",
-    "§9.7#r15",
+    "§9.7#r16",
     "EB-CON-3",
     "EB-EDG-1"
    ],
@@ -2381,8 +2386,8 @@
    "units": [
     "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>",
     "T-MYA-04",
-    "§1.2#r35",
-    "§1.2#r54",
+    "§1.2#r36",
+    "§1.2#r55",
     "§4.1b#r60",
     "§4.1b#r62",
     "§4.1b#r63",
@@ -2397,8 +2402,8 @@
     "§9.2#r29",
     "§9.2#r30",
     "§9.2#r31",
-    "§9.4.2#r60",
-    "§9.4.2#r63",
+    "§9.4.2#r62",
+    "§9.4.2#r65",
     "§9.4.3#b6",
     "§9.6#r5",
     "§9.6#r8",
@@ -2423,20 +2428,20 @@
    "title": "Aturan server perpindahan baris saat PIC diganti, dikosongkan, atau Borrower dibuatkan akun",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r49",
     "§1.2#r50",
-    "§1.2#r52",
+    "§1.2#r51",
     "§1.2#r53",
+    "§1.2#r54",
     "§9.2#r23",
     "§9.2#r24",
     "§9.4.2#r10",
     "§9.4.2#r22",
-    "§9.4.2#r48",
-    "§9.4.2#r49",
     "§9.4.2#r50",
     "§9.4.2#r51",
-    "§9.4.2#r64",
-    "§9.4.2#r65"
+    "§9.4.2#r52",
+    "§9.4.2#r53",
+    "§9.4.2#r66",
+    "§9.4.2#r67"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2467,7 +2472,8 @@
     "§8#r9",
     "§8#r10",
     "§8#r11",
-    "§8#p3"
+    "§8#p3",
+    "§9.7#r18"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2479,19 +2485,19 @@
    "priority": "Medium",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "User Log dibaca di Users atas kejadian Transactions > Borrow dan Transactions > Assignment; ketiganya dibutuhkan kelompok aturan yang sama."
+   "alasan": "User Log dibaca di Users atas kejadian Transactions > Borrow dan Transactions > Assignment; ketiganya dibutuhkan kelompok aturan yang sama. Hasil server Borrow Now self-service (baris baru berstatus Borrowed di tab Borrowed, §9.7#r18) diamati pada aksi Borrow Now yang sama dengan entri User Log-nya; sisi UI mobile unit itu tidak diasersi (temuan 12)."
   },
   {
    "id": "TC-FA-MYASSET-BE-210-status-berbasis-waktu-dep-borrow",
    "title": "Perubahan berbasis waktu: baris menjadi Overdue dan Task hilang saat jendela konfirmasi lewat",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r12",
-    "§1.2#r72",
-    "§9.4.2#r87",
-    "§9.4.2#r90",
+    "§1.2#r13",
+    "§1.2#r73",
+    "§9.4.2#r89",
+    "§9.4.2#r92",
     "§9.7#r2",
-    "§9.7#r16"
+    "§9.7#r17"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2509,7 +2515,7 @@
    "title": "Notifikasi My Asset: penerima atas nama dan sinyal Auto-Read saat Task hilang",
    "layer": "be-e2e",
    "units": [
-    "§1.2#r48",
+    "§1.2#r49",
     "§9.8#p1"
    ],
    "smoke": [],
@@ -2530,8 +2536,8 @@
    "layer": "be-e2e",
    "units": [
     "§9.4.1#r1",
-    "§9.4.2#r81",
     "§9.4.2#r83",
+    "§9.4.2#r85",
     "EB-AKS-7"
    ],
    "smoke": [],
@@ -2718,9 +2724,9 @@
    "units": [
     "§4.3#r7",
     "§9.10#p1",
-    "§9.4.2#r92",
-    "§9.4.2#r93",
-    "§9.4.2#r94"
+    "§9.4.2#r94",
+    "§9.4.2#r95",
+    "§9.4.2#r96"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2741,12 +2747,12 @@
    "title": "Plan Assignment None dengan penugasan berjalan: tab Assigned read-only, tanpa Task Confirm Handover (Assignment), item My Asset hilang setelah penugasan terakhir ditutup",
    "layer": "ui-e2e",
    "units": [
-    "§1.2#r85",
+    "§1.2#r86",
     "§4.3#r9",
     "§9.10#p1",
-    "§9.4.2#r95",
-    "§9.4.2#r96",
-    "§9.4.2#r97"
+    "§9.4.2#r97",
+    "§9.4.2#r98",
+    "§9.4.2#r99"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2769,9 +2775,9 @@
    "units": [
     "§4.3#r7",
     "§9.10#p1",
-    "§9.4.2#r84",
-    "§9.4.2#r85",
-    "§9.4.2#r86"
+    "§9.4.2#r86",
+    "§9.4.2#r87",
+    "§9.4.2#r88"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2786,15 +2792,65 @@
    "varianPlatform": [],
    "alasan": "Level plan berlaku untuk seluruh entitas (IN-2 `status-entitas`). Baris self-service berjalan dibentuk sebelum entitas diturunkan dari Full ke Basic (EC-MYA-35b, EC-MYA-35c). Extend oleh Aktor Borrow dari web adalah langkah pemicu (LK-8). Request Extension per baris dan bulk diasersi tidak tampil. PRD tidak menyatakan hasil permintaan Request Extension yang dikirim langsung ke server pada level Basic (temuan 11), jadi spec ini tidak mengasersi penolakan server. Borrow an Asset di Android tidak diasersi (spec Android ditunda keputusan pemilik, temuan 12); di web tombol itu selalu Hidden (S-04).",
    "entitasKhusus": "status-entitas"
+  },
+  {
+   "id": "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine",
+   "title": "Badge Maintenance due di kolom Status tab Borrowed: tampil pada baris yang asetnya dipegang, tidak tampil pada baris Waiting, dan berubah saat task Maintenance Routine berubah",
+   "layer": "ui-e2e",
+   "units": [
+    "§4.1b#r7",
+    "§1.2#r10",
+    "§9.4.2#r37",
+    "§9.4.2#r38",
+    "§9.7#r14"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Maintenance Routine: task Maintenance Routine pada aset yang dipinjam",
+    "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"
+   ],
+   "batch": "e7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pengecualian RC-4 «pemicu bukan objek uji»: aksi Aktor di modul sumber (membuat dan mengakhiri task Maintenance Routine, memajukan pinjaman dari Waiting ke Borrowed) ditulis sebagai langkah pemicu (LK-8); yang diasersi hanya layar pengguna My Asset. Baris pinjaman dibuat lewat Transactions > Borrow dan task lewat Maintenance Routine; keduanya dibutuhkan satu alur yang sama sehingga tidak bisa dipecah per modul (IS-4). Kapan task memenuhi `FAMNT-LOGIC-26` dimiliki modul Maintenance Routine (§1.2 MYASSET-LOGIC-10), jadi spec tidak mengasersi aturannya, hanya tampil dan hilangnya badge di baris. Tampilan badge pada respons tiruan diasersi di UI-104; spec Assigned: E2E-066."
+  },
+  {
+   "id": "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine",
+   "title": "Badge Maintenance due di kolom Status tab Assigned: tampil pada baris Assigned, tidak tampil pada baris Waiting, dan berubah saat task Maintenance Routine berubah",
+   "layer": "ui-e2e",
+   "units": [
+    "T-MYA-04",
+    "§1.2#r10",
+    "§9.4.2#r37",
+    "§9.4.2#r38",
+    "§9.7#r14"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Maintenance Routine: task Maintenance Routine pada aset yang ditugaskan",
+    "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"
+   ],
+   "batch": "e7",
+   "priority": "Medium",
+   "coverage": {
+    "web": "automated"
+   },
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Pengecualian RC-4 «pemicu bukan objek uji»: aksi Aktor di modul sumber (membuat dan mengakhiri task Maintenance Routine, memajukan penugasan dari Waiting ke Assigned) ditulis sebagai langkah pemicu (LK-8); yang diasersi hanya layar pengguna My Asset. Baris penugasan dibuat lewat Transactions > Assignment dan task lewat Maintenance Routine; keduanya dibutuhkan satu alur yang sama sehingga tidak bisa dipecah per modul (IS-4). Kapan task memenuhi `FAMNT-LOGIC-26` dimiliki modul Maintenance Routine (§1.2 MYASSET-LOGIC-10), jadi spec tidak mengasersi aturannya, hanya tampil dan hilangnya badge di baris. Dipisah dari E2E-065 karena aktor, tab, dan modul sumber barisnya berbeda (RC-2.2, RC-2.3). Tampilan badge pada respons tiruan diasersi di UI-116."
   }
  ],
  "na": {
   "D-BRW-01,D-BRW-14(borrow.md);D-DMG-01,D-DMG-08(damaged.md);D-MIS-01,D-MIS-07(missing.md);BorrowLogT-BRW-23(borrow.md§8.1);AssignmentLog(assignment.md§8.1)": "penunjuk: §7.2#r4 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
   "D-MYA-01(D-MYA-01a–01c),D-MYA-02(D-MYA-02a–02d),D-MYA-03": "penunjuk: §7.2#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "EC-MYA-01–EC-MYA-40(IDyangadaditabel)": "penunjuk: §9.4.2#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "EC-MYA-03a–EC-MYA-03d,EC-MYA-04a–EC-MYA-04b,EC-MYA-05a–EC-MYA-05c,EC-MYA-06a–EC-MYA-06b,EC-MYA-09a–EC-MYA-09b,EC-MYA-10a–EC-MYA-10b,EC-MYA-16a–EC-MYA-16b,EC-MYA-17a–EC-MYA-17c,EC-MYA-19a–EC-MYA-19b,EC-MYA-21a–EC-MYA-21b,EC-MYA-23a–EC-MYA-23c,EC-MYA-25a–EC-MYA-25b,EC-MYA-28a–EC-MYA-28c,EC-MYA-29a–EC-MYA-29d,EC-MYA-30a–EC-MYA-30d,EC-MYA-31a–EC-MYA-31b,EC-MYA-32a–EC-MYA-32b,EC-MYA-34a–EC-MYA-34c,EC-MYA-35a–EC-MYA-35c,EC-MYA-36a–EC-MYA-36c,EC-MYA-37a–EC-MYA-37b,EC-MYA-39a–EC-MYA-39c,EC-MYA-40a–EC-MYA-40c": "penunjuk: §9.4.2#r37 (baris induk Edge Case yang dipecah; ekspektasi ada di tabel Sub-ekspektasi atomik)",
-  "F-MYASSET-01–05,07,08,09": "penunjuk: §9.2#b1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "F-MYASSET-NN.kNdansub-ruleF-MYASSET-NN.kNa…": "penunjuk: §9.2#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "T-MYA-03": "penunjuk: §9.4.2#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "EC-MYA-03a–EC-MYA-03d,EC-MYA-04a–EC-MYA-04b,EC-MYA-05a–EC-MYA-05c,EC-MYA-06a–EC-MYA-06b,EC-MYA-09a–EC-MYA-09b,EC-MYA-10a–EC-MYA-10b,EC-MYA-16a–EC-MYA-16b,EC-MYA-17a–EC-MYA-17c,EC-MYA-19a–EC-MYA-19b,EC-MYA-21a–EC-MYA-21b,EC-MYA-23a–EC-MYA-23c,EC-MYA-25a–EC-MYA-25b,EC-MYA-28a–EC-MYA-28c,EC-MYA-29a–EC-MYA-29d,EC-MYA-30a–EC-MYA-30d,EC-MYA-31a–EC-MYA-31b,EC-MYA-32a–EC-MYA-32b,EC-MYA-34a–EC-MYA-34c,EC-MYA-35a–EC-MYA-35c,EC-MYA-36a–EC-MYA-36c,EC-MYA-37a–EC-MYA-37b,EC-MYA-39a–EC-MYA-39c,EC-MYA-40a–EC-MYA-40c": "penunjuk: §9.4.2#r39 (baris induk Edge Case yang dipecah; ekspektasi ada di tabel Sub-ekspektasi atomik)",
+  "EC-MYA-01–EC-MYA-42(IDyangadaditabel)": "penunjuk: §9.2#b1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "F-MYASSET-01–05,07,08,09": "penunjuk: §9.2#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
   "FI-03": "penunjuk: §4.4#r35 (baris induk FI-03; perilaku ada di FI-03a–FI-03c)",
   "FI-03a–FI-03c,FI-09a–FI-09b,FI-10a–FI-10b,FI-11a–FI-11c,FI-17a–FI-17c,FI-18a–FI-18b,FI-19a–FI-19b": "penunjuk: §4.4#r35 (baris induk Interaksi Field yang dipecah; perilaku ada di tabel Sub-perilaku atomik)",
   "FI-09": "penunjuk: §4.4#r38 (baris induk FI-09; perilaku ada di FI-09a–FI-09b)",
@@ -2803,13 +2859,13 @@
   "FI-17": "penunjuk: §4.4#r45 (baris induk FI-17; perilaku ada di FI-17a–FI-17c)",
   "FI-18": "penunjuk: §4.4#r48 (baris induk FI-18; perilaku ada di FI-18a–FI-18b)",
   "FI-19": "penunjuk: §4.4#r50 (baris induk FI-19; perilaku ada di FI-19a–FI-19b)",
-  "Kunci=baristabelataubutir": "penunjuk: §2.1#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "MYASSET-LOGIC-01–09;sub-ruleMYASSET-LOGIC-01a–01m,02a–02e,03a–03h,04a–04s,05a–05h,06a–06e,08a–08q,09a–09e": "penunjuk: §1.2#r10 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "S-01–S-08danS-18(§4.3),S-09–S-16(Empty),S-17(Error)": "penunjuk: §4.3#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "T-BRW-07,T-BRW-08,T-BRW-11,T-BRW-18,T-BRW-21,T-BRW-24,T-BRW-26,T-BRW-29(borrow.md);TS-MIS-01,TS-MIS-02,TS-MIS-07(missing.md);TS-DMG-07(damaged.md);TS-ASG-29,TS-ASG-31(assignment.md)": "penunjuk: §7.3#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "T-MYA-02": "penunjuk: §4.1b#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "T-MYA-03": "penunjuk: §4.1c#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
-  "TS-MYA-01,TS-MYA-02": "penunjuk: §7.3#r13 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "F-MYASSET-NN.kNdansub-ruleF-MYASSET-NN.kNa…": "penunjuk: §2.1#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "TS-MYA-01,TS-MYA-02": "penunjuk: §1.2#r11 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "Kunci=baristabelataubutir": "penunjuk: §4.3#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "MYASSET-LOGIC-01–10;sub-ruleMYASSET-LOGIC-01a–01m,02a–02e,03a–03h,04a–04s,05a–05h,06a–06e,08a–08q,09a–09e": "penunjuk: §7.3#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "S-01–S-08danS-18(§4.3),S-09–S-16(Empty),S-17(Error)": "penunjuk: §4.1b#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "T-BRW-07,T-BRW-08,T-BRW-11,T-BRW-18,T-BRW-21,T-BRW-24,T-BRW-26,T-BRW-29(borrow.md);TS-MIS-01,TS-MIS-02,TS-MIS-07(missing.md);TS-DMG-07(damaged.md);TS-ASG-29,TS-ASG-31(assignment.md)": "penunjuk: §4.1c#r1 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
+  "T-MYA-02": "penunjuk: §7.3#r13 (§4.9 L933: «Indeks ini hanya navigasi, bukan sumber aturan»)",
   "§1#b1": "penunjuk: §1.2 (ringkasan; aturannya dimiliki sub-rule MYASSET-LOGIC)",
   "§1#b2": "penunjuk: §4.1 (ringkasan bentuk UI)",
   "§1#b3": "penunjuk: §9.1 (ringkasan operasi)",
@@ -2824,23 +2880,23 @@
   "§1.1#b8": "penunjuk: §11 (daftar dependensi; hubungan tiap modul dijelaskan di §11)",
   "§1.1#b9": "penunjuk: §11 (daftar dependensi; hubungan tiap modul dijelaskan di §11)",
   "§1.1#b10": "penunjuk: §11 (daftar dependensi; hubungan tiap modul dijelaskan di §11)",
-  "§1.2#r1": "penunjuk: §1.2#r10 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-01a–01m)",
-  "§1.2#r2": "penunjuk: §1.2#r23 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-02a–02e)",
-  "§1.2#r3": "penunjuk: §1.2#r28 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-03a–03h)",
-  "§1.2#r4": "penunjuk: §1.2#r36 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-04a–04s)",
-  "§1.2#r5": "penunjuk: §1.2#r55 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-05a–05h)",
-  "§1.2#r6": "penunjuk: §1.2#r63 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-06a–06e)",
-  "§1.2#r8": "penunjuk: §1.2#r68 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-08a–08r)",
-  "§1.2#r9": "penunjuk: §1.2#r86 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-09a–09e)",
-  "§1.2#r29": "penunjuk: §4.1b#r28 (syarat tiap aksi ada di sub-rule ACT-MYA-02; aturan bisnisnya dimiliki `borrow.md`, di luar scope §1 L13)",
-  "§1.2#r40": "penunjuk: §4.2.5#p4 (alasan desain MYASSET-LOGIC-04d; nama Borrower di dialog varian PIC diasersi dari unit itu)",
-  "§1.2#r51": "PRD menyatakan aturan ini milik `assignment.md` (`ASSIGN-LOGIC-06`); §1 L13 menempatkan seluruh aturan Assignment di luar scope halaman ini",
-  "§1.2#r57": "penunjuk: §1.2#r55 (alasan desain MYASSET-LOGIC-05a)",
-  "§1.2#r59": "isi hanya token visual: teks Remaining ber-token `danger`; §4.5 L883 menyatakan status tidak bergantung pada warna, teksnya diasersi dari MYASSET-LOGIC-05b",
-  "§1.2#r84": "catatan dokumen: «Aturan Assignment (alur, status, konfirmasi, Unassign) tidak ditulis ulang di sini»",
+  "§1.2#r1": "penunjuk: §1.2#r11 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-01a–01m)",
+  "§1.2#r2": "penunjuk: §1.2#r24 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-02a–02e)",
+  "§1.2#r3": "penunjuk: §1.2#r29 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-03a–03h)",
+  "§1.2#r4": "penunjuk: §1.2#r37 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-04a–04s)",
+  "§1.2#r5": "penunjuk: §1.2#r56 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-05a–05h)",
+  "§1.2#r6": "penunjuk: §1.2#r64 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-06a–06e)",
+  "§1.2#r8": "penunjuk: §1.2#r69 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-08a–08r)",
+  "§1.2#r9": "penunjuk: §1.2#r87 (baris induk; klaim ada di sub-rule MYASSET-LOGIC-09a–09e)",
+  "§1.2#r30": "penunjuk: §4.1b#r28 (syarat tiap aksi ada di sub-rule ACT-MYA-02; aturan bisnisnya dimiliki `borrow.md`, di luar scope §1 L13)",
+  "§1.2#r41": "penunjuk: §4.2.5#p4 (alasan desain MYASSET-LOGIC-04d; nama Borrower di dialog varian PIC diasersi dari unit itu)",
+  "§1.2#r52": "PRD menyatakan aturan ini milik `assignment.md` (`ASSIGN-LOGIC-06`); §1 L13 menempatkan seluruh aturan Assignment di luar scope halaman ini",
+  "§1.2#r58": "penunjuk: §1.2#r56 (alasan desain MYASSET-LOGIC-05a)",
+  "§1.2#r60": "isi hanya token visual: teks Remaining ber-token `danger`; §4.5 L883 menyatakan status tidak bergantung pada warna, teksnya diasersi dari MYASSET-LOGIC-05b",
+  "§1.2#r85": "catatan dokumen: «Aturan Assignment (alur, status, konfirmasi, Unassign) tidak ditulis ulang di sini»",
   "§1.2#p2": "data contoh: «Contoh Skenario» untuk MYASSET-LOGIC-02 dan MYASSET-LOGIC-04",
-  "§2.1#b1": "penunjuk: §1.2#r36 (definisi Borrower; perilaku PIC diasersi dari sub-rule MYASSET-LOGIC-04)",
-  "§2.1#b2": "penunjuk: §1.2#r45 (definisi Assignee; perilaku PIC Division diasersi dari sub-rule MYASSET-LOGIC-04)",
+  "§2.1#b1": "penunjuk: §1.2#r37 (definisi Borrower; perilaku PIC diasersi dari sub-rule MYASSET-LOGIC-04)",
+  "§2.1#b2": "penunjuk: §1.2#r46 (definisi Assignee; perilaku PIC Division diasersi dari sub-rule MYASSET-LOGIC-04)",
   "§2.1#p1": "penunjuk: §2.1#r14 (kalimat pengantar tabel alasan ❌)",
   "§2.1#r14": "penunjuk: §2.1#r2 (alasan desain sel ❌; selnya diasersi dari baris matriks)",
   "§2.1#r15": "penunjuk: §2.1#r3 (alasan desain sel ❌; selnya diasersi dari baris matriks)",
@@ -2898,7 +2954,7 @@
   "§4.1c#r28": "data contoh: §4.9 L952 menyatakan «Example Data bukan sumber aturan»",
   "§4.1c#r29": "data contoh: §4.9 L952 menyatakan «Example Data bukan sumber aturan»",
   "§4.1c#p6": "data contoh: §4.9 L952 menyatakan «Example Data bukan sumber aturan»",
-  "§4.2.1#b1": "penunjuk: §1.2#r20 (tab awal dan tab di URL: MYASSET-LOGIC-01; default sort: §4.1a–§4.1d)",
+  "§4.2.1#b1": "penunjuk: §1.2#r21 (tab awal dan tab di URL: MYASSET-LOGIC-01; default sort: §4.1a–§4.1d)",
   "§4.2.5#p1": "penunjuk: §4.2.5#p2 (judul blok dialog D-MYA-01)",
   "§4.2.5#p5": "penunjuk: §4.2.5#p6 (judul blok varian Assignment)",
   "§4.2.5#p9": "penunjuk: FLD-01 (judul tabel field form dialog D-MYA-01)",
@@ -2929,36 +2985,36 @@
   "§9.1#r8": "penunjuk: §9.2#b17 (ringkasan fungsi F-MYASSET-09; kunci uji di kondisi §9.2)",
   "§9.2#p1": "penunjuk: §9.2#b1 (keterangan penomoran kondisi)",
   "§9.2#b2": "penunjuk: §9.2#r1 (kondisi induk; klaim ada di sub-rule F-MYASSET-01.k2a–k2c)",
-  "§9.2#b5": "penunjuk: §1.2#r13 (isi tab: MYASSET-LOGIC-01; Remaining dan Due Date: MYASSET-LOGIC-05)",
+  "§9.2#b5": "penunjuk: §1.2#r14 (isi tab: MYASSET-LOGIC-01; Remaining dan Due Date: MYASSET-LOGIC-05)",
   "§9.2#b6": "penunjuk: §9.2#r4 (kondisi induk; klaim ada di sub-rule F-MYASSET-02.k2a–k2f)",
   "§9.2#b9": "penunjuk: §9.2#r10 (kondisi induk; klaim ada di sub-rule F-MYASSET-02.k5a–k5e)",
   "§9.2#b10": "penunjuk: §9.2#r15 (kondisi induk; klaim ada di sub-rule F-MYASSET-02.k6a–k6d)",
   "§9.2#b11": "penunjuk: §9.2#r19 (kondisi induk; klaim ada di sub-rule F-MYASSET-03.k1a–k1c)",
   "§9.2#b14": "penunjuk: §9.2#r22 (kondisi induk; klaim ada di sub-rule F-MYASSET-04.k1a–k1c)",
-  "§9.2#b15": "penunjuk: §1.2#r44 (baris Division dan perpindahannya: MYASSET-LOGIC-04)",
+  "§9.2#b15": "penunjuk: §1.2#r45 (baris Division dan perpindahannya: MYASSET-LOGIC-04)",
   "§9.2#b17": "penunjuk: §9.2#r25 (kondisi induk; klaim ada di sub-rule F-MYASSET-09.k1a–k1c)",
   "§9.2#b18": "penunjuk: §9.2#r28 (kondisi induk; klaim ada di sub-rule F-MYASSET-09.k2a–k2d)",
   "§9.2#r9": "penunjuk: §4.1b#r75 (syarat, dialog, dan notifikasi dimiliki `borrow.md`; yang tampil di My Asset diasersi dari sub-rule ACT-MYA-02.cancel-borrow)",
-  "§9.2#r19": "penunjuk: §1.2#r17 (isi tab History: MYASSET-LOGIC-01, MYASSET-LOGIC-08)",
-  "§9.2#r22": "penunjuk: §1.2#r36 (baris Borrower tanpa akun: MYASSET-LOGIC-04)",
-  "§9.2#r25": "penunjuk: §1.2#r15 (isi tab Assigned dan perpindahan baris: MYASSET-LOGIC-01, MYASSET-LOGIC-08)",
-  "§9.4.1#r2": "penunjuk: §9.4.2#r84 (daftar dimensi D2; ekspektasi di EC-MYA-35, EC-MYA-39, EC-MYA-40)",
+  "§9.2#r19": "penunjuk: §1.2#r18 (isi tab History: MYASSET-LOGIC-01, MYASSET-LOGIC-08)",
+  "§9.2#r22": "penunjuk: §1.2#r37 (baris Borrower tanpa akun: MYASSET-LOGIC-04)",
+  "§9.2#r25": "penunjuk: §1.2#r16 (isi tab Assigned dan perpindahan baris: MYASSET-LOGIC-01, MYASSET-LOGIC-08)",
+  "§9.4.1#r2": "penunjuk: §9.4.2#r86 (daftar dimensi D2; ekspektasi di EC-MYA-35, EC-MYA-39, EC-MYA-40)",
   "§9.4.1#r3": "penunjuk: §9.4.2#r23 (daftar dimensi D3; ekspektasi di EC-MYA-27)",
-  "§9.4.1#r4": "penunjuk: §1.2#r23 (daftar dimensi D4; aturan di MYASSET-LOGIC-02)",
+  "§9.4.1#r4": "penunjuk: §1.2#r24 (daftar dimensi D4; aturan di MYASSET-LOGIC-02)",
   "§9.4.1#r5": "penunjuk: T-MYA-01 (daftar dimensi D5; nilai kosong per kolom di Setup Column)",
-  "§9.4.1#r6": "penunjuk: §9.4.2#r42 (daftar dimensi D6; ekspektasi di EC-MYA-04 dan EC-MYA-06)",
-  "§9.4.1#r7": "penunjuk: §9.4.2#r37 (daftar dimensi D7; ekspektasi di EC-MYA-03 dan EC-MYA-17)",
+  "§9.4.1#r6": "penunjuk: §9.4.2#r44 (daftar dimensi D6; ekspektasi di EC-MYA-04 dan EC-MYA-06)",
+  "§9.4.1#r7": "penunjuk: §9.4.2#r39 (daftar dimensi D7; ekspektasi di EC-MYA-03 dan EC-MYA-17)",
   "§9.4.1#r8": "penunjuk: §9.7#r1 (daftar dimensi D8; efek sinkron di Sync Matrix)",
   "§9.4.1#r9": "penunjuk: §10#r3 (daftar dimensi D9; baris per aset dan Task per BRW)",
   "§9.4.1#r10": "penunjuk: §9.6#p1 (daftar dimensi D10; reaksi kegagalan di Action Resilience Spec)",
-  "§9.4.1#r11": "penunjuk: §9.4.2#r87 (daftar dimensi D11; ekspektasi di EC-MYA-36 dan EC-MYA-37)",
+  "§9.4.1#r11": "penunjuk: §9.4.2#r89 (daftar dimensi D11; ekspektasi di EC-MYA-36 dan EC-MYA-37)",
   "§9.4.1#r12": "PRD menyatakan dimensi D12 «N/A»: halaman tidak memanggil layanan pihak ketiga",
-  "§9.4.1#r13": "penunjuk: §9.4.2#r48 (daftar dimensi D13; ekspektasi di EC-MYA-09 sampai EC-MYA-11, EC-MYA-25, EC-MYA-26)",
+  "§9.4.1#r13": "penunjuk: §9.4.2#r50 (daftar dimensi D13; ekspektasi di EC-MYA-09 sampai EC-MYA-11, EC-MYA-25, EC-MYA-26)",
   "§9.4.1#r14": "penunjuk: §9.4.2#r34 (daftar dimensi D14; ekspektasi di EC-MYA-38)",
   "§9.4.1#r15": "penunjuk: §9.4.2#r11 (daftar dimensi D15; ekspektasi di EC-MYA-13)",
   "§9.4.2#p1": "penunjuk: §9.4.2#r1 (legenda kolom Jenis)",
-  "§9.4.2#p2": "penunjuk: §9.4.2#r37 (judul tabel Sub-ekspektasi atomik)",
-  "§9.4.2#r52": "isi hanya token visual: Remaining ber-token `danger`; teks Overdue diasersi dari MYASSET-LOGIC-05b",
+  "§9.4.2#p2": "penunjuk: §9.4.2#r39 (judul tabel Sub-ekspektasi atomik)",
+  "§9.4.2#r54": "isi hanya token visual: Remaining ber-token `danger`; teks Overdue diasersi dari MYASSET-LOGIC-05b",
   "§9.4.3#p1": "penanda blok: pembuka blok kode daftar Must NOT",
   "§9.4.3#p2": "penunjuk: §9.4.3#b1 (judul daftar Must NOT)",
   "§9.4.3#b12": "aturan penulisan dokumen, bukan perilaku produk: larangan menyalin aturan modul lain ke dokumen ini",
@@ -2985,10 +3041,10 @@
   "§9.4.4#r17": "penunjuk: §9.2#b17 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
   "§9.4.4#r18": "penunjuk: §9.2#b18 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
   "§9.4.4#r19": "penunjuk: §9.2#b7 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
-  "§9.4.4#r20": "penunjuk: §9.4.2#r84 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
-  "§9.4.4#r21": "penunjuk: §9.4.2#r81 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
+  "§9.4.4#r20": "penunjuk: §9.4.2#r86 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
+  "§9.4.4#r21": "penunjuk: §9.4.2#r83 (peta turunan §9.4.4: «Tabel turunan dari §9.2»)",
   "§9.5#p1": "PRD menyatakan «Tampilan turunan, bukan sumber kebenaran»",
-  "§9.5#r1": "penunjuk: §1.2#r20 (§9.5: «Tampilan turunan, bukan sumber kebenaran»)",
+  "§9.5#r1": "penunjuk: §1.2#r21 (§9.5: «Tampilan turunan, bukan sumber kebenaran»)",
   "§9.5#r2": "penunjuk: T-MYA-01 (§9.5: «Tampilan turunan, bukan sumber kebenaran»)",
   "§9.5#r3": "penunjuk: §4.1b#p7 (§9.5: «Tampilan turunan, bukan sumber kebenaran»)",
   "§9.5#r4": "penunjuk: T-MYA-04 (§9.5: «Tampilan turunan, bukan sumber kebenaran»)",
@@ -2999,9 +3055,9 @@
   "§9.6#p2": "metadata dokumen: «Tidak ada kolom Method/Endpoint/route literal; API Response Contract (M-2) dimiliki backend»",
   "§9.7#p1": "penunjuk: §9.7#r1 (klasifikasi halaman sebagai Derived view; efeknya per baris Sync Matrix)",
   "§9.11#p1": "PRD menyatakan «Tidak relevan (§18.3 N/A)»; visibilitas data diasersi dari §2.2",
-  "§10#r1": "penunjuk: §1.2#r26 (konstrain halaman pribadi: MYASSET-LOGIC-02d)",
-  "§10#r4": "penunjuk: §1.2#r31 (konstrain aksi mengikuti baris: MYASSET-LOGIC-03, MYASSET-LOGIC-08)",
-  "§10#r5": "penunjuk: §1.2#r83 (konstrain tanpa Unassign: MYASSET-LOGIC-08p)",
+  "§10#r1": "penunjuk: §1.2#r27 (konstrain halaman pribadi: MYASSET-LOGIC-02d)",
+  "§10#r4": "penunjuk: §1.2#r32 (konstrain aksi mengikuti baris: MYASSET-LOGIC-03, MYASSET-LOGIC-08)",
+  "§10#r5": "penunjuk: §1.2#r84 (konstrain tanpa Unassign: MYASSET-LOGIC-08p)",
   "§11#r1": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
   "§11#r2": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
   "§11#r3": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
@@ -3009,10 +3065,10 @@
   "§11#r5": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
   "§11#r6": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
   "§11#r7": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
-  "§11#r8": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
-  "§11#r9": "catatan dampak perubahan dokumen (Breaking Changes), bukan perilaku produk",
+  "§11#r9": "penunjuk: §9.7#r1 (catatan dependensi antar-modul; efek ke My Asset diasersi dari Sync Matrix)",
   "§11#r10": "catatan dampak perubahan dokumen (Breaking Changes), bukan perilaku produk",
   "§11#r11": "catatan dampak perubahan dokumen (Breaking Changes), bukan perilaku produk",
+  "§11#r12": "catatan dampak perubahan dokumen (Breaking Changes), bukan perilaku produk",
   "§12#r1": "PRD menyatakan Open Item: Tab Damage Reports «belum dicakup»",
   "§12#p1": "catatan dokumen: keputusan yang sudah ditutup ada di berkas terpisah",
   "§Daftar Isi#b1": "penunjuk: §1 (butir daftar isi, tautan navigasi ke «1. Ringkasan Cepat»; PRD: «Tiap heading di bawah (H2 dan H3) punya anchor HTML eksplisit — klik untuk lompat langsung»)",
@@ -3056,13 +3112,15 @@
   "§Daftar Isi#b39": "penunjuk: §12 (butir daftar isi, tautan navigasi ke «12. Open Items»; PRD: «Tiap heading di bawah (H2 dan H3) punya anchor HTML eksplisit — klik untuk lompat langsung»)",
   "§Daftar Isi#b40": "penunjuk: §Changelog (butir daftar isi, tautan navigasi ke «Changelog»; PRD: «Tiap heading di bawah (H2 dan H3) punya anchor HTML eksplisit — klik untuk lompat langsung»)",
   "§Daftar Isi#p1": "catatan navigasi: «Tiap heading di bawah (H2 dan H3) punya anchor HTML eksplisit — klik untuk lompat langsung»",
-  "§Changelog#p1": "catatan dokumen: «Riwayat perubahan: `my-asset.changelog.md`.», riwayat ada di berkas terpisah"
+  "§Changelog#p1": "catatan dokumen: «Riwayat perubahan: `my-asset.changelog.md`.», riwayat ada di berkas terpisah",
+  "§1.1#b11": "penunjuk: §11 (daftar dependensi; hubungan tiap modul dijelaskan di §11)",
+  "§11#r8": "penunjuk: §1.2#r10 (catatan dependensi antar-modul; klaim badge Maintenance due dimiliki MYASSET-LOGIC-10 dan Sync Matrix §9.7)"
  },
  "ditahan": {
-  "§9.4.2#r67": 1,
+  "§9.4.2#r69": 1,
   "EB-FLT-7": 2,
   "FI-16": 12,
-  "§1.2#r43": 12,
+  "§1.2#r44": 12,
   "§10#r6": 12,
   "§2.2#b1": 12,
   "§3#p15": 12,
@@ -3070,16 +3128,15 @@
   "§4.4#r12": 12,
   "§4.6#p1": 12,
   "§7.3#r4": 12,
-  "§9.6#r7": 12,
-  "§9.7#r17": 12
+  "§9.6#r7": 12
  },
  "temuan": [
   {
    "no": 1,
    "jenis": "bertentangan",
    "units": [
-    "§9.4.2#r67",
-    "§1.2#r13"
+    "§9.4.2#r69",
+    "§1.2#r14"
    ],
    "kutipan": [
     "§9.4.2 L1291 (EC-MYA-28b): «Aset tidak tercentang tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed»",
@@ -3145,7 +3202,7 @@
    "no": 6,
    "jenis": "ambigu",
    "units": [
-    "§1.2#r22"
+    "§1.2#r23"
    ],
    "kutipan": [
     "§1.2 L111 (MYASSET-LOGIC-01m): «server menolak `403` tanpa membuka data atau keberadaan baris itu (EC-MYA-22, `entity-isolation.md` §18.6) dan tab tetap terbuka tanpa sorotan»",
@@ -3222,7 +3279,7 @@
    "no": 11,
    "jenis": "kurang",
    "units": [
-    "§9.4.2#r84",
+    "§9.4.2#r86",
     "§4.3#r7"
    ],
    "kutipan": [
@@ -3236,7 +3293,7 @@
    "jenis": "kurang",
    "units": [
     "FI-16",
-    "§1.2#r43",
+    "§1.2#r44",
     "§10#r6",
     "§2.2#b1",
     "§3#p15",
@@ -3245,20 +3302,34 @@
     "§4.6#p1",
     "§7.3#r4",
     "§9.6#r7",
-    "§9.7#r17",
+    "§9.7#r18",
     "§2.1#r11",
     "§4.1b#p1",
     "§4.1b#p6",
     "§4.3#r4",
     "§4.8#r10",
     "§9.10#p1",
-    "§9.4.2#r84"
+    "§9.4.2#r86"
    ],
    "kutipan": [
     "§4.6 L891: «Platform mobile adalah aplikasi native Android»",
-    "§10 L1483: «Mobile hanya Android native»"
+    "§10 L1483: «Mobile hanya Android native»",
+    "§2 baris Borrow an Asset: «✅ atas nama lewat `Borrow for` (mobile; pernyataan PIC `D-BRW-21`)»"
    ],
-   "dampak": "spec Android ditunda keputusan pemilik. Unit yang hanya bisa diuji di Android (kartu mobile, tombol Borrow an Asset, halaman Borrow an Asset dan Borrow Now, long-press seleksi, bottom sheet) ditahan sampai pemilik memutuskan spec Android. Unit yang sebagian punya spec web tetap dimiliki spec itu, dan klausa Android-nya tidak diasersi: §2.1#r11 (sel Borrower dan PIC Borrower di mobile), §4.8#r10 (sel Borrower dan PIC Borrower di mobile), §4.1b#p1 dan §4.3#r4 (tombol Borrow an Asset di mobile, Borrow Now, dan baris baru), §4.1b#p6 (seleksi bulk di mobile), §9.10#p1 dan §9.4.2#r84 (tombol Borrow an Asset di Android pada plan Basic)."
+   "dampak": "spec Android ditunda keputusan pemilik. Unit yang hanya bisa diuji di Android (kartu mobile, tombol Borrow an Asset, halaman Borrow an Asset dan Borrow Now, long-press seleksi, bottom sheet) ditahan sampai pemilik memutuskan spec Android. Unit yang sebagian punya spec web tetap dimiliki spec itu, dan klausa Android-nya tidak diasersi: §2.1#r11 (sel Borrower dan PIC Borrower di mobile), §4.8#r10 (sel Borrower dan PIC Borrower di mobile), §4.1b#p1 dan §4.3#r4 (tombol Borrow an Asset di mobile, Borrow Now, dan baris baru), §4.1b#p6 (seleksi bulk di mobile), §9.10#p1 dan §9.4.2#r86 (tombol Borrow an Asset di Android pada plan Basic). Catatan §1.2#r44 (`Borrow for`): PRD sendiri sudah menetapkan hasilnya (PIC memulai Borrow an Asset atas nama Borrower tanpa akun lewat `Borrow for`, §2 dan MYASSET-LOGIC-04h), jadi penahanan ini bukan karena PRD ambigu atau belum memutuskan; penundaan spec Android adalah keputusan pemilik di luar PRD (SB-6). Begitu pemilik memutuskan spec Android, spec Android menjadi pemilik §1.2#r44. §9.7#r18 (baris baru Borrowed di tab Borrowed setelah Borrow Now) tidak lagi ditahan: klausa hasil server dimiliki TC-FA-MYASSET-BE-209, sedangkan sisi UI mobile unit itu tidak diasersi sampai spec Android diputuskan."
+  },
+  {
+   "no": 13,
+   "jenis": "ambigu",
+   "units": [
+    "§4.1b#r7",
+    "T-MYA-04"
+   ],
+   "kutipan": [
+    "§4.1b: «baris dengan satu atau lebih badge tambahan ditulis `[Status] · [Badge 1] · [Badge 2]` dengan urutan badge sama dengan urutan tampil di kolom Status»",
+    "§4.1b: «serta badge `Maintenance due` (`warning`, `MYASSET-LOGIC-10`;"
+   ],
+   "dampak": "PRD tidak menyatakan urutan tampil badge `Maintenance due` terhadap `Reported Damaged` dan `Reported Missing` di kolom Status, sehingga label opsi filter Status untuk baris ber-badge `Maintenance due` (mis. `Borrowed · Maintenance due`) tidak punya literal yang pasti. Spec mengasersi badge tampil atau tidak tampil dan tidak mengasersi urutannya maupun label opsi filter yang memuatnya."
   }
  ],
  "ekspektasiBaku": {
@@ -3618,8 +3689,8 @@
    "be-e2e": "hasil Search per kolom Searchable tiap tabel; urutan sort per kolom tiap tabel, nilai kosong, dan urutan default; opsi dan hasil Filter per field Filterable tiap tabel, AND antar-field dan OR dalam field; aturan server Confirm Handover pinjaman: konfirmasi pertama, penolakan per penyebab, Expires At, idempotensi, atomisitas; aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
   },
   "T-MYA-04": {
-   "ui-client": "format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned; aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
-   "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin; sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division; Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang; Report Missing pada baris Assigned: dialog, toast, badge; urutan default dan konfigurasi toolbar tabel Assigned pada data nyata",
+   "ui-client": "format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned; aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan; Assignment Log tanpa nama approver",
+   "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin; sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division; Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang; Report Missing pada baris Assigned: dialog, toast, badge; urutan default dan konfigurasi toolbar tabel Assigned pada data nyata; badge Maintenance due pada baris tab Assigned dari data nyata",
    "be-e2e": "hasil Search per kolom Searchable tiap tabel; urutan sort per kolom tiap tabel, nilai kosong, dan urutan default; opsi dan hasil Filter per field Filterable tiap tabel, AND antar-field dan OR dalam field; aturan server laporan Damaged dan Missing: pembuatan, laporan ganda, pembatalan oleh pelapor, akibat keputusan"
   },
   "V-02": {
@@ -3636,102 +3707,98 @@
    "ui-client": "dialog D-MYA-01c: isi tanpa Return by, pernyataan (termasuk Division), validasi aset dan pernyataan",
    "be-e2e": "aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
   },
-  "§1.2#r12": {
+  "§1.2#r13": {
    "ui-e2e": "Task hilang saat dikonfirmasi; Task hilang saat sesi dibatalkan lewat Cancel Request",
    "be-e2e": "Task hilang saat jendela konfirmasi habis"
   },
-  "§1.2#r22": {
+  "§1.2#r23": {
    "ui-e2e": "nilai `?tab=` yang sah dan yang tidak valid; sorotan `highlight`, pindah halaman, dan id tidak dikenal di layar",
    "be-e2e": "server menolak 403 tanpa membuka data atau keberadaan baris"
   },
-  "§1.2#r24": {
+  "§1.2#r25": {
    "be-e2e": "aturan server",
    "ui-e2e": "layar PIC Borrower"
   },
-  "§1.2#r25": {
+  "§1.2#r26": {
    "be-e2e": "aturan server",
    "ui-e2e": "layar PIC Division"
   },
-  "§1.2#r26": {
+  "§1.2#r27": {
    "be-e2e": "aturan server",
    "ui-e2e": "layar pengguna ber-role"
   },
-  "§1.2#r28": {
+  "§1.2#r29": {
    "ui-client": "matriks keadaan baris Borrowed pada respons tiruan; matriks keadaan baris Assigned pada respons tiruan",
    "ui-e2e": "representatif pada data nyata tab Borrowed; representatif pada data nyata tab Assigned"
   },
-  "§1.2#r30": {
+  "§1.2#r31": {
    "ui-client": "aksi menu baris Borrowed yang tampil atau tidak untuk tiap keadaan baris pada respons tiruan",
    "ui-e2e": "isi tab Borrowed dari data nyata: baris per aset, nilai sel, badge tab, tooltip approval, aksi per status, Borrow Log"
   },
-  "§1.2#r31": {
+  "§1.2#r32": {
    "ui-client": "aksi tampil hanya pada baris Waiting for Approval atau Waiting for Handover",
    "ui-e2e": "aksi dijalankan pada baris Waiting for Approval",
    "be-e2e": "server menolak status lain"
   },
-  "§1.2#r32": {
+  "§1.2#r33": {
    "ui-client": "aksi menu baris Borrowed yang tampil atau tidak untuk tiap keadaan baris pada respons tiruan",
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah"
   },
-  "§1.2#r33": {
+  "§1.2#r34": {
    "ui-e2e": "Cancel Borrow berhasil: dialog, toast, dan baris pindah ke tab History",
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah"
   },
-  "§1.2#r34": {
+  "§1.2#r35": {
    "ui-e2e": "Cancel Borrow ditolak: dialog D-MYA-03, toast TS-MYA-02, dan baris yang dibatalkan Aktor saat tab terbuka",
    "ui-client": "dialog D-BRW-01 varian Borrower: isi, toast sukses dan gagal, D-MYA-03, TS-MYA-02"
   },
-  "§1.2#r35": {
+  "§1.2#r36": {
    "ui-client": "aksi yang tampil per keadaan Damage Report pada respons tiruan",
    "ui-e2e": "aksi sesudah keputusan Aktor Damaged pada data nyata",
    "be-e2e": "aturan server laporan"
-  },
-  "§1.2#r37": {
-   "ui-client": "kolom Borrower; kolom Holder",
-   "ui-e2e": "nilai pada data nyata"
   },
   "§1.2#r38": {
    "ui-client": "kolom Borrower; kolom Holder",
    "ui-e2e": "nilai pada data nyata"
   },
-  "§1.2#r42": {
+  "§1.2#r39": {
+   "ui-client": "kolom Borrower; kolom Holder",
+   "ui-e2e": "nilai pada data nyata"
+  },
+  "§1.2#r43": {
    "ui-client": "dialog D-MYA-01b: Info Borrower, pernyataan PIC wajib, pesan error",
    "ui-e2e": "sel PIC Borrower: baris Borrower tanpa akun, kolom Borrower, aksi atas nama, dan pernyataan PIC"
   },
-  "§1.2#r45": {
+  "§1.2#r46": {
    "ui-client": "kolom Assigned To; kolom Holder",
    "ui-e2e": "nilai pada data nyata",
    "be-e2e": "baris Division hanya untuk PIC-nya"
   },
-  "§1.2#r46": {
+  "§1.2#r47": {
    "ui-client": "tabel Task pada respons tiruan: format sel, penanda atas nama, aksi baris, konfigurasi kolom dan filter, empty state",
    "ui-e2e": "sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division"
   },
-  "§1.2#r49": {
+  "§1.2#r50": {
    "ui-e2e": "Change PIC Division: layar PIC baru dan PIC lama",
    "be-e2e": "aturan server perpindahan baris, riwayat, dan Task saat PIC berubah; baris No PIC; hak pelapor lama"
   },
-  "§1.2#r52": {
+  "§1.2#r53": {
    "be-e2e": "aturan server perpindahan",
    "ui-e2e": "layar PIC lama dan PIC baru"
   },
-  "§1.2#r53": {
+  "§1.2#r54": {
    "be-e2e": "Confirm pemegang lama ditolak server",
    "ui-client": "toast 403 baku dan tabel dimuat ulang"
   },
-  "§1.2#r58": {
+  "§1.2#r59": {
    "ui-client": "teks Remaining dan format Due Date menurut status, satuan, jam sekarang, dan setting format di Kondisi",
    "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali"
   },
-  "§1.2#r60": {
+  "§1.2#r61": {
    "ui-client": "teks Remaining dan format Due Date menurut status, satuan, jam sekarang, dan setting format di Kondisi",
    "ui-e2e": "isi tab Borrowed dari data nyata: baris per aset, nilai sel, badge tab, tooltip approval, aksi per status, Borrow Log"
   },
-  "§1.2#r64": {
-   "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali",
-   "be-e2e": "aturan server pengajuan Extend: menunggu review, Due date lama, pengajuan ganda, penutupan otomatis, penarikan"
-  },
-  "§1.2#r66": {
+  "§1.2#r65": {
    "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali",
    "be-e2e": "aturan server pengajuan Extend: menunggu review, Due date lama, pengajuan ganda, penutupan otomatis, penarikan"
   },
@@ -3740,28 +3807,28 @@
    "be-e2e": "aturan server pengajuan Extend: menunggu review, Due date lama, pengajuan ganda, penutupan otomatis, penarikan"
   },
   "§1.2#r68": {
-   "ui-e2e": "Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang",
-   "be-e2e": "aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
+   "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali",
+   "be-e2e": "aturan server pengajuan Extend: menunggu review, Due date lama, pengajuan ganda, penutupan otomatis, penarikan"
   },
   "§1.2#r69": {
    "ui-e2e": "Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang",
-   "ui-client": "dialog D-MYA-01c: isi tanpa Return by, pernyataan (termasuk Division), validasi aset dan pernyataan"
+   "be-e2e": "aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
   },
   "§1.2#r70": {
+   "ui-e2e": "Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang",
+   "ui-client": "dialog D-MYA-01c: isi tanpa Return by, pernyataan (termasuk Division), validasi aset dan pernyataan"
+  },
+  "§1.2#r71": {
    "ui-client": "tabel Task pada respons tiruan: format sel, penanda atas nama, aksi baris, konfigurasi kolom dan filter, empty state",
    "ui-e2e": "Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang"
   },
-  "§1.2#r71": {
+  "§1.2#r72": {
    "ui-e2e": "Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang",
    "be-e2e": "aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
   },
-  "§1.2#r72": {
+  "§1.2#r73": {
    "ui-e2e": "Task hilang saat Confirm; Task hilang saat sesi dibatalkan",
    "be-e2e": "Task hilang saat jendela konfirmasi habis"
-  },
-  "§1.2#r77": {
-   "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
-   "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin"
   },
   "§1.2#r78": {
    "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
@@ -3771,23 +3838,27 @@
    "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
    "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin"
   },
-  "§1.2#r81": {
-   "ui-client": "format sel, caption late, Holder, Type, dan aksi baris tabel History pada respons tiruan",
-   "ui-e2e": "baris penugasan yang ditutup di tab History: Type Assignment, status, Handed Over At, Assignment Log"
-  },
-  "§1.2#r82": {
+  "§1.2#r80": {
    "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
    "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin"
   },
+  "§1.2#r82": {
+   "ui-client": "format sel, caption late, Holder, Type, dan aksi baris tabel History pada respons tiruan",
+   "ui-e2e": "baris penugasan yang ditutup di tab History: Type Assignment, status, Handed Over At, Assignment Log"
+  },
   "§1.2#r83": {
+   "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
+   "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin"
+  },
+  "§1.2#r84": {
    "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
    "ui-e2e": "isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin; sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division"
   },
-  "§1.2#r86": {
+  "§1.2#r87": {
    "ui-client": "badge Waiting for Approval dan Extension Approval tab Borrowed; badge Waiting for Approval tab Assigned",
    "ui-e2e": "angka pada data nyata"
   },
-  "§1.2#r90": {
+  "§1.2#r91": {
    "ui-client": "node keputusan approver tanpa pelaku; tooltip tanpa nama approver",
    "ui-e2e": "Borrow Log pada data nyata"
   },
@@ -3822,7 +3893,7 @@
   },
   "§4.1b#r7": {
    "ui-client": "format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan; tampil awal, urutan, dan field filter kolom ini",
-   "ui-e2e": "nilai sel dari data nyata; opsi dan hasil Filter tab Borrowed pada data nyata",
+   "ui-e2e": "nilai sel dari data nyata; opsi dan hasil Filter tab Borrowed pada data nyata; badge Maintenance due pada baris tab Borrowed dari data nyata",
    "be-e2e": "hasil Search atas kolom ini; urutan sort kolom ini; opsi dan hasil filter kolom ini"
   },
   "§4.1b#r8": {
@@ -4340,97 +4411,97 @@
    "ui-e2e": "entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil; entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
    "be-e2e": "aturan server: aksi tulis ditolak tanpa perubahan data saat entitas Suspended atau Expired; Extend tetap berjalan sesudah downgrade"
   },
-  "§9.4.2#r37": {
+  "§9.4.2#r39": {
    "be-e2e": "aturan server Confirm Handover pinjaman: konfirmasi pertama, penolakan per penyebab, Expires At, idempotensi, atomisitas",
    "ui-e2e": "Confirm Handover pinjaman ditolak server: dialog D-MYA-02b dan D-MYA-02c pada data nyata"
   },
-  "§9.4.2#r38": {
+  "§9.4.2#r40": {
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
    "ui-e2e": "Confirm Handover pinjaman ditolak server: dialog D-MYA-02b dan D-MYA-02c pada data nyata"
   },
-  "§9.4.2#r39": {
+  "§9.4.2#r41": {
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
    "ui-e2e": "Confirm Handover pinjaman ditolak server: dialog D-MYA-02b dan D-MYA-02c pada data nyata"
   },
-  "§9.4.2#r42": {
+  "§9.4.2#r44": {
    "ui-e2e": "Confirm Handover pinjaman ditolak server: dialog D-MYA-02b dan D-MYA-02c pada data nyata",
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
    "be-e2e": "aturan server Confirm Handover pinjaman: konfirmasi pertama, penolakan per penyebab, Expires At, idempotensi, atomisitas"
-  },
-  "§9.4.2#r43": {
-   "ui-client": "aksi menu baris Borrowed yang tampil atau tidak untuk tiap keadaan baris pada respons tiruan",
-   "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali"
   },
   "§9.4.2#r45": {
    "ui-client": "aksi menu baris Borrowed yang tampil atau tidak untuk tiap keadaan baris pada respons tiruan",
    "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali"
   },
-  "§9.4.2#r46": {
+  "§9.4.2#r47": {
+   "ui-client": "aksi menu baris Borrowed yang tampil atau tidak untuk tiap keadaan baris pada respons tiruan",
+   "ui-e2e": "Request Extension satu baris: halaman Extension Request, toast, status Extension Request, dan state list sesudah kembali"
+  },
+  "§9.4.2#r48": {
    "be-e2e": "aturan server pengajuan Extend: menunggu review, Due date lama, pengajuan ganda, penutupan otomatis, penarikan",
    "ui-e2e": "Cancel Extension Request berhasil, dan pengajuan yang sudah ditinjau Aktor Borrow"
   },
-  "§9.4.2#r48": {
+  "§9.4.2#r50": {
    "ui-e2e": "pergantian PIC Borrower: layar PIC baru dan PIC lama",
    "be-e2e": "aturan server perpindahan baris, riwayat, dan Task saat PIC berubah; baris No PIC; hak pelapor lama"
   },
-  "§9.4.2#r49": {
+  "§9.4.2#r51": {
    "ui-e2e": "pergantian PIC Borrower: layar PIC baru dan PIC lama",
    "be-e2e": "aturan server perpindahan baris, riwayat, dan Task saat PIC berubah; baris No PIC; hak pelapor lama"
   },
-  "§9.4.2#r54": {
+  "§9.4.2#r56": {
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
    "ui-e2e": "Confirm Handover penugasan ditolak: dialog D-MYA-02b dan D-MYA-02d, Task hilang, baris tetap"
   },
-  "§9.4.2#r56": {
+  "§9.4.2#r58": {
    "ui-e2e": "Confirm Handover penugasan ditolak: dialog D-MYA-02b dan D-MYA-02d, Task hilang, baris tetap",
    "be-e2e": "aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang"
   },
-  "§9.4.2#r58": {
+  "§9.4.2#r60": {
    "ui-e2e": "Confirm Handover penugasan ditolak: dialog D-MYA-02b dan D-MYA-02d, Task hilang, baris tetap",
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403"
   },
-  "§9.4.2#r61": {
+  "§9.4.2#r63": {
    "ui-client": "format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned",
    "ui-e2e": "Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang"
   },
-  "§9.4.2#r62": {
+  "§9.4.2#r64": {
    "ui-client": "aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan",
    "ui-e2e": "Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang"
   },
-  "§9.4.2#r64": {
+  "§9.4.2#r66": {
    "ui-e2e": "Change PIC Division: layar PIC baru dan PIC lama",
    "be-e2e": "aturan server perpindahan baris, riwayat, dan Task saat PIC berubah; baris No PIC; hak pelapor lama"
   },
-  "§9.4.2#r65": {
+  "§9.4.2#r67": {
    "ui-e2e": "Change PIC Division: layar PIC baru dan PIC lama",
    "be-e2e": "aturan server perpindahan baris, riwayat, dan Task saat PIC berubah; baris No PIC; hak pelapor lama"
   },
-  "§9.4.2#r70": {
+  "§9.4.2#r72": {
    "ui-e2e": "Cancel Borrow berhasil: dialog, toast, dan baris pindah ke tab History",
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah"
   },
-  "§9.4.2#r73": {
+  "§9.4.2#r75": {
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah",
    "ui-e2e": "Cancel Borrow ditolak: dialog D-MYA-03, toast TS-MYA-02, dan baris yang dibatalkan Aktor saat tab terbuka"
   },
-  "§9.4.2#r74": {
+  "§9.4.2#r76": {
    "ui-e2e": "Cancel Borrow ditolak: dialog D-MYA-03, toast TS-MYA-02, dan baris yang dibatalkan Aktor saat tab terbuka",
    "ui-client": "dialog D-BRW-01 varian Borrower: isi, toast sukses dan gagal, D-MYA-03, TS-MYA-02"
   },
-  "§9.4.2#r77": {
+  "§9.4.2#r79": {
    "ui-e2e": "Cancel Borrow ditolak: dialog D-MYA-03, toast TS-MYA-02, dan baris yang dibatalkan Aktor saat tab terbuka",
    "ui-client": "dialog D-BRW-01 varian Borrower: isi, toast sukses dan gagal, D-MYA-03, TS-MYA-02",
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah"
   },
-  "§9.4.2#r78": {
+  "§9.4.2#r80": {
    "ui-e2e": "Cancel Borrow ditolak: dialog D-MYA-03, toast TS-MYA-02, dan baris yang dibatalkan Aktor saat tab terbuka",
    "be-e2e": "aturan server Cancel Borrow: syarat, penolakan, idempotensi, Custody Available, baris lain tidak berubah"
   },
-  "§9.4.2#r81": {
+  "§9.4.2#r83": {
    "ui-e2e": "entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil; entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
    "be-e2e": "aturan server: aksi tulis ditolak tanpa perubahan data saat entitas Suspended atau Expired; Extend tetap berjalan sesudah downgrade"
   },
-  "§9.4.2#r91": {
+  "§9.4.2#r93": {
    "ui-client": "reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
    "be-e2e": "aturan server Confirm Handover pinjaman: konfirmasi pertama, penolakan per penyebab, Expires At, idempotensi, atomisitas"
   },
@@ -4489,13 +4560,13 @@
    "ui-e2e": "Task hilang saat konfirmasi",
    "be-e2e": "Task hilang saat jendela habis"
   },
-  "§9.7#r15": {
+  "§9.7#r16": {
    "ui-e2e": "baris Returned di tab History",
    "be-e2e": "pengajuan Extend yang menunggu ditutup otomatis"
   },
-  "§9.7#r16": {
+  "§9.7#r17": {
    "be-e2e": "aturan server berbasis waktu: Overdue sesudah Due date, Task hilang sesudah Expires At",
-   "ui-client": "tab, badge jumlah, breadcrumb, state per tab, dan susunan tab menurut plan pada respons tiruan"
+   "ui-client": "tab, badge jumlah, breadcrumb, state per tab, dan susunan tab menurut plan pada respons tiruan; Remaining `danger` pada baris Overdue"
   },
   "§9.10#p1": {
    "ui-client": "susunan tab per plan dan ada tidaknya baris berjalan pada respons tiruan; langkah untuk tab yang tidak tampil dilewati",
@@ -4521,19 +4592,22 @@
    "ui-client": "format tanggal dan waktu menurut setting di Kondisi",
    "ui-e2e": "perubahan setting sampai ke kolom tanggal"
   },
-  "§1.2#r85": {
+  "§1.2#r86": {
    "ui-client": "aksi baris tab Assigned (Report Damaged, Report Missing, Cancel Damage Report, Cancel Missing Report) tidak tampil saat respons tiruan membawa level Assignment None",
    "ui-e2e": "level Assignment None pada data nyata: tab Assigned read-only selama ada penugasan berjalan, Task Confirm Handover (Assignment) tidak ada"
   },
   "§4.3#r9": {
    "ui-client": "aksi baris tab Assigned tidak tampil saat respons tiruan membawa level Assignment None",
    "ui-e2e": "level Assignment None pada data nyata: aksi baris tab Assigned dan Task Confirm Handover (Assignment) tidak ada"
+  },
+  "§9.4.2#r43": {
+   "ui-e2e": "sesudah Borrower mengonfirmasi lewat HP, baris Task hilang dari tab Task dan empty state tampil di layar Borrower",
+   "be-e2e": "sesudah Borrower mengonfirmasi lewat HP, data tab Task tidak lagi memuat Task Confirm Handover untuk sesi itu"
   }
  },
  "dataUnits": [
-  "§1.2#r10",
   "§1.2#r11",
-  "§1.2#r13",
+  "§1.2#r12",
   "§1.2#r14",
   "§1.2#r15",
   "§1.2#r16",
@@ -4542,26 +4616,27 @@
   "§1.2#r19",
   "§1.2#r20",
   "§1.2#r21",
-  "§1.2#r23",
-  "§1.2#r27",
-  "§1.2#r36",
-  "§1.2#r41",
-  "§1.2#r44",
-  "§1.2#r47",
+  "§1.2#r22",
+  "§1.2#r24",
+  "§1.2#r28",
+  "§1.2#r37",
+  "§1.2#r42",
+  "§1.2#r45",
   "§1.2#r48",
-  "§1.2#r50",
-  "§1.2#r54",
-  "§1.2#r61",
-  "§1.2#r63",
-  "§1.2#r65",
-  "§1.2#r73",
+  "§1.2#r49",
+  "§1.2#r51",
+  "§1.2#r55",
+  "§1.2#r62",
+  "§1.2#r64",
+  "§1.2#r66",
   "§1.2#r74",
   "§1.2#r75",
   "§1.2#r76",
-  "§1.2#r80",
-  "§1.2#r87",
+  "§1.2#r77",
+  "§1.2#r81",
   "§1.2#r88",
   "§1.2#r89",
+  "§1.2#r90",
   "§2.2#r1",
   "§2.2#r2",
   "§2.2#r3",
@@ -4609,31 +4684,31 @@
   "§9.4.2#r22",
   "§9.4.2#r23",
   "§9.4.2#r34",
-  "§9.4.2#r40",
-  "§9.4.2#r41",
-  "§9.4.2#r47",
-  "§9.4.2#r50",
-  "§9.4.2#r51",
-  "§9.4.2#r55",
+  "§9.4.2#r42",
+  "§9.4.2#r43",
+  "§9.4.2#r49",
+  "§9.4.2#r52",
+  "§9.4.2#r53",
   "§9.4.2#r57",
   "§9.4.2#r59",
-  "§9.4.2#r60",
-  "§9.4.2#r63",
-  "§9.4.2#r66",
+  "§9.4.2#r61",
+  "§9.4.2#r62",
+  "§9.4.2#r65",
   "§9.4.2#r68",
-  "§9.4.2#r69",
+  "§9.4.2#r70",
   "§9.4.2#r71",
-  "§9.4.2#r72",
-  "§9.4.2#r75",
-  "§9.4.2#r76",
-  "§9.4.2#r79",
-  "§9.4.2#r80",
+  "§9.4.2#r73",
+  "§9.4.2#r74",
+  "§9.4.2#r77",
+  "§9.4.2#r78",
+  "§9.4.2#r81",
   "§9.4.2#r82",
-  "§9.4.2#r83",
   "§9.4.2#r84",
   "§9.4.2#r85",
+  "§9.4.2#r86",
   "§9.4.2#r87",
-  "§9.4.2#r90",
+  "§9.4.2#r89",
+  "§9.4.2#r92",
   "§9.7#r1",
   "§9.7#r3",
   "§9.7#r4",
@@ -4646,14 +4721,18 @@
   "§9.7#r11",
   "§9.7#r12",
   "§9.7#r13",
-  "§9.7#r14",
-  "§9.4.2#r86",
-  "§9.4.2#r92",
-  "§9.4.2#r93",
+  "§9.7#r15",
+  "§9.4.2#r88",
   "§9.4.2#r94",
   "§9.4.2#r95",
   "§9.4.2#r96",
-  "§9.4.2#r97"
+  "§9.4.2#r97",
+  "§9.4.2#r98",
+  "§9.4.2#r99",
+  "§1.2#r10",
+  "§9.4.2#r37",
+  "§9.4.2#r38",
+  "§9.7#r14"
  ],
  "shared": {
   "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": "per spec: E2E-054: Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang · E2E-055: Report Missing pada baris Assigned: dialog, toast, badge",
@@ -4663,22 +4742,22 @@
   "FLD-03": "per spec: UI-119: pernyataan varian D-MYA-01b · UI-120: pernyataan varian D-MYA-01c",
   "FLD-04": "per spec: UI-118: teks bantu varian D-MYA-01a · UI-119: teks bantu varian D-MYA-01b · UI-120: teks bantu varian D-MYA-01c",
   "T-MYA-01": "per spec: E2E-036: isi tab Task dari data nyata, urutan default, dan konfigurasi toolbar tabel Task · E2E-010: Confirm Handover pinjaman berhasil: Task muncul, aset tercentang menjadi Borrowed, Task hilang · E2E-050: Confirm Handover penugasan berhasil: Task muncul selama sesi, aset tercentang Assigned, Task hilang · BE-213: hasil Search per kolom Searchable tiap tabel · BE-214: urutan sort per kolom tiap tabel, nilai kosong, dan urutan default · BE-215: opsi dan hasil Filter per field Filterable tiap tabel, AND antar-field dan OR dalam field · BE-203: aturan server Confirm Handover pinjaman: konfirmasi pertama, penolakan per penyebab, Expires At, idempotensi, atomisitas · BE-204: aturan server Confirm Handover penugasan: sesi aktif, validasi, penolakan, aset tidak tercentang",
-  "T-MYA-04": "per spec: UI-116: format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned · UI-117: aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan · E2E-052: isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin · E2E-057: sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division · E2E-054: Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang · E2E-055: Report Missing pada baris Assigned: dialog, toast, badge · E2E-053: urutan default dan konfigurasi toolbar tabel Assigned pada data nyata · BE-213: hasil Search per kolom Searchable tiap tabel · BE-214: urutan sort per kolom tiap tabel, nilai kosong, dan urutan default · BE-215: opsi dan hasil Filter per field Filterable tiap tabel, AND antar-field dan OR dalam field · BE-207: aturan server laporan Damaged dan Missing: pembuatan, laporan ganda, pembatalan oleh pelapor, akibat keputusan",
+  "T-MYA-04": "per spec: UI-116: format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned · UI-117: aksi menu baris Assigned per keadaan baris, tanpa Unassign, dan reaksi atas respons aksi laporan · E2E-052: isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin · E2E-057: sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division · E2E-054: Report Damaged pada baris Assigned: dialog, toast, badge, aksi yang hilang · E2E-055: Report Missing pada baris Assigned: dialog, toast, badge · E2E-053: urutan default dan konfigurasi toolbar tabel Assigned pada data nyata · E2E-066: badge Maintenance due pada baris tab Assigned dari data nyata · BE-213: hasil Search per kolom Searchable tiap tabel · BE-214: urutan sort per kolom tiap tabel, nilai kosong, dan urutan default · BE-215: opsi dan hasil Filter per field Filterable tiap tabel, AND antar-field dan OR dalam field · BE-207: aturan server laporan Damaged dan Missing: pembuatan, laporan ganda, pembatalan oleh pelapor, akibat keputusan · UI-124: Assignment Log pada menu baris Assigned tanpa nama approver",
   "V-03": "per spec: UI-118: dialog D-MYA-01a: isi, checklist, Return by, validasi minimal satu aset, fokus · UI-121: reaksi klien atas respons Confirm: toast sukses dan gagal, dialog tetap terbuka, D-MYA-02 per penyebab, 403",
   "§1.2#r7": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-114: format sel, caption late, Holder, Type, dan aksi baris tabel History pada respons tiruan · UI-116: format sel, Assigned To, badge, konfigurasi kolom dan filter, dan empty state tabel Assigned",
-  "§1.2#r10": "per spec: E2E-036: satu baris per BRW di tabel Task · E2E-010: Task muncul saat Aktor Borrow memulai Handover",
-  "§1.2#r12": "per spec: E2E-010: Task hilang saat dikonfirmasi · E2E-011: Task hilang saat sesi dibatalkan lewat Cancel Request",
-  "§1.2#r19": "per spec: E2E-037: Type `Borrow` pada baris pinjaman · E2E-056: Type `Assignment` pada baris penugasan",
-  "§1.2#r20": "per spec: E2E-001: tanpa Task aktif: tab awal Task dengan empty state · E2E-036: dengan Task aktif: tab awal Task",
-  "§1.2#r22": "per spec: E2E-001: nilai `?tab=` yang sah dan yang tidak valid · E2E-038: sorotan `highlight`, pindah halaman, dan id tidak dikenal di layar",
-  "§1.2#r28": "per spec: UI-106: matriks keadaan baris Borrowed pada respons tiruan · UI-117: matriks keadaan baris Assigned pada respons tiruan · E2E-030: representatif pada data nyata tab Borrowed · E2E-052: representatif pada data nyata tab Assigned",
-  "§1.2#r37": "per spec: UI-104: kolom Borrower · UI-114: kolom Holder",
+  "§1.2#r11": "per spec: E2E-036: satu baris per BRW di tabel Task · E2E-010: Task muncul saat Aktor Borrow memulai Handover",
+  "§1.2#r13": "per spec: E2E-010: Task hilang saat dikonfirmasi · E2E-011: Task hilang saat sesi dibatalkan lewat Cancel Request",
+  "§1.2#r20": "per spec: E2E-037: Type `Borrow` pada baris pinjaman · E2E-056: Type `Assignment` pada baris penugasan",
+  "§1.2#r21": "per spec: E2E-001: tanpa Task aktif: tab awal Task dengan empty state · E2E-036: dengan Task aktif: tab awal Task",
+  "§1.2#r23": "per spec: E2E-001: nilai `?tab=` yang sah dan yang tidak valid · E2E-038: sorotan `highlight`, pindah halaman, dan id tidak dikenal di layar",
+  "§1.2#r29": "per spec: UI-106: matriks keadaan baris Borrowed pada respons tiruan · UI-117: matriks keadaan baris Assigned pada respons tiruan · E2E-030: representatif pada data nyata tab Borrowed · E2E-052: representatif pada data nyata tab Assigned",
   "§1.2#r38": "per spec: UI-104: kolom Borrower · UI-114: kolom Holder",
-  "§1.2#r45": "per spec: UI-116: kolom Assigned To · UI-114: kolom Holder",
-  "§1.2#r72": "per spec: E2E-050: Task hilang saat Confirm · E2E-051: Task hilang saat sesi dibatalkan",
-  "§1.2#r83": "per spec: E2E-052: isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin · E2E-057: sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division",
-  "§1.2#r86": "per spec: UI-104: badge Waiting for Approval dan Extension Approval tab Borrowed · UI-116: badge Waiting for Approval tab Assigned",
-  "§1.2#r90": "per spec: UI-124: node keputusan approver tanpa pelaku · UI-104: tooltip tanpa nama approver",
+  "§1.2#r39": "per spec: UI-104: kolom Borrower · UI-114: kolom Holder",
+  "§1.2#r46": "per spec: UI-116: kolom Assigned To · UI-114: kolom Holder",
+  "§1.2#r73": "per spec: E2E-050: Task hilang saat Confirm · E2E-051: Task hilang saat sesi dibatalkan",
+  "§1.2#r84": "per spec: E2E-052: isi tab Assigned dari data nyata, aksi per status, tanpa Unassign, dan baris yang ditutup admin · E2E-057: sel PIC Division: baris Division, kolom Assigned To, penanda Task, aksi atas nama Division",
+  "§1.2#r87": "per spec: UI-104: badge Waiting for Approval dan Extension Approval tab Borrowed · UI-116: badge Waiting for Approval tab Assigned",
+  "§1.2#r91": "per spec: UI-124: node keputusan approver tanpa pelaku · UI-104: tooltip tanpa nama approver",
   "§2.1#r1": "per spec: E2E-030: sel Borrower: elemen untuk pinjamannya sendiri · E2E-040: sel PIC Borrower (atas nama Borrower tanpa akun) · E2E-057: sel PIC Division (atas nama Division)",
   "§2.1#r2": "per spec: E2E-050: sel Assignee: aksi dijalankan sampai berhasil · E2E-040: sel PIC Borrower (atas nama Borrower tanpa akun) · E2E-057: sel PIC Division (atas nama Division)",
   "§2.1#r3": "per spec: E2E-010: sel Borrower: aksi dijalankan sampai berhasil · E2E-040: sel PIC Borrower (atas nama Borrower tanpa akun) · E2E-057: sel PIC Division (atas nama Division)",
@@ -4704,7 +4783,7 @@
   "§4.1b#r4": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
   "§4.1b#r5": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
   "§4.1b#r6": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
-  "§4.1b#r7": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · E2E-030: nilai sel dari data nyata · E2E-033: opsi dan hasil Filter tab Borrowed pada data nyata · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
+  "§4.1b#r7": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · E2E-030: nilai sel dari data nyata · E2E-065: badge Maintenance due pada baris tab Borrowed dari data nyata · E2E-033: opsi dan hasil Filter tab Borrowed pada data nyata · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
   "§4.1b#r8": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
   "§4.1b#r9": "per spec: UI-104: format sel, nilai kosong, hover, dan badge tabel Borrowed pada respons tiruan · UI-108: tampil awal, urutan, dan field filter kolom ini · BE-213: hasil Search atas kolom ini · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
   "§4.1b#r10": "per spec: UI-105: teks Remaining dan format Due Date menurut status, satuan, jam sekarang, dan setting format di Kondisi · UI-108: tampil awal, urutan, dan field filter kolom ini · E2E-030: nilai sel dari data nyata · E2E-045: perubahan setting format tanggal dan waktu tercermin di kolom tanggal · BE-214: urutan sort kolom ini · BE-215: opsi dan hasil filter kolom ini",
@@ -4774,8 +4853,8 @@
   "§9.2#b7": "per spec: E2E-014: pinjaman pengguna sendiri · E2E-040: Borrower tanpa akun yang PIC-nya pengguna",
   "§9.2#b16": "per spec: E2E-043: tautan lewat notifikasi · E2E-038: tautan lewat URL",
   "§9.4.1#r1": "per spec: E2E-046: entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil · E2E-059: entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
-  "§9.4.2#r81": "per spec: E2E-046: entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil · E2E-059: entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
-  "§9.4.2#r82": "per spec: E2E-046: entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil · E2E-059: entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
+  "§9.4.2#r83": "per spec: E2E-046: entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil · E2E-059: entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
+  "§9.4.2#r84": "per spec: E2E-046: entitas Suspended atau Expired: tiap aksi tulis pinjaman ditolak dengan toast, baris tetap tampil · E2E-059: entitas Suspended atau Expired: tiap aksi tulis penugasan ditolak dengan toast, baris tetap tampil",
   "§9.6#r9": "per spec: E2E-021: Cancel Damage Report berhasil · E2E-023: Cancel Missing Report berhasil",
   "§9.6#p1": "per spec: UI-121: Confirm Handover (Borrow) · UI-122: Cancel Borrow · UI-113: Report dan Cancel Report",
   "§9.7#r7": "per spec: E2E-050: Confirm · E2E-051: sesi Handover dibatalkan",
@@ -4787,7 +4866,14 @@
   "EB-AKS-7": "per spec: E2E-046: tiap aksi tulis pinjaman ditolak dengan toast; baris tetap tampil · E2E-059: tiap aksi tulis penugasan ditolak dengan toast; baris tetap tampil",
   "EB-CON-3": "per spec: BE-203: pasangan konfirmasi Borrower, perangkat admin, Accept, PIC, dan Cancel Request · BE-205: pasangan Cancel Borrow dengan pembatalan Aktor Borrow dan sesi Handover · BE-206: pasangan Cancel Extension Request dengan review Aktor Borrow, dan Extend dengan Return",
   "EB-EDG-1": "per spec: BE-203: Confirm Handover atas sesi yang sudah dikonfirmasi · BE-205: Cancel Borrow atas baris yang sudah Canceled · BE-206: pengajuan Extend ganda dan penarikan pengajuan yang sudah ditutup · BE-207: laporan ganda dan pembatalan laporan yang sudah Canceled",
-  "§4.3#r7": "per pemicu: E2E-014: pengajuan Extend sudah menunggu · E2E-064: level Basic · E2E-004: level Borrowing None"
+  "§4.3#r7": "per pemicu: E2E-014: pengajuan Extend sudah menunggu · E2E-064: level Basic · E2E-004: level Borrowing None",
+  "§1.2#r10": "per spec: E2E-065: aturan badge Maintenance due pada tab Borrowed (baris dipegang, baris Waiting, informasi tanpa aksi) · E2E-066: aturan badge Maintenance due pada tab Assigned (baris Assigned, baris Waiting, informasi tanpa aksi)",
+  "§9.4.2#r37": "per tab: E2E-065: tab Borrowed, baris Borrowed, Overdue, Extension Request, atau Extension Approval · E2E-066: tab Assigned, baris Assigned",
+  "§9.4.2#r38": "per tab: E2E-065: tab Borrowed, baris Waiting for Approval atau Waiting for Handover · E2E-066: tab Assigned, baris Waiting for Approval atau Waiting for Handover",
+  "§9.7#r14": "per tab: E2E-065: badge pada baris tab Borrowed muncul atau hilang saat task berubah · E2E-066: badge pada baris tab Assigned muncul atau hilang saat task berubah",
+  "§9.7#r15": "per cabang status: E2E-017: baris Borrowed pindah ke History sebagai Returned lewat Return self-service · E2E-037: baris Overdue pindah ke History sebagai Returned lewat Return oleh Aktor Borrow",
+  "§1.2#r12": "per penerima Task: E2E-050: Task Confirm Handover milik Assignee · E2E-057: Task Confirm Handover atas nama Division untuk PIC Division",
+  "§9.7#r17": "per klausa: UI-101: titik `danger` pada badge tab Borrowed · UI-105: Remaining `danger` pada baris Overdue · BE-210: aturan server Overdue sesudah Due date"
  },
  "kontrak": {
   "Tabs": [
@@ -4840,8 +4926,8 @@
    "T-MYA-04"
   ],
   "Tooltip": [
-   "§1.2#r86",
-   "§1.2#r46",
+   "§1.2#r87",
+   "§1.2#r47",
    "FI-13",
    "FI-14",
    "FI-20",
@@ -4854,7 +4940,9 @@
    "§4.1b#r14",
    "§4.1c#r11",
    "§4.3#r1",
-   "§4.3#r2"
+   "§4.3#r2",
+   "§1.2#r10",
+   "§9.4.2#r37"
   ],
   "BulkActionButton": [
    "§4.1b#p6",
@@ -5434,7 +5522,7 @@
     "§5#r5",
     "§4.1#p2",
     "EB-BLK-1@tabel-borrowed",
-    "§9.4.2#r44"
+    "§9.4.2#r46"
    ],
    "spec": [
     "TC-FA-MYASSET-UI-107-tabel-borrowed-seleksi-bulk",
@@ -5519,15 +5607,19 @@
    "target": "status-baris@tabel-borrowed",
    "kode": "VD-A5",
    "units": [
-    "§1.2#r28",
+    "§1.2#r29",
     "§4.1b#p5",
     "§4.1b#r7",
-    "§1.2#r35"
+    "§1.2#r36",
+    "§1.2#r10",
+    "§9.4.2#r37",
+    "§9.4.2#r38"
    ],
    "spec": [
     "TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris",
     "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel",
-    "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow"
+    "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
    ],
    "pemilik": "TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris",
    "param": {
@@ -5564,13 +5656,17 @@
    "kode": "VD-A5",
    "units": [
     "T-MYA-04",
-    "§1.2#r78",
-    "§1.2#r79"
+    "§1.2#r79",
+    "§1.2#r80",
+    "§1.2#r10",
+    "§9.4.2#r37",
+    "§9.4.2#r38"
    ],
    "spec": [
     "TC-FA-MYASSET-UI-117-tabel-assigned-aksi-baris-dan-reaksi-respons",
     "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi",
-    "TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment"
+    "TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment",
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
    ],
    "pemilik": "TC-FA-MYASSET-UI-117-tabel-assigned-aksi-baris-dan-reaksi-respons",
    "param": {
@@ -5788,7 +5884,7 @@
    "kode": "VD-T10",
    "units": [
     "T-MYA-01",
-    "§1.2#r37"
+    "§1.2#r38"
    ],
    "spec": [
     "TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi",
@@ -5801,10 +5897,10 @@
    "target": "remaining@tabel-borrowed",
    "kode": "VD-T12",
    "units": [
-    "§1.2#r56",
-    "§1.2#r62",
+    "§1.2#r57",
+    "§1.2#r63",
     "§4.1b#r15",
-    "§9.4.2#r88"
+    "§9.4.2#r90"
    ],
    "spec": [
     "TC-FA-MYASSET-UI-105-tabel-borrowed-due-date-dan-remaining",
@@ -6060,7 +6156,7 @@
    "target": "visibilitas@daftar-my-asset",
    "kode": "VD-P2",
    "units": [
-    "§1.2#r23",
+    "§1.2#r24",
     "§2.2#r1",
     "§2.2#r2",
     "§2.2#r3",
@@ -6087,10 +6183,10 @@
    "target": "akses-langsung@baris-my-asset",
    "kode": "VD-P4",
    "units": [
-    "§1.2#r22",
+    "§1.2#r23",
     "§9.4.2#r19",
     "§9.3#b2",
-    "§1.2#r27"
+    "§1.2#r28"
    ],
    "spec": [
     "TC-FA-MYASSET-BE-202-akses-langsung-baris-orang-lain-dep-borrow"
@@ -6106,8 +6202,8 @@
    "kode": "VD-A4",
    "units": [
     "EB-AKS-7",
-    "§9.4.2#r81",
     "§9.4.2#r83",
+    "§9.4.2#r85",
     "§9.4.1#r1"
    ],
    "spec": [
@@ -6163,7 +6259,7 @@
    "target": "pic-berubah@dialog-confirm-handover",
    "kode": "VD-P7",
    "units": [
-    "§1.2#r53"
+    "§1.2#r54"
    ],
    "spec": [
     "TC-FA-MYASSET-BE-208-perpindahan-pic-aturan-server-dep-users",
@@ -6302,7 +6398,7 @@
    "alasan": "`diasersi` temuan 8 adalah perilaku (letak baris sesudah status akhir), bukan copy UI, sehingga tidak masuk korpus literal (RC-10)."
   },
   {
-   "review": "[R-7] unit `§1.2#r63` milik ui-e2e memuat klausa klien («breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
+   "review": "[R-7] unit `§1.2#r64` milik ui-e2e memuat klausa klien («breadcrumb»); pertimbangkan `bagian` dengan ui-client (LY-10)",
    "alasan": "breadcrumb halaman Extension Request dan Borrow an Asset milik `borrow.md` dan baru teramati sesudah berpindah halaman dari My Asset; langkah seperti itu keluar dari unit yang di-mount, jadi tetap di ui-e2e (LY-8). Breadcrumb halaman My Asset sendiri diasersi di ui-client lewat §4.2.1#p1 dan EB-TBL-11."
   },
   {
@@ -6338,11 +6434,11 @@
    "alasan": "unit ini menyatakan ketiadaan checkbox dan bulk action di tab selain Borrowed; tidak ada aturan data yang divariasikan"
   },
   {
-   "review": "[R-11] unit `§1.2#r86` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "review": "[R-11] unit `§1.2#r87` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
    "alasan": "«Required» di unit ini adalah nama placeholder `[Required]` pada tooltip progres approval, bukan aturan field wajib; Approval type (All approvers, Any one approver) ditulis sebagai keadaan baris di Prerequisites"
   },
   {
-   "review": "[R-11] unit `§1.2#r87` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
+   "review": "[R-11] unit `§1.2#r88` memuat aturan data («Required») tetapi tidak ada di `units` target varian mana pun (VD-1)",
    "alasan": "«Required» di unit ini adalah nama placeholder `[Required]` pada tooltip progres approval, bukan aturan field wajib; Approval type (All approvers, Any one approver) ditulis sebagai keadaan baris di Prerequisites"
   },
   {

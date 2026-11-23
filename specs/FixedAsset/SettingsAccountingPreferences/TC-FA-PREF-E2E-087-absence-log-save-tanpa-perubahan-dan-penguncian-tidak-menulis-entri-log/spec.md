@@ -32,7 +32,7 @@ coverage:
 - Kelas harness: g (asersi absence log). Pemicu (request langsung ke server dan penguncian lewat fixture BE) hanya membentuk kondisi yang diasersi tidak tercatat (P-5).
 - Akun aktor: Total Control (Pre-setup PC-8: Rina Anggraini, tampil "Rina A") `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
-- Data Pre-setup: Preferences nilai awal PB-1 untuk TC-FA-PREF-231 dan TC-FA-PREF-244 dan PC-1 untuk TC-FA-PREF-382 dan TC-FA-PREF-602 (setara: Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date; periode Mar 2026 sampai Dec 2026 Open; belum ada posting penyusutan); akun Chart of Accounts PB-2; Asset Class IT Equipment (PB-3 dan PC-6); Changelog Preferences berisi 1 entri Create (PB-1). Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API); seed ulang ke nilai awal dilakukan lewat langkah penghubung (langkah 17, 18, dan 35).
+- Data Pre-setup: Preferences nilai awal PB-1 untuk TC-FA-PREF-231 dan TC-FA-PREF-244 dan PC-1 untuk TC-FA-PREF-382 dan TC-FA-PREF-602 (setara: Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date; belum ada Run Posted); akun Chart of Accounts PB-2; Asset Class IT Equipment (PB-3 dan PC-6); Changelog Preferences berisi 1 entri Create (PB-1). Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API); seed ulang ke nilai awal dilakukan lewat langkah penghubung (langkah 17, 18, dan 35).
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): request langsung ke server memakai sesi API Total Control Rina Anggraini (butir "Sesi API aktor" di `suite.md`) dan fixture BE untuk membaca ulang Preferences; fixture BE untuk menandai posting penyusutan pertama pada Asset Class IT Equipment (Last Posted Period Apr 2026); kemampuan baca BE jumlah baris Changelog Preferences, jumlah entri System Log Rina Anggraini, dan jumlah entri Activity Log FAMS (baseline sebelum aksi, bagian 8b butir 10 dan S-12).
 - State yang diubah spec: posting penyusutan pertama Asset Class IT Equipment (langkah 10 dan 28), dipulihkan pada langkah 17 dan 35 dan di hook `after` (tetap jalan bila spec gagal di tengah).
 - Flag Guided Tooltip halaman Preferences disetel true oleh hook suite `before` (lihat `suite.md`) sehingga walkthrough tidak menutupi layar.
@@ -78,7 +78,7 @@ coverage:
 ### TC-FA-PREF-602: Kunci Fiscal Year Start dan First Accounting Period tidak dicatat sebagai entri log
 
 27. Catat jumlah baris Changelog Preferences, jumlah entri System Log Rina Anggraini, dan jumlah entri Activity Log FAMS (baseline)
-28. Lakukan posting penyusutan pertama sehingga Asset Class IT Equipment memiliki Last Posted Period Apr 2026 lewat fixture BE hingga tersimpan
+28. Lakukan posting penyusutan pertama sehingga Depreciation Run periode Apr 2026 berstatus Posted (Asset Class IT Equipment memiliki Last Posted Period Apr 2026) lewat fixture BE hingga tersimpan
 29. Muat ulang halaman dengan F5
 30. Verifikasi Fiscal Year Start tampil Disabled dengan ikon gembok
 31. Verifikasi First Accounting Period tampil Disabled dengan ikon gembok

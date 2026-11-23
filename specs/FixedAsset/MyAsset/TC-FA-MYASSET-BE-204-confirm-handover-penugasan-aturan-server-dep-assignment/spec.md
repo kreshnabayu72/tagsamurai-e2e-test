@@ -5,18 +5,18 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["FI-05", "T-MYA-01", "V-04", "§1.2#r68", "§1.2#r71", "§9.2#r27", "§9.4.2#r56", "§9.4.3#b9", "§9.6#r10"]
+sourceRules: ["FI-05", "T-MYA-01", "V-04", "§1.2#r69", "§1.2#r72", "§9.2#r27", "§9.4.2#r58", "§9.4.3#b9", "§9.6#r10"]
 smoke: []
 dependsOn: ["Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 trace:
   "FI-05": [29, 31]
   "T-MYA-01": [3, 18, 20, 22, 29, 31, 37, 44]
   "V-04": [8, 18, 20, 22, 24, 34, 37]
-  "§1.2#r68": [2, 3, 6, 12, 41, 48]
-  "§1.2#r71": 29
+  "§1.2#r69": [2, 3, 6, 12, 41, 48, 51, 52]
+  "§1.2#r72": 29
   "§9.2#r27": [8, 10, 26, 28]
-  "§9.4.2#r56": [39, 46]
-  "§9.4.3#b9": [3, 13, 41, 48]
+  "§9.4.2#r58": [39, 46]
+  "§9.4.3#b9": [3, 13, 41, 48, 52]
   "§9.6#r10": [13, 16]
 owner: BE
 ---
@@ -26,14 +26,16 @@ owner: BE
 ## Prerequisites
 - Aktor: Tono (Assignee Employee) dan Rina (Aktor Assignment yang menekan `[Request Confirmation]` dan membatalkan sesi Handover).
 - Data:
-  - DU-204-1: User `Tono Wibowo {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Assignee pada DU-204-3 sampai DU-204-8.
+  - DU-204-1: User `Tono Wibowo {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Assignee pada DU-204-3 sampai DU-204-10.
   - DU-204-2: User `Rina Wulandari {runId}`, role Asset Admin, cakupan Group `Head Office` beserta Group di bawahnya, Aktor Assignment Group `Head Office`.
   - DU-204-3: Penugasan Tono dengan Need recipient confirmation `Yes`, aset `Laptop Dell Latitude 5420 - 41 {runId}`, Group `Head Office`, status `Waiting for Handover`, sesi Handover belum dimulai, jendela konfirmasi belum habis setelah sesi dimulai.
   - DU-204-4: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, berisi tiga aset: `Laptop Dell Latitude 5420 - 42 {runId}`, `Laptop Dell Latitude 5420 - 43 {runId}`, dan `Laptop Dell Latitude 5420 - 44 {runId}`, Group `Head Office`, ketiganya berstatus `Waiting for Handover`, jendela konfirmasi belum habis.
   - DU-204-5: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 45 {runId}`, Group `Head Office`, status `Waiting for Handover`, jendela konfirmasi belum habis.
   - DU-204-6: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 46 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai.
-  - DU-204-7: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 47 {runId}`, Group `Head Office`, status `Waiting for Handover`, jendela konfirmasi belum habis.
+  - DU-204-7: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 47 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-204-6 dan sesi DU-204-8 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 35 dan jendela konfirmasi belum habis saat Rina membatalkan sesi pada langkah 42.
   - DU-204-8: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 48 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai.
+  - DU-204-9: Penugasan Tono dengan Need recipient confirmation `No`, aset `Laptop Dell Latitude 5420 - 51 {runId}`, Group `Head Office`, belum diserahkan Aktor.
+  - DU-204-10: Penugasan Tono dengan Need recipient confirmation `Yes` dan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 52 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-204-6 dan sesi DU-204-8 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 35.
 
 ## Test Steps
 
@@ -94,3 +96,9 @@ owner: BE
 46. Verifikasi baris penugasan aset `Laptop Dell Latitude 5420 - 47 {runId}` tetap berstatus `Waiting for Handover`
 47. Tono meminta data tab Task
 48. Verifikasi data tidak memuat Task Confirm Handover penugasan untuk aset `Laptop Dell Latitude 5420 - 47 {runId}`
+
+### Penugasan tanpa konfirmasi penerima tidak memunculkan Task Confirm Handover
+49. Rina menyerahkan aset `Laptop Dell Latitude 5420 - 51 {runId}` pada penugasan DU-204-9 kepada Tono tanpa konfirmasi penerima
+50. Tono meminta data tab Task
+51. Verifikasi data memuat Task Confirm Handover penugasan untuk aset `Laptop Dell Latitude 5420 - 52 {runId}`
+52. Verifikasi data tidak memuat Task Confirm Handover penugasan untuk aset `Laptop Dell Latitude 5420 - 51 {runId}`, karena penugasan itu Need recipient confirmation `No` dan tidak membentuk sesi Handover

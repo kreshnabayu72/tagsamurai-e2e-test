@@ -5,20 +5,20 @@ layer: ui-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§1.2#r72", "§3#p7", "§4.2.5#p11", "§4.2.5#r6", "§9.4.2#r54", "§9.4.2#r55", "§9.4.2#r56", "§9.4.2#r57", "§9.4.2#r58", "§9.7#r7"]
+sourceRules: ["§1.2#r73", "§3#p7", "§4.2.5#p11", "§4.2.5#r6", "§9.4.2#r56", "§9.4.2#r57", "§9.4.2#r58", "§9.4.2#r59", "§9.4.2#r60", "§9.7#r7"]
 smoke: []
 dependsOn:
   - "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"
 trace:
-  "§1.2#r72": [12, 26]
+  "§1.2#r73": [12, 26]
   "§3#p7": [12, 14, 26]
   "§4.2.5#p11": [9, 24]
   "§4.2.5#r6": [8, 9, 11, 12, 14, 23, 24, 26]
-  "§9.4.2#r54": [8, 23]
-  "§9.4.2#r55": [12, 26]
-  "§9.4.2#r56": 14
+  "§9.4.2#r56": [8, 23]
   "§9.4.2#r57": [12, 26]
-  "§9.4.2#r58": [8, 23]
+  "§9.4.2#r58": 14
+  "§9.4.2#r59": [12, 26]
+  "§9.4.2#r60": [8, 23]
   "§9.7#r7": [12, 26]
 anchor: [2, 17]
 coverage:

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§4.6#p1, §4.6#b3, §4.2.2#p3, §4.8#r7, D-DMG-01, D-DMG-08, TS-DMG-02, TS-DMG-07, §Aturan Logika Modul#r53, §4.2.4#p5]
+sourceRules: [§4.6#p1, §4.6#b3, §4.2.2#p3, §4.8#r7, D-DMG-01, D-DMG-08, TS-DMG-02, TS-DMG-07, §Aturan Logika Modul#r55, §4.2.4#p6, §3#p4, §4.2.4#r17, §4.2.4#p8, §4.2.4#r13]
 smoke: []
 dependsOn:
   - "My Asset: kartu aset di mobile (Report Damaged, Cancel Report)"
@@ -18,8 +18,12 @@ trace:
   D-DMG-08: [12, 13]
   TS-DMG-02: 8
   TS-DMG-07: 15
-  §Aturan Logika Modul#r53: [10, 16]
-  §4.2.4#p5: [21, 23]
+  §Aturan Logika Modul#r55: [10, 16]
+  §4.2.4#p6: [21, 23]
+  §3#p4: [15, 16]
+  §4.2.4#r17: 21
+  §4.2.4#p8: [12, 13]
+  §4.2.4#r13: [15, 16]
 coverage:
   android: manual
 ---

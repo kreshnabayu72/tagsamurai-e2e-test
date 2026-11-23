@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r35", "§4.1b#r50", "§4.1b#r67", "§9.7#r12"]
+sourceRules: ["§1.2#r36", "§4.1b#r50", "§4.1b#r67", "§9.7#r12"]
 smoke: []
 dependsOn: ["Damaged: keputusan Damage Report oleh Aktor Damaged", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§1.2#r35": [6, 11, 14, 16, 17, 23, 25]
+  "§1.2#r36": [6, 11, 14, 16, 17, 23, 25]
   "§4.1b#r50": [6, 14, 25]
   "§4.1b#r67": [15]
   "§9.7#r12": [11, 12, 23]

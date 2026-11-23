@@ -5,16 +5,16 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r79", "§Aturan Logika Modul#r80", "§Aturan Logika Modul#r81", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§8.3#r1", "§8.1#r7", "§9.2#b5", "§9.7#r8", "EC-DMG-28", "EC-DMG-32", "§9.4.4#r6", "EC-DMG-31", "T-DMG-01", "T-DMG-02"]
+sourceRules: ["§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§Aturan Logika Modul#r85", "§Aturan Logika Modul#r86", "§Aturan Logika Modul#r87", "§8.3#r1", "§8.1#r7", "§9.2#b5", "§9.7#r8", "EC-DMG-28", "EC-DMG-32", "§9.4.4#r6", "EC-DMG-31", "T-DMG-01", "T-DMG-02"]
 smoke: []
 dependsOn: ["Asset Registration: registrasi aset ber-Condition Damaged dan Activate"]
 trace:
-  "§Aturan Logika Modul#r79": [6]
-  "§Aturan Logika Modul#r80": [7]
-  "§Aturan Logika Modul#r81": [6]
-  "§Aturan Logika Modul#r82": [13]
-  "§Aturan Logika Modul#r83": [14]
-  "§Aturan Logika Modul#r84": [12]
+  "§Aturan Logika Modul#r82": [6]
+  "§Aturan Logika Modul#r83": [7]
+  "§Aturan Logika Modul#r84": [6]
+  "§Aturan Logika Modul#r85": [13]
+  "§Aturan Logika Modul#r86": [14]
+  "§Aturan Logika Modul#r87": [12]
   "§8.3#r1": [12]
   "§8.1#r7": [12, 13, 14]
   "§9.2#b5": [3, 6]

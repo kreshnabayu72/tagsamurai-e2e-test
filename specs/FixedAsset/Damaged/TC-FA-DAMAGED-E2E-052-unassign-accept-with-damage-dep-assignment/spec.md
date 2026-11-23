@@ -5,22 +5,25 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r48", "§Aturan Logika Modul#r55", "§9.2#b7", "§8.3#r2", "§8.1#r7", "§Aturan Logika Modul#r34", "§Aturan Logika Modul#r42", "§9.7#r3", "T-DMG-01", "§2#b6", "§3#p2"]
+sourceRules: ["§Aturan Logika Modul#r50", "§Aturan Logika Modul#r57", "§9.2#b7", "§8.3#r2", "§8.1#r7", "§Aturan Logika Modul#r36", "§Aturan Logika Modul#r44", "§9.7#r3", "T-DMG-01", "§2#b6", "§3#p2", "§4.2.3#p1", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r49"]
 smoke: []
 dependsOn:
   - "Assignment: Unassign (status Unassigned bermarker Damaged, form D-ASG-17)"
 trace:
-  "§Aturan Logika Modul#r48": [20, 21, 40, 41, 42, 71, 73]
-  "§Aturan Logika Modul#r55": [35, 38, 44, 46, 49, 50, 53, 56, 58, 61, 67, 68, 71, 84, 89, 90, 94, 95]
+  "§Aturan Logika Modul#r50": [20, 21, 40, 41, 42, 71, 73]
+  "§Aturan Logika Modul#r57": [35, 38, 44, 46, 49, 50, 53, 56, 58, 61, 67, 68, 71, 84, 89, 90, 94, 95]
   "§9.2#b7": [20, 21]
   "§8.3#r2": [19]
   "§8.1#r7": [19, 20, 21]
-  "§Aturan Logika Modul#r34": [35, 38]
-  "§Aturan Logika Modul#r42": [10, 35, 49]
+  "§Aturan Logika Modul#r36": [35, 38]
+  "§Aturan Logika Modul#r44": [10, 35, 49]
   "§9.7#r3": [14, 17, 25, 27]
   "T-DMG-01": [14, 15, 16, 38, 46]
   "§2#b6": [14]
   "§3#p2": [9, 11, 14, 25]
+  "§4.2.3#p1": [9]
+  "§Aturan Logika Modul#r52": [15]
+  "§Aturan Logika Modul#r49": [20, 21, 42]
 anchor: []
 coverage:
   web: automated

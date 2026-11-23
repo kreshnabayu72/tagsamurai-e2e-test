@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-11, "§4.1#r4", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#b1", "§4.4#r4", "§4.4#r5", "§4.4#p1", S-DMG-15, TS-DMG-04, "§9.6#r2", EB-FB-1@confirm, EB-ERR-1@confirm, "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16"]
+sourceRules: [D-DMG-11, "§4.1#r4", "§8.1#r1", "§8.1#r2", "§8.1#r3", "§8.1#r4", "§8.1#r5", "§8.1#r6", "§8.1#b1", "§4.4#r4", "§4.4#r5", "§4.4#p1", S-DMG-15, TS-DMG-04, "§9.6#r2", EB-FB-1@confirm, EB-ERR-1@confirm, "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16", "§Aturan Logika Modul#r96"]
 smoke: []
 dependsOn: []
 trace:
@@ -26,16 +26,17 @@ trace:
   "§9.6#r2": [38, 58, 59]
   EB-FB-1@confirm: [38, 58]
   EB-ERR-1@confirm: [58, 59, 60, 62, 65, 66]
-  "§8.1#r7": [68, 69, 70, 72, 74, 75]
+  "§8.1#r7": [68, 69, 70, 72, 74, 75, 114, 115]
   "§8.1#r8": [77, 78, 79]
   "§8.1#r9": [81]
   "§8.1#r10": [83, 84]
   "§8.1#r11": [85]
-  "§8.1#r12": [87, 88]
+  "§8.1#r12": [87, 88, 117, 118]
   "§8.1#r13": [90]
   "§8.1#r14": [91]
   "§8.1#r15": [92, 94]
   "§8.1#r16": [96]
+  "§Aturan Logika Modul#r96": [115, 118]
 anchor: []
 coverage:
   web: automated
@@ -68,6 +69,8 @@ coverage:
   - DU-116-18: record `Disposed` dengan node `Disposed` oleh `System` berisi Disposal No. `DSP-2026-0007`.
   - DU-116-19: pengguna `Lia N` dengan role Read Only, cakupan seluruh client, tanpa hak Aktor Damaged.
   - DU-116-20: pengguna `Joko T` dengan role Manage asset & TAG (Read), cakupan Group `Head Office` beserta descendant, tanpa hak Update dan tanpa hak Aktor Damaged.
+  - DU-116-21: record `Damaged` untuk aset `Toyota Avanza - 4` dengan node `Reported damaged by Agus P` berisi What happened `Rem tidak berfungsi saat dipakai`; Damaged Photo sudah dihapus lewat File Manager.
+  - DU-116-22: record `Repaired` untuk aset `Laptop Dell Latitude 5420 - 6` dengan node `Marked as repaired by Rina W` berisi Repair note `Panel layar diganti dan diuji` dan Manual identification `Identifikasi manual dicatat`; After photo sudah dihapus lewat File Manager.
 - Kondisi:
   - K1: DU-116-1 dibuka oleh DU-116-4; daftar record saat dialog dibuka berurutan DU-116-2, DU-116-1, DU-116-3; respons Confirm sukses.
   - K2: DU-116-1 dibuka oleh DU-116-5.
@@ -90,6 +93,8 @@ coverage:
   - K19: DU-116-1 dibuka oleh DU-116-19.
   - K20: DU-116-1 dibuka oleh DU-116-20.
   - K21: DU-116-1 dibuka oleh DU-116-4; daftar record saat dialog dibuka berurutan DU-116-2, DU-116-1, DU-116-3; respons Reject sukses.
+  - K22: DU-116-21.
+  - K23: DU-116-22.
 
 ## Test Steps
 
@@ -250,3 +255,13 @@ coverage:
 110. Verifikasi dialog Damage Log menampilkan record `Tablet Samsung Tab A8 - 3` dari daftar saat dialog dibuka
 111. Klik `Prev`
 112. Verifikasi dialog Damage Log menampilkan record `Laptop Dell Latitude 5420 - 4` dengan badge status record `Rejected`
+
+### Damaged Photo yang dihapus dari File Manager tidak tampil pada node laporan
+113. Tampilkan Dialog Damage Log dengan kondisi K22
+114. Verifikasi node `Reported damaged by Agus P` tampil dengan baris `What happened`
+115. Verifikasi node `Reported damaged by Agus P` tidak memuat baris `Damaged Photo` karena fotonya sudah dihapus
+
+### After photo yang dihapus dari File Manager tidak tampil pada node Marked as repaired
+116. Tampilkan Dialog Damage Log dengan kondisi K23
+117. Verifikasi node `Marked as repaired by Rina W` memuat baris `Repair note` dan `Manual identification`
+118. Verifikasi node `Marked as repaired by Rina W` tidak memuat baris `After photo` karena fotonya sudah dihapus

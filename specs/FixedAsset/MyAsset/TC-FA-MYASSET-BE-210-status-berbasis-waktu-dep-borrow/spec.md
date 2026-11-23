@@ -5,17 +5,17 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r12", "§1.2#r72", "§9.4.2#r87", "§9.4.2#r90", "§9.7#r2", "§9.7#r16"]
+sourceRules: ["§1.2#r13", "§1.2#r73", "§9.4.2#r89", "§9.4.2#r92", "§9.7#r2", "§9.7#r17"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 owner: BE
 trace:
-  "§1.2#r12": [1, 5]
-  "§1.2#r72": [2, 8, 9]
-  "§9.4.2#r87": [3, 11, 13, 15]
-  "§9.4.2#r90": [5, 8]
+  "§1.2#r13": [1, 5]
+  "§1.2#r73": [2, 8, 9]
+  "§9.4.2#r89": [3, 11, 13, 15]
+  "§9.4.2#r92": [5, 8]
   "§9.7#r2": [5, 6]
-  "§9.7#r16": [5, 8, 11, 15]
+  "§9.7#r17": [5, 8, 11, 15]
 ---
 
 # Perubahan berbasis waktu: baris menjadi Overdue dan Task hilang saat jendela konfirmasi lewat

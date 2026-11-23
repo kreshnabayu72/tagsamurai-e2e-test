@@ -1,14 +1,14 @@
 {
  "schema": "spec-from-prd-audit/v1",
- "putaran": 1,
- "suite": "2feb4331136a2620",
+ "putaran": 3,
+ "suite": "e2b91b1f280341de",
  "hitung": {
-  "ok": 581,
+  "ok": 585,
   "parsial": 23,
-  "hilang": 0,
+  "hilang": 1,
   "salah": 0,
-  "na": 271,
-  "skor": 98.1
+  "na": 272,
+  "skor": 97.9
  },
  "siap": [
   "TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state",
@@ -97,10 +97,48 @@
   "TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow",
   "TC-FA-MYASSET-E2E-004-plan-borrowing-none-pinjaman-berjalan-dep-borrow",
   "TC-FA-MYASSET-E2E-005-plan-assignment-none-penugasan-berjalan-dep-assignment",
-  "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow"
+  "TC-FA-MYASSET-E2E-064-plan-basic-aksi-tab-borrowed-dep-borrow",
+  "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine",
+  "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
  ],
  "draft": {},
  "plan": [
+  {
+   "unit": "§10#r2",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow",
+   "langkah": [
+    5,
+    6
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state: Klausa «tanpa badge atau titik pengingat» (juga bila ada Task aktif, PRD S-03) tidak bisa gagal dengan datanya: E2E-001 memakai Borrower tanpa Task aktif (DU-001-1), E2E-036 membuka menu profil (langkah 5-6) pada pengguna dengan Task aktif tetapi tidak memverifikasi apa pun pada avatar maupun item `My Asset`, dan tidak ada spec lain yang melakukannya (grep «titik»: hanya E2E-001 langkah 2 dan 8). Tambahkan sesudah langkah 5 atau 6 di E2E-036: verifikasi tidak ada badge atau titik pada avatar dan pada item `My Asset`, padahal tab Task berisi 3 Task.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.1#r1",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow",
+   "langkah": [
+    5,
+    6
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state: Klausa «tanpa badge atau titik pengingat» (juga bila ada Task aktif, PRD S-03) tidak bisa gagal dengan datanya: E2E-001 memakai Borrower tanpa Task aktif (DU-001-1), E2E-036 membuka menu profil (langkah 5-6) pada pengguna dengan Task aktif tetapi tidak memverifikasi apa pun pada avatar maupun item `My Asset`, dan tidak ada spec lain yang melakukannya (grep «titik»: hanya E2E-001 langkah 2 dan 8). Tambahkan sesudah langkah 5 atau 6 di E2E-036: verifikasi tidak ada badge atau titik pada avatar dan pada item `My Asset`, padahal tab Task berisi 3 Task.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.3#r3",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow",
+   "langkah": [
+    5,
+    6
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-001-titik-masuk-tab-url-dan-empty-state: Klausa «tanpa badge atau titik pengingat» (juga bila ada Task aktif, PRD S-03) tidak bisa gagal dengan datanya: E2E-001 memakai Borrower tanpa Task aktif (DU-001-1), E2E-036 membuka menu profil (langkah 5-6) pada pengguna dengan Task aktif tetapi tidak memverifikasi apa pun pada avatar maupun item `My Asset`, dan tidak ada spec lain yang melakukannya (grep «titik»: hanya E2E-001 langkah 2 dan 8). Tambahkan sesudah langkah 5 atau 6 di E2E-036: verifikasi tidak ada badge atau titik pada avatar dan pada item `My Asset`, padahal tab Task berisi 3 Task.",
+   "status": "tetap"
+  },
   {
    "unit": "EB-EDG-2",
    "verdict": "ok",
@@ -122,15 +160,12 @@
    "catatan": "E2E-040 langkah 76 (`No tasks` sesudah Task Borrow terakhir dikonfirmasi) ikut menanggung klausa nol dan item terakhir EB-EDG-2, tetapi tidak tercatat sebagai penanggung unit ini."
   },
   {
-   "unit": "§9.4.2#r41",
+   "unit": "§9.4.2#r43",
    "verdict": "ok",
    "jenis": "plan",
    "spec": "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow",
-   "langkah": [
-    25,
-    26
-   ],
-   "catatan": "Task hilang sesudah konfirmasi lewat Accept diasersi BE-203 step 25-26 tetapi BE-203 tidak tercatat sebagai penanggung unit ini (hanya E2E-011)."
+   "langkah": [],
+   "catatan": "Opsional: sisi server atas konfirmasi lewat HP (Task hilang) juga ditegaskan di BE-203, tetapi BE-203 tidak tercatat sebagai pemilik unit ini. Celah pencatatan saja."
   },
   {
    "unit": "§9.2#r4",
@@ -146,22 +181,6 @@
     33
    ],
    "catatan": "Klausa 'milik pengguna' (baris orang lain ditolak, termasuk oleh Total Control) diasersi benar di BE-202 langkah 28-33 tetapi BE-202 tidak tercatat sebagai penanggung unit ini; catat BE-202 sebagai pemilik klausa kepemilikan."
-  },
-  {
-   "unit": "§9.4.2#r69",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-UI-122-dialog-cancel-borrow",
-   "langkah": [
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10
-   ],
-   "catatan": "Isi dialog D-BRW-01 varian Borrower (judul, tombol [Go Back] dan [Cancel Borrow], tanpa Reason dan Save as Draft to edit) diasersi lengkap di UI-122 tetapi UI-122 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§9.6#r3",
@@ -214,6 +233,17 @@
    "catatan": "Idempotensi Return (Return kedua atas baris `Returned` tidak diproses ulang, Borrow Log tetap satu node `Returned via self-service`) diasersi benar di BE-206 langkah 95-101 dan entri User Log di BE-209 langkah 11-13, tetapi keduanya tidak tercatat sebagai penanggung unit ini. Cabang gagal tidak punya spec ui-client pemilik."
   },
   {
+   "unit": "§9.7#r15",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow",
+   "langkah": [
+    50,
+    57
+   ],
+   "catatan": "Cabang Overdue pada baris matriks (Borrowed / Overdue pindah ke History sebagai Returned) tidak diuji di E2E-017 (hanya Borrowed). Cabang itu ditegaskan di E2E-037 langkah 50-57, tetapi lewat Return oleh Aktor Borrow dan spec itu tidak tercatat sebagai pemilik unit. Celah pencatatan, bukan celah asersi."
+  },
+  {
    "unit": "§4.1b#r48",
    "verdict": "ok",
    "jenis": "plan",
@@ -259,12 +289,35 @@
   {
    "unit": "§4.8#r12",
    "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-042-peran-lain-sebagai-borrower-dep-borrow",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-042-peran-lain-sebagai-borrower-dep-borrow`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-021-cancel-damage-report-pinjaman-dep-borrow, TC-FA-MYASSET-E2E-023-cancel-missing-report-pinjaman-dep-borrow, TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users, TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment: Kolom «Peran lain (sebagai Borrower, Assignee, atau PIC)» bernilai `Mengikuti posisi` (pelapor: Show) tidak diasersi untuk `Cancel Damage Report` dan `Cancel Missing Report`. E2E-042 hanya menguji Request Extension, Report Damaged, Report Missing, Return, Cancel Borrow, Cancel Extension Request; tidak ada pinjaman Asset Admin Rahmat dengan Damage Report atau laporan Missing `Waiting for Confirmation` yang ia laporkan sendiri. Tambahkan dua pinjaman itu dan verifikasi menu baris memuat `Cancel Damage Report` dan `Cancel Missing Report`.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.8#r12",
+   "verdict": "parsial",
    "jenis": "plan",
    "spec": "TC-FA-MYASSET-E2E-054-report-damaged-aset-assigned-dep-assignment",
    "langkah": [
     23
    ],
    "catatan": "Kolom Borrower / Assignee untuk sisi Assignee diasersi di E2E-054 langkah 23 (`Cancel Damage Report`) dan E2E-055 langkah 16 (`Cancel Missing Report`), tetapi keduanya tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "§4.1b#r54",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-026-keputusan-laporan-missing-dep-missing",
+   "langkah": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-026-keputusan-laporan-missing-dep-missing`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-022-report-missing-pinjaman-dep-borrow, TC-FA-MYASSET-BE-206-extension-aturan-server-dep-borrow: Klausa «Extend, Report Damaged, dan Report Missing tidak tampil lagi sampai laporan dikonfirmasi, ditolak, atau dibatalkan»: cabang ditolak tidak diasersi pada menu. E2E-026 langkah 4-7 hanya memverifikasi status `Borrowed` dan badge hilang sesudah Aktor Missing menolak; tidak ada langkah membuka menu `⋯` baris `Proyektor Epson EB-X06 {runId}` dan memverifikasi `Request Extension`, `Report Damaged`, `Report Missing` tampil lagi, dan UI-106 tidak punya baris dengan laporan Missing `Rejected`.",
+   "status": "tetap"
   },
   {
    "unit": "§4.1b#r54",
@@ -299,37 +352,6 @@
    "catatan": "Sisi «Cancel Missing Report» (badge `Reported Missing` hilang) diasersi benar di E2E-023 langkah 11 sampai 12, tetapi E2E-023 tidak tercatat sebagai penanggung unit; plan hanya mencatat E2E-022 dan E2E-026."
   },
   {
-   "unit": "§1.2#r38",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow",
-   "langkah": [
-    15
-   ],
-   "catatan": "Nilai `Me` pada kolom Holder data nyata diasersi di E2E-037 langkah 15 (dan E2E-056 langkah 9), tetapi kedua spec tidak tercatat sebagai penanggung unit ini (bagian ui-e2e hanya E2E-030, yang mengasersi kolom Borrower)."
-  },
-  {
-   "unit": "§1.2#r38",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-056-tab-history-penugasan-dep-assignment",
-   "langkah": [
-    9
-   ],
-   "catatan": "Holder `Me` pada data nyata History penugasan diasersi di sini, tidak tercatat sebagai penanggung unit LOGIC-04c."
-  },
-  {
-   "unit": "§1.2#r89",
-   "verdict": "na",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
-   "langkah": [
-    34,
-    37
-   ],
-   "catatan": "MYASSET-LOGIC-09d hanya penunjuk: model approval mengikuti approval-foundation.md dan daftar approver yang berhak dimiliki borrow.md dan assignment.md. Tidak ada perilaku teruji tersendiri; status plan 'dimiliki' sebaiknya 'na'."
-  },
-  {
    "unit": "§10#r3",
    "verdict": "ok",
    "jenis": "plan",
@@ -349,6 +371,87 @@
     6
    ],
    "catatan": "Satu baris Task per transaksi Assignment (tiga aset satu penugasan, langkah 6) dan baris per aset pada tab Assigned (langkah 2) diasersi di E2E-050, bukan di penanggung unit ini."
+  },
+  {
+   "unit": "§2.1#b3",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow: «Borrower, Assignee, dan PIC tidak memiliki akses ke menu Borrow atau Assignment»: asersi sidebar hanya ada di E2E-030 langkah 72 (aktor Borrower). Tidak ada langkah serupa untuk Assignee Employee (E2E-052).",
+   "status": "tetap"
+  },
+  {
+   "unit": "§2.1#b3",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow: Menu `Transactions > Borrow` dan `Transactions > Assignment` tidak tampil bagi PIC Borrower tidak diasersi.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§2.1#b3",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow: Menu `Transactions > Borrow` dan `Transactions > Assignment` tidak tampil bagi PIC Division tidak diasersi.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§2.1#r12",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment",
+   "langkah": [
+    14,
+    23,
+    29
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-052-tab-assigned-isi-dan-aksi-baris-dep-assignment`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow, TC-FA-MYASSET-E2E-040-pic-borrower-baris-dan-aksi-dep-users, TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment: Kolom Borrower/Assignee: Borrow Log `✅ (hanya pinjaman)`. Tidak ada langkah yang memastikan menu baris Assigned tidak memuat `Borrow Log` (langkah 14-35 hanya memeriksa `Assignment Log`, `Report Damaged`, `Report Missing`, `Unassign`). Sel PIC Borrower dan PIC Division sudah diasersi (E2E-040 langkah 32; E2E-057 langkah 58 dan 64).",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.1b#r16",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-E2E-045-format-tanggal-dep-general-settings",
+   "langkah": [
+    4,
+    5,
+    12,
+    13
+   ],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-E2E-045-format-tanggal-dep-general-settings`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow, TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel, TC-FA-MYASSET-UI-108-tabel-borrowed-konfigurasi-toolbar, TC-FA-MYASSET-BE-214-sort-per-tipe-kolom-dep-borrow, TC-FA-MYASSET-BE-215-filter-opsi-dan-hasil-dep-borrow: PRD: Handed Over At = tanggal + jam, ikut General Settings (§32). Perubahan Date Format, Time Format, dan Time Zone (E2E-045 langkah 6-53, UI-105 K4/K5) hanya diasersi pada kolom Due Date; Handed Over At hanya diasersi pada nilai bawaan `dd/MM/yy` 24 jam (UI-104 langkah 17, E2E-030 langkah 23), sehingga tidak teruji mengikuti setting. Tambahkan asersi kolom Handed Over At pada tiap perubahan setting di E2E-045 (data DU-045-2 dan DU-045-3 punya Handed Over At `T0`).",
+   "status": "tetap"
+  },
+  {
+   "unit": "§5#r6",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-034-tab-borrowed-download-dep-borrow, TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-053-tab-assigned-toolbar-dep-assignment, TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download, TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow: TS-MYA-01 berlaku `Download gagal (semua tab)` dengan `[File Name]` (mis. `My-Asset-Task`). Gagal Download tab Task (`Error, failed to download My-Asset-Task.`) tidak diasersi; hanya tab Borrowed di UI-112 langkah 26 dan 31.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§5#r6",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-034-tab-borrowed-download-dep-borrow, TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-053-tab-assigned-toolbar-dep-assignment, TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download, TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow: Gagal Download tab Assigned (`Error, failed to download My-Asset-Assigned.`) tidak diasersi di spec mana pun.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§5#r6",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-115-tabel-history-konfigurasi-dan-state",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-115-tabel-history-konfigurasi-dan-state`, padahal plan memberi unit ini ke TC-FA-MYASSET-E2E-034-tab-borrowed-download-dep-borrow, TC-FA-MYASSET-E2E-036-tab-task-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow, TC-FA-MYASSET-E2E-053-tab-assigned-toolbar-dep-assignment, TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download, TC-FA-MYASSET-BE-216-download-isi-berkas-dep-borrow: Gagal Download tab History (`Error, failed to download My-Asset-History.`) tidak diasersi di spec mana pun.",
+   "status": "tetap"
   },
   {
    "unit": "§4.1c#r18",
@@ -413,6 +516,17 @@
    "catatan": "Klausa 'peran apa pun tidak memberi hak; hanya bertindak sebagai Borrower, Assignee, atau PIC' juga diasersi BE-201 (enam peran hanya melihat barisnya sendiri; Sari dan Tono ber-role admin sebagai Assignee) di luar E2E-042 yang satu-satunya tercatat. Catat BE-201 sebagai penanggung."
   },
   {
+   "unit": "§1.2#r12",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
+   "langkah": [
+    5,
+    6
+   ],
+   "catatan": "Bagian 'atau PIC Division' pada klausa Task diasersi E2E-057 langkah 6 (satu baris Task Confirm Handover atas nama Division untuk PIC Division), tetapi E2E-057 tidak tercatat sebagai penanggung unit ini; catat sebagai pemilik atau smoke."
+  },
+  {
    "unit": "§3#p7",
    "verdict": "ok",
    "jenis": "plan",
@@ -469,6 +583,18 @@
    "catatan": "Klausa 'Filename: My-Asset-Task / -Borrowed / -Assigned / -History (sesuai tab aktif)' pada unit ini hanya tercatat di UI-101, tetapi diasersi di spec lain: UI-112 (My-Asset-Borrowed), E2E-034 (langkah 6, 13), E2E-036 (langkah 108), E2E-037 (langkah 121), E2E-053 (langkah 36, 39). Tambahkan spec-spec itu sebagai penanggung unit ini."
   },
   {
+   "unit": "§9.7#r17",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-MYASSET-UI-105-tabel-borrowed-due-date-dan-remaining",
+   "langkah": [
+    14,
+    16,
+    35
+   ],
+   "catatan": "Klausa 'Remaining danger' pada baris Overdue diasersi benar di UI-105 (langkah 14, 16, 35), tetapi UI-105 tidak tercatat sebagai penanggung unit §9.7#r17 (hanya UI-101 dan BE-210). Tambahkan UI-105 sebagai pemilik untuk klausa Remaining danger."
+  },
+  {
    "unit": "EB-BLK-1@tabel-borrowed",
    "verdict": "ok",
    "jenis": "plan",
@@ -523,24 +649,75 @@
    "catatan": "E2E-030 langkah 71 (Borrower) dan E2E-057 langkah 54 (PIC Division) juga mengasersi tombol `Borrow an Asset` tidak tampil di web pada data nyata, tetapi tidak tercatat sebagai penanggung unit ini (belum diperbaiki sejak putaran 1)."
   },
   {
+   "unit": "§7.3#r13",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-103-tabel-task-tampilan-dan-konfigurasi`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download: TS-MYA-01 `Download gagal (semua tab)`; hanya tab Borrowed (`My-Asset-Borrowed`, CSV dan XLSX, UI-112 langkah 26 dan 31) yang diasersi. Gagal Download tab Task (`My-Asset-Task`) tidak diasersi.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§7.3#r13",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download: Gagal Download tab Assigned (`My-Asset-Assigned`) tidak diasersi.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§7.3#r13",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-115-tabel-history-konfigurasi-dan-state",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-115-tabel-history-konfigurasi-dan-state`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-112-tabel-borrowed-state-data-dan-download: Gagal Download tab History (`My-Asset-History`) tidak diasersi.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.5#p1",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower: `Tabel dapat di-scroll horizontal pada lebar sempit; header kolom tidak dibungkus` tidak diasersi (E2E-035 langkah 18 hanya menggulir untuk kolom pin). Juga `Status tidak bergantung pada warna saja (teks badge selalu tampil; caption late dan Remaining Overdue selalu teks)` tidak diasersi sebagai aturan.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.5#p1",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower: `Tabs ... dapat dioperasikan keyboard` tidak diasersi; hanya dialog yang dioperasikan keyboard (UI-118 langkah 35-43).",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.5#p1",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-110-tabel-borrowed-mekanik-filter-panel",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-110-tabel-borrowed-mekanik-filter-panel`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower: `FilterContainer ... dapat dioperasikan keyboard` tidak diasersi (Filter Panel selalu dioperasikan dengan klik).",
+   "status": "tetap"
+  },
+  {
+   "unit": "§4.5#p1",
+   "verdict": "parsial",
+   "jenis": "kurang",
+   "spec": "TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris",
+   "langkah": [],
+   "catatan": "juri meminta klausa ini di `TC-FA-MYASSET-UI-106-tabel-borrowed-aksi-baris`, padahal plan memberi unit ini ke TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower: `menu ⋯ ... dapat dioperasikan keyboard` tidak diasersi: semua spec membuka menu ⋯ dengan klik.",
+   "status": "tetap"
+  },
+  {
    "unit": "§4.5#p1",
    "verdict": "parsial",
    "jenis": "plan",
    "spec": "TC-FA-MYASSET-UI-118-dialog-confirm-handover-borrower",
    "langkah": [],
    "catatan": "§4.5#p1 mencakup tabel, Tabs, FilterContainer, menu ⋯, dan dialog, tetapi plan hanya menyerahkannya ke UI-118 (spec dialog). Klausa non-dialog perlu pemilik di spec tabel/tab/filter."
-  },
-  {
-   "unit": "§9.4.2#r91",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment",
-   "langkah": [
-    35,
-    36,
-    37
-   ],
-   "catatan": "Unit merujuk EC-MYA-17 (Assignment) selain EC-MYA-03, tetapi penolakan server pada Expires At untuk Assignment ada di BE-204 (langkah 35-37), yang tidak tercatat sebagai penanggung unit; pemilik be-e2e hanya BE-203 (pinjaman). Dialog D-MYA-02 untuk Assignment juga diasersi E2E-051 dan UI-121 (K7). Catat BE-204 sebagai pemilik tambahan."
   },
   {
    "unit": "EB-EDG-1",
@@ -553,6 +730,23 @@
     16
    ],
    "catatan": "Idempotensi Confirm Handover Assignment per sesi (§9.6 baris terakhir, `Ya (per sesi)`) diasersi BE-204 langkah 14-16 (Confirm kedua, Assignment Log tetap satu entri konfirmasi), tetapi BE-204 tidak tercatat sebagai penanggung EB-EDG-1 di `shared`/`spec`. Tambahkan BE-204 ke penanggung EB-EDG-1. Temuan putaran 1 soal Return kedua pinjaman self-service sudah beres (BE-206 langkah 95-101)."
+  },
+  {
+   "unit": "§1.2#r44",
+   "verdict": "hilang",
+   "jenis": "kurang",
+   "spec": null,
+   "langkah": [],
+   "catatan": "MYASSET-LOGIC-04h: 'PIC juga dapat memulai `Borrow an Asset` atas nama Borrower lewat pilihan `Borrow for` (mobile, `borrow.md` §4.2.12)'. Sumber menetapkan hasil yang bisa diuji: PRD §2 baris Borrow an Asset menyatakan PIC '✅ atas nama lewat `Borrow for` (mobile; pernyataan PIC `D-BRW-21`)' dan baris 925 'Show di mobile lewat `Borrow for` (web: Hidden)'. Grep `Borrow for` di seluruh suite kosong; yang ada hanya asersi web bahwa tombol `Borrow an Asset` Hidden (E2E-040 langkah 105, E2E-042 langkah 84), yang bukan klausa mobile unit ini. Penahanan plan (spec Android ditunda keputusan pemilik) bukan karena sumber belum memutuskan, jadi `hilang` sampai ada spec Android pemilik unit ini.",
+   "status": "tetap"
+  },
+  {
+   "unit": "§1.2#r44",
+   "verdict": "hilang",
+   "jenis": "plan",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Unit ditahan karena spec Android ditunda, bukan karena sumber ambigu. Begitu pemilik memutuskan spec Android, tetapkan spec Android itu sebagai pemilik unit ini (klausa mobile: PIC melihat pilihan `Borrow for` dan memulai Borrow an Asset atas nama Borrower tanpa akun)."
   }
  ],
  "prd": [
@@ -772,6 +966,14 @@
    "catatan": "Toast `TS-MIS-01` bercopy dimiliki `missing.md` (di luar kit); E2E-024 langkah 6 mengasersi awalan `Success,` saja. Klausa lain unit ini (record langsung `Missing`, baris ditutup `Returned` bermarker `Missing`) diasersi E2E-024 langkah 13 dan BE-207 langkah 58 sampai 59."
   },
   {
+   "unit": "§1.2#r90",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Model approval dan daftar approver yang berhak didefinisikan di approval-foundation.md, borrow.md, dan assignment.md (dokumen luar). Di My Asset hanya angka Approved/Required pada tooltip yang bisa diuji, dan itu sudah ditegaskan di E2E-030. Tidak memengaruhi verdict."
+  },
+  {
    "unit": "§4.4#r11",
    "verdict": "ok",
    "jenis": "prd",
@@ -845,6 +1047,14 @@
    "catatan": "Tab dan item tujuan per `event_type` dimiliki `notification.md` §9.2a (di luar kit), sehingga pemetaan event ke tab (mis. `assignment_confirmation_required` ke Task, `borrow_extension_resolved` ke tab baris) tidak bisa dipastikan suite ini. Selain itu PRD «halaman membuka tab yang memuat baris itu atau tab awal» tidak menetapkan kapan tab awal berlaku; cabang tab awal tidak diasersi."
   },
   {
+   "unit": "§1.2#r27",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Klausa 'tampilan lintas Borrower ada di `Transactions > Borrow` (`borrow.md`), lintas Assignee di `Transactions > Assignment`' menunjuk surface milik modul lain (borrow.md / assignment.md, di luar kit); tidak bisa diasersi suite My Asset dengan pasti dan tidak dihitung kurang. Klausa inti (keenam peran hanya melihat pinjaman dan penugasannya sendiri) diasersi di BE-201 langkah 44-58 dan 80-94 serta E2E-042."
+  },
+  {
    "unit": "§3#p3",
    "verdict": "ok",
    "jenis": "prd",
@@ -883,16 +1093,6 @@
    "spec": null,
    "langkah": [],
    "catatan": "Kolom Failure ('Dimiliki assignment/ (form tetap terbuka untuk retry)') dan Atomic ('Dimiliki assignment/') ditetapkan assignment.md 9.6, di luar kit. UI-121 langkah 111-114 sudah mengasersi toast `Error, failed to hand over assets.` dan dialog tetap terbuka dengan pilihan dipertahankan untuk varian Assignment."
-  },
-  {
-   "unit": "T-MYA-04",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-MYASSET-E2E-054-report-damaged-aset-assigned-dep-assignment",
-   "langkah": [
-    14
-   ],
-   "catatan": "Copy toast `TS-ASG-29` (Report Damaged tab Assigned) dimiliki `assignment.md` §7.3; literal di luar kit sehingga toast diasersi tanpa literal. Tidak mengubah verdict."
   },
   {
    "unit": "§3#p9",
@@ -1065,6 +1265,14 @@
    "catatan": "PRD §9.6 (paragraf setelah tabel) dan T-BRW-26: gagal server '5xx atau timeout' memakai toast `Error, failed to cancel extension request.`; foundation error-handling-convention.md §2 baris Timeout/Network: `Connection problem. Please try again.` Sisi yang berlaku: foundation untuk timeout/koneksi terputus. Spec sudah mengasersi foundation (UI-123 langkah 30) dengan footnote drift-1, jadi tidak salah."
   },
   {
+   "unit": "§1.2#r28",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Unit hanya menunjuk aturan penegakan di dokumen lain: «Penegakan server mengikuti `BORROW-LOGIC-15` (Borrow) dan `ASSIGN-LOGIC-14` (Assignment)». Isi rinci kedua aturan itu dimiliki borrow.md dan assignment.md (di luar kit); suite hanya dapat mengasersi yang dinyatakan PRD ini (§9.3: baris milik pengguna, status, hak aksi), yang sudah diasersi BE-202 (akses langsung dan aksi tulis atas baris orang lain, sisi Borrow lengkap, sisi Assignment untuk akses dan Confirm Handover)."
+  },
+  {
    "unit": "§4.1b#r63",
    "verdict": "ok",
    "jenis": "prd",
@@ -1112,6 +1320,14 @@
    "catatan": "Katalog event, penerima, Title, Body, dan `action_tier` dimiliki `fixed-asset/notification/PRD/notification.md` §5.1a/§5.1b dan peta navigasi §9.2a, dan perilaku Auto-Read dirujuk ke `notification-system.md` §3.2 (di luar kit); tidak bisa diasersi dengan pasti oleh suite ini. Ketiadaan asersinya tidak dihitung kurang. Penerima PIC (Borrower tanpa akun, Assignee Division) dan ketiga pemicu Auto-Read (Confirm, `Cancel Request`, jendela habis) untuk Borrower ber-akun dan PIC sudah diasersi."
   },
   {
+   "unit": "§1.2#r10",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "MYASSET-LOGIC-10: «badge tampil hanya pada baris yang asetnya dipegang ... kapan badge tampil dan hilang dimiliki modul itu» (`maintenance-routine.md`, `FAMNT-LOGIC-26`). Kriteria task Maintenance Routine yang membuat badge tampil atau hilang ditetapkan dokumen di luar kit; suite hanya mengasersi sisi My Asset (E2E-065 dan E2E-066: tampil pada baris dipegang, tidak pada baris Waiting, ikut berubah saat task To Do atau berakhir)."
+  },
+  {
    "unit": "§4.6#p1",
    "verdict": "parsial",
    "jenis": "prd",
@@ -1120,21 +1336,15 @@
    "catatan": "`Borrow Now` memerlukan online dan aksi cepat `[Request Extension]` mobile dimiliki `borrow.md` (§9.11, §4.6); di luar kit, tidak dihitung kurang."
   },
   {
-   "unit": "§9.4.2#r67",
+   "unit": "§9.4.2#r69",
    "verdict": "na",
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "PRD bertentangan dengan dirinya soal aset tidak tercentang: EC-MYA-28b (baris 1295) berbunyi «tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed», sedangkan MYASSET-LOGIC-01d (baris 102) menyatakan tab Borrowed memuat satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue, §4.1b menyatakan baris Waiting for Handover punya aksi Borrow Log dan Cancel Borrow (jadi tampil di Borrowed), dan baris 700 menyatakan keterangan `Not received` hanya tercatat di Borrow Log / Assignment Log tanpa badge, caption, atau tooltip pada tabel (bukan 'dengan keterangan' pada baris). Tidak ada aturan yang menetapkan sisi yang berlaku, jadi penahanan oleh plan benar. Catatan: BE-203 langkah 61-63 meminta data tab Borrowed lalu mengasersi baris aset tidak tercentang tetap Waiting for Handover, sehingga memihak pembacaan LOGIC-01d; E2E-010 langkah 32 memihak baris 700. Keduanya mengikuti PRD pada salah satu sisi; putuskan di PRD."
+   "catatan": "PRD bertentangan dengan dirinya soal tampil tidaknya aset tidak tercentang di tab Borrowed. EC-MYA-28b (baris 1299): \"Aset tidak tercentang tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed\". Sedangkan MYASSET-LOGIC-01d (baris 104): \"Borrowed: satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue\" dan MYASSET-LOGIC-05a/05c (baris 147-148) memberi Remaining untuk baris Waiting for Handover di tab itu. Tidak ada aturan yang menetapkan sisi mana yang berlaku. Bagian yang pasti (tetap Waiting for Handover, Not received hanya di Borrow Log tanpa badge/caption/tooltip, baris 702 dan FI-05) sudah diasersi E2E-010 langkah 31-32 dan BE-203 langkah 65. E2E-010 langkah 31 memakai sisi 01d (baris Waiting for Handover tampil di tab Borrowed); PRD perlu memutuskan sisinya."
   }
  ],
  "rows": [
-  {
-   "unit": "§1.2#r20",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
   {
    "unit": "§1.2#r21",
    "verdict": "ok",
@@ -1143,6 +1353,12 @@
   },
   {
    "unit": "§1.2#r22",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r23",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1320,19 +1536,19 @@
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r10",
+   "unit": "§1.2#r11",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r12",
+   "unit": "§1.2#r13",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r61",
+   "unit": "§1.2#r62",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1404,13 +1620,13 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r66",
+   "unit": "§9.4.2#r68",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r68",
+   "unit": "§9.4.2#r70",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1498,19 +1714,13 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r37",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r38",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
    "unit": "§9.4.2#r39",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r40",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1518,21 +1728,24 @@
   {
    "unit": "§9.4.2#r41",
    "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r43",
+   "verdict": "ok",
    "temuan": [
     {
      "jenis": "plan",
      "spec": "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow",
-     "langkah": [
-      25,
-      26
-     ],
-     "catatan": "Task hilang sesudah konfirmasi lewat Accept diasersi BE-203 step 25-26 tetapi BE-203 tidak tercatat sebagai penanggung unit ini (hanya E2E-011)."
+     "langkah": [],
+     "catatan": "Opsional: sisi server atas konfirmasi lewat HP (Task hilang) juga ditegaskan di BE-203, tetapi BE-203 tidak tercatat sebagai pemilik unit ini. Celah pencatatan saja."
     }
    ],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r42",
+   "unit": "§9.4.2#r44",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1544,16 +1757,16 @@
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r31",
+   "unit": "§1.2#r32",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r33",
+   "unit": "§1.2#r34",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§2.1#r4",
@@ -1661,34 +1874,19 @@
    "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r69",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-UI-122-dialog-cancel-borrow",
-     "langkah": [
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-     ],
-     "catatan": "Isi dialog D-BRW-01 varian Borrower (judul, tombol [Go Back] dan [Cancel Borrow], tanpa Reason dan Save as Draft to edit) diasersi lengkap di UI-122 tetapi UI-122 tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r70",
+   "unit": "§9.4.2#r71",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
    "unit": "§9.4.2#r72",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§9.4.2#r74",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1737,10 +1935,10 @@
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r34",
+   "unit": "§1.2#r35",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§4.1b#r76",
@@ -1797,31 +1995,19 @@
    "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r73",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r74",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
    "unit": "§9.4.2#r75",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r77",
+   "unit": "§9.4.2#r76",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r78",
+   "unit": "§9.4.2#r77",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -1839,28 +2025,34 @@
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r58",
+   "unit": "§9.4.2#r81",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r63",
+   "unit": "§9.4.2#r82",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r59",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r64",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r65",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r66",
@@ -1872,7 +2064,13 @@
    "unit": "§1.2#r67",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r68",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§2.1#r5",
@@ -1976,13 +2174,13 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r43",
+   "unit": "§9.4.2#r45",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r45",
+   "unit": "§9.4.2#r47",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -2079,13 +2277,13 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r46",
+   "unit": "§9.4.2#r48",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r47",
+   "unit": "§9.4.2#r49",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -2316,10 +2514,20 @@
    "juri": "j1"
   },
   {
-   "unit": "§9.7#r14",
+   "unit": "§9.7#r15",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j3"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow",
+     "langkah": [
+      50,
+      57
+     ],
+     "catatan": "Cabang Overdue pada baris matriks (Borrowed / Overdue pindah ke History sebagai Returned) tidak diuji di E2E-017 (hanya Borrowed). Cabang itu ditegaskan di E2E-037 langkah 50-57, tetapi lewat Return oleh Aktor Borrow dan spec itu tidak tercatat sebagai pemilik unit. Celah pencatatan, bukan celah asersi."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "EB-FB-1@report-damaged",
@@ -2797,7 +3005,7 @@
    "juri": "j4"
   },
   {
-   "unit": "§1.2#r35",
+   "unit": "§1.2#r36",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -2827,60 +3035,37 @@
    "juri": "j5"
   },
   {
-   "unit": "§1.2#r13",
+   "unit": "§1.2#r14",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r23",
+   "unit": "§1.2#r24",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r28",
+   "unit": "§1.2#r29",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r30",
+   "unit": "§1.2#r31",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r38",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow",
-     "langkah": [
-      15
-     ],
-     "catatan": "Nilai `Me` pada kolom Holder data nyata diasersi di E2E-037 langkah 15 (dan E2E-056 langkah 9), tetapi kedua spec tidak tercatat sebagai penanggung unit ini (bagian ui-e2e hanya E2E-030, yang mengasersi kolom Borrower)."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-056-tab-history-penugasan-dep-assignment",
-     "langkah": [
-      9
-     ],
-     "catatan": "Holder `Me` pada data nyata History penugasan diasersi di sini, tidak tercatat sebagai penanggung unit LOGIC-04c."
-    }
-   ],
-   "juri": "j5"
-  },
-  {
-   "unit": "§1.2#r60",
+   "unit": "§1.2#r39",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j5"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r86",
+   "unit": "§1.2#r61",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -2899,22 +3084,25 @@
   },
   {
    "unit": "§1.2#r89",
-   "verdict": "na",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r90",
+   "verdict": "ok",
    "temuan": [
     {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-E2E-030-tab-borrowed-isi-dan-aksi-baris-dep-borrow",
-     "langkah": [
-      34,
-      37
-     ],
-     "catatan": "MYASSET-LOGIC-09d hanya penunjuk: model approval mengikuti approval-foundation.md dan daftar approver yang berhak dimiliki borrow.md dan assignment.md. Tidak ada perilaku teruji tersendiri; status plan 'dimiliki' sebaiknya 'na'."
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Model approval dan daftar approver yang berhak didefinisikan di approval-foundation.md, borrow.md, dan assignment.md (dokumen luar). Di My Asset hanya angka Approved/Required pada tooltip yang bisa diuji, dan itu sudah ditegaskan di E2E-030. Tidak memengaruhi verdict."
     }
    ],
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r90",
+   "unit": "§1.2#r91",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
@@ -3096,7 +3284,7 @@
    "unit": "§4.1b#r7",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§4.2.1#b3",
@@ -3344,16 +3532,16 @@
    "juri": "j6"
   },
   {
-   "unit": "§1.2#r17",
+   "unit": "§1.2#r18",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j1"
   },
   {
-   "unit": "§1.2#r19",
+   "unit": "§1.2#r20",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j2"
   },
   {
    "unit": "§4.1c#p4",
@@ -3472,7 +3660,7 @@
    "juri": "j6"
   },
   {
-   "unit": "§9.7#r15",
+   "unit": "§9.7#r16",
    "verdict": "ok",
    "temuan": [],
    "juri": "j2"
@@ -3528,31 +3716,25 @@
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r14",
+   "unit": "§1.2#r15",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r24",
+   "unit": "§1.2#r25",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
-  },
-  {
-   "unit": "§1.2#r36",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j6"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r37",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r41",
+   "unit": "§1.2#r38",
    "verdict": "ok",
    "temuan": [],
    "juri": "j2"
@@ -3561,7 +3743,13 @@
    "unit": "§1.2#r42",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r43",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§2.1#r10",
@@ -3612,10 +3800,10 @@
    "juri": "j7"
   },
   {
-   "unit": "§1.2#r52",
+   "unit": "§1.2#r53",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j2"
   },
   {
    "unit": "§9.2#r23",
@@ -3624,16 +3812,16 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r48",
+   "unit": "§9.4.2#r50",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r49",
+   "unit": "§9.4.2#r51",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§9.7#r11",
@@ -3673,10 +3861,17 @@
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r26",
+   "unit": "§1.2#r27",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Klausa 'tampilan lintas Borrower ada di `Transactions > Borrow` (`borrow.md`), lintas Assignee di `Transactions > Assignment`' menunjuk surface milik modul lain (borrow.md / assignment.md, di luar kit); tidak bisa diasersi suite My Asset dengan pasti dan tidak dihitung kurang. Klausa inti (keenam peran hanya melihat pinjaman dan penugasannya sendiri) diasersi di BE-201 langkah 44-58 dan 80-94 serta E2E-042."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§2.1#b4",
@@ -3776,24 +3971,24 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r81",
+   "unit": "§9.4.2#r83",
    "verdict": "parsial",
    "temuan": [
     {
      "jenis": "kurang",
-     "spec": null,
+     "spec": "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow",
      "langkah": [],
-     "catatan": "EC-MYA-34 memuat 'Borrow an Asset (Borrow Now)' di antara semua aksi tulis, hasil 'Aksi ditolak server dengan toast dan perlakuan UI menurut entity_isolation() §18.8' (toast `Changes can't be saved while this workspace is suspended or expired.`, tanpa redirect, UI di-refresh). Penolakan Borrow Now hanya diasersi di sisi server (BE-212 langkah 22-23, 59-60, 93-94); tidak ada spec UI yang menjalankan Borrow Now pada entitas Suspended atau Expired dan mengasersi toast serta baris baru tidak muncul. E2E-046 dan E2E-059 berplatform web (tombol Borrow an Asset selalu Hidden di web, S-04); E2E-061 (Android) hanya alur normal. Perlu spec Android (atau langkah Android pada spec owner) untuk Borrow Now pada entitas Suspended atau Expired.",
-     "status": "tetap"
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: Kondisi baris 49 menyatakan semua baris Data sudah berstatus semula 'sebelum langkah pertama', sedangkan baris 51 menyatakan sesi Handover DU-212-28, DU-212-29, DU-212-30, DU-212-31 masih menunggu dan belum melewati jendela konfirmasi pada blok Expired (sesudah waktu dimajukan sampai T-0) dan blok Grace (hari ke-15 sesudah T-0). Dengan waktu dimajukan sejauh itu setelah sesi dibuat, sesi hampir pasti sudah habis jendelanya, sehingga penolakan tidak terbedakan dari 'jendela habis'. Nyatakan di Kondisi bahwa sesi-sesi itu baru dimulai sesudah waktu dimajukan (tepat sebelum langkah Confirm Handover di blok masing-masing). Tidak mengubah verdict."
     }
    ],
    "juri": "j1"
   },
   {
-   "unit": "§9.4.2#r82",
+   "unit": "§9.4.2#r84",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "EB-FB-1@confirm-handover-assignment",
@@ -3802,40 +3997,50 @@
    "juri": "j7"
   },
   {
-   "unit": "§1.2#r11",
+   "unit": "§1.2#r12",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
-  },
-  {
-   "unit": "§1.2#r68",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j7"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-E2E-057-pic-division-baris-dan-aksi-dep-assignment",
+     "langkah": [
+      5,
+      6
+     ],
+     "catatan": "Bagian 'atau PIC Division' pada klausa Task diasersi E2E-057 langkah 6 (satu baris Task Confirm Handover atas nama Division untuk PIC Division), tetapi E2E-057 tidak tercatat sebagai penanggung unit ini; catat sebagai pemilik atau smoke."
+    }
+   ],
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r69",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r70",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r71",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r72",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j2"
+  },
+  {
+   "unit": "§1.2#r73",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§3#p7",
@@ -3961,91 +4166,95 @@
    "juri": "j7"
   },
   {
-   "unit": "§9.4.2#r54",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r55",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
    "unit": "§9.4.2#r56",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.2#r57",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§9.4.2#r58",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "T-MYA-04",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-MYASSET-E2E-054-report-damaged-aset-assigned-dep-assignment",
-     "langkah": [
-      14
-     ],
-     "catatan": "Copy toast `TS-ASG-29` (Report Damaged tab Assigned) dimiliki `assignment.md` §7.3; literal di luar kit sehingga toast diasersi tanpa literal. Tidak mengubah verdict."
-    }
-   ],
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r15",
+   "unit": "§9.4.2#r59",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j7"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r74",
+   "unit": "§9.4.2#r60",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r77",
+   "unit": "T-MYA-04",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-MYASSET-BE-215-filter-opsi-dan-hasil-dep-borrow",
+     "langkah": [
+      194,
+      195,
+      196,
+      197
+     ],
+     "catatan": "T-MYA-04 Status: badge `Maintenance due` (warning) adalah badge tambahan pada baris `Assigned`, dan opsi Filter Status 'ditulis `[Status] · [Badge 1] · [Badge 2]` ... satu opsi per kombinasi yang tampil, cocok hanya dengan opsi yang sama persis'. Bagian Assigned BE-215 sudah menguji `Assigned · Reported Damaged` dan `Assigned · Damaged · Reported Missing`, tetapi tidak ada data baris Assigned ber-`Maintenance due` dan tidak ada langkah di suite yang menguji opsi `Assigned · Maintenance due` (atau kombinasinya dengan badge laporan) beserta hasil saringannya; grep `Maintenance due` hanya muncul di E2E-065/066 dan UI-104/116 (badge di sel). Temuan putaran 1 yang sama sisa sebagian: multi-badge laporan sudah ditambahkan, opsi Maintenance due belum. Tambahkan baris Assigned dengan task Maintenance Routine To Do dan asersi opsi Status `Assigned · Maintenance due` serta hasil filternya.",
+     "status": "tetap"
+    }
+   ],
+   "juri": "j1"
+  },
+  {
+   "unit": "§1.2#r16",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
+  },
+  {
+   "unit": "§1.2#r75",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r78",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r79",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r82",
+   "unit": "§1.2#r80",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r83",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
+  },
+  {
+   "unit": "§1.2#r84",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§3#p9",
@@ -4156,16 +4365,16 @@
    "juri": "j8"
   },
   {
-   "unit": "§9.4.2#r61",
+   "unit": "§9.4.2#r63",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r62",
+   "unit": "§9.4.2#r64",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j2"
   },
   {
    "unit": "§9.2#r30",
@@ -4174,31 +4383,25 @@
    "juri": "j8"
   },
   {
-   "unit": "§9.4.2#r59",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§1.2#r18",
+   "unit": "§9.4.2#r61",
    "verdict": "ok",
    "temuan": [],
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r75",
+   "unit": "§1.2#r19",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r76",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r80",
+   "unit": "§1.2#r77",
    "verdict": "ok",
    "temuan": [],
    "juri": "j2"
@@ -4207,7 +4410,13 @@
    "unit": "§1.2#r81",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
+  },
+  {
+   "unit": "§1.2#r82",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§4.1c#r19",
@@ -4229,46 +4438,46 @@
    "juri": "j8"
   },
   {
-   "unit": "§1.2#r16",
+   "unit": "§1.2#r17",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r25",
+   "unit": "§1.2#r26",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
-  },
-  {
-   "unit": "§1.2#r44",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r45",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r46",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
    "unit": "§1.2#r47",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§1.2#r73",
+   "unit": "§1.2#r48",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
+  },
+  {
+   "unit": "§1.2#r74",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j2"
   },
   {
    "unit": "§2.1#r11",
@@ -4291,22 +4500,22 @@
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r49",
+   "unit": "§1.2#r50",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j8"
+   "juri": "j2"
   },
   {
-   "unit": "§9.4.2#r64",
+   "unit": "§9.4.2#r66",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r65",
+   "unit": "§9.4.2#r67",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "EB-KOL-3",
@@ -4358,10 +4567,21 @@
    "juri": "j9"
   },
   {
-   "unit": "§9.7#r16",
+   "unit": "§9.7#r17",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-MYASSET-UI-105-tabel-borrowed-due-date-dan-remaining",
+     "langkah": [
+      14,
+      16,
+      35
+     ],
+     "catatan": "Klausa 'Remaining danger' pada baris Overdue diasersi benar di UI-105 (langkah 14, 16, 35), tetapi UI-105 tidak tercatat sebagai penanggung unit §9.7#r17 (hanya UI-101 dan BE-210). Tambahkan UI-105 sebagai pemilik untuk klausa Remaining danger."
+    }
+   ],
+   "juri": "j3"
   },
   {
    "unit": "§4.7#r1",
@@ -4406,10 +4626,10 @@
    "juri": "j9"
   },
   {
-   "unit": "§1.2#r39",
+   "unit": "§1.2#r40",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j3"
   },
   {
    "unit": "§4.1#p2",
@@ -4529,34 +4749,34 @@
    "juri": "j9"
   },
   {
-   "unit": "§1.2#r55",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
-  },
-  {
    "unit": "§1.2#r56",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j3"
   },
   {
-   "unit": "§1.2#r62",
+   "unit": "§1.2#r57",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r88",
+   "unit": "§1.2#r63",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
-   "unit": "§1.2#r32",
+   "unit": "§9.4.2#r90",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j9"
+   "juri": "j3"
+  },
+  {
+   "unit": "§1.2#r33",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "§4.1b#p3",
@@ -4607,16 +4827,16 @@
    "juri": "j9"
   },
   {
-   "unit": "§9.4.2#r53",
+   "unit": "§9.4.2#r55",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r89",
+   "unit": "§9.4.2#r91",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§9.4.3#b3",
@@ -4718,10 +4938,10 @@
    "juri": "j10"
   },
   {
-   "unit": "§9.4.2#r44",
+   "unit": "§9.4.2#r46",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§4.1b#p1",
@@ -5082,10 +5302,10 @@
    "juri": "j10"
   },
   {
-   "unit": "§1.2#r85",
+   "unit": "§1.2#r86",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§4.3#r9",
@@ -5289,10 +5509,10 @@
    "juri": "j11"
   },
   {
-   "unit": "§1.2#r53",
+   "unit": "§1.2#r54",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "§4.2.1#b5",
@@ -5313,21 +5533,10 @@
    "juri": "j11"
   },
   {
-   "unit": "§9.4.2#r91",
+   "unit": "§9.4.2#r93",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment",
-     "langkah": [
-      35,
-      36,
-      37
-     ],
-     "catatan": "Unit merujuk EC-MYA-17 (Assignment) selain EC-MYA-03, tetapi penolakan server pada Expires At untuk Assignment ada di BE-204 (langkah 35-37), yang tidak tercatat sebagai penanggung unit; pemilik be-e2e hanya BE-203 (pinjaman). Dialog D-MYA-02 untuk Assignment juga diasersi E2E-051 dan UI-121 (K7). Catat BE-204 sebagai pemilik tambahan."
-    }
-   ],
-   "juri": "j2"
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "EB-ERR-1@cancel-borrow",
@@ -5512,10 +5721,17 @@
    "juri": "j12"
   },
   {
-   "unit": "§1.2#r27",
+   "unit": "§1.2#r28",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j12"
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Unit hanya menunjuk aturan penegakan di dokumen lain: «Penegakan server mengikuti `BORROW-LOGIC-15` (Borrow) dan `ASSIGN-LOGIC-14` (Assignment)». Isi rinci kedua aturan itu dimiliki borrow.md dan assignment.md (di luar kit); suite hanya dapat mengasersi yang dinyatakan PRD ini (§9.3: baris milik pengguna, status, hak aksi), yang sudah diasersi BE-202 (akses langsung dan aksi tulis atas baris orang lain, sisi Borrow lengkap, sisi Assignment untuk akses dan Confirm Handover)."
+    }
+   ],
+   "juri": "j3"
   },
   {
    "unit": "§9.3#b1",
@@ -5559,10 +5775,10 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r40",
+   "unit": "§9.4.2#r42",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.3#b9",
@@ -5583,16 +5799,16 @@
    "juri": "j12"
   },
   {
-   "unit": "§9.4.2#r71",
+   "unit": "§9.4.2#r73",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r76",
+   "unit": "§9.4.2#r78",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "§9.4.2#r7",
@@ -5601,26 +5817,10 @@
    "juri": "j12"
   },
   {
-   "unit": "§1.2#r54",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow",
-     "langkah": [
-      81,
-      82,
-      83,
-      84,
-      85,
-      86,
-      87
-     ],
-     "catatan": "MYASSET-LOGIC-04s: 'setelah PIC diganti atau Borrower dibuatkan akun, pemegang baru tidak dapat membatalkan laporan PIC lama'. Spec hanya menguji cabang PIC Division diganti lewat Change PIC (Assignment). Cabang Borrow tidak diuji di suite mana pun (grep `bukan pelapor`/`pelapor tercatat` hanya ada di BE-207 langkah 83 dan 86): (a) PIC Borrower diganti, PIC baru mencoba Cancel Damage Report / Cancel Missing Report atas laporan PIC lama atas nama Borrower tanpa akun, ditolak dan laporan tetap `Waiting for Confirmation`; (b) Borrower dibuatkan akun, Borrower baru mencoba membatalkan laporan yang diajukan PIC, ditolak dan laporan tetap `Waiting for Confirmation`. Temuan putaran 1 soal keputusan Aktor Damaged/Missing atas laporan PIC lama sudah beres (langkah 114-117).",
-     "status": "tetap"
-    }
-   ],
-   "juri": "j3"
+   "unit": "§1.2#r55",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§4.1b#r63",
@@ -5671,19 +5871,19 @@
    "juri": "j12"
   },
   {
-   "unit": "§9.4.2#r60",
+   "unit": "§9.4.2#r62",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r63",
+   "unit": "§9.4.2#r65",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
-   "unit": "§1.2#r50",
+   "unit": "§1.2#r51",
    "verdict": "ok",
    "temuan": [],
    "juri": "j3"
@@ -5707,16 +5907,16 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r50",
+   "unit": "§9.4.2#r52",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r51",
+   "unit": "§9.4.2#r53",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "§8#p3",
@@ -5803,22 +6003,28 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r87",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r90",
+   "unit": "§9.7#r18",
    "verdict": "ok",
    "temuan": [],
    "juri": "j1"
   },
   {
-   "unit": "§1.2#r48",
+   "unit": "§9.4.2#r89",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j12"
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r92",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§1.2#r49",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "§9.8#p1",
@@ -5834,72 +6040,103 @@
    "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r83",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r92",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
-  },
-  {
-   "unit": "§9.4.2#r93",
-   "verdict": "ok",
-   "temuan": [],
+   "unit": "§9.4.2#r85",
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-MYASSET-BE-212-aksi-tulis-menurut-state-entitas-dan-plan-dep-borrow",
+     "langkah": [],
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: Asersi 'tidak ada perubahan data' untuk Confirm Handover (pinjaman dan penugasan) pada blok Expired dan Grace bergantung pada sesi DU-212-28 sampai DU-212-31 yang masih menunggu (Kondisi baris 51), padahal Kondisi baris 49 menyatakan semua baris sudah ada sebelum langkah pertama dan waktu dimajukan sampai T-0 dan hari ke-15. Bila jendela konfirmasi sudah habis, 'baris tetap Waiting for Handover' tidak membedakan penolakan karena Status entitas dari penolakan karena jendela habis. Nyatakan sesi itu dimulai sesudah waktu dimajukan. Tidak mengubah verdict."
+    }
+   ],
    "juri": "j1"
   },
   {
    "unit": "§9.4.2#r94",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "§9.4.2#r95",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "§9.4.2#r96",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j1"
+   "juri": "j3"
   },
   {
    "unit": "§9.4.2#r97",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
-   "unit": "§9.4.2#r84",
-   "verdict": "parsial",
-   "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": null,
-     "langkah": [],
-     "catatan": "EC-MYA-35a: 'Basic: tombol `Borrow an Asset` dan `Request Extension` tidak tampil'. `Request Extension` diasersi benar (E2E-064 langkah 7, 12 untuk menu baris dan 16 untuk bulk action; data Basic dengan baris Admin Borrowed membedakannya dari Full). `Borrow an Asset` pada plan Basic tidak diasersi: tombol hanya ada di mobile (web selalu Hidden, sehingga asersi web tidak bisa gagal) dan tidak ada spec mobile.",
-     "status": "tetap"
-    }
-   ],
-   "juri": "j1"
-  },
-  {
-   "unit": "§9.4.2#r85",
+   "unit": "§9.4.2#r98",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r99",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "§9.4.2#r86",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r87",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r88",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§1.2#r10",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "MYASSET-LOGIC-10: «badge tampil hanya pada baris yang asetnya dipegang ... kapan badge tampil dan hilang dimiliki modul itu» (`maintenance-routine.md`, `FAMNT-LOGIC-26`). Kriteria task Maintenance Routine yang membuat badge tampil atau hilang ditetapkan dokumen di luar kit; suite hanya mengasersi sisi My Asset (E2E-065 dan E2E-066: tampil pada baris dipegang, tidak pada baris Waiting, ikut berubah saat task To Do atau berakhir)."
+    }
+   ],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r37",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.4.2#r38",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
+   "unit": "§9.7#r14",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j3"
   },
   {
    "unit": "D-BRW-01,D-BRW-14(borrow.md);D-DMG-01,D-DMG-08(damaged.md);D-MIS-01,D-MIS-07(missing.md);BorrowLogT-BRW-23(borrow.md§8.1);AssignmentLog(assignment.md§8.1)",
@@ -5920,10 +6157,10 @@
    "juri": "j12"
   },
   {
-   "unit": "EC-MYA-01–EC-MYA-40(IDyangadaditabel)",
+   "unit": "EC-MYA-01–EC-MYA-42(IDyangadaditabel)",
    "verdict": "na",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j3"
   },
   {
    "unit": "EC-MYA-03a–EC-MYA-03d,EC-MYA-04a–EC-MYA-04b,EC-MYA-05a–EC-MYA-05c,EC-MYA-06a–EC-MYA-06b,EC-MYA-09a–EC-MYA-09b,EC-MYA-10a–EC-MYA-10b,EC-MYA-16a–EC-MYA-16b,EC-MYA-17a–EC-MYA-17c,EC-MYA-19a–EC-MYA-19b,EC-MYA-21a–EC-MYA-21b,EC-MYA-23a–EC-MYA-23c,EC-MYA-25a–EC-MYA-25b,EC-MYA-28a–EC-MYA-28c,EC-MYA-29a–EC-MYA-29d,EC-MYA-30a–EC-MYA-30d,EC-MYA-31a–EC-MYA-31b,EC-MYA-32a–EC-MYA-32b,EC-MYA-34a–EC-MYA-34c,EC-MYA-35a–EC-MYA-35c,EC-MYA-36a–EC-MYA-36c,EC-MYA-37a–EC-MYA-37b,EC-MYA-39a–EC-MYA-39c,EC-MYA-40a–EC-MYA-40c",
@@ -6004,10 +6241,10 @@
    "juri": "j13"
   },
   {
-   "unit": "MYASSET-LOGIC-01–09;sub-ruleMYASSET-LOGIC-01a–01m,02a–02e,03a–03h,04a–04s,05a–05h,06a–06e,08a–08q,09a–09e",
+   "unit": "MYASSET-LOGIC-01–10;sub-ruleMYASSET-LOGIC-01a–01m,02a–02e,03a–03h,04a–04s,05a–05h,06a–06e,08a–08q,09a–09e",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j3"
   },
   {
    "unit": "S-01–S-08danS-18(§4.3),S-09–S-16(Empty),S-17(Error)",
@@ -6076,6 +6313,12 @@
    "juri": "j13"
   },
   {
+   "unit": "§1.1#b11",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j3"
+  },
+  {
    "unit": "§1.1#b2",
    "verdict": "na",
    "temuan": [],
@@ -6142,16 +6385,16 @@
    "juri": "j13"
   },
   {
-   "unit": "§1.2#r29",
+   "unit": "§1.2#r3",
    "verdict": "na",
    "temuan": [],
    "juri": "j13"
   },
   {
-   "unit": "§1.2#r3",
+   "unit": "§1.2#r30",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j3"
   },
   {
    "unit": "§1.2#r4",
@@ -6160,16 +6403,30 @@
    "juri": "j13"
   },
   {
-   "unit": "§1.2#r40",
+   "unit": "§1.2#r41",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j3"
   },
   {
-   "unit": "§1.2#r43",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j8"
+   "unit": "§1.2#r44",
+   "verdict": "hilang",
+   "temuan": [
+    {
+     "jenis": "kurang",
+     "spec": null,
+     "langkah": [],
+     "catatan": "MYASSET-LOGIC-04h: 'PIC juga dapat memulai `Borrow an Asset` atas nama Borrower lewat pilihan `Borrow for` (mobile, `borrow.md` §4.2.12)'. Sumber menetapkan hasil yang bisa diuji: PRD §2 baris Borrow an Asset menyatakan PIC '✅ atas nama lewat `Borrow for` (mobile; pernyataan PIC `D-BRW-21`)' dan baris 925 'Show di mobile lewat `Borrow for` (web: Hidden)'. Grep `Borrow for` di seluruh suite kosong; yang ada hanya asersi web bahwa tombol `Borrow an Asset` Hidden (E2E-040 langkah 105, E2E-042 langkah 84), yang bukan klausa mobile unit ini. Penahanan plan (spec Android ditunda keputusan pemilik) bukan karena sumber belum memutuskan, jadi `hilang` sampai ada spec Android pemilik unit ini.",
+     "status": "tetap"
+    },
+    {
+     "jenis": "plan",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Unit ditahan karena spec Android ditunda, bukan karena sumber ambigu. Begitu pemilik memutuskan spec Android, tetapkan spec Android itu sebagai pemilik unit ini (klausa mobile: PIC melihat pilihan `Borrow for` dan memulai Borrow an Asset atas nama Borrower tanpa akun)."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§1.2#r5",
@@ -6178,22 +6435,16 @@
    "juri": "j13"
   },
   {
-   "unit": "§1.2#r51",
+   "unit": "§1.2#r52",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j3"
   },
   {
-   "unit": "§1.2#r57",
+   "unit": "§1.2#r58",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
-  },
-  {
-   "unit": "§1.2#r59",
-   "verdict": "na",
-   "temuan": [],
-   "juri": "j13"
+   "juri": "j3"
   },
   {
    "unit": "§1.2#r6",
@@ -6202,16 +6453,22 @@
    "juri": "j13"
   },
   {
+   "unit": "§1.2#r60",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
    "unit": "§1.2#r8",
    "verdict": "na",
    "temuan": [],
    "juri": "j2"
   },
   {
-   "unit": "§1.2#r84",
+   "unit": "§1.2#r85",
    "verdict": "na",
    "temuan": [],
-   "juri": "j13"
+   "juri": "j4"
   },
   {
    "unit": "§1.2#r9",
@@ -6253,13 +6510,19 @@
    "unit": "§11#r10",
    "verdict": "na",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j4"
   },
   {
    "unit": "§11#r11",
    "verdict": "na",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j4"
+  },
+  {
+   "unit": "§11#r12",
+   "verdict": "na",
+   "temuan": [],
+   "juri": "j4"
   },
   {
    "unit": "§11#r2",
@@ -6301,13 +6564,13 @@
    "unit": "§11#r8",
    "verdict": "na",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j4"
   },
   {
    "unit": "§11#r9",
    "verdict": "na",
    "temuan": [],
-   "juri": "j14"
+   "juri": "j4"
   },
   {
    "unit": "§12#p1",
@@ -7056,23 +7319,23 @@
    "juri": "j16"
   },
   {
-   "unit": "§9.4.2#r52",
+   "unit": "§9.4.2#r54",
    "verdict": "na",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
-   "unit": "§9.4.2#r67",
+   "unit": "§9.4.2#r69",
    "verdict": "na",
    "temuan": [
     {
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "PRD bertentangan dengan dirinya soal aset tidak tercentang: EC-MYA-28b (baris 1295) berbunyi «tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed», sedangkan MYASSET-LOGIC-01d (baris 102) menyatakan tab Borrowed memuat satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue, §4.1b menyatakan baris Waiting for Handover punya aksi Borrow Log dan Cancel Borrow (jadi tampil di Borrowed), dan baris 700 menyatakan keterangan `Not received` hanya tercatat di Borrow Log / Assignment Log tanpa badge, caption, atau tooltip pada tabel (bukan 'dengan keterangan' pada baris). Tidak ada aturan yang menetapkan sisi yang berlaku, jadi penahanan oleh plan benar. Catatan: BE-203 langkah 61-63 meminta data tab Borrowed lalu mengasersi baris aset tidak tercentang tetap Waiting for Handover, sehingga memihak pembacaan LOGIC-01d; E2E-010 langkah 32 memihak baris 700. Keduanya mengikuti PRD pada salah satu sisi; putuskan di PRD."
+     "catatan": "PRD bertentangan dengan dirinya soal tampil tidaknya aset tidak tercentang di tab Borrowed. EC-MYA-28b (baris 1299): \"Aset tidak tercentang tetap Waiting for Handover dengan keterangan `Not received` dan tidak tampil di tab Borrowed\". Sedangkan MYASSET-LOGIC-01d (baris 104): \"Borrowed: satu baris per aset berstatus Waiting for Approval, Waiting for Handover, Borrowed, atau Overdue\" dan MYASSET-LOGIC-05a/05c (baris 147-148) memberi Remaining untuk baris Waiting for Handover di tab itu. Tidak ada aturan yang menetapkan sisi mana yang berlaku. Bagian yang pasti (tetap Waiting for Handover, Not received hanya di Borrow Log tanpa badge/caption/tooltip, baris 702 dan FI-05) sudah diasersi E2E-010 langkah 31-32 dan BE-203 langkah 65. E2E-010 langkah 31 memakai sisi 01d (baris Waiting for Handover tampil di tab Borrowed); PRD perlu memutuskan sisinya."
     }
    ],
-   "juri": "j2"
+   "juri": "j4"
   },
   {
    "unit": "§9.4.3#b12",
@@ -7313,12 +7576,6 @@
    "verdict": "na",
    "temuan": [],
    "juri": "j17"
-  },
-  {
-   "unit": "§9.7#r17",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j9"
   },
   {
    "unit": "§Changelog#p1",

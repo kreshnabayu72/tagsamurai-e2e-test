@@ -5,14 +5,14 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-06", "FLD-03", "FLD-04", "§1.2#r42", "§4.2.5#p4"]
+sourceRules: ["FI-06", "FLD-03", "FLD-04", "§1.2#r43", "§4.2.5#p4"]
 smoke: []
 dependsOn: []
 trace:
   "FI-06": 13
   "FLD-03": [6, 7, 11, 13]
   "FLD-04": 5
-  "§1.2#r42": [4, 6, 13]
+  "§1.2#r43": [4, 6, 13]
   "§4.2.5#p4": [4, 5, 6, 13, 17, 21, 29, 30]
 anchor: [19]
 coverage:

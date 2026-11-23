@@ -5,18 +5,20 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-08, "§4.2.4#p7", TS-DMG-07, "§9.6#r4", "§4.2.4#p5", EB-FB-1@cancel-report, EB-FB-2@go-back-cancel-report, EB-ERR-1@cancel-report]
+sourceRules: [D-DMG-08, "§4.2.4#p8", TS-DMG-07, "§9.6#r4", "§4.2.4#p6", EB-FB-1@cancel-report, EB-FB-2@go-back-cancel-report, EB-ERR-1@cancel-report, "§4.2.4#r17", "§4.2.4#r13"]
 smoke: []
 dependsOn: []
 trace:
   D-DMG-08: [2, 3, 4, 5, 6]
-  "§4.2.4#p7": [2, 3, 4, 5, 6]
-  TS-DMG-07: [9, 23]
-  "§9.6#r4": [9, 10, 17, 18, 20, 23]
-  "§4.2.4#p5": [34, 35, 36, 38, 41]
+  "§4.2.4#p8": [2, 3, 4, 5, 6, 43, 47]
+  TS-DMG-07: [9, 23, 45, 49]
+  "§9.6#r4": [9, 10, 17, 18, 20, 23, 45, 49]
+  "§4.2.4#p6": [34, 35, 36, 38, 41]
   EB-FB-1@cancel-report: [9, 23]
   EB-FB-2@go-back-cancel-report: [13, 14]
   EB-ERR-1@cancel-report: [23, 24, 25, 27, 30, 31]
+  "§4.2.4#r17": [34, 35, 36, 41]
+  "§4.2.4#r13": [3, 4, 5, 6, 9, 43, 45, 47, 49]
 anchor: []
 coverage:
   web: automated
@@ -25,7 +27,7 @@ coverage:
 # Dialog Cancel Report: bullet nama aset, pertanyaan penutup, Go Back, saving, toast, gagal 5xx, dan Already Changed bila laporan sudah diputuskan
 
 ## Prerequisites
-- Aktor: Pelapor, yaitu pemegang aset yang membuka Cancel Report dari My Asset (`Dewi A`).
+- Aktor: Pelapor, yaitu pemegang aset yang membuka Cancel Report dari My Asset (`Dewi A`); pada K7 dan K8 pelapor umum tanpa hak Aktor Damaged yang membuka `Cancel my report`.
 - Layar awal: Dialog Cancel Report belum ditampilkan; setiap blok langkah menampilkannya dengan kondisi yang disebut.
 - Komponen: Dialog Cancel Report (D-DMG-08)
 - Data:
@@ -39,6 +41,8 @@ coverage:
   - K4: laporan DU-117-1; permintaan simpan melewati batas waktu.
   - K5: laporan DU-117-1; respons simpan menyatakan status laporan sudah diubah oleh `Rina W` (DU-117-2); sesudah muat ulang laporan berstatus `Rejected`.
   - K6: laporan DU-117-1; respons simpan menyatakan status laporan sudah diubah oleh `System` (DU-117-3).
+  - K7: laporan DU-117-1 Source `Maintenance`, dialog dibuka lewat `Cancel my report` di Task Maintenance; respons simpan sukses.
+  - K8: laporan DU-117-1 Source `Audit`, dialog dibuka lewat `Cancel my report` di Task Detail Audit; respons simpan sukses.
 
 ## Test Steps
 
@@ -98,3 +102,15 @@ coverage:
 39. Tampilkan Dialog Cancel Report dengan kondisi K6
 40. Klik `[Cancel Report]`
 41. Verifikasi dialog `Already Changed` memuat pesan `This record was changed by [User Name]. Reload to see the latest status.` dengan `[User Name]` berisi `System`
+
+### Cancel my report dari Task Maintenance memakai dialog Cancel Report yang sama
+42. Tampilkan Dialog Cancel Report dengan kondisi K7
+43. Verifikasi dialog Cancel Report memuat nama aset `Scanner Fujitsu fi-7160 - 2`, pertanyaan penutup `Are you sure you want to cancel it?`, tombol `[Go Back]`, dan tombol `[Cancel Report]`
+44. Klik `[Cancel Report]`
+45. Verifikasi toast `Success, report has been canceled.` tampil
+
+### Cancel my report dari Task Detail Audit memakai dialog Cancel Report yang sama
+46. Tampilkan Dialog Cancel Report dengan kondisi K8
+47. Verifikasi dialog Cancel Report memuat nama aset `Scanner Fujitsu fi-7160 - 2`, pertanyaan penutup `Are you sure you want to cancel it?`, tombol `[Go Back]`, dan tombol `[Cancel Report]`
+48. Klik `[Cancel Report]`
+49. Verifikasi toast `Success, report has been canceled.` tampil

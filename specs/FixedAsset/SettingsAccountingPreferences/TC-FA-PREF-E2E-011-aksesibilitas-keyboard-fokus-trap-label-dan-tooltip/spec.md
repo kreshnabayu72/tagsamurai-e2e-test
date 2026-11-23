@@ -82,7 +82,7 @@ coverage:
 ### TC-FA-PREF-65: Tooltip ikon ⓘ lewat keyboard focus
 
 24. Tekan Tab hingga fokus berada pada ikon ⓘ Fiscal Year Start
-25. Verifikasi tooltip "The month your company's financial year starts every year. Can be changed until depreciation is posted or a period is closed." tampil saat ikon ⓘ menerima fokus keyboard
+25. Verifikasi tooltip "The month your company's financial year starts every year. Can be changed until depreciation is posted." tampil saat ikon ⓘ menerima fokus keyboard
 
 ### TC-FA-PREF-63 dan TC-FA-PREF-64: Label aksesibilitas titik peringatan
 

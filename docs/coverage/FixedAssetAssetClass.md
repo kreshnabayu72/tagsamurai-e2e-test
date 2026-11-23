@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Asset Class
 
-Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (746 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
+Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (743 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
 Suite: `specs/FixedAsset/AssetClass/` (beserta `suite.md`).
 Prefix Modul: `FA` + `AC` (`TC-FA-FAAC-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (206 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (215 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -85,7 +85,7 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-072-assign-ditolak-state-berubah-setelah-dialog-dibuka | Assign Ditolak atau Dilewati saat State Berubah Setelah Dialog Dibuka | FE+BE | 42 | TC-FA-FAAC-161, TC-FA-FAAC-162, TC-FA-FAAC-163, TC-FA-FAAC-164 |
 | TC-FA-FAAC-E2E-073-move-screening-dan-validasi-destination | Screening Dialog Move Asset Names dan Validasi Destination Asset Class | FE+BE | 26 | TC-FA-FAAC-188, TC-FA-FAAC-189, TC-FA-FAAC-196, TC-FA-FAAC-197 |
 | TC-FA-FAAC-E2E-074-move-validasi-effective-from-dan-batal | Move: Validasi Pemilih Bulan Effective From serta Batal dan Tutup Dialog Move | FE+BE | 28 | TC-FA-FAAC-194, TC-FA-FAAC-195, TC-FA-FAAC-198, TC-FA-FAAC-199 |
-| TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period | Move: Batas Bawah Effective From Akibat Accounting Period Closed dan Last Posted Period | FE+BE | 28 | TC-FA-FAAC-200, TC-FA-FAAC-201, TC-FA-FAAC-202 |
+| TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period | Move: Batas Bawah Effective From Akibat Last Posted Period | FE+BE | 19 | TC-FA-FAAC-201, TC-FA-FAAC-202 |
 | TC-FA-FAAC-E2E-076-move-batas-bawah-lanjutan-dan-versi-scheduled-tujuan | Move: Batas Bawah Effective From Lanjutan dan Versi Scheduled Asset Class Tujuan | FE+BE | 35 | TC-FA-FAAC-203, TC-FA-FAAC-204, TC-FA-FAAC-205 |
 | TC-FA-FAAC-E2E-077-move-berhasil-single-dan-massal | Move Asset Name Berhasil: Satu Asset Name dan Massal dengan Effective From Bulan Berjalan | FE+BE | 35 | TC-FA-FAAC-190, TC-FA-FAAC-191, TC-FA-FAAC-192 |
 | TC-FA-FAAC-E2E-078-move-massal-tanpa-aset-aktif-bulan-lampau-klik-ganda-dan-spinner | Move Massal Tanpa Aset Aktif, Effective From Bulan Lampau, Klik Ganda, dan Spinner | FE+BE | 49 | TC-FA-FAAC-193, TC-FA-FAAC-206, TC-FA-FAAC-626, TC-FA-FAAC-628 |
@@ -110,7 +110,7 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-097-aksi-asset-name-pada-asset-class-dihapus-pengguna-lain | Aksi Assign, Move, dan Unassign Asset Name pada Asset Class yang Dihapus Pengguna Lain | FE+BE | 47 | TC-FA-FAAC-170, TC-FA-FAAC-213, TC-FA-FAAC-240, TC-FA-FAAC-241 |
 | TC-FA-FAAC-E2E-098-apply-changes-screening-berhasil-dan-batal | Apply Changes: Screening Dialog, Cancel, dan Apply dengan Effective From Bulan Berjalan | FE+BE | 29 | TC-FA-FAAC-307, TC-FA-FAAC-308, TC-FA-FAAC-310 |
 | TC-FA-FAAC-E2E-099-apply-changes-effective-from-masa-depan-dan-pratinjau | Apply Changes: Pratinjau Assets Affected dan Effective From Masa Depan Menjadwalkan Versi | FE+BE | 24 | TC-FA-FAAC-309, TC-FA-FAAC-312 |
-| TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar | Apply Changes: Validasi Effective From Kosong, Periode Closed, dan Bulan Tanpa Accounting Period | FE+BE | 23 | TC-FA-FAAC-316, TC-FA-FAAC-317, TC-FA-FAAC-318 |
+| TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar | Apply Changes: Validasi Effective From Kosong | FE+BE | 15 | TC-FA-FAAC-316 |
 | TC-FA-FAAC-E2E-101-apply-changes-validasi-effective-from-versi-dan-last-posted | Apply Changes: Validasi Effective From terhadap Last Posted Period dan Versi Terakhir | FE+BE | 30 | TC-FA-FAAC-319, TC-FA-FAAC-320 |
 | TC-FA-FAAC-E2E-102-apply-changes-alert-dampak-dan-capitalization-threshold | Apply Changes: Alert Dampak Not Depreciated dan Perubahan Capitalization Threshold Saja | FE+BE | 34 | TC-FA-FAAC-313, TC-FA-FAAC-314, TC-FA-FAAC-315 |
 | TC-FA-FAAC-E2E-103-versi-scheduled-alert-dan-save-no-op | Versi Scheduled: Alert Next Version, Save No-Op, dan Validasi Effective From Perubahan Lanjutan | FE+BE | 46 | TC-FA-FAAC-321, TC-FA-FAAC-322, TC-FA-FAAC-323, TC-FA-FAAC-324, TC-FA-FAAC-325 |
@@ -217,6 +217,15 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-204-defense-in-depth-request-langsung-tax-method-di-luar-irisan-ditolak-v-36 | Defense-in-Depth: Request Langsung dengan Tax Method di Luar Irisan Ditolak V-36 pada Create, Edit Versi Scheduled, dan Recommended Classes | FE+BE | 12 | TC-FA-FAAC-747 |
 | TC-FA-FAAC-E2E-205-sinkron-cancel-scheduled-version-tax-depreciation-class-menghitung-ulang-opsi-tax-method | Sinkronisasi Tax Depreciation Class: Membatalkan dan Membuat Versi Scheduled Menghitung Ulang Opsi Tax Method pada Asset Class | FE+BE | 38 | TC-FA-FAAC-748 |
 | TC-FA-FAAC-E2E-206-log-absence-request-langsung-tax-method-di-luar-irisan-ditolak-server | Log Absence: Request Langsung dengan Tax Method di Luar Irisan yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 12 | TC-FA-FAAC-747 |
+| TC-FA-FAAC-E2E-207-create-end-of-life-treatment-commercial-opsi-nilai-awal-dan-clear-field | Create Asset Class: End-of-Life Treatment Commercial Muncul pada Declining Balance dengan Tiga Opsi dan Nilai Awal, Hilang dan Pulih Lewat Clear Field | FE+BE | 21 | TC-FA-FAAC-719, TC-FA-FAAC-722 |
+| TC-FA-FAAC-E2E-208-create-end-of-life-treatment-fiskal-read-only-dan-hidden-menurut-tax-method | Create Asset Class: End-of-Life Treatment Fiskal Tampil Read-Only pada Tax Method Declining Balance dan Hidden pada Kondisi Lain | FE+BE | 26 | TC-FA-FAAC-731, TC-FA-FAAC-732 |
+| TC-FA-FAAC-E2E-209-create-declining-balance-menyimpan-end-of-life-treatment-dan-duplicate | Create Asset Class Declining Balance: End-of-Life Treatment Nilai Awal, Charge in Final Period, Keep Depreciating, dan Tersalin Lewat Duplicate | FE+BE | 51 | TC-FA-FAAC-720, TC-FA-FAAC-721, TC-FA-FAAC-727 |
+| TC-FA-FAAC-E2E-210-edit-end-of-life-treatment-tanpa-apply-changes-ganti-method-dan-asset-class-belum-dipakai | Edit Asset Class Belum Dipakai Aset: Ganti Method Mengosongkan End-of-Life Treatment dan Edit End-of-Life Treatment Tersimpan Langsung Tanpa Apply Changes | FE+BE | 38 | TC-FA-FAAC-723, TC-FA-FAAC-725 |
+| TC-FA-FAAC-E2E-211-edit-end-of-life-treatment-apply-changes-dan-versi-scheduled | Edit End-of-Life Treatment pada Asset Class yang Dipakai Aset: Apply Changes Membentuk Versi Berlaku dan Effective From Masa Depan Menjadwalkan Versi | FE+BE | 42 | TC-FA-FAAC-724, TC-FA-FAAC-726 |
+| TC-FA-FAAC-E2E-212-helper-equivalent-declining-rate-pembulatan-dan-fallback | Create Asset Class: Helper Equivalent di Bawah Declining Rate, Kelipatan Tarif Garis Lurus, Pembulatan Half-Up, dan Kembali ke Helper Bawaan | FE+BE | 45 | TC-FA-FAAC-728, TC-FA-FAAC-729, TC-FA-FAAC-735, TC-FA-FAAC-730 |
+| TC-FA-FAAC-E2E-213-log-edit-end-of-life-treatment-tiga-surface | Log Edit End-of-Life Treatment: Teks Opsi pada Old Value dan New Value di Changelog, System Log, dan Activity Log | FE+BE | 20 | TC-FA-FAAC-733 |
+| TC-FA-FAAC-E2E-214-defense-in-depth-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-v-39 | Defense-in-Depth: Request Langsung Create Declining Balance dengan End-of-Life Treatment Kosong Ditolak V-39 | FE+BE | 4 | TC-FA-FAAC-734 |
+| TC-FA-FAAC-E2E-215-log-absence-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-server | Log Absence: Request Langsung Create Declining Balance dengan End-of-Life Treatment Kosong yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 6 | TC-FA-FAAC-734 |
 
 ## 2. Daftar TC hanya-BE (Excluded dari E2E — 0 TC)
 
@@ -425,7 +434,6 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-197 | E2E | TC-FA-FAAC-E2E-073-move-screening-dan-validasi-destination | FE+BE |
 | TC-FA-FAAC-198 | E2E | TC-FA-FAAC-E2E-074-move-validasi-effective-from-dan-batal | FE+BE |
 | TC-FA-FAAC-199 | E2E | TC-FA-FAAC-E2E-074-move-validasi-effective-from-dan-batal | FE+BE |
-| TC-FA-FAAC-200 | E2E | TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period | FE+BE |
 | TC-FA-FAAC-201 | E2E | TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period | FE+BE |
 | TC-FA-FAAC-202 | E2E | TC-FA-FAAC-E2E-075-move-batas-bawah-effective-from-last-posted-period | FE+BE |
 | TC-FA-FAAC-203 | E2E | TC-FA-FAAC-E2E-076-move-batas-bawah-lanjutan-dan-versi-scheduled-tujuan | FE+BE |
@@ -543,8 +551,6 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-314 | E2E | TC-FA-FAAC-E2E-102-apply-changes-alert-dampak-dan-capitalization-threshold | FE+BE |
 | TC-FA-FAAC-315 | E2E | TC-FA-FAAC-E2E-102-apply-changes-alert-dampak-dan-capitalization-threshold | FE+BE |
 | TC-FA-FAAC-316 | E2E | TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar | FE+BE |
-| TC-FA-FAAC-317 | E2E | TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar | FE+BE |
-| TC-FA-FAAC-318 | E2E | TC-FA-FAAC-E2E-100-apply-changes-validasi-effective-from-dasar | FE+BE |
 | TC-FA-FAAC-319 | E2E | TC-FA-FAAC-E2E-101-apply-changes-validasi-effective-from-versi-dan-last-posted | FE+BE |
 | TC-FA-FAAC-320 | E2E | TC-FA-FAAC-E2E-101-apply-changes-validasi-effective-from-versi-dan-last-posted | FE+BE |
 | TC-FA-FAAC-321 | E2E | TC-FA-FAAC-E2E-103-versi-scheduled-alert-dan-save-no-op | FE+BE |
@@ -961,6 +967,24 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-716 | E2E | TC-FA-FAAC-E2E-131-hover-identifier-dan-format-nominal | FE+BE |
 | TC-FA-FAAC-717 | E2E | TC-FA-FAAC-E2E-160-log-edit-format-nominal-dan-total-estimated-units | FE+BE |
 | TC-FA-FAAC-718 | E2E | TC-FA-FAAC-E2E-155-changelog-download-csv-xlsx | FE+BE |
+| TC-FA-FAAC-719 | E2E | TC-FA-FAAC-E2E-207-create-end-of-life-treatment-commercial-opsi-nilai-awal-dan-clear-field | FE+BE |
+| TC-FA-FAAC-720 | E2E | TC-FA-FAAC-E2E-209-create-declining-balance-menyimpan-end-of-life-treatment-dan-duplicate | FE+BE |
+| TC-FA-FAAC-721 | E2E | TC-FA-FAAC-E2E-209-create-declining-balance-menyimpan-end-of-life-treatment-dan-duplicate | FE+BE |
+| TC-FA-FAAC-722 | E2E | TC-FA-FAAC-E2E-207-create-end-of-life-treatment-commercial-opsi-nilai-awal-dan-clear-field | FE+BE |
+| TC-FA-FAAC-723 | E2E | TC-FA-FAAC-E2E-210-edit-end-of-life-treatment-tanpa-apply-changes-ganti-method-dan-asset-class-belum-dipakai | FE+BE |
+| TC-FA-FAAC-724 | E2E | TC-FA-FAAC-E2E-211-edit-end-of-life-treatment-apply-changes-dan-versi-scheduled | FE+BE |
+| TC-FA-FAAC-725 | E2E | TC-FA-FAAC-E2E-210-edit-end-of-life-treatment-tanpa-apply-changes-ganti-method-dan-asset-class-belum-dipakai | FE+BE |
+| TC-FA-FAAC-726 | E2E | TC-FA-FAAC-E2E-211-edit-end-of-life-treatment-apply-changes-dan-versi-scheduled | FE+BE |
+| TC-FA-FAAC-727 | E2E | TC-FA-FAAC-E2E-209-create-declining-balance-menyimpan-end-of-life-treatment-dan-duplicate | FE+BE |
+| TC-FA-FAAC-728 | E2E | TC-FA-FAAC-E2E-212-helper-equivalent-declining-rate-pembulatan-dan-fallback | FE+BE |
+| TC-FA-FAAC-729 | E2E | TC-FA-FAAC-E2E-212-helper-equivalent-declining-rate-pembulatan-dan-fallback | FE+BE |
+| TC-FA-FAAC-730 | E2E | TC-FA-FAAC-E2E-212-helper-equivalent-declining-rate-pembulatan-dan-fallback | FE+BE |
+| TC-FA-FAAC-731 | E2E | TC-FA-FAAC-E2E-208-create-end-of-life-treatment-fiskal-read-only-dan-hidden-menurut-tax-method | FE+BE |
+| TC-FA-FAAC-732 | E2E | TC-FA-FAAC-E2E-208-create-end-of-life-treatment-fiskal-read-only-dan-hidden-menurut-tax-method | FE+BE |
+| TC-FA-FAAC-733 | E2E | TC-FA-FAAC-E2E-213-log-edit-end-of-life-treatment-tiga-surface | FE+BE |
+| TC-FA-FAAC-734 | E2E | TC-FA-FAAC-E2E-214-defense-in-depth-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-v-39 | FE+BE |
+| TC-FA-FAAC-734 | E2E | TC-FA-FAAC-E2E-215-log-absence-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-server | FE+BE |
+| TC-FA-FAAC-735 | E2E | TC-FA-FAAC-E2E-212-helper-equivalent-declining-rate-pembulatan-dan-fallback | FE+BE |
 | TC-FA-FAAC-736 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
 | TC-FA-FAAC-737 | E2E | TC-FA-FAAC-E2E-197-tab-asset-names-caption-per-mode-dan-assign-tanpa-save | FE+BE |
 | TC-FA-FAAC-738 | E2E | TC-FA-FAAC-E2E-198-role-matrix-caption-tab-asset-names-read-only | FE+BE |
@@ -1033,3 +1057,7 @@ Menutup J-1 (169) dan J-2 (169, 170, 190: Create/Submit dan aksi di Detail tetap
 ### 4.11 Sinkron perubahan TC 2026-11-20 (irisan Tax Method)
 
 Tax Method dibatasi irisan metode versi Current dan semua versi Scheduled Tax Depreciation Class. TC-653 dihapus (spec 085 kehilangan blok keadaan Tax Method tersimpan yang tidak diizinkan; langkah dan trace dinomori ulang). TC-266 dihapus (aturan Duplicate yang mengosongkan Tax Method di luar irisan dicabut; spec 086 kehilangan blok TC-266 dan seed `B-DUPTM`); TC-119 dan TC-126/127 (spec 043, 045) hanya menambah rujukan FAAC-LOGIC-02l. TC baru 740-748 masuk spec 199-206: 199 (740, 741), 200 (742, 743), 201 (746), 202 (744), 203 (745), 204 (747 respons dan state data), 205 (748, di atas 35 langkah dengan alasan di Notes), 206 (747 klausa tidak ada log, pasangan S-05 dengan 204). Seed baru: `Seed Irisan A` sampai `D` dan `B-IRISAN` (nama literal tanpa suffix, disediakan fixture BE di bawah suite serial). Asumsi yang belum terbukti: cara pembuatan versi Scheduled `Seed Irisan A` pada tab Tax Depreciation Class (spec 205) dan nilai field wajib lain permintaan Create TC-747 (spec 204, 206).
+
+### 4.12 TC End-of-Life Treatment Declining Balance dan helper Equivalent (TC-719 sampai 735)
+
+TC-719 sampai 735 masuk spec 207 sampai 215: 207 (719, 722), 208 (731, 732), 209 (720, 721, 727), 210 (723, 725), 211 (724, 726), 212 (728, 729, 730, 735), 213 (733), 214 (734 respons dan state data), 215 (734 klausa tidak ada log, pasangan S-05 dengan 214). Tidak ada TC hanya-BE: TC-734 bertanda BE di tabel TC tetapi berkelas defense-in-depth dengan Expected respons API, sehingga masuk spec FE+BE menurut K-1 (pola TC-747 di spec 204 dan 206). Seed baru: `B-EOLSWAP`, `B-EOLUSED`, `B-EOLFREE`, `B-EOLSCHED`, `B-EOLDUP`, `B-EOLLOG` (nama literal, disediakan fixture BE di bawah suite serial); `B-EOLDEF`, `B-EOLCHG`, `B-EOLKEEP`, `B-EOLDUP2` dibuat spec 209 dan dihapus fixture BE. Spec 209 sampai 212 di atas 35 langkah dengan alasan di Notes. Asumsi yang belum terbukti dan perlu konfirmasi tim FE: nilai End-of-Life Treatment fiskal pada master `Bukan bangunan – Kelompok 3` (TC-731 tidak menyebut nilainya), bentuk visual indikator wajib pada label End-of-Life Treatment (TC-719), label tombol dialog Apply Changes (TC-724, 726), dan status respons HTTP penolakan V-39 (TC-734).

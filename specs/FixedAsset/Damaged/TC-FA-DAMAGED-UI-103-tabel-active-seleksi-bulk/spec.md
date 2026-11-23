@@ -5,25 +5,29 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-07, D-DMG-13, "§4.2.4#p6", "§4.2.4#p10", "§4.4#r13", S-DMG-08, V-DMG-02, V-DMG-08, EB-BLK-1@tabel-active, EB-BLK-4, EB-BLK-6, EB-TBL-5@checkbox-bukan-damaged, EB-TBL-5@checkbox-penanda-missing, EB-FB-2@dialog-blok-disposal]
+sourceRules: [T-DMG-01, D-DMG-07, D-DMG-13, "§4.2.4#p7", "§4.4#r13", S-DMG-08, V-DMG-02, V-DMG-08, EB-BLK-1@tabel-active, EB-BLK-4, EB-BLK-6, EB-TBL-5@checkbox-bukan-damaged, EB-TBL-5@checkbox-penanda-missing, EB-FB-2@dialog-blok-disposal, "§4.2.4#r10", "§6#p2", D-DISP-13, "§4.2.4#r11", "§9.4.2#r32"]
 smoke: []
 dependsOn: []
 trace:
   T-DMG-01: [2, 3, 4, 5, 9, 10, 18, 20, 23, 130, 132, 133, 134]
-  D-DMG-07: [49, 50, 52]
-  D-DMG-13: [63, 64, 66, 69]
-  "§4.2.4#p6": [50, 51]
-  "§4.2.4#p10": [64, 65]
-  "§4.4#r13": [38, 53]
+  D-DMG-07: [49, 50, 52, 140, 141, 142, 143, 150, 151, 152, 154, 156, 164, 165, 175, 176, 186, 187]
+  D-DMG-13: [63, 64, 65, 66, 69, 204, 205, 206, 207, 209]
+  "§4.2.4#p7": [50, 51, 141, 142, 143]
+  "§4.4#r13": [38, 53, 195, 196, 198, 204, 207]
   S-DMG-08: [36, 47]
   V-DMG-02: [12]
   V-DMG-08: [49]
-  EB-BLK-1@tabel-active: [15, 16, 17, 18, 20, 21, 22, 25, 27, 31, 40, 55, 75, 76]
+  EB-BLK-1@tabel-active: [15, 16, 17, 18, 20, 21, 22, 25, 27, 31, 40, 55, 75, 76, 166, 177, 188]
   EB-BLK-4: [82, 83, 89, 90]
   EB-BLK-6: [94, 95, 96, 100, 101, 105, 106, 114, 115, 122, 124, 125, 127]
   EB-TBL-5@checkbox-bukan-damaged: [3, 4, 5, 7]
   EB-TBL-5@checkbox-penanda-missing: [9, 10, 12]
-  EB-FB-2@dialog-blok-disposal: [41, 56, 67]
+  EB-FB-2@dialog-blok-disposal: [41, 56, 67, 167, 178, 189]
+  "§4.2.4#r10": [49, 50, 51, 52, 53, 55, 56]
+  "§6#p2": [63, 64, 65, 69, 195, 196, 198, 204, 205, 206, 207]
+  D-DISP-13: [38, 52, 64, 65, 66, 141, 142, 143]
+  "§4.2.4#r11": [63, 64, 65, 66, 67, 69, 204, 205, 206, 207, 209]
+  "§9.4.2#r32": [195, 196, 198, 204, 205, 206]
 anchor: []
 coverage:
   web: automated
@@ -69,6 +73,9 @@ coverage:
   - K10: daftar seperti K1; permintaan Report Disposal gagal karena timeout.
   - K11: daftar seperti K1; saat dialog `D-DISP-13` dikirim, seluruh record terpilih sudah tidak Damaged.
   - K12: daftar memuat 4 record pada DU-103-17 dan DU-103-18 sampai DU-103-20; Selection Limit bernilai `5`.
+  - K13: daftar memuat 12 record pada DU-103-9 dan DU-103-3 sebagai satu-satunya record Damaged lain; Selection Limit bernilai `1000`; aktor berhak menjalankan Report Disposal; daftar aset terpilih pada dialog `Cannot Report Disposal` lebih panjang daripada tinggi dialog.
+  - K14: daftar seperti K1; saat `Report Disposal` pada Bulk Action diklik, DU-103-2 sudah tidak Damaged sedangkan DU-103-1 masih Damaged; permintaan Report Disposal diterima server dengan record yang tidak layak dilewati.
+  - K15: daftar seperti K1; saat `Report Disposal` pada Bulk Action diklik, DU-103-1 dan DU-103-2 sudah tidak Damaged.
 
 ## Test Steps
 
@@ -238,3 +245,91 @@ coverage:
 133. Verifikasi tidak ada toast batas yang tampil
 134. Verifikasi checkbox baris `Welding Machine Lincoln - 1`, `Welding Machine Lincoln - 2`, dan `Welding Machine Lincoln - 3` tidak tercentang
 
+### Daftar aset dialog Cannot Report Disposal tidak diringkas dan bisa digulir
+135. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K13
+136. Centang baris `Toyota Avanza - 2`
+137. Klik `Select All (13 records)`
+138. Klik `Bulk Action`
+139. Klik `Report Disposal`
+140. Verifikasi dialog `Cannot Report Disposal` terbuka
+141. Verifikasi seluruh 13 aset terpilih `Pallet Jack Manual - 1`, `Pallet Jack Manual - 2`, `Pallet Jack Manual - 3`, `Pallet Jack Manual - 4`, `Pallet Jack Manual - 5`, `Pallet Jack Manual - 6`, `Pallet Jack Manual - 7`, `Pallet Jack Manual - 8`, `Pallet Jack Manual - 9`, `Pallet Jack Manual - 10`, `Pallet Jack Manual - 11`, `Pallet Jack Manual - 12`, dan `Toyota Avanza - 2` tampil sebagai bullet pada dialog `Cannot Report Disposal`
+142. Verifikasi daftar aset pada dialog `Cannot Report Disposal` berada dalam wadah yang bisa digulir
+143. Verifikasi tidak ada teks ringkasan jumlah aset pengganti daftar nama pada dialog `Cannot Report Disposal`
+
+### Aksesibilitas dialog Cannot Report Disposal
+144. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+145. Centang baris `Projector Epson EB-X06 - 2`
+146. Centang baris `Tablet Samsung Tab A8 - 3`
+147. Centang baris `Toyota Avanza - 2`
+148. Klik `Bulk Action`
+149. Klik `Report Disposal`
+150. Verifikasi dialog `Cannot Report Disposal` memiliki peran dialog modal yang berlabel judul `Cannot Report Disposal` untuk teknologi bantu
+151. Verifikasi fokus berada pada elemen di dalam dialog `Cannot Report Disposal`
+152. Verifikasi tombol tutup dialog `Cannot Report Disposal` memiliki nama aksesibel `Close dialog`
+153. Tekan `Tab` sebanyak 10 kali
+154. Verifikasi fokus tetap berada pada elemen di dalam dialog `Cannot Report Disposal`
+155. Tekan `Shift+Tab` sebanyak 10 kali
+156. Verifikasi fokus tetap berada pada elemen di dalam dialog `Cannot Report Disposal`
+
+### Esc menutup dialog Cannot Report Disposal tanpa memproses seleksi
+157. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+158. Centang baris `Projector Epson EB-X06 - 2`
+159. Centang baris `Tablet Samsung Tab A8 - 3`
+160. Centang baris `Toyota Avanza - 2`
+161. Klik `Bulk Action`
+162. Klik `Report Disposal`
+163. Tekan `Esc`
+164. Verifikasi dialog `Cannot Report Disposal` tertutup
+165. Verifikasi dialog `D-DISP-13` tidak terbuka
+166. Verifikasi jumlah terpilih `3` tetap tampil pada bar
+167. Verifikasi tidak ada toast yang tampil
+
+### Klik latar gelap menutup dialog Cannot Report Disposal tanpa memproses seleksi
+168. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+169. Centang baris `Projector Epson EB-X06 - 2`
+170. Centang baris `Tablet Samsung Tab A8 - 3`
+171. Centang baris `Toyota Avanza - 2`
+172. Klik `Bulk Action`
+173. Klik `Report Disposal`
+174. Klik latar gelap di luar dialog `Cannot Report Disposal`
+175. Verifikasi dialog `Cannot Report Disposal` tertutup
+176. Verifikasi dialog `D-DISP-13` tidak terbuka
+177. Verifikasi jumlah terpilih `3` tetap tampil pada bar
+178. Verifikasi tidak ada toast yang tampil
+
+### Tombol tutup menutup dialog Cannot Report Disposal tanpa memproses seleksi
+179. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+180. Centang baris `Projector Epson EB-X06 - 2`
+181. Centang baris `Tablet Samsung Tab A8 - 3`
+182. Centang baris `Toyota Avanza - 2`
+183. Klik `Bulk Action`
+184. Klik `Report Disposal`
+185. Klik tombol tutup `Close dialog` pada dialog `Cannot Report Disposal`
+186. Verifikasi dialog `Cannot Report Disposal` tertutup
+187. Verifikasi dialog `D-DISP-13` tidak terbuka
+188. Verifikasi jumlah terpilih `3` tetap tampil pada bar
+189. Verifikasi tidak ada toast yang tampil
+
+### Sebagian record tidak layak saat klik: dialog Reason hanya berisi record yang layak
+190. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K14
+191. Centang baris `Projector Epson EB-X06 - 2`
+192. Centang baris `Tablet Samsung Tab A8 - 3`
+193. Klik `Bulk Action`
+194. Klik `Report Disposal`
+195. Verifikasi dialog `D-DISP-13` terbuka dengan `Projector Epson EB-X06 - 2` sebagai record yang akan dilaporkan
+196. Verifikasi `Tablet Samsung Tab A8 - 3` tidak termasuk dalam dialog `D-DISP-13`
+197. Kirim dialog `D-DISP-13` dengan Reason `Kerusakan tidak dapat diperbaiki`
+198. Verifikasi toast `Success, asset has been reported for disposal. Some items were skipped.` tampil
+
+### Semua record tidak layak saat klik diblok dialog Cannot Report Disposal
+199. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K15
+200. Centang baris `Projector Epson EB-X06 - 2`
+201. Centang baris `Tablet Samsung Tab A8 - 3`
+202. Klik `Bulk Action`
+203. Klik `Report Disposal`
+204. Verifikasi dialog `Cannot Report Disposal` terbuka
+205. Verifikasi pesan `None of the selected records can be reported for disposal.` tampil
+206. Verifikasi seluruh record terpilih `Projector Epson EB-X06 - 2` dan `Tablet Samsung Tab A8 - 3` tampil sebagai bullet beserta keterangan per record tanpa diringkas
+207. Verifikasi dialog `D-DISP-13` tidak terbuka
+208. Klik `[OK]`
+209. Verifikasi tidak ada toast yang tampil

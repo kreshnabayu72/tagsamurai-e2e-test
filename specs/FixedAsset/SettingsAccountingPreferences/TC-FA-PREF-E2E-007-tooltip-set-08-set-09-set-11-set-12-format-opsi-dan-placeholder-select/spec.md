@@ -68,7 +68,7 @@ coverage:
 ### TC-FA-PREF-39: Tooltip First Accounting Period (SET-12)
 
 7. Hover ikon ⓘ di sebelah label "First Accounting Period"
-8. Verifikasi tooltip tampil dengan teks persis: "The month and year your accounting periods start from. It can be in the past but not in the future. Can be changed until depreciation is posted or a period is closed."
+8. Verifikasi tooltip tampil dengan teks persis: "The month and year your accounting periods start from. It can be in the past but not in the future. Can be changed until depreciation is posted."
 
 ### TC-FA-PREF-46: Placeholder kelima Select akun
 

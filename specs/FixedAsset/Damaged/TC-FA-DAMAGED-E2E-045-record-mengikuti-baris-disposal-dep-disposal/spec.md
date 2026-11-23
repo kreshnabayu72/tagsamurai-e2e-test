@@ -5,25 +5,27 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r21", "§8.1#p2", "§8.1#r16", "§8.3#r4", "§8.3#r5", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.4#r27", EC-DMG-17, S-DMG-05, S-DMG-06, T-DMG-02]
+sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r22", "§8.1#p2", "§8.1#r16", "§8.3#r4", "§8.3#r5", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.4#r30", EC-DMG-17, S-DMG-05, S-DMG-06, T-DMG-02, "§Aturan Logika Modul#r19", "§Aturan Logika Modul#r65"]
 smoke: []
 dependsOn:
   - "Disposal: Dispose, Request, Reject, Cancel, Remove, Execute"
 trace:
-  "§Aturan Logika Modul#r19": 7
-  "§9.7#r12": 7
+  "§Aturan Logika Modul#r19": 24
+  "§Aturan Logika Modul#r20": [7, 39]
+  "§Aturan Logika Modul#r65": 7
+  "§9.7#r12": [7, 39]
   S-DMG-05: [9, 10]
   S-DMG-06: 11
-  "§8.1#p2": [14, 43, 57, 71]
+  "§8.1#p2": [14, 48, 62, 76]
   "§9.7#r13": [21, 24]
-  "§9.4.4#r27": [24, 28]
+  "§9.4.4#r30": [24, 28]
   T-DMG-02: [24, 25, 26]
   "§8.1#r16": [28, 29]
   "§8.3#r4": 28
-  "§Aturan Logika Modul#r21": [40, 54, 68]
-  "§9.7#r14": [40, 41, 54, 55, 68, 69]
-  EC-DMG-17: [40, 43, 54, 57, 68, 71]
-  "§8.3#r5": [43, 57, 71]
+  "§Aturan Logika Modul#r22": [45, 59, 73]
+  "§9.7#r14": [45, 46, 59, 60, 73, 74]
+  EC-DMG-17: [45, 48, 59, 62, 73, 76]
+  "§8.3#r5": [48, 62, 76]
 anchor: []
 coverage:
   web: automated
@@ -40,7 +42,7 @@ coverage:
   - DU-045-3: Damage record `Printer HP LaserJet M404 {runId}`, Group `Head Office`, Status `Reported Disposal`, Source `Manual`.
   - DU-045-4: Damage record `Tablet Samsung Tab A8 {runId}`, Group `Head Office`, Status `Reported Disposal`, Source `Manual`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
   - Baris Disposal hasil Submit Request atas `Laptop Dell Latitude 5420 {runId}` berstatus Waiting for Execution, tanpa menunggu approval.
   - Baris Disposal hasil Submit Request atas `Monitor Dell P2422H {runId}` berstatus Waiting for Approval, menunggu keputusan approver.
 
@@ -87,43 +89,48 @@ coverage:
 34. Buka menu ⋯ pada Disposal Report aset `Monitor Dell P2422H {runId}` di tab Reported
 35. Klik `Dispose`
 36. Submit Request pada form Request aset `Monitor Dell P2422H {runId}`
-37. Reject baris Disposal aset `Monitor Dell P2422H {runId}`
-38. Buka Assets > Damaged > Active
-39. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
-40. Verifikasi baris `Monitor Dell P2422H {runId}` berstatus `Damaged`
-41. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
-42. Klik nama aset `Monitor Dell P2422H {runId}` di kolom Name
-43. Verifikasi dialog Damage Log memuat node `Rejected by`
-44. Tutup dialog Damage Log
+37. Buka Assets > Damaged > Active
+38. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+39. Verifikasi baris `Monitor Dell P2422H {runId}` berstatus `In Disposal Process` selagi baris Disposalnya Waiting for Approval
+40. Buka Transactions > Disposal, daftar baris Disposal
+41. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+42. Reject baris Disposal aset `Monitor Dell P2422H {runId}`
+43. Buka Assets > Damaged > Active
+44. Ketik Search `Monitor Dell P2422H {runId}`, tekan Enter
+45. Verifikasi baris `Monitor Dell P2422H {runId}` berstatus `Damaged`
+46. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
+47. Klik nama aset `Monitor Dell P2422H {runId}` di kolom Name
+48. Verifikasi dialog Damage Log memuat node `Rejected by`
+49. Tutup dialog Damage Log
 
 ### Cancel baris Disposal mengembalikan record ke Damaged
-45. Catat jumlah pada badge tab Damaged
-46. Buka Transactions > Disposal, tab Reported
-47. Ketik Search `Printer HP LaserJet M404 {runId}`, tekan Enter
-48. Buka menu ⋯ pada Disposal Report aset `Printer HP LaserJet M404 {runId}` di tab Reported
-49. Klik `Dispose`
-50. Submit Request pada form Request aset `Printer HP LaserJet M404 {runId}`
-51. Cancel baris Disposal aset `Printer HP LaserJet M404 {runId}`
-52. Buka Assets > Damaged > Active
-53. Ketik Search `Printer HP LaserJet M404 {runId}`, tekan Enter
-54. Verifikasi baris `Printer HP LaserJet M404 {runId}` berstatus `Damaged`
-55. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
-56. Klik nama aset `Printer HP LaserJet M404 {runId}` di kolom Name
-57. Verifikasi dialog Damage Log memuat node `Canceled by`
-58. Tutup dialog Damage Log
+50. Catat jumlah pada badge tab Damaged
+51. Buka Transactions > Disposal, tab Reported
+52. Ketik Search `Printer HP LaserJet M404 {runId}`, tekan Enter
+53. Buka menu ⋯ pada Disposal Report aset `Printer HP LaserJet M404 {runId}` di tab Reported
+54. Klik `Dispose`
+55. Submit Request pada form Request aset `Printer HP LaserJet M404 {runId}`
+56. Cancel baris Disposal aset `Printer HP LaserJet M404 {runId}`
+57. Buka Assets > Damaged > Active
+58. Ketik Search `Printer HP LaserJet M404 {runId}`, tekan Enter
+59. Verifikasi baris `Printer HP LaserJet M404 {runId}` berstatus `Damaged`
+60. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
+61. Klik nama aset `Printer HP LaserJet M404 {runId}` di kolom Name
+62. Verifikasi dialog Damage Log memuat node `Canceled by`
+63. Tutup dialog Damage Log
 
 ### Remove baris Disposal mengembalikan record ke Damaged
-59. Catat jumlah pada badge tab Damaged
-60. Buka Transactions > Disposal, tab Reported
-61. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
-62. Buka menu ⋯ pada Disposal Report aset `Tablet Samsung Tab A8 {runId}` di tab Reported
-63. Klik `Dispose`
-64. Submit Request pada form Request aset `Tablet Samsung Tab A8 {runId}`
-65. Remove aset `Tablet Samsung Tab A8 {runId}` dari baris Disposal
-66. Buka Assets > Damaged > Active
-67. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
-68. Verifikasi baris `Tablet Samsung Tab A8 {runId}` berstatus `Damaged`
-69. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
-70. Klik nama aset `Tablet Samsung Tab A8 {runId}` di kolom Name
-71. Verifikasi dialog Damage Log memuat node `Removed from disposal by`
-72. Tutup dialog Damage Log
+64. Catat jumlah pada badge tab Damaged
+65. Buka Transactions > Disposal, tab Reported
+66. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
+67. Buka menu ⋯ pada Disposal Report aset `Tablet Samsung Tab A8 {runId}` di tab Reported
+68. Klik `Dispose`
+69. Submit Request pada form Request aset `Tablet Samsung Tab A8 {runId}`
+70. Remove aset `Tablet Samsung Tab A8 {runId}` dari baris Disposal
+71. Buka Assets > Damaged > Active
+72. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
+73. Verifikasi baris `Tablet Samsung Tab A8 {runId}` berstatus `Damaged`
+74. Verifikasi jumlah pada badge tab Damaged bertambah `1` dari jumlah yang dicatat
+75. Klik nama aset `Tablet Samsung Tab A8 {runId}` di kolom Name
+76. Verifikasi dialog Damage Log memuat node `Removed from disposal by`
+77. Tutup dialog Damage Log

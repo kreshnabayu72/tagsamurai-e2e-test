@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r8", TS-MIS-01, D-MIS-01, "§4.4#r8", S-DMG-04, V-DMG-02, S-DMG-02, "§8.1#r10", "§8.3#r3", "§Aturan Logika Modul#r65", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r72", EC-DMG-11, EC-DMG-26, "§9.4.4#r30", "§9.7#r15", F-DMG-10, "§2.1#r7", "§4.8#r5", "§9.2#b25", "§4.1#p3"]
+sourceRules: [T-DMG-01, "§4.1#r8", TS-MIS-01, D-MIS-01, "§4.4#r8", S-DMG-04, V-DMG-02, S-DMG-02, "§8.1#r10", "§8.3#r3", "§Aturan Logika Modul#r68", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r75", EC-DMG-11, EC-DMG-26, "§9.4.4#r33", "§9.7#r15", F-DMG-10, "§2.1#r7", "§4.8#r5", "§9.2#b28", "§4.1#p3", "§3#p7"]
 smoke: []
 dependsOn: ["Missing: dialog Report Missing (D-MIS-01)"]
 trace:
@@ -19,21 +19,22 @@ trace:
   S-DMG-02: [11, 23]
   "§8.1#r10": [25, 26]
   "§8.3#r3": [25, 26]
-  "§Aturan Logika Modul#r65": 9
-  "§Aturan Logika Modul#r67": 29
-  "§Aturan Logika Modul#r68": [11, 17]
-  "§Aturan Logika Modul#r69": 23
-  "§Aturan Logika Modul#r70": 11
-  "§Aturan Logika Modul#r72": [17, 18, 19, 20]
+  "§Aturan Logika Modul#r68": 9
+  "§Aturan Logika Modul#r70": 29
+  "§Aturan Logika Modul#r71": [11, 17]
+  "§Aturan Logika Modul#r72": 23
+  "§Aturan Logika Modul#r73": 11
+  "§Aturan Logika Modul#r75": [17, 18, 19, 20]
   EC-DMG-11: [11, 17, 18, 19, 20]
   EC-DMG-26: [7, 9, 11]
-  "§9.4.4#r30": 25
+  "§9.4.4#r33": 25
   "§9.7#r15": [11, 12]
   F-DMG-10: [11, 17]
   "§2.1#r7": [5, 9]
   "§4.8#r5": [5, 14]
-  "§9.2#b25": [25, 26]
+  "§9.2#b28": [25, 26]
   "§4.1#p3": [2, 11, 22, 23]
+  "§3#p7": [7, 11, 17]
 anchor: []
 coverage:
   web: automated

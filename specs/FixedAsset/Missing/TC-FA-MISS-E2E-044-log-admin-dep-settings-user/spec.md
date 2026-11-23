@@ -9,7 +9,7 @@ sourceRules: ["§8.2#b2", "§8#r10", "§9.6#r1", "§9.6#r2", "§9.6#r3", "§9.6#
 smoke: []
 dependsOn: ["Settings User: Detail User > Transaction admin log"]
 trace:
-  "§8.2#b2": [4, 16, 23, 28, 33]
+  "§8.2#b2": [4, 16, 23, 28, 33, 34, 40, 41, 42, 48]
   "§8#r10": [18]
   "§9.6#r1": [4, 8, 9]
   "§9.6#r2": [5]
@@ -50,6 +50,10 @@ coverage:
   - DU-044-17: Asset `Proyektor BenQ MW535 {runId}`, Group `Head Office`, dengan satu entri Report Missing oleh `Budi Hartono {runId}` yang dilaporkan dari halaman transaksi Borrow.
   - DU-044-18: Pengguna `Sari Wulandari {runId}`, pemilik sesi Stock Opname tanpa Manage asset & TAG (Update), yang di Transaction admin log-nya sudah tercatat entri Report Missing atas DU-044-19.
   - DU-044-19: Asset `Barcode Scanner Honeywell 1900 {runId}`, Group `Warehouse`, dengan satu entri Report Missing oleh `Sari Wulandari {runId}` yang dilaporkan dari sesi Stock Opname miliknya.
+  - DU-044-20: Pengguna `Lia Kartika {runId}`, Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group `Warehouse`, pelapor umum yang melapor dari Task Detail Audit lalu membatalkan laporannya lewat `Cancel my report` atas DU-044-21.
+  - DU-044-21: Asset `Rak Server APC {runId}`, Group `Warehouse`, dengan record Missing Source `Audit` berstatus `Canceled` yang dibatalkan `Lia Kartika {runId}` dari Task Detail Audit.
+  - DU-044-22: Pengguna `Hadi Pratama {runId}`, pemegang aset dengan hak Aktor Missing (Pelapor admin) yang melapor dari My Asset atas DU-044-23.
+  - DU-044-23: Asset `Kamera Nikon D850 {runId}`, Group `Head Office`, dipegang `Hadi Pratama {runId}`, dengan record Missing dari laporannya lewat My Asset.
 - Kondisi:
   - Akun `Rina W` dan `Dewi Anggraini {runId}` aktif dan kredensialnya disediakan fase 2.
 
@@ -93,9 +97,26 @@ coverage:
 25. Ketik Search `Budi Hartono {runId}`, tekan Enter
 26. Klik `Budi Hartono {runId}` pada kolom Name
 27. Buka Transaction admin log pada User Detail
-28. Verifikasi entri Report Missing atas `Proyektor BenQ MW535 {runId}` tampil di Transaction admin log
+28. Klik sub-tab `Missing` pada Transaction admin log, lalu verifikasi entri Activity `Reported missing` atas `Proyektor BenQ MW535 {runId} - 1` dengan Source `Borrow` dan Group `Head Office` tampil di Transaction admin log, dan sub-tab `Borrow` tidak memuat baris Report Missing itu
 29. Buka daftar pengguna
 30. Ganti isi kotak search dengan `Sari Wulandari {runId}`, tekan Enter
 31. Klik `Sari Wulandari {runId}` pada kolom Name
 32. Buka Transaction admin log pada User Detail
-33. Verifikasi entri Report Missing atas `Barcode Scanner Honeywell 1900 {runId}` tampil di Transaction admin log
+33. Klik sub-tab `Missing` pada Transaction admin log, lalu verifikasi entri Activity `Reported missing` atas `Barcode Scanner Honeywell 1900 {runId} - 1` dengan Source `Audit` dan Group `Warehouse` tampil di Transaction admin log
+
+### Pelapor umum dan Cancel Report dari Task Detail Audit tercatat, aksi dari My Asset tidak
+34. Verifikasi kolom Transaction admin log sub-tab `Missing` berurutan `Date`, `Activity`, `Name`, `Source`, `Group`
+35. Buka daftar pengguna
+36. Ketik Search `Lia Kartika {runId}`, tekan Enter
+37. Klik `Lia Kartika {runId}` pada kolom Name
+38. Buka Transaction admin log pada User Detail
+39. Klik sub-tab `Missing` pada Transaction admin log
+40. Verifikasi entri Activity `Reported missing` atas `Rak Server APC {runId} - 1` dengan Source `Audit` dan Group `Warehouse` tampil walau `Lia Kartika {runId}` pelapor umum
+41. Verifikasi entri Activity `Report canceled` atas `Rak Server APC {runId} - 1` dengan Source `Audit` dan Group `Warehouse` tampil dari Cancel Report di Task Detail Audit
+42. Verifikasi baris `Reported missing` dan `Report canceled` atas `Rak Server APC {runId} - 1` memakai Source yang sama
+43. Buka daftar pengguna
+44. Ketik Search `Hadi Pratama {runId}`, tekan Enter
+45. Klik `Hadi Pratama {runId}` pada kolom Name
+46. Buka Transaction admin log pada User Detail
+47. Klik sub-tab `Missing` pada Transaction admin log
+48. Verifikasi tidak ada baris untuk aset `Kamera Nikon D850 {runId}` di Transaction admin log walau `Hadi Pratama {runId}` adalah Pelapor admin, karena Report Missing dari My Asset hanya masuk Missing Log dan User Log

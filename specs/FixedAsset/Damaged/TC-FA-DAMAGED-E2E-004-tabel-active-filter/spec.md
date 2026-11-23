@@ -30,7 +30,7 @@ coverage:
   - DU-004-1: Name `Filter Aset {runId} - 1`, Asset ID `FLT-0001-{runId}`, Group `Head Office {runId}`, Status `Damaged`, Source `Manual`, Last Holder `Sari D`, Reported By `Agus P`, Reported Date `T0 − 3 hari, pukul 11:00`, Days Damaged `3 days`.
   - DU-004-2: Name `Filter Aset {runId} - 2`, Asset ID `FLT-0002-{runId}`, Group `Branch Surabaya {runId}`, Status `Damaged`, Source `Reported by scan`, Last Holder `—`, Reported By `Dedi K`, Reported Date `T0 − 6 hari, pukul 11:00`, Days Damaged `6 days`.
   - DU-004-3: Name `Filter Aset {runId} - 3`, Asset ID `FLT-0003-{runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `—`, Reported By `Budi S`, Reported Date `T0 − 10 hari, pukul 11:00`, Days Damaged `10 days`.
-  - DU-004-4: Name `Filter Aset {runId} - 4`, Asset ID `FLT-0004-{runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 14 hari, pukul 11:00`, Days Damaged `14 days`.
+  - DU-004-4: Name `Filter Aset {runId} - 4`, Asset ID `FLT-0004-{runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 14 hari, pukul 11:00`, Days Damaged `14 days`.
   - DU-004-5: Name `Filter Aset {runId} - 5`, Asset ID `FLT-0005-{runId}`, Group `Head Office {runId}`, Status `In Disposal Process`, Source `Manual`, Last Holder `—`, Reported By `Rina W`, Reported Date `T0 − 20 hari, pukul 11:00`, Days Damaged `20 days`.
   - DU-004-6: Name `Filter Aset {runId} - 6`, Asset ID `FLT-0006-{runId}`, Group `Warehouse {runId}`, Status `Damaged` berpenanda `Reported Missing`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 5 hari, pukul 11:00`, Days Damaged `5 days`.
   - DU-004-7: Name `Filter Aset {runId} - 7`, Asset ID `FLT-0007-{runId}`, Group `Warehouse {runId}`, Status `Damaged` berpenanda `Missing`, Source `Borrow return`, Last Holder `—`, Reported By `Rina W`, Reported Date `T0 − 8 hari, pukul 11:00`, Days Damaged `8 days`.
@@ -38,7 +38,7 @@ coverage:
   - DU-004-9: record `Repaired` (sudah selesai, hanya tampil di sub-tab History), Name `Filter Aset {runId} - 9`, Asset ID `FLT-0009-{runId}`, Group `Head Office {runId}`, Source `Manual`, Reported By `Rina W`.
   - DU-004-10: aset Normal tanpa record berjalan, Name `Filter Aset {runId} - 10`, Asset ID `FLT-0010-{runId}`, Group `Head Office {runId}`.
   - DU-004-11: isian Report Damaged oleh `Bima A` atas DU-004-10: What happened `Layar retak terbentur`, Damaged Photo `foto-layar-retak.jpg`.
-  - DU-004-14: rentang Reported Date `T0 − 8 hari` sampai `T0 − 5 hari`; DU-004-15: rentang Reported Date `T0 − 30 hari` sampai `T0 − 25 hari`; DU-004-16: rentang Days Damaged Min `14`, Max `5`; DU-004-17: kata kunci dropdown Source `scan`, `STOCK`, dan `Tidak Ada`.
+  - DU-004-14: rentang Reported Date `T0 − 8 hari` sampai `T0 − 5 hari`; DU-004-15: rentang Reported Date `T0 − 30 hari` sampai `T0 − 25 hari`; DU-004-16: rentang Days Damaged Min `14`, Max `5`; DU-004-17: kata kunci dropdown Source `scan`, `AUDIT`, dan `Tidak Ada`.
   - DU-004-18: user master `Gita P` yang tidak pernah melapor record apa pun.
   - DU-004-12: isian Mark as Repaired oleh `Bima A` atas DU-004-8: Repair note `Unit sudah diganti`; aset tanpa TAG.
   - Pengguna `Agus P`, `Dedi K`, `Budi S`, dan `Rina W` adalah user ber-runId; sumber Source `Manual` adalah laporan Pelapor admin.
@@ -57,7 +57,7 @@ coverage:
 6. Verifikasi opsi `Waiting for Confirmation`, `Damaged`, `Reported Disposal`, `In Disposal Process`, `Reported Missing`, dan `Missing` tampil
 7. Verifikasi opsi `Repaired` tidak tampil karena nilainya hanya ada pada record sub-tab History
 8. Buka dropdown field `Source`
-9. Verifikasi opsi `Manual`, `Reported by scan`, `Reported by holder`, `Stock opname`, `Borrow return`, dan `Assign return` tampil
+9. Verifikasi opsi `Manual`, `Reported by scan`, `Reported by holder`, `Audit`, `Borrow return`, dan `Assign return` tampil
 
 ### AND antar-field dan OR di dalam satu field
 10. Pilih opsi `Damaged` pada field `Status`
@@ -151,11 +151,11 @@ coverage:
 ### Opsi dropdown dicari dan tidak dipersempit oleh Search
 87. Ganti isi kotak search dengan `Filter Aset {runId} - 1`, tekan Enter
 88. Buka dropdown field `Source`
-89. Verifikasi opsi `Stock opname` tampil walau baris `Filter Aset {runId} - 4` tidak cocok dengan Search
+89. Verifikasi opsi `Audit` tampil walau baris `Filter Aset {runId} - 4` tidak cocok dengan Search
 90. Ketik `scan` pada kotak cari di dalam dropdown `Source`
 91. Verifikasi opsi `Reported by scan` tampil dan opsi `Manual` tidak tampil
-92. Ketik `STOCK` pada kotak cari di dalam dropdown `Source`
-93. Verifikasi opsi `Stock opname` tampil
+92. Ketik `AUDIT` pada kotak cari di dalam dropdown `Source`
+93. Verifikasi opsi `Audit` tampil
 94. Ketik `Tidak Ada` pada kotak cari di dalam dropdown `Source`
 95. Verifikasi dropdown `Source` menampilkan `No results found`
 96. Buka dropdown field `Reported By`

@@ -4,12 +4,12 @@ title: "Tabel sub-tab Active: kolom awal, format sel, nilai kosong, nama singkat
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.4#r11", "§5#r1", S-DMG-11, S-DMG-12, S-DMG-16, S-DMG-02, S-DMG-10, "§4.5#p1", "§4#p1", EB-TBL-1@tabel-active, EB-TBL-3@kolom-labels, EB-TBL-4@kolom-last-holder, EB-TBL-4@kolom-reported-by, EB-TBL-4@kolom-modified-by, EB-TBL-8@tabel-active, EB-XM-1, EB-TBL-2@kolom-photo, EB-TBL-2@kolom-brand, EB-TBL-2@kolom-model-type, EB-TBL-2@kolom-tag, EB-TBL-2@kolom-last-holder, EB-TBL-2@kolom-alias-name, EB-TBL-2@kolom-measurement, EB-TBL-2@kolom-division, EB-TBL-2@kolom-labels, EB-TBL-2@kolom-asset-class, EB-TBL-2@kolom-purchase-date, EB-TBL-2@kolom-warranty-expiry, EB-TBL-2@kolom-purchase-cost, EB-TBL-2@kolom-asset-value-commercial, EB-TBL-2@kolom-asset-value-fiscal]
+status: draft
+sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.4#r11", "§5#r1", S-DMG-11, S-DMG-12, S-DMG-16, S-DMG-02, S-DMG-10, "§4.5#p1", "§4#p1", EB-TBL-1@tabel-active, EB-TBL-3@kolom-labels, EB-TBL-4@kolom-last-holder, EB-TBL-4@kolom-reported-by, EB-TBL-4@kolom-modified-by, EB-TBL-8@tabel-active, EB-XM-1, EB-TBL-2@kolom-photo, EB-TBL-2@kolom-brand, EB-TBL-2@kolom-model-type, EB-TBL-2@kolom-tag, EB-TBL-2@kolom-last-holder, EB-TBL-2@kolom-alias-name, EB-TBL-2@kolom-measurement, EB-TBL-2@kolom-division, EB-TBL-2@kolom-labels, EB-TBL-2@kolom-asset-class, EB-TBL-2@kolom-purchase-date, EB-TBL-2@kolom-warranty-expiry, EB-TBL-2@kolom-purchase-cost, EB-TBL-2@kolom-asset-value-commercial, EB-TBL-2@kolom-asset-value-fiscal, "§Aturan Logika Modul#r96"]
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [2, 3, 4, 5, 6, 7, 8, 11, 48, 49, 52, 53, 55, 56, 57, 58, 60, 61, 63, 64, 65, 66, 67, 71, 72, 73, 97, 98, 99, 100, 102, 103, 105, 139, 140, 142, 143, 145, 146, 147, 148, 151, 152]
+  T-DMG-01: [2, 3, 4, 5, 6, 7, 8, 11, 48, 49, 52, 53, 55, 56, 57, 58, 60, 61, 63, 64, 65, 66, 67, 71, 72, 73, 97, 98, 99, 100, 102, 103, 105, 139, 140, 142, 143, 145, 146, 147, 148, 151, 152, 168, 171, 172, 174, 176, 177]
   "§4.1#r1": [133]
   "§4.1#p3": [19, 20, 21, 22, 24, 25]
   "§4.1#p4": [46, 51]
@@ -25,11 +25,11 @@ trace:
   EB-TBL-1@tabel-active: [108, 109, 114, 115, 116, 118, 119, 120]
   EB-TBL-3@kolom-labels: [78, 79, 80, 81, 82]
   EB-TBL-4@kolom-last-holder: [30, 32, 36, 38, 39, 44, 142, 145]
-  EB-TBL-4@kolom-reported-by: [33, 35, 37, 40, 42, 143]
+  EB-TBL-4@kolom-reported-by: [33, 35, 37, 40, 42, 143, 171, 172]
   EB-TBL-4@kolom-modified-by: [74, 76]
   EB-TBL-8@tabel-active: [106]
   EB-XM-1: [46, 47, 51, 68, 69, 70]
-  EB-TBL-2@kolom-photo: [28]
+  EB-TBL-2@kolom-photo: [28, 168]
   EB-TBL-2@kolom-brand: [84]
   EB-TBL-2@kolom-model-type: [85]
   EB-TBL-2@kolom-tag: [86]
@@ -40,10 +40,11 @@ trace:
   EB-TBL-2@kolom-labels: [82]
   EB-TBL-2@kolom-asset-class: [90]
   EB-TBL-2@kolom-purchase-date: [91]
-  EB-TBL-2@kolom-warranty-expiry: [92]
+  EB-TBL-2@kolom-warranty-expiry: [92, 174]
   EB-TBL-2@kolom-purchase-cost: [93]
   EB-TBL-2@kolom-asset-value-commercial: [94]
   EB-TBL-2@kolom-asset-value-fiscal: [95, 97]
+  "§Aturan Logika Modul#r96": [164, 165]
 anchor: []
 coverage:
   web: automated
@@ -59,12 +60,12 @@ coverage:
   - DU-101-1: Record `Projector Epson EB-X06 - 2`, Asset ID `PRJ-2026-0002`, Group `Head Office`, Status `Damaged`, Source `Borrow return`, Photo `projector-epson-eb-x06-2.jpg`, Last Holder `Sari Dewi` (tampil `Sari D`, dari `Sari Dewi`; Division `Operations`, Employee ID `EMP-0145`), Reported By `Rina Wijaya` (tampil `Rina W`, dari `Rina Wijaya`), Reported Date `04/11/26, 17:10` dari `2026-11-04T10:10:00Z`, Days Damaged `7 days` dari 7 hari kalender sampai hari ini `11/11/26`, Last Updated `06/11/26, 09:45` dari `2026-11-06T02:45:00Z`.
   - DU-101-2: Record `Laptop Dell Latitude 5420 - 4`, Asset ID `LPT-2026-0004`, Group `Head Office`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Budi`, Reported By `Budi`, Reported Date `10/11/26, 08:15` dari `2026-11-10T01:15:00Z`, Days Damaged `1 day` dari 1 hari kalender, Last Updated `10/11/26, 08:15` dari `2026-11-10T01:15:00Z`.
   - DU-101-3: Record `Office Chair Ergo - 31`, Asset ID `CHR-2026-0031`, Group `Branch Surabaya`, Status `Damaged`, Source `Reported by scan`, tanpa Photo, Last Holder kosong (tampil `—`), Reported By `Dedi Kurniawan` (tampil `Dedi K`, dari `Dedi Kurniawan`), Reported Date `06/11/26, 13:00` dari `2026-11-06T06:00:00Z`, Days Damaged `5 days` dari 5 hari kalender.
-  - DU-101-4: Record `Printer HP LaserJet M404 - 8`, Asset ID `PRN-2026-0008`, Group `Head Office`, Status `Reported Disposal`, Source `Stock opname`, Last Holder `Buzzlightyear Sumardi` (tampil `Buzzlightyear S`, dari `Buzzlightyear Sumardi`), Reported By `Alexander Graham Bell` (tampil `Alexander G`, dari `Alexander Graham Bell`), Reported Date `15/10/26, 10:00` dari `2026-10-15T03:00:00Z`, Days Damaged `27 days` dari 27 hari kalender.
+  - DU-101-4: Record `Printer HP LaserJet M404 - 8`, Asset ID `PRN-2026-0008`, Group `Head Office`, Status `Reported Disposal`, Source `Audit`, Last Holder `Buzzlightyear Sumardi` (tampil `Buzzlightyear S`, dari `Buzzlightyear Sumardi`), Reported By `Alexander Graham Bell` (tampil `Alexander G`, dari `Alexander Graham Bell`), Reported Date `15/10/26, 10:00` dari `2026-10-15T03:00:00Z`, Days Damaged `27 days` dari 27 hari kalender.
   - DU-101-5: Record `Monitor Dell P2422H - 6`, Asset ID `MON-2026-0006`, Group `Head Office`, Status `In Disposal Process`, Source `Manual`, Last Holder `Dewi Anggraini` (tampil `Dewi A`, dari `Dewi Anggraini`), Reported By `Dewi Anggreni` (tampil `Dewi A`, dari `Dewi Anggreni`), Reported Date `20/09/26, 14:20` dari `2026-09-20T07:20:00Z`, Days Damaged `52 days` dari 52 hari kalender.
   - DU-101-6: Record `Camera Canon EOS - 3`, Asset ID `CAM-2026-0003`, Group `Head Office`, Status `Damaged` dengan penanda `Missing`, Source `Manual`, Reported By `Agus Prasetyo`, Reported Date `03/11/26, 11:00` dari `2026-11-03T04:00:00Z`.
   - DU-101-7: Record `Drill Bosch GSB - 6`, Asset ID `DRL-2026-0006`, Group `Warehouse`, Status `Damaged` dengan penanda `Reported Missing`, Source `Manual`, Last Holder `Sari Dewi`, Reported By `Agus Prasetyo`, Reported Date `28/10/26, 10:00` dari `2026-10-28T03:00:00Z`.
   - DU-101-8: Record `Laptop Dell Latitude 5420 - 6`, Asset ID `LPT-2026-0006`, Group `Head Office`, Status `Damaged`, Source `Missing asset`, Reported By `Rina Wijaya`, Reported Date `11/11/26, 15:20` dari `2026-11-11T08:20:00Z`, Days Damaged `0 days` karena dilaporkan pada hari ini `11/11/26`.
-  - DU-101-9: Record `Generator Set Cummins C100 - 1`, Asset ID `GEN-2026-0001`, Group `Warehouse`, Status `Damaged`, Source `Stock opname`, Reported By `Agus Prasetyo`, Reported Date `25/03/26, 06:30` dari `2026-03-24T23:30:00Z` pada zona waktu company, Days Damaged `231 days` dari 231 hari kalender.
+  - DU-101-9: Record `Generator Set Cummins C100 - 1`, Asset ID `GEN-2026-0001`, Group `Warehouse`, Status `Damaged`, Source `Audit`, Reported By `Agus Prasetyo`, Reported Date `25/03/26, 06:30` dari `2026-03-24T23:30:00Z` pada zona waktu company, Days Damaged `231 days` dari 231 hari kalender.
   - DU-101-10: Record `Tablet Samsung Tab A8 - 3`, Asset ID `TAB-2026-0003`, Brand `Samsung`, Model/Type `Galaxy Tab A8`, TAG `RFID` dan `QR`, Category `Tablet` (hierarki `IT Equipment > Tablet`), Group `Server Room` (hierarki `Head Office > Floor 2 > Server Room`), Status `Damaged`, Source `Manual`, Last Holder `Dewi Anggraini`, Reported By `Agus Prasetyo`, Alias Name `Tab Gudang`, Measurement `Unit`, Division `Operations`, Labels `Warehouse`, `Fragile`, `Priority` (tampil `Fragile`, `Priority`, dan `+1 more`, dari urutan A-Z), Asset Class `Electronic`, Register Date `15/01/26` dari `2026-01-15`, Purchase Date `10/01/26` dari `2026-01-10`, Warranty Expiry `10/01/28` dari `2028-01-10`, Purchase Cost `12500000`, Asset Value (Commercial) `9800000`, Asset Value (Fiscal) `10200000`, Modified By `Rina Wijaya` (tampil `Rina W`, dari `Rina Wijaya`), Reported Date `07/11/26, 10:30` dari `2026-11-07T03:30:00Z`, Last Updated `10/11/26, 09:30` dari `2026-11-10T02:30:00Z`.
   - DU-101-11: Record `Forklift Toyota 8FD - 1`, Asset ID `FLT-2026-0001`, Group `Warehouse`, Status `Damaged`, Source `Manual`, Reported By `Agus Prasetyo`; Brand, Model/Type, Alias Name, Measurement, Division, Asset Class, Purchase Date, Warranty Expiry, Purchase Cost, Asset Value (Commercial), dan Asset Value (Fiscal) tidak pernah diisi; TAG dan Labels tanpa isi (tampil `—`).
   - DU-101-12: Record `Handheld RFID Scanner Zebra TC21 Warehouse Receiving Dock Unit - 14`, Asset ID `HSC-2026-0014`, Brand `Zebra Technologies International Holdings` (tampil `Zebra Techno..nal Holdings`, dari 12 huruf pertama, `..`, dan 12 huruf terakhir), Group `Jakarta Selatan Distribution Center` (tampil `Jakarta Sela..ution Center`, hierarki `Region Jawa > Jakarta Selatan Distribution Center`), Status `Damaged`, Source `Manual`, Division `Regional Procurement and Vendor Management Office Jakarta`, Labels `Warehouse` lalu `Priority` (tampil `Priority` lalu `Warehouse`, dari urutan A-Z), Reported By `Rina Wijaya`.
@@ -72,7 +73,10 @@ coverage:
   - DU-101-14: Record `<b>Meeting</b> Table - 2`, Asset ID `TBL-2026-0002`, Group `Head Office`, Status `Damaged`, Source `Manual`, Reported By `Rina Wijaya`.
   - DU-101-15: Daftar record berjalan kosong untuk entitas yang belum pernah menerima laporan (jumlah record `0`).
   - DU-101-16: Record `Toyota Avanza - 2` di Group `Branch Surabaya`, ada di entitas tetapi di luar cakupan Group aktor `Head Office`.
+  - DU-101-19: Record `Welding Machine Lincoln - 2`, Asset ID `WLD-2026-0002`, Group `Warehouse`, Status `Damaged`, Source `Manual`, Reported By `Rina Wijaya`; aset punya foto aset `welding-machine-lincoln-2.jpg`, sedangkan Damaged Photo record sudah dihapus lewat File Manager sehingga tidak ada.
+  - DU-101-20: Record `Pressure Washer Karcher - 5`, Asset ID `PWR-2026-0005`, Group `Warehouse`, Status `Damaged`, Source `Manual`, Reported By `Rina Wijaya`; aset belum punya foto aset, dan Damaged Photo record sudah dihapus lewat File Manager sehingga tidak ada.
   - DU-101-18: Record `Handheld Scanner Zebra TC21 - 2`, Asset ID `HSC-2026-0002`, Group `Head Office`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Tono Rahmat` tanpa akun (tampil `Tono R`, dari `Tono Rahmat`; Division `Finance`, PIC `Sinta Maharani` sehingga hover memuat `PIC: Sinta Maharani`, Employee ID `EMP-0217`), Reported By laporan PIC `Sinta Maharani` atas nama `Tono Rahmat` (tampil `Sinta M on behalf of Tono R`, dari `Sinta Maharani` dan `Tono Rahmat`).
+  - DU-101-21: Record `Air Conditioner Daikin FTV - 5`, Asset ID `ACN-2026-0005`, Group `Head Office`, Status `Damaged`, Source `Manual`, Reported By `Rina Wijaya`, dua garansi aset: `Manufacturer Warranty` berakhir `15/03/27` dari `2027-03-15` dan `Extended Warranty` berakhir `10/01/28` dari `2028-01-10`; Warranty Expiry tampil `15/03/27`, dari garansi terdekat (hari ini `11/11/26`).
 - Kondisi:
   - K1: daftar memuat DU-101-1 sampai DU-101-5 dengan kolom bawaan Setup Column; hari ini `11/11/26`; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; Time Zone bernilai `Asia/Jakarta`.
   - K2: daftar memuat DU-101-6 dan DU-101-7 dengan kolom bawaan Setup Column.
@@ -85,6 +89,8 @@ coverage:
   - K9: jawaban daftar belum tiba saat tabel ditampilkan; begitu jawaban tiba, daftar memuat DU-101-1.
   - K10: lebar tampilan sempit; daftar memuat DU-101-1.
   - K11: daftar memuat DU-101-18.
+  - K12: daftar memuat DU-101-19 dan DU-101-20 dengan kolom bawaan Setup Column.
+  - K13: daftar memuat DU-101-21; Setup Column menampilkan seluruh kolom, termasuk kolom `Warranty Expiry`; hari ini `11/11/26`; Date Format bernilai `dd/MM/yy`.
 
 ## Test Steps
 
@@ -299,5 +305,28 @@ coverage:
 160. Fokuskan header kolom Actions (`⋯`) dengan keyboard
 161. Tekan Enter
 162. Verifikasi daftar kolom dengan checkbox tampil
+
+### Kolom Photo jatuh ke nilai kosong sesudah Damaged Photo dihapus
+163. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K12
+164. Verifikasi foto aset `welding-machine-lincoln-2.jpg` tampil pada kolom `Photo` baris `Welding Machine Lincoln - 2`
+165. Verifikasi avatar inisial tampil pada kolom `Photo` baris `Pressure Washer Karcher - 5`
+
+### Hover foto pada kolom Photo menampilkan pratinjau besar
+166. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+167. Arahkan pointer ke foto pada kolom `Photo` baris `Projector Epson EB-X06 - 2`
+168. Verifikasi pratinjau besar foto `projector-epson-eb-x06-2.jpg` tampil
+
+### Hover Reported By pada laporan PIC atas nama pemegang
+169. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K11
+170. Arahkan pointer ke `Sinta M on behalf of Tono R` pada kolom `Reported By` baris `Handheld Scanner Zebra TC21 - 2`
+171. Verifikasi nama lengkap pelapor `Sinta Maharani` tampil
+172. Verifikasi nama lengkap pemegang yang diwakili `Tono Rahmat` tampil
+
+### Warranty Expiry memuat garansi terdekat dan daftar seluruh garansi saat hover
+173. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K13
+174. Verifikasi kolom `Warranty Expiry` baris `Air Conditioner Daikin FTV - 5` menampilkan `15/03/27`
+175. Arahkan pointer ke `15/03/27` pada kolom `Warranty Expiry` baris `Air Conditioner Daikin FTV - 5`
+176. Verifikasi garansi `Manufacturer Warranty — 15/03/27` tampil pada daftar garansi
+177. Verifikasi garansi `Extended Warranty — 10/01/28` tampil pada daftar garansi
 
 [^drift-1]: Drift PRD vs kontrak komponen. PRD §4.5: `Tooltip Disabled 🔖 dapat diakses lewat fokus`. Kontrak `Tooltip#38`: `A disabled control cannot be focused, so its tooltip opens on hover only`. Diasersi: kontrak (SB-7), sehingga alasan pada kontrol Disabled diasersi lewat hover dan klausa fokus PRD tidak diasersi.

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.2.1#p1", "§4.2.1#b1", "§4.2.1#b2", "§4.2.1#b4", "§4.4#r1", "§4.4#r11", "§5#r1", "§9.2#b11", "§9.5#r1", "§9.5#r2", "§9.5#r5", S-DMG-02, F-DMG-02, "§Aturan Logika Modul#r10", "§Aturan Logika Modul#r12", "§8.1#r2"]
+sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.2.1#p1", "§4.2.1#b1", "§4.2.1#b2", "§4.2.1#b4", "§4.4#r1", "§4.4#r11", "§5#r1", "§9.2#b12", "§9.5#r1", "§9.5#r2", "§9.5#r5", S-DMG-02, F-DMG-02, "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r13", "§8.1#r2", "§9.2#b4"]
 smoke: []
 dependsOn: []
 trace:
@@ -20,15 +20,16 @@ trace:
   "§4.4#r1": [8, 11, 75, 77, 78, 79, 80, 81]
   "§4.4#r11": [61, 62]
   "§5#r1": [12, 14, 15]
-  "§9.2#b11": [19, 20]
+  "§9.2#b12": [19, 20]
   "§9.5#r1": [5]
   "§9.5#r2": [22, 23]
   "§9.5#r5": [21]
   S-DMG-02: [28, 29]
   F-DMG-02: [12, 19]
-  "§Aturan Logika Modul#r10": [49]
-  "§Aturan Logika Modul#r12": [38]
+  "§Aturan Logika Modul#r11": [49]
+  "§Aturan Logika Modul#r13": [38]
   "§8.1#r2": [63]
+  "§9.2#b4": [30, 31, 32, 33, 34, 35, 36, 37]
 anchor: []
 coverage:
   web: automated
@@ -42,7 +43,7 @@ coverage:
 - Data:
   - DU-001-1: record `Waiting for Confirmation`, Name `Laptop Dell Latitude {runId} - 4`, Asset ID `LPT-0004-{runId}`, Group `Head Office {runId}`, Source `Reported by holder`, Last Holder `Budi S`, Reported By `Budi S`, Reported Date `T0 − 1 hari, pukul 08:15`, Days Damaged `1 day`.
   - DU-001-2: record `In Disposal Process`, Name `Monitor Dell P2422H {runId} - 6`, Asset ID `MON-0006-{runId}`, Group `Head Office {runId}`, Source `Manual`, Last Holder `—`, Reported By `Rina W`, Reported Date `T0 − 52 hari, pukul 14:20`, Days Damaged `52 days`.
-  - DU-001-3: record `Reported Disposal`, Name `Printer HP LaserJet M404 {runId} - 8`, Asset ID `PRN-0008-{runId}`, Group `Head Office {runId}`, Source `Stock opname`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 27 hari, pukul 10:00`, Days Damaged `27 days`.
+  - DU-001-3: record `Reported Disposal`, Name `Printer HP LaserJet M404 {runId} - 8`, Asset ID `PRN-0008-{runId}`, Group `Head Office {runId}`, Source `Audit`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 27 hari, pukul 10:00`, Days Damaged `27 days`.
   - DU-001-4: record `Damaged` berpenanda `Reported Missing`, Name `Drill Bosch GSB {runId} - 6`, Asset ID `DRL-0006-{runId}`, Group `Warehouse {runId}`, Source `Manual`, Last Holder `Sari D`, Reported By `Agus P`, Reported Date `T0 − 14 hari, pukul 10:00`, Days Damaged `14 days`.
   - DU-001-5: record `Damaged` berpenanda `Missing`, Name `Camera Canon EOS {runId} - 3`, Asset ID `CAM-0003-{runId}`, Group `Head Office {runId}`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 8 hari, pukul 11:00`, Days Damaged `8 days`, Modified By `System`.
   - DU-001-6: record `Damaged`, Name `Projector Epson EB-X06 {runId} - 2`, Asset ID `PRJ-0002-{runId}`, Group `Head Office {runId}`, Source `Borrow return`, Last Holder `Sari D`, Reported By `Rina W`, Reported Date `T0 − 7 hari, pukul 17:10`, Days Damaged `7 days`.
@@ -59,7 +60,7 @@ coverage:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24h`.
   - Time Zone bernilai `Asia/Jakarta`.
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 
@@ -93,8 +94,8 @@ coverage:
 21. Verifikasi ikon `Filter` tidak menampilkan badge titik saringan aktif
 
 ### Urutan default record berjalan
-22. Verifikasi baris pertama adalah record `Waiting for Confirmation` `Scanner Fujitsu fi-7160 {runId} - 2` (Days Damaged `2 days`) dan baris kedua adalah record `Waiting for Confirmation` `Laptop Dell Latitude {runId} - 4` (Days Damaged `1 day`), karena Days Damaged terlama dulu
-23. Verifikasi urutan baris sesudah kedua record itu, dari atas, menurut Days Damaged terlama dulu, adalah `Monitor Dell P2422H {runId} - 6`, `Printer HP LaserJet M404 {runId} - 8`, `Drill Bosch GSB {runId} - 6`, `Camera Canon EOS {runId} - 3`, `Projector Epson EB-X06 {runId} - 2`, `Forklift Toyota 8FD {runId} - 1`, `Office Chair Ergo {runId} - 31`, `Projector Epson EB-X06 {runId} - 7`, `Laptop Dell Latitude {runId} - 6`
+22. Verifikasi baris pertama adalah record `Waiting for Confirmation` `Scanner Fujitsu fi-7160 {runId} - 2` (Days Damaged `2 days`) dan baris kedua adalah record `Waiting for Confirmation` `Laptop Dell Latitude {runId} - 4` (Days Damaged `1 day`), karena antar-record `Waiting for Confirmation` Days Damaged terlama dulu
+23. Verifikasi urutan baris sesudah kedua record itu, dari atas, antar-record status lain menurut Days Damaged terlama dulu, adalah `Monitor Dell P2422H {runId} - 6`, `Printer HP LaserJet M404 {runId} - 8`, `Drill Bosch GSB {runId} - 6`, `Camera Canon EOS {runId} - 3`, `Projector Epson EB-X06 {runId} - 2`, `Forklift Toyota 8FD {runId} - 1`, `Office Chair Ergo {runId} - 31`, `Projector Epson EB-X06 {runId} - 7`, `Laptop Dell Latitude {runId} - 6`
 
 ### Badge status dan penanda Missing pada setiap status record
 24. Verifikasi baris `Laptop Dell Latitude {runId} - 4` menampilkan badge status `Waiting for Confirmation`
@@ -107,7 +108,7 @@ coverage:
 ### Kolom Source menunjukkan titik masuk laporan pertama
 30. Verifikasi kolom Source baris `Laptop Dell Latitude {runId} - 4` bernilai `Reported by holder`
 31. Verifikasi kolom Source baris `Monitor Dell P2422H {runId} - 6` bernilai `Manual`
-32. Verifikasi kolom Source baris `Printer HP LaserJet M404 {runId} - 8` bernilai `Stock opname`
+32. Verifikasi kolom Source baris `Printer HP LaserJet M404 {runId} - 8` bernilai `Audit`
 33. Verifikasi kolom Source baris `Projector Epson EB-X06 {runId} - 2` bernilai `Borrow return`
 34. Verifikasi kolom Source baris `Office Chair Ergo {runId} - 31` bernilai `Reported by scan`
 35. Verifikasi kolom Source baris `Laptop Dell Latitude {runId} - 6` bernilai `Missing asset`

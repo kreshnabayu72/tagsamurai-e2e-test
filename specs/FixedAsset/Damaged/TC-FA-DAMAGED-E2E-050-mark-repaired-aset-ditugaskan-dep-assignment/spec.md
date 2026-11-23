@@ -5,19 +5,20 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r39", "§Aturan Logika Modul#r40", "EC-DMG-10", "EC-DMG-18", "§9.4.4#r20", "§9.4.4#r8", "§9.2#b17", "T-DMG-01"]
+sourceRules: ["§Aturan Logika Modul#r41", "§Aturan Logika Modul#r42", "EC-DMG-10", "EC-DMG-18", "§9.4.4#r22", "§9.4.4#r8", "§9.2#b19", "T-DMG-01", "§9.7#r9"]
 smoke: []
 dependsOn:
   - "Assignment: baris Assignment, form Assign"
 trace:
-  "§Aturan Logika Modul#r39": [14, 22]
-  "§Aturan Logika Modul#r40": [28, 29]
-  "EC-DMG-10": [22, 28, 29]
+  "§Aturan Logika Modul#r41": [14, 22]
+  "§Aturan Logika Modul#r42": [28, 29]
+  "EC-DMG-10": [22, 28, 29, 33]
   "EC-DMG-18": [3]
-  "§9.4.4#r20": [24]
+  "§9.4.4#r22": [24]
   "§9.4.4#r8": [3]
-  "§9.2#b17": [28, 29]
+  "§9.2#b19": [28, 29]
   "T-DMG-01": [12, 14, 19]
+  "§9.7#r9": [28, 33]
 anchor: [8, 9, 18]
 coverage:
   web: automated
@@ -29,7 +30,7 @@ coverage:
 - Aktor: Total Control.
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
-  - DU-050-1: aset Name `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Bima Prakoso {runId}` lewat baris Assignment berstatus `Assigned`, dengan record `Damaged` Source `Manual` dan What happened `Engsel laptop longgar dan layar tidak bisa berdiri tegak`.
+  - DU-050-1: aset Name `Laptop Dell Latitude 5420 {runId}`, Group `Head Office`, tanpa TAG, sedang ditugaskan kepada `Bima Prakoso {runId}` lewat baris Assignment berstatus `Assigned`, status global `Assigned`, dengan record `Damaged` Source `Manual` dan What happened `Engsel laptop longgar dan layar tidak bisa berdiri tegak`.
   - DU-050-2: aset Name `Monitor Dell P2422H {runId}`, Group `Head Office`, tanpa TAG, tanpa pemegang, dengan record `Damaged` Source `Manual` dan What happened `Layar monitor berkedip dan garis vertikal muncul`.
 - Kondisi:
   - After photo required bernilai `OFF`.
@@ -72,3 +73,8 @@ coverage:
 27. Ketik Search `{runId}`, tekan Enter
 28. Verifikasi baris Assignment aset `Laptop Dell Latitude 5420 {runId}` tetap berstatus `Assigned`
 29. Verifikasi pemegang pada baris itu tetap `Bima Prakoso {runId}`
+
+### Status global aset tetap Assigned sesudah Mark as Repaired
+31. Buka halaman Assets, tab `Assets`
+32. Ketik Search `Laptop Dell Latitude 5420 {runId}`, tekan Enter
+33. Verifikasi status global aset `Assigned` pada baris `Laptop Dell Latitude 5420 {runId}`

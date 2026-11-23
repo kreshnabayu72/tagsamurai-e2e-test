@@ -5,7 +5,7 @@ layer: ui-client
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: [FI-DMG-08, V-DMG-03, V-DMG-04, FLD-DMG-03, FLD-DMG-05, TS-DMG-05, "§4.2.4#p12", "§9.6#r5", "§9.4.4#r23", EB-FRM-4@repair-note, EB-FB-1@mark-as-repaired, EB-FB-2@cancel-mark-as-repaired, EB-FRM-1@mark-as-repaired, EB-FRM-2@mark-as-repaired, EB-ERR-1@mark-as-repaired]
+sourceRules: [FI-DMG-08, V-DMG-03, V-DMG-04, FLD-DMG-03, FLD-DMG-05, TS-DMG-05, "§4.2.4#p13", "§9.6#r5", "§9.4.4#r25", EB-FRM-4@repair-note, EB-FB-1@mark-as-repaired, EB-FB-2@cancel-mark-as-repaired, EB-FRM-1@mark-as-repaired, EB-FRM-2@mark-as-repaired, EB-ERR-1@mark-as-repaired, "§Aturan Logika Modul#r93", "§Aturan Logika Modul#r94", "§Aturan Logika Modul#r95", V-DMG-20, TS-DMG-12, EC-DMG-39, "§7.3#p1", "§4.2.4#p3", "§9.2#b18"]
 smoke: []
 dependsOn: []
 trace:
@@ -15,15 +15,24 @@ trace:
   FLD-DMG-03: [4, 8]
   FLD-DMG-05: [12, 16, 19, 21, 23, 25]
   TS-DMG-05: [29, 35, 41, 47, 53, 58, 74]
-  "§4.2.4#p12": [100, 108, 110]
-  "§9.6#r5": [29, 30, 74]
-  "§9.4.4#r23": [9]
+  "§4.2.4#p13": [100, 108, 110]
+  "§9.6#r5": [29, 30, 74, 117, 130]
+  "§9.4.4#r25": [9]
   EB-FRM-4@repair-note: [19, 21]
   EB-FB-1@mark-as-repaired: [29, 74]
   EB-FB-2@cancel-mark-as-repaired: [5, 63, 95, 96]
   EB-FRM-1@mark-as-repaired: [67, 68, 70]
   EB-FRM-2@mark-as-repaired: [87, 88, 91, 92, 100, 101, 102, 104, 106]
-  EB-ERR-1@mark-as-repaired: [74, 75, 76, 78, 82, 83, 84]
+  EB-ERR-1@mark-as-repaired: [74, 75, 76, 78, 82, 83, 84, 148, 149]
+  "§Aturan Logika Modul#r93": [117, 124, 130, 146]
+  "§Aturan Logika Modul#r94": [121, 139, 140]
+  "§Aturan Logika Modul#r95": [121, 122, 123]
+  V-DMG-20: [117, 118, 120]
+  TS-DMG-12: [117, 130, 137, 146]
+  EC-DMG-39: [117, 121, 130, 131, 147]
+  "§7.3#p1": [130, 146]
+  "§4.2.4#p3": [115, 117, 121]
+  "§9.2#b18": [117]
 anchor: [62]
 coverage:
   web: automated
@@ -55,6 +64,9 @@ coverage:
   - DU-114-17: After photo tidak dipilih saat setting OFF.
   - DU-114-18: After photo tidak dipilih saat setting ON.
   - DU-114-19: pengisian valid lengkap: Repair note `Layar diganti baru dan sudah diuji fungsi` dengan Scan TAG `RFID-LPT-0006` untuk aset ber-TAG.
+  - DU-114-20: Storage penuh: usage ledger Storage client sama dengan kuota, `50.0 GB` dari `50.0 GB`.
+  - DU-114-21: Storage melebihi kuota: usage ledger `51.2 GB`, kuota `50.0 GB`.
+  - DU-114-22: Storage client tanpa baris ledger Storage: kuota `0.0 GB` dan usage `0.0 GB`.
 - Kondisi:
   - K1: record DU-114-1 dengan setting DU-114-3; Scan TAG belum dipindai.
   - K2: record DU-114-1 dengan setting DU-114-3; hasil pindai adalah DU-114-6.
@@ -65,6 +77,10 @@ coverage:
   - K7: record DU-114-2 dengan setting DU-114-3; respons simpan pertama gagal karena error server, respons berikutnya sukses.
   - K8: record DU-114-2 dengan setting DU-114-3; permintaan simpan melewati batas waktu.
   - K9: record DU-114-2 dengan setting DU-114-3; Repair note belum diisi.
+  - K10: record DU-114-2 dengan setting DU-114-4; Storage penuh DU-114-20; respons simpan ditolak karena Storage penuh.
+  - K11: record DU-114-2 dengan setting DU-114-3; Storage melebihi kuota DU-114-21; After photo opsional diisi; respons simpan ditolak karena Storage penuh.
+  - K12: record DU-114-2 dengan setting DU-114-4; respons simpan pertama ditolak karena Storage penuh DU-114-20, respons berikutnya sukses (Storage dibebaskan).
+  - K13: record DU-114-2 dengan setting DU-114-4; client tanpa baris ledger Storage DU-114-22; respons simpan ditolak karena Storage penuh.
 
 ## Test Steps
 
@@ -215,3 +231,50 @@ coverage:
 108. Verifikasi dialog `Unsaved Changes` tampil sesudah `Esc` pada form Mark as Repaired yang terisi
 109. Klik `[Leave]`
 110. Verifikasi dialog Mark as Repaired tertutup sesudah `[Leave]`
+
+### Storage penuh dengan After photo wajib: Submit ditolak dengan toast Error persisten
+111. Tampilkan Dialog Mark as Repaired dengan kondisi K10
+112. Isi `Repair note*` dengan `Layar diganti baru dan sudah diuji fungsi`
+113. Pilih berkas foto `foto-sesudah.jpeg` pada pemilih foto `After photo*`
+114. Klik `Apply` pada dialog `Adjust photo`
+115. Verifikasi tombol `[Mark as Repaired]` tidak Disabled sebelum diklik
+116. Klik `[Mark as Repaired]`
+117. Verifikasi toast `Error, failed to mark asset as repaired. Storage is full (50.0 GB of 50.0 GB used).` tampil
+118. Verifikasi tidak ada caption error di bawah pemilih foto `After photo*`
+119. Waktu berlalu sampai 10 detik sejak toast tampil
+120. Verifikasi toast `Error, failed to mark asset as repaired. Storage is full (50.0 GB of 50.0 GB used).` masih tampil
+121. Verifikasi dialog Mark as Repaired tetap terbuka walau After photo wajib sudah terisi
+122. Verifikasi isian `Repair note*` masih berisi `Layar diganti baru dan sudah diuji fungsi`
+123. Verifikasi foto `foto-sesudah.jpeg` masih tampil pada pemilih foto `After photo*`
+124. Verifikasi tombol `[Mark as Repaired]` aktif lagi
+
+### Storage melebihi kuota dengan After photo opsional yang diisi
+125. Tampilkan Dialog Mark as Repaired dengan kondisi K11
+126. Isi `Repair note*` dengan `Layar diganti baru dan sudah diuji fungsi`
+127. Pilih berkas foto `foto-sesudah.jpeg` pada pemilih foto `After photo`
+128. Klik `Apply` pada dialog `Adjust photo`
+129. Klik `[Mark as Repaired]`
+130. Verifikasi toast `Error, failed to mark asset as repaired. Storage is full (51.2 GB of 50.0 GB used).` tampil
+131. Verifikasi dialog Mark as Repaired tetap terbuka sesudah After photo opsional ditolak karena Storage penuh
+
+### Submit ulang berhasil sesudah Storage dibebaskan
+132. Tampilkan Dialog Mark as Repaired dengan kondisi K12
+133. Isi `Repair note*` dengan `Layar diganti baru dan sudah diuji fungsi`
+134. Pilih berkas foto `foto-sesudah.jpeg` pada pemilih foto `After photo*`
+135. Klik `Apply` pada dialog `Adjust photo`
+136. Klik `[Mark as Repaired]`
+137. Verifikasi toast `Error, failed to mark asset as repaired. Storage is full (50.0 GB of 50.0 GB used).` tampil
+138. Klik `[Mark as Repaired]`
+139. Verifikasi toast `Success, Toyota Avanza - 2 has been marked as repaired.` tampil sesudah Storage dibebaskan
+140. Verifikasi dialog Mark as Repaired tertutup sesudah Storage dibebaskan
+
+### Client tanpa baris ledger Storage dianggap berkuota 0: Submit ditolak
+141. Tampilkan Dialog Mark as Repaired dengan kondisi K13
+142. Isi `Repair note*` dengan `Layar diganti baru dan sudah diuji fungsi`
+143. Pilih berkas foto `foto-sesudah.jpeg` pada pemilih foto `After photo*`
+144. Klik `Apply` pada dialog `Adjust photo`
+145. Klik `[Mark as Repaired]`
+146. Verifikasi toast `Error, failed to mark asset as repaired. Storage is full (0.0 GB of 0.0 GB used).` tampil
+147. Verifikasi dialog Mark as Repaired tetap terbuka walau After photo wajib sudah terisi
+148. Verifikasi isian `Repair note*` masih berisi `Layar diganti baru dan sudah diuji fungsi`
+149. Verifikasi tombol `[Mark as Repaired]` aktif lagi

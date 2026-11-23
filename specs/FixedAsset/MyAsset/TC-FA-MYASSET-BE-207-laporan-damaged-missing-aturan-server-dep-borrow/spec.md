@@ -5,19 +5,19 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r35", "§1.2#r54", "§4.1b#r60", "§4.1b#r62", "§4.1b#r63", "§4.1b#r68", "§4.1b#r70", "§4.1b#r71", "§9.2#r10", "§9.2#r11", "§9.2#r13", "§9.2#r15", "§9.2#r18", "§9.2#r29", "§9.2#r30", "§9.2#r31", "§9.4.2#r60", "§9.4.2#r63", "§9.4.3#b6", "§9.6#r5", "§9.6#r8", "§9.6#r9", "EB-EDG-1"]
+sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r36", "§1.2#r55", "§4.1b#r60", "§4.1b#r62", "§4.1b#r63", "§4.1b#r68", "§4.1b#r70", "§4.1b#r71", "§9.2#r10", "§9.2#r11", "§9.2#r13", "§9.2#r15", "§9.2#r18", "§9.2#r29", "§9.2#r30", "§9.2#r31", "§9.4.2#r62", "§9.4.2#r65", "§9.4.3#b6", "§9.6#r5", "§9.6#r8", "§9.6#r9", "EB-EDG-1"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment", "Damaged: keputusan Damage Report oleh Aktor Damaged", "Missing: keputusan laporan Missing oleh Aktor Missing"]
 owner: BE
 trace:
-  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [7, 9, 13, 24, 26, 39, 49, 61, 63, 65, 67, 68, 70, 83, 86, 103, 105, 107, 109, 110, 113, 114]
+  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [7, 9, 13, 24, 26, 39, 49, 61, 63, 65, 67, 68, 70, 83, 86, 103, 105, 107, 109, 110, 113, 114, 126, 129, 137, 140]
   "T-MYA-04": [70, 75, 103, 105, 107, 109, 110, 113, 114]
-  "§1.2#r35": [9, 11, 22, 28, 30, 32, 34, 73, 89, 91, 93, 95, 97, 99, 101]
-  "§1.2#r54": [83, 84, 86, 87, 117, 119]
-  "§4.1b#r60": [13, 83]
+  "§1.2#r36": [9, 11, 22, 28, 30, 32, 34, 73, 89, 91, 93, 95, 97, 99, 101]
+  "§1.2#r55": [83, 84, 86, 87, 117, 119, 121, 123, 126, 127, 129, 130, 132, 134, 137, 138, 140, 141]
+  "§4.1b#r60": [13, 83, 126, 127, 137, 138]
   "§4.1b#r62": 13
   "§4.1b#r63": 14
-  "§4.1b#r68": [49, 86]
+  "§4.1b#r68": [49, 86, 129, 130, 140, 141]
   "§4.1b#r70": 49
   "§4.1b#r71": 50
   "§9.2#r10": [39, 58]
@@ -28,8 +28,8 @@ trace:
   "§9.2#r29": 71
   "§9.2#r30": [75, 79, 80]
   "§9.2#r31": 77
-  "§9.4.2#r60": 77
-  "§9.4.2#r63": 71
+  "§9.4.2#r62": 77
+  "§9.4.2#r65": 71
   "§9.4.3#b6": [40, 58, 59]
   "§9.6#r5": [42, 43, 45]
   "§9.6#r8": [3, 4, 5, 7]
@@ -40,7 +40,7 @@ trace:
 # Aturan server laporan Damaged dan Missing dari My Asset beserta pembatalannya
 
 ## Prerequisites
-- Aktor: Borrower dan Assignee Dewi (DU-207-1), Aktor Damaged Hendra (DU-207-2), Aktor Missing Maya (DU-207-3), Aktor Borrow dan Aktor Assignment Rina (DU-207-4), pemegang yang juga memegang hak Aktor Missing Agus (DU-207-5), PIC Division lama Budi (DU-207-6) dan PIC Division baru Siti (DU-207-7).
+- Aktor: Borrower dan Assignee Dewi (DU-207-1), Aktor Damaged Hendra (DU-207-2), Aktor Missing Maya (DU-207-3), Aktor Borrow dan Aktor Assignment Rina (DU-207-4), pemegang yang juga memegang hak Aktor Missing Agus (DU-207-5), PIC Division lama Budi (DU-207-6) dan PIC Division baru Siti (DU-207-7), PIC Borrower lama Wulan (DU-207-44) dan PIC Borrower baru Yoga (DU-207-45), serta admin Bambang (DU-207-46) yang mengelola karyawan dan akun login.
 - Data:
   - DU-207-1: User: Name `Dewi Lestari {runId}`, Peran `Borrower dan Assignee tanpa hak Aktor Damaged dan Aktor Missing`.
   - DU-207-2: User: Name `Hendra Wijaya {runId}`, Peran `Aktor Damaged pada Group Head Office`.
@@ -74,6 +74,18 @@ trace:
   - DU-207-41: Extension Request: Reason `Kegiatan pelatihan lapangan diperpanjang satu pekan`.
   - DU-207-42: Extension Request: Reason `Pelatihan lapangan baru berakhir minggu depan`.
   - DU-207-43: Damage Report: Damaged Photo `monitor-penyangga-patah.jpg`, What happened `Kaki penyangga monitor patah, dilaporkan lagi`.
+  - DU-207-44: User: Name `Wulan Prasetyo {runId}`, Peran `PIC Borrower tanpa hak Aktor Damaged dan Aktor Missing`.
+  - DU-207-45: User: Name `Yoga Permana {runId}`, Peran `pengganti PIC Borrower tanpa hak Aktor Damaged dan Aktor Missing`.
+  - DU-207-46: User: Name `Bambang Hartono {runId}`, Peran `admin yang mengelola karyawan dan akun login`.
+  - DU-207-47: Karyawan: Name `Gunawan Setiadi {runId}`, Akun login `tidak ada`, PIC `Wulan Prasetyo {runId}`.
+  - DU-207-48: Karyawan: Name `Lestari Wibowo {runId}`, Akun login `tidak ada`, PIC `Wulan Prasetyo {runId}`.
+  - DU-207-49: Pinjaman: Name `Mesin Laminasi GBC {runId}`, Status `Borrowed`, Borrower `Gunawan Setiadi {runId}`, Laporan `belum ada Damage Report dan belum ada laporan Missing`.
+  - DU-207-50: Pinjaman: Name `Hard Disk Eksternal WD 2TB {runId}`, Status `Borrowed`, Borrower `Gunawan Setiadi {runId}`, Laporan `belum ada Damage Report dan belum ada laporan Missing`.
+  - DU-207-51: Pinjaman: Name `Speaker Konferensi Jabra 410 {runId}`, Status `Borrowed`, Borrower `Lestari Wibowo {runId}`, Laporan `belum ada Damage Report dan belum ada laporan Missing`.
+  - DU-207-52: Pinjaman: Name `Alat Ukur Fluke 117 {runId}`, Status `Borrowed`, Borrower `Lestari Wibowo {runId}`, Laporan `belum ada Damage Report dan belum ada laporan Missing`.
+  - DU-207-53: Damage Report: Damaged Photo `mesin-laminasi-roller-aus.jpg`, What happened `Roller mesin laminasi aus dan menggulung kertas`.
+  - DU-207-54: Damage Report: Damaged Photo `speaker-konferensi-kabel-putus.jpg`, What happened `Kabel speaker konferensi putus dekat konektor`.
+  - DU-207-55: Akun: Name `Lestari Wibowo {runId}`, Email `lestari.wibowo.{runId}@example.com`.
 
 ## Test Steps
 
@@ -227,3 +239,29 @@ trace:
 117. Verifikasi record Damage Report itu menjadi `Damaged` walau PIC pelapornya sudah diganti
 118. Maya mengonfirmasi laporan Missing pada `Scanner Epson DS-530 {runId}`
 119. Verifikasi record Missing itu dikonfirmasi menjadi `Missing` walau PIC pelapornya sudah diganti
+
+### PIC Borrower diganti: PIC baru tidak membatalkan laporan PIC lama atas nama Borrower tanpa akun
+120. Wulan mengirim Report Damaged atas nama Gunawan untuk pinjaman `Mesin Laminasi GBC {runId}` dengan Damaged Photo `mesin-laminasi-roller-aus.jpg` dan What happened `Roller mesin laminasi aus dan menggulung kertas`
+121. Verifikasi Damage Report atas `Mesin Laminasi GBC {runId}` dibuat dengan status `Waiting for Confirmation` dan pelapor tercatat `Wulan Prasetyo {runId}`
+122. Wulan mengirim Report Missing atas nama Gunawan untuk pinjaman `Hard Disk Eksternal WD 2TB {runId}`
+123. Verifikasi Missing record atas `Hard Disk Eksternal WD 2TB {runId}` dibuat dengan status `Waiting for Confirmation` dan pelapor tercatat `Wulan Prasetyo {runId}`
+124. Bambang mengganti PIC Borrower `Gunawan Setiadi {runId}` dari Wulan menjadi Yoga
+125. Yoga mengirim Cancel Damage Report atas laporan Damaged pada `Mesin Laminasi GBC {runId}`
+126. Verifikasi Cancel Damage Report ditolak server karena Yoga bukan pelapor tercatat
+127. Verifikasi laporan Damaged pada `Mesin Laminasi GBC {runId}` tetap `Waiting for Confirmation` dan menunggu keputusan Aktor Damaged
+128. Yoga mengirim Cancel Missing Report atas laporan Missing pada `Hard Disk Eksternal WD 2TB {runId}`
+129. Verifikasi Cancel Missing Report ditolak server karena Yoga bukan pelapor tercatat
+130. Verifikasi laporan Missing pada `Hard Disk Eksternal WD 2TB {runId}` tetap `Waiting for Confirmation` dan menunggu keputusan Aktor Missing
+
+### Borrower dibuatkan akun: Borrower tidak membatalkan laporan PIC lama
+131. Wulan mengirim Report Damaged atas nama Lestari untuk pinjaman `Speaker Konferensi Jabra 410 {runId}` dengan Damaged Photo `speaker-konferensi-kabel-putus.jpg` dan What happened `Kabel speaker konferensi putus dekat konektor`
+132. Verifikasi Damage Report atas `Speaker Konferensi Jabra 410 {runId}` dibuat dengan status `Waiting for Confirmation` dan pelapor tercatat `Wulan Prasetyo {runId}`
+133. Wulan mengirim Report Missing atas nama Lestari untuk pinjaman `Alat Ukur Fluke 117 {runId}`
+134. Verifikasi Missing record atas `Alat Ukur Fluke 117 {runId}` dibuat dengan status `Waiting for Confirmation` dan pelapor tercatat `Wulan Prasetyo {runId}`
+135. Bambang membuatkan akun login untuk Borrower `Lestari Wibowo {runId}` dengan Email `lestari.wibowo.{runId}@example.com`
+136. Lestari mengirim Cancel Damage Report atas laporan Damaged pada `Speaker Konferensi Jabra 410 {runId}`
+137. Verifikasi Cancel Damage Report ditolak server karena Lestari bukan pelapor tercatat
+138. Verifikasi laporan Damaged pada `Speaker Konferensi Jabra 410 {runId}` tetap `Waiting for Confirmation` dan menunggu keputusan Aktor Damaged
+139. Lestari mengirim Cancel Missing Report atas laporan Missing pada `Alat Ukur Fluke 117 {runId}`
+140. Verifikasi Cancel Missing Report ditolak server karena Lestari bukan pelapor tercatat
+141. Verifikasi laporan Missing pada `Alat Ukur Fluke 117 {runId}` tetap `Waiting for Confirmation` dan menunggu keputusan Aktor Missing

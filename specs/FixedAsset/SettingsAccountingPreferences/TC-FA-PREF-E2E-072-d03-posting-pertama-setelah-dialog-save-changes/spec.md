@@ -34,8 +34,8 @@ coverage:
 - Akun aktor UI: Total Control "Rina Anggraini" (Pre-setup PC-8) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Pelaku kedua (hanya memicu perubahan state): Total Control kedua (Pre-setup PC-8) lewat sesi API, password `Spectra.env.FA_PREF_TC2_PASSWORD`. Email akun ini tidak tertulis di Pre-setup TC (lihat Temuan untuk QA). Sesi API aktor: lihat butir "Sesi API aktor" di `suite.md`.
 - Env var `FA_TC_PASSWORD` dan `FA_PREF_TC2_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup: PC-1 (Preferences nilai awal: Fiscal Year Start January, First Accounting Period Mar 2026, belum ada posting penyusutan, periode Mar 2026 sampai Dec 2026 Open). Asset Class `IT Equipment` (PC-6) menjadi tempat Last Posted Period terisi.
-- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "13 accounting periods will be rebuilt." (TC-557) dan "12 accounting periods will be rebuilt."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
+- Data Pre-setup: PC-1 (Preferences nilai awal: Fiscal Year Start January, First Accounting Period Mar 2026, belum ada Run Posted). Asset Class `IT Equipment` (PC-6) menjadi tempat Last Posted Period terisi.
+- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "The period calendar will have 13 accounting periods." (TC-557) dan "The period calendar will have 12 accounting periods."; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
 - Data Dinamis DC-8: posting penyusutan pertama yang dibuat pelaku kedua saat dialog Save Changes terbuka (Last Posted Period Apr 2026 pada `IT Equipment`).
 - Kemampuan teknis: aksi fixture BE "posting penyusutan pertama" (Depreciation Run belum disusun) dan kemampuan baca jumlah baris Changelog, System Log, dan Activity Log FAMS (surface audit trail permanen; N dibaca sebelum aksi, bagian 8b butir 10). Keduanya disediakan tim FE/BE tanpa endpoint karangan (S-13).
 - Seed dan pemulihan Preferences lewat API: lihat butir "Seed dan pemulihan lewat API" di `suite.md`. Spec mengubah state BE (posting penyusutan pertama membuat Fiscal Year Start dan First Accounting Period terkunci); pemulihan ke PC-1 dilakukan di langkah 20 dan di hook `after` spec ini.
@@ -50,10 +50,10 @@ coverage:
 1. Catat jumlah baris Changelog, System Log, dan Activity Log FAMS
 2. Pilih "April" pada Select Fiscal Year Start
 3. Klik [Save changes]
-4. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "13 accounting periods will be rebuilt." dan "Tax year start also follows Fiscal Year Start." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
+4. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "The period calendar will have 13 accounting periods." dan "Tax year start also follows Fiscal Year Start." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
 5. Sesi API Total Control kedua: lakukan posting penyusutan pertama hingga Asset Class `IT Equipment` memiliki Last Posted Period Apr 2026 tersimpan
 6. Klik [Save] pada dialog Save Changes
-7. Verifikasi dialog "Cannot Save Preferences" tampil dengan body "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted or a period has been closed. The page has been reloaded with the latest lock status." dan tombol [OK]
+7. Verifikasi dialog "Cannot Save Preferences" tampil dengan body "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted. The page has been reloaded with the latest lock status." dan tombol [OK]
 8. Verifikasi tidak ada toast tambahan
 9. Klik [OK]
 10. Verifikasi halaman dimuat ulang dari nilai tersimpan dan perubahan yang belum disimpan dibuang: Select Fiscal Year Start menampilkan "January"
@@ -73,10 +73,10 @@ coverage:
 21. Catat jumlah baris Changelog, System Log, dan Activity Log FAMS
 22. Pilih bulan "January" dan tahun "2026" pada Select First Accounting Period
 23. Klik [Save changes]
-24. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "12 accounting periods will be rebuilt." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
+24. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet baris dampak "The period calendar will have 12 accounting periods." lalu pertanyaan "Are you sure you want to save these changes?", tombol [Cancel] dan [Save]
 25. Sesi API Total Control kedua: lakukan posting penyusutan pertama hingga Asset Class `IT Equipment` memiliki Last Posted Period Apr 2026 tersimpan
 26. Klik [Save] pada dialog Save Changes
-27. Verifikasi dialog "Cannot Save Preferences" tampil dengan body "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted or a period has been closed. The page has been reloaded with the latest lock status." dan tombol [OK]
+27. Verifikasi dialog "Cannot Save Preferences" tampil dengan body "Fiscal Year Start and First Accounting Period are locked because depreciation has been posted. The page has been reloaded with the latest lock status." dan tombol [OK]
 28. Verifikasi tidak ada toast tambahan
 29. Klik [OK]
 30. Verifikasi halaman dimuat ulang dari nilai tersimpan dan perubahan yang belum disimpan dibuang: Select First Accounting Period menampilkan "Mar 2026"

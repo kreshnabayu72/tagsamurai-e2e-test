@@ -5,16 +5,16 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [D-DMG-04, "§4.2.4#p4", "§4.4#r6", FLD-DMG-06, TS-DMG-04, "§4.2.4#p12", "§9.6#r3", EB-FRM-4@reason, EB-FB-1@reject, EB-FB-2@cancel-reject-report, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-7@reject-report, EB-ERR-1@reject-report]
+sourceRules: [D-DMG-04, "§4.2.4#p5", "§4.4#r6", FLD-DMG-06, TS-DMG-04, "§4.2.4#p13", "§9.6#r3", EB-FRM-4@reason, EB-FB-1@reject, EB-FB-2@cancel-reject-report, EB-FRM-1@reject-report, EB-FRM-2@reject-report, EB-FRM-7@reject-report, EB-ERR-1@reject-report, "§4.2.4#r16"]
 smoke: []
 dependsOn: []
 trace:
   D-DMG-04: [2, 3, 5, 6, 7]
-  "§4.2.4#p4": [2, 3, 4, 5, 6, 7]
+  "§4.2.4#p5": [2, 3, 4, 5, 6, 7]
   "§4.4#r6": [2]
   FLD-DMG-06: [10, 14, 17, 19, 21, 23]
   TS-DMG-04: [27, 39]
-  "§4.2.4#p12": [65, 73, 75]
+  "§4.2.4#p13": [65, 73, 75]
   "§9.6#r3": [27, 28, 39]
   EB-FRM-4@reason: [17, 19]
   EB-FB-1@reject: [27, 39]
@@ -23,6 +23,7 @@ trace:
   EB-FRM-2@reject-report: [52, 53, 56, 57, 65, 66, 67, 69, 71]
   EB-FRM-7@reject-report: [77, 78, 79, 81, 83, 85]
   EB-ERR-1@reject-report: [39, 40, 41, 43, 47, 48, 49]
+  "§4.2.4#r16": [10, 14, 27, 39, 43]
 anchor: []
 coverage:
   web: automated

@@ -5,18 +5,18 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-20", "FI-21", "§1.2#r14", "§1.2#r24", "§1.2#r36", "§1.2#r37", "§1.2#r41", "§1.2#r42", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r12", "§2.1#r13", "§4.1b#r12", "§4.1b#r31", "§4.1b#p6", "§4.2.3#p1", "§4.2.5#p4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§9.2#b7"]
+sourceRules: ["FI-20", "FI-21", "§1.2#r15", "§1.2#r25", "§1.2#r37", "§1.2#r38", "§1.2#r42", "§1.2#r43", "§2.1#r1", "§2.1#r2", "§2.1#r3", "§2.1#r4", "§2.1#r5", "§2.1#r6", "§2.1#r7", "§2.1#r8", "§2.1#r9", "§2.1#r10", "§2.1#r12", "§2.1#r13", "§4.1b#r12", "§4.1b#r31", "§4.1b#p6", "§4.2.3#p1", "§4.2.5#p4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§4.8#r1", "§4.8#r2", "§4.8#r3", "§4.8#r4", "§4.8#r5", "§4.8#r6", "§4.8#r7", "§4.8#r8", "§4.8#r9", "§4.8#r10", "§4.8#r11", "§4.8#r12", "§4.8#r13", "§4.8#r14", "§9.2#b7"]
 smoke: []
 dependsOn: ["Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log", "Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
   "FI-20": [17, 18]
   "FI-21": [20, 21, 22, 25, 27, 28, 29]
-  "§1.2#r14": 4
-  "§1.2#r24": 4
-  "§1.2#r36": [4, 67]
-  "§1.2#r37": [6, 68]
-  "§1.2#r41": [33, 34, 35, 38, 41, 44, 47, 50, 53, 71]
-  "§1.2#r42": 73
+  "§1.2#r15": 4
+  "§1.2#r25": 4
+  "§1.2#r37": [4, 67]
+  "§1.2#r38": [6, 68]
+  "§1.2#r42": [33, 34, 35, 38, 41, 44, 47, 50, 53, 71]
+  "§1.2#r43": 73
   "§2.1#r1": [2, 5]
   "§2.1#r2": 13
   "§2.1#r3": [71, 77, 78, 80]
@@ -82,6 +82,7 @@ coverage:
   - Sort aktif tab Borrowed adalah bawaan, Due Date terdekat dulu, sehingga di antara baris yang dapat dipilih baris `Laptop Lenovo E14 {runId}` milik Borrower `Hendra Kusuma` paling awal, sebelum baris `Monitor Dell P2422H {runId}` dan `Router Mikrotik hAP {runId}`.
   - Baris Borrower `Hendra Kusuma` yang dapat dipilih untuk bulk Request Extension ada `4`: DU-040-4, DU-040-5, DU-040-8, dan DU-040-9.
   - Sesi Handover DU-040-12 dan DU-040-14 menunggu konfirmasi dan jendela konfirmasinya belum habis.
+  - Halaman Extension Request bulk untuk `Laptop Lenovo E14 {runId}` dan `Proyektor Epson X06 {runId}` terisi bawaan dengan isian valid, sehingga `[Submit Request]` tidak ditolak validasi klien.
 
 ## Test Steps
 
@@ -197,7 +198,7 @@ coverage:
 91. Centang baris `Proyektor Epson X06 {runId}`
 92. Klik `Bulk Action`
 93. Klik `Request Extension`
-94. Klik `[Submit Request]`
+94. Klik `[Submit Request]` dengan isian halaman Extension Request yang terisi bawaan dan valid
 95. Buka menu `⋯` pada baris `Laptop Lenovo E14 {runId}`
 96. Klik `Borrow Log`
 97. Verifikasi node `Extension requested` pada dialog Borrow Log dicatat `[PIC] on behalf of [Borrower]` dengan PIC `Taufik Hidayat {runId}` dan Borrower `Hendra Kusuma`

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §2#b2, §2#b3, §2#b5, §2.1#b7, §2.1#b4, S-DMG-01, S-DMG-06, S-DMG-09, T-DMG-01, §9.3#b1, EB-AKS-5@confirm, EB-AKS-6, D-DISP-15]
+sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r10, §4.8#r11, §4.8#r12, §4.8#r13, §2#b2, §2#b3, §2#b5, §2.1#b9, §2.1#b6, S-DMG-01, S-DMG-06, S-DMG-09, T-DMG-01, §9.3#b1, EB-AKS-5@confirm, EB-AKS-6, D-DISP-15]
 smoke: []
 dependsOn: []
 trace:
@@ -27,15 +27,15 @@ trace:
   §4.8#r5: [11, 12, 25]
   §4.8#r6: [20, 54]
   §4.8#r7: 21
-  §4.8#r8: 13
-  §4.8#r9: [17, 74, 78]
-  §4.8#r10: 34
-  §4.8#r11: [27, 28]
+  §4.8#r10: 13
+  §4.8#r11: [17, 74, 78]
+  §4.8#r12: 34
+  §4.8#r13: [27, 28]
   §2#b2: 5
-  §2#b3: [11, 54]
+  §2#b3: [11, 12, 20, 45, 47, 54]
   §2#b5: 3
-  §2.1#b7: [7, 8, 24, 25]
-  §2.1#b4: 17
+  §2.1#b9: [7, 8, 24, 25]
+  §2.1#b6: [13, 17, 74, 78]
   S-DMG-01: 3
   S-DMG-06: 17
   S-DMG-09: [33, 34]
@@ -57,7 +57,7 @@ coverage:
 - Data:
   - DU-016-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}` (DU-016-8), status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-016-13.
   - DU-016-2: Damage record aset `Projector Epson EB-X06 {runId}` di Group `Sub Head Office {runId}` (DU-016-9, descendant `Head Office {runId}`), status `Damaged`, Source `Manual`, dilaporkan DU-016-12.
-  - DU-016-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-016-12.
+  - DU-016-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-016-12.
   - DU-016-4: Damage record aset `Toyota Avanza {runId}` di Group `Branch Surabaya {runId}` (DU-016-10), status `Damaged`, Source `Manual`, dilaporkan DU-016-12.
   - DU-016-5: Damage record aset `Drill Bosch GSB {runId}` di Group `Head Office {runId}`, status `Repaired`, Source `Manual`, dilaporkan DU-016-12.
   - DU-016-6: Aset `Tablet Samsung Tab A8 {runId}` di Group `Head Office {runId}`, tanpa record Damaged berjalan.
@@ -73,7 +73,7 @@ coverage:
   - DU-016-16: User `Maya Puspita {runId}`, pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` dan Asset Admin sub-tab Disposal; cakupan: Group Update beserta descendant.
   - DU-016-17: Damage record aset `Scanner Brother ADS-2200 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Manual`, dilaporkan DU-016-16.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 

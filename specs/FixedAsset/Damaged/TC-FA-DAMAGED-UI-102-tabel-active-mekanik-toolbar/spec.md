@@ -4,18 +4,18 @@ title: "Mekanik toolbar sub-tab Active: siklus kotak Search, indikator sort, Set
 layer: ui-client
 priority: Medium
 caseType: Positive
-status: ready-for-automation
+status: draft
 sourceRules: [T-DMG-01, "§5#r8", "§9.5#r4", EB-SRC-4@tabel-active, EB-SRC-6@filter-group, EB-SRC-6@filter-category, EB-SRT-3@tabel-active, EB-KOL-1@tabel-active, EB-FLT-2@tabel-active, EB-FLT-6@tabel-active, EB-TBL-7@tabel-active, EB-DL-2@tabel-active, EB-DL-5]
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [32, 98, 99, 100, 101, 102, 103, 104, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225]
+  T-DMG-01: [32, 98, 99, 100, 101, 102, 103, 104, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 241, 243, 244, 246, 247]
   "§5#r8": [36, 93, 94]
   "§9.5#r4": [179, 180, 182]
   EB-SRC-4@tabel-active: [3, 5, 7, 8, 10, 11, 12, 14, 16, 17, 19, 20]
   EB-SRC-6@filter-group: [161, 163, 165, 166, 168]
   EB-SRC-6@filter-category: [172, 174, 176, 177]
-  EB-SRT-3@tabel-active: [23, 25, 27, 30, 31, 32]
+  EB-SRT-3@tabel-active: [23, 25, 27, 30, 31, 32, 241, 243, 244, 246, 247]
   EB-KOL-1@tabel-active: [35, 37, 39, 40, 42, 44, 47, 49, 53, 54, 55, 56, 58, 59, 61, 67, 68, 69, 74, 75, 77, 79, 86, 88, 90, 230, 232, 236, 238]
   EB-FLT-2@tabel-active: [97, 109, 111, 116, 118, 119, 121, 122, 123, 125, 134, 135, 137, 138, 142, 144, 149, 153, 157]
   EB-FLT-6@tabel-active: [128, 129, 130, 132]
@@ -34,10 +34,10 @@ coverage:
 - Layar awal: halaman Assets, tab `Damaged`, sub-tab `Active`.
 - Komponen: Tabel T-DMG-01 (sub-tab Active)
 - Data:
-  - DU-102-1: Record `Printer HP LaserJet M404 - 8`, Asset ID `PRN-2026-0008`, Group `Head Office`, Status `Reported Disposal`, Source `Stock opname`, Reported By `Agus Prasetyo`.
+  - DU-102-1: Record `Printer HP LaserJet M404 - 8`, Asset ID `PRN-2026-0008`, Group `Head Office`, Status `Reported Disposal`, Source `Audit`, Reported By `Agus Prasetyo`.
   - DU-102-2: Record `Monitor Dell P2422H - 6`, Asset ID `MON-2026-0006`, Group `Warehouse`, Status `In Disposal Process`, Source `Manual`, Reported By `Rina Wijaya`.
   - DU-102-3: Record `Camera Canon EOS - 3`, Asset ID `CAM-2026-0003`, Group `Branch Surabaya`, Status `Damaged`, Source `Manual`, Reported By `Agus Prasetyo`.
-  - DU-102-4: Sebelas nilai Source pada data tabel: `Manual`, `Reported by scan`, `Reported by holder`, `Borrowed asset`, `Borrow return`, `Assigned asset`, `Assign return`, `Stock opname`, `Transfer receive`, `Missing asset`, `Registration`.
+  - DU-102-4: Dua belas nilai Source pada data tabel: `Manual`, `Reported by scan`, `Reported by holder`, `Borrowed asset`, `Borrow return`, `Assigned asset`, `Assign return`, `Audit`, `Maintenance`, `Transfer receive`, `Missing asset`, `Registration`.
   - DU-102-5: Pohon Group dengan node `Head Office`, `Warehouse`, dan `Branch Surabaya`.
   - DU-102-6: Pohon Category dengan node `Electronics`, `Furniture`, dan `Vehicle`.
   - DU-102-7: 25 record `Office Desk Standard - {n}` (n = 1 sampai 25), Asset ID `DSK-2026-{n}`, Group `Head Office`, Status `Damaged`, Source `Manual`.
@@ -45,7 +45,7 @@ coverage:
 - Kondisi:
   - K1: daftar memuat DU-102-1 sampai DU-102-3 dengan kolom bawaan Setup Column; pohon filter Group dan Category memuat DU-102-5 dan DU-102-6; aktor berhak melihat nilai finansial; jawaban daftar mengikuti Search, saringan, urutan, dan halaman yang dikirim tabel.
   - K2: daftar seperti K1, dengan Setup Column hanya menampilkan kolom `Name`.
-  - K3: daftar seperti K1, dengan opsi filter `Source` memuat sebelas nilai pada DU-102-4.
+  - K3: daftar seperti K1, dengan opsi filter `Source` memuat dua belas nilai pada DU-102-4.
   - K4: daftar kosong, sehingga sumber opsi filter tidak memuat nilai.
   - K5: daftar memuat 25 record pada DU-102-7 dengan ukuran halaman bawaan.
   - K6: daftar seperti K1; unduhan gagal karena error server.
@@ -240,7 +240,7 @@ coverage:
 ### Chip opsi melimpah diringkas
 154. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K3
 155. Klik ikon Filter
-156. Pilih satu per satu seluruh sebelas opsi pada field `Source`
+156. Pilih satu per satu seluruh dua belas opsi pada field `Source`
 157. Verifikasi ringkasan `+N more` tampil pada field `Source` dan field tidak melebar keluar Filter Panel
 
 ### Pencarian tree Group berjalan saat Enter
@@ -341,5 +341,16 @@ coverage:
 236. Verifikasi checkbox `Name` pada dialog `Setup Column` Disabled
 237. Arahkan pointer ke checkbox `Name` pada dialog `Setup Column`
 238. Verifikasi alasan `At least one column must remain visible.` tersampaikan pada checkbox yang Disabled
+
+### Indikator sort pada kolom tanggal, angka, dan teks lain
+239. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+240. Klik header kolom `Last Updated`
+241. Verifikasi indikator sort aktif pada header kolom `Last Updated`
+242. Klik header kolom `Days Damaged`
+243. Verifikasi indikator sort aktif pada header kolom `Days Damaged`
+244. Verifikasi indikator sort pada header kolom `Last Updated` tidak aktif
+245. Klik header kolom `Last Holder`
+246. Verifikasi indikator sort aktif pada header kolom `Last Holder`
+247. Verifikasi indikator sort pada header kolom `Days Damaged` tidak aktif
 
 [^drift-1]: Drift foundation vs kontrak komponen. PRD §9.5: `Pagination | Mengikuti prd-conventions.md §9.11, tanpa delta`; foundation `prd-conventions.md` §9.18: `input diabaikan dan tabel tetap di halaman sekarang`. Kontrak `Paginator#9`: `a page past the last goes to the last page`. Diasersi: kontrak (SB-7), sehingga nomor halaman melebihi halaman terakhir membuka halaman terakhir.

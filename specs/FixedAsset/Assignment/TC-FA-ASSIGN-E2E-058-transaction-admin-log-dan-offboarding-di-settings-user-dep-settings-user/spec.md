@@ -46,7 +46,7 @@ coverage:
   - DU-058-7: Karyawan `Wulan Sari {runId}`, Status `Active`, Activation Status `Activated`, ber-akun login, Assignee DU-058-17.
   - DU-058-8: Draft Assignee `Wulan Sari {runId}` dengan aset `Kamera Mirrorless Sony A6400 {runId}` (Group `Head Office`), Purpose `Dokumentasi acara`, dibuat oleh `Dewi Lestari {runId}`; satu baris tindakan Draft create tercatat di Transaction admin log `Dewi Lestari {runId}`; Modified By Draft `Dewi Lestari {runId}`. Purpose baru yang diketik Aktor: `Dokumentasi seminar`.
   - DU-058-9: Draft Assignee `Budi Santoso {runId}` (DU-058-20) dengan aset `Mesin Label Brother PT-P700 {runId}` (Group `Head Office`, dalam cakupan Group `Head Office` Aktor Assignment `Dewi Lestari {runId}`), Purpose `Pelabelan aset`, dibuat oleh `Rudi Hartono {runId}`.
-  - DU-058-10: Riwayat tindakan `Dewi Lestari {runId}` di Transaction admin log: `Assignment requested by [Actor]` untuk aset `Kursi Ergonomis Ergotec {runId}` (Purpose `Kerja harian`, Approval `Not required`); `Handed over by [Giver]` untuk aset `Meja Kerja Lipat {runId}`; `PIC changed by [Actor]` untuk aset `Lemari Arsip Besi {runId}`; `Damage reported by [Reporter]` untuk aset `Kipas Angin Berdiri {runId}`; `Canceled by [Actor]` untuk aset `Rak Buku Kayu {runId}`; `Unassigned by [Receiver]` untuk aset `Scanner Epson DS-530 {runId}`; `Reported missing by [Actor]` untuk aset `Router Mikrotik hAP ax2 {runId}`; `Damage report canceled by [Actor]` untuk aset `Proyektor Epson EB-X06 {runId}`; `Canceled by [Actor]` dengan Description `Saved as draft` untuk aset `Whiteboard Magnetik {runId}` (Cancel dengan Save as draft).
+  - DU-058-10: Riwayat tindakan `Dewi Lestari {runId}` di Transaction admin log: `Assignment requested by [Actor]` untuk aset `Kursi Ergonomis Ergotec {runId}` (Purpose `Kerja harian`, Approval `Not required`); `Handed over by [Giver]` untuk aset `Meja Kerja Lipat {runId}`; `PIC changed by [Actor]` untuk aset `Lemari Arsip Besi {runId}`; `Canceled by [Actor]` untuk aset `Rak Buku Kayu {runId}`; `Unassigned by [Receiver]` untuk aset `Scanner Epson DS-530 {runId}`; `Canceled by [Actor]` dengan Description `Saved as draft` untuk aset `Whiteboard Magnetik {runId}` (Cancel dengan Save as draft). Laporan dari halaman Assignment oleh `Dewi Lestari {runId}` tidak masuk sub-tab `Assignment` melainkan sub-tab `Damaged` (Report Damaged atas aset `Kipas Angin Berdiri {runId}` dan Cancel Damage Report atas aset `Proyektor Epson EB-X06 {runId}`, Source `Assigned asset`) dan sub-tab `Missing` (Report Missing atas aset `Router Mikrotik hAP ax2 {runId}`, Source `Assign`).
   - DU-058-11: Riwayat tindakan `Anton Pratama {runId}`: `Approved by [Approver]` untuk aset `Dispenser Air Galon {runId}`; `Rejected by [Approver]` untuk aset `Kulkas Mini Sharp {runId}`.
   - DU-058-12: ASG `Waiting for Approval` untuk Assignee `Tono Hartono {runId}`, diajukan oleh pengaju `Dewi Lestari {runId}`, berisi aset `Laptop Asus ExpertBook {runId}` (Group `Head Office`).
   - DU-058-13: ASG `Waiting for Handover` untuk Assignee `Tono Hartono {runId}`, diajukan oleh pengaju `Dewi Lestari {runId}`, berisi aset `Monitor Samsung S24 {runId}` (Group `Head Office`).
@@ -74,7 +74,7 @@ coverage:
 5. Verifikasi baris Activity `Assignment requested by [Actor]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Kursi Ergonomis Ergotec {runId}` dengan Description `Purpose: Kerja harian · Approval: Not required`
 6. Verifikasi baris Activity `Handed over by [Giver]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Meja Kerja Lipat {runId}`
 7. Verifikasi baris Activity `PIC changed by [Actor]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Lemari Arsip Besi {runId}`
-8. Verifikasi baris Activity `Damage reported by [Reporter]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Kipas Angin Berdiri {runId}`
+8. Verifikasi tidak ada baris Report Damaged untuk aset `Kipas Angin Berdiri {runId}` di sub-tab `Assignment` karena laporan dari halaman Assignment hanya dicatat di sub-tab `Damaged`
 9. Verifikasi baris Activity `Canceled by [Actor]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Rak Buku Kayu {runId}`
 10. Verifikasi satu baris tindakan Draft create dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Kamera Mirrorless Sony A6400 {runId}`
 11. Verifikasi tidak ada baris untuk aset `Tablet Lenovo Tab M10 {runId}` karena konfirmasi Assignee atas penugasannya sendiri tidak masuk log ini
@@ -167,15 +167,15 @@ coverage:
 84. Verifikasi form Assignment Request mode edit terbuka dengan aset `Mesin Label Brother PT-P700 {runId}` dan Purpose `Pelabelan aset`
 85. Klik `[Cancel]` pada form Draft yang belum diubah
 
-### Transaction admin log Aktor Assignment memuat Unassign, Report Missing, Cancel Damage Report, Cancel dengan Save as draft, dan Confirm on This Device
+### Transaction admin log Aktor Assignment memuat Unassign, Cancel dengan Save as draft, dan Confirm on This Device; Report Missing, Report Damaged, dan Cancel Damage Report dari halaman Assignment tercatat di sub-tab Missing dan Damaged
 86. Admin pengguna `Fajar Nugroho {runId}`: Buka halaman Settings > User
 87. Ketik Search `Dewi Lestari {runId}`, tekan Enter
 88. Buka User Detail `Dewi Lestari {runId}`
 89. Buka tab `Transaction admin log`
 90. Verifikasi baris Activity `Unassigned by [Receiver]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Scanner Epson DS-530 {runId}`
-91. Verifikasi baris Activity `Reported missing by [Actor]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Router Mikrotik hAP ax2 {runId}`
-92. Verifikasi baris Activity `Damage report canceled by [Actor]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Proyektor Epson EB-X06 {runId}`
-93. Verifikasi baris Activity `Canceled by [Actor]` dengan pelaku `Dewi Lestari {runId}` dan Description `Saved as draft` tampil untuk aset `Whiteboard Magnetik {runId}`
+91. Verifikasi tidak ada baris Report Missing untuk aset `Router Mikrotik hAP ax2 {runId}` di sub-tab `Assignment`; klik sub-tab `Missing`, lalu verifikasi baris Activity `Reported missing` dengan Name `Router Mikrotik hAP ax2 {runId} - 1`, Source `Assign`, dan Group `Head Office` tampil
+92. Verifikasi tidak ada baris Cancel Damage Report untuk aset `Proyektor Epson EB-X06 {runId}` di sub-tab `Assignment`; klik sub-tab `Damaged`, lalu verifikasi baris Activity `Report canceled` untuk aset `Proyektor Epson EB-X06 {runId} - 1` dan baris Activity `Reported damaged` untuk aset `Kipas Angin Berdiri {runId} - 1`, masing-masing dengan Source `Assigned asset` dan Group `Head Office`
+93. Klik sub-tab `Assignment`, lalu verifikasi baris Activity `Canceled by [Actor]` dengan pelaku `Dewi Lestari {runId}` dan Description `Saved as draft` tampil untuk aset `Whiteboard Magnetik {runId}`
 94. Verifikasi baris Activity `Handed over by [Giver]` dengan pelaku `Dewi Lestari {runId}` tampil untuk aset `Headset Jabra Evolve 40 {runId}` dengan Description `Confirmation: Confirmed by Dewi Lestari {runId} on behalf of Wulan Sari {runId}`
 
 ### Transaction admin log Approver memuat keputusan Reject

@@ -5,16 +5,16 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-09, D-DISP-15, TS-DISP-18, "§4.4#r12", TS-DMG-08, S-DMG-06, V-DMG-06, "§8.1#r15", "§Aturan Logika Modul#r20", "§9.2#b22", "§9.6#r8", "§9.4.4#r26", "§2.1#r9", "§4.8#r9", "§2.1#b4", "EB-FB-1@cancel-disposal-report"]
+sourceRules: [T-DMG-01, D-DMG-09, D-DISP-15, TS-DISP-18, "§4.4#r12", TS-DMG-08, S-DMG-06, V-DMG-06, "§8.1#r15", "§Aturan Logika Modul#r21", "§9.2#b25", "§9.6#r8", "§9.4.4#r29", "§2.1#r9", "§4.8#r11", "§2.1#b6", "EB-FB-1@cancel-disposal-report", "§4.2.4#p6", "§4.2.4#r17", "§3#p7"]
 smoke: []
 dependsOn:
   - "Disposal: Cancel Report (D-DISP-15)"
 trace:
-  "§9.2#b22": [2, 4]
+  "§9.2#b25": [2, 4]
   T-DMG-01: [4, 13, 32, 33, 38, 39]
   "§2.1#r9": 4
-  "§4.8#r9": 4
-  "§2.1#b4": [4, 13, 33, 39]
+  "§4.8#r11": 4
+  "§2.1#b6": [4, 13, 33, 39]
   D-DISP-15: [4, 6, 9, 10, 13, 33, 39]
   D-DMG-09: [6, 10]
   "§4.4#r12": [6, 9, 10]
@@ -22,11 +22,14 @@ trace:
   TS-DMG-08: 9
   "EB-FB-1@cancel-disposal-report": 9
   "§9.6#r8": [9, 10]
-  "§Aturan Logika Modul#r20": [10, 12]
+  "§Aturan Logika Modul#r21": [10, 12]
   S-DMG-06: [13, 30, 33, 36, 39]
   "§8.1#r15": [16, 17, 18]
   V-DMG-06: [21, 26, 28]
-  "§9.4.4#r26": [26, 28]
+  "§9.4.4#r29": [26, 28]
+  "§4.2.4#p6": [26, 28]
+  "§4.2.4#r17": 26
+  "§3#p7": [6, 10]
 anchor: []
 coverage:
   web: automated
@@ -46,7 +49,7 @@ coverage:
   - DU-043-6: Input Cancel Disposal Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki`.
   - DU-043-7: Input Decline Report `Admin B {runId}` atas `Monitor Dell P2422H {runId}`: Reason `Laporan ditolak karena aset masih dapat dipakai`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 

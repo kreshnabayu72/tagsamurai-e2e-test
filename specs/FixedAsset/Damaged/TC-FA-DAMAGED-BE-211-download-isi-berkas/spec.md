@@ -5,16 +5,16 @@ layer: be-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§5#r6", "EB-DL-4", "EB-DL-5", "T-DMG-01", "T-DMG-02", "§2.1#r10"]
+sourceRules: ["§5#r6", EB-DL-4, EB-DL-5, T-DMG-01, T-DMG-02, "§2.1#r10"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
   "§5#r6": [2, 5, 7, 19, 30, 32, 47, 54]
-  "EB-DL-4": [3, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 21, 23, 25, 27, 28, 34, 36, 38, 40, 42, 44]
-  "EB-DL-5": [47, 49, 50]
-  "T-DMG-01": [2, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 23, 25, 30, 32, 34, 38, 40, 42, 44, 56]
-  "T-DMG-02": [7, 27, 28]
+  EB-DL-4: [3, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 21, 23, 25, 27, 28, 34, 36, 38, 40, 42, 44]
+  EB-DL-5: [47, 49, 50]
+  T-DMG-01: [2, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 23, 25, 30, 32, 34, 38, 40, 42, 44, 56]
+  T-DMG-02: [7, 27, 28]
   "§2.1#r10": [52, 54, 56]
 ---
 
@@ -36,7 +36,7 @@ trace:
   - DU-211-7: Group `Bandung Office {runId} > Floor 2 {runId}`, leaf-nya sama dengan Group di bawah `Head Office {runId}` tetapi parent berbeda.
   - DU-211-8: Aset `Laptop Lenovo ThinkPad - 301 {runId}`, Asset ID `LPT-0301-{runId}`, Status `Damaged`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `RFID, NFC`, Brand `Lenovo {runId}`, Model/Type `ThinkPad X1 {runId}`, Category `Elektronik {runId} > Laptop {runId}`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, Modified By `Siti Nur Rahmawati {runId}`, Labels `Prioritas {runId}, Aset Kantor {runId}, Aset Lantai Dua {runId}`, Purchase Cost `12500000`, Asset Value (Commercial) `10000000`, Days Damaged `7`, sub-tab Active.
   - DU-211-9: Aset `Laptop Lenovo ThinkPad - 302 {runId}`, Asset ID `LPT-0302-{runId}`, Status `Waiting for Confirmation`, Group `Bandung Office {runId} > Floor 2 {runId}`, TAG `QR`, Brand `Lenovo {runId}`, Source `Reported by holder`, Purchase Cost `4500000`, sub-tab Active.
-  - DU-211-10: Aset `Printer Canon Pixma - 303 {runId}`, Asset ID `PRN-0303-{runId}`, Status `Reported Disposal`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `RFID`, Brand `Canon {runId}`, Source `Stock opname`, Purchase Cost `2100000`, sub-tab Active.
+  - DU-211-10: Aset `Printer Canon Pixma - 303 {runId}`, Asset ID `PRN-0303-{runId}`, Status `Reported Disposal`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `RFID`, Brand `Canon {runId}`, Source `Audit`, Purchase Cost `2100000`, sub-tab Active.
   - DU-211-11: Aset `Printer Canon Pixma - 304 {runId}`, Asset ID `PRN-0304-{runId}`, Status `In Disposal Process`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `RFID`, Brand `Canon {runId}`, Source `Manual`, Purchase Cost `3300000`, sub-tab Active.
   - DU-211-12: Aset `Monitor, Curved Dell - 305 {runId}`, Asset ID `MON-0305-{runId}`, Status `Damaged`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `QR`, Brand `Dell {runId}`, Source `Manual`, sub-tab Active.
   - DU-211-13: Aset `Monitor "Curved" 27 inci - 306 {runId}`, Asset ID `MON-0306-{runId}`, Status `Damaged`, Group `Head Office {runId} > Floor 2 {runId} > Server Room {runId}`, TAG `QR`, Brand `Dell {runId}`, Source `Manual`, sub-tab Active.

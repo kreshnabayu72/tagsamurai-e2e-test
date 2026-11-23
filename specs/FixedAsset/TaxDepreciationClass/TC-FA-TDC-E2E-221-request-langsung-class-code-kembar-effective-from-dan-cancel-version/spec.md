@@ -33,7 +33,7 @@ coverage:
 
 - Mode: FE+BE.
 - Akun: Total Control (company uji Fixed Asset); password lewat `Spectra.env.FA_TC_PASSWORD`. Akun dan email disediakan tim FE (email tidak tertulis di TC; lihat Temuan untuk QA). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Langkah spec tidak memakai UI.
-- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung dan request baca, seed dan pemulihan lewat API (versi Scheduled, Current, dan Past, serta periode Accounting Period Closed), dan kendali jam sistem (jam server dan jam browser diatur bersama). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13).
+- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung dan request baca, seed dan pemulihan lewat API (versi Scheduled, Current, dan Past, serta Exported through), dan kendali jam sistem (jam server dan jam browser diatur bersama). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13).
 - Jam sistem uji: 15 Okt 2026 10:00 WIB (Time Zone entitas Asia/Jakarta, UTC+07:00); Fiscal Year Start Januari. Jam diatur di langkah 1 dan dipulihkan di langkah 29; hook `after` memulihkannya bila spec berhenti di tengah.
 - Data milik spec (seed idempotent di hook `before` lewat API, dipulihkan di hook `after`; kode memakai literal TC karena Class Code maksimal 15 karakter sehingga suffix `{runId}-<NNN>` tidak muat; nilai mengacu ke `Fixture.fixedAssetTaxDepreciationClass.<kunci>`, fixture disediakan tim FE):
 
@@ -43,9 +43,10 @@ coverage:
 | `nb2` | `NB-2` | versi Current dan versi Scheduled mulai Jan 2028 sebagai versi terakhir |
 | `nb1` | `NB-1` | versi dengan Effective From Jan 2026 yang sudah Current |
 | `bldNp` | `BLD-NP` | versi Past (Jan 2025) dan versi Current |
-| `periode2026` | Accounting Period tahun pajak 2026 | 12 periode berstatus Open (nilai awal); ditutup (Closed) di langkah 23 dan dikembalikan di langkah 28 |
+| `exportedThrough` | Exported through | belum mencapai Des 2026 (nilai awal); dimajukan ke Des 2026 (seluruh 12 bulan tahun pajak 2026 sudah diekspor) di langkah 23 dan dikembalikan di langkah 28 |
 
-- State global yang diubah spec: jam server dan jam browser (langkah 1 dan 29) serta status 12 periode Accounting Period tahun pajak 2026 (langkah 23 dan 28); hook `after` memulihkan keduanya.
+- State global yang diubah spec: jam server dan jam browser (langkah 1 dan 29) serta Exported through (langkah 23 dan 28); hook `after` memulihkan keduanya.
+- Nilai awal Exported through (belum mencapai Des 2026) perlu dikonfirmasi tim FE/BE: TC tidak menyebutnya, sehingga nilai ini hasil tebakan penulis spec.
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -90,23 +91,23 @@ coverage:
 
 ### TC-FA-TDC-847: Request langsung dengan Effective From pada tahun pajak tertutup ditolak
 
-23. Tutup seluruh 12 periode akuntansi tahun pajak 2026 (status Closed) lewat data uji Accounting Period
+23. Atur Exported through menjadi Des 2026 (seluruh 12 bulan tahun pajak 2026 sudah diekspor) lewat data uji Export Journal
 24. Kirim request langsung dengan sesi API aktor Total Control untuk mengubah Useful Life `NB-4` menjadi `10` dengan Effective From `1 Januari 2026` tanpa melalui UI
 25. Verifikasi server menolak request tanpa membentuk versi baru
 26. Baca ulang daftar versi `NB-4` lewat request baca
 27. Verifikasi daftar versi `NB-4` tetap satu versi
-28. Kembalikan 12 periode akuntansi tahun pajak 2026 ke status Open
+28. Kembalikan Exported through ke nilai awal
 29. Pulihkan jam server dan jam browser
 
 ## Notes
 
 - K-1: TC kelas a dengan Expected respons API tetap masuk spec FE+BE; spec hanya mengasersi status respons dan state data lewat request baca (8b.1). Tidak ada tampilan UI yang diasersi.
 - Klausa Expected c TC-FA-TDC-844, TC-FA-TDC-845, TC-FA-TDC-846, TC-FA-TDC-847, TC-FA-TDC-848, dan TC-FA-TDC-849 (tidak ada entri log baru) tidak diasersi di spec ini; asersinya ada di spec absence 270 (TC-FA-TDC-845, TC-FA-TDC-846), 271 (TC-FA-TDC-848, TC-FA-TDC-849), 273 (TC-FA-TDC-844), dan 262 (TC-FA-TDC-847) dengan aksi nyata dan baseline sendiri per TC (S-05).
-- Urutan TC: TC-FA-TDC-844, 845, 846, 848, 849, 847. TC-FA-TDC-847 di akhir karena mengubah state global (periode Accounting Period Closed) yang dipulihkan langkah 28.
-- Langkah penghubung (S-03): langkah 1 dan 29 (mengatur dan memulihkan jam); langkah 10 (baseline daftar versi untuk asersi "tidak berubah"); langkah 23 dan 28 (membentuk dan memulihkan precondition tahun pajak tertutup, tidak diasersi); langkah 4, 8, 13, 17, 21, dan 26 (membaca state data lewat request baca).
+- Urutan TC: TC-FA-TDC-844, 845, 846, 848, 849, 847. TC-FA-TDC-847 di akhir karena mengubah state global (Exported through) yang dipulihkan langkah 28.
+- Langkah penghubung (S-03): langkah 1 dan 29 (mengatur dan memulihkan jam); langkah 10 (baseline daftar versi untuk asersi "tidak berubah"); langkah 23 dan 28 (membentuk dan memulihkan precondition tahun pajak tertutup lewat Exported through, tidak diasersi); langkah 4, 8, 13, 17, 21, dan 26 (membaca state data lewat request baca).
 - Temuan untuk QA:
   - TC-FA-TDC-844 sampai 849 menulis "Server menolak request" tanpa status HTTP; spec mengasersi penolakan tanpa kode status.
   - TC-FA-TDC-844 tidak menyebut Regulation Reference pada request Create; spec mengirim field yang disebut TC.
-  - TC-FA-TDC-846 dan TC-FA-TDC-847 mensyaratkan data uji Accounting Period yang disediakan tim FE/BE; mekanisme penutupan periode tidak disebut TC.
+  - TC-FA-TDC-846 dan TC-FA-TDC-847 mensyaratkan data uji Export Journal untuk Exported through yang disediakan tim FE/BE; TC-FA-TDC-847 menyebut "Exported through Des 2026" tanpa menyebut mekanismenya.
   - Email akun Total Control dan identitas company uji tidak tertulis di TC.
   - Class Code dibatasi 15 karakter (TC-136, 137), sehingga data milik spec memakai kode literal tanpa suffix `{runId}-<NNN>` (S-12); perlu konfirmasi QA.

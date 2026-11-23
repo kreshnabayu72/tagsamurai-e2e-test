@@ -30,7 +30,7 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control (`totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`), password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture. Nama diusulkan mengikuti `<APP>_<ROLE>_PASSWORD` (perlu dikonfirmasi tim FE).
-- Data: company `PT Contoh Konstruksi` (plan Growth, Time Zone entitas Asia/Jakarta) dengan Preferences nilai awal PA-2 dan PC-1 (setara: Fiscal Year Start January, First Accounting Period Mar 2026, tidak terkunci; belum ada posting penyusutan; semua periode Mar 2026 sampai Dec 2026 Open).
+- Data: company `PT Contoh Konstruksi` (plan Growth, Time Zone entitas Asia/Jakarta) dengan Preferences nilai awal PA-2 dan PC-1 (setara: Fiscal Year Start January, First Accounting Period Mar 2026, tidak terkunci; belum ada posting penyusutan).
 - Jam sistem (clock): jam server dan jam browser diatur bersama. TC-FA-PREF-146 dan 147: 28 Oktober 2026 pukul 10:00 Asia/Jakarta (PA-1, diatur di hook `before`). TC-FA-PREF-609: 31 Oktober 2026 pukul 16:59 UTC (23:59 waktu entitas; langkah 12). TC-FA-PREF-610: 31 Oktober 2026 pukul 17:00 UTC (1 November 2026 pukul 00:00 waktu entitas; langkah 18). Dipulihkan di hook `after` bila spec gagal di tengah. Suite serial (bagian 6).
 - State yang diubah spec: jam sistem. Tidak ada Save yang berhasil; form dikembalikan ke nilai tersimpan pada langkah 11, 17, dan 23. Hook `after` memulihkan jam sistem.
 - Seed dan pemulihan lewat API disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" dan "Kendali jam sistem" di `suite.md`).
@@ -65,7 +65,7 @@ coverage:
 12. Atur jam server dan jam browser ke 31 Oktober 2026 pukul 16:59 UTC dengan Time Zone entitas Asia/Jakarta, lalu muat ulang halaman Preferences
 13. Ubah Select Fiscal Year Start dari "January" menjadi "November"
 14. Klik `[Save changes]`
-15. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet "8 accounting periods will be rebuilt." dan "Tax year start also follows Fiscal Year Start.", pertanyaan "Are you sure you want to save these changes?", serta tombol `[Cancel]` dan `[Save]`
+15. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet "The period calendar will have 8 accounting periods." dan "Tax year start also follows Fiscal Year Start.", pertanyaan "Are you sure you want to save these changes?", serta tombol `[Cancel]` dan `[Save]`
 16. Klik `[Cancel]` pada dialog
 17. Ubah Select Fiscal Year Start dari "November" menjadi "January"
 
@@ -74,7 +74,7 @@ coverage:
 18. Atur jam server dan jam browser ke 31 Oktober 2026 pukul 17:00 UTC dengan Time Zone entitas Asia/Jakarta, lalu muat ulang halaman Preferences
 19. Ubah Select Fiscal Year Start dari "January" menjadi "November"
 20. Klik `[Save changes]`
-21. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet "20 accounting periods will be rebuilt." dan "Tax year start also follows Fiscal Year Start.", pertanyaan "Are you sure you want to save these changes?", serta tombol `[Cancel]` dan `[Save]`
+21. Verifikasi dialog "Save Changes" (severity warning) tampil dengan bullet "The period calendar will have 20 accounting periods." dan "Tax year start also follows Fiscal Year Start.", pertanyaan "Are you sure you want to save these changes?", serta tombol `[Cancel]` dan `[Save]`
 22. Klik `[Cancel]` pada dialog
 23. Ubah Select Fiscal Year Start dari "November" menjadi "January"
 

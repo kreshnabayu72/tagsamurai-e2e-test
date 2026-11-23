@@ -1,6 +1,6 @@
 ---
 id: TC-FA-PREF-E2E-046-first-accounting-period-batas-transaksi-bertanggal-paling-awal-seri-pb
-title: "Save First Accounting Period terhadap transaksi bertanggal paling awal: batas satu bulan sebelum, sama, dan sesudah (seri PB)"
+title: "Save First Accounting Period terhadap catatan berefek akuntansi terawal: batas satu bulan sebelum, sama, dan sesudah (seri PB)"
 layer: ui-e2e
 priority: High
 caseType: Edge
@@ -24,14 +24,14 @@ coverage:
   web: automated
 ---
 
-# Save First Accounting Period terhadap transaksi bertanggal paling awal: batas satu bulan sebelum, sama, dan sesudah (seri PB)
+# Save First Accounting Period terhadap catatan berefek akuntansi terawal: batas satu bulan sebelum, sama, dan sesudah (seri PB)
 
 ## Prerequisites
 
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net` pada company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data: seri PB (TC-FA-PREF-176-361), company `PT Contoh Konstruksi` plan Growth (PB-1): Preferences nilai awal (Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, akun default kosong, Journal Grouping Group), periode Mar 2026 sampai Dec 2026 Open, tidak ada penyusutan diposting, Tax Depreciation Class hanya versi pertama tanpa Effective From, tidak ada transaksi bertanggal. Transaksi bertanggal paling awal: aktivasi aset bertanggal 15/05/26 (PB-9, M = Mei 2026); untuk TC-FA-PREF-226 tidak ada versi Tax Depreciation Class ber-Effective From.
+- Data: seri PB (TC-FA-PREF-176-361), company `PT Contoh Konstruksi` plan Growth (PB-1): Preferences nilai awal (Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, akun default kosong, Journal Grouping Group), periode Mar 2026 sampai Dec 2026 Open, tidak ada penyusutan diposting, Tax Depreciation Class hanya versi pertama tanpa Effective From, tidak ada catatan berefek akuntansi. Catatan berefek akuntansi terawal: baris Disposal berstatus Executed dengan Execution date 15/05/26 (PB-9, bulan penahan M = Mei 2026); untuk TC-FA-PREF-226 tidak ada versi Tax Depreciation Class ber-Effective From.
 - Data: akun Chart of Accounts PB-2.
 - Seed dan pemulihan lewat API (Preferences ke nilai awal, plan, penguncian, versi Tax Depreciation Class, transaksi bertanggal, akun Chart of Accounts) disediakan tim FE/BE: butir "Seed dan pemulihan lewat API" di `suite.md`. Hook `after` spec ini memulihkan state server yang diubah spec ke nilai awal.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true untuk akun aktor dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -40,18 +40,18 @@ coverage:
 
 ## Test Steps
 
-### TC-FA-PREF-224: Save First Accounting Period ke satu bulan setelah transaksi bertanggal paling awal ditolak V-10
+### TC-FA-PREF-224: Save First Accounting Period ke satu bulan setelah bulan catatan berefek akuntansi terawal ditolak V-10
 
 1. Ubah Select bulan First Accounting Period dari "March" menjadi "June" dan Select tahun menjadi "2026"
 2. Klik `[Save changes]`
 3. Klik `[Save]` pada dialog D-01
 4. Verifikasi dialog D-01 ditutup
 5. Verifikasi form tetap memuat seluruh perubahan yang belum disimpan
-6. Verifikasi caption "First accounting period cannot be later than existing dated transactions." tampil pada First Accounting Period
+6. Verifikasi caption "First accounting period cannot be later than May 2026, the earliest disposal or value change." tampil pada First Accounting Period
 7. Verifikasi tidak ada toast
 8. Klik `[Cancel]`
 
-### TC-FA-PREF-222: Save First Accounting Period ke satu bulan sebelum transaksi bertanggal paling awal diizinkan
+### TC-FA-PREF-222: Save First Accounting Period ke satu bulan sebelum bulan catatan berefek akuntansi terawal diizinkan
 
 9. Ubah Select bulan First Accounting Period dari "March" menjadi "April" dan Select tahun menjadi "2026"
 10. Klik `[Save changes]`
@@ -62,7 +62,7 @@ coverage:
 15. Verifikasi Select bulan First Accounting Period menampilkan "April"
 16. Verifikasi Select tahun menampilkan "2026"
 
-### TC-FA-PREF-223: Save First Accounting Period ke bulan yang sama dengan transaksi bertanggal paling awal diizinkan
+### TC-FA-PREF-223: Save First Accounting Period ke bulan yang sama dengan bulan catatan berefek akuntansi terawal diizinkan
 
 17. Pulihkan First Accounting Period ke Mar 2026 lewat seed API hingga tersimpan
 18. Buka ulang Fixed Asset > Settings > Accounting > Preferences
@@ -75,7 +75,7 @@ coverage:
 25. Verifikasi Select bulan First Accounting Period menampilkan "May"
 26. Verifikasi Select tahun menampilkan "2026"
 
-### TC-FA-PREF-226: Save hanya mengubah Fiscal Year Start tidak ditolak V-10 walau ada transaksi bertanggal
+### TC-FA-PREF-226: Save hanya mengubah Fiscal Year Start tidak ditolak V-10 walau ada catatan berefek akuntansi
 
 27. Pulihkan Preferences ke nilai awal PB-1 (Fiscal Year Start January, First Accounting Period Mar 2026) lewat seed API hingga tersimpan
 28. Buka ulang Fixed Asset > Settings > Accounting > Preferences

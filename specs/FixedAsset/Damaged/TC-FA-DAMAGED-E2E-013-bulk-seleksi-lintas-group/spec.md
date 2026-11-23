@@ -5,25 +5,26 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-07, §4.2.4#p6, §4.2.4#r9, §4.4#r13, V-DMG-08, V-DMG-02, S-DMG-08, §6#p2, §9.2#b12, EC-DMG-21, §9.4.4#r10, §5#r5, EB-BLK-2@tabel-active, F-DMG-02, EB-FB-2@dialog-blok-disposal]
+sourceRules: [T-DMG-01, D-DMG-07, §4.2.4#p7, §4.2.4#r10, §4.4#r13, V-DMG-08, V-DMG-02, S-DMG-08, §6#p2, §9.2#b13, EC-DMG-21, §9.4.4#r11, §5#r5, EB-BLK-2@tabel-active, F-DMG-02, §9.4.2#r32, EB-FB-2@dialog-blok-disposal]
 smoke: [EB-FB-2@dialog-blok-disposal]
 dependsOn: []
 trace:
   T-DMG-01: [5, 6, 8, 9, 11, 12, 14, 15, 18, 21, 22, 24, 25, 32, 35, 38, 40, 41, 44, 50, 59, 60, 62, 78]
   D-DMG-07: [67, 68, 69, 73]
-  §4.2.4#p6: [68, 69]
-  §4.2.4#r9: 67
+  §4.2.4#p7: [68, 69]
+  §4.2.4#r10: 67
   §4.4#r13: [67, 70]
   V-DMG-08: [67, 68]
   V-DMG-02: [15, 17, 18, 20, 21, 22]
   S-DMG-08: [64, 67]
   §6#p2: [70, 73, 82, 83, 84, 86, 87]
-  §9.2#b12: [64, 67]
+  §9.2#b13: [64, 67]
   EC-DMG-21: [67, 70, 74]
-  §9.4.4#r10: 74
+  §9.4.4#r11: 74
   §5#r5: 65
   EB-BLK-2@tabel-active: [25, 27, 28, 45, 47, 48, 50, 53, 55]
   F-DMG-02: [65, 67]
+  §9.4.2#r32: [82, 83, 84]
   EB-FB-2@dialog-blok-disposal: [67, 71]
 anchor: []
 coverage:
@@ -38,7 +39,7 @@ coverage:
 - Data:
   - DU-013-1: 12 Damage record aset `Monitor Dell P2422H {n} {runId}` (n = 1 sampai 12) di Group `Head Office {runId}` (DU-013-8), semuanya berstatus `Damaged`, Source `Manual`, tanpa penanda, dilaporkan DU-013-10.
   - DU-013-2: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Warehouse {runId}` (DU-013-9), status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-013-11.
-  - DU-013-3: Damage record aset `Scanner Fujitsu fi-7160 {runId}` di Group `Warehouse {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-013-10.
+  - DU-013-3: Damage record aset `Scanner Fujitsu fi-7160 {runId}` di Group `Warehouse {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-013-10.
   - DU-013-4: Damage record aset `Forklift Toyota 8FD {runId}` di Group `Warehouse {runId}`, status `In Disposal Process`, Source `Manual`, dilaporkan DU-013-10.
   - DU-013-5: Damage record aset `Camera Canon EOS {runId}` di Group `Warehouse {runId}`, status `Damaged` dengan penanda `Missing`, Source `Manual`, dilaporkan DU-013-10.
   - DU-013-6: Damage record aset `Drill Bosch GSB {runId}` di Group `Warehouse {runId}`, status `Damaged` dengan penanda `Reported Missing`, Source `Manual`, dilaporkan DU-013-10.
@@ -52,7 +53,7 @@ coverage:
   - DU-013-14: Input Reason Admin B atas record DU-013-12: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain`.
 - Kondisi:
   - Selection Limit bernilai `1000`.
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 

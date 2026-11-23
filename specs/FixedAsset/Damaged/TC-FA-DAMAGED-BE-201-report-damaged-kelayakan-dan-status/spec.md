@@ -5,33 +5,33 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r10", "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r15", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r44", "§Aturan Logika Modul#r45", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r77", "§9.2#r2", "S-DMG-22", "§9.2#b2", "§9.2#b3", "§9.2#b4", "S-DMG-21", "§4.2.3#b1", "§4.2.3#b4", "§9.4.3#b1", "§9.6#r1", "§3#p2", "V-DMG-10", "EC-DMG-01", "EC-DMG-02", "EC-DMG-04", "EC-DMG-05", "EC-DMG-27", "FLD-DMG-01", "FLD-DMG-02", "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", "EB-FRM-4@what-happened", "F-DMG-01", "§Aturan Logika Modul#r37"]
+sourceRules: ["§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r14", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r17", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r80", "§9.2#r2", S-DMG-22, "§9.2#b2", "§9.2#b3", "§9.2#b4", S-DMG-21, "§4.2.3#b2", "§4.2.3#b5", "§9.4.3#b1", "§9.6#r1", "§3#p2", V-DMG-10, EC-DMG-01, EC-DMG-02, EC-DMG-04, EC-DMG-05, EC-DMG-27, FLD-DMG-01, FLD-DMG-02, "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", EB-FRM-4@what-happened, F-DMG-01, "§Aturan Logika Modul#r39", "§9.4.2#r38", "§2.1#r2"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r10": 5
-  "§Aturan Logika Modul#r11": [25, 59, 63, 65]
-  "§Aturan Logika Modul#r12": [6, 69, 70, 71]
-  "§Aturan Logika Modul#r13": [24, 31, 33]
-  "§Aturan Logika Modul#r15": 43
-  "§Aturan Logika Modul#r16": 42
-  "§Aturan Logika Modul#r44": [2, 87]
-  "§Aturan Logika Modul#r45": [15, 18, 20, 22]
-  "§Aturan Logika Modul#r46": 4
-  "§Aturan Logika Modul#r50": 3
-  "§Aturan Logika Modul#r77": 38
+  "§Aturan Logika Modul#r11": 5
+  "§Aturan Logika Modul#r12": [25, 59, 63, 65]
+  "§Aturan Logika Modul#r13": [6, 69, 70, 71]
+  "§Aturan Logika Modul#r14": [24, 31, 33]
+  "§Aturan Logika Modul#r16": 43
+  "§Aturan Logika Modul#r17": 42
+  "§Aturan Logika Modul#r46": [2, 87]
+  "§Aturan Logika Modul#r47": [15, 18, 20, 22, 98, 101, 112, 115]
+  "§Aturan Logika Modul#r48": 4
+  "§Aturan Logika Modul#r52": [3, 98, 101, 105, 107]
+  "§Aturan Logika Modul#r80": 38
   "§9.2#r2": 2
   S-DMG-22: [24, 35, 40, 44, 82, 84]
-  "§9.2#b2": [2, 42]
+  "§9.2#b2": [2, 42, 99, 103, 113, 116]
   "§9.2#b3": [25, 31, 33]
-  "§9.2#b4": 3
+  "§9.2#b4": [3, 98, 101, 102, 105, 107, 112, 115]
   S-DMG-21: [46, 47]
-  "§4.2.3#b1": 35
-  "§4.2.3#b4": [40, 85]
+  "§4.2.3#b2": 35
+  "§4.2.3#b5": [40, 85]
   "§9.4.3#b1": [25, 61, 67, 72]
-  "§9.6#r1": [7, 9]
-  "§3#p2": [2, 15, 16, 79, 80]
+  "§9.6#r1": [7, 9, 109, 110]
+  "§3#p2": [2, 15, 16, 79, 80, 105, 107]
   V-DMG-10: [43, 48]
   EC-DMG-01: [29, 43]
   EC-DMG-02: [24, 26]
@@ -44,13 +44,15 @@ trace:
   "§9.4.4#r2": [35, 36]
   "§9.4.4#r5": 49
   "§9.4.4#r7": 8
-  "§2#b6": [2, 11, 12, 82, 84, 87]
-  "§2#b7": [15, 18, 20, 22, 74, 76, 77]
+  "§2#b6": [2, 11, 12, 82, 84, 87, 105, 107]
+  "§2#b7": [15, 18, 20, 22, 74, 76, 77, 98, 101, 112, 115]
   "§9.4.1#r6": 46
   "§9.4.1#r7": 24
   EB-FRM-4@what-happened: [53, 57]
   F-DMG-01: 2
-  "§Aturan Logika Modul#r37": [89, 90, 91, 92, 94, 95, 96]
+  "§Aturan Logika Modul#r39": [89, 90, 91, 92, 94, 95, 96]
+  "§9.4.2#r38": [98, 101, 105, 107, 112, 115]
+  "§2.1#r2": [2, 11, 79, 82, 87, 105, 107]
 ---
 
 # Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda, dan tidak dibatasi Activity Lock
@@ -65,7 +67,11 @@ trace:
   - Pelapor umum `Dedi Kurniawan {runId}`, pengguna aktif yang memindai TAG, tanpa role Damaged.
   - Group Manager `Gita Permatasari {runId}`, Group binaan `Head Office {runId}` beserta sub-group.
   - Pelapor umum `Maya Kusuma {runId}`, PIC karyawan tanpa akun `Bagus Hartono {runId}`.
-  - Aktor Missing `Hendra Saputra {runId}`, Aktor Transfer `Tono Riyadi {runId}`, dan pemilik sesi Stock Opname `Sinta Marlina {runId}`.
+  - Aktor Missing `Hendra Saputra {runId}` dan Aktor Transfer `Tono Riyadi {runId}`.
+  - Staff Auditor `Sinta Marlina {runId}`, pemilik sesi Audit, tanpa hak Aktor Damaged pada Group aset.
+  - Staff Executor Maintenance Routine `Joko Prasetyo {runId}`, tanpa hak Aktor Damaged pada Group aset.
+  - Asset Admin sub-tab Audit `Lestari Wibowo {runId}`, tanpa hak Aktor Damaged pada Group aset.
+  - Asset Admin Maintenance Routine `Fajar Nugroho {runId}`, tanpa hak Aktor Damaged pada Group aset.
 - Data:
   - DU-201-1: User `Agus Pratama {runId}`, Total Control, cakupan seluruh client.
   - DU-201-2: User `Rina Wulandari {runId}`, Manage asset & TAG (Update), cakupan Group `Head Office {runId}` beserta descendant.
@@ -75,7 +81,7 @@ trace:
   - DU-201-6: User `Dedi Kurniawan {runId}`, pelapor umum, pemindai TAG, cakupan aset yang ia pindai.
   - DU-201-7: User `Hendra Saputra {runId}`, Aktor Missing, cakupan Group `Head Office {runId}`.
   - DU-201-8: User `Tono Riyadi {runId}`, Aktor Transfer, cakupan Group `Head Office {runId}`.
-  - DU-201-9: User `Sinta Marlina {runId}`, pemilik sesi Stock Opname, cakupan Group `Head Office {runId}`.
+  - DU-201-9: User `Sinta Marlina {runId}`, Staff Auditor, pemilik sesi Audit, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
   - DU-201-10: Group `Head Office {runId}`.
   - DU-201-11: Group `Branch Surabaya {runId}`, di luar cakupan Update `Rina Wulandari {runId}`.
   - DU-201-12: Aset `Laptop Dell Latitude 5420 - 1 {runId}`, Group `Head Office {runId}`, Normal, tanpa record berjalan.
@@ -100,7 +106,7 @@ trace:
   - DU-201-31: Aset `Camera Canon EOS - 3 {runId}`, Group `Head Office {runId}`, Missing (hilang) dengan Condition sebelumnya Damaged, punya record `Damaged` ditahan dengan What happened `Lensa berjamur`.
   - DU-201-32: Aset `Projector Epson EB-X06 - 5 {runId}`, Group `Head Office {runId}`, draf registrasi dengan Condition `Damaged` dan Damage note `Lensa tergores saat pengiriman`, belum Active.
   - DU-201-33: Aset `Forklift Toyota 8FD - 2 {runId}`, Group `Head Office {runId}`, dalam Transfer menuju `Branch Surabaya {runId}`, punya record `Damaged` dengan What happened `Garpu bengkok`.
-  - DU-201-34: Aset `Drill Bosch GSB - 6 {runId}`, Group `Head Office {runId}`, termasuk sesi Stock Opname milik `Sinta Marlina {runId}`, punya record `Damaged` dengan What happened `Mata bor patah`.
+  - DU-201-34: Aset `Drill Bosch GSB - 6 {runId}`, Group `Head Office {runId}`, termasuk sesi Audit milik `Sinta Marlina {runId}`, punya record `Damaged` dengan What happened `Mata bor patah`.
   - DU-201-35: What happened `Layar retak setelah terjatuh dari meja`, Damaged Photo `layar-retak.jpg`.
   - DU-201-36: What happened `Kursi roda patah saat dipakai`, Damaged Photo `roda-patah.jpg`.
   - DU-201-37: What happened `Laporan kedua atas aset yang sama`, Damaged Photo `laporan-kedua.jpg`.
@@ -120,7 +126,17 @@ trace:
   - DU-201-51: Aset `Handheld Scanner Zebra TC21 - 4 {runId}`, Group `Branch Surabaya {runId}`, Normal, tanpa record berjalan.
   - DU-201-52: Aset `Tablet Samsung Tab A8 - 6 {runId}`, Group `Head Office {runId}`, dalam Transfer menuju `Branch Surabaya {runId}`, tanpa record berjalan.
   - DU-201-53: Aset `Generator Honda EU22i - 1 {runId}`, Group `Head Office {runId}`, Normal, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya, tanpa record berjalan.
-  - DU-201-54: Aset `Rack Server Dell R740 - 2 {runId}`, Group `Head Office {runId}`, Normal, Activity Lock `In Audit` karena menjadi item sesi Stock Opname berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
+  - DU-201-54: Aset `Rack Server Dell R740 - 2 {runId}`, Group `Head Office {runId}`, Normal, Activity Lock `In Audit` karena menjadi item sesi Audit berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
+  - DU-201-55: User `Joko Prasetyo {runId}`, Staff Executor Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-201-56: Aset `Laptop Dell Latitude 5420 - 14 {runId}`, Group `Head Office {runId}`, Normal, item sesi Audit berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
+  - DU-201-57: Aset `Generator Honda EU22i - 2 {runId}`, Group `Head Office {runId}`, Normal, punya Task Maintenance berjalan yang dikerjakan `Joko Prasetyo {runId}`, tanpa record berjalan.
+  - DU-201-58: Aset `Rack Server Dell R740 - 5 {runId}`, Group `Head Office {runId}`, Normal, item sesi Audit berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
+  - DU-201-59: Aset `Generator Honda EU22i - 3 {runId}`, Group `Head Office {runId}`, Normal, punya Task Maintenance berjalan yang dikerjakan `Joko Prasetyo {runId}`, tanpa record berjalan.
+  - DU-201-60: Aset `Tablet Samsung Tab A8 - 7 {runId}`, Group `Head Office {runId}`, Assigned kepada `Rina Wulandari {runId}`, tanpa record berjalan.
+  - DU-201-61: User `Lestari Wibowo {runId}`, Asset Admin sub-tab Audit, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-201-62: User `Fajar Nugroho {runId}`, Asset Admin Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
+  - DU-201-63: Aset `Printer HP LaserJet M404 - 10 {runId}`, Group `Head Office {runId}`, Normal, item sesi Audit berjalan, tanpa record berjalan.
+  - DU-201-64: Aset `Generator Honda EU22i - 4 {runId}`, Group `Head Office {runId}`, Normal, punya Task Maintenance berjalan, tanpa record berjalan.
 
 ## Test Steps
 
@@ -210,7 +226,7 @@ trace:
 63. Verifikasi aset itu hanya memiliki satu record berjalan dengan Source `Registration`
 64. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 2 {runId}` dan melaporkan Damaged saat penerimaan
 65. Verifikasi aset itu tetap hanya memiliki satu record berjalan dan tidak ada record kedua
-66. Pemilik sesi opname `Sinta Marlina {runId}` melaporkan kondisi rusak atas `Drill Bosch GSB - 6 {runId}` dari sesinya
+66. Staff Auditor `Sinta Marlina {runId}` melaporkan kondisi rusak atas `Drill Bosch GSB - 6 {runId}` dari Task Detail Audit
 67. Verifikasi aset itu tetap hanya memiliki satu record berjalan dan tidak ada record kedua
 
 ### Aset dengan record selesai dapat dilaporkan lagi: dua record dibedakan oleh urutan laporan
@@ -243,7 +259,7 @@ trace:
 86. Aktor pemindahan aset `Tono Riyadi {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 6 {runId}` dari halaman transaksi pemindahan dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
 87. Verifikasi server membuat record berstatus `Damaged`, bukan `Waiting for Confirmation`
 
-### Report Damaged tidak dibatasi Activity Lock dan tidak mengubah Work Order, jadwal maintenance, maupun item Stock Opname
+### Report Damaged tidak dibatasi Activity Lock dan tidak mengubah Work Order, jadwal maintenance, maupun item sesi Audit
 88. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 1 {runId}` yang ber-Activity Lock `Under Maintenance` dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
 89. Verifikasi laporan itu diterima dan server membuat satu Damage record `Damaged` untuk aset yang ber-Activity Lock `Under Maintenance`
 90. Verifikasi Work Order aset itu tidak diubah, tidak ditutup, dan tidak dijeda oleh laporan
@@ -251,5 +267,35 @@ trace:
 92. Verifikasi Activity Lock `Under Maintenance` tetap ada sebagai overlay di atas Condition `Damaged`
 93. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Rack Server Dell R740 - 2 {runId}` yang ber-Activity Lock `In Audit` dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
 94. Verifikasi laporan itu diterima dan server membuat satu Damage record `Damaged` untuk aset yang ber-Activity Lock `In Audit`
-95. Verifikasi item aset itu di sesi opname `Sinta Marlina {runId}` yang berjalan tidak diubah, tidak ditutup, dan tidak dijeda oleh laporan
+95. Verifikasi item aset itu di sesi milik `Sinta Marlina {runId}` yang berjalan tidak diubah, tidak ditutup, dan tidak dijeda oleh laporan
 96. Verifikasi Activity Lock `In Audit` tetap ada sebagai overlay di atas Condition `Damaged`
+
+### Pelapor dari Task Detail Audit tanpa hak Aktor Damaged: Waiting for Confirmation dengan Source Audit, status global aset tetap
+97. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 14 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+98. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan langsung `Damaged`, dengan Source `Audit`
+99. Verifikasi Condition aset `Laptop Dell Latitude 5420 - 14 {runId}` tetap `Normal`, status global aset tidak berubah, dan aset hanya diberi penanda `Damage reported`
+
+### Pelapor dari Task Maintenance tanpa hak Aktor Damaged: Waiting for Confirmation dengan Source Maintenance, status global aset tetap
+100. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 2 {runId}` dari Task Maintenance dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
+101. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan langsung `Damaged`, dengan Source `Maintenance`
+102. Verifikasi record itu tertaut ke Task ID task Maintenance yang dilaporkan
+103. Verifikasi Condition aset `Generator Honda EU22i - 2 {runId}` tetap `Normal`, status global aset tidak berubah, dan aset hanya diberi penanda `Damage reported`
+
+### Pelapor dengan hak Aktor Damaged dari Task Detail Audit dan Task Maintenance: langsung Damaged
+104. Total Control `Agus Pratama {runId}` mengirim Report Damaged atas `Rack Server Dell R740 - 5 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+105. Verifikasi server membuat record berstatus `Damaged`, bukan `Waiting for Confirmation`, dengan Source `Audit`
+106. Pemegang Update `Rina Wulandari {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 3 {runId}` dari Task Maintenance dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
+107. Verifikasi server membuat record berstatus `Damaged`, bukan `Waiting for Confirmation`, dengan Source `Maintenance`
+
+### Report Damaged dari My Asset tidak dicatat di Transaction admin log pelapor
+108. Pemegang Update `Rina Wulandari {runId}` mengirim Report Damaged atas `Tablet Samsung Tab A8 - 7 {runId}` yang ia pegang dari halaman aset yang dipegangnya dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+109. Verifikasi server membuat satu Damage record `Damaged` untuk aset itu
+110. Verifikasi Transaction admin log `Rina Wulandari {runId}` tidak memuat Report Damaged atas `Tablet Samsung Tab A8 - 7 {runId}`
+
+### Asset Admin sub-tab Audit dan Asset Admin Maintenance Routine tanpa hak Aktor Damaged melapor: Waiting for Confirmation menurut Source, status global aset tetap
+111. Asset Admin `Lestari Wibowo {runId}` mengirim Report Damaged atas `Printer HP LaserJet M404 - 10 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh dari meja` dan Damaged Photo `layar-retak.jpg`
+112. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan langsung `Damaged`, dengan Source `Audit`
+113. Verifikasi Condition aset `Printer HP LaserJet M404 - 10 {runId}` tetap `Normal`, status global aset tidak berubah, dan aset hanya diberi penanda `Damage reported`
+114. Asset Admin `Fajar Nugroho {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 4 {runId}` dari Task Maintenance dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
+115. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan langsung `Damaged`, dengan Source `Maintenance`
+116. Verifikasi Condition aset `Generator Honda EU22i - 4 {runId}` tetap `Normal`, status global aset tidak berubah, dan aset hanya diberi penanda `Damage reported`

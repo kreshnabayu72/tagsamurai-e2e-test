@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > User
 
-Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1187 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
+Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md` (1195 TC granular aktif); tidak ada `tc-settings-user-backend.md`, jadi tidak ada TC hanya-BE.
 Suite: `specs/FixedAsset/SettingsUser/`.
 Prefix Modul: `FA` + `SU` (`TC-FA-SU-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (460 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (465 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -460,17 +460,22 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-463-tab-transaction-admin-log-assignment-pin-dan-unpin-setup-column | Tab Transaction Admin Log Sub-tab Assignment: Pin dan Unpin Setup Column | FE+BE | 42 | TC-FA-SU-1164 |
 | TC-FA-SU-E2E-464-tab-transaction-admin-log-assignment-pagination-dan-state-per-sub-tab | Tab Transaction Admin Log Sub-tab Assignment: Pagination dan State per Sub-tab | FE+BE | 43 | TC-FA-SU-1166, TC-FA-SU-1173 |
 | TC-FA-SU-E2E-465-tab-transaction-admin-log-assignment-download-csv-xlsx-dan-cakupan-baris-kolom | Tab Transaction Admin Log Sub-tab Assignment: Download CSV dan XLSX dan Cakupan Baris dan Kolom | FE+BE | 35 | TC-FA-SU-1167, TC-FA-SU-1168 |
-| TC-FA-SU-E2E-468-tab-transaction-admin-log-struktur-sub-tab-damaged | Tab Transaction Admin Log: Struktur Sub-tab Damaged | FE+BE | 38 | TC-FA-SU-1174 |
-| TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Damaged: Search, Guard Kolom, dan Sort | FE+BE | 38 | TC-FA-SU-1175, TC-FA-SU-1176, TC-FA-SU-1177 |
-| TC-FA-SU-E2E-470-tab-transaction-admin-log-damaged-filter-dan-download | Tab Transaction Admin Log Sub-tab Damaged: Filter dan Download | FE+BE | 48 | TC-FA-SU-1178, TC-FA-SU-1179 |
-| TC-FA-SU-E2E-471-tab-transaction-admin-log-struktur-sub-tab-missing | Tab Transaction Admin Log: Struktur Sub-tab Missing | FE+BE | 38 | TC-FA-SU-1180 |
-| TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Missing: Search, Guard Kolom, dan Sort | FE+BE | 38 | TC-FA-SU-1181, TC-FA-SU-1182, TC-FA-SU-1183 |
-| TC-FA-SU-E2E-473-tab-transaction-admin-log-missing-filter-dan-download | Tab Transaction Admin Log Sub-tab Missing: Filter dan Download | FE+BE | 48 | TC-FA-SU-1184, TC-FA-SU-1185 |
+| TC-FA-SU-E2E-468-tab-transaction-admin-log-struktur-sub-tab-damaged | Tab Transaction Admin Log: Struktur Sub-tab Damaged | FE+BE | 40 | TC-FA-SU-1174 |
+| TC-FA-SU-E2E-469-tab-transaction-admin-log-damaged-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Damaged: Search, Guard Kolom, dan Sort | FE+BE | 47 | TC-FA-SU-1175, TC-FA-SU-1176, TC-FA-SU-1177 |
+| TC-FA-SU-E2E-470-tab-transaction-admin-log-damaged-filter-dan-download | Tab Transaction Admin Log Sub-tab Damaged: Filter dan Download | FE+BE | 55 | TC-FA-SU-1178, TC-FA-SU-1179 |
+| TC-FA-SU-E2E-471-tab-transaction-admin-log-struktur-sub-tab-missing | Tab Transaction Admin Log: Struktur Sub-tab Missing | FE+BE | 40 | TC-FA-SU-1180 |
+| TC-FA-SU-E2E-472-tab-transaction-admin-log-missing-search-guard-dan-sort | Tab Transaction Admin Log Sub-tab Missing: Search, Guard Kolom, dan Sort | FE+BE | 47 | TC-FA-SU-1181, TC-FA-SU-1182, TC-FA-SU-1183 |
+| TC-FA-SU-E2E-473-tab-transaction-admin-log-missing-filter-dan-download | Tab Transaction Admin Log Sub-tab Missing: Filter dan Download | FE+BE | 55 | TC-FA-SU-1184, TC-FA-SU-1185 |
 | TC-FA-SU-E2E-474-routing-tab-transaction-admin-log-damaged-missing-dan-disposal | Routing Tab Transaction Admin Log: Damaged, Missing, dan Disposal | FE+BE | 33 | TC-FA-SU-1186, TC-FA-SU-1187 |
-| TC-FA-SU-E2E-475-aksi-pemegang-tidak-masuk-sub-tab-damaged-dan-missing | Aksi Pemegang Tidak Masuk Tab Transaction Admin Log Sub-tab Damaged dan Missing | FE+BE | 14 | TC-FA-SU-1188 |
+| TC-FA-SU-E2E-475-aksi-pemegang-tidak-masuk-sub-tab-damaged-dan-missing | Aksi dari My Asset Tidak Masuk Tab Transaction Admin Log Sub-tab Damaged dan Missing | FE+BE | 20 | TC-FA-SU-1188 |
 | TC-FA-SU-E2E-476-tab-transaction-admin-log-assignment-format-assignee-dan-hover-pic-saat-tindakan | Tab Transaction Admin Log Sub-tab Assignment: Format Assignee dan Hover PIC Saat Tindakan | FE+BE | 10 | TC-FA-SU-1189 |
 | TC-FA-SU-E2E-477-tab-transaction-admin-log-audit-baris-tingkat-task-dan-activity-nama-node | Tab Transaction Admin Log Sub-tab Audit: Baris Tingkat Task dan Activity Nama Node | FE+BE | 11 | TC-FA-SU-1190 |
 | TC-FA-SU-E2E-478-tab-transaction-admin-log-maintenance-routine-peristiwa-system-tidak-tampil | Tab Transaction Admin Log Sub-tab Maintenance Routine: Peristiwa System Tidak Tampil | FE+BE | 11 | TC-FA-SU-1191 |
+| TC-FA-SU-E2E-479-routing-tab-transaction-admin-log-report-damaged-dari-borrow-assignment-dan-transfer-hanya-di-sub-tab-damaged | Routing Tab Transaction Admin Log: Report Damaged dari Borrow, Assignment, dan Transfer Hanya di Sub-tab Damaged dengan Source Asal | FE+BE | 34 | TC-FA-SU-1192 |
+| TC-FA-SU-E2E-480-routing-tab-transaction-admin-log-report-missing-dari-borrow-assignment-transfer-dan-task-audit-hanya-di-sub-tab-missing | Routing Tab Transaction Admin Log: Report Missing dari Borrow, Assignment, Transfer, dan Task Audit Hanya di Sub-tab Missing dengan Source Asal | FE+BE | 30 | TC-FA-SU-1193 |
+| TC-FA-SU-E2E-481-routing-tab-transaction-admin-log-pelapor-non-admin-waiting-for-confirmation-dan-cancel-report-borrow-assignment | Routing Tab Transaction Admin Log: Pelapor Non-admin Waiting for Confirmation dan Cancel Report dari Borrow dan Assignment | FE+BE | 18 | TC-FA-SU-1194, TC-FA-SU-1195 |
+| TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | Routing Tab Transaction Admin Log: Cancel Report dari Task Audit dan Report TAG Tetap di Sub-tab Audit | FE+BE | 27 | TC-FA-SU-1196, TC-FA-SU-1197 |
+| TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | Tab Transaction Admin Log: Transaction ID Draft Tampil Dash dan Report ID Disposal | FE+BE | 16 | TC-FA-SU-1198, TC-FA-SU-1199 |
 
 ---
 
@@ -1729,12 +1734,20 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1189 | E2E | TC-FA-SU-E2E-476-tab-transaction-admin-log-assignment-format-assignee-dan-hover-pic-saat-tindakan | FE+BE |
 | TC-FA-SU-1190 | E2E | TC-FA-SU-E2E-477-tab-transaction-admin-log-audit-baris-tingkat-task-dan-activity-nama-node | FE+BE |
 | TC-FA-SU-1191 | E2E | TC-FA-SU-E2E-478-tab-transaction-admin-log-maintenance-routine-peristiwa-system-tidak-tampil | FE+BE |
+| TC-FA-SU-1192 | E2E | TC-FA-SU-E2E-479-routing-tab-transaction-admin-log-report-damaged-dari-borrow-assignment-dan-transfer-hanya-di-sub-tab-damaged | FE+BE |
+| TC-FA-SU-1193 | E2E | TC-FA-SU-E2E-480-routing-tab-transaction-admin-log-report-missing-dari-borrow-assignment-transfer-dan-task-audit-hanya-di-sub-tab-missing | FE+BE |
+| TC-FA-SU-1194 | E2E | TC-FA-SU-E2E-481-routing-tab-transaction-admin-log-pelapor-non-admin-waiting-for-confirmation-dan-cancel-report-borrow-assignment | FE+BE |
+| TC-FA-SU-1195 | E2E | TC-FA-SU-E2E-481-routing-tab-transaction-admin-log-pelapor-non-admin-waiting-for-confirmation-dan-cancel-report-borrow-assignment | FE+BE |
+| TC-FA-SU-1196 | E2E | TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | FE+BE |
+| TC-FA-SU-1197 | E2E | TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | FE+BE |
+| TC-FA-SU-1198 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | FE+BE |
+| TC-FA-SU-1199 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | FE+BE |
 
 ---
 
 ## 4. Catatan Penulisan
 
-- Nomor TC yang tidak ada di file TC: dua nomor pada rentang 1 sampai 1191 tidak dipakai, sehingga total 1189 TC aktif. Nomor spec E2E-466 dan E2E-467 tidak dipakai (tidak ada spec bernomor itu).
+- Nomor TC yang tidak ada di file TC: empat nomor pada rentang 1 sampai 1199 tidak dipakai, sehingga total 1195 TC aktif. Nomor spec E2E-466 dan E2E-467 tidak dipakai (tidak ada spec bernomor itu).
 - Nomor cadangan dipakai oleh banyak slice untuk memecah spec yang melewati sekitar 35 langkah; pemetaan TC ke spec di bagian 1 dan 3 mengikuti hasil akhir (sourceTc di frontmatter), bukan tabel rencana awal. Slug beberapa spec (mis. 004, 005, 043, 353-356) tidak lagi persis sama dengan isinya karena TC dipindah ke nomor cadangan.
 - TC yang sengaja ada di dua spec (spec asal dan spec absence kelas g, S-05): 125, 126, 127, 128, 129, 130, 146, 148, 171, 183, 222, 223, 272, 304, 305, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 997, 998, 1004, 1067, 1089 (dibagi per aktor Sinta dan Qori: 389 dan 401), 1099 (399 fungsional dan 400 absence). `check-suite.py` menandai ini sebagai C2; itu disengaja.
 - Banyak spec melewati 35 langkah dan memuat alasan di Notes (C6); penyebab utama: satu `Verifikasi` per klausa Expected (S-01) dan ekspansi blok berulang per kolom.

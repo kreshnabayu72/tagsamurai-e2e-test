@@ -2,10 +2,10 @@
 id: TC-FA-DAMAGED-E2E-056-notifikasi-dep-notification
 title: "Confirm memicu damaged_review_resolved kepada pelapor dan Mark as Repaired memicu damaged_resolved yang tampil di notifikasi"
 layer: ui-e2e
-priority: Medium
+priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["damaged_review_resolved", "damaged_resolved", "§9.8#p4"]
+sourceRules: ["damaged_review_resolved", "damaged_resolved", "§9.8#p4", "§9.4.4#r18"]
 smoke: []
 dependsOn:
   - "Notification: daftar notifikasi in-app"
@@ -13,6 +13,7 @@ trace:
   "damaged_review_resolved": [6]
   "damaged_resolved": [13]
   "§9.8#p4": [6, 13]
+  "§9.4.4#r18": [6]
 anchor: []
 coverage:
   web: automated

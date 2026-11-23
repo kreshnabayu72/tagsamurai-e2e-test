@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: draft
-sourceRules: [FI-DMG-09, FI-DMG-10, EC-DMG-16, §9.4.4#r21, §9.2#b16, §8.1#r12, D-DMG-02, §4.1#r9, §8.2#b3]
+sourceRules: [FI-DMG-09, FI-DMG-10, EC-DMG-16, §9.4.4#r23, §9.2#b17, §8.1#r12, D-DMG-02, §4.1#r9, §8.2#b3]
 smoke: []
 dependsOn:
   - "Tag: dialog Report TAG (identifikasi manual)"
@@ -13,8 +13,8 @@ trace:
   FI-DMG-09: 5
   FI-DMG-10: [7, 8, 11]
   EC-DMG-16: [7, 17]
-  §9.4.4#r21: [14, 17]
-  §9.2#b16: [5, 7, 17]
+  §9.4.4#r23: [14, 17]
+  §9.2#b17: [5, 7, 17]
   §8.1#r12: [16, 17]
   D-DMG-02: 3
   §4.1#r9: 5
@@ -31,7 +31,9 @@ coverage:
 - Data:
   - DU-059-1: aset ber-TAG `Kamera Sony ZV-E10 {runId}`, Group `Head Office`, TAG `RFID` yang tidak dapat dipindai, status global `Damaged`, sudah punya record Damage berjalan berstatus `Damaged`.
   - DU-059-2: Repair note `Antena RFID diganti dan diuji ulang`; After photo tidak diisi.
-- Kondisi: After photo required bernilai `OFF`.
+- Kondisi:
+  - After photo required bernilai `OFF`.
+  - Dialog Report TAG varian identifikasi manual yang dibuka untuk aset DU-059-1 sudah memuat seluruh isian wajibnya dengan nilai valid, sehingga dapat langsung disimpan.
 
 ## Test Steps
 

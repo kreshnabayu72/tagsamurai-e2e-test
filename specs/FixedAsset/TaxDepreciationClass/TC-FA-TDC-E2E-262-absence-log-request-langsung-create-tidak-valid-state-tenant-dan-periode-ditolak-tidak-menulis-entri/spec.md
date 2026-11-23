@@ -1,6 +1,6 @@
 ---
 id: TC-FA-TDC-E2E-262-absence-log-request-langsung-create-tidak-valid-state-tenant-dan-periode-ditolak-tidak-menulis-entri
-title: "Absence Log: Request Langsung pada Plan Starter, Entitas Suspended, dan Periode Tertutup yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
+title: "Absence Log: Request Langsung pada Plan Starter, Entitas Suspended, dan Tahun Pajak Tertutup yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log"
 layer: ui-e2e
 priority: Critical
 caseType: Negative
@@ -20,15 +20,15 @@ coverage:
   web: automated
 ---
 
-# Absence Log: Request Langsung pada Plan Starter, Entitas Suspended, dan Periode Tertutup yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log
+# Absence Log: Request Langsung pada Plan Starter, Entitas Suspended, dan Tahun Pajak Tertutup yang Ditolak Tidak Menulis Entri di Changelog, System Log, dan Activity Log
 
 ## Prerequisites
 
 - Mode: FE+BE.
 - Akun aktor UI: Total Control (akun default suite). Email akun, company uji, dan nama env password disediakan tim FE (usulan nama env `FA_TC_PASSWORD`); email tidak tertulis di Pre-setup TC (lihat Temuan untuk QA). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Hook, sesi API aktor, seed dan pemulihan lewat API, kendali jam, dan flag Guided Tooltip mengikuti `suite.md`.
-- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung, seed dan pemulihan lewat API (periode Accounting Period), kendali jam sistem (jam server dan jam browser diatur bersama), serta perubahan plan company dan status company (disediakan tim FE/BE). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13). Langkah spec tidak memakai UI selain pembacaan log.
+- Kemampuan suite yang dipakai (dinyatakan di `suite.md`): sesi API aktor Total Control untuk request langsung, seed dan pemulihan lewat API (Exported through), kendali jam sistem (jam server dan jam browser diatur bersama), serta perubahan plan company dan status company (disediakan tim FE/BE). Klien HTTP untuk request langsung disediakan tim FE/BE; endpoint tidak dikarang (S-13). Langkah spec tidak memakai UI selain pembacaan log.
 - Jam sistem uji: 15 Okt 2026 10:00 WIB (Time Zone entitas Asia/Jakarta, UTC+07:00); Fiscal Year Start Januari. Jam diatur sesudah baseline TC yang memakainya dan dipulihkan sebelum jumlah entri dibaca (S-09, R-10); TC-FA-TDC-847 memakai jam (langkah 18, 22). Hook `after` memulihkan jam bila spec berhenti di tengah. Sesi UI dan sesi API tetap valid selama jam digeser (dinyatakan di `suite.md`).
-- Perubahan plan company, status client, dan status periode Accounting Period dilakukan lewat kemampuan fixture BE yang tidak menulis entri ke Changelog, System Log, dan Activity Log modul ini (disediakan tim FE/BE); baseline tiap TC dicatat sebelum perubahan state pertama TC itu, dan state dipulihkan sebelum jumlah entri dibaca.
+- Perubahan plan company, status client, dan Exported through dilakukan lewat kemampuan fixture BE yang tidak menulis entri ke Changelog, System Log, dan Activity Log modul ini (disediakan tim FE/BE); baseline tiap TC dicatat sebelum perubahan state pertama TC itu, dan state dipulihkan sebelum jumlah entri dibaca.
 - Kemampuan teknis (disediakan tim FE/BE; mekanismenya tidak disebut TC, S-13): kemampuan baca log fixture BE yang membaca jumlah entri Changelog (modul Tax Depreciation Class), System Log (Total Control), dan Activity Log (`Reports & Logs > Activity Log`, tab `User Action`) dengan sesi API aktor Total Control (sesi seeding). Baseline dicatat tepat sebelum request tiap TC dan dibandingkan dengan jumlah entri sesudah request TC itu; baseline dan jumlah sesudahnya dibaca lewat sumber yang sama (8b.10, S-12). Bila selisih terbukti, entri baru dibaca pada baris teratas urutan default Date terbaru di surface UI-nya (S-14).
 - Spec absence (kelas g, S-05, P-5 butir a): request yang ditolak hanya membentuk kondisi yang diasersi tidak tercatat dan bukan objek uji; asersi status respons dan state data atas request yang sama berada di spec asal.
 
@@ -37,9 +37,10 @@ coverage:
 | Kunci fixture (usulan) | Class Code | Nilai |
 |---|---|---|
 | `nb4` | `NB-4` | Class Name `Bukan bangunan – Kelompok 4`, Active, Used By 0, hanya satu versi (versi pertama tanpa Effective From) |
-| `periode2026` | `Accounting Period tahun pajak 2026` | 12 periode berstatus Open (nilai awal); ditutup (Closed) pada langkah 19 dan dikembalikan pada langkah 23 |
+| `exportedThrough` | Exported through | belum mencapai Des 2026 (nilai awal); dimajukan ke Des 2026 pada langkah 19 dan dikembalikan pada langkah 23 |
 
-- State global yang diubah spec: plan company (Starter, langkah 2, dipulihkan langkah 5), status entitas client (Suspended, langkah 10, dipulihkan langkah 13), status 12 periode Accounting Period tahun pajak 2026 (Closed langkah 19, dipulihkan langkah 23), dan jam server serta jam browser (langkah 18, 22); hook `after` memulihkan semuanya bila spec berhenti di tengah.
+- State global yang diubah spec: plan company (Starter, langkah 2, dipulihkan langkah 5), status entitas client (Suspended, langkah 10, dipulihkan langkah 13), Exported through (Des 2026 pada langkah 19, dipulihkan langkah 23), dan jam server serta jam browser (langkah 18, 22); hook `after` memulihkan semuanya bila spec berhenti di tengah.
+- Nilai awal Exported through (belum mencapai Des 2026) perlu dikonfirmasi tim FE/BE: TC tidak menyebutnya, sehingga nilai ini hasil tebakan penulis spec.
 - Suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -70,11 +71,11 @@ coverage:
 
 17. Catat baseline jumlah entri Changelog, System Log Total Control, dan Activity Log lewat kemampuan baca log fixture BE dengan sesi API aktor Total Control (sesi seeding)
 18. Atur jam server dan jam browser ke 15 Okt 2026 10:00 WIB
-19. Tutup seluruh 12 periode Accounting Period tahun pajak 2026 (status Closed)
+19. Atur Exported through menjadi Des 2026 (seluruh 12 bulan tahun pajak 2026 sudah diekspor)
 20. Kirim request langsung dengan sesi API Total Control untuk mengubah Useful Life `NB-4` menjadi `10` dengan Effective From `1 Januari 2026` tanpa melalui UI
 21. Verifikasi server menolak request tanpa membentuk versi baru
 22. Pulihkan jam server dan jam browser
-23. Kembalikan seluruh 12 periode Accounting Period tahun pajak 2026 ke status Open
+23. Kembalikan Exported through ke nilai awal
 24. Verifikasi jumlah entri Changelog (dibaca lewat kemampuan baca log fixture BE) sama dengan baseline TC ini
 25. Verifikasi jumlah entri System Log Total Control sama dengan baseline TC ini
 26. Verifikasi jumlah entri Activity Log sama dengan baseline TC ini
@@ -86,11 +87,11 @@ coverage:
 - P-5 butir (a): request langsung yang ditolak hanya membentuk kondisi yang diasersi tidak tercatat dan bukan objek uji; tiap TC memiliki baseline sendiri yang dicatat sesudah TC sebelumnya selesai dibaca dan tepat sebelum request TC itu, lalu tiga `Verifikasi` selisih jumlah entri sendiri (satu TC satu blok).
 - Jumlah langkah: nominal 26, tanpa perulangan (ekspansi 26); tiap blok TC memuat baseline, request, anchor, dan tiga `Verifikasi` jumlah entri.
 - Jam: TC-FA-TDC-847 mensyaratkan tanggal sistem uji 15 Okt 2026 (Effective From Jan 2026 = awal tahun pajak berjalan); jam diatur sesudah baseline TC itu dan dipulihkan sebelum jumlah entri dibaca (S-09, R-10).
-- State pemicu: plan Starter (TC-FA-TDC-831), status Suspended (TC-FA-TDC-888), dan periode Closed (TC-FA-TDC-847) hanya mengondisikan request yang ditolak; state itu dipulihkan sebelum pembacaan log agar surface log dapat dibuka dan dibaca.
+- State pemicu: plan Starter (TC-FA-TDC-831), status Suspended (TC-FA-TDC-888), dan Exported through Des 2026 (TC-FA-TDC-847) hanya mengondisikan request yang ditolak; state itu dipulihkan sebelum pembacaan log agar surface log dapat dibuka dan dibaca.
 - Langkah penghubung (S-03): langkah 1, 9, 17 (mencatat baseline tiap TC, S-12); langkah 18, 22 (mengatur dan memulihkan jam); langkah 2, 5, 10, 13, 19, 23 (membentuk dan memulihkan state pemicu).
 - Temuan untuk QA:
   - TC-FA-TDC-831, TC-FA-TDC-888, dan TC-FA-TDC-847 menyebut "Tidak ada entri log baru" tanpa surface; spec membaca ketiga surface (Changelog, System Log Total Control, Activity Log) berdasarkan jumlah entri total, bukan filter per class.
-  - TC-FA-TDC-831, 888, dan 847 membutuhkan perubahan plan, status client, dan data Accounting Period tanpa mekanisme di TC; kemampuannya disediakan tim FE/BE, dan perubahan itu harus tidak menulis entri ke tiga surface log (bila menulis, baseline TC perlu dicatat ulang sesudah tiap perubahan).
+  - TC-FA-TDC-831, 888, dan 847 membutuhkan perubahan plan, status client, dan Exported through tanpa mekanisme di TC; kemampuannya disediakan tim FE/BE, dan perubahan itu harus tidak menulis entri ke tiga surface log (bila menulis, baseline TC perlu dicatat ulang sesudah tiap perubahan).
   - Akun, email, dan company Total Control tidak tertulis di TC.
   - Class Code dibatasi 15 karakter, sehingga data milik spec memakai kode literal TC tanpa suffix `{runId}-<NNN>` (S-12).
   - Cara membaca jumlah entri ketiga surface tidak disebut TC; spec memakai kemampuan baca log fixture BE yang disediakan tim FE/BE.

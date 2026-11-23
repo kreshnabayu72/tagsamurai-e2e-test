@@ -5,24 +5,25 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-01, "§4.1#r5", "§4.2.3#p1", "§4.2.3#p2", "§4.2.3#b2", "§4.2.3#b3", "§4.2.3#b4", "§4.2.3#b5", FI-DMG-01, FI-DMG-04, FI-DMG-05, S-DMG-21, S-DMG-22, EB-FRM-7@report-damaged]
+sourceRules: [D-DMG-01, "§4.1#r5", "§4.2.3#p1", "§4.2.3#p2", "§4.2.3#b3", "§4.2.3#b4", "§4.2.3#b5", "§4.2.3#b6", FI-DMG-01, FI-DMG-04, FI-DMG-05, S-DMG-21, S-DMG-22, EB-FRM-7@report-damaged, "§Aturan Logika Modul#r58"]
 smoke: []
 dependsOn: []
 trace:
   D-DMG-01: [2, 6, 7, 14]
   "§4.1#r5": [4, 5, 7, 8]
-  "§4.2.3#p1": [41, 42]
+  "§4.2.3#p1": [41, 42, 75, 81, 82]
   "§4.2.3#p2": [2, 3, 4, 5, 8, 9, 11, 12, 14, 15, 45, 46]
-  "§4.2.3#b2": [16, 17, 29, 30, 31]
-  "§4.2.3#b3": [18, 19, 20, 21]
-  "§4.2.3#b4": [37, 38]
-  "§4.2.3#b5": [33, 34, 35, 36, 37, 38, 39]
+  "§4.2.3#b3": [16, 17, 29, 30, 31]
+  "§4.2.3#b4": [18, 19, 20, 21]
+  "§4.2.3#b5": [37, 38]
+  "§4.2.3#b6": [33, 34, 35, 36, 37, 38, 39, 56, 57]
   FI-DMG-01: [7]
   FI-DMG-04: [41, 42, 43]
-  FI-DMG-05: [48, 50]
+  FI-DMG-05: [48, 50, 74, 77]
   S-DMG-21: [36, 56, 57]
   S-DMG-22: [37]
   EB-FRM-7@report-damaged: [59, 60, 61, 62, 64, 66, 68, 70, 72]
+  "§Aturan Logika Modul#r58": [74, 77, 79]
 anchor: []
 coverage:
   web: automated
@@ -31,7 +32,7 @@ coverage:
 # Dialog Report Damaged: judul per jumlah aset, blok per aset, field, placeholder, kotak dampak per jenis pelapor dan pemegang, keterangan aset yang dikeluarkan, isian awal, dan aksesibilitas
 
 ## Prerequisites
-- Aktor: Pelapor admin (Aktor Damaged pada Group aset); pada K4 dan K5 pelapor umum.
+- Aktor: Pelapor admin (Aktor Damaged pada Group aset); pada K4, K5, K9, dan K10 pelapor umum.
 - Layar awal: Dialog Report Damaged belum ditampilkan; setiap blok langkah menampilkannya dengan kondisi yang disebut.
 - Komponen: Dialog Report Damaged (D-DMG-01)
 - Data:
@@ -48,6 +49,9 @@ coverage:
   - DU-110-11: isian awal What happened `Layar retak setelah terjatuh dari meja`.
   - DU-110-12: What happened yang diketik `Layar retak dan perangkat tidak menyala`.
   - DU-110-13: berkas foto yang dipilih `kerusakan-proyektor.jpg`, `kerusakan-handheld.jpg`, dan `kerusakan-laptop.jpg`.
+  - DU-110-14: isian awal What happened dari indicator yang out of standard `Tekanan oli mesin 1,2 bar, di bawah standar 2,0 bar`.
+  - DU-110-15: What happened yang diketik `Selang oli bocor di sambungan, tekanan oli mesin turun ke 1,2 bar`.
+  - DU-110-16: What happened sepanjang 361 karakter.
 - Kondisi:
   - K1: satu aset terpilih (DU-110-1), pelapor admin, dialog dibuka dari Asset List.
   - K2: satu aset terpilih (DU-110-2), pelapor admin.
@@ -57,6 +61,8 @@ coverage:
   - K6: empat aset terpilih saat klik dari Asset List, pelapor admin yang memegang Update pada Group `Head Office`: DU-110-7 layak, DU-110-8, DU-110-9, dan DU-110-10 tidak layak.
   - K7: satu aset terpilih (DU-110-1), titik masuk mengisi awal What happened dengan DU-110-11.
   - K8: satu aset terpilih (DU-110-1), pelapor admin; respons simpan menyatakan aset itu baru saja dilaporkan orang lain.
+  - K9: satu aset terpilih (DU-110-1), pelapor umum yang tidak memegang hak Aktor Damaged, dialog dibuka dari Task Maintenance (Source `Maintenance`), What happened terisi awal dengan DU-110-14.
+  - K10: satu aset terpilih (DU-110-1), pelapor umum yang tidak memegang hak Aktor Damaged, dialog dibuka dari Task Detail Audit (Source `Audit`).
 
 ## Test Steps
 
@@ -153,3 +159,17 @@ coverage:
 70. Verifikasi pemilih foto `Damaged Photo*` pada dialog Report Damaged memiliki penanda wajib untuk teknologi bantu
 71. Klik `[Report Damaged]`
 72. Verifikasi caption `Damaged photo must not be empty` terhubung sebagai deskripsi aksesibel pemilih foto `Damaged Photo*`
+
+### Titik masuk Task Maintenance: isian awal indicator dapat diubah dan batas What happened tetap berlaku
+73. Tampilkan Dialog Report Damaged dengan kondisi K9
+74. Verifikasi isian `What happened*` berisi `Tekanan oli mesin 1,2 bar, di bawah standar 2,0 bar`
+75. Verifikasi dialog memuat isian `What happened*`, pemilih foto `Damaged Photo*`, tombol `[Cancel]`, dan tombol `[Report Damaged]`
+76. Ganti isi `What happened*` dengan `Selang oli bocor di sambungan, tekanan oli mesin turun ke 1,2 bar`
+77. Verifikasi isian `What happened*` berisi `Selang oli bocor di sambungan, tekanan oli mesin turun ke 1,2 bar`
+78. Ganti isi `What happened*` dengan `Layar laptop retak di bagian tengah setelah terjatuh dari meja rapat lantai tiga saat dipindahkan oleh staf gudang, sehingga tampilan bergaris dan perangkat tidak dapat dipakai bekerja. Layar laptop retak di bagian tengah setelah terjatuh dari meja rapat lantai tiga saat dipindahkan oleh staf gudang, sehingga tampilan bergaris dan perangkat tidak dapat dipaka` (361 karakter)
+79. Verifikasi isian awal yang diubah melebihi batas menampilkan pesan `Max. 360 characters`
+
+### Titik masuk Task Detail Audit memakai dialog yang sama
+80. Tampilkan Dialog Report Damaged dengan kondisi K10
+81. Verifikasi judul dialog `Report Damaged`
+82. Verifikasi dialog memuat isian `What happened*`, pemilih foto `Damaged Photo*`, tombol `[Cancel]`, dan tombol `[Report Damaged]`

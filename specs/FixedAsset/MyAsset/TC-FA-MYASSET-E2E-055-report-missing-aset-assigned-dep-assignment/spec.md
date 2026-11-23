@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§2.1#r8", "§3#p9", "§4.8#r9", "§9.2#r30", "§9.4.2#r59"]
+sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§2.1#r8", "§3#p9", "§4.8#r9", "§9.2#r30", "§9.4.2#r61"]
 smoke: []
 dependsOn:
   - "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"
@@ -16,7 +16,7 @@ trace:
   "§3#p9": [3, 5, 9, 10, 42, 45]
   "§4.8#r9": 3
   "§9.2#r30": [5, 7, 9, 45]
-  "§9.4.2#r59": [9, 42, 45]
+  "§9.4.2#r61": [9, 42, 45]
 anchor: [12, 13, 26, 41]
 coverage:
   web: automated

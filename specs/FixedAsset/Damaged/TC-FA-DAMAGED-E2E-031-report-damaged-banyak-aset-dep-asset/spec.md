@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-01, D-DMG-12, §4.2.3#p2, §4.2.3#b1, §4.2.3#b2, §4.2.3#b3, §4.2.3#b4, §4.2.3#b5, §4.2.4#p9, FI-DMG-06, FI-DMG-07, TS-DMG-10, V-DMG-10, §Aturan Logika Modul#r15, §Aturan Logika Modul#r16, §8.3#b1, S-DMG-21, EC-DMG-01, EC-DMG-02, EC-DMG-05, §9.4.4#r1, §9.4.4#r5, F-DMG-01, §4.8#r2, EB-FB-2@dialog-blok-report-damaged]
+sourceRules: [D-DMG-01, D-DMG-12, §4.2.3#p2, §4.2.3#b2, §4.2.3#b3, §4.2.3#b4, §4.2.3#b5, §4.2.3#b6, §4.2.4#p10, FI-DMG-06, FI-DMG-07, TS-DMG-10, V-DMG-10, §Aturan Logika Modul#r16, §Aturan Logika Modul#r17, §8.3#b1, S-DMG-21, EC-DMG-01, EC-DMG-02, EC-DMG-05, §9.4.4#r1, §9.4.4#r5, F-DMG-01, §4.8#r2, EB-FB-2@dialog-blok-report-damaged]
 smoke: [EB-FB-2@dialog-blok-report-damaged]
 dependsOn:
   - "Asset: Asset List (Report Damaged banyak aset)"
@@ -13,18 +13,18 @@ trace:
   D-DMG-01: [34, 35]
   D-DMG-12: [51, 52]
   §4.2.3#p2: [5, 11, 12, 18, 20, 64, 82, 98, 99]
-  §4.2.3#b1: [22, 23, 54, 55]
-  §4.2.3#b2: 27
-  §4.2.3#b3: 25
-  §4.2.3#b4: 24
-  §4.2.3#b5: [18, 19, 51, 57, 70, 71, 89, 90]
-  §4.2.4#p9: [53, 54, 55, 56]
+  §4.2.3#b2: [22, 23, 54, 55]
+  §4.2.3#b3: 27
+  §4.2.3#b4: 25
+  §4.2.3#b5: 24
+  §4.2.3#b6: [18, 19, 51, 57, 70, 71, 89, 90]
+  §4.2.4#p10: [53, 54, 55, 56]
   FI-DMG-06: [26, 39, 44]
   FI-DMG-07: [27, 41, 45]
   TS-DMG-10: 70
   V-DMG-10: [71, 72, 89, 91, 92]
-  §Aturan Logika Modul#r15: [20, 53]
-  §Aturan Logika Modul#r16: [34, 35]
+  §Aturan Logika Modul#r16: [20, 53]
+  §Aturan Logika Modul#r17: [34, 35]
   §8.3#b1: [37, 40]
   S-DMG-21: [71, 72, 76]
   EC-DMG-01: [20, 53]

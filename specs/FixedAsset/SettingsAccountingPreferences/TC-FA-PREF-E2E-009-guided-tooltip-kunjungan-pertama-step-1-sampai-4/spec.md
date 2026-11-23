@@ -45,7 +45,7 @@ coverage:
 4. Verifikasi walkthrough mulai otomatis dari Step 1 dengan overlay gelap
 5. Verifikasi spotlight pada judul SectionCard General
 6. Verifikasi tooltip box menampilkan indikator "Step 1 of 4"
-7. Verifikasi tooltip box menampilkan judul "Accounting Year" dan deskripsi "Set when your accounting year begins and when your first accounting period starts. These settings lock once depreciation is posted or a period is closed."
+7. Verifikasi tooltip box menampilkan judul "Accounting Year" dan deskripsi "Set when your accounting year begins and when your first accounting period starts. These settings lock once depreciation is posted."
 8. Verifikasi navigasi menampilkan `[Skip]` dan `[Next]`
 9. Verifikasi `[Back]` tidak tampil (Hidden) pada Step 1
 

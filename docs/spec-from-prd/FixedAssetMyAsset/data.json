@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-18",
- "sha": "b8d61b5ce495b89e",
+ "disetujui": "otomatis, 2026-11-23",
+ "sha": "9dcf0ff8dc3dd0fd",
  "entri": [
   {
    "id": "DU-201-1",
@@ -715,6 +715,121 @@
    }
   },
   {
+   "id": "DU-201-32",
+   "spec": [
+    "TC-FA-MYASSET-BE-201-visibilitas-baris-milik-pengguna-dep-borrow"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned milik pengguna ber-role lain",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Hendra Wijaya {runId}",
+    "Asset Name": "Monitor Dell P2422H - 95 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r27",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-201-33",
+   "spec": [
+    "TC-FA-MYASSET-BE-201-visibilitas-baris-milik-pengguna-dep-borrow"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned milik pengguna ber-role lain",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Maya Anggraini {runId}",
+    "Asset Name": "Monitor Dell P2422H - 96 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r27",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-201-34",
+   "spec": [
+    "TC-FA-MYASSET-BE-201-visibilitas-baris-milik-pengguna-dep-borrow"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned milik pengguna ber-role lain",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Dimas Prasetyo {runId}",
+    "Asset Name": "Monitor Dell P2422H - 97 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r27",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-201-35",
+   "spec": [
+    "TC-FA-MYASSET-BE-201-visibilitas-baris-milik-pengguna-dep-borrow"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned milik pengguna ber-role lain",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Lestari Dewi {runId}",
+    "Asset Name": "Monitor Dell P2422H - 98 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r27",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-201-36",
+   "spec": [
+    "TC-FA-MYASSET-BE-201-visibilitas-baris-milik-pengguna-dep-borrow"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan Assigned milik pengguna ber-role lain",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Fajar Nugroho {runId}",
+    "Asset Name": "Monitor Dell P2422H - 99 {runId}",
+    "Group": "Branch Surabaya",
+    "Status": "Assigned"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r27",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
    "id": "DU-202-1",
    "spec": [
     "TC-FA-MYASSET-BE-202-akses-langsung-baris-orang-lain-dep-borrow"
@@ -1369,6 +1484,33 @@
    }
   },
   {
+   "id": "DU-203-14",
+   "spec": [
+    "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow"
+   ],
+   "jenis": "Borrow",
+   "data": "Pinjaman dengan sesi Handover yang dikonfirmasi perangkat admin lebih dulu, lalu dicoba Maya",
+   "asal": "awal",
+   "nilai": {
+    "Borrower": "Maya Anggraini {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "Sesi Handover": "berjalan, menunggu konfirmasi",
+    "Expires At": "T0 + lama jendela konfirmasi, T0 = waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai; lebih akhir daripada waktu pada langkah 56",
+    "Asset Name": "Laptop Dell Latitude 5420 - 50 {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-203-confirm-handover-pinjaman-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§9.4.2#r42",
+   "maks": {
+    "Borrower": null,
+    "Asset Name": null
+   }
+  },
+  {
    "id": "DU-204-1",
    "spec": [
     "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment"
@@ -1539,7 +1681,8 @@
     "Status": "Waiting for Handover",
     "Need recipient confirmation": "Yes",
     "Sesi Handover": "berjalan, menunggu konfirmasi",
-    "Asset Name": "Laptop Dell Latitude 5420 - 47 {runId}"
+    "Asset Name": "Laptop Dell Latitude 5420 - 47 {runId}",
+    "Expires At": "T0 + lama jendela konfirmasi, T0 = waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-204-6 dan sesi DU-204-8 dimulai; lebih akhir daripada waktu pada langkah 35"
    },
    "jumlah": 1,
    "mutasi": [
@@ -1575,6 +1718,58 @@
    ],
    "varian": [],
    "sumber": "turunan penulis",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-204-9",
+   "spec": [
+    "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Penugasan tanpa konfirmasi penerima yang diserahkan Aktor",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Tono Wibowo {runId}",
+    "Group": "Head Office",
+    "Need recipient confirmation": "No",
+    "Status": "belum diserahkan Aktor",
+    "Asset Name": "Laptop Dell Latitude 5420 - 51 {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r69",
+   "maks": {
+    "Assignee": null,
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-204-10",
+   "spec": [
+    "TC-FA-MYASSET-BE-204-confirm-handover-penugasan-aturan-server-dep-assignment"
+   ],
+   "jenis": "Assignment",
+   "data": "Sesi yang menunggu konfirmasi sebagai pembanding Task",
+   "asal": "awal",
+   "nilai": {
+    "Assignee": "Tono Wibowo {runId}",
+    "Group": "Head Office",
+    "Need recipient confirmation": "Yes",
+    "Status": "Waiting for Handover",
+    "Sesi Handover": "berjalan, menunggu konfirmasi",
+    "Asset Name": "Laptop Dell Latitude 5420 - 52 {runId}",
+    "Expires At": "T0 + lama jendela konfirmasi, T0 = waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-204-6 dan sesi DU-204-8 dimulai; lebih akhir daripada waktu pada langkah 35"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r69",
    "maks": {
     "Assignee": null,
     "Asset Name": null
@@ -3651,6 +3846,271 @@
    "varian": [],
    "sumber": "T-MYA-04",
    "maks": {}
+  },
+  {
+   "id": "DU-207-44",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "PIC Borrower lama",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Wulan Prasetyo {runId}",
+    "Peran": "PIC Borrower tanpa hak Aktor Damaged dan Aktor Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-207-45",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "PIC Borrower baru",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Yoga Permana {runId}",
+    "Peran": "pengganti PIC Borrower tanpa hak Aktor Damaged dan Aktor Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-207-46",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "User",
+   "data": "admin karyawan dan akun login",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Bambang Hartono {runId}",
+    "Peran": "admin yang mengelola karyawan dan akun login"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
+   "id": "DU-207-47",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Karyawan",
+   "data": "Borrower tanpa akun dengan PIC lama, PIC lalu diganti",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gunawan Setiadi {runId}",
+    "Akun login": "tidak ada",
+    "PIC": "Wulan Prasetyo {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "PIC": null
+   }
+  },
+  {
+   "id": "DU-207-48",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Karyawan",
+   "data": "Borrower tanpa akun dengan PIC lama, lalu dibuatkan akun",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Lestari Wibowo {runId}",
+    "Akun login": "tidak ada",
+    "PIC": "Wulan Prasetyo {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "PIC": null
+   }
+  },
+  {
+   "id": "DU-207-49",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Pinjaman",
+   "data": "pinjaman awal Mesin Laminasi GBC",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Mesin Laminasi GBC {runId}",
+    "Status": "Borrowed",
+    "Borrower": "Gunawan Setiadi {runId}",
+    "Laporan": "belum ada Damage Report dan belum ada laporan Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-207-50",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Pinjaman",
+   "data": "pinjaman awal Hard Disk Eksternal WD 2TB",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Hard Disk Eksternal WD 2TB {runId}",
+    "Status": "Borrowed",
+    "Borrower": "Gunawan Setiadi {runId}",
+    "Laporan": "belum ada Damage Report dan belum ada laporan Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-207-51",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Pinjaman",
+   "data": "pinjaman awal Speaker Konferensi Jabra 410",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Speaker Konferensi Jabra 410 {runId}",
+    "Status": "Borrowed",
+    "Borrower": "Lestari Wibowo {runId}",
+    "Laporan": "belum ada Damage Report dan belum ada laporan Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-207-52",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Pinjaman",
+   "data": "pinjaman awal Alat Ukur Fluke 117",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Alat Ukur Fluke 117 {runId}",
+    "Status": "Borrowed",
+    "Borrower": "Lestari Wibowo {runId}",
+    "Laporan": "belum ada Damage Report dan belum ada laporan Missing"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "Borrower": null
+   }
+  },
+  {
+   "id": "DU-207-53",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Damage Report",
+   "data": "laporan Damaged oleh PIC lama atas nama Borrower, PIC diganti",
+   "asal": "dibuat",
+   "nilai": {
+    "Damaged Photo": "mesin-laminasi-roller-aus.jpg",
+    "What happened": "Roller mesin laminasi aus dan menggulung kertas"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {}
+  },
+  {
+   "id": "DU-207-54",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Damage Report",
+   "data": "laporan Damaged oleh PIC lama atas nama Borrower, Borrower dibuatkan akun",
+   "asal": "dibuat",
+   "nilai": {
+    "Damaged Photo": "speaker-konferensi-kabel-putus.jpg",
+    "What happened": "Kabel speaker konferensi putus dekat konektor"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {}
+  },
+  {
+   "id": "DU-207-55",
+   "spec": [
+    "TC-FA-MYASSET-BE-207-laporan-damaged-missing-aturan-server-dep-borrow"
+   ],
+   "jenis": "Akun",
+   "data": "akun login Borrower",
+   "asal": "dibuat",
+   "nilai": {
+    "Name": "Lestari Wibowo {runId}",
+    "Email": "lestari.wibowo.{runId}@example.com"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§1.2#r55",
+   "maks": {
+    "Name": null,
+    "Email": null
+   }
   },
   {
    "id": "DU-208-1",
@@ -7887,6 +8347,35 @@
    "sumber": "§4.1b#r7",
    "maks": {
     "Name": null
+   }
+  },
+  {
+   "id": "DU-215-22",
+   "spec": [
+    "TC-FA-MYASSET-BE-215-filter-opsi-dan-hasil-dep-borrow"
+   ],
+   "jenis": "Baris Assigned untuk uji filter",
+   "data": "penugasan Assigned dengan marker Damaged dan laporan Missing menunggu konfirmasi, Brand, Model, Group, TAG, dan Category sama dengan DU-215-15",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Notebook Cadangan {runId}",
+    "Brand": "Lenovo",
+    "Model/Type": "T14",
+    "Group": "Ruang Staf",
+    "Status": "Assigned · Damaged · Reported Missing",
+    "Assigned To": "Me",
+    "TAG": "RFID",
+    "Category": "Laptop",
+    "Assigned Date": "T0",
+    "Assigned By": "Siti Rahmawati {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null,
+    "Assigned By": null
    }
   },
   {
@@ -13099,6 +13588,37 @@
    }
   },
   {
+   "jenis": "Baris Borrowed",
+   "data": "Dua aset satu pinjaman yang di-Return Aktor Borrow pada langkah spec",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Printer Epson L3250 {n} {runId}",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "T0 − 1 hari",
+    "Due Date": "T0 + 2 hari",
+    "Borrower": "Me",
+    "Asset ID": "milik entri ini",
+    "Transaction ID": "milik entri ini, sama untuk kedua aset",
+    "Status sesudah Return": "Returned"
+   },
+   "sumber": "§1.2#r18",
+   "id": "DU-037-14",
+   "spec": [
+    "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow"
+   ],
+   "jumlah": 2,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-037-tab-history-pinjaman-isi-dan-toolbar-dep-borrow"
+   ],
+   "varian": [],
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
    "jenis": "User",
    "data": "Aktor Borrower tanpa role admin",
    "asal": "awal",
@@ -16792,6 +17312,514 @@
    }
   },
   {
+   "id": "DU-065-1",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Borrower pemilik baris di tab Borrowed",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Budi Santoso {runId}",
+    "Role": "tanpa role admin",
+    "Cakupan": "Group Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-065-2",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Aktor Borrow pemicu pengajuan Extend dan serah terima",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Rina Wulandari {runId}",
+    "Role": "Asset Admin dengan hak Aktor Borrow",
+    "Cakupan": "Group Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-065-3",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Approver yang belum Approve",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Dewi Lestari {runId}",
+    "Role": "Approver",
+    "Cakupan": "Group Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-065-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Aktor Maintenance Routine pemicu task To Do dan task berakhir",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Maya Pratiwi {runId}",
+    "Role": "Asset Admin dengan hak mengelola task Maintenance Routine",
+    "Cakupan": "Group Head Office"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-065-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Borrowed dengan task To Do yang kemudian berakhir",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "T0",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Borrowed"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-6",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Overdue dengan task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Kamera Canon EOS 90D {runId}",
+    "Group": "Head Office",
+    "Status": "Overdue",
+    "Source": "Admin",
+    "Duration": "2 days",
+    "Handed Over At": "T0 − 5 hari",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Overdue"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-7",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Extension Request dengan task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Tablet Lenovo Tab P11 {runId}",
+    "Group": "Head Office",
+    "Status": "Extension Request",
+    "Source": "Admin",
+    "Duration": "5 days",
+    "Handed Over At": "T0 − 2 hari",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Extension Request"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-8",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Extension Approval dengan task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Tripod Manfrotto {runId}",
+    "Group": "Head Office",
+    "Status": "Extension Approval",
+    "Source": "Admin",
+    "Duration": "5 days",
+    "Handed Over At": "T0 − 3 hari",
+    "Approval type": "Any one approver",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Extension Approval"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-9",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Borrowed tanpa task yang kemudian mendapat task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Monitor Dell 24 inci {runId}",
+    "Group": "Head Office",
+    "Status": "Borrowed",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "T0",
+    "Task Maintenance Routine": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Borrowed"
+   ],
+   "sumber": "§9.7#r14",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-10",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Waiting for Handover dengan task To Do yang kemudian menjadi Borrowed",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Proyektor Epson EB-X06 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "—",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Waiting for Handover"
+   ],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-065-11",
+   "spec": [
+    "TC-FA-MYASSET-E2E-065-badge-maintenance-due-tab-borrowed-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Waiting for Approval dengan task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Printer Canon G3010 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Approval",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "—",
+    "Approval type": "Any one approver",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-borrowed:per-status:Waiting for Approval"
+   ],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-066-1",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Assignee pemilik baris di tab Assigned",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Budi Santoso {runId}",
+    "Role": "Read Only",
+    "Cakupan": "Group Head Office",
+    "Akun": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-066-2",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Aktor Assignment penyerah dan pemicu serah terima",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Rina Wijaya {runId}",
+    "Role": "Asset Admin dengan hak Aktor Assignment",
+    "Cakupan": "Group Head Office",
+    "Akun": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-066-3",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Approver penugasan yang belum memutuskan",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Dewi Lestari {runId}",
+    "Role": "Approver",
+    "Cakupan": "Group Head Office",
+    "Akun": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-066-4",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "User",
+   "data": "Aktor Maintenance Routine pemicu task To Do dan task berakhir",
+   "asal": "awal",
+   "nilai": {
+    "Full Name": "Maya Pratiwi {runId}",
+    "Role": "Asset Admin dengan hak mengelola task Maintenance Routine",
+    "Cakupan": "Group Head Office",
+    "Akun": "aktif"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Full Name": null
+   }
+  },
+  {
+   "id": "DU-066-5",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Baris Assigned dengan task To Do yang kemudian berakhir",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Laptop Dell Latitude 5420 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Assigned By": "Rina Wijaya {runId}",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-assigned:per-status:Assigned"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null,
+    "Assigned By": null
+   }
+  },
+  {
+   "id": "DU-066-6",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Baris Assigned dengan task To Do yang tidak berubah sebagai pembanding",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Projector Epson EB-X06 {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Assigned By": "Rina Wijaya {runId}",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-assigned:per-status:Assigned"
+   ],
+   "sumber": "§9.4.2#r37",
+   "maks": {
+    "Asset Name": null,
+    "Assigned By": null
+   }
+  },
+  {
+   "id": "DU-066-7",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Baris Assigned tanpa task yang kemudian mendapat task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Monitor LG 24MK430H {runId}",
+    "Group": "Head Office",
+    "Status": "Assigned",
+    "Assigned To": "Me",
+    "Assigned By": "Rina Wijaya {runId}",
+    "Task Maintenance Routine": "tidak ada"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-assigned:per-status:Assigned"
+   ],
+   "sumber": "§9.7#r14",
+   "maks": {
+    "Asset Name": null,
+    "Assigned By": null
+   }
+  },
+  {
+   "id": "DU-066-8",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Baris Waiting for Handover dengan task To Do yang kemudian menjadi Assigned",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Printer HP LaserJet M404 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "Assigned To": "Me",
+    "Assigned By": "—",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "varian": [
+    "status-baris@tabel-assigned:per-status:Waiting for Handover"
+   ],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
+   "id": "DU-066-9",
+   "spec": [
+    "TC-FA-MYASSET-E2E-066-badge-maintenance-due-tab-assigned-dep-maintenance-routine"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Baris Waiting for Approval dengan task To Do",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Scanner Zebra DS2208 {runId}",
+    "Group": "Head Office",
+    "Status": "Waiting for Approval",
+    "Assigned To": "Me",
+    "Assigned By": "—",
+    "Task Maintenance Routine": "To Do"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-assigned:per-status:Waiting for Approval"
+   ],
+   "sumber": "§9.4.2#r38",
+   "maks": {
+    "Asset Name": null
+   }
+  },
+  {
    "id": "DU-101-1",
    "spec": [
     "TC-FA-MYASSET-UI-101-halaman-tab-badge-dan-breadcrumb"
@@ -17814,7 +18842,7 @@
     "Category": "Tablet",
     "Due Date": "11/11/26",
     "Remaining": "Due in 2 days",
-    "Borrower": "Agus Pratama",
+    "Borrower": "Budi Setiawan",
     "Transaction ID": "BRW-2026-0160",
     "Source": "Admin",
     "Duration": "1 day",
@@ -18010,6 +19038,284 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§4.1b#r18",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-16",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Borrowed yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-12.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 12",
+    "Asset ID": "LPT-2026-0012",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Borrowed + Maintenance due",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "12/11/26",
+    "Remaining": "Due in 3 days",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0175",
+    "Source": "Admin",
+    "Duration": "5 days",
+    "Handed Over At": "07/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Pekerjaan lapangan"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-17",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Overdue yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-13.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 13",
+    "Asset ID": "LPT-2026-0013",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Overdue + Maintenance due",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "06/11/26",
+    "Remaining": "3 days overdue",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0176",
+    "Source": "Admin",
+    "Duration": "4 days",
+    "Handed Over At": "03/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Kunjungan klien"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-18",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Extension Request yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-14.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 14",
+    "Asset ID": "LPT-2026-0014",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Extension Request + Maintenance due",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "11/11/26",
+    "Remaining": "Due in 2 days",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0177",
+    "Source": "Admin",
+    "Duration": "5 days",
+    "Handed Over At": "07/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Pelatihan vendor"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-19",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Extension Approval yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-15.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 15",
+    "Asset ID": "LPT-2026-0015",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Extension Approval + Maintenance due",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "11/11/26",
+    "Remaining": "Due in 2 days",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0178",
+    "Source": "Admin",
+    "Duration": "5 days",
+    "Handed Over At": "07/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Audit cabang",
+    "Approved": "0",
+    "Required": "1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-20",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Waiting for Handover yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "projector-epson-eb-x06-13.jpg",
+    "Name": "Projector Epson EB-X06 - 13",
+    "Asset ID": "PRJ-2026-0013",
+    "Brand": "Epson",
+    "Model/Type": "EB-X06",
+    "Group": "Head Office",
+    "Status": "Waiting for Handover",
+    "TAG": "QR",
+    "Category": "Projector",
+    "Due Date": "null",
+    "Remaining": "—",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0179",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "null",
+    "Extensions": "0 / 2",
+    "Purpose": "Presentasi mitra"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-21",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Waiting for Approval yang asetnya punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-16.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 16",
+    "Asset ID": "LPT-2026-0016",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Waiting for Approval",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "null",
+    "Remaining": "—",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0180",
+    "Source": "Admin",
+    "Duration": "3 days",
+    "Handed Over At": "null",
+    "Extensions": "0 / 2",
+    "Purpose": "Survei lokasi",
+    "Approved": "0",
+    "Required": "1"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-22",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Overdue dengan pengajuan Extend menunggu review (dua badge)",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-17.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 17",
+    "Asset ID": "LPT-2026-0017",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Overdue + Extension Request",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "07/11/26",
+    "Remaining": "2 days overdue",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0181",
+    "Source": "Admin",
+    "Duration": "4 days",
+    "Handed Over At": "03/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Pendampingan proyek"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
+   "maks": {}
+  },
+  {
+   "id": "DU-104-23",
+   "spec": [
+    "TC-FA-MYASSET-UI-104-tabel-borrowed-tampilan-sel"
+   ],
+   "jenis": "Baris Borrowed",
+   "data": "Baris Overdue dengan pengajuan Extend menunggu approval (dua badge)",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "laptop-dell-18.jpg",
+    "Name": "Laptop Dell Latitude 5420 - 18",
+    "Asset ID": "LPT-2026-0018",
+    "Brand": "Dell",
+    "Model/Type": "Latitude 5420",
+    "Group": "Head Office",
+    "Status": "Overdue + Extension Approval",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Due Date": "07/11/26",
+    "Remaining": "2 days overdue",
+    "Borrower": "Me",
+    "Transaction ID": "BRW-2026-0182",
+    "Source": "Admin",
+    "Duration": "4 days",
+    "Handed Over At": "03/11/26, 09:00",
+    "Extensions": "0 / 2",
+    "Purpose": "Dukungan acara",
+    "Approved": "1",
+    "Required": "2"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.1b#r7",
    "maks": {}
   },
   {
@@ -21385,6 +22691,96 @@
    "maks": {}
   },
   {
+   "id": "DU-116-10",
+   "spec": [
+    "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Penugasan Assigned dengan badge Maintenance due",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "foto-LPT-2026-0009.jpg",
+    "Brand": "Lenovo",
+    "Model/Type": "ThinkPad T14",
+    "Group": "Head Office",
+    "Assigned To": "Me",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Name": "Laptop Lenovo ThinkPad T14 - 9",
+    "Asset ID": "LPT-2026-0009",
+    "Status": "Assigned · Maintenance due",
+    "Transaction ID": "ASG-2026-0040",
+    "Assigned Date": "09/11/26, 08:30",
+    "Assigned By": "Rina W",
+    "Assigned By Full Name": "Rina Wulandari"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-116-11",
+   "spec": [
+    "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Penugasan Waiting for Handover pada aset yang punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "foto-LPT-2026-0010.jpg",
+    "Brand": "Lenovo",
+    "Model/Type": "ThinkPad T14",
+    "Group": "Head Office",
+    "Assigned To": "Me",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Name": "Laptop Lenovo ThinkPad T14 - 10",
+    "Asset ID": "LPT-2026-0010",
+    "Status": "Waiting for Handover",
+    "Transaction ID": "ASG-2026-0076",
+    "Assigned Date": null,
+    "Assigned By": null
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-116-12",
+   "spec": [
+    "TC-FA-MYASSET-UI-116-tabel-assigned-tampilan-dan-konfigurasi"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Penugasan Waiting for Approval pada aset yang punya task Maintenance Routine jatuh tempo",
+   "asal": "awal",
+   "nilai": {
+    "Photo": "foto-LPT-2026-0011.jpg",
+    "Brand": "Lenovo",
+    "Model/Type": "ThinkPad T14",
+    "Group": "Head Office",
+    "Assigned To": "Me",
+    "TAG": "Non TAG",
+    "Category": "Laptop",
+    "Name": "Laptop Lenovo ThinkPad T14 - 11",
+    "Asset ID": "LPT-2026-0011",
+    "Status": "Waiting for Approval",
+    "Transaction ID": "ASG-2026-0077",
+    "Assigned Date": null,
+    "Assigned By": null,
+    "Approved": 0,
+    "Required": 1
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
    "id": "DU-117-1",
    "spec": [
     "TC-FA-MYASSET-UI-117-tabel-assigned-aksi-baris-dan-reaksi-respons"
@@ -21586,6 +22982,68 @@
    "mutasi": [],
    "varian": [],
    "sumber": "PRD §4.1d Sub-rule aksi T-MYA-04 (ACT-MYA-04.report-damaged.e)",
+   "maks": {}
+  },
+  {
+   "id": "DU-117-8",
+   "spec": [
+    "TC-FA-MYASSET-UI-117-tabel-assigned-aksi-baris-dan-reaksi-respons"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Penugasan Division Assigned dengan Damage Report Waiting for Confirmation yang diajukan pelapor lain",
+   "asal": "awal",
+   "nilai": {
+    "Photo": null,
+    "Brand": "HP",
+    "Model/Type": "M404",
+    "Group": "Branch Surabaya",
+    "Assigned To": "Finance",
+    "TAG": "Non TAG",
+    "Category": "Printer",
+    "Assigned Date": "10/11/26, 08:40",
+    "Assigned By": "Agus P",
+    "Name": "Printer HP M404 - 3",
+    "Asset ID": "PRN-2026-0003",
+    "Status": "Assigned · Reported Damaged",
+    "Transaction ID": "ASG-2026-0074"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-assigned:per-kondisi-disabled:Reported Damaged"
+   ],
+   "sumber": "PRD §1.2 MYASSET-LOGIC-04s; PRD §4.1d Sub-rule aksi T-MYA-04 (ACT-MYA-04.cancel-damage-report.a)",
+   "maks": {}
+  },
+  {
+   "id": "DU-117-9",
+   "spec": [
+    "TC-FA-MYASSET-UI-117-tabel-assigned-aksi-baris-dan-reaksi-respons"
+   ],
+   "jenis": "Baris Assigned",
+   "data": "Penugasan Division Assigned dengan laporan Missing Waiting for Confirmation yang diajukan pelapor lain",
+   "asal": "awal",
+   "nilai": {
+    "Photo": null,
+    "Brand": "Dell",
+    "Model/Type": "P2422H",
+    "Group": "Head Office",
+    "Assigned To": "Finance",
+    "TAG": "Non TAG",
+    "Category": "Monitor",
+    "Assigned Date": "10/11/26, 08:50",
+    "Assigned By": "Agus P",
+    "Name": "Monitor Dell 24\" - 6",
+    "Asset ID": "MON-2026-0006",
+    "Status": "Assigned · Reported Missing",
+    "Transaction ID": "ASG-2026-0075"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [
+    "status-baris@tabel-assigned:per-kondisi-disabled:Reported Missing"
+   ],
+   "sumber": "PRD §1.2 MYASSET-LOGIC-04s; PRD §4.1d Sub-rule aksi T-MYA-04 (ACT-MYA-04.cancel-missing-report.a)",
    "maks": {}
   },
   {

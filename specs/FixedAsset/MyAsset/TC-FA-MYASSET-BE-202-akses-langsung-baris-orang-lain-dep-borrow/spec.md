@@ -5,12 +5,12 @@ layer: be-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§1.2#r22", "§1.2#r27", "§9.3#b1", "§9.3#b2", "§9.4.2#r19", "§9.4.3#b4", "EB-AKS-3@confirm-handover", "EB-AKS-3@confirm-handover-assignment", "EB-AKS-3@cancel-borrow", "EB-AKS-3@cancel-extension-request", "EB-AKS-3@report-damaged", "EB-AKS-3@report-missing", "EB-AKS-3@cancel-damage-report", "EB-AKS-3@cancel-missing-report"]
+sourceRules: ["§1.2#r23", "§1.2#r28", "§9.3#b1", "§9.3#b2", "§9.4.2#r19", "§9.4.3#b4", "EB-AKS-3@confirm-handover", "EB-AKS-3@confirm-handover-assignment", "EB-AKS-3@cancel-borrow", "EB-AKS-3@cancel-extension-request", "EB-AKS-3@report-damaged", "EB-AKS-3@report-missing", "EB-AKS-3@cancel-damage-report", "EB-AKS-3@cancel-missing-report"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment"]
 trace:
-  "§1.2#r22": [4, 5, 7, 13, 14, 18, 19]
-  "§1.2#r27": [2, 11, 16, 21, 25, 29, 35, 39, 43, 47, 51]
+  "§1.2#r23": [4, 5, 7, 13, 14, 18, 19]
+  "§1.2#r28": [2, 11, 16, 21, 25, 29, 35, 39, 43, 47, 51]
   "§9.3#b1": [9, 31]
   "§9.3#b2": [4, 13, 18]
   "§9.4.2#r19": [18, 19]

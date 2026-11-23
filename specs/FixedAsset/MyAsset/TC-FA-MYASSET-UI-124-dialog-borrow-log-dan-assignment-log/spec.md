@@ -5,15 +5,16 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§1.2#r90", "§2.2#r4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r5", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§9.4.3#b2"]
+sourceRules: ["§1.2#r91", "§2.2#r4", "§Dialog aksi baris (tab Borrowed dan Assigned)#r5", "§Dialog aksi baris (tab Borrowed dan Assigned)#r7", "§9.4.3#b2", "T-MYA-04"]
 smoke: []
 dependsOn: []
 trace:
-  "§1.2#r90": [6, 7, 13, 19, 29, 35]
+  "§1.2#r91": [6, 7, 13, 19, 29, 35]
   "§2.2#r4": [8, 14, 20, 30, 36]
   "§Dialog aksi baris (tab Borrowed dan Assigned)#r5": [4, 5, 6, 7, 13, 19, 24, 29, 35]
   "§Dialog aksi baris (tab Borrowed dan Assigned)#r7": [40, 44]
   "§9.4.3#b2": [8, 14, 20, 30, 36]
+  "T-MYA-04": [29, 30]
 anchor: [12, 18, 28, 34]
 coverage:
   web: automated

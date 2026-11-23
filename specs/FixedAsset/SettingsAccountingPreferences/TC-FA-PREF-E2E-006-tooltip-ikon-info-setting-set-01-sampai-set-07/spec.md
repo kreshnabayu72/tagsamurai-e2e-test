@@ -44,7 +44,7 @@ coverage:
 ### TC-FA-PREF-29: Tooltip Fiscal Year Start (SET-01)
 
 1. Hover ikon ⓘ di sebelah label "Fiscal Year Start"
-2. Verifikasi tooltip tampil dengan teks persis: "The month your company's financial year starts every year. Can be changed until depreciation is posted or a period is closed."
+2. Verifikasi tooltip tampil dengan teks persis: "The month your company's financial year starts every year. Can be changed until depreciation is posted."
 
 ### TC-FA-PREF-30: Tooltip Default Capitalization Threshold (SET-02)
 
@@ -54,7 +54,7 @@ coverage:
 ### TC-FA-PREF-31: Tooltip In-service Date Source (SET-03)
 
 5. Hover ikon ⓘ di sebelah label "In-service Date Source"
-6. Verifikasi tooltip tampil dengan teks persis: "When depreciation starts. Activation date: the date the asset first moves to an operational status. Manual: Accounting enters the date on each asset. Changes apply to new assets only."
+6. Verifikasi tooltip tampil dengan teks persis: "When depreciation starts. Activation date: the date the asset becomes Active. Manual: Accounting enters the date each asset is ready for use. Changes apply to new assets only."
 
 ### TC-FA-PREF-32: Tooltip Depreciation in Disposal Month (SET-04)
 

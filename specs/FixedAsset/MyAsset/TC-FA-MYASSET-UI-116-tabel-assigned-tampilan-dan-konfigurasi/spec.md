@@ -5,15 +5,15 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["FI-15", "T-MYA-04", "§1.2#r7", "§1.2#r45", "§1.2#r86", "§4.1#p2", "§4.4#r50", "§5#r1", "§5#r3", "§5#r9", "§5#r10", "§7.1#r3", "§9.4.2#r61", "EB-TBL-1@tabel-assigned", "EB-FLT-6@tabel-assigned"]
+sourceRules: ["FI-15", "T-MYA-04", "§1.2#r7", "§1.2#r46", "§1.2#r87", "§4.1#p2", "§4.4#r50", "§5#r1", "§5#r3", "§5#r9", "§5#r10", "§7.1#r3", "§9.4.2#r63", "EB-TBL-1@tabel-assigned", "EB-FLT-6@tabel-assigned"]
 smoke: []
 dependsOn: []
 trace:
   "FI-15": 7
-  "T-MYA-04": [2, 3, 4, 6, 9, 10, 11, 12, 13, 14, 17, 19, 20, 22, 24, 25, 26, 28, 29, 30, 31, 33, 34, 35, 36, 38, 40, 42, 43, 45, 47, 48, 53, 54, 56, 57, 58, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 79, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 110, 151, 152]
+  "T-MYA-04": [2, 3, 4, 6, 9, 10, 11, 12, 13, 14, 17, 19, 20, 22, 24, 25, 26, 28, 29, 30, 31, 33, 34, 35, 36, 38, 40, 42, 43, 45, 47, 48, 53, 54, 56, 57, 58, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 79, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 110, 151, 152, 155, 156, 158, 160, 161]
   "§1.2#r7": 4
-  "§1.2#r45": [19, 20, 22]
-  "§1.2#r86": 17
+  "§1.2#r46": [19, 20, 22, 161]
+  "§1.2#r87": 17
   "§4.1#p2": [57, 58, 59, 60]
   "§4.4#r50": 6
   "§5#r1": [47, 48, 49]
@@ -21,9 +21,10 @@ trace:
   "§5#r9": 4
   "§5#r10": [53, 56]
   "§7.1#r3": [112, 113, 121, 122, 129, 130]
-  "§9.4.2#r61": [12, 13]
+  "§9.4.2#r63": [12, 13]
   "EB-TBL-1@tabel-assigned": [112, 114, 115, 116, 118, 121, 123, 125, 129, 132, 133, 134, 135]
   "EB-FLT-6@tabel-assigned": [74, 140, 141, 145, 146, 147, 148, 149]
+anchor: [154, 157]
 coverage:
   web: automated
 ---
@@ -43,6 +44,9 @@ coverage:
   - DU-116-6: Baris Assigned Photo `foto-MON-2026-0005.jpg`, Name `Monitor Dell 24" - 5`, Asset ID `MON-2026-0005`, Brand `Dell`, Model/Type `P2422H`, Group `Head Office`, Status `Assigned · Damaged`, Assigned To `Me`, TAG `Non TAG`, Category `Monitor`, Transaction ID `ASG-2026-0016`, Assigned Date `22/08/26, 11:00`, Assigned By `Rina W`, Assigned By Full Name `Rina Wulandari`.
   - DU-116-7: Baris Assigned Photo kosong, Name `Laptop Dell Latitude 5420 Edisi Khusus Kantor Pengadaan dan Manajemen Vendor Regional Jakarta - 31`, Asset ID `LPT-2026-0031`, Brand kosong, Model/Type kosong, Group `Head Office`, Status `Assigned`, Assigned To `Me`, TAG `Non TAG`, Category `Laptop`, Transaction ID `ASG-2026-0032`, Assigned Date `14/10/26, 10:00`, Assigned By `Rina W`, Assigned By Full Name `Rina Wulandari`.
   - DU-116-8: Baris Assigned Photo `foto-MIC-2026-0007.jpg`, Name `Meeting Mic Set - 7`, Asset ID `MIC-2026-0007`, Brand `Dell Technologies Indonesia Authorized Distributor`, Model/Type `Latitude 5420 Rugged Extreme Edition`, Group `Pengadaan`, Status `Assigned`, Assigned To `Me`, TAG `QR Code` dan `RFID`, Category `Audio Visual`, Transaction ID `ASG-2026-0033`, Assigned Date `16/10/26, 10:00`, Assigned By `Rina W`, Assigned By Full Name `Rina Wulandari`, hierarki Group `Head Office` lalu `Pengadaan`, hierarki Category `Peralatan Kantor` lalu `Audio Visual`.
+  - DU-116-10: Baris Assigned Photo `foto-LPT-2026-0009.jpg`, Name `Laptop Lenovo ThinkPad T14 - 9`, Asset ID `LPT-2026-0009`, Brand `Lenovo`, Model/Type `ThinkPad T14`, Group `Head Office`, Status `Assigned · Maintenance due`, Assigned To `Me`, TAG `Non TAG`, Category `Laptop`, Transaction ID `ASG-2026-0040`, Assigned Date `09/11/26, 08:30`, Assigned By `Rina W`, Assigned By Full Name `Rina Wulandari`.
+  - DU-116-11: Baris Assigned Photo `foto-LPT-2026-0010.jpg`, Name `Laptop Lenovo ThinkPad T14 - 10`, Asset ID `LPT-2026-0010`, Brand `Lenovo`, Model/Type `ThinkPad T14`, Group `Head Office`, Status `Waiting for Handover`, Assigned To `Me`, TAG `Non TAG`, Category `Laptop`, Transaction ID `ASG-2026-0076`, Assigned Date kosong, Assigned By kosong.
+  - DU-116-12: Baris Assigned Photo `foto-LPT-2026-0011.jpg`, Name `Laptop Lenovo ThinkPad T14 - 11`, Asset ID `LPT-2026-0011`, Brand `Lenovo`, Model/Type `ThinkPad T14`, Group `Head Office`, Status `Waiting for Approval`, Assigned To `Me`, TAG `Non TAG`, Category `Laptop`, Transaction ID `ASG-2026-0077`, Assigned Date kosong, Assigned By kosong, Approved `0`, Required `1`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`.
   - K1: tabel Assigned memuat DU-116-1 sampai DU-116-6, dengan konfigurasi kolom bawaan.
@@ -51,6 +55,8 @@ coverage:
   - K4: tabel Assigned memuat DU-116-4; respons untuk Search `Kamera Drone DJI` dan untuk Filter Status `Waiting for Approval` tidak memuat baris.
   - K5: memuat tabel Assigned gagal karena error server.
   - K6: tabel Assigned memuat DU-116-4 dan DU-116-1; respons untuk Filter Status `Assigned` hanya memuat DU-116-4.
+  - K7: tabel Assigned memuat DU-116-10, DU-116-11, dan DU-116-12; respons menandai aset ketiga baris itu punya task Maintenance Routine yang jatuh tempo.
+  - K8: tabel Assigned memuat DU-116-4 dan DU-116-3, dengan konfigurasi kolom bawaan dan bahasa antarmuka aktif adalah bahasa selain bahasa bawaan.
 
 ## Test Steps
 
@@ -235,3 +241,16 @@ coverage:
 150. Tampilkan Tabel Assigned dengan kondisi K1
 151. Verifikasi header kolom `Name` memiliki ikon sort
 152. Verifikasi header kolom `Photo` tidak memiliki ikon sort
+
+### Badge Maintenance due hanya pada baris Assigned
+153. Tampilkan Tabel Assigned dengan kondisi K7
+154. Verifikasi baris `Laptop Lenovo ThinkPad T14 - 10` menampilkan Status `Waiting for Handover`
+155. Verifikasi badge `Maintenance due` tidak tampil pada baris `Laptop Lenovo ThinkPad T14 - 10`
+156. Verifikasi baris `Laptop Lenovo ThinkPad T14 - 9` menampilkan Status `Assigned` dengan badge tambahan `Maintenance due`
+157. Verifikasi baris `Laptop Lenovo ThinkPad T14 - 11` menampilkan Status `Waiting for Approval`
+158. Verifikasi badge `Maintenance due` tidak tampil pada baris `Laptop Lenovo ThinkPad T14 - 11`
+
+### Bahasa antarmuka lain: label sistem Me mengikuti bahasa, nama Division tetap persis
+159. Tampilkan Tabel Assigned dengan kondisi K8
+160. Verifikasi baris `Laptop Dell Latitude 5420 - 1` menampilkan label sistem `Me` pada Assigned To dalam bahasa antarmuka aktif
+161. Verifikasi baris `Printer HP M404 - 2` tetap menampilkan Assigned To `Finance` persis seperti data, tanpa diterjemahkan

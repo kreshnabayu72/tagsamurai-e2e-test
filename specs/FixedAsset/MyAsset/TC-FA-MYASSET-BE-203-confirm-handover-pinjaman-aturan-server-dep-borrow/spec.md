@@ -5,24 +5,25 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["FI-05", "T-MYA-01", "V-03", "§4.2.5#p3", "§9.2#b3", "§9.2#r2", "§9.2#r3", "§9.4.2#r37", "§9.4.2#r40", "§9.4.2#r42", "§9.4.2#r91", "§9.6#r1", "EB-CON-3", "EB-EDG-1"]
+sourceRules: ["FI-05", "T-MYA-01", "V-03", "§4.2.5#p3", "§9.2#b3", "§9.2#r2", "§9.2#r3", "§9.4.2#r39", "§9.4.2#r42", "§9.4.2#r44", "§9.4.2#r93", "§9.6#r1", "EB-CON-3", "EB-EDG-1", "§9.4.2#r43"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
   "FI-05": [63, 65]
   "T-MYA-01": [51, 55, 58]
-  "V-03": [2, 4, 10, 14, 18, 20, 24, 28, 32, 34, 36, 42, 51, 58, 60, 71]
+  "V-03": [2, 4, 10, 14, 18, 20, 24, 28, 32, 34, 36, 42, 51, 58, 60, 71, 79, 82]
   "§4.2.5#p3": [63, 65]
   "§9.2#b3": [42, 44, 48]
-  "§9.2#r2": [4, 18, 22, 24, 30, 34, 38, 71]
-  "§9.2#r3": [14, 20, 28, 36]
-  "§9.4.2#r37": [20, 42, 51]
-  "§9.4.2#r40": [16, 22, 44, 53]
-  "§9.4.2#r42": [10, 20, 28]
-  "§9.4.2#r91": 51
+  "§9.2#r2": [4, 18, 22, 24, 30, 34, 38, 71, 79]
+  "§9.2#r3": [14, 20, 28, 36, 82]
+  "§9.4.2#r39": [20, 42, 51, 82]
+  "§9.4.2#r42": [16, 22, 44, 53, 84, 86]
+  "§9.4.2#r44": [10, 20, 28]
+  "§9.4.2#r93": 51
   "§9.6#r1": [6, 8, 12, 26, 46, 62, 67, 73, 75, 77]
-  "EB-CON-3": [14, 20, 28, 36, 42]
+  "EB-CON-3": [14, 20, 28, 36, 42, 82]
   "EB-EDG-1": [10, 12]
+  "§9.4.2#r43": 26
 owner: BE
 ---
 
@@ -31,7 +32,7 @@ owner: BE
 ## Prerequisites
 - Aktor: Maya (Borrower), Wulan (PIC Borrower atas nama Anton), dan Gita (Aktor Borrow yang menyerahkan aset, mengonfirmasi lewat perangkat admin, dan menekan `Cancel Request`).
 - Data:
-  - DU-203-1: User `Maya Anggraini {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Borrower pada DU-203-5 sampai DU-203-13.
+  - DU-203-1: User `Maya Anggraini {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, Borrower pada DU-203-5 sampai DU-203-14.
   - DU-203-2: User `Gita Permata {runId}`, role Asset Admin, cakupan Group `Head Office` beserta Group di bawahnya, Aktor Borrow Group `Head Office`.
   - DU-203-3: Borrower tanpa akun `Anton Saputra {runId}`, PIC-nya Wulan, Borrower pada DU-203-8.
   - DU-203-4: User `Wulan Pratiwi {runId}`, role Read Only, cakupan Group `Head Office` beserta Group di bawahnya, PIC Anton.
@@ -44,6 +45,7 @@ owner: BE
   - DU-203-11: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 37 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-10 dimulai.
   - DU-203-12: Pinjaman Maya dengan satu sesi Handover berjalan berisi tiga aset: `Projector Epson EB-X06 - 38 {runId}`, `Laptop Dell Latitude 5420 - 39 {runId}`, dan `Meeting Mic Set - 40 {runId}`, Group `Head Office`, ketiganya berstatus `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 56.
   - DU-203-13: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 41 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 56.
+  - DU-203-14: Pinjaman Maya dengan sesi Handover berjalan yang menunggu konfirmasi, aset `Laptop Dell Latitude 5420 - 50 {runId}`, Group `Head Office`, status `Waiting for Handover`, Expires At sesi: T0 + lama jendela konfirmasi, dengan T0 waktu sesi dimulai, paling sedikit 1 menit sesudah sesi DU-203-11 dimulai, sehingga Expires At sesi lebih akhir daripada waktu pada langkah 56.
 
 ## Test Steps
 
@@ -139,3 +141,14 @@ owner: BE
 75. Verifikasi Custody aset `Laptop Dell Latitude 5420 - 41 {runId}` sudah berubah dibandingkan Custody pada langkah 68
 76. Gita meminta Transaction log aset `Laptop Dell Latitude 5420 - 41 {runId}`
 77. Verifikasi Transaction log aset `Laptop Dell Latitude 5420 - 41 {runId}` memuat satu entri baru dibandingkan entri teratas pada langkah 69
+
+### Percobaan Maya yang ditolak sesudah konfirmasi perangkat admin tidak mengubah baris
+78. Gita mengonfirmasi sesi DU-203-14 lewat `Confirm on This Device` dengan aset `Laptop Dell Latitude 5420 - 50 {runId}` tercentang
+79. Verifikasi konfirmasi dari perangkat admin diterima server
+80. Maya meminta data tab Borrowed dan mencatat Due Date baris pinjaman aset `Laptop Dell Latitude 5420 - 50 {runId}`
+81. Maya mengirim Confirm Handover untuk sesi DU-203-14 dengan aset `Laptop Dell Latitude 5420 - 50 {runId}` tercentang
+82. Verifikasi konfirmasi Maya ditolak server karena sesi sudah dikonfirmasi lewat cara lain
+83. Maya meminta Borrow Log baris pinjaman aset `Laptop Dell Latitude 5420 - 50 {runId}`
+84. Verifikasi Borrow Log tetap memuat satu node `Handed over`
+85. Maya meminta data tab Borrowed
+86. Verifikasi Due Date baris pinjaman aset `Laptop Dell Latitude 5420 - 50 {runId}` sama dengan Due Date yang dicatat pada langkah 80

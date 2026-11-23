@@ -38,7 +38,7 @@ coverage:
 - Akun: Total Control (company uji Fixed Asset). Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite. Akun dan email disediakan tim FE (email tidak tertulis di TC); password lewat `Spectra.env.FA_TC_PASSWORD`.
 - Hook suite, seeding, dan flag Guided Tooltip mengikuti `suite.md`.
 - Jam sistem: tanggal sistem uji 15 Okt 2026 10:00 WIB (Time Zone entitas Asia/Jakarta, UTC+07:00); jam server dan jam browser diatur bersama lewat kendali jam (`suite.md`) di hook `before` dan dipulihkan di hook `after`.
-- Data Pre-setup (disediakan tim FE lewat seeding API, `Fixture.fixedAssetTaxDepreciationClass`, kunci `exampleData`, fixture belum ada): sembilan class Example Data PRD dengan tabel dalam satu halaman (9 baris, 10 baris per halaman) sehingga baris target tidak dicari lewat Search; semua periode akuntansi Open. Kondisi tiap blok dibentuk lewat seeding di langkah penghubung (langkah 1, 10, 33, 45, 56):
+- Data Pre-setup (disediakan tim FE lewat seeding API, `Fixture.fixedAssetTaxDepreciationClass`, kunci `exampleData`, fixture belum ada): sembilan class Example Data PRD dengan tabel dalam satu halaman (9 baris, 10 baris per halaman) sehingga baris target tidak dicari lewat Search; belum ada penyusutan diposting. Kondisi tiap blok dibentuk lewat seeding di langkah penghubung (langkah 1, 10, 33, 45, 56):
   - TC-924: Fiscal Year Start `January`; NB-4 memiliki tiga versi (versi pertama tanpa Effective From berstatus Past, versi Jan 2025 Past, versi Jan 2026 Current); tidak ada versi Scheduled di class mana pun.
   - TC-925: Fiscal Year Start `January`; NB-2 memiliki versi Scheduled mulai Jan 2027 dan NB-3 (Used By 0) memiliki versi Scheduled mulai Jan 2028; tidak ada versi bertanggal lain.
   - TC-753: Fiscal Year Start `January`; NB-2 memiliki versi Scheduled mulai Jan 2027 sebagai satu-satunya versi bertanggal di seluruh class.
@@ -46,7 +46,7 @@ coverage:
   - TC-755: Fiscal Year Start `July` tersimpan; NB-4 hanya memiliki versi pertama tanpa Effective From.
   - Class Code dibatasi 15 karakter sehingga kode memakai literal TC tanpa suffix `{runId}-<NNN>` (lihat Temuan untuk QA).
 - Data uji: perubahan Fiscal Year Start ke `July` pada tiap blok; TC-755 mengubah Useful Life NB-4 menjadi 10 untuk membuka dialog Save Changes.
-- Kemampuan teknis (disediakan tim FE/BE, lihat `suite.md`): seeding class, versi (Past, Current, Scheduled), periode akuntansi Open, dan Fiscal Year Start lewat API; pemulihan data lewat API.
+- Kemampuan teknis (disediakan tim FE/BE, lihat `suite.md`): seeding class, versi (Past, Current, Scheduled), dan Fiscal Year Start lewat API (tanpa Run Posted); pemulihan data lewat API.
 - State global yang diubah: Fiscal Year Start (menjadi July pada blok TC-925, TC-753, dan TC-754), versi NB-2, NB-3, dan NB-4, penghapusan NB-3, serta jam server dan browser. Dipulihkan di hook `after` lewat seeding ulang Fiscal Year Start `January` dan class Example Data, serta pemulihan jam.
 
 ## Test Steps

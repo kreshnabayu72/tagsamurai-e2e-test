@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r8, §4.8#r9, §4.8#r10, §4.8#r11, §2#b3, S-DMG-01, S-DMG-09, §9.11#b1, §5#r8, T-DMG-01, EB-AKS-4, §9.3#b1]
+sourceRules: [§2.1#r1, §2.1#r2, §2.1#r3, §2.1#r4, §2.1#r5, §2.1#r6, §2.1#r7, §2.1#r8, §2.1#r9, §2.1#r10, §2.1#r11, §4.8#r1, §4.8#r2, §4.8#r3, §4.8#r4, §4.8#r5, §4.8#r6, §4.8#r7, §4.8#r10, §4.8#r11, §4.8#r12, §4.8#r13, §2#b3, S-DMG-01, S-DMG-09, §9.11#b1, §5#r8, T-DMG-01, EB-AKS-4, §9.3#b1, §9.4.3#b6]
 smoke: []
 dependsOn: []
 trace:
@@ -27,11 +27,11 @@ trace:
   §4.8#r5: 10
   §4.8#r6: 14
   §4.8#r7: 15
-  §4.8#r8: 10
-  §4.8#r9: 19
-  §4.8#r10: 29
-  §4.8#r11: [21, 22]
-  §2#b3: 10
+  §4.8#r10: 10
+  §4.8#r11: 19
+  §4.8#r12: 29
+  §4.8#r13: [21, 22]
+  §2#b3: [10, 14, 44, 47]
   S-DMG-01: 3
   S-DMG-09: [28, 29]
   §9.11#b1: 29
@@ -39,7 +39,8 @@ trace:
   T-DMG-01: [5, 36, 43]
   EB-AKS-4: [5, 24, 28, 31, 33, 51, 53, 54, 58, 59]
   §9.3#b1: 10
-anchor: [46]
+  §9.4.3#b6: 66
+anchor: [46, 65]
 coverage:
   web: automated
 ---
@@ -52,7 +53,7 @@ coverage:
 - Data:
   - DU-017-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}` (DU-017-6), status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-017-9.
   - DU-017-2: Damage record aset `Toyota Avanza {runId}` di Group `Branch Surabaya {runId}` (DU-017-7), status `Damaged`, Source `Manual`, dilaporkan DU-017-9.
-  - DU-017-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Stock opname`, dilaporkan DU-017-9.
+  - DU-017-3: Damage record aset `Printer HP LaserJet M404 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Audit`, dilaporkan DU-017-9.
   - DU-017-4: Damage record aset `Drill Bosch GSB {runId}` di Group `Head Office {runId}`, status `Repaired`, Source `Manual`, dilaporkan DU-017-9.
   - DU-017-5: Damage record aset `Handheld Scanner Zebra TC21 {runId}` di Group `Head Office {runId}`, status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan DU-017-8 sebagai pelapor umum dari My Asset.
   - DU-017-6: Group `Head Office {runId}`.
@@ -139,3 +140,12 @@ coverage:
 57. Klik `[Apply]`
 58. Verifikasi baris `Toyota Avanza {runId}` di Group `Branch Surabaya {runId}` tampil di tabel
 59. Verifikasi baris `Laptop Dell Latitude 5420 {runId}` tidak tampil di tabel
+
+### Pelapor tanpa hak Aktor Damaged tidak melihat Review atas laporannya sendiri
+60. Klik ikon Filter pada toolbar
+61. Pada Filter Panel, ganti pilihan Group menjadi `Head Office {runId}`
+62. Klik `[Apply]`
+63. Ganti isi kotak search dengan `Handheld Scanner Zebra TC21 {runId}`, tekan Enter
+64. Klik `⋯` pada baris `Handheld Scanner Zebra TC21 {runId}`
+65. Verifikasi item `Damage Log` tampil pada menu baris
+66. Verifikasi item `Review` tidak tampil pada menu baris laporan buatan aktor sendiri

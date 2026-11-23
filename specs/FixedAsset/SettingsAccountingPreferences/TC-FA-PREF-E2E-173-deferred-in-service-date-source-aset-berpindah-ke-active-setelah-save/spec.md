@@ -49,9 +49,9 @@ coverage:
 10. Verifikasi Detail aset 'assignment - 14' memakai Activation date sebagai sumber tanggal mulai penyusutan
 11. Verifikasi tanggal mulai penyusutan aset 'assignment - 14' adalah 7 Mei 2026
 
-### TC-FA-PREF-439: Aset terdaftar sebelum Save yang belum berstatus operasional tetap memakai sumber lama
+### TC-FA-PREF-439: Aset terdaftar sebelum Save yang Lifecycle-nya belum pernah Active tetap memakai sumber lama
 
-12. Seed In-service Date Source tersimpan "Activation date" dan aset 'assignment - 15' terdaftar sebelum T serta belum pernah berstatus operasional, lalu bekukan jam server dan jam browser pada T lewat kendali jam hingga tersimpan
+12. Seed In-service Date Source tersimpan "Activation date" dan aset 'assignment - 15' terdaftar sebelum T serta Lifecycle-nya belum pernah Active, lalu bekukan jam server dan jam browser pada T lewat kendali jam hingga tersimpan
 13. Buka Fixed Asset > Settings > Accounting > Preferences
 14. Pilih "Manual by Accounting" pada Select In-service Date Source
 15. Klik [Save changes]

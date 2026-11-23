@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-02, "§4.1#r2", "§5#r5", "§9.5#r3", "§9.5#r6", "§9.5#r7", "§9.2#b11", S-DMG-13, S-DMG-14, "§Aturan Logika Modul#r17", EB-SRC-5@tabel-history, EB-TBL-1@tabel-history, "§5#r1"]
+sourceRules: [T-DMG-02, "§4.1#r2", "§5#r5", "§9.5#r3", "§9.5#r6", "§9.5#r7", "§9.2#b12", S-DMG-13, S-DMG-14, "§Aturan Logika Modul#r18", EB-SRC-5@tabel-history, EB-TBL-1@tabel-history, "§5#r1"]
 smoke: []
 dependsOn: []
 trace:
@@ -15,10 +15,10 @@ trace:
   "§9.5#r3": [12]
   "§9.5#r6": [11]
   "§9.5#r7": [23, 24]
-  "§9.2#b11": [7, 8]
+  "§9.2#b12": [7, 8]
   S-DMG-13: [79]
   S-DMG-14: [30, 31]
-  "§Aturan Logika Modul#r17": [13, 42]
+  "§Aturan Logika Modul#r18": [13, 42]
   EB-SRC-5@tabel-history: [33, 37, 40]
   EB-TBL-1@tabel-history: [30]
   "§5#r1": [3, 5, 9]
@@ -34,7 +34,7 @@ coverage:
 - Layar awal: halaman Assets.
 - Data:
   - DU-007-1: record `Repaired`, Name `Riwayat Aset {runId} - 1`, Asset ID `RWY-0001-{runId}`, Group `Head Office {runId}`, Source `Borrow return`, Last Holder `Sari D`, Reported By `Rina W`, Reported Date `T0 − 20 hari, pukul 09:00`, Resolved By `Rina W`, Resolved Date `T0 − 14 hari, pukul 14:10`, Duration `6 days`, Category `Elektronik {runId}`.
-  - DU-007-2: record `Disposed`, Name `Riwayat Aset {runId} - 2`, Asset ID `RWY-0002-{runId}`, Group `Head Office {runId}`, Source `Stock opname`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 30 hari, pukul 08:00`, Resolved By `System`, Resolved Date `T0 − 10 hari, pukul 00:30`, Duration `20 days`, Category `Elektronik {runId}`.
+  - DU-007-2: record `Disposed`, Name `Riwayat Aset {runId} - 2`, Asset ID `RWY-0002-{runId}`, Group `Head Office {runId}`, Source `Audit`, Last Holder `—`, Reported By `Agus P`, Reported Date `T0 − 30 hari, pukul 08:00`, Resolved By `System`, Resolved Date `T0 − 10 hari, pukul 00:30`, Duration `20 days`, Category `Elektronik {runId}`.
   - DU-007-3: record `Rejected`, Name `Riwayat Aset {runId} - 3`, Asset ID `RWY-0003-{runId}`, Group `Cabang Lama {runId}`, Source `Reported by holder`, Last Holder `Budi S`, Reported By `Budi S`, Reported Date `T0 − 8 hari, pukul 08:30`, Resolved By `Rina W`, Resolved Date `T0 − 7 hari, pukul 09:15`, Duration `1 day`, Category `Peralatan Lama {runId}`.
   - DU-007-4: record `Canceled`, Name `Riwayat Aset {runId} - 4`, Asset ID `RWY-0004-{runId}`, Group `Gudang Lama {runId}`, Source `Reported by holder`, Last Holder `Dewi A`, Reported By `Dewi A`, Reported Date `T0 − 5 hari, pukul 10:00`, Resolved By `Dewi A`, Resolved Date `T0 − 4 hari, pukul 08:00`, Duration `1 day`, Category `Mebel Lama {runId}`.
   - DU-007-5: record berjalan `Damaged`, Name `Riwayat Aset {runId} - 5`, Asset ID `RWY-0005-{runId}`, Group `Head Office {runId}`, Source `Manual`, Reported By `Agus P`.
@@ -70,7 +70,7 @@ coverage:
 ### Isi baris record selesai
 13. Verifikasi baris `Riwayat Aset {runId} - 1` menampilkan badge status `Repaired` dan Source `Borrow return`
 14. Verifikasi baris `Riwayat Aset {runId} - 1` memuat Last Holder `Sari D`, Reported By `Rina W`, Resolved By `Rina W`, Reported Date pukul `09:00`, Resolved Date pukul `14:10`, dan Duration `6 days`
-15. Verifikasi baris `Riwayat Aset {runId} - 2` menampilkan badge status `Disposed` dan Source `Stock opname`
+15. Verifikasi baris `Riwayat Aset {runId} - 2` menampilkan badge status `Disposed` dan Source `Audit`
 16. Verifikasi baris `Riwayat Aset {runId} - 2` memuat Last Holder `—`, Reported By `Agus P`, Resolved By `System`, Resolved Date pukul `00:30`, dan Duration `20 days`
 17. Verifikasi baris `Riwayat Aset {runId} - 3` menampilkan badge status `Rejected` dan Source `Reported by holder`
 18. Verifikasi baris `Riwayat Aset {runId} - 3` memuat Group `Cabang Lama {runId}`, Last Holder `Budi S`, Reported By `Budi S`, Resolved By `Rina W`, Resolved Date pukul `09:15`, dan Duration `1 day`

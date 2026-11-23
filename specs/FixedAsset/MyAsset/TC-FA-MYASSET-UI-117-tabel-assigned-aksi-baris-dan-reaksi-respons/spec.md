@@ -5,24 +5,24 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r28", "§1.2#r77", "§1.2#r78", "§1.2#r79", "§1.2#r82", "§1.2#r83", "§4.4#r51", "§7.3#r12", "§7.3#r15", "§9.4.2#r62", "§9.4.3#b10", "§1.2#r85", "§4.3#r9"]
+sourceRules: ["ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>", "T-MYA-04", "§1.2#r29", "§1.2#r78", "§1.2#r79", "§1.2#r80", "§1.2#r83", "§1.2#r84", "§4.4#r51", "§7.3#r12", "§7.3#r15", "§9.4.2#r64", "§9.4.3#b10", "§1.2#r86", "§4.3#r9"]
 smoke: []
 dependsOn: []
 trace:
-  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 48, 67, 72, 77, 82, 87, 92]
-  "T-MYA-04": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 67, 72, 77, 82, 87, 92]
-  "§1.2#r28": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34]
-  "§1.2#r77": [5, 11, 17, 23, 29, 35]
-  "§1.2#r78": [15, 16, 21, 22, 27, 28, 33, 34]
-  "§1.2#r79": [3, 4, 9, 10]
-  "§1.2#r82": [5, 11, 17, 23, 29, 35]
+  "ACT-MYA-01.<aksi>.<huruf>,ACT-MYA-02.<aksi>.<huruf>,ACT-MYA-04.<aksi>.<huruf>": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 48, 67, 72, 77, 82, 87, 92, 108, 109, 113, 114]
+  "T-MYA-04": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34, 67, 72, 77, 82, 87, 92, 108, 109, 113, 114]
+  "§1.2#r29": [3, 4, 9, 10, 15, 16, 21, 22, 27, 28, 33, 34]
+  "§1.2#r78": [5, 11, 17, 23, 29, 35]
+  "§1.2#r79": [15, 16, 21, 22, 27, 28, 33, 34]
+  "§1.2#r80": [3, 4, 9, 10]
   "§1.2#r83": [5, 11, 17, 23, 29, 35]
+  "§1.2#r84": [5, 11, 17, 23, 29, 35]
   "§4.4#r51": 40
   "§7.3#r12": 48
   "§7.3#r15": [55, 62]
-  "§9.4.2#r62": [21, 22, 27, 28]
+  "§9.4.2#r64": [21, 22, 27, 28]
   "§9.4.3#b10": [5, 11, 17, 23, 29, 35]
-  "§1.2#r85": [96, 100, 104]
+  "§1.2#r86": [96, 100, 104]
   "§4.3#r9": [96, 100, 104]
 anchor: [95, 99, 103]
 coverage:
@@ -42,6 +42,8 @@ coverage:
   - DU-117-4: Baris Assigned Name `Printer HP M404 - 2`, Asset ID `PRN-2026-0002`, Status `Assigned · Reported Damaged`, Assigned To `Finance`, Transaction ID `ASG-2026-0069`, Assigned Date `06/11/26, 09:20`, Assigned By `Agus P`.
   - DU-117-5: Baris Assigned Name `Monitor Dell 24" - 5`, Asset ID `MON-2026-0005`, Status `Assigned · Damaged`, Assigned To `Me`, Transaction ID `ASG-2026-0016`, Assigned Date `22/08/26, 11:00`, Assigned By `Rina W`.
   - DU-117-6: Baris Assigned Name `Monitor Dell 24" - 4`, Asset ID `MON-2026-0004`, Status `Assigned · Reported Missing`, Assigned To `Me`, Transaction ID `ASG-2026-0015`, Assigned Date `20/08/26, 09:30`, Assigned By `Rina W`.
+  - DU-117-8: Baris Assigned Name `Printer HP M404 - 3`, Asset ID `PRN-2026-0003`, Status `Assigned · Reported Damaged`, Assigned To `Finance`, Transaction ID `ASG-2026-0074`, Assigned Date `10/11/26, 08:40`, Assigned By `Agus P`, laporan Damaged diajukan pelapor lain.
+  - DU-117-9: Baris Assigned Name `Monitor Dell 24" - 6`, Asset ID `MON-2026-0006`, Status `Assigned · Reported Missing`, Assigned To `Finance`, Transaction ID `ASG-2026-0075`, Assigned Date `10/11/26, 08:50`, Assigned By `Agus P`, laporan Missing diajukan pelapor lain.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`.
   - K1: tabel Assigned memuat DU-117-1 sampai DU-117-6.
@@ -55,6 +57,7 @@ coverage:
   - K9: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab sukses.
   - K10: tabel Assigned memuat DU-117-6; Cancel Missing Report pada baris `Monitor Dell 24" - 4` dijawab error server.
   - K11: tabel Assigned memuat DU-117-3, DU-117-4, dan DU-117-6, dan respons menyatakan level Feature Suite Assignment `None`.
+  - K12: tabel Assigned memuat DU-117-8 dan DU-117-9; laporan pada kedua baris diajukan oleh PIC Division sebelumnya, bukan Budi Santoso, yang menjadi PIC Division Finance sesudah Change PIC.
 
 ## Test Steps
 
@@ -196,3 +199,17 @@ coverage:
 103. Verifikasi menu baris `Monitor Dell 24" - 4` memuat aksi `Assignment Log`
 104. Verifikasi aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, dan `Cancel Missing Report` tidak tampil pada menu baris `Monitor Dell 24" - 4` saat respons menyatakan level `None`
 105. Tutup menu dengan menekan `Escape`
+
+### Menu baris dengan Damage Report dari pelapor lain hanya berisi Assignment Log
+106. Tampilkan Tabel Assigned dengan kondisi K12
+107. Klik menu `⋯` pada baris `Printer HP M404 - 3`
+108. Verifikasi menu memuat aksi `Assignment Log`
+109. Verifikasi menu tidak memuat aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, `Cancel Missing Report`
+110. Tutup menu dengan menekan `Escape`
+
+### Menu baris dengan laporan Missing dari pelapor lain hanya berisi Assignment Log
+111. Tampilkan Tabel Assigned dengan kondisi K12
+112. Klik menu `⋯` pada baris `Monitor Dell 24" - 6`
+113. Verifikasi menu memuat aksi `Assignment Log`
+114. Verifikasi menu tidak memuat aksi `Report Damaged`, `Report Missing`, `Cancel Damage Report`, `Cancel Missing Report`
+115. Tutup menu dengan menekan `Escape`

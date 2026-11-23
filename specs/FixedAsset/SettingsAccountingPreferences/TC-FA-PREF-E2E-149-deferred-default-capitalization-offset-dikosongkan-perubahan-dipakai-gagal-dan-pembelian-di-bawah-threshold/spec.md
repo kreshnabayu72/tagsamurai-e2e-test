@@ -22,7 +22,7 @@ trace:
   "F-FAPREF-05.k2a": 18
   "F-FAPREF-05.k2b": 19
   "R-06": [25, 28, 30]
-  "FAPREF-LOGIC-03c": [34, 35]
+  "FAPREF-LOGIC-03c": [34, 35, 38]
 coverage:
   web: automated
 ---
@@ -35,7 +35,7 @@ coverage:
 - Kelas harness: fungsional (alur lintas modul; TC `[DEFERRED]` pada modul pemilik yang belum disusun).
 - Akun aktor: Total Control (PC-8: Rina Anggraini, tampil "Rina A") `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env sama dengan spec lain di suite; perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
-- Data Pre-setup: Preferences nilai awal PC-1; Chart of Accounts PC-5 (`1-2900 – Biaya Dikapitalisasi`, `1-2910 – Biaya Dikapitalisasi Proyek` Active, function Capitalization Offset, `1-2950 – Biaya Lama` Inactive); Asset Class PC-6 (Vehicles tanpa threshold sendiri; IT Equipment); aset PC-16 'transfer - 31', 'transfer - 33', 'transfer - 34' siap dikapitalisasi tanpa dokumen sumber dan aset 'assignment - 11' untuk pembelian. Data modul kapitalisasi dan transaksi aset disediakan tim FE setelah modul tersedia. Seed dan pemulihan lewat API sesuai `suite.md` (butir seed dan pemulihan).
+- Data Pre-setup: Preferences nilai awal PC-1; Chart of Accounts PC-5 (`1-2900 – Biaya Dikapitalisasi`, `1-2910 – Biaya Dikapitalisasi Proyek` Active, function Capitalization Offset, `1-2950 – Biaya Lama` Inactive); Asset Class PC-6 (Vehicles tanpa threshold sendiri; IT Equipment); aset PC-16 'transfer - 31', 'transfer - 33', 'transfer - 34' siap dikapitalisasi tanpa dokumen sumber dan aset 'assignment - 11' untuk pembelian; pemegang Manage accounting Budi Santoso (Read + Update, PC-8) untuk TC-FA-PREF-605 (email dan password tidak tertulis di TC: perlu konfirmasi FE). Data modul kapitalisasi dan transaksi aset disediakan tim FE setelah modul tersedia. Seed dan pemulihan lewat API sesuai `suite.md` (butir seed dan pemulihan).
 - Nilai Preferences per TC (dibentuk lewat seed): Default Capitalization Offset `1-2900 – Biaya Dikapitalisasi` untuk TC-FA-PREF-481 dan 482; kosong untuk TC-FA-PREF-483; Default Capitalization Threshold 5.000.000 untuk TC-FA-PREF-605.
 - Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan): seed Preferences dan aset; kapitalisasi lewat UI modul kapitalisasi; pencatatan pembelian lewat UI modul transaksi aset; `Spectra.intercept()` untuk memaksa respons 5xx pada penyimpanan kapitalisasi (TC-FA-PREF-483), dilepas segera sesudah pemicu; kemampuan baca BE jumlah baris Changelog Preferences (baseline, bagian 8b butir 10).
 - State global yang diubah: Default Capitalization Offset company dan status kapitalisasi aset; dikembalikan ke nilai awal PC-1 oleh langkah pemulihan terakhir dan hook `after` (tetap jalan bila spec gagal di tengah).
@@ -84,26 +84,29 @@ coverage:
 30. Verifikasi modal Changelog: Preferences memuat sedikitnya satu baris dan jumlah barisnya sama dengan baseline langkah 21 (tidak ada baris L-03 baru)
 31. Klik ikon [✕] di header modal Changelog
 
-### TC-FA-PREF-605: Pembelian di bawah Default Capitalization Threshold tetap dapat dicatat sebagai aset
+### TC-FA-PREF-605: Pembelian di bawah Default Capitalization Threshold berstatus awal Tracked only dan Accounting Treatment dapat diubah pemegang Manage accounting
 
-32. Seed Default Capitalization Threshold tersimpan 5.000.000 dan Asset Class Vehicles tanpa threshold sendiri hingga tersimpan
+32. Seed Default Capitalization Threshold tersimpan 5.000.000, Asset Class Vehicles tanpa threshold sendiri, dan Budi Santoso (Manage accounting - Read + Update, PC-8) tersedia hingga tersimpan
 33. Catat pembelian senilai "800000" pada Asset Class Vehicles sebagai aset 'assignment - 11' di modul transaksi aset
-34. Verifikasi pembelian tetap dapat dicatat sebagai aset
-35. Verifikasi aset 'assignment - 11' tercatat
-36. Pulihkan Preferences ke nilai awal PC-1 dan status kapitalisasi aset ke nilai awal lewat seed hingga tersimpan
+34. Verifikasi pembelian tercatat sebagai aset 'assignment - 11' (threshold tidak memblokir pencatatan)
+35. Verifikasi status awal aset 'assignment - 11' adalah Tracked only
+36. Login sebagai Budi Santoso (Manage accounting - Read + Update) dan buka detail aset 'assignment - 11'
+37. Ubah Accounting Treatment aset 'assignment - 11' menjadi Capitalized
+38. Verifikasi nilai baru Capitalized tampil pada Accounting Treatment aset 'assignment - 11'
+39. Pulihkan Preferences ke nilai awal PC-1 dan status kapitalisasi aset ke nilai awal lewat seed hingga tersimpan
 
 ## Notes
 
 - P-5: TC-FA-PREF-483 adalah objek-uji ringan kelas b (satu kegagalan 5xx pada penyimpanan kapitalisasi) tanpa harness eksternal dan tanpa state berat sendiri; ia berada di spec fungsional dengan permukaan Default Capitalization Offset yang sama, dan hanya satu TC kelas b dalam spec ini.
-- Langkah penghubung (S-03): langkah 2, 10, 27 (membuka layar Preferences), langkah 26 (melepas intercept segera sesudah pemicu, S-09), langkah 31 (menutup modal Changelog), langkah 36 (pemulihan state, S-09, R-08).
+- Langkah penghubung (S-03): langkah 2, 10, 27 (membuka layar Preferences), langkah 26 (melepas intercept segera sesudah pemicu, S-09), langkah 31 (menutup modal Changelog), langkah 36 (login sebagai Budi Santoso), langkah 39 (pemulihan state, S-09, R-08).
 - Asersi "tidak ada baris L-03 baru" pada TC-FA-PREF-483 diasersi sebagai selisih jumlah terhadap baseline (asersi jumlah, S-12) dengan anchor sedikitnya satu baris pada modal yang sama (bagian 8b butir 2); spec absence tidak memuat aksi untuk TC ini.
 - Seed per TC (langkah 1, 9, 20, 32) membentuk precondition tanpa bergantung hasil TC sebelumnya.
-- Spec 36 langkah, di atas 35 langkah. Alasan: tiap blok TC berdiri sendiri dengan seed dan precondition sendiri (langkah 1, 9, 20, 32) tanpa bergantung hasil blok lain, dan semuanya satu permukaan Default Capitalization Offset; langkah pemulihan terakhir (langkah 36) dan hook `after` mengembalikan state. Jumlah langkah terutama dari Expected yang dipecah per klausa (S-01).
+- Spec 39 langkah, di atas 35 langkah. Alasan: tiap blok TC berdiri sendiri dengan seed dan precondition sendiri (langkah 1, 9, 20, 32) tanpa bergantung hasil blok lain, dan semuanya satu permukaan Default Capitalization Offset; langkah pemulihan terakhir (langkah 39) dan hook `after` mengembalikan state. Jumlah langkah terutama dari Expected yang dipecah per klausa (S-01).
 - Temuan untuk QA:
   - TC-FA-PREF-481 dan 482 Expected "Toast ... tampil tanpa dialog Save Changes" memuat dua klausa dan ditulis dua `Verifikasi` (S-01).
   - TC-FA-PREF-483 precondition c tidak menyebut endpoint yang di-intercept; spec menyebut "penyimpanan kapitalisasi" tanpa endpoint karangan (S-13), nama endpoint disediakan tim FE.
   - TC-FA-PREF-483 Expected a ("Kapitalisasi gagal") tidak menyebut tanda tampilan kegagalan; spec mengasersi teks Expected apa adanya.
   - TC-FA-PREF-605 menyebut HINT volume (e) pada indeks tetapi hanya satu pembelian; diperlakukan fungsional.
-  - TC-FA-PREF-605 Expected a memuat klausa tambahan ("threshold hanya berupa saran agar dibebankan dan tidak memblokir pencatatan") yang tidak punya tanda teramati terpisah; langkah 34 mengasersi klausa utama (pembelian tetap dapat dicatat).
+  - TC-FA-PREF-605 menyebut `FAPREF-LOGIC-03d` dan ASTD-LOGIC-19 (status per aset dimiliki modul asset-detail); spec tidak menambah `FAPREF-LOGIC-03d` ke sourceRules karena tidak ada langkah yang mengasersinya terpisah. Email dan password Budi Santoso tidak tertulis di TC: perlu konfirmasi FE.
   - Post Condition TC-FA-PREF-481, 482, 483, dan 605 adalah kesimpulan dari Expected dan tidak diasersi terpisah (S-01).
   - TC-FA-PREF-476 sampai 480 ada di spec 148.

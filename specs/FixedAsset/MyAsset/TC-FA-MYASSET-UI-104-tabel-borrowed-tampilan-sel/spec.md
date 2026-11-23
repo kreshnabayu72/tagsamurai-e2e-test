@@ -5,15 +5,15 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r7", "§1.2#r37", "§1.2#r38", "§1.2#r86", "§1.2#r90", "§4.1#p5", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r8", "§4.1b#r9", "§4.1b#r12", "§4.1b#r13", "§4.1b#r14", "§4.1b#r15", "§4.1b#r16", "§4.1b#r17", "§4.1b#r18", "§4.4#r13", "§4.4#r50", "§5#r9", "§9.4.2#r29", "EB-TBL-12"]
+sourceRules: ["§1.2#r7", "§1.2#r38", "§1.2#r39", "§1.2#r87", "§1.2#r91", "§4.1#p5", "§4.1b#r1", "§4.1b#r2", "§4.1b#r3", "§4.1b#r4", "§4.1b#r5", "§4.1b#r6", "§4.1b#r7", "§4.1b#r8", "§4.1b#r9", "§4.1b#r12", "§4.1b#r13", "§4.1b#r14", "§4.1b#r15", "§4.1b#r16", "§4.1b#r17", "§4.1b#r18", "§4.4#r13", "§4.4#r50", "§5#r9", "§9.4.2#r29", "EB-TBL-12"]
 smoke: []
 dependsOn: []
 trace:
   "§1.2#r7": 3
-  "§1.2#r37": 60
-  "§1.2#r38": [12, 63]
-  "§1.2#r86": [54, 57]
-  "§1.2#r90": [55, 58]
+  "§1.2#r38": 60
+  "§1.2#r39": [12, 63]
+  "§1.2#r87": [54, 57]
+  "§1.2#r91": [55, 58]
   "§4.1#p5": [15, 24]
   "§4.1b#r1": [5, 19]
   "§4.1b#r2": [6, 81]
@@ -21,7 +21,7 @@ trace:
   "§4.1b#r4": [8, 20, 82, 84]
   "§4.1b#r5": [9, 21, 85, 87]
   "§4.1b#r6": [10, 75, 77, 78, 80]
-  "§4.1b#r7": [11, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 98]
+  "§4.1b#r7": [11, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 98, 106, 107, 108, 109, 110, 111, 112, 113, 114, 116, 117]
   "§4.1b#r8": [33, 34]
   "§4.1b#r9": [35, 88, 90]
   "§4.1b#r12": [12, 60, 62, 63, 92, 93]
@@ -44,7 +44,7 @@ coverage:
 # Tabel Borrowed: format sel, nilai kosong, hover, badge Status, dan tooltip progres approval
 
 ## Prerequisites
-- Aktor: Borrower (Budi Santoso, pengguna yang membuka halaman My Asset miliknya; untuk K2 juga PIC Borrower atas nama Borrower tanpa akun `Agus Pratama`).
+- Aktor: Borrower (Budi Santoso, pengguna yang membuka halaman My Asset miliknya; untuk K2 juga PIC Borrower atas nama Borrower tanpa akun `Budi Setiawan`).
 - Layar awal: Halaman My Asset > tab Borrowed
 - Komponen: Tabel Borrowed (T-MYA-02)
 - Data:
@@ -57,13 +57,21 @@ coverage:
   - DU-104-7: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-54.jpg`, Name `Laptop Dell Latitude 5420 - 54`, Asset ID `LPT-2026-0054`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Borrowed + Reported Damaged`, TAG `Non TAG`, Category `Laptop`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0164`, Source `Admin`, Duration `6 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pelatihan karyawan baru`.
   - DU-104-8: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-11.jpg`, Name `Laptop Dell Latitude 5420 - 11`, Asset ID `LPT-2026-0011`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Borrowed + Reported Missing`, TAG `Non TAG`, Category `Laptop`, Due Date `10/11/26`, Remaining `Due in 1 day`, Borrower `Me`, Transaction ID `BRW-2026-0150`, Source `Admin`, Duration `4 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Audit lapangan`.
   - DU-104-9: respons tiruan, satu baris tabel Borrowed: Photo `camera-sony-a7-3.jpg`, Name `Camera Sony A7 - 3`, Asset ID `CAM-2026-0003`, Brand `Sony`, Model/Type `A7 III`, Group `Head Office`, Status `Borrowed + Damaged`, TAG `NFC`, Category `Camera`, Due Date `13/11/26`, Remaining `Due in 4 days`, Borrower `Me`, Transaction ID `BRW-2026-0158`, Source `Admin`, Duration `7 days`, Handed Over At `06/11/26, 10:00`, Extensions `0 / 2`, Purpose `Dokumentasi acara kantor`.
-  - DU-104-10: respons tiruan, satu baris tabel Borrowed: Photo `tablet-samsung-galaxy-tab-4.jpg`, Name `Tablet Samsung Galaxy Tab - 4`, Asset ID `TAB-2026-0004`, Brand `Samsung`, Model/Type `Galaxy Tab S9`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Tablet`, Due Date `11/11/26`, Remaining `Due in 2 days`, Borrower `Agus Pratama`, Transaction ID `BRW-2026-0160`, Source `Admin`, Duration `1 day`, Handed Over At `08/11/26, 09:00`, Extensions `0 / 2`, Purpose `Survei pelanggan`, PIC `Budi Santoso`.
+  - DU-104-10: respons tiruan, satu baris tabel Borrowed: Photo `tablet-samsung-galaxy-tab-4.jpg`, Name `Tablet Samsung Galaxy Tab - 4`, Asset ID `TAB-2026-0004`, Brand `Samsung`, Model/Type `Galaxy Tab S9`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Tablet`, Due Date `11/11/26`, Remaining `Due in 2 days`, Borrower `Budi Setiawan`, Transaction ID `BRW-2026-0160`, Source `Admin`, Duration `1 day`, Handed Over At `08/11/26, 09:00`, Extensions `0 / 2`, Purpose `Survei pelanggan`, PIC `Budi Santoso`.
   - DU-104-11: respons tiruan, satu baris tabel Borrowed: Photo `scanner-zebra-tc21-1.jpg`, Name `Scanner Zebra TC21 - 1`, Asset ID `SCN-2026-0001`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Jakarta Barat Warehouse 1`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0170`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Inventarisasi gudang`, Group (hierarki) `Region Jawa > Jakarta Barat Warehouse 1`, Category (hierarki) `Sensors > Environmental Monitoring`.
   - DU-104-12: respons tiruan, satu baris tabel Borrowed: Photo `regional-procurement-1.jpg`, Name `Regional Procurement and Vendor Management Office Jakarta - 1`, Asset ID `RPV-2026-0001`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Jakarta Barat Warehouse 12`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0171`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pengadaan perangkat kantor regional`, Group (hierarki) `Region Jawa > Jakarta Cluster > Jakarta Barat Warehouse 12`.
   - DU-104-13: respons tiruan, satu baris tabel Borrowed: Photo `headset-jabra-evolve-5.jpg`, Name `Headset Jabra Evolve - 5`, Asset ID `HDS-2026-0005`, Brand `Jabra`, Model/Type `Evolve 40`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Audio`, Due Date `09/11/26, 19:50`, Remaining `Due in 1 hour`, Borrower `Me`, Transaction ID `BRW-2026-0172`, Source `Self-service`, Duration `1 hour`, Handed Over At `09/11/26, 18:50`, Extensions `0 / 0`, Purpose `Panggilan konferensi singkat`.
   - DU-104-14: respons tiruan, satu baris tabel Borrowed: Photo `camera-sony-a7-5.jpg`, Name `Camera Sony A7 - 5`, Asset ID `CAM-2026-0005`, Brand `Sony`, Model/Type `A7 III`, Group `Head Office`, Status `Borrowed + Damaged + Reported Missing`, TAG `NFC`, Category `Camera`, Due Date `13/11/26`, Remaining `Due in 4 days`, Borrower `Me`, Transaction ID `BRW-2026-0173`, Source `Admin`, Duration `7 days`, Handed Over At `06/11/26, 10:00`, Extensions `0 / 2`, Purpose `Liputan acara cabang`.
   - DU-104-15: respons tiruan, satu baris tabel Borrowed: Photo `scanner-zebra-tc21-6.jpg`, Name `Scanner Zebra TC21 - 6`, Asset ID `SCN-2026-0006`, Brand `Zebra Technologies`, Model/Type `Handheld Reader Pro`, Group `Head Office`, Status `Borrowed`, TAG `RFID`, Category `Environmental Monitoring`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0174`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pemindaian inventaris seluruh gudang regional Jawa Barat selama triwulan keempat beserta rekonsiliasi hasilnya`.
-  - Nama pada Borrower yang diharapkan untuk DU-104-10 adalah `Agus P`, dari Full Name `Agus Pratama`; tooltip yang diharapkan `Agus Pratama · PIC: Budi Santoso`, dari Full Name `Agus Pratama` dan PIC `Budi Santoso`.
+  - DU-104-16: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-12.jpg`, Name `Laptop Dell Latitude 5420 - 12`, Asset ID `LPT-2026-0012`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Borrowed`, TAG `Non TAG`, Category `Laptop`, Due Date `12/11/26`, Remaining `Due in 3 days`, Borrower `Me`, Transaction ID `BRW-2026-0175`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pekerjaan lapangan`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-17: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-13.jpg`, Name `Laptop Dell Latitude 5420 - 13`, Asset ID `LPT-2026-0013`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Overdue`, TAG `Non TAG`, Category `Laptop`, Due Date `06/11/26`, Remaining `3 days overdue`, Borrower `Me`, Transaction ID `BRW-2026-0176`, Source `Admin`, Duration `4 days`, Handed Over At `03/11/26, 09:00`, Extensions `0 / 2`, Purpose `Kunjungan klien`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-18: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-14.jpg`, Name `Laptop Dell Latitude 5420 - 14`, Asset ID `LPT-2026-0014`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Extension Request`, TAG `Non TAG`, Category `Laptop`, Due Date `11/11/26`, Remaining `Due in 2 days`, Borrower `Me`, Transaction ID `BRW-2026-0177`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pelatihan vendor`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-19: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-15.jpg`, Name `Laptop Dell Latitude 5420 - 15`, Asset ID `LPT-2026-0015`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Extension Approval`, TAG `Non TAG`, Category `Laptop`, Due Date `11/11/26`, Remaining `Due in 2 days`, Borrower `Me`, Transaction ID `BRW-2026-0178`, Source `Admin`, Duration `5 days`, Handed Over At `07/11/26, 09:00`, Extensions `0 / 2`, Purpose `Audit cabang`, Approved `0`, Required `1`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-20: respons tiruan, satu baris tabel Borrowed: Photo `projector-epson-eb-x06-13.jpg`, Name `Projector Epson EB-X06 - 13`, Asset ID `PRJ-2026-0013`, Brand `Epson`, Model/Type `EB-X06`, Group `Head Office`, Status `Waiting for Handover`, TAG `QR`, Category `Projector`, Due Date `null`, Remaining `—`, Borrower `Me`, Transaction ID `BRW-2026-0179`, Source `Admin`, Duration `3 days`, Handed Over At `null`, Extensions `0 / 2`, Purpose `Presentasi mitra`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-21: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-16.jpg`, Name `Laptop Dell Latitude 5420 - 16`, Asset ID `LPT-2026-0016`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Waiting for Approval`, TAG `Non TAG`, Category `Laptop`, Due Date `null`, Remaining `—`, Borrower `Me`, Transaction ID `BRW-2026-0180`, Source `Admin`, Duration `3 days`, Handed Over At `null`, Extensions `0 / 2`, Purpose `Survei lokasi`, Approved `0`, Required `1`, aset memiliki task Maintenance Routine yang jatuh tempo.
+  - DU-104-22: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-17.jpg`, Name `Laptop Dell Latitude 5420 - 17`, Asset ID `LPT-2026-0017`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Overdue + Extension Request`, TAG `Non TAG`, Category `Laptop`, Due Date `07/11/26`, Remaining `2 days overdue`, Borrower `Me`, Transaction ID `BRW-2026-0181`, Source `Admin`, Duration `4 days`, Handed Over At `03/11/26, 09:00`, Extensions `0 / 2`, Purpose `Pendampingan proyek`.
+  - DU-104-23: respons tiruan, satu baris tabel Borrowed: Photo `laptop-dell-18.jpg`, Name `Laptop Dell Latitude 5420 - 18`, Asset ID `LPT-2026-0018`, Brand `Dell`, Model/Type `Latitude 5420`, Group `Head Office`, Status `Overdue + Extension Approval`, TAG `Non TAG`, Category `Laptop`, Due Date `07/11/26`, Remaining `2 days overdue`, Borrower `Me`, Transaction ID `BRW-2026-0182`, Source `Admin`, Duration `4 days`, Handed Over At `03/11/26, 09:00`, Extensions `0 / 2`, Purpose `Dukungan acara`, Approved `1`, Required `2`.
+  - Nama pada Borrower yang diharapkan untuk DU-104-10 adalah `Budi S`, dari Full Name `Budi Setiawan`; tooltip yang diharapkan `Budi Setiawan · PIC: Budi Santoso`, dari Full Name `Budi Setiawan` dan PIC `Budi Santoso`.
   - Badge Group yang diharapkan untuk DU-104-12 adalah `Jakarta Bara..Warehouse 12`, dari Group `Jakarta Barat Warehouse 12`.
 - Kondisi:
   - K1: tabel Borrowed berisi DU-104-1 sampai DU-104-9 dan DU-104-14, dengan kolom bawaan tampil.
@@ -71,6 +79,8 @@ coverage:
   - K3: tabel Borrowed berisi DU-104-11 dan DU-104-12, dengan kolom bawaan tampil.
   - K4: tabel Borrowed berisi DU-104-1 dan DU-104-10, dengan kolom bawaan tampil dan bahasa antarmuka aktif adalah bahasa selain bahasa bawaan.
   - K5: tabel Borrowed berisi DU-104-15, dengan kolom bawaan tampil.
+  - K6: tabel Borrowed berisi DU-104-16 sampai DU-104-21, dengan kolom bawaan tampil.
+  - K7: tabel Borrowed berisi DU-104-22 dan DU-104-23, dengan kolom bawaan tampil.
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24 jam`.
 
 ## Test Steps
@@ -147,9 +157,9 @@ coverage:
 
 ### Kolom Borrower untuk Borrower tanpa akun dan baris milik sendiri
 59. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K2
-60. Verifikasi sel Borrower baris `Tablet Samsung Galaxy Tab - 4` berisi `Agus P`, yaitu nama depan dan inisial nama belakang
+60. Verifikasi sel Borrower baris `Tablet Samsung Galaxy Tab - 4` berisi `Budi S`, yaitu nama depan dan inisial nama belakang
 61. Arahkan kursor ke sel Borrower baris `Tablet Samsung Galaxy Tab - 4`
-62. Verifikasi tooltip sel itu berisi `Agus Pratama · PIC: Budi Santoso`
+62. Verifikasi tooltip sel itu berisi `Budi Setiawan · PIC: Budi Santoso`
 63. Verifikasi sel Borrower baris `Laptop Dell Latitude 5420 - 9` berisi `Me`
 64. Verifikasi sel Duration baris `Tablet Samsung Galaxy Tab - 4` berisi `1 day`
 
@@ -186,7 +196,7 @@ coverage:
 ### Bahasa antarmuka lain: label sistem mengikuti bahasa, nama data tetap persis
 91. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K4
 92. Verifikasi sel Borrower baris `Laptop Dell Latitude 5420 - 9` menampilkan label sistem `Me` dalam bahasa antarmuka aktif
-93. Verifikasi sel Borrower baris `Tablet Samsung Galaxy Tab - 4` tetap berisi `Agus P` persis seperti data, tanpa diterjemahkan
+93. Verifikasi sel Borrower baris `Tablet Samsung Galaxy Tab - 4` tetap berisi `Budi S` persis seperti data, tanpa diterjemahkan
 94. Verifikasi sel Name baris `Laptop Dell Latitude 5420 - 9` tetap tampil persis `Laptop Dell Latitude 5420 - 9`
 
 ### Duration satuan jam bentuk tunggal
@@ -204,3 +214,20 @@ coverage:
 102. Tutup popover Column Visibility
 103. Arahkan kursor ke sel Purpose baris `Scanner Zebra TC21 - 6`
 104. Verifikasi tooltip sel itu berisi teks penuh `Pemindaian inventaris seluruh gudang regional Jawa Barat selama triwulan keempat beserta rekonsiliasi hasilnya`
+
+### Badge Maintenance due hanya pada baris yang asetnya dipegang
+105. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K6
+106. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 12` menampilkan badge `Borrowed` dan badge `Maintenance due`
+107. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 13` menampilkan badge `Overdue` dan badge `Maintenance due`
+108. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 14` menampilkan badge `Extension Request` dan badge `Maintenance due`
+109. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 15` menampilkan badge `Extension Approval` dan badge `Maintenance due`
+110. Verifikasi badge `Maintenance due` pada baris `Laptop Dell Latitude 5420 - 12` bersaverity `warning`
+111. Verifikasi sel Status baris `Projector Epson EB-X06 - 13` menampilkan badge `Waiting for Handover`
+112. Verifikasi sel Status baris `Projector Epson EB-X06 - 13` tidak menampilkan badge `Maintenance due`
+113. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 16` menampilkan badge `Waiting for Approval`
+114. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 16` tidak menampilkan badge `Maintenance due`
+
+### Baris Overdue dengan pengajuan Extend menampilkan dua badge
+115. Tampilkan Tabel Borrowed (T-MYA-02) dengan kondisi K7
+116. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 17` menampilkan badge `Overdue` dan badge `Extension Request`
+117. Verifikasi sel Status baris `Laptop Dell Latitude 5420 - 18` menampilkan badge `Overdue` dan badge `Extension Approval`

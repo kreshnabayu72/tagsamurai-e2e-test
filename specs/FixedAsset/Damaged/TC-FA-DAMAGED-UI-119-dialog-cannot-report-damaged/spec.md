@@ -5,12 +5,12 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-12, "§4.2.4#p9", EB-FB-2@dialog-blok-report-damaged]
+sourceRules: [D-DMG-12, "§4.2.4#p10", EB-FB-2@dialog-blok-report-damaged]
 smoke: []
 dependsOn: []
 trace:
   D-DMG-12: [2, 3, 4, 5, 6, 7]
-  "§4.2.4#p9": [3, 4, 5, 6, 7, 9, 10, 11]
+  "§4.2.4#p10": [3, 4, 5, 6, 7, 9, 10, 11]
   EB-FB-2@dialog-blok-report-damaged: [14, 15]
 anchor: []
 coverage:

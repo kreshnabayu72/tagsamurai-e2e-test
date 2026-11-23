@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [D-DMG-02, "§4.2.4#p2", "§4.4#r7", FI-DMG-11, FI-DMG-12, S-DMG-07, "§9.2#b16", FLD-DMG-04, EB-FRM-7@mark-as-repaired]
+sourceRules: [D-DMG-02, "§4.2.4#p2", "§4.4#r7", FI-DMG-11, FI-DMG-12, S-DMG-07, "§9.2#b17", FLD-DMG-04, EB-FRM-7@mark-as-repaired]
 smoke: []
 dependsOn: []
 trace:
@@ -15,7 +15,7 @@ trace:
   FI-DMG-11: [15]
   FI-DMG-12: [7]
   S-DMG-07: [7, 15]
-  "§9.2#b16": [5, 13]
+  "§9.2#b17": [5, 13]
   FLD-DMG-04: [15, 18]
   EB-FRM-7@mark-as-repaired: [20, 21, 22, 23, 25, 27, 29, 31, 33, 35, 38]
 anchor: []

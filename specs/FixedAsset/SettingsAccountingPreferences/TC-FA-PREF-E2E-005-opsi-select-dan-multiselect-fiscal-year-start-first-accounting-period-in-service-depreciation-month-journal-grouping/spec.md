@@ -43,7 +43,7 @@ coverage:
 - Akun aktor: Total Control (Pre-setup PA-1) `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, company `PT Contoh Konstruksi`, password `Spectra.env.FA_TC_PASSWORD` (nama env perlu dikonfirmasi tim FE sebelum didaftarkan di `executionConfig.environmentVariables` dan `.env.example`).
 - Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences).
 - Data Pre-setup (hanya dibaca, tidak diubah): Preferences nilai awal PA-2, tidak terkunci, semua setting wajib terisi: Fiscal Year Start January; First Accounting Period March 2026; Journal Grouping Group. Seed disediakan tim FE/BE (lihat `suite.md`, butir seed dan pemulihan lewat API).
-- TC-FA-PREF-596 memakai seri fixture PC-1; nilai awal Preferences PC-1 setara PA-2 (belum ada posting penyusutan, semua periode Open). Seed ulang ke nilai awal PC-1 dilakukan lewat langkah penghubung (langkah 10), disediakan tim FE/BE.
+- TC-FA-PREF-596 memakai seri fixture PC-1; nilai awal Preferences PC-1 setara PA-2 (belum ada posting penyusutan). Seed ulang ke nilai awal PC-1 dilakukan lewat langkah penghubung (langkah 10), disediakan tim FE/BE.
 - State global: jam sistem dikendalikan (clock): jam server dan jam browser dibekukan pada 28 Oktober 2026 pukul 10:00 menurut Time Zone entitas Asia/Jakarta (bulan dan tahun berjalan Oktober 2026), dipakai TC-FA-PREF-24 dan 596. Kemampuan kendali jam disediakan tim FE/BE (lihat `suite.md`); jam dipulihkan di hook `after` spec ini.
 - Flag Guided Tooltip halaman Preferences disetel true oleh hook suite `before` (lihat `suite.md`) sehingga walkthrough tidak menutupi layar.
 - Suite berjalan serial (`parallel: false`).

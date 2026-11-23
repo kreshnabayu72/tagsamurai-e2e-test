@@ -5,12 +5,12 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§1.2#r17", "§1.2#r19", "§4.1c#r1", "§4.1c#r2", "§4.1c#r3", "§4.1c#r4", "§4.1c#r5", "§4.1c#r6", "§4.1c#r7", "§4.1c#r8", "§4.1c#r11", "§4.1c#r12", "§4.1c#r13", "§4.1c#r14", "§4.1c#r18", "§4.1c#p4", "§5#r4", "§5#r6", "§9.2#r20", "§9.2#r21", "§9.7#r15", "EB-SRC-5@tabel-history"]
+sourceRules: ["§1.2#r18", "§1.2#r20", "§4.1c#r1", "§4.1c#r2", "§4.1c#r3", "§4.1c#r4", "§4.1c#r5", "§4.1c#r6", "§4.1c#r7", "§4.1c#r8", "§4.1c#r11", "§4.1c#r12", "§4.1c#r13", "§4.1c#r14", "§4.1c#r18", "§4.1c#p4", "§5#r4", "§5#r6", "§9.2#r20", "§9.2#r21", "§9.7#r16", "EB-SRC-5@tabel-history", "§9.7#r15"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
-  "§1.2#r17": [6, 24, 26]
-  "§1.2#r19": 16
+  "§1.2#r18": [6, 24, 26, 61, 62]
+  "§1.2#r20": 16
   "§4.1c#r1": 8
   "§4.1c#r2": [9, 34]
   "§4.1c#r3": 10
@@ -29,8 +29,9 @@ trace:
   "§5#r6": 49
   "§9.2#r20": [21, 22]
   "§9.2#r21": [27, 31]
-  "§9.7#r15": [5, 52, 55, 57]
+  "§9.7#r16": [5, 52, 55, 57]
   "EB-SRC-5@tabel-history": [40, 45]
+  "§9.7#r15": [55, 57]
 anchor: [51]
 coverage:
   web: automated
@@ -39,7 +40,7 @@ coverage:
 # Tab History pada data nyata pinjaman: status akhir, Type Borrow, urutan default, dan toolbar
 
 ## Prerequisites
-- Aktor: Borrower `Kartika Dewi {runId}`, pengguna karyawan ber-akun login tanpa role admin. Aktor Borrow `Rina Wulandari {runId}` hanya memicu dua Return, pada langkah pertama dan langkah 53 (LK-8).
+- Aktor: Borrower `Kartika Dewi {runId}`, pengguna karyawan ber-akun login tanpa role admin. Aktor Borrow `Rina Wulandari {runId}` hanya memicu tiga Return, pada langkah pertama, langkah 53, dan langkah 58 (LK-8).
 - Layar awal: halaman Fixed Asset (FAMS) dengan navbar.
 - Data:
   - DU-037-1: User `Kartika Dewi {runId}`, tanpa role admin, cakupan Group `Head Office`.
@@ -51,11 +52,12 @@ coverage:
   - DU-037-7: pinjaman Admin atas nama `Kartika Dewi {runId}`, aset `Monitor Dell 24 inci {runId}`, Group `Head Office`, Status `Returned` dengan marker `Damaged`, Handed Over At `T0 − 8 hari`, Closed At `T0 − 5 hari`.
   - DU-037-8: pinjaman Admin atas nama `Kartika Dewi {runId}`, aset `Proyektor Epson EB-X06 {runId}`, Group `Head Office`, Status `Returned` dengan marker `Missing`, Handed Over At `T0 − 9 hari`, Closed At `T0 − 7 hari`.
   - DU-037-13: pinjaman Admin atas nama `Kartika Dewi {runId}`, aset `Speaker Bluetooth {runId}`, Group `Head Office`, Status `Overdue`, Duration `2 days`, Handed Over At `T0 − 5 hari`, Due Date `T0 − 3 hari`. Di-Return Aktor Borrow pada langkah 53 sehingga Status menjadi `Returned`.
+  - DU-037-14: 2 aset `Printer Epson L3250 {n} {runId}` dengan n dari 1 sampai 2 dalam satu pinjaman Admin atas nama `Kartika Dewi {runId}`, Group `Head Office`, Status `Borrowed`, Duration `3 days`, Handed Over At `T0 − 1 hari`, Due Date `T0 + 2 hari`. Transaction ID dibentuk server dan sama untuk kedua aset. Di-Return Aktor Borrow pada langkah 58 sehingga Status kedua aset menjadi `Returned`.
   - Kata kunci Search: DU-037-9 `Kamera`, DU-037-10 `Rejected`, DU-037-11 tanggal Closed At DU-037-6 berformat `dd/MM/yy`, DU-037-12 `RFID`.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24 jam`.
-  - Tab History `Kartika Dewi {runId}` berisi 5 baris aset, dari DU-037-4 sampai DU-037-8, sebelum DU-037-3 di-Return. Tab Borrowed `Kartika Dewi {runId}` berisi 2 baris aset, DU-037-3 dan DU-037-13, sebelum DU-037-3 di-Return.
+  - Tab History `Kartika Dewi {runId}` berisi 5 baris aset, dari DU-037-4 sampai DU-037-8, sebelum DU-037-3 di-Return. Tab Borrowed `Kartika Dewi {runId}` berisi 4 baris aset, DU-037-3, DU-037-13, dan kedua aset DU-037-14, sebelum DU-037-3 di-Return.
   - Kolom `TAG` tidak tampil pada tabel History (kolom tambahan, tersembunyi pada konfigurasi bawaan).
 
 ## Test Steps
@@ -130,3 +132,10 @@ coverage:
 55. Verifikasi baris `Speaker Bluetooth {runId}` tidak tampil di tab Borrowed
 56. Klik tab `History`
 57. Verifikasi baris `Speaker Bluetooth {runId}` tampil di tab History dengan Status `Returned`
+
+### Pinjaman multi-aset yang ditutup tampil sebagai satu baris per aset
+58. Aktor Borrow `Rina Wulandari {runId}` melakukan Return atas kedua aset pinjaman DU-037-14 milik `Kartika Dewi {runId}`
+59. Muat ulang halaman
+60. Klik tab `History`
+61. Verifikasi kedua baris `Printer Epson L3250 {n} {runId}` tampil sebagai baris terpisah di tab History dengan Status `Returned`
+62. Verifikasi kedua baris `Printer Epson L3250 {n} {runId}` memiliki Transaction ID yang sama karena berasal dari satu pinjaman

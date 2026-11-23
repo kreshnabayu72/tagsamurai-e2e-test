@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§3#p11", "§4.1b#r56", "§4.1b#r57", "§4.1b#r58", "§4.1b#r59", "§Dialog aksi baris (tab Borrowed dan Assigned)#p6", "§4.4#r5", "§7.3#r3", "§9.2#b8", "§9.4.2#r46", "§9.4.2#r47", "§9.6#r4", "§9.7#r5", "EB-FB-1@cancel-extension-request"]
+sourceRules: ["§3#p11", "§4.1b#r56", "§4.1b#r57", "§4.1b#r58", "§4.1b#r59", "§Dialog aksi baris (tab Borrowed dan Assigned)#p6", "§4.4#r5", "§7.3#r3", "§9.2#b8", "§9.4.2#r48", "§9.4.2#r49", "§9.6#r4", "§9.7#r5", "EB-FB-1@cancel-extension-request"]
 smoke: ["EB-FB-1@cancel-extension-request"]
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow"]
 trace:
@@ -18,8 +18,8 @@ trace:
   "§4.4#r5": [8, 11]
   "§7.3#r3": 11
   "§9.2#b8": [12, 18]
-  "§9.4.2#r46": 25
-  "§9.4.2#r47": 29
+  "§9.4.2#r48": 25
+  "§9.4.2#r49": 29
   "§9.6#r4": [11, 12]
   "§9.7#r5": [25, 26]
   "EB-FB-1@cancel-extension-request": 11

@@ -5,24 +5,25 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p5", "§4.4#r10", S-DMG-04, S-DMG-05, S-DMG-06, V-DMG-07, EC-DMG-36, "§2.1#b6", EB-TBL-5@aksi-disposal-plan-none, S-DMG-23, "§9.4.2#r33", "§Aturan Logika Modul#r43"]
+sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p6", "§4.4#r10", S-DMG-04, S-DMG-05, S-DMG-06, V-DMG-07, EC-DMG-36, "§2.1#b8", EB-TBL-5@aksi-disposal-plan-none, S-DMG-23, EC-DMG-37, "§Aturan Logika Modul#r45", "§4.2.4#r17"]
 smoke: []
 dependsOn: []
 trace:
   T-DMG-01: [3, 8, 9, 10, 13, 17, 76, 83, 86]
   D-DMG-06: [52, 53, 54, 62]
-  "§4.2.4#p5": [53, 56, 57, 63, 69, 70]
+  "§4.2.4#p6": [53, 56, 57, 63, 69, 70]
   "§4.4#r10": [52]
   S-DMG-04: [22, 23, 26, 27]
   S-DMG-05: [14, 18]
   S-DMG-06: [5, 19, 30, 31]
   V-DMG-07: [52, 62]
   EC-DMG-36: [34, 36, 39, 41, 45, 47]
-  "§2.1#b6": [4]
+  "§2.1#b8": [4]
   EB-TBL-5@aksi-disposal-plan-none: [36, 41, 47]
   S-DMG-23: [73, 75]
-  "§9.4.2#r33": [73, 75]
-  "§Aturan Logika Modul#r43": [73, 75, 76, 77, 80]
+  EC-DMG-37: [73, 75]
+  "§Aturan Logika Modul#r45": [73, 75, 76, 77, 80]
+  "§4.2.4#r17": [52, 53, 62, 63]
 anchor: []
 coverage:
   web: automated

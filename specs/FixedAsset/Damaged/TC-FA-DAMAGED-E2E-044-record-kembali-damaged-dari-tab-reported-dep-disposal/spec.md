@@ -5,15 +5,15 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r62", "§8.1#r14", "§8.1#r15", "§8.3#r4", EC-DMG-17, "§9.4.4#r25", "§9.7#r11"]
+sourceRules: ["§Aturan Logika Modul#r21", "§Aturan Logika Modul#r65", "§8.1#r14", "§8.1#r15", "§8.3#r4", EC-DMG-17, "§9.4.4#r28", "§9.7#r11"]
 smoke: []
 dependsOn:
   - "Disposal: tab Reported (Decline, Cancel Report)"
 trace:
-  "§Aturan Logika Modul#r62": [5, 25]
-  "§Aturan Logika Modul#r20": [11, 14, 31, 34]
+  "§Aturan Logika Modul#r65": [5, 25]
+  "§Aturan Logika Modul#r21": [11, 14, 31, 34]
   EC-DMG-17: [11, 17, 31, 37]
-  "§9.4.4#r25": [11, 17, 31, 37]
+  "§9.4.4#r28": [11, 17, 31, 37]
   "§9.7#r11": [11, 12, 14, 31, 32, 34]
   "§8.1#r14": [17, 18, 19]
   "§8.3#r4": [17, 37]
@@ -34,7 +34,7 @@ coverage:
   - DU-044-3: Input Decline Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki oleh teknisi internal`.
   - DU-044-4: Input Cancel Report atas `Monitor Dell P2422H {runId}`: Reason `Pelaporan dibatalkan karena monitor sudah diperbaiki`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Full`.
+  - Level Feature Suite Disposal bernilai `Basic`.
 
 ## Test Steps
 

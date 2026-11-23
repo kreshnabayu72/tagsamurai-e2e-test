@@ -1,6 +1,6 @@
 ---
 id: TC-FA-PREF-E2E-062-d01-pv04-pv05-pembangunan-ulang-periode-dan-awal-tahun-fiskal
-title: "D-01 PV-04 dan PV-05: Pembangunan Ulang Periode dan Awal Tahun Fiskal"
+title: "D-01 PV-04 dan PV-05: Hitungan Kalender Periode dan Awal Tahun Fiskal"
 layer: ui-e2e
 priority: High
 caseType: Positive
@@ -21,15 +21,15 @@ coverage:
   web: automated
 ---
 
-# D-01 PV-04 dan PV-05: Pembangunan Ulang Periode dan Awal Tahun Fiskal
+# D-01 PV-04 dan PV-05: Hitungan Kalender Periode dan Awal Tahun Fiskal
 
 ## Prerequisites
 
 - Mode: FE+BE.
 - Akun aktor: Total Control (Pre-setup, company `PT Contoh Konstruksi`): `totalControlFixedAsset_automated_{namaCompany}@qwertysystem.net`, password `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman dibuka hook `beforeEach` suite (Fixed Asset > Settings > Accounting > Preferences). Hook `after` mengembalikan sesi ke akun default suite.
 - Env var `FA_TC_PASSWORD` belum terdaftar di `executionConfig.environmentVariables` (`spectra.config.ts`) dan `.env.example`: didaftarkan tim FE. Password tidak ditulis di spec atau fixture.
-- Data Pre-setup PB-1 (company `PT Contoh Konstruksi`, plan Growth, entitas Active; Preferences nilai awal: Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date, Depreciation in Disposal Month Up to previous month, Default Gain/Loss on Disposal, Default Capitalization Offset dan Found Asset Credit Account kosong, Disposal Documents semua jenis Optional, Journal Grouping Group; periode Mar 2026 sampai Dec 2026 Open; belum ada penyusutan diposting) dan PB-2 (akun Chart of Accounts uji).
-- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "accounting periods will be rebuilt." pada dialog D-01; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
+- Data Pre-setup PB-1 (company `PT Contoh Konstruksi`, plan Growth, entitas Active; Preferences nilai awal: Fiscal Year Start January, First Accounting Period Mar 2026, Default Capitalization Threshold 5.000.000, In-service Date Source Activation date, Depreciation in Disposal Month Up to previous month, Default Gain/Loss on Disposal, Default Capitalization Offset dan Found Asset Credit Account kosong, Disposal Documents semua jenis Optional, Journal Grouping Group; belum ada penyusutan diposting) dan PB-2 (akun Chart of Accounts uji).
+- Jam sistem: bulan berjalan Oktober 2026 menurut Time Zone entitas, dasar hitungan "The period calendar will have [N] accounting periods." (PV-04) pada dialog D-01; jam server dan browser diatur lewat kendali jam (butir "Kendali jam sistem" di `suite.md`) di hook `before` dan dipulihkan di hook `after` spec ini.
 - Seed dan pemulihan lewat API (Preferences ke nilai awal, Asset Class, pelepasan, akun Chart of Accounts, penguncian) disediakan tim FE/BE (butir "Seed dan pemulihan lewat API" di `suite.md`); tiap TC dijalankan dari keadaan awal yang dinyatakan di Precondition TC-nya.
 - Identitas data Pre-setup dibaca dari `fixtures/settings-accounting-preferences.json` (belum ada; disediakan tim FE, nama kunci ditetapkan tim FE). Nama akun dan Asset Class ditulis seperti di TC.
 - Flag Guided Tooltip halaman Preferences: hook suite `before` men-set true dan `after` memulihkannya (butir "Flag Guided Tooltip" di `suite.md`).
@@ -43,7 +43,7 @@ coverage:
 1. Ubah Select Fiscal Year Start dari "January" menjadi "July"
 2. Klik [Save changes]
 3. Verifikasi dialog D-01 berjudul "Save Changes" tampil (severity warning)
-4. Verifikasi body dialog memuat daftar bullet: "16 accounting periods will be rebuilt."; "Tax year start also follows Fiscal Year Start."
+4. Verifikasi body dialog memuat daftar bullet: "The period calendar will have 16 accounting periods."; "Tax year start also follows Fiscal Year Start."
 5. Verifikasi body dialog ditutup pertanyaan "Are you sure you want to save these changes?"
 6. Verifikasi footer dialog memuat tombol [Cancel] (variant text, severity contrast) dan [Save]
 7. Muat ulang halaman dengan F5 dan konfirmasi dialog beforeunload (membuang perubahan yang belum disimpan)
@@ -53,19 +53,19 @@ coverage:
 8. Ubah Select bulan First Accounting Period dari "March" menjadi "January" dengan Select tahun tetap "2026"
 9. Klik [Save changes]
 10. Verifikasi dialog D-01 berjudul "Save Changes" tampil (severity warning)
-11. Verifikasi body dialog memuat daftar bullet: "12 accounting periods will be rebuilt."
+11. Verifikasi body dialog memuat daftar bullet: "The period calendar will have 12 accounting periods."
 12. Verifikasi body dialog ditutup pertanyaan "Are you sure you want to save these changes?"
 13. Verifikasi footer dialog memuat tombol [Cancel] (variant text, severity contrast) dan [Save]
 14. Verifikasi dialog D-01 tidak memuat bullet "Tax year start also follows Fiscal Year Start."
 15. Muat ulang halaman dengan F5 dan konfirmasi dialog beforeunload (membuang perubahan yang belum disimpan)
 
-### TC-FA-PREF-196: PV-04 bentuk tunggal saat hasil pembangunan ulang hanya 1 periode
+### TC-FA-PREF-196: PV-04 bentuk tunggal saat kalender periode hanya berisi 1 periode
 
-16. Seed varian PB-10 lewat API (First Accounting Period tersimpan Oct 2026; periode Oct 2026 sampai Dec 2026 Open)
+16. Seed varian PB-10 lewat API (First Accounting Period tersimpan Oct 2026)
 17. Ubah Select Fiscal Year Start dari "January" menjadi "November"
 18. Klik [Save changes]
 19. Verifikasi dialog D-01 berjudul "Save Changes" tampil (severity warning)
-20. Verifikasi body dialog memuat daftar bullet: "1 accounting period will be rebuilt."; "Tax year start also follows Fiscal Year Start."
+20. Verifikasi body dialog memuat daftar bullet: "The period calendar will have 1 accounting period."; "Tax year start also follows Fiscal Year Start."
 21. Verifikasi body dialog ditutup pertanyaan "Are you sure you want to save these changes?"
 22. Verifikasi footer dialog memuat tombol [Cancel] (variant text, severity contrast) dan [Save]
 23. Muat ulang halaman dengan F5 dan konfirmasi dialog beforeunload (membuang perubahan yang belum disimpan)
@@ -77,7 +77,7 @@ coverage:
 26. Ubah Select bulan First Accounting Period menjadi "January"
 27. Klik [Save changes]
 28. Verifikasi dialog D-01 berjudul "Save Changes" tampil (severity warning)
-29. Verifikasi body dialog memuat daftar bullet: "324 accounting periods will be rebuilt."
+29. Verifikasi body dialog memuat daftar bullet: "The period calendar will have 324 accounting periods."
 30. Verifikasi body dialog ditutup pertanyaan "Are you sure you want to save these changes?"
 31. Verifikasi footer dialog memuat tombol [Cancel] (variant text, severity contrast) dan [Save]
 32. Muat ulang halaman dengan F5 dan konfirmasi dialog beforeunload (membuang perubahan yang belum disimpan)

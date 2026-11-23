@@ -5,15 +5,15 @@ layer: be-e2e
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§1.2#r23", "§1.2#r24", "§1.2#r25", "§1.2#r26", "§1.2#r45", "§2.2#r1", "§2.2#r2", "§2.2#r3", "§Dialog aksi baris (tab Borrowed dan Assigned)#r6", "§9.4.2#r34", "§9.4.3#b1", "§9.4.3#b8"]
+sourceRules: ["§1.2#r24", "§1.2#r25", "§1.2#r26", "§1.2#r27", "§1.2#r46", "§2.2#r1", "§2.2#r2", "§2.2#r3", "§Dialog aksi baris (tab Borrowed dan Assigned)#r6", "§9.4.2#r34", "§9.4.3#b1", "§9.4.3#b8"]
 smoke: []
 dependsOn: ["Transactions > Borrow: pinjaman, approval, sesi Handover, Extension, dan Return oleh Aktor Borrow", "Transactions > Assignment: penugasan, approval, sesi Handover, Change PIC, dan Unassign oleh Aktor Assignment", "Users: Borrower tanpa akun beserta PIC-nya, dan User Detail > User Log"]
 trace:
-  "§1.2#r23": [2, 8]
-  "§1.2#r24": 23
-  "§1.2#r25": 33
-  "§1.2#r26": [4, 9, 45, 46, 48, 49, 51, 52, 54, 55, 57, 58]
-  "§1.2#r45": [10, 43, 64, 67]
+  "§1.2#r24": [2, 8]
+  "§1.2#r25": 23
+  "§1.2#r26": 33
+  "§1.2#r27": [4, 9, 45, 46, 48, 49, 51, 52, 54, 55, 57, 58, 81, 82, 84, 85, 87, 88, 90, 91, 93, 94]
+  "§1.2#r46": [10, 43, 64, 67]
   "§2.2#r1": [2, 5, 12, 14, 16, 23, 26, 28, 60, 69]
   "§2.2#r2": [8, 10, 17, 35, 37, 42, 63, 64, 66, 67]
   "§2.2#r3": 3
@@ -60,6 +60,11 @@ owner: BE
   - DU-201-29: Pinjaman Rudi, Borrower di entitas lain, user `Rudi Hermawan {runId}`, aset `Camera Sony A7 III - 91 {runId}`, status `Borrowed`.
   - DU-201-30: Penugasan Sari yang sudah ditutup, aset `Monitor Dell P2422H - 93 {runId}`, Group `Head Office`, status `Unassigned`.
   - DU-201-31: Pinjaman Sari yang sudah dikembalikan, aset `Laptop Dell Latitude 5420 - 94 {runId}`, Group `Head Office`, status `Returned`; sesudah pinjaman itu Returned, asetnya dihapus.
+  - DU-201-32: Penugasan Hendra, aset `Monitor Dell P2422H - 95 {runId}`, Group `Head Office`, status `Assigned`.
+  - DU-201-33: Penugasan Maya, aset `Monitor Dell P2422H - 96 {runId}`, Group `Head Office`, status `Assigned`.
+  - DU-201-34: Penugasan Dimas, aset `Monitor Dell P2422H - 97 {runId}`, Group `Head Office`, status `Assigned`.
+  - DU-201-35: Penugasan Lestari, aset `Monitor Dell P2422H - 98 {runId}`, Group `Head Office`, status `Assigned`.
+  - DU-201-36: Penugasan Fajar, aset `Monitor Dell P2422H - 99 {runId}`, Group `Branch Surabaya`, status `Assigned`.
 
 ## Test Steps
 
@@ -157,3 +162,20 @@ owner: BE
 77. Sari meminta Assignment Log baris penugasan aset `Monitor Dell P2422H - 92 {runId}` milik Tono
 78. Verifikasi permintaan Assignment Log ditolak server
 79. Verifikasi penolakan tidak membuka riwayat baris penugasan aset `Monitor Dell P2422H - 92 {runId}`
+
+### Pengguna dengan peran apa pun hanya melihat penugasannya sendiri
+80. Hendra meminta data tab Assigned
+81. Verifikasi data memuat baris penugasan aset `Monitor Dell P2422H - 95 {runId}` milik Hendra
+82. Verifikasi data tidak memuat baris penugasan aset `Monitor Dell P2422H - 96 {runId}` milik Maya
+83. Maya meminta data tab Assigned
+84. Verifikasi data memuat baris penugasan aset `Monitor Dell P2422H - 96 {runId}` milik Maya
+85. Verifikasi data tidak memuat baris penugasan aset `Monitor Dell P2422H - 83 {runId}` milik Sari
+86. Dimas meminta data tab Assigned
+87. Verifikasi data memuat baris penugasan aset `Monitor Dell P2422H - 97 {runId}` milik Dimas
+88. Verifikasi data tidak memuat baris penugasan aset `Monitor Dell P2422H - 98 {runId}` milik Lestari
+89. Lestari meminta data tab Assigned
+90. Verifikasi data memuat baris penugasan aset `Monitor Dell P2422H - 98 {runId}` milik Lestari
+91. Verifikasi data tidak memuat baris penugasan aset `Monitor Dell P2422H - 95 {runId}` milik Hendra
+92. Fajar meminta data tab Assigned
+93. Verifikasi data memuat baris penugasan aset `Monitor Dell P2422H - 99 {runId}` milik Fajar
+94. Verifikasi data tidak memuat baris penugasan Division `Printer HP M404 - 88 {runId}` yang berada di Group `Branch Surabaya`, karena Fajar bukan PIC-nya
