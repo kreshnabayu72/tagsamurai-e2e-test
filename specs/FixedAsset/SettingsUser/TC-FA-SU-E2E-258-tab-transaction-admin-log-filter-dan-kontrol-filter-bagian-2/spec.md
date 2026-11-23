@@ -7,7 +7,6 @@ status: draft
 sourceTc:
   - TC-FA-SU-779
   - TC-FA-SU-780
-  - TC-FA-SU-781
 coverage:
   web: automated
 ---
@@ -19,88 +18,61 @@ coverage:
 - Mode: FE+BE.
 - Akun aktor: Total Control Lina Marlina (Pre-setup #1), `totalControl_automated_{namaCompany}@qwertysystem.net`, kredensial `Spectra.env.FA_TC_PASSWORD`. Login di hook `before` spec ini; halaman Fixed Asset > Settings > User dibuka hook `beforeEach` suite.
 - Hook suite (`suite.md`) berlaku: flag Guided Tooltip User List `seen`, sesi API aktor, dan pemulihan Pre-setup bersama lewat seed API.
-- Data Pre-setup: Client `FaUserMain` (#20) dan Transaction Admin Log (#29). Pengguna target: Budi Santoso; sub-tab Borrowing & Assignment berisi 5 baris (`BRW-20260712-0311`, `BRW-20260713-0312`, `BRW-20260715-0313`, `BRW-20260716-0314`, `BRW-20260718-0315`) dengan nilai Group, Role, Action Taken, Date, dan Transaction Status per baris sesuai Tabel Data Uji Pre-setup TC. Nama pengguna dan nilai Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE). Spec ini hanya membaca surface Transaction Admin Log dan tidak menambah atau mengubah data Pre-setup.
-- Spec bersifat baca saja pada data bersama (tanpa mutasi); state yang diubah hanya filter, sort, Search, dan preferensi tampilan sisi klien.
+- Data Pre-setup: Client `FaUserMain` (#20) dan Transaction Admin Log (#29). Pengguna target: Budi Santoso. Sub-tab Borrow berisi 5 baris sesuai Pre-setup #29 TC: `18/07/26` `Returned · Self-processed` `BRW-2026-0315` `Laptop Dell Latitude - 3` `Rina Wijaya` `General Affairs`; `16/07/26` `Rejected` `BRW-2026-0314` `Projector Epson - 1` `Andi Pratama` `Branch Surabaya`; `15/07/26` `Handed over` `BRW-2026-0313` `Camera Sony A7 - 2` `Budi Santoso` `Logistics Warehouse`; `13/07/26` `Requested` `BRW-2026-0312` `Laptop Dell Latitude - 5` `Dewi Lestari` `Finance & Accounting`; `12/07/26` `Draft created` `—` `Tablet Samsung Tab - 4` `—` `IT Infrastructure`. Nama pengguna dan nilai Pre-setup dirujuk lewat fixture `Fixture.fixedAssetSettingsUser.<kunci>` (berkas `fixtures/fixed-asset-settings-user.json` belum ada dan disediakan tim FE). Spec hanya membaca surface Transaction Admin Log dan tidak menambah atau mengubah data Pre-setup.
+- Kemampuan teknis: dropdown multi-select pada Filter Panel, ikon `←` pada kotak Search.
+- State: yang berubah hanya Search, Filter, dan Sort di sisi klien; ketiganya dikembalikan ke keadaan awal dengan langkah eksplisit di akhir spec (langkah 35 sampai 39). Tidak ada state global dan tidak ada data yang dibuat spec.
 
 ## Test Steps
 
-
 ### TC-FA-SU-779: Kombinasi Search dan Filter dua arah
 
-1. Cari Budi Santoso lewat Search di User List, buka Detail User Budi Santoso, klik Tab Transaction Admin Log, lalu klik Sub-tab Borrowing & Assignment
-2. Verifikasi tabel menampilkan lima baris
-3. Ketik Search `0313`, tekan Enter
-4. Klik icon Filter, buka dropdown `Group`, lalu centang `Branch Surabaya`
+1. Cari Budi Santoso lewat Search di User List, buka Detail User Budi Santoso, klik Tab Transaction Admin Log, lalu klik Sub-tab Borrow
+2. Ketik Search `0313`, tekan Enter
+3. Klik icon Filter
+4. Buka dropdown Group lalu centang `Branch Surabaya`
 5. Klik `[Apply]`
-6. Verifikasi irisan Search `0313` dan Filter Group `Branch Surabaya` tidak menyisakan baris (0 baris)
-7. Verifikasi kotak Search tetap berisi `0313` setelah Filter diterapkan
-8. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-9. Kosongkan isi kotak search, tekan Enter
-10. Buka dropdown `Group`, lalu centang `Branch Surabaya`
-11. Klik `[Apply]`
-12. Ketik Search `0313`, tekan Enter
-13. Verifikasi irisan Filter Group `Branch Surabaya` dan Search `0313` tidak menyisakan baris (0 baris), identik dengan urutan sebelumnya
-14. Verifikasi chip `Branch Surabaya` tetap tampil di field `Group` setelah Search dijalankan
-15. Verifikasi tabel berada di halaman 1
-16. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-17. Kosongkan isi kotak search, tekan Enter
+6. Verifikasi hasil irisan Search `0313` dan Filter Group `Branch Surabaya` tidak ada baris (0 baris)
+7. Verifikasi kotak Search tetap berisi `0313` (menerapkan Filter tidak mengosongkan keyword Search)
+8. Klik `←` pada kotak Search
+9. Klik `[Clear Field]`
+10. Klik `[Apply]`
+11. Verifikasi tabel kembali menampilkan semua baris (lima baris)
+12. Buka dropdown Group lalu centang `Branch Surabaya`
+13. Klik `[Apply]`
+14. Ketik Search `0313`, tekan Enter
+15. Verifikasi hasil Filter Group `Branch Surabaya` lalu Search `0313` identik: tidak ada baris
+16. Verifikasi chip `Branch Surabaya` tetap tampil di field Group (menjalankan Search tidak mereset Filter)
+17. Verifikasi tabel berada di halaman 1 setelah kriteria berubah
 
-### TC-FA-SU-780: Pelepasan kontrol (Clear Field, Clear Search, ganti kolom sort, dan recovery empty state)
+### TC-FA-SU-780: Pelepasan kontrol: Clear Field, Clear Search, ganti kolom sort, dan recovery empty state
 
-18. Ketik Search `0313`, tekan Enter
-19. Buka dropdown `Group`, lalu centang `Branch Surabaya`
+18. Klik header `Transaction ID` (Search `0313` dan Filter Group `Branch Surabaya` masih aktif)
+19. Klik `[Clear Field]`
 20. Klik `[Apply]`
-21. Klik header `Transaction ID` satu kali
-22. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-23. Verifikasi Search `0313` tetap berlaku (tabel menyisakan `BRW-20260715-0313`)
-24. Verifikasi Sort pada kolom `Transaction ID` tetap berlaku (icon sort ascending (↑) pada header)
-25. Buka dropdown `Group`, lalu centang `Branch Surabaya`
-26. Klik `[Apply]`
-27. Kosongkan isi kotak search, tekan Enter
-28. Verifikasi Filter Group `Branch Surabaya` tetap berlaku (tabel menyisakan `BRW-20260716-0314`)
-29. Verifikasi Sort pada kolom `Transaction ID` tetap berlaku
-30. Klik header `Date` satu kali
-31. Verifikasi sort pindah ke kolom `Date` (icon sort ascending (↑) pada header `Date`)
-32. Verifikasi Filter Group `Branch Surabaya` tetap berlaku (tabel menyisakan `BRW-20260716-0314`)
-33. Ketik Search `zzzz`, tekan Enter
-34. Verifikasi empty state `No results found` dengan deskripsi `Try adjusting your search or filter.` tampil
-35. Kosongkan isi kotak search, tekan Enter
-36. Verifikasi tabel kembali menyisakan `BRW-20260716-0314`
-37. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-38. Klik header `Date` dua kali untuk mengembalikan sort ke default
-
-### TC-FA-SU-781: Perilaku Filter Panel (tutup tanpa Apply, indikator titik, dan nilai kosong)
-
-39. Buka dropdown `Group`, lalu centang `Branch Surabaya` tanpa klik `[Apply]`
-40. Klik di luar panel Filter
-41. Klik icon Filter untuk membuka panel
-42. Verifikasi field `Group` tidak berisi pilihan (nilai ter-Apply terakhir: kosong)
-43. Verifikasi tabel tidak berubah dan menampilkan lima baris
-44. Buka dropdown `Group`, lalu centang `Branch Surabaya`
-45. Klik `[Apply]`
-46. Verifikasi icon Filter menampilkan badge titik saat panel terbuka
-47. Klik icon Filter untuk menutup panel
-48. Verifikasi icon Filter menampilkan badge titik saat panel tertutup
-49. Klik icon Filter untuk membuka panel
-50. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-51. Verifikasi badge titik pada icon Filter hilang
-52. Buka dropdown `Group`
-53. Verifikasi dropdown `Group` memuat opsi data: `Branch Surabaya`, `Finance & Accounting`, `General Affairs`, `IT Infrastructure`, `Logistics Warehouse`
-54. Verifikasi dropdown `Group` tidak memiliki opsi untuk nilai kosong
-55. Centang `Branch Surabaya`
-56. Klik `[Apply]`
-57. Klik header `⋯`, hilangkan centang `Group`, lalu tutup overlay dengan Esc
-58. Verifikasi field `Group` tetap ada pada panel Filter
-59. Verifikasi Filter Group `Branch Surabaya` tetap berlaku (tabel menyisakan `BRW-20260716-0314`)
-60. Klik header `⋯`, beri centang `Group`, lalu tutup overlay dengan Esc
-61. Klik `[Clear Field]` pada field `Group`, lalu klik `[Apply]`
-62. Klik icon Filter untuk menutup panel
+21. Verifikasi Search tetap berlaku: tabel menyisakan `BRW-2026-0313` (1 baris)
+22. Verifikasi Sort kolom `Transaction ID` tetap berlaku
+23. Buka dropdown Group lalu centang `Branch Surabaya`
+24. Klik `[Apply]`
+25. Klik `←` pada kotak Search
+26. Verifikasi Filter tetap berlaku: tabel menyisakan `BRW-2026-0314` (1 baris)
+27. Verifikasi Sort kolom `Transaction ID` tetap berlaku
+28. Ketik Search `0313`, tekan Enter
+29. Klik header `Name`
+30. Verifikasi Sort berpindah ke kolom `Name`
+31. Verifikasi keyword Search `0313` dan chip Filter `Branch Surabaya` tetap berlaku
+32. Verifikasi empty state `No results found` dengan deskripsi `Try adjusting your search or filter.` tampil
+33. Klik `←` pada kotak Search
+34. Verifikasi baris yang cocok dengan Filter dipulihkan: tabel menyisakan `BRW-2026-0314` (1 baris)
+35. Klik `[Clear Field]`
+36. Klik `[Apply]`
+37. Klik icon Filter
+38. Klik header `Name`
+39. Klik header `Name`
 
 ## Notes
 
-- Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
-- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (mencari pengguna dan membuka sub-tab; pencarian pengguna di User List adalah langkah penghubung, R-16), semua `[Clear Field]` lalu `[Apply]`, pengosongan Search, pemulihan sort, penutupan overlay dan panel Filter (S-09).
-- `Verifikasi` tabel lima baris di awal TC-FA-SU-779 adalah anchor positif untuk asersi "0 baris" (bagian 8b butir 2); asersi itu tambahan atas Expected TC dan dicatat di sini (S-03). Kata kunci tanpa hasil `zzzz` pada TC-FA-SU-780 dipilih spec karena TC tidak menyebut nilainya.
-- Temuan untuk QA (S-15): (1) TC-FA-SU-780 meminta mengganti sort "tanpa mereset Search dan Filter", tetapi Search sudah dikosongkan pada langkah sebelumnya; spec hanya mengasersi Filter tetap berlaku. (2) TC-FA-SU-779 butir d "Tabel kembali ke halaman 1" tidak dapat dibuktikan pada fixture satu halaman; spec mengasersi tabel berada di halaman 1. (3) TC-FA-SU-781 butir c menyebut "menyaring keluar baris yang nilainya kosong", tetapi seed #29 tidak memiliki nilai kosong; hanya ketiadaan opsi nilai kosong yang diasersi. (4) TC-FA-SU-781 butir a tidak menyebut cara mengasersi "nilai ter-Apply terakhir"; spec mengasersi field `Group` kosong karena belum ada filter ter-Apply.
-- Spec ini berjumlah 62 langkah (dihitung dengan ekspansi langkah berulang) dan tetap di atas sekitar 35 langkah. Alasan: seluruh TC di dalamnya satu kelas (fungsional baca) pada satu surface yang sama dengan data seed yang sama, berdiri sendiri, dan kegagalan satu blok TC tidak membuat blok lain kehilangan makna; ukuran berasal dari klausa Expected yang wajib punya `Verifikasi` sendiri (S-01), bukan dari langkah tambahan.
-- Langkah 53 (`Verifikasi` dropdown `Group` memuat opsi data) adalah asersi tambahan di luar Expected TC-FA-SU-781 dan menjadi anchor positif untuk asersi absence opsi nilai kosong pada langkah 54 (bagian 8b butir 2, S-03).
+- Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular. Perilaku Filter Panel sub-tab Borrow (tutup tanpa Apply, indikator titik, nilai kosong; TC-FA-SU-781) ada di spec 438.
+- Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (mencari pengguna di User List lalu membuka sub-tab; R-16), pembersihan Search dan Filter pada langkah 8 sampai 10, dan pemulihan akhir pada langkah 35 sampai 39 (Clear Field, Apply, tutup panel, dua klik `Name` agar sort netral; S-09). Kondisi awal TC-FA-SU-780 (Search `0313`, Filter Group `Branch Surabaya`) dibentuk oleh langkah 14 dan 13; TC-FA-SU-780 langkah 2 mensyaratkan keadaan yang sama persis, sehingga spec tidak mengosongkan dan mengisi ulang keduanya. Pada langkah 23 dan 28 panel Filter masih terbuka sesudah `[Apply]` (8b.9), sehingga dropdown dibuka tanpa klik icon Filter; kotak Search yang ditutup oleh `←` diisi lewat "Ketik Search" (langkah 14 dan 28).
+- Langkah 11 adalah anchor bahwa tabel penuh (lima baris) pulih sebelum urutan sebaliknya (8b.2). Langkah 6 dan 15 menjadi satu-satunya sumber asersi irisan kosong; empty state pada langkah 32 diasersi karena Expected d TC-FA-SU-780 menyebut judul dan deskripsinya.
+- Temuan untuk QA (S-15): (1) Kolom ACC TC-FA-SU-779 dan 780 berisi `#20`, yang di Pre-setup adalah Client `FaUserMain`, bukan akun; aktor diambil dari hook suite (Lina Marlina, Pre-setup #1). (2) Kombinasi Search `0313` dengan Filter Group `Branch Surabaya` (TC-FA-SU-779 butir a) menghasilkan 0 baris, padahal TC-FA-SU-780 langkah 2 memakai kombinasi yang sama sebagai kondisi awal Sort; efek Sort pada hasil tidak dapat diamati karena tabel kosong, sehingga spec hanya mengasersi bahwa kolom sort aktif tetap berlaku (langkah 22, 27, 30). (3) TC-FA-SU-780 langkah 6 ("lepas salah satu kontrol") tidak menyebut kontrol yang dilepas; spec memakai `←` pada kotak Search. (4) TC-FA-SU-779 butir d ("kembali ke halaman 1") tidak dapat dibedakan pada fixture satu halaman; spec mengasersi nomor halaman 1. (5) Post Condition tidak ada pada kedua TC.
+- Spec ini berjumlah 39 langkah dan di atas sekitar 35 langkah. Alasan: kedua TC satu kelas (fungsional baca) pada satu surface dengan seed yang sama; TC-FA-SU-780 mensyaratkan kondisi awal yang sama dengan akhir TC-FA-SU-779 sehingga keduanya berbagi dataset dan state, dan ukuran berasal dari empat butir Expected tiap TC (satu `Verifikasi` per klausa, S-01) ditambah pembersihan state di akhir.

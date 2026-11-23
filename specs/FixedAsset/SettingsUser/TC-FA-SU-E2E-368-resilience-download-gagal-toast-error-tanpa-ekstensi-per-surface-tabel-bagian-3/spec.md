@@ -9,6 +9,7 @@ sourceTc:
   - TC-FA-SU-762
   - TC-FA-SU-793
   - TC-FA-SU-834
+  - TC-FA-SU-1170
 coverage:
   web: automated
 ---
@@ -51,13 +52,13 @@ coverage:
 18. Lepas intercept respons unduhan
 19. Tutup toast error
 
-### TC-FA-SU-793: Download Tab Transaction Admin Log sub-tab Borrowing & Assignment gagal: toast error tanpa ekstensi
+### TC-FA-SU-793: Download Tab Transaction Admin Log sub-tab Borrow gagal: toast error tanpa ekstensi
 
-20. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Borrowing & Assignment
+20. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Borrow
 21. Atur intercept respons unduhan menjadi 500
 22. Klik icon Download
 23. Pilih `Download as CSV`
-24. Verifikasi toast error persist "Error, failed to download Transaction-Admin-Log-Budi-Santoso-Borrowing-Assignment." tampil (tanpa ekstensi)
+24. Verifikasi toast error persist "Error, failed to download Transaction-Admin-Log-Budi-Santoso-Borrow." tampil (tanpa ekstensi)
 25. Verifikasi tidak ada berkas terunduh
 26. Verifikasi halaman tetap utuh
 27. Lepas intercept respons unduhan
@@ -75,6 +76,18 @@ coverage:
 36. Lepas intercept respons unduhan
 37. Tutup toast error
 
+### TC-FA-SU-1170: Download Tab Transaction Admin Log sub-tab Assignment gagal: toast error tanpa ekstensi
+
+38. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Assignment
+39. Atur intercept respons unduhan menjadi 500
+40. Klik icon Download
+41. Pilih `Download as CSV`
+42. Verifikasi toast error persist "Error, failed to download Transaction-Admin-Log-Budi-Santoso-Assignment." tampil (tanpa ekstensi)
+43. Verifikasi tidak ada berkas terunduh
+44. Verifikasi halaman tetap utuh
+45. Lepas intercept respons unduhan
+46. Tutup toast error
+
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
@@ -85,8 +98,10 @@ coverage:
   - TC-FA-SU-762: format dan nama berkas TC-FA-SU-759 di spec 250, empty state, loading, dan error load TC-FA-SU-764 di spec 364, transformasi data TC-FA-SU-761 di spec 373.
   - TC-FA-SU-793: format dan nama berkas TC-FA-SU-790 di spec 262, empty state, loading, dan error load TC-FA-SU-795 di spec 364, transformasi data TC-FA-SU-792 di spec 373.
   - TC-FA-SU-834: format dan nama berkas TC-FA-SU-831 di spec 274, empty state, loading, dan error load TC-FA-SU-836 di spec 376, transformasi data TC-FA-SU-833 di spec 373.
-- Alasan melewati sekitar 35 langkah (37 langkah tertulis, 37 dengan ekspansi; tidak ada langkah yang diulang per iterasi): seluruh blok berkelas b (kegagalan unduhan yang dipaksa), tiap blok berdiri sendiri dan melepas intercept-nya sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
+  - TC-FA-SU-1170: format dan nama berkas TC-FA-SU-1167 di spec 465, empty state, loading, dan error load TC-FA-SU-1172 di spec 364, transformasi data TC-FA-SU-1169 di spec 373.
+- Alasan melewati sekitar 35 langkah (46 langkah tertulis, 46 dengan ekspansi; tidak ada langkah yang diulang per iterasi): seluruh blok berkelas b (kegagalan unduhan yang dipaksa), tiap blok berdiri sendiri dan melepas intercept-nya sendiri sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna.
 - Temuan untuk QA (S-15):
   - Butir b ("halaman tetap utuh") tidak mendefinisikan unsur yang diperiksa; spec menuliskannya apa adanya sebagai satu `Verifikasi` per TC.
   - TC hanya memicu kegagalan unduhan lewat `Download as CSV`; kegagalan unduhan XLSX tidak dicakup TC.
   - TC tidak menyatakan cara menutup toast error persist; spec memakai langkah penghubung `Tutup toast error` agar toast TC sebelumnya tidak terbawa ke TC berikutnya (R-12).
+  - Kolom ACC TC sumber menyebut `#20`, yaitu Client `FaUserMain`, bukan akun; aktor diambil dari hook suite (Lina Marlina, #1).

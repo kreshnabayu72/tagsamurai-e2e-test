@@ -1,0 +1,10 @@
+{
+ "suite": "specs/FixedAsset/FileManager",
+ "prd": "fixed-asset@1836c1a",
+ "prdSha": "7a66273b026439ed",
+ "foundation": "foundation@a25f734-dirty",
+ "kontrakKomponen": "wangs-ui@1.0.0",
+ "kontrakSamaDenganPin": false,
+ "stage": "prd-harness@42accb5",
+ "ditutup": "2026-11-22T14:31:19Z"
+}

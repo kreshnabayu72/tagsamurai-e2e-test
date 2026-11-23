@@ -9,6 +9,7 @@ sourceTc:
   - TC-FA-SU-761
   - TC-FA-SU-792
   - TC-FA-SU-833
+  - TC-FA-SU-1169
 coverage:
   web: automated
 ---
@@ -48,16 +49,16 @@ coverage:
 15. Verifikasi kolom bertipe text (Action, Object, Name, Field, Old Value, New Value): teks ditulis apa adanya
 16. Verifikasi nilai kosong ditulis `-` (hyphen tunggal), bukan blank atau `—`
 
-### TC-FA-SU-792: Transformasi data Download Tab Transaction Admin Log sub-tab Borrowing & Assignment per tipe kolom
+### TC-FA-SU-792: Transformasi data Download Tab Transaction Admin Log sub-tab Borrow per tipe kolom
 
-17. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Borrowing & Assignment
+17. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Borrow
 18. Klik icon Download
 19. Pilih `Download as XLSX`
 20. Buka berkas XLSX hasil unduhan
-21. Verifikasi kolom bertipe badge (Role) ditulis sebagai label teks tanpa warna
+21. Verifikasi kolom bertipe badge (Group) ditulis sebagai label teks tanpa warna
 22. Verifikasi kolom bertipe date (Date): tanggal dan jam mengikuti General Settings
-23. Verifikasi kolom bertipe text (Transaction ID, Group, Action Taken, Transaction Status): teks ditulis apa adanya
-24. Verifikasi nilai kosong ditulis `-` (hyphen tunggal), bukan blank atau `—`
+23. Verifikasi kolom bertipe text (Activity, Transaction ID, Name, Borrower): teks ditulis apa adanya (mis. Activity `Returned · Self-processed`)
+24. Verifikasi nilai kosong (Transaction ID dan Borrower pada baris Draft) ditulis `-` (hyphen tunggal), bukan blank atau `—`
 
 ### TC-FA-SU-833: Transformasi data Download Tab User Log sub-tab Borrow per tipe kolom
 
@@ -70,6 +71,16 @@ coverage:
 31. Verifikasi kolom bertipe text (Activity, Transaction ID, Name): teks ditulis apa adanya
 32. Verifikasi nilai kosong ditulis `-` (hyphen tunggal), bukan blank atau `—`
 
+### TC-FA-SU-1169: Transformasi data Download Tab Transaction Admin Log sub-tab Assignment per tipe kolom
+
+33. Buka Detail Budi Santoso > Tab Transaction Admin Log > Sub-tab Assignment
+34. Klik icon Download
+35. Pilih `Download as XLSX`
+36. Buka berkas XLSX hasil unduhan
+37. Verifikasi kolom bertipe badge (Group) ditulis sebagai label teks tanpa warna
+38. Verifikasi kolom bertipe date (Date): tanggal dan jam mengikuti General Settings
+39. Verifikasi kolom bertipe text (Activity, Transaction ID, Name, Assignee): teks ditulis apa adanya (mis. Activity `Approved`; Assignee Employee ditulis sebagai `Rina W` dan Assignee Division sebagai nama Division `General Affairs`, tanpa teks hover)
+
 ## Notes
 
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular; tiap TC memakai surface-nya sendiri sehingga kegagalan satu blok tidak mengubah state blok lain.
@@ -80,8 +91,11 @@ coverage:
   - TC-FA-SU-761: format dan nama berkas TC-FA-SU-759 di spec 250, empty state, loading, dan error load TC-FA-SU-764 di spec 364, Download gagal TC-FA-SU-762 di spec 368.
   - TC-FA-SU-792: format dan nama berkas TC-FA-SU-790 di spec 262, empty state, loading, dan error load TC-FA-SU-795 di spec 364, Download gagal TC-FA-SU-793 di spec 368.
   - TC-FA-SU-833: format dan nama berkas TC-FA-SU-831 di spec 274, empty state, loading, dan error load TC-FA-SU-836 di spec 376, Download gagal TC-FA-SU-834 di spec 368.
+  - TC-FA-SU-1169: format, nama berkas, kolom, dan jumlah baris Download TC-FA-SU-1167 dan 1168 di spec 465, empty state, loading, dan error load TC-FA-SU-1172 di spec 364, Download gagal TC-FA-SU-1170 di spec 368.
 - Temuan untuk QA (S-15):
   - Acuan "ditulis apa adanya" (nilai di tabel UI atau data seed) tidak dinyatakan TC; spec membandingkan nilai sel berkas dengan nilai yang sama pada Pre-setup atau tabel surface lewat kemampuan baca berkas tim FE.
   - Format tanggal dan jam "mengikuti General Settings" tidak disebut nilainya; spec mengasersi kesesuaian dengan konfigurasi General Settings Client `FaUserMain` yang dibaca tim FE.
   - Klausa nilai kosong (`-`) hanya bermakna bila ada baris dengan sel kosong pada surface itu; Pre-setup yang dirujuk tidak menyatakan baris atau kolom yang kosong, sehingga klausa ini bergantung pada data yang sudah ada.
   - TC-FA-SU-731: Combined Changelog memuat riwayat seluruh pengguna Client dan audit trail permanen yang tumbuh; asersi hanya berdasarkan tipe kolom, bukan posisi atau jumlah baris tertentu (S-14).
+  - Kolom ACC TC sumber menyebut `#20`, yaitu Client `FaUserMain`, bukan akun; aktor diambil dari hook suite (Lina Marlina, #1).
+- Spec ini berjumlah 39 langkah dan di atas sekitar 35 langkah. Alasan: kelima TC satu kelas harness (f, isi berkas unduhan) dengan pola yang sama, tiap TC memakai surface-nya sendiri dan berdiri sendiri, sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna; ukuran berasal dari satu `Verifikasi` per klausa Expected (S-01), bukan dari langkah tambahan.
