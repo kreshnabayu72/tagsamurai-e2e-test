@@ -1,13 +1,13 @@
 # Coverage E2E — Fixed Asset > Settings > Accounting > Asset Class
 
-Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (743 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
+Sumber: `fixed-asset/asset-class/TestCases/tc-asset-class.md` (749 TC granular aktif). Modul tidak punya `tc-asset-class-backend.md`.
 Suite: `specs/FixedAsset/AssetClass/` (beserta `suite.md`).
 Prefix Modul: `FA` + `AC` (`TC-FA-FAAC-E2E-*`).
 Status semua spec: `draft`.
 
 ---
 
-## 1. Pemetaan TC Granular → Spec E2E (215 Spec)
+## 1. Pemetaan TC Granular → Spec E2E (216 Spec)
 
 | Spec | Isi / Judul | Mode | Langkah | TC Sumber |
 |---|---|:---:|:---:|---|
@@ -226,6 +226,7 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-213-log-edit-end-of-life-treatment-tiga-surface | Log Edit End-of-Life Treatment: Teks Opsi pada Old Value dan New Value di Changelog, System Log, dan Activity Log | FE+BE | 20 | TC-FA-FAAC-733 |
 | TC-FA-FAAC-E2E-214-defense-in-depth-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-v-39 | Defense-in-Depth: Request Langsung Create Declining Balance dengan End-of-Life Treatment Kosong Ditolak V-39 | FE+BE | 4 | TC-FA-FAAC-734 |
 | TC-FA-FAAC-E2E-215-log-absence-request-langsung-declining-balance-end-of-life-treatment-kosong-ditolak-server | Log Absence: Request Langsung Create Declining Balance dengan End-of-Life Treatment Kosong yang Ditolak Server Tidak Menulis Entri di Changelog Asset Class, System Log, dan Activity Log | FE+BE | 6 | TC-FA-FAAC-734 |
+| TC-FA-FAAC-E2E-216-guided-tooltip-replay-melewati-kolom-tersembunyi | Guided Tooltip Tab Asset Class: Replay Melewati Step yang Kolom Targetnya Disembunyikan | FE+BE | 24 | TC-FA-FAAC-754 |
 
 ## 2. Daftar TC hanya-BE (Excluded dari E2E — 0 TC)
 
@@ -999,6 +1000,7 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-747 | E2E | TC-FA-FAAC-E2E-204-defense-in-depth-request-langsung-tax-method-di-luar-irisan-ditolak-v-36 | FE+BE |
 | TC-FA-FAAC-747 | E2E | TC-FA-FAAC-E2E-206-log-absence-request-langsung-tax-method-di-luar-irisan-ditolak-server | FE+BE |
 | TC-FA-FAAC-748 | E2E | TC-FA-FAAC-E2E-205-sinkron-cancel-scheduled-version-tax-depreciation-class-menghitung-ulang-opsi-tax-method | FE+BE |
+| TC-FA-FAAC-754 | E2E | TC-FA-FAAC-E2E-216-guided-tooltip-replay-melewati-kolom-tersembunyi | FE+BE |
 
 ## 4. Pertanyaan terbuka dan Temuan untuk QA
 
@@ -1061,3 +1063,7 @@ Tax Method dibatasi irisan metode versi Current dan semua versi Scheduled Tax De
 ### 4.12 TC End-of-Life Treatment Declining Balance dan helper Equivalent (TC-719 sampai 735)
 
 TC-719 sampai 735 masuk spec 207 sampai 215: 207 (719, 722), 208 (731, 732), 209 (720, 721, 727), 210 (723, 725), 211 (724, 726), 212 (728, 729, 730, 735), 213 (733), 214 (734 respons dan state data), 215 (734 klausa tidak ada log, pasangan S-05 dengan 214). Tidak ada TC hanya-BE: TC-734 bertanda BE di tabel TC tetapi berkelas defense-in-depth dengan Expected respons API, sehingga masuk spec FE+BE menurut K-1 (pola TC-747 di spec 204 dan 206). Seed baru: `B-EOLSWAP`, `B-EOLUSED`, `B-EOLFREE`, `B-EOLSCHED`, `B-EOLDUP`, `B-EOLLOG` (nama literal, disediakan fixture BE di bawah suite serial); `B-EOLDEF`, `B-EOLCHG`, `B-EOLKEEP`, `B-EOLDUP2` dibuat spec 209 dan dihapus fixture BE. Spec 209 sampai 212 di atas 35 langkah dengan alasan di Notes. Asumsi yang belum terbukti dan perlu konfirmasi tim FE: nilai End-of-Life Treatment fiskal pada master `Bukan bangunan – Kelompok 3` (TC-731 tidak menyebut nilainya), bentuk visual indikator wajib pada label End-of-Life Treatment (TC-719), label tombol dialog Apply Changes (TC-724, 726), dan status respons HTTP penolakan V-39 (TC-734).
+
+### 4.13 Sinkron perubahan TC 2026-11-24
+
+TC-754 (Guided Tooltip melewati step yang kolom targetnya disembunyikan; `guided-tooltip.md` §16.3 baris Target tersembunyi) masuk spec 216. TC-749 sampai 753 (pengecualian Unpost pada `FAAC-LOGIC-09c`) belum punya spec dan belum dipetakan di sini.
