@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Negative
 status: ready-for-automation
-sourceRules: [V-05, V-06, V-07, V-08, §4.1.2#r2, §4.1.2#r3, "§[F-FACO-01] Create Account#r3", "§[F-FACO-01] Create Account#r4", §9.4.2#r3, §9.4.2#r4, EB-FRM-4@account-name, EB-FRM-6@form-add-account]
+sourceRules: [V-05, V-06, V-07, V-08, §4.1.2#r2, §4.1.2#r3, "§[F-FACO-01] Create Account#r3", "§[F-FACO-01] Create Account#r4", §9.4.2#r3, §9.4.2#r4, §9.9#r2, EB-FRM-4@account-name, EB-FRM-6@form-add-account]
 smoke: []
 dependsOn: []
 trace:
@@ -19,6 +19,7 @@ trace:
   §[F-FACO-01] Create Account#r4: [6, 7, 9, 13]
   §9.4.2#r3: [19, 21]
   §9.4.2#r4: [6, 7, 9, 13]
+  §9.9#r2: [47]
   EB-FRM-4@account-name: [17, 19]
   EB-FRM-6@form-add-account: [36, 40, 43, 54, 58, 59]
 anchor: [2, 16, 24, 28, 32, 46]

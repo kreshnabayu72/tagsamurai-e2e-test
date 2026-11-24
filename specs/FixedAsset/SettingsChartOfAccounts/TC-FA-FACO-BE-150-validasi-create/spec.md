@@ -33,7 +33,7 @@ trace:
   "§9.4.2#r3": [14]
   "§9.4.2#r4": [20, 22, 24, 26]
   "§9.9#r1": [10, 16, 20, 28, 59, 61]
-  "§9.9#r2": [14, 18, 22]
+  "§9.9#r2": [14, 18, 22, 51, 57, 67]
   "§9.9#r3": [24, 40, 42, 44, 46, 47, 48, 49]
   EB-FRM-4@account-code: [6, 8, 10]
   EB-FRM-4@account-name: [12, 14]
@@ -141,3 +141,7 @@ trace:
 63. Verifikasi permintaan itu tidak menghasilkan akun ber-Last Used in Journal `Oct 2026`: akun dengan Account Code `LUJ-{runId}` tidak ada, atau ada dengan Last Used in Journal kosong
 64. Admin A mengirim Create dengan Account Code `LUK-{runId}`, Account Name `Kas Tanpa Periode {runId}`, Account Function `Asset Cost`
 65. Verifikasi akun dengan Account Code `LUK-{runId}` tersimpan dengan Last Used in Journal kosong
+
+### Account Name dengan karakter non-ASCII disimpan apa adanya
+66. Admin A mengirim Create dengan Account Code `NAS-{runId}`, Account Name `Café Ünïcode 北京 {runId}`, Account Function `Asset Cost`
+67. Verifikasi akun dengan Account Code `NAS-{runId}` diterima dan tersimpan dengan Account Name persis `Café Ünïcode 北京 {runId}`, tanpa karakter non-ASCII yang diubah atau dibuang

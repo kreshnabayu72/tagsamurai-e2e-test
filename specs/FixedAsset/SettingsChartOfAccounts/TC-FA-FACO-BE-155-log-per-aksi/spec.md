@@ -6,7 +6,7 @@ priority: Medium
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: [J-06, L-01, L-02, L-03, L-04, "§8#r3", "§8#r4", "§8.1#p1", "§9.7#r17", "§9.7#r20", "§9.7#r22", "§9.7#r25", "§9.7#r28", "§8.1#p2"]
+sourceRules: [J-06, L-01, L-02, L-03, L-04, "§8#r3", "§8#r4", "§8.1#p1", "§9.7#r17", "§9.7#r20", "§9.7#r22", "§9.7#r25", "§9.7#r28", "§8.1#p2", "§8.1#p3"]
 smoke: []
 dependsOn: []
 trace:
@@ -24,6 +24,7 @@ trace:
   "§9.7#r25": [20, 26, 27]
   "§9.7#r28": [22, 23, 24, 35, 36]
   "§8.1#p2": [3, 4, 5, 22, 23, 24, 29, 30, 35, 36]
+  "§8.1#p3": [13, 16, 38, 39, 41, 42]
 ---
 
 # Pencatatan log per aksi akun pada tiga surface
@@ -42,6 +43,7 @@ trace:
   - DU-155-14: Account Code `LG8-{runId}`, Account Name `Kas Dihapus {runId}`, Account Function `Asset Cost`.
   - DU-155-15: Account Code `LG9A-{runId}`, Account Name `Kas Bulk Log Satu {runId}`, Account Function `Asset Cost`, Status `Active`.
   - DU-155-16: Account Code `LG9B-{runId}`, Account Name `Kas Bulk Log Dua {runId}`, Account Function `Asset Cost`, Status `Active`.
+  - DU-155-19: Account Code `LG11-{runId}`, Account Name `Kas Proyek Timur {runId}`, Account Function `Asset Cost`.
 - Kondisi:
   - Semua akun di atas belum pernah diekspor dan tidak dipakai Asset Class (Used By 0), sehingga tidak ada field yang terkunci dan Deactivate serta Delete tidak diblokir.
   - Batas jumlah akun client belum tercapai.
@@ -97,3 +99,13 @@ trace:
 34. Pemanggil terotorisasi (DU-155-2) mengirim Delete lewat request langsung atas akun `LG10-{runId}`
 35. Verifikasi Changelog dan Activity Log masing-masing memuat tepat satu baris untuk akun `LG10-{runId}` dengan Action `Delete`, Field `Account Code`, Old Value `LG10-{runId}`, dan New Value `-`, dan Modified By adalah pemanggil itu
 36. Verifikasi System Log milik pemanggil memuat tepat satu entri untuk akun `LG10-{runId}` dengan Action `Delete`, Object `Chart of Accounts`, Name `LG10-{runId}`, Field `Account Code`, Old Value `LG10-{runId}`, dan New Value `-`
+
+### Edit multi-field yang mengubah Account Code menamai semua entri dengan kode baru
+37. Admin A (DU-155-1) mengirim Edit akun `LG11-{runId}` dengan Account Code `LG11B-{runId}` dan Account Name `Kas Proyek Timur Baru {runId}` dalam satu Save
+38. Verifikasi System Log milik Admin A memuat tepat dua entri bernama `LG11B-{runId}` dengan Action `Edit` dan Object `Chart of Accounts`: satu dengan Field `Account Code`, Old Value `LG11-{runId}`, dan New Value `LG11B-{runId}`, satu dengan Field `Account Name`, Old Value `Kas Proyek Timur {runId}`, dan New Value `Kas Proyek Timur Baru {runId}`
+39. Verifikasi Activity Log memuat tepat dua entri bernama `LG11B-{runId}` dengan Action `Edit` dan Object `Chart of Accounts`: satu dengan Field `Account Code`, Old Value `LG11-{runId}`, dan New Value `LG11B-{runId}`, satu dengan Field `Account Name`, Old Value `Kas Proyek Timur {runId}`, dan New Value `Kas Proyek Timur Baru {runId}`
+
+### Edit kode berikutnya tidak memperbarui entri log yang sudah ditulis
+40. Admin A (DU-155-1) mengirim Edit akun `LG11B-{runId}` dengan Account Code `LG11C-{runId}`
+41. Verifikasi System Log milik Admin A dan Activity Log masing-masing memuat tepat satu entri bernama `LG11C-{runId}` dengan Action `Edit`, Field `Account Code`, Old Value `LG11B-{runId}`, dan New Value `LG11C-{runId}`
+42. Verifikasi System Log milik Admin A dan Activity Log masing-masing tetap memuat tepat dua entri bernama `LG11B-{runId}` dari Save pada langkah 37, dengan Field `Account Code` (Old Value `LG11-{runId}`, New Value `LG11B-{runId}`) dan Field `Account Name` (Old Value `Kas Proyek Timur {runId}`, New Value `Kas Proyek Timur Baru {runId}`)

@@ -1,9 +1,9 @@
 {
  "schema": "spec-from-prd-audit/v1",
- "putaran": 3,
- "suite": "0fc628b4fbd725c3",
+ "putaran": 2,
+ "suite": "93f6b173707b240a",
  "hitung": {
-  "ok": 556,
+  "ok": 557,
   "parsial": 0,
   "hilang": 0,
   "salah": 0,
@@ -291,16 +291,6 @@
    "catatan": "Klausa Catatan «Untuk `L-02` yang mengubah kode, berisi kode setelah perubahan (§8.1)» diasersi E2E-011 langkah 13 (di bawah §8.1#p3); E2E-011 tidak tercatat sebagai penanggung §4.1.1#r23."
   },
   {
-   "unit": "§8.1#p3",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FACO-BE-155-log-per-aksi",
-   "langkah": [
-    13
-   ],
-   "catatan": "Masih berlaku dari putaran 1. Klausa Name pada System Log dan Activity Log diasersi BE-155 langkah 13 («kolom Account Code serta Name berisi kode setelah perubahan»), tetapi BE-155 tidak mencatat §8.1#p3 di `sourceRules`/`trace` dan tidak tercatat sebagai penanggung unit ini; penanggung tercatat hanya E2E-011 (ui-e2e) yang hanya menjangkau modal Changelog."
-  },
-  {
    "unit": "V-04",
    "verdict": "ok",
    "jenis": "plan",
@@ -340,6 +330,16 @@
     10
    ],
    "catatan": "Cabang «Klik [+ Account] saat batas jumlah akun tercapai → Dialog D-13; modal tidak dibuka» diasersi UI-129 langkah 7 dan 10; UI-129 tidak tercatat sebagai penanggung §3.1#p1."
+  },
+  {
+   "unit": "§9.9#r2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-FACO-E2E-020-create-account",
+   "langkah": [
+    46
+   ],
+   "catatan": "Klausa 'Unik ❌' pada baris Account Name (`Boleh sama dengan akun lain`) tidak diasersi di BE-150 maupun BE-151 (tidak ada Create atau Edit dengan Account Name yang sama dengan akun lain). Klausa itu diasersi di E2E-020 langkah 46 (Create), E2E-022 langkah 45 (Edit), dan UI-102 langkah 47-51, dengan backend nyata atau form, dan nilainya sah. Catat spec-spec itu sebagai penanggung klausa 'Unik ❌' unit §9.9#r2, atau tambahkan satu Create dengan Account Name kembar di BE-150 bila server diharapkan diasersi langsung. Aturan server lain pada baris ini (wajib, Min 1 termasuk hanya spasi, Max 120 pada batas 120 dan 121, blocklist emoji, HTML dan non-ASCII disimpan apa adanya) diasersi di BE-150 langkah 11-14, 17-18, 21-22, 25-26, 56-57, 66-67 dan BE-151 langkah 29-32, 35-36, 41-42, 68-69, 101-104. Pesan V-05 sampai V-07, timing, dan nilai bawaan form adalah teks UI dan bukan tanggungan layer be-e2e."
   },
   {
    "unit": "EB-FRM-9",
@@ -772,23 +772,9 @@
    "unit": "§4.2a#p1",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-FACO-UI-130-guided-tooltip",
-   "langkah": [
-    69,
-    70,
-    71
-   ],
-   "catatan": "Fungsi tombol `[?]`, «menjalankan ulang Guided Tooltip», dan letaknya di kanan Breadcrumb tidak diasersi UI-120 (hanya tooltip `Show guide`, langkah 7). Asersinya ada di UI-130 langkah 69-71, yang tidak tercatat sebagai penanggung §4.2a#p1."
-  },
-  {
-   "unit": "§4.2a#p1",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-FACO-BE-157-download-isi-berkas",
-   "langkah": [
-    2
-   ],
-   "catatan": "Literal Filename `Chart-of-Accounts` pada wireframe tidak diasersi UI-120. Asersinya ada di BE-157 langkah 2 (dan UI-128 langkah 11 lewat toast), yang tidak tercatat sebagai penanggung §4.2a#p1."
+   "spec": "TC-FA-FACO-UI-120-tabel-tampilan-awal",
+   "langkah": [],
+   "catatan": "Pohon §4.2a memuat banyak klausa yang diasersi spec lain yang tidak tercatat sebagai penanggung unit ini, hanya UI-120 yang tercatat. Breadcrumb, tooltip toolbar, placeholder `Search account...`, opsi `Download as CSV`/`Download as XLSX`, urutan toolbar, dan tooltip `Show guide` diasersi UI-120 (langkah 2-24, 66). Posisi `[?]` tepat di kanan Breadcrumb diasersi E2E-016 langkah 6 dan UI-130 langkah 69. Badge titik filter aktif di UI-123 langkah 23-31, 98, 104. Filename `Chart-of-Accounts` di E2E-008 langkah 3, 8, 18, 25 dan BE-157 langkah 2, 11. Checkbox terpin kiri dan Actions terpin kanan, serta pin kolom, di UI-124 langkah 43-54. Bulk Action Bar dan counter di UI-125. Catat spec-spec itu sebagai pemilik klausa masing-masing pada unit §4.2a#p1 (urutan tab di tab bar dimiliki `asset-class/` FAAC-LOGIC-18 sesuai PRD, jadi tidak dihitung kurang)."
   },
   {
    "unit": "§5#b6",
@@ -912,14 +898,6 @@
    "spec": null,
    "langkah": [],
    "catatan": "Klausa klien baris ini (pesan `V-01` sampai `V-04` beserta timing, default Create kosong, Edit pre-filled dan terkunci) diasersi spec ui-client (UI-100, UI-101, UI-110, UI-111) yang tidak tercatat sebagai penanggung §9.9#r1; penanggung tercatat hanya BE-150 dan BE-151. Kedua temuan `kurang` putaran 1 sudah beres: kode ber-`_` dan ber-`.` kini diterima pada Create (BE-150 langkah 58-61) dan Edit (BE-151 langkah 97-100)."
-  },
-  {
-   "unit": "§9.9#r2",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Klausa klien baris ini (pesan `V-05` sampai `V-07` beserta timing, default Create kosong, Edit pre-filled) diasersi UI-102, UI-111, UI-100 langkah 10, dan UI-110 langkah 4; 'Unik ❌' (nama sama diizinkan) diasersi E2E-020 langkah 46 dan E2E-022 langkah 45. Spec itu tidak tercatat sebagai penanggung §9.9#r2; penanggung tercatat hanya BE-150 dan BE-151."
   },
   {
    "unit": "§9.9#r3",
@@ -1061,14 +1039,6 @@
    "spec": null,
    "langkah": [],
    "catatan": "Catatan baris ini: «Termasuk `System` (§8.4)», tetapi §8.4 tidak memuat jalur beraktor System: `J-04` «User yang mengekspor» dan `J-06` «Pemanggil terotorisasi». PRD tidak menetapkan kejadian apa yang menulis entri Changelog dengan Modified By `System`, sehingga klausa ini tidak bisa diasersi dan tidak ada spec yang mengasersinya."
-  },
-  {
-   "unit": "§8.1#p3",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": null,
-   "langkah": [],
-   "catatan": "Masih berlaku dari putaran 1. Klausa «Name pada System Log dan Activity Log berisi Account Code setelah perubahan, untuk semua baris `L-02` dari Save itu» berlaku di surface milik modul lain (Global Settings > User: Detail User > Tab System Log; Activity Log FAMS). Suite hanya mengasersinya untuk Save yang mengubah Account Code saja (BE-155 langkah 13, E2E-093 langkah 35, E2E-094 langkah 34); Save yang mengubah Account Code bersama field lain tidak diasersi di kedua surface itu (BE-155 langkah 14-16 mengubah dua field tanpa Account Code). Tidak dihitung kurang."
   },
   {
    "unit": "§[F-FACO-03] Activate Account#p1",
@@ -1237,7 +1207,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Klausa peran Disposal Proceeds pada jurnal pelepasan Sell, Scrap, dan Trade-in ditetapkan `transactions-disposal.md` §9.12.2, dan «opsional dan kosong pada nilai awal» untuk Default Disposal Proceeds Account ditetapkan `SET-13` di `settings-accounting-preferences/`; keduanya di luar kit sehingga tidak diasersi. Yang diasersi: tidak dihitung Used By (E2E-087 langkah 13) dan dipilih lewat Default Disposal Proceeds Account (langkah 15)."
+   "catatan": "FACO-LOGIC-01f memuat klausa yang hasilnya ditetapkan di luar kit atau surface modul lain: 'akun kliring sisi hasil jurnal pelepasan Sell, Scrap, dan Trade-in; pelunasan kas atau piutang ... diselesaikan di ERP (`disposal.md` §9.12.2)', 'tidak dipetakan per Asset Class' (surface Asset Class), dan 'opsional dan kosong pada nilai awal' (nilai awal Default Disposal Proceeds Account di Settings > Accounting > Preferences, `settings-accounting-preferences/`). Tidak bisa diasersi pasti oleh suite ini; tidak mengubah verdict. Klausa yang bisa diuji di modul ini ('tidak dihitung Used By' dan 'akun default company-nya dipilih lewat Default Disposal Proceeds Account') diasersi di E2E-087 langkah 13 dan 15."
   },
   {
    "unit": "§11.1#r3",
@@ -1274,16 +1244,6 @@
    "spec": null,
    "langkah": [],
    "catatan": "PRD §4.5: «Enter / Space untuk tombol dan checkbox». Kontrak `Checkbox#18`: «Enter does not toggle the box» (belum diverifikasi) dan `Checkbox#35`: «Space toggles it» (belum diverifikasi). Untuk mekanik komponen sisi kontrak yang berlaku, tetapi butirnya masih bertanda belum diverifikasi sehingga tidak dipakai untuk menilai salah. Perbaikan putaran 1 menambah UI-103 langkah 84-85 yang mengasersi sisi PRD (checkbox tercentang lewat Enter); bila butir `Checkbox#18` nanti terverifikasi, langkah itu menjadi bertentangan dengan kontrak. Space pada tombol (UI-103 langkah 89-90) sesuai `Button#29` dan temuan `kurang` putaran 1 sudah beres."
-  },
-  {
-   "unit": "§4.2a#p1",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-FACO-UI-120-tabel-tampilan-awal",
-   "langkah": [
-    5
-   ],
-   "catatan": "Tab bar halaman Accounting dan urutan tabnya dimiliki `asset-class/` (`FAAC-LOGIC-18`; PRD §4.2a: «halaman, tab bar, urutan tab, dan tab default: asset-class/»), dokumen di luar kit. Langkah 5 mengasersi empat tab itu hanya berdasarkan salinan di wireframe PRD ini."
   },
   {
    "unit": "§4.1#r5",
@@ -2044,22 +2004,7 @@
   {
    "unit": "§8.1#p3",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Masih berlaku dari putaran 1. Klausa «Name pada System Log dan Activity Log berisi Account Code setelah perubahan, untuk semua baris `L-02` dari Save itu» berlaku di surface milik modul lain (Global Settings > User: Detail User > Tab System Log; Activity Log FAMS). Suite hanya mengasersinya untuk Save yang mengubah Account Code saja (BE-155 langkah 13, E2E-093 langkah 35, E2E-094 langkah 34); Save yang mengubah Account Code bersama field lain tidak diasersi di kedua surface itu (BE-155 langkah 14-16 mengubah dua field tanpa Account Code). Tidak dihitung kurang."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FACO-BE-155-log-per-aksi",
-     "langkah": [
-      13
-     ],
-     "catatan": "Masih berlaku dari putaran 1. Klausa Name pada System Log dan Activity Log diasersi BE-155 langkah 13 («kolom Account Code serta Name berisi kode setelah perubahan»), tetapi BE-155 tidak mencatat §8.1#p3 di `sourceRules`/`trace` dan tidak tercatat sebagai penanggung unit ini; penanggung tercatat hanya E2E-011 (ui-e2e) yang hanya menjangkau modal Changelog."
-    }
-   ],
+   "temuan": [],
    "juri": "j1"
   },
   {
@@ -2102,7 +2047,7 @@
    "unit": "EB-TBL-10",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j2"
+   "juri": "j1"
   },
   {
    "unit": "§4.7#b1",
@@ -2254,6 +2199,21 @@
    "verdict": "ok",
    "temuan": [],
    "juri": "j2"
+  },
+  {
+   "unit": "§9.9#r2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-FACO-E2E-020-create-account",
+     "langkah": [
+      46
+     ],
+     "catatan": "Klausa 'Unik ❌' pada baris Account Name (`Boleh sama dengan akun lain`) tidak diasersi di BE-150 maupun BE-151 (tidak ada Create atau Edit dengan Account Name yang sama dengan akun lain). Klausa itu diasersi di E2E-020 langkah 46 (Create), E2E-022 langkah 45 (Edit), dan UI-102 langkah 47-51, dengan backend nyata atau form, dan nilainya sah. Catat spec-spec itu sebagai penanggung klausa 'Unik ❌' unit §9.9#r2, atau tambahkan satu Create dengan Account Name kembar di BE-150 bila server diharapkan diasersi langsung. Aturan server lain pada baris ini (wajib, Min 1 termasuk hanya spasi, Max 120 pada batas 120 dan 121, blocklist emoji, HTML dan non-ASCII disimpan apa adanya) diasersi di BE-150 langkah 11-14, 17-18, 21-22, 25-26, 56-57, 66-67 dan BE-151 langkah 29-32, 35-36, 41-42, 68-69, 101-104. Pesan V-05 sampai V-07, timing, dan nilai bawaan form adalah teks UI dan bukan tanggungan layer be-e2e."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§[F-FACO-01] Create Account#b1",
@@ -4065,10 +4025,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Klausa peran Disposal Proceeds pada jurnal pelepasan Sell, Scrap, dan Trade-in ditetapkan `transactions-disposal.md` §9.12.2, dan «opsional dan kosong pada nilai awal» untuk Default Disposal Proceeds Account ditetapkan `SET-13` di `settings-accounting-preferences/`; keduanya di luar kit sehingga tidak diasersi. Yang diasersi: tidak dihitung Used By (E2E-087 langkah 13) dan dipilih lewat Default Disposal Proceeds Account (langkah 15)."
+     "catatan": "FACO-LOGIC-01f memuat klausa yang hasilnya ditetapkan di luar kit atau surface modul lain: 'akun kliring sisi hasil jurnal pelepasan Sell, Scrap, dan Trade-in; pelunasan kas atau piutang ... diselesaikan di ERP (`disposal.md` §9.12.2)', 'tidak dipetakan per Asset Class' (surface Asset Class), dan 'opsional dan kosong pada nilai awal' (nilai awal Default Disposal Proceeds Account di Settings > Accounting > Preferences, `settings-accounting-preferences/`). Tidak bisa diasersi pasti oleh suite ini; tidak mengubah verdict. Klausa yang bisa diuji di modul ini ('tidak dihitung Used By' dan 'akun default company-nya dipilih lewat Default Disposal Proceeds Account') diasersi di E2E-087 langkah 13 dan 15."
     }
    ],
-   "juri": "j7"
+   "juri": "j1"
   },
   {
    "unit": "§11.1#r4",
@@ -4726,32 +4686,12 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-FACO-UI-130-guided-tooltip",
-     "langkah": [
-      69,
-      70,
-      71
-     ],
-     "catatan": "Fungsi tombol `[?]`, «menjalankan ulang Guided Tooltip», dan letaknya di kanan Breadcrumb tidak diasersi UI-120 (hanya tooltip `Show guide`, langkah 7). Asersinya ada di UI-130 langkah 69-71, yang tidak tercatat sebagai penanggung §4.2a#p1."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-FACO-BE-157-download-isi-berkas",
-     "langkah": [
-      2
-     ],
-     "catatan": "Literal Filename `Chart-of-Accounts` pada wireframe tidak diasersi UI-120. Asersinya ada di BE-157 langkah 2 (dan UI-128 langkah 11 lewat toast), yang tidak tercatat sebagai penanggung §4.2a#p1."
-    },
-    {
-     "jenis": "prd",
      "spec": "TC-FA-FACO-UI-120-tabel-tampilan-awal",
-     "langkah": [
-      5
-     ],
-     "catatan": "Tab bar halaman Accounting dan urutan tabnya dimiliki `asset-class/` (`FAAC-LOGIC-18`; PRD §4.2a: «halaman, tab bar, urutan tab, dan tab default: asset-class/»), dokumen di luar kit. Langkah 5 mengasersi empat tab itu hanya berdasarkan salinan di wireframe PRD ini."
+     "langkah": [],
+     "catatan": "Pohon §4.2a memuat banyak klausa yang diasersi spec lain yang tidak tercatat sebagai penanggung unit ini, hanya UI-120 yang tercatat. Breadcrumb, tooltip toolbar, placeholder `Search account...`, opsi `Download as CSV`/`Download as XLSX`, urutan toolbar, dan tooltip `Show guide` diasersi UI-120 (langkah 2-24, 66). Posisi `[?]` tepat di kanan Breadcrumb diasersi E2E-016 langkah 6 dan UI-130 langkah 69. Badge titik filter aktif di UI-123 langkah 23-31, 98, 104. Filename `Chart-of-Accounts` di E2E-008 langkah 3, 8, 18, 25 dan BE-157 langkah 2, 11. Checkbox terpin kiri dan Actions terpin kanan, serta pin kolom, di UI-124 langkah 43-54. Bulk Action Bar dan counter di UI-125. Catat spec-spec itu sebagai pemilik klausa masing-masing pada unit §4.2a#p1 (urutan tab di tab bar dimiliki `asset-class/` FAAC-LOGIC-18 sesuai PRD, jadi tidak dihitung kurang)."
     }
    ],
-   "juri": "j4"
+   "juri": "j1"
   },
   {
    "unit": "§5#b2",
@@ -5214,6 +5154,12 @@
    "juri": "j5"
   },
   {
+   "unit": "§4.7#p2",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j1"
+  },
+  {
    "unit": "§4.7#r1",
    "verdict": "ok",
    "temuan": [],
@@ -5398,19 +5344,6 @@
     }
    ],
    "juri": "j1"
-  },
-  {
-   "unit": "§9.9#r2",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": null,
-     "langkah": [],
-     "catatan": "Klausa klien baris ini (pesan `V-05` sampai `V-07` beserta timing, default Create kosong, Edit pre-filled) diasersi UI-102, UI-111, UI-100 langkah 10, dan UI-110 langkah 4; 'Unik ❌' (nama sama diizinkan) diasersi E2E-020 langkah 46 dan E2E-022 langkah 45. Spec itu tidak tercatat sebagai penanggung §9.9#r2; penanggung tercatat hanya BE-150 dan BE-151."
-    }
-   ],
-   "juri": "j5"
   },
   {
    "unit": "§9.9#r3",
@@ -7144,7 +7077,7 @@
    "unit": "§Resolved#r3",
    "verdict": "na",
    "temuan": [],
-   "juri": "j15"
+   "juri": "j1"
   },
   {
    "unit": "§Resolved#r4",

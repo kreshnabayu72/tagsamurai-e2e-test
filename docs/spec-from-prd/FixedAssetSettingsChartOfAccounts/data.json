@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-16",
- "sha": "8dab67140994cc6a",
+ "disetujui": "otomatis, 2026-11-24",
+ "sha": "518d040464b0d624",
  "entri": [
   {
    "id": "DU-001-1",
@@ -3052,7 +3052,8 @@
     "TC-FA-FACO-E2E-016-guided-tooltip-flag"
    ],
    "varian": [
-    "flag-tur@tab-chart-of-accounts:flag-belum"
+    "flag-tur@tab-chart-of-accounts:flag-belum",
+    "flag-tur@tab-chart-of-accounts:aktor-lain"
    ],
    "sumber": "foundation guided-tooltip §16.1",
    "maks": {
@@ -12572,6 +12573,40 @@
    "maks": {}
   },
   {
+   "id": "DU-130-3",
+   "spec": [
+    "TC-FA-FACO-UI-130-guided-tooltip"
+   ],
+   "jenis": "Column Visibility",
+   "data": "Kolom Function disembunyikan agar step yang menargetnya dilewati",
+   "asal": "awal",
+   "nilai": {
+    "Kolom disembunyikan": "Function"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.7#p2",
+   "maks": {}
+  },
+  {
+   "id": "DU-130-4",
+   "spec": [
+    "TC-FA-FACO-UI-130-guided-tooltip"
+   ],
+   "jenis": "Column Visibility",
+   "data": "Kolom Account Code disembunyikan agar step yang menargetnya dilewati",
+   "asal": "awal",
+   "nilai": {
+    "Kolom disembunyikan": "Account Code"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§4.7#p2",
+   "maks": {}
+  },
+  {
    "id": "DU-135-1",
    "spec": [
     "TC-FA-FACO-UI-135-changelog-tampilan-dan-state"
@@ -14176,6 +14211,28 @@
    }
   },
   {
+   "id": "DU-150-33",
+   "spec": [
+    "TC-FA-FACO-BE-150-validasi-create"
+   ],
+   "jenis": "Account",
+   "data": "Name berisi karakter non-ASCII",
+   "asal": "dibuat",
+   "nilai": {
+    "Account Code": "NAS-{runId}",
+    "Account Name": "Café Ünïcode 北京 {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#r2",
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
    "id": "DU-151-1",
    "spec": [
     "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
@@ -15538,6 +15595,98 @@
    "mutasi": [],
    "varian": [],
    "sumber": "V-03",
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "id": "DU-151-60",
+   "spec": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "jenis": "Account",
+   "data": "awal akun untuk Edit Name berisi HTML",
+   "asal": "awal",
+   "nilai": {
+    "Account Code": "HTM-{runId}",
+    "Account Name": "Kas Pelaporan Pajak {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "varian": [],
+   "sumber": "§9.9#r2",
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "id": "DU-151-61",
+   "spec": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "jenis": "Account",
+   "data": "Name berisi markup HTML hasil Edit",
+   "asal": "dibuat",
+   "nilai": {
+    "Account Code": "HTM-{runId}",
+    "Account Name": "<b>Kas Kecil</b> {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#r2",
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "id": "DU-151-62",
+   "spec": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "jenis": "Account",
+   "data": "awal akun untuk Edit Name berisi karakter non-ASCII",
+   "asal": "awal",
+   "nilai": {
+    "Account Code": "NAE-{runId}",
+    "Account Name": "Kas Pelaporan Regional {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "varian": [],
+   "sumber": "§9.9#r2",
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "id": "DU-151-63",
+   "spec": [
+    "TC-FA-FACO-BE-151-validasi-edit-dan-no-op"
+   ],
+   "jenis": "Account",
+   "data": "Name berisi karakter non-ASCII hasil Edit",
+   "asal": "dibuat",
+   "nilai": {
+    "Account Code": "NAE-{runId}",
+    "Account Name": "Café Ünïcode 北京 {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§9.9#r2",
    "maks": {
     "Account Code": 15,
     "Account Name": 120
@@ -17472,6 +17621,80 @@
    "sumber": "turunan penulis",
    "jumlah": 1,
    "id": "DU-155-18",
+   "spec": [
+    "TC-FA-FACO-BE-155-log-per-aksi"
+   ],
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "jenis": "Account",
+   "data": "akun yang Account Code dan Account Name-nya diubah dalam satu Save, lalu Account Code-nya diubah lagi",
+   "asal": "awal",
+   "nilai": {
+    "Account Code": "LG11-{runId}",
+    "Account Name": "Kas Proyek Timur {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "mutasi": [
+    "TC-FA-FACO-BE-155-log-per-aksi"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "id": "DU-155-19",
+   "spec": [
+    "TC-FA-FACO-BE-155-log-per-aksi"
+   ],
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "jenis": "Account",
+   "data": "nilai baru Account Code dan Account Name pada Save pertama",
+   "asal": "dibuat",
+   "nilai": {
+    "Account Code": "LG11B-{runId}",
+    "Account Name": "Kas Proyek Timur Baru {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "mutasi": [],
+   "varian": [
+    "changelog@account:edit-multi-field",
+    "changelog@account:edit-per-field:Account Code",
+    "changelog@account:edit-per-field:Account Name"
+   ],
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "id": "DU-155-20",
+   "spec": [
+    "TC-FA-FACO-BE-155-log-per-aksi"
+   ],
+   "maks": {
+    "Account Code": 15,
+    "Account Name": 120
+   }
+  },
+  {
+   "jenis": "Account",
+   "data": "nilai baru Account Code pada Save kedua",
+   "asal": "dibuat",
+   "nilai": {
+    "Account Code": "LG11C-{runId}",
+    "Account Name": "Kas Proyek Timur Baru {runId}",
+    "Account Function": "Asset Cost"
+   },
+   "mutasi": [],
+   "varian": [
+    "changelog@account:edit-per-field:Account Code"
+   ],
+   "sumber": "turunan penulis",
+   "jumlah": 1,
+   "id": "DU-155-21",
    "spec": [
     "TC-FA-FACO-BE-155-log-per-aksi"
    ],

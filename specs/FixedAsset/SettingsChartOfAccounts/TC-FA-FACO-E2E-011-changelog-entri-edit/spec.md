@@ -9,7 +9,7 @@ sourceRules: ["§8.1#p3", "EB-LOG-1", "EB-LOG-2", "L-02"]
 smoke: ["L-02"]
 dependsOn: []
 trace:
-  "§8.1#p3": [10, 13, 25, 27, 38, 39]
+  "§8.1#p3": [10, 13, 25, 27, 38, 39, 41, 42]
   "EB-LOG-1": [9, 14, 16, 24]
   "EB-LOG-2": [25, 26]
   "L-02": [9, 10, 11, 12]
@@ -74,3 +74,8 @@ coverage:
 37. Ketik Search `LG2-{runId}` pada modal Changelog, tekan Enter
 38. Verifikasi baris Field `Account Name` dengan Old Value `Akun Pembanding {runId}` dan New Value `Pembanding Satu {runId}` bernilai Account Code `LG2-{runId}`, kode sebelum perubahan, tidak mengikuti kode terbaru `LG2B-{runId}`
 39. Verifikasi baris Field `Account Code` bernilai Account Code `LG2B-{runId}`, Old Value `LG2-{runId}`, dan New Value `LG2B-{runId}`
+
+### Satu Save multi-field menulis entri bertimestamp sama dengan urutan tampil terbaru-dahulu
+40. Ganti isi kotak Search modal Changelog dengan `LG1B-{runId}`, tekan Enter
+41. Verifikasi baris Field `Account Code`, baris Field `Account Name` dengan Old Value `Nama Satu {runId}`, dan baris Field `Account Function` dari Save pertama bernilai sama pada kolom Date
+42. Verifikasi dari atas ke bawah, ketiga baris dari Save pertama berurutan Field `Account Function`, `Account Name`, `Account Code`

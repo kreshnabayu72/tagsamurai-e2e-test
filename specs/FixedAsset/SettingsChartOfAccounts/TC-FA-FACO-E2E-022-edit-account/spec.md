@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["F-FACO-02", "FACO-LOGIC-04c", "R-02", "§[F-FACO-02] Edit Account#b4", "§9.4.2#r37", "§9.5#r8", "§9.7#r18", "EB-FRM-1@form-edit-account", "EB-FRM-9", "L-02", "T-02", "EB-ERR-4"]
+sourceRules: ["F-FACO-02", "FACO-LOGIC-04c", "R-02", "§[F-FACO-02] Edit Account#b4", "§9.4.2#r37", "§9.5#r8", "§9.7#r18", "EB-FRM-1@form-edit-account", "§9.9#r2", "EB-FRM-9", "L-02", "T-02", "EB-ERR-4"]
 smoke: ["L-02", "T-02", "EB-ERR-4"]
 dependsOn: []
 trace:
@@ -17,6 +17,7 @@ trace:
   "§9.5#r8": [5, 6, 7]
   "§9.7#r18": 24
   "EB-FRM-1@form-edit-account": [33, 35, 37]
+  "§9.9#r2": 45
   "EB-FRM-9": [10, 11, 26, 29, 30]
   "L-02": [33, 34, 36]
   "T-02": 23

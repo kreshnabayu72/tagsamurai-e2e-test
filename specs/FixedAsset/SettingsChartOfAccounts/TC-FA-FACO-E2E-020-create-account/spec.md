@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["F-FACO-01", "R-01", "ST-04", "§3.1#p1", "§5#b14", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#b3", "§[F-FACO-01] Create Account#b5", "§9.4.2#r32", "§9.4.2#r37", "§9.5#r9", "§9.7#r15", "EB-FRM-1@form-add-account", "L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
+sourceRules: ["F-FACO-01", "R-01", "ST-04", "§3.1#p1", "§5#b14", "§[F-FACO-01] Create Account#b1", "§[F-FACO-01] Create Account#b3", "§[F-FACO-01] Create Account#b5", "§9.4.2#r32", "§9.4.2#r37", "§9.5#r9", "§9.7#r15", "EB-FRM-1@form-add-account", "§9.9#r2", "L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
 smoke: ["L-01", "T-01", "V-04", "EB-FRM-5@account-code", "EB-CON-2"]
 dependsOn: []
 trace:
@@ -22,6 +22,7 @@ trace:
   "§9.5#r9": [21, 22, 23]
   "§9.7#r15": 14
   "EB-FRM-1@form-add-account": [33, 36]
+  "§9.9#r2": 46
   "L-01": [37, 38]
   "T-01": 13
   "V-04": 52

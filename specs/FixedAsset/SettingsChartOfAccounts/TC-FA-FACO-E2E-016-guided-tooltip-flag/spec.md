@@ -55,7 +55,7 @@ coverage:
 
 ### Keluar tanpa selesai tidak menyetel flag dan Done menyetelnya
 20. Pengguna Tur B membuka Settings > Accounting > Chart of Accounts untuk pertama kali
-21. Verifikasi Guided Tooltip tampil otomatis dengan judul `Account Code` pada step pertama
+21. Verifikasi Guided Tooltip tampil otomatis dengan judul `Account Code` pada step pertama walau flag Pengguna Tur A sudah disetel
 22. Muat ulang halaman saat Guided Tooltip masih terbuka
 23. Verifikasi Guided Tooltip tampil kembali dengan judul `Account Code` karena flag belum disetel
 24. Klik `[Next]` sebanyak lima kali sampai step terakhir

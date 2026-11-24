@@ -1,10 +1,10 @@
 {
  "suite": "specs/FixedAsset/SettingsChartOfAccounts",
  "prd": "fixed-asset@9e5ae60",
- "prdSha": "851502c28b0ddee7",
- "foundation": "foundation@8ec9ed8-dirty",
+ "prdSha": "58f5881f2e4d0851",
+ "foundation": "foundation@3acd1bc",
  "kontrakKomponen": "wangs-ui@1.0.0",
  "kontrakSamaDenganPin": false,
- "stage": "prd-harness@1271d35",
- "ditutup": "2026-11-15T19:55:20Z"
+ "stage": "prd-harness@0fdd9f8",
+ "ditutup": "2026-11-24T09:20:35Z"
 }

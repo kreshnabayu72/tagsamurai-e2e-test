@@ -1,11 +1,11 @@
 <!-- Ditulis stage spec-from-prd saat close. Jangan diubah tangan: run berikutnya menimpanya. -->
 
-Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5ae60` (sha `851502c28b0ddee7`), foundation@8ec9ed8-dirty, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@1271d35`, ditutup 2026-11-15T19:55:20Z.
+Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5ae60` (sha `58f5881f2e4d0851`), foundation@3acd1bc, kontrak komponen wangs-ui@1.0.0. Stage: `prd-harness@0fdd9f8`, ditutup 2026-11-24T09:20:35Z.
 
-# Matriks data Chart of Accounts (8dab67140994cc6a)
+# Matriks data Chart of Accounts (518d040464b0d624)
 
-- Entri: 896 (awal 613, dibuat 152, dicoba 131)
-- Checker: ERROR 0, REVIEW 22
+- Entri: 906 (awal 618, dibuat 157, dicoba 131)
+- Checker: ERROR 0, REVIEW 19
 
 ## Target × varian
 
@@ -983,8 +983,8 @@ Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5a
 | Varian | Entri |
 |---|---|
 | `create` | ✓ DU-155-3 |
-| `edit-per-field:Account Code` | ✓ DU-155-9 |
-| `edit-per-field:Account Name` | ✓ DU-155-5 |
+| `edit-per-field:Account Code` | ✓ DU-155-9, DU-155-20, DU-155-21 |
+| `edit-per-field:Account Name` | ✓ DU-155-5, DU-155-20 |
 | `edit-per-field:Account Function` | ✓ DU-155-7 |
 | `edit-per-field:Status` | ✓ DU-155-12 |
 | `delete` | ✓ DU-155-14 |
@@ -998,7 +998,7 @@ Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5a
 | `per-varian-jalur:Request API langsung` | ✓ DU-155-17 |
 | `field-badge-enum` | ✓ DU-155-7 |
 | `nilai-kosong` | ✓ DU-155-3, DU-155-14 |
-| `edit-multi-field` | ✓ DU-155-11 |
+| `edit-multi-field` | ✓ DU-155-11, DU-155-20 |
 | `per-sub-konteks` | — §8.1: kejadian yang dicatat hanya `L-01` sampai `L-04` dan `L-10`; varian ini tidak punya padanan |
 | `field-sub-item` | — §8.1: kejadian yang dicatat hanya `L-01` sampai `L-04` dan `L-10`; varian ini tidak punya padanan |
 | `field-permission` | — §8.1: kejadian yang dicatat hanya `L-01` sampai `L-04` dan `L-10`; varian ini tidak punya padanan |
@@ -1167,6 +1167,7 @@ Suite: `specs/FixedAsset/SettingsChartOfAccounts`. Sumber: PRD `fixed-asset@9e5a
 | `flag-belum` | ✓ DU-016-1, DU-016-2 |
 | `flag-sudah` | ✓ DU-016-1 |
 | `flag-sudah-device-lain` | ✓ DU-016-1 |
+| `aktor-lain` | ✓ DU-016-2 |
 
 ### format-tanggal@tabel-account-list · VD-S1
 
@@ -1932,6 +1933,8 @@ Mesin` (15 kar), Baris pertama `Perawatan` (9 kar), Baris kedua `Mesin` (5 kar) 
 - **DU-129-3** Account (awal; 1001 record), 1001 akun, satu di atas Master Data Count Limit karena limit diturunkan: Account Code `K-{n}` (5 kar), Account Name `Akun Lebih Batas {n}` (20 kar), Function `Asset Cost` (10 kar), Active `Active` (6 kar), Used By `0` (1 kar) · sumber foundation prd-conventions.md §8 (nilai kanonik plans-licensing-lifecycle-settings §9.9)
 - **DU-130-1** Account (awal), Akun tunggal agar header kolom dan toolbar yang disorot tampil: Account Code `1-1001` (6 kar), Account Name `Fixed Assets – Equipment` (24 kar), Function `Asset Cost` (10 kar), Active `Active` (6 kar), Used By `3` (1 kar), Last Used in Journal `Oct 2026` (8 kar) · sumber PRD §4.1.1 Example Data
 - **DU-130-2** Viewport (dicoba), Ukuran jendela baru untuk memicu penutupan tur saat resize: Ukuran jendela `1024 x 768` (10 kar) · sumber turunan penulis
+- **DU-130-3** Column Visibility (awal), Kolom Function disembunyikan agar step yang menargetnya dilewati: Kolom disembunyikan `Function` (8 kar) · sumber §4.7#p2
+- **DU-130-4** Column Visibility (awal), Kolom Account Code disembunyikan agar step yang menargetnya dilewati: Kolom disembunyikan `Account Code` (12 kar) · sumber §4.7#p2
 - **DU-135-1** Changelog (awal), Entri Create untuk Old Value kosong dan Modified By dengan nama belakang: Date `2026-03-25T09:15:00Z` (20 kar), Action `Create` (6 kar), Account Code `1-1001` (6 kar), Field `Account Code` (12 kar), Old Value `None` (4 kar), New Value `1-1001` (6 kar), Modified By `Rina Pratiwi` (12 kar), Date tampil dd/MM/yy `25/03/26, 09:15` (15 kar), Date tampil dd MMM yy `25 Mar 26, 09:15` (16 kar) · sumber turunan penulis
 - **DU-135-2** Changelog (awal), Entri Edit nama akun: Date `2026-03-26T10:30:00Z` (20 kar), Action `Edit` (4 kar), Account Code `1-1001` (6 kar), Field `Account Name` (12 kar), Old Value `Fixed Asset Equipment` (21 kar), New Value `Fixed Assets – Equipment` (24 kar), Modified By `Rina Pratiwi` (12 kar) · sumber turunan penulis
 - **DU-135-3** Changelog (awal), Entri Edit Status dengan Modified By satu kata: Date `2026-03-27T23:30:00Z` (20 kar), Action `Edit` (4 kar), Account Code `1-1001` (6 kar), Field `Status` (6 kar), Old Value `Active` (6 kar), New Value `Inactive` (8 kar), Modified By `Budi` (4 kar) · sumber turunan penulis
@@ -2005,6 +2008,7 @@ Mesin` (15 kar), Baris pertama `Perawatan` (9 kar), Baris kedua `Mesin` (5 kar) 
 - **DU-150-30** Account (dibuat), Code bertitik yang diizinkan whitelist: Account Code `BNK.{runId}` (11 kar), Account Name `Rekening Bank Cadangan {runId}` (30 kar), Account Function `Asset Cost` (10 kar) · sumber V-03
 - **DU-150-31** Account (dicoba), Create langsung yang membawa Last Used in Journal: Account Code `LUJ-{runId}` (11 kar), Account Name `Kas Periode Jurnal {runId}` (26 kar), Account Function `Asset Cost` (10 kar), Last Used in Journal `Oct 2026` (8 kar) · sumber FACO-LOGIC-07d
 - **DU-150-32** Account (dibuat), akun baru dari Create tanpa Last Used in Journal: Account Code `LUK-{runId}` (11 kar), Account Name `Kas Tanpa Periode {runId}` (25 kar), Account Function `Asset Cost` (10 kar) · sumber FACO-LOGIC-07d
+- **DU-150-33** Account (dibuat), Name berisi karakter non-ASCII: Account Code `NAS-{runId}` (11 kar), Account Name `Café Ünïcode 北京 {runId}` (23 kar), Account Function `Asset Cost` (10 kar) · sumber §9.9#r2
 - **DU-151-1** Account (awal; dimutasi TC-FA-FACO-BE-151-validasi-edit-dan-no-op), akun untuk Edit nilai baru: Account Code `SWA-{runId}` (11 kar), Account Name `Beban Sewa Kantor {runId}` (25 kar), Account Function `Depreciation Expense` (20 kar) · sumber turunan penulis
 - **DU-151-2** Account (dibuat), nilai baru hasil Edit pada ketiga field: Account Code `SWB-{runId}` (11 kar), Account Name `Beban Sewa Gedung {runId}` (25 kar), Account Function `Accumulated Depreciation` (24 kar) · sumber F-FACO-02
 - **DU-151-3** Account (awal), akun untuk Edit tanpa perubahan: Account Code `NOP-{runId}` (11 kar), Account Name `Kas Kecil Pusat {runId}` (23 kar), Account Function `Asset Cost` (10 kar) · sumber F-FACO-02
@@ -2064,6 +2068,10 @@ Mesin` (15 kar), Baris pertama `Perawatan` (9 kar), Baris kedua `Mesin` (5 kar) 
 - **DU-151-57** Account (awal; dimutasi TC-FA-FACO-BE-151-validasi-edit-dan-no-op), akun untuk Edit Account Code ke nilai ber-garis-bawah dan bertitik: Account Code `WLS-{runId}` (11 kar), Account Name `Kas Whitelist Edit {runId}` (26 kar), Account Function `Asset Cost` (10 kar) · sumber V-03
 - **DU-151-58** Account (dibuat), Code hasil Edit ber-garis-bawah yang diizinkan whitelist: Account Code `WLS_{runId}` (11 kar), Account Name `Kas Whitelist Edit {runId}` (26 kar), Account Function `Asset Cost` (10 kar) · sumber V-03
 - **DU-151-59** Account (dibuat), Code hasil Edit bertitik yang diizinkan whitelist: Account Code `WLS.{runId}` (11 kar), Account Name `Kas Whitelist Edit {runId}` (26 kar), Account Function `Asset Cost` (10 kar) · sumber V-03
+- **DU-151-60** Account (awal; dimutasi TC-FA-FACO-BE-151-validasi-edit-dan-no-op), awal akun untuk Edit Name berisi HTML: Account Code `HTM-{runId}` (11 kar), Account Name `Kas Pelaporan Pajak {runId}` (27 kar), Account Function `Asset Cost` (10 kar) · sumber §9.9#r2
+- **DU-151-61** Account (dibuat), Name berisi markup HTML hasil Edit: Account Code `HTM-{runId}` (11 kar), Account Name `<b>Kas Kecil</b> {runId}` (24 kar), Account Function `Asset Cost` (10 kar) · sumber §9.9#r2
+- **DU-151-62** Account (awal; dimutasi TC-FA-FACO-BE-151-validasi-edit-dan-no-op), awal akun untuk Edit Name berisi karakter non-ASCII: Account Code `NAE-{runId}` (11 kar), Account Name `Kas Pelaporan Regional {runId}` (30 kar), Account Function `Asset Cost` (10 kar) · sumber §9.9#r2
+- **DU-151-63** Account (dibuat), Name berisi karakter non-ASCII hasil Edit: Account Code `NAE-{runId}` (11 kar), Account Name `Café Ünïcode 北京 {runId}` (23 kar), Account Function `Asset Cost` (10 kar) · sumber §9.9#r2
 - **DU-152-1** User (awal), aktor Total Control: Name `Budi Total {runId}` (18 kar), Access Level `Total Control` (13 kar) · sumber matriks role PRD
 - **DU-152-2** User (awal), aktor Read Only: Name `Rina ReadOnly {runId}` (21 kar), Access Level `Read Only` (9 kar) · sumber matriks role PRD
 - **DU-152-3** User (awal), aktor Manage accounting dengan semua huruf CRUD: Name `Dewi Akuntansi {runId}` (22 kar), Global Role `Manage accounting` (17 kar), Capability `Read, Create, Update, Delete` (28 kar) · sumber matriks role PRD
@@ -2145,6 +2153,9 @@ Mesin` (15 kar), Baris pertama `Perawatan` (9 kar), Baris kedua `Mesin` (5 kar) 
 - **DU-155-16** Account (awal; dimutasi TC-FA-FACO-BE-155-log-per-aksi), akun kedua pada Deactivate bulk: Account Code `LG9B-{runId}` (12 kar), Account Name `Kas Bulk Log Dua {runId}` (24 kar), Account Function `Asset Cost` (10 kar), Status `Active` (6 kar) · sumber turunan penulis
 - **DU-155-17** Account (dibuat; dimutasi TC-FA-FACO-BE-155-log-per-aksi), akun yang dibuat, diubah, dan dihapus lewat request langsung: Account Code `LG10-{runId}` (12 kar), Account Name `Kas Integrasi {runId}` (21 kar), Account Function `Asset Cost` (10 kar) · sumber turunan penulis
 - **DU-155-18** Account (dibuat), nilai baru Account Name lewat request langsung: Account Code `LG10-{runId}` (12 kar), Account Name `Kas Integrasi Terbarui {runId}` (30 kar), Account Function `Asset Cost` (10 kar) · sumber turunan penulis
+- **DU-155-19** Account (awal; dimutasi TC-FA-FACO-BE-155-log-per-aksi), akun yang Account Code dan Account Name-nya diubah dalam satu Save, lalu Account Code-nya diubah lagi: Account Code `LG11-{runId}` (12 kar), Account Name `Kas Proyek Timur {runId}` (24 kar), Account Function `Asset Cost` (10 kar) · sumber turunan penulis
+- **DU-155-20** Account (dibuat), nilai baru Account Code dan Account Name pada Save pertama: Account Code `LG11B-{runId}` (13 kar), Account Name `Kas Proyek Timur Baru {runId}` (29 kar), Account Function `Asset Cost` (10 kar) · sumber turunan penulis
+- **DU-155-21** Account (dibuat), nilai baru Account Code pada Save kedua: Account Code `LG11C-{runId}` (13 kar), Account Name `Kas Proyek Timur Baru {runId}` (29 kar), Account Function `Asset Cost` (10 kar) · sumber turunan penulis
 - **DU-156-1** User (awal), aktor yang melakukan aksi: Name `Maya Pengelola {runId}` (22 kar), Access Level `Total Control` (13 kar) · sumber matriks role PRD
 - **DU-156-2** Account (awal; dimutasi TC-FA-FACO-BE-156-bulk-dan-selection-limit), akun Active pertama pada Deactivate bulk: Account Code `BKA-{runId}` (11 kar), Account Name `Kas Bulk Nonaktif Satu {runId}` (30 kar), Account Function `Asset Cost` (10 kar), Status `Active` (6 kar) · sumber turunan penulis
 - **DU-156-3** Account (awal; dimutasi TC-FA-FACO-BE-156-bulk-dan-selection-limit), akun Active kedua pada Deactivate bulk: Account Code `BKB-{runId}` (11 kar), Account Name `Kas Bulk Nonaktif Dua {runId}` (29 kar), Account Function `Asset Cost` (10 kar), Status `Active` (6 kar) · sumber turunan penulis

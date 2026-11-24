@@ -23,7 +23,7 @@ trace:
   "§[F-FACO-02] Edit Account#r19": [64, 65, 71, 72]
   "§9.4.2#r9": [49, 50, 51, 55, 56]
   "§9.9#r1": [20, 22, 24, 26, 28, 34, 40, 44, 98, 100]
-  "§9.9#r2": [30, 32, 36, 42]
+  "§9.9#r2": [30, 32, 36, 42, 102, 104]
   "§9.9#r3": [38]
   EB-FRM-6@form-edit-account: [28, 32]
   EB-FRM-8@account-code: [20, 22, 24, 26, 28, 34, 40, 44, 67]
@@ -67,6 +67,8 @@ trace:
   - DU-151-52: Account Code `DED-{runId}`, Account Name `Kas Hapus Edit Serentak {runId}`, Account Function `Asset Cost`.
   - DU-151-54: Account Code `SEQ-{runId}`, Account Name `Kas Berurutan Awal {runId}`, Account Function `Asset Cost`.
   - DU-151-57: Account Code `WLS-{runId}`, Account Name `Kas Whitelist Edit {runId}`, Account Function `Asset Cost`.
+  - DU-151-60: Account Code `HTM-{runId}`, Account Name `Kas Pelaporan Pajak {runId}`, Account Function `Asset Cost`.
+  - DU-151-62: Account Code `NAE-{runId}`, Account Name `Kas Pelaporan Regional {runId}`, Account Function `Asset Cost`.
 - Kondisi:
   - Semua akun di atas belum pernah diekspor (Last Used in Journal kosong) dan tidak dipakai Asset Class (Used By 0), sehingga tidak ada field yang terkunci.
 
@@ -212,3 +214,11 @@ trace:
 98. Verifikasi akun tersimpan dengan Account Code `WLS_{runId}`, karena `_` termasuk karakter yang diizinkan, dan tidak ada lagi akun dengan Account Code `WLS-{runId}`
 99. Admin A mengirim Edit akun `WLS_{runId}` dengan Account Code `WLS.{runId}`, Account Name `Kas Whitelist Edit {runId}`, Account Function `Asset Cost`
 100. Verifikasi akun tersimpan dengan Account Code `WLS.{runId}`, karena `.` termasuk karakter yang diizinkan, dan tidak ada lagi akun dengan Account Code `WLS_{runId}`
+
+### Account Name berisi HTML disimpan apa adanya saat Edit
+101. Admin A mengirim Edit akun `HTM-{runId}` dengan Account Code `HTM-{runId}`, Account Name `<b>Kas Kecil</b> {runId}`, Account Function `Asset Cost`
+102. Verifikasi akun `HTM-{runId}` tersimpan dengan Account Name persis `<b>Kas Kecil</b> {runId}` sebagai teks
+
+### Account Name dengan karakter non-ASCII disimpan apa adanya saat Edit
+103. Admin A mengirim Edit akun `NAE-{runId}` dengan Account Code `NAE-{runId}`, Account Name `Café Ünïcode 北京 {runId}`, Account Function `Asset Cost`
+104. Verifikasi akun `NAE-{runId}` tersimpan dengan Account Name persis `Café Ünïcode 北京 {runId}`, tanpa karakter non-ASCII yang diubah atau dibuang

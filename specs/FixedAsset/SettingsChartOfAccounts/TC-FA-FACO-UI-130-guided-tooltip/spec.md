@@ -5,7 +5,7 @@ layer: ui-client
 priority: Medium
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§4.7#r5", "§4.7#r6", "EB-TBL-10"]
+sourceRules: ["§4.7#r1", "§4.7#r2", "§4.7#r3", "§4.7#r4", "§4.7#r5", "§4.7#r6", "§4.7#p2", "EB-TBL-10"]
 smoke: []
 dependsOn: []
 trace:
@@ -15,7 +15,8 @@ trace:
   "§4.7#r4": [23, 24, 25]
   "§4.7#r5": [28, 29, 30]
   "§4.7#r6": [33, 34, 35]
-  "EB-TBL-10": [2, 3, 7, 8, 11, 15, 17, 22, 27, 32, 36, 40, 42, 44, 45, 48, 50, 52, 54, 56, 58, 61, 63, 65, 67, 69, 71, 74, 76, 78, 80]
+  "§4.7#p2": [82, 83, 84, 86, 87, 88, 90, 91, 93, 94, 96, 97, 98, 101, 102, 103, 104, 105, 107, 108]
+  "EB-TBL-10": [2, 3, 7, 8, 11, 15, 17, 22, 27, 32, 36, 40, 42, 44, 45, 48, 50, 52, 54, 56, 58, 61, 63, 65, 67, 69, 71, 74, 76, 78, 80, 101, 105]
 anchor: []
 coverage:
   web: automated
@@ -30,9 +31,13 @@ coverage:
 - Data:
   - DU-130-1: Account `1-1001`, Name `Fixed Assets – Equipment`, Function `Asset Cost`, status Active, Used By `3`, Last Used in Journal `Oct 2026`.
   - DU-130-2: ukuran jendela browser `1024 x 768` piksel.
+  - DU-130-3: Column Visibility menyembunyikan kolom `Function`; kolom lain tetap tampil menurut bawaan.
+  - DU-130-4: Column Visibility menyembunyikan kolom `Account Code`; kolom lain tetap tampil menurut bawaan.
 - Kondisi:
   - K1: tampilan desktop; tabel berisi DU-130-1; aktor belum pernah melihat Guided Tooltip halaman ini (flag seen belum ada).
   - K2: tampilan desktop; tabel berisi DU-130-1; aktor sudah menyelesaikan Guided Tooltip halaman ini (flag seen sudah ada).
+  - K3: tampilan desktop; tabel berisi DU-130-1 dengan DU-130-3 berlaku; aktor belum pernah melihat Guided Tooltip halaman ini (flag seen belum ada).
+  - K4: tampilan desktop; tabel berisi DU-130-1 dengan DU-130-4 berlaku; aktor sudah menyelesaikan Guided Tooltip halaman ini (flag seen sudah ada).
 
 ## Test Steps
 
@@ -131,3 +136,35 @@ coverage:
 78. Verifikasi Guided Tooltip tampil pada Step 1
 79. Ubah ukuran jendela browser menjadi `1024 x 768` piksel
 80. Verifikasi Guided Tooltip tidak tampil
+
+### Step yang menarget kolom tersembunyi dilewati pada tur otomatis
+81. Tampilkan Tab Chart of Accounts dengan kondisi K3
+82. Verifikasi Guided Tooltip tampil pada Step 1
+83. Verifikasi indikator `Step [N] of [Total]` dengan N `1` dan Total `5` tampil
+84. Verifikasi judul `Account Code` tampil
+85. Klik `[Next]`
+86. Verifikasi indikator `Step [N] of [Total]` dengan N `2` dan Total `5` tampil
+87. Verifikasi judul `Where an Account Is Used` tampil
+88. Verifikasi judul `Account Function` tidak tampil
+89. Klik `[Next]`
+90. Verifikasi indikator `Step [N] of [Total]` dengan N `3` dan Total `5` tampil
+91. Verifikasi judul `Last Used in Journal` tampil
+92. Klik `[Next]`
+93. Verifikasi indikator `Step [N] of [Total]` dengan N `4` dan Total `5` tampil
+94. Verifikasi judul `Filter Accounts` tampil
+95. Klik `[Next]`
+96. Verifikasi indikator `Step [N] of [Total]` dengan N `5` dan Total `5` tampil
+97. Verifikasi judul `Changelog` tampil
+98. Verifikasi tombol `[Done]` tampil sebagai pengganti `[Next]`
+
+### Step pertama yang menarget kolom tersembunyi dilewati pada replay
+99. Tampilkan Tab Chart of Accounts dengan kondisi K4
+100. Klik `[?]`
+101. Verifikasi Guided Tooltip tampil pada Step 1
+102. Verifikasi indikator `Step [N] of [Total]` dengan N `1` dan Total `5` tampil
+103. Verifikasi judul `Account Function` tampil
+104. Verifikasi judul `Account Code` tidak tampil
+105. Verifikasi tombol `[Back]` tidak tampil
+106. Klik `[Next]`
+107. Verifikasi indikator `Step [N] of [Total]` dengan N `2` dan Total `5` tampil
+108. Verifikasi judul `Where an Account Is Used` tampil
