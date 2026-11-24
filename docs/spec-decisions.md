@@ -3002,3 +3002,13 @@ Aturan:
 - **Untuk spec:** di filter tree, parent tidak pernah disabled sebelum batas tercapai; klik parent mencentang sub sampai batas (parent indeterminate bila terpotong); disabled + tooltip hanya saat batas tercapai. Di tabel, header checkbox checked saat terpilih = batas, klik header = unselect all.
 - **Diputuskan oleh:** owner 2026-11-23 (setelah melihat perilaku di Storybook; lewat workflow owner dan Coordinator). Komponen: wangs-ui rc.358.
 - **Status:** berlaku.
+
+## D-288 Teks banner, pesan dan toast yang hanya beda kata: teks app menang (2026-11-24)
+
+- **Spec / langkah:** GlobalSettings/Import `TC-GS-IMPORT-E2E-105` langkah 4; `TC-GS-IMPORT-E2E-122` (TC-GS-IMPORT-925 langkah 56); `TC-GS-IMPORT-E2E-204` langkah 24–26, 35, 48–50; `TC-GS-IMPORT-E2E-208` (TC-GS-IMPORT-950/951/960, banner Shift dan Overtime Hours); `TC-GS-IMPORT-E2E-214` langkah 33; `TC-GS-IMPORT-E2E-141` langkah 8–11 (Brand, Unit, Position, Division). AdminConsole/SettingsUser `TC-AC-SU-E2E-041` (TC-AC-SU-156 langkah 11) dan `TC-AC-SU-E2E-165` (TC-AC-SU-575 langkah 11). Daftar lengkap dengan teks kedua sisi: tagsamurai-slicing `apps/e2e/wording-only-cases.md` bagian 1 (584b19a9c), kecuali baris IMPORT-204 langkah 19 dan IMPORT-211 langkah 15.
+- **Spec meminta:** `<Field> is deactivated. Its values stay hidden on users until it is activated.` / `<Field> has been deleted. Its values will not be imported.`; `<Entity> name already exists`; `Success, email has been sent. Some items were skipped.`
+- **Kenyataannya:** app menulis `Custom field '<Field>' is deactivated. …` / `Custom field '<Field>' has been deleted. …`; `<Entity> Name already exists`; `Success, activation email has been sent. Some items were skipped (cooldown not finished).` Maknanya sama, tidak ada data yang hilang atau berbeda.
+- **Keputusan:** perbedaan yang hanya kata, huruf besar atau keterangan tambahan dengan makna sama mengikuti teks app (i18n app atau pesan server yang ditampilkan apa adanya). Bila isinya berbeda (jumlah, nilai, nama field, sebab, atau pesan tidak muncul), itu cacat app, bukan wording.
+- **Untuk spec:** langkah di atas mengasersi teks app yang tertulis di kolom "Kenyataannya". IMPORT-204 langkah 19 dan IMPORT-211 langkah 15 (pesan validasi dari server) tidak termasuk; keduanya tetap mengikuti temuan BE BT-GS-IMP-9 sampai teksnya terbukti dari hasil run.
+- **Diputuskan oleh:** Coordinator 2026-11-24 (aturan tim: teks UI dari i18n app, beda kata saja = D-entry). Nomor D-287 dicadangkan untuk keputusan owner yang masih tertunda.
+- **Status:** berlaku.
