@@ -24,6 +24,7 @@ sourceRules:
   - §9.4.4#r19
   - §4.1#r189
   - §9.2#b423
+  - FLD-43
 smoke: []
 dependsOn: []
 trace:
@@ -45,6 +46,7 @@ trace:
   §9.4.4#r19: 17
   §4.1#r189: 80
   §9.2#b423: [11, 83]
+  FLD-43: [85, 87, 89, 91]
 anchor: [13, 78, 79, 82]
 coverage:
   web: automated
@@ -57,10 +59,10 @@ coverage:
 - Layar awal: Area utama pada halaman Transaction Settings.
 - Komponen: Area utama
 - Data:
-  - DU-062-1: Pengaturan Company default tab Disposal pada All categories: Allow Disposal `Allow`, Allowed disposal types `Sell`, `Scrap`, `Donate`, `Trade-in`, `Write-off`, Min asset age warning `12`, Max deviation from book value `30`, Require approval `ON`, Approval type `Any one approver`, Transaction timeout `7`, Send email notifications `OFF`.
+  - DU-062-1: Pengaturan Company default tab Disposal pada All categories: Allow Disposal `Allow`, Allowed disposal types `Sell`, `Scrap`, `Donate`, `Trade-in`, Min asset age warning `12`, Max deviation from book value `30`, Max price drop from approved price `10`, Require approval `ON`, Approval type `Any one approver`, Transaction timeout `7`, Send email notifications `OFF`.
   - DU-062-2: Pengaturan Company default tab Damaged & Missing pada All categories: Long missing after `30`, After photo required `OFF`.
   - DU-062-3: Pengaturan Company default tab Disposal dengan Allowed disposal types hanya `Sell`.
-  - DU-062-4: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Allowed disposal types hanya `Sell`, Min asset age warning `24`, Max deviation from book value `50`, Send email notifications `ON`.
+  - DU-062-4: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Allowed disposal types hanya `Sell`, Min asset age warning `24`, Max deviation from book value `50`, Max price drop from approved price `50`, Send email notifications `ON`.
   - DU-062-5: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `OFF`.
   - DU-062-6: Pengaturan Company default tab Disposal pada All categories yang berbeda dari nilai awal: Require approval `ON`, Approval type `All approvers (AND)`.
   - DU-062-7: Pengaturan Company default tab Damaged & Missing pada All categories yang berbeda dari nilai awal: Long missing after `14`, After photo required `ON`.
@@ -81,7 +83,7 @@ coverage:
 3. Buka daftar pilihan `Allow Disposal`
 4. Verifikasi pilihan `Allow Disposal` adalah `Allow` dan `Deny`
 5. Tutup daftar pilihan dengan Escape
-6. Verifikasi `Allowed disposal types` terpilih `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
+6. Verifikasi `Allowed disposal types` terpilih `Sell`, `Scrap`, `Donate`, dan `Trade-in`
 7. Verifikasi `Min asset age warning` bernilai `12`
 8. Verifikasi `Max deviation from book value` bernilai `30`
 
@@ -120,7 +122,7 @@ coverage:
 ### Daftar pilihan Allowed disposal types
 31. Tampilkan Area utama dengan kondisi K1
 32. Buka daftar pilihan `Allowed disposal types`
-33. Verifikasi pilihan `Allowed disposal types` adalah `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
+33. Verifikasi pilihan `Allowed disposal types` adalah `Sell`, `Scrap`, `Donate`, dan `Trade-in`
 34. Tutup daftar pilihan dengan Escape
 
 ### Reset to Default mengembalikan Limits dan Notifications Disposal ke nilai awal
@@ -130,7 +132,7 @@ coverage:
 38. Verifikasi `Max deviation from book value` bernilai `50`
 39. Verifikasi `Send email notifications` bernilai `ON`
 40. Klik `Reset to Default`
-41. Verifikasi `Allowed disposal types` kembali ke nilai awal terpilih `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`
+41. Verifikasi `Allowed disposal types` kembali ke nilai awal terpilih `Sell`, `Scrap`, `Donate`, dan `Trade-in`
 42. Verifikasi `Min asset age warning` kembali ke nilai awal `12`
 43. Verifikasi `Max deviation from book value` kembali ke nilai awal `30`
 44. Verifikasi `Send email notifications` kembali ke nilai awal `OFF`
@@ -187,3 +189,15 @@ coverage:
 81. Tampilkan Area utama dengan kondisi K7
 82. Verifikasi `After photo required` pada tab `Damaged & Missing` bernilai `ON`
 83. Verifikasi setting `Photo at start` dan `Photo at end` tidak ada pada tab `Damaged & Missing`
+
+### Max price drop from approved price pada tab Disposal
+84. Tampilkan Area utama dengan kondisi K1
+85. Verifikasi `Max price drop from approved price` bernilai `10`
+86. Pindahkan fokus keyboard ke bantuan label `Max price drop from approved price`
+87. Verifikasi teks bantuan label `Max price drop from approved price` tersampaikan berbunyi `A final price lower than the approved price by more than this percentage needs approval again before execution.`
+
+### Reset to Default mengembalikan Max price drop from approved price ke nilai awal
+88. Tampilkan Area utama dengan kondisi K4
+89. Verifikasi `Max price drop from approved price` bernilai `50`
+90. Klik `Reset to Default`
+91. Verifikasi `Max price drop from approved price` kembali ke nilai awal `10`

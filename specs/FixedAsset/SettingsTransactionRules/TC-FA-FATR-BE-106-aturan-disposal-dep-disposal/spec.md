@@ -46,11 +46,17 @@ sourceRules:
   - "§4.1#r155"
   - "§Aturan Logika Modul#r5"
   - "§9.2#b423"
+  - "F-FATR-10.p6d"
+  - "F-FATR-10.p6e"
+  - "F-FATR-10.p6f"
 smoke: []
 dependsOn:
   - "Disposal: pengajuan, approval, dan Execute"
 owner: BE
 trace:
+  "F-FATR-10.p6d": [55, 56, 57, 58]
+  "F-FATR-10.p6e": [59, 60]
+  "F-FATR-10.p6f": [40, 42, 96, 97, 98, 99]
   "§Aturan Logika Modul#r6": 46
   "§Aturan Logika Modul#r29": 46
   "§4.1#r156": [8, 82, 84, 86]
@@ -101,9 +107,9 @@ trace:
   - DU-106-1: Group `Workshop {runId}`
   - DU-106-2: Group `Gudang Terbatas {runId}`, Group override Allow Disposal `Deny`
   - DU-106-3: Category `Alat Berat {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in`, Min asset age warning `12`, Max deviation from book value `30`, Allow Disposal `Allow`, Non TAG `Tidak`
-  - DU-106-4: Category `Peralatan Proyek {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in, Write-off`, Min asset age warning `12`, Max deviation from book value `30`, Allow Disposal `Allow`, Non TAG `Ya`
-  - DU-106-5: Category `Mesin Produksi {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in, Write-off`, Min asset age warning `12`, Min asset age warning setelah Save Changes `24`, Max deviation from book value `30`, Allow Disposal `Allow`, Non TAG `Tidak`
-  - DU-106-6: Category `Kendaraan Dinas {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in, Write-off`, Min asset age warning `12`, Max deviation from book value `30`, Allow Disposal `Deny`, Non TAG `Tidak`
+  - DU-106-4: Category `Peralatan Proyek {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in`, Min asset age warning `12`, Max deviation from book value `30`, Allow Disposal `Allow`, Non TAG `Ya`
+  - DU-106-5: Category `Mesin Produksi {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in`, Min asset age warning `12`, Min asset age warning setelah Save Changes `24`, Max deviation from book value `30`, Allow Disposal `Allow`, Non TAG `Tidak`
+  - DU-106-6: Category `Kendaraan Dinas {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in`, Min asset age warning `12`, Max deviation from book value `30`, Allow Disposal `Deny`, Non TAG `Tidak`
   - DU-106-7: Asset `Excavator PC200 {runId}`, Category `Alat Berat {runId}`, Group `Workshop {runId}`, Tag `Ber-tag`, Condition `Active`, Purchase date `T0 − 6 bulan`, Register Date `T0 − 6 bulan`, Commercial book value `10.000.000`, Nilai jual yang diajukan `10.000.000`
   - DU-106-8: Asset `Excavator PC300 {runId}`, Category `Alat Berat {runId}`, Group `Workshop {runId}`, Tag `Ber-tag`, Condition `Active`, Purchase date `T0 − 18 bulan`, Register Date `T0 − 2 bulan`, Commercial book value `10.000.000`, Nilai jual yang diajukan `10.000.000`
   - DU-106-9: Asset `Bulldozer D31 {runId}`, Category `Alat Berat {runId}`, Group `Workshop {runId}`, Tag `Ber-tag`, Condition `Active`, Purchase date `kosong`, Register Date `T0 − 3 bulan`, Commercial book value `10.000.000`
@@ -139,6 +145,7 @@ trace:
   - DU-106-46: Disposal `Pompa Eksekusi {runId}`, Category `Pompa Industri {runId}`, Group `Workshop {runId}`, Status `Executed menunggu posting`, Masuk status sejak `T0`
   - DU-106-47: Asset `Mesin Foto {runId}`, Category `Alat Berat {runId}`, Group `Workshop {runId}`, Tag `Ber-tag`, Condition `Active`, Purchase date `T0 − 30 bulan`, Register Date `T0 − 30 bulan`, Commercial book value `10.000.000`
   - DU-106-48: Disposal `Mesin Eksekusi Foto {runId}`, Category `Alat Berat {runId}`, Group `Workshop {runId}`, Status `Waiting for Execution`, Masuk status sejak `T0`
+  - DU-106-49: User `Indra Pratama {runId}`, Role `Aktor Disposal`, Cakupan `Workshop {runId}`, Status `Aktif`; melakukan Execute pada langkah 57, 59, dan 98
 - Kondisi:
   - Zona waktu client bernilai `Asia/Jakarta` (UTC+7), dan T0 adalah pukul `01:00` pada zona waktu itu, yaitu pukul `18:00` pada hari kalender sebelumnya menurut UTC. Purchase date dan Register Date ditulis sebagai tanggal kalender zona waktu client.
   - Transaction timeout Disposal bernilai `7` (days), nilai awal Company default.
@@ -221,13 +228,13 @@ trace:
 53. Pengaju mengajukan Disposal jenis `Sell` atas `Dump Truck HD325 {runId}` dengan scan tag aset
 54. Verifikasi pengajuan ditolak karena override Group bernilai Deny walaupun override pada aset yang lebih dekat ke aset bernilai Allow
 
-### Scan tag wajib untuk aset ber-tag tanpa identifikasi manual dengan pengecualian Category Non TAG
+### Scan tag wajib saat Execute untuk aset ber-tag, identifikasi manual diizinkan saat Execute, dengan pengecualian Category Non TAG
 55. Pengaju mengajukan Disposal jenis `Sell` atas `Excavator PC350 {runId}` tanpa scan tag aset
-56. Verifikasi pengajuan ditolak karena scan tag wajib saat mulai transaksi untuk aset ber-tag
-57. Pengaju mengajukan Disposal jenis `Sell` atas `Excavator PC350 {runId}` dengan mengidentifikasi aset secara manual pada langkah mulai
-58. Verifikasi pengajuan ditolak karena langkah mulai tidak menerima identifikasi manual
-59. Pengaju mengajukan Disposal jenis `Sell` atas `Tenda Proyek {runId}` tanpa scan tag aset
-60. Verifikasi pengajuan diterima karena Category `Peralatan Proyek {runId}` bertanda Non TAG
+56. Verifikasi pengajuan diterima karena langkah mulai Disposal adalah Execute, bukan Request, sehingga scan tag tidak diminta saat Request
+57. Aktor Disposal `Indra Pratama {runId}` melakukan Execute atas Disposal `Excavator PC350 {runId}` yang berstatus `Waiting for Execution` tanpa scan tag aset dan tanpa identifikasi manual
+58. Verifikasi Execute ditolak karena scan tag wajib saat Execute untuk aset ber-tag
+59. Aktor Disposal `Indra Pratama {runId}` melakukan Execute atas Disposal `Excavator PC350 {runId}` dengan mengidentifikasi aset secara manual
+60. Verifikasi Execute diterima karena identifikasi manual diizinkan saat Execute (`tag.md` §9.12.3)
 
 ### Perubahan setting berlaku untuk transaksi baru dan tidak membatalkan transaksi berjalan
 61. Pengaju mengajukan Disposal jenis `Sell` atas `Mesin Press P1 {runId}` dengan scan tag aset dan Nilai jual `10.000.000`, sehingga Disposal berstatus `Waiting for Approval`
@@ -273,3 +280,7 @@ trace:
 93. Verifikasi Draft Disposal `Pompa Draft {runId}` tetap berstatus `Draft`, tidak ditutup otomatis
 94. Verifikasi Disposal Report `Pompa Laporan {runId}` tetap berstatus `Reported`, tidak ditutup otomatis
 95. Verifikasi Disposal `Pompa Eksekusi {runId}` yang Executed menunggu posting tetap berstatus `Executed menunggu posting`, tidak ditutup otomatis
+96. Pengaju mengajukan Disposal jenis `Sell` atas `Tenda Proyek {runId}` tanpa scan tag aset
+97. Verifikasi pengajuan diterima karena Category `Peralatan Proyek {runId}` bertanda Non TAG
+98. Aktor Disposal `Indra Pratama {runId}` melakukan Execute atas Disposal `Tenda Proyek {runId}` yang berstatus `Waiting for Execution` tanpa scan tag aset dan tanpa identifikasi manual
+99. Verifikasi Execute diterima karena Category `Peralatan Proyek {runId}` bertanda Non TAG

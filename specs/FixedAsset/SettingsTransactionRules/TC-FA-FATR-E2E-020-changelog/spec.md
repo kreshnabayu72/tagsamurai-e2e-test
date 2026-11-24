@@ -44,7 +44,7 @@ coverage:
   - DU-020-3: Group `Proyek Karawang {runId}`, ada di entitas DU-020-19.
   - DU-020-19: Entitas `Armada Mitra Sejahtera {runId}`, entitas khusus yang hanya dipakai spec ini dan tidak dipakai spec lain. Plan-nya menyediakan transaksi Borrow, Assign, Transfer, dan Disposal, serta Approval Workflow.
 - Kondisi:
-  - Company default entitas DU-020-19 bernilai bawaan: Max duration `14`, Duration unit `Days`, Allowed disposal types seluruh opsi (`Sell`, `Scrap`, `Donate`, `Trade-in`, `Write-off`), dan Long missing after `30`.
+  - Company default entitas DU-020-19 bernilai bawaan: Max duration `14`, Duration unit `Days`, Allowed disposal types seluruh opsi (`Sell`, `Scrap`, `Donate`, `Trade-in`), dan Long missing after `30`.
   - Level Feature Suite Borrowing, Assignment, Transfer, dan Disposal entitas DU-020-19 bernilai `Full`.
 
 ## Test Steps
@@ -90,7 +90,7 @@ coverage:
 32. Klik `[Save]` pada dialog Save Changes
 33. Klik ikon Changelog di header
 34. Ketik Search `{runId}`, tekan Enter
-35. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Inherit`, dan New Value `Sell, Scrap, Trade-in, Write-off`
+35. Verifikasi ada baris dengan Category `Kendaraan {runId} > Mobil Dinas {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Inherit`, dan New Value `Sell, Scrap, Trade-in`
 36. Klik `✕` pada dialog Changelog
 
 ### Edit Photo at start dari Inherit ke OFF tercatat per field

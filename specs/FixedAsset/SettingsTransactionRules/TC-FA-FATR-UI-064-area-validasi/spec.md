@@ -60,6 +60,7 @@ sourceRules:
   - §9.2#b71
   - §9.4.1#r11
   - §9.4.2#r9
+  - FLD-43
 smoke: []
 dependsOn: []
 trace:
@@ -117,6 +118,8 @@ trace:
   §9.2#b71: 84
   §9.4.1#r11: [21, 24, 119, 127]
   §9.4.2#r9: [80, 81]
+  FLD-43: [169, 171]
+  FLD-43c: [172, 174, 175, 177]
 anchor: [83, 112, 115, 124]
 coverage:
   web: automated
@@ -354,3 +357,18 @@ coverage:
 164. Klik `Save`
 165. Verifikasi dialog `Save Changes` tampil
 166. Verifikasi `Auto-approve when duration ≤` bernilai `100000` tanpa pesan di bawah kontrolnya
+
+### Max price drop from approved price di tab Disposal
+167. Tampilkan Area utama dengan kondisi K1
+168. Klik tab `Disposal`
+169. Kosongkan `Max price drop from approved price`
+170. Klik `Save`
+171. Verifikasi pesan `You must enter a value` tampil di bawah kontrol `Max price drop from approved price`
+172. Ganti `Max price drop from approved price` menjadi `0`
+173. Klik `Save`
+174. Verifikasi pesan `Value must be at least 1` tampil di bawah kontrol `Max price drop from approved price`
+175. Ganti `Max price drop from approved price` menjadi `101`
+176. Klik `Save`
+177. Verifikasi pesan `Value must be at most 100` tampil di bawah kontrol `Max price drop from approved price`
+178. Ganti `Max price drop from approved price` dengan `1a2`
+179. Verifikasi `Max price drop from approved price` bernilai `12`

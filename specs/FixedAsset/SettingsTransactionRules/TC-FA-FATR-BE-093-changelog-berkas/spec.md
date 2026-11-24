@@ -26,7 +26,7 @@ trace:
   - DU-093-4: Category, Category leaf yang muncul pada entri Changelog terunduh: Name `Perangkat Unduh {runId}`.
   - DU-093-5: Changelog, entri Max duration tertua pada Category Perangkat Unduh: Action `Edit`; Category `Perangkat Unduh {runId}`; Field `Borrow (Max duration)`; Old Value `Inherit`; New Value `16 days`; Modified By `Maya Pengelola {runId}`.
   - DU-093-6: Changelog, entri Max extensions 0 pada Category Perangkat Unduh, dari pengubah yang sudah dinonaktifkan: Action `Edit`; Category `Perangkat Unduh {runId}`; Field `Borrow (Max extensions)`; Old Value `Inherit`; New Value `No extension`; Modified By `Budi Lama {runId}`.
-  - DU-093-7: Changelog, entri nilai berderet Allowed disposal types pada Category Perangkat Unduh: Action `Edit`; Category `Perangkat Unduh {runId}`; Field `Disposal (Allowed disposal types)`; Old Value `Sell, Scrap, Write-off`; New Value `Sell, Scrap`; Modified By `Maya Pengelola {runId}`.
+  - DU-093-7: Changelog, entri nilai berderet Allowed disposal types pada Category Perangkat Unduh: Action `Edit`; Category `Perangkat Unduh {runId}`; Field `Disposal (Allowed disposal types)`; Old Value `Sell, Scrap, Trade-in`; New Value `Sell, Scrap`; Modified By `Maya Pengelola {runId}`.
   - DU-093-8: Changelog, entri Damaged & Missing pada All categories: Action `Edit`; Category `All categories`; Field `Damaged & Missing (Long missing after)`; Old Value `30 days`; New Value `Off`; Modified By `Maya Pengelola {runId}`.
   - DU-093-9: Changelog, entri massal berantai dari `10 days` ke `11 days` pada Category Berkas Massal (2550 record): Action `Edit`; Category `Berkas Massal {runId}`; Field `Borrow (Max duration)`; Old Value `10 days`; New Value `11 days`; Modified By `Maya Pengelola {runId}`; Date `T0 − {n} menit`.
   - DU-093-10: Category, Category leaf yang muncul pada entri massal Changelog: Name `Berkas Massal {runId}`.
@@ -58,7 +58,7 @@ trace:
 11. Verifikasi sel Old Value dan New Value baris Max duration ditulis `Inherit` dan `16 days`
 12. Verifikasi sel New Value baris Max extensions ditulis `No extension`, karena Changelog menulis nilai 0 sebagai teks maknanya
 13. Verifikasi sel Modified By baris Max extensions ditulis `Budi Lama {runId}`, nama pengubah yang sudah dinonaktifkan
-14. Verifikasi sel Old Value baris Allowed disposal types ditulis `Sell, Scrap, Write-off` dan sel New Value ditulis `Sell, Scrap`, dengan nilai berderet dipisah `", "`
+14. Verifikasi sel Old Value baris Allowed disposal types ditulis `Sell, Scrap, Trade-in` dan sel New Value ditulis `Sell, Scrap`, dengan nilai berderet dipisah `", "`
 15. Verifikasi sel Field baris entri All categories ditulis `Damaged & Missing (Long missing after)`
 16. Verifikasi tidak ada sel yang kosong pada baris data, karena Changelog tidak pernah memiliki nilai kosong
 17. Verifikasi berkas tidak memuat kolom foto

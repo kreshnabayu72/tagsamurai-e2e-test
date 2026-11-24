@@ -30,9 +30,6 @@ sourceRules:
   - "§9.2#b455"
   - "§9.2#b456"
   - "§9.2#b457"
-  - "§9.2#b459"
-  - "§9.2#b460"
-  - "§9.2#b463"
   - "§9.2#b464"
   - "§9.2#b465"
   - "§9.2#b467"
@@ -95,11 +92,19 @@ sourceRules:
   - "§10#b1"
   - "§9.2#r11"
   - "§4.1#r153"
+  - "F-FATR-11.p4a"
+  - "F-FATR-11.p5d"
+  - "EC-40"
+  - "EC-63"
 smoke: []
 dependsOn:
   - "Disposal: pengajuan, approval, dan Execute"
 owner: BE
 trace:
+  "F-FATR-11.p4a": [37, 42, 45]
+  "F-FATR-11.p5d": [50, 51, 52]
+  "EC-40": [48, 51]
+  "EC-63": [37, 42, 45]
   "§4.1#r194": 87
   "§4.1#r196": 89
   "§4.1#r197": [90, 92]
@@ -124,9 +129,6 @@ trace:
   "§9.2#b455": [10, 15]
   "§9.2#b456": [24, 26, 30]
   "§9.2#b457": [11, 15, 16, 30, 31]
-  "§9.2#b459": 37
-  "§9.2#b460": [37, 42, 45]
-  "§9.2#b463": 48
   "§9.2#b464": [94, 96]
   "§9.2#b465": 40
   "§9.2#b467": [53, 58]
@@ -310,26 +312,26 @@ trace:
 34. Verifikasi Disposal langsung berstatus `Waiting for Execution` tanpa menunggu `Budi Santoso {runId}` dan `Citra Lestari {runId}` karena Group Manager yang menaungi Group aset eligible menyetujui tanpa penugasan Approver
 35. Verifikasi status `Budi Santoso {runId}` dan `Citra Lestari {runId}` pada Disposal menjadi `Not Involved`
 
-### Pengaju Group Manager atau Total Control melewati seluruh langkah approval
+### Pengaju Group Manager atau Total Control tetap melewati approval: Kondisi A tidak berlaku untuk Disposal
 36. `Gita Maharani {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Boks T8 {runId}` dengan scan tag aset
-37. Verifikasi Disposal langsung disetujui tanpa langkah approval dan berstatus `Waiting for Execution` walaupun `Budi Santoso {runId}` dan `Citra Lestari {runId}` terdaftar sebagai Approver
-38. Verifikasi log transaksi mencatat `Approved by Gita Maharani {runId} (Group Manager — requester)` karena pengaju Group Manager yang menaungi Group aset di ancestor-nya
-39. Verifikasi Modified By log itu adalah `Gita Maharani {runId}`, bukan `System`
-40. Verifikasi `Gita Maharani {runId}` tidak menjadi approver transaksinya sendiri walaupun melewati approval
+37. Verifikasi Disposal berstatus `Waiting for Approval`, tidak langsung disetujui, walaupun pengaju Group Manager yang menaungi Group aset, karena Kondisi A tidak berlaku untuk Disposal
+38. Verifikasi log transaksi tidak memuat `Approved by Gita Maharani {runId} (Group Manager — requester)`
+39. Verifikasi `Budi Santoso {runId}` dan `Citra Lestari {runId}` menjadi Approver Disposal, dan `Gita Maharani {runId}` tidak ada di daftar approver
+40. Verifikasi `Gita Maharani {runId}` tidak menjadi approver transaksinya sendiri
 41. `Hendra Saputra {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Gudang G1 {runId}` dengan scan tag aset
-42. Verifikasi Disposal langsung disetujui tanpa langkah approval dan berstatus `Waiting for Execution` karena pengaju Group Manager yang menaungi Group aset di node itu
-43. Verifikasi log transaksi mencatat `Approved by Hendra Saputra {runId} (Group Manager — requester)` dengan Modified By `Hendra Saputra {runId}`
+42. Verifikasi Disposal berstatus `Waiting for Approval` dan tidak langsung disetujui walaupun pengaju Group Manager yang menaungi Group aset di node itu
+43. Verifikasi log transaksi mencatat approval dialihkan ke Total Control `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` dengan Reason `Requester is the only approver`, karena tidak ada Approver eligible dan satu-satunya Group Manager yang menaungi adalah pengaju
 44. `Tono Prasetyo {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Boks T9 {runId}` dengan scan tag aset
-45. Verifikasi Disposal langsung disetujui tanpa langkah approval dan berstatus `Waiting for Execution` karena pengaju Total Control
-46. Verifikasi log transaksi mencatat `Approved by Tono Prasetyo {runId} (Total Control — requester)` dengan Modified By `Tono Prasetyo {runId}`
+45. Verifikasi Disposal berstatus `Waiting for Approval` dan tidak langsung disetujui karena pengaju Total Control
+46. Verifikasi log transaksi tidak memuat `Approved by Tono Prasetyo {runId} (Total Control — requester)` dan daftar approver tidak memuat `Tono Prasetyo {runId}`
 47. `Gita Maharani {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Satu Orang U1 {runId}` dengan scan tag aset
-48. Verifikasi log transaksi mencatat `Approved by Gita Maharani {runId} (Group Manager — requester)`, bukan `Approved by system (no independent approver)`, walaupun pengaju juga satu-satunya Approver terdaftar, karena Kondisi A dievaluasi lebih dulu daripada self-approval guard
+48. Verifikasi log transaksi tidak memuat `Approved by Gita Maharani {runId} (Group Manager — requester)` maupun `Approved by system (no independent approver)`, walaupun pengaju juga satu-satunya Approver terdaftar di Group aset, karena Disposal tidak memakai Kondisi A maupun auto-approve
 
-### Pengaju satu-satunya Approver eligible: approval dilewati dan dicatat oleh System
+### Pengaju satu-satunya Approver eligible: approval dialihkan ke Total Control tanpa auto-approve
 49. `Rina Wijaya {runId}` mengajukan Disposal jenis `Scrap` atas `Truk Mandiri S1 {runId}` dengan scan tag aset
-50. Verifikasi langkah approval dilewati dan Disposal langsung disetujui dan berstatus `Waiting for Execution` karena pengaju satu-satunya Approver eligible
-51. Verifikasi log transaksi mencatat `Approved by system (no independent approver)`
-52. Verifikasi Modified By log itu adalah `System`
+50. Verifikasi Disposal berstatus `Waiting for Approval`, bukan `Waiting for Execution`, karena pengaju satu-satunya Approver eligible tidak boleh menyetujui sendiri
+51. Verifikasi log transaksi mencatat node `Approval rerouted` dengan Reason `Requester is the only approver`, dan approver dialihkan ke Total Control `Tono Prasetyo {runId}` dan `Umar Hakim {runId}` karena tidak ada Group Manager yang menaungi `Divisi Mandiri {runId}`
+52. Verifikasi log transaksi tidak memuat `Approved by system (no independent approver)`
 53. Verifikasi `Rina Wijaya {runId}` tidak menjadi approver transaksinya sendiri
 
 ### Pengaju dikecualikan dari daftar Approver dan approval berjalan dengan Approver lain

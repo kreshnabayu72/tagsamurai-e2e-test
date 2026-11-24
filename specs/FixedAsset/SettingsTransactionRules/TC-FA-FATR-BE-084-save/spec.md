@@ -6,7 +6,7 @@ priority: Medium
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: ["§8.1#b1", "§8.1#b2", "§9.2#b23", "§9.2#b25", "§9.2#b28", "§9.2#b29", "§9.2#b38", "§9.2#b39", "§9.2#b40", "§9.2#b41", "§9.2#b44", "§9.2#b45", "§9.2#b46", "§9.2#b53", "§9.2#b198", "§9.2#b202", "§9.2#b209", "§9.2#b210", "§9.2#b211", "§9.2#b299", "§9.4.2#r5", "§9.4.2#r89", "§9.4.4#r14", "§9.6#r6", "§9.6#r7", "§9.6#r10", "§9.6#r17", "§9.9#r1", "§9.9#r2", "§9.9#r3", "§9.9#r4", "§9.9#r5", "§9.9#r6", "§9.9#r7", "§9.9#r8", "§9.9#r9", "§9.9#r10", "§9.9#r11", "§9.10.4#b3", EB-ERR-4, "§4.1#r153", "§4.1#r211"]
+sourceRules: ["§8.1#b1", "§8.1#b2", "§9.2#b23", "§9.2#b25", "§9.2#b28", "§9.2#b29", "§9.2#b38", "§9.2#b39", "§9.2#b40", "§9.2#b41", "§9.2#b44", "§9.2#b45", "§9.2#b46", "§9.2#b53", "§9.2#b198", "§9.2#b202", "§9.2#b209", "§9.2#b210", "§9.2#b211", "§9.2#b299", "§9.4.2#r5", "§9.4.2#r89", "§9.4.4#r14", "§9.6#r6", "§9.6#r7", "§9.6#r10", "§9.6#r17", "§9.9#r1", "§9.9#r2", "§9.9#r3", "§9.9#r4", "§9.9#r5", "§9.9#r6", "§9.9#r7", "§9.9#r8", "§9.9#r9", "§9.9#r10", "§9.9#r11", "§9.10.4#b3", EB-ERR-4, "§4.1#r153", "§4.1#r211", "FLD-43", "FLD-43c", "FLD-43d"]
 smoke: []
 dependsOn: []
 trace:
@@ -52,6 +52,9 @@ trace:
   "EB-ERR-4": [7, 8, 85, 86]
   "§4.1#r153": 50
   "§4.1#r211": [52, 54, 56]
+  "FLD-43": [89, 90]
+  "FLD-43c": [91, 92, 93, 94]
+  "FLD-43d": [95, 96]
 ---
 # Validasi dan atomisitas Save Changes
 
@@ -67,8 +70,8 @@ trace:
 - Kondisi:
   - Approval Workflow tersedia di plan entitas.
   - Spec ini memakai entitas khusus `Entitas Simpan {runId}` (DU-084-1) yang tidak dipakai spec lain, karena yang diasersi adalah setting Company default dan setting Category.
-  - Seluruh setting Company default bernilai default: Max duration `14`, Max extensions `1`, Max assets per borrower (concurrent) `3`, Max assets per assignee (concurrent) `0`, In-transit overdue after `7`, Min asset age warning `12`, Max deviation from book value `30`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Require approval `ON`, Transaction timeout `7`, dan Long missing after `30`.
-  - Allowed disposal types Company default berisi `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`.
+  - Seluruh setting Company default bernilai default: Max duration `14`, Max extensions `1`, Max assets per borrower (concurrent) `3`, Max assets per assignee (concurrent) `0`, In-transit overdue after `7`, Min asset age warning `12`, Max deviation from book value `30`, Max price drop from approved price `10`, Auto-approve `ON`, Auto-approve when duration ≤ `3`, Require approval `ON`, Transaction timeout `7`, dan Long missing after `30`.
+  - Allowed disposal types Company default berisi `Sell`, `Scrap`, `Donate`, dan `Trade-in`.
   - Seluruh field setiap Category pada entitas ini bernilai Inherit.
   - Entitas berada pada masa Grace dan Category `Aset Lama {runId}` berstatus excess.
   - Nilai di langkah ditulis pada tab transaksi pemilik fieldnya; Max duration, Max extensions, Max assets per borrower (concurrent), dan Auto-approve when duration ≤ ada pada transaksi Borrow, yang di langkah disebut «transaksi peminjaman».
@@ -149,7 +152,7 @@ trace:
 
 ### Allowed disposal types tanpa satu jenis pun ditolak server
 49. Maya Pengelola mengirim Save pada Company default dengan Allowed disposal types dikosongkan
-50. Verifikasi Save ditolak dan Allowed disposal types tetap berisi `Sell`, `Scrap`, `Donate`, `Trade-in`, dan `Write-off`, tidak ada yang tersimpan
+50. Verifikasi Save ditolak dan Allowed disposal types tetap berisi `Sell`, `Scrap`, `Donate`, dan `Trade-in`, tidak ada yang tersimpan
 
 ### Transaction timeout hanya menerima bilangan bulat minimal 1
 51. Maya Pengelola mengirim Save pada Company default dengan Transaction timeout `1.5`
@@ -204,3 +207,15 @@ trace:
 86. Verifikasi Changelog dan Activity Log tidak bertambah entri dari jumlah yang dicatat
 87. Maya Pengelola mengirim Save pada Company default dengan Allowed disposal types dikosongkan
 88. Verifikasi Changelog dan Activity Log tetap tidak bertambah entri dari jumlah yang dicatat sebelum Save pertama di kelompok ini
+
+### Max price drop from approved price kosong atau di luar rentang 1 sampai 100 ditolak server
+89. Maya Pengelola mengirim Save pada Company default dengan Max price drop from approved price dikosongkan
+90. Verifikasi Save ditolak dan Max price drop from approved price tetap `10`, tidak ada yang tersimpan
+91. Maya Pengelola mengirim Save pada Company default dengan Max price drop from approved price `0`
+92. Verifikasi Save ditolak dan Max price drop from approved price tetap `10`, tidak ada yang tersimpan
+93. Maya Pengelola mengirim Save pada Company default dengan Max price drop from approved price `101`
+94. Verifikasi Save ditolak dan Max price drop from approved price tetap `10`, tidak ada yang tersimpan
+
+### Max price drop from approved price `100` diterima karena menonaktifkan pemblokiran
+95. Maya Pengelola mengirim Save pada Company default dengan Max price drop from approved price `100`
+96. Verifikasi Save diterima dan Max price drop from approved price tersimpan `100`

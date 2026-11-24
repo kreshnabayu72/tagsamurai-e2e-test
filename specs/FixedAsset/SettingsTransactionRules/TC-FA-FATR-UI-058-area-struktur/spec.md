@@ -121,7 +121,7 @@ coverage:
 - Layar awal: Area utama pada halaman Transaction Settings.
 - Komponen: Area utama
 - Data:
-  - DU-058-1: Pengaturan Company default pada All categories: Duration unit `Days`, Max duration `14`, Max extensions `0`, Max assets per assignee (concurrent) `0`, Allowed disposal types `Write-off` dipilih lebih dulu lalu `Sell`, Long missing after `0`, Transaction timeout `7`, Change Cost Center with Group `Never`, Send email notifications `ON`, Allowed borrower `Employee in any Group`.
+  - DU-058-1: Pengaturan Company default pada All categories: Duration unit `Days`, Max duration `14`, Max extensions `0`, Max assets per assignee (concurrent) `0`, Allowed disposal types `Trade-in` dipilih lebih dulu lalu `Sell`, Long missing after `0`, Transaction timeout `7`, Change Cost Center with Group `Never`, Send email notifications `ON`, Allowed borrower `Employee in any Group`.
   - DU-058-2: Pengaturan Category leaf `Machinery`: Max duration bernilai sendiri `21`, semua field lain Inherit.
 - Kondisi:
   - K1: node All categories terpilih, semua tab transaksi tersedia di plan, addon Audit dan addon Maintenance aktif, nilai Company default memakai DU-058-1.
@@ -192,7 +192,7 @@ coverage:
 43. Klik tab `Assign`
 44. Verifikasi `Max assets per assignee (concurrent)` menampilkan `Inherit — Unlimited (from Company default)`
 45. Klik tab `Disposal`
-46. Verifikasi pada teks Inherit `Allowed disposal types`, `Sell` tampil sebelum `Write-off`
+46. Verifikasi pada teks Inherit `Allowed disposal types`, `Sell` tampil sebelum `Trade-in`
 
 ### Field khusus All categories pada Category
 47. Tampilkan Area utama dengan kondisi K2

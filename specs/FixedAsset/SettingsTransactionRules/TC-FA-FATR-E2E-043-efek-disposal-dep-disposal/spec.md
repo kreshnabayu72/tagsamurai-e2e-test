@@ -67,7 +67,7 @@ coverage:
 4. Verifikasi judul form pengajuan Disposal bertuliskan `Dispose`
 5. Verifikasi tombol `[Dispose]` tampil pada form
 6. Verifikasi peringatan `Disposal without approval. This action can't be undone.` tampil
-7. Verifikasi peringatan severity danger tampil karena umur aset `Server Rack SR40 {runId}` kurang dari `12` bulan kalender penuh sejak Purchase date
+7. Verifikasi peringatan severity warning tampil karena umur aset `Server Rack SR40 {runId}` kurang dari `12` bulan kalender penuh sejak Purchase date
 8. Isi nilai jual `6000000`
 9. Verifikasi peringatan deviasi tampil karena nilai jual `6000000` di bawah nilai buku Commercial `10000000` dengan selisih melebihi Max deviation from book value `30`
 10. Verifikasi peringatan aset muda dan peringatan below book value tetap tampil walau Require approval OFF
@@ -86,7 +86,7 @@ coverage:
 21. Klik `[Submit]`
 22. Masuk sebagai `Eko Prasetyo {runId}`
 23. Buka permintaan approval Disposal aset `Server Rack SR60 {runId}`
-24. Verifikasi peringatan severity danger tampil pada permintaan approval karena aset `Server Rack SR60 {runId}` lebih muda dari Min asset age warning
+24. Verifikasi peringatan severity warning tampil pada permintaan approval karena aset `Server Rack SR60 {runId}` lebih muda dari Min asset age warning
 
 ### Transaksi yang melewati Transaction timeout berakhir Canceled oleh System
 25. Masuk sebagai Default User

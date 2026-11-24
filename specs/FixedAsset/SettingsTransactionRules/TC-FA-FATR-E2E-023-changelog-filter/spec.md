@@ -31,7 +31,7 @@ coverage:
   - DU-023-2: entri Changelog Category `Vehicle > Pool car {runId}`, Field `Borrow (Allow Borrow)`, Old Value `Allow`, New Value `Deny`, Modified By `Budi Santoso` (tampil `Budi S`; pengguna Total Control), Action `Edit`, Date `T0 − 5 hari`.
   - DU-023-3: entri Changelog Category `Machinery {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `10 days`, Modified By `Rina Wulandari` (pengguna Total Control), Action `Edit`, Date `T0 − 5 hari`.
   - DU-023-4: entri Changelog Category `Machinery {runId}`, Field `Transfer (Approval scope)`, Old Value `Both`, New Value `Origin only`, Modified By `Budi Santoso` (pengguna Total Control), Action `Edit`, Date `T0 − 2 hari`.
-  - DU-023-5: entri Changelog Category `Machinery {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Donate, Trade-in, Write-off`, New Value `Sell, Scrap`, Modified By `Dewi Anggraini` (tampil `Dewi A`; pengguna ini sudah dinonaktifkan sesudah entri tercatat), Action `Edit`, Date `T0 − 5 hari`.
+  - DU-023-5: entri Changelog Category `Machinery {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Donate, Trade-in`, New Value `Sell, Scrap`, Modified By `Dewi Anggraini` (tampil `Dewi A`; pengguna ini sudah dinonaktifkan sesudah entri tercatat), Action `Edit`, Date `T0 − 5 hari`.
   - DU-023-6: Category `Furniture {runId}` ada di master data Category dan tidak memiliki entri Changelog.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.

@@ -6,7 +6,21 @@ Plan, unit PRD, data, dan vonis per unit: `docs/spec-from-prd/FixedAssetSettings
 
 - Putaran: 3. Unit dinilai: 2127 (ok 1703, parsial 3, hilang 0, salah 0, na 421).
 - Skor: 99.9% (ok + setengah parsial, dibagi unit berperilaku).
-- Spec `ready-for-automation`: 130. Spec tetap `draft`: 0.
+- Spec `ready-for-automation`: 130. Spec tetap `draft`: 1 (BE-131, ditambah tangan, lihat catatan di bawah).
+
+## Catatan perubahan manual 2026-11-23 (di luar run spec-from-prd)
+
+Angka skor dan unit di atas berasal dari run terakhir dan belum dihitung ulang. Perubahan PRD Transaction Rules 2026-11-23 disesuaikan ke spec dengan edit tangan dan anchor ID stabil (bukan anchor posisi `§...#rN`):
+
+- `FLD-43` Max price drop from approved price: `BE-084` (langkah 89-96), `BE-092` (105), `UI-062` (84-91), `UI-064` (167-179), `UI-074` (145), `UI-075` (268-276). Penegakan saat Execute dan Edit Execution (`DISP-LOGIC-21`, `V-DISP-36`) belum dicakup karena suite Disposal belum ada.
+- Write-off keluar dari Allowed disposal types (4 opsi); severity peringatan Disposal `warning`; Disposal tanpa level Basic: `BE-084`, `BE-093`, `BE-106`, `E2E-020`, `E2E-021`, `E2E-023`, `E2E-043`, `UI-058`, `UI-062`.
+- Disposal tanpa Kondisi A dan tanpa auto-approve: `BE-107` langkah 36-53 (`F-FATR-11.p4a`, `p5d`, `EC-40`, `EC-63`); anchor `§9.2#b459`, `#b460`, `#b463` dihapus.
+- Langkah mulai Disposal adalah Execute: `BE-106` langkah 55-60 dan 96-99 (`F-FATR-10.p6d`-`p6f`).
+- Timeout mengembalikan Report ke `Reported` dan Condition ke `Reported Disposal`: `BE-108` (`F-FATR-07.p9f`, `p9g`).
+- Suite baru `specs/FixedAsset/Disposal` (di luar suite ini, 4 spec `draft`) mencakup penegakan `FLD-43` di Execute, Request Price Change, Edit Execution, dan snapshot: `TC-FA-DISP-BE-001` sampai `004`. Penegakan itu tidak dihitung dalam skor suite Transaction Rules.
+- Spec baru `BE-131` (`draft`): approval Disposal tanpa approver lain; anchor `F-FATR-11.p4a`, `p5d`, `EC-40`, `EC-63`, `DISP-LOGIC-06`. Belum diverifikasi ke unit PRD dan belum dijalankan.
+
+Semua perubahan ini belum dijalankan. Run `spec-from-prd` berikutnya akan menimpa bagian ini dan menghitung ulang skor.
 
 ## Keputusan pemilik PRD (85)
 
@@ -190,11 +204,11 @@ Spec yang memuatnya benar, tetapi klausa di bawah belum diasersi. Ini yang menur
 - unit `§Aturan Logika Modul#r82` (parsial; kurang; langkah 88, 89, 90): Toggle Approval Workflow OFF (langkah 88): langkah 90 hanya mengasersi Waiting for Handover; tidak ada asersi Approver Assign tidak menerima permintaan approval. Hal sama pada BE-102 langkah 20-23.
 - unit `§4.3#r36` (parsial; kurang; langkah 40, 41, 42, 43, 44, 45, 46, 47, 48): Belum beres dari putaran 1. §7 S-09: 'Bagian Approval semua tab transaksi' menampilkan `Alert` severity info "Approval Workflow isn't available on your plan. Transactions run without approval." dan S-22d menambahkan chip "Upgrade"; PRD §4.2 menyebut Audit sebagai tab transaksi dan tab Audit punya bagian Approval (Require approval, Approval type) yang bergerbang. Alert dan chip hanya diasersi pada Borrow, Assign, Transfer, Disposal (UI-066 langkah 2, 3, 16, 76, 78, 80, 84, 106). Pada K5 (tab Audit, Approval Workflow tidak tersedia) tidak ada asersi Alert, severity info, teks, maupun chip 'Upgrade' di bagian Approval. Tambahkan langkah itu di bagian field approval tab Audit. Chip 'Upgrade' pada alert juga hanya diasersi di tab Borrow (UI-066 langkah 3), tidak pada Assign, Transfer, Disposal.
 
-## Spec yang tetap draft (0)
+## Spec yang tetap draft (1)
 
 Asersi yang masih salah atau tidak bisa dijalankan sesudah perbaikan penutup.
 
-- Tidak ada.
+- `TC-FA-FATR-BE-131-approval-disposal-tanpa-approver-lain`: ditambah tangan 2026-11-23; butuh entitas khusus dengan satu Total Control (fase 2) dan belum pernah dijalankan.
 
 ## Catatan tingkat plan (142)
 

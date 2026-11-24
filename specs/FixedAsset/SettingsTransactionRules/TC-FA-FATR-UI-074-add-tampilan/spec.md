@@ -5,7 +5,7 @@ layer: ui-client
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [§Aturan Logika Modul#r49, §Aturan Logika Modul#r50, §Aturan Logika Modul#r51, §Aturan Logika Modul#r52, §Aturan Logika Modul#r54, §Aturan Logika Modul#r69, §Aturan Logika Modul#r102, §4.1#r11, §4.1#r309, §4.1#r310, §4.1#r311, §4.1#r312, §4.1#r313, §4.1#r314, §4.1#r315, §4.1#r316, §4.1#r317, §4.1#r318, §4.1#r320, §4.1#r321, §4.1#r322, §4.1#r323, §4.1#r324, §4.1#r325, §4.1#r326, §4.1#r327, §4.1#r328, §4.1#r329, §4.1#r330, §4.1#r331, §4.1#r332, §4.1#r333, §4.1#r334, §4.1#r335, §4.1#r345, §4.1#p67, D-02, §9.2#b84, §9.2#b86, §9.2#b87, §9.2#b150, §9.2#b155, §9.2#b197, §9.4.2#r8, §9.4.2#r25, §9.4.4#r23, §9.5#r13, §9.5#r14, §9.5#r19, §9.5#r20, §9.5#r26, §9.9#r13, §9.9#r14, §9.9#r15, §9.9#r16, §9.10.1#b5, §9.10.2#b5, §10#b2, EB-FRM-7@add-override, EB-TBL-5@hapus-baris-field]
+sourceRules: [§Aturan Logika Modul#r49, §Aturan Logika Modul#r50, §Aturan Logika Modul#r51, §Aturan Logika Modul#r52, §Aturan Logika Modul#r54, §Aturan Logika Modul#r69, §Aturan Logika Modul#r102, §4.1#r11, §4.1#r309, §4.1#r310, §4.1#r311, §4.1#r312, §4.1#r313, §4.1#r314, §4.1#r315, §4.1#r316, §4.1#r317, §4.1#r318, §4.1#r320, §4.1#r321, §4.1#r322, §4.1#r323, §4.1#r324, §4.1#r325, §4.1#r326, §4.1#r327, §4.1#r328, §4.1#r329, §4.1#r330, §4.1#r331, §4.1#r332, §4.1#r333, §4.1#r334, §4.1#r335, §4.1#r345, §4.1#p67, D-02, §9.2#b84, §9.2#b86, §9.2#b87, §9.2#b150, §9.2#b155, §9.2#b197, §9.4.2#r8, §9.4.2#r25, §9.4.4#r23, §9.5#r13, §9.5#r14, §9.5#r19, §9.5#r20, §9.5#r26, §9.9#r13, §9.9#r14, §9.9#r15, §9.9#r16, §9.10.1#b5, §9.10.2#b5, §10#b2, EB-FRM-7@add-override, EB-TBL-5@hapus-baris-field, FLD-43]
 smoke: []
 dependsOn: []
 trace:
@@ -69,6 +69,7 @@ trace:
   §10#b2: 12
   EB-FRM-7@add-override: [125, 126, 127, 130, 132, 135, 177, 180, 183, 208, 210]
   EB-TBL-5@hapus-baris-field: 100
+  FLD-43: 145
 anchor: [90, 168]
 coverage:
   web: automated
@@ -92,7 +93,7 @@ coverage:
   - DU-074-9: nilai berlaku Allow Borrow `Deny`.
   - DU-074-10: field yang ditawarkan pada transaksi Borrow: `Allow Borrow`, `Duration unit`, `Max duration`, `Max extensions`, `Max assets per borrower (concurrent)`, `Allowed borrower`, `Block new borrow when overdue`, `Photo at start`, `Photo at end`, `Require approval`, `Self service`, `Auto-approve`, `Auto-approve when duration ≤`, `Approval type`, `Due date reminders`.
   - DU-074-11: nilai berlaku Borrow Max assets per borrower (concurrent) `3 assets`.
-  - DU-074-12: field yang ditawarkan pada transaksi Disposal: `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Require approval`, `Approval type`.
+  - DU-074-12: field yang ditawarkan pada transaksi Disposal: `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Max price drop from approved price`, `Require approval`, `Approval type`.
   - DU-074-13: sebagian field yang ditawarkan pada transaksi Transfer: `Allow Transfer`, `Destination scope`, `In-transit overdue after`.
   - DU-074-14: field lain yang ditawarkan pada transaksi Transfer: `Destination quota check`, `Photo at start`, `Photo at end`, `Require approval`, `Auto-approve`, `Approval type`.
   - DU-074-15: field yang ditawarkan pada transaksi Assign: `Allow Assign`, `Allowed assignee: Employee`, `Allowed assignee: Division`, `Max assets per assignee (concurrent)`, `Need recipient confirmation`, `Photo at start`, `Photo at end`, `Require approval`, `Approval type`.
@@ -286,7 +287,7 @@ coverage:
 ### Daftar Field pada Dialog Add override - Disposal
 143. Tampilkan Dialog Add override dengan kondisi K8
 144. Klik kontrol Field pada baris Field + Value pertama
-145. Verifikasi opsi Field memuat `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Require approval`, `Approval type` (DU-074-12)
+145. Verifikasi opsi Field memuat `Allow Disposal`, `Min asset age warning`, `Max deviation from book value`, `Max price drop from approved price`, `Require approval`, `Approval type` (DU-074-12)
 146. Verifikasi opsi Field tidak memuat `Allowed disposal types`
 
 ### Daftar Field dan field Approval bergerbang pada Dialog Add override - Transfer
