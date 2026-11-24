@@ -6,7 +6,7 @@ priority: High
 caseType: Positive
 status: ready-for-automation
 owner: BE
-sourceRules: ["§Aturan Logika Modul#r39", "§4.1#r53", "§4.1#r55", "§4.1#r279", "§9.2#b310", "§9.2#b311", "§9.2#b312", "§9.2#b314", "§9.2#b315", "§9.2#b318", "§9.2#b323", "§9.2#b325", "§9.2#b326", "§9.2#b327", "§9.2#b328", "§9.2#b329", "§9.2#b331", "§9.2#b332", "§9.2#b333", "§9.2#b335", "§9.2#b336", "§9.2#b337", "§9.2#b338", "§9.2#b340", "§9.2#b341", "§9.2#b342", "§9.2#b343", "§9.2#b344", "§9.2#b345", "§9.2#b347", "§9.2#b348", "§9.2#b349", "§9.2#b350", "§9.2#b351", "§9.2#b352", "§9.2#b353", "§9.2#b354", "§9.2#b355", "§9.2#b356", "§9.2#b357", "§9.2#b359", "§9.2#b360", "§9.2#b361", "§9.2#b362", "§9.2#b363", "§9.2#b365", "§9.2#b366", "§9.2#b367", "§9.2#b368", "§9.2#b369", "§9.2#b370", "§9.2#b371", "§9.4.2#r49", "§9.10.1#b7", "§9.10.2#b6"]
+sourceRules: ["§Aturan Logika Modul#r39", "§4.1#r53", "§4.1#r55", "§4.1#r279", "§9.2#b310", "§9.2#b311", "§9.2#b312", "§9.2#b314", "§9.2#b315", "§9.2#b318", "§9.2#b323", "§9.2#b325", "§9.2#b326", "§9.2#b327", "§9.2#b328", "§9.2#b329", "§9.2#b331", "§9.2#b332", "§9.2#b333", "§9.2#b335", "§9.2#b336", "§9.2#b337", "§9.2#b338", "§9.2#b340", "§9.2#b341", "§9.2#b342", "§9.2#b343", "§9.2#b344", "§9.2#b345", "§9.2#b347", "§9.2#b348", "§9.2#b349", "§9.2#b350", "§9.2#b351", "§9.2#b352", "§9.2#b353", "§9.2#b354", "§9.2#b355", "§9.2#b356", "§9.2#b357", "§9.2#b359", "§9.2#b360", "§9.2#b361", "§9.2#b362", "§9.2#b363", "§9.2#b365", "§9.2#b366", "§9.2#b367", "§9.2#b368", "§9.2#b369", "§9.2#b370", "§9.2#b371", "§9.4.2#r49", "§9.10.1#b7", "§9.10.2#b6", "FLD-43"]
 smoke: []
 dependsOn: []
 trace:
@@ -65,6 +65,7 @@ trace:
   "§9.4.2#r49": [8, 9]
   "§9.10.1#b7": [37, 42, 53]
   "§9.10.2#b6": 71
+  "FLD-43": 105
 ---
 # Isi berkas Export rules
 
@@ -242,3 +243,4 @@ trace:
 102. Verifikasi baris Feature Suite Disposal sheet Info berisi `Full`
 103. Verifikasi baris Transaction `Assign`, Field `Allow Assign` berisi Value `Allow` sebagai label teks dan Source `Company default`
 104. Verifikasi baris Transaction `Borrow`, Field `Duration unit` berisi Value `Hours` sebagai label teks pilihan tunggal
+105. Verifikasi baris Transaction `Disposal`, Field `Max price drop from approved price` berisi Value `10`, Unit `%`, dan Source `Company default`

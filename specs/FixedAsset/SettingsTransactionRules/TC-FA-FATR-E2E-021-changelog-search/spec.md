@@ -34,7 +34,7 @@ coverage:
 - Data:
   - DU-021-1: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Borrow (Max duration)`, Old Value `Inherit`, New Value `30 days`, Action `Edit`, Modified By `Rina W`, Date T0.
   - DU-021-2: Changelog Category `Elektronik {runId} > Proyektor {runId}`, Field `Transfer (Approval type)`, Old Value `Any one approver`, New Value `All approvers (AND)`, Action `Edit`, Modified By `Budi S`, dari Name `Budi Santoso`, Date T0.
-  - DU-021-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Donate, Trade-in, Write-off`, New Value `Sell, Scrap, Trade-in, Write-off`, Action `Edit`, Modified By `Rina W`, Date T0.
+  - DU-021-3: Changelog Category `Elektronik {runId} > Laptop {runId}`, Field `Disposal (Allowed disposal types)`, Old Value `Sell, Scrap, Donate, Trade-in`, New Value `Sell, Scrap, Trade-in`, Action `Edit`, Modified By `Rina W`, Date T0.
   - DU-021-4: Changelog Category `Elektronik {runId} > Printer {runId}`, Field `Borrow (Max extensions)`, Old Value `No extension`, New Value `Inherit`, Action `Edit`, Modified By `Rina W`, Date T0.
 - Kondisi:
   - Date Format bernilai `dd/MM/yy`.

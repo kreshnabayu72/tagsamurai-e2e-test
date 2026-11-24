@@ -149,7 +149,7 @@ trace:
   - DU-108-1: Entitas `Entitas Timeout {runId}`, Pemakai `hanya spec ini`
   - DU-108-2: Group `Workshop Timeout {runId}`
   - DU-108-3: Group `Gudang Override {runId}`, Group override Allow Disposal `Deny`
-  - DU-108-4: Category `Mesin Timeout {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in, Write-off`, Require approval `ON`, Approval type `Any one approver`
+  - DU-108-4: Category `Mesin Timeout {runId}`, Allowed disposal types `Sell, Scrap, Donate, Trade-in`, Require approval `ON`, Approval type `Any one approver`
   - DU-108-5: Category `Mesin Versi {runId}`, Allowed disposal types `Sell, Scrap`, Allowed disposal types setelah Save Changes `Scrap`, Require approval `ON`, Approval type `Any one approver`
   - DU-108-6: User `Sinta Dewi {runId}`, Role `Pengaju Disposal`, Cakupan `Workshop Timeout {runId}, Gudang Override {runId}`, Status `Aktif`
   - DU-108-7: User `Taufik Hidayat {runId}`, Role `Role Transaksi Approver Disposal`, Cakupan `Workshop Timeout {runId}`, Status `Aktif`
@@ -160,7 +160,7 @@ trace:
   - DU-108-12: Disposal `Mesin Draft D1 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Draft`, Masuk status sejak `T0`
   - DU-108-13: Disposal `Mesin Laporan P1 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Reported`, Masuk status sejak `T0`
   - DU-108-14: Disposal `Mesin Eksekusi X1 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Executed menunggu posting`, Masuk status sejak `T0`
-  - DU-108-15: Disposal `Mesin Laporan P2 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Waiting for Approval`, Masuk status sejak `T0`, Disposal Report `Proceeded`, Condition aset sebelum dilaporkan `Normal`
+  - DU-108-15: Disposal `Mesin Laporan P2 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Waiting for Approval`, Masuk status sejak `T0`, Disposal Report asal `Proceeded`, Condition aset sebelum dilaporkan `Normal`
   - DU-108-16: Disposal `Mesin Manual M1 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Status `Waiting for Approval`, Masuk status sejak `T0`, Source `Manual`, Condition aset sebelum Disposal `Damaged`
   - DU-108-17: Asset `Mesin Cetak Q1 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Tag `Ber-tag`, Condition `Active`, Transaction timeout setelah Save Changes `3`
   - DU-108-18: Asset `Mesin Cetak Q2 {runId}`, Category `Mesin Timeout {runId}`, Group `Workshop Timeout {runId}`, Tag `Ber-tag`, Condition `Active`
@@ -182,11 +182,11 @@ trace:
 
 ## Test Steps
 
-### Penutupan timeout mengembalikan Condition aset dan mempertahankan Disposal Report sebagai arsip
+### Penutupan timeout mengembalikan Disposal Report ke Reported dan Condition aset ke Reported Disposal
 1. Waktu berlalu sampai batas Transaction timeout `7` hari terlampaui sejak Disposal `Mesin Laporan P2 {runId}` dan `Mesin Manual M1 {runId}` masuk status `Waiting for Approval`
 2. Job Transaction timeout berjalan
-3. Verifikasi Disposal Report `Mesin Laporan P2 {runId}` tetap `Proceeded` sebagai arsip sesudah Disposal asalnya ditutup
-4. Verifikasi Condition aset `Mesin Laporan P2 {runId}` kembali menjadi `Normal`, yaitu nilai sebelum aset dilaporkan, dan aset itu tidak memiliki record kondisi yang tersisa
+3. Verifikasi Disposal Report `Mesin Laporan P2 {runId}` kembali ke `Reported` sesudah Disposal asalnya ditutup
+4. Verifikasi Condition aset `Mesin Laporan P2 {runId}` kembali menjadi `Reported Disposal` karena baris berasal dari Report, bukan `Normal`, dan record Damaged atau Missing aset itu tetap ada dengan Condition `Reported Disposal`
 5. Verifikasi Condition aset `Mesin Manual M1 {runId}` kembali ke nilai sebelum Disposal diajukan karena Source Disposal `Manual`
 
 ### Batas Transaction timeout Waiting for Approval tepat N kali 24 jam dihitung sejak masuk status itu

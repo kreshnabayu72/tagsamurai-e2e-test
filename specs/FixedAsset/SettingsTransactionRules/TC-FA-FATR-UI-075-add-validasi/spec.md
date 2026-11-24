@@ -63,6 +63,7 @@ sourceRules:
   - "§9.4.2#r8"
   - "§9.4.1#r11"
   - "EB-FB-2@add-override"
+  - FLD-43
 smoke: []
 dependsOn: []
 trace:
@@ -123,6 +124,7 @@ trace:
   §9.9#r20: 18
   §9.9#r21: 63
   EB-FB-2@add-override: [256, 267]
+  FLD-43c: [276]
 anchor: [42, 51, 98, 110, 122, 134, 146, 232, 238, 242, 248, 255, 266]
 coverage:
   web: automated
@@ -491,5 +493,16 @@ coverage:
 265. Klik `[Submit]`
 266. Verifikasi pesan `At least one assignee type must be enabled` tampil di bawah kontrol Value baris pertama dan baris kedua
 267. Verifikasi tidak ada toast yang tampil
+
+### Value 0 pada Max price drop from approved price di dialog Disposal
+268. Tampilkan Dialog Add override dengan kondisi K9
+269. Pilih Scope `Group`
+270. Klik `[Select Group]`
+271. Centang node `Proyek Karawang`
+272. Klik `[Select]`
+273. Pilih Field `Max price drop from approved price` pada baris pertama
+274. Isi Value `0` pada baris pertama
+275. Klik `[Submit]`
+276. Verifikasi error inline `Value must be at least 1` tampil di bawah input Value
 
 [^drift-1]: Drift PRD vs foundation. PRD §4.1 (FLD-35l dan Deviasi): badge target Group menampilkan full path Group, bukan nama leaf dengan hover. Foundation `prd-conventions.md` §9.14: badge Group berisi nama, hierarki lengkap `[Parent] > [Child] > [Grandchild]` pada hover. Diasersi: foundation, sehingga badge Group dirujuk dengan nama Group (SB-4).
