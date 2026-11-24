@@ -32,7 +32,7 @@ coverage:
 - Mode: FE+BE
 - Akun aktor: Total Control `totalControl_automated_{namaCompany}@qwertysystem.net` (kredensial `Spectra.env.FA_TC_PASSWORD`). Login di hook `before` spec ini; halaman Fixed Asset > Settings > Accounting > tab Asset Class dibuka hook `beforeEach` suite.
 - Data seed (kode literal TC, disediakan tim FE/BE lewat fixture BE): Asset Class `B-LOCK` dengan Last Posted Period Mar 2026 dan belum punya Last Exported Period (seed Pre-setup sesuai NC-16).
-- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan, S-13): seed yang menyimulasikan posting periode (Mar 2026, Jan 2026, Apr 2026) dan export periode Mar 2026 untuk `B-LOCK`, karena Depreciation Run dan Export Journal belum disusun (OI-06 TC); aktor tidak memicunya lewat UI.
+- Kemampuan teknis (disediakan tim FE/BE, tanpa endpoint karangan, S-13): seed yang menyimulasikan posting periode (Mar 2026, Jan 2026, Apr 2026) dan export periode Mar 2026 untuk `B-LOCK`, karena posting dan export diuji di modul pemiliknya (Depreciation Run, FADR-LOGIC-11i; Export Journal); aktor Asset Class tidak memicunya lewat UI.
 - Changelog dibaca lewat kemampuan baca Changelog yang disediakan tim FE/BE: jumlah entri dicatat sebelum aksi dan asersi memakai selisih (audit trail permanen, S-12).
 - State yang diubah spec dan dipulihkan fixture BE di hook `after`: Last Posted Period `B-LOCK` kembali Mar 2026 dan Last Exported Period dikosongkan. Efeknya (Last Updated dan entri Changelog) tersisa di audit trail permanen.
 - Kode seed memakai nama literal TC apa adanya tanpa suffix `{runId}` karena asersi TC bergantung pada kode dan periode itu. Fixture `fixtures/fixed-asset-asset-class.json` belum ada dan disediakan tim FE.
