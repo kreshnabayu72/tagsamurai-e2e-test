@@ -3012,3 +3012,15 @@ Aturan:
 - **Untuk spec:** langkah di atas mengasersi teks app yang tertulis di kolom "Kenyataannya". IMPORT-204 langkah 19 dan IMPORT-211 langkah 15 (pesan validasi dari server) tidak termasuk; keduanya tetap mengikuti temuan BE BT-GS-IMP-9 sampai teksnya terbukti dari hasil run.
 - **Diputuskan oleh:** Coordinator 2026-11-24 (aturan tim: teks UI dari i18n app, beda kata saja = D-entry). Nomor D-287 dicadangkan untuk keputusan owner yang masih tertunda.
 - **Status:** berlaku.
+
+## D-289 Bar chip filter aktif dan Clear all di atas tabel dihapus untuk semua tabel (2026-11-25)
+
+- **Spec / langkah:** FixedAsset/SettingsChartOfAccounts `TC-FA-FACO-E2E-004` langkah 3-4, `020` langkah 19, `076` langkah 15-16, `088` langkah 20-21; AdminConsole/TagStock `TC-AC-ACTS-E2E-013` langkah 9-10, 16-18; FixedAsset/AssetClass `TC-FA-FAAC-E2E-117`, `118`, `119`, `135`, `136`, `150`, `151` (langkah yang meminta chip filter aktif atau tombol Clear all di atas tabel); langkah serupa di spec lain yang meng-assert chip atau Clear all di atas tabel.
+- **Spec meminta:** satu chip per filter yang diterapkan dan tombol Clear all di atas tabel (PRD "active-filter bar"), atau memastikan bar itu tidak ada.
+- **Kenyataannya:** fitur bar itu tidak ada di app. Chip pada field panel filter (MultiSelect), titik indikator di icon Filter, Apply, dan Clear Field tidak berubah.
+- **Karena:** bar chip + Clear all di atas tabel adalah kesalahan PRD; owner memutuskan fiturnya dihapus.
+- **Keputusan:** tidak ada tabel yang menampilkan chip filter aktif atau Clear all di atas tabel. Langkah yang meminta chip/Clear all di atas tabel tidak diasersi (langkah "bar tidak ada" otomatis terpenuhi). Efek filter tetap diasersi lewat isi tabel, titik indikator di icon Filter, dan nilai field di panel. Menimpa keputusan 25 Nov "tabel log tanpa chip": sekarang berlaku untuk semua tabel.
+- **Untuk spec:** hapus langkah yang meng-assert chip filter aktif, jumlah chip, nilai chip, tombol Clear all, atau ketiadaan bar di atas tabel. Jangan menyentuh chip di dalam field panel filter, Clear Field, dan Apply.
+- **Diputuskan oleh:** owner 2026-11-25 ("itu kesalahan PRD, hapus fiturnya").
+- **Status:** berlaku.
+
