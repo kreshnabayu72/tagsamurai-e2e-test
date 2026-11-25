@@ -46,6 +46,7 @@ coverage:
   - DU-053-7: aset Name `Proyektor BenQ MW550 {runId}`, Group `Head Office`, tanpa TAG, Custody `Available`, dengan record `Damaged` Source `Manual` dan What happened `Lampu proyektor redup dan kipas berisik`.
 - Kondisi:
   - Approval Transfer bernilai `OFF`: Transfer yang di-Submit tidak menunggu persetujuan.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 

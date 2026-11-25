@@ -5,13 +5,14 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§4.2.3#b4", "§11#r11", "§4.1a#p11"]
+sourceRules: ["§4.2.3#b4", "§11#r11", "§4.1a#p11", "§9.2#b31"]
 smoke: []
 dependsOn: ["Wizard Reconciliation: langkah aset tidak ditemukan > Report Missing"]
 trace:
   "§4.2.3#b4": [5, 10, 12, 14, 19, 26, 31, 34]
   "§11#r11": [11, 17]
   "§4.1a#p11": [11]
+  "§9.2#b31": [11, 17]
 anchor: [33]
 coverage:
   web: automated
@@ -54,7 +55,7 @@ coverage:
 14. Verifikasi dialog Missing Log memuat node `Reported missing by` oleh `Maya Putri {runId}` dengan What happened `Hand pallet truck tidak ditemukan saat rekonsiliasi gudang`
 15. Tutup dialog Missing Log dengan `✕`
 16. Buka menu `⋯` pada baris `Hand Pallet Truck {runId}`
-17. Verifikasi aksi `Report Disposal` tampil pada menu
+17. Verifikasi aksi `Report Disposal` tampil pada menu baris di sub-tab Active
 
 ### Notifikasi missing_reported atas record Source Reconciliation
 18. Buka daftar notifikasi

@@ -54,7 +54,7 @@ coverage:
   - DU-042-15: Input Reason bulk atas record `Genset Perkins 400A {runId} - 1` dan `- 2`: Reason `Genset sudah tidak layak pakai`.
   - DU-042-16: Input Reason `Admin B {runId}` atas record `Genset Perkins 400A {runId} - 3` dan seluruh record `Rak Arsip Besi {runId}`: Reason `Unit sudah dilaporkan lebih dulu oleh admin lain`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
   - Selection Limit bernilai `1000`.
 
 ## Test Steps

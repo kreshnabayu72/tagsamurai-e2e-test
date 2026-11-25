@@ -1,10 +1,10 @@
 {
  "module": "Missing",
  "status": "disetujui",
- "disetujui": "Intan, 2026-11-23",
+ "disetujui": "otomatis, 2026-11-25",
  "prd": "fixed-asset@ea04860",
- "prdSha": "db4637b30cc75d5d",
- "foundation": "foundation@757d6be",
+ "prdSha": "8fe9af136c166804",
+ "foundation": "foundation@21e4b47-dirty",
  "specs": [
   {
    "id": "TC-FA-MISS-E2E-001-tab-active-tampilan-tabel",
@@ -406,7 +406,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Membaca dialog dari data awal yang memuat satu record per jenis node (laporan admin, PIC atas nama, Detected by scan dengan Count, Reported found by, Long missing, Marked as found, node Disposal, Disposed); tanpa mutasi. Unit node shared dengan spec aksi yang membuatnya: klausa isi node dari data awal di sini, klausa «node muncul sesudah aksi» di spec aksinya. §4.6#b5 shared: klausa «dialog Missing Log hanya di desktop» diasersi di sini sebagai ketersediaan di web; klausa banner mobile di spec android.",
+   "alasan": "Membaca dialog dari data awal yang memuat satu record per jenis node (laporan admin, PIC atas nama, Detected by scan dengan Count, Reported found by, Long missing, Marked as found, node Disposal, Disposed); tanpa mutasi. Unit node shared dengan spec aksi yang membuatnya: klausa isi node dari data awal di sini, klausa «node muncul sesudah aksi» di spec aksinya. §4.6#b5 shared: klausa «dialog Missing Log hanya di desktop» diasersi di sini sebagai ketersediaan di web; klausa banner mobile di spec android. Amandemen 6 (revisi PRD): node `Disposal reported by` memuat Reason; `Disposal report declined by` memuat Reason dan Back to Missing; `Disposal report canceled by` memuat Reason (bila ada) dan Back to Missing; tidak ada Report ID (§8.1#r15, §8.1#r16, §8.1#r17).",
    "coverage": {
     "web": "automated"
    }
@@ -561,7 +561,8 @@
     "EB-FB-1@mark-as-found",
     "EB-EDG-2",
     "§8.2#p8",
-    "§3#p4"
+    "§3#p4",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -569,7 +570,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Dua record ber-{runId}: satu Missing dan satu Waiting for Confirmation (EC-MIS-06), keduanya aset tanpa TAG sehingga Scan TAG tidak wajib (§9.9 FLD-02); satu jenis mutasi dengan datanya sendiri. Status global aset dan Damage Report diasersi di spec -dep-asset dan -dep-damaged (shared). EB-EDG-2: hapus record terakhir tidak berlaku; representatifnya satu record Found pindah dari Active ke History.",
+   "alasan": "Dua record ber-{runId}: satu Missing dan satu Waiting for Confirmation (EC-MIS-06), keduanya aset tanpa TAG sehingga Scan TAG tidak wajib (§9.9 FLD-02); satu jenis mutasi dengan datanya sendiri. Status global aset dan Damage Report diasersi di spec -dep-asset dan -dep-damaged (shared). EB-EDG-2: hapus record terakhir tidak berlaku; representatifnya satu record Found pindah dari Active ke History. Amandemen 7 (perbaikan plan): juga dicatat sebagai pemilik klausa keluar dari Missing ke Found lewat Mark as Found (§9.2#r2).",
    "coverage": {
     "web": "automated"
    }
@@ -599,7 +600,8 @@
     "§8.1#r6",
     "§4.8#r6",
     "EB-TBL-5@aksi-last-holder",
-    "§4.5#p1"
+    "§4.5#p1",
+    "§4.8#r9"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -607,7 +609,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Dua record ber-{runId} dengan Last holder = aktor login (satu pemegang berakun, satu PIC atas nama). Report Disposal diasersi hanya keadaan Disabled dan tooltip (tanpa membuka D-DISP-13). §4.5#p1 bagian: klausa tooltip Disabled lewat fokus di sini; klausa keyboard dan scroll di ui-client.",
+   "alasan": "Dua record ber-{runId} dengan Last holder = aktor login (satu pemegang berakun, satu PIC atas nama). Report Disposal diasersi hanya keadaan Disabled dan tooltip (tanpa membuka D-DISP-13). §4.5#p1 bagian: klausa tooltip Disabled lewat fokus di sini; klausa keyboard dan scroll di ui-client. Amandemen 7 (perbaikan plan audit putaran 1): unit §4.8#r9 juga dimiliki spec ini untuk sel `Report Disposal` Disabled bagi Last Holder (MISS-LOGIC-09). Sel itu diasersi untuk semua jenis aktor yang PRD sebut Disabled: Group Manager dan PIC pemegang tanpa akun pada record Missing yang sudah ada, serta Total Control dan Manage asset & TAG (Update) sebagai Last Holder pada record berstatus `Missing` (bukan Waiting for Confirmation, karena aksi `Report Disposal` hanya tampil pada record Missing); record Missing tambahan untuk kedua aktor itu ditambahkan penulis di entri datanya.",
    "coverage": {
     "web": "automated"
    }
@@ -828,7 +830,7 @@
    "priority": "Medium",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Per jenis aktor (RC-5). Report Disposal hanya diasersi tampil (tanpa membuka D-DISP-13).",
+   "alasan": "Per jenis aktor (RC-5). Report Disposal hanya diasersi tampil (tanpa membuka D-DISP-13). Amandemen 6 (revisi PRD): sel Report Disposal dan Cancel Disposal Report untuk Accounting hanya berlaku pada aset Missing tidak dalam transaksi (§2.1#r9, §4.8#r9); data spec ini memakai aset Missing tanpa transaksi terbuka. Hasil untuk aset dalam transaksi tidak dinyatakan (temuan 12). Amandemen 7 (perbaikan plan): unit §4.8#r2 diasersi di spec ini hanya untuk sel Accounting pada Asset List dan Detail (Hidden). Sel pada halaman transaksi dan Task Detail Audit milik aktor transaksi tanpa Manage asset & TAG (Update) dan pelapor Audit (catatan di bawah tabel §4.8), bukan Accounting, jadi diasersi di 033, 034, 035, dan 049.",
    "coverage": {
     "web": "automated"
    }
@@ -1185,7 +1187,8 @@
     "§8.2#p10",
     "§8.2#p27",
     "§2.1#r2",
-    "§4.8#r12"
+    "§4.8#r12",
+    "§4.8#r2"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1208,7 +1211,7 @@
      "android": "kartu My Asset, bottom sheet"
     }
    ],
-   "alasan": "Dua pemegang: satu berakun (Waiting lalu Cancel Report), satu PIC atas nama (laporan tetap Waiting untuk spec Review). Pemegang yang juga Aktor Missing (EC-MIS-29) menjadi blok ketiga: record langsung Missing. Mobile: dialog tampil sebagai bottom sheet (PF-3).",
+   "alasan": "Dua pemegang: satu berakun (Waiting lalu Cancel Report), satu PIC atas nama (laporan tetap Waiting untuk spec Review). Pemegang yang juga Aktor Missing (EC-MIS-29) menjadi blok ketiga: record langsung Missing. Mobile: dialog tampil sebagai bottom sheet (PF-3). Amandemen 8 (perbaikan plan audit putaran 2): unit §4.8#r2 juga dimiliki spec ini untuk sel Pemegang (catatan penulis 023): pemegang tanpa hak Aktor Missing (kolom Pemegang §4.8, §2.1) tidak punya Report Missing di Asset List dan Detail (Hidden); aksinya hanya ada di My Asset (blok pemegang berakun). Sel jenis aktor lain tetap di spec gating dan spec aksinya.",
    "coverage": {
     "web": "automated",
     "android": "automated"
@@ -1333,7 +1336,7 @@
   },
   {
    "id": "TC-FA-MISS-E2E-036-report-disposal-dep-transactions-disposal",
-   "title": "Report Disposal satu record dan Cancel Disposal Report: status Reported Disposal, Mark as Found Hidden, kembali Missing, node Disposal",
+   "title": "Report Disposal satu record dan Cancel Disposal Report: status Reported Disposal, Mark as Found Hidden, kembali Missing, kembali Reported Disposal sesudah Request ditolak atau dibatalkan, node Disposal",
    "layer": "ui-e2e",
    "units": [
     "§9.1#r5",
@@ -1401,19 +1404,22 @@
     "§9.4.1#r3",
     "EB-FB-1@report-disposal",
     "EB-FB-1@cancel-disposal-report",
-    "§1.2#r45"
+    "§1.2#r45",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [
     "Transactions Disposal: dialog Report Disposal D-DISP-13",
     "Transactions Disposal: tab Reported > Decline dan Cancel Report",
-    "Transactions Disposal: Dispose > form Request Write-off"
+    "Transactions Disposal: Dispose > form Request Write-off",
+    "Transactions Disposal: Draft Disposal",
+    "Transactions Disposal: Request Write-off > Reject atau Cancel Request"
    ],
    "batch": "b4",
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Disposal. Dua record ber-{runId}: satu Report Disposal lalu Cancel Disposal Report; satu Report Disposal lalu Decline oleh Aktor Disposal dan satu lagi Dispose sampai In Disposal Process (record ketiga). Executed → Disposed diasersi sebagai data awal di History.",
+   "alasan": "Satu modul luar: Disposal. Dua record ber-{runId}: satu Report Disposal lalu Cancel Disposal Report; satu Report Disposal lalu Decline oleh Aktor Disposal dan satu lagi Dispose sampai In Disposal Process (record ketiga). Executed → Disposed diasersi sebagai data awal di History. Amandemen 6 (revisi PRD): (1) record ketiga yang sudah In Disposal Process dilanjutkan sampai Request Write-off ditolak atau dibatalkan di Disposal (§1.2#r22, §9.2#r3, §9.2#r4): record kembali `Reported Disposal` (bukan `Missing`) dan Report kembali `Reported`; Mark as Found tetap Hidden dan Cancel Disposal Report tersedia lagi; kembali ke `Missing` hanya lewat Decline Report atau Cancel Report. Removed dan timeout tidak dibentuk di ui-e2e (diasersi sebagai keadaan di BE-071 dan BE-077). (2) §1.2#r97: sebelum Submit, Draft Disposal dari Dispose tidak mengubah record (tetap `Reported Disposal`) dan Report tidak diberi penanda; sesudah Submit, Report tetap di tab Reported dengan status `In Disposal Process`. (3) §8.1#r15, §8.1#r16, §8.1#r17: node log `Disposal reported by`, `Disposal report declined by`, dan `Disposal report canceled by` hanya memuat Reason (dan Back to Missing), tanpa Report ID. (4) §2.1#r9, §4.8#r9: sel allow Accounting hanya untuk aset Missing tidak dalam transaksi (temuan 12).",
    "coverage": {
     "web": "automated"
    }
@@ -1448,7 +1454,8 @@
     "EB-BLK-2@tabel-active",
     "EB-BLK-3",
     "EB-FB-1@bulk-report-disposal",
-    "EB-EDG-2"
+    "EB-EDG-2",
+    "§8.1#r15"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1459,7 +1466,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Disposal. Bulk dengan satu item memakai bentuk tunggal (EB-EDG-2 shared). Satu mutasi utama (bulk) dengan seleksi ber-{runId}.",
+   "alasan": "Satu modul luar: Disposal. Bulk dengan satu item memakai bentuk tunggal (EB-EDG-2 shared). Satu mutasi utama (bulk) dengan seleksi ber-{runId}. Amandemen 7 (perbaikan plan): juga dicatat sebagai pemilik node `Disposal reported by` jalur Bulk pada Missing Log (§8.1#r15).",
    "coverage": {
     "web": "automated"
    }
@@ -1678,7 +1685,8 @@
    "units": [
     "§4.2.3#b4",
     "§11#r11",
-    "§4.1a#p11"
+    "§4.1a#p11",
+    "§9.2#b31"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1688,7 +1696,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Wizard Reconciliation. §4.2.3#b4 shared per titik masuk (Audit vs Reconciliation).",
+   "alasan": "Satu modul luar: Wizard Reconciliation. §4.2.3#b4 shared per titik masuk (Audit vs Reconciliation). Amandemen 6 (revisi PRD): §9.2#b31 shared dan §11#r11: pada record Source Reconciliation yang dibuat Wizard, aksi Report Disposal tersedia di tab Active (jalan masuk Write-off hanya dari record Missing itu); membuka dialog D-DISP-13 dan Disposal tidak diasersi di sini (IS-4, satu modul luar). Disposal tanpa Source Reconciliation (`DEC-DISP-12`) adalah klausa Disposal dan tidak diasersi di spec ini.",
    "coverage": {
     "web": "automated"
    }
@@ -2381,7 +2389,12 @@
     "§3#p4",
     "§9.4.2#r11",
     "§1.2#r71",
-    "§9.4.2#r37"
+    "§9.4.2#r37",
+    "§8.1#r16",
+    "§8.1#r17",
+    "§3#p8",
+    "§9.8#p2",
+    "§11#r11"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2389,7 +2402,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Matriks transisi dan konflik milik be-e2e (LY-7). Transisi lewat Disposal dibentuk sebagai keadaan awal record. EB-FB-3, EB-FRM-8, EB-FRM-9, EB-CON-1, EB-LOG-2 tidak punya form Edit di modul ini (§9.6#p2); dinyatakan tidak berlaku, lihat ekspektasiBaku. Catatan layer (§9.6#r4): dialog D-MIS-06 dan toast diasersi di E2E-018/UI-059; di sini cukup hasil keadaan. §1.2#r71 dan §9.4.2#r37: penulis perlu Confirm atas record Audit dari aset yang dipegang dengan baris transaksi terbuka dan mengasersi penutupan baris (MISS-LOGIC-04). §1.2#r58: cabang tidak dipegang bertagging Tag Reported menghasilkan status global TAG Reported, perlu ditambah di E2E-049."
+   "alasan": "Matriks transisi dan konflik milik be-e2e (LY-7). Transisi lewat Disposal dibentuk sebagai keadaan awal record. EB-FB-3, EB-FRM-8, EB-FRM-9, EB-CON-1, EB-LOG-2 tidak punya form Edit di modul ini (§9.6#p2); dinyatakan tidak berlaku, lihat ekspektasiBaku. Catatan layer (§9.6#r4): dialog D-MIS-06 dan toast diasersi di E2E-018/UI-059; di sini cukup hasil keadaan. §1.2#r71 dan §9.4.2#r37: penulis perlu Confirm atas record Audit dari aset yang dipegang dengan baris transaksi terbuka dan mengasersi penutupan baris (MISS-LOGIC-04). §1.2#r58: cabang tidak dipegang bertagging Tag Reported menghasilkan status global TAG Reported, perlu ditambah di E2E-049. Amandemen 6 (revisi PRD): Disposal Rejected / Canceled / Removed / timeout atas baris pada In Disposal Process mengembalikan record ke `Reported Disposal` dan Report kembali `Reported` (§1.2#r22, §9.2#r3, §9.2#r4); `Missing` hanya lewat Decline Report atau Cancel Report (§9.2#r2). §9.2#b31: jalan masuk Disposal hanya lewat Report Disposal atas record Missing (termasuk record Source Reconciliation); Disposal tanpa Source `Reconciliation` (`DEC-DISP-12`). Amandemen 7 (perbaikan plan): juga memiliki unit penunjuk Write-off lewat Report Disposal atas record Source Reconciliation (§11#r11), klausa server di spec ini dan klausa tampil aksi di 043; serta pencatatan unit §8.1#r16, §8.1#r17, §3#p8, §9.8#p2 yang sudah diasersi di spec ini sebagai state server (log dan event)."
   },
   {
    "id": "TC-FA-MISS-BE-072-authz-scope-dan-pemisahan-tugas",
@@ -2772,7 +2785,10 @@
     "§3#p4",
     "§1.2#r61",
     "§3#p8",
-    "§9.4.2#r11"
+    "§9.4.2#r11",
+    "§8.1#r15",
+    "§8.1#r16",
+    "§8.1#r17"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2780,7 +2796,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Isi log dan event milik be-e2e. Baris §9.6 shared: kolom Atomic/guard dan Logging di sini. Sync Matrix shared: kolom state yang berubah di sini."
+   "alasan": "Isi log dan event milik be-e2e. Baris §9.6 shared: kolom Atomic/guard dan Logging di sini. Sync Matrix shared: kolom state yang berubah di sini. Amandemen 6 (revisi PRD): Reject / Cancel / Remove / timeout atas baris Disposal mengembalikan record ke `Reported Disposal` dan Report kembali `Reported`, tanpa event `missing_*` (§8.1#p2, §9.8#p2); node log Disposal pada Missing Log hanya memuat Reason dan Back to Missing, tanpa Report ID (§8.1#r15-r17). Amandemen 7 (perbaikan plan): juga dicatat sebagai pemilik isi node Disposal pada Missing Log sebagai state server (§8.1#r15, §8.1#r16, §8.1#r17)."
   },
   {
    "id": "TC-FA-MISS-BE-078-search-sort-filter",
@@ -2896,7 +2912,8 @@
     "§9.2#b33",
     "§9.4.4#r18",
     "§9.4.4#r19",
-    "§9.4.2#r3"
+    "§9.4.2#r3",
+    "§8.1#r15"
    ],
    "smoke": [],
    "dependsOn": [
@@ -2906,7 +2923,7 @@
    "priority": "Critical",
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu modul luar: Disposal. Matriks skip per sebab (status, Last holder, hak Group)."
+   "alasan": "Satu modul luar: Disposal. Matriks skip per sebab (status, Last holder, hak Group). Amandemen 7 (perbaikan plan): juga dicatat sebagai pemilik isi node `Disposal reported by` jalur Bulk sebagai state server (§8.1#r15)."
   },
   {
    "id": "TC-FA-MISS-E2E-047-mark-as-found-storage-penuh-dep-file-manager",
@@ -3016,7 +3033,7 @@
    "coverage": {
     "web": "automated"
    },
-   "alasan": "Satu modul luar: Audit. Satu journey pelapor Audit tanpa hak Aktor Missing (Report lalu Cancel my report atas laporan yang sama); aktor berbeda dari spec 042 (pelapor dengan hak Aktor Missing langsung Missing, RC-2). Entri Transaction admin log pelapor (`Reported missing`, `Report canceled`) diasersi di spec -dep-settings-user (044), dan penerima notifikasi di spec -dep-notification (041), bukan di sini (IS-4).",
+   "alasan": "Satu modul luar: Audit. Satu journey pelapor Audit tanpa hak Aktor Missing (Report lalu Cancel my report atas laporan yang sama); aktor berbeda dari spec 042 (pelapor dengan hak Aktor Missing langsung Missing, RC-2). Entri Transaction admin log pelapor (`Reported missing`, `Report canceled`) diasersi di spec -dep-settings-user (044), dan penerima notifikasi di spec -dep-notification (041), bukan di sini (IS-4). Amandemen 7 (perbaikan plan): klausa «status global saat laporan dibuat tidak disalin kembali» (§1.2#r58) tidak diasersi di spec ini, karena butuh perubahan state aset lewat modul Tag (IS-4); diasersi di TC-FA-MISS-BE-082-status-global-dihitung-ulang-dep-tag.",
    "priority": "High"
   },
   {
@@ -3041,6 +3058,23 @@
    },
    "alasan": "Satu modul luar: Maintenance Routine (konsumen baru yang PRD nyatakan menerima efek Missing, RC-16). Satu journey: Report Missing atas aset yang punya task lalu Mark as Found. Amandemen 5: Cancel Report oleh pemegang (§11#r10: penanda Asset missing hilang) diasersi di spec ini lewat My Asset: aksi Cancel Report (dependsOn kedua, IS-4 dicatat untuk keputusan pemilik run). Klausa Task Maintenance pada Reject dan laporan pelapor Audit (§9.7#r2, §9.7#r3) tidak diasersi di spec ini (satu mutasi utama per spec, RC-2) dan dicatat untuk keputusan pemilik run.",
    "priority": "Medium"
+  },
+  {
+   "id": "TC-FA-MISS-BE-082-status-global-dihitung-ulang-dep-tag",
+   "title": "Server: Cancel Report atas laporan Waiting for Confirmation menghitung ulang status global aset dari state aset terkini, bukan menyalin status saat laporan dibuat",
+   "layer": "be-e2e",
+   "units": [
+    "§1.2#r58"
+   ],
+   "smoke": [],
+   "dependsOn": [
+    "Tag: dialog Report TAG (identifikasi manual)"
+   ],
+   "batch": "b8",
+   "priority": "Medium",
+   "harness": "fungsional",
+   "varianPlatform": [],
+   "alasan": "Amandemen 7 (perbaikan plan, catatan penulis 049): klausa «status global saat laporan dibuat tidak disalin kembali» (MISS-LOGIC-05f, §1.2#r58) butuh state aset yang berubah antara laporan Waiting for Confirmation dan Cancel Report; spec 049 hanya boleh menyentuh modul Audit (IS-4) dan BE-076 tidak boleh membutuhkan modul lain (IS-2). Satu modul luar: Tag (Report TAG mengubah state aset sesudah laporan). Satu mutasi utama: Cancel Report. Klausa dasar §1.2#r58 (Cancel Report dan Reject menghitung ulang dari state terkini: Borrowed/Assigned bila masih dipegang, Normal/TAG Reported bila tidak) tetap di BE-076."
   }
  ],
  "na": {
@@ -3284,6 +3318,19 @@
     "foundation/product/licensing/plans.md §3.4a: Feature Suite Disposal hanya None dan Full"
    ],
    "dampak": "Level Disposal Basic tidak ada di foundation, jadi tidak ada keadaan nyata untuknya. Yang diasersi sisi foundation (pola licensing bersama): level None terkunci dan level Full tersedia; target varian level Basic tidakBerlaku."
+  },
+  {
+   "no": 12,
+   "jenis": "kurang",
+   "units": [
+    "§2.1#r9",
+    "§4.8#r9"
+   ],
+   "kutipan": [
+    "§2.1: «✅ aset tidak dalam transaksi (`Manage accounting` Read + Update)»",
+    "§4.8: «Show (`Manage accounting` Read + Update; aset Missing tidak dalam transaksi; `Cancel Disposal Report` hanya laporan miliknya)»"
+   ],
+   "dampak": "PRD membatasi hak Accounting pada aset Missing yang tidak dalam transaksi, tetapi tidak menyebut hasilnya (Hidden, Disabled, atau ditolak server) untuk aset yang dalam transaksi. Spec mengasersi hanya sel aset tidak dalam transaksi; keadaan aset dalam transaksi tidak diasersi sampai PRD menyatakannya."
   }
  ],
  "ekspektasiBaku": {
@@ -5596,6 +5643,22 @@
   "§9.4.2#r35": {
    "be-e2e": "klausa aturan server black-box: penolakan, state tersimpan, log, dan event",
    "ui-e2e": "klausa hasil yang ditentukan server dan teramati di UI: isi dari data nyata, status sesudah aksi, tampil-tidaknya aksi per hak"
+  },
+  "§8.1#r15": {
+   "ui-e2e": "node `Disposal reported by` dengan Reason (Pelapor sebagai Actor Name) yang teramati di dialog Missing Log",
+   "be-e2e": "node `Disposal reported by` dengan Reason yang tercatat sebagai state server dari Report Disposal satu record dan Bulk"
+  },
+  "§8.1#r16": {
+   "ui-e2e": "node `Disposal report declined by` dengan Reason dan Back to Missing `Yes` yang teramati di dialog Missing Log",
+   "be-e2e": "node `Disposal report declined by` dengan Back to Missing `Yes` yang tercatat sebagai state server dari Decline Report"
+  },
+  "§8.1#r17": {
+   "ui-e2e": "node `Disposal report canceled by` dengan Back to Missing `Yes` yang teramati di dialog Missing Log",
+   "be-e2e": "node `Disposal report canceled by` dengan Back to Missing `Yes` yang tercatat sebagai state server dari Cancel Disposal Report"
+  },
+  "§11#r11": {
+   "ui-e2e": "aksi `Report Disposal` tampil pada record Source `Reconciliation` di tab Active",
+   "be-e2e": "Write-off hanya lewat `Report Disposal` atas record Missing itu: record Source `Reconciliation` melapor disposal menjadi `Reported Disposal` dan Disposal Report bukan Source `Reconciliation`"
   }
  },
  "dataUnits": [
@@ -5656,9 +5719,9 @@
   "§8.1#r10": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#r12": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-; foto tidak tampil bila file dihapus dari File Manager di 048 (-dep-file-manager); Location koordinat dan Location tanpa izin di BE-077",
   "§8.1#r14": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
-  "§8.1#r15": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
-  "§8.1#r16": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
-  "§8.1#r17": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
+  "§8.1#r15": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-; node Disposal reported by dari jalur satu record di 036 dan jalur Bulk di 037 (ui-e2e); isi node sebagai state server di BE-077 dan BE-081 (be-e2e)",
+  "§8.1#r16": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-; node Disposal report declined by pada Missing Log di 012 dan 036 (ui-e2e); isi node sebagai state server di BE-077 dan transisi Decline di BE-071 (be-e2e)",
+  "§8.1#r17": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-; node Disposal report canceled by pada Missing Log di 012 dan 036 (ui-e2e); isi node sebagai state server di BE-071 (Cancel Disposal Report) dan BE-077 (be-e2e)",
   "§8.1#r18": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
   "§8.1#p2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§8#r8": "per surface: isi node dari data awal di spec Missing Log, node yang lahir dari aksi di spec aksinya, jalur non-form dan log lain di spec -dep-",
@@ -5674,7 +5737,7 @@
   "§7.3#r7": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§9.2#r1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§9.2#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
+  "§9.2#r2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); masuk Missing lewat Decline Report dan Cancel Report di 036 (ui-e2e) dan BE-071 (be-e2e); keluar ke Found lewat Mark as Found di 016 (ui-e2e) dan BE-071",
   "§2.1#r6": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r6": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§9.2#b35": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
@@ -5695,7 +5758,7 @@
   "§9.9#r3": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.9#r5": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§2.1#r7": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§3#p8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); cabang Damaged -> Damage Report di 038 (dan BE-076); Disposal Rejected/Removed/timeout -> Missing di BE-077",
+  "§3#p8": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); cabang Damaged -> Damage Report di 038 (dan BE-076); Disposal Rejected/Canceled/Removed/timeout -> Reported Disposal dan Report kembali Reported di BE-077 dan 036; Decline Report dan Cancel Report -> Missing di 036 dan BE-077; cabang Dispose > Submit Request > In Disposal Process, Disposal Executed > Disposed, Rejected/Canceled/Removed/timeout > Reported Disposal, dan Decline > Missing paling lengkap sebagai state server di BE-071 (be-e2e)",
   "§9.4.4#r12": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.4.4#r13": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
   "§9.7#r4": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
@@ -5710,8 +5773,8 @@
   "§2.1#r11": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§2.1#r12": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r1": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
-  "§4.8#r2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri; aktor tanpa hak aksi transaksi pada halaman Borrow (Report Missing Hidden) di 033",
-  "§4.8#r9": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
+  "§4.8#r2": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri; aktor tanpa hak aksi transaksi pada halaman Borrow (Report Missing Hidden) di 033; aktor Accounting hanya pada Asset List dan Detail di 023 (sel transaksi dan Task Detail Audit bukan sel Accounting: aktor transaksi tanpa Manage asset & TAG (Update) di halaman transaksinya di 033, 034, 035, dan pelapor Audit tanpa hak Aktor Missing di 049); sel Pemegang (pemegang tanpa hak Aktor Missing): Report Missing Hidden pada Asset List dan Detail dan hanya ada di My Asset, di 032 (-dep-my-asset)",
+  "§4.8#r9": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri; sel Report Disposal Disabled bagi Last Holder (MISS-LOGIC-09) per jenis aktor di 017: Group Manager dan PIC pemegang tanpa akun, serta Total Control dan Manage asset & TAG (Update) yang Last Holder, masing-masing pada record Missing",
   "§4.8#r10": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r11": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
   "§4.8#r12": "per jenis aktor: tiap spec gating mengasersi sel aktornya; spec aksi mengasersi sel allow aktornya sendiri",
@@ -5754,7 +5817,7 @@
   "§9.7#r3": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§2.1#b1": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.7#r5": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
-  "§9.8#p2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
+  "§9.8#p2": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu; ketiadaan event `missing_*` pada Report Disposal, Decline Report, Cancel Report, dan Cancel Disposal Report sebagai state server di BE-071; Submit Request, Reject/Cancel/Remove/timeout, dan `missing_resolved` saat Disposal Execute di BE-077",
   "§8.2#b2": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
   "§9.6#r10": "per aksi dan per surface: toast dan status di spec aksinya, efek modul lain di spec -dep- modul itu",
   "§1.2#r66": "per cabang: klausa inti di spec inti, klausa modul lain di spec -dep- modul itu, klausa gating di spec aktor",
@@ -5802,10 +5865,11 @@
   "§8.2#p27": "per surface: Report Missing dan Cancel Report dari My Asset di 032 (-dep-my-asset); isi Transaction admin log di 044 (-dep-settings-user)",
   "§8.1#p1": "per surface: tab Active di 001; pintu masuk banner Asset Detail [View] membuka dialog Missing Log di 031 (-dep-asset)",
   "§4.2.4#p14": "per layer dan aksi: dialog Already Changed untuk aksi satuan di E2E-018, UI-059, BE-071; aksi bulk tidak memakai dialog itu (konflik ditangani per item) di UI-052",
-  "§1.2#r58": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§9.4.2#r11": "per cabang: baris Disposal Write-off ditolak approver kembali Missing diasersi record dan status di BE-071, node/event di BE-077; cabang Decline Report di E2E-036",
+  "§1.2#r58": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform); klausa «tidak disalin kembali» (status dihitung ulang dari state aset terkini yang berubah sesudah laporan, lewat Report TAG) di BE-082 (be-e2e, -dep-tag); perhitungan ulang dasar di BE-076",
+  "§9.4.2#r11": "per cabang: Decline Report oleh Aktor Disposal (record kembali Missing; node `Disposal report declined by`) di E2E-036 (ui-e2e), transisi dan status di BE-071, node dan event di BE-077; baris Disposal Write-off ditolak approver (record kembali Reported Disposal dan Report kembali Reported, bukan Missing) di E2E-036 pada record yang sudah In Disposal Process (record, status, dan tab Reported), transisi dan status di BE-071, node dan event di BE-077",
   "§9.2#b33": "per surface: tiap spec mengasersi klausa yang terjadi di surface-nya (dialog, tab, titik masuk, atau platform)",
-  "§9.6#r8": "per kolom: Submit sukses, idempotensi (tiap Submit = node baru, notifikasi sekali per jam), dan toast gagal di BE-077 (server) dan E2E-046 (sheet dan toast); Storage penuh menolak Submit sebelum transaksi, tanpa node dan tanpa notifikasi, di BE-080 (server, entitas status-entitas); toast persisten dan sheet tetap di E2E-046"
+  "§9.6#r8": "per kolom: Submit sukses, idempotensi (tiap Submit = node baru, notifikasi sekali per jam), dan toast gagal di BE-077 (server) dan E2E-046 (sheet dan toast); Storage penuh menolak Submit sebelum transaksi, tanpa node dan tanpa notifikasi, di BE-080 (server, entitas status-entitas); toast persisten dan sheet tetap di E2E-046",
+  "§9.2#b31": "per jalur masuk record Missing: aset yang dilaporkan lewat Report Missing masuk Disposal lewat Report Disposal di 036 (-dep-transactions-disposal); aset yang tidak ditemukan saat rekonsiliasi masuk Disposal hanya lewat record Missing Source Reconciliation, dan Disposal tidak punya Source `Reconciliation` (`DEC-DISP-12`), di 043 (-dep-wizard-reconciliation); klausa server di BE-071"
  },
  "kontrak": {
   "DataTable": [

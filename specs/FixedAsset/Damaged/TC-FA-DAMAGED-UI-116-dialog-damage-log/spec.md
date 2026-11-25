@@ -64,8 +64,8 @@ coverage:
   - DU-116-13: record `Canceled` dengan node `Report canceled by Budi S` tanpa detail.
   - DU-116-14: record dengan node `Asset reported missing`, `Missing report closed`, dan `Asset found` oleh `System`.
   - DU-116-15: record `Repaired` dengan node `Marked as repaired by Rina W` berisi Repair note `Panel layar diganti dan diuji`, After photo `foto-sesudah.jpeg`, dan Manual identification `Identifikasi manual dicatat`.
-  - DU-116-16: record dengan node `Disposal reported by Agus P`, `Disposal report declined by Dedi K`, dan `Disposal report canceled by Agus P`, masing-masing berisi Report ID `RPT-DSP-0001`, Reason `Aset tidak ekonomis diperbaiki`, dan pada dua node terakhir Back to Damaged.
-  - DU-116-17: record dengan node `Disposal report canceled by System` berisi Report ID `RPT-DSP-0002` dan Back to Damaged.
+  - DU-116-16: record dengan node `Disposal reported by Agus P`, `Disposal report declined by Dedi K`, dan `Disposal report canceled by Agus P`, masing-masing berisi Reason `Aset tidak ekonomis diperbaiki`, dan pada dua node terakhir Back to Damaged.
+  - DU-116-17: record dengan node `Disposal report canceled by System` berisi Back to Damaged.
   - DU-116-18: record `Disposed` dengan node `Disposed` oleh `System` berisi Disposal No. `DSP-2026-0007`.
   - DU-116-19: pengguna `Lia N` dengan role Read Only, cakupan seluruh client, tanpa hak Aktor Damaged.
   - DU-116-20: pengguna `Joko T` dengan role Manage asset & TAG (Read), cakupan Group `Head Office` beserta descendant, tanpa hak Update dan tanpa hak Aktor Damaged.
@@ -222,9 +222,9 @@ coverage:
 
 ### Node peristiwa Disposal
 89. Tampilkan Dialog Damage Log dengan kondisi K16
-90. Verifikasi node `Disposal reported by Agus P` memuat baris `Report ID` dan `Reason`
-91. Verifikasi node `Disposal report declined by Dedi K` memuat baris `Report ID`, `Reason`, dan `Back to Damaged`
-92. Verifikasi node `Disposal report canceled by Agus P` memuat baris `Report ID`, `Reason`, dan `Back to Damaged`
+90. Verifikasi node `Disposal reported by Agus P` memuat baris `Reason`
+91. Verifikasi node `Disposal report declined by Dedi K` memuat baris `Reason`, dan `Back to Damaged`
+92. Verifikasi node `Disposal report canceled by Agus P` memuat baris `Reason`, dan `Back to Damaged`
 
 ### Node Disposal report canceled oleh System
 93. Tampilkan Dialog Damage Log dengan kondisi K17

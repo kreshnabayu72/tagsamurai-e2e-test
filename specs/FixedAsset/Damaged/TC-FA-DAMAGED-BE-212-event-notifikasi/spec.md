@@ -138,17 +138,17 @@ trace:
 39. Aktor pelepasan aset `Maya Puspita {runId}` men-Submit Request atas `Forklift Toyota 8FD - 341 {runId}` yang laporan pelepasan asetnya sudah diterima
 40. Verifikasi tidak ada event `damaged_*` dipicu saat record menjadi `In Disposal Process`
 41. Baris pelepasan aset `Forklift Toyota 8FD - 344 {runId}` kedaluwarsa (timeout) tanpa user aktor
-42. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged`
+42. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Reported Disposal` dan laporan pelepasan aset kembali `Reported` karena baris pelepasan aset kedaluwarsa
 43. Aktor pelepasan aset `Maya Puspita {runId}` menjalankan Cancel Report atas laporan `Forklift Toyota 8FD - 345 {runId}` dari tab Reported
 44. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged` karena Cancel Report atas laporan pelepasan aset
 45. Total Control `Agus Pratama {runId}` menjalankan Cancel Disposal Report atas `Forklift Toyota 8FD - 346 {runId}` dari tab Damaged
 46. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged` karena Cancel Disposal Report
 47. Baris pelepasan aset `Forklift Toyota 8FD - 347 {runId}` ditolak (Reject) oleh approver
-48. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged` karena baris pelepasan aset ditolak
+48. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Reported Disposal` dan laporan pelepasan aset kembali `Reported` karena baris pelepasan aset ditolak
 49. Baris pelepasan aset `Forklift Toyota 8FD - 348 {runId}` dibatalkan (Cancel) oleh pembuatnya
-50. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged` karena baris pelepasan aset dibatalkan
+50. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Reported Disposal` dan laporan pelepasan aset kembali `Reported` karena baris pelepasan aset dibatalkan
 51. Baris pelepasan aset `Forklift Toyota 8FD - 349 {runId}` dihapus (Remove)
-52. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Damaged` karena baris pelepasan aset dihapus
+52. Verifikasi tidak ada event `damaged_*` dipicu saat record kembali `Reported Disposal` dan laporan pelepasan aset kembali `Reported` karena baris pelepasan aset dihapus
 
 ### Sinyal task selesai
 53. Catat sinyal task selesai untuk `Camera Canon EOS - 311 {runId}`, `Printer HP LaserJet M404 - 321 {runId}`, dan `Forklift Toyota 8FD - 342 {runId}`

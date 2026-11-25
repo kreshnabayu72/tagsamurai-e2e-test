@@ -5,11 +5,11 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.2.1#p1", "§4.2.1#b1", "§4.2.1#b2", "§4.2.1#b4", "§4.4#r1", "§4.4#r11", "§5#r1", "§9.2#b12", "§9.5#r1", "§9.5#r2", "§9.5#r5", S-DMG-02, F-DMG-02, "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r13", "§8.1#r2", "§9.2#b4"]
+sourceRules: [T-DMG-01, "§4.1#r1", "§4.1#p3", "§4.1#p4", "§4.2.1#p1", "§4.2.1#b1", "§4.2.1#b2", "§4.2.1#b4", "§4.4#r1", "§4.4#r11", "§5#r1", "§9.2#b12", "§9.5#r1", "§9.5#r2", "§9.5#r5", S-DMG-02, F-DMG-02, "§Aturan Logika Modul#r11", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r45", "§8.1#r2", "§9.2#b4"]
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [19, 68, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 67]
+  T-DMG-01: [19, 68, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 67, 83]
   "§4.1#r1": [12, 14, 19]
   "§4.1#p3": [24, 25, 26, 27, 28, 29, 68]
   "§4.1#p4": [48]
@@ -28,9 +28,10 @@ trace:
   F-DMG-02: [12, 19]
   "§Aturan Logika Modul#r11": [49]
   "§Aturan Logika Modul#r13": [38]
+  "§Aturan Logika Modul#r45": [16]
   "§8.1#r2": [63]
   "§9.2#b4": [30, 31, 32, 33, 34, 35, 36, 37]
-anchor: []
+anchor: [82]
 coverage:
   web: automated
 ---
@@ -60,7 +61,7 @@ coverage:
   - Date Format bernilai `dd/MM/yy`.
   - Time Format bernilai `24h`.
   - Time Zone bernilai `Asia/Jakarta`.
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -172,3 +173,7 @@ coverage:
 79. Verifikasi ikon `Filter` tetap menampilkan badge titik saringan aktif sesudah muat ulang
 80. Verifikasi tabel tetap memuat `2` baris, yaitu `Office Chair Ergo {runId} - 31` dan `Projector Epson EB-X06 {runId} - 7`
 81. Verifikasi urutan sort Name menurun tetap berlaku sesudah muat ulang: baris pertama `Projector Epson EB-X06 {runId} - 7`, baris kedua `Office Chair Ergo {runId} - 31`
+
+### Sub-tab Active tanpa kartu ringkasan
+82. Verifikasi baris `Office Chair Ergo {runId} - 31` tampil di tabel sub-tab Active
+83. Verifikasi kartu ringkasan tidak tampil di sub-tab Active

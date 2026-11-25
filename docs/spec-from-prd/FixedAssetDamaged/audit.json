@@ -1,7 +1,7 @@
 {
  "schema": "spec-from-prd-audit/v1",
  "putaran": 3,
- "suite": "54bf19b7efb3fb00",
+ "suite": "9e899e85a13b5882",
  "hitung": {
   "ok": 605,
   "parsial": 22,
@@ -225,6 +225,17 @@
    "catatan": "Tautan Damage Log langsung (tautan dari luar) diasersi membuka dialog di sini, tetapi spec tidak tercatat sebagai penanggung unit ini."
   },
   {
+   "unit": "§8.1#r14",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server",
+   "langkah": [
+    31,
+    32
+   ],
+   "catatan": "Node Disposal report declined by oleh Aktor Disposal (Maya Puspita, Asset Admin sub-tab Disposal) diasersi di BE-207 langkah 31-32 dan BE-208 langkah 31-32 (dengan Reason dan Back to Damaged); BE-207 tidak tercatat sebagai penanggung unit ini."
+  },
+  {
    "unit": "§8.1#r7",
    "verdict": "ok",
    "jenis": "plan",
@@ -403,43 +414,64 @@
    "unit": "§3#p7",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
+   "spec": "TC-FA-DAMAGED-E2E-044-record-kembali-damaged-dari-tab-reported-dep-disposal",
    "langkah": [
-    6,
-    7,
-    8,
-    9,
-    12
+    11,
+    31
    ],
-   "catatan": "Cabang [Report Disposal] (tab Damaged) -> D-DISP-13 (Reason) -> Reported Disposal diasersi dengan benar di UI oleh E2E-041, tetapi spec ini tidak tercatat sebagai penanggung §3#p7 (hanya 011/204/206/207). Tambahkan sebagai pemilik ui-e2e cabang Report Disposal."
+   "catatan": "Cabang diagram `[Decline] / [Cancel Report] → Damaged` diasersi di UI oleh E2E-044 (record kembali Damaged setelah Decline dan Cancel Report di tab Reported), tetapi E2E-044 tidak tercatat sebagai penanggung unit ini; `shared` hanya menyebut 011, 037, 041, 043 untuk ui-e2e."
   },
   {
    "unit": "§3#p7",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-037-report-missing-dep-missing",
+   "spec": "TC-FA-DAMAGED-E2E-045-record-mengikuti-baris-disposal-dep-disposal",
    "langkah": [
-    6,
     7,
-    8,
-    10
+    27,
+    48,
+    65,
+    82
    ],
-   "catatan": "Cabang [Report Missing] -> D-MIS-01 (aset terisi) -> record Damaged ditahan dengan penanda Missing diasersi di UI oleh E2E-037, tidak tercatat di §3#p7."
+   "catatan": "Cabang `Dispose → Submit → In Disposal Process`, `Disposal Executed → Disposed` dan `Rejected / Canceled / Removed → Reported Disposal` diasersi di UI oleh E2E-045, tetapi tidak tercatat sebagai penanggung unit ini (hanya BE-207 yang dicatat untuk cabang tersebut)."
   },
   {
-   "unit": "§3#p7",
+   "unit": "§9.2#r2",
    "verdict": "ok",
    "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-E2E-043-cancel-disposal-report-dep-disposal",
+   "spec": "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report",
    "langkah": [
-    4,
-    5,
-    6,
-    8,
-    9,
-    10
+    2,
+    3,
+    24
    ],
-   "catatan": "Cabang [Cancel Disposal Report] (hanya Reported Disposal) -> Damaged diasersi di UI oleh E2E-043, tidak tercatat di §3#p7."
+   "catatan": "Jalur masuk Damaged lewat Confirm (record berubah Waiting for Confirmation → Damaged bersamaan dengan status global aset) diasersi di BE-203, tidak tercatat sebagai penanggung unit; unit hanya mencatat BE-201."
+  },
+  {
+   "unit": "§9.2#r2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
+   "langkah": [
+    47,
+    59,
+    60,
+    77
+   ],
+   "catatan": "Jalur masuk Registrasi (langkah 47), Unassigned bermarker Damaged (langkah 59-60) dan Mark as Found Damaged tanpa record (langkah 77) diasersi di BE-208 (dan E2E-038 langkah 37), tidak tercatat sebagai penanggung unit."
+  },
+  {
+   "unit": "§9.2#r2",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server",
+   "langkah": [
+    32,
+    34,
+    44,
+    26
+   ],
+   "catatan": "Jalur masuk Decline Report / Cancel Report atas Disposal Report dan jalur keluar ke Reported Disposal diasersi di BE-207; jalur keluar ke Repaired di BE-204/E2E-011 dan ke Disposed (Missing → Disposed) di BE-206 langkah 45-46/E2E-040. Tak satu pun tercatat sebagai penanggung unit."
   },
   {
    "unit": "§9.6#r5",
@@ -1146,6 +1178,17 @@
    "catatan": "Dialog D-DISP-13 (satu Reason untuk seluruh aset terpilih) dan dialog blok D-DMG-13 (pesan baku, bullet semua record beserta keterangan per record, wadah bergulir, tidak diringkas, [OK]) diasersi di UI-103, tetapi UI-103 tidak tercatat sebagai penanggung unit D-DISP-13."
   },
   {
+   "unit": "§9.2#r3",
+   "verdict": "ok",
+   "jenis": "plan",
+   "spec": "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
+   "langkah": [
+    12,
+    15
+   ],
+   "catatan": "Masuk ke Reported Disposal lewat Report Disposal dan keluar ke In Disposal Process / Damaged diasersi juga di UI oleh E2E-041, E2E-044 dan E2E-045; unit hanya mencatat BE-207 (be-e2e) sebagai penanggung."
+  },
+  {
    "unit": "TS-DMG-09",
    "verdict": "ok",
    "jenis": "plan",
@@ -1260,21 +1303,6 @@
     22
    ],
    "catatan": "Event `damaged_resolved` pada Disposal Executed diasersi BE-212 langkah 21-22, tetapi BE-212 tidak tercatat sebagai penanggung unit ini."
-  },
-  {
-   "unit": "§9.7#r14",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-BE-212-event-notifikasi",
-   "langkah": [
-    47,
-    48,
-    49,
-    50,
-    51,
-    52
-   ],
-   "catatan": "Event damaged_* tidak dipicu saat baris Disposal ditolak/dibatalkan/dihapus/timeout (kolom Efek turunan \"-\") diasersi BE-212 langkah 41-42 dan 47-52; BE-212 tidak tercatat sebagai penanggung unit ini."
   },
   {
    "unit": "§Aturan Logika Modul#r49",
@@ -1448,16 +1476,6 @@
     67
    ],
    "catatan": "Efek ke aset untuk laporan pemegang dan Aktor Borrow/Assignment yang Waiting (03f, status global langsung Damaged) serta laporan scan (03g, penanda Damage reported, status global tetap) diasersi BE-202, sedangkan BE-201 sebagai satu-satunya penanggung hanya memeriksa status record dan Source pada langkah 14-22 dan 73-76; tambahkan BE-202 sebagai penanggung bagian efek ke aset."
-  },
-  {
-   "unit": "§9.2#r2",
-   "verdict": "ok",
-   "jenis": "plan",
-   "spec": "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status",
-   "langkah": [
-    2
-   ],
-   "catatan": "Plan hanya menetapkan BE-201 untuk baris status Damaged. Klausa 'Masuk dari' selain Report admin/Registrasi (Confirm: BE-203 langkah 2; Unassign bermarker tanpa record dan Mark as Found Damaged tanpa record: BE-208 langkah 59-60 dan 76-77, BE-206 langkah 42-43; Decline/Cancel Disposal Report dan Disposal Reject/Cancel/Remove/timeout dengan Condition dipulihkan: BE-207 langkah 31-42 dan 67-80) dan 'Keluar ke' (Reported Disposal/Disposed: BE-207 langkah 2, 29; Repaired: BE-202; Missing→Disposed: BE-206 langkah 44-46) diasersi benar di spec lain. Semua klausa terpenuhi gabungan suite; selisih hanya pencatatan penanggung."
   },
   {
    "unit": "§9.4.1#r6",
@@ -1723,23 +1741,29 @@
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "parsial",
+   "verdict": "ok",
    "jenis": "drift",
    "spec": "TC-FA-DAMAGED-UI-102-tabel-active-mekanik-toolbar",
-   "langkah": [],
-   "catatan": "Footnote [^drift-1] pada UI-102 untuk pola paginasi keliru. Isinya tidak sesuai selisih PRD vs foundation untuk paginasi (§9.11/§9.18: nomor halaman melebihi terakhir menuju halaman terakhir, kurang dari 1 menuju halaman 1, non-angka diabaikan). Footnote perlu diperbaiki agar mengasersi versi foundation dengan rujukan drift yang benar."
+   "langkah": [
+    195
+   ],
+   "catatan": "Temuan putaran 1 belum beres. Catatan kaki [^drift-1] masih mengutip foundation `prd-conventions.md` §9.18 sebagai `input diabaikan dan tabel tetap di halaman sekarang` untuk nomor halaman tidak valid. Teks foundation sebenarnya (foundation-pack baris 2507): `nomor di atas halaman terakhir menuju halaman terakhir, nomor di bawah 1 (0 atau negatif) menuju halaman 1, dan input non-angka diabaikan (tabel tetap di halaman sekarang)`. Ini sama dengan kontrak Paginator#9, jadi tidak ada drift foundation-vs-kontrak; asersi langkah 188-195 benar, hanya catatan kakinya keliru dan harus dibuang atau dikoreksi."
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "parsial",
+   "verdict": "ok",
    "jenis": "prd",
-   "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
-   "langkah": [
-    80,
-    83,
-    86
-   ],
-   "catatan": "Teks tooltip untuk Report Disposal Disabled (S-DMG-35) dan Report Missing Disabled (S-DMG-27) ditetapkan di luar kit. Spec hanya menyatakan Disabled tanpa literal tooltip. Tidak mengubah verdict. Perlu penetapan di PRD."
+   "spec": null,
+   "langkah": [],
+   "catatan": "Teks tooltip alasan `Report Disposal` Disabled saat Custody selain Available (PRD merujuk `asset-list.md` S-35) dan `Report Missing` Disabled saat baris Transfer In Transit (`asset-list.md` S-27), serta hak Report Disposal (`disposal.md` §2.1) dan hak Report Missing (`missing.md` §2.1) sebagai syarat tampilnya aksi, ditetapkan dokumen/modul di luar kit. UI-104 langkah 76-92 dan E2E-053 langkah 44-45 hanya menyatakan Disabled/aktif tanpa teks tooltip; tidak dihitung kurang."
+  },
+  {
+   "unit": "§Aturan Logika Modul#r45",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "Tetap dari putaran 1. Tooltip alasan `Report Disposal` Disabled ('tooltip `asset-list.md` `S-35`') dan `Report Missing` Disabled saat baris Transfer In Transit ('`asset-list.md` `S-27`') ditetapkan asset-list.md, di luar kit; literalnya tidak ada di PRD maupun foundation pack. Klausa 'Already damaged saat Send' (`transfer.md` `XFER-LOGIC-16`) adalah surface modul Transfer. Ketiadaan asersi alasan itu tidak dihitung kurang (E2E-053 langkah 44/45, UI-104 langkah 76/80 hanya mengasersi Disabled)."
   },
   {
    "unit": "§4.2.2#p1",
@@ -1789,7 +1813,15 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Perilaku Cancel Report di sisi Disposal didefinisikan di disposal.md (luar kit); suite hanya menguji efek ke record Damaged."
+   "catatan": "PRD (D-DMG-09, baris 605): \"isi dialog, Reason opsional, efek, dan hak: `disposal.md` `D-DISP-15`, `DISP-LOGIC-15`\". Isi dialog Cancel Report, kewajiban Reason, dan teks toast TS-DISP-18/TS-DMG-08 ditetapkan disposal.md (di luar kit), sehingga tidak bisa diasersi dengan pasti oleh suite ini; E2E-043 langkah 9 hanya memeriksa toast sukses tampil tanpa literal, dan Reason opsional hanya tersirat dari BE-207 langkah 43 (Cancel Disposal Report tanpa Reason diterima)."
+  },
+  {
+   "unit": "§2.1#b6",
+   "verdict": "ok",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD (§2.1 butir Report Disposal): hak melapor \"mengikuti Pelapor Report (`disposal.md` §2.1)\", hak Dispose/Decline/Cancel Report/approve/eksekusi dimiliki role Disposal (`disposal.md` §2.1, `DISP-LOGIC-15`), dan \"Accounting melaporkan aset Damaged ... hanya dari Asset List atau Asset Detail\". Himpunan Pelapor Report, definisi Aktor Disposal, dan surface Asset List/Asset Detail ditetapkan disposal.md / asset-list (di luar kit), sehingga tidak bisa diasersi dengan pasti oleh suite ini; bagian yang menjadi tanggungan modul ini (Update boleh melapor: E2E-016 langkah 13; Cancel Disposal Report per aktor dan hanya pada Reported Disposal: E2E-043, BE-205 langkah 45-52/116-119/142-149; tab Damaged tertutup bagi Manage accounting: BE-205 langkah 19-20) sudah diasersi."
   },
   {
    "unit": "§4.2.4#p6",
@@ -1880,7 +1912,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Klausa 'Surface log lain mengikuti disposal.md §8.2' ditetapkan dokumen di luar kit (disposal.md §8.2: Transaction log aset dan Transaction admin log untuk Report Disposal); tidak dihitung kurang. Penegasan lokalnya ada di BE-208 langkah 30 dan 35."
+   "catatan": "PRD: \"Surface log lain mengikuti `disposal.md` §8.2\". Surface log lain Bulk Report Disposal (Transaction log, Transaction admin log, Activity/System Log) ditetapkan disposal.md (di luar kit) dan tidak bisa diasersi dengan pasti oleh suite ini; satu node per record yang diproses dan tanpa node pada record yang dilewati sudah diasersi (E2E-042 langkah 42-45 dan 63, BE-208 langkah 44-45, BE-207 langkah 55 dan 61)."
   },
   {
    "unit": "D-DMG-09",
@@ -1920,7 +1952,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Pelaku dan baris detail node `Disposal requested by`, `Rejected by`, `Canceled by`, `Removed from disposal by` 'didefinisikan di disposal.md §8.1' (di luar kit); suite mengasersi judul node, record kembali Damaged (E2E-045 langkah 7, 40, 54, 68; BE-207 langkah 27, 36, 38, 40) dan PIC `System` bila tanpa user aktor (BE-207 langkah 42). Tidak mengubah verdict."
+   "catatan": "PRD: node Disposal \"sesuai katalog node `disposal.md` §8.1 ... dengan pelaku dan baris detail yang didefinisikan di sana; modul ini tidak menyalin judul node tersebut\". Pelaku dan baris detail node `Disposal requested by`, `Rejected by`, `Canceled by`, `Removed from disposal by` ditetapkan disposal.md (di luar kit) dan tidak bisa diasersi dengan pasti; judul node, kembalinya record ke `Reported Disposal` (Report kembali `Reported`), dan PIC `System` pada timeout sudah diasersi (E2E-045 langkah 14, 48-55, 65-72, 82-89; BE-207 langkah 27, 36-42)."
   },
   {
    "unit": "§8.3#r1",
@@ -1963,14 +1995,6 @@
    "catatan": "'penanda Damaged baris Borrow mengikuti keputusan itu (borrow.md BORROW-LOGIC-16)': hasil untuk keputusan Reject/Cancel ditetapkan borrow.md (di luar kit). E2E-049 langkah 35-42 hanya menguji keputusan Confirm (penanda Damaged tampil); cabang Reject tidak dihitung kurang."
   },
   {
-   "unit": "§Aturan Logika Modul#r45",
-   "verdict": "ok",
-   "jenis": "prd",
-   "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
-   "langkah": [],
-   "catatan": "Tooltip Report Disposal Disabled dan Report Missing Disabled selama In Transit dirujuk ke asset-list.md S-35 / S-27 yang berada di luar kit ini; teksnya tidak dapat diverifikasi dari PRD modul. Tidak mempengaruhi verdict. Klausa 'Report Damaged tidak tersedia' untuk aset In Transfer terpenuhi tersirat lewat E2E-030 (Hidden bila aset sudah punya record)."
-  },
-  {
    "unit": "§9.4.4#r14",
    "verdict": "ok",
    "jenis": "prd",
@@ -1984,7 +2008,7 @@
    "jenis": "prd",
    "spec": null,
    "langkah": [],
-   "catatan": "Penerima, isi, dan identitas notifikasi 'Isi notifikasi dimiliki notification.md' (di luar kit); tidak dihitung kurang. Event pada Repaired/Disposed (E2E-056 langkah 13; BE-212 langkah 20, 22, 24), tanpa event pada transisi Reported Disposal/Submit Request/Rejected/Canceled/Removed/timeout (BE-212 langkah 35-52), dan pelapor nonaktif (langkah 57-60) sudah diasersi; temuan kelayakan putaran 1 (pelapor laporan Forklift 345 = Maya, DU-212-38) sudah beres."
+   "catatan": "PRD (§9.8): \"Penerima, varian, Title, Body, `action_tier`, Klik → Path ... dimiliki `fixed-asset/notification/PRD/notification.md`\" dan \"Isi notifikasi dimiliki `notification.md`\". Penerima dan isi notifikasi damaged_resolved ditetapkan notification.md (di luar kit); E2E-056 langkah 13 hanya memeriksa jumlah notifikasi pelapor bertambah satu tanpa isi, dan BE-212 langkah 20/22/24 memeriksa pemicu event. Pemicu Repaired, Disposed (Disposal Execute), Disposed (Missing → Disposed), serta ketiadaan event pada transisi Disposal/Submit Request/Reject/Cancel/Remove/timeout sudah diasersi (BE-212 langkah 19-24 dan 35-52)."
   },
   {
    "unit": "damaged_review_resolved",
@@ -2099,6 +2123,14 @@
    "catatan": "Klausa «form modul asal: toast miliknya» (Return, Unassign, Receive, Mark as Found) ditetapkan dokumen modul lain (borrow/assignment/transfer/missing); suite ini hanya menegaskan penolakan server dan transaksi asal tidak ter-commit (BE-214 langkah 39-41). Teks toast form modul asal tidak dihitung kurang."
   },
   {
+   "unit": "§Aturan Logika Modul#r39",
+   "verdict": "parsial",
+   "jenis": "prd",
+   "spec": null,
+   "langkah": [],
+   "catatan": "PRD (DAMAGED-LOGIC-03p): `Aturan yang sama untuk Missing: MISS-LOGIC-04i, 04j`. Aturan Report Missing terhadap Activity Lock ditetapkan `missing.md` (di luar kit) dan surface-nya milik modul Missing; tidak bisa diasersi suite ini dan tidak dihitung kurang. Rujukan `asset-state-machine.md` (matriks validitas kombinasi, §5.1) juga di luar kit."
+  },
+  {
    "unit": "§9.2#b8",
    "verdict": "ok",
    "jenis": "prd",
@@ -2200,54 +2232,21 @@
   },
   {
    "unit": "T-DMG-01",
-   "verdict": "parsial",
+   "verdict": "ok",
    "temuan": [
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-DAMAGED-E2E-004-tabel-active-filter",
-     "langkah": [
-      73,
-      76,
-      80,
-      82,
-      84,
-      135,
-      138,
-      139,
-      142,
-      145,
-      146,
-      151,
-      153,
-      154
-     ],
-     "catatan": "Temuan putaran 1 no. 4 masih sebagian. Hasil filter (baris yang lolos dan yang tersaring) hanya dijalankan untuk sebagian kolom. Placeholder semua field sudah diverifikasi di UI-102 langkah 98-225, tetapi hasil penyaringan untuk Asset Name, Last Updated, Brand, Model/Type, TAG, Category, Label, Measurement, Division, Asset Class, Modified By, rentang tanggal, dan rentang angka (Purchase Cost, Asset Value) tidak diuji pada suite mana pun. Foundation §9.8/§9.20 menetapkan AND antar field, OR dalam field, dan opsi DISTINCT, sehingga hasil per field adalah perilaku yang harus diasersi.",
-     "status": "tetap"
-    },
-    {
-     "jenis": "kurang",
-     "spec": "TC-FA-DAMAGED-UI-101-tabel-active-tampilan-dan-state",
-     "langkah": [
-      2
-     ],
-     "catatan": "Urutan kolom default pada Setup Column 28 kolom (T-DMG-01) tidak diasersi sebagai urutan penuh dari kiri ke kanan. Hanya urutan relatif tertentu (Source sebelum Status, UI-102 langkah 44/230-232) yang diverifikasi. Menyimpang dari tabel Setup Column di PRD.",
-     "status": "tetap"
-    },
     {
      "jenis": "drift",
      "spec": "TC-FA-DAMAGED-UI-102-tabel-active-mekanik-toolbar",
-     "langkah": [],
-     "catatan": "Footnote [^drift-1] pada UI-102 untuk pola paginasi keliru. Isinya tidak sesuai selisih PRD vs foundation untuk paginasi (§9.11/§9.18: nomor halaman melebihi terakhir menuju halaman terakhir, kurang dari 1 menuju halaman 1, non-angka diabaikan). Footnote perlu diperbaiki agar mengasersi versi foundation dengan rujukan drift yang benar."
+     "langkah": [
+      195
+     ],
+     "catatan": "Temuan putaran 1 belum beres. Catatan kaki [^drift-1] masih mengutip foundation `prd-conventions.md` §9.18 sebagai `input diabaikan dan tabel tetap di halaman sekarang` untuk nomor halaman tidak valid. Teks foundation sebenarnya (foundation-pack baris 2507): `nomor di atas halaman terakhir menuju halaman terakhir, nomor di bawah 1 (0 atau negatif) menuju halaman 1, dan input non-angka diabaikan (tabel tetap di halaman sekarang)`. Ini sama dengan kontrak Paginator#9, jadi tidak ada drift foundation-vs-kontrak; asersi langkah 188-195 benar, hanya catatan kakinya keliru dan harus dibuang atau dikoreksi."
     },
     {
      "jenis": "prd",
-     "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
-     "langkah": [
-      80,
-      83,
-      86
-     ],
-     "catatan": "Teks tooltip untuk Report Disposal Disabled (S-DMG-35) dan Report Missing Disabled (S-DMG-27) ditetapkan di luar kit. Spec hanya menyatakan Disabled tanpa literal tooltip. Tidak mengubah verdict. Perlu penetapan di PRD."
+     "spec": null,
+     "langkah": [],
+     "catatan": "Teks tooltip alasan `Report Disposal` Disabled saat Custody selain Available (PRD merujuk `asset-list.md` S-35) dan `Report Missing` Disabled saat baris Transfer In Transit (`asset-list.md` S-27), serta hak Report Disposal (`disposal.md` §2.1) dan hak Report Missing (`missing.md` §2.1) sebagai syarat tampilnya aksi, ditetapkan dokumen/modul di luar kit. UI-104 langkah 76-92 dan E2E-053 langkah 44-45 hanya menyatakan Disabled/aktif tanpa teks tooltip; tidak dihitung kurang."
     }
    ],
    "juri": "j1"
@@ -2395,6 +2394,19 @@
    "unit": "§Aturan Logika Modul#r13",
    "verdict": "ok",
    "temuan": [],
+   "juri": "j1"
+  },
+  {
+   "unit": "§Aturan Logika Modul#r45",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "Tetap dari putaran 1. Tooltip alasan `Report Disposal` Disabled ('tooltip `asset-list.md` `S-35`') dan `Report Missing` Disabled saat baris Transfer In Transit ('`asset-list.md` `S-27`') ditetapkan asset-list.md, di luar kit; literalnya tidak ada di PRD maupun foundation pack. Klausa 'Already damaged saat Send' (`transfer.md` `XFER-LOGIC-16`) adalah surface modul Transfer. Ketiadaan asersi alasan itu tidak dihitung kurang (E2E-053 langkah 44/45, UI-104 langkah 76/80 hanya mengasersi Disabled)."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -2751,8 +2763,18 @@
   {
    "unit": "§8.1#r14",
    "verdict": "ok",
-   "temuan": [],
-   "juri": "j2"
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server",
+     "langkah": [
+      31,
+      32
+     ],
+     "catatan": "Node Disposal report declined by oleh Aktor Disposal (Maya Puspita, Asset Admin sub-tab Disposal) diasersi di BE-207 langkah 31-32 dan BE-208 langkah 31-32 (dengan Reason dan Back to Damaged); BE-207 tidak tercatat sebagai penanggung unit ini."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§8.1#r15",
@@ -3245,39 +3267,24 @@
    "temuan": [
     {
      "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
+     "spec": "TC-FA-DAMAGED-E2E-044-record-kembali-damaged-dari-tab-reported-dep-disposal",
      "langkah": [
-      6,
-      7,
-      8,
-      9,
-      12
+      11,
+      31
      ],
-     "catatan": "Cabang [Report Disposal] (tab Damaged) -> D-DISP-13 (Reason) -> Reported Disposal diasersi dengan benar di UI oleh E2E-041, tetapi spec ini tidak tercatat sebagai penanggung §3#p7 (hanya 011/204/206/207). Tambahkan sebagai pemilik ui-e2e cabang Report Disposal."
+     "catatan": "Cabang diagram `[Decline] / [Cancel Report] → Damaged` diasersi di UI oleh E2E-044 (record kembali Damaged setelah Decline dan Cancel Report di tab Reported), tetapi E2E-044 tidak tercatat sebagai penanggung unit ini; `shared` hanya menyebut 011, 037, 041, 043 untuk ui-e2e."
     },
     {
      "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-037-report-missing-dep-missing",
+     "spec": "TC-FA-DAMAGED-E2E-045-record-mengikuti-baris-disposal-dep-disposal",
      "langkah": [
-      6,
       7,
-      8,
-      10
+      27,
+      48,
+      65,
+      82
      ],
-     "catatan": "Cabang [Report Missing] -> D-MIS-01 (aset terisi) -> record Damaged ditahan dengan penanda Missing diasersi di UI oleh E2E-037, tidak tercatat di §3#p7."
-    },
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-E2E-043-cancel-disposal-report-dep-disposal",
-     "langkah": [
-      4,
-      5,
-      6,
-      8,
-      9,
-      10
-     ],
-     "catatan": "Cabang [Cancel Disposal Report] (hanya Reported Disposal) -> Damaged diasersi di UI oleh E2E-043, tidak tercatat di §3#p7."
+     "catatan": "Cabang `Dispose → Submit → In Disposal Process`, `Disposal Executed → Disposed` dan `Rejected / Canceled / Removed → Reported Disposal` diasersi di UI oleh E2E-045, tetapi tidak tercatat sebagai penanggung unit ini (hanya BE-207 yang dicatat untuk cabang tersebut)."
     }
    ],
    "juri": "j1"
@@ -3293,6 +3300,45 @@
    "verdict": "ok",
    "temuan": [],
    "juri": "j3"
+  },
+  {
+   "unit": "§9.2#r2",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-BE-203-review-confirm-reject-cancel-report",
+     "langkah": [
+      2,
+      3,
+      24
+     ],
+     "catatan": "Jalur masuk Damaged lewat Confirm (record berubah Waiting for Confirmation → Damaged bersamaan dengan status global aset) diasersi di BE-203, tidak tercatat sebagai penanggung unit; unit hanya mencatat BE-201."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log",
+     "langkah": [
+      47,
+      59,
+      60,
+      77
+     ],
+     "catatan": "Jalur masuk Registrasi (langkah 47), Unassigned bermarker Damaged (langkah 59-60) dan Mark as Found Damaged tanpa record (langkah 77) diasersi di BE-208 (dan E2E-038 langkah 37), tidak tercatat sebagai penanggung unit."
+    },
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server",
+     "langkah": [
+      32,
+      34,
+      44,
+      26
+     ],
+     "catatan": "Jalur masuk Decline Report / Cancel Report atas Disposal Report dan jalur keluar ke Reported Disposal diasersi di BE-207; jalur keluar ke Repaired di BE-204/E2E-011 dan ke Disposed (Missing → Disposed) di BE-206 langkah 45-46/E2E-040. Tak satu pun tercatat sebagai penanggung unit."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§9.6#r5",
@@ -3906,7 +3952,7 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Perilaku Cancel Report di sisi Disposal didefinisikan di disposal.md (luar kit); suite hanya menguji efek ke record Damaged."
+     "catatan": "PRD (D-DMG-09, baris 605): \"isi dialog, Reason opsional, efek, dan hak: `disposal.md` `D-DISP-15`, `DISP-LOGIC-15`\". Isi dialog Cancel Report, kewajiban Reason, dan teks toast TS-DISP-18/TS-DMG-08 ditetapkan disposal.md (di luar kit), sehingga tidak bisa diasersi dengan pasti oleh suite ini; E2E-043 langkah 9 hanya memeriksa toast sukses tampil tanpa literal, dan Reason opsional hanya tersirat dari BE-207 langkah 43 (Cancel Disposal Report tanpa Reason diterima)."
     }
    ],
    "juri": "j1"
@@ -3932,7 +3978,14 @@
   {
    "unit": "§2.1#b6",
    "verdict": "ok",
-   "temuan": [],
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD (§2.1 butir Report Disposal): hak melapor \"mengikuti Pelapor Report (`disposal.md` §2.1)\", hak Dispose/Decline/Cancel Report/approve/eksekusi dimiliki role Disposal (`disposal.md` §2.1, `DISP-LOGIC-15`), dan \"Accounting melaporkan aset Damaged ... hanya dari Asset List atau Asset Detail\". Himpunan Pelapor Report, definisi Aktor Disposal, dan surface Asset List/Asset Detail ditetapkan disposal.md / asset-list (di luar kit), sehingga tidak bisa diasersi dengan pasti oleh suite ini; bagian yang menjadi tanggungan modul ini (Update boleh melapor: E2E-016 langkah 13; Cancel Disposal Report per aktor dan hanya pada Reported Disposal: E2E-043, BE-205 langkah 45-52/116-119/142-149; tab Damaged tertutup bagi Manage accounting: BE-205 langkah 19-20) sudah diasersi."
+    }
+   ],
    "juri": "j1"
   },
   {
@@ -5355,6 +5408,22 @@
    "juri": "j3"
   },
   {
+   "unit": "§9.2#r3",
+   "verdict": "ok",
+   "temuan": [
+    {
+     "jenis": "plan",
+     "spec": "TC-FA-DAMAGED-E2E-041-report-disposal-dep-disposal",
+     "langkah": [
+      12,
+      15
+     ],
+     "catatan": "Masuk ke Reported Disposal lewat Report Disposal dan keluar ke In Disposal Process / Damaged diasersi juga di UI oleh E2E-041, E2E-044 dan E2E-045; unit hanya mencatat BE-207 (be-e2e) sebagai penanggung."
+    }
+   ],
+   "juri": "j1"
+  },
+  {
    "unit": "§9.7#r10",
    "verdict": "ok",
    "temuan": [],
@@ -5480,10 +5549,10 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Klausa 'Surface log lain mengikuti disposal.md §8.2' ditetapkan dokumen di luar kit (disposal.md §8.2: Transaction log aset dan Transaction admin log untuk Report Disposal); tidak dihitung kurang. Penegasan lokalnya ada di BE-208 langkah 30 dan 35."
+     "catatan": "PRD: \"Surface log lain mengikuti `disposal.md` §8.2\". Surface log lain Bulk Report Disposal (Transaction log, Transaction admin log, Activity/System Log) ditetapkan disposal.md (di luar kit) dan tidak bisa diasersi dengan pasti oleh suite ini; satu node per record yang diproses dan tanpa node pada record yang dilewati sudah diasersi (E2E-042 langkah 42-45 dan 63, BE-208 langkah 44-45, BE-207 langkah 55 dan 61)."
     }
    ],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§9.4.4#r12",
@@ -5649,7 +5718,7 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Pelaku dan baris detail node `Disposal requested by`, `Rejected by`, `Canceled by`, `Removed from disposal by` 'didefinisikan di disposal.md §8.1' (di luar kit); suite mengasersi judul node, record kembali Damaged (E2E-045 langkah 7, 40, 54, 68; BE-207 langkah 27, 36, 38, 40) dan PIC `System` bila tanpa user aktor (BE-207 langkah 42). Tidak mengubah verdict."
+     "catatan": "PRD: node Disposal \"sesuai katalog node `disposal.md` §8.1 ... dengan pelaku dan baris detail yang didefinisikan di sana; modul ini tidak menyalin judul node tersebut\". Pelaku dan baris detail node `Disposal requested by`, `Rejected by`, `Canceled by`, `Removed from disposal by` ditetapkan disposal.md (di luar kit) dan tidak bisa diasersi dengan pasti; judul node, kembalinya record ke `Reported Disposal` (Report kembali `Reported`), dan PIC `System` pada timeout sudah diasersi (E2E-045 langkah 14, 48-55, 65-72, 82-89; BE-207 langkah 27, 36-42)."
     }
    ],
    "juri": "j1"
@@ -5710,28 +5779,14 @@
   {
    "unit": "§9.7#r14",
    "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-BE-212-event-notifikasi",
-     "langkah": [
-      47,
-      48,
-      49,
-      50,
-      51,
-      52
-     ],
-     "catatan": "Event damaged_* tidak dipicu saat baris Disposal ditolak/dibatalkan/dihapus/timeout (kolom Efek turunan \"-\") diasersi BE-212 langkah 41-42 dan 47-52; BE-212 tidak tercatat sebagai penanggung unit ini."
-    }
-   ],
-   "juri": "j2"
+   "temuan": [],
+   "juri": "j1"
   },
   {
    "unit": "§Aturan Logika Modul#r22",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "EC-DMG-28",
@@ -6093,19 +6148,6 @@
    "juri": "j1"
   },
   {
-   "unit": "§Aturan Logika Modul#r45",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "prd",
-     "spec": "TC-FA-DAMAGED-UI-104-tabel-active-aksi-per-status",
-     "langkah": [],
-     "catatan": "Tooltip Report Disposal Disabled dan Report Missing Disabled selama In Transit dirujuk ke asset-list.md S-35 / S-27 yang berada di luar kit ini; teksnya tidak dapat diverifikasi dari PRD modul. Tidak mempengaruhi verdict. Klausa 'Report Damaged tidak tersedia' untuk aset In Transfer terpenuhi tersirat lewat E2E-030 (Hidden bila aset sudah punya record)."
-    }
-   ],
-   "juri": "j3"
-  },
-  {
    "unit": "§2.1#b4",
    "verdict": "ok",
    "temuan": [],
@@ -6212,7 +6254,7 @@
      "jenis": "prd",
      "spec": null,
      "langkah": [],
-     "catatan": "Penerima, isi, dan identitas notifikasi 'Isi notifikasi dimiliki notification.md' (di luar kit); tidak dihitung kurang. Event pada Repaired/Disposed (E2E-056 langkah 13; BE-212 langkah 20, 22, 24), tanpa event pada transisi Reported Disposal/Submit Request/Rejected/Canceled/Removed/timeout (BE-212 langkah 35-52), dan pelapor nonaktif (langkah 57-60) sudah diasersi; temuan kelayakan putaran 1 (pelapor laporan Forklift 345 = Maya, DU-212-38) sudah beres."
+     "catatan": "PRD (§9.8): \"Penerima, varian, Title, Body, `action_tier`, Klik → Path ... dimiliki `fixed-asset/notification/PRD/notification.md`\" dan \"Isi notifikasi dimiliki `notification.md`\". Penerima dan isi notifikasi damaged_resolved ditetapkan notification.md (di luar kit); E2E-056 langkah 13 hanya memeriksa jumlah notifikasi pelapor bertambah satu tanpa isi, dan BE-212 langkah 20/22/24 memeriksa pemicu event. Pemicu Repaired, Disposed (Disposal Execute), Disposed (Missing → Disposed), serta ketiadaan event pada transisi Disposal/Submit Request/Reject/Cancel/Remove/timeout sudah diasersi (BE-212 langkah 19-24 dan 35-52)."
     }
    ],
    "juri": "j1"
@@ -7087,6 +7129,12 @@
    "juri": "j11"
   },
   {
+   "unit": "§2.1#b5",
+   "verdict": "ok",
+   "temuan": [],
+   "juri": "j4"
+  },
+  {
    "unit": "§9.2#b2",
    "verdict": "ok",
    "temuan": [
@@ -7110,21 +7158,6 @@
    "verdict": "ok",
    "temuan": [],
    "juri": "j11"
-  },
-  {
-   "unit": "§9.2#r2",
-   "verdict": "ok",
-   "temuan": [
-    {
-     "jenis": "plan",
-     "spec": "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status",
-     "langkah": [
-      2
-     ],
-     "catatan": "Plan hanya menetapkan BE-201 untuk baris status Damaged. Klausa 'Masuk dari' selain Report admin/Registrasi (Confirm: BE-203 langkah 2; Unassign bermarker tanpa record dan Mark as Found Damaged tanpa record: BE-208 langkah 59-60 dan 76-77, BE-206 langkah 42-43; Decline/Cancel Disposal Report dan Disposal Reject/Cancel/Remove/timeout dengan Condition dipulihkan: BE-207 langkah 31-42 dan 67-80) dan 'Keluar ke' (Reported Disposal/Disposed: BE-207 langkah 2, 29; Repaired: BE-202; Missing→Disposed: BE-206 langkah 44-46) diasersi benar di spec lain. Semua klausa terpenuhi gabungan suite; selisih hanya pencatatan penanggung."
-    }
-   ],
-   "juri": "j4"
   },
   {
    "unit": "§9.4.1#r6",
@@ -7171,9 +7204,23 @@
   },
   {
    "unit": "§Aturan Logika Modul#r39",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j4"
+   "verdict": "parsial",
+   "temuan": [
+    {
+     "jenis": "prd",
+     "spec": null,
+     "langkah": [],
+     "catatan": "PRD (DAMAGED-LOGIC-03p): `Aturan yang sama untuk Missing: MISS-LOGIC-04i, 04j`. Aturan Report Missing terhadap Activity Lock ditetapkan `missing.md` (di luar kit) dan surface-nya milik modul Missing; tidak bisa diasersi suite ini dan tidak dihitung kurang. Rujukan `asset-state-machine.md` (matriks validitas kombinasi, §5.1) juga di luar kit."
+    },
+    {
+     "jenis": "kurang",
+     "spec": "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status",
+     "langkah": [],
+     "status": "dibuang",
+     "catatan": "asersi dibuang karena tidak bisa dibenarkan: Langkah 119-120 mengasersi Work Order dan jadwal maintenance tidak berubah/ditutup/dijeda oleh Mark as Repaired. PRD hanya menyatakan untuk Mark as Repaired: `juga tidak dibatasi Activity Lock dan tidak mengubah baris Audit yang sudah final`; larangan mengubah/menutup/menjeda Work Order dan jadwal maintenance hanya disebut untuk Report Damaged. Keyakinan rendah: bisa dibaca sebagai bagian dari `juga`, tetapi teks tidak menetapkannya. Tidak mengubah verdict."
+    }
+   ],
+   "juri": "j1"
   },
   {
    "unit": "§Aturan Logika Modul#r80",
@@ -7495,12 +7542,6 @@
    "juri": "j12"
   },
   {
-   "unit": "§2.1#b5",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j4"
-  },
-  {
    "unit": "§4.8#r9",
    "verdict": "ok",
    "temuan": [],
@@ -7570,16 +7611,10 @@
    "juri": "j5"
   },
   {
-   "unit": "§9.2#r3",
-   "verdict": "ok",
-   "temuan": [],
-   "juri": "j12"
-  },
-  {
    "unit": "§9.2#r4",
    "verdict": "ok",
    "temuan": [],
-   "juri": "j3"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#r6",
@@ -8476,7 +8511,7 @@
    "unit": "§9.2#b27",
    "verdict": "na",
    "temuan": [],
-   "juri": "j6"
+   "juri": "j1"
   },
   {
    "unit": "§9.2#b31",

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: [T-DMG-01, "§4.1#r7", TS-DISP-15, D-DISP-13, "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r20", "§9.7#r10", TS-DISP-12, "§9.2#b26", F-DMG-06, "§2.1#r8", "§4.8#r10", S-DMG-01, "§4.2.4#r17", "§3#p7"]
+sourceRules: [T-DMG-01, "§4.1#r7", TS-DISP-15, D-DISP-13, "§4.4#r9", S-DMG-05, "§8.1#r13", "§8.3#r4", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r20", "§9.7#r10", TS-DISP-12, "§9.2#b26", F-DMG-06, "§2.1#r8", "§4.8#r10", S-DMG-01, "§4.2.4#r17", "§3#p7", "§9.2#r3"]
 smoke: []
 dependsOn: ["Disposal: dialog Report Disposal (D-DISP-13)"]
 trace:
@@ -29,6 +29,7 @@ trace:
   S-DMG-01: 13
   "§4.2.4#r17": [49, 53]
   "§3#p7": [7, 12]
+  "§9.2#r3": [12, 26]
 anchor: []
 coverage:
   web: automated
@@ -49,7 +50,7 @@ coverage:
   - DU-041-7: Input Report Disposal atas `Monitor Dell P2422H {runId}`: Reason `Unit rusak berat dan sudah tidak layak pakai`.
   - DU-041-8: Input Mark as Repaired `Admin B {runId}` atas `Monitor Dell P2422H {runId}`: Repair note `Panel diganti dan unit sudah diuji normal`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -77,7 +78,7 @@ coverage:
 19. Klik nama aset `Printer HP LaserJet M404 {runId}` di kolom Name
 20. Verifikasi dialog Damage Log memuat node `Disposal reported by` dengan pelaku aktor yang menjalankan Report Disposal
 21. Verifikasi baris detail node `Disposal reported by` memuat Reason `Unit rusak berat dan biaya perbaikan melebihi nilai buku`
-22. Verifikasi baris detail node `Disposal reported by` memuat `Report ID`
+22. Verifikasi baris detail node `Disposal reported by` memuat `Reason`
 23. Tutup dialog Damage Log
 
 ### Disposal Report tercatat di tab Reported

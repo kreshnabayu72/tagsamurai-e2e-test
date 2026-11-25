@@ -52,7 +52,7 @@ coverage:
 # Pemegang Manage asset & TAG (Update) menjalankan aksi tulis pada aset Group Update dan descendant, mengikuti kolom Read di Group lain, dan kehilangan aksi saat capability dicabut
 
 ## Prerequisites
-- Aktor: pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` dan Read pada Group `Branch Surabaya {runId}` (DU-016-11); `Agus Pratama {runId}` (DU-016-12) hanya memicu perubahan capability; di akhir spec aktor berganti ke pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` yang juga Asset Admin sub-tab Disposal, `Maya Puspita {runId}` (DU-016-16).
+- Aktor: pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` dan Read pada Group `Branch Surabaya {runId}` (DU-016-11); `Agus Pratama {runId}` (DU-016-12) hanya memicu perubahan capability; di akhir spec aktor berganti ke pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` tanpa Asset Admin sub-tab Disposal yang melaporkan Report Disposal sendiri, `Maya Puspita {runId}` (DU-016-16).
 - Layar awal: halaman Assets, tab Damaged, sub-tab Active.
 - Data:
   - DU-016-1: Damage record aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office {runId}` (DU-016-8), status `Waiting for Confirmation`, Source `Reported by holder`, dilaporkan pelapor umum DU-016-13.
@@ -70,10 +70,10 @@ coverage:
   - DU-016-13: User `Dewi Anggraeni {runId}`, pelapor umum tanpa hak Aktor Damaged; cakupan: aset yang ia pegang.
   - DU-016-14: Group `Gudang Bandung {runId}`, tanpa Update maupun Read bagi DU-016-11.
   - DU-016-15: Damage record aset `Forklift Toyota 8FD {runId}` di Group `Gudang Bandung {runId}` (DU-016-14), status `Damaged`, Source `Manual`, dilaporkan DU-016-12.
-  - DU-016-16: User `Maya Puspita {runId}`, pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}` dan Asset Admin sub-tab Disposal; cakupan: Group Update beserta descendant.
+  - DU-016-16: User `Maya Puspita {runId}`, pemegang Manage asset & TAG dengan Update pada Group `Head Office {runId}`, tanpa Asset Admin sub-tab Disposal dan tanpa hak Manage accounting; cakupan: Group Update beserta descendant.
   - DU-016-17: Damage record aset `Scanner Brother ADS-2200 {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Manual`, dilaporkan DU-016-16.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -96,7 +96,7 @@ coverage:
 14. Tekan Esc untuk menutup menu baris
 15. Klik `⋯` pada baris `Printer HP LaserJet M404 {runId}`
 16. Verifikasi item `Damage Log` tampil pada menu baris
-17. Verifikasi item `Cancel Disposal Report` tidak tampil pada menu baris karena aktor tidak memiliki hak Cancel Disposal Report
+17. Verifikasi item `Cancel Disposal Report` tidak tampil pada menu baris laporan yang dilaporkan `Agus Pratama {runId}`, karena hak Cancel Disposal Report pemegang Update hanya atas laporan miliknya
 18. Tekan Esc untuk menutup menu baris
 19. Klik `⋯` pada baris `Laptop Dell Latitude 5420 {runId}`
 20. Verifikasi item `Review` tampil dan aktif pada menu baris
@@ -164,7 +164,7 @@ coverage:
 66. Verifikasi item `Damage Log` tampil pada menu baris
 67. Verifikasi item `Review` tidak tampil pada menu baris
 
-### Cancel Disposal Report tersedia bagi pemegang Update yang juga Asset Admin sub-tab Disposal hanya pada laporan miliknya
+### Cancel Disposal Report tersedia bagi pemegang Update sebagai pelapor hanya pada laporan miliknya
 68. Keluar dari aplikasi
 69. Masuk sebagai Maya Puspita {runId} dari sesi browser baru
 70. Klik tab `Damaged`

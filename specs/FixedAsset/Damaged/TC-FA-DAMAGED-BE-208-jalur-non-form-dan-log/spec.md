@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r49", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r51", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§Aturan Logika Modul#r85", "§Aturan Logika Modul#r86", "§Aturan Logika Modul#r87", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", EC-DMG-06, EC-DMG-28, EC-DMG-29, EC-DMG-31, EC-DMG-32, "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r13", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16", "§8.2#p4", "§8.2#p5", "§8.2#p6", "§8.2#p7", "§8.2#p8", "§8.2#p9", "§8.2#p10", "§8.2#p14", "§8.2#p15", "§8.2#p16", "§8.2#p17", "§8.2#p18", "§8.2#p21", "§8.2#p22", "§8.2#p23", "§8.2#p24", "§8.2#p25", "§8.2#p26", "§2#b6", "§2.1#r5", "§3#p2", "§9.2#b4", "§Aturan Logika Modul#r52"]
+sourceRules: ["§Aturan Logika Modul#r49", "§Aturan Logika Modul#r50", "§Aturan Logika Modul#r51", "§Aturan Logika Modul#r82", "§Aturan Logika Modul#r83", "§Aturan Logika Modul#r84", "§Aturan Logika Modul#r85", "§Aturan Logika Modul#r86", "§Aturan Logika Modul#r87", "§9.2#b5", "§9.2#b6", "§9.2#b7", "§9.6#r9", "§9.6#p1", "§8#p1", "§8.1#p4", "§8.2#b1", "§8.2#b2", "§8.2#b3", "§8.3#r1", "§8.3#r2", "§8.3#r3", "§8.3#r4", "§8.3#r5", "§8.3#r6", "§8.3#p2", "§8.3#b1", "§8.3#b2", "§5#r7", EC-DMG-06, EC-DMG-28, EC-DMG-29, EC-DMG-31, EC-DMG-32, "§9.4.4#r4", "§9.4.4#r6", "§9.4.4#r9", "§9.4.4#r13", "§9.7#r3", "§9.7#r8", "§9.4.1#r15", "§8.1#r7", "§8.1#r8", "§8.1#r9", "§8.1#r10", "§8.1#r11", "§8.1#r12", "§8.1#r13", "§8.1#r14", "§8.1#r15", "§8.1#r16", "§8.2#p4", "§8.2#p5", "§8.2#p6", "§8.2#p7", "§8.2#p8", "§8.2#p9", "§8.2#p10", "§8.2#p14", "§8.2#p15", "§8.2#p16", "§8.2#p17", "§8.2#p18", "§8.2#p21", "§8.2#p22", "§8.2#p23", "§8.2#p24", "§8.2#p25", "§8.2#p26", "§2#b6", "§2.1#r5", "§3#p2", "§9.2#b4", "§Aturan Logika Modul#r52", "§9.2#r2"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -59,7 +59,7 @@ trace:
   "§8.1#r12": [23, 27, 124]
   "§8.1#r13": [29, 89]
   "§8.1#r14": 32
-  "§8.1#r15": [34, 37]
+  "§8.1#r15": [34, 37, 146]
   "§8.1#r16": [39, 83]
   "§8.2#p4": [95, 96]
   "§8.2#p5": 97
@@ -84,6 +84,7 @@ trace:
   "§3#p2": [3, 57, 59, 63, 69, 77]
   "§9.2#b4": [48, 56, 59, 67, 69, 77]
   "§Aturan Logika Modul#r52": [48, 56, 59, 67, 69, 77]
+  "§9.2#r2": [32, 34, 47, 59, 60, 77]
 ---
 
 # Server membuat record dan node dari jalur non-form (registrasi, Unassign bermarker Damaged, Task Detail Audit, Transfer receive, Mark as Found), menulis Damage Log, Transaction log, Transaction admin log, Activity Log, dan System Log per aksi, dan tidak mencatat pembukaan dialog maupun Download
@@ -95,6 +96,7 @@ trace:
   - Aktor peminjaman `Yoga Tanuwijaya {runId}`, Aktor penugasan `Dewi Anggraini {runId}`, Aktor pemindahan aset `Tono Riyadi {runId}`, Staff Auditor `Sinta Marlina {runId}` (pelapor dari Task Detail Audit), Staff Executor Maintenance Routine `Joko Prasetyo {runId}` (pelapor dari Task Maintenance), dan Aktor penemuan aset `Hendra Saputra {runId}`, masing-masing tanpa hak Update Manage asset & TAG.
   - Aktor pelepasan aset `Maya Puspita {runId}`, Asset Admin sub-tab Disposal.
   - Pelapor umum `Budi Santoso {runId}`, pemegang aset, tanpa role Damaged.
+  - Group Manager `Gita Permatasari {runId}`, Group binaan `Head Office {runId}` beserta sub-group.
 - Data:
   - DU-208-1: User `Agus Pratama {runId}`, Total Control, cakupan seluruh client.
   - DU-208-2: User `Rina Wulandari {runId}`, Manage asset & TAG (Update), cakupan Group `Head Office {runId}` beserta descendant.
@@ -163,6 +165,8 @@ trace:
   - DU-208-67: Aset `Tablet Samsung Tab A8 - 166 {runId}`, Group `Head Office {runId}`, `Assigned` kepada `Budi Santoso {runId}`, tanpa record berjalan, form Unassign belum lolos validasi.
   - DU-208-68: Aset `Camera Canon EOS - 187 {runId}`, Group `Head Office {runId}`, `Missing` tanpa record Damaged, form Mark as Found Damaged belum lolos validasi.
   - DU-208-69: Aset `Forklift Toyota 8FD - 174 {runId}`, Group `Head Office {runId}`, dalam pemindahan menuju `Branch Surabaya {runId}`, tanpa record berjalan, form penerimaan belum lolos validasi.
+  - DU-208-70: User `Gita Permatasari {runId}`, Group Manager, cakupan Group binaan `Head Office {runId}` beserta sub-group.
+  - DU-208-71: Aset `Scanner Fujitsu fi-7160 - 147 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` yang dilaporkan oleh `Rina Wulandari {runId}`.
 - Kondisi:
   - Approval registrasi aset bernilai `OFF`.
   - Date Format bernilai `dd/MM/yy`.
@@ -207,15 +211,15 @@ trace:
 
 ### Report Disposal, Decline, dan Cancel Disposal Report tercatat sebagai node Damage Log
 28. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Scanner Fujitsu fi-7160 - 141 {runId}` dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
-29. Verifikasi Damage Log record memuat node `Disposal reported by` dengan pelaku `Agus Pratama {runId}`, Report ID, dan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
+29. Verifikasi Damage Log record memuat node `Disposal reported by` dengan pelaku `Agus Pratama {runId}`, dan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
 30. Verifikasi Report Disposal itu dicatat di sub-tab pelepasan aset, tidak diulang di Transaction admin log Damaged
 31. Aktor pelepasan aset `Maya Puspita {runId}` menjalankan Decline atas laporan `Scanner Fujitsu fi-7160 - 142 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
-32. Verifikasi Damage Log record memuat node `Disposal report declined by` dengan pelaku `Maya Puspita {runId}`, Report ID, Reason, dan Back to Damaged
+32. Verifikasi Damage Log record memuat node `Disposal report declined by` dengan pelaku `Maya Puspita {runId}`, Reason, dan Back to Damaged
 33. Total Control `Agus Pratama {runId}` menjalankan Cancel Disposal Report atas `Scanner Fujitsu fi-7160 - 143 {runId}`
-34. Verifikasi Damage Log record memuat node `Disposal report canceled by` dengan pelaku `Agus Pratama {runId}`, Report ID, dan Back to Damaged
+34. Verifikasi Damage Log record memuat node `Disposal report canceled by` dengan pelaku `Agus Pratama {runId}`, dan Back to Damaged
 35. Verifikasi Cancel Disposal Report itu dicatat di sub-tab pelepasan aset, tidak diulang di Transaction admin log Damaged
 36. Total Control `Agus Pratama {runId}` menjalankan Report Missing atas `Scanner Fujitsu fi-7160 - 146 {runId}` yang record-nya `Reported Disposal` dari Asset List dengan What happened `Terakhir terlihat di gudang lantai dua {runId}` dan Damaged Photo `terakhir-terlihat.jpg`
-37. Verifikasi Damage Log record memuat node `Disposal report canceled by` dengan pelaku `System`, Report ID, Reason `Asset reported missing`, dan Back to Damaged
+37. Verifikasi Damage Log record memuat node `Disposal report canceled by` dengan pelaku `System`, Reason `Asset reported missing`, dan Back to Damaged
 38. Pelepasan aset `Scanner Fujitsu fi-7160 - 144 {runId}` dieksekusi (Executed)
 39. Verifikasi Damage Log record memuat node `Disposed` dengan pelaku `System` dan Disposal No. milik baris pelepasan aset itu
 40. Verifikasi Transaction log aset memuat Disposed dari pelepasan aset yang dieksekusi itu
@@ -223,7 +227,7 @@ trace:
 42. Verifikasi node di Damage Log record dicatat dengan PIC `System`
 43. Verifikasi Activity Log mencatat Modified By `System` dan tidak ada entri System Log untuk peristiwa itu
 44. Total Control `Agus Pratama {runId}` mengirim Bulk Report Disposal atas `Printer HP LaserJet M404 - 191 {runId}`, `Printer HP LaserJet M404 - 192 {runId}`, dan `Printer HP LaserJet M404 - 193 {runId}` dengan satu Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`, setelah `Printer HP LaserJet M404 - 193 {runId}` menjadi `Repaired`
-45. Verifikasi masing-masing `Printer HP LaserJet M404 - 191 {runId}` dan `Printer HP LaserJet M404 - 192 {runId}` mendapat satu node `Disposal reported by` dengan Report ID sendiri, sedangkan `Printer HP LaserJet M404 - 193 {runId}` yang dilewati tidak mendapat node
+45. Verifikasi masing-masing `Printer HP LaserJet M404 - 191 {runId}` dan `Printer HP LaserJet M404 - 192 {runId}` mendapat satu node `Disposal reported by`, sedangkan `Printer HP LaserJet M404 - 193 {runId}` yang dilewati tidak mendapat node
 
 ### Registrasi aset ber-Condition Damaged membuat record otomatis
 46. Total Control `Agus Pratama {runId}` mengaktifkan registrasi `Projector Epson EB-X06 - 151 {runId}` yang ber-Condition `Damaged` dengan Damage note sepanjang 120 karakter
@@ -357,3 +361,7 @@ trace:
 142. Verifikasi Mark as Found Damaged itu ditolak oleh form modul asal dan tidak ada Damage record yang dibuat untuk `Camera Canon EOS - 187 {runId}`
 143. Aktor pemindahan aset `Tono Riyadi {runId}` menerima pemindahan `Forklift Toyota 8FD - 174 {runId}` dan melaporkan Damaged saat penerimaan dengan What happened tidak diisi dan Damaged Photo `garpu-bengkok.jpg`
 144. Verifikasi penerimaan itu ditolak oleh form modul asal dan tidak ada Damage record yang dibuat untuk `Forklift Toyota 8FD - 174 {runId}`
+
+### Group Manager membatalkan Disposal Report yang dilaporkan orang lain: node Disposal report canceled by atas nama Group Manager
+145. Group Manager `Gita Permatasari {runId}` menjalankan Cancel Disposal Report atas `Scanner Fujitsu fi-7160 - 147 {runId}` yang dilaporkan `Rina Wulandari {runId}`
+146. Verifikasi Damage Log record memuat node `Disposal report canceled by` dengan pelaku `Gita Permatasari {runId}` dan Back to Damaged

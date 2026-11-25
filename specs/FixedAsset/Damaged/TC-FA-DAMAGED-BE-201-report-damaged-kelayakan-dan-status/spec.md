@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r14", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r17", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r80", "§9.2#r2", S-DMG-22, "§9.2#b2", "§9.2#b3", "§9.2#b4", S-DMG-21, "§4.2.3#b2", "§4.2.3#b5", "§9.4.3#b1", "§9.6#r1", "§3#p2", V-DMG-10, EC-DMG-01, EC-DMG-02, EC-DMG-04, EC-DMG-05, EC-DMG-27, FLD-DMG-01, FLD-DMG-02, "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", EB-FRM-4@what-happened, F-DMG-01, "§Aturan Logika Modul#r39", "§9.4.2#r38", "§2.1#r2"]
+sourceRules: ["§Aturan Logika Modul#r11", "§Aturan Logika Modul#r12", "§Aturan Logika Modul#r13", "§Aturan Logika Modul#r14", "§Aturan Logika Modul#r16", "§Aturan Logika Modul#r17", "§Aturan Logika Modul#r46", "§Aturan Logika Modul#r47", "§Aturan Logika Modul#r48", "§Aturan Logika Modul#r52", "§Aturan Logika Modul#r80", "§9.2#r2", S-DMG-22, "§9.2#b2", "§9.2#b3", "§9.2#b4", S-DMG-21, "§4.2.3#b2", "§4.2.3#b5", "§9.4.3#b1", "§9.6#r1", "§3#p2", V-DMG-10, EC-DMG-01, EC-DMG-02, EC-DMG-04, EC-DMG-05, EC-DMG-27, FLD-DMG-01, FLD-DMG-02, "§9.4.4#r1", "§9.4.4#r2", "§9.4.4#r5", "§9.4.4#r7", "§2#b6", "§2#b7", "§9.4.1#r6", "§9.4.1#r7", EB-FRM-4@what-happened, F-DMG-01, "§Aturan Logika Modul#r39", "§9.4.2#r38", "§2.1#r2", "§2.1#b5"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -50,9 +50,10 @@ trace:
   "§9.4.1#r7": 24
   EB-FRM-4@what-happened: [53, 57]
   F-DMG-01: 2
-  "§Aturan Logika Modul#r39": [89, 90, 91, 92, 94, 95, 96]
+  "§Aturan Logika Modul#r39": [89, 90, 91, 92, 94, 95, 96, 118, 119, 121, 122, 123]
   "§9.4.2#r38": [98, 101, 105, 107, 112, 115]
   "§2.1#r2": [2, 11, 79, 82, 87, 105, 107]
+  "§2.1#b5": 107
 ---
 
 # Server membuat satu Damage record per aset layak dengan status menurut jenis pelapor dan Source titik masuk, menolak aset ber-record berjalan, Disposed, Missing, di luar cakupan, dan laporan ganda, dan tidak dibatasi Activity Lock
@@ -137,6 +138,11 @@ trace:
   - DU-201-62: User `Fajar Nugroho {runId}`, Asset Admin Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
   - DU-201-63: Aset `Printer HP LaserJet M404 - 10 {runId}`, Group `Head Office {runId}`, Normal, item sesi Audit berjalan, tanpa record berjalan.
   - DU-201-64: Aset `Generator Honda EU22i - 4 {runId}`, Group `Head Office {runId}`, Normal, punya Task Maintenance berjalan, tanpa record berjalan.
+  - DU-201-65: Aset `Generator Honda EU22i - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-G21 {runId}`, punya record `Damaged`, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya.
+  - DU-201-66: Aset `Rack Server Dell R740 - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-R21 {runId}`, punya record `Damaged`, Activity Lock `In Audit` karena menjadi item sesi Audit berjalan milik `Sinta Marlina {runId}` dengan baris audit `Verified`.
+  - DU-201-67: Repair note `Komponen rusak sudah diganti {runId}`.
+- Kondisi:
+  - After photo required bernilai `OFF`.
 
 ## Test Steps
 
@@ -299,3 +305,12 @@ trace:
 114. Asset Admin `Fajar Nugroho {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 4 {runId}` dari Task Maintenance dengan What happened `Kursi roda patah saat dipakai` dan Damaged Photo `roda-patah.jpg`
 115. Verifikasi server membuat record berstatus `Waiting for Confirmation`, bukan langsung `Damaged`, dengan Source `Maintenance`
 116. Verifikasi Condition aset `Generator Honda EU22i - 4 {runId}` tetap `Normal`, status global aset tidak berubah, dan aset hanya diberi penanda `Damage reported`
+
+### Mark as Repaired tidak dibatasi Activity Lock dan tidak mengubah baris Audit yang sudah final
+117. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Generator Honda EU22i - 21 {runId}` yang ber-Activity Lock `Under Maintenance` dengan Scan TAG `RFID-G21 {runId}` milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+118. Verifikasi permintaan diterima dan record menjadi `Repaired` untuk aset yang ber-Activity Lock `Under Maintenance`
+119. Verifikasi Activity Lock `Under Maintenance` tetap ada setelah Mark as Repaired
+120. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Rack Server Dell R740 - 21 {runId}` yang ber-Activity Lock `In Audit` dengan Scan TAG `RFID-R21 {runId}` milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+121. Verifikasi permintaan diterima dan record menjadi `Repaired` untuk aset yang ber-Activity Lock `In Audit`
+122. Verifikasi baris audit aset itu di sesi milik `Sinta Marlina {runId}` tetap `Verified` dan tidak berubah oleh Mark as Repaired
+123. Verifikasi Activity Lock `In Audit` tetap ada setelah Mark as Repaired

@@ -17,7 +17,7 @@ trace:
   "§9.8#r5": [44]
   "§9.8#r6": [43]
   "§9.8#r7": [34, 38]
-  "§9.8#p2": [41]
+  "§9.8#p2": [41, 66, 67]
   "§9.8#p3": [35]
   "§11#r18": [17, 22, 29, 34, 42, 43, 44]
   "§11#r19": [23, 24]
@@ -44,7 +44,7 @@ trace:
   "§9.2#b38": [60]
   "§9.4.2#r39": [60]
   "§9.4.4#r24": [60]
-anchor: []
+anchor: [65]
 coverage:
   web: automated
 ---
@@ -52,7 +52,7 @@ coverage:
 # Event notifikasi Missing: tiap aksi memicu event yang dinyatakan dan transisi Disposal tidak memicu event missing_*
 
 ## Prerequisites
-- Aktor: Total Control `Rina W` sebagai penerima notifikasi. Aktor lain yang memicu perubahan: Total Control `Dewi Anggraini {runId}`, pemegang `Joko Santoso {runId}` tanpa hak Aktor Missing, dan pemegang `Andi Pratama {runId}` dengan hak Manage asset & TAG (Update) pada Group asetnya, dan Asset Admin sub-tab Audit `Lia Kartika {runId}` tanpa hak Aktor Missing pada Group aset.
+- Aktor: Total Control `Rina W` sebagai penerima notifikasi. Aktor lain yang memicu perubahan: Total Control `Dewi Anggraini {runId}`, pemegang `Joko Santoso {runId}` tanpa hak Aktor Missing, dan pemegang `Andi Pratama {runId}` dengan hak Manage asset & TAG (Update) pada Group asetnya, dan Asset Admin sub-tab Audit `Lia Kartika {runId}` tanpa hak Aktor Missing pada Group aset, serta approver Disposal yang menolak baris Request.
 - Layar awal: daftar notifikasi in-app.
 - Data:
   - DU-041-1: Asset `Monitor LG 27UL500 {runId}`, Group `Head Office`, dipegang `Sari Dewanti {runId}`, tanpa record Missing.
@@ -86,6 +86,8 @@ coverage:
   - DU-041-29: Asset `Rak Server APC {runId}`, Group `Warehouse`, tanpa record Missing.
   - DU-041-30: Pengguna `Lia Kartika {runId}`, Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group `Warehouse`.
   - DU-041-31: What happened `Rak server tidak ada di ruang server saat penghitungan fisik`.
+  - DU-041-32: Asset `Router Cisco ISR {runId}`, Group `Head Office`, dengan record Missing berstatus `In Disposal Process` karena Request Write-off sudah di-Submit, yang tidak membawa notifikasi event `missing_*` apa pun sebelum spec mulai.
+  - DU-041-33: Asset `Printer Brother HL-L2350 {runId}`, Group `Head Office`, dengan record Missing berstatus `In Disposal Process` karena Request Write-off sudah di-Submit, yang tidak membawa notifikasi event `missing_*` apa pun sebelum spec mulai.
 - Kondisi:
   - Akun `Rina W`, `Dewi Anggraini {runId}`, `Joko Santoso {runId}`, `Andi Pratama {runId}`, dan `Lia Kartika {runId}` aktif dan kredensialnya disediakan fase 2.
 
@@ -168,3 +170,12 @@ coverage:
 58. Masuk sebagai `Rina W`
 59. Buka daftar notifikasi
 60. Verifikasi notifikasi event `missing_holder_reported` atas `Rak Server APC {runId}` tampil di daftar notifikasi
+
+### Request Write-off yang ditolak atau dibatalkan mengembalikan Report ke Reported tanpa event missing_*
+61. Approver Disposal menolak baris Request Disposal atas `Router Cisco ISR {runId}`
+62. `Dewi Anggraini {runId}` membatalkan baris Request Disposal atas `Printer Brother HL-L2350 {runId}`
+63. Muat ulang halaman
+64. Buka daftar notifikasi
+65. Verifikasi notifikasi event `missing_holder_reported` atas `Rak Server APC {runId}` masih tampil di daftar notifikasi
+66. Verifikasi tidak ada notifikasi event `missing_*` atas `Router Cisco ISR {runId}` di daftar notifikasi
+67. Verifikasi tidak ada notifikasi event `missing_*` atas `Printer Brother HL-L2350 {runId}` di daftar notifikasi

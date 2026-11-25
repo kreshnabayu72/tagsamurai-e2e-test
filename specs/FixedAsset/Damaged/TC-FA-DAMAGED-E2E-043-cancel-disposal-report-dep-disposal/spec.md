@@ -49,7 +49,7 @@ coverage:
   - DU-043-6: Input Cancel Disposal Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki`.
   - DU-043-7: Input Decline Report `Admin B {runId}` atas `Monitor Dell P2422H {runId}`: Reason `Laporan ditolak karena aset masih dapat dipakai`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -73,7 +73,7 @@ coverage:
 15. Klik nama aset `Printer HP LaserJet M404 {runId}` di kolom Name
 16. Verifikasi dialog Damage Log memuat node `Disposal report canceled by` dengan pelaku aktor yang menjalankan Cancel Disposal Report
 17. Verifikasi baris detail node `Disposal report canceled by` memuat Reason `Aset masih dapat diperbaiki`
-18. Verifikasi baris detail node `Disposal report canceled by` memuat `Report ID` dan `Back to Damaged`
+18. Verifikasi baris detail node `Disposal report canceled by` memuat `Back to Damaged`
 19. Tutup dialog Damage Log
 
 ### Status record berubah sebelum Submit memunculkan dialog Already Changed

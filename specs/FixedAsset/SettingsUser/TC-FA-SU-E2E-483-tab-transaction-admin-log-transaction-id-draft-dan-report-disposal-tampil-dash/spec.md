@@ -1,6 +1,6 @@
 ---
-id: TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal
-title: "Tab Transaction Admin Log: Transaction ID Draft Tampil Dash dan Report ID Disposal"
+id: TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-dan-report-disposal-tampil-dash
+title: "Tab Transaction Admin Log: Transaction ID Draft dan Report Disposal Tampil Dash"
 priority: Medium
 caseType: Positive
 status: draft
@@ -11,7 +11,7 @@ coverage:
   web: automated
 ---
 
-# Tab Transaction Admin Log: Transaction ID Draft Tampil Dash dan Report ID Disposal
+# Tab Transaction Admin Log: Transaction ID Draft dan Report Disposal Tampil Dash
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ coverage:
 7. Verifikasi baris Activity `Requested` untuk `Camera Sony A7 - 7` menampilkan nomor berawalan `TRF-`
 8. Verifikasi Transaction ID baris itu berupa teks biasa, bukan tautan
 
-### TC-FA-SU-1199: Transaction ID sub-tab Disposal: aksi Draft tampil `—`, aksi Report tampil Report ID `DRP-`
+### TC-FA-SU-1199: Transaction ID sub-tab Disposal: aksi Draft tampil `—`, aksi Report tampil `—`
 
 9. Klik Sub-tab Disposal
 10. Catat jumlah baris sub-tab Disposal sebagai baseline
@@ -45,7 +45,7 @@ coverage:
 12. Lakukan Report Disposal dari tab Damaged atas `Laptop Dell Latitude - 15` sebagai Budi Santoso lewat sesi API hingga laporan tersimpan
 13. Tekan F5 pada halaman Detail dan klik Sub-tab Disposal
 14. Verifikasi baris Activity `Draft created` untuk `Printer HP LaserJet - 6` menampilkan Transaction ID `—` (bukan sel kosong)
-15. Verifikasi baris Activity `Reported` untuk `Laptop Dell Latitude - 15` menampilkan Report ID berawalan `DRP-`
+15. Verifikasi baris Activity `Reported` untuk `Laptop Dell Latitude - 15` menampilkan Transaction ID `—`
 16. Verifikasi Transaction ID kedua baris itu berupa teks biasa, bukan tautan
 
 ## Notes
@@ -53,4 +53,4 @@ coverage:
 - Sumber: `fixed-asset/settings-user/TestCases/tc-settings-user.md`. Subjudul `###` memetakan langkah ke id TC granular.
 - Langkah penghubung (tanpa awalan `Verifikasi`, S-03): langkah 1 (mencari pengguna dan membuka sub-tab; pencarian pengguna di User List adalah langkah penghubung, R-16), pencatatan baseline jumlah baris (S-12), pemicuan state lewat sesi API (R-20), pemuatan ulang halaman Detail, pembukaan panel Filter dan dropdown, serta perpindahan sub-tab dan halaman.
 - Pembagian TC lintas spec: routing Report Disposal ke sub-tab Disposal (TC-FA-SU-1187) ada di spec 474.
-- Temuan untuk QA (S-15): (1) TC-FA-SU-1198 dan 1199 menyebut nomor `TRF-` dan `DRP-` tanpa pola penuh; spec mengasersi awalan saja. (2) Aksi dijalankan lewat sesi API (R-20) sebagai Budi Santoso; nama aset seed memakai literal TC dan harus dijamin seed. (3) Activity `Requested` pada TC-FA-SU-1198 dan `Reported` pada TC-FA-SU-1199 mengikuti Expected TC. (4) Entri log baru bersifat permanen; baseline jumlah dicatat sebagai titik acuan dan asersi mengacu baris berdasarkan Name.
+- Temuan untuk QA (S-15): (1) TC-FA-SU-1198 dan 1199 menyebut nomor `TRF-` tanpa pola penuh, dan Report Disposal tidak bernomor (Transaction ID `—`); spec mengasersi awalan `TRF-` saja. (2) Aksi dijalankan lewat sesi API (R-20) sebagai Budi Santoso; nama aset seed memakai literal TC dan harus dijamin seed. (3) Activity `Requested` pada TC-FA-SU-1198 dan `Reported` pada TC-FA-SU-1199 mengikuti Expected TC. (4) Entri log baru bersifat permanen; baseline jumlah dicatat sebagai titik acuan dan asersi mengacu baris berdasarkan Name.

@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r90", "§Aturan Logika Modul#r39", "§9.2#r5", "§9.2#b17", "§9.2#b19", "§9.6#r5", FLD-DMG-03, FLD-DMG-04, FLD-DMG-05, V-DMG-03, V-DMG-04, V-DMG-05, FI-DMG-08, FI-DMG-11, FI-DMG-12, S-DMG-07, EC-DMG-16, EC-DMG-31, "§9.4.4#r23", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r9", "§9.4.1#r12", EB-FRM-4@repair-note, "§3#p7", F-DMG-05]
+sourceRules: ["§Aturan Logika Modul#r59", "§Aturan Logika Modul#r60", "§Aturan Logika Modul#r90", "§9.2#r5", "§9.2#b17", "§9.2#b19", "§9.6#r5", FLD-DMG-03, FLD-DMG-04, FLD-DMG-05, V-DMG-03, V-DMG-04, V-DMG-05, FI-DMG-08, FI-DMG-11, FI-DMG-12, S-DMG-07, EC-DMG-16, EC-DMG-31, "§9.4.4#r23", "§9.4.4#r25", "§9.4.4#r26", "§9.4.4#r9", "§9.4.1#r12", EB-FRM-4@repair-note, "§3#p7", F-DMG-05, "§9.2#r2"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -13,7 +13,6 @@ trace:
   "§Aturan Logika Modul#r59": [2, 19]
   "§Aturan Logika Modul#r60": 2
   "§Aturan Logika Modul#r90": 22
-  "§Aturan Logika Modul#r39": [39, 40, 41, 42, 43, 44, 45, 46]
   "§9.2#r5": 2
   "§9.2#b17": 31
   "§9.2#b19": [3, 24, 26]
@@ -38,6 +37,7 @@ trace:
   EB-FRM-4@repair-note: [15, 17]
   "§3#p7": 2
   F-DMG-05: 2
+  "§9.2#r2": 2
 ---
 
 # Server memvalidasi Mark as Repaired: Scan TAG milik aset untuk aset ber-TAG, After photo menurut setting, Repair note, identifikasi manual, status record Repaired dengan penghapusan penanda secara atomik, dan penolakan pada status Disposal
@@ -68,8 +68,6 @@ trace:
   - DU-204-19: Repair note `Komponen utama sudah diganti dan unit diuji ulang selama beberapa jam tanpa gangguan apa pun pada seluruh fungsinya, Komponen utama sudah diganti dan unit diuji ulang selama beberapa jam tanpa gangguan apa pun pada seluruh fungsinya, Komponen utama sudah diganti dan unit diuji ulang selama beberapa jam tanpa gangguan apa pun pada seluruh fungsinya, Komponenxy` (361 karakter).
   - DU-204-20: Repair note dikosongkan.
   - DU-204-21: After photo `perbaikan-{runId}.jpg`.
-  - DU-204-22: Aset `Generator Honda EU22i - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-G21 {runId}`, punya record `Damaged`, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya.
-  - DU-204-23: Aset `Rack Server Dell R740 - 21 {runId}`, Group `Head Office {runId}`, TAG `RFID-R21 {runId}`, punya record `Damaged`, Activity Lock `In Audit` karena menjadi item sesi Audit berjalan milik `Sinta Marlina {runId}` dengan baris audit `Verified`.
 - Kondisi:
   - After photo required bernilai `OFF`.
 
@@ -126,13 +124,3 @@ trace:
 36. Verifikasi permintaan ditolak karena status record sudah berubah dan record tetap `In Disposal Process`
 37. Verifikasi penolakan itu tidak menambah node Damage Log di kedua record
 38. Verifikasi penolakan itu tidak memicu event `damaged_resolved` untuk kedua record
-
-### Mark as Repaired tidak dibatasi Activity Lock dan tidak mengubah Work Order, jadwal maintenance, maupun baris Audit yang sudah final
-39. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Generator Honda EU22i - 21 {runId}` yang ber-Activity Lock `Under Maintenance` dengan Scan TAG `RFID-G21 {runId}` milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-40. Verifikasi permintaan diterima dan record menjadi `Repaired` untuk aset yang ber-Activity Lock `Under Maintenance`
-41. Verifikasi Work Order aset itu tidak diubah, tidak ditutup, dan tidak dijeda, dan jadwal maintenance aset itu tidak berubah
-42. Verifikasi Activity Lock `Under Maintenance` tetap ada setelah Mark as Repaired
-43. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Rack Server Dell R740 - 21 {runId}` yang ber-Activity Lock `In Audit` dengan Scan TAG `RFID-R21 {runId}` milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-44. Verifikasi permintaan diterima dan record menjadi `Repaired` untuk aset yang ber-Activity Lock `In Audit`
-45. Verifikasi baris audit aset itu di sesi milik `Sinta Marlina {runId}` tetap `Verified` dan tidak berubah oleh Mark as Repaired
-46. Verifikasi Activity Lock `In Audit` tetap ada setelah Mark as Repaired

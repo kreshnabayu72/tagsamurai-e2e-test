@@ -5,7 +5,7 @@ layer: be-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r76", "§Aturan Logika Modul#r77", "§Aturan Logika Modul#r78", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r81", V-DMG-02, "§9.2#b28", "§9.2#b29", "§9.2#b30", "§9.6#r10", EC-DMG-11, EC-DMG-12, EC-DMG-33, EC-DMG-34, "§9.4.4#r33", "§9.4.4#r34", "§9.4.4#r35", "§9.4.4#r36", "§9.7#r4", "§9.7#r15", "§9.7#r16", F-DMG-10, "§2#b6", "§3#p2", "§3#p7"]
+sourceRules: ["§Aturan Logika Modul#r68", "§Aturan Logika Modul#r69", "§Aturan Logika Modul#r70", "§Aturan Logika Modul#r71", "§Aturan Logika Modul#r72", "§Aturan Logika Modul#r73", "§Aturan Logika Modul#r74", "§Aturan Logika Modul#r75", "§Aturan Logika Modul#r76", "§Aturan Logika Modul#r77", "§Aturan Logika Modul#r78", "§Aturan Logika Modul#r79", "§Aturan Logika Modul#r81", V-DMG-02, "§9.2#b28", "§9.2#b29", "§9.2#b30", "§9.6#r10", EC-DMG-11, EC-DMG-12, EC-DMG-33, EC-DMG-34, "§9.4.4#r33", "§9.4.4#r34", "§9.4.4#r35", "§9.4.4#r36", "§9.7#r4", "§9.7#r15", "§9.7#r16", F-DMG-10, "§2#b6", "§3#p2", "§3#p7", "§9.2#r2"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -43,6 +43,7 @@ trace:
   "§2#b6": [37, 43]
   "§3#p2": [37, 43]
   "§3#p7": [3, 4, 5, 18, 25, 48, 50]
+  "§9.2#r2": 45
 ---
 
 # Server menahan dan melepas Damage record saat aset dilaporkan Missing, ditemukan, laporan Missing ditutup, atau Missing → Disposed, menolak aksi pada record berpenanda Missing, dan menangani Report Missing atas record Disposal

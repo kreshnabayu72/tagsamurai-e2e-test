@@ -10,17 +10,17 @@ smoke: []
 dependsOn:
   - "Borrow: baris Borrow, form Borrow"
 trace:
-  "§Aturan Logika Modul#r41": [15, 23]
-  "§Aturan Logika Modul#r42": [29, 30]
-  "§Aturan Logika Modul#r43": [31]
-  "EC-DMG-09": [23, 29, 30, 34]
+  "§Aturan Logika Modul#r41": [15, 25]
+  "§Aturan Logika Modul#r42": [31, 32]
+  "§Aturan Logika Modul#r43": [33]
+  "EC-DMG-09": [25, 31, 32, 36]
   "EC-DMG-18": [3]
-  "§9.4.4#r21": [25]
+  "§9.4.4#r21": [27]
   "§9.4.4#r8": [3]
-  "§9.2#b19": [29, 30]
-  "T-DMG-01": [13, 15, 20]
-  "§9.7#r9": [29, 31, 34]
-anchor: [8, 9, 10, 19]
+  "§9.2#b19": [31, 32]
+  "T-DMG-01": [13, 15, 16, 17, 22]
+  "§9.7#r9": [31, 33, 36]
+anchor: [8, 9, 10, 21]
 coverage:
   web: automated
 ---
@@ -58,26 +58,28 @@ coverage:
 13. Verifikasi baris aset `Tablet Samsung Tab A8 {runId}` tampil di sub-tab `Active` dengan Status `Damaged`
 14. Klik `⋯` pada baris aset `Tablet Samsung Tab A8 {runId}`
 15. Verifikasi aksi `Mark as Repaired` tampil pada menu baris
-16. Klik `Mark as Repaired`
-17. Isi Repair note `Sentuhan layar sudah dikalibrasi ulang dan berfungsi normal`
-18. Klik `[Mark as Repaired]`
-19. Verifikasi baris aset `Camera Canon EOS {runId}` tetap tampil di sub-tab `Active`
-20. Verifikasi baris aset `Tablet Samsung Tab A8 {runId}` tidak tampil lagi di sub-tab `Active`
-21. Klik sub-tab `History`
-22. Ketik Search `{runId}`, tekan Enter
-23. Verifikasi baris aset `Tablet Samsung Tab A8 {runId}` tampil di sub-tab `History` dengan Status `Repaired`
-24. Klik nama aset pada baris aset `Tablet Samsung Tab A8 {runId}`
-25. Verifikasi node `Marked as repaired by [Admin Name]` tampil di dialog Damage Log dengan baris detail Repair note `Sentuhan layar sudah dikalibrasi ulang dan berfungsi normal`
-26. Tutup dialog Damage Log
+16. Verifikasi aksi `Report Disposal` pada menu itu Disabled
+17. Verifikasi aksi `Report Missing` pada menu itu aktif dan bisa diklik
+18. Klik `Mark as Repaired`
+19. Isi Repair note `Sentuhan layar sudah dikalibrasi ulang dan berfungsi normal`
+20. Klik `[Mark as Repaired]`
+21. Verifikasi baris aset `Camera Canon EOS {runId}` tetap tampil di sub-tab `Active`
+22. Verifikasi baris aset `Tablet Samsung Tab A8 {runId}` tidak tampil lagi di sub-tab `Active`
+23. Klik sub-tab `History`
+24. Ketik Search `{runId}`, tekan Enter
+25. Verifikasi baris aset `Tablet Samsung Tab A8 {runId}` tampil di sub-tab `History` dengan Status `Repaired`
+26. Klik nama aset pada baris aset `Tablet Samsung Tab A8 {runId}`
+27. Verifikasi node `Marked as repaired by [Admin Name]` tampil di dialog Damage Log dengan baris detail Repair note `Sentuhan layar sudah dikalibrasi ulang dan berfungsi normal`
+28. Tutup dialog Damage Log
 
 ### Baris Borrow tetap Borrowed, pemegang tidak berubah, dan penanda Damaged hilang bersama record
-27. Buka halaman Borrow
-28. Ketik Search `{runId}`, tekan Enter
-29. Verifikasi baris Borrow aset `Tablet Samsung Tab A8 {runId}` tetap berstatus `Borrowed`
-30. Verifikasi pemegang pada baris itu tetap `Dewi Anggraini {runId}`
-31. Verifikasi baris itu tidak lagi memuat penanda `Damaged`
+29. Buka halaman Borrow
+30. Ketik Search `{runId}`, tekan Enter
+31. Verifikasi baris Borrow aset `Tablet Samsung Tab A8 {runId}` tetap berstatus `Borrowed`
+32. Verifikasi pemegang pada baris itu tetap `Dewi Anggraini {runId}`
+33. Verifikasi baris itu tidak lagi memuat penanda `Damaged`
 
 ### Status global aset tetap Borrowed sesudah Mark as Repaired
-32. Buka halaman Assets, tab `Assets`
-33. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
-34. Verifikasi status global aset `Borrowed` pada baris `Tablet Samsung Tab A8 {runId}`
+34. Buka halaman Assets, tab `Assets`
+35. Ketik Search `Tablet Samsung Tab A8 {runId}`, tekan Enter
+36. Verifikasi status global aset `Borrowed` pada baris `Tablet Samsung Tab A8 {runId}`

@@ -1,10 +1,10 @@
 {
  "suite": "specs/FixedAsset/Damaged",
  "prd": "fixed-asset@f688ea9",
- "prdSha": "6f79946a09f41c96",
- "foundation": "foundation@6011f14-dirty",
+ "prdSha": "270724071328960a",
+ "foundation": "foundation@21e4b47-dirty",
  "kontrakKomponen": "wangs-ui@1.0.0",
  "kontrakSamaDenganPin": false,
- "stage": "prd-harness@963b2f8",
- "ditutup": "2026-11-23T08:14:41Z"
+ "stage": "prd-harness@0fdd9f8",
+ "ditutup": "2026-11-25T07:15:12Z"
 }

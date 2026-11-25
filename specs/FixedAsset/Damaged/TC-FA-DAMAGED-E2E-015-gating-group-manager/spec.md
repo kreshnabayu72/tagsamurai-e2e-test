@@ -17,7 +17,7 @@ trace:
   §2.1#r6: [11, 48]
   §2.1#r7: 12
   §2.1#r8: 13
-  §2.1#r9: 16
+  §2.1#r9: [16, 61]
   §2.1#r10: 23
   §2.1#r11: [6, 7, 8]
   §4.8#r1: [1, 2]
@@ -28,7 +28,7 @@ trace:
   §4.8#r6: 19
   §4.8#r7: 20
   §4.8#r10: 13
-  §4.8#r11: [16, 58]
+  §4.8#r11: [16, 58, 61]
   §4.8#r12: 29
   §4.8#r13: [22, 23]
   §2#b2: [6, 8]
@@ -38,7 +38,7 @@ trace:
   §9.11#r2: 29
   T-DMG-01: [6, 33]
   §9.3#b1: [25, 48, 49]
-anchor: [57]
+anchor: [57, 59]
 coverage:
   web: automated
 ---
@@ -61,7 +61,10 @@ coverage:
   - DU-015-10: User `Rina Wijaya {runId}`, role Group Manager dengan Group binaan `Head Office {runId}`, tanpa hak Manage accounting; cakupan: Group binaan beserta sub-group.
   - DU-015-11: User `Dewi Anggraeni {runId}`, pelapor umum tanpa hak Aktor Damaged; cakupan: aset yang ia pegang.
   - DU-015-13: Damage record aset `Forklift Toyota 8FD {runId}` di Group `Branch Surabaya {runId}` (DU-015-9, di luar Group binaan), status `Reported Disposal`, Source `Manual`, dilaporkan DU-015-10.
-  - Badge jumlah pada tab `Damaged` bernilai `2`, dari DU-015-1 (`Waiting for Confirmation`) dan DU-015-2 (`Damaged` tanpa penanda Missing) di Group binaan beserta sub-group; DU-015-3 (`Reported Disposal`) dan DU-015-5 (`Repaired`) tidak dihitung, dan DU-015-4 di luar Group binaan tidak dihitung.
+  - DU-015-14: Damage record aset `Monitor Dell P2422H {runId}` di Group `Head Office {runId}`, status `Reported Disposal`, Source `Manual`, dilaporkan DU-015-15.
+  - DU-015-15: User `Agus Pratama {runId}`, role Total Control; cakupan: seluruh Group.
+  - Badge jumlah pada tab `Damaged` bernilai `2`, dari DU-015-1 (`Waiting for Confirmation`) dan DU-015-2 (`Damaged` tanpa penanda Missing) di Group binaan beserta sub-group; DU-015-3 dan DU-015-14 (`Reported Disposal`) dan DU-015-5 (`Repaired`) tidak dihitung, dan DU-015-4 di luar Group binaan tidak dihitung.
+- Kondisi: After photo required bernilai `OFF`.
 
 ## Test Steps
 
@@ -140,3 +143,9 @@ coverage:
 56. Ketik Search `{runId}`, tekan Enter
 57. Verifikasi baris `Printer HP LaserJet M404 {runId}` di Group binaan `Head Office {runId}` tampil di tabel dengan status `Reported Disposal`
 58. Verifikasi baris `Forklift Toyota 8FD {runId}` di Group `Branch Surabaya {runId}` tidak tampil di tabel
+
+### Cancel Disposal Report tampil untuk laporan aktor lain di Group binaan
+59. Verifikasi baris `Monitor Dell P2422H {runId}` di Group binaan `Head Office {runId}` tampil di tabel dengan status `Reported Disposal`, dilaporkan `Agus Pratama {runId}`
+60. Klik `⋯` pada baris `Monitor Dell P2422H {runId}`
+61. Verifikasi item `Cancel Disposal Report` tampil pada menu baris atas laporan yang dilaporkan `Agus Pratama {runId}`, bukan oleh Group Manager sendiri
+62. Tekan Esc untuk menutup menu baris

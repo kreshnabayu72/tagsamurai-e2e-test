@@ -24,7 +24,7 @@ trace:
   "§9.4.1#r13": 26
   "§9.4.1#r14": [28, 30, 64]
   "§9.4.1#r10": 33
-  T-DMG-01: [2, 3, 5, 11, 17, 19, 60]
+  T-DMG-01: [2, 3, 5, 11, 17, 19, 60, 73, 76]
   T-DMG-02: [7, 14, 15, 21, 61]
   "§9.7#r18": [60, 61, 62, 63, 64, 65, 70, 71]
 ---
@@ -96,6 +96,7 @@ trace:
   - DU-210-56: Aset `Forklift Toyota 8FD - 219 {runId}`, Group `Cabang Asal {runId}`, punya record `Damaged` Source `Manual`, dalam pemindahan menuju `Cabang Tujuan {runId}`.
   - DU-210-57: Aset `Forklift Toyota 8FD - 220 {runId}`, Group `Cabang Asal {runId}`, punya record `Damaged` Source `Manual`.
   - DU-210-58: Aset `Forklift Toyota 8FD - 221 {runId}`, Group `Cabang Tujuan {runId}`, punya record `Damaged` Source `Manual`.
+  - DU-210-59: Aset `Laptop Lenovo ThinkPad - 222 {runId}`, Group `Head Office {runId}`, punya foto aset `foto-aset-222.jpg`, punya record `Damaged` Source `Manual` dengan satu Damaged Photo `kerusakan-222.jpg`.
 - Kondisi:
   - Time Zone company bernilai `Asia/Jakarta`.
   - Date Format bernilai `dd/MM/yy` dan Time Format bernilai `24h`.
@@ -204,3 +205,10 @@ trace:
 ### Kolom Photo hanya mengikuti Damaged Photo pertama, sedangkan After photo hanya memengaruhi node Marked as repaired by
 70. Verifikasi respons daftar record Active untuk `Laptop Lenovo ThinkPad - 218 {runId}` tidak lagi memuat Damaged Photo pada kolom Photo, karena Damaged Photo pertamanya sudah dihapus
 71. Verifikasi respons daftar record History untuk `Printer HP LaserJet M404 - 202 {runId}` tetap memuat Damaged Photo pertama `printer-rusak.jpg` pada kolom Photo, karena menghapus After photo tidak memengaruhi kolom Photo
+
+### Kolom Photo memakai Damaged Photo pertama dan kembali ke foto aset sesudah Damaged Photo dihapus
+72. Total Control `Agus Pratama {runId}` meminta daftar record Active yang memuat `Laptop Lenovo ThinkPad - 222 {runId}` yang punya foto aset `foto-aset-222.jpg` dan Damaged Photo pertama `kerusakan-222.jpg`
+73. Verifikasi kolom Photo `Laptop Lenovo ThinkPad - 222 {runId}` di respons memuat Damaged Photo pertama `kerusakan-222.jpg`, bukan foto aset `foto-aset-222.jpg`
+74. Total Control `Agus Pratama {runId}` menghapus berkas Damaged Photo `kerusakan-222.jpg` milik laporan `Laptop Lenovo ThinkPad - 222 {runId}` dari `File Manager`
+75. Total Control `Agus Pratama {runId}` meminta lagi daftar record Active yang memuat `Laptop Lenovo ThinkPad - 222 {runId}`
+76. Verifikasi kolom Photo `Laptop Lenovo ThinkPad - 222 {runId}` di respons memuat foto aset `foto-aset-222.jpg`, bukan Damaged Photo, dan status record tetap `Damaged`

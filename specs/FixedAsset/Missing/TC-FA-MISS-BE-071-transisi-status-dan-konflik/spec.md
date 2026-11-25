@@ -1,259 +1,311 @@
 ---
 id: TC-FA-MISS-BE-071-transisi-status-dan-konflik
-title: "Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, dan record selesai tidak dibuka ulang"
+title: "Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, record selesai tidak dibuka ulang"
 layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
 owner: BE
-sourceRules: [§1.2#r18, §1.2#r19, §1.2#r20, §1.2#r21, §1.2#r22, §1.2#r23, §1.2#r104, §1.2#r105, §1.2#r62, §1.2#r63, §1.2#r102, §1.2#r103, §1.2#r67, §1.2#r59, §9.2#r1, §9.2#r2, §9.2#r3, §9.2#r4, §9.2#r5, §9.2#r6, §9.2#r7, §9.2#r8, §9.2#p2, §6#r2, §6#r3, §6#r10, §9.2#b20, §9.4.2#r28, §9.4.2#r22, §9.4.2#r12, §9.4.3#b4, §9.4.3#b5, §9.6#r2, §9.6#r3, §9.6#r4, §9.6#r5, §9.6#r7, §9.6#p2, §9.4.4#r7, §9.4.4#r17, §9.4.4#r22, §9.4.1#r7, §9.2#b36, §10#r4, §10#r5, EB-CON-3, EB-EDG-1, §4.2.4#p14, §9.2#b30, §9.2#b31, §9.4.2#r38, §9.2#b37, §1.2#r71, §3#p4, §9.4.2#r11, §9.4.2#r37]
+sourceRules: ["§1.2#r18", "§1.2#r19", "§1.2#r20", "§1.2#r21", "§1.2#r22", "§1.2#r23", "§1.2#r104", "§1.2#r105", "§1.2#r62", "§1.2#r63", "§1.2#r102", "§1.2#r103", "§1.2#r67", "§1.2#r59", "§9.2#r1", "§9.2#r2", "§9.2#r3", "§9.2#r4", "§9.2#r5", "§9.2#r6", "§9.2#r7", "§9.2#r8", "§9.2#p2", "§6#r2", "§6#r3", "§6#r10", "§9.2#b20", "§9.4.2#r28", "§9.4.2#r22", "§9.4.2#r12", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§9.6#r5", "§9.6#r7", "§9.6#p2", "§9.4.4#r7", "§9.4.4#r17", "§9.4.4#r22", "§9.4.1#r7", "§9.2#b36", "§10#r4", "§10#r5", "EB-CON-3", "EB-EDG-1", "§4.2.4#p14", "§9.2#b30", "§9.2#b31", "§9.2#b37", "§9.4.2#r38", "§3#p4", "§9.4.2#r11", "§1.2#r71", "§9.4.2#r37", "§8.1#r16", "§8.1#r17", "§3#p8", "§9.8#p2", "§11#r11"]
 smoke: []
 dependsOn: []
 trace:
-  §1.2#r18: [2, 11, 19, 47, 53]
-  §1.2#r19: 25
-  §1.2#r20: 29
-  §1.2#r21: [15, 65]
-  §1.2#r22: [57, 59, 61, 63]
-  §1.2#r23: 2
-  §1.2#r104: [67, 69, 71]
-  §1.2#r105: 23
-  §1.2#r62: 75
-  §1.2#r63: 76
-  §1.2#r102: [15, 49]
-  §1.2#r103: 47
-  §1.2#r67: [81, 83]
-  §1.2#r59: [4, 44]
-  §9.2#r1: [2, 33]
-  §9.2#r2: [2, 57, 65]
-  §9.2#r3: 11
-  §9.2#r4: [47, 57]
-  §9.2#r5: 19
-  §9.2#r6: [53, 73]
-  §9.2#r7: 25
-  §9.2#r8: 29
-  §9.2#p2: [2, 67]
-  §6#r2: [13, 51]
-  §6#r3: 49
-  §6#r10: [6, 35]
-  §9.2#b20: [35, 38, 41, 55]
-  §9.4.2#r28: [35, 38, 41, 44, 49, 55]
-  §9.4.2#r22: [75, 76]
-  §9.4.2#r12: [13, 19, 51]
-  §9.4.3#b4: [67, 69, 71]
-  §9.4.3#b5: [75, 77]
-  §9.6#r2: [2, 6, 96]
-  §9.6#r3: [25, 27]
-  §9.6#r4: [19, 21]
-  §9.6#r5: 9
-  §9.6#r7: [29, 31, 44]
-  §9.6#p2: [35, 38]
-  §9.4.4#r7: [35, 41]
-  §9.4.4#r17: [16, 17]
-  §9.4.4#r22: 76
-  §9.4.1#r7: 33
-  §9.2#b36: 75
-  §10#r4: [53, 77]
-  §10#r5: [85, 86]
-  EB-CON-3: [35, 38, 41, 44, 49]
-  EB-EDG-1: [67, 69, 71, 73, 88, 90, 92, 94]
-  §4.2.4#p14: [35, 55, 103]
-  §9.2#b30: [11, 15, 57, 65]
-  §9.2#b31: [15, 49, 79]
-  §9.4.2#r38: [98, 99, 100, 103, 105]
-  §9.2#b37: [98, 99, 105]
-  §1.2#r71: [107, 108, 109]
-  §9.4.2#r37: [107, 108, 109]
-  §3#p4: [25, 29, 33, 107]
-  §9.4.2#r11: [57, 59, 65, 110]
+  "§1.2#r18": [2, 23, 48, 58, 89]
+  "§1.2#r19": 8
+  "§1.2#r20": 14
+  "§1.2#r21": [32, 38, 44]
+  "§1.2#r22": [50, 52, 54, 56]
+  "§1.2#r23": 85
+  "§1.2#r104": [64, 66, 68, 70, 72]
+  "§1.2#r105": [74, 75]
+  "§1.2#r62": 112
+  "§1.2#r63": 113
+  "§1.2#r102": [81, 83]
+  "§1.2#r103": [48, 50]
+  "§1.2#r67": [135, 137]
+  "§1.2#r59": [98, 100, 103]
+  "§9.2#r1": [2, 8, 14, 20]
+  "§9.2#r2": [23, 26]
+  "§9.2#r3": [23, 48, 50]
+  "§9.2#r4": [48, 50, 58]
+  "§9.2#r5": [26, 27]
+  "§9.2#r6": 58
+  "§9.2#r7": [8, 9]
+  "§9.2#r8": [14, 15]
+  "§9.2#p2": [85, 89]
+  "§6#r2": [36, 77, 79]
+  "§6#r3": [81, 83, 106]
+  "§6#r10": [92, 95]
+  "§9.2#b20": [92, 95, 98, 103, 106]
+  "§9.4.2#r28": [18, 92, 95, 98, 103, 106]
+  "§9.4.2#r22": 112
+  "§9.4.2#r12": [36, 42]
+  "§9.4.3#b4": [64, 68, 72]
+  "§9.4.3#b5": [113, 117]
+  "§9.6#r2": [2, 3, 6]
+  "§9.6#r3": [9, 12]
+  "§9.6#r4": 30
+  "§9.6#r5": [108, 110]
+  "§9.6#r7": [14, 15, 18]
+  "§9.6#p2": 110
+  "§9.4.4#r7": [92, 106]
+  "§9.4.4#r17": [40, 42]
+  "§9.4.4#r22": 113
+  "§9.4.1#r7": [20, 21]
+  "§9.2#b36": 112
+  "§10#r4": [116, 117]
+  "§10#r5": [62, 75, 87]
+  "EB-CON-3": [92, 95, 98, 103, 106]
+  "EB-EDG-1": [6, 64, 68, 72]
+  "§4.2.4#p14": [60, 92]
+  "§9.2#b30": [23, 48, 50]
+  "§9.2#b31": [85, 132, 133]
+  "§9.2#b37": [126, 128]
+  "§9.4.2#r38": [126, 128, 130]
+  "§3#p4": [2, 8, 14, 20, 126]
+  "§9.4.2#r11": [32, 33, 50]
+  "§1.2#r71": [119, 120, 122, 124]
+  "§9.4.2#r37": [119, 122, 124]
+  "§8.1#r16": 33
+  "§8.1#r17": [39, 45]
+  "§3#p8": [48, 58]
+  "§9.8#p2": [24, 34, 40, 46]
+  "§11#r11": [132, 133]
 ---
 
-# Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, dan record selesai tidak dibuka ulang
+# Server: tabel transisi status record, aksi atas status yang sudah berubah ditolak tanpa efek ganda, idempotensi per aksi, record selesai tidak dibuka ulang
 
 ## Prerequisites
-- Aktor: Rina W, Total Control dengan cakupan seluruh client dan Aktor Disposal; `Bambang Wijaya {runId}` (DU-071-1), Total Control dengan cakupan seluruh client dan Aktor Disposal; `Joko Susilo {runId}` (DU-071-2), pemegang tanpa hak Aktor Missing; `Sabrina Putri {runId}` (DU-071-31), Staff Auditor tanpa hak Aktor Missing; approver Disposal dan job sistem hanya sebagai pemicu keadaan.
+- Aktor:
+  - Aktor Missing A: Total Control, cakupan seluruh client, bukan Last holder satu pun record di Data.
+  - Aktor Missing B: Total Control lain, cakupan seluruh client, bukan Last holder satu pun record di Data.
+  - Aktor Disposal: Total Control A yang sama dengan Aktor Missing A, memutuskan Report dan Request Disposal.
+  - Pemegang: Borrower atau Assignee aset tanpa hak Aktor Missing pada Group aset; pemegang yang sama melapor dan membatalkan laporannya sendiri.
+  - Pelapor sesi: Asset Admin sub-tab Audit tanpa hak Aktor Missing pada Group aset.
+  - Staff Auditor: tanpa hak Aktor Missing pada Group aset.
 - Data:
-  - DU-071-1: User Name `Bambang Wijaya {runId}`, Peran `Total Control`.
-  - DU-071-2: User Name `Joko Susilo {runId}`, Peran `pemegang tanpa hak Aktor Missing`.
-  - DU-071-3: Asset Name `Hand Pallet Truck {runId}`, Asset ID `FA071-001`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-4: Asset Name `Laptop Dell Latitude 5420 {runId}`, Asset ID `FA071-002`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-5: Asset Name `Scanner Zebra DS2208 {runId}`, Asset ID `FA071-003`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-6: Asset Name `Printer HP LaserJet M404 {runId}`, Asset ID `FA071-004`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-7: Asset Name `Camera Canon EOS {runId}`, Asset ID `FA071-005`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Missing`.
-  - DU-071-8: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA071-006`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-9: Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `FA071-007`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-10: Asset Name `Toyota Innova {runId}`, Asset ID `FA071-008`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Reported Disposal`.
-  - DU-071-11: Asset Name `Mesin Fotokopi Ricoh {runId}`, Asset ID `FA071-009`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `In Disposal Process`.
-  - DU-071-12: Asset Name `Drill Bosch GSB {runId}`, Asset ID `FA071-010`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `In Disposal Process`.
-  - DU-071-13: Asset Name `Genset Honda EU22 {runId}`, Asset ID `FA071-011`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `In Disposal Process`.
-  - DU-071-14: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA071-012`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `In Disposal Process`.
-  - DU-071-15: Asset Name `Kamera Sony A7 {runId}`, Asset ID `FA071-013`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `In Disposal Process`.
-  - DU-071-16: Asset Name `Laptop Lenovo ThinkPad T14 {runId}`, Asset ID `FA071-014`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Reported Disposal`.
-  - DU-071-17: Asset Name `Hand Truck Gudang {runId}`, Asset ID `FA071-015`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation, dilaporkan T0 − 90 hari`.
-  - DU-071-18: Asset Name `Kursi Ergonomis {runId}`, Asset ID `FA071-016`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Missing, dilaporkan T0 − 45 hari`.
-  - DU-071-19: Asset Name `Brankas Besi {runId}`, Asset ID `FA071-017`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`, Condition tersimpan `Damaged, tidak lagi dapat dipulihkan`.
-  - DU-071-20: Asset Name `Papan Tulis {runId}`, Asset ID `FA071-018`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`, Condition tersimpan `Damaged, tidak lagi dapat dipulihkan`.
-  - DU-071-21: Asset Name `Meja Kerja Kayu {runId}`, Asset ID `FA071-019`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Found`.
-  - DU-071-22: Asset Name `Rak Besi Gudang {runId}`, Asset ID `FA071-020`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Disposed`.
-  - DU-071-23: Asset Name `Lemari Arsip Besi {runId}`, Asset ID `FA071-021`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Rejected`.
-  - DU-071-24: Asset Name `Kipas Angin Standing {runId}`, Asset ID `FA071-022`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Canceled`.
-  - DU-071-30: Asset Name `Kulkas Pendingin {runId}`, Asset ID `FA071-023`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}`, Record berjalan `Waiting for Confirmation`, Pelapor `Joko Susilo {runId}`.
-  - DU-071-31: User Name `Sabrina Putri {runId}`, Peran `Staff Auditor tanpa hak Aktor Missing`.
-  - DU-071-32: Asset Name `Kabinet Server {runId}`, Asset ID `FA071-024`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`, baris pada sesi `Audit Gudang {runId}` semula `Pending`.
-  - DU-071-33: Asset Name `Meja Resepsionis {runId}`, Asset ID `FA071-025`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`.
-  - DU-071-34: Asset Name `Lemari Berkas Jati {runId}`, Asset ID `FA071-026`, Condition `Normal`, TAG `tanpa TAG`, Record berjalan `Missing`, Source `Audit`, dilaporkan langsung `Missing` oleh Rina W.
-  - DU-071-36: Asset Name `Server Rack Gudang {runId}`, Asset ID `FA071-027`, Condition `Normal`, TAG `tanpa TAG`, Pemegang `Joko Susilo {runId}` dengan baris transaksi berjalan berstatus `Borrowed`, Record berjalan `Waiting for Confirmation`, Source `Audit`, Pelapor `Sabrina Putri {runId}`.
-  - DU-071-35: Sesi Audit `Audit Gudang {runId}` milik `Sabrina Putri {runId}`, memuat aset DU-071-32, DU-071-33, dan DU-071-34.
+  - DU-071-1: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Laptop Dell Latitude 5420 {runId}` di Group `Head Office`, dipegang Borrower lewat baris Borrow terbuka, status global aset `Missing`.
+  - DU-071-2: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Monitor LG 27UL500 {runId}` di Group `Head Office`, dipegang Borrower lewat baris Borrow terbuka, status global aset `Missing`.
+  - DU-071-3: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Hand Pallet Truck {runId}` di Group `Head Office`, dipegang Assignee lewat baris Assignment terbuka, status global aset `Missing`.
+  - DU-071-4: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Camera Canon EOS {runId}` di Group `Head Office`, dipegang Borrower lewat baris Borrow terbuka, tanpa TAG, status global aset `Missing`.
+  - DU-071-5: Missing record berstatus `Missing`, Source `Manual`, aset `Projector Epson EB-X06 {runId}` di Group `Head Office`.
+  - DU-071-6: Missing record berstatus `Missing`, Source `Manual`, aset `Scanner Zebra DS2208 {runId}` di Group `Head Office`, tanpa TAG.
+  - DU-071-7: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Drill Bosch GSB {runId}` di Group `Head Office`, Disposal Report berstatus `Reported`.
+  - DU-071-8: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Forklift Toyota 8FD {runId}` di Group `Head Office`, tanpa TAG, Disposal Report berstatus `Reported`.
+  - DU-071-9: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Router Cisco ISR {runId}` di Group `Head Office`, Disposal Report berstatus `Reported` dilaporkan Aktor Missing A.
+  - DU-071-10: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Handheld Zebra TC21 {runId}` di Group `Head Office`, Disposal Report berstatus `Reported`.
+  - DU-071-11: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `Generator Honda EU20 {runId}` di Group `Head Office`, baris Disposal Write-off `Waiting for Approval`.
+  - DU-071-12: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `Kursi Ergonomis Ergotec {runId}` di Group `Head Office`, baris Disposal Write-off `Waiting for Approval`.
+  - DU-071-13: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `Meja Rapat Informa {runId}` di Group `Head Office`, baris Disposal Write-off `Waiting for Approval`.
+  - DU-071-14: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `AC Daikin FTV35 {runId}` di Group `Head Office`, baris Disposal Write-off `Waiting for Approval`.
+  - DU-071-15: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `Server Dell PowerEdge R450 {runId}` di Group `Head Office`, baris Disposal Write-off `Waiting for Execution`.
+  - DU-071-16: Missing record berstatus `Found`, Source `Borrow`, aset `Barcode Printer Zebra ZD230 {runId}` di Group `Head Office`, status global aset `Normal`.
+  - DU-071-17: Missing record berstatus `Rejected`, Source `Reported by holder`, aset `Mesin Fotokopi Fuji Xerox {runId}` di Group `Head Office`.
+  - DU-071-18: Missing record berstatus `Canceled`, Source `Reported by holder`, aset `Tablet Samsung Galaxy Tab A8 {runId}` di Group `Head Office`.
+  - DU-071-19: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Proyektor BenQ MW550 {runId}` di Group `Head Office`.
+  - DU-071-20: Missing record berstatus `In Disposal Process`, Source `Manual`, aset `UPS APC Smart 1500 {runId}` di Group `Head Office`.
+  - DU-071-21: Missing record berstatus `Missing`, Source `Transfer`, aset `Switch Cisco Catalyst 2960 {runId}` di Group `Head Office`.
+  - DU-071-22: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Kamera CCTV Hikvision {runId}` di Group `Head Office`.
+  - DU-071-23: Missing record berstatus `Missing`, Source `Manual`, aset `Timbangan Digital Ohaus {runId}` di Group `Head Office`, tanpa TAG.
+  - DU-071-24: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Mixer Audio Yamaha MG10 {runId}` di Group `Head Office`, tanpa TAG.
+  - DU-071-25: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Radio Handy Motorola {runId}` di Group `Head Office`, tanpa TAG.
+  - DU-071-26: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Laptop HP ProBook 450 {runId}` di Group `Head Office`.
+  - DU-071-27: Missing record berstatus `Reported Disposal`, Source `Manual`, aset `Monitor Dell P2422H {runId}` di Group `Head Office`, Disposal Report berstatus `Reported`.
+  - DU-071-28: Missing record berstatus `Missing`, Source `Manual`, aset `Keyboard Logitech MX {runId}` di Group `Head Office`.
+  - DU-071-29: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Telepon IP Yealink T46 {runId}` di Group `Head Office`.
+  - DU-071-30: Missing record berstatus `Missing`, Source `Manual`, aset `Trolley Besi Gudang {runId}` di Group `Head Office`.
+  - DU-071-31: aset `Kompresor Swan 2HP {runId}` di Group `Head Office`, dipegang Borrower lewat baris Borrow terbuka, belum punya record berjalan.
+  - DU-071-32: aset `Genset Perkins 20kVA {runId}` di Group `Head Office`, belum punya record berjalan.
+  - DU-071-33: Missing record berstatus `Waiting for Confirmation`, Source `Audit`, aset `Lemari Arsip Brother {runId}` di Group `Head Office`, dilaporkan Pelapor sesi dari Task Detail sesi pemeriksaan, baris sesi pemeriksaan `Not found`.
+  - DU-071-34: Missing record berstatus `Missing`, Source `Audit`, aset `Laptop Asus ExpertBook B1 {runId}` di Group `Head Office`, dilaporkan Pelapor sesi lalu di-Confirm Aktor Missing.
+  - DU-071-35: Missing record berstatus `Missing`, Source `Audit`, aset `Printer Epson L3250 {runId}` di Group `Head Office`, dilaporkan Group Manager dari Task Detail sesi pemeriksaan sehingga langsung `Missing`.
+  - DU-071-36: Missing record berstatus `Missing`, Source `Reconciliation`, aset `Dispenser Sharp {runId}` di Group `Head Office`.
+  - DU-071-37: Missing record berstatus `Waiting for Confirmation`, Source `Reported by holder`, aset `Telepon IP Cisco 7841 {runId}` di Group `Head Office`, Condition aset sebelum laporan sudah tidak dapat dipulihkan.
+  - DU-071-38: Missing record berstatus `Disposed`, Source `Manual`, aset `Lampu Sorot Philips {runId}` di Group `Head Office`, aset berstatus Disposed.
+  - DU-071-39: Reason Reject `Aset masih dipegang peminjam`, dipakai Aktor Missing A dan B.
+  - DU-071-40: Update `Pencarian di gudang sudah dilakukan tim operasional`.
+  - DU-071-41: Update `Pencarian di lobi sudah dilakukan tim keamanan`.
+  - DU-071-42: What happened `Aset hilang saat dipindahkan antar ruangan`.
+  - DU-071-43: Reason Report Disposal `Aset tidak ditemukan setelah pencarian`.
+  - DU-071-44: Reason Decline Report `Aset masih dalam proses pencarian`.
 - Kondisi:
-  - Long missing after bernilai `30`
+  - Long missing after bernilai `30`.
+  - Jumlah event `missing_*`, jumlah node Missing Log, dan nilai `Last Updated` setiap record di Data dicatat sebelum aksi pertama atas record itu.
+  - Cakupan Group Aktor Missing A dan B meliputi `Head Office`.
 
 ## Test Steps
-### Record melewati Waiting for Confirmation, Missing, Reported Disposal, dan Found
-1. Rina W menjalankan Confirm atas record `Hand Pallet Truck {runId}` yang berstatus `Waiting for Confirmation`
-2. Verifikasi record `Hand Pallet Truck {runId}` berstatus `Missing` dan status global aset Missing
-3. Rina W menjalankan Reject atas record `Hand Pallet Truck {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
-4. Verifikasi aksi itu ditolak dengan `D-MIS-06`, record `Hand Pallet Truck {runId}` tetap `Missing`, dan tidak berubah menjadi `Rejected`
-5. Rina W mengirim ulang Confirm atas record `Hand Pallet Truck {runId}`
-6. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06`, record `Hand Pallet Truck {runId}` tetap `Missing`, dan node `Report confirmed by` tetap satu
-7. Rina W menjalankan Add Update atas record `Hand Pallet Truck {runId}` dengan Update `Pencarian di gudang lantai satu belum membuahkan hasil`
-8. Rina W menjalankan Add Update atas record `Hand Pallet Truck {runId}` dengan Update `Pencarian di gudang lantai dua belum membuahkan hasil`
-9. Verifikasi record `Hand Pallet Truck {runId}` memuat dua node `Update added by` yang terpisah, satu per Submit, dan statusnya tetap `Missing`
-10. Rina W menjalankan Report Disposal atas record `Hand Pallet Truck {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
-11. Verifikasi record `Hand Pallet Truck {runId}` berstatus `Reported Disposal` dengan Condition aset `Reported Disposal` dan Custody `Available`
-12. Rina W menjalankan Mark as Found atas record `Hand Pallet Truck {runId}` yang berstatus `Reported Disposal`
-13. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Hand Pallet Truck {runId}` tetap `Reported Disposal`
-14. Rina W menjalankan Cancel Disposal Report atas record `Hand Pallet Truck {runId}`
-15. Verifikasi record `Hand Pallet Truck {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
-16. Verifikasi record `Hand Pallet Truck {runId}` memuat node `Disposal report canceled by` dengan Back to Missing `Yes`
-17. Verifikasi transisi Cancel Disposal Report itu tidak mengirim event `missing_*`
-18. Rina W menjalankan Mark as Found atas record `Hand Pallet Truck {runId}` dengan Found at default Group aset dan Asset Status `Normal`
-19. Verifikasi record `Hand Pallet Truck {runId}` berstatus `Found` dan status global aset menjadi Normal lalu Available
-20. Rina W mengirim ulang Mark as Found atas record `Hand Pallet Truck {runId}`
-21. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06`, record `Hand Pallet Truck {runId}` tetap `Found`, dan node `Marked as found by` tetap satu
-22. Rina W mengirim Report Missing atas `Hand Pallet Truck {runId}` dengan What happened `Aset hilang lagi sesudah pemeriksaan bulanan`
-23. Verifikasi aset `Hand Pallet Truck {runId}` mendapat record baru berstatus `Missing` dan record `Found` sebelumnya tetap berstatus `Found`
 
-### Laporan pemegang yang ditolak selesai sebagai Rejected
-24. Rina W menjalankan Reject atas record `Laptop Dell Latitude 5420 {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
-25. Verifikasi record `Laptop Dell Latitude 5420 {runId}` berstatus `Rejected` dan status global aset dihitung ulang dari state aset terkini, tidak lagi Missing
-26. Rina W mengirim ulang Reject atas record `Laptop Dell Latitude 5420 {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
-27. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06` dan record `Laptop Dell Latitude 5420 {runId}` tetap `Rejected`
+### Confirm laporan pemegang membawa record ke Missing dan diulang tanpa efek tambahan
+1. Aktor Missing A melakukan Confirm atas record DU-071-1
+2. Verifikasi status record DU-071-1 menjadi `Missing`
+3. Verifikasi baris transaksi aset DU-071-1 ditutup dalam transaksi atomik yang sama dengan Confirm, menjadi baris `Returned` bermarker `Missing`
+4. Catat jumlah node Missing Log, jumlah notifikasi `missing_holder_resolved`, dan nilai `Last Updated` record DU-071-1 sesudah Confirm pertama
+5. Aktor Missing A melakukan Confirm atas record DU-071-1 sekali lagi
+6. Verifikasi pengulangan Confirm tidak menambah efek: status tetap `Missing`, jumlah node `Report confirmed by` tetap satu, notifikasi `missing_holder_resolved` tidak bertambah, dan `Last Updated` sama dengan sesudah Confirm pertama
 
-### Laporan pemegang yang dibatalkan pelapornya selesai sebagai Canceled
-28. `Joko Susilo {runId}` menjalankan Cancel Report atas record `Scanner Zebra DS2208 {runId}`
-29. Verifikasi record `Scanner Zebra DS2208 {runId}` berstatus `Canceled` dan status global aset dihitung ulang dari state aset terkini, tidak lagi Missing
-30. `Joko Susilo {runId}` mengirim ulang Cancel Report atas record `Scanner Zebra DS2208 {runId}`
-31. Verifikasi pengiriman ulang itu ditolak dengan `D-MIS-06` dan record `Scanner Zebra DS2208 {runId}` tetap `Canceled`
+### Reject laporan pemegang membawa record ke Rejected dan diulang tanpa efek tambahan
+7. Aktor Missing A melakukan Reject atas record DU-071-2 dengan Reason `Aset masih dipegang peminjam`
+8. Verifikasi status record DU-071-2 menjadi `Rejected`
+9. Verifikasi status global aset DU-071-2 dihitung ulang dari state aset terkini menjadi `Borrowed` karena aset masih dipegang
+10. Catat jumlah node Missing Log, jumlah notifikasi `missing_holder_resolved`, dan nilai `Last Updated` record DU-071-2 sesudah Reject pertama
+11. Aktor Missing A melakukan Reject atas record DU-071-2 sekali lagi dengan Reason `Aset masih dipegang peminjam`
+12. Verifikasi pengulangan Reject tidak menambah efek: status tetap `Rejected`, jumlah node `Report rejected by` tetap satu, notifikasi `missing_holder_resolved` tidak bertambah, dan `Last Updated` sama dengan sesudah Reject pertama
 
-### Mark as Found oleh admin lain mendahului Confirm
-32. `Bambang Wijaya {runId}` menjalankan Mark as Found atas record `Printer HP LaserJet M404 {runId}` dengan Found at default Group aset dan Asset Status `Normal`
-33. Verifikasi record `Printer HP LaserJet M404 {runId}` berstatus `Found` langsung dari `Waiting for Confirmation`
-34. Rina W menjalankan Confirm atas record `Printer HP LaserJet M404 {runId}` dari tampilan yang masih memuat status lama
-35. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut `Bambang Wijaya {runId}` sebagai pengubah, record `Printer HP LaserJet M404 {runId}` tetap `Found`, dan tidak ada node `Report confirmed by`
+### Cancel Report pelapor membawa record ke Canceled dan diulang ditolak tanpa efek ganda
+13. Pemegang aset DU-071-3 melakukan Cancel Report atas laporannya sendiri
+14. Verifikasi status record DU-071-3 menjadi `Canceled`
+15. Verifikasi status global aset DU-071-3 dihitung ulang dari state aset terkini menjadi `Assigned` karena aset masih dipegang, dan bukan disalin dari status saat laporan dibuat
+16. Catat jumlah node Missing Log dan nilai `Last Updated` record DU-071-3 sesudah Cancel Report pertama
+17. Pemegang aset DU-071-3 melakukan Cancel Report sekali lagi
+18. Verifikasi pengulangan Cancel Report ditolak karena status record sudah berubah, tanpa efek ganda: status tetap `Canceled`, jumlah node `Report canceled by` tetap satu, dan `Last Updated` sama dengan sesudah Cancel Report pertama
 
-### Mark as Found oleh admin lain mendahului Add Update
-36. `Bambang Wijaya {runId}` menjalankan Mark as Found atas record `Camera Canon EOS {runId}` dengan Found at default Group aset dan Asset Status `Normal`
-37. Rina W menjalankan Add Update atas record `Camera Canon EOS {runId}` dengan Update `Pencarian di gudang lantai satu belum membuahkan hasil` dari tampilan yang masih memuat status lama
-38. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut `Bambang Wijaya {runId}` sebagai pengubah, record `Camera Canon EOS {runId}` tetap `Found`, dan tidak ada node `Update added by` baru
+### Mark as Found dari Waiting for Confirmation
+19. Aktor Missing A melakukan Mark as Found atas record DU-071-4 dengan Found at `Head Office` dan Asset Status `Normal`
+20. Verifikasi status record DU-071-4 menjadi `Found`
+21. Verifikasi baris transaksi aset DU-071-4 tetap terbuka dan status global aset DU-071-4 bukan `Available`
 
-### Confirm oleh admin lain mendahului Reject
-39. `Bambang Wijaya {runId}` menjalankan Confirm atas record `Monitor LG 27UL500 {runId}`
-40. Rina W menjalankan Reject atas record `Monitor LG 27UL500 {runId}` dengan Reason `Aset masih dipakai di meja pemegang` dari tampilan yang masih memuat status lama
-41. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut `Bambang Wijaya {runId}` sebagai pengubah, record `Monitor LG 27UL500 {runId}` tetap `Missing`, dan tidak berubah menjadi `Rejected`
+### Missing keluar ke Reported Disposal atau Found
+22. Aktor Missing A melakukan Report Disposal atas record DU-071-5 dengan Reason `Aset tidak ditemukan setelah pencarian`
+23. Verifikasi status record DU-071-5 menjadi `Reported Disposal` dengan Condition `Reported Disposal` dan Custody `Available`
+24. Verifikasi Report Disposal atas record DU-071-5 tidak memicu event `missing_*` baru dibanding sebelum aksi
+25. Aktor Missing A melakukan Mark as Found atas record DU-071-6 dengan Found at `Head Office` dan Asset Status `Normal`
+26. Verifikasi status record DU-071-6 menjadi `Found`
+27. Verifikasi aset DU-071-6 berstatus `Normal` lalu kembali `Available` di Group aset
+28. Catat jumlah node Missing Log, jumlah notifikasi `missing_resolved`, dan nilai `Last Updated` record DU-071-6 sesudah Mark as Found pertama
+29. Aktor Missing A melakukan Mark as Found atas record DU-071-6 sekali lagi dengan Found at `Head Office` dan Asset Status `Normal`
+30. Verifikasi pengulangan Mark as Found tidak menambah efek: status tetap `Found`, jumlah node `Marked as found by` tetap satu, notifikasi `missing_resolved` tidak bertambah, dan `Last Updated` sama dengan sesudah Mark as Found pertama
 
-### Confirm mendahului Cancel Report pelapor
-42. Rina W menjalankan Confirm atas record `Projector Epson EB-X06 {runId}`
-43. `Joko Susilo {runId}` menjalankan Cancel Report atas record `Projector Epson EB-X06 {runId}` dari tampilan yang masih memuat status lama
-44. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut Rina W sebagai pengubah, record `Projector Epson EB-X06 {runId}` tetap `Missing`, dan status global aset tetap Missing
+### Decline Report mengembalikan Reported Disposal ke Missing
+31. Aktor Disposal melakukan Decline atas Disposal Report record DU-071-7 dengan Reason `Aset masih dalam proses pencarian`
+32. Verifikasi status record DU-071-7 kembali `Missing`
+33. Verifikasi node `Disposal report declined by` pada record DU-071-7 memuat Reason `Aset masih dalam proses pencarian` dan Back to Missing `Yes`
+34. Verifikasi Decline Report atas record DU-071-7 tidak memicu event `missing_*` baru dibanding sebelum aksi
 
-### Dispose mendahului Cancel Disposal Report
-45. `Bambang Wijaya {runId}` menjalankan Dispose atas laporan disposal `Toyota Innova {runId}` dengan jenis `Write-off`
-46. `Bambang Wijaya {runId}` menjalankan Submit Request atas laporan disposal `Toyota Innova {runId}`
-47. Verifikasi record `Toyota Innova {runId}` berstatus `In Disposal Process` dengan Condition aset `In Disposal Process` dan Custody `Available`
-48. Rina W menjalankan Cancel Disposal Report atas record `Toyota Innova {runId}` dari tampilan yang masih memuat status lama
-49. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut `Bambang Wijaya {runId}` sebagai pengubah dan record `Toyota Innova {runId}` tetap `In Disposal Process`
-50. Rina W menjalankan Mark as Found atas record `Toyota Innova {runId}` yang berstatus `In Disposal Process`
-51. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Toyota Innova {runId}` tetap `In Disposal Process`
+### Cancel Disposal Report dan Cancel Report di tab Reported mengembalikan ke Missing
+35. Aktor Missing A melakukan Mark as Found atas record DU-071-8 yang berstatus `Reported Disposal`
+36. Verifikasi Mark as Found ditolak server: status record DU-071-8 tetap `Reported Disposal` dan tidak ada node `Marked as found by`
+37. Aktor Missing A melakukan Cancel Disposal Report atas record DU-071-8
+38. Verifikasi status record DU-071-8 kembali `Missing`
+39. Verifikasi node `Disposal report canceled by` pada record DU-071-8 memuat Back to Missing `Yes`
+40. Verifikasi Cancel Disposal Report atas record DU-071-8 tidak memicu event `missing_*` baru dibanding sebelum aksi
+41. Aktor Missing A melakukan Mark as Found atas record DU-071-8 dengan Found at `Head Office` dan Asset Status `Normal`
+42. Verifikasi Mark as Found diterima sesudah Cancel Disposal Report: status record DU-071-8 menjadi `Found`
+43. Aktor Missing A melakukan Cancel Report atas Disposal Report record DU-071-9 di tab Reported
+44. Verifikasi status record DU-071-9 kembali `Missing`
+45. Verifikasi node `Disposal report canceled by` pada record DU-071-9 memuat Back to Missing `Yes`
+46. Verifikasi Cancel Report atas Disposal Report record DU-071-9 tidak memicu event `missing_*` baru dibanding sebelum aksi
 
-### Disposal Executed oleh System menutup record sebagai Disposed
-52. Disposal Executed untuk aset `Mesin Fotokopi Ricoh {runId}`
-53. Verifikasi record `Mesin Fotokopi Ricoh {runId}` berstatus `Disposed` dan Lifecycle aset menjadi `Disposed`
-54. Rina W menjalankan Mark as Found atas record `Mesin Fotokopi Ricoh {runId}` dari tampilan yang masih memuat status lama
-55. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut `System` sebagai pengubah dan record `Mesin Fotokopi Ricoh {runId}` tetap `Disposed`
+### Dispose dan Submit Request membawa Reported Disposal ke In Disposal Process
+47. Aktor Disposal melakukan Dispose dengan Submit Request jenis Write-off atas Report record DU-071-10
+48. Verifikasi status record DU-071-10 menjadi `In Disposal Process` dengan Condition `In Disposal Process` dan Custody `Available`, mengikuti Report dan baris Disposal
 
-### Baris Disposal yang tidak jadi dieksekusi mengembalikan record ke Missing
-56. Approver Disposal menolak baris Disposal aset `Drill Bosch GSB {runId}`
-57. Verifikasi record `Drill Bosch GSB {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
-58. Pembuat membatalkan baris Disposal aset `Genset Honda EU22 {runId}`
-59. Verifikasi record `Genset Honda EU22 {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
-60. Baris Disposal aset `Tablet Samsung Tab A8 {runId}` dihapus dari daftar Disposal
-61. Verifikasi record `Tablet Samsung Tab A8 {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
-62. Baris Disposal aset `Kamera Sony A7 {runId}` melewati Transaction timeout
-63. Verifikasi record `Kamera Sony A7 {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
-64. Aktor Disposal menjalankan Decline Report atas laporan disposal `Laptop Lenovo ThinkPad T14 {runId}`
-65. Verifikasi record `Laptop Lenovo ThinkPad T14 {runId}` kembali berstatus `Missing` dengan Condition aset `Missing`
+### Baris Disposal gagal mengembalikan In Disposal Process ke Reported Disposal
+49. Baris Disposal Write-off record DU-071-11 ditolak approver
+50. Verifikasi status record DU-071-11 kembali `Reported Disposal` dan Report kembali `Reported`, bukan `Missing`
+51. Baris Disposal Write-off record DU-071-12 dibatalkan
+52. Verifikasi status record DU-071-12 kembali `Reported Disposal` dan Report kembali `Reported`
+53. Baris Disposal Write-off record DU-071-13 dihapus
+54. Verifikasi status record DU-071-13 kembali `Reported Disposal` dan Report kembali `Reported`
+55. Baris Disposal Write-off record DU-071-14 melewati Transaction timeout
+56. Verifikasi status record DU-071-14 kembali `Reported Disposal` dan Report kembali `Reported`
 
-### Record selesai tidak dibuka ulang
-66. Rina W menjalankan Confirm atas record `Meja Kerja Kayu {runId}` yang berstatus `Found`
-67. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Meja Kerja Kayu {runId}` tetap `Found`
-68. Rina W menjalankan Confirm atas record `Lemari Arsip Besi {runId}` yang berstatus `Rejected`
-69. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Lemari Arsip Besi {runId}` tetap `Rejected`
-70. Rina W menjalankan Confirm atas record `Kipas Angin Standing {runId}` yang berstatus `Canceled`
-71. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Kipas Angin Standing {runId}` tetap `Canceled`
-72. Rina W menjalankan Mark as Found atas record `Rak Besi Gudang {runId}` yang berstatus `Disposed`
-73. Verifikasi aksi itu ditolak dengan `D-MIS-06` dan record `Rak Besi Gudang {runId}` tetap `Disposed`
+### Disposal Executed membawa record ke Disposed dan aksi sesudahnya ditolak
+57. Disposal Executed atas baris Disposal Write-off record DU-071-15
+58. Verifikasi status record DU-071-15 menjadi `Disposed` dengan Lifecycle `Disposed`
+59. Aktor Missing A melakukan Mark as Found atas record DU-071-15 yang sudah `Disposed`
+60. Verifikasi Mark as Found ditolak tanpa efek ganda: status record DU-071-15 tetap `Disposed`, dan respons konflik menyebut aktor pengubah `System`
 
-### Laporan pemegang tidak punya batas tunggu dan tidak ditutup otomatis
-74. Job Long missing harian berjalan
-75. Verifikasi record `Hand Truck Gudang {runId}` yang dilaporkan T0 − 90 hari tetap berstatus `Waiting for Confirmation` dan tidak dibatalkan otomatis
-76. Verifikasi record `Hand Truck Gudang {runId}` tidak mendapat notifikasi, node, atau penanda tambahan selama menunggu
-77. Verifikasi record `Kursi Ergonomis {runId}` yang dilaporkan T0 − 45 hari tetap berstatus `Missing` dan tidak ditutup otomatis
+### Record Disposed ikut terhapus bersama aset
+61. Aktor Missing A melakukan Delete Asset Data atas aset record DU-071-38
+62. Verifikasi record `Disposed` DU-071-38 ikut terhapus permanen bersama aset, tidak lagi ada di riwayat
 
-### Report Disposal hanya untuk record Missing
-78. Rina W menjalankan Report Disposal atas record `Hand Truck Gudang {runId}` yang berstatus `Waiting for Confirmation` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
-79. Verifikasi aksi itu ditolak dan record `Hand Truck Gudang {runId}` tetap `Waiting for Confirmation` tanpa Disposal Report
+### Record Found, Rejected, dan Canceled tidak dibuka ulang
+63. Aktor Missing A melakukan Confirm atas record DU-071-16 yang berstatus `Found`
+64. Verifikasi Confirm ditolak: status record DU-071-16 tetap `Found`
+65. Aktor Missing A melakukan Add Update atas record DU-071-16 dengan Update `Pencarian di gudang sudah dilakukan tim operasional`
+66. Verifikasi Add Update ditolak karena record sudah selesai: status record DU-071-16 tetap `Found` dan tidak ada node `Update added by`
+67. Aktor Missing A melakukan Confirm atas record DU-071-17 yang berstatus `Rejected`
+68. Verifikasi Confirm ditolak: status record DU-071-17 tetap `Rejected`
+69. Aktor Missing A melakukan Mark as Found atas record DU-071-17 dengan Found at `Head Office` dan Asset Status `Normal`
+70. Verifikasi Mark as Found ditolak: status record DU-071-17 tetap `Rejected`
+71. Aktor Missing A melakukan Reject atas record DU-071-18 yang berstatus `Canceled` dengan Reason `Aset masih dipegang peminjam`
+72. Verifikasi Reject ditolak: status record DU-071-18 tetap `Canceled`
+73. Pelapor admin Aktor Missing A melakukan Report Missing atas aset record DU-071-16 dengan What happened `Aset hilang saat dipindahkan antar ruangan`
+74. Verifikasi aset DU-071-16 yang hilang lagi mendapat record baru berstatus `Missing`, terpisah dari record DU-071-16
+75. Verifikasi record DU-071-16 tidak dibuka ulang: status tetap `Found` dan tetap tampil sebagai riwayat di tab History
 
-### Condition tersimpan yang tidak lagi dapat dipulihkan menolak Reject dan Cancel Report
-80. Rina W menjalankan Reject atas record `Brankas Besi {runId}` dengan Reason `Aset masih dipakai di meja pemegang`
-81. Verifikasi aksi itu ditolak dengan `D-MIS-06`, record `Brankas Besi {runId}` tetap `Waiting for Confirmation`, dan status global aset tetap Missing
-82. `Joko Susilo {runId}` menjalankan Cancel Report atas record `Papan Tulis {runId}`
-83. Verifikasi aksi itu ditolak dengan `D-MIS-06`, record `Papan Tulis {runId}` tetap `Waiting for Confirmation`, dan status global aset tetap Missing
+### Transisi yang tidak ada di tabel status record ditolak
+76. Aktor Missing A melakukan Mark as Found atas record DU-071-19 yang berstatus `Reported Disposal` lewat permintaan basi
+77. Verifikasi Mark as Found ditolak server: status record DU-071-19 tetap `Reported Disposal` dan tidak ada node `Marked as found by`
+78. Aktor Missing A melakukan Mark as Found atas record DU-071-20 yang berstatus `In Disposal Process` lewat permintaan basi
+79. Verifikasi Mark as Found ditolak server: status record DU-071-20 tetap `In Disposal Process` dan tidak ada node `Marked as found by`
+80. Aktor Missing A melakukan Cancel Disposal Report atas record DU-071-20 yang berstatus `In Disposal Process`
+81. Verifikasi Cancel Disposal Report ditolak karena hanya tersedia pada record `Reported Disposal`: status record DU-071-20 tetap `In Disposal Process`
+82. Aktor Missing A melakukan Cancel Disposal Report atas record DU-071-21 yang berstatus `Missing`
+83. Verifikasi Cancel Disposal Report ditolak karena hanya tersedia pada record `Reported Disposal`: status record DU-071-21 tetap `Missing`
+84. Aktor Disposal melakukan Dispose atas aset record DU-071-21 dengan memilih jenis Write-off, tanpa Report Disposal lebih dulu
+85. Verifikasi Dispose ditolak karena aset Missing hanya masuk Disposal lewat Report Disposal: status record DU-071-21 tetap `Missing`, tanpa transisi ke `In Disposal Process`
+86. Aktor Missing A mencoba menghapus record DU-071-21
+87. Verifikasi server menolak penghapusan: record DU-071-21 tetap ada berstatus `Missing`, karena Missing record tidak dapat dihapus pengguna dan dikoreksi lewat Cancel Report, Reject, atau Mark as Found
+88. Aktor Missing A melakukan Report Disposal atas record DU-071-22 yang berstatus `Waiting for Confirmation` dengan Reason `Aset tidak ditemukan setelah pencarian`
+89. Verifikasi Report Disposal ditolak karena status record bukan `Missing`: status record DU-071-22 tetap `Waiting for Confirmation`
 
-### Missing record tidak dapat dihapus pengguna
-84. Rina W menghapus record `Kursi Ergonomis {runId}`
-85. Verifikasi penghapusan itu ditolak dan record `Kursi Ergonomis {runId}` tetap ada berstatus `Missing`
-86. Verifikasi record `Meja Kerja Kayu {runId}` yang berstatus `Found` tetap tersedia sebagai riwayat selama asetnya ada
+### Aksi atas record yang sudah diubah pihak lain ditolak tanpa efek ganda
+90. Aktor Missing A melakukan Mark as Found atas record DU-071-23 dengan Found at `Head Office` dan Asset Status `Normal`
+91. Aktor Missing B melakukan Add Update atas record DU-071-23 dengan Update `Pencarian di lobi sudah dilakukan tim keamanan`
+92. Verifikasi Add Update ditolak karena status record sudah diubah pihak lain, tanpa efek ganda: status record DU-071-23 tetap `Found`, tidak ada node `Update added by`, dan respons konflik menyebut Aktor Missing A sebagai pengubah
+93. Aktor Missing A melakukan Mark as Found atas record DU-071-24 dengan Found at `Head Office` dan Asset Status `Normal`
+94. Aktor Missing B melakukan Confirm atas record DU-071-24
+95. Verifikasi Confirm ditolak karena status record sudah diubah pihak lain, tanpa efek ganda: status record DU-071-24 tetap `Found` dan tidak ada node `Report confirmed by`
+96. Aktor Missing A melakukan Confirm atas record DU-071-25 lewat Review
+97. Aktor Missing B melakukan Reject atas record DU-071-25 dengan Reason `Aset masih dipegang peminjam`
+98. Verifikasi Reject ditolak karena status record sudah diubah pihak lain, tanpa efek ganda: status record DU-071-25 tetap `Missing` dan tidak ada node `Report rejected by`
+99. Aktor Missing A melakukan Mark as Found atas record DU-071-25 dengan Found at `Head Office` dan Asset Status `Normal`
+100. Verifikasi koreksi sesudah Confirm hanya lewat Mark as Found oleh Aktor Missing: status record DU-071-25 menjadi `Found`
+101. Aktor Missing A melakukan Confirm atas record DU-071-26 lewat Review
+102. Pemegang aset DU-071-26 melakukan Cancel Report atas laporannya
+103. Verifikasi Cancel Report ditolak karena record sudah bukan `Waiting for Confirmation`, tanpa efek ganda: status record DU-071-26 tetap `Missing` dan tidak ada node `Report canceled by`
+104. Aktor Disposal melakukan Dispose dengan Submit Request jenis Write-off atas Report record DU-071-27
+105. Aktor Missing B melakukan Cancel Disposal Report atas record DU-071-27
+106. Verifikasi Cancel Disposal Report ditolak karena status record sudah diubah pihak lain, tanpa efek ganda: status record DU-071-27 tetap `In Disposal Process` dan tidak ada node `Disposal report canceled by`
 
-### Aksi tulis atas record yang asetnya sudah dihapus ditolak tanpa efek
-87. Rina W menjalankan Delete Asset Data atas aset `Rak Besi Gudang {runId}` yang berstatus Disposed
-88. Verifikasi aset `Rak Besi Gudang {runId}` terhapus bersama record `Disposed` miliknya
-89. Rina W menjalankan Confirm atas record `Rak Besi Gudang {runId}` dari tampilan yang masih memuat record itu
-90. Verifikasi aksi itu ditolak tanpa efek dan tidak ada record, node, atau aset `Rak Besi Gudang {runId}` yang tercipta atau berubah
-91. Rina W menjalankan Add Update atas record `Rak Besi Gudang {runId}` dengan Update `Pencarian di gudang lantai satu belum membuahkan hasil` dari tampilan yang masih memuat record itu
-92. Verifikasi aksi itu ditolak tanpa efek dan tidak ada node `Update added by` yang tercatat untuk `Rak Besi Gudang {runId}`
-93. Rina W menjalankan Mark as Found atas record `Rak Besi Gudang {runId}` dari tampilan yang masih memuat record itu
-94. Verifikasi aksi itu ditolak tanpa efek dan tidak ada node `Marked as found by` yang tercatat untuk `Rak Besi Gudang {runId}`
+### Add Update tidak idempotent: tiap Submit membuat node baru
+107. Aktor Missing A melakukan Add Update atas record DU-071-28 dengan Update `Pencarian di gudang sudah dilakukan tim operasional`
+108. Verifikasi jumlah node `Update added by` pada record DU-071-28 bertambah satu
+109. Aktor Missing A melakukan Add Update atas record DU-071-28 sekali lagi dengan Update `Pencarian di gudang sudah dilakukan tim operasional`
+110. Verifikasi jumlah node `Update added by` bertambah satu lagi karena tiap Submit membuat node baru, sedangkan status record DU-071-28 tetap `Missing` karena Add Update hanya menambah node dan tidak mengubah status
 
-### Confirm mencatat status record dan status global aset bersama
-95. Rina W menjalankan Confirm atas record `Kulkas Pendingin {runId}`
-96. Verifikasi aksi itu atomik: record `Missing` dan status global aset Missing tercatat bersama, tanpa salah satunya saja
+### Tanpa batas tunggu, tanpa penutupan otomatis, Long missing hanya penanda
+111. Waktu berlalu sampai 45 hari sejak laporan record DU-071-29 dibuat
+112. Verifikasi record DU-071-29 tetap `Waiting for Confirmation` tanpa batas tunggu
+113. Verifikasi record DU-071-29 tidak dibatalkan otomatis, tidak menerima notifikasi baru dibanding sebelum aksi, dan tidak mendapat penanda `Long missing`
+114. Waktu berlalu sampai 31 hari sejak laporan record DU-071-30 dibuat
+115. Job Long missing harian berjalan
+116. Verifikasi record DU-071-30 mendapat penanda `Long missing` dan satu notifikasi `missing_long`
+117. Verifikasi record DU-071-30 tetap `Missing` dan tidak ditutup otomatis
 
-### Pelapor sesi pemeriksaan membatalkan laporannya sebelum dikonfirmasi
-97. `Sabrina Putri {runId}` menjalankan Cancel Report atas record `Kabinet Server {runId}` dari Task Detail sesi `Audit Gudang {runId}`
-98. Verifikasi record `Kabinet Server {runId}` berstatus `Canceled`
-99. Verifikasi status global aset `Kabinet Server {runId}` dihitung ulang dari state aset terkini, tidak lagi Missing
-100. Verifikasi baris aset `Kabinet Server {runId}` pada sesi `Audit Gudang {runId}` kembali `Pending`
-101. Rina W menjalankan Confirm atas record `Meja Resepsionis {runId}`
-102. `Sabrina Putri {runId}` menjalankan Cancel Report atas record `Meja Resepsionis {runId}` dari tampilan yang masih memuat status lama
-103. Verifikasi aksi itu ditolak dengan `D-MIS-06` yang menyebut Rina W sebagai pengubah, record `Meja Resepsionis {runId}` tetap `Missing`, dan tidak berubah menjadi `Canceled`
-104. Rina W menjalankan Cancel Report atas record `Lemari Berkas Jati {runId}` yang ia laporkan langsung `Missing`
-105. Verifikasi aksi itu ditolak dan record `Lemari Berkas Jati {runId}` tetap `Missing`
+### Laporan dari Task Detail Audit tanpa hak Aktor Missing menunggu Confirm
+118. Pelapor sesi melakukan Report Missing atas aset DU-071-31 dari Task Detail sesi pemeriksaan dengan What happened `Aset hilang saat dipindahkan antar ruangan`
+119. Verifikasi record untuk aset DU-071-31 berstatus `Waiting for Confirmation` dan status global aset langsung `Missing`
+120. Verifikasi baris transaksi aset DU-071-31 belum ditutup sebelum Confirm
+121. Aktor Missing A melakukan Confirm atas record aset DU-071-31
+122. Verifikasi status record aset DU-071-31 menjadi `Missing` dan baris transaksi aset DU-071-31 ditutup menjadi baris `Returned` bermarker `Missing`
+123. Staff Auditor melakukan Report Missing atas aset DU-071-32 dari Task Detail sesi pemeriksaan dengan What happened `Aset hilang saat dipindahkan antar ruangan`
+124. Verifikasi record untuk aset DU-071-32 berstatus `Waiting for Confirmation` dan status global aset langsung `Missing`
+125. Pelapor sesi melakukan Cancel my report atas record DU-071-33 dari Task Detail sesi pemeriksaan
+126. Verifikasi record DU-071-33 menjadi `Canceled`, status global aset dihitung ulang dari state aset terkini, dan baris sesi pemeriksaan kembali `Pending`
+127. Pelapor sesi melakukan Cancel my report atas record DU-071-34 yang sudah diputuskan Aktor Missing
+128. Verifikasi Cancel my report ditolak tanpa efek ganda: status record DU-071-34 tetap `Missing` dan tidak ada node `Report canceled by`
+129. Pelapor sesi melakukan Cancel my report atas record DU-071-35 yang langsung `Missing`
+130. Verifikasi Cancel my report ditolak karena pelapor yang langsung `Missing` tidak memiliki aksi ini: status record DU-071-35 tetap `Missing`
 
-### Confirm atas laporan Source Audit dari aset yang dipegang menjalankan penutupan baris transaksi
-106. Rina W menjalankan Confirm atas record `Server Rack Gudang {runId}`
-107. Verifikasi record `Server Rack Gudang {runId}` berstatus `Missing` dan status global aset Missing
-108. Verifikasi baris transaksi berjalan atas aset `Server Rack Gudang {runId}` ditutup sebagai `Returned` dengan marker `Missing`
-109. Verifikasi record `Server Rack Gudang {runId}` mencatat `Joko Susilo {runId}` sebagai Last holder
+### Write-off hanya lewat Report Disposal atas record Missing dari Reconciliation
+131. Aktor Missing A melakukan Report Disposal atas record DU-071-36 dengan Reason `Aset tidak ditemukan setelah pencarian`
+132. Verifikasi status record DU-071-36 menjadi `Reported Disposal`
+133. Verifikasi Disposal Report dari record DU-071-36 bukan Source `Reconciliation`, karena Disposal tidak punya Source `Reconciliation`
 
-### Decline Report mencatat node penolakan
-110. Verifikasi record `Laptop Lenovo ThinkPad T14 {runId}` memuat node `Disposal report declined by` oleh Aktor Disposal
+### Condition tersimpan yang tidak dapat dipulihkan menolak Reject dan Cancel Report
+134. Aktor Missing A melakukan Reject atas record DU-071-37 dengan Reason `Aset masih dipegang peminjam`
+135. Verifikasi Reject ditolak tanpa efek ganda: status record DU-071-37 tetap `Waiting for Confirmation`, status global aset tidak berubah, dan tidak ada node `Report rejected by`
+136. Pemegang aset DU-071-37 melakukan Cancel Report atas laporannya
+137. Verifikasi Cancel Report ditolak tanpa efek ganda: status record DU-071-37 tetap `Waiting for Confirmation`, status global aset tidak berubah, dan tidak ada node `Report canceled by`

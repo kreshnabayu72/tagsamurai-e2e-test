@@ -44,10 +44,10 @@ coverage:
 - Aktor: Accounting, yaitu pemegang Global Role `Manage accounting` (Read + Update), cakupan seluruh client.
 - Layar awal: halaman Assets.
 - Data:
-  - DU-023-1: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22`, Asset ID `LPT-0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`.
+  - DU-023-1: Missing record, Name `Laptop Dell Latitude 5420 {runId} - 22`, Asset ID `LPT-0022 {runId}`, Group `Finance Room {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`, asetnya tidak dalam transaksi.
   - DU-023-2: Missing record, Name `Hand Pallet Truck {runId} - 3`, Asset ID `HPT-0003 {runId}`, Group `Warehouse {runId}`, Status `Missing`, Source `Manual`, Last Holder `—`.
   - DU-023-3: Missing record, Name `Monitor LG 27UL500 {runId} - 11`, Asset ID `MON-0011 {runId}`, Group `Head Office {runId}`, Status `Waiting for Confirmation`, Source `Reported by holder`, Last Holder `Sari Dewi {runId}` (pemegang aset tanpa hak Aktor Missing).
-  - DU-023-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, dilaporkan oleh aktor ini.
+  - DU-023-4: Missing record, Name `Projector Epson EB-X06 {runId} - 7`, Asset ID `PRJ-0007 {runId}`, Group `Branch Surabaya {runId}`, Status `Reported Disposal`, Source `Audit`, Last Holder `—`, asetnya tidak dalam transaksi, dilaporkan oleh aktor ini.
   - DU-023-5: Missing record, Name `Printer HP LaserJet M404 {runId} - 5`, Asset ID `PRN-0005 {runId}`, Group `Head Office {runId}`, Status `Reported Disposal`, Source `Manual`, Last Holder `—`, dilaporkan oleh pengguna lain.
   - DU-023-6: Missing record, Name `Camera Canon EOS {runId} - 1`, Asset ID `CAM-0001 {runId}`, Group `Head Office {runId}`, Status `Found`, Source `Borrow`, Last Holder `—`.
   - DU-023-7: Asset, Name `Scanner Zebra DS2208 {runId} - 2`, Asset ID `SCN-0002 {runId}`, Group `Warehouse {runId}`, Status `Available`, tanpa record Missing berjalan.
@@ -74,7 +74,7 @@ coverage:
 ### Record Missing: Report Disposal tersedia, aksi tulis lain tidak tampil
 14. Klik menu ⋯ pada baris `Laptop Dell Latitude 5420 {runId} - 22`
 15. Verifikasi aksi `Missing Log` tampil
-16. Verifikasi aksi `Report Disposal` tampil
+16. Verifikasi aksi `Report Disposal` tampil pada record Missing yang asetnya tidak dalam transaksi
 17. Verifikasi aksi `Add Update` tidak tampil
 18. Verifikasi aksi `Mark as Found` tidak tampil
 19. Tekan `Esc`

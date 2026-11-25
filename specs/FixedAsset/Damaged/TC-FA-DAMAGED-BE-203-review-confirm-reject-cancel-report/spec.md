@@ -5,7 +5,7 @@ layer: be-e2e
 priority: Critical
 caseType: Negative
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r24", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r89", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p6", V-DMG-07, D-DMG-06, EC-DMG-07, EC-DMG-08, EC-DMG-23, "§9.4.4#r18", "§9.4.4#r19", "§9.4.1#r11", FLD-DMG-06, "§2.1#b8", "§3#p4", EB-FRM-4@reason, EB-ERR-4, EB-CON-3, EB-EDG-1, F-DMG-04, "§9.4.2#r40", "§9.4.2#r41", "§2.1#r5", "§4.2.4#r15", "§4.2.4#r16", "§4.2.4#r17", "§8.2#p22", "§4.2.4#r13"]
+sourceRules: ["§Aturan Logika Modul#r19", "§Aturan Logika Modul#r23", "§Aturan Logika Modul#r24", "§Aturan Logika Modul#r53", "§Aturan Logika Modul#r54", "§Aturan Logika Modul#r55", "§Aturan Logika Modul#r56", "§Aturan Logika Modul#r57", "§Aturan Logika Modul#r37", "§Aturan Logika Modul#r66", "§Aturan Logika Modul#r67", "§Aturan Logika Modul#r89", "§9.2#r1", "§9.2#r7", "§9.2#r8", "§9.4.3#b4", "§9.4.3#b5", "§9.6#r2", "§9.6#r3", "§9.6#r4", "§4.2.4#p6", V-DMG-07, D-DMG-06, EC-DMG-07, EC-DMG-08, EC-DMG-23, "§9.4.4#r18", "§9.4.4#r19", "§9.4.1#r11", FLD-DMG-06, "§2.1#b8", "§3#p4", EB-FRM-4@reason, EB-ERR-4, EB-CON-3, EB-EDG-1, F-DMG-04, "§9.4.2#r40", "§9.4.2#r41", "§2.1#r5", "§4.2.4#r15", "§4.2.4#r16", "§4.2.4#r17", "§8.2#p22", "§4.2.4#r13", "§9.2#r2"]
 smoke: []
 dependsOn: []
 owner: BE
@@ -55,6 +55,7 @@ trace:
   "§4.2.4#r17": [36, 39, 43, 93, 104]
   "§8.2#p22": [80, 84, 89, 100]
   "§4.2.4#r13": [15, 20]
+  "§9.2#r2": 2
 ---
 
 # Server memproses Confirm, Reject, dan Cancel Report: Aktor Damaged memutuskan laporan mana pun termasuk laporannya sendiri, status akhir, record selesai tidak dibuka ulang, tanpa batas tunggu, dan konflik status

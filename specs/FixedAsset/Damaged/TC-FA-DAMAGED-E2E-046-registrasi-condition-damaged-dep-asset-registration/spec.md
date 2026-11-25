@@ -24,7 +24,7 @@ trace:
   "§9.4.4#r6": [12]
   "EC-DMG-31": [14]
   "T-DMG-01": [8, 9]
-  "T-DMG-02": [22, 23, 24, 25]
+  "T-DMG-02": [22, 23, 24, 25, 26]
 anchor: []
 coverage:
   web: automated
@@ -36,7 +36,7 @@ coverage:
 - Aktor: Total Control, yang melakukan Activate atas aset.
 - Layar awal: halaman Assets, tab Registration.
 - Data:
-  - DU-046-1: draft registrasi aset Name `Laptop Lenovo ThinkPad E14 {runId}`, Condition `Damaged`, Damage note `Layar retak dan engsel patah setelah terjatuh saat pemindahan unit`, Group `Head Office`, tanpa TAG, siap di-Activate.
+  - DU-046-1: draft registrasi aset Name `Laptop Lenovo ThinkPad E14 {runId}`, Condition `Damaged`, Damage note `Layar retak dan engsel patah setelah terjatuh saat pemindahan unit`, Group `Head Office`, tanpa TAG, tanpa foto aset, siap di-Activate.
 - Kondisi:
   - Approval registrasi aset bernilai `OFF`.
 
@@ -72,3 +72,4 @@ coverage:
 23. Verifikasi kolom Source pada baris itu `Registration`
 24. Verifikasi kolom Last Holder pada baris itu `—`
 25. Verifikasi kolom Reported By pada baris itu memuat nama aktor yang melakukan Activate
+26. Verifikasi kolom Photo pada baris itu menampilkan avatar inisial, karena record tanpa Damaged Photo dan aset tanpa foto

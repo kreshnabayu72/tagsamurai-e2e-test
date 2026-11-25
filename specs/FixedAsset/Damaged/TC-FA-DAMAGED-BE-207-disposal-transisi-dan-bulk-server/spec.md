@@ -5,18 +5,18 @@ layer: be-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r65", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b13", "§9.2#b24", "§9.2#b25", "§9.2#b26", "§6#p2", "§8.1#p2", V-DMG-06, V-DMG-08, V-DMG-09, D-DMG-13, TS-DMG-09, TS-DISP-12, TS-DISP-15, "§9.6#r8", EC-DMG-17, EC-DMG-21, EC-DMG-35, "§9.4.4#r11", "§9.4.4#r12", "§9.4.4#r28", "§9.4.4#r29", "§9.4.4#r30", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p7", F-DMG-06, "§9.2#b8", "§Aturan Logika Modul#r19", "§9.4.2#r32", "§4.2.4#r10", "§4.2.4#r11"]
+sourceRules: ["§Aturan Logika Modul#r20", "§Aturan Logika Modul#r21", "§Aturan Logika Modul#r22", "§Aturan Logika Modul#r63", "§Aturan Logika Modul#r64", "§Aturan Logika Modul#r65", "§9.2#r3", "§9.2#r4", "§9.2#r6", "§9.2#b13", "§9.2#b24", "§9.2#b25", "§9.2#b26", "§6#p2", "§8.1#p2", V-DMG-06, V-DMG-08, V-DMG-09, D-DMG-13, TS-DMG-09, TS-DISP-12, TS-DISP-15, "§9.6#r8", EC-DMG-17, EC-DMG-21, EC-DMG-35, "§9.4.4#r11", "§9.4.4#r12", "§9.4.4#r28", "§9.4.4#r29", "§9.4.4#r30", "§9.7#r10", "§9.7#r11", "§9.7#r12", "§9.7#r13", "§9.7#r14", "§9.4.1#r9", "§3#p7", F-DMG-06, "§9.2#b8", "§Aturan Logika Modul#r19", "§9.4.2#r32", "§4.2.4#r10", "§4.2.4#r11", T-DMG-01, "§8.1#r14", "§8.1#r15", "§9.2#r2"]
 smoke: []
 dependsOn: []
 owner: BE
 trace:
-  "§Aturan Logika Modul#r20": [2, 26, 59]
+  "§Aturan Logika Modul#r20": [2, 26, 59, 94, 96, 97]
   "§Aturan Logika Modul#r21": [32, 34]
   "§Aturan Logika Modul#r22": [36, 38, 40, 42]
   "§Aturan Logika Modul#r63": 2
   "§Aturan Logika Modul#r64": [2, 6]
   "§Aturan Logika Modul#r65": [26, 32, 34]
-  "§9.2#r3": [2, 3, 12]
+  "§9.2#r3": [2, 3, 12, 36, 38, 40, 42, 74, 76, 78, 80]
   "§9.2#r4": [26, 36, 82]
   "§9.2#r6": [20, 29, 84]
   "§9.2#b13": [51, 52]
@@ -33,7 +33,7 @@ trace:
   TS-DISP-12: [4, 6, 86]
   TS-DISP-15: [54, 55, 57, 63]
   "§9.6#r8": [44, 45, 66]
-  EC-DMG-17: [32, 34, 36]
+  EC-DMG-17: [32, 34, 36, 38]
   EC-DMG-21: 51
   EC-DMG-35: [59, 61]
   "§9.4.4#r11": 52
@@ -47,13 +47,17 @@ trace:
   "§9.7#r13": 29
   "§9.7#r14": [36, 38, 40, 42]
   "§9.4.1#r9": [51, 54, 59]
-  "§3#p7": 2
+  "§3#p7": [2, 29, 36, 38, 40, 42]
   F-DMG-06: 2
   "§9.2#b8": 12
   "§Aturan Logika Modul#r19": [12, 14, 20, 29]
   "§9.4.2#r32": [88, 89, 91, 92]
   "§4.2.4#r10": [51, 52]
   "§4.2.4#r11": [63, 64, 91, 92]
+  T-DMG-01: 105
+  "§8.1#r14": 99
+  "§8.1#r15": [101, 103]
+  "§9.2#r2": [2, 32, 34, 44]
 ---
 
 # Server mengikuti Disposal Report dan baris Disposal untuk status record, memproses Bulk Report Disposal per record dengan pengecekan ganda, memblok lintas Group, dan membatasi Cancel Disposal Report pada Reported Disposal
@@ -79,7 +83,7 @@ trace:
   - DU-207-14: Aset `Camera Canon EOS - 88 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris Disposal `Waiting for Execution`.
   - DU-207-15: Aset `Camera Canon EOS - 89 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris Disposal yang akan di-Remove.
   - DU-207-16: Aset `Camera Canon EOS - 90 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan baris Disposal yang akan kedaluwarsa.
-  - DU-207-17: Aset `Camera Canon EOS - 91 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process`.
+  - DU-207-17: Aset `Camera Canon EOS - 91 {runId}`, Group `Head Office {runId}`, punya record `In Disposal Process` dengan laporan pelepasan aset berstatus Report `In Disposal Process` di tab Reported.
   - DU-207-18: Aset `Drill Bosch GSB - 92 {runId}`, Group `Head Office {runId}`, punya record `Repaired`.
   - DU-207-19: Aset `Drill Bosch GSB - 93 {runId}`, Group `Head Office {runId}`, `Disposed`, punya record `Disposed`.
   - DU-207-20: Aset `Drill Bosch GSB - 94 {runId}`, Group `Head Office {runId}`, punya record `Rejected`.
@@ -106,8 +110,9 @@ trace:
   - DU-207-41: Aset `Barcode Printer Zebra ZD421 - 112 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah ditahan penanda `Missing` sebelum bulk dipilih.
   - DU-207-42: Aset `Label Printer Brother QL-820 - 113 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah `Repaired` sebelum bulk dipilih.
   - DU-207-43: Aset `Label Printer Brother QL-820 - 114 {runId}`, Group `Head Office {runId}`, punya record `Damaged` yang sudah ditahan penanda `Missing` sebelum bulk dipilih.
+  - DU-207-44: Aset `Scanner Fujitsu fi-7160 - 115 {runId}`, Group `Head Office {runId}`, punya record `Reported Disposal` dengan laporan pelepasan aset `Reported` di tab Reported, belum ada baris Disposal.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -115,7 +120,7 @@ trace:
 1. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Laptop Dell Latitude 5420 - 82 {runId}` dari tab Damaged dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
 2. Verifikasi server membuat laporan pelepasan aset berstatus `Reported` di tab Reported dan record menjadi `Reported Disposal`
 3. Verifikasi Condition aset menjadi `Reported Disposal` dan Custody `Available`
-4. Verifikasi Damage Log record memuat node `Disposal reported by` dengan pelaku `Agus Pratama {runId}`, Report ID, dan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
+4. Verifikasi Damage Log record memuat node `Disposal reported by` dengan pelaku `Agus Pratama {runId}`, dan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
 5. Total Control `Agus Pratama {runId}` mengirim ulang Report Disposal yang sama atas `Laptop Dell Latitude 5420 - 82 {runId}` dengan kunci idempotensi yang sama
 6. Verifikasi tidak ada laporan pelepasan aset kedua dan tidak ada node `Disposal reported by` kedua, karena record sudah berada di state tujuan
 7. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Monitor Dell P2422H - 108 {runId}` dari Asset List dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
@@ -153,15 +158,15 @@ trace:
 33. Aktor pelepasan aset `Maya Puspita {runId}` menjalankan Cancel Report atas laporan `Printer HP LaserJet M404 - 84 {runId}` dari tab Reported
 34. Verifikasi record kembali `Damaged` dan Damage Log memuat node `Disposal report canceled by` dengan pelaku `Maya Puspita {runId}`
 
-### Baris pelepasan aset ditolak, dibatalkan, dihapus, atau kedaluwarsa mengembalikan record ke Damaged
+### Baris pelepasan aset ditolak, dibatalkan, dihapus, atau kedaluwarsa mengembalikan record ke Reported Disposal dan laporan ke Reported
 35. Baris pelepasan aset `Camera Canon EOS - 87 {runId}` ditolak (Reject) oleh approver
-36. Verifikasi record kembali `Damaged` dan Damage Log memuat node `Rejected by`
+36. Verifikasi record kembali `Reported Disposal`, bukan `Damaged`, laporan pelepasan aset kembali `Reported`, dan Damage Log memuat node `Rejected by`
 37. Baris pelepasan aset `Camera Canon EOS - 88 {runId}` dibatalkan (Cancel) oleh pembuatnya
-38. Verifikasi record kembali `Damaged` dan Damage Log memuat node `Canceled by`
+38. Verifikasi record kembali `Reported Disposal`, bukan `Damaged`, laporan pelepasan aset kembali `Reported`, dan Damage Log memuat node `Canceled by`
 39. Baris pelepasan aset `Camera Canon EOS - 89 {runId}` dihapus (Remove)
-40. Verifikasi record kembali `Damaged` dan Damage Log memuat node `Removed from disposal by`
+40. Verifikasi record kembali `Reported Disposal`, bukan `Damaged`, laporan pelepasan aset kembali `Reported`, dan Damage Log memuat node `Removed from disposal by`
 41. Baris pelepasan aset `Camera Canon EOS - 90 {runId}` kedaluwarsa (timeout) tanpa user aktor
-42. Verifikasi record kembali `Damaged` dan node di Damage Log dicatat dengan PIC `System`
+42. Verifikasi record kembali `Reported Disposal`, bukan `Damaged`, laporan pelepasan aset kembali `Reported`, dan node di Damage Log dicatat dengan PIC `System`
 
 ### Cancel Disposal Report hanya untuk record Reported Disposal
 43. Total Control `Agus Pratama {runId}` menjalankan Cancel Disposal Report atas `Printer HP LaserJet M404 - 85 {runId}` yang berstatus `Reported Disposal`
@@ -180,7 +185,7 @@ trace:
 ### Bulk Report Disposal satu Group: satu Reason untuk semua dan satu node per record
 53. Total Control `Agus Pratama {runId}` mengirim Bulk Report Disposal atas `Office Chair Ergo - 101 {runId}` dan `Office Chair Ergo - 102 {runId}` di Group `Head Office {runId}` dengan satu Reason `Seluruh unit dihentikan penggunaannya {runId}`
 54. Verifikasi kedua record menjadi `Reported Disposal` dengan Reason `Seluruh unit dihentikan penggunaannya {runId}` yang sama
-55. Verifikasi Damage Log tiap record memuat satu node `Disposal reported by` dengan Report ID masing-masing
+55. Verifikasi Damage Log tiap record memuat satu node `Disposal reported by`
 56. Total Control `Agus Pratama {runId}` mengirim ulang Bulk Report Disposal yang sama atas kedua record dengan kunci idempotensi yang sama
 57. Verifikasi tidak ada laporan pelepasan aset atau node baru karena kedua record sudah berada di state tujuan
 
@@ -197,7 +202,7 @@ trace:
 65. Total Control `Agus Pratama {runId}` mengirim ulang Cancel Disposal Report yang sama atas `Printer HP LaserJet M404 - 85 {runId}` dengan kunci idempotensi yang sama
 66. Verifikasi tidak ada node `Disposal report canceled by` kedua dan record tetap `Damaged`
 
-### Condition aset dipulihkan saat record kembali Damaged
+### Condition aset mengikuti status record saat keluar dari proses pelepasan aset: Damaged untuk Decline dan Cancel Report, Reported Disposal untuk penutupan baris
 67. Total Control `Agus Pratama {runId}` membaca Condition aset `Printer HP LaserJet M404 - 83 {runId}` yang laporan pelepasan asetnya di-Decline
 68. Verifikasi Condition aset kembali `Damaged`
 69. Total Control `Agus Pratama {runId}` membaca Condition aset `Printer HP LaserJet M404 - 84 {runId}` yang laporan pelepasan asetnya dibatalkan lewat Cancel Report
@@ -205,13 +210,13 @@ trace:
 71. Total Control `Agus Pratama {runId}` membaca Condition aset `Printer HP LaserJet M404 - 85 {runId}` yang laporan pelepasan asetnya dibatalkan lewat Cancel Disposal Report
 72. Verifikasi Condition aset kembali `Damaged`
 73. Total Control `Agus Pratama {runId}` membaca Condition aset `Camera Canon EOS - 87 {runId}` yang baris pelepasan asetnya ditolak
-74. Verifikasi Condition aset kembali `Damaged`
+74. Verifikasi Condition aset kembali `Reported Disposal`
 75. Total Control `Agus Pratama {runId}` membaca Condition aset `Camera Canon EOS - 88 {runId}` yang baris pelepasan asetnya dibatalkan
-76. Verifikasi Condition aset kembali `Damaged`
+76. Verifikasi Condition aset kembali `Reported Disposal`
 77. Total Control `Agus Pratama {runId}` membaca Condition aset `Camera Canon EOS - 89 {runId}` yang baris pelepasan asetnya dihapus
-78. Verifikasi Condition aset kembali `Damaged`
+78. Verifikasi Condition aset kembali `Reported Disposal`
 79. Total Control `Agus Pratama {runId}` membaca Condition aset `Camera Canon EOS - 90 {runId}` yang baris pelepasan asetnya kedaluwarsa
-80. Verifikasi Condition aset kembali `Damaged`
+80. Verifikasi Condition aset kembali `Reported Disposal`
 
 ### Custody aset In Disposal Process dan Lifecycle aset yang dieksekusi
 81. Total Control `Agus Pratama {runId}` membaca Custody aset `Camera Canon EOS - 91 {runId}` yang record-nya `In Disposal Process`
@@ -230,3 +235,22 @@ trace:
 90. Total Control `Agus Pratama {runId}` mengirim Bulk Report Disposal atas `Label Printer Brother QL-820 - 113 {runId}` dan `Label Printer Brother QL-820 - 114 {runId}` dengan satu Reason `Seluruh unit dihentikan penggunaannya {runId}`, setelah record pertama sudah `Repaired` dan record kedua sudah ditahan penanda `Missing`
 91. Verifikasi tidak ada laporan pelepasan aset yang dibuat dan respons menyatakan `None of the selected records can be reported for disposal.` tanpa pesan sukses
 92. Verifikasi kedua record tidak berubah dan tidak ada node baru
+
+### Laporan tetap di tab Reported selama baris Disposal berjalan, dan Draft Disposal tidak mengubah record
+93. Total Control `Agus Pratama {runId}` membaca laporan pelepasan aset `Camera Canon EOS - 91 {runId}` yang record-nya `In Disposal Process`
+94. Verifikasi laporan itu tetap di tab Reported dengan status Report `In Disposal Process`
+95. Aktor pelepasan aset `Maya Puspita {runId}` menjalankan Dispose atas laporan `Scanner Fujitsu fi-7160 - 115 {runId}` dari tab Reported dan menyimpannya sebagai Draft Disposal tanpa Submit Request
+96. Verifikasi record `Scanner Fujitsu fi-7160 - 115 {runId}` tetap `Reported Disposal` dan tidak ada node baru di Damage Log
+97. Verifikasi laporan pelepasan aset itu tidak mendapat penanda dari Draft Disposal dan tetap di tab Reported
+
+### Node Disposal report declined by dan Disposal report canceled by memuat Reason dan Back to Damaged
+98. Total Control `Agus Pratama {runId}` membaca Damage Log record `Printer HP LaserJet M404 - 83 {runId}` yang laporan pelepasan asetnya di-Decline oleh `Maya Puspita {runId}` dengan Reason `Unit masih layak dipakai {runId}`
+99. Verifikasi node `Disposal report declined by` memuat Reason `Unit masih layak dipakai {runId}` dan `Back to Damaged`
+100. Total Control `Agus Pratama {runId}` membaca Damage Log record `Printer HP LaserJet M404 - 84 {runId}` yang laporan pelepasan asetnya dibatalkan lewat Cancel Report oleh pelapor `Maya Puspita {runId}` dari tab Reported
+101. Verifikasi node `Disposal report canceled by` atas nama `Maya Puspita {runId}` memuat `Back to Damaged`
+102. Total Control `Agus Pratama {runId}` membaca Damage Log record `Printer HP LaserJet M404 - 85 {runId}` yang laporan pelepasan asetnya dibatalkan lewat Cancel Disposal Report
+103. Verifikasi node `Disposal report canceled by` atas nama `Agus Pratama {runId}` memuat `Back to Damaged`
+
+### Record yang menjadi berpenanda Missing setelah dipilih dilewati pada submit Bulk Report Disposal
+104. Total Control `Agus Pratama {runId}` membaca record `Handheld Scanner Zebra TC21 - 105 {runId}` yang menjadi berpenanda `Missing` setelah dipilih untuk Bulk Report Disposal
+105. Verifikasi record itu dilewati pada submit dan tetap `Damaged`

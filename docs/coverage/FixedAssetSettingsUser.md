@@ -475,7 +475,7 @@ Status semua spec: `draft`.
 | TC-FA-SU-E2E-480-routing-tab-transaction-admin-log-report-missing-dari-borrow-assignment-transfer-dan-task-audit-hanya-di-sub-tab-missing | Routing Tab Transaction Admin Log: Report Missing dari Borrow, Assignment, Transfer, dan Task Audit Hanya di Sub-tab Missing dengan Source Asal | FE+BE | 30 | TC-FA-SU-1193 |
 | TC-FA-SU-E2E-481-routing-tab-transaction-admin-log-pelapor-non-admin-waiting-for-confirmation-dan-cancel-report-borrow-assignment | Routing Tab Transaction Admin Log: Pelapor Non-admin Waiting for Confirmation dan Cancel Report dari Borrow dan Assignment | FE+BE | 18 | TC-FA-SU-1194, TC-FA-SU-1195 |
 | TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | Routing Tab Transaction Admin Log: Cancel Report dari Task Audit dan Report TAG Tetap di Sub-tab Audit | FE+BE | 27 | TC-FA-SU-1196, TC-FA-SU-1197 |
-| TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | Tab Transaction Admin Log: Transaction ID Draft Tampil Dash dan Report ID Disposal | FE+BE | 16 | TC-FA-SU-1198, TC-FA-SU-1199 |
+| TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-dan-report-disposal-tampil-dash | Tab Transaction Admin Log: Transaction ID Draft dan Report Disposal Tampil Dash | FE+BE | 16 | TC-FA-SU-1198, TC-FA-SU-1199 |
 
 ---
 
@@ -1740,8 +1740,8 @@ Tidak ada. Semua TC masuk minimal satu spec E2E.
 | TC-FA-SU-1195 | E2E | TC-FA-SU-E2E-481-routing-tab-transaction-admin-log-pelapor-non-admin-waiting-for-confirmation-dan-cancel-report-borrow-assignment | FE+BE |
 | TC-FA-SU-1196 | E2E | TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | FE+BE |
 | TC-FA-SU-1197 | E2E | TC-FA-SU-E2E-482-routing-tab-transaction-admin-log-cancel-report-task-audit-dan-report-tag-tetap-di-sub-tab-audit | FE+BE |
-| TC-FA-SU-1198 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | FE+BE |
-| TC-FA-SU-1199 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-tampil-dash-dan-report-id-disposal | FE+BE |
+| TC-FA-SU-1198 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-dan-report-disposal-tampil-dash | FE+BE |
+| TC-FA-SU-1199 | E2E | TC-FA-SU-E2E-483-tab-transaction-admin-log-transaction-id-draft-dan-report-disposal-tampil-dash | FE+BE |
 
 ---
 

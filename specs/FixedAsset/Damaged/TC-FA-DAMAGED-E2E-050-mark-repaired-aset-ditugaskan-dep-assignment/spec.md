@@ -10,16 +10,16 @@ smoke: []
 dependsOn:
   - "Assignment: baris Assignment, form Assign"
 trace:
-  "§Aturan Logika Modul#r41": [14, 22]
-  "§Aturan Logika Modul#r42": [28, 29]
-  "EC-DMG-10": [22, 28, 29, 33]
+  "§Aturan Logika Modul#r41": [14, 24]
+  "§Aturan Logika Modul#r42": [30, 31]
+  "EC-DMG-10": [24, 30, 31, 34]
   "EC-DMG-18": [3]
-  "§9.4.4#r22": [24]
+  "§9.4.4#r22": [26]
   "§9.4.4#r8": [3]
-  "§9.2#b19": [28, 29]
-  "T-DMG-01": [12, 14, 19]
-  "§9.7#r9": [28, 33]
-anchor: [8, 9, 18]
+  "§9.2#b19": [30, 31]
+  "T-DMG-01": [12, 14, 15, 16, 21]
+  "§9.7#r9": [30, 34]
+anchor: [8, 9, 20]
 coverage:
   web: automated
 ---
@@ -56,25 +56,27 @@ coverage:
 12. Verifikasi baris aset `Laptop Dell Latitude 5420 {runId}` tampil di sub-tab `Active` dengan Status `Damaged`
 13. Klik `⋯` pada baris aset `Laptop Dell Latitude 5420 {runId}`
 14. Verifikasi aksi `Mark as Repaired` tampil pada menu baris
-15. Klik `Mark as Repaired`
-16. Isi Repair note `Engsel laptop sudah diganti dan layar bisa berdiri tegak`
-17. Klik `[Mark as Repaired]`
-18. Verifikasi baris aset `Monitor Dell P2422H {runId}` tetap tampil di sub-tab `Active`
-19. Verifikasi baris aset `Laptop Dell Latitude 5420 {runId}` tidak tampil lagi di sub-tab `Active`
-20. Klik sub-tab `History`
-21. Ketik Search `{runId}`, tekan Enter
-22. Verifikasi baris aset `Laptop Dell Latitude 5420 {runId}` tampil di sub-tab `History` dengan Status `Repaired`
-23. Klik nama aset pada baris aset `Laptop Dell Latitude 5420 {runId}`
-24. Verifikasi node `Marked as repaired by [Admin Name]` tampil di dialog Damage Log dengan baris detail Repair note `Engsel laptop sudah diganti dan layar bisa berdiri tegak`
-25. Tutup dialog Damage Log
+15. Verifikasi aksi `Report Disposal` pada menu itu Disabled
+16. Verifikasi aksi `Report Missing` pada menu itu aktif dan bisa diklik
+17. Klik `Mark as Repaired`
+18. Isi Repair note `Engsel laptop sudah diganti dan layar bisa berdiri tegak`
+19. Klik `[Mark as Repaired]`
+20. Verifikasi baris aset `Monitor Dell P2422H {runId}` tetap tampil di sub-tab `Active`
+21. Verifikasi baris aset `Laptop Dell Latitude 5420 {runId}` tidak tampil lagi di sub-tab `Active`
+22. Klik sub-tab `History`
+23. Ketik Search `{runId}`, tekan Enter
+24. Verifikasi baris aset `Laptop Dell Latitude 5420 {runId}` tampil di sub-tab `History` dengan Status `Repaired`
+25. Klik nama aset pada baris aset `Laptop Dell Latitude 5420 {runId}`
+26. Verifikasi node `Marked as repaired by [Admin Name]` tampil di dialog Damage Log dengan baris detail Repair note `Engsel laptop sudah diganti dan layar bisa berdiri tegak`
+27. Tutup dialog Damage Log
 
 ### Baris Assignment tetap Assigned dan pemegang tidak berubah
-26. Buka halaman Assignment
-27. Ketik Search `{runId}`, tekan Enter
-28. Verifikasi baris Assignment aset `Laptop Dell Latitude 5420 {runId}` tetap berstatus `Assigned`
-29. Verifikasi pemegang pada baris itu tetap `Bima Prakoso {runId}`
+28. Buka halaman Assignment
+29. Ketik Search `{runId}`, tekan Enter
+30. Verifikasi baris Assignment aset `Laptop Dell Latitude 5420 {runId}` tetap berstatus `Assigned`
+31. Verifikasi pemegang pada baris itu tetap `Bima Prakoso {runId}`
 
 ### Status global aset tetap Assigned sesudah Mark as Repaired
-31. Buka halaman Assets, tab `Assets`
-32. Ketik Search `Laptop Dell Latitude 5420 {runId}`, tekan Enter
-33. Verifikasi status global aset `Assigned` pada baris `Laptop Dell Latitude 5420 {runId}`
+32. Buka halaman Assets, tab `Assets`
+33. Ketik Search `Laptop Dell Latitude 5420 {runId}`, tekan Enter
+34. Verifikasi status global aset `Assigned` pada baris `Laptop Dell Latitude 5420 {runId}`

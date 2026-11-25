@@ -9,7 +9,7 @@ sourceRules: [T-DMG-02, "§4.1#r2", "§5#r1", S-DMG-13, S-DMG-14, EB-TBL-1@tabel
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-02: [2, 3, 4, 5, 6, 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 29, 30, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 86, 88, 89, 90, 91, 93, 95, 96, 98, 99, 100, 101, 103, 105, 108]
+  T-DMG-02: [2, 3, 4, 5, 6, 8, 9, 10, 11, 16, 17, 18, 19, 20, 21, 29, 30, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 86, 88, 89, 90, 91, 93, 95, 96, 98, 99, 100, 101, 103, 105, 108, 110, 112, 113, 114, 116, 117, 119, 120, 122, 123, 125, 126, 128, 130, 132, 133, 135, 136, 137, 140]
   "§4.1#r2": [26]
   "§5#r1": [23, 24, 25]
   S-DMG-13: [32, 33]
@@ -35,6 +35,9 @@ coverage:
   - DU-106-4: Record `Scanner Fujitsu fi-7160 - 2`, Asset ID `SCN-2026-0002`, Group `Head Office`, Status `Canceled`, Source `Reported by holder`, Reported By `Dewi Anggraini` (tampil `Dewi A`, dari `Dewi Anggraini`), Reported Date `08/11/26, 10:00` dari `2026-11-08T03:00:00Z`, Duration `1 day` dari 1 hari kalender, Resolved By `Dewi Anggraini`, Resolved Date `09/11/26, 08:00` dari `2026-11-09T01:00:00Z`.
   - DU-106-7: Record `Handheld Scanner Zebra TC21 - 2`, Asset ID `HSC-2026-0002`, Group `Head Office`, Status `Repaired`, Source `Reported by holder`, Last Holder `Tono Rahmat` tanpa akun (tampil `Tono R`, dari `Tono Rahmat`; Division `Finance`, PIC `Sinta Maharani` sehingga hover memuat `PIC: Sinta Maharani`, Employee ID `EMP-0217`), Reported By laporan PIC `Sinta Maharani` atas nama `Tono Rahmat` (tampil `Sinta M on behalf of Tono R`, dari `Sinta Maharani` dan `Tono Rahmat`), Reported Date `03/11/26, 09:30` dari `2026-11-03T02:30:00Z`, Duration `2 days` dari 2 hari kalender, Resolved By `Rina Wijaya`, Resolved Date `05/11/26, 11:00` dari `2026-11-05T04:00:00Z`.
   - DU-106-8: Record `Projector Epson EB-X06 - 5`, Asset ID `PRJ-2026-0005`, Group `Head Office`, Status `Repaired`, Source `Registration`, tanpa Damaged Photo, Reported By `Rina Wijaya`, Reported Date `02/11/26, 09:00` dari `2026-11-02T02:00:00Z`, Duration `3 days` dari 3 hari kalender, Resolved By `Rina Wijaya`, Resolved Date `05/11/26, 13:45` dari `2026-11-05T06:45:00Z`.
+  - DU-106-9: Record `Printer Epson L3250 - 1`, Asset ID `PRN-2026-0011`, Group `Head Office`, Status `Repaired`, Source `Manual`, Reported By `Agus Prasetyo`, Reported Date `09/11/26, 08:00` dari `2026-11-09T01:00:00Z`, Duration `0 days` dari 0 hari kalender, Resolved By `Rina Wijaya`, Resolved Date `09/11/26, 16:30` dari `2026-11-09T09:30:00Z`.
+  - DU-106-10: Record `Sensor Suhu Ruang Server - 2`, Asset ID `SNS-2026-0021`, Photo `sensor-suhu-ruang-server-2.jpg`, Brand `Zebra Technologies Indonesia` (28 karakter; tampil `Zebra Techno..es Indonesia`, dari 12 huruf pertama, `..`, dan 12 huruf terakhir), Model/Type `Handheld Reader Pro`, Category `Environmental Monitoring` (hierarki `Sensors > Environmental Monitoring`), Group `Room 301` (hierarki `Head Office A > Floor 1 > Room 301`), Status `Repaired`, Source `Manual`, Last Holder `Sari Dewi` (tampil `Sari D`, dari `Sari Dewi`), Reported By `Agus Prasetyo`, Reported Date `10/11/26, 08:00` dari `2026-11-10T01:00:00Z`, Duration `1 day` dari 1 hari kalender, Resolved By `Rina Wijaya`, Resolved Date `11/11/26, 10:00` dari `2026-11-11T03:00:00Z`.
+  - DU-106-11: Record `NFC Reader ACR122 - 1`, Asset ID `NFR-2026-0001`, tanpa Damaged Photo, Brand dan Model/Type tidak pernah diisi (tampil `—`), Category `NFC` (hierarki `TAG Technology > NFC`), Group `Jakarta Selatan Distribution Center` (35 karakter; tampil `Jakarta Sela..ution Center`, hierarki `Region Jawa > Jakarta Selatan Distribution Center`), Status `Rejected`, Source `Reported by scan`, Last Holder kosong karena aset tidak dipegang (tampil `—`), Reported By `Dedi Kurniawan` (tampil `Dedi K`, dari `Dedi Kurniawan`), Reported Date `10/11/26, 12:00` dari `2026-11-10T05:00:00Z`, Duration `2 days` dari 2 hari kalender, Resolved By `Agus Prasetyo`, Resolved Date `12/11/26, 10:10` dari `2026-11-12T03:10:00Z`.
   - DU-106-5: Daftar record selesai kosong untuk entitas yang belum menyelesaikan record apa pun (jumlah record `0`).
 - Kondisi:
   - K1: daftar memuat DU-106-1 sampai DU-106-4 dengan kolom bawaan Setup Column; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; Time Zone bernilai `Asia/Jakarta`.
@@ -43,6 +46,8 @@ coverage:
   - K4: memuat daftar gagal karena error server.
   - K5: daftar seperti K1; aktor berhak melihat nilai finansial.
   - K6: daftar memuat DU-106-7 dan DU-106-8 dengan kolom bawaan Setup Column; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; Time Zone bernilai `Asia/Jakarta`.
+  - K7: daftar memuat DU-106-9 dengan kolom bawaan Setup Column; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; Time Zone bernilai `Asia/Jakarta`.
+  - K8: daftar memuat DU-106-10 dan DU-106-11; Setup Column menampilkan kolom `Brand`, `Model/Type`, dan `Category` selain kolom bawaan; Date Format bernilai `dd/MM/yy`; Time Format bernilai `24h`; Time Zone bernilai `Asia/Jakarta`.
 
 ## Test Steps
 
@@ -181,3 +186,47 @@ coverage:
 106. Tekan `Esc`
 107. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K6
 108. Verifikasi avatar inisial tampil pada kolom `Photo` baris `Projector Epson EB-X06 - 5`
+
+### Urutan kolom awal tabel History
+109. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K1
+110. Verifikasi kolom tampil berurutan dari kiri ke kanan: `Photo`, `Name`, `Asset ID`, `Group`, `Status`, `Source`, `Last Holder`, `Reported By`, `Reported Date`, `Duration`, `Resolved By`, `Resolved Date`, dan `Actions`
+
+### Duration 0 days untuk record selesai pada hari kalender yang sama
+111. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K7
+112. Verifikasi kolom `Reported Date` baris `Printer Epson L3250 - 1` menampilkan `09/11/26, 08:00`
+113. Verifikasi kolom `Resolved Date` baris `Printer Epson L3250 - 1` menampilkan `09/11/26, 16:30`
+114. Verifikasi kolom `Duration` baris `Printer Epson L3250 - 1` menampilkan `0 days`
+
+### Hierarki Group dan Category saat hover pada tabel History
+115. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K8
+116. Verifikasi header kolom `Brand`, `Model/Type`, dan `Category` tampil
+117. Verifikasi kolom `Group` baris `Sensor Suhu Ruang Server - 2` menampilkan `Room 301`
+118. Arahkan pointer ke `Room 301` pada kolom `Group` baris `Sensor Suhu Ruang Server - 2`
+119. Verifikasi hierarki lengkap `Head Office A > Floor 1 > Room 301` tampil
+120. Verifikasi kolom `Group` baris `NFC Reader ACR122 - 1` menampilkan `Jakarta Sela..ution Center`
+121. Arahkan pointer ke `Jakarta Sela..ution Center` pada kolom `Group` baris `NFC Reader ACR122 - 1`
+122. Verifikasi hierarki lengkap `Region Jawa > Jakarta Selatan Distribution Center` tampil
+123. Verifikasi kolom `Category` baris `Sensor Suhu Ruang Server - 2` menampilkan `Environmental Monitoring`
+124. Arahkan pointer ke `Environmental Monitoring` pada kolom `Category` baris `Sensor Suhu Ruang Server - 2`
+125. Verifikasi hierarki lengkap `Sensors > Environmental Monitoring` tampil
+126. Verifikasi kolom `Category` baris `NFC Reader ACR122 - 1` menampilkan `NFC`
+127. Arahkan pointer ke `NFC` pada kolom `Category` baris `NFC Reader ACR122 - 1`
+128. Verifikasi hierarki lengkap `TAG Technology > NFC` tampil
+
+### Nama penuh Brand saat hover pada tabel History
+129. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K8
+130. Verifikasi kolom `Brand` baris `Sensor Suhu Ruang Server - 2` menampilkan `Zebra Techno..es Indonesia`
+131. Arahkan pointer ke `Zebra Techno..es Indonesia` pada kolom `Brand` baris `Sensor Suhu Ruang Server - 2`
+132. Verifikasi nama penuh Brand `Zebra Technologies Indonesia` tampil
+133. Verifikasi kolom `Model/Type` baris `Sensor Suhu Ruang Server - 2` menampilkan `Handheld Reader Pro`
+
+### Nilai kosong kolom tersembunyi dan Last Holder pada tabel History
+134. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K8
+135. Verifikasi kolom `Brand` baris `NFC Reader ACR122 - 1` menampilkan `—`
+136. Verifikasi kolom `Model/Type` baris `NFC Reader ACR122 - 1` menampilkan `—`
+137. Verifikasi kolom `Last Holder` baris `NFC Reader ACR122 - 1` menampilkan `—`
+
+### Hover foto pada kolom Photo tabel History
+138. Tampilkan Tabel T-DMG-02 (sub-tab History) dengan kondisi K1
+139. Arahkan pointer ke foto pada kolom `Photo` baris `Laptop Dell Latitude 5420 - 9`
+140. Verifikasi pratinjau besar foto `laptop-dell-latitude-5420-9.jpg` tampil saat pointer berada di foto

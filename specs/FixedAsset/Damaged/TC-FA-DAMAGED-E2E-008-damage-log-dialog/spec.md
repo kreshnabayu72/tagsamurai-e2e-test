@@ -54,7 +54,7 @@ coverage:
   - DU-008-5: record `Repaired`, Name `Log Aset {runId} - 5`, Asset ID `LOG-0005-{runId}`, Group `Head Office {runId}`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, What happened `Layar tidak menyala`, node: `Reported damaged by Agus P`, `Marked as repaired by Rina W`.
   - DU-008-6: record `Disposed`, Name `Log Aset {runId} - 6`, Asset ID `LOG-0006-{runId}`, Group `Head Office {runId}`, Source `Registration`, Last Holder `—`, Reported By `Rina W`, What happened `Casing retak saat registrasi`, node: `Reported damaged by Rina W`, `Disposal reported by Rina W`, `Disposed`.
   - DU-008-7: record `Damaged`, Name `Log Aset {runId} - 7`, Asset ID `LOG-0007-{runId}`, Group `Head Office {runId}`, Source `Manual`, Last Holder `—`, Reported By `Agus P`, What happened `Kipas mati total`, node: `Reported damaged by Agus P`, `Asset reported missing`, `Missing report closed`, `Asset reported missing`, `Asset found`.
-  - DU-008-8: Reason Disposal `Sudah tidak ekonomis`, Reason Decline `Masih bisa diperbaiki`, Reason Reject `Foto tidak menunjukkan kerusakan`, Repair note `Layar diganti`; Report ID dan Disposal No. milik DU-008-1 dan DU-008-6 dibentuk server.
+  - DU-008-8: Reason Disposal `Sudah tidak ekonomis`, Reason Decline `Masih bisa diperbaiki`, Reason Reject `Foto tidak menunjukkan kerusakan`, Repair note `Layar diganti`; Disposal No. milik DU-008-1 dan DU-008-6 dibentuk server.
   - DU-008-1, DU-008-2, dan DU-008-7 adalah record berjalan di sub-tab Active; DU-008-3, DU-008-4, DU-008-5, dan DU-008-6 adalah record selesai di sub-tab History. DU-008-6 tidak memiliki Damaged Photo; record lain memiliki Damaged Photo `foto-kerusakan.jpg`.
   - Reported Date setiap record pukul `09:00` dengan Days Damaged yang berurutan DU-008-1 lebih lama daripada DU-008-7 dan DU-008-2; Resolved Date DU-008-3 terbaru, lalu DU-008-4, DU-008-5, dan DU-008-6.
   - User `Rina W`, `Agus P`, `Budi S`, `Dewi A`, `Sinta M`, dan `Tono R` adalah user ber-runId; `Sinta M` adalah PIC yang melapor atas nama karyawan tanpa akun `Tono R`.
@@ -72,9 +72,9 @@ coverage:
 8. Verifikasi badge status `Damaged` disertai penanda `Missing` pada dialog
 9. Verifikasi pihak `Reported By` bernilai `Rina W` pada dialog
 10. Verifikasi node `Reported damaged by Rina W` memuat What happened `<script>alert(1)</script>` sebagai teks apa adanya dan Damaged Photo `foto-kerusakan.jpg`
-11. Verifikasi node `Disposal reported by Rina W` memuat Report ID milik DU-008-1 dan Reason `Sudah tidak ekonomis`
-12. Verifikasi node `Disposal report declined by Agus P` memuat Report ID milik DU-008-1, Reason `Masih bisa diperbaiki`, dan Back to Damaged
-13. Verifikasi node `Disposal report canceled by Rina W` memuat Report ID milik DU-008-1 dan Back to Damaged
+11. Verifikasi node `Disposal reported by Rina W` memuat Reason `Sudah tidak ekonomis`
+12. Verifikasi node `Disposal report declined by Agus P` memuat Reason `Masih bisa diperbaiki`, dan Back to Damaged
+13. Verifikasi node `Disposal report canceled by Rina W` memuat Back to Damaged
 14. Verifikasi node `Asset reported missing` dengan pelaku `System` adalah node terbaru (kronologis terakhir) pada record `Log Aset {runId} - 1`
 15. Verifikasi dialog `Damage Log` tidak memiliki footer `[Reject]` dan `[Confirm]` karena status record bukan `Waiting for Confirmation`
 

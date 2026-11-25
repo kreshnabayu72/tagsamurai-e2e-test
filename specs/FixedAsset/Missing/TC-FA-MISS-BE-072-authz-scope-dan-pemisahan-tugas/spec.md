@@ -107,7 +107,7 @@ trace:
   - DU-072-25: Asset Name `Projector Epson EB-X06 {runId}`, Asset ID `FA072-005`, Group aset `Server Room`, Record berjalan `Missing, dilaporkan Hendra Pratama {runId}`.
   - DU-072-26: Asset Name `Toyota Innova {runId}`, Asset ID `FA072-006`, Group aset `Finance Room`, Record berjalan `Reported Disposal, dilaporkan Hendra Pratama {runId}`.
   - DU-072-27: Asset Name `Mesin Fotokopi Ricoh {runId}`, Asset ID `FA072-007`, Group aset `Warehouse`, Record berjalan `Reported Disposal, dilaporkan Hendra Pratama {runId}`.
-  - DU-072-28: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA072-008`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Hendra Pratama {runId}`.
+  - DU-072-28: Asset Name `Monitor LG 27UL500 {runId}`, Asset ID `FA072-008`, Group aset `Finance Room`, Transaksi `aset tidak dalam transaksi`, Record berjalan `Missing, dilaporkan Hendra Pratama {runId}`.
   - DU-072-29: Asset Name `Camera Canon EOS {runId}`, Asset ID `FA072-009`, Group aset `Finance Room`, Record berjalan `Waiting for Confirmation, dilaporkan Andi Prasetyo {runId} sebelum ia memperoleh hak Aktor Missing`, Pemegang `Andi Prasetyo {runId}`.
   - DU-072-30: Asset Name `Genset Honda EU22 {runId}`, Asset ID `FA072-010`, Group aset `Finance Room`, Record berjalan `Missing, dilaporkan Andi Prasetyo {runId}`, Pemegang `Andi Prasetyo {runId}`.
   - DU-072-31: Asset Name `Tablet Samsung Tab A8 {runId}`, Asset ID `FA072-011`, Group aset `Finance Room`, Record berjalan `tidak ada`, Transaksi `milik Wulan Sari {runId}`.
@@ -153,7 +153,7 @@ trace:
 21. Verifikasi permintaan itu ditolak dan tidak ada berkas yang dihasilkan
 
 ### Accounting melapor disposal aset Missing dan membatalkan laporannya sendiri
-22. `Eko Wibowo {runId}` mengirim Report Disposal atas record `Monitor LG 27UL500 {runId}` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
+22. `Eko Wibowo {runId}` mengirim Report Disposal atas record `Monitor LG 27UL500 {runId}` yang asetnya tidak dalam transaksi dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
 23. Verifikasi record `Monitor LG 27UL500 {runId}` berstatus `Reported Disposal`
 24. `Eko Wibowo {runId}` mengirim Report Disposal atas record `Printer HP LaserJet M404 {runId}` yang berstatus `Waiting for Confirmation` dengan Reason `Aset tidak ditemukan setelah pencarian dua pekan`
 25. Verifikasi permintaan itu ditolak karena Report Disposal hanya melaporkan aset Missing, dan record `Printer HP LaserJet M404 {runId}` tetap `Waiting for Confirmation`

@@ -1,10 +1,10 @@
 {
  "module": "Damaged",
  "status": "disetujui",
- "disetujui": "Intan, 2026-11-23",
+ "disetujui": "otomatis, 2026-11-25",
  "prd": "fixed-asset@f688ea9",
- "prdSha": "6f79946a09f41c96",
- "foundation": "foundation@6011f14-dirty",
+ "prdSha": "270724071328960a",
+ "foundation": "foundation@21e4b47-dirty",
  "specs": [
   {
    "id": "TC-FA-DAMAGED-E2E-001-tabel-active-tampilan",
@@ -30,6 +30,7 @@
     "F-DMG-02",
     "§Aturan Logika Modul#r11",
     "§Aturan Logika Modul#r13",
+    "§Aturan Logika Modul#r45",
     "§8.1#r2",
     "§9.2#b4"
    ],
@@ -314,7 +315,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": null,
+   "alasan": "Dialog Unsaved Changes pada navigasi in-app atau Back/Forward (§24.1e) tidak diasersi di spec ini: mencegat perubahan rute butuh rute tujuan di luar modul ini (IS-2), dan PRD tidak menetapkan rute lain di dalam modul Damaged. Mekanik universal itu diasersi sekali, untuk D-DMG-01, di E2E-030 (LY-11). Spec ini mengasersi konfirmasi bawaan browser saat reload dan tutup tab (§24.1d).",
    "priority": "Critical"
   },
   {
@@ -344,7 +345,8 @@
     "FLD-DMG-05",
     "§4.2.1#b2",
     "§4.2.4#p13",
-    "§9.7#r9"
+    "§9.7#r9",
+    "§9.2#r2"
    ],
    "smoke": [
     "EB-FB-1@mark-as-repaired",
@@ -357,7 +359,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Aset tanpa TAG dipakai agar Scan TAG tidak diminta (EC-DMG-31); Scan TAG dengan perangkat ada di spec 012. After photo required bernilai OFF (lingkungan). Badge jumlah tab (S-DMG-01) diasersi sebagai selisih (AS-8). Aksi Hidden pada baris Reported Disposal / In Disposal Process / berpenanda Missing diasersi pada record awal lain tanpa mutasi.",
+   "alasan": "Aset tanpa TAG dipakai agar Scan TAG tidak diminta (EC-DMG-31); Scan TAG dengan perangkat ada di spec 012. After photo required bernilai OFF (lingkungan). Badge jumlah tab (S-DMG-01) diasersi sebagai selisih (AS-8). Aksi Hidden pada baris Reported Disposal / In Disposal Process / berpenanda Missing diasersi pada record awal lain tanpa mutasi. Dialog Unsaved Changes pada navigasi in-app atau Back/Forward (§24.1e) tidak diasersi di spec ini: butuh rute tujuan di luar modul ini (IS-2); mekanik universal itu diasersi sekali, untuk D-DMG-01, di E2E-030 (LY-11). Spec ini mengasersi konfirmasi bawaan browser saat reload dan tutup tab (§24.1d). Klausa File Manager (§8.1#r12, After photo dihapus) dimiliki E2E-062 dan klausa Storage penuh (§9.6#r5) dimiliki BE-214.",
    "priority": "Critical"
   },
   {
@@ -722,7 +724,9 @@
     "§2.1#b3",
     "§4.8#r1",
     "§2.1#r1",
-    "§2#b7"
+    "§2#b7",
+    "§2.1#b6",
+    "D-DISP-15"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -732,7 +736,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Titik masuk modul adalah tab Damaged pada halaman Assets (§4.2.1), bukan item sidebar sendiri (§11#r18); EB-AKS-1 diasersi pada tab itu.",
+   "alasan": "Titik masuk modul adalah tab Damaged pada halaman Assets (§4.2.1), bukan item sidebar sendiri (§11#r18); EB-AKS-1 diasersi pada tab itu. Accounting adalah salah satu pengguna tanpa role Damaged: tab Damaged tidak terbuka baginya dan ia melapor hanya dari Asset List atau Asset Detail (§2.1#b6); yang diasersi di sini hanya tab tidak tampil dan URL langsung ditolak, sedangkan hak melapor dari Asset List atau Asset Detail milik modul Disposal.",
    "priority": "Medium"
   },
   {
@@ -1195,7 +1199,8 @@
     "§9.4.4#r34",
     "§9.2#b28",
     "§3#p2",
-    "§Aturan Logika Modul#r52"
+    "§Aturan Logika Modul#r52",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1245,7 +1250,8 @@
     "§8.3#r3",
     "EC-DMG-34",
     "§9.4.4#r36",
-    "§9.7#r16"
+    "§9.7#r16",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1284,7 +1290,8 @@
     "§4.8#r10",
     "S-DMG-01",
     "§4.2.4#r17",
-    "§3#p7"
+    "§3#p7",
+    "§9.2#r3"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1386,7 +1393,9 @@
     "§8.3#r4",
     "EC-DMG-17",
     "§9.4.4#r28",
-    "§9.7#r11"
+    "§9.7#r11",
+    "§3#p7",
+    "§9.2#r3"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1403,7 +1412,7 @@
   },
   {
    "id": "TC-FA-DAMAGED-E2E-045-record-mengikuti-baris-disposal-dep-disposal",
-   "title": "Record mengikuti baris Disposal: Submit Request menjadi In Disposal Process, Reject/Cancel/Remove kembali Damaged, dan Execute menjadi Disposed di History dengan Resolved By System",
+   "title": "Record mengikuti baris Disposal: Submit Request menjadi In Disposal Process, Reject/Cancel/Remove atas baris dari Report kembali Reported Disposal (Report kembali Reported), dan Execute menjadi Disposed di History dengan Resolved By System",
    "layer": "ui-e2e",
    "units": [
     "§Aturan Logika Modul#r20",
@@ -1421,7 +1430,9 @@
     "S-DMG-06",
     "T-DMG-02",
     "§Aturan Logika Modul#r19",
-    "§Aturan Logika Modul#r65"
+    "§Aturan Logika Modul#r65",
+    "§3#p7",
+    "§9.2#r3"
    ],
    "smoke": [],
    "dependsOn": [
@@ -1697,7 +1708,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu alur Transfer atas dua aset: aset Damaged (record ikut Group tujuan) dan aset normal yang dilaporkan rusak saat Receive; keduanya teramati pada Received yang sama. Pengamatan Mark as Repaired, Report Disposal, dan Report Missing Disabled selama In Transfer Process dan aktif lagi setelah Received memakai aset Damaged yang sama dalam alur Transfer yang sama (satu mutasi Transfer); cabang Returned to Origin, Rejected, dan Canceled dimiliki spec be-e2e (klausa server).",
+   "alasan": "Satu alur Transfer atas dua aset: aset Damaged (record ikut Group tujuan) dan aset normal yang dilaporkan rusak saat Receive; keduanya teramati pada Transfer yang sama (Completed). Pengamatan Mark as Repaired, Report Disposal, dan Report Missing Disabled selama In Transfer Process dan aktif lagi setelah Completed memakai aset Damaged yang sama dalam alur Transfer yang sama (satu mutasi Transfer); cabang Returned to Origin, Rejected, dan Canceled dimiliki spec be-e2e (klausa server).",
    "priority": "Critical"
   },
   {
@@ -2462,7 +2473,8 @@
     "F-DMG-01",
     "§Aturan Logika Modul#r39",
     "§9.4.2#r38",
-    "§2.1#r2"
+    "§2.1#r2",
+    "§2.1#b5"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2582,7 +2594,8 @@
     "§4.2.4#r17",
     "§8.2#p22",
     "§4.2.4#r15",
-    "§4.2.4#r13"
+    "§4.2.4#r13",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2623,7 +2636,8 @@
     "§9.4.1#r12",
     "EB-FRM-4@repair-note",
     "§3#p7",
-    "F-DMG-05"
+    "F-DMG-05",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2735,7 +2749,8 @@
     "F-DMG-10",
     "§3#p7",
     "§3#p2",
-    "§2#b6"
+    "§2#b6",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2793,7 +2808,11 @@
     "§9.2#b8",
     "§9.4.2#r32",
     "§4.2.4#r10",
-    "§4.2.4#r11"
+    "§4.2.4#r11",
+    "T-DMG-01",
+    "§8.1#r14",
+    "§8.1#r15",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -2881,7 +2900,8 @@
     "§3#p2",
     "§2#b6",
     "§9.2#b4",
-    "§Aturan Logika Modul#r52"
+    "§Aturan Logika Modul#r52",
+    "§9.2#r2"
    ],
    "smoke": [],
    "dependsOn": [],
@@ -3037,7 +3057,7 @@
    },
    "harness": "fungsional",
    "varianPlatform": [],
-   "alasan": "Satu journey pelapor umum Source Maintenance (Staff Executor atau Asset Admin Maintenance Routine tanpa hak Aktor Damaged pada Group aset): Report Damaged dari Task Maintenance lalu Cancel my report atas laporan yang sama, pola yang sama dengan spec dep-audit tetapi modul sumbernya berbeda (IS-4). Keputusan Aktor Damaged (Confirm, Reject) bukan objek uji spec ini; hasil server dan status record diasersi spec be-e2e (LY-2). Pelapor yang punya hak Aktor Damaged langsung Damaged dan diasersi di be-e2e (EC-DMG-41). Spec ini hanya mengasersi pelapor umum dan pintu masuk Task Maintenance; klausa Pelapor admin dari Task Maintenance (langsung Damaged) tidak diasersi di sini dan tidak ada kelompok representatif ui-e2e seperti 054.",
+   "alasan": "Satu journey pelapor umum Source Maintenance (Staff Executor atau Asset Admin Maintenance Routine tanpa hak Aktor Damaged pada Group aset): Report Damaged dari Task Maintenance lalu Cancel my report atas laporan yang sama, pola yang sama dengan spec dep-audit tetapi modul sumbernya berbeda (IS-4). Keputusan Aktor Damaged (Confirm, Reject) bukan objek uji spec ini; hasil server dan status record diasersi spec be-e2e (LY-2). Pelapor yang punya hak Aktor Damaged langsung Damaged dan diasersi di be-e2e (EC-DMG-41). Spec ini hanya mengasersi pelapor umum dan pintu masuk Task Maintenance; klausa Pelapor admin dari Task Maintenance (langsung Damaged) tidak diasersi di sini dan tidak ada kelompok representatif ui-e2e seperti 054. Keputusan plan: klausa Pelapor admin dari Task Maintenance (langsung Damaged, §2.1#b5) dimiliki be-e2e 201 dan tidak ada kelompok representatif ui-e2e di spec ini.",
    "priority": "Medium"
   },
   {
@@ -3445,7 +3465,7 @@
    "kutipan": [
     "DAMAGED-LOGIC-04g: «Report Damaged tidak tersedia dari modul ini (kerusakan baru dicatat lewat Already damaged saat Send dan Report Damaged saat Receive, `transfer.md` `XFER-LOGIC-16`)»"
    ],
-   "dampak": "PRD tidak menyebut elemen dan keadaannya (Hidden, Disabled, atau ditolak server) untuk Report Damaged atas aset In Transfer Process. Klausa itu tidak diasersi; bagian lain DAMAGED-LOGIC-04g (Mark as Repaired dan Report Disposal Disabled, Condition tidak berubah, record tetap di Active, aktif lagi setelah Received, Returned to Origin, Rejected, atau Canceled) tetap dimiliki spec."
+   "dampak": "PRD tidak menyebut elemen dan keadaannya (Hidden, Disabled, atau ditolak server) untuk Report Damaged atas aset In Transfer Process. Klausa itu tidak diasersi; bagian lain DAMAGED-LOGIC-04g (Mark as Repaired dan Report Disposal Disabled, Condition tidak berubah, record tetap di Active, aktif lagi setelah Completed, Returned to Origin, Rejected, atau Canceled) tetap dimiliki spec."
   },
   {
    "no": 13,
@@ -5377,7 +5397,7 @@
   },
   "§2.1#b5": {
    "ui-e2e": "pelapor Maintenance tanpa hak Aktor Damaged melihat Cancel my report",
-   "be-e2e": "hanya pelapor laporan Waiting for Confirmation yang dapat membatalkan"
+   "be-e2e": "hanya pelapor laporan Waiting for Confirmation yang dapat membatalkan, dan Pelapor admin dari Task Maintenance langsung Damaged"
   },
   "§4.8#r9": {
    "ui-e2e": "Cancel my report di Task Maintenance Show bagi pelapornya",
@@ -5431,7 +5451,7 @@
   },
   "§4.2.4#p13": {
    "ui-client": "dialog Unsaved Changes saat ditutup lewat [✕] atau Esc dalam keadaan terisi",
-   "ui-e2e": "konfirmasi bawaan browser saat reload atau tutup tab dengan form kotor, dan dialog Unsaved Changes pada navigasi in-app atau Back/Forward (web)"
+   "ui-e2e": "konfirmasi bawaan browser saat reload atau tutup tab dengan form kotor (D-DMG-01, D-DMG-02, D-DMG-04), dan dialog Unsaved Changes pada navigasi in-app atau Back/Forward (web) hanya untuk D-DMG-01"
   },
   "§9.4.2#r32": {
    "ui-client": "klausa klien: EC-DMG-46 (D-DISP-13 hanya berisi record layak, toast V-DMG-09 setelah Submit, semua tidak layak D-DMG-13)",
@@ -5460,6 +5480,14 @@
   "§9.4.3#b6": {
    "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
    "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§9.2#r2": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
+  },
+  "§9.2#r3": {
+   "ui-e2e": "klausa hasil server yang teramati di UI dengan data nyata",
+   "be-e2e": "klausa aturan server: validasi, status, authz, atomisitas, dan log"
   }
  },
  "dataUnits": [
@@ -5470,7 +5498,7 @@
   "§4.2.2#p3"
  ],
  "shared": {
-  "T-DMG-01": "per fitur tabel dan aksi: tampilan di 001, search di 002, sort di 003, filter di 004, Setup Column/paginasi di 005, Download di 006, seleksi bulk di 013, matriks aksi per aksi di spec aksinya (009–011, 037, 041–043), per jenis aktor di spec gating (014–019, 025), konfigurasi tabel di spec -dep- yang membacanya; ui-client: tampilan di 101, mekanik di 102, seleksi di 103, aksi per status di 104; 010, 012, 015, 016, 017, 018, 030, 033, 034, 042, 046, 047, 048, 049, 050, 051, 052, 053, 054 (revisi PRD); 209, 210, 211 (revisi PRD)",
+  "T-DMG-01": "per fitur tabel dan aksi: tampilan di 001, search di 002, sort di 003, filter di 004, Setup Column/paginasi di 005, Download di 006, seleksi bulk di 013, matriks aksi per aksi di spec aksinya (009–011, 037, 041–043), per jenis aktor di spec gating (014–019, 025), konfigurasi tabel di spec -dep- yang membacanya; ui-client: tampilan di 101, mekanik di 102, seleksi di 103, aksi per status di 104; 010, 012, 015, 016, 017, 018, 030, 033, 034, 042, 046, 047, 048, 049, 050, 051, 052, 053, 054 (revisi PRD); 209, 210, 211 (revisi PRD); be-e2e: record yang menjadi berpenanda Missing setelah dipilih dilewati pada submit Bulk Report Disposal sesuai V-DMG-09 di 207",
   "§4.1#p3": "per spec, klausa masing-masing: 001, 037",
   "§4.1#p4": "per spec, klausa masing-masing: 001, 060",
   "§4.2.1#b2": "per klausa: badge tampil di 001, jumlah berubah di 011",
@@ -5496,8 +5524,8 @@
   "§8.1#r11": "per spec, klausa masing-masing: 008, 039",
   "§8.1#r12": "per klausa: Repair note/After photo di 011, Manual identification di 059; tampilan di 008; 012 (revisi PRD); After photo dihapus dari File Manager (DAMAGED-LOGIC-10f) di 062; 011 hanya mengasersi After photo yang diunggah",
   "§8.1#r13": "per spec, klausa masing-masing: 008, 041",
-  "§8.1#r14": "per spec, klausa masing-masing: 008, 044",
-  "§8.1#r15": "per pelaku: Cancel Disposal Report dari modul ini di 043, Cancel Report dari tab Reported di 044; tampilan di 008",
+  "§8.1#r14": "ui-e2e per spec, klausa masing-masing: 008, 044; be-e2e per klausa: node Disposal report declined by atas Decline oleh Aktor Disposal (Reason dan Back to Damaged) di 207, jalur non-form dan log di 208",
+  "§8.1#r15": "per pelaku: Cancel Disposal Report dari modul ini di 043, Cancel Report dari tab Reported di 044; tampilan di 008; be-e2e per pelaku: Cancel Report oleh pelapor di tab Reported dan Cancel Disposal Report oleh Total Control di 207, jalur non-form dan log di 208",
   "§8.1#r16": "per pemicu: Disposal Executed di 045, Missing → Disposed di 040; tampilan di 008",
   "§9.2#b21": "per klausa: dialog riwayat di 008, akses di luar cakupan di 018",
   "§8.2#b3": "per spec, klausa masing-masing: 008, 059",
@@ -5515,7 +5543,7 @@
   "S-DMG-05": "per status: Hidden pada baris awal Reported Disposal/In Disposal Process di 011, sesudah Report Disposal di 041, sesudah Submit Request di 045",
   "§Aturan Logika Modul#r60": "per spec, klausa masing-masing: 011, 021",
   "EC-DMG-31": "per klausa: Mark as Repaired tanpa Scan TAG di 011, node tanpa foto (Registration) di 046; 204, 208 (revisi PRD)",
-  "§3#p7": "be-e2e per cabang: Disposal Executed / Rejected / Canceled / Removed / timeout di 207, [Report Missing] menahan record dan Report Disposal pada record yang ditahan di 206 dan 207, Mark as Repaired di 204; ui-e2e per cabang: Mark as Repaired di 011, Report Disposal dari tab Damaged (D-DISP-13 lalu Reported Disposal) di 041, Report Missing dari tab Damaged (record ditahan penanda Missing) di 037, Cancel Disposal Report di 043",
+  "§3#p7": "be-e2e per cabang: Disposal Executed / Rejected / Canceled / Removed / timeout di 207, [Report Missing] menahan record dan Report Disposal pada record yang ditahan di 206 dan 207, Mark as Repaired di 204; ui-e2e per cabang: Mark as Repaired di 011, Report Disposal dari tab Damaged (D-DISP-13 lalu Reported Disposal) di 041, Report Missing dari tab Damaged (record ditahan penanda Missing) di 037, Cancel Disposal Report di 043; ui-e2e per cabang (lanjutan): Decline atau Cancel Report di tab Reported kembali ke Damaged di 044; Dispose → Submit → In Disposal Process, Disposal Executed → Disposed, dan Rejected / Canceled / Removed → Reported Disposal di 045",
   "§4.4#r13": "per hasil: lintas Group (D-DMG-07) di 013, satu Group (D-DISP-13) di 042",
   "V-DMG-02": "per klausa: checkbox Disabled dan tooltip di 013, sesudah Report Missing di 037",
   "S-DMG-08": "per klausa: tombol tetap aktif dan lintas Group di 013, satu Group di 042",
@@ -5548,12 +5576,12 @@
   "S-DMG-09": "per jenis aktor: spec gating 014–019; 015, 016, 017, 018 (revisi PRD)",
   "§9.11#r2": "per jenis aktor: Total Control di 014, Group Manager di 015, View asset value di 019",
   "§9.3#b1": "per jenis aktor: spec gating 014–019; 015, 016, 017 (revisi PRD)",
-  "§2.1#b6": "per spec, klausa masing-masing: 016, 043",
+  "§2.1#b6": "per spec, klausa masing-masing: 016, 043; ui-e2e klausa Accounting: tab Damaged tidak terbuka bagi Accounting (pengguna tanpa role Damaged) di 020; melapor dari Asset List atau Asset Detail adalah hak Pelapor Report milik modul Disposal (disposal.md §2.1) dan tidak diasersi di suite ini",
   "S-DMG-06": "per klausa: Hidden tanpa hak di 016, Hidden pada status lain di 043 dan 045",
   "§9.11#b1": "per jenis aktor: Read Only di 017, Manage asset & TAG (Read) di 018, View asset value di 019",
-  "§9.11#r1": "per aktor: Manage asset & TAG (Read) di 018, Aktor Borrow di 048, pemilik sesi Stock Opname di 054; 061 (revisi PRD)",
+  "§9.11#r1": "per aktor: Manage asset & TAG (Read) di 018, Aktor Borrow di 048, pemilik sesi Audit di 054; 061 (revisi PRD)",
   "S-DMG-17": "per aktor: Manage asset & TAG (Read) di luar Group di 018, pelapor umum dari My Asset di 036",
-  "EC-DMG-22": "per aktor: Manage asset & TAG (Read) di luar Group di 018, pelapor umum dari My Asset di 036, Aktor Borrow dan pemilik sesi Stock Opname di 048 dan 054; 061 (revisi PRD)",
+  "EC-DMG-22": "per aktor: Manage asset & TAG (Read) di luar Group di 018, pelapor umum dari My Asset di 036, Aktor Borrow dan pemilik sesi Audit di 048 dan 054; 061 (revisi PRD)",
   "§2#b7": "per jenis pelapor umum: tanpa role di 020, pemegang dari My Asset di 033, Aktor Borrow dari halaman Borrow di 048, Aktor Assignment dari halaman Assignment di 051, scan mobile di 057; 054, 061 (revisi PRD); Aktor Transfer yang melapor saat Receive tanpa hak Update menghasilkan record langsung Damaged di 053 (pembeda Pelapor admin dari pelapor umum)",
   "EB-EDG-2": "per klausa: hapus record terakhir → empty state di 021; bulk satu item bentuk tunggal di 042",
   "§4.2.4#p6": "per sisi: dari tab Damaged (Reload memuat ulang tabel) di 022, dari My Asset web di 035, mobile di 058; 104, 117 (revisi PRD); Already Changed pada Cancel Disposal Report di 043",
@@ -5566,15 +5594,15 @@
   "§4.2.3#b2": "per titik masuk: aksi Hidden satu aset di 030, keterangan banyak aset di 031, scan mobile di 057",
   "§8.2#b1": "per spec, klausa masing-masing: 030 (kolom Date/Status/User, urutan kolom, dan hover nama lengkap pada baris laporan), 032 (baris Marked as repaired dan Disposed, tanpa Transaction ID, Reader name, Group, Requested by); be-e2e tanpa perilaku UI",
   "§Aturan Logika Modul#r15": "per titik masuk satu aset: Asset List/Detail di 030, scan mobile di 057",
-  "§Aturan Logika Modul#r46": "per titik masuk Pelapor admin: Asset List / Detail di 030, pemegang Update dari My Asset di 034, halaman Return Borrow di 049; 054 (revisi PRD)",
-  "§3#p2": "per jalur: D-DMG-01 oleh Pelapor admin di 030, Return bermarker Damaged di 049, Unassign bermarker Damaged di 052, Stock Opname di 054; 061 (revisi PRD); Mark as Found (Damaged) di 038 (ui-e2e), 206 dan 208 (be-e2e); notifikasi damaged_reported dan tanpa event damaged_* untuk Return, Unassign, Mark as Found di 212",
+  "§Aturan Logika Modul#r46": "per titik masuk Pelapor admin: Asset List / Detail di 030, pemegang Update dari My Asset di 034, halaman Return Borrow di 049; Task Detail Audit di 054 (satu kelompok representatif: Total Control melapor langsung Damaged); Task Maintenance di be-e2e 201",
+  "§3#p2": "per jalur: D-DMG-01 oleh Pelapor admin di 030, Return bermarker Damaged di 049, Unassign bermarker Damaged di 052, Task Detail Audit di 054; Task Maintenance (pelapor umum) di 061; Mark as Found (Damaged) di 038 (ui-e2e), 206 dan 208 (be-e2e); notifikasi damaged_reported dan tanpa event damaged_* untuk Return, Unassign, Mark as Found di 212",
   "EC-DMG-04": "per titik masuk: Asset List/Detail di 030, scan mobile di 057",
   "F-DMG-01": "per titik masuk: Asset List satu aset di 030, banyak aset di 031, My Asset di 033",
   "§Aturan Logika Modul#r43": "per spec, klausa masing-masing: 032, 047",
   "TS-DMG-02": "per platform: web My Asset di 033, scan mobile di 057, My Asset mobile di 058",
   "§4.2.2#p3": "per platform: web di 036, mobile di 058; 033 (revisi PRD)",
   "§9.4.4#r7": "per spec, klausa masing-masing: 201, 212",
-  "§2#b6": "per jenis Pelapor admin: pemegang Update dari My Asset di 034, Aktor Damaged dari halaman Return Borrow di 049, Aktor Transfer di 053, pemilik sesi Stock Opname di 054; Unassign bermarker Damaged sebagai keputusan modul asal (langsung Damaged) di 052; 061 (revisi PRD); be-e2e: Unassign bermarker Damaged (Aktor Assignment tanpa Update) dan Mark as Found Damaged sebagai keputusan modul asal, bukan laporan, di 208 dan 206; pelapor admin di 201",
+  "§2#b6": "per jenis Pelapor admin: pemegang Update dari My Asset di 034, Aktor Damaged dari halaman Return Borrow di 049, Aktor Transfer di 053, pemilik sesi Audit tanpa hak Aktor Damaged (bukan Pelapor admin) di 054 dengan satu kelompok representatif Pelapor admin dari Task Detail Audit; Unassign bermarker Damaged sebagai keputusan modul asal (langsung Damaged) di 052; pelapor umum dari Task Maintenance di 061 (Pelapor admin dari Task Maintenance di be-e2e 201); be-e2e: Unassign bermarker Damaged (Aktor Assignment tanpa Update) dan Mark as Found Damaged sebagai keputusan modul asal, bukan laporan, di 208 dan 206; pelapor admin di 201",
   "D-DMG-08": "per spec, klausa masing-masing: 035, 058",
   "TS-DMG-07": "per spec, klausa masing-masing: 035, 058",
   "§Aturan Logika Modul#r55": "per titik masuk dan platform: My Asset web di 035, My Asset mobile di 058, halaman Borrow di 048, halaman Assignment di 051; 054, 061 (revisi PRD)",
@@ -5587,14 +5615,14 @@
   "§Aturan Logika Modul#r20": "per klausa: Reported Disposal di 041, In Disposal Process di 045",
   "§9.2#b26": "per titik masuk: baris di 041, bulk satu Group di 042",
   "§Aturan Logika Modul#r21": "per pemicu: Cancel Disposal Report dari modul ini di 043, Decline/Cancel Report dari tab Reported di 044",
-  "EC-DMG-17": "per peristiwa: Decline/Cancel Report atas Report di 044, baris Disposal ditolak/dibatalkan di 045",
+  "EC-DMG-17": "per peristiwa: Decline / Cancel Report atas Report (record kembali Damaged) di 044; baris Disposal ditolak / dibatalkan (record kembali Reported Disposal dan Report kembali Reported) di 045; be-e2e: kedua hasil di 207",
   "§Aturan Logika Modul#r41": "per status: Borrowed di 047, Assigned di 050",
   "§Aturan Logika Modul#r42": "per status: Borrowed di 047, Assigned di 050",
   "EC-DMG-18": "per modul transaksi: Borrow menolak di 047, Assign menolak di 050, Transfer menerima dengan peringatan di 053",
   "§9.4.4#r8": "per modul transaksi: Borrow di 047, Assign di 050, Transfer di 053",
   "§9.2#b19": "per status transaksi: Borrowed di 047, Assigned di 050",
-  "§2.1#b1": "per halaman: Aktor Borrow tanpa hak Aktor Damaged (Waiting for Confirmation) di 048, Aktor Assignment tanpa hak Aktor Damaged di 051, Stock Opname (langsung Damaged) di 054; 061 (revisi PRD)",
-  "§2.1#b2": "per aktor transaksi: Borrow (tanpa hak Aktor Damaged, Waiting for Confirmation) di 048, Assignment (tanpa hak Aktor Damaged) di 051, Transfer di 053, Stock Opname di 054; 061 (revisi PRD)",
+  "§2.1#b1": "per halaman: Aktor Borrow tanpa hak Aktor Damaged (Waiting for Confirmation) di 048, Aktor Assignment tanpa hak Aktor Damaged di 051, Task Detail Audit (kelompok representatif Total Control, langsung Damaged) di 054; Task Maintenance (pelapor umum, Waiting for Confirmation) di 061",
+  "§2.1#b2": "per aktor transaksi: Borrow (tanpa hak Aktor Damaged, Waiting for Confirmation) di 048, Assignment (tanpa hak Aktor Damaged) di 051, Transfer di 053, Task Detail Audit di 054; Task Maintenance di 061",
   "§Aturan Logika Modul#r40": "per halaman: Borrow di 048, Assignment di 051",
   "EC-DMG-03": "per halaman transaksi: Borrow di 048, Assignment di 051",
   "§9.4.4#r3": "per spec, klausa masing-masing: 202, 212",
@@ -5604,7 +5632,7 @@
   "§9.2#b7": "per spec, klausa masing-masing: 049, 052",
   "EC-DMG-29": "per spec, klausa masing-masing: 208, 210",
   "§4.6#p1": "per surface mobile: scan TAG di 057, My Asset di 058",
-  "§4.2.4#p13": "ui-client per form: dialog Unsaved Changes saat ditutup lewat [✕] atau Esc dalam keadaan terisi (§24.1c) untuk Report Damaged di 112, Mark as Repaired di 114, Reject Report di 115; ui-e2e per form (khusus web): konfirmasi bawaan browser saat reload atau tutup tab dengan form kotor dan dialog Unsaved Changes pada navigasi in-app atau Back/Forward (§24.1d, §24.1e) untuk D-DMG-01 di 030, D-DMG-02 di 011, D-DMG-04 di 010",
+  "§4.2.4#p13": "ui-client per form: dialog Unsaved Changes saat ditutup lewat [✕] atau Esc dalam keadaan terisi (§24.1c) untuk Report Damaged di 112, Mark as Repaired di 114, Reject Report di 115; ui-e2e per form (khusus web): konfirmasi bawaan browser saat reload atau tutup tab dengan form kotor (§24.1d) untuk D-DMG-01 di 030, D-DMG-02 di 011, D-DMG-04 di 010; dialog Unsaved Changes pada navigasi in-app atau Back/Forward (§24.1e) hanya untuk D-DMG-01 di 030, sebagai representatif mekanik universal (LY-11): rute tujuan dari Asset List dan Asset Detail ada di modul Asset yang menjadi dependsOn 030, sedangkan 010 dan 011 tidak punya rute tujuan di dalam modul ini dan tidak mengasersi §24.1e (IS-2)",
   "§9.4.4#r9": "per spec, klausa masing-masing: 204, 208",
   "EC-DMG-19": "per spec, klausa masing-masing: 210, 212",
   "§9.4.4#r20": "per spec, klausa masing-masing: 210, 212",
@@ -5612,7 +5640,7 @@
   "§Aturan Logika Modul#r29": "per jenis pelapor: pemegang dari My Asset di 033, Aktor Borrow dari halaman Borrow di 048, Aktor Assignment dari halaman Assignment di 051",
   "§Aturan Logika Modul#r47": "per titik masuk pelapor umum: My Asset di 033, halaman Borrow di 048, halaman Assignment di 051; 054, 061 (revisi PRD)",
   "§4.2.4#p8": "per surface: My Asset di 035, halaman Assignment di 051; 054, 061 (revisi PRD); My Asset mobile di 058, halaman Borrow di 048",
-  "D-DISP-15": "per klausa: hak melapor Report Disposal pemegang Manage asset & TAG (Update) atas aset Damaged di 016; Cancel Disposal Report di 043",
+  "D-DISP-15": "per klausa: hak melapor Report Disposal pemegang Manage asset & TAG (Update) atas aset Damaged di 016; Cancel Disposal Report di 043; ui-e2e klausa Accounting: tab Damaged tidak terbuka bagi Accounting di 020",
   "§2.1#b3": "per spec, klausa masing-masing: 020, 054, 061",
   "§9.4.2#r38": "per spec, klausa masing-masing: 054, 061",
   "§9.4.2#r42": "per spec, klausa masing-masing: 054, 061",
@@ -5650,7 +5678,11 @@
   "§4.2.4#r13": "ui-e2e per platform: Cancel Report dari My Asset di web di 035, di mobile di 058",
   "§9.4.2#r32": "ui-e2e per cabang: semua tidak layak saat klik bulk (D-DMG-13 terbuka sebelum D-DISP-13, D-DISP-13 tidak dibuka) di 013; saat Submit di 042",
   "§9.7#r18": "be-e2e per klausa: rujukan foto dikosongkan (Reflected) di 210; penghapusan Damaged Photo / After photo lewat File Manager tidak mengubah status record, status global aset, penanda, dan kolom Photo di 213",
-  "§9.4.3#b6": "ui-e2e per kasus: pelapor umum Source Audit tanpa aksi Review di 054, pelapor umum Source Maintenance di 061, Read Only tanpa Review di 017, pelapor yang kemudian berhak melihat Review di 009; be-e2e: Confirm / Reject oleh pengguna tanpa hak ditolak server di 205"
+  "§9.4.3#b6": "ui-e2e per kasus: pelapor umum Source Audit tanpa aksi Review di 054, pelapor umum Source Maintenance di 061, Read Only tanpa Review di 017, pelapor yang kemudian berhak melihat Review di 009; be-e2e: Confirm / Reject oleh pengguna tanpa hak ditolak server di 205",
+  "§9.2#r2": "be-e2e per jalur: masuk lewat Report Damaged oleh Pelapor admin di 201, masuk lewat Confirm di 203, masuk lewat Registrasi, Unassigned bermarker Damaged tanpa record, dan Mark as Found Damaged tanpa record di 208, masuk lewat Decline Report atau Cancel Report atas Disposal Report di 207, keluar ke Reported Disposal di 207, keluar ke Repaired di 204, keluar ke Disposed (Missing → Disposed) di 206; ui-e2e per jalur: Mark as Found Damaged tanpa record di 038, keluar ke Repaired di 011, keluar ke Disposed (Missing → Disposed) di 040",
+  "§9.2#r3": "ui-e2e per jalur: masuk lewat Report Disposal di 041, keluar ke Damaged (Decline Report / Cancel Report atas Disposal Report) di 044, keluar ke In Disposal Process dan kembali dari baris Disposal (Rejected / Canceled / Removed) di 045; be-e2e: seluruh transisi masuk dan keluar di 207",
+  "§2.1#b5": "ui-e2e: pelapor umum dari Task Maintenance (Cancel my report) di 061, tanpa kelompok Pelapor admin; be-e2e per klausa: hanya pelapor laporan Waiting for Confirmation yang dapat membatalkan di 205, Total Control, Group Manager, dan pemegang Manage asset & TAG (Update) yang melapor dari Task Maintenance langsung Damaged di 201",
+  "§Aturan Logika Modul#r45": "per klausa ui-e2e: «Report Damaged tidak tersedia dari modul ini» (tab Damaged tanpa tombol [Report Damaged]) di 001; Mark as Repaired dan Report Disposal Disabled selama In Transfer Process, Report Missing Disabled selama In Transit, record tetap di Active, dan record ikut Group tujuan setelah Completed di 053; ui-client: UI-104; be-e2e: 202"
  },
  "kontrak": {
   "DataTable": [
@@ -5901,7 +5933,7 @@
    "sumber": "PRD §8.3#r1, DAMAGED-LOGIC-08f: «approver bila approval ON»; suite memakai OFF; BE-215 memakai ON di entitas khusus sendiri (setting-entitas, IN-2), spec lain OFF"
   },
   "Level Feature Suite Disposal": {
-   "nilai": "Basic",
+   "nilai": "Full",
    "sumber": "plans.md §3.4a: Report Disposal, Decline, dan Cancel Report berlaku pada semua level selain None; PRD §9.10"
   }
  },
@@ -6868,7 +6900,7 @@
     "sudah-di-state-tujuan": "§9.6: idempotensi dimiliki target status-record@server",
     "state-transien": "§9.2 \"9.2.0\": tidak ada status transien",
     "koheren-rantai-gate": "§4.1a: tiap baris satu status, tanpa rantai gate",
-    "per-kondisi-disabled:level Feature Suite Disposal None": "§9.10#p1 / EC-DMG-36: kondisi tingkat entitas (level Feature Suite Disposal), bukan state record tabel; lingkungan suite memakai level Basic (plans.md §3.4a) dan keadaan None dibentuk spec TC-FA-DAMAGED-E2E-025-plan-disposal-none ber-entitasKhusus status-entitas (IN-2), bukan entri data record di entitas suite"
+    "per-kondisi-disabled:level Feature Suite Disposal None": "§9.10#p1 / EC-DMG-36: kondisi tingkat entitas (level Feature Suite Disposal), bukan state record tabel; lingkungan suite memakai level Full (plans.md §3.4a) dan keadaan None dibentuk spec TC-FA-DAMAGED-E2E-025-plan-disposal-none ber-entitasKhusus status-entitas (IN-2), bukan entri data record di entitas suite"
    }
   },
   {
@@ -7342,7 +7374,7 @@
      "Pelapor admin",
      "pelapor umum",
      "Aktor transaksi",
-     "pemilik sesi Stock Opname"
+     "pemilik sesi Audit"
     ]
    },
    "tidakBerlaku": {
@@ -7421,7 +7453,6 @@
    "param": {
     "per-level": [
      "None",
-     "Basic",
      "Full"
     ]
    },

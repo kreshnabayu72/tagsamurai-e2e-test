@@ -16,21 +16,21 @@ trace:
   "§Aturan Logika Modul#r28": [8, 11]
   "§Aturan Logika Modul#r29": [8, 65, 67]
   "§Aturan Logika Modul#r30": [11, 12]
-  "§Aturan Logika Modul#r31": [14, 99, 102]
+  "§Aturan Logika Modul#r31": [14, 96, 99]
   "§Aturan Logika Modul#r33": [40, 50]
   "§Aturan Logika Modul#r34": [20, 25, 30, 57, 60]
-  "§Aturan Logika Modul#r35": [35, 38, 106, 109, 112, 115]
+  "§Aturan Logika Modul#r35": [35, 38, 103, 106, 109, 112]
   "§Aturan Logika Modul#r36": [23, 28, 33]
   "§Aturan Logika Modul#r40": [4, 6]
   "§Aturan Logika Modul#r41": [40, 44]
   "§Aturan Logika Modul#r42": [41, 45]
   "§Aturan Logika Modul#r43": [42, 46]
   "§Aturan Logika Modul#r44": [52, 54]
-  "§Aturan Logika Modul#r61": [40, 44, 50, 121, 123]
+  "§Aturan Logika Modul#r61": [40, 44, 50, 118, 120]
   "§Aturan Logika Modul#r62": 48
-  "§9.2#b8": [8, 9, 12, 14, 93, 96, 99, 102]
+  "§9.2#b8": [8, 9, 12, 14, 90, 93, 96, 99]
   "§9.4.3#b2": [4, 6]
-  "§9.4.3#b3": [11, 93, 96]
+  "§9.4.3#b3": [11, 90, 93]
   EC-DMG-03: [4, 6]
   EC-DMG-09: [40, 41]
   EC-DMG-10: [44, 45]
@@ -38,25 +38,25 @@ trace:
   "§9.4.4#r3": [4, 6]
   "§9.4.4#r21": [40, 63]
   "§9.4.4#r22": [44, 70]
-  "§9.4.4#r24": [48, 117, 118, 119]
+  "§9.4.4#r24": [48, 114, 115, 116]
   "§9.7#r1": 2
   "§9.7#r2": [8, 11, 65, 67]
-  "§9.7#r5": [14, 15, 17, 100, 103]
+  "§9.7#r5": [14, 15, 17, 97, 100]
   "§9.7#r6": [20, 25, 35]
   "§9.7#r7": [30, 38]
   "§9.7#r9": [40, 44, 48, 50, 62, 69]
   "§9.4.1#r3": [2, 40]
-  "§9.4.1#r8": [4, 23, 28, 33, 52, 72, 74, 75, 77, 79, 82, 85, 88, 91]
+  "§9.4.1#r8": [4, 23, 28, 33, 52, 71, 72, 73, 74, 76, 80]
   "§9.4.1#r5": 50
-  "§Aturan Logika Modul#r45": [72, 74, 75, 77, 79, 82, 85, 88, 91]
-  EC-DMG-37: [72, 74, 75, 77, 79, 82, 85, 88, 91]
-  "§9.4.2#r42": [93, 96, 99, 102]
-  "§3#p5": [93, 96, 99, 102, 106, 109, 112, 115]
-  "§Aturan Logika Modul#r32": [93, 94, 96, 97]
+  "§Aturan Logika Modul#r45": [71, 72, 73, 74, 76, 78, 80, 82, 85, 88]
+  EC-DMG-37: [71, 72, 73, 74, 78, 82, 85, 88]
+  "§9.4.2#r42": [90, 93, 96, 99]
+  "§3#p5": [90, 93, 96, 99, 103, 106, 109, 112]
+  "§Aturan Logika Modul#r32": [90, 91, 93, 94]
   "§3#p4": [8, 11, 12, 14, 20, 30]
   "§9.2#b2": [2, 8, 11, 65, 67]
-  "§Aturan Logika Modul#r53": [14, 17, 99, 102]
-  "§Aturan Logika Modul#r54": [20, 25, 35, 57, 106, 112]
+  "§Aturan Logika Modul#r53": [14, 17, 96, 99]
+  "§Aturan Logika Modul#r54": [20, 25, 35, 57, 103, 109]
 ---
 
 # Efek Damage record ke status global aset: Damaged saat record Damaged, laporan pemegang vs scan selama Waiting for Confirmation, hitung ulang saat Reject/Cancel, saat Repaired Borrowed atau Assigned bila aset masih dipegang dan Normal atau TAG Reported bila tidak, dan transaksi berjalan tidak berubah, serta Condition tidak berubah dan record tetap Active selama aset In Transfer Process
@@ -109,7 +109,6 @@ trace:
   - DU-202-36: Aset `Pickup Toyota Hilux - 4 {runId}`, Group `Head Office {runId}`, tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `In Transit` menuju `Branch Surabaya {runId}`.
   - DU-202-37: Aset `Pickup Toyota Hilux - 5 {runId}`, Group `Head Office {runId}`, tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`.
   - DU-202-38: Aset `Pickup Toyota Hilux - 6 {runId}`, Group `Head Office {runId}`, tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`.
-  - DU-202-39: Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`.
   - DU-202-40: User `Sinta Marlina {runId}`, Staff Auditor, pemilik sesi Audit, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
   - DU-202-41: User `Joko Prasetyo {runId}`, Staff Executor Maintenance Routine, tanpa hak Aktor Damaged pada Group aset, cakupan Group `Head Office {runId}`.
   - DU-202-42: Aset `Laptop Dell Latitude 5420 - 15 {runId}`, Group `Head Office {runId}`, TAG `QR`, Condition `Normal`, item sesi Audit berjalan milik `Sinta Marlina {runId}`, tanpa record berjalan.
@@ -220,69 +219,66 @@ trace:
 69. Verifikasi record menjadi `Repaired` dan baris penugasan tetap `Assigned`
 70. Verifikasi Mark as Repaired atas aset yang ditugaskan itu memicu tepat satu event `damaged_resolved`
 
-### Selama Custody In Transfer Process Mark as Repaired dan Report Disposal ditolak server, Condition tidak berubah, dan record tetap Active
-71. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 1 {runId}` yang baris pemindahannya `Waiting for Approval` dengan Repair note `Komponen rusak sudah diganti {runId}`
-72. Verifikasi Mark as Repaired itu ditolak server dan record tetap `Damaged`
-73. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Pickup Toyota Hilux - 1 {runId}` dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
-74. Verifikasi Report Disposal itu ditolak server dan record tetap `Damaged`, bukan `Reported Disposal`
-75. Verifikasi Condition aset `Pickup Toyota Hilux - 1 {runId}` tidak berubah dan record itu tetap record berjalan di sub-tab Active
-76. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 2 {runId}` yang baris pemindahannya `In Transit` dengan Repair note `Komponen rusak sudah diganti {runId}`
-77. Verifikasi Mark as Repaired itu ditolak server dan record tetap `Damaged`, Condition aset tidak berubah, dan record tetap di sub-tab Active
-78. Total Control `Agus Pratama {runId}` menjalankan Report Disposal atas `Pickup Toyota Hilux - 2 {runId}` dengan Reason `Unit sudah tidak ekonomis untuk diperbaiki {runId}`
-79. Verifikasi Report Disposal itu ditolak server dan record tetap `Damaged`, bukan `Reported Disposal`
+### Selama Custody In Transfer Process Condition aset tidak berubah dan record tetap di Active
+71. Verifikasi Condition aset `Pickup Toyota Hilux - 1 {runId}` yang baris pemindahannya `Waiting for Approval` tetap `Damaged`
+72. Verifikasi record `Damaged` aset itu tetap menjadi record berjalan di sub-tab Active
+73. Verifikasi Condition aset `Pickup Toyota Hilux - 2 {runId}` yang baris pemindahannya `In Transit` tetap `Damaged`
+74. Verifikasi record `Damaged` aset itu tetap menjadi record berjalan di sub-tab Active
 
-### Mark as Repaired aktif lagi setelah baris Transfer Completed, Returned to Origin, Rejected, atau Canceled
-80. Aktor pemindahan aset `Tono Riyadi {runId}` menyelesaikan pemindahan atas `Pickup Toyota Hilux - 3 {runId}` sehingga baris pemindahan menjadi `Completed`
-81. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 3 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
+### Record Damaged mengikuti Group dan Mark as Repaired aktif lagi setelah baris Transfer Completed, Returned to Origin, Rejected, atau Canceled
+75. Aktor pemindahan aset `Tono Riyadi {runId}` menyelesaikan pemindahan atas `Pickup Toyota Hilux - 3 {runId}` sehingga baris pemindahan menjadi `Completed`
+76. Verifikasi record `Damaged` aset itu aktif ikut berpindah ke Group tujuan `Branch Surabaya {runId}`
+77. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 3 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
+78. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
+79. Aktor pemindahan aset `Tono Riyadi {runId}` mengembalikan pemindahan atas `Pickup Toyota Hilux - 4 {runId}` ke asal sehingga baris pemindahan menjadi `Returned to Origin`
+80. Verifikasi record `Damaged` aset itu tetap berada di Group asal `Head Office {runId}`
+81. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 4 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
 82. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
-83. Aktor pemindahan aset `Tono Riyadi {runId}` mengembalikan pemindahan atas `Pickup Toyota Hilux - 4 {runId}` ke asal sehingga baris pemindahan menjadi `Returned to Origin`
-84. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 4 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
+83. Permintaan pemindahan atas `Pickup Toyota Hilux - 5 {runId}` ditolak pada tahap approval sehingga baris pemindahan menjadi `Rejected`
+84. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 5 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
 85. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
-86. Permintaan pemindahan atas `Pickup Toyota Hilux - 5 {runId}` ditolak pada tahap approval sehingga baris pemindahan menjadi `Rejected`
-87. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 5 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
+86. Aktor pemindahan aset `Tono Riyadi {runId}` membatalkan pemindahan atas `Pickup Toyota Hilux - 6 {runId}` sehingga baris pemindahan menjadi `Canceled`
+87. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 6 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
 88. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
-89. Aktor pemindahan aset `Tono Riyadi {runId}` membatalkan pemindahan atas `Pickup Toyota Hilux - 6 {runId}` sehingga baris pemindahan menjadi `Canceled`
-90. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Pickup Toyota Hilux - 6 {runId}` dengan Repair note `Komponen rusak sudah diganti {runId}`
-91. Verifikasi Mark as Repaired itu diterima server dan record menjadi `Repaired`
 
 ### Laporan pelapor umum Source Audit dan Maintenance selama Waiting for Confirmation tidak mengubah status global dan Condition aset
-92. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 15 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+89. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 15 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+90. Verifikasi record berstatus `Waiting for Confirmation` sedangkan Condition aset tetap `Normal` dan status global aset tidak berubah
+91. Verifikasi aset itu diberi penanda `Damage reported`
+92. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 4 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
 93. Verifikasi record berstatus `Waiting for Confirmation` sedangkan Condition aset tetap `Normal` dan status global aset tidak berubah
 94. Verifikasi aset itu diberi penanda `Damage reported`
-95. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 4 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
-96. Verifikasi record berstatus `Waiting for Confirmation` sedangkan Condition aset tetap `Normal` dan status global aset tidak berubah
-97. Verifikasi aset itu diberi penanda `Damage reported`
 
 ### Confirm laporan Source Audit dan Maintenance mengubah status global menjadi Damaged dan menghapus penanda
-98. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Laptop Dell Latitude 5420 - 15 {runId}`
+95. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Laptop Dell Latitude 5420 - 15 {runId}`
+96. Verifikasi record menjadi `Damaged` dan status global aset menjadi `Damaged`
+97. Verifikasi penanda `Damage reported` pada aset itu dihapus
+98. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Generator Honda EU22i - 4 {runId}`
 99. Verifikasi record menjadi `Damaged` dan status global aset menjadi `Damaged`
 100. Verifikasi penanda `Damage reported` pada aset itu dihapus
-101. Total Control `Agus Pratama {runId}` melakukan Confirm atas laporan `Generator Honda EU22i - 4 {runId}`
-102. Verifikasi record menjadi `Damaged` dan status global aset menjadi `Damaged`
-103. Verifikasi penanda `Damage reported` pada aset itu dihapus
 
 ### Laporan Source Audit dan Maintenance yang di-Reject atau di-Cancel menghapus penanda tanpa mengubah Condition dan status global
-104. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Rack Server Dell R740 - 6 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
-105. Total Control `Agus Pratama {runId}` melakukan Reject atas laporan `Rack Server Dell R740 - 6 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
-106. Verifikasi record menjadi `Rejected`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
-107. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 16 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
-108. Staff Auditor `Sinta Marlina {runId}` membatalkan laporannya lewat `Cancel my report` di Task Detail Audit atas `Laptop Dell Latitude 5420 - 16 {runId}`
-109. Verifikasi record menjadi `Canceled`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
-110. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 5 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
-111. Total Control `Agus Pratama {runId}` melakukan Reject atas laporan `Generator Honda EU22i - 5 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
-112. Verifikasi record menjadi `Rejected`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
-113. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 6 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
-114. Staff Executor `Joko Prasetyo {runId}` membatalkan laporannya lewat `Cancel my report` di Task Maintenance atas `Generator Honda EU22i - 6 {runId}`
-115. Verifikasi record menjadi `Canceled`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
+101. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Rack Server Dell R740 - 6 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+102. Total Control `Agus Pratama {runId}` melakukan Reject atas laporan `Rack Server Dell R740 - 6 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
+103. Verifikasi record menjadi `Rejected`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
+104. Staff Auditor `Sinta Marlina {runId}` mengirim Report Damaged atas `Laptop Dell Latitude 5420 - 16 {runId}` dari Task Detail Audit dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+105. Staff Auditor `Sinta Marlina {runId}` membatalkan laporannya lewat `Cancel my report` di Task Detail Audit atas `Laptop Dell Latitude 5420 - 16 {runId}`
+106. Verifikasi record menjadi `Canceled`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
+107. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 5 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+108. Total Control `Agus Pratama {runId}` melakukan Reject atas laporan `Generator Honda EU22i - 5 {runId}` dengan Reason `Foto yang dikirim bukan foto aset ini {runId}`
+109. Verifikasi record menjadi `Rejected`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
+110. Staff Executor `Joko Prasetyo {runId}` mengirim Report Damaged atas `Generator Honda EU22i - 6 {runId}` dari Task Maintenance dengan What happened `Layar retak setelah terjatuh {runId}` dan Damaged Photo `layar-retak.jpg`
+111. Staff Executor `Joko Prasetyo {runId}` membatalkan laporannya lewat `Cancel my report` di Task Maintenance atas `Generator Honda EU22i - 6 {runId}`
+112. Verifikasi record menjadi `Canceled`, penanda `Damage reported` pada aset itu dihapus, dan Condition aset tetap `Normal` tanpa perubahan status global
 
 ### Mark as Repaired atas aset TAG Reported menulis node Damage Log dan memicu tepat satu event damaged_resolved
-116. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Toyota Avanza - 8 {runId}` yang sebelum dilaporkan rusak berstatus `TAG Reported`, dengan identifikasi manual dan Repair note `Komponen rusak sudah diganti {runId}`
-117. Verifikasi record menjadi `Repaired` dan status global aset menjadi `TAG Reported`, bukan `Normal`
-118. Verifikasi Damage Log record itu memuat node `Marked as repaired by` dengan pelaku `Agus Pratama {runId}`
-119. Verifikasi tepat satu event `damaged_resolved` dikirim untuk record itu
+113. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Toyota Avanza - 8 {runId}` yang sebelum dilaporkan rusak berstatus `TAG Reported`, dengan identifikasi manual dan Repair note `Komponen rusak sudah diganti {runId}`
+114. Verifikasi record menjadi `Repaired` dan status global aset menjadi `TAG Reported`, bukan `Normal`
+115. Verifikasi Damage Log record itu memuat node `Marked as repaired by` dengan pelaku `Agus Pratama {runId}`
+116. Verifikasi tepat satu event `damaged_resolved` dikirim untuk record itu
 
 ### Mark as Repaired atas aset yang sudah dikembalikan atau tidak lagi ditugaskan menghasilkan Normal, bukan keadaan saat laporan
-120. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Monitor Dell P2422H - 9 {runId}` yang sudah di-Return dan record-nya masih `Damaged`, dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-121. Verifikasi record menjadi `Repaired` dan status global aset dihitung ulang dari state aset terkini menjadi `Normal` karena aset tidak lagi dipegang, bukan `Borrowed` seperti saat dilaporkan
-122. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Handheld Scanner Zebra TC21 - 5 {runId}` yang sudah di-Unassign dan record-nya masih `Damaged`, dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
-123. Verifikasi record menjadi `Repaired` dan status global aset dihitung ulang dari state aset terkini menjadi `Normal` karena aset tidak lagi dipegang, bukan `Assigned` seperti saat dilaporkan
+117. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Monitor Dell P2422H - 9 {runId}` yang sudah di-Return dan record-nya masih `Damaged`, dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+118. Verifikasi record menjadi `Repaired` dan status global aset dihitung ulang dari state aset terkini menjadi `Normal` karena aset tidak lagi dipegang, bukan `Borrowed` seperti saat dilaporkan
+119. Total Control `Agus Pratama {runId}` menjalankan Mark as Repaired atas `Handheld Scanner Zebra TC21 - 5 {runId}` yang sudah di-Unassign dan record-nya masih `Damaged`, dengan Scan TAG milik aset dan Repair note `Komponen rusak sudah diganti {runId}`
+120. Verifikasi record menjadi `Repaired` dan status global aset dihitung ulang dari state aset terkini menjadi `Normal` karena aset tidak lagi dipegang, bukan `Assigned` seperti saat dilaporkan

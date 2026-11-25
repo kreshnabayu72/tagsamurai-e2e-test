@@ -38,7 +38,9 @@ coverage:
   - DU-012-7: TAG RFID `RFID-{runId}-U` terpasang pada user DU-012-8.
   - DU-012-8: User `Sinta Maharani {runId}`, pemegang TAG DU-012-7, tanpa hak Aktor Damaged; cakupan: aset yang ia pegang.
   - DU-012-9: User `Agus Pratama {runId}`, role Total Control; cakupan: seluruh client.
-- Kondisi: Perangkat pemindai TAG tersedia untuk memindai TAG DU-012-4 sampai DU-012-7.
+- Kondisi:
+  - Perangkat pemindai TAG tersedia untuk memindai TAG DU-012-4 sampai DU-012-7.
+  - After photo required bernilai `OFF`.
 
 ## Test Steps
 

@@ -1,8 +1,8 @@
 {
  "schema": "spec-from-prd-data/v1",
  "status": "disetujui",
- "disetujui": "otomatis, 2026-11-23",
- "sha": "464bd81082e68612",
+ "disetujui": "otomatis, 2026-11-25",
+ "sha": "7b9a5b3c38be7a02",
  "entri": [
   {
    "id": "DU-001-1",
@@ -2788,7 +2788,6 @@
     "Reason Decline": "Masih bisa diperbaiki",
     "Reason Reject": "Foto tidak menunjukkan kerusakan",
     "Repair note": "Layar diganti",
-    "Report ID": "milik laporan disposal DU-008-1 dan DU-008-6",
     "Disposal No.": "milik DU-008-6"
    },
    "jumlah": 1,
@@ -4396,6 +4395,53 @@
    }
   },
   {
+   "id": "DU-015-14",
+   "jenis": "Damage record",
+   "data": "Record Reported Disposal di Group binaan yang dilaporkan aktor lain",
+   "asal": "awal",
+   "nilai": {
+    "Asset Name": "Monitor Dell P2422H {runId}",
+    "Group": "Head Office {runId}",
+    "Status": "Reported Disposal",
+    "Source": "Manual",
+    "Reported By": "Agus Pratama {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-015-gating-group-manager"
+   ],
+   "maks": {
+    "Asset Name": null,
+    "Group": null,
+    "Reported By": null
+   }
+  },
+  {
+   "id": "DU-015-15",
+   "jenis": "User",
+   "data": "Pelapor Reported Disposal di Group binaan, bukan aktor spec ini",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Agus Pratama {runId}",
+    "Role": "Total Control",
+    "Cakupan": "Seluruh Group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-015-gating-group-manager"
+   ],
+   "maks": {
+    "Name": null,
+    "Role": null
+   }
+  },
+  {
    "id": "DU-016-1",
    "jenis": "Damage record",
    "data": "Laporan Waiting yang di-Confirm",
@@ -4742,11 +4788,11 @@
     "TC-FA-DAMAGED-E2E-016-gating-manage-asset-tag-update"
    ],
    "jenis": "User",
-   "data": "Aktor akhir spec: pemegang Update yang juga Asset Admin sub-tab Disposal",
+   "data": "Aktor akhir spec: pemegang Update sebagai pelapor Report Disposal, tanpa Asset Admin sub-tab Disposal",
    "asal": "awal",
    "nilai": {
     "Name": "Maya Puspita {runId}",
-    "Role": "Manage asset & TAG (Update pada Head Office {runId}) dan Asset Admin sub-tab Disposal",
+    "Role": "Manage asset & TAG (Update pada Head Office {runId}; tanpa Asset Admin sub-tab Disposal dan tanpa Manage accounting)",
     "Cakupan": "Group Update beserta descendant"
    },
    "jumlah": 1,
@@ -4764,7 +4810,7 @@
     "TC-FA-DAMAGED-E2E-016-gating-manage-asset-tag-update"
    ],
    "jenis": "Damage record",
-   "data": "Record Reported Disposal milik Asset Admin sub-tab Disposal",
+   "data": "Record Reported Disposal yang dilaporkan pemegang Update aktor akhir spec",
    "asal": "awal",
    "nilai": {
     "Asset Name": "Scanner Brother ADS-2200 {runId}",
@@ -5590,13 +5636,13 @@
    "asal": "awal",
    "nilai": {
     "Name": "Budi Santoso {runId}",
-    "Role": "Pelapor umum (tanpa role Damaged)",
+    "Role": "Accounting (tanpa role Damaged)",
     "Cakupan": "Aset yang ia pegang"
    },
    "jumlah": 1,
    "mutasi": [],
    "varian": [],
-   "sumber": "matriks role PRD",
+   "sumber": "turunan penulis",
    "spec": [
     "TC-FA-DAMAGED-E2E-020-akses-tanpa-role"
    ],
@@ -6233,28 +6279,6 @@
   {
    "id": "DU-025-2",
    "jenis": "Entitas",
-   "data": "Entitas level Disposal Basic",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Client Basic {runId}",
-    "Level Feature Suite Disposal": "Basic"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [
-    "plan-disposal@tab-damaged:per-level:Basic"
-   ],
-   "sumber": "turunan penulis",
-   "spec": [
-    "TC-FA-DAMAGED-E2E-025-plan-disposal-none"
-   ],
-   "maks": {
-    "Name": null
-   }
-  },
-  {
-   "id": "DU-025-3",
-   "jenis": "Entitas",
    "data": "Entitas level Disposal Full",
    "asal": "awal",
    "nilai": {
@@ -6275,7 +6299,7 @@
    }
   },
   {
-   "id": "DU-025-4",
+   "id": "DU-025-3",
    "jenis": "User",
    "data": "Aktor entitas level None",
    "asal": "awal",
@@ -6297,29 +6321,7 @@
    }
   },
   {
-   "id": "DU-025-5",
-   "jenis": "User",
-   "data": "Aktor entitas level Basic",
-   "asal": "awal",
-   "nilai": {
-    "Name": "Agus Pratama {runId}",
-    "Role": "Total Control pada entitas Client Basic {runId}",
-    "Cakupan": "Seluruh entitas level Basic"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "matriks role PRD",
-   "spec": [
-    "TC-FA-DAMAGED-E2E-025-plan-disposal-none"
-   ],
-   "maks": {
-    "Name": null,
-    "Role": null
-   }
-  },
-  {
-   "id": "DU-025-6",
+   "id": "DU-025-4",
    "jenis": "User",
    "data": "Aktor entitas level Full",
    "asal": "awal",
@@ -6341,7 +6343,7 @@
    }
   },
   {
-   "id": "DU-025-7",
+   "id": "DU-025-5",
    "jenis": "Damage record",
    "data": "Record Damaged di tiap entitas",
    "asal": "awal",
@@ -6366,7 +6368,7 @@
    }
   },
   {
-   "id": "DU-025-8",
+   "id": "DU-025-6",
    "jenis": "Damage record",
    "data": "Record Reported Disposal di tiap entitas",
    "asal": "awal",
@@ -6391,7 +6393,7 @@
    }
   },
   {
-   "id": "DU-025-9",
+   "id": "DU-025-7",
    "spec": [
     "TC-FA-DAMAGED-E2E-025-plan-disposal-none"
    ],
@@ -6411,7 +6413,7 @@
    }
   },
   {
-   "id": "DU-025-10",
+   "id": "DU-025-8",
    "spec": [
     "TC-FA-DAMAGED-E2E-025-plan-disposal-none"
    ],
@@ -9294,6 +9296,30 @@
    }
   },
   {
+   "id": "DU-045-5",
+   "spec": [
+    "TC-FA-DAMAGED-E2E-045-record-mengikuti-baris-disposal-dep-disposal"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Reported Disposal yang form Request-nya hanya disimpan sebagai Draft",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Headset Jabra Evolve2 {runId}",
+    "Group": "Head Office",
+    "Status": "Reported Disposal",
+    "Source": "Manual"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-E2E-045-record-mengikuti-baris-disposal-dep-disposal"
+   ],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {
+    "Name": null
+   }
+  },
+  {
    "id": "DU-046-1",
    "spec": [
     "TC-FA-DAMAGED-E2E-046-registrasi-condition-damaged-dep-asset-registration"
@@ -9306,7 +9332,8 @@
     "Condition": "Damaged",
     "Damage note": "Layar retak dan engsel patah setelah terjatuh saat pemindahan unit",
     "Group": "Head Office",
-    "TAG": "tanpa TAG"
+    "TAG": "tanpa TAG",
+    "Foto aset": "tanpa foto aset"
    },
    "jumlah": 1,
    "mutasi": [
@@ -12420,6 +12447,100 @@
    "maks": {}
   },
   {
+   "id": "DU-106-9",
+   "spec": [
+    "TC-FA-DAMAGED-UI-106-tabel-history-tampilan"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Repaired yang dilaporkan dan selesai pada hari kalender yang sama",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Printer Epson L3250 - 1",
+    "Asset ID": "PRN-2026-0011",
+    "Group": "Head Office",
+    "Status": "Repaired",
+    "Source": "Manual",
+    "Reported By": "Agus Prasetyo",
+    "Reported Date": "2026-11-09T01:00:00Z",
+    "Duration": "0 days",
+    "Resolved By": "Rina Wijaya",
+    "Resolved Date": "2026-11-09T09:30:00Z"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-106-10",
+   "spec": [
+    "TC-FA-DAMAGED-UI-106-tabel-history-tampilan"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Repaired dengan Brand panjang, Model/Type, Category, dan Group berhierarki pada kolom tersembunyi",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Sensor Suhu Ruang Server - 2",
+    "Asset ID": "SNS-2026-0021",
+    "Photo": "sensor-suhu-ruang-server-2.jpg",
+    "Brand": "Zebra Technologies Indonesia",
+    "Brand Badge": "Zebra Techno..es Indonesia",
+    "Model/Type": "Handheld Reader Pro",
+    "Category": "Environmental Monitoring",
+    "Category Hierarchy": "Sensors > Environmental Monitoring",
+    "Group": "Room 301",
+    "Group Hierarchy": "Head Office A > Floor 1 > Room 301",
+    "Status": "Repaired",
+    "Source": "Manual",
+    "Last Holder": "Sari Dewi",
+    "Reported By": "Agus Prasetyo",
+    "Reported Date": "2026-11-10T01:00:00Z",
+    "Duration": "1 day",
+    "Resolved By": "Rina Wijaya",
+    "Resolved Date": "2026-11-11T03:00:00Z"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "turunan penulis",
+   "maks": {}
+  },
+  {
+   "id": "DU-106-11",
+   "spec": [
+    "TC-FA-DAMAGED-UI-106-tabel-history-tampilan"
+   ],
+   "jenis": "Damage record",
+   "data": "Record Rejected tanpa Brand, Model/Type, dan pemegang, dengan Group panjang berhierarki",
+   "asal": "awal",
+   "nilai": {
+    "Name": "NFC Reader ACR122 - 1",
+    "Asset ID": "NFR-2026-0001",
+    "Photo": null,
+    "Brand": null,
+    "Model/Type": null,
+    "Category": "NFC",
+    "Category Hierarchy": "TAG Technology > NFC",
+    "Group": "Jakarta Selatan Distribution Center",
+    "Group Badge": "Jakarta Sela..ution Center",
+    "Group Hierarchy": "Region Jawa > Jakarta Selatan Distribution Center",
+    "Status": "Rejected",
+    "Source": "Reported by scan",
+    "Last Holder": null,
+    "Reported By": "Dedi Kurniawan",
+    "Reported Date": "2026-11-10T05:00:00Z",
+    "Duration": "2 days",
+    "Resolved By": "Agus Prasetyo",
+    "Resolved Date": "2026-11-12T03:10:00Z"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "foundation prd-conventions.md §9.14",
+   "maks": {}
+  },
+  {
    "id": "DU-107-1",
    "spec": [
     "TC-FA-DAMAGED-UI-107-tab-damaged-sub-tab-breadcrumb-guided-tooltip"
@@ -14269,7 +14390,6 @@
     "Node 1": "Disposal reported by Agus P",
     "Node 2": "Disposal report declined by Dedi K",
     "Node 3": "Disposal report canceled by Agus P",
-    "Report ID": "RPT-DSP-0001",
     "Reason": "Aset tidak ekonomis diperbaiki",
     "Back to Damaged": "Back to Damaged"
    },
@@ -14289,7 +14409,6 @@
    "asal": "awal",
    "nilai": {
     "Node": "Disposal report canceled by System",
-    "Report ID": "RPT-DSP-0002",
     "Back to Damaged": "Back to Damaged"
    },
    "sumber": "PRD §4.1a Example Data",
@@ -15991,6 +16110,81 @@
    }
   },
   {
+   "id": "DU-201-65",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Generator Honda EU22i - 21 {runId}",
+    "Group": "Head Office {runId}",
+    "TAG": "RFID-G21 {runId}",
+    "Keadaan": "punya record `Damaged`, Activity Lock `Under Maintenance` karena punya Work Order berjalan dan jadwal maintenance berikutnya"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r39",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "TAG": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-201-66",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Rack Server Dell R740 - 21 {runId}",
+    "Group": "Head Office {runId}",
+    "TAG": "RFID-R21 {runId}",
+    "Baris audit": "Verified",
+    "Keadaan": "punya record `Damaged`, Activity Lock `In Audit` karena menjadi item sesi Audit berjalan milik `Sinta Marlina {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r39",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "TAG": null,
+    "Baris audit": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-201-67",
+   "spec": [
+    "TC-FA-DAMAGED-BE-201-report-damaged-kelayakan-dan-status"
+   ],
+   "jenis": "Repair note",
+   "data": "Repair note Mark as Repaired",
+   "asal": "dibuat",
+   "nilai": {
+    "Repair note": "Komponen rusak sudah diganti {runId}"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r39",
+   "maks": {
+    "Repair note": 360
+   }
+  },
+  {
    "id": "DU-202-1",
    "spec": [
     "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
@@ -16732,9 +16926,7 @@
     "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `Waiting for Approval` menuju `Branch Surabaya {runId}`"
    },
    "jumlah": 1,
-   "mutasi": [
-    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
-   ],
+   "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {
@@ -16757,9 +16949,7 @@
     "Keadaan": "tanpa TAG, status global `Damaged`, punya record `Damaged`, Custody `In Transfer Process` dengan baris Transfer `In Transit` menuju `Branch Surabaya {runId}`"
    },
    "jumlah": 1,
-   "mutasi": [
-    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
-   ],
+   "mutasi": [],
    "varian": [],
    "sumber": "turunan penulis",
    "maks": {
@@ -16866,25 +17056,6 @@
     "Name": null,
     "Group": null,
     "Keadaan": null
-   }
-  },
-  {
-   "id": "DU-202-39",
-   "spec": [
-    "TC-FA-DAMAGED-BE-202-efek-ke-status-global-aset"
-   ],
-   "jenis": "Disposal report",
-   "data": "Reason Report Disposal",
-   "asal": "dibuat",
-   "nilai": {
-    "Reason": "Unit sudah tidak ekonomis untuk diperbaiki {runId}"
-   },
-   "jumlah": 1,
-   "mutasi": [],
-   "varian": [],
-   "sumber": "turunan penulis",
-   "maks": {
-    "Reason": null
    }
   },
   {
@@ -19191,7 +19362,7 @@
    "jumlah": 1,
    "mutasi": [],
    "varian": [
-    "akses@tab-damaged:per-peran-alur:pemilik sesi Stock Opname"
+    "akses@tab-damaged:per-peran-alur:pemilik sesi Audit"
    ],
    "sumber": "matriks role PRD",
    "maks": {
@@ -19205,11 +19376,11 @@
     "TC-FA-DAMAGED-BE-205-authz-cakupan-dan-isolasi"
    ],
    "jenis": "User",
-   "data": "User Manage asset & TAG (Update) dan Asset Admin sub-tab Disposal",
+   "data": "User Manage asset & TAG (Update)",
    "asal": "awal",
    "nilai": {
     "Name": "Maya Puspita {runId}",
-    "Role": "Manage asset & TAG (Update) dan Asset Admin sub-tab Disposal",
+    "Role": "Manage asset & TAG (Update), tanpa Asset Admin sub-tab Disposal",
     "Cakupan": "Group `Head Office {runId}` beserta descendant"
    },
    "jumlah": 1,
@@ -21494,7 +21665,7 @@
    "nilai": {
     "Name": "Camera Canon EOS - 91 {runId}",
     "Group": "Head Office {runId}",
-    "Keadaan": "punya record `In Disposal Process`"
+    "Keadaan": "punya record `In Disposal Process` dengan laporan pelepasan aset berstatus Report `In Disposal Process` di tab Reported"
    },
    "jumlah": 1,
    "mutasi": [],
@@ -22107,6 +22278,30 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§9.4.2#r32",
+   "maks": {
+    "Name": null,
+    "Group": null
+   }
+  },
+  {
+   "id": "DU-207-44",
+   "spec": [
+    "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Scanner Fujitsu fi-7160 - 115 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "punya record `Reported Disposal` dengan laporan pelepasan aset `Reported` di tab Reported, belum ada baris Disposal"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-207-disposal-transisi-dan-bulk-server"
+   ],
+   "varian": [],
+   "sumber": "§Aturan Logika Modul#r20",
    "maks": {
     "Name": null,
     "Group": null
@@ -23738,6 +23933,56 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§9.6#p1",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-208-70",
+   "spec": [
+    "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
+   ],
+   "jenis": "User",
+   "data": "User Group Manager",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Gita Permatasari {runId}",
+    "Role": "Group Manager",
+    "Cakupan": "Group binaan `Head Office {runId}` beserta sub-group"
+   },
+   "jumlah": 1,
+   "mutasi": [],
+   "varian": [],
+   "sumber": "matriks role PRD",
+   "maks": {
+    "Name": null,
+    "Cakupan": null
+   }
+  },
+  {
+   "id": "DU-208-71",
+   "spec": [
+    "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
+   ],
+   "jenis": "Asset",
+   "data": "Aset ber-Reported Disposal dari pelapor lain",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Scanner Fujitsu fi-7160 - 147 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "punya record `Reported Disposal` yang dilaporkan oleh `Rina Wulandari {runId}`"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-208-jalur-non-form-dan-log"
+   ],
+   "varian": [
+    "damage-log@record:per-aksi-non-crud:Cancel Disposal Report",
+    "damage-log@record:per-event:Disposal report canceled by"
+   ],
+   "sumber": "§8.1#r15",
    "maks": {
     "Name": null,
     "Group": null,
@@ -25699,6 +25944,33 @@
    "mutasi": [],
    "varian": [],
    "sumber": "§9.7#r17",
+   "maks": {
+    "Name": null,
+    "Group": null,
+    "Keadaan": null
+   }
+  },
+  {
+   "id": "DU-210-59",
+   "spec": [
+    "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
+   ],
+   "jenis": "Asset",
+   "data": "Aset uji dengan foto aset dan Damaged Photo",
+   "asal": "awal",
+   "nilai": {
+    "Name": "Laptop Lenovo ThinkPad - 222 {runId}",
+    "Group": "Head Office {runId}",
+    "Keadaan": "punya foto aset `foto-aset-222.jpg`, punya record `Damaged` Source `Manual` dengan satu Damaged Photo `kerusakan-222.jpg`",
+    "Foto aset": "foto-aset-222.jpg",
+    "Damaged Photo pertama": "kerusakan-222.jpg"
+   },
+   "jumlah": 1,
+   "mutasi": [
+    "TC-FA-DAMAGED-BE-210-sync-reflected-snapshot-dan-dependen"
+   ],
+   "varian": [],
+   "sumber": "PRD §4.1a T-DMG-01 kolom Photo",
    "maks": {
     "Name": null,
     "Group": null,

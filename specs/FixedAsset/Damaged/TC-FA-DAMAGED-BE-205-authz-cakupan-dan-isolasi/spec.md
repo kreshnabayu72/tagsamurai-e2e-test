@@ -88,7 +88,7 @@ trace:
   - DU-205-10: User `Cici Rahayu {runId}`, Manage asset & TAG dengan Create dan Delete tanpa Update, cakupan Group `Head Office {runId}` beserta descendant.
   - DU-205-11: User `Yoga Tanuwijaya {runId}`, Aktor Borrow, cakupan Group `Head Office {runId}`.
   - DU-205-12: User `Sinta Marlina {runId}`, Staff Auditor, pelapor dari Task Detail Audit, tanpa hak Update dan tanpa hak Aktor Damaged, cakupan Group `Head Office {runId}`.
-  - DU-205-13: User `Maya Puspita {runId}`, Manage asset & TAG (Update) dan Asset Admin sub-tab Disposal, cakupan Group `Head Office {runId}` beserta descendant.
+  - DU-205-13: User `Maya Puspita {runId}`, Manage asset & TAG (Update), tanpa Asset Admin sub-tab Disposal, cakupan Group `Head Office {runId}` beserta descendant.
   - DU-205-14: User `Anton Wijaya {runId}`, Total Control di entitas `Mitra Suspended {runId}` yang berstatus Suspended, cakupan entitas `Mitra Suspended {runId}`.
   - DU-205-15: User `Erika Hasan {runId}`, Total Control di entitas `Mitra Expired {runId}` yang berstatus Expired, cakupan entitas `Mitra Expired {runId}`.
   - DU-205-16: User `Dian Susanto {runId}`, Total Control di entitas `Mitra Tanpa Disposal {runId}` ber-level Feature Suite Disposal `None`, cakupan entitas `Mitra Tanpa Disposal {runId}`.
@@ -194,14 +194,14 @@ trace:
 41. Permintaan Report Damaged atas `Laptop Dell Latitude 5420 - 43 {runId}` dikirim tanpa token
 42. Verifikasi permintaan ditolak karena tanpa sesi dan tidak ada Damage record untuk aset itu
 
-### Cancel Report hanya milik pelapor, dan Cancel Disposal Report menurut hak Disposal
+### Cancel Report hanya milik pelapor, dan Cancel Disposal Report hanya oleh pelapor atas laporan miliknya, Group Manager atas Group binaan, dan Total Control atas semua laporan
 43. Read Only `Rosa Maharani {runId}` menjalankan Cancel Report atas laporan `Handheld Scanner Zebra TC21 - 41 {runId}` milik `Dedi Kurniawan {runId}` yang masih `Waiting for Confirmation`
 44. Verifikasi Cancel Report ditolak karena bukan laporannya sendiri dan record tetap `Waiting for Confirmation`
 45. Pemegang Update `Rina Wulandari {runId}` menjalankan Cancel Disposal Report atas `Tablet Samsung Tab A8 - 36 {runId}`
-46. Verifikasi Cancel Disposal Report ditolak karena tidak memegang Asset Admin sub-tab pelepasan aset dan record tetap `Reported Disposal`
+46. Verifikasi Cancel Disposal Report ditolak karena bukan laporan miliknya dan record tetap `Reported Disposal`
 47. Group Manager `Gunawan Hartono {runId}` menjalankan Cancel Disposal Report atas `Tablet Samsung Tab A8 - 36 {runId}` di Group binaan
 48. Verifikasi Cancel Disposal Report diterima dan record kembali `Damaged`
-49. Pemegang `Maya Puspita {runId}` yang juga Asset Admin sub-tab pelepasan aset menjalankan Cancel Disposal Report atas `Camera Canon EOS - 35 {runId}` yang ia laporkan sendiri
+49. Pemegang Update `Maya Puspita {runId}` menjalankan Cancel Disposal Report atas `Camera Canon EOS - 35 {runId}` yang ia laporkan sendiri
 50. Verifikasi Cancel Disposal Report atas laporan miliknya diterima dan record kembali `Damaged`
 51. Total Control `Agus Pratama {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 53 {runId}` yang dilaporkan `Maya Puspita {runId}`
 52. Verifikasi Cancel Disposal Report oleh Total Control atas semua laporan diterima
@@ -280,7 +280,7 @@ trace:
 115. Verifikasi penolakan Cancel Disposal Report itu tidak memicu event `damaged_*`
 
 ### Cancel Disposal Report atas laporan orang lain dan di luar Group binaan ditolak
-116. Pemegang `Maya Puspita {runId}` yang juga Asset Admin sub-tab pelepasan aset menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}` yang dilaporkan `Agus Pratama {runId}`
+116. Pemegang Update `Maya Puspita {runId}` menjalankan Cancel Disposal Report atas `Monitor Dell P2422H - 54 {runId}` yang dilaporkan `Agus Pratama {runId}`
 117. Verifikasi Cancel Disposal Report ditolak karena bukan laporan miliknya dan record tetap `Reported Disposal`
 118. Group Manager `Gunawan Hartono {runId}` menjalankan Cancel Disposal Report atas `Drill Bosch GSB - 55 {runId}` di Group `Warehouse {runId}` yang di luar Group binaan
 119. Verifikasi Cancel Disposal Report ditolak karena di luar Group binaan dan record tetap `Reported Disposal`

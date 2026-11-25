@@ -9,7 +9,7 @@ sourceRules: [T-DMG-01, D-DMG-06, "§4.2.4#p6", "§4.4#r10", S-DMG-04, S-DMG-05,
 smoke: []
 dependsOn: []
 trace:
-  T-DMG-01: [3, 8, 9, 10, 13, 14, 17, 18, 76, 83, 86, 89, 92]
+  T-DMG-01: [3, 8, 9, 10, 13, 14, 17, 18, 76, 83, 86, 89, 92, 95, 96]
   D-DMG-06: [52, 53, 54, 62]
   "§4.2.4#p6": [53, 56, 57, 63, 69, 70]
   "§4.4#r10": [52]
@@ -178,3 +178,9 @@ coverage:
 90. Tekan `Esc`
 91. Klik `⋯` pada baris `Handheld Zebra TC21 - 9`
 92. Verifikasi aksi `Report Missing` aktif
+
+### Record Damaged dari Pelapor admin tanpa Delete dan Cancel Report
+93. Tampilkan Tabel T-DMG-01 (sub-tab Active) dengan kondisi K1
+94. Klik `⋯` pada baris `Projector Epson EB-X06 - 2`
+95. Verifikasi menu memuat `Damage Log`
+96. Verifikasi aksi `Delete` dan `Cancel Report` tidak dirender

@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: Critical
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§Aturan Logika Modul#r21", "§Aturan Logika Modul#r65", "§8.1#r14", "§8.1#r15", "§8.3#r4", EC-DMG-17, "§9.4.4#r28", "§9.7#r11"]
+sourceRules: ["§Aturan Logika Modul#r21", "§Aturan Logika Modul#r65", "§8.1#r14", "§8.1#r15", "§8.3#r4", EC-DMG-17, "§9.4.4#r28", "§9.7#r11", "§3#p7", "§9.2#r3"]
 smoke: []
 dependsOn:
   - "Disposal: tab Reported (Decline, Cancel Report)"
@@ -18,6 +18,8 @@ trace:
   "§8.1#r14": [17, 18, 19]
   "§8.3#r4": [17, 37]
   "§8.1#r15": [37, 38, 39]
+  "§3#p7": [11, 31]
+  "§9.2#r3": [11, 31]
 anchor: []
 coverage:
   web: automated
@@ -34,7 +36,7 @@ coverage:
   - DU-044-3: Input Decline Report atas `Printer HP LaserJet M404 {runId}`: Reason `Aset masih dapat diperbaiki oleh teknisi internal`.
   - DU-044-4: Input Cancel Report atas `Monitor Dell P2422H {runId}`: Reason `Pelaporan dibatalkan karena monitor sudah diperbaiki`.
 - Kondisi:
-  - Level Feature Suite Disposal bernilai `Basic`.
+  - Level Feature Suite Disposal bernilai `Full`.
 
 ## Test Steps
 
@@ -57,7 +59,7 @@ coverage:
 16. Klik nama aset `Printer HP LaserJet M404 {runId}` di kolom Name
 17. Verifikasi dialog Damage Log memuat node `Disposal report declined by` dengan pelaku aktor yang menjalankan Decline
 18. Verifikasi baris detail node `Disposal report declined by` memuat Reason `Aset masih dapat diperbaiki oleh teknisi internal`
-19. Verifikasi baris detail node `Disposal report declined by` memuat `Report ID` dan `Back to Damaged`
+19. Verifikasi baris detail node `Disposal report declined by` memuat `Back to Damaged`
 20. Tutup dialog Damage Log
 
 ### Cancel Report di tab Reported mengembalikan record ke Damaged
@@ -79,5 +81,5 @@ coverage:
 36. Klik nama aset `Monitor Dell P2422H {runId}` di kolom Name
 37. Verifikasi dialog Damage Log memuat node `Disposal report canceled by` dengan pelaku aktor yang menjalankan Cancel Report
 38. Verifikasi baris detail node `Disposal report canceled by` memuat Reason `Pelaporan dibatalkan karena monitor sudah diperbaiki`
-39. Verifikasi baris detail node `Disposal report canceled by` memuat `Report ID` dan `Back to Damaged`
+39. Verifikasi baris detail node `Disposal report canceled by` memuat `Back to Damaged`
 40. Tutup dialog Damage Log

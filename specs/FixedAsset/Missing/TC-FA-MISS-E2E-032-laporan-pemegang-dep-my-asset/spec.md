@@ -5,7 +5,7 @@ layer: ui-e2e
 priority: High
 caseType: Positive
 status: ready-for-automation
-sourceRules: ["§9.1#r6", "§9.2#b34", "§3#p4", "§7.3#r6", "§7.3#r11", "§7.2#r3", "§7.2#r18", "§4.2.4#p8", "§9.6#r7", "§9.7#r2", "§9.7#r8", "§9.2#r1", "§9.2#r8", "§8.1#r7", "§8.1#r8", "§1.2#r18", "§1.2#r20", "§1.2#r53", "§1.2#r55", "§1.2#r57", "§1.2#r58", "§1.2#r70", "§1.2#r73", "§1.2#r122", "§1.2#r123", "§2#b3", "§2.1#r3", "§2.1#r8", "§2.1#b4", "§4.8#r3", "§4.8#r7", "§9.11#r3", "§9.4.2#r27", "§9.4.2#r22", "§9.2#b36", "§9.4.4#r20", "§9.4.4#r22", "§9.4.3#b5", "§11#r4", "§4.2.3#p2", "§4.2.4#r15", "§9.9#r1", "§9.8#r2", "§9.6#r1", "EB-FB-1@report-missing-pemegang", "EB-FB-1@cancel-report", "EB-FB-2@go-back-cancel-report", "§9.3#b1", "§4.6#b3", "§4.6#b6", "§8.2#p5", "§8.2#p10", "§8.2#p27", "§2.1#r2", "§4.8#r12"]
+sourceRules: ["§9.1#r6", "§9.2#b34", "§3#p4", "§7.3#r6", "§7.3#r11", "§7.2#r3", "§7.2#r18", "§4.2.4#p8", "§9.6#r7", "§9.7#r2", "§9.7#r8", "§9.2#r1", "§9.2#r8", "§8.1#r7", "§8.1#r8", "§1.2#r18", "§1.2#r20", "§1.2#r53", "§1.2#r55", "§1.2#r57", "§1.2#r58", "§1.2#r70", "§1.2#r73", "§1.2#r122", "§1.2#r123", "§2#b3", "§2.1#r3", "§2.1#r8", "§2.1#b4", "§4.8#r3", "§4.8#r7", "§9.11#r3", "§9.4.2#r27", "§9.4.2#r22", "§9.2#b36", "§9.4.4#r20", "§9.4.4#r22", "§9.4.3#b5", "§11#r4", "§4.2.3#p2", "§4.2.4#r15", "§9.9#r1", "§9.8#r2", "§9.6#r1", "EB-FB-1@report-missing-pemegang", "EB-FB-1@cancel-report", "EB-FB-2@go-back-cancel-report", "§9.3#b1", "§4.6#b3", "§4.6#b6", "§8.2#p5", "§8.2#p10", "§8.2#p27", "§2.1#r2", "§4.8#r12", "§4.8#r2"]
 smoke: []
 dependsOn: ["My Asset: tab Borrowed", "My Asset: tab Assigned", "My Asset: aksi Cancel Report"]
 trace:
@@ -62,9 +62,10 @@ trace:
   "§8.2#p27": [46, 51]
   "§4.6#b3": [3]
   "§4.6#b6": [21, 22]
-  "§2.1#r2": [142]
+  "§2.1#r2": [144]
   "§4.8#r12": [111]
-anchor: [73, 77, 82, 84, 87, 105, 110, 128, 141]
+  "§4.8#r2": [141, 144]
+anchor: [73, 77, 82, 84, 87, 105, 110, 128, 140, 143]
 coverage:
   web: automated
   android: automated
@@ -267,10 +268,12 @@ coverage:
 135. Verifikasi dialog Missing Log memuat node `Reported missing by` oleh `Joko Santoso {runId}` dengan What happened `Scanner tidak ada di loker setelah shift malam`
 136. Tutup dialog Missing Log dengan `✕`
 
-### Pemegang tanpa hak Aktor Missing tidak mendapat Report Missing sebagai Pelapor admin di Asset Detail
+### Pemegang tanpa hak Aktor Missing tidak mendapat Report Missing sebagai Pelapor admin di Asset List dan Asset Detail
 137. Masuk sebagai `Joko Santoso {runId}`
 138. Buka halaman `Assets`
 139. Ketik Search `Scanner Zebra DS2208 {runId}`, tekan Enter
-140. Klik `Scanner Zebra DS2208 {runId}` pada kolom Name
-141. Verifikasi Asset Status pada Asset Detail `Assigned`
-142. Verifikasi tombol `[Report Missing]` tidak tampil pada Asset Detail
+140. Verifikasi baris `Scanner Zebra DS2208 {runId}` tampil di daftar Assets
+141. Verifikasi aksi `Report Missing` tidak tampil (Hidden) pada baris `Scanner Zebra DS2208 {runId}` di daftar Assets
+142. Klik `Scanner Zebra DS2208 {runId}` pada kolom Name
+143. Verifikasi Asset Status pada Asset Detail `Assigned`
+144. Verifikasi tombol `[Report Missing]` tidak tampil (Hidden) pada Asset Detail
