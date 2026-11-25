@@ -3036,3 +3036,14 @@ Aturan:
 - **Diputuskan oleh:** owner 2026-11-25 ("flow kode app kita ganti untuk cuma ambil dari API BE DELETE").
 - **Lingkup (owner 2026-11-25):** pola konfirmasi, lalu conflict (`409`, dialog blok), atau no-op (`404`, toast netral) berlaku untuk Delete Category saja, hasil akhir yang dijaga, bukan PRD 1:1. Bukan aturan umum: alur lain (cek di depan pada modul lain) tidak diubah; owner menimbang kasus lain satu per satu.
 - **Status:** berlaku.
+
+## D-291 Archive Plan: konfirmasi selalu muncul, dialog blok dari respons POST archive (2026-11-25)
+
+- **Spec / langkah:** AdminConsole/PlansLicensingPlansFeatures `TC-AC-PF-E2E-100` (TC-AC-PF-246 s.d. 249), `101` (TC-AC-PF-251, 252, 706), `125` (TC-AC-PF-538 langkah 4), `022` (TC-AC-PF-795 langkah 21), dan langkah serupa yang mengharapkan `Cannot Archive Plan` langsung sesudah klik `Archive`.
+- **Spec meminta:** klik `Archive` pada plan yang dipakai subscription Waiting for Approval/Pending/Active/Grace langsung membuka dialog `Cannot Archive Plan` (PRD §9.2 F-ACPF-03b langkah 1-3: cek dulu, blok, baru konfirmasi).
+- **Kenyataannya:** dialog `Archive Plan` selalu muncul dulu; sesudah `[Archive]`, `POST /v2/enterprise-management/plans-features/{planId}/archive` yang memeriksa: `409` membuka `Cannot Archive Plan` dengan daftar client dari `data.clients`, `404` toast gagal. API tidak punya endpoint cek awal khusus Archive.
+- **Keputusan:** pola D-290 dipakai untuk Archive Plan. Hasil akhir tetap sama dengan PRD: plan yang ditahan subscription = dialog `Cannot Archive Plan` dengan daftar client lengkap, plan tidak ter-archive, tanpa entri log. Hanya jalurnya berubah: dialog `Archive Plan` dan klik `[Archive]` sebelum dialog blok. Menimpa PRD §9.2 F-ACPF-03b langkah 1-3 (urutan cek sebelum konfirmasi). F-ACPF-03b.k3 (client ter-assign di antara dialog dan submit, TC-AC-PF-593) tetap berlaku apa adanya.
+- **Untuk spec:** pada langkah yang mengharapkan `Cannot Archive Plan` langsung sesudah klik `Archive`, lakukan klik `Archive`, klik `[Archive]` pada dialog `Archive Plan`, baru asersi dialog blok. Tidak ada `ui-gap` UG-PF-6 atau PF8-9.
+- **Diputuskan oleh:** owner 2026-11-25 ("yang ini ikutin DC aja, jadi sama tetep muncul dialog dulu").
+- **Lingkup:** Archive Plan saja; bukan aturan umum (sama seperti D-290).
+- **Status:** berlaku.
