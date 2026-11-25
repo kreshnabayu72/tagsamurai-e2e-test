@@ -3071,4 +3071,9 @@ Aturan:
 - **Untuk spec:** prasyarat status konsumen hanya boleh memakai state yang ada di PRD modul konsumen itu.
 - **Untuk script:** langkah itu memakai gap kind `spec-decision` yang sudah ada (PI), dengan komentar `// @spec-decision: pending D-293 global-settings#61 <TC id> langkah <n> — <state>` dan `gaps.open('spec-decision', 'pending D-293 global-settings#61 <TC id> langkah <n>', ...)` (`pending` karena menunggu keputusan global-settings#61; hanya bentuk ini yang dihitung PI). Tidak memakai tag baru.
 - **Diputuskan oleh:** owner 2026-11-25 ("ini gap spec dan prd ya"; "PI aja, jangan spec gap, jangan bikin tag baru").
-- **Status:** berlaku.
+- **Pembaruan 2026-11-25 (global-settings#61 ditutup, opsi 2, PRD/TC commit 73b9665):** `UOM-LOGIC-02a` menghitung per konsumen menurut state yang dimilikinya. Asset Name tidak punya status nonaktif atau Recycle Bin, jadi setiap Asset Name yang ada dihitung dan yang sudah dihapus tidak. TC-GS-UOM-393 dan 394 ditulis ulang. Selama spec 058 belum disesuaikan tim spec, script mengikuti TC baru:
+  - langkah 14 (TC-GS-UOM-393): keempat Asset Name yang merujuk `Box` tampil di Item Type List, dan Used By (Items) serta Total Item `4`;
+  - langkah 46-56 (TC-GS-UOM-394): `Peti {runId}-058` hanya dirujuk satu Asset Name yang lalu dihapus permanen. Used By (Items) dan Total Item `0`, Item Type List kosong, dan Delete `Peti` memunculkan dialog konfirmasi biasa, bukan blok.
+  - State dibangun lewat helper `/dev` yang sudah ada (seed lalu hapus item type), tanpa ubah DB langsung. Tag `@spec-decision: pending D-293` dilepas, langkahnya diasersi (pass).
+- **Untuk spec (tim spec):** sesuaikan 058 ke TC-GS-UOM-393/394 versi 73b9665 (judul, Pre-setup `Storage Box A-D`, `Peti`, langkah 14 dan 46-56).
+- **Status:** berlaku (diperbarui 2026-11-25).
