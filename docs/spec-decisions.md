@@ -3024,3 +3024,15 @@ Aturan:
 - **Diputuskan oleh:** owner 2026-11-25 ("itu kesalahan PRD, hapus fiturnya").
 - **Status:** berlaku.
 
+
+## D-290 Device Category Delete: konfirmasi selalu muncul, dialog blok dan toast netral dari respons DELETE (2026-11-25)
+
+- **Spec / langkah:** AdminConsole/SettingsDeviceCategory `TC-AC-DC-E2E-047`, `048`, `084` langkah dialog blok, `086` langkah guard Delete, `TC-AC-DC-E2E-141` langkah 22 (dan langkah serupa)
+- **Spec meminta:** klik Delete pada node yang dipakai Device Name atau punya record stock membuka dialog blok `Cannot Delete Category` langsung (PRD §7 "saat klik", "cek awal"); node yang sudah hilang di tab kedua membuka konfirmasi dulu, lalu toast `T-06` sesudah Confirm.
+- **Kenyataannya:** app tidak memanggil `POST /categories/check-references` saat klik Delete. Dialog `Delete Category` (D-03 leaf, D-04 family, dari tree) selalu muncul; sesudah Confirm, `DELETE /categories/{id}` yang menjawab: `409` membuka `Cannot Delete Category` dengan daftar Device Name dari respons (atau teks stock bila tanpa daftar), `404` menampilkan toast netral `This category is no longer available.` dan tree dimuat ulang.
+- **Karena:** cek referensi di klik tidak menambah apa pun selain memilih dialog; DELETE sudah memvalidasi dan mengembalikan datanya. Owner memutuskan alur pakai DELETE saja.
+- **Keputusan:** hasil akhir tetap sama dengan PRD: referensi atau konflik = dialog `Cannot Delete Category`; node sudah hilang = toast netral. Hanya jalurnya berubah: ada dialog `Delete Category` dan klik Confirm sebelum dialog blok atau toast. Menimpa PRD §7 "saat klik" untuk Delete Category.
+- **Untuk spec:** pada langkah yang mengharapkan dialog blok langsung sesudah klik Delete, lakukan klik Delete, konfirmasi `Delete Category`, baru asersi dialog blok. Langkah 22 di `141` (konfirmasi pada node yang sudah hilang) berlaku apa adanya. Tidak ada `ui-gap` UG-DC-7.
+- **Diputuskan oleh:** owner 2026-11-25 ("flow kode app kita ganti untuk cuma ambil dari API BE DELETE").
+- **Lingkup (owner 2026-11-25):** pola konfirmasi, lalu conflict (`409`, dialog blok), atau no-op (`404`, toast netral) berlaku untuk Delete Category saja, hasil akhir yang dijaga, bukan PRD 1:1. Bukan aturan umum: alur lain (cek di depan pada modul lain) tidak diubah; owner menimbang kasus lain satu per satu.
+- **Status:** berlaku.
