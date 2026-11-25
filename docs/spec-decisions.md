@@ -3034,4 +3034,5 @@ Aturan:
 - **Keputusan:** hasil akhir tetap sama dengan PRD: referensi atau konflik = dialog `Cannot Delete Category`; node sudah hilang = toast netral. Hanya jalurnya berubah: ada dialog `Delete Category` dan klik Confirm sebelum dialog blok atau toast. Menimpa PRD §7 "saat klik" untuk Delete Category.
 - **Untuk spec:** pada langkah yang mengharapkan dialog blok langsung sesudah klik Delete, lakukan klik Delete, konfirmasi `Delete Category`, baru asersi dialog blok. Langkah 22 di `141` (konfirmasi pada node yang sudah hilang) berlaku apa adanya. Tidak ada `ui-gap` UG-DC-7.
 - **Diputuskan oleh:** owner 2026-11-25 ("flow kode app kita ganti untuk cuma ambil dari API BE DELETE").
+- **Lingkup (owner 2026-11-25):** pola konfirmasi, lalu conflict (`409`, dialog blok), atau no-op (`404`, toast netral) berlaku untuk Delete Category saja, hasil akhir yang dijaga, bukan PRD 1:1. Bukan aturan umum: alur lain (cek di depan pada modul lain) tidak diubah; owner menimbang kasus lain satu per satu.
 - **Status:** berlaku.
