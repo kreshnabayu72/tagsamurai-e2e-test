@@ -3058,3 +3058,17 @@ Aturan:
 - **Untuk script:** langkah itu tidak diasersi dan diberi komentar `// @ui-decorative: D-292 <TC id> langkah <n> — <efek>`, tanpa `gaps.*`.
 - **Diputuskan oleh:** owner 2026-11-25 ("kalo cuma hover mah gausah di assert ... di abaikan dan lolos bukan incomplete").
 - **Status:** berlaku.
+
+## D-293 Measurement Used By/Total Item: Asset Name nonaktif dan Recycle Bin belum ada di produk (2026-11-25)
+
+- **Spec / langkah:** GlobalSettings/Measurement `TC-GS-UOM-E2E-058`. Yang terkena: langkah TC-GS-UOM-393 yang memakai Asset Name nonaktif (langkah 14) dan langkah TC-GS-UOM-394 yang memakai Asset Name di Recycle Bin (langkah 46-56).
+- **Spec meminta:** Asset Name nonaktif ikut dihitung di `Used By (Items)` dan `Total Item`, sedangkan Asset Name di Recycle Bin tidak dihitung (`UOM-LOGIC-02a`, `F-UOM-06.k6`).
+- **Kenyataannya:**
+  - PRD Asset Name (`fixed-asset/settings-asset-name/PRD/settings-asset-name.md` L11, `FAAM-LOGIC-02`) tidak punya status nonaktif atau Recycle Bin. Delete langsung permanen.
+  - Di backend, item type Measurement juga tidak punya kolom status.
+  - Akibatnya prasyarat kedua TC tidak bisa dibentuk lewat produk. Ini gap spec dan PRD, dilaporkan di PRD global-settings#61.
+- **Keputusan:** langkah-langkah itu tidak diasersi dan tidak dihitung PI. State-nya juga tidak dibuat lewat seed atau penghapusan langsung di DB. Langkah lain di spec tetap diuji. Bila global-settings#61 diputuskan, entri ini ditinjau ulang.
+- **Untuk spec:** prasyarat status konsumen hanya boleh memakai state yang ada di PRD modul konsumen itu.
+- **Untuk script:** langkah itu tidak diasersi. Beri komentar `// @spec-gap: D-293 global-settings#61 <TC id> langkah <n> — <state>`, tanpa `gaps.*`.
+- **Diputuskan oleh:** owner 2026-11-25 ("ini gap spec dan prd ya").
+- **Status:** berlaku.
