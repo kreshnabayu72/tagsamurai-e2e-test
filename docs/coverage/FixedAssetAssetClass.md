@@ -128,7 +128,7 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-115-filter-panel-screening-dan-multi-select | Filter Tabel Asset Class: Screening Filter Panel, Opsi Dropdown, dan Filter Tunggal Multi-Select | FE+BE | 33 | TC-FA-FAAC-363, TC-FA-FAAC-364, TC-FA-FAAC-365 |
 | TC-FA-FAAC-E2E-116-filter-range-min-max-dan-date | Filter Tabel Asset Class: Range Min dan Max Capitalization Threshold, Asset Names, Assets, dan Date Range Last Updated | FE+BE | 26 | TC-FA-FAAC-366, TC-FA-FAAC-367, TC-FA-FAAC-368 |
 | TC-FA-FAAC-E2E-117-filter-logika-or-and-chip-dan-dropdown | Filter Tabel Asset Class: Logika OR dan AND, Search di Dropdown, dan Chip pada Field Multi-Select | FE+BE | 34 | TC-FA-FAAC-369, TC-FA-FAAC-370, TC-FA-FAAC-371, TC-FA-FAAC-372, TC-FA-FAAC-373 |
-| TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | Filter Tabel Asset Class: Chip Filter Aktif, Clear all, dan Kombinasi dengan Search dan Sort | FE+BE | 31 | TC-FA-FAAC-374, TC-FA-FAAC-375, TC-FA-FAAC-376, TC-FA-FAAC-377, TC-FA-FAAC-378 |
+| TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | Filter Tabel Asset Class: Indikator Filter Aktif, Pelepasan Filter, dan Kombinasi dengan Search dan Sort | FE+BE | 31 | TC-FA-FAAC-374, TC-FA-FAAC-375, TC-FA-FAAC-376, TC-FA-FAAC-377, TC-FA-FAAC-378 |
 | TC-FA-FAAC-E2E-119-filter-lepas-draft-kolom-dan-kombinasi | Filter Tabel Asset Class: Draft Filter Panel, Hasil Kosong, Ganti Sort, dan Filter pada Kolom yang Disembunyikan | FE+BE | 36 | TC-FA-FAAC-379, TC-FA-FAAC-380, TC-FA-FAAC-381, TC-FA-FAAC-382 |
 | TC-FA-FAAC-E2E-120-sort-3-state-kolom-teks-commercial-fiscal | Sort 3-State Tabel Asset Class: Class Code, Class Name, Modified By, Commercial, Fiscal, Asset Names, Assets, dan Capitalization Threshold | FE+BE | 10 | TC-FA-FAAC-385, TC-FA-FAAC-386, TC-FA-FAAC-387, TC-FA-FAAC-388, TC-FA-FAAC-389 |
 | TC-FA-FAAC-E2E-121-sort-3-state-active-accounts-last-updated | Sort 3-State Tabel Asset Class: Active, Accounts, Last Updated, Satu Kolom Sort Aktif, dan Kolom Tanpa Ikon Sort | FE+BE | 20 | TC-FA-FAAC-390, TC-FA-FAAC-391, TC-FA-FAAC-392, TC-FA-FAAC-393, TC-FA-FAAC-394 |
@@ -146,7 +146,7 @@ Status semua spec: `draft`.
 | TC-FA-FAAC-E2E-133-filter-capitalization-threshold-nominal-berdesimal | Filter Tabel Asset Class: Min dan Max pada Capitalization Threshold Membandingkan Nilai Tersimpan Termasuk Bagian Desimal | FE+BE | 15 | TC-FA-FAAC-706 |
 | TC-FA-FAAC-E2E-134-tab-asset-names-search | Tab Asset Names: Search pada Kolom Asset Name, Category, Label, Assets, Assigned By, Assigned At, Debounce, dan Kolom Tersembunyi | FE+BE | 36 | TC-FA-FAAC-441, TC-FA-FAAC-442, TC-FA-FAAC-443, TC-FA-FAAC-444, TC-FA-FAAC-445, TC-FA-FAAC-446, TC-FA-FAAC-447, TC-FA-FAAC-448 |
 | TC-FA-FAAC-E2E-135-tab-asset-names-filter | Tab Asset Names: Struktur Filter Panel serta Filter Category, Label, Assets Yes, dan Assets No | FE+BE | 31 | TC-FA-FAAC-449, TC-FA-FAAC-450, TC-FA-FAAC-451, TC-FA-FAAC-452, TC-FA-FAAC-453 |
-| TC-FA-FAAC-E2E-136-tab-asset-names-filter-lanjutan-dan-kombinasi | Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter dengan Clear all | FE+BE | 25 | TC-FA-FAAC-454, TC-FA-FAAC-455, TC-FA-FAAC-456 |
+| TC-FA-FAAC-E2E-136-tab-asset-names-filter-lanjutan-dan-kombinasi | Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter | FE+BE | 25 | TC-FA-FAAC-454, TC-FA-FAAC-455, TC-FA-FAAC-456 |
 | TC-FA-FAAC-E2E-137-tab-asset-names-sort-3-state | Tab Asset Names: Sort Tiga Tahap pada Kolom Asset Name, Category, dan Assets | FE+BE | 25 | TC-FA-FAAC-457, TC-FA-FAAC-458, TC-FA-FAAC-459 |
 | TC-FA-FAAC-E2E-138-tab-asset-names-sort-lanjutan-dan-kolom-label | Tab Asset Names: Sort Tiga Tahap pada Kolom Assigned At dan Assigned By serta Kolom Label Tidak Dapat Diurutkan | FE+BE | 21 | TC-FA-FAAC-460, TC-FA-FAAC-461, TC-FA-FAAC-462 |
 | TC-FA-FAAC-E2E-139-tab-asset-names-kolom-dan-persistensi | Tab Asset Names: Overlay Column Visibility, Kolom Terakhir Tidak Dapat Disembunyikan, dan Persistensi Setelah Muat Ulang | FE+BE | 21 | TC-FA-FAAC-463, TC-FA-FAAC-465, TC-FA-FAAC-466 |
@@ -607,11 +607,11 @@ Tidak ada. Modul tidak punya TC backend; seluruh TC granular masuk spec FE+BE.
 | TC-FA-FAAC-371 | E2E | TC-FA-FAAC-E2E-117-filter-logika-or-and-chip-dan-dropdown | FE+BE |
 | TC-FA-FAAC-372 | E2E | TC-FA-FAAC-E2E-117-filter-logika-or-and-chip-dan-dropdown | FE+BE |
 | TC-FA-FAAC-373 | E2E | TC-FA-FAAC-E2E-117-filter-logika-or-and-chip-dan-dropdown | FE+BE |
-| TC-FA-FAAC-374 | E2E | TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | FE+BE |
-| TC-FA-FAAC-375 | E2E | TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | FE+BE |
-| TC-FA-FAAC-376 | E2E | TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | FE+BE |
-| TC-FA-FAAC-377 | E2E | TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | FE+BE |
-| TC-FA-FAAC-378 | E2E | TC-FA-FAAC-E2E-118-filter-chip-clear-all-dan-kombinasi-search-sort | FE+BE |
+| TC-FA-FAAC-374 | E2E | TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | FE+BE |
+| TC-FA-FAAC-375 | E2E | TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | FE+BE |
+| TC-FA-FAAC-376 | E2E | TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | FE+BE |
+| TC-FA-FAAC-377 | E2E | TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | FE+BE |
+| TC-FA-FAAC-378 | E2E | TC-FA-FAAC-E2E-118-indikator-filter-aktif-dan-kombinasi-search-sort | FE+BE |
 | TC-FA-FAAC-379 | E2E | TC-FA-FAAC-E2E-119-filter-lepas-draft-kolom-dan-kombinasi | FE+BE |
 | TC-FA-FAAC-380 | E2E | TC-FA-FAAC-E2E-119-filter-lepas-draft-kolom-dan-kombinasi | FE+BE |
 | TC-FA-FAAC-381 | E2E | TC-FA-FAAC-E2E-119-filter-lepas-draft-kolom-dan-kombinasi | FE+BE |

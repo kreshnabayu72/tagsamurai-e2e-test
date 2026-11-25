@@ -90,7 +90,7 @@ coverage:
 36. Pindah ke halaman 2
 37. Klik `✕` pada Search, tekan Enter
 38. Verifikasi setelah Search dikosongkan tabel kembali ke halaman 1
-39. Klik `Clear all` pada chip filter
+39. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 
 ## Notes
 

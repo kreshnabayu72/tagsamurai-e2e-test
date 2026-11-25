@@ -114,7 +114,7 @@ coverage:
 38. Klik icon Download lalu pilih `Download as CSV`
 39. Verifikasi berkas memuat baris HEAVY-EQ, IT-EQ, OFFICE-NEW, dan STORAGE
 40. Verifikasi berkas tidak memuat baris contoh lain (OFFICE-OLD, VEHICLES)
-41. Klik Clear all
+41. Klik `[Clear Field]` pada Filter Panel yang masih terbuka sejak langkah 36, lalu klik `[Apply]`
 42. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 
 ## Notes

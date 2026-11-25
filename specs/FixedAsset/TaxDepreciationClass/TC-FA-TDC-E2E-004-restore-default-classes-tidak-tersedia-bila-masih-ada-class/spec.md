@@ -70,8 +70,8 @@ coverage:
 19. Klik `[Apply]`
 20. Verifikasi Title "No results found" dan Description "Try adjusting your search or filter."
 21. Verifikasi tombol `Restore default classes` tidak ada
-22. Verifikasi chip filter dan `Clear all` tersedia
-23. Klik `Clear all` pada chip filter
+22. Verifikasi icon Filter menampilkan badge titik
+23. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 
 ### TC-FA-TDC-317: Selama minimal satu class ada, tidak ada jalur UI untuk Restore default classes
 
@@ -99,7 +99,7 @@ coverage:
 ## Notes
 
 - Urutan TC dalam spec mengikuti nomor TC; kasus yang menghapus class (TC-FA-TDC-318) di akhir (prinsip 5 sampai 7 bagian 3).
-- Langkah penghubung (S-03): langkah 4, 7, 10, 28, dan 31 (menutup panel atau menu sebelum aksi berikutnya), langkah 11, 24, dan 35 (mengganti isi tabel lewat seeding API karena tiap TC mensyaratkan isi tabel berbeda), langkah 15 (mengosongkan Search sebelum Filter), langkah 23 (menghapus chip filter), dan langkah 34 (`Unselect All`).
+- Langkah penghubung (S-03): langkah 4, 7, 10, 28, dan 31 (menutup panel atau menu sebelum aksi berikutnya), langkah 11, 24, dan 35 (mengganti isi tabel lewat seeding API karena tiap TC mensyaratkan isi tabel berbeda), langkah 15 (mengosongkan Search sebelum Filter), langkah 23 (melepas filter lewat Clear Field), dan langkah 34 (`Unselect All`).
 - Anchor positif absence (8b.2): tiap `Verifikasi` "tanpa Restore default classes" pada langkah 1, 3, 6, 9, 25, 27, 30, 33 memuat daftar elemen lain pada surface yang sama (toolbar, panel, menu, bar) sehingga surface terbukti termuat. Langkah 14 dan 21 didahului Empty State pada langkah 13 dan 20.
 - Spec ini sekitar 40 langkah, di atas ~35 langkah. Alasan: keempat TC satu topik (jalur `Restore default classes` hanya muncul bila tabel kosong) dan satu kelas harness (fungsional); tiap blok dimulai dari seeding sendiri (langkah 11, 24, 35) sehingga kegagalan satu blok tidak membuat blok lain kehilangan makna, dan memecahnya hanya menambah hook, login, dan seeding tanpa kelas atau harness berbeda.- Temuan untuk QA:
   - TC-FA-TDC-13 memakai sembilan class Example Data, TC-FA-TDC-316 tujuh seed, TC-FA-TDC-317 satu class `NB-1`, TC-FA-TDC-318 satu class `KHS-D1`; keempat isi tabel berbeda sehingga spec menyediakan seeding ulang antar blok.

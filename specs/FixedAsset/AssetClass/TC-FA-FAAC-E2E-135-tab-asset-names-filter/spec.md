@@ -68,31 +68,31 @@ coverage:
 
 14. Pada field Category pilih `Rented`
 15. Verifikasi tabel hanya memuat baris `Crane Rental Unit`, sedangkan `Excavator PC200` dan `Wheel Loader` tidak tampil
-16. Verifikasi chip filter aktif tampil di atas tabel
-17. Verifikasi tautan `Clear all` tampil bersama chip filter
-18. Klik `Clear all`
+16. Verifikasi badge titik tampil pada icon Filter karena filter ter-Apply
+17. Verifikasi badge titik pada icon Filter tetap tampil selama filter Category ter-Apply
+18. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
 ### TC-FA-FAAC-451: Filter berdasarkan Label
 
-19. Klik tombol Filter
+19. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 18 (tanpa klik tombol Filter, karena klik itu menutup panel)
 20. Pada field Label pilih `Insured`
 21. Verifikasi tabel hanya memuat baris `Excavator PC200`, sedangkan `Wheel Loader` dan `Crane Rental Unit` tidak tampil
-22. Klik `Clear all`
+22. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
 ### TC-FA-FAAC-452: Filter Assets = Yes menyaring Asset Name dengan aset aktif
 
-23. Klik tombol Filter
+23. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 22 (tanpa klik tombol Filter, karena klik itu menutup panel)
 24. Pada field Assets pilih `Yes`
 25. Verifikasi tabel memuat baris `Excavator PC200` dan `Wheel Loader` (Assets lebih dari 0)
 26. Verifikasi baris `Crane Rental Unit` tidak tampil
-27. Klik `Clear all`
+27. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
 ### TC-FA-FAAC-453: Filter Assets = No menyaring Asset Name tanpa aset aktif
 
-28. Klik tombol Filter
+28. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 27 (tanpa klik tombol Filter, karena klik itu menutup panel)
 29. Pada field Assets pilih `No`
 30. Verifikasi tabel hanya memuat baris `Crane Rental Unit` (Assets 0), sedangkan `Excavator PC200` dan `Wheel Loader` tidak tampil
-31. Klik `Clear all`
+31. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
 ## Notes
 

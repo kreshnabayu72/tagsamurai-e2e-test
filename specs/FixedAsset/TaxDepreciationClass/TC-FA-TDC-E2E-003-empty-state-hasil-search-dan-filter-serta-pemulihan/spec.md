@@ -56,7 +56,7 @@ coverage:
 11. Tekan Enter pada input yang kosong
 12. Verifikasi 7 baris seed tampil kembali
 
-### Filter kosong tanpa tombol Restore dan dengan chip Clear all (TC-FA-TDC-10)
+### Filter kosong tanpa tombol Restore dan dengan badge titik pada icon Filter (TC-FA-TDC-10)
 
 13. Klik `(←)` pada kotak Search
 14. Klik icon Filter
@@ -64,24 +64,25 @@ coverage:
 16. Klik `[Apply]`
 17. Verifikasi Illustration tampil dengan Title `No results found` dan Description `Try adjusting your search or filter.`
 18. Verifikasi tombol `Restore default classes` tidak tampil
-19. Verifikasi chip filter aktif dan `Clear all` tampil di atas tabel
+19. Verifikasi icon Filter menampilkan badge titik tanpa angka, tanpa chip atau tombol pelepas filter di atas tabel
 
-### Pemulihan dengan Clear all (TC-FA-TDC-12)
+### Pemulihan dengan melepas filter lewat Clear Field (TC-FA-TDC-12)
 
-20. Klik `Clear all` pada chip filter
-21. Klik icon Filter
+20. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
+21. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 20 (tanpa klik icon Filter, karena klik itu menutup panel)
 22. Isi Used By Min `99` dan Max `100`
 23. Klik `[Apply]`
 24. Verifikasi tabel menampilkan `No results found`
-25. Klik `Clear all` pada chip filter
+25. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 26. Verifikasi 7 baris seed tampil kembali
-27. Verifikasi chip filter hilang
+27. Verifikasi badge titik pada icon Filter hilang
 
 ## Notes
 
 - Urutan TC dalam spec: TC-FA-TDC-9, 11, 10, 12 (kasus Search dahulu, lalu kasus Filter) supaya state Search dan Filter tidak bercampur.
 - Langkah penghubung (S-03): langkah 5 (menutup input Search lewat `(←)` sehingga tabel kembali penuh sebelum TC berikutnya), langkah 13 (menutup input Search sebelum Filter), dan langkah 20 (menghapus filter TC-FA-TDC-10 sebelum TC-FA-TDC-12 menerapkannya lagi; S-09).
-- Asersi absence langkah 3, 4, dan 18 punya anchor positif pada `Verifikasi` Empty State langkah 2 dan 17; asersi chip hilang langkah 27 didahului anchor langkah 26 (butir 8b.2).
+- Langkah 21 (penghubung): Filter Panel tetap terbuka sesudah `[Apply]` langkah 20 (prd-conventions §9.8), sehingga langkah 22 langsung mengisi Used By tanpa klik icon Filter (klik itu menutup panel).
+- Asersi absence langkah 3, 4, dan 18 punya anchor positif pada `Verifikasi` Empty State langkah 2 dan 17; asersi badge titik hilang langkah 27 didahului anchor langkah 26 (butir 8b.2).
 - Temuan untuk QA:
   - TC-FA-TDC-11 tidak menyebut apa yang tampil pada kotak Search sesudah `(✕)` selain "input kosong"; spec mengikuti TC.
   - Email akun Total Control tidak tertulis di TC.

@@ -61,7 +61,7 @@ coverage:
 19. Pilih Active `Inactive` pada Filter Panel
 20. Klik `[Apply]`
 21. Verifikasi tabel hanya menampilkan baris NB-OLD lewat Filter Panel
-22. Klik `Clear all` pada chip filter
+22. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 
 ## Notes
 

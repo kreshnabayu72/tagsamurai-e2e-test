@@ -1,6 +1,6 @@
 ---
-id: TC-FA-TDC-E2E-150-filter-chip-sinkron-overflow-clear-all-dan-menutup-tanpa-apply
-title: "Filter: Sinkron Chip, Overflow +N more, Clear All, dan Menutup Panel Tanpa Apply"
+id: TC-FA-TDC-E2E-150-filter-sinkron-opsi-overflow-badge-titik-dan-menutup-tanpa-apply
+title: "Filter: Sinkron Chip Opsi, Overflow +N more, Badge Titik, dan Menutup Panel Tanpa Apply"
 layer: ui-e2e
 priority: High
 caseType: Positive
@@ -24,7 +24,7 @@ coverage:
   web: automated
 ---
 
-# Filter: Sinkron Chip, Overflow +N more, Clear All, dan Menutup Panel Tanpa Apply
+# Filter: Sinkron Chip Opsi, Overflow +N more, Badge Titik, dan Menutup Panel Tanpa Apply
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ coverage:
   - Isi tabel B (TC-FA-TDC-523, kunci `sixModifiedBy`): isi tabel A dengan enam user berbeda tercatat sebagai Modified By (nama user disediakan tim FE). Isi tabel diubah lewat seeding API pada langkah 28 dan dikembalikan ke isi tabel A pada langkah 35; Last Updated class Example Data berubah sebagai efeknya (spec ini tidak mengasersi Last Updated). Pemulihan dijamin fixture BE yang disediakan tim FE/BE dan dijalankan juga di hook `after`.
 - Data uji (literal TC): Asset Type `Land`, `Building`, `Non-building`; enam opsi dropdown Modified By.
 - Data Dinamis: tidak ada.
-- Kemampuan teknis: seeding dan penggantian isi tabel lewat API (`suite.md`); membaca chip pada field multi-select; mengklik di luar panel.
+- Kemampuan teknis: seeding dan penggantian isi tabel lewat API (`suite.md`); membaca chip opsi pada field multi-select; membaca badge titik pada icon Filter (komponen Badge varian Standalone Dot, selector belum ada, perlu dikonfirmasi tim FE); mengklik di luar panel.
 - State global yang diubah: Filter pada tabel (dilepas oleh langkah di spec dan oleh `beforeEach` suite) dan Modified By class (isi tabel B, dipulihkan langkah 35 dan hook `after`); suite berjalan serial (`parallel: false`).
 
 ## Test Steps
@@ -52,17 +52,17 @@ coverage:
 7. Klik `[Apply]`
 8. Verifikasi tabel menampilkan tepat dua baris: BLD-NP dan BLD-P
 
-### Chip filter aktif dan Clear all menggantikan titik pada ikon Filter (TC-FA-TDC-524)
+### Badge titik pada ikon Filter muncul saat filter ter-Apply dan hilang saat filter dilepas (TC-FA-TDC-524)
 
-9. Klik `Clear all` pada chip filter
+9. Klik `[Clear Field]` pada Filter Panel
 10. Pilih Asset Type `Land`
 11. Klik `[Apply]`
-12. Verifikasi chip filter aktif tampil di atas tabel
-13. Verifikasi `Clear all` tampil bersama chip filter
-14. Verifikasi icon Filter tidak menampilkan badge titik
-15. Klik `Clear all`
-16. Verifikasi chip filter hilang
-17. Verifikasi semua filter toolbar dilepas
+12. Verifikasi icon Filter menampilkan badge titik
+13. Verifikasi badge titik tanpa angka
+14. Verifikasi tidak ada chip atau tombol pelepas filter di atas tabel
+15. Klik `[Clear Field]`
+16. Klik `[Apply]`
+17. Verifikasi badge titik pada icon Filter hilang
 18. Verifikasi tabel menampilkan 9 baris
 
 ### Menutup Filter Panel tanpa Apply membuang perubahan (TC-FA-TDC-525)
@@ -91,12 +91,12 @@ coverage:
 ## Notes
 
 - Urutan TC dalam spec: TC-FA-TDC-522, 524, 525, 523. TC-FA-TDC-523 diletakkan terakhir karena butuh isi tabel B (enam user Modified By); TC lain memakai isi tabel A.
-- Langkah penghubung (S-03, S-09): langkah 9 (melepas Filter Building sebelum TC-FA-TDC-524), langkah 26 dan 27 (melepas Filter Land sebelum TC-FA-TDC-523; muat ulang tidak melepas Filter), langkah 28 dan 35 (mengganti dan mengembalikan isi tabel lewat seeding API). Langkah "Klik di luar panel" (22) adalah aksi TC-FA-TDC-525.
-- Asersi chip hilang langkah 6 dan 16 didahului anchor positif: chip `Building` tetap ada (langkah 5 pada field yang sama) dan chip aktif tampil sebelum `Clear all` (langkah 12).
-- Filter Panel dibuka pada langkah 1 dan tetap terbuka sesudah `[Apply]` dan `Clear all` (8b.9): langkah 10 (blok TC-FA-TDC-524) dan langkah 19 sampai 21 (blok TC-FA-TDC-525) langsung memilih opsi atau mengubahnya tanpa klik icon Filter (klik icon itu menutup panel). Panel ditutup oleh langkah 22 (klik di luar panel), sehingga langkah 24 membukanya kembali; langkah 29 membuka panel sesudah muat ulang.
+- Langkah penghubung (S-03, S-09): langkah 9 (melepas Filter Building lewat `[Clear Field]` sebelum TC-FA-TDC-524), langkah 26 dan 27 (melepas Filter Land sebelum TC-FA-TDC-523; muat ulang tidak melepas Filter), langkah 28 dan 35 (mengganti dan mengembalikan isi tabel lewat seeding API). Langkah "Klik di luar panel" (22) adalah aksi TC-FA-TDC-525.
+- Asersi chip hilang langkah 6 dan asersi badge titik hilang langkah 17 didahului anchor positif: chip `Building` tetap ada (langkah 5 pada field yang sama) dan badge titik tampil sebelum `[Clear Field]` (langkah 12).
+- Filter Panel dibuka pada langkah 1 dan tetap terbuka sesudah `[Apply]` (8b.9): langkah 10 (blok TC-FA-TDC-524) dan langkah 19 sampai 21 (blok TC-FA-TDC-525) langsung memilih opsi atau mengubahnya tanpa klik icon Filter (klik icon itu menutup panel). Panel ditutup oleh langkah 22 (klik di luar panel), sehingga langkah 24 membukanya kembali; langkah 29 membuka panel sesudah muat ulang.
 - Spec ini 35 langkah.
 - Temuan untuk QA:
   - TC-FA-TDC-523 mensyaratkan enam user berbeda tercatat sebagai Modified By, padahal Example Data hanya memuat `Rina P` dan `System`; spec mengganti isi tabel (isi tabel B) lewat seeding API yang disediakan tim FE/BE, dan "N" pada `+N more` bergantung lebar field.
-  - TC-FA-TDC-524 Expected b "semua filter toolbar dilepas" tidak menyebut cara mengamatinya; spec mengasersinya sebagai `Verifikasi` sendiri dan jumlah baris tabel sebagai `Verifikasi` terpisah.
+  - TC-FA-TDC-524 Expected a "tanpa angka" dan hilangnya badge titik diamati lewat komponen Badge Standalone Dot pada icon Filter; selector badge titik belum ada di repo (belum ada page-object Tax Depreciation Class), perlu dikonfirmasi tim FE.
   - TC-FA-TDC-522 Expected a/b ditulis sesudah Apply pada TC, sedangkan chip diamati di field sebelum Apply; spec mengasersi chip sebelum `[Apply]` dan tabel sesudahnya.
   - Email akun Total Control dan nama enam user Modified By tidak tertulis di TC.

@@ -47,7 +47,7 @@ coverage:
 10. Verifikasi muncul toast sukses: "Success, tax depreciation class has been created."
 11. Verifikasi baris `KHS-04` di-highlight sesaat
 12. Verifikasi kotak Search kosong
-13. Verifikasi chip filter aktif hilang (Filter Panel di-clear)
+13. Verifikasi badge titik pada icon Filter hilang (Filter Panel di-clear)
 14. Verifikasi tabel di sort default Class Code A-Z
 15. Verifikasi tabel menampilkan halaman yang memuat `KHS-04`
 

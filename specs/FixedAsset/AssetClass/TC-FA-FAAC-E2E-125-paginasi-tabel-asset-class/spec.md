@@ -62,7 +62,7 @@ coverage:
 11. Klik icon Filter untuk membuka Filter Panel
 12. Pilih Active = Active, klik `[Apply]`
 13. Verifikasi tabel kembali ke halaman 1 dengan hasil filter
-14. Klik Clear all
+14. Klik `[Clear Field]` pada Filter Panel yang masih terbuka sejak langkah 11, lalu klik `[Apply]`
 
 ### TC-FA-FAAC-409: Ganti ukuran halaman kembali ke halaman 1
 

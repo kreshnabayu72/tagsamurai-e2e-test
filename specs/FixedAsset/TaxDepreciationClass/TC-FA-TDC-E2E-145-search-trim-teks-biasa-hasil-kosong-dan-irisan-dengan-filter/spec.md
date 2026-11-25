@@ -77,7 +77,7 @@ coverage:
 22. Klik `[Apply]`
 23. Verifikasi setelah Apply tabel menampilkan tepat empat baris: NB-1, NB-2, NB-4, dan NB-KHS
 24. Verifikasi keyword Search `Kelompok` tetap tampil di input
-25. Klik `Clear all` pada chip filter
+25. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 26. Klik `(←)` pada kotak Search
 
 ### Alur Filter lalu Search menghasilkan irisan yang sama (TC-FA-TDC-502)
@@ -89,7 +89,7 @@ coverage:
 31. Ketik Search `Kelompok`, tekan Enter
 32. Verifikasi setelah Search tabel menampilkan tepat empat baris NB-1, NB-2, NB-4, dan NB-KHS (identik dengan alur Search lalu Filter)
 33. Verifikasi kriteria Filter tetap aktif
-34. Klik `Clear all` pada chip filter
+34. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 
 ## Notes
 
@@ -99,6 +99,6 @@ coverage:
 - Temuan untuk QA:
   - TC-FA-TDC-500 Expected "tanpa tombol aksi" tidak menyebut tombol mana yang dimaksud; spec mengasersi tidak ada tombol aksi pada Empty State.
   - TC-FA-TDC-498 Expected a "isi input Search di layar tidak berubah" tidak menyebut nilai pembanding; spec memakai teks yang diketik persis.
-  - TC-FA-TDC-501 dan 502 tidak menyebut kriteria Filter yang aktif diamati lewat chip atau panel; spec mengasersi "kriteria Filter tetap aktif" apa adanya.
-  - Asumsi spec, belum dikonfirmasi FE: Filter Panel tetap terbuka sesudah `Clear all` dan klik `(←)` pada kotak Search (langkah 25 dan 26), sehingga langkah 27 memilih Asset Type tanpa klik icon Filter; TC dan PRD tidak menyebutnya (sama dengan asumsi di spec 248). Perlu konfirmasi FE.
+  - TC-FA-TDC-501 dan 502 tidak menyebut kriteria Filter yang aktif diamati lewat badge titik atau panel; spec mengasersi "kriteria Filter tetap aktif" apa adanya.
+  - Asumsi spec, belum dikonfirmasi FE: Filter Panel tetap terbuka sesudah pelepasan Filter lewat `[Clear Field]` dan `[Apply]` serta klik `(←)` pada kotak Search (langkah 25 dan 26), sehingga langkah 27 memilih Asset Type tanpa klik icon Filter; TC dan PRD tidak menyebutnya (sama dengan asumsi di spec 248). Perlu konfirmasi FE.
   - Email akun Total Control tidak tertulis di TC.
