@@ -50,7 +50,7 @@ coverage:
 4. Klik `[Apply]`
 5. Klik header Used By dua kali
 6. Verifikasi tabel menampilkan empat baris berurutan: NB-1 (5), NB-2 (3), lalu NB-4 dan NB-KHS (0, urut Class Code)
-7. Verifikasi chip filter tetap aktif
+7. Verifikasi badge titik pada icon Filter tetap tampil
 8. Verifikasi keyword Search `Kelompok` tetap aktif
 9. Ubah page size menjadi 25
 10. Verifikasi page size 25
@@ -60,7 +60,7 @@ coverage:
 14. Verifikasi Filter tidak direset
 15. Verifikasi Sort tidak direset
 16. Klik `(←)` pada kotak Search
-17. Klik `Clear all` pada chip filter
+17. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 18. Klik header Used By satu kali
 
 ### Clear Field pada Filter Panel tidak melepas Search dan Sort (TC-FA-TDC-504)
@@ -71,7 +71,7 @@ coverage:
 22. Klik header Used By satu kali
 23. Klik `[Clear Field]`
 24. Klik `[Apply]`
-25. Verifikasi setelah Apply kosong chip filter hilang
+25. Verifikasi setelah Apply kosong badge titik pada icon Filter hilang
 26. Verifikasi keyword Search `Kelompok` tetap aktif
 27. Verifikasi Used By tetap Ascending
 28. Verifikasi tabel menampilkan NB-1 sampai NB-SL yang namanya memuat `Kelompok` (6 baris)
@@ -90,7 +90,7 @@ coverage:
 38. Verifikasi Sort Used By Ascending tetap aktif
 39. Verifikasi tabel menampilkan 6 class Non-building tanpa pembatasan keyword
 40. Verifikasi urutan baris menurut Used By naik: NB-4, NB-KHS, NB-OLD, NB-2, NB-SL, NB-1
-41. Klik `Clear all` pada chip filter
+41. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 42. Klik header Used By dua kali
 
 ### Mengganti kolom Sort tidak mereset Search dan Filter (TC-FA-TDC-506)
@@ -103,7 +103,7 @@ coverage:
 48. Verifikasi indikator sort Used By netral
 49. Verifikasi Class Name Ascending
 50. Verifikasi keyword Search `Kelompok` tetap aktif
-51. Verifikasi chip filter Asset Type tetap aktif
+51. Verifikasi Filter Asset Type tetap aktif (badge titik pada icon Filter tetap tampil)
 
 ## Notes
 
@@ -115,5 +115,5 @@ coverage:
   - Class Code maksimal 15 karakter: suffix `{runId}-<NNN>` (S-12) tidak muat, jadi kode `TDC-01` sampai `TDC-17` memakai literal TC dengan syarat seeding idempotent, cleanup oleh spec, dan suite serial. Kode yang sama dipakai spec 152, 157, dan 158 karena TC memakainya sebagai literal; Lampiran A belum punya butir modul ini.
   - TC-FA-TDC-503 langkah 2 tidak menyebut kriteria Filter dibuka lewat Filter Panel; spec menambah klik icon Filter.
   - TC-FA-TDC-505 langkah 4 menyebut "Klik icon (✕) lalu Enter pada input kosong" tanpa menyebut apakah kotak Search tetap terbuka; spec mengikuti TC.
-  - Asumsi spec, belum dikonfirmasi FE: Filter Panel tetap terbuka sesudah `Clear all`, klik `(←)` pada kotak Search, dan klik header sort (langkah 17, 18, 30, 31, 41, 42), sehingga langkah 20, 33, dan 44 memilih Asset Type tanpa klik icon Filter; TC dan PRD tidak menyebutnya (sama dengan asumsi di spec 248). Perlu konfirmasi FE bersama keputusan spec 176.
+  - Asumsi spec, belum dikonfirmasi FE: Filter Panel tetap terbuka sesudah pelepasan Filter lewat `[Clear Field]` dan `[Apply]`, klik `(←)` pada kotak Search, dan klik header sort (langkah 17, 18, 30, 31, 41, 42), sehingga langkah 20, 33, dan 44 memilih Asset Type tanpa klik icon Filter; TC dan PRD tidak menyebutnya (sama dengan asumsi di spec 248). Perlu konfirmasi FE bersama keputusan spec 176.
   - Email akun Total Control tidak tertulis di TC.

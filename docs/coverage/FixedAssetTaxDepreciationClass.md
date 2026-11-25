@@ -161,7 +161,7 @@ Tidak ada. File backend TC tidak ada. TC request langsung (Role Matrix, bypass U
 | TC-FA-TDC-E2E-147-filter-panel-screening-guard-field-dan-opsi-dropdown | Filter Panel: Screening, Guard Field, dan Opsi Dropdown | FE+BE | 38 | 507, 508, 509, 510 |
 | TC-FA-TDC-E2E-148-filter-multi-select-or-allowed-methods-dan-range-numerik | Filter: Multi-Select, Logika OR, Allowed Methods, dan Range Numerik | FE+BE | 40 | 511, 512, 513, 514, 515 |
 | TC-FA-TDC-E2E-149-filter-date-and-search-dropdown-chip-dan-hapus-opsi | Filter: Date Range, Logika AND, Search Dropdown, Chip, dan Hapus Opsi | FE+BE | 40 | 516, 517, 518, 519, 520, 521 |
-| TC-FA-TDC-E2E-150-filter-chip-sinkron-overflow-clear-all-dan-menutup-tanpa-apply | Filter: Sinkron Chip, Overflow +N more, Clear All, dan Menutup Panel Tanpa Apply | FE+BE | 35 | 522, 523, 524, 525 |
+| TC-FA-TDC-E2E-150-filter-sinkron-opsi-overflow-badge-titik-dan-menutup-tanpa-apply | Filter: Sinkron Chip Opsi, Overflow +N more, Badge Titik, dan Menutup Panel Tanpa Apply | FE+BE | 35 | 522, 523, 524, 525 |
 | TC-FA-TDC-E2E-151-sort-default-siklus-tiga-tahap-teks-dan-numerik | Sort: Urutan Default, Siklus Tiga Tahap, Kolom Teks, dan Kolom Numerik | FE+BE | 44 | 14, 528, 529, 530, 531 |
 | TC-FA-TDC-E2E-152-sort-active-effective-from-last-updated-guard-dan-urutan-deterministik | Sort: Active, Effective From, Last Updated, Guard Kolom, dan Urutan Deterministik | FE+BE | 42 | 532, 533, 534, 535, 536, 537, 538 |
 | TC-FA-TDC-E2E-153-setup-column-tabel-utama-screening-overlay-popup-dan-kolom-default-tampil | Setup Column Tabel Utama: Screening Overlay dan Popup, serta Kolom Default Tampil | FE+BE | 32 | 539, 540, 541 |

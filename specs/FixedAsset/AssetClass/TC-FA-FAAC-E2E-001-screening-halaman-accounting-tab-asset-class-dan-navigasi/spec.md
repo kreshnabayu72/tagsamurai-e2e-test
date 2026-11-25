@@ -71,7 +71,7 @@ coverage:
 16. Verifikasi kolom tabel berurutan Checkbox, Active, Class Code, Class Name, Commercial, Fiscal, Capitalization Threshold, Accounts, Asset Names, Assets, Column Visibility (⋯)
 17. Verifikasi kolom Active, Class Code, Class Name, Commercial, Fiscal, Capitalization Threshold, Accounts, Asset Names, dan Assets sortable dan kolom Column Visibility (⋯) unsortable
 18. Verifikasi kolom Modified By dan Last Updated tidak tampil
-19. Verifikasi chip filter aktif dan `Clear all` tidak tampil
+19. Verifikasi badge titik pada icon Filter tidak tampil karena belum ada filter ter-Apply
 20. Verifikasi footer paginasi dengan ukuran halaman 10
 21. Verifikasi pilihan ukuran halaman 10 / 25 / 50 / 100
 

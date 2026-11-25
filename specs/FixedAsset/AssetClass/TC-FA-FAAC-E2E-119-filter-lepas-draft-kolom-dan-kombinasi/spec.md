@@ -49,7 +49,7 @@ coverage:
 
 1. Klik icon Filter untuk membuka Filter Panel
 2. Pilih Active = Active, klik `[Apply]`
-3. Klik icon Filter untuk membuka Filter Panel
+3. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 2 (tanpa klik icon Filter, karena klik itu menutup panel)
 4. Pilih Commercial Method = Straight Line (tanpa Apply)
 5. Klik di luar panel untuk menutup
 6. Verifikasi tabel tetap tersaring Active tanpa saringan Commercial Method
@@ -59,17 +59,17 @@ coverage:
 ### TC-FA-FAAC-380: Hasil kosong lalu pulih saat salah satu saringan dilepas
 
 9. Ketik Search `machinery`, tekan Enter
-10. Klik icon Filter untuk membuka Filter Panel
+10. Lanjutkan pada Filter Panel yang masih terbuka sejak langkah 7 (tanpa klik icon Filter, karena klik itu menutup panel)
 11. Pilih Active = Inactive, klik `[Apply]`
 12. Verifikasi empty state dengan title `No results found` dan description `Try adjusting your search or filter.` tanpa tombol aksi
-13. Verifikasi chip filter Active dan Clear all tetap tersedia di atas tabel
-14. Klik Clear all
+13. Verifikasi badge titik pada icon Filter tampil karena filter Active ter-Apply
+14. Klik `[Clear Field]` pada Filter Panel yang masih terbuka sejak langkah 7, lalu klik `[Apply]`
 15. Verifikasi tabel pulih menampilkan baris MACHINERY
 
 ### TC-FA-FAAC-379: Ganti kolom sort saat Search dan Filter aktif
 
 16. Ganti isi kotak search dengan `equip`, tekan Enter
-17. Klik icon Filter untuk membuka Filter Panel
+17. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 14 (tanpa klik icon Filter, karena klik itu menutup panel)
 18. Pilih Active = Active, klik `[Apply]`
 19. Klik header Class Name
 20. Klik header Class Code
@@ -80,23 +80,23 @@ coverage:
 
 ### TC-FA-FAAC-382: Filter tetap tersedia dan tetap berlaku saat kolom disembunyikan
 
-25. Klik Clear all
+25. Klik `[Clear Field]` pada Filter Panel yang masih terbuka sejak langkah 17, lalu klik `[Apply]`
 26. Klik icon `←` pada kotak Search
-27. Klik icon Filter untuk membuka Filter Panel
+27. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 25 (tanpa klik icon Filter, karena klik itu menutup panel)
 28. Pilih Commercial Method = Units of Production, klik `[Apply]`
-29. Sembunyikan kolom Commercial lewat Setup Column (ikon `⋯` pada header kolom Actions, `Setup Column...`, hilangkan centang Commercial)
+29. Tutup Filter Panel (klik icon Filter), lalu sembunyikan kolom Commercial lewat Setup Column (ikon `⋯` pada header kolom Actions, `Setup Column...`, hilangkan centang Commercial)
 30. Klik `[Save]`
 31. Klik icon Filter untuk membuka Filter Panel
 32. Verifikasi tabel tetap tersaring: baris MACHINERY tampil dan baris contoh lain (HEAVY-EQ) tidak tampil; baris seed lain bermetode Units of Production tidak diasersi
 33. Verifikasi field Commercial Method tetap ada di Filter Panel dengan nilai Units of Production
-34. Tampilkan kembali kolom Commercial lewat Setup Column (ikon `⋯` pada header kolom Actions, `Setup Column...`, centang Commercial)
+34. Tutup Filter Panel (klik icon Filter), lalu tampilkan kembali kolom Commercial lewat Setup Column (ikon `⋯` pada header kolom Actions, `Setup Column...`, centang Commercial)
 35. Klik `[Save]`
-36. Klik Clear all
+36. Buka Filter Panel (klik icon Filter, karena panel ditutup pada langkah 34), klik `[Clear Field]`, lalu klik `[Apply]`
 
 ## Notes
 
 - Urutan TC di dalam spec: TC-FA-FAAC-381, 380, 379, lalu 382 supaya state Search dan Filter yang dibangun TC sebelumnya dipakai ulang dan blok yang mengubah konfigurasi kolom berada di akhir (S-10). Tiap TC tetap memuat semua aksi yang diminta TC-nya.
-- Langkah penghubung (S-03): langkah 10 membuka Filter Panel sebelum Apply; langkah 16 menggantikan isi kotak Search dari langkah 9; langkah 25 dan 26 (melepas filter dan menutup Search sebelum TC-FA-FAAC-382, S-09); langkah 34 dan 35 (memulihkan konfigurasi kolom, S-09); langkah 36 (melepas filter di akhir spec, S-09). Search pada langkah 9 menentukan baris target MACHINERY (R-16).
+- Langkah penghubung (S-03): langkah 3, 10, 17, dan 27 melanjutkan pada Filter Panel yang masih terbuka sesudah Apply (prd-conventions §9.8; klik icon Filter akan menutupnya); langkah 29 dan 34 menutup panel secara eksplisit sebelum Setup Column dan langkah 36 membukanya lagi; langkah 16 menggantikan isi kotak Search dari langkah 9; langkah 25 dan 26 (melepas filter dan menutup Search sebelum TC-FA-FAAC-382, S-09); langkah 34 dan 35 (memulihkan konfigurasi kolom, S-09); langkah 36 (melepas filter di akhir spec, S-09). Search pada langkah 9 menentukan baris target MACHINERY (R-16).
 - Klausa "tabel tetap tersaring ... baris contoh lain tidak tampil" pada langkah 32 diasersi dengan satu baris pembanding yang dijamin ada (8b butir 2).
 - Hasil Search `equip` dan `machinery` serta Filter Commercial Method diasersi pada keanggotaan baris contoh; baris seed lain yang cocok tidak diasersi.
 - Nama literal Pre-setup (sembilan kelas contoh) dipakai tanpa suffix `{runId}` karena asersi bergantung pada nama persis, dan data hanya dibaca (S-06, S-12).

@@ -1,6 +1,6 @@
 ---
 id: TC-FA-FAAC-E2E-136-tab-asset-names-filter-lanjutan-dan-kombinasi
-title: "Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter dengan Clear all"
+title: "Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter"
 layer: ui-e2e
 priority: High
 caseType: Positive
@@ -28,7 +28,7 @@ coverage:
   web: automated
 ---
 
-# Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter dengan Clear all
+# Tab Asset Names: Filter Assigned At, Filter Assigned By, serta Kombinasi Search dan Filter
 
 ## Prerequisites
 
@@ -54,25 +54,25 @@ coverage:
 7. Pada field Assigned At pilih rentang 01/01/26 sampai 31/01/26
 8. Verifikasi tabel memuat baris `Excavator PC200` dan `Wheel Loader` (Assigned At 02/01/26)
 9. Verifikasi baris `Crane Rental Unit` (14/03/26) tidak tampil
-10. Klik `Clear all`
+10. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
 ### TC-FA-FAAC-455: Filter berdasarkan Assigned By
 
-11. Klik tombol Filter
+11. Lanjutkan pada Filter Panel yang masih terbuka sesudah `[Apply]` langkah 10 (tanpa klik tombol Filter, karena klik itu menutup panel)
 12. Pada field Assigned By pilih `Budi S`
 13. Verifikasi tabel hanya memuat baris `Crane Rental Unit`, sedangkan `Excavator PC200` dan `Wheel Loader` tidak tampil
-14. Klik `Clear all`
+14. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
 
-### TC-FA-FAAC-456: Kombinasi Search dan Filter berlaku bersamaan (AND) lalu Clear all
+### TC-FA-FAAC-456: Kombinasi Search dan Filter berlaku bersamaan (AND) lalu dilepas lewat Filter Panel
 
 15. Ketik Search `loader`, tekan Enter
-16. Klik tombol Filter
+16. Lanjutkan pada Filter Panel yang masih terbuka sejak langkah 11 (tanpa klik tombol Filter, karena klik itu menutup panel)
 17. Pada field Assets pilih `No`
 18. Verifikasi EmptyState `No results found` (tidak ada baris yang memenuhi Search `loader` dan Assets `No` sekaligus)
 19. Ubah field Assets menjadi `Yes`
 20. Verifikasi tabel hanya memuat baris `Wheel Loader`, sedangkan `Excavator PC200` dan `Crane Rental Unit` tidak tampil
-21. Klik `Clear all` pada chip filter
-22. Verifikasi semua filter dilepas (tidak ada chip filter aktif)
+21. Klik `[Clear Field]` pada Filter Panel, lalu klik `[Apply]`
+22. Verifikasi semua filter dilepas dan badge titik pada icon Filter hilang
 23. Verifikasi kotak Search masih berisi `loader`
 24. Verifikasi tabel hanya memuat baris `Wheel Loader`
 25. Klik `(←)` pada kotak Search

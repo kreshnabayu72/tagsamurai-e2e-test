@@ -54,7 +54,7 @@ coverage:
 7. Klik Class Code pada salah satu baris untuk membuka Drawer
 8. Tutup Drawer dengan ikon `✕`
 9. Verifikasi keyword Search `TDC` tetap sama
-10. Verifikasi chip filter Asset Type `Building` tetap sama
+10. Verifikasi Filter Asset Type `Building` tetap sama
 11. Verifikasi sort Class Name Descending tetap sama
 12. Verifikasi halaman 2 tetap sama
 
@@ -73,7 +73,7 @@ coverage:
 20. Klik tab `Tax Depreciation Class`
 21. Verifikasi halaman 1 dengan 10 baris
 22. Verifikasi Search kosong
-23. Verifikasi tidak ada chip filter
+23. Verifikasi icon Filter tidak menampilkan badge titik
 24. Verifikasi sort kembali default Class Code A-Z
 
 ### State dipertahankan saat berpindah ke tab Accounting lain lalu kembali (TC-FA-TDC-931)
@@ -87,13 +87,13 @@ coverage:
 31. Klik tab `Asset Class`
 32. Klik tab `Tax Depreciation Class`
 33. Verifikasi keyword Search `TDC` tetap sama
-34. Verifikasi chip filter Asset Type `Building` tetap sama
+34. Verifikasi Filter Asset Type `Building` tetap sama
 35. Verifikasi sort Class Name Descending tetap sama
 36. Verifikasi halaman 2 tetap sama
 
 ### Menghapus baris terakhir di halaman terakhir (TC-FA-TDC-559)
 
-37. Klik `Clear all` pada chip filter
+37. Buka Filter Panel, klik `[Clear Field]`, lalu klik `[Apply]`
 38. Klik `(←)` pada kotak Search
 39. Klik header Class Name satu kali (sort kembali netral)
 40. Hapus class TDC-13 sampai TDC-17 lewat seeding API hingga tabel berisi 21 class, lalu muat ulang halaman
@@ -109,7 +109,7 @@ coverage:
 
 - Urutan TC dalam spec: TC-FA-TDC-560, 561, 562, 931, 559. TC-FA-TDC-559 terakhir karena menghapus data (S-10) dan butuh tabel 21 class. Keadaan hasil langkah 1 sampai 6 dipakai ulang oleh TC-FA-TDC-561 karena TC-FA-TDC-561 memulai dari keadaan yang sama persis (Search `TDC`, Filter `Building`, sort Class Name Descending, halaman 2) dan TC-FA-TDC-560 hanya membuka lalu menutup Drawer tanpa mengubahnya; keadaan dibangun ulang pada langkah 25 sampai 30 untuk TC-FA-TDC-931 karena TC-FA-TDC-562 mereset state.
 - Langkah penghubung (S-03, S-09): langkah 37 sampai 39 (melepas Filter, Search, dan Sort sebelum TC-FA-TDC-559), langkah 40 (menghapus TDC-13 sampai TDC-17 lewat seeding API). Langkah 42 menargetkan baris TDC-12 tanpa Search karena halaman 3 hanya berisi satu baris (TDC-12) dan Search akan mengubah halaman (8b.13, R-23; Search bukan langkah penghubung di sini).
-- Asersi absence langkah 23 (tidak ada chip filter) didahului anchor positif langkah 21 (halaman 1 dengan 10 baris tampil pada tabel yang sama; 8b.2).
+- Asersi absence langkah 23 (tanpa badge titik) didahului anchor positif langkah 21 (halaman 1 dengan 10 baris tampil pada tabel yang sama; 8b.2).
 - Spec ini 47 langkah, di atas ~35 langkah. Alasan: satu topik (state tabel utama dan pagination) pada dataset 26 class yang sama, tiap blok TC berdiri sendiri (kegagalan satu blok tidak membuat blok lain kehilangan makna), dan S-01 mengharuskan satu `Verifikasi` per klausa; keadaan Search, Filter, Sort, dan halaman hanya dibangun dua kali (bukan lima).
 - Temuan untuk QA:
   - Class Code maksimal 15 karakter: suffix `{runId}-<NNN>` (S-12) tidak muat, jadi kode `TDC-01` sampai `TDC-17` memakai literal TC dengan syarat seeding idempotent, cleanup oleh spec, dan suite serial. Kode yang sama dipakai spec 146, 152, dan 157; Lampiran A belum punya butir modul ini.

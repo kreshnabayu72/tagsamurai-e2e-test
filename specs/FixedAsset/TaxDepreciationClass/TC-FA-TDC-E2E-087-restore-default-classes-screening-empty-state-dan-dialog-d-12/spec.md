@@ -61,7 +61,7 @@ coverage:
 3. Verifikasi Title `No tax depreciation class`
 4. Verifikasi Description `Tax depreciation cannot be calculated.`
 5. Verifikasi tombol `Restore default classes` tampil
-6. Verifikasi chip filter dan `Clear all` tidak tampil
+6. Verifikasi icon Filter tidak menampilkan badge titik
 7. Verifikasi header kolom tabel tetap dirender di atas area Empty State (Class Code, Allowed Methods, Used By, Effective From)
 
 ### TC-FA-TDC-315: Restore default classes hanya tampil di Empty State

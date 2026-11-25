@@ -69,7 +69,7 @@ coverage:
 
 ### Pemulihan
 
-24. Klik Clear all
+24. Klik `[Clear Field]` pada Filter Panel (buka bila tertutup), lalu klik `[Apply]`
 25. Klik `(←)` pada kotak Search untuk menutup input dan mereset tabel
 26. Klik header Class Name sekali lagi (sort kembali netral, Class Code A-Z)
 27. Ubah ukuran halaman kembali ke 10

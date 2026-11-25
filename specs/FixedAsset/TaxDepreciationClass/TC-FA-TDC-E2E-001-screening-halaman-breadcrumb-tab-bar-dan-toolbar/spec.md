@@ -78,7 +78,7 @@ coverage:
 12. Verifikasi kolom tabel `Checkbox seleksi baris | Active (sortable) | Class Code (sortable) | Class Name (sortable) | Asset Type (sortable) | Useful Life (years) (sortable) | Straight Line Rate (sortable) | Declining Balance Rate (sortable) | Allowed Methods (sortable) | Used By (sortable) | Effective From (sortable) | Column Visibility (⋯) (unsortable — header klik = buka Overlay Column Visibility, body per baris = row action menu)`
 13. Verifikasi kolom Regulation Reference, Modified By, dan Last Updated tidak tampil (Hidden default)
 14. Verifikasi 7 baris tampil berurutan Class Code A-Z: BLD-NP, BLD-P, LAND, NB-1, NB-2, NB-3, NB-4
-15. Verifikasi chip filter aktif dan `Clear all` tidak tampil karena tidak ada filter aktif
+15. Verifikasi icon Filter tidak menampilkan badge titik karena tidak ada filter ter-Apply
 16. Verifikasi Footer menampilkan Pagination dengan page size default 10 per halaman
 
 ### TC-FA-TDC-4: Tab bar halaman Accounting: urutan tab dan tab Tax Depreciation Class aktif

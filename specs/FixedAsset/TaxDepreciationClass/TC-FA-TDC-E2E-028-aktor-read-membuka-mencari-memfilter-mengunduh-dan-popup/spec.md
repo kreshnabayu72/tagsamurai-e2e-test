@@ -85,8 +85,8 @@ coverage:
 10. Pilih Asset Type `Land`
 11. Klik `[Apply]`
 12. Verifikasi baris LAND tampil dan tabel hanya menampilkan baris LAND
-13. Verifikasi chip filter aktif dan `Clear all` tampil di atas tabel
-14. Klik `Clear all`
+13. Verifikasi icon Filter menampilkan badge titik tanpa angka
+14. Klik `[Clear Field]` lalu `[Apply]` pada Filter Panel
 
 ### Download CSV (TC-FA-TDC-94)
 
@@ -121,7 +121,7 @@ coverage:
 ## Notes
 
 - Satu aktor (Read) untuk seluruh spec; login di hook `before`, tidak ada ganti akun. Langkah 1 (membuka halaman utama) adalah langkah penghubung untuk TC-FA-TDC-91 yang berprasyarat halaman utama.
-- Langkah penghubung (S-03): `(←)` pada Search dan `Clear all` memulihkan tabel penuh sebelum TC berikutnya (S-09); menutup Popup dan Drawer. Search `Tanah` adalah isi TC-FA-TDC-92, bukan pencarian baris target; tabel 9 baris satu halaman (R-16).
+- Langkah penghubung (S-03): `(←)` pada Search dan `[Clear Field]` lalu `[Apply]` memulihkan tabel penuh sebelum TC berikutnya (S-09); menutup Popup dan Drawer. Search `Tanah` adalah isi TC-FA-TDC-92, bukan pencarian baris target; tabel 9 baris satu halaman (R-16).
 - Pembagian TC lintas spec: unduhan CSV hanya diasersi nama berkas dan terunduh; isi berkas diasersi di spec kelas berkas.
 - Absence "tidak ada toast sukses" ditulis tepat sesudah klik `Download as CSV` (8b.11); klik itu adalah anchor positif yang buktinya menyusul pada Verifikasi berkas terunduh.
 - Temuan untuk QA:
