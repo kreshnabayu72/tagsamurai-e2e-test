@@ -3067,8 +3067,8 @@ Aturan:
   - PRD Asset Name (`fixed-asset/settings-asset-name/PRD/settings-asset-name.md` L11, `FAAM-LOGIC-02`) tidak punya status nonaktif atau Recycle Bin. Delete langsung permanen.
   - Di backend, item type Measurement juga tidak punya kolom status.
   - Akibatnya prasyarat kedua TC tidak bisa dibentuk lewat produk. Ini gap spec dan PRD, dilaporkan di PRD global-settings#61.
-- **Keputusan:** langkah-langkah itu tidak diasersi dan tidak dihitung PI. State-nya juga tidak dibuat lewat seed atau penghapusan langsung di DB. Langkah lain di spec tetap diuji. Bila global-settings#61 diputuskan, entri ini ditinjau ulang.
+- **Keputusan:** langkah-langkah itu tidak diasersi dan dihitung PI. State-nya juga tidak dibuat lewat seed atau penghapusan langsung di DB. Langkah lain di spec tetap diuji. Bila global-settings#61 diputuskan, entri ini ditinjau ulang.
 - **Untuk spec:** prasyarat status konsumen hanya boleh memakai state yang ada di PRD modul konsumen itu.
-- **Untuk script:** langkah itu tidak diasersi. Beri komentar `// @spec-gap: D-293 global-settings#61 <TC id> langkah <n> — <state>`, tanpa `gaps.*`.
-- **Diputuskan oleh:** owner 2026-11-25 ("ini gap spec dan prd ya").
+- **Untuk script:** langkah itu memakai gap kind `spec-decision` yang sudah ada (PI), dengan komentar `// @spec-decision: D-293 global-settings#61 <TC id> langkah <n> — <state>` dan `gaps.open('spec-decision', 'D-293 global-settings#61 <TC id> langkah <n>', ...)`. Tidak memakai tag baru.
+- **Diputuskan oleh:** owner 2026-11-25 ("ini gap spec dan prd ya"; "PI aja, jangan spec gap, jangan bikin tag baru").
 - **Status:** berlaku.
