@@ -3047,3 +3047,14 @@ Aturan:
 - **Diputuskan oleh:** owner 2026-11-25 ("yang ini ikutin DC aja, jadi sama tetep muncul dialog dulu").
 - **Lingkup:** Archive Plan saja; bukan aturan umum (sama seperti D-290).
 - **Status:** berlaku.
+
+## D-292 Aturan umum: asersi UI dekoratif tidak diasersi dan spec tetap lolos (2026-11-25)
+
+- **Spec / langkah:** semua modul; langkah yang hanya memverifikasi efek visual dekoratif. Contoh pertama: GlobalSettings/Measurement `TC-GS-UOM-E2E-021` (TC-GS-UOM-340 langkah 25-26, tombol `[Submit]` meredup saat hover) dan `TC-GS-UOM-E2E-027` (tombol `[Save]` meredup saat hover).
+- **Spec meminta:** efek visual seperti opacity, warna, bayangan, atau transisi saat hover/pressed pada tombol, baris, atau ikon.
+- **Kenyataannya:** efek ini berasal dari preset komponen Wangs UI. Bila tidak ada atau berbeda, data, alur, hak akses, validasi, dan aksesibilitas tetap sama.
+- **Keputusan:** asersi yang hanya dekoratif tidak dijalankan, dan langkahnya dihitung lolos (bukan PI, bukan ui-gap). Dekoratif berarti: (1) tidak mengubah data atau alur, (2) tidak memengaruhi aturan bisnis, hak akses, atau validasi, (3) bila diabaikan tidak berdampak apa pun pada pengguna. Tidak termasuk: state yang mengubah perilaku, seperti tombol `[Submit]`/`[Save]` disabled dan loading selama submit (mencegah submit ganda, tetap diasersi), fokus keyboard, tooltip berisi informasi, teks, dan elemen yang tampil/tidak tampil. Ini mempersempit D-096 untuk efek dekoratif.
+- **Untuk spec:** jangan menulis langkah `Verifikasi` untuk efek hover/pressed yang hanya dekoratif. Tulis langkah untuk state yang mengubah perilaku (disabled, loading, fokus).
+- **Untuk script:** langkah itu tidak diasersi dan diberi komentar `// @ui-decorative: D-292 <TC id> langkah <n> — <efek>`, tanpa `gaps.*`.
+- **Diputuskan oleh:** owner 2026-11-25 ("kalo cuma hover mah gausah di assert ... di abaikan dan lolos bukan incomplete").
+- **Status:** berlaku.
